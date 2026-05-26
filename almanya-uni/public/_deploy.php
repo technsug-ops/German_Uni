@@ -104,37 +104,32 @@ if (file_exists($bundleFile)) {
     $log('ℹ️  No bundle (pulse-only trigger)');
 }
 
-// ─── 2. Cache rebuild ───
+// ─── 2. Cache reset (manuel file deletion — KAS CLI PHP 7.4 olduğu için artisan kullanamıyoruz) ───
 if ($allOk) {
-    chdir($appRoot);
-
-    // Manuel cache temizliği (kompilasyon sırasında yol farklı olabilir)
-    foreach (glob($appRoot . '/storage/framework/views/*.php') as $f) @unlink($f);
-    foreach (glob($appRoot . '/bootstrap/cache/*.php') as $f) @unlink($f);
-    $log('🧹 Old caches cleared (views + bootstrap)');
-
-    // Artisan komutları: clear → cache (sıra önemli)
-    $commands = [
-        'php artisan view:clear',
-        'php artisan config:clear',
-        'php artisan route:clear',
-        'php artisan cache:clear',
-        'php artisan config:cache',
-        'php artisan route:cache',
-        'php artisan view:cache',
+    // Laravel her cache dosyasını runtime'da otomatik yeniden compile eder.
+    // Sadece eski derlenmiş dosyaları silmek YETER — artisan komutuna gerek yok.
+    //
+    // KAS gerçeği: web tarafı PHP 8.3 (Laravel için yeterli) ama CLI default PHP 7.4
+    // → exec("php artisan ...") composer platform check fail → artisan'ı kullanma
+    $cleaned = [
+        'views' => 0,
+        'bootstrap' => 0,
+        'routes' => 0,
     ];
-
-    foreach ($commands as $cmd) {
-        $output = [];
-        $exitCode = 0;
-        exec($cmd . ' 2>&1', $output, $exitCode);
-        if ($exitCode !== 0) {
-            $allOk = false;
-            $log("❌ $cmd (exit $exitCode) — " . implode(' | ', array_slice($output, 0, 2)));
-        } else {
-            $log("✅ $cmd");
-        }
+    foreach (glob($appRoot . '/storage/framework/views/*.php') as $f) {
+        if (@unlink($f)) $cleaned['views']++;
     }
+    foreach (glob($appRoot . '/bootstrap/cache/*.php') as $f) {
+        // services.json hariç tut — Laravel onsuz boot edemez
+        if (basename($f) === 'services.json') continue;
+        if (@unlink($f)) $cleaned['bootstrap']++;
+    }
+    // routes-*.php Laravel 9+ için
+    foreach (glob($appRoot . '/bootstrap/cache/routes-*.php') as $f) {
+        if (@unlink($f)) $cleaned['routes']++;
+    }
+    $log("🧹 Cache cleared — views: {$cleaned['views']}, bootstrap: {$cleaned['bootstrap']}, routes: {$cleaned['routes']}");
+    $log('ℹ️  Laravel will auto-rebuild caches on next request (no artisan needed)');
 }
 
 // ─── 3. Pulse temizle + state cleanup ───
