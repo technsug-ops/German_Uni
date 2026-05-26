@@ -57,6 +57,7 @@
             {{-- Map CTA — alternatif yol --}}
             <div class="mb-5">
                 <a href="{{ route('map.index') }}"
+                   title="{{ __('Explore on Map') }} — {{ __(':count universities on interactive map', ['count' => $totals['universities_on_map']]) }}"
                    class="group inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/60 backdrop-blur px-5 py-3 rounded-xl font-semibold transition shadow-lg">
                     <span class="text-2xl">🗺️</span>
                     <span class="flex flex-col items-start leading-tight">
@@ -72,12 +73,12 @@
             {{-- Quick chips --}}
             <div class="flex flex-wrap gap-2 text-sm">
                 <span class="text-primary-200 mr-1">{{ __('Popular:') }}</span>
-                <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">TUM</a>
-                <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">Heidelberg</a>
-                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
-                <a href="{{ route('scholarships.daad') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">🎖️ {{ __('DAAD Scholarship') }}</a>
-                <a href="{{ route('tools.visa-cost') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">💸 {{ __('Visa cost') }}</a>
-                <a href="{{ route('tools.deadlines') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">📅 {{ __('Deadline calendar') }}</a>
+                <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('Search:') }} TUM (Technische Universität München)">TUM</a>
+                <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('Search:') }} Heidelberg">Heidelberg</a>
+                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('English Programs') }} — {{ __('Programs taught in English') }}">🇬🇧 {{ __('English Programs') }}</a>
+                <a href="{{ route('scholarships.daad') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('DAAD Scholarship') }} — {{ __('German Academic Exchange Service') }}">🎖️ {{ __('DAAD Scholarship') }}</a>
+                <a href="{{ route('tools.visa-cost') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('Visa cost') }} — {{ __('Student visa total cost') }}">💸 {{ __('Visa cost') }}</a>
+                <a href="{{ route('tools.deadlines') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('Deadline calendar') }} — {{ __('Application deadlines') }}">📅 {{ __('Deadline calendar') }}</a>
             </div>
         </div>
 
@@ -199,7 +200,7 @@
                 <h2 class="text-2xl font-bold text-gray-900">{{ __('Tools') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('Decide with numbers, stop guessing.') }}</p>
             </div>
-            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All tools') }}">
                 {{ __('All tools') }} →
             </a>
         </div>
@@ -207,6 +208,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             {{-- Cost of Living --}}
             <a href="{{ route('tools.cost-of-living') }}"
+               title="{{ __('Cost of Living') }} — {{ __('City + housing type → monthly expense estimate.') }}"
                class="group relative block bg-gradient-to-br from-emerald-50 via-white to-emerald-50/40 border border-emerald-200 hover:border-emerald-400 rounded-2xl p-5 transition hover:shadow-lg overflow-hidden">
                 <svg class="absolute -right-6 -bottom-6 w-32 h-32 text-emerald-100 opacity-60 group-hover:opacity-90 transition" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2L2 7v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7l-10-5zm0 2.18L19.82 8H4.18L12 4.18zM4 17V10h16v7H4zm2-5h2v3H6v-3zm4 0h2v3h-2v-3zm4 0h2v3h-2v-3z"/>
@@ -229,6 +231,7 @@
 
             {{-- Grade Converter --}}
             <a href="{{ route('tools.grade-converter') }}"
+               title="{{ __('Grade Converter') }} — {{ __('Convert your grade to the German 1-5 system.') }}"
                class="group relative block bg-gradient-to-br from-blue-50 via-white to-blue-50/40 border border-blue-200 hover:border-blue-400 rounded-2xl p-5 transition hover:shadow-lg overflow-hidden">
                 <svg class="absolute -right-6 -bottom-6 w-32 h-32 text-blue-100 opacity-60 group-hover:opacity-90 transition" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M3 13h2v8H3v-8zm4-6h2v14H7V7zm4-4h2v18h-2V3zm4 8h2v10h-2V11zm4-4h2v14h-2V7z"/>
@@ -251,6 +254,7 @@
 
             {{-- Uni Match Quiz --}}
             <a href="{{ route('tools.recommendation') }}"
+               title="{{ __('Uni Match Quiz') }} — {{ __('5 questions, the best universities for you.') }}"
                class="group relative block bg-gradient-to-br from-purple-50 via-white to-purple-50/40 border border-purple-200 hover:border-purple-400 rounded-2xl p-5 transition hover:shadow-lg overflow-hidden">
                 <svg class="absolute -right-6 -bottom-6 w-32 h-32 text-purple-100 opacity-60 group-hover:opacity-90 transition" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
@@ -285,7 +289,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Popular Student Cities') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('By university density') }}</p>
             </div>
-            <a href="{{ route('cities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            <a href="{{ route('cities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All cities') }} — {{ $totals['cities'] }} {{ __('cities') }}">
                 {{ __('All cities') }} →
             </a>
         </div>
@@ -299,6 +303,7 @@
                         $palette = $palettes[$seed % count($palettes)];
                     @endphp
                     <a href="{{ route('cities.show', $city['slug']) }}"
+                       title="{{ $city['name'] }}{{ $city['state_name'] ? ' (' . $city['state_name'] . ')' : '' }} — {{ $city['universities_count'] }} {{ __('universities') }}"
                        class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                         <div class="aspect-[4/3] overflow-hidden bg-gray-100 relative">
                             @if(!empty($city['image_url']))
@@ -339,7 +344,7 @@
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Featured Universities') }}</h2>
             <p class="text-gray-600 text-sm">{{ __('Most applied and largest universities') }}</p>
         </div>
-        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All universities') }} — {{ $totals['universities'] }} {{ __('universities') }}">
             {{ __('All universities') }} →
         </a>
     </div>
@@ -359,6 +364,7 @@
                 };
             @endphp
             <a href="{{ route('universities.show', $uni['slug']) }}"
+               title="{{ $uni['name_de'] }}{{ $typeBadge[0] ? ' — ' . $typeBadge[0] : '' }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
                     @if(!empty($uni['image_url']))
@@ -411,11 +417,12 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🎯 {{ __('Popular Study Fields') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('Top 6 fields by program count — choose your path') }}</p>
             </div>
-            <a href="{{ route('fields.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All fields') }} →</a>
+            <a href="{{ route('fields.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm" title="{{ __('All fields') }}">{{ __('All fields') }} →</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             @foreach ($top_fields as $field)
                 <a href="{{ route('fields.show', $field->slug) }}"
+                   title="{{ $field->name }} — {{ number_format($field->programs_count) }} {{ __('programs') }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-5 text-center">
                     <div class="text-4xl mb-2">{{ $field->icon ?? '📚' }}</div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm mb-1 leading-tight">{{ $field->name }}</h3>
@@ -441,7 +448,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Study in Germany with a Scholarship') }}</h2>
                 <p class="text-gray-600 text-sm mt-1">{{ __('DAAD, EPOS, Helmut-Schmidt and more — lightens the Sperrkonto burden') }}</p>
             </div>
-            <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition shadow-md whitespace-nowrap">
+            <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition shadow-md whitespace-nowrap" title="{{ __('DAAD Guide') }} — {{ __('German Academic Exchange Service') }}">
                 🎖️ {{ __('DAAD Guide') }} →
             </a>
         </div>
@@ -449,6 +456,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             @foreach ($featured_scholarships as $s)
                 <a href="{{ route('scholarships.show', $s->slug) }}"
+                   title="{{ $s->name_en ?: $s->name_de }}{{ $s->is_daad ? ' — DAAD' : '' }}"
                    class="group bg-white rounded-lg border border-emerald-100 hover:border-emerald-400 hover:shadow-md transition p-4">
                     @if ($s->is_daad)
                         <span class="inline-block text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold mb-2">DAAD</span>
@@ -479,7 +487,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('6 tools to help you decide') }}</h2>
                 <p class="text-gray-600 text-sm mt-1">{{ __('Is your budget enough, how much is the visa, when is the nearest deadline — calculate instantly') }}</p>
             </div>
-            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All tools') }} →</a>
+            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm" title="{{ __('All tools') }}">{{ __('All tools') }} →</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             @php
@@ -494,6 +502,7 @@
             @endphp
             @foreach ($homeTools as $t)
                 <a href="{{ $t['route'] }}"
+                   title="{{ $t['lbl'] }} — {{ $t['desc'] }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
                     <div class="text-3xl mb-2">{{ $t['icon'] }}</div>
                     <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 text-sm leading-tight">{{ $t['lbl'] }}</h3>
@@ -520,7 +529,7 @@
                 {{ __('Visa, language tests, Uni-Assist, Studienkolleg, dorm, health insurance, blocked account and much more.') }}
                 <strong>{{ __(':n questions', ['n' => $faq_stats['total']]) }}</strong>, {{ __(':n topics', ['n' => $faq_stats['topics']]) }} — {{ __('all answered.') }}
             </p>
-            <a href="{{ route('faqs.index') }}" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
+            <a href="{{ route('faqs.index') }}" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-lg transition" title="{{ __('See all questions') }} — {{ $faq_stats['total'] }} {{ __('questions') }}">
                 {{ __('See all questions') }} →
             </a>
         </div>
@@ -530,6 +539,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     @foreach ($featured_faqs as $f)
                         <a href="{{ route('faqs.show', [$f->topic->slug, $f->slug]) }}"
+                           title="{{ $f->question }}"
                            class="group block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-lg p-4">
                             <div class="flex items-start gap-2 mb-2">
                                 @if ($f->topic->icon)
@@ -566,6 +576,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 @foreach ($states as $state)
                     <a href="{{ route('universities.index', ['state' => $state['slug']]) }}"
+                       title="{{ __('Universities in :state', ['state' => $state['name']]) }} — {{ $state['cities_count'] }} {{ __('cities') }}"
                        class="group bg-white border border-primary-100 hover:border-primary-500 hover:bg-primary-50 transition p-4 rounded-lg text-center">
                         <h3 class="font-semibold text-primary-900 group-hover:text-primary-700 transition leading-tight">
                             {{ $state['name'] }}
@@ -588,7 +599,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Latest Blog Posts') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('Germany education and student life guides') }}</p>
             </div>
-            <a href="{{ route('blog.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            <a href="{{ route('blog.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All posts') }}">
                 {{ __('All posts') }} →
             </a>
         </div>
@@ -596,6 +607,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             @foreach ($latest_posts as $post)
                 <a href="{{ route('blog.show', $post['slug']) }}"
+                   title="{{ $post['title'] }}{{ $post['category_name'] ? ' — ' . $post['category_name'] : '' }}"
                    class="group block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-xl p-5">
                     @if ($post['category_name'])
                         <span class="inline-block text-xs font-semibold uppercase tracking-wider mb-2"
@@ -631,7 +643,8 @@
             {{ __('In 5 short questions, we\'ll match the best German universities based on your budget, city preference and study field.') }}
         </p>
         <a href="{{ route('tools.recommendation') }}"
-           class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">
+           class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition"
+           title="{{ __('Uni Match Quiz') }} — {{ __('5 questions, the best universities for you.') }}">
             🎯 {{ __('Start quiz — 60 seconds') }}
         </a>
     </div>

@@ -80,7 +80,7 @@
     <header class="bg-primary-700 text-white shadow-md sticky top-0 z-50">
         <nav class="max-w-[1400px] mx-auto px-4 py-3 flex items-center justify-between gap-4">
             {{-- Logo (locale-aware brand) --}}
-            <a href="{{ route('home') }}" class="flex items-center font-extrabold text-xl whitespace-nowrap" aria-label="{{ brand('name') }}">
+            <a href="{{ route('home') }}" class="flex items-center font-extrabold text-xl whitespace-nowrap" aria-label="{{ brand('name') }}" title="{{ brand('name') }} — {{ __('Home') }}">
                 <x-brand-logo variant="white" />
             </a>
 
@@ -124,7 +124,7 @@
                             <div class="grid grid-cols-2 gap-0.5">
                                 @foreach ($kesfetItems as $item)
                                     @if ($url = $item->resolved_url)
-                                        <a href="{{ $url }}" class="{{ $itemCls }}">
+                                        <a href="{{ $url }}" class="{{ $itemCls }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
                                             <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
                                             <span class="min-w-0">
                                                 <span class="block font-semibold text-gray-900 leading-tight">{{ $item->label }}</span>
@@ -135,7 +135,7 @@
                                 @endforeach
                             </div>
                             @if (\App\Models\MenuPage::isKeyEnabled('compare.index'))
-                            <a href="{{ route('compare.index') }}" class="flex items-center justify-center gap-2 mt-1 px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold text-sm hover:from-primary-700 hover:to-primary-800 transition">
+                            <a href="{{ route('compare.index') }}" class="flex items-center justify-center gap-2 mt-1 px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold text-sm hover:from-primary-700 hover:to-primary-800 transition" title="{{ __('Compare') }} — {{ __('2-4 universities side by side') }}">
                                 ⚖️ {{ __('Compare') }} <span class="text-primary-200 font-normal">— {{ __('2-4 universities side by side') }}</span>
                             </a>
                             @endif
@@ -161,7 +161,7 @@
                             <div class="grid grid-cols-2 gap-0.5">
                                 @foreach ($araclarItems as $item)
                                     @if ($url = $item->resolved_url)
-                                        <a href="{{ $url }}" class="{{ $itemCls }}">
+                                        <a href="{{ $url }}" class="{{ $itemCls }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
                                             <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
                                             <span class="min-w-0 flex-1">
                                                 <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-rose-100 text-rose-700">{{ $item->badge }}</span>@endif</span>
@@ -172,7 +172,7 @@
                                 @endforeach
                             </div>
                             @if (\App\Models\MenuPage::isKeyEnabled('tools.index'))
-                            <a href="{{ route('tools.index') }}" class="block text-xs text-primary-600 hover:text-primary-800 px-3 py-2 text-center font-medium">{{ __('See all tools →') }}</a>
+                            <a href="{{ route('tools.index') }}" class="block text-xs text-primary-600 hover:text-primary-800 px-3 py-2 text-center font-medium" title="{{ __('See all tools') }}">{{ __('See all tools →') }}</a>
                             @endif
                         </div>
                     </div>
@@ -269,7 +269,9 @@
                         @foreach ($activeLocales as $loc)
                             @php $cfg = config("locale.locales.$loc"); @endphp
                             <a href="{{ localized_url($loc) }}"
-                               class="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 text-sm {{ app()->getLocale() === $loc ? 'font-bold bg-gray-50' : '' }}">
+                               class="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 text-sm {{ app()->getLocale() === $loc ? 'font-bold bg-gray-50' : '' }}"
+                               title="{{ $cfg['native_name'] }}"
+                               hreflang="{{ $loc }}">
                                 <span>{{ $cfg['flag'] }}</span>
                                 <span>{{ $cfg['native_name'] }}</span>
                                 @if (app()->getLocale() === $loc) <span class="ml-auto text-primary-600">✓</span> @endif
@@ -309,7 +311,8 @@
                             <div class="flex flex-wrap gap-1.5">
                                 @foreach (['TUM', 'Berlin', 'Heidelberg', __('Engineering'), 'Sperrkonto'] as $sug)
                                     <a href="{{ route('search.index', ['q' => $sug]) }}"
-                                       class="px-2 py-1 text-xs rounded-full bg-gray-100 hover:bg-primary-50 hover:text-primary-700 text-gray-700 transition">{{ $sug }}</a>
+                                       class="px-2 py-1 text-xs rounded-full bg-gray-100 hover:bg-primary-50 hover:text-primary-700 text-gray-700 transition"
+                                       title="{{ __('Search:') }} {{ $sug }}">{{ $sug }}</a>
                                 @endforeach
                             </div>
                             <p class="text-xs text-gray-400 mt-3">{{ __('Open with ⌘K / Ctrl+K · ESC to close') }}</p>
@@ -328,9 +331,9 @@
                             <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                         </button>
                         <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-md shadow-lg border border-gray-200 py-1 z-50">
-                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-50">👤 {{ __('Profile') }}</a>
+                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-50" title="{{ __('Profile') }}">👤 {{ __('Profile') }}</a>
                             @if (auth()->user()->is_admin)
-                                <a href="/admin" class="block px-4 py-2 hover:bg-gray-50">⚙️ {{ __('Admin Panel') }}</a>
+                                <a href="/admin" class="block px-4 py-2 hover:bg-gray-50" title="{{ __('Admin Panel') }}">⚙️ {{ __('Admin Panel') }}</a>
                             @endif
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -341,8 +344,8 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="text-primary-100 hover:text-white transition">{{ __('Log in') }}</a>
-                    <a href="{{ route('register') }}" class="bg-accent-500 hover:bg-accent-600 px-4 py-2 rounded-md font-semibold transition">{{ __('Sign up') }}</a>
+                    <a href="{{ route('login') }}" class="text-primary-100 hover:text-white transition" title="{{ __('Log in') }}">{{ __('Log in') }}</a>
+                    <a href="{{ route('register') }}" class="bg-accent-500 hover:bg-accent-600 px-4 py-2 rounded-md font-semibold transition" title="{{ __('Sign up') }} — {{ __('Create your free account') }}">{{ __('Sign up') }}</a>
                 @endauth
             </div>
 
@@ -407,7 +410,7 @@
                             <div x-show="open === '{{ $gKey }}'" x-cloak x-collapse class="bg-primary-900/40 border-t border-white/10">
                                 @foreach ($items as $item)
                                     @if ($url = $item->resolved_url)
-                                        <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white {{ $item->key === 'tools.index' ? 'text-xs italic' : '' }}">
+                                        <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white {{ $item->key === 'tools.index' ? 'text-xs italic' : '' }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
                                             <span class="shrink-0">{{ $item->icon }}</span>
                                             <span class="flex-1 truncate">{{ $item->label }}</span>
                                             @if ($item->badge)
@@ -419,7 +422,7 @@
                                 @if ($gKey === 'icerik' && $forumStandalone->isNotEmpty())
                                     @foreach ($forumStandalone as $std)
                                         @if ($url = $std->resolved_url)
-                                            <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white">
+                                            <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white" title="{{ $std->label }}">
                                                 <span class="shrink-0">{{ $std->icon }}</span>
                                                 <span class="flex-1 truncate">{{ $std->label }}</span>
                                             </a>
@@ -441,7 +444,9 @@
                                 @foreach ($activeLocales as $loc)
                                     @php $cfg = config("locale.locales.$loc"); @endphp
                                     <a href="{{ localized_url($loc) }}"
-                                       class="inline-flex items-center gap-1 px-2 py-1 rounded text-xs transition {{ app()->getLocale() === $loc ? 'bg-white text-primary-900 font-bold shadow-sm' : 'text-primary-100 hover:text-white' }}">
+                                       class="inline-flex items-center gap-1 px-2 py-1 rounded text-xs transition {{ app()->getLocale() === $loc ? 'bg-white text-primary-900 font-bold shadow-sm' : 'text-primary-100 hover:text-white' }}"
+                                       title="{{ $cfg['native_name'] }}"
+                                       hreflang="{{ $loc }}">
                                         <span class="text-sm leading-none">{{ $cfg['flag'] }}</span>
                                         <span class="uppercase font-semibold">{{ $loc }}</span>
                                     </a>
@@ -454,20 +459,20 @@
                 <div class="pt-2 mt-2 border-t border-white/15">
                     @auth
                         <p class="px-3 py-1 text-xs text-primary-200">{{ __('Hello, :name', ['name' => auth()->user()->name]) }}</p>
-                        <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white">👤 {{ __('Profile') }}</a>
+                        <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white" title="{{ __('Profile') }}">👤 {{ __('Profile') }}</a>
                         @if (auth()->user()->is_admin)
-                            <a href="/admin" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white">⚙️ {{ __('Admin Panel') }}</a>
+                            <a href="/admin" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white" title="{{ __('Admin Panel') }}">⚙️ {{ __('Admin Panel') }}</a>
                         @endif
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-red-300 hover:bg-white/10">
+                            <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-red-300 hover:bg-white/10" title="{{ __('Log out') }}">
                                 ↪ {{ __('Log out') }}
                             </button>
                         </form>
                     @else
                         <div class="flex gap-2">
-                            <a href="{{ route('login') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20">{{ __('Log in') }}</a>
-                            <a href="{{ route('register') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 font-semibold">{{ __('Sign up') }}</a>
+                            <a href="{{ route('login') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20" title="{{ __('Log in') }}">{{ __('Log in') }}</a>
+                            <a href="{{ route('register') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 font-semibold" title="{{ __('Sign up') }} — {{ __('Create your free account') }}">{{ __('Sign up') }}</a>
                         </div>
                     @endauth
                 </div>
@@ -663,7 +668,7 @@
         <div class="max-w-[1400px] mx-auto px-4 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-2 md:col-span-1">
-                    <a href="{{ route('home') }}" class="flex items-center font-extrabold text-lg mb-3" aria-label="{{ brand('name') }}">
+                    <a href="{{ route('home') }}" class="flex items-center font-extrabold text-lg mb-3" aria-label="{{ brand('name') }}" title="{{ brand('name') }} — {{ __('Home') }}">
                         <x-brand-logo variant="white" height="h-8" />
                     </a>
                     <p class="text-primary-200 text-sm">{{ __('University and education guide to Germany for international students.') }}</p>
@@ -672,43 +677,43 @@
                 <div>
                     <h4 class="font-semibold mb-3 text-white">{{ __('Explore') }}</h4>
                     <ul class="space-y-2 text-primary-200 text-sm">
-                        <li><a href="{{ route('universities.index') }}" class="hover:text-white transition">{{ __('Universities') }}</a></li>
-                        <li><a href="{{ route('programs.index') }}" class="hover:text-white transition">{{ __('Programs') }}</a></li>
-                        <li><a href="{{ route('rankings.index') }}" class="hover:text-white transition">{{ __('Rankings') }}</a></li>
-                        <li><a href="{{ route('faqs.index') }}" class="hover:text-white transition">{{ __('FAQ') }}</a></li>
-                        <li><a href="{{ route('blog.index') }}" class="hover:text-white transition">{{ __('Blog') }}</a></li>
+                        <li><a href="{{ route('universities.index') }}" class="hover:text-white transition" title="{{ __('Universities') }} — {{ __('Browse universities in Germany') }}">{{ __('Universities') }}</a></li>
+                        <li><a href="{{ route('programs.index') }}" class="hover:text-white transition" title="{{ __('Programs') }} — {{ __('Bachelor, Master and PhD programs') }}">{{ __('Programs') }}</a></li>
+                        <li><a href="{{ route('rankings.index') }}" class="hover:text-white transition" title="{{ __('Rankings') }} — {{ __('University rankings') }}">{{ __('Rankings') }}</a></li>
+                        <li><a href="{{ route('faqs.index') }}" class="hover:text-white transition" title="{{ __('Frequently Asked Questions') }}">{{ __('FAQ') }}</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="hover:text-white transition" title="{{ __('Blog') }} — {{ __('Guides and tips') }}">{{ __('Blog') }}</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-3 text-white">{{ __('Tools') }}</h4>
                     <ul class="space-y-2 text-primary-200 text-sm">
-                        <li><a href="{{ route('tools.cost-of-living') }}" class="hover:text-white transition">{{ __('Cost of Living') }}</a></li>
-                        <li><a href="{{ route('tools.grade-converter') }}" class="hover:text-white transition">{{ __('Grade Converter') }}</a></li>
-                        <li><a href="{{ route('tools.recommendation') }}" class="hover:text-white transition">{{ __('University Recommendation') }}</a></li>
-                        <li><a href="{{ route('compare.index') }}" class="hover:text-white transition">{{ __('Compare') }}</a></li>
-                        <li><a href="{{ route('professions.index') }}" class="hover:text-white transition">{{ __('Professions') }} 🔒</a></li>
+                        <li><a href="{{ route('tools.cost-of-living') }}" class="hover:text-white transition" title="{{ __('Cost of Living') }} — {{ __('Living costs by city') }}">{{ __('Cost of Living') }}</a></li>
+                        <li><a href="{{ route('tools.grade-converter') }}" class="hover:text-white transition" title="{{ __('Grade Converter') }} — {{ __('Convert your GPA to German system') }}">{{ __('Grade Converter') }}</a></li>
+                        <li><a href="{{ route('tools.recommendation') }}" class="hover:text-white transition" title="{{ __('University Recommendation') }} — {{ __('Find the best fit for you') }}">{{ __('University Recommendation') }}</a></li>
+                        <li><a href="{{ route('compare.index') }}" class="hover:text-white transition" title="{{ __('Compare') }} — {{ __('2-4 universities side by side') }}">{{ __('Compare') }}</a></li>
+                        <li><a href="{{ route('professions.index') }}" class="hover:text-white transition" title="{{ __('Professions') }} — {{ __('Job market in Germany') }}">{{ __('Professions') }} 🔒</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-3 text-white">{{ __('About') }}</h4>
                     <ul class="space-y-2 text-primary-200 text-sm">
-                        <li><a href="{{ route('about') }}" class="hover:text-white transition">{{ __('About Us') }}</a></li>
-                        <li><a href="mailto:technsug@gmail.com" class="hover:text-white transition">{{ __('Contact') }}</a></li>
-                        <li><a href="mailto:technsug@gmail.com?subject=Contribute" class="hover:text-white transition">{{ __('Contribute') }}</a></li>
-                        <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition">{{ __('Privacy Policy') }}</a></li>
-                        <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition">{{ __('Terms of Use') }}</a></li>
-                        <li><a href="{{ route('legal.cookies') }}" class="hover:text-white transition">{{ __('Cookie Policy') }}</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-white transition" title="{{ __('About Us') }} — {{ brand('name') }}">{{ __('About Us') }}</a></li>
+                        <li><a href="mailto:technsug@gmail.com" class="hover:text-white transition" title="{{ __('Contact') }} — technsug@gmail.com">{{ __('Contact') }}</a></li>
+                        <li><a href="mailto:technsug@gmail.com?subject=Contribute" class="hover:text-white transition" title="{{ __('Contribute') }} — {{ __('Help improve the site') }}">{{ __('Contribute') }}</a></li>
+                        <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition" title="{{ __('Privacy Policy') }}">{{ __('Privacy Policy') }}</a></li>
+                        <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition" title="{{ __('Terms of Use') }}">{{ __('Terms of Use') }}</a></li>
+                        <li><a href="{{ route('legal.cookies') }}" class="hover:text-white transition" title="{{ __('Cookie Policy') }}">{{ __('Cookie Policy') }}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-primary-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
                 <p class="text-primary-300">&copy; {{ date('Y') }} {{ brand('copyright') }}. {{ __('All rights reserved.') }}</p>
                 <div class="flex items-center gap-4">
-                    <a href="{{ url('/rss.xml') }}" class="text-primary-300 hover:text-white inline-flex items-center gap-1 text-xs" title="RSS Feed">
+                    <a href="{{ url('/rss.xml') }}" class="text-primary-300 hover:text-white inline-flex items-center gap-1 text-xs" title="RSS Feed — {{ __('Subscribe for latest content') }}">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a1 1 0 011-1h.01a8 8 0 018.13 8.13V14a1 1 0 11-2 0v-1.87A6 6 0 003.01 6H3a1 1 0 01-1-1zm0 4a1 1 0 011-1h.01A4 4 0 017 12.13V14a1 1 0 11-2 0v-1.87a2 2 0 00-2-2H3a1 1 0 01-1-1zm0 4a1 1 0 011-1 2 2 0 012 2 1 1 0 11-2 0 1 1 0 01-1-1z"/></svg>
                         RSS
                     </a>
-                    <a href="{{ route('api.docs') }}" class="text-primary-300 hover:text-white text-xs">API</a>
+                    <a href="{{ route('api.docs') }}" class="text-primary-300 hover:text-white text-xs" title="{{ __('Public API documentation') }}">API</a>
                     <p class="text-primary-400 text-xs">{{ __('Up-to-date guide on studying in Germany') }}</p>
                 </div>
             </div>
