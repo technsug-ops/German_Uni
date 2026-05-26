@@ -37,6 +37,19 @@ jobs:
           coverage: none
           tools: composer:v2
 
+      - name: Ensure Laravel cache directories exist
+        working-directory: almanya-uni
+        run: |
+          # Laravel 'package:discover' bu klasörlere erişir — git'te boş klasörler kaybolabilir
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/framework/testing
+          mkdir -p storage/logs
+          mkdir -p storage/app/public
+          chmod -R 775 storage bootstrap/cache
+
       - name: Cache Composer dependencies
         uses: actions/cache@v4
         with:

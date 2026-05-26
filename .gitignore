@@ -47,7 +47,8 @@ vendor/
 /almanya-uni/storage/app/private/
 /almanya-uni/storage/meilisearch/
 /almanya-uni/storage/logs/
-/almanya-uni/storage/framework/
+# storage/framework klasör yapısı korunmalı (Laravel'in default .gitignore'ları içeriği zaten ignore eder).
+# Eski "/almanya-uni/storage/framework/" satırı kaldırıldı — Laravel cache path'leri için klasörler push edilmeli.
 *.exe
 *.log
 
