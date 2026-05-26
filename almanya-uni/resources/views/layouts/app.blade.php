@@ -730,6 +730,7 @@
                         <li><a href="{{ route('rankings.index') }}" class="hover:text-white transition" title="{{ __('Rankings') }} — {{ __('University rankings') }}">{{ __('Rankings') }}</a></li>
                         <li><a href="{{ route('faqs.index') }}" class="hover:text-white transition" title="{{ __('Frequently Asked Questions') }}">{{ __('FAQ') }}</a></li>
                         <li><a href="{{ route('blog.index') }}" class="hover:text-white transition" title="{{ __('Blog') }} — {{ __('Guides and tips') }}">{{ __('Blog') }}</a></li>
+                        <li><a href="{{ route('glossary.index') }}" class="hover:text-white transition" title="{{ __('Germany Education Glossary') }} — APS, DAAD, Anabin, Sperrkonto">📘 {{ __('Glossary') }}</a></li>
                     </ul>
                 </div>
                 <div>

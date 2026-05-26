@@ -74,6 +74,10 @@ $routes = function () {
     Route::get('/faq/{topic}', [FaqController::class, 'topic'])->name('faqs.topic');
     Route::get('/faq/{topic}/{slug}', [FaqController::class, 'show'])->name('faqs.show');
 
+    // Almanya eğitim sistemi sözlüğü (semantic SEO — APS, Anabin, Sperrkonto, DAAD, vb.)
+    Route::get('/sozluk', [\App\Http\Controllers\Web\GlossaryController::class, 'index'])->name('glossary.index');
+    Route::get('/sozluk/{slug}', [\App\Http\Controllers\Web\GlossaryController::class, 'show'])->name('glossary.show');
+
     Route::get('/compare', [CompareController::class, 'index'])->name('compare.index');
     Route::get('/compare/result', [CompareController::class, 'show'])->name('compare.show');
 
