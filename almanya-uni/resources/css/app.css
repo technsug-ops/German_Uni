@@ -1,5 +1,11 @@
-/* Inter font loaded via <link rel="preconnect"+preload> in layouts/app.blade.php (LCP-optimized) */
+/* Inter font self-hosted via FontSource (one variable woff2 ~40KB, no Google Fonts dep) */
+@import '@fontsource-variable/inter';
 @import 'tailwindcss';
+
+/* Alias 'Inter Variable' (FontSource's font-family) to plain 'Inter' so existing Tailwind --font-sans config keeps working */
+:root {
+    --font-sans-fallback: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -95,7 +101,7 @@
 .blog-content h4:hover .heading-anchor { opacity: 1; }
 
 @theme {
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-primary-50: #f0f6fc;
