@@ -1,6 +1,14 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
+# ═══════════════════════════════════════════════════════════════
+# MAINTENANCE MODE — phpBB henüz kurulu değil, tüm forum trafiği
+# bakım sayfasına. Kurulum yapıldığında bu 3 satır silinmeli.
+# ═══════════════════════════════════════════════════════════════
+RewriteCond %{REQUEST_URI} !^/forum/_maintenance\.html$
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|svg|woff2?|ico)$
+RewriteRule ^(.*)$ /forum/_maintenance.html [L,R=302]
+
 #
 # Uncomment the statement below if URL rewriting doesn't
 # work properly. If you installed phpBB in a subdirectory
