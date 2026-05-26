@@ -345,7 +345,7 @@ class ToolsController extends Controller
                     });
                 }
             })
-            ->with(['university:id,name_de,slug,logo_url,city_id', 'university.city:id,name_tr,name_en,name_de,slug', 'field:id,name_tr,name_en,name_de,icon,color','name_en','name_de']);
+            ->with(['university:id,name_de,slug,logo_url,city_id', 'university.city:id,name_tr,name_en,name_de,slug', 'field:id,name_tr,name_en,name_de,icon,color']);
 
         if ($filters['degree']) {
             $q->where('degree', $filters['degree']);
