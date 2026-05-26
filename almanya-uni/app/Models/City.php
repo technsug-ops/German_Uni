@@ -70,4 +70,10 @@ class City extends Model
     {
         return $this->hasOne(CityCostData::class);
     }
+
+    // HTTPS-force accessor (mixed-content fix; Wikimedia URLs may be stored as http://)
+    public function getImageUrlAttribute(?string $value): ?string
+    {
+        return $value ? preg_replace('#^http://#i', 'https://', $value) : null;
+    }
 }

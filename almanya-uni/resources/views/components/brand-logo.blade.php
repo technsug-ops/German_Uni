@@ -5,4 +5,4 @@
     $name = brand('name');
 @endphp
 
-<img src="{{ asset($logo) }}" alt="{{ $name }}" class="{{ trim($height . ' w-auto ' . $class) }}" loading="eager" decoding="async">
+<img src="{{ asset($logo) }}" alt="{{ $name }}" width="160" height="36" class="{{ trim($height . ' w-auto ' . $class) }}" loading="eager" decoding="async" fetchpriority="high">

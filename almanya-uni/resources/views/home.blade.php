@@ -305,17 +305,17 @@
                     <a href="{{ route('cities.show', $city['slug']) }}"
                        title="{{ $city['name'] }}{{ $city['state_name'] ? ' (' . $city['state_name'] . ')' : '' }} — {{ $city['universities_count'] }} {{ __('universities') }}"
                        class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-                        <div class="aspect-[4/3] overflow-hidden bg-gray-100 relative">
+                        {{-- Gradient + letter always rendered; image overlays if URL present, removed on error (Wikimedia 429 fallback) --}}
+                        <div class="aspect-[4/3] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
+                            <span class="absolute inset-0 flex items-center justify-center text-5xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($city['name'], 0, 1) }}</span>
                             @if(!empty($city['image_url']))
-                                <img src="{{ $city['image_url'] }}" alt="{{ __(':city — student city in Germany', ['city' => $city['name']]) }}" loading="lazy"
-                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            @else
-                                <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
-                                    <span class="text-5xl font-extrabold text-white/90 drop-shadow">{{ mb_substr($city['name'], 0, 1) }}</span>
-                                </div>
+                                <img src="{{ $city['image_url'] }}" alt="{{ __(':city — student city in Germany', ['city' => $city['name']]) }}"
+                                     width="400" height="300" loading="lazy" decoding="async"
+                                     onerror="this.remove()"
+                                     class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             @endif
                             @if(!empty($city['has_content']))
-                                <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">✦ {{ __('Guide') }}</span>
+                                <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">✦ {{ __('Guide') }}</span>
                             @endif
                             <span class="absolute bottom-2 right-2 inline-block px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
                                 {{ $city['universities_count'] }} {{ __('uni') }}
@@ -366,14 +366,14 @@
             <a href="{{ route('universities.show', $uni['slug']) }}"
                title="{{ $uni['name_de'] }}{{ $typeBadge[0] ? ' — ' . $typeBadge[0] : '' }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-                <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
+                {{-- Gradient + initials always behind; image overlays if URL present, removed on error --}}
+                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
+                    <span class="absolute inset-0 flex items-center justify-center text-4xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
                     @if(!empty($uni['image_url']))
-                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}" loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    @else
-                        <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
-                            <span class="text-4xl font-extrabold text-white/90 drop-shadow">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
-                        </div>
+                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}"
+                             width="640" height="360" loading="lazy" decoding="async"
+                             onerror="this.remove()"
+                             class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     @endif
                     @if($typeBadge[0])
                         <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded {{ $typeBadge[1] }} text-xs font-semibold ring-1 ring-white/40 shadow-sm">
@@ -382,7 +382,7 @@
                     @endif
                     @if($uni['logo_url'] && $uni['image_url'])
                         <div class="absolute bottom-2 left-2 w-10 h-10 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
-                            <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }} logo" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
+                            <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }} logo" width="36" height="36" onerror="this.remove()" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
                         </div>
                     @endif
                 </div>
@@ -393,7 +393,7 @@
                     @endif
                     <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
                         @if($uni['student_count'])
-                            <span class="text-accent-600 font-bold">{{ number_format($uni['student_count']) }} <span class="font-normal text-gray-500">{{ __('students') }}</span></span>
+                            <span class="text-accent-700 font-bold">{{ number_format($uni['student_count']) }} <span class="font-normal text-gray-500">{{ __('students') }}</span></span>
                         @endif
                         @if($uni['founded_year'])
                             <span class="text-gray-500">est. {{ $uni['founded_year'] }}</span>

@@ -191,4 +191,15 @@ class University extends Model
     {
         return (bool) $this->is_active;
     }
+
+    // ── HTTPS-force accessors (mixed-content fix; Wikimedia URLs may be stored as http://) ──
+    public function getImageUrlAttribute(?string $value): ?string
+    {
+        return $value ? preg_replace('#^http://#i', 'https://', $value) : null;
+    }
+
+    public function getLogoUrlAttribute(?string $value): ?string
+    {
+        return $value ? preg_replace('#^http://#i', 'https://', $value) : null;
+    }
 }
