@@ -85,6 +85,13 @@ $routes = function () {
     Route::get('/rankings/{slug}', [RankingController::class, 'show'])->name('rankings.show');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
+
+    // Programmatic SEO landing pages — locale-aware, SEO-optimized filtered lists.
+    // Spesifik route'lar /programs/{slug}'tan ÖNCE tanımlanmalı (route order matters).
+    Route::get('/programs/city/{city}/field/{field}', [\App\Http\Controllers\Web\LandingController::class, 'cityField'])->name('programs.city-field');
+    Route::get('/programs/city/{city}/language/{lang}', [\App\Http\Controllers\Web\LandingController::class, 'cityLanguage'])->name('programs.city-language');
+    Route::get('/programs/field/{field}/degree/{degree}', [\App\Http\Controllers\Web\LandingController::class, 'fieldDegree'])->name('programs.field-degree');
+
     Route::get('/programs/{slug}', [ProgramController::class, 'show'])->name('programs.show');
 
     Route::get('/fields', [FieldController::class, 'index'])->name('fields.index');

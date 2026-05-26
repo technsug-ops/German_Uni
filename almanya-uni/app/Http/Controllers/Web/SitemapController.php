@@ -177,6 +177,82 @@ class SitemapController extends Controller
                 }
             });
 
+        // ── PROGRAMMATIC SEO LANDING PAGES ────────────────────────────────
+        // Sadece GERÇEKTEN aktif programı olan kombinasyonlar (boş sayfa = SEO penalty)
+
+        // City × Field — gerçek kombinasyonlar
+        $fieldSlugs = FieldOfStudy::pluck('slug', 'id')->all();
+        \Illuminate\Support\Facades\DB::table('programs')
+            ->join('universities', 'universities.id', '=', 'programs.university_id')
+            ->join('cities', 'cities.id', '=', 'universities.city_id')
+            ->where('programs.is_active', 1)
+            ->where('cities.is_active', 1)
+            ->whereNotNull('programs.field_of_study_id')
+            ->select('cities.slug as city_slug', 'programs.field_of_study_id')
+            ->groupBy('cities.slug', 'programs.field_of_study_id')
+            ->get()
+            ->each(function ($combo) use (&$urls, $fieldSlugs) {
+                $fieldSlug = $fieldSlugs[$combo->field_of_study_id] ?? null;
+                if (!$fieldSlug) return;
+                $urls[] = $this->entry(
+                    route('programs.city-field', [$combo->city_slug, $fieldSlug]),
+                    now(),
+                    'weekly',
+                    0.6
+                );
+            });
+
+        // City × Language — EN ve DE için ayrı (English-taught en yüksek aramalı)
+        foreach (['en', 'de'] as $lang) {
+            $langFilter = $lang === 'en' ? ['en', 'both'] : ['de', 'both'];
+            \Illuminate\Support\Facades\DB::table('programs')
+                ->join('universities', 'universities.id', '=', 'programs.university_id')
+                ->join('cities', 'cities.id', '=', 'universities.city_id')
+                ->where('programs.is_active', 1)
+                ->where('cities.is_active', 1)
+                ->whereIn('programs.language', $langFilter)
+                ->select('cities.slug')
+                ->distinct()
+                ->pluck('cities.slug')
+                ->each(function ($citySlug) use (&$urls, $lang) {
+                    $urls[] = $this->entry(
+                        route('programs.city-language', [$citySlug, $lang]),
+                        now(),
+                        'weekly',
+                        $lang === 'en' ? 0.65 : 0.55
+                    );
+                });
+        }
+
+        // Field × Degree — 10 field × 3 degree = 30 URL (yüksek aramalı)
+        foreach ($fieldSlugs as $fieldId => $fieldSlug) {
+            foreach (['bachelor', 'master', 'phd'] as $degree) {
+                // Bu kombinasyonda gerçekten program var mı?
+                $hasPrograms = Program::where('is_active', true)
+                    ->where('field_of_study_id', $fieldId)
+                    ->where('degree', $degree)
+                    ->exists();
+                if (!$hasPrograms) continue;
+                $urls[] = $this->entry(
+                    route('programs.field-degree', [$fieldSlug, $degree]),
+                    now(),
+                    'weekly',
+                    0.6
+                );
+            }
+        }
+
+        // Glossary sözlük sayfaları (semantic SEO)
+        $urls[] = $this->entry(route('glossary.index'), now(), 'monthly', 0.7);
+        foreach (array_keys(config('glossary', [])) as $glossarySlug) {
+            $urls[] = $this->entry(
+                route('glossary.show', $glossarySlug),
+                now(),
+                'monthly',
+                0.7
+            );
+        }
+
         Profession::where('is_active', true)
             ->select(['slug', 'updated_at', 'description_tr', 'description_de'])
             ->orderBy('id')
