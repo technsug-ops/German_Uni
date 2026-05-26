@@ -526,6 +526,13 @@
                         // Buton focus'u bırak — focus stuck olmasın
                         btn.blur();
                     });
+                    // mouseenter — başka panelin click-açık state'i varsa kapat
+                    // (Bug fix: clicked-open panel + hovered-different panel = iki panel açık kalıyordu)
+                    wrap.addEventListener('mouseenter', () => {
+                        megaWraps.forEach(w => {
+                            if (w !== wrap) w.classList.remove('mega-open');
+                        });
+                    });
                 });
                 // Outside click → hepsini kapat
                 document.addEventListener('click', (e) => {
