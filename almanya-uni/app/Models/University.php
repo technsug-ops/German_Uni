@@ -192,14 +192,19 @@ class University extends Model
         return (bool) $this->is_active;
     }
 
-    // ── HTTPS-force accessors (mixed-content fix; Wikimedia URLs may be stored as http://) ──
+    // ── HTTPS-force + Wikimedia thumbnail size accessors ──
+    // (mixed-content fix + image delivery savings — Lighthouse "1.26 MiB")
     public function getImageUrlAttribute(?string $value): ?string
     {
-        return $value ? preg_replace('#^http://#i', 'https://', $value) : null;
+        if (! $value) return null;
+        $value = preg_replace('#^http://#i', 'https://', $value);
+        return wikimedia_thumb($value, 600); // Uni building photos: 600px (cards display ~290-400px)
     }
 
     public function getLogoUrlAttribute(?string $value): ?string
     {
-        return $value ? preg_replace('#^http://#i', 'https://', $value) : null;
+        if (! $value) return null;
+        $value = preg_replace('#^http://#i', 'https://', $value);
+        return wikimedia_thumb($value, 100); // Logos display at 36px — 100px gives 2x retina headroom
     }
 }

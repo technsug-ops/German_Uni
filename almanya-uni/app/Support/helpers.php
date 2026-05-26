@@ -139,3 +139,39 @@ if (! function_exists('localized_url')) {
         return $query ? $newUrl . '?' . $query : $newUrl;
     }
 }
+
+if (! function_exists('wikimedia_thumb')) {
+    /**
+     * Rewrite a Wikimedia image URL to request a smaller thumbnail.
+     *
+     * Wikimedia serves images at any width when requested correctly:
+     *   - upload.wikimedia.org/.../thumb/X/YY/NAME/NNNpx-NAME  → swap NNN to $width
+     *   - commons.wikimedia.org/wiki/Special:FilePath/NAME?width=NNN  → swap or add width param
+     *
+     * Non-Wikimedia URLs pass through unchanged.
+     *
+     * Use case: cards display 186-290px wide, but DB-stored URLs request 960px+ images.
+     * Rewriting to ~500px saves ~80% of bytes per image (Lighthouse "image delivery").
+     */
+    function wikimedia_thumb(?string $url, int $width = 500): ?string
+    {
+        if (! $url) return $url;
+
+        // Pattern 1: upload.wikimedia.org thumbnail
+        // .../thumb/x/yy/filename.jpg/960px-filename.jpg → swap "960px-" to "{width}px-"
+        if (preg_match('#^https?://upload\.wikimedia\.org/.+?/\d+px-[^/]+$#', $url)) {
+            return preg_replace('#/\d+px-([^/]+)$#', '/' . $width . 'px-$1', $url);
+        }
+
+        // Pattern 2: commons.wikimedia.org/wiki/Special:FilePath/... ?width=NNN
+        if (str_contains($url, 'commons.wikimedia.org/wiki/Special:FilePath')) {
+            // Strip any existing width param then append fresh
+            $url = preg_replace('/([?&])width=\d+&?/', '$1', $url);
+            $url = rtrim($url, '?&');
+            $sep = str_contains($url, '?') ? '&' : '?';
+            return $url . $sep . 'width=' . $width;
+        }
+
+        return $url;
+    }
+}
