@@ -7,6 +7,8 @@
     :description="__('Filter upcoming application dates, add to your calendar. 7,000+ German university programs, winter and summer terms.')"
 />
 
+<x-tool-schema tool="deadlines" />
+
 @php
     $degreeLabel = fn ($d) => match ($d) {
         'bachelor' => 'Bachelor',

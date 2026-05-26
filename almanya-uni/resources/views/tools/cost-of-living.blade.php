@@ -7,6 +7,8 @@
     :description="__('Monthly 992 € Sperrkonto for students in Germany, 26 city-based cost breakdowns, tuition fees (BW/Bayern), semester contribution. DAAD official data.')"
 />
 
+<x-tool-schema tool="cost-of-living" />
+
 <x-json-ld :data="[
     '@context' => 'https://schema.org',
     '@type' => 'Article',

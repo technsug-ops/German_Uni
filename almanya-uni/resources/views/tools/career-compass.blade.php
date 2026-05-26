@@ -7,6 +7,8 @@
     :description="__('Discover your talent (RIASEC) + value profile in 12 questions. Find the most suitable matches from 3,500+ real professions in Germany, with education paths and programs.')"
 />
 
+<x-tool-schema tool="career-compass" />
+
 @section('content')
 
 {{-- HERO --}}

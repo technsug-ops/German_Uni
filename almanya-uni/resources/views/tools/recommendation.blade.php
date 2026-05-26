@@ -7,6 +7,8 @@
     :description="__('We match the best German universities for you based on budget, field, language preference and city type. Each university gets a %match score + reason explanation.')"
 />
 
+<x-tool-schema tool="recommendation" />
+
 @section('content')
 
 {{-- HERO --}}

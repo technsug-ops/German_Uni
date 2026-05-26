@@ -7,6 +7,8 @@
     :description="__('Compare blocked account providers for the Germany student visa. Expatrio, Fintiba, Coracle, Deutsche Bank — price, speed, insurance combo features side by side.')"
 />
 
+<x-tool-schema tool="blocked-account" />
+
 @section('content')
 {{-- HERO --}}
 <section class="bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500 text-white">

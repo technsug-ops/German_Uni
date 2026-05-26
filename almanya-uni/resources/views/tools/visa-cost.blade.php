@@ -7,6 +7,8 @@
     :description="__('Add up every cost of the German student visa process step by step: Sperrkonto, visa fee, uni-assist, language exam, translation, flight. Up-to-date 2025 figures.')"
 />
 
+<x-tool-schema tool="visa-cost" />
+
 @section('content')
 {{-- HERO --}}
 <section class="bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-500 text-white">

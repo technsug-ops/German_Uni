@@ -7,6 +7,8 @@
     :description="__('Monthly income + expense + savings goal. City-based, including Werkstudent income. A planning tool for international students.')"
 />
 
+<x-tool-schema tool="budget-planner" />
+
 @section('content')
 
 {{-- HERO --}}

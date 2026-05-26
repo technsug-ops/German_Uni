@@ -7,6 +7,8 @@
     :description="__('Convert your Turkish university grade (4-point or 100-point) to the German 1-5 system. Modifizierte bayerische Formel — the DAAD and uni-assist standard.')"
 />
 
+<x-tool-schema tool="grade-converter" />
+
 @section('content')
 <div class="bg-gradient-to-r from-primary-500 to-primary-700 text-white py-10">
     <div class="max-w-[1400px] mx-auto px-4">

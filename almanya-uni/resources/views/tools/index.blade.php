@@ -7,6 +7,43 @@
     :description="__('Cost of living, grade converter, university match quiz — all calculators for studying in Germany in one place.')"
 />
 
+@php
+    $locale = app()->getLocale();
+    $fallback = 'en';
+    $toolsRegistry = config('tools_schema', []);
+    $itemListElements = [];
+    $position = 1;
+    foreach ($toolsRegistry as $tKey => $tCfg) {
+        $tName = $tCfg['name'][$locale] ?? $tCfg['name'][$fallback] ?? null;
+        $tDesc = $tCfg['description'][$locale] ?? $tCfg['description'][$fallback] ?? null;
+        $tUrl  = isset($tCfg['route']) ? route($tCfg['route']) : null;
+        if (!$tName || !$tUrl) continue;
+        $itemListElements[] = [
+            '@type' => 'ListItem',
+            'position' => $position++,
+            'item' => [
+                '@type' => 'WebApplication',
+                'name' => $tName,
+                'description' => $tDesc,
+                'url' => $tUrl,
+                'applicationCategory' => 'EducationalApplication',
+                'operatingSystem' => 'Any',
+                'isAccessibleForFree' => true,
+                'offers' => ['@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'EUR'],
+            ],
+        ];
+    }
+@endphp
+
+<x-json-ld :data="[
+    '@context' => 'https://schema.org',
+    '@type' => 'ItemList',
+    'name' => __('Germany Student Tools'),
+    'description' => __('Free interactive tools for international students applying to German universities.'),
+    'numberOfItems' => count($itemListElements),
+    'itemListElement' => $itemListElements,
+]" />
+
 @section('content')
 <div class="bg-gradient-to-r from-primary-500 to-primary-700 text-white py-12">
     <div class="max-w-[1400px] mx-auto px-4">

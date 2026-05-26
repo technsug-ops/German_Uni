@@ -7,6 +7,8 @@
     :description="__('30+ official Studienkollegs in Germany — public + private, by city, track (T/M/W/G/S), tuition fee. Compare and apply.')"
 />
 
+<x-tool-schema tool="studienkolleg" />
+
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
     ['name' => __('Home'), 'url' => route('home')],
     ['name' => __('Tools'), 'url' => route('tools.index')],

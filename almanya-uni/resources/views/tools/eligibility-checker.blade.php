@@ -7,6 +7,8 @@
     :description="__('Is your diploma recognized by German universities? Free 30-second check based on Anabin classification — for 15 most common countries.')"
 />
 
+<x-tool-schema tool="eligibility-checker" />
+
 @section('content')
 
 {{-- HERO --}}
