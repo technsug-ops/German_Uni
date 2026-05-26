@@ -274,6 +274,56 @@ class Seo
         ];
     }
 
+    /**
+     * Schema.org City — Almanya şehirleri için yerel SEO sinyali.
+     * Google "Berlin universities", "Munich student life" gibi yerel aramalarda
+     * bu schema'yı kullanarak doğru rich snippet üretir.
+     */
+    public static function cityPlace(\App\Models\City $city, ?string $url = null): array
+    {
+        $address = [
+            '@type' => 'PostalAddress',
+            'addressLocality' => $city->name_de ?: $city->name,
+            'addressCountry' => 'DE',
+        ];
+        if ($city->state) {
+            $address['addressRegion'] = $city->state->name_de ?: $city->state->name;
+        }
+
+        $geo = ($city->latitude && $city->longitude) ? [
+            '@type' => 'GeoCoordinates',
+            'latitude' => (float) $city->latitude,
+            'longitude' => (float) $city->longitude,
+        ] : null;
+
+        // Şehirdeki aktif üniversiteler — Place içinde containsPlace
+        $containsPlace = $city->relationLoaded('universities')
+            ? $city->universities
+                ->where('is_active', true)
+                ->take(20)
+                ->map(fn ($u) => [
+                    '@type' => 'CollegeOrUniversity',
+                    'name' => $u->name_de,
+                    'url' => route('universities.show', $u->slug),
+                ])
+                ->values()
+                ->all()
+            : [];
+
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'City',
+            'name' => $city->name,
+            'alternateName' => $city->name_de !== $city->name ? $city->name_de : null,
+            'url' => $url ?? url()->current(),
+            'address' => $address,
+            'geo' => $geo,
+            'population' => $city->population ?: null,
+            'containsPlace' => $containsPlace ?: null,
+            'image' => $city->image_url ?: null,
+        ];
+    }
+
     public static function universityOrg(University $university, ?string $url = null): array
     {
         $address = [];

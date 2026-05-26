@@ -28,6 +28,9 @@
     ['name' => $city->name, 'url' => route('cities.show', $city->slug)],
 ])" />
 
+{{-- Schema.org City — yerel SEO (Berlin universities, Munich student life vb. aramalar için) --}}
+<x-json-ld :data="\App\Support\Seo::clean(\App\Support\Seo::cityPlace($city))" />
+
 @php $faqSchema = app()->getLocale() === 'tr' ? \App\Support\Seo::faqPageFromBlocks($city->content_blocks) : null; @endphp
 @if ($faqSchema)
     <x-json-ld :data="$faqSchema" />
@@ -348,6 +351,68 @@
 
     </div>
 </section>
+
+{{-- ════════════════════════════════════════════════════ --}}
+{{-- POPÜLER ARAMALAR (Wiki-style cross-linking → programmatic landing pages) --}}
+{{-- SEO: bu sayfadan landing'lere internal link → trafik akışı + topic clustering --}}
+{{-- ════════════════════════════════════════════════════ --}}
+@php
+    // Bu şehirde program olan alanlar (cache'lenebilir, şimdilik 1 query)
+    $cityTopFields = \App\Models\FieldOfStudy::query()
+        ->whereHas('programs', function ($q) use ($city) {
+            $q->where('is_active', true)
+              ->whereHas('university', fn ($u) => $u->where('city_id', $city->id));
+        })
+        ->withCount(['programs as programs_in_city_count' => function ($q) use ($city) {
+            $q->where('is_active', true)
+              ->whereHas('university', fn ($u) => $u->where('city_id', $city->id));
+        }])
+        ->orderByDesc('programs_in_city_count')
+        ->take(8)
+        ->get(['id', 'slug', 'name_tr', 'name_en', 'name_de', 'icon', 'color']);
+
+    // EN/DE program var mı?
+    $hasEnPrograms = \App\Models\Program::query()
+        ->where('is_active', true)
+        ->whereHas('university', fn ($u) => $u->where('city_id', $city->id))
+        ->whereIn('language', ['en', 'both'])
+        ->exists();
+@endphp
+
+@if ($cityTopFields->isNotEmpty() || $hasEnPrograms)
+<section class="bg-gradient-to-br from-gray-50 to-white border-t border-gray-200 py-10">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">🔍 {{ __('Popular searches in :city', ['city' => $city->name]) }}</h2>
+        <p class="text-sm text-gray-600 mb-6">{{ __('Filtered program lists for common queries') }}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            @if ($hasEnPrograms)
+                <a href="{{ route('programs.city-language', [$city->slug, 'en']) }}"
+                   title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}"
+                   class="group flex items-center gap-3 bg-white border border-blue-200 hover:border-blue-500 hover:shadow-md rounded-xl p-4 transition">
+                    <span class="text-3xl shrink-0">🇬🇧</span>
+                    <div class="min-w-0">
+                        <p class="font-bold text-gray-900 group-hover:text-blue-700 leading-tight">{{ __('English-taught programs in :city', ['city' => $city->name]) }}</p>
+                        <p class="text-xs text-gray-500 mt-0.5">{{ __('All English Bachelor/Master programs') }}</p>
+                    </div>
+                </a>
+            @endif
+
+            @foreach ($cityTopFields as $f)
+                <a href="{{ route('programs.city-field', [$city->slug, $f->slug]) }}"
+                   title="{{ $f->name }} — {{ $city->name }}"
+                   class="group flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md rounded-xl p-4 transition">
+                    <span class="text-3xl shrink-0">{{ $f->icon ?? '📚' }}</span>
+                    <div class="min-w-0">
+                        <p class="font-bold text-gray-900 group-hover:text-primary-700 leading-tight">{{ __(':field in :city', ['field' => $f->name, 'city' => $city->name]) }}</p>
+                        <p class="text-xs text-gray-500 mt-0.5">{{ $f->programs_in_city_count }} {{ __('programs') }}</p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 
 {{-- ════════════════════════════════════════════════════ --}}
 {{-- BENZER ŞEHİRLER --}}

@@ -129,12 +129,12 @@
             </section>
         @endif
 
-        {{-- TOP ŞEHİRLER --}}
+        {{-- TOP ŞEHİRLER — kartlar landing page'e yönlendir (city × field) --}}
         @if (! empty($topCities) && $topCities->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
                     <h2 class="text-2xl font-bold text-gray-900">🏙️ {{ __('Best cities for :field', ['field' => $field->name]) }}</h2>
-                    <a href="{{ route('cities.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('All cities') }} →</a>
+                    <a href="{{ route('cities.index') }}" class="text-sm text-primary-600 hover:underline" title="{{ __('All cities') }}">{{ __('All cities') }} →</a>
                 </div>
                 <p class="text-sm text-gray-600 mb-4">{!! __('Cities offering the most programs in this field. Compare the Sperrkonto burden, cost of living and student life with the <a href=":url" class="text-primary-600 hover:underline">cost calculator</a>.', ['url' => route('tools.cost-of-living')]) !!}</p>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -147,13 +147,44 @@
                                 default                     => null,
                             };
                         @endphp
-                        <a href="{{ route('cities.show', $c->slug) }}"
+                        <a href="{{ route('programs.city-field', [$c->slug, $field->slug]) }}"
+                           title="{{ __(':field in :city', ['field' => $field->name, 'city' => $c->name]) }}"
                            class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
                             <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-tight">{{ $c->name }}</h3>
                             <p class="text-sm font-semibold text-primary-700 mt-1">{{ $c->program_count }} {{ __('programs') }}</p>
                             @if ($sizeBadge)
                                 <p class="text-xs text-gray-500 mt-1">{{ $sizeBadge[0] }} {{ $sizeBadge[1] }}</p>
                             @endif
+                        </a>
+                    @endforeach
+                </div>
+            </section>
+
+            {{-- Cross-linking: field × degree landing pages --}}
+            <section class="mt-8">
+                <h2 class="text-xl font-bold text-gray-900 mb-3">🎓 {{ __(':field by degree', ['field' => $field->name]) }}</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    @foreach (['bachelor', 'master', 'phd'] as $deg)
+                        @php
+                            $degLabel = match ($deg) {
+                                'bachelor' => __('Bachelor'),
+                                'master' => __('Master'),
+                                'phd' => __('PhD'),
+                            };
+                            $degIcon = match ($deg) {
+                                'bachelor' => '🎓',
+                                'master' => '🎯',
+                                'phd' => '🔬',
+                            };
+                        @endphp
+                        <a href="{{ route('programs.field-degree', [$field->slug, $deg]) }}"
+                           title="{{ $degLabel }} {{ $field->name }} — {{ __('Germany') }}"
+                           class="group flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md rounded-xl p-4 transition">
+                            <span class="text-3xl shrink-0">{{ $degIcon }}</span>
+                            <div class="min-w-0">
+                                <p class="font-bold text-gray-900 group-hover:text-primary-700 leading-tight">{{ $degLabel }} {{ $field->name }}</p>
+                                <p class="text-xs text-gray-500 mt-0.5">{{ __('All programs across Germany') }}</p>
+                            </div>
                         </a>
                     @endforeach
                 </div>
