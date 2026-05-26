@@ -302,6 +302,11 @@ Route::fallback(function (\Illuminate\Http\Request $request) {
 // ─────────── Auth-protected, locale-bağımsız ───────────
 
 Route::middleware('auth')->group(function () {
+    // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
+    Route::get('/dashboard', function () {
+        return redirect()->route('profile.edit');
+    })->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

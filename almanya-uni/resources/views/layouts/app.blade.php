@@ -34,13 +34,18 @@
     @endforeach
     <link rel="alternate" hreflang="x-default" href="{{ localized_url($xDefaultLocale) }}">
 
+    {{-- Favicon — brand-aware (modern: SVG, fallback: ICO) --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset(brand('logo')) }}">
+    <link rel="alternate icon" type="image/x-icon" href="{{ asset(brand('favicon')) }}">
+    <link rel="shortcut icon" href="{{ asset(brand('favicon')) }}">
+
     {{-- PWA + iOS native --}}
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1e40af">
+    <meta name="theme-color" content="{{ brand('theme_color') ?? '#1e40af' }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="{{ brand('apple_title') }}">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ asset(brand('logo')) }}">
 
     {{-- Self-canonical (her sayfa) — query string'siz mevcut URL (duplicate content önleme) --}}
     <link rel="canonical" href="{{ url(request()->path()) }}">
@@ -352,8 +357,10 @@
             {{-- Mobile burger --}}
             <style>
                 @media (min-width: 768px) {
+                    /* Hover = aç, .mega-open class = JS-controlled açık state (tıklama).
+                       focus-within KALDIRILDI — buton'da focus stuck kalınca dropdown açık takılı kalıyordu (bug). */
                     [data-mega]:hover > .mega-panel,
-                    [data-mega]:focus-within > .mega-panel { display: block !important; }
+                    [data-mega].mega-open > .mega-panel { display: block !important; }
                 }
             </style>
             <button id="mobileMenuBtn" class="md:hidden p-2 hover:bg-white/10 rounded-md" aria-label="{{ __('Menu') }}">
@@ -481,6 +488,40 @@
 
         <script>
             (function () {
+                // ════════════════════════════════════════════════════════════════
+                // Mega menü dropdown yönetimi (Bug fix: focus stuck kalıyordu)
+                // ════════════════════════════════════════════════════════════════
+                // CSS hover ile açılır AMA buton click'inde JS açık state'i kontrol eder.
+                // Diğer dropdown açıldığında diğerleri kapanır. Outside click → hepsi kapanır.
+                const megaWraps = document.querySelectorAll('[data-mega]');
+                megaWraps.forEach(wrap => {
+                    const btn = wrap.querySelector(':scope > button');
+                    if (!btn) return;
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const wasOpen = wrap.classList.contains('mega-open');
+                        // Önce hepsini kapat
+                        megaWraps.forEach(w => w.classList.remove('mega-open'));
+                        // Kapalı ise aç (toggle)
+                        if (!wasOpen) wrap.classList.add('mega-open');
+                        // Buton focus'u bırak — focus stuck olmasın
+                        btn.blur();
+                    });
+                });
+                // Outside click → hepsini kapat
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('[data-mega]')) {
+                        megaWraps.forEach(w => w.classList.remove('mega-open'));
+                    }
+                });
+                // ESC ile kapat
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        megaWraps.forEach(w => w.classList.remove('mega-open'));
+                    }
+                });
+
                 const mBtn = document.getElementById('mobileMenuBtn');
                 const mMenu = document.getElementById('mobileMenu');
                 if (mBtn && mMenu) {
