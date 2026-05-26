@@ -198,6 +198,9 @@ $routes = function () {
 // ─────────── Sitemap & API (locale'siz, tek versiyon) ───────────
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/sitemap-content.xml', [SitemapController::class, 'content'])->name('sitemap.content');
+Route::get('/sitemap-landings.xml', [SitemapController::class, 'landings'])->name('sitemap.landings');
+Route::get('/sitemap-glossary.xml', [SitemapController::class, 'glossary'])->name('sitemap.glossary');
 
 // Dual-brand robots.txt — absolute Sitemap URL + brand-aware
 Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {

@@ -44,7 +44,7 @@
 {{-- ─────────────── HERO ─────────────── --}}
 <section class="relative bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 text-white overflow-hidden">
     @if($city->image_url)
-        <img src="{{ $city->image_url }}" alt="{{ $city->name }}"
+        <img src="{{ $city->image_url }}" alt="{{ __(':city — university and student life guide', ['city' => $city->name]) }}"
              class="absolute inset-0 w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high"/>
         <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/50 to-transparent"></div>
     @endif

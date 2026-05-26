@@ -37,6 +37,10 @@
                         'upvoteCount' => 0,
                     ],
                 ],
+            'speakable' => [
+                '@type' => 'SpeakableSpecification',
+                'cssSelector' => ['h1', '.blog-content'],
+            ],
         ];
     @endphp
     <x-json-ld :data="$qaSchema" />

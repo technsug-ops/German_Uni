@@ -2,9 +2,25 @@
 
 @section('title', $h1 . ' — ' . brand('name'))
 
+@php
+    // OG image: city image varsa onu, yoksa field OG, yoksa city dynamic OG, yoksa default brand
+    $ogImage = null;
+    if (isset($city) && $city->image_url) {
+        $ogImage = $city->image_url;
+    } elseif (isset($field) && $field->image_url) {
+        $ogImage = $field->image_url;
+    } elseif (isset($city)) {
+        $ogImage = route('og.image', ['type' => 'city', 'slug' => $city->slug . '.png']);
+    } elseif (isset($field)) {
+        $ogImage = route('og.image', ['type' => 'field', 'slug' => $field->slug . '.png']);
+    }
+@endphp
+
 <x-seo
     :title="$h1"
     :description="$metaDescription"
+    :image="$ogImage"
+    :imageAlt="$h1"
 />
 
 @push('head')

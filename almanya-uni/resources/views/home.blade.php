@@ -307,7 +307,7 @@
                        class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                         <div class="aspect-[4/3] overflow-hidden bg-gray-100 relative">
                             @if(!empty($city['image_url']))
-                                <img src="{{ $city['image_url'] }}" alt="{{ $city['name'] }}" loading="lazy"
+                                <img src="{{ $city['image_url'] }}" alt="{{ __(':city — student city in Germany', ['city' => $city['name']]) }}" loading="lazy"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             @else
                                 <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
@@ -368,7 +368,7 @@
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
                     @if(!empty($uni['image_url']))
-                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }}" loading="lazy"
+                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}" loading="lazy"
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     @else
                         <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
@@ -382,7 +382,7 @@
                     @endif
                     @if($uni['logo_url'] && $uni['image_url'])
                         <div class="absolute bottom-2 left-2 w-10 h-10 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
-                            <img src="{{ $uni['logo_url'] }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
+                            <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }} logo" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
                         </div>
                     @endif
                 </div>

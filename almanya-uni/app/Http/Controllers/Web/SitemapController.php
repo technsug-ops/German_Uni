@@ -21,23 +21,160 @@ use Illuminate\Support\Facades\URL;
 
 class SitemapController extends Controller
 {
-    public function index(Request $request, RankingService $rankings): Response
+    /**
+     * Master sitemap index (sitemap.xml).
+     * Referans alt sitemap'lere — Google'ın crawl efficiency'sini artırır,
+     * 50K URL/50MB limit'lerine takılma riski sıfırlanır.
+     */
+    public function index(Request $request): Response
     {
-        // ── DOMAIN-AWARE LOCALE ────────────────────────────────────────────
-        // Sitemap rotası middleware'siz tanımlandığı için manuel locale belirleme.
-        // Host → brand → default_locale (almanyauni.com=tr, applytogerman.com=en)
+        $this->setLocaleFromHost($request);
+
+        $base = $request->getScheme() . '://' . $request->getHost();
+        $sitemaps = [
+            ['loc' => $base . '/sitemap-content.xml',   'lastmod' => now()->format('Y-m-d')],
+            ['loc' => $base . '/sitemap-landings.xml',  'lastmod' => now()->format('Y-m-d')],
+            ['loc' => $base . '/sitemap-glossary.xml',  'lastmod' => now()->format('Y-m-d')],
+        ];
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $xml .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        foreach ($sitemaps as $s) {
+            $xml .= "  <sitemap>\n";
+            $xml .= '    <loc>' . htmlspecialchars($s['loc'], ENT_XML1 | ENT_QUOTES, 'UTF-8') . "</loc>\n";
+            $xml .= "    <lastmod>{$s['lastmod']}</lastmod>\n";
+            $xml .= "  </sitemap>\n";
+        }
+        $xml .= '</sitemapindex>';
+
+        return response($xml, 200)->header('Content-Type', 'application/xml; charset=utf-8');
+    }
+
+    /**
+     * Domain-aware locale (private helper, multiple sitemap methods kullanır).
+     */
+    private function setLocaleFromHost(Request $request): void
+    {
         $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
         $domains = config('brand.domains', []);
         $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
         $defaultLocale = config('brand.brands')[$brandKey]['default_locale'] ?? 'tr';
         App::setLocale($defaultLocale);
         URL::defaults(['locale' => $defaultLocale]);
+    }
 
-        // Hreflang alternates: aktif tüm diller
-        $activeLocales = collect(config('locale.locales', []))
+    /**
+     * Glossary sitemap — semantic SEO entity sayfaları.
+     */
+    public function glossary(Request $request): Response
+    {
+        $this->setLocaleFromHost($request);
+        $activeLocales = $this->activeLocales();
+
+        $urls = [];
+        $urls[] = $this->entry(route('glossary.index'), now(), 'monthly', 0.7);
+        foreach (array_keys(config('glossary', [])) as $slug) {
+            $urls[] = $this->entry(route('glossary.show', $slug), now(), 'monthly', 0.7);
+        }
+
+        return response($this->buildXml($urls, $activeLocales), 200)
+            ->header('Content-Type', 'application/xml; charset=utf-8');
+    }
+
+    /**
+     * Programmatic SEO landing pages — city × field, city × language, field × degree.
+     */
+    public function landings(Request $request): Response
+    {
+        $this->setLocaleFromHost($request);
+        $activeLocales = $this->activeLocales();
+
+        $urls = [];
+
+        // City × Field
+        $fieldSlugs = FieldOfStudy::pluck('slug', 'id')->all();
+        \Illuminate\Support\Facades\DB::table('programs')
+            ->join('universities', 'universities.id', '=', 'programs.university_id')
+            ->join('cities', 'cities.id', '=', 'universities.city_id')
+            ->where('programs.is_active', 1)
+            ->where('cities.is_active', 1)
+            ->whereNotNull('programs.field_of_study_id')
+            ->select('cities.slug as city_slug', 'programs.field_of_study_id')
+            ->groupBy('cities.slug', 'programs.field_of_study_id')
+            ->get()
+            ->each(function ($combo) use (&$urls, $fieldSlugs) {
+                $fieldSlug = $fieldSlugs[$combo->field_of_study_id] ?? null;
+                if (!$fieldSlug) return;
+                $urls[] = $this->entry(
+                    route('programs.city-field', [$combo->city_slug, $fieldSlug]),
+                    now(),
+                    'weekly',
+                    0.6
+                );
+            });
+
+        // City × Language (EN ve DE)
+        foreach (['en', 'de'] as $lang) {
+            $langFilter = $lang === 'en' ? ['en', 'both'] : ['de', 'both'];
+            \Illuminate\Support\Facades\DB::table('programs')
+                ->join('universities', 'universities.id', '=', 'programs.university_id')
+                ->join('cities', 'cities.id', '=', 'universities.city_id')
+                ->where('programs.is_active', 1)
+                ->where('cities.is_active', 1)
+                ->whereIn('programs.language', $langFilter)
+                ->select('cities.slug')
+                ->distinct()
+                ->pluck('cities.slug')
+                ->each(function ($citySlug) use (&$urls, $lang) {
+                    $urls[] = $this->entry(
+                        route('programs.city-language', [$citySlug, $lang]),
+                        now(),
+                        'weekly',
+                        $lang === 'en' ? 0.65 : 0.55
+                    );
+                });
+        }
+
+        // Field × Degree
+        foreach ($fieldSlugs as $fieldId => $fieldSlug) {
+            foreach (['bachelor', 'master', 'phd'] as $degree) {
+                $hasPrograms = \App\Models\Program::where('is_active', true)
+                    ->where('field_of_study_id', $fieldId)
+                    ->where('degree', $degree)
+                    ->exists();
+                if (!$hasPrograms) continue;
+                $urls[] = $this->entry(
+                    route('programs.field-degree', [$fieldSlug, $degree]),
+                    now(),
+                    'weekly',
+                    0.6
+                );
+            }
+        }
+
+        return response($this->buildXml($urls, $activeLocales), 200)
+            ->header('Content-Type', 'application/xml; charset=utf-8');
+    }
+
+    /**
+     * Aktif locale listesini döner — hreflang üretimi için.
+     */
+    private function activeLocales(): array
+    {
+        return collect(config('locale.locales', []))
             ->filter(fn ($c) => ! empty($c['active']) && empty($c['coming_soon']))
             ->keys()
             ->all();
+    }
+
+    /**
+     * Content sitemap — static pages + cities/unis/programs/blog/faq/scholarships.
+     * (Eski tek sitemap.xml içeriği — programmatic landings ve glossary hariç tutuldu.)
+     */
+    public function content(Request $request, RankingService $rankings): Response
+    {
+        $this->setLocaleFromHost($request);
+        $activeLocales = $this->activeLocales();
 
         $urls = [];
 
@@ -177,81 +314,8 @@ class SitemapController extends Controller
                 }
             });
 
-        // ── PROGRAMMATIC SEO LANDING PAGES ────────────────────────────────
-        // Sadece GERÇEKTEN aktif programı olan kombinasyonlar (boş sayfa = SEO penalty)
-
-        // City × Field — gerçek kombinasyonlar
-        $fieldSlugs = FieldOfStudy::pluck('slug', 'id')->all();
-        \Illuminate\Support\Facades\DB::table('programs')
-            ->join('universities', 'universities.id', '=', 'programs.university_id')
-            ->join('cities', 'cities.id', '=', 'universities.city_id')
-            ->where('programs.is_active', 1)
-            ->where('cities.is_active', 1)
-            ->whereNotNull('programs.field_of_study_id')
-            ->select('cities.slug as city_slug', 'programs.field_of_study_id')
-            ->groupBy('cities.slug', 'programs.field_of_study_id')
-            ->get()
-            ->each(function ($combo) use (&$urls, $fieldSlugs) {
-                $fieldSlug = $fieldSlugs[$combo->field_of_study_id] ?? null;
-                if (!$fieldSlug) return;
-                $urls[] = $this->entry(
-                    route('programs.city-field', [$combo->city_slug, $fieldSlug]),
-                    now(),
-                    'weekly',
-                    0.6
-                );
-            });
-
-        // City × Language — EN ve DE için ayrı (English-taught en yüksek aramalı)
-        foreach (['en', 'de'] as $lang) {
-            $langFilter = $lang === 'en' ? ['en', 'both'] : ['de', 'both'];
-            \Illuminate\Support\Facades\DB::table('programs')
-                ->join('universities', 'universities.id', '=', 'programs.university_id')
-                ->join('cities', 'cities.id', '=', 'universities.city_id')
-                ->where('programs.is_active', 1)
-                ->where('cities.is_active', 1)
-                ->whereIn('programs.language', $langFilter)
-                ->select('cities.slug')
-                ->distinct()
-                ->pluck('cities.slug')
-                ->each(function ($citySlug) use (&$urls, $lang) {
-                    $urls[] = $this->entry(
-                        route('programs.city-language', [$citySlug, $lang]),
-                        now(),
-                        'weekly',
-                        $lang === 'en' ? 0.65 : 0.55
-                    );
-                });
-        }
-
-        // Field × Degree — 10 field × 3 degree = 30 URL (yüksek aramalı)
-        foreach ($fieldSlugs as $fieldId => $fieldSlug) {
-            foreach (['bachelor', 'master', 'phd'] as $degree) {
-                // Bu kombinasyonda gerçekten program var mı?
-                $hasPrograms = Program::where('is_active', true)
-                    ->where('field_of_study_id', $fieldId)
-                    ->where('degree', $degree)
-                    ->exists();
-                if (!$hasPrograms) continue;
-                $urls[] = $this->entry(
-                    route('programs.field-degree', [$fieldSlug, $degree]),
-                    now(),
-                    'weekly',
-                    0.6
-                );
-            }
-        }
-
-        // Glossary sözlük sayfaları (semantic SEO)
-        $urls[] = $this->entry(route('glossary.index'), now(), 'monthly', 0.7);
-        foreach (array_keys(config('glossary', [])) as $glossarySlug) {
-            $urls[] = $this->entry(
-                route('glossary.show', $glossarySlug),
-                now(),
-                'monthly',
-                0.7
-            );
-        }
+        // Programmatic SEO landing pages → sitemap-landings.xml
+        // Glossary sözlük sayfaları → sitemap-glossary.xml
 
         Profession::where('is_active', true)
             ->select(['slug', 'updated_at', 'description_tr', 'description_de'])

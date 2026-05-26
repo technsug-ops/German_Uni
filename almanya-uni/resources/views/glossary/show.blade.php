@@ -25,6 +25,21 @@
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
 
+{{-- Schema.org WebPage with SpeakableSpecification — Google Assistant TTS hint --}}
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'WebPage',
+    'name' => $entry['title'],
+    'description' => $entry['short'],
+    'url' => route('glossary.show', $entry['slug']),
+    'speakable' => [
+        '@type' => 'SpeakableSpecification',
+        'cssSelector' => ['h1', '.prose'],
+    ],
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+</script>
+
 {{-- Schema.org FAQPage — Google rich snippet için --}}
 @if (! empty($entry['faq']))
 <script type="application/ld+json">
@@ -39,6 +54,10 @@
             'text' => $item['a'],
         ],
     ])->all(),
+    'speakable' => [
+        '@type' => 'SpeakableSpecification',
+        'cssSelector' => ['h1', '.prose'],
+    ],
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
 </script>
 @endif

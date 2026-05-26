@@ -37,7 +37,7 @@
 <section class="relative text-white overflow-hidden"
          style="background: linear-gradient(135deg, {{ $field->color }}, {{ $field->color }}cc);">
     @if($field->image_url)
-        <img src="{{ $field->image_url }}" alt="{{ $field->name }}"
+        <img src="{{ $field->image_url }}" alt="{{ __(':field — study programs in Germany', ['field' => $field->name]) }}"
              class="absolute inset-0 w-full h-full object-cover opacity-25" loading="eager" fetchpriority="high"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
     @endif

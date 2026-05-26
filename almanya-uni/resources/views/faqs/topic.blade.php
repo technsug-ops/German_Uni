@@ -32,6 +32,10 @@
                     'url' => route('faqs.show', [$topic->slug, $f->slug]),
                 ],
             ])->values()->all(),
+            'speakable' => [
+                '@type' => 'SpeakableSpecification',
+                'cssSelector' => ['h1', 'h2'],
+            ],
         ];
     @endphp
     <x-json-ld :data="$faqPayload" />
