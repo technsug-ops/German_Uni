@@ -172,6 +172,20 @@ if (! function_exists('wikimedia_thumb')) {
             return $url . $sep . 'width=' . $width;
         }
 
+        // Pattern 3: upload.wikimedia.org original file (no /thumb/) — construct thumb URL
+        // .../commons/X/YY/Filename.ext → .../commons/thumb/X/YY/Filename.ext/NNNpx-Filename.ext
+        if (preg_match('#^(https?://upload\.wikimedia\.org/wikipedia/commons/)([0-9a-f]/[0-9a-f]{2})/([^/?]+)$#i', $url, $m)) {
+            $base = $m[1];
+            $hashPath = $m[2];
+            $filename = $m[3];
+            $thumbName = $width . 'px-' . $filename;
+            // SVG thumbnails are rasterized to PNG (Wikipedia convention)
+            if (preg_match('/\.svg$/i', $filename)) {
+                $thumbName .= '.png';
+            }
+            return $base . 'thumb/' . $hashPath . '/' . $filename . '/' . $thumbName;
+        }
+
         return $url;
     }
 }
