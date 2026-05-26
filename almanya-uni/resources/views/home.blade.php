@@ -112,7 +112,7 @@
                         <span class="text-green-300">✓</span> {{ __('Multilingual + up-to-date sources') }}
                     </div>
                     <div class="flex items-center gap-2 text-primary-100">
-                        <span class="text-green-300">✓</span> {{ __('Distilled from 1.5M community messages') }}
+                        <span class="text-green-300">✓</span> {{ __('Distilled from 10+ years of education consulting experience') }}
                     </div>
                 </div>
             </div>
@@ -177,9 +177,9 @@
                 <p class="text-xs text-gray-500 mt-0.5">{{ __('DAAD, Wikidata, BERUFENET') }}</p>
             </div>
             <div>
-                <div class="text-3xl mb-1">💬</div>
-                <p class="text-sm font-bold text-gray-900">{{ __('1.5M community messages') }}</p>
-                <p class="text-xs text-gray-500 mt-0.5">{{ __('Distilled into FAQs') }}</p>
+                <div class="text-3xl mb-1">🎓</div>
+                <p class="text-sm font-bold text-gray-900">{{ __('10+ years of consulting') }}</p>
+                <p class="text-xs text-gray-500 mt-0.5">{{ __('Real-world experience') }}</p>
             </div>
             <div>
                 <div class="text-3xl mb-1">🌐</div>
