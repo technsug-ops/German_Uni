@@ -249,14 +249,16 @@
                 @endif
             </div>
 
-            {{-- Forum + sağ tarafa öne çıkan CTA --}}
-            @php $forumItem = \App\Models\MenuPage::findByKey('forum'); @endphp
-            @if ($forumItem && ($forumUrl = $forumItem->resolved_url))
-            <a href="{{ $forumUrl }}"
-               class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 text-white font-semibold text-sm shadow-md transition whitespace-nowrap"
-               title="{{ __('Community Forum') }}">
-                {{ $forumItem->icon }} {{ $forumItem->label }}
-            </a>
+            {{-- Forum + sağ tarafa öne çıkan CTA — SADECE TR locale (phpBB Türkçe konfigürasyonu, EN/DE'de hazır değil) --}}
+            @if (app()->getLocale() === 'tr')
+                @php $forumItem = \App\Models\MenuPage::findByKey('forum'); @endphp
+                @if ($forumItem && ($forumUrl = $forumItem->resolved_url))
+                <a href="{{ $forumUrl }}"
+                   class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 text-white font-semibold text-sm shadow-md transition whitespace-nowrap"
+                   title="{{ __('Community Forum') }}">
+                    {{ $forumItem->icon }} {{ $forumItem->label }}
+                </a>
+                @endif
             @endif
 
             {{-- Right side: auth-aware --}}
@@ -389,7 +391,10 @@
                         'firsatlar' => ['label' => __('Opportunities'),        'icon' => '🎁'],
                         'icerik'    => ['label' => __('Content & Community'),  'icon' => '📚'],
                     ];
-                    $forumStandalone = \App\Models\MenuPage::forGroup('standalone');
+                    // Forum sadece TR locale'de (phpBB sadece Türkçe konfigürasyonu var)
+                    $forumStandalone = app()->getLocale() === 'tr'
+                        ? \App\Models\MenuPage::forGroup('standalone')
+                        : collect();
                 @endphp
 
                 <div class="space-y-1.5">
