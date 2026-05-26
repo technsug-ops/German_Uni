@@ -1,0 +1,13 @@
+Subject: Mesajın onaylanması gerekiyor - "{TOPIC_TITLE}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosundaki "{POST_SUBJECT}" konulu mesajın onaylanması gerekiyor.
+
+Eğer mesajı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_VIEW_POST}
+
+Eğer başlığı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_TOPIC}
+
+{EMAIL_SIG}

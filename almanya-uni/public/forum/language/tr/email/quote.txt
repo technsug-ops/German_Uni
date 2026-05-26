@@ -1,0 +1,19 @@
+Subject: "{TOPIC_TITLE}" konusunda alıntı yapıldı
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosundaki "{TOPIC_TITLE}" konu adlı başlıkta "{AUTHOR_NAME}" adlı kullanıcı mesajınızı alıntı yaptı.
+
+Eğer alıntı yapılan mesajı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_VIEW_POST}
+
+Eğer başlığı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_TOPIC}
+
+Eğer forumu görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_FORUM}
+
+Eğer mesajlarınızın alıntı yapıldığı cevaplar hakkında güncellemeleri artık almak istemiyorsanız, lütfen bildirim ayarlarınızı buradan güncelleyin:
+{U_NOTIFICATION_SETTINGS}
+
+{EMAIL_SIG}

@@ -1,0 +1,636 @@
+/*  AlmanyaUni Forum Theme Override
+    --------------------------------------------------------------
+    Laravel sitesi ile uyumlu renkler ve typography.
+    Primary: #1E40AF (Alman mavisi) · Accent: #F97316 (Türk turuncusu)
+    Font: Inter
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+    --au-primary:        #1E40AF;
+    --au-primary-dark:   #1E3A8A;
+    --au-primary-light:  #3B82F6;
+    --au-primary-50:     #EFF6FF;
+    --au-primary-100:    #DBEAFE;
+    --au-primary-700:    #1D4ED8;
+    --au-primary-900:    #1E3A8A;
+    --au-accent:         #F97316;
+    --au-accent-dark:    #EA580C;
+    --au-accent-50:      #FFF7ED;
+    --au-text:           #1F2937;
+    --au-text-muted:     #6B7280;
+    --au-border:         #E5E7EB;
+}
+
+/* ============ TYPOGRAPHY ============ */
+html, body, body.section-index, body.section-viewforum, body.section-viewtopic {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
+    color: var(--au-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.headerbar h2,
+.forumbg .header h3,
+.forabg .header h3,
+.cp-main .panel h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--au-text);
+}
+
+/* ============ HEADER ============ */
+#page-header {
+    background: linear-gradient(135deg, var(--au-primary) 0%, var(--au-primary-dark) 100%);
+    color: #fff;
+    border-bottom: 3px solid var(--au-accent);
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#page-header .headerbar {
+    background: transparent;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    margin-bottom: 0;
+}
+
+#page-header h1,
+#page-header .site_logo,
+.site-description {
+    color: #fff !important;
+}
+
+#page-header h1 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 2px 0;
+}
+
+#page-header .site-description {
+    font-size: 13px;
+    opacity: 0.9;
+    margin: 0;
+    font-weight: 400;
+}
+
+#page-header > .headerbar a,
+#page-header > .headerbar h1,
+#page-header > .headerbar h1 a,
+#page-header > .headerbar .site-description {
+    color: #fff !important;
+}
+
+/* Dropdown açılır panel — beyaz arka plan, koyu text
+   ÖNEMLİ: SADECE .dropdown KONTAİNER'i etkile, .dropdown-trigger'i değil! */
+.dropdown,
+.dropdown-extended,
+.notification_list .dropdown {
+    background: #fff !important;
+    color: var(--au-text) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--au-border) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.dropdown .dropdown-contents,
+.dropdown-extended .dropdown-contents {
+    background: #fff !important;
+    color: var(--au-text) !important;
+}
+
+/* Dropdown İÇİNDEKİ menü item linkleri (trigger değil!) */
+.dropdown .dropdown-contents a,
+.dropdown .dropdown-contents li a,
+.dropdown-contents > ul li a,
+.dropdown-extended .dropdown-contents a {
+    color: var(--au-text) !important;
+    display: block;
+    padding: 9px 14px !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid var(--au-border);
+}
+
+.dropdown .dropdown-contents li:last-child a {
+    border-bottom: 0;
+}
+
+.dropdown .dropdown-contents a:hover,
+.dropdown-contents > ul li a:hover {
+    background: var(--au-primary-50) !important;
+    color: var(--au-primary-dark) !important;
+}
+
+/* Notification içeriğindeki başlık/text */
+.dropdown .notification_text,
+.dropdown .notification-block {
+    color: var(--au-text) !important;
+}
+
+/* TRIGGER butonlarına DOKUNMA — phpBB default davranışını koru
+   "Hızlı bağlantılar", "Yapra ▼" gibi trigger'lar buradan etkilenmez */
+
+.dropdown .pointer,
+.dropdown .pointer-inner {
+    border-bottom-color: #fff !important;
+}
+
+/* Notification list specifically */
+.notification_list ul li {
+    background: #fff !important;
+}
+
+.notification_list ul li a,
+.notification_list ul li.row a {
+    color: var(--au-text) !important;
+}
+
+/* Notification empty/header */
+.notification_text {
+    color: var(--au-text-muted) !important;
+}
+
+/* Mark all notifications read */
+.notification_list .header,
+.notification_list .footer {
+    background: var(--au-primary-50) !important;
+    color: var(--au-primary-dark) !important;
+    font-weight: 600;
+    padding: 8px 14px !important;
+}
+
+/* Header sağındaki Yapra dropdown trigger butonu (sadece #page-header SCOPE) */
+#page-header .header-profile > a {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #fff !important;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#page-header .header-profile > a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#page-header .header-profile > a .username,
+#page-header .header-profile > a strong,
+#page-header .header-profile > a > span {
+    color: #fff !important;
+}
+
+/* Inline style ile renklendirilmiş kullanıcı adları (admin kırmızı, mod yeşil)
+   — global olarak ezme, phpBB'nin grup rengini koru.
+   ÖNCE benim rule'um vardı: .username-coloured { color: #fff !important } — KALDIRILDI */
+.username-coloured {
+    font-weight: 600;
+}
+
+/* ============ FOOTER ============ */
+#nav-footer,
+.linklist.bulletin,
+#page-footer .linklist {
+    background: transparent !important;
+}
+
+#page-footer a,
+#nav-footer a,
+.linklist.bulletin a,
+#page-footer .linklist a,
+#page-footer .navbar a,
+#nav-footer .linklist a {
+    color: #F1F5F9 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+#page-footer a:hover,
+#nav-footer a:hover,
+.linklist.bulletin a:hover,
+#page-footer .navbar a:hover {
+    color: var(--au-accent) !important;
+}
+
+/* Footer navbar (Forum ana sayfa | Takım | Üyeler | Çerezleri sil) */
+#nav-footer,
+#page-footer .navbar,
+#page-footer > .navbar {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    padding: 10px 16px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#nav-footer .icon,
+#page-footer .icon,
+#page-footer .fa,
+#page-footer .fas,
+#page-footer .fa-home,
+#page-footer i {
+    color: #F1F5F9 !important;
+    opacity: 1 !important;
+}
+
+#page-footer .copyright,
+.copyright,
+#page-footer #copyright,
+#page-footer .small,
+#page-footer p {
+    color: #CBD5E1 !important;
+    opacity: 1 !important;
+    font-size: 13px !important;
+}
+
+#page-footer .copyright a,
+.copyright a {
+    color: var(--au-accent) !important;
+    font-weight: 600;
+}
+
+#page-footer .copyright a:hover {
+    color: #FB923C !important;
+    text-decoration: underline !important;
+}
+
+/* Footer içindeki ikonlar daha belirgin */
+#nav-footer .icon-home::before,
+.linklist.bulletin .fa,
+#page-footer .fa {
+    opacity: 1 !important;
+}
+
+.headerbar .site_logo {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    background: var(--au-accent);
+    border-radius: 10px;
+    margin-right: 14px;
+    background-image: none;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.headerbar .site_logo::after {
+    content: "🎓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+}
+
+/* SEARCH BOX in header — küçült, integrate et */
+#search-header,
+.search-header {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+#search-box {
+    margin: 0 !important;
+    max-width: 280px;
+}
+
+#search-box .inputbox,
+#search-box input[type="search"],
+#search-box input[type="text"] {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px 0 0 6px !important;
+    padding: 7px 12px !important;
+    height: 34px !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    color: var(--au-text) !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 200px !important;
+}
+
+#search-box .inputbox::placeholder {
+    color: var(--au-text-muted) !important;
+    font-style: normal !important;
+}
+
+#search-box .button,
+#search-box button.button {
+    height: 34px !important;
+    padding: 0 12px !important;
+    background: var(--au-accent) !important;
+    border: 1px solid var(--au-accent-dark) !important;
+    border-radius: 0 6px 6px 0 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    min-width: 38px !important;
+    width: auto !important;
+}
+
+#search-box .button:hover,
+#search-box button.button:hover {
+    background: var(--au-accent-dark) !important;
+}
+
+/* Search dropdown arrow button — turuncuyu sadeleştir */
+#search-box a.button {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    margin-left: 4px !important;
+    color: #fff !important;
+}
+
+#search-box a.button:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Top navigation bar — Forum ana sayfa, üye listesi vb. */
+.navbar {
+    background: #fff;
+    border-top: 0;
+    border-bottom: 1px solid var(--au-border);
+    padding: 8px 0;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.navbar .linklist {
+    padding: 0 8px;
+}
+
+.navbar .linklist li {
+    margin: 0;
+}
+
+.navbar .linklist li a {
+    color: var(--au-primary) !important;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.navbar .linklist li a:hover {
+    background: var(--au-primary-50);
+    color: var(--au-primary-dark) !important;
+    text-decoration: none;
+}
+
+/* Üst boşluğu azalt — page body */
+#page-body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+#wrap > .navbar:first-of-type,
+#page-body > .navbar:first-of-type {
+    margin-top: 0;
+}
+
+/* ============ LINKS ============ */
+a {
+    color: var(--au-primary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: var(--au-accent-dark);
+    text-decoration: underline;
+}
+
+/* Topic / forum titles */
+.topictitle, a.topictitle,
+.forumtitle, a.forumtitle {
+    color: var(--au-primary) !important;
+    font-weight: 600 !important;
+}
+
+.topictitle:hover, .forumtitle:hover {
+    color: var(--au-accent-dark) !important;
+}
+
+/* ============ BUTTONS ============ */
+input.button1, input.button2, input.button3,
+a.button1, a.button2, a.button3,
+.button {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    transition: all 0.15s ease;
+}
+
+/* Primary CTA buttons */
+input.button1, a.button1 {
+    background: var(--au-primary) !important;
+    color: #fff !important;
+    border: 1px solid var(--au-primary-dark) !important;
+}
+
+input.button1:hover, a.button1:hover {
+    background: var(--au-primary-dark) !important;
+    border-color: var(--au-primary-dark) !important;
+    color: #fff !important;
+}
+
+/* Secondary buttons */
+input.button2, a.button2 {
+    background: #fff !important;
+    color: var(--au-primary) !important;
+    border: 1px solid var(--au-primary) !important;
+}
+
+input.button2:hover, a.button2:hover {
+    background: var(--au-primary-50) !important;
+    color: var(--au-primary-dark) !important;
+}
+
+/* Important / Post new topic / Reply buttons (orange accent) */
+.button-secondary, .submit-buttons input.button1[name="post"] {
+    background: var(--au-accent) !important;
+    border-color: var(--au-accent-dark) !important;
+    color: #fff !important;
+}
+
+.button-secondary:hover, .submit-buttons input.button1[name="post"]:hover {
+    background: var(--au-accent-dark) !important;
+    border-color: var(--au-accent-dark) !important;
+}
+
+/* ============ FORUMS LIST ============ */
+.forumbg, .forabg {
+    background: #fff;
+    border: 1px solid var(--au-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.forumbg .header, .forabg .header,
+ul.topiclist.forums li.row .header,
+ul.topiclist.topics li.row dl.icon dt {
+    background: linear-gradient(180deg, var(--au-primary-50) 0%, #fff 100%);
+}
+
+.forabg li.header dt, .forumbg li.header dt,
+.forabg li.header dd, .forumbg li.header dd,
+.forabg .header h3, .forumbg .header h3 {
+    color: var(--au-primary-900) !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+}
+
+/* Alternate row striping */
+ul.topiclist li.row:nth-child(even) dl.icon {
+    background: #FAFAFA;
+}
+
+/* Row icons */
+li.row .pagination, .row .lastpost {
+    color: var(--au-text-muted);
+}
+
+/* ============ POST / VIEWTOPIC ============ */
+.post, .postbody {
+    background: #fff;
+}
+
+.postbody h3 {
+    color: var(--au-primary-900);
+}
+
+.postbody .author a {
+    color: var(--au-primary);
+    font-weight: 600;
+}
+
+/* Quote box */
+blockquote, .quotetitle, .quotecontent {
+    background: var(--au-primary-50);
+    border-left: 3px solid var(--au-primary);
+    color: var(--au-text);
+}
+
+/* Code box */
+.codebox {
+    background: #F9FAFB;
+    border: 1px solid var(--au-border);
+    color: var(--au-text);
+}
+
+/* ============ FORMS ============ */
+input[type="text"], input[type="password"], input[type="email"],
+input[type="search"], input[type="url"], input[type="tel"],
+textarea, select {
+    border: 1px solid var(--au-border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
+input[type="search"]:focus, textarea:focus, select:focus {
+    outline: 0;
+    border-color: var(--au-primary);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+}
+
+/* ============ NOTIFICATION / BADGES ============ */
+.badge {
+    background: var(--au-accent);
+    color: #fff;
+    border-radius: 9999px;
+    padding: 2px 8px;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.notification-block {
+    border-bottom: 1px solid var(--au-border);
+}
+
+/* New / unread indicator */
+.icon.fa-circle.unread,
+.row dl.icon.unread {
+    color: var(--au-accent);
+}
+
+/* ============ FOOTER ============ */
+#page-footer {
+    background: #1F2937;
+    color: #fff;
+    border-top: 3px solid var(--au-accent);
+    margin-top: 32px;
+    padding: 24px 16px;
+}
+
+#page-footer a {
+    color: #DBEAFE !important;
+}
+
+#page-footer a:hover {
+    color: var(--au-accent) !important;
+}
+
+/* ============ JUMP-BOX / DROPDOWNS ============ */
+.dropdown {
+    border-radius: 6px;
+    border: 1px solid var(--au-border);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ============ PAGINATION ============ */
+.pagination li a, .pagination li.active span {
+    border-radius: 6px;
+    margin: 0 2px;
+    padding: 4px 10px;
+    font-weight: 500;
+}
+
+.pagination li a:hover {
+    background: var(--au-primary-50);
+    color: var(--au-primary-dark);
+}
+
+.pagination li.active span {
+    background: var(--au-primary);
+    color: #fff;
+    border-color: var(--au-primary);
+}
+
+/* ============ TABS ============ */
+#tabs .activetab a,
+#tabs li.activetab span {
+    background: var(--au-primary);
+    color: #fff !important;
+    border-color: var(--au-primary);
+}
+
+#tabs a:hover {
+    background: var(--au-primary-50);
+    color: var(--au-primary-dark);
+}
+
+/* ============ SEARCH BAR ============ */
+#search-box input[type="search"] {
+    border-radius: 6px 0 0 6px;
+}
+
+#search-box .button {
+    background: var(--au-accent);
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+    border-color: var(--au-accent-dark);
+}
+
+#search-box .button:hover {
+    background: var(--au-accent-dark);
+}

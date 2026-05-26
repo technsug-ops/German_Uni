@@ -1,0 +1,194 @@
+name: Deploy to KAS (All-Inkl)
+
+# Tetikleyiciler:
+#  - main branch'e push → otomatik deploy
+#  - Actions sekmesinden manuel "Run workflow"
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Aynı anda iki deploy çalışmasın (push üst üste gelirse en yeniyi bekler)
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      # ─────────────────────────────────────────────────────
+      # 1. Checkout
+      # ─────────────────────────────────────────────────────
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ─────────────────────────────────────────────────────
+      # 2. PHP 8.3 + Composer (production deps)
+      # ─────────────────────────────────────────────────────
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, gd, pdo_mysql, bcmath, zip, curl, fileinfo, openssl
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: almanya-uni/vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('almanya-uni/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Composer install (production)
+        working-directory: almanya-uni
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist
+
+      # ─────────────────────────────────────────────────────
+      # 3. Node 20 + Vite build
+      # ─────────────────────────────────────────────────────
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: almanya-uni/package-lock.json
+
+      - name: NPM install
+        working-directory: almanya-uni
+        run: npm ci --no-audit --no-fund
+
+      - name: Vite production build
+        working-directory: almanya-uni
+        run: npm run build
+
+      # ─────────────────────────────────────────────────────
+      # 4. .env.production'ı secret'tan yaz (deploy-time injection)
+      # ─────────────────────────────────────────────────────
+      - name: Write .env from secret
+        working-directory: almanya-uni
+        run: |
+          # GitHub Secret içeriği aynen yazılır (multiline destekli)
+          printf '%s' "${{ secrets.ENV_PRODUCTION }}" > .env
+          # Sanity check: .env'in MySQL kullandığını ve SQLite içermediğini doğrula
+          if grep -q '^DB_CONNECTION=sqlite' .env; then
+            echo "::error::SECRET ENV_PRODUCTION SQLite içeriyor — MySQL olmalı!"
+            exit 1
+          fi
+          if [ ! -s .env ]; then
+            echo "::error::.env boş yazıldı — ENV_PRODUCTION secret tanımlanmamış!"
+            exit 1
+          fi
+          echo ".env yazıldı ($(wc -l < .env) satır)"
+
+      # ─────────────────────────────────────────────────────
+      # 5. Deploy artefakt hazırlığı — bilinen hatalar için temizlik
+      # ─────────────────────────────────────────────────────
+      - name: Clean deploy artifacts (postmortem #6: public/hot, vb.)
+        working-directory: almanya-uni
+        run: |
+          # Vite dev mode artığı — production'da SESSİZ FAIL sebebiyor (postmortem #6)
+          rm -f public/hot
+          # Eski cache'ler (server path'ler local Windows path'leri içerebilir)
+          rm -rf bootstrap/cache/*.php
+          rm -rf storage/framework/views/*.php
+          rm -rf storage/framework/cache/data/*
+          rm -rf storage/framework/sessions/*
+          # SQLite test DB (postmortem #3: fallback olmasın)
+          rm -f database/database.sqlite
+          # Build artefaktları silinmesin — vite manifest gerekli
+          ls -la public/build > /dev/null 2>&1 || { echo "::error::public/build yok — vite build başarısız!"; exit 1; }
+          echo "Artefakt temizliği tamam"
+
+      # ─────────────────────────────────────────────────────
+      # 6. FTP/FTPS ile KAS'a deploy
+      # ─────────────────────────────────────────────────────
+      - name: Deploy via FTPS to KAS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./almanya-uni/
+          server-dir: /almanya-uni/
+          # state-file: server'da hangi dosyaların değiştiğini hatırlar (incremental upload)
+          state-name: .ftp-deploy-sync-state.json
+          # Logları normal seviyede
+          log-level: standard
+          # Hariç tutulanlar — sunucuya gitmemesi gerekenler
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/tests/**
+            **/storage/logs/**
+            **/storage/app/db-dumps/**
+            **/storage/framework/cache/data/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            **/deploy/_archive/**
+            **/deploy/*.sql
+            **/deploy/*.sql.gz
+            **/deploy/setup.php
+            **/deploy/blog-fix-publish.php
+            **/.editorconfig
+            **/.gitignore
+            **/.gitattributes
+            **/.npmrc
+            **/phpunit.xml
+            **/.env.example
+            **/.env.local
+            **/DEPLOY-GUIDE.md
+            **/PARTNER_REQUEST_*.md
+            **/ADMISSION_MODE_NASIL_DOLDURULUR.md
+            **/DAAD_SCHOLARSHIPS_OZET.md
+            **/README.md
+
+      # ─────────────────────────────────────────────────────
+      # 7. Deploy sonrası cache rebuild tetikleyici dosyası
+      #    KAS Cronjob bu dosyayı görünce view:cache + config:cache çalıştırır
+      #    (cronjob kurulum talimatı: .github/DEPLOY_SETUP.md)
+      # ─────────────────────────────────────────────────────
+      - name: Trigger cache rebuild flag
+        run: |
+          # Dummy bir dosya yazıp upload — server'daki cronjob bu dosya varsa cache rebuild yapacak
+          mkdir -p ./cache-trigger
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > ./cache-trigger/.deploy-pulse
+          echo "Cache trigger dosyası hazırlandı"
+
+      - name: Upload cache trigger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./cache-trigger/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .deploy-pulse-state.json
+          log-level: minimal
+
+      # ─────────────────────────────────────────────────────
+      # 8. Bilgilendirme
+      # ─────────────────────────────────────────────────────
+      - name: Deploy summary
+        if: always()
+        run: |
+          echo "## Deploy Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Doğrulama:**" >> $GITHUB_STEP_SUMMARY
+          echo "- https://almanyauni.com (TR-first primary)" >> $GITHUB_STEP_SUMMARY
+          echo "- https://applytogerman.com (intl)" >> $GITHUB_STEP_SUMMARY

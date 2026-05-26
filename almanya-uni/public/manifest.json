@@ -1,0 +1,56 @@
+{
+    "name": "AlmanyaUni — Almanya Üniversite Rehberi",
+    "short_name": "AlmanyaUni",
+    "description": "Türk öğrenciler için Almanya'da eğitim rehberi: 603 üniversite, 18.306 program, şehir/eyalet/alan detayları, yaşam maliyeti araçları.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1e40af",
+    "lang": "tr-TR",
+    "dir": "ltr",
+    "categories": ["education", "lifestyle", "reference"],
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48 32x32 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Üniversiteler",
+            "short_name": "Üniler",
+            "description": "Tüm Alman üniversiteleri",
+            "url": "/universities",
+            "icons": [{ "src": "/favicon.ico", "sizes": "48x48" }]
+        },
+        {
+            "name": "Şehirler",
+            "short_name": "Şehirler",
+            "description": "Öğrenci şehirleri rehberi",
+            "url": "/cities",
+            "icons": [{ "src": "/favicon.ico", "sizes": "48x48" }]
+        },
+        {
+            "name": "Karşılaştır",
+            "short_name": "Compare",
+            "description": "Üniversiteleri karşılaştır",
+            "url": "/compare",
+            "icons": [{ "src": "/favicon.ico", "sizes": "48x48" }]
+        },
+        {
+            "name": "Yaşam Maliyeti",
+            "short_name": "Maliyet",
+            "description": "Şehir yaşam maliyeti hesapla",
+            "url": "/tools/cost-of-living",
+            "icons": [{ "src": "/favicon.ico", "sizes": "48x48" }]
+        }
+    ]
+}

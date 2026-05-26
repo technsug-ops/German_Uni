@@ -1,0 +1,408 @@
+# FAQ Seed Listesi (374 soru / 15 konu)
+
+Kaynak: 1.5M mesaj analizi sonucu kümelenmiş gerçek kullanıcı soruları.
+Format: `| N) KONU (pool, top N) |` başlıkları, sonra her satırda 1 soru.
+
+## 1) VİZE (1,537 soru havuzu, top 25)
+- Vize için başvuru nasıl yapılabilir? Dil kursu kaydıyla mı, yoksa üniversiteye başvuru mu?
+- Mavi kart başvurusu sırasında ailesi için başvurabilen var mı? (IDATA direnç)
+- Anne/babasını yanına getirmek için vize/oturum kartı türü nedir?
+- Stellenangebote alanlar vize alabiliyor mu?
+- Almanya'da Goethe üzerinden Almanca kursu kaydı vize alabilir miyim?
+- Yakın zamanda vize başvurusunda bulunan var mı? Ortalama kaç ay/hafta randevu?
+- Dil kursu vizesini tavsiye etmiyorsunuz, iş arama vizesi için Approbation isteniyor — B2 yetmiyor, ne öneriyorsunuz?
+- Son dönemde dil kursu vizesiyle giden oldu mu?
+- Fintiba dışında bloke hesap oluşturabileceğim uygulama var mı?
+- Beglaubigung için konsolosluk randevu açık mı?
+- Yaz stajı için vize başvurusunda bulunan oldu mu?
+- Sperrkonto açtırıp dil kursuyla anlaşsak bile vize vermeyecekler mi?
+- Oturum izni veya vize olması şart mı?
+- Vize için olumlu/olumsuz dönüş ortalama kaç gün?
+- Ulusal vize başvurusunda istenen belgeler arasında dil sertifikası zorunlu mu?
+- Hospitation için ulusal vize alabilen oldu mu?
+- Vize için istenen sigorta hangi kapsamda olmalı?
+- Fintiba basic ve plus arasındaki fiyat farkı + ulusal vize için plus kabul ediliyor mu?
+- 4 aylık dil kursu vizesi için bloke hesaba 6 ay yatırmam yeterli mi?
+- Ankara'dan §44 f vize çıkma süresi ortalaması nedir?
+- Dil kursu kaydı en az 6 ay olmak zorunda mı? 3 aya vize verilebiliyor mu?
+- Dil kursu vizesinde çocuğa da vize çıkar mı?
+- Hospitasyon konaklama+yemek+ulaşım+vize gider kim karşılar?
+- Bloke hesapta ne kadar para istiyorlar?
+- Konsolosluk Beglaubigung randevu sorunu yaşayan var mı?
+
+## 2) DİL (1,451 soru havuzu, top 25)
+- Goethe online kurs nasıl?
+- NRW doktorum, B2 tamamladım, Münster Approbation zor — hangi eyalet daha uygun?
+- Aile hekimliği TUKMOS Almancaya çeviren var mı?
+- B2 sonrası FSP ve Approbation faydası nedir?
+- Abitur veya Sprachdiplom B2 fayda sağlar mı?
+- Dil kursuna gitmeden Almanca öğrenmek mümkün mü?
+- BW ve Bayern hep kabul etti, TR'deki yeminli tercüman kabul edilmedi mi?
+- Almanca kurslar ne zaman başlayabilir?
+- Online Almanca kursu memnuniyeti?
+- Almanca öğrenip istediğin branşta doktorluk seviyesi?
+- B2 sonrası Approbation mı BE mi?
+- Almanca öğrendikten sonra İsviçre asistanlık mümkün mü?
+- Online ders veren Almanca öğretmeni önerisi?
+- TR'de Telc FSP için Almanya'da iş ön şartı mı?
+- Goethe sınav tarihleri belli değil — alternatif kurum?
+- Telc med C1 TR'de mi Almanya'da mı?
+- Telc med B2-C1 vs FSP, hangisi?
+- DSH Hochschulzugang sınavı C1/FSP muafiyet?
+- Almanca online ders veren hoca arıyorum
+- Almanca çalışan doktor olduğumu bilen biri tercüme istedi
+- B2 için online birebir hoca/kurs?
+- Telc-fsp-medizin TR'de giren?
+- Goethe online Almanca kursu / önerilebilecek?
+- Goethe B1 hörende kaldım, büyükelçilik kabul eder mi?
+- Mit Erfolg zu Telc deutsch B2 PDF paylaşımı?
+
+## 3) RANDEVU (412 soru havuzu, top 25)
+- IDATA evrakları geri verip 75 € geri verir mi?
+- Mavi kart başvurusu IDATA direniyor — Ankara başvuran?
+- Vize randevu ortalama kaç ay/hafta?
+- Dil kursu vizesi — randevu için kaç gün beklediniz?
+- Beglaubigung konsolosluk randevu açık mı?
+- Ankara'ya dil vizesi başvurup randevu alan?
+- Ankara valiliği apostil — pandemi randevu?
+- İzmir başkonsolosluk ulusal randevu sistemi sorunu?
+- Randevu en yakın ekim başı, ne yapmalı?
+- Randevu bulamayan ne yapmalı?
+- IDATA hospitation randevu süresi?
+- Blue Card için IDATA randevu kaç gün?
+- IDATA aylarca randevu vermiyor — hızlandırma önerisi?
+- İzmir IDATA ulusal başvuran — randevu süresi?
+- Alman konsolosluk adli sicil — randevusuz?
+- Tekrarlı randevu alınır mı?
+- Ankara IDATA mavi kart randevu süresi?
+- IDATA fotokopi ek hizmeti ne anlama geliyor?
+- NRW + Niedersachsen FSP termin süresi?
+- 26 Haziran başvuru, randevu hâlâ gelmedi — ikamet etkisi?
+- Mavi kart vize randevu en son ne zaman?
+- IDATA evrak teslim hangi şehirler?
+- Ağustos başvurusu, randevu yok — bekleyen var mı?
+- Hangi şehir/tarih başvuru-randevu-vize?
+- IDATA dil kursu başvurusu sağlık alanı sorusu — evet/hayır?
+
+## 4) DENKLİK (364 soru havuzu, top 25)
+- İntörnlükte 2 ay cerrahi denklik için sorun mu?
+- Almanya'da denklik UK ve diğer AB'de geçerli mi?
+- Denklik ücretlerini Arbeitsagentur'dan talep?
+- Psikiyatri uzmanı denklik veya BE iş bulan oldu mu?
+- NRW Denklik sürecinde Zusage gerekli mi?
+- Sınav katılım belgesi Almanya'da denklik için nasıl?
+- Sınav (dil-denklik) Almanya'da mı?
+- Avusturya denklik C1 + pandemi esneklik?
+- Genel cerrahi 4 ay asistanlık intörnlük açığı kapatır mı?
+- Dokuz Eylül Tıp + gutachten denklik (sınavsız)?
+- Uzman doktor denklik dosya + asistanlık 1. yıl mı?
+- Gürcistan mezunu denk sayılma nasıl öğrenilir?
+- Ege Tıp + gutachten denklik?
+- Eksik staj için Almanya/TR gönüllü staj sayılır mı?
+- B1 ile denkliksiz iş + B2'ye devam mümkün mü?
+- Almanya + İngiltere denklik bilen var mı?
+- Curriculum klinik branş — temel bilimler istenmiyor mu?
+- Almanya hastane denklik için maaş/burs?
+- Denklik şartları değişir mi?
+- Şart sağlanmazsa sınava girmek yeterli mi?
+- FSP'siz işe başlanabilen eyaletler? 2 sene tecrübeyle bilirkişi denklik kolay mı?
+- Almanca yok, günde 1-2 saat denklik için kaç ay?
+- Üniversite puan ortalaması denklik etkili mi?
+- Internüm + gutachten denklik soru?
+- Almanya'da denklik başarısız doktorla görüşme?
+
+## 5) PARA (260 soru havuzu, top 25)
+- Almanya intörnlük TR hibesi mi yerel ücret mi?
+- Extra para verince kanaat notu pozitif olur mu?
+- Danışmanlık şirketi maddi kar amacı mı?
+- Fintibaya para gönderme — SWIFT şube adı sorunu?
+- Almancası iyi olmayan biri için kaç ay/TL?
+- Adam para mı istedi, kâr amacı mı?
+- Eyalete gidebilmek için bin Euro Almanca tercüme?
+- Almanya'da Türkiye'den para transferi avantajlı banka?
+- Bloke hesaptan para çekmek için TR'den hesap açılır mı?
+- Almanya'dan TR'ye para gönderme uygulaması?
+- Gutachten ücret + KP arasında karar?
+- Sayfa başı kaç Euro tercüme + kaç gün?
+- TR-DE para transferi indirim kodu?
+- Berufserlaubnis olmadan praktikum/hospitation kazanç + Ausländerbehörde?
+- Approbation hospitasyon kazanç imkânı?
+- Dil kursu vize 30K Euro teminat sağlık sigorta yeterli mi?
+- Bloke hesap eş + 2 çocuk için ayrı miktar?
+- Ev sahibi vs emlakçı para gönderme güveni?
+- Goethe intensive 1200 € + 3 hafta değer mi?
+- Vize görüşmesi 75 € yeterli mi?
+- Danışmanlığa binlerce Euro şart mı?
+- Bloke hesap kapalı kalırsa 5 € kesinti devam eder mi?
+- Çalışan dil okuluna ücretsiz izin mi istifa mı?
+- Fahri konsolosluk evrak 29 € + konsolosluk ücreti?
+- Postbank Berlin'e Euro yatırma — TR'den en az komisyon?
+
+## 6) SEHIR (257 soru havuzu, top 25)
+- BW/SH/Niedersachsen/Hamburg DE dışı çeviri kabul ediyor — başka tecrübe?
+- Hamburg asistanlık veya staj?
+- Berlin Approbation evrak + e-mail dönüş?
+- Hamburg iş bulma kabul açısından nasıl?
+- Zusage hospitasyon olmadan Bayern + Berlin Approbation?
+- Hamburg Approbation süreci?
+- Berlin yüzyüze Almanca kursu?
+- Berlin FSP'siz Zusage + geçici BE?
+- Hamburg uygun fiyatlı çevirmen?
+- Berlin Kinderarzt?
+- Frankfurt + çevre dil kursu?
+- Berlin Büyükelçilik apostil mi sadece TR mi?
+- Frankfurt + çevre dil kursu özelden?
+- Berlin/Bayern yurt anlaşmalı FSP kursu?
+- Frankfurt civarı uygun dil kursu + acil kayıt?
+- Bremen-Hamburg-Hannover grup?
+- Freiburg B2 + FSP kurs önerisi?
+- Stuttgart çevirmen önerisi?
+- Hamburg grup?
+- Berlin Gutachten Bohn'a mı gönderiliyor?
+- Freiburg 5-30 Haziran yurt/daire?
+- Berlin denklik evrak listesi?
+- Frankfurt am Main dil okulu önerisi?
+- Niedersachsen-Stade hospitation aile konaklama?
+- Hamburg grup linki?
+
+## 7) MASTER (176 soru havuzu, top 25)
+- PhD/master Tıbbi Biyokimya ihtisas süreç?
+- Master kabulü + yeşil pasaport — vize Almanya'dan yapılır mı?
+- Master 20 saat çalışma izni Lieferando?
+- Mainz master burs?
+- Goethe B2 ile şartsız doğrudan master?
+- Master 3. sınıfta mı 4. sonrası mı?
+- Ücretsiz master mümkün mü?
+- Düşük GPA ile DE master/bachelor kabul?
+- Tıbbi Biyokimya master + Almanca kurs üniversite?
+- Master 5 yıllık programlar (Tıp, Mühendislik) için durum?
+- NC sürpriz, master kabul belirsiz?
+- Yüksek lisans mezunu Approbation için bonus mu?
+- PhD biyokimya FSP gerekli mi?
+- Bachelor + master farklı bölüm — kabul?
+- Sosyal bilim master burs?
+- Public Health master Almanya seçenekleri?
+- Master İngilizce + Almanca seviyeleri?
+- Sertifikasız master kabul + dil sonra?
+- Master sonrası iş arama vizesi 18 ay?
+- Bilgisayar mühendisliği master DE/AT/CH karşılaştırma?
+- Online master + Almanya'da geçerli mi?
+- Master burs DAAD ne zaman?
+- Master tezi başlamadan değişim?
+- Master kabul belgesi vize için yeterli mi?
+- Diş hekimliği master/PhD nasıl?
+
+## 8) UNI_ASSIST (145 soru havuzu, top 25)
+- Uni-Assist VPD nedir?
+- VPD ücreti + ek başvuru?
+- Uni-Assist HZB notu nasıl hesaplanır?
+- Mein Konto sekmeleri ne işe yarar?
+- Uni-Assist evrak red — düzeltme süresi?
+- APS + Uni-Assist sıralama?
+- DoSV programlar Uni-Assist mi?
+- VPD geldikten sonra direkt başvuru mı?
+- Uni-Assist BID/BAN ne demek?
+- Apostilli evrak Uni-Assist gerekli mi?
+- Uni-Assist diploma çeviri yeminli mi?
+- Uni-Assist üniversite seçimi şart mı VPD için?
+- Uni-Assist 75 € + 30 € ek başvuru ödeme?
+- VPD geçerlilik süresi?
+- Uni-Assist transcript çeviri zorunlu mu?
+- Uni-Assist kabul belgesi sonrası ne yapmalı?
+- Uni-Assist red sebebi nedir?
+- Lisans bitirmeden Uni-Assist VPD?
+- Uni-Assist ödeme hatası — ne yapmalı?
+- Uni-Assist Mein Konto güncelleme?
+- Uni-Assist evrak postayla mı?
+- Uni-Assist + üniversite paralel başvuru?
+- Uni-Assist VPD 1.0 vs 4.0 not farkı?
+- Uni-Assist deadlines Wintersemester?
+- Uni-Assist online vs evrak başvuru?
+
+## 9) STUDIENKOLLEG (143 soru havuzu, top 25)
+- Studienkolleg Feststellungsprüfung süreci?
+- Studkol kursları nerede en iyi?
+- Studienkolleg para ödeme?
+- Studkol giriş sınavı zorluk?
+- Studienkolleg M-Kurs T-Kurs farkı?
+- Studienkolleg vize gerekli mi?
+- Devlet Studkol mü özel mi?
+- Hazırlık atlamak mümkün mü?
+- Studkol sonrası üniversite garanti mi?
+- Studkol giriş Almanca C1?
+- Studkol süresi 1 yıl mı 2 yıl mı?
+- Studienkolleg yurt imkânı?
+- Studkol giriş sınavı tarihi?
+- Studkol Sperrkonto gerekli mi?
+- Studkol ile direkt Bachelor karşılaştırma?
+- Hazırlık programı Almanya'da geçerli mi?
+- Studkol M-Kurs tıp için?
+- Studkol özel okul fiyatları?
+- Studkol başarısız olunca?
+- Studkol giriş sınavı ne soruluyor?
+- Studkol başlama tarihi yıl içinde 2 mi?
+- Studkol Almanya dışında alternatif?
+- Studkol giriş için lise diploma çevirisi?
+- Studkol kabul belgesi vize için yeter mi?
+- Studkol sonrası iş izni?
+
+## 10) YURT (106 soru havuzu, top 25)
+- WG arama platformu nedir?
+- Wohnheim başvuru süreci?
+- Kira ortalama Hamburg/Berlin/Bayern?
+- Kaution kaç ay kira?
+- WG Almanca yeterliliği?
+- Yurt başvuru deadline?
+- Anonser dolandırıcılığı yaşayan?
+- Studierendenwerk yurt başvurusu?
+- WG vize görüşmesi için yetersiz mi?
+- Aile için yurt mümkün mü?
+- WG sözleşme olmadan ev tutma?
+- Anmeldung yurt adresi sorun mu?
+- Geçici 1 ay yurt/Airbnb?
+- WG-Gesucht ücretsiz mi?
+- Berlin yurt kontenjan dolu mu?
+- Yurt + Studkol kombinasyonu?
+- Garantör yurt için şart mı?
+- Üniversite yurt müracaat zaman?
+- Wohnung tutma garantör nedir?
+- WG münih süreci?
+- Frankfurt staj için yurt?
+- Hamburg Praktikum kalacak yer?
+- Yurt fiyatı dahil oda mı?
+- Aile getirip tek oda yurt?
+- Yurt başvuru kabul oranı?
+
+## 11) İŞ (72 soru havuzu, top 25)
+- Werkstudent ile asistanlık çakışır mı?
+- Minijob 538 € sınırı?
+- Part time master ile?
+- Hospitation ücretsiz mi?
+- Werkstudent + bloke hesap eklenir mi?
+- İş bulma ipuçları + LinkedIn DE?
+- Almanca olmadan iş bulan oldu mu?
+- Doktor 1. yıl asistan işe nasıl başlanır?
+- Lieferando öğrenci için ne kadar?
+- Werkstudent başvuru ne zaman?
+- Almanya iş arama vizesi başvuru?
+- Çalışma izni 20 saat öğrenci?
+- Mini-Job olmadan harçlık?
+- İş bulma sektörü tercih?
+- Bachelor mezuniyet sonrası iş arama 18 ay?
+- İş + master kombinasyonu?
+- Almanca eksik iş için?
+- İlk asistanlık + denklik beklerken?
+- Sosyal güvenlik kesintisi öğrenci?
+- Master sonrası iş bulamadıysa?
+- Mühendis iş arayan örnek aylık?
+- Hospitation ücreti var mı?
+- Almanca yok mühendis iş?
+- Çalışma sözleşmesi ne içerir?
+- Werkstudent saat üzeri kontrol?
+
+## 12) SİGORTA (93 soru havuzu, top 25)
+- TK vs AOK karşılaştırma?
+- Krankenversicherung öğrenci için?
+- Sigorta vize için 30K teminat yeterli mi?
+- Sperrkonto + sigorta paket Fintiba?
+- Özel sigorta avantajı?
+- Aile dahil sigorta?
+- Sigorta başlangıç tarihi?
+- Almanya'ya gelmeden sigorta?
+- Krankenkasse vergisi?
+- Sigorta kapsamı diş?
+- Studienkolleg sigorta?
+- Bachelor 30 yaş üstü sigorta?
+- Master sigorta nasıl?
+- Hospitation sigorta?
+- Tıp eğitimi sigorta + maaş?
+- Asistanlık sigorta hangi?
+- Türk şirket çalışan + DE sigorta?
+- Sigorta iptal etme?
+- AOK Bayern başvuru?
+- Sigorta primi öğrenci ücret?
+- Sigorta belgesi Anmeldung gerekli mi?
+- Werkstudent sigorta zorunlu mu?
+- Sigorta uzun süreli muayene?
+- Acil sigorta seyahat?
+- Sigorta kart kaybı?
+
+## 13) ANMELDUNG (65 soru havuzu, top 25)
+- Anmeldung randevu Bürgeramt?
+- Anmeldung evrak listesi?
+- Anmeldung WG sözleşme yeterli mi?
+- Anmeldung olmadan banka hesap?
+- Anmeldung kira sözleşme türü?
+- Anmeldung randevu Berlin sıkıntı?
+- Anmeldung sahte adres?
+- Anmeldung Wohnungsgeberbestätigung nedir?
+- Anmeldung sigorta gerekli mi?
+- Anmeldung 14 gün şartı?
+- Anmeldung Münih süreci?
+- Anmeldung Hamburg WG?
+- Anmeldung pasaport + vize beraber?
+- Anmeldung sahibe başkası mı?
+- Anmeldung gecikme cezası?
+- Anmeldung iş başvuru için şart mı?
+- Anmeldung Frankfurt önerisi?
+- Anmeldung sonrası SteuerID?
+- Anmeldung başvuru ücreti?
+- Anmeldung Türk pasaport sorun?
+- Anmeldung vize uzatma için şart?
+- Anmeldung yurt adresi?
+- Anmeldung uzatma randevu?
+- Anmeldung evlilik için şart?
+- Anmeldung Ummeldung farkı?
+
+## 14) AUSBILDUNG (73 soru havuzu, top 25)
+- Ausbildung başvuru süreci?
+- Ausbildung B1 yeter mi?
+- Ausbildung sağlık alanı?
+- Pflege Ausbildung maaş?
+- Ausbildung kabul + vize?
+- Ausbildung 30 yaş üstü?
+- Ausbildung tercih meslek?
+- Ausbildung başvuru önce iş mı kabul mu?
+- Ausbildung süresi ortalama?
+- Ausbildung Krankenpflege süreci?
+- Ausbildung Berlin başvuru?
+- Ausbildung Türkçe öğretmen?
+- Ausbildung sigorta + vergi?
+- Ausbildung sözleşme öncesi vize?
+- Ausbildung otelcilik?
+- Ausbildung tıp dışı sağlık?
+- Ausbildung dil kursu vize geçişi?
+- Ausbildung işe alım sektör?
+- Ausbildung okul + iş paralel?
+- Ausbildung vize danışmanlık?
+- Ausbildung sonrası daimi iş?
+- Ausbildung Almanya çevirmen?
+- Ausbildung lise diplomasi yeterli mi?
+- Ausbildung başvuru deadline?
+- Ausbildung tercüman yeminli evrak?
+
+## 15) BURS (39 soru havuzu, top 24)
+- DAAD burs başvuru süreci?
+- DAAD belgeler nelerdir?
+- Stipendium fellow için kabul oranı?
+- Burs yaş sınırı?
+- DAAD kısa süreli burs?
+- Burs + dil kursu?
+- Master burs DAAD?
+- Tıp doktor için burs?
+- Yardım hesabı vize için yeterli mi?
+- Erasmus karşılaştırma?
+- Burs başvurusu 2-3 üniversite?
+- Burs notu + dil şartı?
+- DAAD biyolojik bilimler?
+- Sosyal bilimler burs?
+- Burs + part time çalışma?
+- DAAD master burs aylık miktar?
+- Burs başvuru tarihleri?
+- Burs için referans mektubu?
+- Türkiye'den burs imkânı?
+- PhD burs Almanya?
+- Konrad Adenauer burs?
+- DAAD özel sektör?
+- Burs duyuru sayfası?
+- Burs sonrası işe geri dönüş zorunlu mu?

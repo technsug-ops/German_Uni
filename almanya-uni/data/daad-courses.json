@@ -1,0 +1,362 @@
+{
+    "courses": [
+        {
+            "id": "514",
+            "image": "/images/content/language-course.jpg",
+            "courseName": "20th International Summer Academy Sans Souci 2018",
+            "shortName": "Summer Academy",
+            "academy": "University of Berlin",
+            "city": "Potsdam",
+            "languages": [
+                "English",
+                "German"
+            ],
+            "languageLevelGerman": [
+                "A1",
+                "A2",
+                "C2"
+            ],
+            "languageLevelEnglish": [
+                "A2",
+                "C2"
+            ],
+            "beginning": "Winter semester",
+            "programmeDuration": "From 6 months to 1 year",
+            "date": [
+                {
+                    "start": "2018-15-10",
+                    "end": "2018-24-12",
+                    "costs": 1000,
+                    "registrationDeadline": "2018-20-09",
+                    "selectHskHwk": "HSK"
+                },
+                {
+                    "start": "2018-03",
+                    "end": "2018-09",
+                    "costs": 600,
+                    "registrationDeadline": "",
+                    "selectHskHwk": "HWK"
+                },
+                {
+                    "start": "2018-06",
+                    "end": "2018-08",
+                    "costs": 200,
+                    "registrationDeadline": ""
+                }
+            ],
+            "tuitionFees": "varied",
+            "courseType": 5,
+            "preparationForDegree": [],
+            "applicationDeadline": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer",
+            "isCompleteOnlinePossible": false,
+            "financialSupport": "Yes",
+            "structuredResearch": "Yes",
+            "supportInternationalStudents": [
+                "Welcome Event",
+                "Buddy-Programm"
+            ]
+        },
+        {
+            "id": "513",
+            "image": "",
+            "courseName": "20th International Summer Academy Sans Souci 2018",
+            "shortName": "Summer Academy",
+            "academy": "University of Potsdam",
+            "city": "Potsdam",
+            "languages": [
+                "English",
+                "German"
+            ],
+            "languageLevelGerman": [
+                "A1",
+                "A2",
+                "C2"
+            ],
+            "languageLevelEnglish": [
+                "A2",
+                "C2"
+            ],
+            "beginning": "Winter semester",
+            "programmeDuration": "From 6 months to 1 year",
+            "date": [
+                {
+                    "start": "2018-15-10",
+                    "end": "2019-20-12",
+                    "costs": 800,
+                    "registrationDeadline": "2018-20-09",
+                    "selectHskHwk": "HWK"
+                },
+                {
+                    "start": "2018-11",
+                    "end": "2019-09",
+                    "costs": 800,
+                    "registrationDeadline": ""
+                }
+            ],
+            "tuitionFees": "varied",
+            "courseType": 6,
+            "preparationForDegree": [
+                "Bachelor",
+                "Master",
+                "State examination"
+            ],
+            "applicationDeadline": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer",
+            "isCompleteOnlinePossible": true,
+            "financialSupport": "Yes",
+            "structuredResearch": "Yes",
+            "supportInternationalStudents": [
+                "Welcome Event",
+                "Buddy-Programm"
+            ]
+        },
+        {
+            "id": "512",
+            "image": "/images/content/language-course.jpg",
+            "courseName": "20th International Summer Academy Sans Souci 2018",
+            "shortName": "Summer Academy",
+            "academy": "University of Potsdam",
+            "city": "Potsdam",
+            "languages": [
+                "English",
+                "German"
+            ],
+            "languageLevelGerman": [
+                "A1",
+                "A2",
+                "C2"
+            ],
+            "languageLevelEnglish": [
+                "A2",
+                "C2"
+            ],
+            "beginning": "Winter semester",
+            "programmeDuration": "From 6 months to 1 year",
+            "date": [
+                {
+                    "start": "2018-15-10",
+                    "end": "2019-20-12",
+                    "costs": 800,
+                    "registrationDeadline": "2018-20-09",
+                    "selectHskHwk": "HSK"
+                },
+                {
+                    "start": "2018-11",
+                    "end": "2019-09",
+                    "costs": 800,
+                    "registrationDeadline": "",
+                    "selectHskHwk": "HSK"
+                }
+            ],
+            "tuitionFees": "varied",
+            "courseType": 1,
+            "preparationForDegree": [
+                "Bachelor",
+                "Master",
+                "State examination"
+            ],
+            "applicationDeadline": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer",
+            "isCompleteOnlinePossible": false,
+            "financialSupport": "Yes",
+            "structuredResearch": "Yes",
+            "supportInternationalStudents": [
+                "Welcome Event",
+                "Buddy-Programm"
+            ]
+        },
+        {
+            "id": "511",
+            "image": "",
+            "courseName": "20th International Summer Academy Sans Souci 2018",
+            "shortName": "Summer Academy",
+            "academy": "University of Potsdam",
+            "city": "Potsdam",
+            "languages": [
+                "English",
+                "German"
+            ],
+            "languageLevelGerman": [
+                "A1",
+                "A2",
+                "C2"
+            ],
+            "languageLevelEnglish": [
+                "A2",
+                "C2"
+            ],
+            "beginning": "Winter semester",
+            "programmeDuration": "From 6 months to 1 year",
+            "date": [
+                {
+                    "start": "2018-15-10",
+                    "end": "2019-20-12",
+                    "costs": 400,
+                    "registrationDeadline": "2018-20-09",
+                    "selectHskHwk": ""
+                },
+                {
+                    "start": "2018-11",
+                    "end": "2019-09",
+                    "costs": 400,
+                    "registrationDeadline": "",
+                    "selectHskHwk": ""
+                }
+            ],
+            "tuitionFees": "varied",
+            "courseType": 7,
+            "preparationForDegree": [
+                "Bachelor",
+                "Master",
+                "State examination"
+            ],
+            "applicationDeadline": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer",
+            "isCompleteOnlinePossible": false,
+            "financialSupport": "Yes",
+            "structuredResearch": "Yes",
+            "supportInternationalStudents": [
+                "Welcome Event",
+                "Buddy-Programm"
+            ]
+        }
+    ],
+    "numResults": 224,
+    "filter": [
+        {
+            "subjects": [
+                {
+                    "value": 1,
+                    "name": "Agriculture, Forestry and Nutritional Science"
+                },
+                {
+                    "value": 2,
+                    "name": "Art, Art Theory"
+                },
+                {
+                    "value": 3,
+                    "name": "Engineering"
+                },
+                {
+                    "value": 4,
+                    "name": "Languages and Cultural Studies"
+                }
+            ],
+            "city": [
+                "Aachen",
+                "Berlin",
+                "Cologne"
+            ],
+            "type": [
+                {
+                    "value": 1,
+                    "name": "University"
+                },
+                {
+                    "value": 2,
+                    "name": "University of Applied Sciences"
+
+                },
+                {
+                    "value": 3,
+                    "name": "Universities of Fine Arts"
+
+                },
+                {
+                    "value": 4,
+                    "name": "Non-university Research Institute"
+                }
+            ],
+            "institution": [
+                {
+                    "value": 1,
+                    "name": "FH Aachen University of Applied Science"
+                },
+                {
+                    "value": 2,
+                    "name": "FH Aachen University of Fine Arts"
+                },
+                {
+                    "value": 3,
+                    "name": "FH Berlin University of Research"
+                }
+            ],
+            "duration": [
+                {
+                    "label": "Up to 1 month",
+                    "option": [
+                        {
+                            "value": [
+                                1
+                            ],
+                            "name": "From 1 to 2 weeks"
+                        },
+                        {
+                            "value": [
+                                2
+                            ],
+                            "name": "From 3 to 4 weeks"
+                        }
+                    ]
+                },
+                {
+                    "label": "From 1 to 6 months",
+                    "option": [
+                        {
+                            "value": [
+                                3
+                            ],
+                            "name": "From 1 to 3 months"
+                        },
+                        {
+                            "value": [
+                                4
+                            ],
+                            "name": "From 3 to 6 months"
+                        }
+                    ]
+                },
+                {
+                    "label": "",
+                    "option": [
+                        {
+                            "value": [
+                                5
+                            ],
+                            "name": "Up to 1 year"
+                        },
+                        {
+                            "value": [
+                                6
+                            ],
+                            "name": "Up to 2 years"
+                        },
+                        {
+                            "value": [
+                                7
+                            ],
+                            "name": "Up to 3 years"
+                        },
+                        {
+                            "value": [
+                                8
+                            ],
+                            "name": "Up to 4 years"
+                        }
+                    ]
+                }
+            ],
+            "date": [
+                "12 / 2017",
+                "01 / 2018",
+                "02 / 2018",
+                "03 / 2018",
+                "04 / 2018",
+                "05 / 2018",
+                "06 / 2018",
+                "07 / 2018",
+                "08 / 2018",
+                "09 / 2018",
+                "10 / 2018",
+                "11 / 2018"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+Subject: phpBB e-posta gönderimleri için düzgün bir şekilde ayarlandı
+
+Merhaba {USERNAME},
+
+Tebrikler. Eğer bu e-postayı alıyorsanız, phpBB e-posta gönderimleri için düzgün bir şekilde ayarlanmış demektir.
+
+<!-- IF MESSAGE -->
+{MESSAGE}
+
+<!-- ENDIF -->
+Konuyla ilgili yardıma ihtiyacınız varsa, lütfen phpBB destek forumlarını ziyaret edin - https://www.phpbb.com/community/
+
+{EMAIL_SIG}

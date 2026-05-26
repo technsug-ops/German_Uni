@@ -1,0 +1,1278 @@
+{
+    "groups": [
+        {
+            "id": 1,
+            "name": "Agricultural and Forest Sciences",
+            "fieldsOfStudyIds": [
+                1,
+                12,
+                8
+            ]
+        },
+        {
+            "id": 146,
+            "name": "Art, Music, Design",
+            "fieldsOfStudyIds": [
+                173,
+                165,
+                146,
+                179,
+                176,
+                156,
+                405
+            ]
+        },
+        {
+            "id": 380,
+            "name": "Economic Sciences, Law",
+            "fieldsOfStudyIds": [
+                380,
+                395
+            ]
+        },
+        {
+            "id": 56,
+            "name": "Engineering Sciences",
+            "fieldsOfStudyIds": [
+                94,
+                56,
+                66,
+                87,
+                69,
+                59,
+                74,
+                108,
+                145,
+                126,
+                91,
+                134,
+                96,
+                102,
+                63,
+                104,
+                400,
+                71,
+                401,
+                116,
+                109,
+                132,
+                120,
+                84
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Humanities and Social Sciences",
+            "fieldsOfStudyIds": [
+                399,
+                17,
+                26,
+                29,
+                40,
+                37,
+                42,
+                46
+            ]
+        },
+        {
+            "id": 273,
+            "name": "Language and Cultural Studies",
+            "fieldsOfStudyIds": [
+                7000,
+                273,
+                277,
+                320,
+                342,
+                279,
+                288,
+                293,
+                302,
+                404,
+                316,
+                369,
+                282,
+                325,
+                328,
+                334,
+                348,
+                351,
+                357,
+                363
+            ]
+        },
+        {
+            "id": 193,
+            "name": "Mathematics, Natural Sciences",
+            "fieldsOfStudyIds": [
+                193,
+                204,
+                226,
+                403,
+                214,
+                217,
+                237,
+                242,
+                402,
+                212,
+                248,
+                250
+            ]
+        },
+        {
+            "id": 255,
+            "name": "Medicine, Health Sciences",
+            "fieldsOfStudyIds": [
+                255,
+                270,
+                263
+            ]
+        },
+        {
+            "id": 382,
+            "name": "Public Administration",
+            "fieldsOfStudyIds": [
+                406
+            ]
+        },
+        {
+            "id": 381,
+            "name": "Teaching Degrees",
+            "fieldsOfStudyIds": [
+                398,
+                397,
+                396
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "id": 94,
+            "subjectGroup": 56,
+            "name": "Aerospace Engineering",
+            "subjectIds": [
+                94,
+                95
+            ]
+        },
+        {
+            "id": 1,
+            "subjectGroup": 1,
+            "name": "Agricultural Sciences",
+            "subjectIds": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                475
+            ]
+        },
+        {
+            "id": 56,
+            "subjectGroup": 56,
+            "name": "Architecture",
+            "subjectIds": [
+                56,
+                57,
+                58
+            ]
+        },
+        {
+            "id": 173,
+            "subjectGroup": 146,
+            "name": "Art and Design Sciences, Art Pedagogy",
+            "subjectIds": [
+                173,
+                174,
+                175,
+                403,
+                544
+            ]
+        },
+        {
+            "id": 66,
+            "subjectGroup": 56,
+            "name": "Bioengineering",
+            "subjectIds": [
+                66,
+                67,
+                68
+            ]
+        },
+        {
+            "id": 193,
+            "subjectGroup": 193,
+            "name": "Biology",
+            "subjectIds": [
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203
+            ]
+        },
+        {
+            "id": 87,
+            "subjectGroup": 56,
+            "name": "Building Services and Supply Engineering",
+            "subjectIds": [
+                87,
+                88,
+                89,
+                90
+            ]
+        },
+        {
+            "id": 69,
+            "subjectGroup": 56,
+            "name": "Chemical Engineering, Process Technology",
+            "subjectIds": [
+                69,
+                70
+            ]
+        },
+        {
+            "id": 204,
+            "subjectGroup": 193,
+            "name": "Chemistry",
+            "subjectIds": [
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211
+            ]
+        },
+        {
+            "id": 59,
+            "subjectGroup": 56,
+            "name": "Civil Engineering",
+            "subjectIds": [
+                59,
+                60,
+                61,
+                62
+            ]
+        },
+        {
+            "id": 226,
+            "subjectGroup": 193,
+            "name": "Computer Science",
+            "subjectIds": [
+                226,
+                227,
+                228,
+                229,
+                230,
+                231,
+                232,
+                233,
+                234,
+                235,
+                236,
+                404,
+                547,
+                548
+            ]
+        },
+        {
+            "id": 399,
+            "subjectGroup": 17,
+            "name": "Counselling",
+            "subjectIds": [
+                476,
+                477,
+                478,
+                514
+            ]
+        },
+        {
+            "id": 165,
+            "subjectGroup": 146,
+            "name": "Design",
+            "subjectIds": [
+                165,
+                166,
+                167,
+                168,
+                169,
+                171,
+                172,
+                402,
+                543
+            ]
+        },
+        {
+            "id": 380,
+            "subjectGroup": 380,
+            "name": "Economic Sciences",
+            "subjectIds": [
+                380,
+                381,
+                382,
+                383,
+                384,
+                385,
+                386,
+                387,
+                388,
+                389,
+                390,
+                391,
+                392,
+                393,
+                394,
+                498,
+                499,
+                500,
+                501,
+                502,
+                503,
+                517
+            ]
+        },
+        {
+            "id": 74,
+            "subjectGroup": 56,
+            "name": "Electrical Engineering",
+            "subjectIds": [
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                482
+            ]
+        },
+        {
+            "id": 145,
+            "subjectGroup": 56,
+            "name": "Engineering and Management",
+            "subjectIds": [
+                145
+            ]
+        },
+        {
+            "id": 108,
+            "subjectGroup": 56,
+            "name": "Engineering Physics",
+            "subjectIds": [
+                108
+            ]
+        },
+        {
+            "id": 12,
+            "subjectGroup": 1,
+            "name": "Environmental and Landscape Design",
+            "subjectIds": [
+                12,
+                13,
+                14,
+                15,
+                16
+            ]
+        },
+        {
+            "id": 126,
+            "subjectGroup": 56,
+            "name": "Environmental Protection and Disposal Technology",
+            "subjectIds": [
+                126,
+                127,
+                129,
+                130,
+                131
+            ]
+        },
+        {
+            "id": 403,
+            "subjectGroup": 193,
+            "name": "Environmental Sciences",
+            "subjectIds": [
+                493,
+                494,
+                515
+            ]
+        },
+        {
+            "id": 146,
+            "subjectGroup": 146,
+            "name": "Fine Arts",
+            "subjectIds": [
+                146,
+                147,
+                149,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                170,
+                521,
+                522,
+                539
+            ]
+        },
+        {
+            "id": 91,
+            "subjectGroup": 56,
+            "name": "Food Technology",
+            "subjectIds": [
+                91,
+                92,
+                93
+            ]
+        },
+        {
+            "id": 8,
+            "subjectGroup": 1,
+            "name": "Forest and Wood Management",
+            "subjectIds": [
+                8,
+                9,
+                10,
+                11
+            ]
+        },
+        {
+            "id": 214,
+            "subjectGroup": 193,
+            "name": "Geography",
+            "subjectIds": [
+                214,
+                215,
+                216
+            ]
+        },
+        {
+            "id": 217,
+            "subjectGroup": 193,
+            "name": "Geosciences",
+            "subjectIds": [
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225
+            ]
+        },
+        {
+            "id": 255,
+            "subjectGroup": 255,
+            "name": "Health and Nursing Sciences",
+            "subjectIds": [
+                255,
+                256,
+                257,
+                258,
+                259,
+                260,
+                261,
+                262
+            ]
+        },
+        {
+            "id": 395,
+            "subjectGroup": 380,
+            "name": "Law",
+            "subjectIds": [
+                395,
+                396,
+                397,
+                398,
+                399,
+                400,
+                401,
+                520
+            ]
+        },
+        {
+            "id": 134,
+            "subjectGroup": 56,
+            "name": "Materials Science and Engineering",
+            "subjectIds": [
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144
+            ]
+        },
+        {
+            "id": 237,
+            "subjectGroup": 193,
+            "name": "Mathematics",
+            "subjectIds": [
+                237,
+                238,
+                239,
+                240,
+                241
+            ]
+        },
+        {
+            "id": 96,
+            "subjectGroup": 56,
+            "name": "Mechanical Engineering",
+            "subjectIds": [
+                96,
+                97,
+                99,
+                100,
+                101
+            ]
+        },
+        {
+            "id": 102,
+            "subjectGroup": 56,
+            "name": "Mechatronics, Systems Engineering",
+            "subjectIds": [
+                102,
+                103,
+                546
+            ]
+        },
+        {
+            "id": 270,
+            "subjectGroup": 255,
+            "name": "Medicine",
+            "subjectIds": [
+                270,
+                271,
+                272
+            ]
+        },
+        {
+            "id": 63,
+            "subjectGroup": 56,
+            "name": "Mining",
+            "subjectIds": [
+                63,
+                64,
+                65
+            ]
+        },
+        {
+            "id": 179,
+            "subjectGroup": 146,
+            "name": "Music",
+            "subjectIds": [
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                189,
+                190,
+                191,
+                192,
+                491,
+                545
+            ]
+        },
+        {
+            "id": 176,
+            "subjectGroup": 146,
+            "name": "Musicology, Music Pedagogy",
+            "subjectIds": [
+                176,
+                177,
+                178,
+                187,
+                490
+            ]
+        },
+        {
+            "id": 242,
+            "subjectGroup": 193,
+            "name": "Nanosciences",
+            "subjectIds": [
+                242,
+                243,
+                244,
+                245,
+                246,
+                247
+            ]
+        },
+        {
+            "id": 402,
+            "subjectGroup": 193,
+            "name": "Neurosciences",
+            "subjectIds": [
+                492
+            ]
+        },
+        {
+            "id": 212,
+            "subjectGroup": 193,
+            "name": "Nutritional Sciences",
+            "subjectIds": [
+                212,
+                213
+            ]
+        },
+        {
+            "id": 104,
+            "subjectGroup": 56,
+            "name": "Optical Technologies",
+            "subjectIds": [
+                104,
+                105,
+                106,
+                107
+            ]
+        },
+        {
+            "id": 17,
+            "subjectGroup": 17,
+            "name": "Pedagogy, Educational Sciences",
+            "subjectIds": [
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                479
+            ]
+        },
+        {
+            "id": 156,
+            "subjectGroup": 146,
+            "name": "Performing Arts, Dance, Theatre",
+            "subjectIds": [
+                156,
+                160,
+                162,
+                163,
+                188,
+                523
+            ]
+        },
+        {
+            "id": 248,
+            "subjectGroup": 193,
+            "name": "Pharmacy, Pharmaceutical Engineering",
+            "subjectIds": [
+                248,
+                249
+            ]
+        },
+        {
+            "id": 250,
+            "subjectGroup": 193,
+            "name": "Physics, Astronomy",
+            "subjectIds": [
+                250,
+                251,
+                252,
+                253,
+                254
+            ]
+        },
+        {
+            "id": 26,
+            "subjectGroup": 17,
+            "name": "Political Sciences",
+            "subjectIds": [
+                26,
+                27,
+                28,
+                480
+            ]
+        },
+        {
+            "id": 400,
+            "subjectGroup": 56,
+            "name": "Power Engineering",
+            "subjectIds": [
+                98,
+                128,
+                483,
+                486
+            ]
+        },
+        {
+            "id": 71,
+            "subjectGroup": 56,
+            "name": "Printing Technology, Media Technology",
+            "subjectIds": [
+                71,
+                72,
+                73
+            ]
+        },
+        {
+            "id": 29,
+            "subjectGroup": 17,
+            "name": "Psychology",
+            "subjectIds": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+            ]
+        },
+        {
+            "id": 401,
+            "subjectGroup": 56,
+            "name": "Safety, Disaster Prevention \/ Management and Relief",
+            "subjectIds": [
+                484,
+                485,
+                487,
+                488,
+                489
+            ]
+        },
+        {
+            "id": 398,
+            "subjectGroup": 381,
+            "name": "School Subjects",
+            "subjectIds": [
+                281,
+                293,
+                423,
+                424,
+                425,
+                426,
+                427,
+                428,
+                429,
+                430,
+                431,
+                432,
+                433,
+                434,
+                435,
+                436,
+                437,
+                438,
+                439,
+                440,
+                441,
+                442,
+                443,
+                444,
+                445,
+                446,
+                447,
+                448,
+                449,
+                450,
+                451,
+                452,
+                453,
+                454,
+                455,
+                456,
+                457,
+                458,
+                459,
+                460,
+                461,
+                462,
+                463,
+                464,
+                465,
+                466,
+                467,
+                468,
+                469,
+                470,
+                471,
+                472,
+                473,
+                506,
+                507,
+                508,
+                509,
+                510,
+                511,
+                519
+            ]
+        },
+        {
+            "id": 116,
+            "subjectGroup": 56,
+            "name": "Ship Engineering, Nautics",
+            "subjectIds": [
+                116,
+                117,
+                118,
+                119
+            ]
+        },
+        {
+            "id": 40,
+            "subjectGroup": 17,
+            "name": "Social Sciences",
+            "subjectIds": [
+                40,
+                41,
+                481,
+                516
+            ]
+        },
+        {
+            "id": 37,
+            "subjectGroup": 17,
+            "name": "Social Work, Curative Pedagogy",
+            "subjectIds": [
+                37,
+                38,
+                39
+            ]
+        },
+        {
+            "id": 109,
+            "subjectGroup": 56,
+            "name": "Spatial Planning",
+            "subjectIds": [
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115
+            ]
+        },
+        {
+            "id": 397,
+            "subjectGroup": 381,
+            "name": "Special Pedagogy, Inclusive Pedagogy",
+            "subjectIds": [
+                422
+            ]
+        },
+        {
+            "id": 42,
+            "subjectGroup": 17,
+            "name": "Sport",
+            "subjectIds": [
+                42,
+                43,
+                44,
+                45
+            ]
+        },
+        {
+            "id": 406,
+            "subjectGroup": 382,
+            "name": "Study and Training Programmes",
+            "subjectIds": [
+                524,
+                525,
+                526,
+                527,
+                528,
+                529,
+                530,
+                531,
+                532,
+                533,
+                534,
+                535,
+                536,
+                537,
+                538,
+                549
+            ]
+        },
+        {
+            "id": 132,
+            "subjectGroup": 56,
+            "name": "Surveying, Geodesy",
+            "subjectIds": [
+                132,
+                133
+            ]
+        },
+        {
+            "id": 120,
+            "subjectGroup": 56,
+            "name": "Technical Health Systems",
+            "subjectIds": [
+                120,
+                121,
+                122,
+                123,
+                124,
+                125
+            ]
+        },
+        {
+            "id": 405,
+            "subjectGroup": 146,
+            "name": "Theatre, Dramaturgy, Direction",
+            "subjectIds": [
+                148,
+                157,
+                161,
+                164,
+                540,
+                541,
+                542
+            ]
+        },
+        {
+            "id": 46,
+            "subjectGroup": 17,
+            "name": "Theology, Religion",
+            "subjectIds": [
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                55
+            ]
+        },
+        {
+            "id": 263,
+            "subjectGroup": 255,
+            "name": "Therapies",
+            "subjectIds": [
+                263,
+                264,
+                265,
+                266,
+                267,
+                268,
+                269
+            ]
+        },
+        {
+            "id": 84,
+            "subjectGroup": 56,
+            "name": "Vehicle and Traffic Engineering",
+            "subjectIds": [
+                84,
+                85,
+                86
+            ]
+        },
+        {
+            "id": 396,
+            "subjectGroup": 381,
+            "name": "Vocational Disciplines",
+            "subjectIds": [
+                406,
+                407,
+                408,
+                409,
+                410,
+                411,
+                412,
+                413,
+                414,
+                415,
+                416,
+                417,
+                418,
+                419,
+                420,
+                421,
+                504,
+                505
+            ]
+        },
+        {
+            "id": 7000,
+            "subjectGroup": 273,
+            "name": "Language Courses",
+            "subjectIds": [
+                7001,
+                7002,
+                7003,
+                7004,
+                7005
+            ]
+        },
+        {
+            "id": 273,
+            "subjectGroup": 273,
+            "name": "African Studies, Pre-Columbian American Studies",
+            "subjectIds": [
+                273,
+                274,
+                275,
+                276
+            ]
+        },
+        {
+            "id": 277,
+            "subjectGroup": 273,
+            "name": "Ancient Languages",
+            "subjectIds": [
+                277,
+                278,
+                405
+            ]
+        },
+        {
+            "id": 320,
+            "subjectGroup": 273,
+            "name": "Cultural Studies",
+            "subjectIds": [
+                320,
+                321,
+                322,
+                323,
+                324
+            ]
+        },
+        {
+            "id": 342,
+            "subjectGroup": 273,
+            "name": "East Asian Studies",
+            "subjectIds": [
+                342,
+                343,
+                344,
+                345,
+                346,
+                347
+            ]
+        },
+        {
+            "id": 279,
+            "subjectGroup": 273,
+            "name": "English Studies, American Studies",
+            "subjectIds": [
+                279,
+                280
+            ]
+        },
+        {
+            "id": 288,
+            "subjectGroup": 273,
+            "name": "Ethnology, Anthropology",
+            "subjectIds": [
+                288,
+                289,
+                290,
+                291,
+                292,
+                495
+            ]
+        },
+        {
+            "id": 293,
+            "subjectGroup": 273,
+            "name": "German Studies and Contemporary Germanic Languages",
+            "subjectIds": [
+                294,
+                295,
+                296,
+                297,
+                298,
+                299,
+                300,
+                496
+            ]
+        },
+        {
+            "id": 302,
+            "subjectGroup": 273,
+            "name": "History, Ancient Studies",
+            "subjectIds": [
+                302,
+                303,
+                304,
+                305,
+                306,
+                307,
+                308,
+                309,
+                310,
+                311,
+                312,
+                313,
+                314,
+                315
+            ]
+        },
+        {
+            "id": 404,
+            "subjectGroup": 273,
+            "name": "Indo-European Studies",
+            "subjectIds": [
+                497
+            ]
+        },
+        {
+            "id": 316,
+            "subjectGroup": 273,
+            "name": "Journalism, Publishing Studies",
+            "subjectIds": [
+                316,
+                317,
+                318,
+                319
+            ]
+        },
+        {
+            "id": 369,
+            "subjectGroup": 273,
+            "name": "Language and Literary Studies",
+            "subjectIds": [
+                369,
+                370,
+                371,
+                372,
+                373,
+                374,
+                375,
+                376,
+                377,
+                378,
+                379,
+                513
+            ]
+        },
+        {
+            "id": 282,
+            "subjectGroup": 273,
+            "name": "Library Science, Documentation",
+            "subjectIds": [
+                282,
+                283,
+                284,
+                285,
+                286,
+                287
+            ]
+        },
+        {
+            "id": 325,
+            "subjectGroup": 273,
+            "name": "Media Studies",
+            "subjectIds": [
+                325,
+                326,
+                327
+            ]
+        },
+        {
+            "id": 328,
+            "subjectGroup": 273,
+            "name": "Modern European Philologies, Miscellaneous",
+            "subjectIds": [
+                328,
+                329,
+                330,
+                331,
+                332,
+                333
+            ]
+        },
+        {
+            "id": 334,
+            "subjectGroup": 273,
+            "name": "Oriental Studies",
+            "subjectIds": [
+                334,
+                335,
+                336,
+                337,
+                338,
+                339,
+                340,
+                341,
+                474
+            ]
+        },
+        {
+            "id": 348,
+            "subjectGroup": 273,
+            "name": "Philosophy",
+            "subjectIds": [
+                348,
+                349,
+                350
+            ]
+        },
+        {
+            "id": 351,
+            "subjectGroup": 273,
+            "name": "Regional Studies",
+            "subjectIds": [
+                351,
+                352,
+                353,
+                354,
+                355,
+                356
+            ]
+        },
+        {
+            "id": 357,
+            "subjectGroup": 273,
+            "name": "Romance Studies",
+            "subjectIds": [
+                357,
+                358,
+                359,
+                360,
+                361,
+                362
+            ]
+        },
+        {
+            "id": 363,
+            "subjectGroup": 273,
+            "name": "Slavic Studies",
+            "subjectIds": [
+                363,
+                364,
+                365,
+                366,
+                367,
+                368
+            ]
+        }
+    ]
+}

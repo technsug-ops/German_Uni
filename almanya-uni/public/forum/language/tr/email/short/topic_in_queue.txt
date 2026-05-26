@@ -1,0 +1,13 @@
+Subject: Başlığın onaylanması gerekiyor - "{TOPIC_TITLE}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunda "{TOPIC_TITLE}" konulu başlığın onaylanması gerekiyor.
+
+Eğer başlığı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_VIEW_TOPIC}
+
+Eğer forumu görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_FORUM}
+
+{EMAIL_SIG}

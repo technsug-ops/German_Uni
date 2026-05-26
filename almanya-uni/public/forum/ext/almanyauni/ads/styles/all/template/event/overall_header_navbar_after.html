@@ -1,0 +1,21 @@
+<!-- AlmanyaUni Ad Slot — header altı banner -->
+<div class="au-ad-slot au-ad-banner-top" style="margin: 12px auto; padding: 0 12px; max-width: 1400px;">
+    {% if AU_ADSENSE_CLIENT and AU_ADSENSE_SLOT_FORUM_TOP %}
+        <ins class="adsbygoogle"
+             style="display:block;text-align:center"
+             data-ad-client="{{ AU_ADSENSE_CLIENT }}"
+             data-ad-slot="{{ AU_ADSENSE_SLOT_FORUM_TOP }}"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ AU_ADSENSE_CLIENT }}" crossorigin="anonymous"></script>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    {% else %}
+        <a href="{{ AU_AFFILIATE_TOP_URL ?: 'https://almanyauni.de/blog/almanya-ogrenci-vizesi-2026-basvuru-rehberi' }}" target="_blank" rel="sponsored noopener"
+           style="display:block;background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border:1px solid #FED7AA;border-radius:10px;padding:14px 18px;text-decoration:none;color:#7C2D12;transition:transform 0.15s;">
+            <span style="display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#9A3412;font-weight:600;margin-right:8px;">Sponsor</span>
+            <strong style="color:#1F2937;">💰 Sperrkonto 5 dakikada açılır</strong>
+            <span style="color:#374151;margin-left:6px;">— Vize için 11.904 € bloke hesap. Expatrio / Fintiba ile online açılış.</span>
+            <span style="color:#EA580C;font-weight:700;margin-left:8px;">İncele →</span>
+        </a>
+    {% endif %}
+</div>

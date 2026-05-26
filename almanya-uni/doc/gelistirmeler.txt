@@ -1,0 +1,273 @@
+3 net cevap, eylem-odaklı:
+________________________________________
+1️⃣ Taranan sitelerden aktarılabilir TOP feature'lar
+9 backlog memory'de detay var, ama bugün-yarın yapılabilir + yüksek getiri olanlar:
+#	Feature	Kaynak	Çaba	Getiri
+🔥	Methodology page her ranking için ("QS nasıl hesaplandı, ağırlıklar")	THE	1 gün	SEO (long-tail)
+🔥	Studienkolleg Finder tool	MyGuide	4 saat	Niş trafik
+🔥	Mesleki Denklik Tracker (mühendis/doktor/hemşire)	Euroversity	2 gün	Yeni segment
+🔥	"Inspire me" random discovery widget (home'da rastgele üni/şehir/burs)	MyGuide	3 saat	Bounce azalt
+🟡	Carousel testimonials (alumni story) + 3rd-party reviews badge	deutschland.de + Expatrio	6 saat	Trust
+🟡	Animated story sequences ("Almanya'ya 7 adımda")	deutschland.de	2 gün	Engagement
+🟡	Bundle/Package mantığı (7 tool tek akış)	Expatrio Value	1 gün	UX
+🟢	Job board MVP (Make-it-in-Germany API entegrasyon)	THE + Euroversity	1 hafta	Gelir kanalı
+Hemen başlayacaksan: Methodology pages + Studienkolleg Finder + Inspire me — 1-2 günde 3 yeni özellik, hepsi SEO + engagement.
+________________________________________
+2️⃣ Bu siteyi business'a nasıl çevirirsin
+Şu an: ücretsiz platform, gelir kanalı yok. 6 katmanlı revenue model:
+🟢 Pasif gelir (kullanıcıya bedava, hemen kurulabilir)
+Kanal	Beklenen aylık (3-6 ay sonra, 10K MAU)	Setup
+Affiliate: Sperrkonto (Fintiba/Coracle/Expatrio)	€500-2000	1 hafta (affiliate kayıt + link tracking)
+Affiliate: Sigorta (TK/DR-WALTER/MAWISTA)	€300-1500	1 hafta
+Affiliate: Yurt (STW, Uniplaces, HousingAnywhere)	€100-500	3 gün
+Google AdSense (canlıdan 3 ay sonra başvuru)	€200-800	1 saat (canlı + 3 ay sonra)
+Toplam pasif (3-6 ay): ~€1.100-4.800/ay — kendiliğinden gelir
+🟡 Aktif gelir (operasyon gerektiriyor)
+Kanal	Beklenen aylık	Setup
+Premium consultancy (sen + mentor'lar, 30dk = €30-50)	€1.500-5.000	2 hafta (booking sistemi + payment)
+PDF rehber satışı ("Almanya'ya Hazırlık 2026" e-book €19)	€200-1.000	1 hafta (1 PDF + Stripe)
+White-label SaaS (üniler/danışmanlık firmaları için API + admin)	€5.000-20.000 (B2B)	2 ay
+🎯 Önerim: 90 günlük yol haritası
+•	Gün 1-30: Canlıya al + 3 affiliate (Sperrkonto/sigorta/yurt) entegre
+•	Gün 30-60: Mentorde lead transfer kanalını test (alttaki #3) + Premium consultancy MVP
+•	Gün 60-90: PDF e-book + AdSense başvuru + ilk B2B outreach
+Hedef ay 6 sonu: ~€3-5K aylık kombinasyonlu gelir
+________________________________________
+3️⃣ Mentorde.com lead transfer — SEN bu işin merkezindesin
+Konfigürasyon: AlmanyaUni = TOP-OF-FUNNEL (organic trafik) · Mentorde = BOTTOM-OF-FUNNEL (booking/satış). Sen her iki tarafın ortağısın → win-win optimize edebilirsin.
+💰 Hangi lead transfer modeli en mantıklı?
+Model	Mantık	Bizim için iyi mi?
+CPL (Cost Per Lead, €5-20)	Mentorde her lead için sabit öder	✅ Düşük lead'de garantili, ama düşük conversion'da Mentorde kaybeder
+CPA (Cost Per Action, €50-200)	Sadece booking olursa	✅ Mentorde'ye güvenli ama bize riskli (conversion düşükse 0 gelir)
+Revenue Share (%20-40)	Mentorde'nin sattığı her hizmetin %X'i	✅ Win-win, ama tracking şart
+HYBRID ⭐	CPL €3 (her qualified lead) + Rev Share %20	🥇 EN İYİ — düşük lead için garantili, yüksek conversion'da büyür
+Önerim: Hybrid (CPL €3 + Rev Share %20) — sen iki taraf da ortağı olduğun için bu modeli kendin tasarlayıp Mentorde'ye empoze edebilirsin.
+🔨 Lead transfer için NE eklenmeli (kod tarafı, ~1-2 hafta)
+#	Komponent	Detay
+1	"Mentor ile konuş" CTA	Strategic 5 yerde: visa rehberi sonu, eligibility result, journey step 5 (acceptance), uni detay, country page
+2	Lead capture form	Modal: isim + e-mail + telefon + "Hangi konuda yardım?" (vize/uni seçim/Sperrkonto/genel)
+3	Mentor profil kartı widget	Mentorde'nin mentor'larını "tanıdık yüz" olarak listele (foto + ülke + uzmanlık)
+4	Affiliate tracking link	mentorde.com/almanyauni?utm_source=almanyauni&utm_medium=cta&utm_campaign=visa&lead_id=X
+5	Lead pipeline tablosu (DB)	lead_id, user_email, source_page, sent_at, mentorde_booking_status, commission_amount
+6	Mentorde webhook receiver	POST endpoint: "Lead X booked → status=converted, amount=Y"
+7	Lead dashboard (Filament admin)	"Bu ay 47 lead gönderdik, 8 booking, €240 commission"
+8	A/B test framework	Farklı CTA copy + yerleşim testi, hangi sayfa en çok lead üretiyor
+📈 Mentorde lead beklenen senaryolar (10K MAU)
+Senaryo	MAU	Lead conversion	Lead/ay	Booking conversion	Booking/ay	Commission (€50)	Aylık
+Düşük	10K	%1	100	%5	5	€30 (CPL + Rev)	€150
+Orta	10K	%2	200	%10	20	€40	€800
+Yüksek	10K	%3	300	%15	45	€50	€2.250
+Bonus avantajın: Sen Mentorde ortağıysan, bu iki yönlü gelir — hem AlmanyaUni komisyonu, hem Mentorde satış payı. Diğer rakiplere göre kâr 2× yüksek olur.
+🎯 90 günde yapılacak (Mentorde özelinde)
+Hafta	İş
+1-2	Lead capture form + tracking + 5 CTA yerleşim
+3-4	Mentor profil widget + utm link generator + webhook receiver
+5-6	Filament lead dashboard + ilk A/B test (CTA copy)
+7-8	Mentorde commission setup tartışması + canlıya alma
+9-12	Optimization + scale (en iyi conversion sayfalarına ek CTA)
+________________________________________
+🥇 Kısa cevap
+1.	Taranan sitelerden: Bugün 3 feature başlatabilirsin: Methodology pages + Studienkolleg + Inspire me. Backlog'da hazır 9 dosya.
+2.	Business model: 6 katmanlı — affiliate (Sperrkonto/sigorta) + Premium consultancy + Mentorde lead + AdSense. 6 ay sonra ~€3-5K/ay hedeflenebilir.
+3.	Mentorde lead: Hybrid model (CPL €3 + Rev Share %20). Sen iki taraf ortağıyken bu modeli kendin tasarla. 8 komponent gerek (~1-2 hafta kod). 10K MAU'da €150-€2.250/ay + bonus Mentorde satış payı.
+Hangisinden başlamak istersin? Mentorde lead sistemi en yüksek leverage — sen iki taraf ortağıyken kolay onay alırsın.
+Yeni eklenenlerde bir cok ingilizce var. Bu ingilizce kisimlari en sayfasinda sakli tut tr sayfasinda ceviri yap
+Haklısın — yeni view'larda key'ler EN, lang/tr.json'da TR çevirileri eksik. Audit edip eksikleri TR'ye çevireyim:
+Write c:\Users\Yapra\uni finder_Claude\almanya-uni\storage\app\drafts\extract-missing-tr.php
+43 lines
+Bash Extract missing TR translations from new views
+IN
+cd almanya-uni && php storage/app/drafts/extract-missing-tr.php 2>&1 | head -80
+OUT
+Yeni view'lardan toplam unique key: 2084
+TR'de eksik (key === value veya yok): 230
+DE'de eksik: 233
+
+=== TR'de eksik key listesi ===
+  - a public-benefit platform built on data from official sources, community experience, and volunteer effort. We help international students navigate higher education in Germany.
+  - What\
+  - Blog
+  - Germany has one of the world\
+  - <strong>AlmanyaUni\
+  - Tell us about anything missing, wrong, or improvable — we\
+  - Where We\
+  - Couldn\
+  - Study in Germany — Why Germany, City Map, and 10 Reasons
+  - Europe\
+  - In which city should you study your field? Germany\
+  - Germany is Europe\
+  - Once you\
+  - For this information you can use Hochschulkompass\
+  - Zulassungsfrei (NC Frei):
+  - Örtlich zulassungsbeschränkt:
+  - Bundesweit zulassungsbeschränkt:
+  - Categories
+  - German University Cities — Student Guide
+  - Program
+  - Compare :n universities — 
+  - Sponsor
+  - These threads come from an external source (community.deutschstudent.com). To join AlmanyaUni\
+  - Share Your Experience — Community Contribution
+  - If the button doesn\
+  - If you didn\
+  - Germany guide for international students
+  - Events — Webinars, Workshops, Meetups
+  - Online
+  - Frequently Asked Questions about Studying in Germany
+  - Fields of Study — Which Subject to Study in Germany?
+  - Studying in Germany
+  - Studying in Germany Guide
+  - ICS export
+  - Jump to any of Germany\
+  - In 5 short questions, we\
+  - Share Experience — Housing
+  - Example openings: \
+  - Don\
+  - If you went through housing search in Germany, be the first to share! The next student won\
+  - Private companies\
+  - Platform / Portal
+  - Track your progress through 8 steps: from eligibility check to arrival in Germany. All your tools in one dashboard.
+  - 8 steps from "is my diploma valid" to "I\
+  - Guest mode — progress saved only on this device
+  - Tick steps freely. If you clear cookies or switch device, your progress will be lost.
+  - Log in to save permanently
+  - Bachelor\
+  - Master\
+  - Steps don\
+  - Latest Content
+  - Decide with numbers, don\
+  - Ara
+  - Admin Panel
+  - AlmanyaUni\
+  - Google\
+  - AlmanyaUni is an information platform, <strong>not an official application channel</strong>. We try to keep our content current, but for final application decisions you should always verify with <strong>the university\
+  - <strong>Final source:</strong> always check the university\
+  - Third-party data such as university names, program descriptions, DAAD data and Wikidata content are subject to their own original licences. Wikidata = CC-0, DAAD = open data, university pages = the respective university\
+  - <strong>In any case</strong> AlmanyaUni\
+  - These terms are governed by the law of the operator\
+  - Join as a mentor and guide newly arrived students. 30 min sharing = years of a student\
+  - Let\
+  - You\
+  - You haven\
+  - :n Treffer anzeigen
+  - NC Frei (Zulassungsfrei)
+  - <strong>NC status (Zulassungsmodus)</strong> data is not currently stored in our database. Hochschulkompass\
+  - <strong>Critical for international students:</strong> Depending on your high school type, a Bachelor\
+  - sem
+  - NC Frei
+  - NC (Numerus Clausus)
+  - NC (Zulassungsmodus)
+  - Universities located in Germany\
+  - QS World University Rankings calculates each university\
+230 TR + 233 DE key eksik. Gemini batch ile çeviri yapayım:
+
+
+
+
+
+
+
+
+💎 Premium (€14/ay) Operasyon Planı
+Her vaad için platform + ekip + kapasite + SLA. Bootstrap çerçevesinde gerçekçi. Tam detay → premium_operations_playbook.md
+
+PREMIUM vaadleri
+Vaad	Platform	Ekip	Kapasite	İlk Yatırım
+1× 20dk mentor seansı	Cal.com (booking) + Jitsi Meet (görüşme)	Ay 1-3: Yapra + 4 editör → Ay 6+: 1-3 freelance mentor	5 mentor × 5sa/hf × 3 seans/sa = 300 seans/ay → 300 premium üye	€0 platform, mentor profit share (€15-30/sa)
+Portal içi son tarih + email	Laravel Notifications (DB + Mail channel) + Brevo SMTP	Otomatik cron	Sınırsız (transactional mail ücretsiz tier 9K/ay)	€0
+Yolculuk analitiği	Chart.js + application_tracker_events table	Otomatik	Sınırsız	2-3 gün dev
+Reklamsız deneyim	x-ad-slot koşullu render: if(!premium)	Otomatik	Sınırsız	1 satır kod
+Kişisel üni önerisi	Cosine similarity (profil + davranış) + haftalık digest	Otomatik	Sınırsız	2-3 gün dev MVP
+24s e-posta desteği	Filament SupportTicket + premium tag + SLA dashboard	Ay 1-3: Yapra → Ay 6+: 1 freelance (€300-500/ay)	Günde 30 dk = 5-10 ticket	€0 → €500/ay
+PRO (€49 tek)
+Vaad	Nasıl
+Tam başvuru incelemesi	Onboarding form → mentor 60-90 dk derin review → PDF rapor + Loom video + 30 dk Q&A (5-7 iş günü teslim)
+CV + motivasyon FB	Google Docs track-changes inline yorum → 1 revize hakkı dahil
+Vize mock interview	30-60 dk Zoom → 20 sık soru + 5-10 programa özel → kayıt + geri bildirim raporu
+2 saat mentor zamanı	Cal.com'da 4×30dk veya 2×60dk seçenek
+Belge checklist + apostille	DomPDF ile per-user PDF (ülke + program tipi bazlı template)
+3 ay Premium	user->premium_until = now()->addMonths(3)
+📈 Bootstrap ölçek senaryosu
+Dönem	Premium üye	Aylık operasyon ek gider	Aylık gelir	Net
+Ay 3	10-30	€0 (solo)	€140-420	+€140-420
+Ay 6	50-150	€800-1500 (1 mentor + 1 support)	€700-2100	-€100 → +€600
+Yıl 1	200-500	€2-3K (3-5 mentor + support)	€2.8-7K	+€800-4K
+Yıl 3	1000-3000	€8-15K (10 mentor + 2-3 FT)	€14-42K	+€6-27K
+⚠️ Kritik riskler
+Mentor azlığı → bekleme → AI-mentor fallback (Claude/Gemini RAG bot)
+SLA aşımı → Filament dashboard auto-alert
+Bookings spam → ay başına 1 cap + no-show penalty
+Mentor ayrılırsa → her seans transcript/notes saklanır → bilgi şirkette
+Refund → ilk 14 gün full refund (sadakat = düşük churn)
+🛠️ Hangi vaad MVP olarak deploy edilebilir?
+Şu an deploy ile çalışacak vaadler:
+
+✅ Reklamsız deneyim (kod 1 satır)
+✅ Application Tracker progress (zaten var)
+✅ Free favoriler + email digest (zaten var)
+Deploy sonrası 1-2 hafta içinde yapılabilir (premium aktif olmadan beta):
+
+🟡 Portal içi bildirim sistemi (~2 gün dev)
+🟡 Mentor booking (Cal.com ücretsiz hesap + 1 link butona) (~1 saat)
+🟡 Support ticket Filament admin (~1 gün dev)
+🟡 Üni öneri algoritması MVP (~3 gün dev)
+Bu hazır olmadan Premium'a para tahsil etme — şu an "interest form" mantığı (early access waitlist) doğru. Premium ilk ödemeyi alacağın gün hepsi canlı olmalı.
+
+İstiyorsan şimdi 1-2 vaadi koda dökeyim (örn portal içi bildirim sistemi + mentor booking sayfası), yoksa DE final crawl + DB dump'a geçeyim mi?
+
+
+
+📊 AlmanyaUni 10-Yıllık Projeksiyon
+Karar parametreleri: Bootstrap + 4 gelir modeli + Sadece Almanya + Part-time founder
+
+Trafik & Gelir Tablosu
+Dönem	Trafik/ay	Aff.	Premium	B2B	Reklam	TOPLAM/ay	Yıllık
+3 ay	1-3K	€50-200	€0-50	€0	€0	€50-250	~€1K
+6 ay	5-15K	€200-800	€100-400	€0-500	€100-300	€400-2K	~€10K
+1 yıl	20-60K	€800-2.5K	€500-2.5K	€0-1.5K	€300-1K	€1.6K-7.5K	~€55K
+3 yıl	80-200K	€3-8K	€10-25K	€5-20K	€1.5-4K	€20-57K	~€450K
+5 yıl	150-400K	€5-12K	€25-60K	€15-50K	€3-8K	€48-130K	~€1.1M
+10 yıl A: bağımsız	300-800K	€8-20K	€40-120K	€30-100K	€5-15K	€80-255K	~€2M
+10 yıl B: exit	—	—	—	—	—	€5-15M one-time	—
+Personel & İş Yükü
+Dönem	Yapra sa/hf	Tam zamanlı	Freelance	Aylık personel
+3 ay	15-25	0	1 yazar	€500
+6 ay	18-30	0	3 (yazar/dev/SM)	€1.5K
+1 yıl	25-35	0-1	4-5	€2.5-4K
+3 yıl	40 (FT)	2-3	4-6	€8-15K
+5 yıl	40	4-6	10-15	€20-35K
+10 yıl A	20-40	8-15	15-25	€60-100K
+🚀 13 Kanal Detay Playbook
+Her kanal için bu hafta / bu ay / yıl 1 / yıl 3 somut aksiyon + metrik + risk → tam dosya: playbook_growth_channels.md
+
+#	Kanal	Bu hafta odak	Yıl 1 hedef
+1	Backlink	Search Console + 5 rakip backlink audit	DA 5→15, 60-120 organik link
+2	Google indexleme	Sitemap + IndexNow + robots audit	%85+ index coverage
+3	Bloglar	50 long-tail keyword + 5 öncelikli brief	120-200 yayın blog
+4	Canlı kanıt (UGC)	Forum aktivasyon + ilk 10 öğrenci review	500+ doğrulanmış review, 1K forum üye
+5	Sosyal medya	IG/TikTok/YT açılış + içerik takvimi	IG 5-15K, TikTok 10-50K
+6	Email/Newsletter	Platform + 5 e-posta hoşgeldin serisi	5-15K abone
+7	Topluluk	Discord+Telegram açılış + 50 üye davet	500-2K Discord, 1-5K Telegram
+8	Affiliate optim	Click tracking + 7 provider portfolio	CR %1.5→%3-5
+9	Outreach/PR	20 hedef listesi + pitch template	5-10 medya çıkışı
+10	Veri tazeliği	Auto-import takvim + "Son güncellendi" rozeti	99% data accuracy
+11	Technical SEO	PageSpeed audit tüm sayfa tipleri	CWV %90+ yeşil
+12	Yazar otoritesi	/yazarlar dedicated sayfaları	Yapra LinkedIn thought leader
+13	AIO/LLM optim	Bing Webmaster + llms.txt + schema audit	AIO citation source seçilme
+⚠️ Kritik Riskler (öncelik sırası)
+Bootstrap + part-time hız kaybı → Niş long-tail odak, doğrudan rekabet etme. 18K program × {nasıl başvurulur, vize, yurt, maliyet} = 90K+ uzun-kuyruk = rakip yetişemez.
+AIO zero-click → AIO citation source seçilmek (schema + backlink + Wikipedia).
+Google algoritma updates → AI-only sayfa yapmama, kullanıcı sinyali güçlü.
+4 gelir modeli = focus eksikliği → İlk 12 ay affiliate'e kilitlen, B2B yıl 2'de.
+Affiliate provider bağımlılığı → 3+ provider portföyü.
+Türk öğrenci azalması → EN+DE yansıtma → Hindistan/Pakistan/Nijerya %40 trafik hedef.
+🎯 Karar Noktaları
+Ay 3: İlk affiliate gelir var mı?
+Ay 6: Premium beta 100+ üye?
+Ay 12: MRR > €3K → Yapra full-time?
+Yıl 2: İlk B2B pilot uni?
+Yıl 5: Exit teklifleri değerlendir?
+Stratejik öneri: İlk 3 ay TEK ODAK long-tail içerik (haftada 5 blog × 12 hafta = 60 blog). Premium ve B2B ay 6+ sonra. Sen veri konusunda haklısın — long-tail için 18K program × yapay zekayla genişletilmiş content brief = haftada 3-5 blog rahat çıkar.
+
+Şimdi DE final crawl + DB dump v7-FINAL'e geçeyim mi, yoksa playbook'ta tartışmak/değiştirmek istediğin nokta var mı?
+

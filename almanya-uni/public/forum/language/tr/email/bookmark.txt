@@ -1,0 +1,19 @@
+Subject: "{TOPIC_TITLE}" konusunda cevap
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunu son ziyaretinizden bu yana sık kullanılanlara eklediğiniz "{TOPIC_TITLE}" konusuna yeni bir cevap geldi. Konuyu görüntüleyene kadar daha fazla bildirim gönderilmeyecektir.
+
+Eğer yeni mesajı görüntülemek istiyorsanız alttaki bağlantıya tıklayın:
+{U_NEWEST_POST}
+
+Eğer başlığı görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_TOPIC}
+
+Eğer forumu görüntülemek istiyorsanız, alttaki bağlantıya tıklayın:
+{U_FORUM}
+
+Eğer sık kullanılanlara eklediğiniz başlıklara gelen cevaplar hakkındaki güncellemeleri artık almak istemiyorsanız, lütfen bildirim ayarlarınızı buradan güncelleyin:
+{U_NOTIFICATION_SETTINGS}
+
+{EMAIL_SIG}

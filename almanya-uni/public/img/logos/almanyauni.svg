@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="AlmanyaUni">
+  <defs>
+    <linearGradient id="auBadge" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <!-- Badge: Türk bayrağı rengi (kırmızı) + Alman bayrağı (siyah/kırmızı/altın) ipucu -->
+  <rect x="2" y="6" width="36" height="36" rx="10" fill="url(#auBadge)"/>
+  <path d="M11 28 L17 16 L23 28 Z" fill="#1e3a8a"/>
+  <circle cx="29" cy="22" r="4" fill="#dc2626"/>
+  <!-- Wordmark -->
+  <text x="48" y="32" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#1e3a8a" letter-spacing="-0.5">Almanya<tspan fill="#dc2626">Uni</tspan></text>
+</svg>

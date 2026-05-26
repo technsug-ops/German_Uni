@@ -1,0 +1,212 @@
+<?php
+
+namespace App\Filament\Resources\ContentBriefs\RelationManagers;
+
+use App\Models\ContentAsset;
+use App\Models\ContentBrief;
+use App\Services\Content\ContentGenerationService;
+use App\Services\Content\ImageGenerationService;
+use App\Services\Content\TextToSpeechService;
+use App\Services\Content\VideoComposerService;
+use Filament\Actions\Action;
+use Filament\Actions\CreateAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\ViewField;
+use Filament\Notifications\Notification;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+
+class AssetsRelationManager extends RelationManager
+{
+    protected static string $relationship = 'assets';
+
+    protected static ?string $title = 'Asset\'ler';
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema->components([
+            Select::make('asset_type')
+                ->label('Platform')
+                ->required()
+                ->options(ContentAsset::TYPES),
+            Select::make('status')
+                ->required()
+                ->options(ContentAsset::STATUSES)
+                ->default('draft'),
+            Textarea::make('body_md')
+                ->label('İçerik (Markdown)')
+                ->rows(20)
+                ->columnSpanFull(),
+            ViewField::make('media_preview')
+                ->view('filament.content.asset-media-preview')
+                ->columnSpanFull()
+                ->dehydrated(false)
+                ->visible(fn ($record) => $record && !empty($record->media)),
+        ]);
+    }
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('asset_type')
+                    ->label('Platform')
+                    ->formatStateUsing(fn (string $state) => ContentAsset::TYPES[$state] ?? $state)
+                    ->badge(),
+                TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state) => match ($state) {
+                        'draft' => 'gray',
+                        'ready' => 'info',
+                        'scheduled' => 'warning',
+                        'published' => 'success',
+                    })
+                    ->formatStateUsing(fn (string $state) => ContentAsset::STATUSES[$state] ?? $state),
+                TextColumn::make('generated_by')->badge(),
+                TextColumn::make('body_md')
+                    ->label('İçerik')
+                    ->limit(80)
+                    ->wrap(),
+                TextColumn::make('updated_at')->dateTime('d.m H:i')->sortable(),
+            ])
+            ->filters([
+                SelectFilter::make('asset_type')->options(ContentAsset::TYPES),
+                SelectFilter::make('status')->options(ContentAsset::STATUSES),
+            ])
+            ->headerActions([
+                CreateAction::make(),
+                Action::make('regenerateAll')
+                    ->label('🔄 Eksikleri AI ile üret')
+                    ->color('warning')
+                    ->requiresConfirmation()
+                    ->action(function () {
+                        /** @var ContentBrief $brief */
+                        $brief = $this->ownerRecord;
+                        $service = app(ContentGenerationService::class);
+                        if (!$service->isConfigured()) {
+                            Notification::make()->title('❌ Gemini API key yok')->danger()->send();
+                            return;
+                        }
+                        $existing = $brief->assets()->pluck('asset_type')->all();
+                        $missing = array_diff(array_keys(ContentAsset::TYPES), $existing);
+                        if (empty($missing)) {
+                            Notification::make()->title('Tüm asset\'ler zaten var')->send();
+                            return;
+                        }
+                        $results = $service->generateAll($brief, $missing);
+                        $ok = collect($results)->filter(fn ($r) => $r['success'] ?? false)->count();
+                        Notification::make()
+                            ->title("$ok asset üretildi")
+                            ->success()
+                            ->send();
+                    }),
+                Action::make('generateAllImages')
+                    ->label('🎨 Tüm Asset\'lere Görsel')
+                    ->color('info')
+                    ->requiresConfirmation()
+                    ->modalDescription('Görseli olmayan tüm asset\'lere otomatik görsel üretir (asset türüne göre 1-8 görsel). Ücretsiz (Pollinations) ama 1-3 dk sürebilir.')
+                    ->action(function () {
+                        $brief = $this->ownerRecord;
+                        $service = app(ImageGenerationService::class);
+                        $assets = $brief->assets()->where(function ($q) {
+                            $q->whereNull('media')->orWhereRaw("JSON_LENGTH(media) = 0");
+                        })->get();
+                        $totalImages = 0;
+                        foreach ($assets as $a) {
+                            $r = $service->generateForAsset($a);
+                            if ($r['success']) $totalImages += $r['count'];
+                        }
+                        Notification::make()
+                            ->title("🎨 $totalImages görsel üretildi")
+                            ->success()->persistent()->send();
+                    }),
+            ])
+            ->recordActions([
+                Action::make('regenerate')
+                    ->label('🔄 Yeniden üret')
+                    ->color('warning')
+                    ->requiresConfirmation()
+                    ->action(function (ContentAsset $record) {
+                        $service = app(ContentGenerationService::class);
+                        $result = $service->generateAsset($record->brief, $record->asset_type);
+                        Notification::make()
+                            ->title($result['success'] ? '✅ Üretildi' : '❌ Hata')
+                            ->body($result['error'] ?? 'OK')
+                            ->color($result['success'] ? 'success' : 'danger')
+                            ->send();
+                    }),
+                Action::make('generateImages')
+                    ->label('🎨 Görsel Üret')
+                    ->color('info')
+                    ->requiresConfirmation()
+                    ->modalDescription('Pollinations.ai FLUX modeli ile görsel(ler) üretilecek. Asset türüne göre 1-8 görsel.')
+                    ->action(function (ContentAsset $record) {
+                        $service = app(ImageGenerationService::class);
+                        $result = $service->generateForAsset($record);
+                        Notification::make()
+                            ->title($result['success'] ? '🎨 ' . $result['count'] . ' görsel üretildi' : '❌ Hata')
+                            ->body($result['error'] ?? 'Asset detayında galeri sekmesinde gör')
+                            ->color($result['success'] ? 'success' : 'danger')
+                            ->persistent()
+                            ->send();
+                    }),
+                Action::make('composeVideo')
+                    ->label('🎬 Video Üret')
+                    ->color('success')
+                    ->visible(fn (ContentAsset $record) => in_array($record->asset_type, ['tiktok', 'youtube_short', 'instagram', 'youtube_long', 'podcast']))
+                    ->requiresConfirmation()
+                    ->modalDescription('Görsel + Ses birleştirilerek slideshow video üretilir. FFmpeg yoksa CapCut/Pictory için scene_script.json üretilir.')
+                    ->action(function (ContentAsset $record) {
+                        $service = app(VideoComposerService::class);
+                        $result = $service->composeForAsset($record);
+
+                        $msg = '';
+                        if (!empty($result['video_url'])) {
+                            $msg .= 'Video: ' . $result['video_url'] . "\n";
+                        }
+                        if (!empty($result['scene_script_url'])) {
+                            $msg .= 'Scene script: ' . $result['scene_script_url'] . "\n";
+                        }
+                        if (!empty($result['note'])) {
+                            $msg .= $result['note'];
+                        }
+
+                        Notification::make()
+                            ->title($result['success'] ? '🎬 Üretildi' : '❌ Hata')
+                            ->body($result['error'] ?? $msg)
+                            ->color($result['success'] ? 'success' : 'danger')
+                            ->persistent()
+                            ->send();
+                    }),
+                Action::make('generateVoice')
+                    ->label('🎙️ Ses Üret')
+                    ->color('warning')
+                    ->visible(fn (ContentAsset $record) => in_array($record->asset_type, ['podcast', 'youtube_long', 'youtube_short', 'tiktok', 'instagram']))
+                    ->requiresConfirmation()
+                    ->modalDescription('ElevenLabs ile Türkçe ses (MP3) üretilir. Free tier 10K karakter/ay limiti.')
+                    ->action(function (ContentAsset $record) {
+                        $service = app(TextToSpeechService::class);
+                        if (!$service->isConfigured()) {
+                            Notification::make()->title('❌ ELEVENLABS_API_KEY eksik')->body('.env\'e ekle: ELEVENLABS_API_KEY=...')->danger()->persistent()->send();
+                            return;
+                        }
+                        $result = $service->generateForAsset($record);
+                        Notification::make()
+                            ->title($result['success'] ? '🎙️ Ses üretildi' : '❌ Hata')
+                            ->body($result['success'] ? round($result['audio']['size_bytes']/1024,1).' KB MP3' : $result['error'])
+                            ->color($result['success'] ? 'success' : 'danger')
+                            ->persistent()
+                            ->send();
+                    }),
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
+            ;
+    }
+}

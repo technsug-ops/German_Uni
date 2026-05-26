@@ -1,0 +1,13 @@
+Subject: Yeni özel mesaj
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosundaki hesabınıza "{AUTHOR_NAME}" tarafından alttaki konu adıyla yeni bir özel mesaj geldi:
+{SUBJECT}
+
+Yeni mesajınızı alttaki bağlantıya tıklayarak görüntüleyebilirsiniz:
+{U_VIEW_MESSAGE}
+
+Bu durum hakkında bilgilendirilmeyi talep ettiniz, istediğiniz zaman profilinizdeki uygun ayarı değiştirerek yeni mesajlardan haberdar edilmemeyi seçebileceğinizi unutmayın.
+
+{EMAIL_SIG}

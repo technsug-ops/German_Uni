@@ -1,0 +1,215 @@
+{
+    "courses": [
+        {
+            "id": "514",
+            "geo": "52.3942x13.0727",
+            "courseName": "20th International Summer Academy Sans Souci 2018",
+            "academy": "University of Potsdam",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "640",
+            "geo": "52.2799x8.04718",
+            "courseName": "20th International Winter Language School of Hochschule Osnabr\u00fcck: Culture and Society, Economy and Technology in Germany",
+            "academy": "University of Applied Sciences Osnabr\u00fcck",
+            "typeOfProgramme": "Language Course"
+        },
+        {
+            "id": "83",
+            "geo": "51.874x12.628",
+            "courseName": "22nd International Summer Academy - A Language and Culture Course",
+            "academy": "Institute for German Language and Culture - Martin Luther University Halle-Wittenberg",
+            "typeOfProgramme": "Master"
+        },
+        {
+            "id": "142",
+            "geo": "52.2799x8.04718",
+            "courseName": "26th International Summer Language School of Hochschule Osnabr\u00fcck: Culture and Society, Economy and Technology in Germany",
+            "academy": "University of Applied Sciences Osnabr\u00fcck",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "1229",
+            "geo": "50.7753x6.08389",
+            "courseName": "3D Printing Summer School",
+            "academy": "FH Aachen University of Applied Sciences",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "60",
+            "geo": "50.6843x10.9255",
+            "courseName": "40th International Summer Course - Experiencing Germany",
+            "academy": "Technische Universit\u00e4t Ilmenau",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "133",
+            "geo": "50.6843x10.9255",
+            "courseName": "40th International Summer Course - German for Technical Purposes",
+            "academy": "Technische Universit\u00e4t Ilmenau",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "882",
+            "geo": "50.6843x10.9255",
+            "courseName": "40th International Summer Course - Living and Studying in Germany",
+            "academy": "Technische Universit\u00e4t Ilmenau",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "152",
+            "geo": "49.7469x6.63475",
+            "courseName": "46th International Summer School Trier: Germany and its Neighbouring Countries",
+            "academy": "Trier University",
+            "typeOfProgramme": "Bachelor"
+        },
+        {
+            "id": "9",
+            "geo": "54.3233x10.1228",
+            "courseName": "71st International Summer Course: Germany Today",
+            "academy": "Kiel University, International Center",
+            "typeOfProgramme": "Bachelor"
+        }
+    ],
+    "numResults": 2005,
+    "filter": [
+        {
+            "subjects": [
+                {
+                    "value": 1,
+                    "name": "Agriculture, Forestry and Nutritional Science"
+                },
+                {
+                    "value": 2,
+                    "name": "Art, Art Theory"
+                },
+                {
+                    "value": 3,
+                    "name": "Engineering"
+                },
+                {
+                    "value": 4,
+                    "name": "Languages and Cultural Studies"
+                }
+            ],
+            "city": [
+                "Aachen",
+                "Berlin",
+                "Cologne"
+            ],
+            "type": [
+                {
+                    "value": 1,
+                    "name": "University"
+                },
+                {
+                    "value": 2,
+                    "name": "University of Applied Sciences"
+
+                },
+                {
+                    "value": 3,
+                    "name": "Universities of Fine Arts"
+
+                },
+                {
+                    "value": 4,
+                    "name": "Non-university Research Institute"
+                }
+            ],
+            "institution": [
+                {
+                    "value": 1,
+                    "name": "FH Aachen University of Applied Science"
+                },
+                {
+                    "value": 2,
+                    "name": "FH Aachen University of Fine Arts"
+                },
+                {
+                    "value": 3,
+                    "name": "FH Berlin University of Research"
+                }
+            ],
+            "duration": [
+                {
+                    "label": "Up to 1 month",
+                    "option": [
+                        {
+                            "value": [
+                                1
+                            ],
+                            "name": "From 1 to 2 weeks"
+                        },
+                        {
+                            "value": [
+                                2
+                            ],
+                            "name": "From 3 to 4 weeks"
+                        }
+                    ]
+                },
+                {
+                    "label": "From 1 to 6 months",
+                    "option": [
+                        {
+                            "value": [
+                                3
+                            ],
+                            "name": "From 1 to 3 months"
+                        },
+                        {
+                            "value": [
+                                4
+                            ],
+                            "name": "From 3 to 6 months"
+                        }
+                    ]
+                },
+                {
+                    "label": "",
+                    "option": [
+                        {
+                            "value": [
+                                5
+                            ],
+                            "name": "Up to 1 year"
+                        },
+                        {
+                            "value": [
+                                6
+                            ],
+                            "name": "Up to 2 years"
+                        },
+                        {
+                            "value": [
+                                7
+                            ],
+                            "name": "Up to 3 years"
+                        },
+                        {
+                            "value": [
+                                8
+                            ],
+                            "name": "Up to 4 years"
+                        }
+                    ]
+                }
+            ],
+            "date": [
+                "12 / 2017",
+                "01 / 2018",
+                "02 / 2018",
+                "03 / 2018",
+                "04 / 2018",
+                "05 / 2018",
+                "06 / 2018",
+                "07 / 2018",
+                "08 / 2018",
+                "09 / 2018",
+                "10 / 2018",
+                "11 / 2018"
+            ]
+        }
+    ]
+}

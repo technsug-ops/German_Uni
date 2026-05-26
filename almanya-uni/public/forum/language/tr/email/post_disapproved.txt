@@ -1,0 +1,12 @@
+Subject: Mesaj Onaylanmadı - "{POST_SUBJECT}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunda bulunan "{POST_SUBJECT}" konulu mesajınız bir moderatör veya yönetici tarafından onaylanmadı.
+
+Alttaki verilen sebepten dolayı onaylanmamıştır:
+
+{REASON}
+
+
+{EMAIL_SIG}

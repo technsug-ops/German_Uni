@@ -1,0 +1,11 @@
+Subject: Başlık onaylandı - "{TOPIC_TITLE}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunda bulunan "{TOPIC_TITLE}" konulu başlığınız bir moderatör veya yönetici tarafından onaylandı.
+
+Eğer başlığı görüntülemek istiyorsanız, alttaki bağlantıya tıklayınız:
+{U_VIEW_TOPIC}
+
+
+{EMAIL_SIG}

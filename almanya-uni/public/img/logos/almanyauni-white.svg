@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="AlmanyaUni">
+  <rect x="2" y="6" width="36" height="36" rx="10" fill="#ffffff"/>
+  <path d="M11 28 L17 16 L23 28 Z" fill="#1e3a8a"/>
+  <circle cx="29" cy="22" r="4" fill="#dc2626"/>
+  <text x="48" y="32" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Almanya<tspan fill="#fbbf24">Uni</tspan></text>
+</svg>

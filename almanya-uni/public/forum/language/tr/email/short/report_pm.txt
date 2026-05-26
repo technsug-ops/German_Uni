@@ -1,0 +1,10 @@
+Subject: Özel Mesaj bildirisi - "{SUBJECT}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunda "{AUTHOR_NAME}" tarafından "{SUBJECT}" başlığıyla gönderilen Özel Mesaj bildirildi.
+
+Eğer bildiriyi görüntülemek istiyorsanız, aşağıdaki bağlantıya tıklayın:
+{U_VIEW_REPORT}
+
+{EMAIL_SIG}

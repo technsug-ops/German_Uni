@@ -1,0 +1,20 @@
+<!-- AlmanyaUni Ad Slot — footer üstü -->
+<div class="au-ad-slot au-ad-banner-bottom" style="margin: 18px auto; padding: 0 12px; max-width: 1400px;">
+    {% if AU_ADSENSE_CLIENT and AU_ADSENSE_SLOT_FORUM_BOTTOM %}
+        <ins class="adsbygoogle"
+             style="display:block;text-align:center"
+             data-ad-client="{{ AU_ADSENSE_CLIENT }}"
+             data-ad-slot="{{ AU_ADSENSE_SLOT_FORUM_BOTTOM }}"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    {% else %}
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:18px 20px;text-align:center;">
+            <p style="margin:0 0 8px;font-size:13px;color:#64748B;text-transform:uppercase;letter-spacing:0.05em;font-weight:600;">📬 Bülten</p>
+            <p style="margin:0 0 12px;color:#1F2937;font-weight:600;">Haftalık Almanya rehberi e-postana gelsin.</p>
+            <a href="/" style="display:inline-block;background:#1E40AF;color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;">
+                Siteyi ziyaret et →
+            </a>
+        </div>
+    {% endif %}
+</div>

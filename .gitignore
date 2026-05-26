@@ -1,0 +1,58 @@
+# ==== Kök dizin (git repo burada, Laravel app almanya-uni/ içinde) ====
+# Bu repo PUBLIC. Gizli/iç içerik kesinlikle dışarıda.
+
+# --- Kök seviyesi geçici/iç dosyalar ---
+/.claude/
+/extracted/
+/package-lock.json
+*.csv
+# Deploy zip'leri (KAS'a manuel upload edilenler) — repo'da olmamalı, GitHub Actions build eder
+*.zip
+
+# ==== Gizli bilgiler / sırlar (her yerde) ====
+.env
+.env.*
+!.env.example
+auth.json
+*.pem
+*.key
+
+# ==== Veritabanı dump'ları / yedekler (büyük + kullanıcı verisi) ====
+*.sql
+*.sql.gz
+*.sqlite
+/almanya-uni/dumps/
+/almanya-uni/deploy/*.sql
+/almanya-uni/deploy/*.sql.gz
+
+# ==== Operasyon / dağıtım / iç dökümanlar (sunucu IP, hesap, token, strateji) ====
+/almanya-uni/deploy/setup.php
+/almanya-uni/deploy/clear.php
+/almanya-uni/deploy/SETUP_TOKEN.txt
+/almanya-uni/deploy/*.service
+/almanya-uni/deploy/blog-fix-publish.php
+/almanya-uni/DEPLOY-GUIDE.md
+/almanya-uni/deploy/DEPLOY-GUIDE.md
+/almanya-uni/PARTNER_REQUEST_*.md
+/almanya-uni/ADMISSION_MODE_NASIL_DOLDURULUR.md
+/almanya-uni/DAAD_SCHOLARSHIPS_OZET.md
+
+# ==== Bağımlılıklar / build / binary ====
+# Unanchored: her derinlikteki node_modules/vendor (scrapers/node_modules dahil)
+node_modules/
+vendor/
+/almanya-uni/public/build/
+# İç audit/dump artefaktları
+/almanya-uni/storage/app/*.json
+/almanya-uni/storage/app/private/
+/almanya-uni/storage/meilisearch/
+/almanya-uni/storage/logs/
+/almanya-uni/storage/framework/
+*.exe
+*.log
+
+# ==== OS / editör ====
+.DS_Store
+Thumbs.db
+/.idea/
+/.vscode/

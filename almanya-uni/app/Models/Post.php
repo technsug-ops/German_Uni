@@ -1,0 +1,136 @@
+<?php
+
+namespace App\Models;
+
+use App\Support\MarkdownRenderer;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Post extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'title',
+        'slug',
+        'excerpt',
+        'content_md',
+        'content_html',
+        'featured_image',
+        'featured_image_caption',
+        'audio_url',
+        'audio_duration_seconds',
+        'video_url',
+        'gallery_images',
+        'reading_minutes',
+        'view_count',
+        'meta_title',
+        'meta_description',
+        'published_at',
+        'is_published',
+    ];
+
+    protected $casts = [
+        'is_published'           => 'boolean',
+        'published_at'           => 'datetime',
+        'reading_minutes'        => 'integer',
+        'view_count'             => 'integer',
+        'audio_duration_seconds' => 'integer',
+        'gallery_images'         => 'array',
+    ];
+
+    public function getFormattedAudioDurationAttribute(): ?string
+    {
+        if (! $this->audio_duration_seconds) return null;
+        $m = intdiv($this->audio_duration_seconds, 60);
+        $s = $this->audio_duration_seconds % 60;
+        return sprintf('%d:%02d', $m, $s);
+    }
+
+    protected static function booted(): void
+    {
+        static::saving(function (self $post) {
+            if ($post->isDirty('content_md')) {
+                $html = app(MarkdownRenderer::class)->render($post->content_md ?? '');
+                // Otomatik iç-linkleme: glossary tooltip + şehir/üni entity linkleri
+                $post->content_html = app(\App\Services\Content\BlogAutoLinker::class)->process($html);
+                $post->reading_minutes = self::computeReadingMinutes($post->content_md ?? '');
+            }
+        });
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function engagements(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostEngagement::class);
+    }
+
+    /** Ortalama okuma derinliği (% scroll) — okunmuşluk göstergesi. */
+    public function getAvgScrollAttribute(): int
+    {
+        return (int) round($this->engagements()->avg('scroll_depth') ?? 0);
+    }
+
+    /** Ortalama sayfada kalış süresi (saniye). */
+    public function getAvgSecondsAttribute(): int
+    {
+        return (int) round($this->engagements()->avg('seconds') ?? 0);
+    }
+
+    /** Tamamlama oranı (% — yazıyı sonuna kadar okuyanlar). */
+    public function getCompletionRateAttribute(): int
+    {
+        $total = $this->engagements()->count();
+        if ($total === 0) return 0;
+        return (int) round($this->engagements()->where('completed', true)->count() / $total * 100);
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->where('locale', app()->getLocale());
+    }
+
+    public function scopeForLocale(Builder $query, ?string $locale = null): Builder
+    {
+        return $query->where('locale', $locale ?? app()->getLocale());
+    }
+
+    public function translations()
+    {
+        return $this->hasMany(self::class, 'translation_group_id', 'translation_group_id');
+    }
+
+    public function metaTitleResolved(): string
+    {
+        return $this->meta_title ?: ($this->title . ' - AlmanyaUni');
+    }
+
+    public function metaDescriptionResolved(): string
+    {
+        return $this->meta_description
+            ?: ($this->excerpt ?: trim(mb_substr(strip_tags($this->content_html ?? ''), 0, 160)));
+    }
+
+    public static function computeReadingMinutes(string $markdown): int
+    {
+        $words = preg_match_all('/[\p{L}\p{N}]+/u', $markdown);
+        return max(1, (int) ceil($words / 220));
+    }
+}

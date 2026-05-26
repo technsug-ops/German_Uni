@@ -1,0 +1,9 @@
+Subject: Bildiri kapatıldı - "{PM_SUBJECT}"
+
+Merhaba {USERNAME},
+
+"{SITENAME}" mesaj panosunda bildiri yaptığınız "{PM_SUBJECT}" başlıklı özel mesaj bir moderatör ya da yönetici tarafından incelendi. Bildiri artık kapalı durumdadır.
+
+Eğer daha fazla sorunuz varsa, lütfen {CLOSER_NAME} kullanıcı adı ile özel mesaj yoluyla iletişime geçin.
+
+{EMAIL_SIG}

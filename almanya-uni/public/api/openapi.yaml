@@ -1,0 +1,674 @@
+openapi: 3.1.0
+info:
+  title: AlmanyaUni Public API
+  version: "1.0.0"
+  summary: Almanya üniversiteleri, programları ve mesleklerine açık erişim.
+  description: |
+    AlmanyaUni Public API; 645 resmi Hochschule, 15.782 program, 3.560 meslek ve 207 SSS kaydını
+    JSON formatında dış uygulamalara sunar. Türk öğrenciler için Almanya'da eğitim verisi
+    sağlamayı kolaylaştırmak amacıyla geliştirilmiştir.
+
+    **Kimlik doğrulama:** Çoğu uç nokta açık (okuma için). Yazma/hesap uçları Sanctum
+    bearer token gerektirir. Üst seviye kotalar için API anahtarı (yakında).
+
+    **Hız sınırı (varsayılan):** 60 req/dk per IP. API anahtarı ile yükseltilebilir
+    (Free: 60/dk · Partner: 1.000/dk · Enterprise: 10.000/dk). Her cevapta
+    `X-RateLimit-Limit/Remaining/Reset` header'ları döner.
+
+    **Plan ability'leri:** Free plan webhook abone olamaz (403). Partner/Enterprise
+    plan `webhooks:manage` ability'sine sahiptir.
+
+    **Versiyon politikası:** Yıkıcı değişiklikler yeni majör sürümde (`/api/v2`) gelir.
+  contact:
+    name: AlmanyaUni
+    url: https://almanyauni.de
+    email: technsug@gmail.com
+  license:
+    name: Proprietary
+servers:
+  - url: https://almanyauni.de/api/v1
+    description: Production
+  - url: http://localhost:8000/api/v1
+    description: Local dev
+tags:
+  - name: Universities
+    description: 986 Alman üniversitesi (devlet, özel, FH, sanat, din).
+  - name: Programs
+    description: 15.782 bölüm/program kaydı (lisans, master, doktora).
+  - name: Cities
+    description: 180 şehir.
+  - name: States
+    description: 16 federal eyalet.
+  - name: Fields of Study
+    description: Çalışma alanları (mühendislik, bilişim, tıp vb.).
+  - name: Professions
+    description: 3.560 BERUFENET mesleği.
+  - name: FAQs
+    description: 207 sık sorulan soru (vize, dil, başvuru, yaşam vb.).
+  - name: Auth
+    description: Hesap oluşturma, oturum açma, token yönetimi.
+security: []
+paths:
+  /universities:
+    get:
+      tags: [Universities]
+      summary: Üniversite listesi
+      parameters:
+        - { in: query, name: q, schema: { type: string, maxLength: 100 }, description: İsim araması }
+        - { in: query, name: type, schema: { type: string, enum: [public, private, applied_sciences, art, religion] } }
+        - { in: query, name: city, schema: { type: string }, description: Şehir slug'ı }
+        - { in: query, name: state, schema: { type: string } }
+        - { in: query, name: founded_min, schema: { type: integer, minimum: 800, maximum: 2100 } }
+        - { in: query, name: founded_max, schema: { type: integer, minimum: 800, maximum: 2100 } }
+        - { in: query, name: has_logo, schema: { type: boolean } }
+        - { in: query, name: has_website, schema: { type: boolean } }
+        - in: query
+          name: official_only
+          schema: { type: boolean, default: false }
+          description: |
+            Default tüm aktif üniler (651) döner. `true` yapılırsa sadece HRK üye /
+            HS-Nummer'lı / partner kayıtlı **resmi Hochschule**'leri döndürür (645).
+        - { in: query, name: sort, schema: { type: string, enum: [name_de, name_tr, founded_year, student_count, created_at] } }
+        - { in: query, name: order, schema: { type: string, enum: [asc, desc] } }
+        - { in: query, name: per_page, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+      responses:
+        "200": { $ref: "#/components/responses/UniversityListResponse" }
+
+  /universities/top:
+    get:
+      tags: [Universities]
+      summary: En büyük/en eski üniversiteler
+      parameters:
+        - { in: query, name: metric, schema: { type: string, enum: [students, age, founded_year], default: students } }
+        - { in: query, name: limit, schema: { type: integer, minimum: 1, maximum: 100, default: 10 } }
+        - { in: query, name: type, schema: { type: string, enum: [public, private, applied_sciences, art, religion] } }
+      responses:
+        "200":
+          description: Sıralı üniversite listesi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metric: { type: string }
+                  count: { type: integer }
+                  data: { type: array, items: { $ref: "#/components/schemas/UniversitySummary" } }
+
+  /universities/compare:
+    get:
+      tags: [Universities]
+      summary: 2-5 üniversiteyi yan yana karşılaştır
+      parameters:
+        - in: query
+          name: ids
+          required: true
+          schema: { type: string }
+          description: Virgülle ayrılmış ID listesi (örn. "1,5,42")
+      responses:
+        "200":
+          description: Detaylı karşılaştırma verisi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requested_ids: { type: array, items: { type: integer } }
+                  count: { type: integer }
+                  data: { type: array, items: { $ref: "#/components/schemas/University" } }
+
+  /universities/{slugOrId}:
+    get:
+      tags: [Universities]
+      summary: Tek üniversite detayı
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - in: query
+          name: with
+          description: "Ek alanları dahil et. Virgülle ayır. Örn. `with=content_blocks` zengin sayfa içeriğini de döndürür."
+          schema: { type: string, example: "content_blocks" }
+      responses:
+        "200":
+          description: Tam üniversite kaydı
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: "#/components/schemas/University" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /universities/{slugOrId}/content:
+    get:
+      tags: [Universities]
+      summary: Üniversite zengin içeriği (content_blocks)
+      description: |
+        AI ile üretilmiş + Wikipedia + Forum/Telegram topluluk verisi ile zenginleştirilmiş
+        modüler sayfa içeriği. Blok tipleri: hero, intro, section, quick_facts, image, gallery,
+        video, table, cost_of_living, places, student_culture, faq, cta, programs_summary,
+        external_links, related_forum_topics, almanyauni_forum_topics, schema_jsonld.
+        3rd party platformlar (mobil app, partner portal) bu endpoint'i kullanarak sayfa yapabilir.
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: İçerik blokları + meta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id: { type: integer }
+                      slug: { type: string }
+                      name: { type: string }
+                      short_name: { type: string, nullable: true }
+                      image_url: { type: string, nullable: true, description: "Kapak görseli (kampüs fotoğrafı)" }
+                      logo_url: { type: string, nullable: true }
+                      type: { type: string }
+                      city: { type: string, nullable: true }
+                      state: { type: string, nullable: true }
+                      last_enriched_at: { type: string, format: date-time, nullable: true }
+                      blocks_count: { type: integer, example: 14 }
+                      block_types:
+                        type: array
+                        items: { type: string }
+                        example: [hero, intro, quick_facts, cost_of_living, places, faq]
+                      content_blocks:
+                        type: array
+                        description: "Sıralı blok listesi. Her blok {type, ...flat fields} formatında."
+                        items: { type: object }
+                  links:
+                    type: object
+                    properties:
+                      web: { type: string }
+                      api: { type: string }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /programs:
+    get:
+      tags: [Programs]
+      summary: Program listesi (15.782 kayıt)
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: university_id, schema: { type: integer } }
+        - { in: query, name: university_slug, schema: { type: string } }
+        - { in: query, name: field_id, schema: { type: integer } }
+        - { in: query, name: field_slug, schema: { type: string } }
+        - { in: query, name: degree, schema: { type: string, enum: [bachelor, master, phd, studienkolleg, sprachkurs, other, unknown] } }
+        - { in: query, name: language, schema: { type: string, enum: [de, en, both, other] } }
+        - { in: query, name: admission_mode, schema: { type: string, enum: [zulassungsfrei, oertlich, auswahl, eignung, nc, frei, unknown] } }
+        - { in: query, name: nc_max, schema: { type: number, format: float, minimum: 1, maximum: 5 } }
+        - { in: query, name: tuition_max, schema: { type: number } }
+        - { in: query, name: tuition_free, schema: { type: boolean } }
+        - { in: query, name: study_form, schema: { type: string } }
+        - { in: query, name: sort, schema: { type: string, enum: [name_de, name_tr, degree, duration_semesters, nc_value, created_at] } }
+        - { in: query, name: order, schema: { type: string, enum: [asc, desc] } }
+        - { in: query, name: per_page, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+      responses:
+        "200": { $ref: "#/components/responses/ProgramListResponse" }
+
+  /programs/stats:
+    get:
+      tags: [Programs]
+      summary: Program agregat istatistikleri
+      responses:
+        "200":
+          description: Toplam ve kırılım sayıları
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      total: { type: integer }
+                      by_degree: { type: object, additionalProperties: { type: integer } }
+                      by_language: { type: object, additionalProperties: { type: integer } }
+                      by_admission_mode: { type: object, additionalProperties: { type: integer } }
+
+  /programs/{slugOrId}:
+    get:
+      tags: [Programs]
+      summary: Tek program detayı
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Tam program kaydı
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: "#/components/schemas/Program" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /cities:
+    get:
+      tags: [Cities]
+      summary: Şehir listesi
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: state, schema: { type: string }, description: Eyalet slug'ı }
+        - { in: query, name: per_page, schema: { type: integer, minimum: 1, maximum: 200, default: 50 } }
+      responses:
+        "200":
+          description: Şehirler
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/City" } } } }
+
+  /cities/{slugOrId}:
+    get:
+      tags: [Cities]
+      summary: Tek şehir
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - in: query
+          name: with
+          description: "Ek alanları dahil et. Örn. `with=content_blocks` zengin sayfa içeriğini ekler."
+          schema: { type: string, example: "content_blocks" }
+      responses:
+        "200":
+          description: Şehir kaydı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/City" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /cities/{slugOrId}/content:
+    get:
+      tags: [Cities]
+      summary: Şehir zengin içeriği (content_blocks)
+      description: |
+        Wikipedia (DE/EN/TR) + AI + Forum/Telegram topluluk verisiyle zenginleştirilmiş
+        modüler şehir sayfası. Blok tipleri: hero, intro, section, quick_facts, gallery,
+        cost_of_living (kira/yemek/ulaşım/sigorta), places (kütüphane/müze/meydan/park),
+        student_culture, video, faq (gerçek öğrenci soruları), cta, universities_in_city,
+        related_forum_topics (DeutschStudent), almanyauni_forum_topics (kendi forumumuz),
+        external_links, schema_jsonld.
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: İçerik blokları + meta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id: { type: integer }
+                      slug: { type: string }
+                      name: { type: string }
+                      image_url: { type: string, nullable: true }
+                      state: { type: string, nullable: true }
+                      last_enriched_at: { type: string, format: date-time, nullable: true }
+                      blocks_count: { type: integer, example: 17 }
+                      block_types:
+                        type: array
+                        items: { type: string }
+                      content_blocks:
+                        type: array
+                        items: { type: object }
+                  links:
+                    type: object
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /states:
+    get:
+      tags: [States]
+      summary: 16 federal eyalet
+      responses:
+        "200":
+          description: Eyaletler
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/State" } } } }
+
+  /states/{slugOrId}:
+    get:
+      tags: [States]
+      summary: Tek eyalet
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Eyalet kaydı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/State" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /fields-of-study:
+    get:
+      tags: [Fields of Study]
+      summary: Çalışma alanları
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: with_counts, schema: { type: boolean }, description: Her alana program sayısını ekler }
+      responses:
+        "200":
+          description: Alanlar
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/FieldOfStudy" } } } }
+
+  /fields-of-study/{slugOrId}:
+    get:
+      tags: [Fields of Study]
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Tek alan
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/FieldOfStudy" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /professions:
+    get:
+      tags: [Professions]
+      summary: 3.560 BERUFENET mesleği
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: cluster, schema: { type: string } }
+        - { in: query, name: field_id, schema: { type: integer } }
+        - { in: query, name: field_slug, schema: { type: string } }
+        - { in: query, name: type, schema: { type: string } }
+        - { in: query, name: per_page, schema: { type: integer, default: 30, maximum: 100 } }
+      responses:
+        "200":
+          description: Meslek listesi
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/Profession" } } } }
+
+  /professions/{slugOrId}:
+    get:
+      tags: [Professions]
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Tek meslek (steckbrief + description dahil)
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Profession" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /faqs:
+    get:
+      tags: [FAQs]
+      summary: SSS listesi (207 cevaplı kayıt)
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: topic_slug, schema: { type: string } }
+        - { in: query, name: featured, schema: { type: boolean } }
+        - { in: query, name: per_page, schema: { type: integer, default: 25, maximum: 100 } }
+      responses:
+        "200":
+          description: SSS listesi
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/Faq" } } } }
+
+  /faqs/topics:
+    get:
+      tags: [FAQs]
+      summary: SSS konuları
+      responses:
+        "200":
+          description: SSS konuları
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/FaqTopic" } } } }
+
+  /faqs/{slugOrId}:
+    get:
+      tags: [FAQs]
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Tek SSS
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Faq" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Yeni hesap oluştur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+                device_name: { type: string, default: api-client }
+      responses:
+        "201":
+          description: Hesap oluşturuldu + token döner
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: { $ref: "#/components/schemas/User" }
+                  token: { type: string }
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+                device_name: { type: string, default: api-client }
+      responses:
+        "200":
+          description: Geçerli login → bearer token
+          content:
+            application/json:
+              schema: { type: object, properties: { user: { $ref: "#/components/schemas/User" }, token: { type: string } } }
+        "401": { description: Hatalı kimlik bilgisi }
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200":
+          description: Mevcut kullanıcı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/User" } } }
+
+  /auth/logout:
+    post:
+      tags: [Auth]
+      security: [{ bearerAuth: [] }]
+      responses:
+        "204": { description: Token iptal edildi }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Sanctum
+  schemas:
+    UniversitySummary:
+      type: object
+      properties:
+        id: { type: integer }
+        wikidata_id: { type: string, nullable: true }
+        slug: { type: string }
+        name: { type: string }
+        name_tr: { type: string, nullable: true }
+        name_de: { type: string }
+        name_en: { type: string, nullable: true }
+        short_name: { type: string, nullable: true }
+        type: { type: string }
+        founded_year: { type: integer, nullable: true }
+        student_count: { type: integer, nullable: true }
+        website_url: { type: string, nullable: true }
+        logo_url: { type: string, nullable: true }
+        city:
+          type: object
+          nullable: true
+          properties:
+            id: { type: integer }
+            slug: { type: string }
+            name: { type: string }
+    University:
+      allOf:
+        - $ref: "#/components/schemas/UniversitySummary"
+        - type: object
+          properties:
+            address: { type: string, nullable: true }
+            phone: { type: string, nullable: true }
+            latitude: { type: number, nullable: true }
+            longitude: { type: number, nullable: true }
+            hochschultyp: { type: string, nullable: true }
+            traegerschaft: { type: string, nullable: true }
+            promotion_recht: { type: boolean, nullable: true }
+    Program:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name_de: { type: string }
+        name_en: { type: string, nullable: true }
+        name_tr: { type: string, nullable: true }
+        degree: { type: string, nullable: true }
+        degree_specification: { type: string, nullable: true }
+        language: { type: string, nullable: true }
+        languages: { type: array, items: { type: string } }
+        duration_semesters: { type: integer, nullable: true }
+        study_form: { type: string, nullable: true }
+        location: { type: string, nullable: true }
+        admission_mode: { type: string, nullable: true }
+        nc_value: { type: number, nullable: true }
+        tuition_fee_eur: { type: number, nullable: true }
+        application_deadline_summer: { type: string, format: date, nullable: true }
+        application_deadline_winter: { type: string, format: date, nullable: true }
+        description_tr: { type: string, nullable: true }
+        description_en: { type: string, nullable: true }
+        source_url: { type: string, nullable: true }
+        university: { $ref: "#/components/schemas/UniversitySummary" }
+        field: { $ref: "#/components/schemas/FieldOfStudy" }
+    City:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name: { type: string }
+        name_tr: { type: string, nullable: true }
+        state_id: { type: integer }
+    State:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name_de: { type: string }
+        name_tr: { type: string, nullable: true }
+    FieldOfStudy:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name_tr: { type: string, nullable: true }
+        name_de: { type: string }
+        name_en: { type: string, nullable: true }
+        icon: { type: string, nullable: true }
+        color: { type: string, nullable: true }
+        programs_count: { type: integer, nullable: true }
+    Profession:
+      type: object
+      properties:
+        id: { type: integer }
+        berufenet_id: { type: integer, nullable: true }
+        kldb_code: { type: string, nullable: true }
+        slug: { type: string }
+        name_de: { type: string }
+        name_tr: { type: string, nullable: true }
+        cluster: { type: string, nullable: true }
+        type: { type: string, nullable: true }
+        description_de: { type: string, nullable: true }
+        description_tr: { type: string, nullable: true }
+    Faq:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        question: { type: string }
+        answer_html: { type: string, nullable: true }
+        intent: { type: string, nullable: true }
+        is_featured: { type: boolean }
+        topic: { $ref: "#/components/schemas/FaqTopic" }
+    FaqTopic:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name: { type: string }
+        icon: { type: string, nullable: true }
+        color: { type: string, nullable: true }
+        faqs_count: { type: integer, nullable: true }
+    User:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        email: { type: string, format: email }
+    Error:
+      type: object
+      properties:
+        message: { type: string }
+        errors: { type: object, additionalProperties: { type: array, items: { type: string } } }
+  responses:
+    NotFound:
+      description: Kayıt bulunamadı
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    UniversityListResponse:
+      description: Üniversite listesi (sayfalı)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: { type: array, items: { $ref: "#/components/schemas/UniversitySummary" } }
+              links: { type: object }
+              meta: { type: object }
+    ProgramListResponse:
+      description: Program listesi (sayfalı)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: { type: array, items: { $ref: "#/components/schemas/Program" } }
+              links: { type: object }
+              meta: { type: object }
