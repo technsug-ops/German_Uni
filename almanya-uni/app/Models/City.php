@@ -33,14 +33,27 @@ class City extends Model
     {
         $locale = app()->getLocale();
         $key = 'name_' . $locale; // name_tr, name_en, name_de
-        if (! empty($this->attributes[$key] ?? null)) {
-            return $this->attributes[$key];
+        $value = $this->attributes[$key] ?? null;
+        if (empty($value)) {
+            // fallback: en → de → tr
+            foreach (['name_en', 'name_de', 'name_tr'] as $fb) {
+                if (! empty($this->attributes[$fb] ?? null)) {
+                    $value = $this->attributes[$fb];
+                    break;
+                }
+            }
         }
-        // fallback: en → de → tr
-        foreach (['name_en', 'name_de', 'name_tr'] as $fb) {
-            if (! empty($this->attributes[$fb] ?? null)) return $this->attributes[$fb];
+
+        // TR locale'de Almanca disambiguation kuyruğunu gizle:
+        //   "Frankfurt am Main" → "Frankfurt"
+        //   "Neustadt an der Weinstraße" → "Neustadt"
+        // "Frankfurt (Oder)" gibi parantezli ayrımlar etkilenmez (TR'de gerekli).
+        if ($locale === 'tr' && $value) {
+            $value = preg_replace('/\s+am\s+\S+$/u', '', $value);
+            $value = preg_replace('/\s+an\s+der\s+\S+$/u', '', $value);
         }
-        return '';
+
+        return $value ?: '';
     }
 
     public function state(): BelongsTo

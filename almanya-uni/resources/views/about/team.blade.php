@@ -229,9 +229,15 @@
             {{ __('Content writing, German translation, mentoring or sharing your student experience — AlmanyaUni grows with community support.') }}
         </p>
         <div class="flex flex-wrap gap-3 justify-center">
-            <a href="{{ route('contribute') }}" class="bg-white text-indigo-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">🌱 {{ __('Share your experience') }}</a>
-            <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Editor" class="bg-white/15 backdrop-blur hover:bg-white/25 px-6 py-3 rounded-lg font-bold transition">✍️ {{ __('Become a content editor') }}</a>
-            <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Mentor" class="bg-white/15 backdrop-blur hover:bg-white/25 px-6 py-3 rounded-lg font-bold transition">🤝 {{ __('Become a mentor') }}</a>
+            <a href="{{ route('contribute') }}"
+               title="{{ __('Share your experience') }}"
+               class="bg-white text-indigo-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">🌱 {{ __('Share your experience') }}</a>
+            <a href="{{ route('contribute') }}?role=editor"
+               title="{{ __('Become a content editor') }} — technsug@gmail.com"
+               class="bg-white/15 backdrop-blur hover:bg-white/25 px-6 py-3 rounded-lg font-bold transition">✍️ {{ __('Become a content editor') }}</a>
+            <a href="{{ route('mentors.index') }}"
+               title="{{ __('Become a mentor') }}"
+               class="bg-white/15 backdrop-blur hover:bg-white/25 px-6 py-3 rounded-lg font-bold transition">🤝 {{ __('Become a mentor') }}</a>
         </div>
     </section>
 </div>

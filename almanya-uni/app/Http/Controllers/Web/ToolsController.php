@@ -1508,6 +1508,7 @@ class ToolsController extends Controller
     public static function eligibilityCountries(): array
     {
         return [
+            'germany'   => ['name' => 'Deutschland', 'flag' => '🇩🇪', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
             'turkey'    => ['name' => 'Türkiye',     'flag' => '🇹🇷', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
             'india'     => ['name' => 'India',       'flag' => '🇮🇳', 'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
             'pakistan'  => ['name' => 'Pakistan',    'flag' => '🇵🇰', 'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],

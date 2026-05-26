@@ -178,36 +178,42 @@
             {{ __('This platform grows with student support. Here are some ways to help:') }}
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <a href="{{ route('contribute') }}" title="{{ __('Write Content') }}"
+               class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-3xl mb-2">✍️</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Write Content') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Share your own experience in Germany, application process, or city impression as a blog post.') }}</p>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            </a>
+            <a href="mailto:technsug@gmail.com?subject={{ urlencode('AlmanyaUni — Translate') }}" title="{{ __('Translate') }}"
+               class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-3xl mb-2">🌐</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Translate') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Help translate German university descriptions or program details into other languages.') }}</p>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            </a>
+            <a href="mailto:technsug@gmail.com?subject={{ urlencode('AlmanyaUni — Develop') }}" title="{{ __('Develop') }}"
+               class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-3xl mb-2">💻</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Develop') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Contribute code if you know Laravel, Tailwind, or frontend. (Open-source plan coming soon.)') }}</p>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            </a>
+            <a href="{{ route('faqs.index') }}" title="{{ __('Answer Questions') }}"
+               class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-3xl mb-2">💬</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Answer Questions') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Help us update or expand missing FAQ entries.') }}</p>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            </a>
+            <a href="https://t.me/almanyauni" target="_blank" rel="noopener" title="{{ __('Share') }}"
+               class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-3xl mb-2">📢</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Share') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Recommend AlmanyaUni to friends planning to study in Germany. Reach is the most valuable help.') }}</p>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6">
+            </a>
+            <button type="button" onclick="document.getElementById('feedbackToggle')?.click()" title="{{ __('Feedback') }}"
+                    class="text-left block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition w-full">
                 <div class="text-3xl mb-2">⭐</div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Feedback') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Tell us about anything missing, wrong, or improvable — we\'ll fix it together.') }}</p>
-            </div>
+            </button>
         </div>
 
         <div class="text-center mt-10">

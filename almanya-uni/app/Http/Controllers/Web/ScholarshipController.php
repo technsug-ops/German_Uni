@@ -30,11 +30,22 @@ class ScholarshipController extends Controller
         ];
 
         if ($filters['q'] !== '') {
-            // Scout/Meilisearch — fallback yoksa LIKE
-            try {
-                $ids = Scholarship::search($filters['q'])->keys()->all();
-                $query->whereIn('id', $ids ?: [0]);
-            } catch (\Throwable $e) {
+            // Production'da SCOUT_DRIVER=null (Meilisearch yok) → her zaman LIKE.
+            // Eğer Scout aktif ve sonuç varsa onu kullan, yoksa LIKE'a düş.
+            $scoutDriver = config('scout.driver');
+            $ids = null;
+            if ($scoutDriver && $scoutDriver !== 'null') {
+                try {
+                    $ids = Scholarship::search($filters['q'])->keys()->all();
+                } catch (\Throwable $e) {
+                    $ids = null;
+                }
+            }
+
+            if (!empty($ids)) {
+                $query->whereIn('id', $ids);
+            } else {
+                // LIKE fallback — BECAL, ALECOSTA gibi tüm isimlerde çalışır
                 $like = '%' . $filters['q'] . '%';
                 $query->where(function ($q) use ($like) {
                     $q->where('name_en', 'like', $like)
