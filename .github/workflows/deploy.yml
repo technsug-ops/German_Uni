@@ -118,66 +118,58 @@ jobs:
           echo "Artefakt temizliği tamam"
 
       # ─────────────────────────────────────────────────────
-      # 6. FTP/FTPS ile KAS'a deploy
+      # 6. Source kodu TEK ZIP dosyasına paketle
+      #    Sebep: KAS FTPS çok sayıda küçük dosyayı sync ederken bağlantıyı
+      #    düşürüyor (ECONNRESET ~27-77 MB sonra). Tek dosya = tek session = stabil.
       # ─────────────────────────────────────────────────────
-      - name: Deploy via FTPS to KAS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          protocol: ftps
-          port: 21
-          local-dir: ./almanya-uni/
-          server-dir: /almanya-uni/
-          # state-file: server'da hangi dosyaların değiştiğini hatırlar (incremental upload)
-          state-name: .ftp-deploy-sync-state.json
-          # Logları normal seviyede
-          log-level: standard
-          # Hariç tutulanlar — sunucuya gitmemesi gerekenler
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/node_modules/**
-            **/vendor/**
-            **/tests/**
-            **/storage/logs/**
-            **/storage/app/db-dumps/**
-            **/storage/framework/cache/data/**
-            **/storage/framework/sessions/**
-            **/storage/framework/views/**
-            **/deploy/_archive/**
-            **/deploy/*.sql
-            **/deploy/*.sql.gz
-            **/deploy/setup.php
-            **/deploy/blog-fix-publish.php
-            **/.editorconfig
-            **/.gitignore
-            **/.gitattributes
-            **/.npmrc
-            **/phpunit.xml
-            **/.env.example
-            **/.env.local
-            **/DEPLOY-GUIDE.md
-            **/PARTNER_REQUEST_*.md
-            **/ADMISSION_MODE_NASIL_DOLDURULUR.md
-            **/DAAD_SCHOLARSHIPS_OZET.md
-            **/README.md
-
-      # ─────────────────────────────────────────────────────
-      # 7. Deploy sonrası cache rebuild tetikleyici dosyası
-      #    KAS Cronjob bu dosyayı görünce view:cache + config:cache çalıştırır
-      #    (cronjob kurulum talimatı: .github/DEPLOY_SETUP.md)
-      # ─────────────────────────────────────────────────────
-      - name: Trigger cache rebuild flag
+      - name: Package source code into single ZIP
+        working-directory: almanya-uni
         run: |
-          # Dummy bir dosya yazıp upload — server'daki cronjob bu dosya varsa cache rebuild yapacak
-          mkdir -p ./cache-trigger
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > ./cache-trigger/.deploy-pulse
-          echo "Cache trigger dosyası hazırlandı"
+          # Bu dosyaları zip'e dahil etme (hariç tutulanlar)
+          # Vendor dışlandı — KAS'ta önceki deploy'dan zaten var
+          zip -r -q ../deploy-bundle.zip . \
+            -x "vendor/*" \
+               "node_modules/*" \
+               ".git/*" \
+               "tests/*" \
+               "storage/logs/*" \
+               "storage/app/db-dumps/*" \
+               "storage/framework/cache/data/*" \
+               "storage/framework/sessions/*" \
+               "storage/framework/views/*" \
+               "deploy/_archive/*" \
+               "deploy/*.sql" \
+               "deploy/*.sql.gz" \
+               "deploy/setup.php" \
+               "deploy/blog-fix-publish.php" \
+               "deploy/SETUP_TOKEN.txt" \
+               ".editorconfig" \
+               ".gitignore" \
+               ".gitattributes" \
+               ".npmrc" \
+               "phpunit.xml" \
+               ".env.example" \
+               ".env.local" \
+               "DEPLOY-GUIDE.md" \
+               "PARTNER_REQUEST_*.md" \
+               "ADMISSION_MODE_NASIL_DOLDURULUR.md" \
+               "DAAD_SCHOLARSHIPS_OZET.md" \
+               "README.md"
+          ls -lh ../deploy-bundle.zip
+          echo "Bundle hazır: $(du -h ../deploy-bundle.zip | cut -f1)"
 
-      - name: Upload cache trigger
+      # ─────────────────────────────────────────────────────
+      # 7. Bundle ZIP + extract-tetikleyici dosyayı tek session'da gönder
+      # ─────────────────────────────────────────────────────
+      - name: Prepare upload directory
+        run: |
+          mkdir -p ./upload-staging
+          mv deploy-bundle.zip ./upload-staging/
+          # Pulse dosyası: post-deploy.php görünce extract + cache rebuild yapar
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > ./upload-staging/.deploy-pulse
+          ls -lh ./upload-staging/
+
+      - name: Upload bundle via FTPS (1 file, single session)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -185,10 +177,11 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           protocol: ftps
           port: 21
-          local-dir: ./cache-trigger/
+          local-dir: ./upload-staging/
           server-dir: /almanya-uni/storage/app/
-          state-name: .deploy-pulse-state.json
-          log-level: minimal
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
 
       # ─────────────────────────────────────────────────────
       # 8. Bilgilendirme
