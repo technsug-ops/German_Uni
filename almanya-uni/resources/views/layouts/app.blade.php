@@ -72,6 +72,12 @@
     {{-- RSS feed discovery --}}
     <link rel="alternate" type="application/rss+xml" title="{{ brand('name') . ' — ' . __('Latest Content') }}" href="{{ url('/rss.xml') }}">
 
+    {{-- High-priority preload for primary CSS — browser starts download before parsing @vite's <link> tag --}}
+    @if(app()->environment('production') || app()->environment('staging'))
+        <link rel="preload" as="style" fetchpriority="high" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/css/app.css') }}">
+        <link rel="modulepreload" fetchpriority="high" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/js/app.js') }}">
+    @endif
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white text-gray-900 antialiased">
