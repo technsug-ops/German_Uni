@@ -184,7 +184,42 @@ jobs:
           dangerous-clean-slate: false
 
       # ─────────────────────────────────────────────────────
-      # 8. Bilgilendirme
+      # 8. Auto-trigger: server'da _deploy.php'yi çağır
+      #    → ZIP extract + cache rebuild OTOMATIK
+      #    Pulse-gated: saldırgan pulse oluşturamaz (FTP/SSH gerek)
+      # ─────────────────────────────────────────────────────
+      - name: Trigger server-side deploy (extract + cache rebuild)
+        run: |
+          # HTTPS GET → server pulse'u görür → extract + cache rebuild
+          # Retry mantığı: 3 deneme, başarısız olursa workflow fail eder
+          set -e
+          MAX_TRIES=3
+          for i in $(seq 1 $MAX_TRIES); do
+            echo "Attempt $i/$MAX_TRIES — calling deploy webhook..."
+            HTTP_CODE=$(curl -sS -o /tmp/deploy-response.txt -w "%{http_code}" \
+              --max-time 120 \
+              "https://applytogerman.com/_deploy.php")
+            RESPONSE=$(cat /tmp/deploy-response.txt)
+            echo "Response: HTTP $HTTP_CODE — $RESPONSE"
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "✅ Deploy webhook successful"
+              exit 0
+            elif [ "$HTTP_CODE" = "204" ]; then
+              echo "⚠️  No pulse found on server (FTP upload may not have completed)"
+              sleep 10
+            elif [ "$HTTP_CODE" = "429" ]; then
+              echo "⚠️  Rate limited, waiting 30s..."
+              sleep 30
+            else
+              echo "❌ Webhook failed with HTTP $HTTP_CODE"
+              sleep 15
+            fi
+          done
+          echo "::error::Deploy webhook failed after $MAX_TRIES attempts"
+          exit 1
+
+      # ─────────────────────────────────────────────────────
+      # 9. Bilgilendirme
       # ─────────────────────────────────────────────────────
       - name: Deploy summary
         if: always()
