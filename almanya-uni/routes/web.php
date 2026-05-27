@@ -228,6 +228,26 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
     ]);
 })->middleware('throttle:30,1'); // 30 req / minute (token already protects against abuse)
 
+// Token-gated stats reset — wipe demo/test traffic numbers to start fresh
+//   curl "https://applytogerman.com/_system/reset-stats?token=XXX&dry-run=1"  (preview)
+//   curl "https://applytogerman.com/_system/reset-stats?token=XXX"            (apply)
+Route::get('/_system/reset-stats', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+
+    $args = [];
+    if ($request->boolean('dry-run')) $args['--dry-run'] = true;
+    if ($request->boolean('keep-engagements')) $args['--keep-engagements'] = true;
+
+    \Illuminate\Support\Facades\Artisan::call('stats:reset', $args);
+    return response()->json([
+        'output' => \Illuminate\Support\Facades\Artisan::output(),
+    ]);
+})->middleware('throttle:5,1');
+
 // Dual-brand robots.txt — absolute Sitemap URL + brand-aware
 Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
     $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
