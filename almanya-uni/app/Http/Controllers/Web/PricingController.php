@@ -22,11 +22,15 @@ class PricingController extends Controller
     public function express(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'email'         => 'required|email|max:150',
-            'name'          => 'nullable|string|max:100',
-            'tier_interest' => 'required|in:premium,pro,undecided',
-            'note'          => 'nullable|string|max:1000',
+            'email'          => 'required|email|max:150',
+            'name'           => 'nullable|string|max:100',
+            'tier_interest'  => 'required|in:premium,pro,undecided',
+            'note'           => 'nullable|string|max:1000',
+            'captcha_answer' => ['required', new \App\Rules\MathCaptchaRule()],
         ]);
+
+        // captcha_answer isn't a model column — strip before insert
+        unset($data['captcha_answer']);
 
         PremiumInterest::create($data + [
             'source_page' => $request->headers->get('referer'),

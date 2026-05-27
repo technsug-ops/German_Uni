@@ -143,6 +143,8 @@
                           class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500">{{ old('note') }}</textarea>
             </div>
 
+            <x-math-captcha compact />
+
             <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-lg shadow-md transition">
                 {{ __('Notify me — lock 20% discount') }} →
             </button>
