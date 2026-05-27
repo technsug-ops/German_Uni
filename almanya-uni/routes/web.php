@@ -65,6 +65,7 @@ $routes = function () {
     Route::get('/gizlilik',     [LegalController::class, 'privacy'])->name('legal.privacy');
     Route::get('/kosullar',     [LegalController::class, 'terms'])->name('legal.terms');
     Route::get('/cerez-politikasi', [LegalController::class, 'cookies'])->name('legal.cookies');
+    Route::get('/impressum',    [LegalController::class, 'impressum'])->name('legal.impressum');
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
