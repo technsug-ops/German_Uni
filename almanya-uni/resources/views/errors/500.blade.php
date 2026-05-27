@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '500 — Sunucu hatası — ' . brand('name'))
+@section('title', '500 — ' . __('Server error') . ' — ' . brand('name'))
 
 @push('meta')
     <meta name="robots" content="noindex">
@@ -15,28 +15,28 @@
             500
         </div>
 
-        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">Bir şeyler ters gitti</h1>
+        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">{{ __('Something went wrong') }}</h1>
         <p class="text-gray-600 text-lg max-w-xl mx-auto mb-8">
-            Sunucumuzda beklenmedik bir hata oluştu. Ekibimiz bilgilendirildi — birkaç dakika sonra tekrar dene.
+            {{ __('An unexpected error occurred on our server. Our team has been notified — please try again in a few minutes.') }}
         </p>
 
         <div class="flex flex-wrap gap-3 justify-center">
             <a href="{{ url()->previous() }}"
                class="px-6 py-3 rounded-lg bg-white border border-gray-300 hover:border-primary-400 text-gray-700 font-semibold transition">
-                ← Geri dön
+                ← {{ __('Go back') }}
             </a>
             <a href="{{ route('home') }}"
                class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold transition">
-                Ana sayfaya git
+                {{ __('Go to homepage') }}
             </a>
             <button type="button" onclick="document.getElementById('feedbackToggle')?.click()"
                     class="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold transition">
-                💬 Hata bildir
+                💬 {{ __('Report this error') }}
             </button>
         </div>
 
         <p class="text-xs text-gray-400 mt-8">
-            Hata kodu: 500 · {{ now()->format('d.m.Y H:i') }}
+            {{ __('Error code:') }} 500 · {{ now()->format('d.m.Y H:i') }}
         </p>
     </div>
 </section>

@@ -82,6 +82,12 @@
 </head>
 <body class="bg-white text-gray-900 antialiased">
 
+    {{-- Skip-to-content link (a11y: visible on keyboard focus) --}}
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-700 focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent-400">
+        {{ __('Skip to content') }}
+    </a>
+
     {{-- =================================================== --}}
     {{-- EVENT TOP BANNER (öne çıkan yaklaşan etkinlik)        --}}
     {{-- =================================================== --}}
@@ -734,7 +740,7 @@
     {{-- =================================================== --}}
     {{-- MAIN                                                  --}}
     {{-- =================================================== --}}
-    <main class="min-h-screen">
+    <main id="main-content" class="min-h-screen" tabindex="-1">
         @yield('content')
         {{ $slot ?? '' }}
     </main>

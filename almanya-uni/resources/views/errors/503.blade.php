@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bakım — ' . brand('name'))
+@section('title', __('Maintenance') . ' — ' . brand('name'))
 
 @push('meta')
     <meta name="robots" content="noindex">
@@ -13,14 +13,14 @@
 
         <div class="text-7xl md:text-9xl mb-4">🛠️</div>
 
-        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">Sitemiz bakımda</h1>
+        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">{{ __('Site is under maintenance') }}</h1>
         <p class="text-gray-600 text-lg max-w-xl mx-auto mb-8">
-            AlmanyaUni şu anda bakımda. Birkaç dakika içinde tekrar erişilebilir olacak.
+            {{ __(':brand is currently under maintenance. We will be back online within a few minutes.', ['brand' => brand('name')]) }}
         </p>
 
         <p class="text-sm text-gray-500">
-            Acil bir durumda:
-            <a href="mailto:technsug@gmail.com" class="text-primary-600 hover:underline">technsug@gmail.com</a>
+            {{ __('For urgent matters:') }}
+            <a href="mailto:info@{{ str_replace('www.', '', request()->getHost()) }}" class="text-primary-600 hover:underline">info@{{ str_replace('www.', '', request()->getHost()) }}</a>
         </p>
     </div>
 </section>

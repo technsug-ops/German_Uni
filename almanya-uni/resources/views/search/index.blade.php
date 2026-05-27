@@ -118,10 +118,39 @@
 
     <div class="max-w-[1400px] mx-auto px-4 py-6">
         @if ($grandTotal === 0)
-            <div class="py-16 text-center bg-white rounded-lg border border-gray-200">
-                <div class="text-5xl mb-3">🔍</div>
-                <p class="text-gray-900 text-lg mb-2">{!! __('No results found for "<strong>:q</strong>"', ['q' => e($q)]) !!}</p>
-                <p class="text-gray-500 text-sm">{{ __('Try a different word. Spelling, language, or abbreviations do not matter.') }}</p>
+            <div class="py-12 px-6 text-center bg-white rounded-2xl border border-gray-200 shadow-sm max-w-2xl mx-auto">
+                <div class="text-5xl mb-4">🔍</div>
+                <p class="text-gray-900 text-lg md:text-xl font-semibold mb-2">{!! __('No results found for "<strong>:q</strong>"', ['q' => e($q)]) !!}</p>
+                <p class="text-gray-500 text-sm mb-6">{{ __('Try a different word. Spelling, language, or abbreviations do not matter.') }}</p>
+
+                {{-- Suggested actions --}}
+                <div class="bg-primary-50 border border-primary-100 rounded-xl p-4 mb-5 text-left">
+                    <p class="text-xs font-bold uppercase tracking-wider text-primary-700 mb-2">💡 {{ __('Tips') }}</p>
+                    <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
+                        <li>{{ __('Shorter keywords often work better (e.g. "TUM" instead of "Technische Universität München")') }}</li>
+                        <li>{{ __('Try the English or German name (e.g. "Munich" instead of "München")') }}</li>
+                        <li>{{ __('Check our browsing pages below — they may have what you need') }}</li>
+                    </ul>
+                </div>
+
+                {{-- Browse alternatives --}}
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    @php
+                        $browse = [
+                            ['url' => route('universities.index'), 'icon' => '🎓', 'label' => __('All Universities')],
+                            ['url' => route('cities.index'), 'icon' => '🏙️', 'label' => __('Cities')],
+                            ['url' => route('programs.index'), 'icon' => '📚', 'label' => __('Programs')],
+                            ['url' => route('faqs.index'), 'icon' => '❓', 'label' => __('FAQ')],
+                        ];
+                    @endphp
+                    @foreach ($browse as $b)
+                        <a href="{{ $b['url'] }}"
+                           class="bg-white border border-gray-200 hover:border-primary-400 hover:bg-primary-50 rounded-lg p-3 transition text-sm font-medium text-gray-700">
+                            <div class="text-2xl mb-1">{{ $b['icon'] }}</div>
+                            {{ $b['label'] }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
         @endif
 

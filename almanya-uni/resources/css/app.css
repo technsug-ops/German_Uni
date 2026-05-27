@@ -100,6 +100,47 @@
 .blog-content h3:hover .heading-anchor,
 .blog-content h4:hover .heading-anchor { opacity: 1; }
 
+/* ─────────── Accessibility: keyboard focus styles ─────────── */
+/* Only show focus ring on keyboard navigation (Tab), not mouse click.
+   :focus-visible respects user input modality automatically. */
+:focus-visible {
+    outline: 2px solid #F97316;          /* accent-500 */
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+/* Suppress default browser outline that some elements still show */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus { outline: none; }
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid #F97316;
+    outline-offset: 3px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #F97316;
+    outline-offset: 0;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+/* Reduced-motion users: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 @theme {
     --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
