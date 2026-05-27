@@ -2,6 +2,7 @@
     "Skip to content": "Zum Inhalt springen",
     "Sending…": "Wird gesendet…",
     "Loading…": "Wird geladen…",
+    ":count error|:count errors prevented submission": "{1} :count Fehler hat das Absenden verhindert|[2,*] :count Fehler haben das Absenden verhindert",
     ":brand on your home screen": ":brand auf Ihrem Startbildschirm",
     "Install as an app — faster, offline-ready, no app store needed.": "Als App installieren — schneller, offline-fähig, ohne App Store.",
     "Install app": "App installieren",
