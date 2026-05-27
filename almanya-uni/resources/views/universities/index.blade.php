@@ -227,9 +227,22 @@
 
             <div class="mt-8">{{ $universities->links() }}</div>
         @else
-            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-8 text-center text-yellow-800">
-                <p class="text-lg">{{ __('No universities match these criteria.') }}</p>
-                <a href="{{ route('universities.index') }}" class="inline-block mt-3 text-primary-600 hover:underline">{{ __('Reset filters') }} →</a>
+            <div class="bg-white rounded-2xl border border-gray-200 p-8 md:p-12 text-center shadow-sm max-w-2xl mx-auto">
+                <div class="text-5xl mb-4">🎓</div>
+                <p class="text-xl font-bold text-gray-900 mb-2">{{ __('No universities match these criteria.') }}</p>
+                <p class="text-sm text-gray-500 mb-6">{{ __('Try loosening one of the filters or browse all universities below.') }}</p>
+
+                <div class="flex flex-wrap gap-3 justify-center mb-6">
+                    <a href="{{ route('universities.index') }}" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition">
+                        ↺ {{ __('Reset all filters') }}
+                    </a>
+                    <a href="{{ route('cities.index') }}" class="px-4 py-2 bg-white border border-gray-300 hover:border-primary-400 text-gray-700 font-semibold rounded-lg transition">
+                        🏙️ {{ __('Browse by city') }}
+                    </a>
+                    <a href="{{ route('fields.index') }}" class="px-4 py-2 bg-white border border-gray-300 hover:border-primary-400 text-gray-700 font-semibold rounded-lg transition">
+                        🎯 {{ __('Browse by field') }}
+                    </a>
+                </div>
             </div>
         @endif
     </div>

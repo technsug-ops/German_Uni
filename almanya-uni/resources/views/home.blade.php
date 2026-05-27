@@ -73,12 +73,12 @@
             {{-- Quick chips --}}
             <div class="flex flex-wrap gap-2 text-sm">
                 <span class="text-primary-200 mr-1">{{ __('Popular:') }}</span>
-                <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('Search:') }} TUM (Technische Universität München)">TUM</a>
-                <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('Search:') }} Heidelberg">Heidelberg</a>
-                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="{{ __('English Programs') }} — {{ __('Programs taught in English') }}">🇬🇧 {{ __('English Programs') }}</a>
-                <a href="{{ route('scholarships.daad') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('DAAD Scholarship') }} — {{ __('German Academic Exchange Service') }}">🎖️ {{ __('DAAD Scholarship') }}</a>
-                <a href="{{ route('tools.visa-cost') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('Visa cost') }} — {{ __('Student visa total cost') }}">💸 {{ __('Visa cost') }}</a>
-                <a href="{{ route('tools.deadlines') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition" title="{{ __('Deadline calendar') }} — {{ __('Application deadlines') }}">📅 {{ __('Deadline calendar') }}</a>
+                <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="Technische Universität München">TUM</a>
+                <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">Heidelberg</a>
+                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
+                <a href="{{ route('scholarships.daad') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">🎖️ {{ __('DAAD Scholarship') }}</a>
+                <a href="{{ route('tools.visa-cost') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">💸 {{ __('Visa cost') }}</a>
+                <a href="{{ route('tools.deadlines') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">📅 {{ __('Deadline calendar') }}</a>
             </div>
         </div>
 
@@ -200,7 +200,7 @@
                 <h2 class="text-2xl font-bold text-gray-900">{{ __('Tools') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('Decide with numbers, stop guessing.') }}</p>
             </div>
-            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All tools') }}">
+            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
                 {{ __('All tools') }} →
             </a>
         </div>
@@ -289,7 +289,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Popular Student Cities') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('By university density') }}</p>
             </div>
-            <a href="{{ route('cities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All cities') }} — {{ $totals['cities'] }} {{ __('cities') }}">
+            <a href="{{ route('cities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
                 {{ __('All cities') }} →
             </a>
         </div>
@@ -303,7 +303,6 @@
                         $palette = $palettes[$seed % count($palettes)];
                     @endphp
                     <a href="{{ route('cities.show', $city['slug']) }}"
-                       title="{{ $city['name'] }}{{ $city['state_name'] ? ' (' . $city['state_name'] . ')' : '' }} — {{ $city['universities_count'] }} {{ __('universities') }}"
                        class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                         {{-- Gradient + letter always rendered; image overlays if URL present, removed on error (Wikimedia 429 fallback) --}}
                         <div class="aspect-[4/3] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
@@ -344,7 +343,7 @@
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Featured Universities') }}</h2>
             <p class="text-gray-600 text-sm">{{ __('Most applied and largest universities') }}</p>
         </div>
-        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap" title="{{ __('All universities') }} — {{ $totals['universities'] }} {{ __('universities') }}">
+        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
             {{ __('All universities') }} →
         </a>
     </div>
@@ -364,7 +363,6 @@
                 };
             @endphp
             <a href="{{ route('universities.show', $uni['slug']) }}"
-               title="{{ $uni['name_de'] }}{{ $typeBadge[0] ? ' — ' . $typeBadge[0] : '' }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                 {{-- Gradient + initials always behind; image overlays if URL present, removed on error --}}
                 <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
@@ -417,7 +415,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🎯 {{ __('Popular Study Fields') }}</h2>
                 <p class="text-gray-600 text-sm">{{ __('Top 6 fields by program count — choose your path') }}</p>
             </div>
-            <a href="{{ route('fields.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm" title="{{ __('All fields') }}">{{ __('All fields') }} →</a>
+            <a href="{{ route('fields.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All fields') }} →</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             @foreach ($top_fields as $field)
@@ -487,7 +485,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('6 tools to help you decide') }}</h2>
                 <p class="text-gray-600 text-sm mt-1">{{ __('Is your budget enough, how much is the visa, when is the nearest deadline — calculate instantly') }}</p>
             </div>
-            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm" title="{{ __('All tools') }}">{{ __('All tools') }} →</a>
+            <a href="{{ route('tools.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All tools') }} →</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             @php

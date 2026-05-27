@@ -148,7 +148,9 @@
                 @php $kesfetItems = \App\Models\MenuPage::forGroup('kesfet')->where('key', '!=', 'compare.index'); @endphp
                 @if ($kesfetItems->isNotEmpty())
                 <div class="relative group" data-mega>
-                    <button class="{{ $btnBase }} {{ $kesfetActive ? $active : $inactive }}">
+                    <button class="{{ $btnBase }} {{ $kesfetActive ? $active : $inactive }}"
+                            type="button" aria-haspopup="true" aria-expanded="false"
+                            aria-label="{{ __('Explore menu') }}">
                         🔍 {{ __('Explore') }}
                         <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
@@ -185,7 +187,9 @@
                 @php $araclarItems = \App\Models\MenuPage::forGroup('araclar')->where('key', '!=', 'tools.index'); @endphp
                 @if ($araclarItems->isNotEmpty())
                 <div class="relative group" data-mega>
-                    <button class="{{ $btnBase }} {{ $araclarActive ? $active : $inactive }}">
+                    <button class="{{ $btnBase }} {{ $araclarActive ? $active : $inactive }}"
+                            type="button" aria-haspopup="true" aria-expanded="false"
+                            aria-label="{{ __('Tools menu') }}">
                         🛠️ {{ __('Tools') }}
                         <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
@@ -220,7 +224,9 @@
                 @php $firsatItems = \App\Models\MenuPage::forGroup('firsatlar'); @endphp
                 @if ($firsatItems->isNotEmpty())
                 <div class="relative group" data-mega>
-                    <button class="{{ $btnBase }} {{ $firsatActive ? $active : $inactive }}">
+                    <button class="{{ $btnBase }} {{ $firsatActive ? $active : $inactive }}"
+                            type="button" aria-haspopup="true" aria-expanded="false"
+                            aria-label="{{ __('Opportunities menu') }}">
                         🎖️ {{ __('Opportunities') }}
                         <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
@@ -252,7 +258,9 @@
                 @php $icerikItems = \App\Models\MenuPage::forGroup('icerik'); @endphp
                 @if ($icerikItems->isNotEmpty())
                 <div class="relative group" data-mega>
-                    <button class="{{ $btnBase }} {{ $icerikActive ? $active : $inactive }}">
+                    <button class="{{ $btnBase }} {{ $icerikActive ? $active : $inactive }}"
+                            type="button" aria-haspopup="true" aria-expanded="false"
+                            aria-label="{{ __('Content menu') }}">
                         📚 {{ __('Content') }}
                         <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
@@ -559,6 +567,16 @@
                 // CSS hover ile açılır AMA buton click'inde JS açık state'i kontrol eder.
                 // Diğer dropdown açıldığında diğerleri kapanır. Outside click → hepsi kapanır.
                 const megaWraps = document.querySelectorAll('[data-mega]');
+                // Helper: sync aria-expanded with .mega-open state on the wrapper's <button>
+                const syncAria = (wrap) => {
+                    const b = wrap.querySelector(':scope > button');
+                    if (b) b.setAttribute('aria-expanded', wrap.classList.contains('mega-open') ? 'true' : 'false');
+                };
+                const closeAll = () => megaWraps.forEach(w => {
+                    w.classList.remove('mega-open');
+                    syncAria(w);
+                });
+
                 megaWraps.forEach(wrap => {
                     const btn = wrap.querySelector(':scope > button');
                     if (!btn) return;
@@ -566,32 +584,27 @@
                         e.preventDefault();
                         e.stopPropagation();
                         const wasOpen = wrap.classList.contains('mega-open');
-                        // Önce hepsini kapat
-                        megaWraps.forEach(w => w.classList.remove('mega-open'));
-                        // Kapalı ise aç (toggle)
-                        if (!wasOpen) wrap.classList.add('mega-open');
-                        // Buton focus'u bırak — focus stuck olmasın
+                        closeAll();
+                        if (!wasOpen) {
+                            wrap.classList.add('mega-open');
+                            syncAria(wrap);
+                        }
                         btn.blur();
                     });
-                    // mouseenter — başka panelin click-açık state'i varsa kapat
-                    // (Bug fix: clicked-open panel + hovered-different panel = iki panel açık kalıyordu)
                     wrap.addEventListener('mouseenter', () => {
                         megaWraps.forEach(w => {
-                            if (w !== wrap) w.classList.remove('mega-open');
+                            if (w !== wrap && w.classList.contains('mega-open')) {
+                                w.classList.remove('mega-open');
+                                syncAria(w);
+                            }
                         });
                     });
                 });
-                // Outside click → hepsini kapat
                 document.addEventListener('click', (e) => {
-                    if (!e.target.closest('[data-mega]')) {
-                        megaWraps.forEach(w => w.classList.remove('mega-open'));
-                    }
+                    if (!e.target.closest('[data-mega]')) closeAll();
                 });
-                // ESC ile kapat
                 document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        megaWraps.forEach(w => w.classList.remove('mega-open'));
-                    }
+                    if (e.key === 'Escape') closeAll();
                 });
 
                 const mBtn = document.getElementById('mobileMenuBtn');
