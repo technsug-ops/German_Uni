@@ -95,6 +95,17 @@
 {{-- GRID --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
+        @if ($states->isEmpty())
+            <x-empty-state
+                icon="🗺️"
+                :title="__('No states available right now')"
+                :description="__('Try browsing cities directly while we are updating the catalog.')"
+                :actions="[
+                    ['label' => __('Cities'), 'url' => route('cities.index'), 'primary' => true, 'icon' => '🏙️'],
+                    ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+                ]"
+            />
+        @else
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach ($states as $state)
                 @php
@@ -127,6 +138,7 @@
                 </a>
             @endforeach
         </div>
+        @endif
     </div>
 </section>
 

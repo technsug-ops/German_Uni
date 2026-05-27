@@ -118,10 +118,15 @@
         </div>
 
         @if ($scholarships->isEmpty())
-            <div class="bg-white rounded-xl border border-gray-200 p-12 text-center">
-                <p class="text-gray-600">{{ __('No scholarships match this filter.') }}</p>
-                <a href="{{ route('scholarships.index') }}" class="inline-block mt-3 text-primary-600 hover:underline">{{ __('Reset filter') }}</a>
-            </div>
+            <x-empty-state
+                icon="🎖️"
+                :title="__('No scholarships match this filter.')"
+                :description="__('Try removing one of the filters or browse the full DAAD catalog.')"
+                :actions="[
+                    ['label' => __('Reset filter'), 'url' => route('scholarships.daad'), 'primary' => true],
+                    ['label' => __('Scholarships overview'), 'url' => route('scholarships.index')],
+                ]"
+            />
         @else
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($scholarships as $sch)

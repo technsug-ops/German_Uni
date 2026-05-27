@@ -35,6 +35,17 @@
 {{-- GRID --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
+        @if ($fields->isEmpty())
+            <x-empty-state
+                icon="🎯"
+                :title="__('No fields available right now')"
+                :description="__('Try browsing universities or programs while we are updating the catalog.')"
+                :actions="[
+                    ['label' => __('Universities'), 'url' => route('universities.index'), 'primary' => true, 'icon' => '🎓'],
+                    ['label' => __('Programs'), 'url' => route('programs.index'), 'icon' => '📚'],
+                ]"
+            />
+        @else
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($fields as $field)
                 <a href="{{ route('fields.show', $field->slug) }}"
@@ -69,6 +80,7 @@
                 </a>
             @endforeach
         </div>
+        @endif
     </div>
 </section>
 
