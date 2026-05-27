@@ -793,10 +793,11 @@
                         @if (\App\Models\MenuPage::isKeyEnabled('pricing'))
                         <li><a href="{{ route('pricing') }}" class="text-amber-300 hover:text-amber-200 transition font-semibold" title="{{ __('Premium') }} — {{ __('Mentor sessions, ad-free, 24h SLA') }}">✨ {{ __('Premium') }}</a></li>
                         @endif
-                        <li><a href="{{ route('legal.impressum') }}" class="hover:text-white transition" title="{{ __('Imprint') }} — {{ __('Legal disclosure') }}">{{ __('Imprint') }}</a></li>
+                        <li><a href="{{ route('legal.impressum') }}" class="hover:text-white transition" title="{{ __('Imprint') }}">{{ __('Imprint') }}</a></li>
                         <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition" title="{{ __('Privacy Policy') }}">{{ __('Privacy Policy') }}</a></li>
                         <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition" title="{{ __('Terms of Use') }}">{{ __('Terms of Use') }}</a></li>
                         <li><a href="{{ route('legal.cookies') }}" class="hover:text-white transition" title="{{ __('Cookie Policy') }}">{{ __('Cookie Policy') }}</a></li>
+                        <li><a href="{{ route('legal.disclaimer') }}" class="hover:text-white transition" title="{{ __('Disclaimer') }}">{{ __('Disclaimer') }}</a></li>
                     </ul>
                 </div>
             </div>

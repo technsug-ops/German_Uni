@@ -61,11 +61,12 @@ $routes = function () {
     Route::match(['get', 'post'], '/newsletter/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])
         ->name('newsletter.unsubscribe');
 
-    // Legal pages — KVKK + GDPR uyumlu
+    // Legal pages — KVKK + GDPR + TMG (DB-driven, admin-editable via Filament)
     Route::get('/gizlilik',     [LegalController::class, 'privacy'])->name('legal.privacy');
     Route::get('/kosullar',     [LegalController::class, 'terms'])->name('legal.terms');
     Route::get('/cerez-politikasi', [LegalController::class, 'cookies'])->name('legal.cookies');
     Route::get('/impressum',    [LegalController::class, 'impressum'])->name('legal.impressum');
+    Route::get('/yasal-uyari',  [LegalController::class, 'disclaimer'])->name('legal.disclaimer');
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
@@ -228,6 +229,31 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
         'output' => \Illuminate\Support\Facades\Artisan::output(),
     ]);
 })->middleware('throttle:30,1'); // 30 req / minute (token already protects against abuse)
+
+// Token-gated migration runner — KAS has no CLI access, run via curl after deploy
+Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(300);
+
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    $migrate = \Illuminate\Support\Facades\Artisan::output();
+
+    $seedClass = $request->query('seed');
+    $seed = null;
+    if ($seedClass && preg_match('/^[A-Za-z0-9_]+Seeder$/', $seedClass)) {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'Database\\Seeders\\' . $seedClass,
+            '--force' => true,
+        ]);
+        $seed = \Illuminate\Support\Facades\Artisan::output();
+    }
+
+    return response()->json(['migrate' => $migrate, 'seed' => $seed]);
+})->middleware('throttle:5,1');
 
 // Token-gated stats reset — wipe demo/test traffic numbers to start fresh
 //   curl "https://applytogerman.com/_system/reset-stats?token=XXX&dry-run=1"  (preview)
