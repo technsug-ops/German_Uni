@@ -12,7 +12,7 @@ class UniversityWebController extends Controller
 {
     private const ALLOWED_TYPES = ['public', 'private', 'applied_sciences', 'art', 'religion'];
 
-    public function index(Request $request): View
+    public function index(Request $request): View|\Illuminate\Http\Response
     {
         $query = University::query()->where('is_active', true);
 
@@ -115,12 +115,40 @@ class UniversityWebController extends Controller
 
         $states = State::orderBy('name_de')->get(['slug', 'name_de', 'name_tr','name_en','name_de']);
 
-        return view('universities.index', [
+        // Form-helper closures used by both index and _grid partials
+        $typeLabel = fn ($t) => match ($t) {
+            'public' => __('Public'),
+            'private' => __('Private'),
+            'applied_sciences' => __('Applied Sciences'),
+            'art' => __('Art'),
+            'religion' => __('Religion'),
+            default => $t ? ucfirst($t) : '-',
+        };
+        $typeBadgeColor = fn ($t) => match ($t) {
+            'public' => 'bg-emerald-50 text-emerald-700',
+            'private' => 'bg-amber-50 text-amber-700',
+            'applied_sciences' => 'bg-blue-50 text-blue-700',
+            'art' => 'bg-pink-50 text-pink-700',
+            'religion' => 'bg-purple-50 text-purple-700',
+            default => 'bg-gray-100 text-gray-700',
+        };
+
+        $viewData = [
             'universities' => $universities,
             'total' => $total,
             'available_types' => $availableTypes,
             'states' => $states,
-        ]);
+            'typeLabel' => $typeLabel,
+            'typeBadgeColor' => $typeBadgeColor,
+        ];
+
+        // XHR — return only the grid partial (async filter UX)
+        if ($request->ajax() || $request->wantsJson() || $request->boolean('partial')) {
+            return response(view('universities._grid', $viewData)->render())
+                ->header('Content-Type', 'text/html; charset=utf-8');
+        }
+
+        return view('universities.index', $viewData);
     }
 
     public function show(string $slugOrId): View

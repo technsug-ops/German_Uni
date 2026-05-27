@@ -3,24 +3,7 @@
 @section('title', __('German Universities — Guide for International Students') . '  — ' . brand('name'))
 @section('meta_description', __('603 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.'))
 
-@php
-    $typeLabel = fn ($t) => match ($t) {
-        'public' => __('Public'),
-        'private' => __('Private'),
-        'applied_sciences' => __('Applied Sciences'),
-        'art' => __('Art'),
-        'religion' => __('Religion'),
-        default => $t ? ucfirst($t) : '-',
-    };
-    $typeBadgeColor = fn ($t) => match ($t) {
-        'public' => 'bg-emerald-50 text-emerald-700',
-        'private' => 'bg-amber-50 text-amber-700',
-        'applied_sciences' => 'bg-blue-50 text-blue-700',
-        'art' => 'bg-pink-50 text-pink-700',
-        'religion' => 'bg-purple-50 text-purple-700',
-        default => 'bg-gray-100 text-gray-700',
-    };
-@endphp
+{{-- $typeLabel and $typeBadgeColor closures are provided by UniversityWebController so they're also available when the _grid partial is rendered for XHR async-filter responses. --}}
 
 @section('content')
 
@@ -56,7 +39,9 @@
 {{-- ─────────────── FILTER BAR ─────────────── --}}
 <section class="bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-[1400px] mx-auto px-4 py-4">
-        <form method="GET" action="/universities" class="space-y-3">
+        <form method="GET" action="{{ route('universities.index') }}" class="space-y-3"
+              data-async-filter-form="#async-filter-results"
+              data-no-loading>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_180px_180px_140px_auto_auto] gap-3">
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
@@ -138,106 +123,9 @@
 {{-- ─────────────── RESULTS ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        <div class="flex items-center justify-between mb-6">
-            <p class="text-sm text-gray-600">
-                {!! __('<strong class="text-gray-900">:count</strong> universities found', ['count' => $total]) !!}
-            </p>
-            <p class="text-xs text-gray-500">{{ __('Sorted by student count') }}</p>
+        <div id="async-filter-results" data-async-filter aria-live="polite" aria-busy="false">
+            @include('universities._grid')
         </div>
-
-        @if ($universities && count($universities) > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                @foreach ($universities as $uni)
-                    @php
-                        $seed = crc32($uni['name_de']);
-                        $palettes = [
-                            'from-blue-500 to-cyan-400',
-                            'from-purple-500 to-pink-500',
-                            'from-amber-500 to-orange-400',
-                            'from-emerald-500 to-teal-400',
-                            'from-rose-500 to-fuchsia-500',
-                            'from-indigo-500 to-violet-500',
-                        ];
-                        $palette = $palettes[$seed % count($palettes)];
-                    @endphp
-                    <a href="{{ route('universities.show', $uni['slug']) }}"
-                       class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-
-                        {{-- Cover image --}}
-                        <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
-                            @if(!empty($uni['image_url']))
-                                <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }}"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 {{ !empty($uni['image_is_fallback']) ? 'opacity-90' : '' }}"/>
-                                @if(!empty($uni['image_is_fallback']) && $uni['city_name'])
-                                    {{-- Şehir görseli fallback — kart'ta küçük overlay ile bildir --}}
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-                                    <span class="absolute bottom-2 right-2 inline-flex items-center gap-1 text-[10px] text-white/90 bg-black/40 backdrop-blur px-1.5 py-0.5 rounded">
-                                        📍 {{ $uni['city_name'] }}
-                                    </span>
-                                @endif
-                            @else
-                                <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
-                                    <span class="text-4xl font-extrabold text-white/90 drop-shadow text-center px-4">
-                                        {{ mb_substr($uni['name_de'], 0, 2) }}
-                                    </span>
-                                </div>
-                            @endif
-
-                            {{-- Type badge top-left --}}
-                            @if($uni['type'])
-                                <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded {{ $typeBadgeColor($uni['type']) }} text-xs font-semibold ring-1 ring-white/40 shadow-sm">
-                                    {{ $typeLabel($uni['type']) }}
-                                </span>
-                            @endif
-
-                            {{-- Logo overlay bottom-left (varsa) --}}
-                            @if($uni['logo_url'] && !empty($uni['image_url']))
-                                <div class="absolute bottom-2 left-2 w-12 h-12 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
-                                    <img src="{{ $uni['logo_url'] }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
-                                </div>
-                            @endif
-                        </div>
-
-                        {{-- Text content --}}
-                        <div class="p-4 flex-1 flex flex-col">
-                            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight line-clamp-2 mb-1">
-                                {{ $uni['name_de'] }}
-                            </h3>
-                            <p class="text-xs text-gray-500 mb-3">
-                                📍 {{ $uni['city_name'] ?? __('Unknown') }}@if (!empty($uni['state_name'])) · {{ $uni['state_name'] }}@endif
-                            </p>
-                            <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
-                                @if($uni['student_count'])
-                                    <span class="text-accent-600 font-bold">
-                                        {{ number_format($uni['student_count']) }}
-                                        <span class="font-normal text-gray-500">{{ __('students') }}</span>
-                                    </span>
-                                @else
-                                    <span></span>
-                                @endif
-                                @if($uni['founded_year'])
-                                    <span class="text-gray-500">est. {{ $uni['founded_year'] }}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-
-            <div class="mt-8">{{ $universities->links() }}</div>
-        @else
-            <x-empty-state
-                icon="🎓"
-                :title="__('No universities match these criteria.')"
-                :description="__('Try loosening one of the filters or browse all universities below.')"
-                :actions="[
-                    ['label' => __('Reset all filters'), 'url' => route('universities.index'), 'primary' => true, 'icon' => '↺'],
-                    ['label' => __('Browse by city'), 'url' => route('cities.index'), 'icon' => '🏙️'],
-                    ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
-                ]"
-            />
-        @endif
     </div>
 </section>
 
