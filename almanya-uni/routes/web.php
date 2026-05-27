@@ -202,6 +202,32 @@ Route::get('/sitemap-content.xml', [SitemapController::class, 'content'])->name(
 Route::get('/sitemap-landings.xml', [SitemapController::class, 'landings'])->name('sitemap.landings');
 Route::get('/sitemap-glossary.xml', [SitemapController::class, 'glossary'])->name('sitemap.glossary');
 
+// Token-gated image cache trigger (KAS has no SSH/cron — fire via curl after deploy)
+//   curl "https://applytogerman.com/_system/cache-hot-images?token=XXX&limit=20"
+Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    // Long-running; raise PHP limits
+    @set_time_limit(600);
+    @ini_set('memory_limit', '512M');
+
+    $exit = \Illuminate\Support\Facades\Artisan::call('images:cache-hot', array_filter([
+        '--limit' => $request->query('limit'),
+        '--width' => $request->query('width'),
+        '--logo-width' => $request->query('logo-width'),
+        '--quality' => $request->query('quality'),
+        '--force' => $request->boolean('force'),
+    ], fn ($v) => $v !== null && $v !== false));
+
+    return response()->json([
+        'exit' => $exit,
+        'output' => \Illuminate\Support\Facades\Artisan::output(),
+    ]);
+})->middleware('throttle:3,60');
+
 // Dual-brand robots.txt — absolute Sitemap URL + brand-aware
 Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
     $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));

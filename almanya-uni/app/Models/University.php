@@ -192,10 +192,16 @@ class University extends Model
         return (bool) $this->is_active;
     }
 
-    // ── HTTPS-force + Wikimedia thumbnail size accessors ──
-    // (mixed-content fix + image delivery savings — Lighthouse "1.26 MiB")
+    // ── Local WebP cache → HTTPS-force → Wikimedia thumb fallback ──
     public function getImageUrlAttribute(?string $value): ?string
     {
+        if ($this->slug) {
+            $localFile = public_path("img/cache/unis/{$this->slug}.webp");
+            if (file_exists($localFile)) {
+                return asset("img/cache/unis/{$this->slug}.webp");
+            }
+        }
+
         if (! $value) return null;
         $value = preg_replace('#^http://#i', 'https://', $value);
         return wikimedia_thumb($value, 600); // Uni building photos: 600px (cards display ~290-400px)
@@ -203,6 +209,13 @@ class University extends Model
 
     public function getLogoUrlAttribute(?string $value): ?string
     {
+        if ($this->slug) {
+            $localFile = public_path("img/cache/uni-logos/{$this->slug}.webp");
+            if (file_exists($localFile)) {
+                return asset("img/cache/uni-logos/{$this->slug}.webp");
+            }
+        }
+
         if (! $value) return null;
         $value = preg_replace('#^http://#i', 'https://', $value);
         return wikimedia_thumb($value, 100); // Logos display at 36px — 100px gives 2x retina headroom

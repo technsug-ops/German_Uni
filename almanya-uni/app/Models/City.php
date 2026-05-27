@@ -71,10 +71,17 @@ class City extends Model
         return $this->hasOne(CityCostData::class);
     }
 
-    // HTTPS-force + Wikimedia thumbnail size accessor
-    // (mixed-content fix + image delivery savings — Lighthouse "1.26 MiB" on home page)
+    // HTTPS-force + local WebP cache (Wikimedia rate-limit immunity) + thumbnail size accessor
     public function getImageUrlAttribute(?string $value): ?string
     {
+        // Local WebP cache (populated by `php artisan images:cache-hot`)
+        if ($this->slug) {
+            $localFile = public_path("img/cache/cities/{$this->slug}.webp");
+            if (file_exists($localFile)) {
+                return asset("img/cache/cities/{$this->slug}.webp");
+            }
+        }
+
         if (! $value) return null;
         $value = preg_replace('#^http://#i', 'https://', $value);
         return wikimedia_thumb($value, 500); // Cards display 186-290px — 500px covers retina
