@@ -226,7 +226,7 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
         'exit' => $exit,
         'output' => \Illuminate\Support\Facades\Artisan::output(),
     ]);
-})->middleware('throttle:3,60');
+})->middleware('throttle:30,1'); // 30 req / minute (token already protects against abuse)
 
 // Dual-brand robots.txt — absolute Sitemap URL + brand-aware
 Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
