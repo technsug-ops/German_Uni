@@ -2,6 +2,87 @@
 @import '@fontsource-variable/inter';
 @import 'tailwindcss';
 
+/* Dark mode: opt-in via .dark class on <html> (not media query — user toggle wins) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Dark mode base overrides ───
+   Site has hundreds of views using bg-white/text-gray-900/border-gray-200 patterns.
+   Updating each file is impractical. Below auto-invert the most common utility
+   combos when .dark is on <html>. Specific views can still override with dark:* utilities. */
+@layer base {
+    .dark body { background-color: rgb(3 7 18); color: rgb(243 244 246); }
+
+    /* Backgrounds */
+    .dark .bg-white { background-color: rgb(17 24 39) !important; }
+    .dark .bg-gray-50 { background-color: rgb(31 41 55) !important; }
+    .dark .bg-gray-100 { background-color: rgb(31 41 55) !important; }
+
+    /* Text */
+    .dark .text-gray-900 { color: rgb(243 244 246) !important; }
+    .dark .text-gray-800 { color: rgb(229 231 235) !important; }
+    .dark .text-gray-700 { color: rgb(209 213 219) !important; }
+    .dark .text-gray-600 { color: rgb(156 163 175) !important; }
+    .dark .text-gray-500 { color: rgb(156 163 175) !important; }
+    .dark .text-gray-400 { color: rgb(107 114 128) !important; }
+
+    /* Borders */
+    .dark .border-gray-100 { border-color: rgb(55 65 81) !important; }
+    .dark .border-gray-200 { border-color: rgb(55 65 81) !important; }
+    .dark .border-gray-300 { border-color: rgb(75 85 99) !important; }
+
+    /* Hovers — gray-50 hover state shouldn't lighten in dark mode */
+    .dark .hover\:bg-gray-50:hover { background-color: rgb(55 65 81) !important; }
+    .dark .hover\:bg-gray-100:hover { background-color: rgb(55 65 81) !important; }
+
+    /* Shadows — too bright over dark backgrounds, soften */
+    .dark .shadow,
+    .dark .shadow-md,
+    .dark .shadow-lg,
+    .dark .shadow-xl,
+    .dark .shadow-2xl { box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5) !important; }
+
+    /* Primary-50 (very light blue used for soft callouts) — too bright in dark */
+    .dark .bg-primary-50 { background-color: rgb(30 58 138 / 0.15) !important; }
+    .dark .text-primary-700 { color: rgb(147 197 253) !important; } /* lighter blue */
+    .dark .text-primary-800 { color: rgb(147 197 253) !important; }
+    .dark .text-primary-900 { color: rgb(191 219 254) !important; }
+    .dark .border-primary-100 { border-color: rgb(30 58 138 / 0.4) !important; }
+    .dark .border-primary-200 { border-color: rgb(30 58 138 / 0.5) !important; }
+
+    /* Red/error tints — keep visible on dark */
+    .dark .bg-red-50 { background-color: rgb(127 29 29 / 0.25) !important; }
+    .dark .border-red-200 { border-color: rgb(127 29 29 / 0.6) !important; }
+    .dark .text-red-900 { color: rgb(252 165 165) !important; }
+    .dark .text-red-800 { color: rgb(252 165 165) !important; }
+    .dark .text-red-700 { color: rgb(248 113 113) !important; }
+    .dark .text-red-600 { color: rgb(248 113 113) !important; }
+
+    /* Green/success tints */
+    .dark .bg-green-50 { background-color: rgb(20 83 45 / 0.25) !important; }
+    .dark .border-green-200 { border-color: rgb(20 83 45 / 0.6) !important; }
+    .dark .text-green-800 { color: rgb(134 239 172) !important; }
+    .dark .text-green-700 { color: rgb(134 239 172) !important; }
+
+    /* Amber tints (used for premium, warning) */
+    .dark .bg-amber-50 { background-color: rgb(120 53 15 / 0.25) !important; }
+    .dark .border-amber-100 { border-color: rgb(120 53 15 / 0.6) !important; }
+    .dark .border-amber-200 { border-color: rgb(120 53 15 / 0.6) !important; }
+    .dark .text-amber-700 { color: rgb(253 230 138) !important; }
+    .dark .text-amber-800 { color: rgb(253 230 138) !important; }
+    .dark .text-amber-900 { color: rgb(254 243 199) !important; }
+
+    /* Input fields — placeholder + dark variant */
+    .dark input:not([type=submit]):not([type=button]):not([type=checkbox]):not([type=radio]),
+    .dark textarea,
+    .dark select {
+        background-color: rgb(31 41 55) !important;
+        color: rgb(243 244 246) !important;
+        border-color: rgb(75 85 99) !important;
+    }
+    .dark input::placeholder,
+    .dark textarea::placeholder { color: rgb(107 114 128) !important; }
+}
+
 /* Alias 'Inter Variable' (FontSource's font-family) to plain 'Inter' so existing Tailwind --font-sans config keeps working */
 :root {
     --font-sans-fallback: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';

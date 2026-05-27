@@ -2,6 +2,8 @@
     "Skip to content": "İçeriğe atla",
     "Sending…": "Gönderiliyor…",
     "Loading…": "Yükleniyor…",
+    "Theme": "Tema",
+    "Switch theme": "Tema değiştir",
     ":count error|:count errors prevented submission": "{1} :count hata gönderimi engelledi|[2,*] :count hata gönderimi engelledi",
     ":brand on your home screen": ":brand ana ekranında",
     "Install as an app — faster, offline-ready, no app store needed.": "Uygulama olarak yükle — daha hızlı, çevrimdışı çalışır, app store gerekmez.",

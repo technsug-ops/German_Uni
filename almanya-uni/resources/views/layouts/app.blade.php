@@ -10,6 +10,19 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>@yield('title', brand('name'))</title>
 
+    {{-- Theme bootstrap (BEFORE first paint to avoid flash) — reads localStorage + prefers-color-scheme --}}
+    <script>
+        (function () {
+            try {
+                var pref = localStorage.getItem('theme');
+                var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (pref === 'dark' || (!pref && systemDark)) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) { /* localStorage blocked: stay light */ }
+        })();
+    </script>
+
     {{-- Inter font is self-hosted via FontSource (resources/css/app.css), no external font CDN --}}
 
     <style>[x-cloak]{display:none!important}</style>
@@ -82,7 +95,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased transition-colors">
 
     {{-- Skip-to-content link (a11y: visible on keyboard focus) --}}
     <a href="#main-content"
@@ -318,6 +331,9 @@
                     </div>
                 </div>
                 @endif
+
+                {{-- Theme toggle (light/dark) --}}
+                <x-theme-toggle />
 
                 {{-- Header search — açılır kutu --}}
                 <div class="relative" id="headerSearchWrap">
@@ -832,6 +848,27 @@
             });
         });
     }
+    </script>
+
+    {{-- Theme toggle handler — clicks the #themeToggle button to flip .dark class + persist --}}
+    <script>
+    (function () {
+        var btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+            var isDark = document.documentElement.classList.toggle('dark');
+            try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+        });
+        // Listen for OS-level theme changes when user hasn't set explicit preference
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+                try {
+                    if (localStorage.getItem('theme')) return; // user has explicit pref
+                    document.documentElement.classList.toggle('dark', e.matches);
+                } catch (err) {}
+            });
+        }
+    })();
     </script>
 
     {{-- ════════ Feedback Widget ════════ --}}
