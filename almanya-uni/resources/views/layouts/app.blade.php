@@ -274,6 +274,16 @@
                 @endif
             @endif
 
+            {{-- Premium / Pricing CTA — standalone link, MenuPage'den toggle edilebilir --}}
+            @php $pricingItem = \App\Models\MenuPage::findByKey('pricing'); @endphp
+            @if ($pricingItem && ($pricingUrl = $pricingItem->resolved_url))
+            <a href="{{ $pricingUrl }}"
+               class="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-md border-2 border-amber-400/60 hover:border-amber-300 hover:bg-amber-500/10 text-amber-200 hover:text-white font-semibold text-sm transition whitespace-nowrap"
+               title="{{ $pricingItem->label }}{{ $pricingItem->description ? ' — ' . $pricingItem->description : '' }}">
+                {{ $pricingItem->icon ?: '✨' }} {{ $pricingItem->label }}
+            </a>
+            @endif
+
             {{-- Right side: auth-aware --}}
             <div class="hidden md:flex items-center gap-3 text-sm">
                 {{-- Locale switcher — sadece birden çok aktif dil varsa göster --}}
@@ -459,6 +469,19 @@
                     @endif
                 @endforeach
                 </div>
+
+                {{-- Premium CTA — mobil drawer'da standalone link --}}
+                @php $pricingMobile = \App\Models\MenuPage::findByKey('pricing'); @endphp
+                @if ($pricingMobile && ($pricingMobileUrl = $pricingMobile->resolved_url))
+                    <a href="{{ $pricingMobileUrl }}"
+                       class="mt-3 flex items-center gap-2 px-3 py-2.5 rounded-lg bg-gradient-to-r from-amber-500/20 to-amber-600/20 border border-amber-400/40 text-amber-200 hover:bg-amber-500/30 hover:text-white transition font-semibold">
+                        <span>{{ $pricingMobile->icon ?: '✨' }}</span>
+                        <span class="flex-1">{{ $pricingMobile->label }}</span>
+                        @if ($pricingMobile->description)
+                            <span class="text-[10px] text-amber-300/80 font-normal">{{ $pricingMobile->description }}</span>
+                        @endif
+                    </a>
+                @endif
 
                 {{-- Dil değiştirici — kompakt segmented control --}}
                 @if ($activeLocales->count() > 1)
@@ -767,6 +790,9 @@
                         <li><a href="{{ route('about') }}" class="hover:text-white transition" title="{{ __('About Us') }} — {{ brand('name') }}">{{ __('About Us') }}</a></li>
                         <li><a href="mailto:technsug@gmail.com" class="hover:text-white transition" title="{{ __('Contact') }} — technsug@gmail.com">{{ __('Contact') }}</a></li>
                         <li><a href="mailto:technsug@gmail.com?subject=Contribute" class="hover:text-white transition" title="{{ __('Contribute') }} — {{ __('Help improve the site') }}">{{ __('Contribute') }}</a></li>
+                        @if (\App\Models\MenuPage::isKeyEnabled('pricing'))
+                        <li><a href="{{ route('pricing') }}" class="text-amber-300 hover:text-amber-200 transition font-semibold" title="{{ __('Premium') }} — {{ __('Mentor sessions, ad-free, 24h SLA') }}">✨ {{ __('Premium') }}</a></li>
+                        @endif
                         <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition" title="{{ __('Privacy Policy') }}">{{ __('Privacy Policy') }}</a></li>
                         <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition" title="{{ __('Terms of Use') }}">{{ __('Terms of Use') }}</a></li>
                         <li><a href="{{ route('legal.cookies') }}" class="hover:text-white transition" title="{{ __('Cookie Policy') }}">{{ __('Cookie Policy') }}</a></li>
