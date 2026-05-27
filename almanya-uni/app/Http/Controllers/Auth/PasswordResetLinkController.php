@@ -28,6 +28,7 @@ class PasswordResetLinkController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email'],
+            'captcha_answer' => ['required', new \App\Rules\MathCaptchaRule()],
         ]);
 
         // We will send the password reset link to this user. Once we have attempted

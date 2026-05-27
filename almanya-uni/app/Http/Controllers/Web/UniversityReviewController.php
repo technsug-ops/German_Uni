@@ -29,6 +29,7 @@ class UniversityReviewController extends Controller
             'author_status'  => 'nullable|in:current_student,alumni,admitted,applicant',
             'study_year'     => 'nullable|integer|min:1990|max:' . (now()->year + 1),
             'consent'        => 'accepted', // KVKK + content policy onayı
+            'captcha_answer' => ['required', new \App\Rules\MathCaptchaRule()],
         ]);
 
         // Email başına 1 review per uni — dupe önleme (DB unique zaten engelliyor ama UX iyi mesaj)

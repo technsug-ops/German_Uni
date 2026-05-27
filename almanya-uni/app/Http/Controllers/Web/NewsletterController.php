@@ -26,6 +26,7 @@ class NewsletterController extends Controller
             'source'          => ['nullable', 'string', 'max:50'],
             'website'         => ['nullable', 'max:0'],  // 🍯 honeypot — bot doldurursa max=0 fail
             'gdpr_consent'    => ['accepted'],
+            'captcha_answer'  => ['required', new \App\Rules\MathCaptchaRule()],
         ], [
             'email.email'        => 'Geçerli bir e-posta adresi gir.',
             'website.max'        => 'Spam algılandı.',

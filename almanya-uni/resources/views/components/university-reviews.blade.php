@@ -230,6 +230,8 @@
                     </label>
                 </div>
 
+                <x-math-captcha compact />
+
                 <button type="submit" class="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-2.5 rounded-lg transition shadow-sm">
                     {{ __('Submit review') }} →
                 </button>

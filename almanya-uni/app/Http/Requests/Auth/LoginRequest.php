@@ -30,6 +30,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'captcha_answer' => ['required', new \App\Rules\MathCaptchaRule()],
         ];
     }
 

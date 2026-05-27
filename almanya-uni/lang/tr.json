@@ -1,4 +1,8 @@
 {
+    "Bot check": "Bot kontrolü",
+    "Bot check: how much is :a + :b?": "Bot kontrolü: :a + :b kaç eder?",
+    "Bot check failed — please solve the math question again.": "Bot kontrolü başarısız — matematik sorusunu tekrar çöz.",
+    "Your answer": "Cevabın",
     "\"Silicon Saxony\" — Europe's #1 microchip manufacturing region. Infineon, GlobalFoundries, Bosch chip fab. TU Dresden Cluster of Excellence.": "\"Silikon Sachsen\" — Avrupa'nın #1 mikroçip üretim bölgesi. Infineon, GlobalFoundries, Bosch chip fabrikası. TU Dresden cluster of excellence.",
     "\"Well done, you are very skilled\"": "\"Eline sağlık, çok yeteneklisin\"",
     "\"You are very creative\"": "\"Çok yaratıcısın\"",
