@@ -279,6 +279,92 @@ Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
         ->header('Content-Type', 'text/plain; charset=utf-8');
 });
 
+// llms.txt — AI/LLM crawler için içerik haritası (https://llmstxt.org/ standardı)
+// Brand-aware: her marka için ayrı içerik
+Route::get('/llms.txt', function (\Illuminate\Http\Request $request) {
+    $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
+    $domains = config('brand.domains', []);
+    $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
+    $brands = config('brand.brands', []);
+    $brand = $brands[$brandKey] ?? [];
+    $name = $brand['name'] ?? 'AlmanyaUni';
+    $domain = $brand['domain'] ?? $host;
+    $base = $request->getScheme() . '://' . $domain;
+
+    $totals = cache()->remember('llms_txt_totals_v1', now()->addHours(24), fn () => [
+        'unis' => \App\Models\University::where('is_active', 1)->count(),
+        'programs' => \App\Models\Program::where('is_active', 1)->count(),
+        'programs_en' => \App\Models\Program::where('is_active', 1)->whereIn('language', ['en', 'both'])->count(),
+        'cities' => \App\Models\City::where('is_active', 1)->count(),
+        'fields' => \App\Models\FieldOfStudy::where('is_active', 1)->count(),
+        'faqs' => \App\Models\Faq::where('has_answer', 1)->count(),
+        'scholarships' => \App\Models\Scholarship::whereNull('removed_at')->count(),
+    ]);
+
+    $content = <<<MD
+# {$name}
+
+> {$name} is a comprehensive guide for international students applying to German universities. We provide data on {$totals['unis']} active universities, {$totals['programs']} study programs ({$totals['programs_en']} taught in English), {$totals['cities']} student cities, scholarships, visa procedures, and cost-of-living for studying in Germany.
+
+## About
+
+- [About Us]({$base}/about): Mission, team, and editorial standards
+- [How to Apply]({$base}/blog): Guides for applying to German universities
+- [FAQ]({$base}/faqs): {$totals['faqs']} answered questions from real applicants
+
+## Universities
+
+- [All Universities]({$base}/universities): Browse {$totals['unis']} active German universities
+- [Compare]({$base}/compare): Side-by-side comparison of 2-4 universities
+- [Rankings]({$base}/rankings): 36 rankings (QS, THE, by field, community favorites)
+
+## Programs & Study Options
+
+- [All Programs]({$base}/programs): {$totals['programs']} programs (Bachelor, Master, PhD)
+- [English-Taught Programs]({$base}/programs?language=en): {$totals['programs_en']} programs in English
+- [Fields of Study]({$base}/fields): {$totals['fields']} academic fields
+
+## Cities & Living
+
+- [Student Cities]({$base}/cities): {$totals['cities']} cities with cost-of-living data
+- [Cost of Living]({$base}/tools/cost-of-living): Monthly expense calculator (DAAD official data)
+- [Housing]({$base}/housing): Student accommodation providers and tips
+
+## Tools & Calculators
+
+- [Application Calendar]({$base}/tools/deadlines): Upcoming deadlines for 7,000+ programs
+- [Visa Cost Calculator]({$base}/tools/visa-cost): Total cost of the German student visa
+- [Blocked Account Finder]({$base}/tools/sperrkonto): Compare Sperrkonto providers
+- [Grade Converter]({$base}/tools/grade-converter): Convert to German 1-5 grade system
+- [Eligibility Checker]({$base}/tools/eligibility-checker): Diploma recognition (Anabin-based)
+- [Studienkolleg Finder]({$base}/tools/studienkolleg): Foundation year programs
+- [University Match Quiz]({$base}/tools/recommendation): Find universities matching your profile
+
+## Scholarships
+
+- [Scholarships]({$base}/scholarships): {$totals['scholarships']} active scholarships
+- [DAAD Guide]({$base}/scholarships/daad): German Academic Exchange Service grants
+
+## Glossary
+
+- [Germany Education Glossary]({$base}/sozluk): Key terms (APS, uni-assist, Sperrkonto, Studienkolleg, Blue Card, DAAD, Anabin, ECTS)
+
+## Reference
+
+- [Sitemap]({$base}/sitemap.xml): Full site index (split: content, landings, glossary)
+- [Robots]({$base}/robots.txt): Crawl rules
+
+## Editorial Notes
+
+- Languages: Turkish (primary), English, German
+- Update frequency: Daily for programs, weekly for universities, on event for FAQs
+- Sources: DAAD official data, Wikidata, university partner API, official Bundesländer education data
+- Authority: 10+ years education consulting experience for students applying to Germany
+MD;
+
+    return response($content, 200)->header('Content-Type', 'text/markdown; charset=utf-8');
+});
+
 // Blog yardımcı oldu mu? oyu (Alpine widget'tan POST)
 Route::post('/api/blog-feedback', [\App\Http\Controllers\Web\BlogController::class, 'feedback'])
     ->middleware('throttle:30,1')

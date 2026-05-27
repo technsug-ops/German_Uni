@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', brand('name') . ' — ' . __('Studying in Germany Guide'))
+@section('title', brand('name') . ' — ' . __('Germany University, Cost & Scholarship Guide'))
 
 <x-seo
     :description="__('Germany university, visa, and cost of living guide for international students. :unis universities, :faqs answered questions, interactive tools.', ['unis' => $totals['universities'], 'faqs' => $faq_stats['total']])"
