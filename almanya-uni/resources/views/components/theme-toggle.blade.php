@@ -5,7 +5,7 @@
     to prevent flash-of-wrong-theme (see layouts/app.blade.php head).
 --}}
 <button type="button" id="themeToggle"
-        class="p-2 hover:bg-white/10 rounded-md transition inline-flex items-center justify-center"
+        class="min-w-[44px] min-h-[44px] hover:bg-white/10 rounded-md transition inline-flex items-center justify-center"
         title="{{ __('Theme') }}"
         aria-label="{{ __('Switch theme') }}">
     {{-- Sun (visible in dark mode) --}}

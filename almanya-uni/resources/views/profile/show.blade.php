@@ -314,7 +314,19 @@
                 <a href="{{ route('profile.edit', ['tab' => 'favorites']) }}" class="text-xs font-semibold text-primary-600 hover:text-primary-800">{{ __('All') }} →</a>
             </div>
             @if ($recent_favorites->isEmpty())
-                <p class="text-sm text-gray-500">{!! __('You have not added any favorites yet. On a university, program or profession page click the <strong>❤ Favorite</strong> button.') !!}</p>
+                <div class="text-center py-8">
+                    <div class="text-4xl mb-3" aria-hidden="true">❤️</div>
+                    <p class="text-sm font-semibold text-gray-900 mb-1">{{ __('No favorites yet') }}</p>
+                    <p class="text-xs text-gray-500 mb-4 max-w-sm mx-auto">{!! __('Click the <strong>❤ Favorite</strong> button on a university, program or profession to save it here.') !!}</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <a href="{{ route('universities.index') }}" class="px-3 py-1.5 text-xs bg-primary-600 hover:bg-primary-700 text-white rounded-md font-semibold transition">
+                            🎓 {{ __('Find universities') }}
+                        </a>
+                        <a href="{{ route('programs.index') }}" class="px-3 py-1.5 text-xs bg-white border border-gray-300 hover:border-primary-400 text-gray-700 rounded-md font-semibold transition">
+                            📚 {{ __('Browse programs') }}
+                        </a>
+                    </div>
+                </div>
             @else
                 <ul class="space-y-2">
                     @foreach ($recent_favorites as $f)

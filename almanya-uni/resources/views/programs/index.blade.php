@@ -433,13 +433,16 @@
     </div>
 
     @if ($programs->isEmpty())
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
-            <p class="text-yellow-900 font-semibold mb-2">{{ __('No results found.') }}</p>
-            <p class="text-yellow-800 text-sm mb-4">{{ __('Try relaxing the filters or change your search term.') }}</p>
-            <a href="{{ route('programs.index') }}" class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-5 py-2 rounded font-semibold transition">
-                {{ __('All Programs') }}
-            </a>
-        </div>
+        <x-empty-state
+            icon="📚"
+            :title="__('No results found.')"
+            :description="__('Try relaxing the filters or change your search term.')"
+            :actions="[
+                ['label' => __('All Programs'), 'url' => route('programs.index'), 'primary' => true],
+                ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
+                ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+            ]"
+        />
     @else
         <div class="space-y-3">
             @foreach ($programs as $p)

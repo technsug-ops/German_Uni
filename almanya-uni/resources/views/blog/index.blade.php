@@ -30,10 +30,15 @@
         <!-- Posts -->
         <div class="lg:col-span-3">
             @if ($posts->isEmpty())
-                <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-8 text-center">
-                    <p class="text-yellow-900 font-semibold">Henüz yazı yok.</p>
-                    <p class="text-gray-700 mt-2">Yakında bu kategoride yeni içerikler olacak.</p>
-                </div>
+                <x-empty-state
+                    icon="✍️"
+                    :title="__('No posts yet.')"
+                    :description="__('New content for this category is coming soon. Browse our FAQ in the meantime.')"
+                    :actions="[
+                        ['label' => __('FAQ'), 'url' => route('faqs.index'), 'primary' => true, 'icon' => '❓'],
+                        ['label' => __('All blog posts'), 'url' => route('blog.index')],
+                    ]"
+                />
             @else
                 <div class="space-y-6">
                     @foreach ($posts as $post)

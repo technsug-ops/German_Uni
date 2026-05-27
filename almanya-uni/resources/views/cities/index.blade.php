@@ -132,10 +132,16 @@
         </div>
 
         @if($cities->isEmpty())
-            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-8 text-center text-yellow-800">
-                <p class="text-lg">{{ __('No city matches these filters.') }}</p>
-                <a href="{{ route('cities.index') }}" class="inline-block mt-3 text-primary-600 hover:underline">{{ __('Clear filters') }} →</a>
-            </div>
+            <x-empty-state
+                icon="🏙️"
+                :title="__('No city matches these filters.')"
+                :description="__('Try removing a filter or browse universities and states.')"
+                :actions="[
+                    ['label' => __('Clear filters'), 'url' => route('cities.index'), 'primary' => true, 'icon' => '↺'],
+                    ['label' => __('States'), 'url' => route('states.index'), 'icon' => '🗺️'],
+                    ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+                ]"
+            />
         @else
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 @foreach($cities as $city)

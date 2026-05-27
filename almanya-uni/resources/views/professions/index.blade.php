@@ -92,12 +92,15 @@
     </div>
 
     @if ($professions->isEmpty())
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
-            <p class="text-yellow-900 font-semibold mb-2">{{ __('No profession found.') }}</p>
-            <a href="{{ route('professions.index') }}" class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-5 py-2 rounded font-semibold">
-                {{ __('All Professions') }}
-            </a>
-        </div>
+        <x-empty-state
+            icon="💼"
+            :title="__('No profession found.')"
+            :description="__('Try the full profession list or browse by field of study.')"
+            :actions="[
+                ['label' => __('All Professions'), 'url' => route('professions.index'), 'primary' => true],
+                ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
+            ]"
+        />
     @else
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($professions as $p)
