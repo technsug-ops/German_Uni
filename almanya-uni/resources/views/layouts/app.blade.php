@@ -967,6 +967,9 @@
     })();
     </script>
 
+    {{-- ════════ PWA Install Prompt ════════ --}}
+    <x-pwa-install-prompt />
+
     {{-- ════════ KVKK Cookie Consent ════════ --}}
     {{-- Mobile: top (feedback button alt sağda olduğu için üstten girer) --}}
     {{-- Desktop: bottom-left (max-w-md, feedback button sağ altta kalabilir) --}}

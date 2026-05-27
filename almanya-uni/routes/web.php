@@ -199,6 +199,47 @@ $routes = function () {
 
 // ─────────── Sitemap & API (locale'siz, tek versiyon) ───────────
 
+// Brand-aware PWA manifest — name/short_name/lang/icons change per domain & locale
+Route::get('/manifest.json', function (\Illuminate\Http\Request $request) {
+    $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
+    $domains = config('brand.domains', []);
+    $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
+    $brands = config('brand.brands', []);
+    $b = $brands[$brandKey] ?? [];
+
+    $name = $b['name'] ?? 'AlmanyaUni';
+    $shortName = $name;
+    $description = $b['tagline'] ?? __('University guide for Germany');
+    $themeColor = $b['theme_color'] ?? '#1e40af';
+    $logo = $b['logo'] ?? '/img/logos/almanyauni.svg';
+
+    return response()->json([
+        'name' => $name,
+        'short_name' => $shortName,
+        'description' => is_array($description) ? ($description[app()->getLocale()] ?? reset($description)) : $description,
+        'start_url' => '/',
+        'scope' => '/',
+        'display' => 'standalone',
+        'orientation' => 'portrait',
+        'background_color' => '#ffffff',
+        'theme_color' => $themeColor,
+        'lang' => app()->getLocale() . '-' . strtoupper(app()->getLocale()),
+        'dir' => 'ltr',
+        'categories' => ['education', 'lifestyle', 'reference'],
+        'icons' => [
+            ['src' => $logo, 'sizes' => 'any', 'type' => 'image/svg+xml', 'purpose' => 'any'],
+            ['src' => '/img/icons/icon-192.png', 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any maskable'],
+            ['src' => '/img/icons/icon-512.png', 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any maskable'],
+        ],
+        'shortcuts' => [
+            ['name' => __('Universities'), 'url' => '/' . app()->getLocale() . '/universities'],
+            ['name' => __('Cities'), 'url' => '/' . app()->getLocale() . '/cities'],
+            ['name' => __('Tools'), 'url' => '/' . app()->getLocale() . '/tools'],
+            ['name' => __('Scholarships'), 'url' => '/' . app()->getLocale() . '/scholarships'],
+        ],
+    ], 200, ['Content-Type' => 'application/manifest+json; charset=utf-8']);
+});
+
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/sitemap-content.xml', [SitemapController::class, 'content'])->name('sitemap.content');
 Route::get('/sitemap-landings.xml', [SitemapController::class, 'landings'])->name('sitemap.landings');
