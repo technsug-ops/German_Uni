@@ -56,9 +56,9 @@ class CacheHotImages extends Command
             if (! $force && file_exists($localPath)) {
                 $stats['skipped']++;
             } else {
-                $remoteUrl = wikimedia_thumb($c->getRawOriginal('image_url'), $width);
+                $remoteUrl = wikimedia_original($c->getRawOriginal('image_url'));
                 $remoteUrl = preg_replace('#^http://#i', 'https://', $remoteUrl);
-                if ($this->downloadAndConvert($remoteUrl, $localPath, $quality)) {
+                if ($this->downloadAndConvert($remoteUrl, $localPath, $quality, $width)) {
                     $stats['cities']++;
                 } else {
                     $stats['failed']++;
@@ -83,9 +83,9 @@ class CacheHotImages extends Command
                 if (! $force && file_exists($localPath)) {
                     $stats['skipped']++;
                 } else {
-                    $remoteUrl = wikimedia_thumb($u->getRawOriginal('image_url'), $width);
+                    $remoteUrl = wikimedia_original($u->getRawOriginal('image_url'));
                     $remoteUrl = preg_replace('#^http://#i', 'https://', $remoteUrl);
-                    if ($this->downloadAndConvert($remoteUrl, $localPath, $quality)) {
+                    if ($this->downloadAndConvert($remoteUrl, $localPath, $quality, $width)) {
                         $stats['unis']++;
                     } else {
                         $stats['failed']++;
@@ -99,9 +99,9 @@ class CacheHotImages extends Command
                 if (! $force && file_exists($localPath)) {
                     $stats['skipped']++;
                 } else {
-                    $remoteUrl = wikimedia_thumb($u->getRawOriginal('logo_url'), $logoWidth);
+                    $remoteUrl = wikimedia_original($u->getRawOriginal('logo_url'));
                     $remoteUrl = preg_replace('#^http://#i', 'https://', $remoteUrl);
-                    if ($this->downloadAndConvert($remoteUrl, $localPath, $quality)) {
+                    if ($this->downloadAndConvert($remoteUrl, $localPath, $quality, $logoWidth)) {
                         $stats['logos']++;
                     } else {
                         $stats['failed']++;
@@ -126,10 +126,14 @@ class CacheHotImages extends Command
         return self::SUCCESS;
     }
 
-    private function downloadAndConvert(string $url, string $destPath, int $quality): bool
+    /**
+     * Download Wikipedia original, decode via GD, resize down to target width
+     * (preserving aspect ratio), encode as WebP. Skips upscaling.
+     */
+    private function downloadAndConvert(string $url, string $destPath, int $quality, int $targetWidth): bool
     {
         try {
-            $response = Http::timeout(20)
+            $response = Http::timeout(45)
                 ->withHeaders(['User-Agent' => 'AlmanyaUni/1.0 (image cache; tech@applytogerman.com)'])
                 ->retry(2, 500)
                 ->get($url);
@@ -143,18 +147,44 @@ class CacheHotImages extends Command
                 return false;
             }
 
-            $img = @imagecreatefromstring($bytes);
-            if (! $img) {
+            $src = @imagecreatefromstring($bytes);
+            if (! $src) {
                 return false;
             }
 
-            // Preserve transparency for PNG-origin
-            imagepalettetotruecolor($img);
-            imagealphablending($img, true);
-            imagesavealpha($img, true);
+            $srcW = imagesx($src);
+            $srcH = imagesy($src);
+            if ($srcW < 1 || $srcH < 1) {
+                imagedestroy($src);
+                return false;
+            }
 
-            $ok = imagewebp($img, $destPath, $quality);
-            imagedestroy($img);
+            // Compute target dimensions, preserve aspect, never upscale
+            $newW = min($targetWidth, $srcW);
+            $newH = (int) round($srcH * ($newW / $srcW));
+
+            if ($newW === $srcW && $newH === $srcH) {
+                // No resize needed
+                imagepalettetotruecolor($src);
+                imagealphablending($src, true);
+                imagesavealpha($src, true);
+                $ok = imagewebp($src, $destPath, $quality);
+                imagedestroy($src);
+                return $ok;
+            }
+
+            // Resize via copyresampled (bicubic-quality)
+            $dst = imagecreatetruecolor($newW, $newH);
+            imagealphablending($dst, false);
+            imagesavealpha($dst, true);
+            $transparent = imagecolorallocatealpha($dst, 0, 0, 0, 127);
+            imagefilledrectangle($dst, 0, 0, $newW, $newH, $transparent);
+
+            imagecopyresampled($dst, $src, 0, 0, 0, 0, $newW, $newH, $srcW, $srcH);
+
+            $ok = imagewebp($dst, $destPath, $quality);
+            imagedestroy($src);
+            imagedestroy($dst);
 
             return $ok;
         } catch (\Throwable $e) {

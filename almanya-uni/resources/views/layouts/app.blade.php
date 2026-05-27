@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ $localeConfig['direction'] ?? 'ltr' }}">
+<html lang="{{ app()->getLocale() }}" dir="{{ $localeConfig['direction'] ?? 'ltr' }}"
+      data-i18n-sending="{{ __('Sending…') }}"
+      data-i18n-loading="{{ __('Loading…') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

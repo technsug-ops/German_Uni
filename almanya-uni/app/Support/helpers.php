@@ -140,6 +140,33 @@ if (! function_exists('localized_url')) {
     }
 }
 
+if (! function_exists('wikimedia_original')) {
+    /**
+     * Convert any Wikimedia URL (thumb or Special:FilePath) to the ORIGINAL file URL.
+     * Wikipedia (2024+) restricts which thumbnail widths are accessible per file —
+     * arbitrary widths often return 400. The ORIGINAL is always 200 OK and we resize
+     * locally with GD. Pass-through for non-Wikimedia URLs.
+     */
+    function wikimedia_original(?string $url): ?string
+    {
+        if (! $url) return $url;
+
+        // Pattern 1 (thumb): .../commons/X/YY/Name.ext/NNNpx-Name.ext → .../commons/X/YY/Name.ext
+        if (preg_match('#^(https?://upload\.wikimedia\.org/wikipedia/commons)/thumb/([0-9a-f]/[0-9a-f]{2})/([^/]+)/\d+px-[^/]+$#i', $url, $m)) {
+            return $m[1] . '/' . $m[2] . '/' . $m[3];
+        }
+
+        // Pattern 2 (Special:FilePath): strip width query param. Resolves via redirect to upload.wikimedia.org/full.
+        if (str_contains($url, 'commons.wikimedia.org/wiki/Special:FilePath')) {
+            $url = preg_replace('/[?&]width=\d+/', '', $url);
+            return rtrim($url, '?&');
+        }
+
+        // Pattern 3 (already original): pass-through (it's already /commons/X/YY/Name.ext with no /thumb/)
+        return $url;
+    }
+}
+
 if (! function_exists('wikimedia_thumb')) {
     /**
      * Rewrite a Wikimedia image URL to request a smaller thumbnail.
