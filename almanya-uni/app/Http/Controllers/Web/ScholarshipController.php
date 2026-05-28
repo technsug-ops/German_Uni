@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): View|\Illuminate\Http\Response
     {
         $query = Scholarship::query()
             ->whereNull('removed_at')
@@ -77,7 +77,7 @@ class ScholarshipController extends Controller
             ->paginate(24)
             ->withQueryString();
 
-        return view('scholarships.daad-list', [
+        $viewData = [
             'scholarships' => $scholarships,
             'filters'      => $filters,
             'origins'      => ScholarshipOrigin::orderBy('name_en')->get(['id', 'name_en', 'name_de']),
@@ -85,7 +85,14 @@ class ScholarshipController extends Controller
             'statuses'     => ScholarshipStatus::orderBy('sortierung')->get(['id', 'name_en', 'name_de']),
             'intentions'   => ScholarshipIntention::orderBy('id')->get(['id', 'name_en', 'name_de']),
             'totalActive'  => Scholarship::whereNull('removed_at')->count(),
-        ]);
+        ];
+
+        if ($request->ajax() || $request->wantsJson() || $request->boolean('partial')) {
+            return response(view('scholarships._grid', $viewData)->render())
+                ->header('Content-Type', 'text/html; charset=utf-8');
+        }
+
+        return view('scholarships.daad-list', $viewData);
     }
 
     /**

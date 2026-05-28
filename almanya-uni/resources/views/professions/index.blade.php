@@ -31,7 +31,9 @@
             {{ __('Definition, education path and tasks of :total professions in Germany — from Bundesagentur für Arbeit data.', ['total' => number_format($totals['all'], 0, ',', '.')]) }}
         </p>
 
-        <form method="GET" action="{{ route('professions.index') }}" class="bg-white rounded-xl shadow-2xl p-3 text-gray-900">
+        <form method="GET" action="{{ route('professions.index') }}" class="bg-white rounded-xl shadow-2xl p-3 text-gray-900"
+              data-async-filter-form="#async-filter-results"
+              data-no-loading>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                 <div class="md:col-span-7 flex items-center px-3 border border-gray-300 rounded-lg">
                     <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -81,89 +83,8 @@
 </section>
 
 <div class="max-w-[1400px] mx-auto px-4 py-8">
-    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
-        <p class="text-sm text-gray-700">
-            <strong>{{ number_format($professions->total(), 0, ',', '.') }}</strong> {{ __('professions') }}
-            @if ($hasFilter)
-                <a href="{{ route('professions.index') }}" class="ml-3 text-accent-600 hover:text-accent-800">↻ {{ __('Clear') }}</a>
-            @endif
-        </p>
-        <p class="text-sm text-gray-500">{{ __('Page :current / :total', ['current' => $professions->currentPage(), 'total' => max(1, $professions->lastPage())]) }}</p>
+    <div id="async-filter-results" data-async-filter aria-live="polite" aria-busy="false">
+        @include('professions._grid')
     </div>
-
-    @if ($professions->isEmpty())
-        <x-empty-state
-            icon="💼"
-            :title="__('No profession found.')"
-            :description="__('Try the full profession list or browse by field of study.')"
-            :actions="[
-                ['label' => __('All Professions'), 'url' => route('professions.index'), 'primary' => true],
-                ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
-            ]"
-        />
-    @else
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach ($professions as $p)
-                @php
-                    [$tLabel, $tEmoji, $tColor] = $typeLabels[$p->type ?? 'other'];
-                    // description_de en güvenilir prose; ama "Aufgaben und TätigkeitenTechniker..." gibi başlık-değer bitişikliği var.
-                    if ($p->description_de) {
-                        $raw = $p->description_de;
-                        // Bilinen başlıkları temizle: "X Bla" veya "XBla" → "Bla"
-                        $raw = preg_replace('/^(Studienfach|Aufgaben und Tätigkeiten|Aufgaben und Tatigkeiten|Beruf|Berufsbezeichnung)\s*/u', '', $raw);
-                        // Türkçe varsa onu tercih et (description_tr boşsa name_tr fallback olabilir ileride)
-                        $body = \Illuminate\Support\Str::limit(trim($raw), 180);
-                    } elseif ($p->clean_steckbrief) {
-                        $body = \Illuminate\Support\Str::limit($p->clean_steckbrief, 180);
-                    } else {
-                        $body = null;
-                    }
-                @endphp
-                <a href="{{ route('professions.show', $p->slug) }}"
-                   class="group flex flex-col bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-xl p-5 min-h-[200px] overflow-hidden">
-                    <div class="flex items-center gap-2 mb-2 flex-wrap">
-                        <span class="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full max-w-full
-                            @switch($tColor)
-                                @case('green')  bg-green-100 text-green-700 @break
-                                @case('blue')   bg-blue-100 text-blue-700 @break
-                                @case('purple') bg-purple-100 text-purple-700 @break
-                                @case('amber')  bg-amber-100 text-amber-800 @break
-                                @default        bg-gray-100 text-gray-700
-                            @endswitch
-                        ">
-                            <span>{{ $tEmoji }}</span>
-                            <span class="truncate">{{ $tLabel }}</span>
-                        </span>
-                        @if ($p->kldb_code)
-                            <span class="text-[10px] text-gray-400 font-mono">KldB {{ $p->kldb_code }}</span>
-                        @endif
-                    </div>
-                    <h3 class="font-bold text-gray-900 leading-snug group-hover:text-primary-700 transition mb-2 break-words">
-                        {{ \Illuminate\Support\Str::limit($p->name_de, 70) }}
-                    </h3>
-
-                    @if ($body)
-                        <p class="text-sm text-gray-700 line-clamp-3 flex-1">{{ $body }}</p>
-                    @else
-                        <div class="flex-1 flex items-center justify-center text-center py-3">
-                            <p class="text-xs text-gray-400 italic">
-                                @if ($p->field)
-                                    {{ __(':field area', ['field' => $p->field->name]) }}
-                                @else
-                                    {{ __('Click for details') }}
-                                @endif
-                            </p>
-                        </div>
-                    @endif
-
-                    <span class="mt-3 inline-flex items-center gap-1 text-xs text-primary-600 group-hover:text-primary-800 font-semibold">
-                        {{ __('See details →') }}
-                    </span>
-                </a>
-            @endforeach
-        </div>
-
-        <div class="mt-8">{{ $professions->links() }}</div>
-    @endif
 </div>
 @endsection

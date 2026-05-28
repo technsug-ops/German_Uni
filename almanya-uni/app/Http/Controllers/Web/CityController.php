@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class CityController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): View|\Illuminate\Http\Response
     {
         $query = City::query()
             ->withCount(['universities' => fn ($q) => $q->where('is_active', 1)])
@@ -61,11 +61,18 @@ class CityController extends Controller
         $cities = $query->paginate(48)->withQueryString();
         $states = State::orderBy('name_de')->get(['slug', 'name_tr', 'name_de','name_en','name_de']);
 
-        return view('cities.index', [
+        $viewData = [
             'cities' => $cities,
             'states' => $states,
             'filters' => $request->only(['q', 'state', 'size', 'uni_count', 'sort']),
-        ]);
+        ];
+
+        if ($request->ajax() || $request->wantsJson() || $request->boolean('partial')) {
+            return response(view('cities._grid', $viewData)->render())
+                ->header('Content-Type', 'text/html; charset=utf-8');
+        }
+
+        return view('cities.index', $viewData);
     }
 
     public function show(string $slug): View

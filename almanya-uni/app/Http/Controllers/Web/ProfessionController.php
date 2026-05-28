@@ -11,7 +11,7 @@ class ProfessionController extends Controller
 {
     private const PER_PAGE = 24;
 
-    public function index(Request $request): View
+    public function index(Request $request): View|\Illuminate\Http\Response
     {
         $filters = [
             'q'     => trim((string) $request->query('q', '')),
@@ -57,7 +57,14 @@ class ProfessionController extends Controller
             ->orderByDesc('professions_count')
             ->get(['id', 'slug', 'name_tr', 'icon','name_en','name_de']);
 
-        return view('professions.index', compact('professions', 'filters', 'totals', 'fields'));
+        $viewData = compact('professions', 'filters', 'totals', 'fields');
+
+        if ($request->ajax() || $request->wantsJson() || $request->boolean('partial')) {
+            return response(view('professions._grid', $viewData)->render())
+                ->header('Content-Type', 'text/html; charset=utf-8');
+        }
+
+        return view('professions.index', $viewData);
     }
 
     public function show(string $slug): View
