@@ -14,6 +14,8 @@ class MenuPage extends Model
     protected $fillable = [
         'key', 'link_type', 'url', 'label', 'icon', 'description', 'badge',
         'group', 'is_enabled', 'protect_route', 'sort_order',
+        'label_tr', 'label_en', 'label_de',
+        'description_tr', 'description_en', 'description_de',
     ];
 
     protected $casts = [
@@ -46,13 +48,27 @@ class MenuPage extends Model
         return $q->where('group', $group);
     }
 
+    /**
+     * Locale-aware label: prefer admin-set label_{locale} column, fall back to __()
+     * lookup against the legacy `label` value, fall back to the literal `label`.
+     *
+     * The locale-specific columns let admin override per language without depending
+     * on lang JSON files; lang JSON still works as a fallback so existing translations
+     * keep working unchanged.
+     */
     public function getLabelAttribute(?string $value): ?string
     {
+        $locale = app()->getLocale();
+        $perLocale = $this->attributes['label_' . $locale] ?? null;
+        if ($perLocale) return $perLocale;
         return $value ? __($value) : $value;
     }
 
     public function getDescriptionAttribute(?string $value): ?string
     {
+        $locale = app()->getLocale();
+        $perLocale = $this->attributes['description_' . $locale] ?? null;
+        if ($perLocale) return $perLocale;
         return $value ? __($value) : $value;
     }
 
