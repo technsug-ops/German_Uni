@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * "Yapra Test" + duplicate "Yapra" accounts → tek "Damla Karakaya" hesabı.
+ * "Yapra Test" + duplicate "Yapra" accounts → tek "Halil Yaprakli" hesabı (kurucu).
  *
  * Production'da #1 = Yapra Test, #2 = Yapra (editor), #3 = Yapra (admin) varsa
- * hepsi tek bir Damla Karakaya'ya birleşir. Idempotent: zaten merged ise no-op.
+ * hepsi tek bir Halil Yaprakli'ya birleşir. Idempotent: zaten merged ise no-op.
  *
  * NOT: User ID'leri production'da farklı olabilir. Bu migration email tabanlı
  * eşleştirme yapar; ID assumption'ı yok.
@@ -17,7 +17,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // 1) Ana hedef user: Yapra Test (email yapra-test1@gmail.com) → "Damla Karakaya" yap
+        // 1) Ana hedef user: Yapra Test (email yapra-test1@gmail.com) → "Halil Yaprakli" yap
         $main = DB::table('users')->where('email', 'yapra-test1@gmail.com')->first();
         if (! $main) {
             // Fallback: ID=1 olan user
@@ -30,11 +30,11 @@ return new class extends Migration
         $mainId = $main->id;
 
         DB::table('users')->where('id', $mainId)->update([
-            'name' => 'Damla Karakaya',
-            'slug' => Schema::hasColumn('users', 'slug') ? 'damla-karakaya' : null,
-            'role_label'  => 'İçerik Editörü',
+            'name' => 'Halil Yaprakli',
+            'slug' => Schema::hasColumn('users', 'slug') ? 'halil-yaprakli' : null,
+            'role_label'  => 'Kurucu',
             'is_author'   => true,
-            'bio'         => "AlmanyaUni'de Türk öğrencilerin Almanya yolculuğunda doğru ve güncel bilgiye erişimi için içerik üretiyor. Resmi kaynaklardan derlenmiş, topluluk deneyimleriyle zenginleştirilmiş rehberleri yazıyor.",
+            'bio'         => "AlmanyaUni'in kurucusu. Türk öğrencilerin Almanya yolculuğunda doğru ve güncel bilgiye erişimini sağlamak için 2026'da bu platformu kurdu. Resmi kaynaklardan derlenmiş, topluluk deneyimleriyle zenginleştirilmiş rehberleri yazıyor.",
             'updated_at'  => now(),
         ]);
 
