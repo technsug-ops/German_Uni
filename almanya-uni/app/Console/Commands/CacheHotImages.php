@@ -127,30 +127,31 @@ class CacheHotImages extends Command
     }
 
     /**
-     * Download Wikipedia original, decode via GD, resize down to target width
-     * (preserving aspect ratio), encode as WebP. Skips upscaling.
+     * Download Wikipedia thumb (or original as fallback), decode via GD, resize down to
+     * target width (preserving aspect ratio), encode as WebP. Skips upscaling.
+     *
+     * Strategy: most Wikipedia originals are 5-15 MB JPGs which exceed shared-host PHP
+     * memory limits. Try a Wikipedia thumbnail at a standard cached width first — much
+     * smaller payload, much smaller GD decode footprint. Fall back to original only if
+     * all thumb sizes return 400.
      */
-    private function downloadAndConvert(string $url, string $destPath, int $quality, int $targetWidth): bool
+    private function downloadAndConvert(string $originalUrl, string $destPath, int $quality, int $targetWidth): bool
     {
         try {
-            $response = Http::timeout(45)
-                ->withHeaders(['User-Agent' => 'AlmanyaUni/1.0 (image cache; tech@applytogerman.com)'])
-                ->retry(2, 500)
-                ->get($url);
-
-            if (! $response->successful()) {
-                return false;
+            // Build candidate URL chain: thumbs at standard sizes first, then original
+            $candidates = $this->candidateUrls($originalUrl, $targetWidth);
+            $bytes = null;
+            foreach ($candidates as $url) {
+                $bytes = $this->fetchBytes($url);
+                if ($bytes !== null) break;
             }
+            if ($bytes === null || strlen($bytes) < 100) return false;
 
-            $bytes = $response->body();
-            if (strlen($bytes) < 100) {
-                return false;
-            }
+            // Defensive: skip giant payloads (>8 MB) — GD decode would blow PHP memory on shared host
+            if (strlen($bytes) > 8 * 1024 * 1024) return false;
 
             $src = @imagecreatefromstring($bytes);
-            if (! $src) {
-                return false;
-            }
+            if (! $src) return false;
 
             $srcW = imagesx($src);
             $srcH = imagesy($src);
@@ -159,12 +160,10 @@ class CacheHotImages extends Command
                 return false;
             }
 
-            // Compute target dimensions, preserve aspect, never upscale
             $newW = min($targetWidth, $srcW);
             $newH = (int) round($srcH * ($newW / $srcW));
 
             if ($newW === $srcW && $newH === $srcH) {
-                // No resize needed
                 imagepalettetotruecolor($src);
                 imagealphablending($src, true);
                 imagesavealpha($src, true);
@@ -173,22 +172,69 @@ class CacheHotImages extends Command
                 return $ok;
             }
 
-            // Resize via copyresampled (bicubic-quality)
             $dst = imagecreatetruecolor($newW, $newH);
             imagealphablending($dst, false);
             imagesavealpha($dst, true);
             $transparent = imagecolorallocatealpha($dst, 0, 0, 0, 127);
             imagefilledrectangle($dst, 0, 0, $newW, $newH, $transparent);
-
             imagecopyresampled($dst, $src, 0, 0, 0, 0, $newW, $newH, $srcW, $srcH);
 
             $ok = imagewebp($dst, $destPath, $quality);
             imagedestroy($src);
             imagedestroy($dst);
-
             return $ok;
         } catch (\Throwable $e) {
             return false;
+        }
+    }
+
+    /**
+     * Try several Wikipedia thumbnail widths before falling back to original.
+     * Standard widths that Wikipedia caches eagerly tend to succeed; arbitrary widths
+     * (and uncached files) return HTTP 400.
+     */
+    private function candidateUrls(string $originalUrl, int $targetWidth): array
+    {
+        $list = [];
+        // For Wikipedia URLs, build thumb candidates at common cached sizes near target
+        if (preg_match('#upload\.wikimedia\.org/wikipedia/commons/([0-9a-f]/[0-9a-f]{2})/([^/?]+)$#i', $originalUrl, $m)) {
+            $hashPath = $m[1];
+            $filename = $m[2];
+            $base = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' . $hashPath . '/' . $filename;
+            $widthCandidates = $this->thumbWidthCandidates($targetWidth);
+            foreach ($widthCandidates as $w) {
+                $thumbName = $w . 'px-' . $filename;
+                if (preg_match('/\.svg$/i', $filename)) $thumbName .= '.png';
+                $list[] = $base . '/' . $thumbName;
+            }
+        }
+        // Always include the original as last resort
+        $list[] = $originalUrl;
+        return $list;
+    }
+
+    /** Order of widths to try: closest to target first, then common cached sizes. */
+    private function thumbWidthCandidates(int $target): array
+    {
+        $common = [120, 200, 250, 320, 500, 640, 800, 1024, 1280];
+        // Sort ascending by distance from target, but never request smaller than 80% of target
+        $minAcceptable = max(80, (int) round($target * 0.8));
+        $filtered = array_filter($common, fn ($w) => $w >= $minAcceptable);
+        usort($filtered, fn ($a, $b) => abs($a - $target) <=> abs($b - $target));
+        return array_values($filtered);
+    }
+
+    /** Fetch URL bytes; null on non-2xx or transport failure. */
+    private function fetchBytes(string $url): ?string
+    {
+        try {
+            $response = Http::timeout(30)
+                ->withHeaders(['User-Agent' => 'AlmanyaUni/1.0 (image cache; tech@applytogerman.com)'])
+                ->retry(1, 300)
+                ->get($url);
+            return $response->successful() ? $response->body() : null;
+        } catch (\Throwable $e) {
+            return null;
         }
     }
 }
