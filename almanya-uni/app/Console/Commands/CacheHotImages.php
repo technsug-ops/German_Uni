@@ -63,6 +63,7 @@ class CacheHotImages extends Command
                 } else {
                     $stats['failed']++;
                 }
+                $this->wikipediaThrottle();
             }
             $bar->advance();
         }
@@ -90,6 +91,7 @@ class CacheHotImages extends Command
                     } else {
                         $stats['failed']++;
                     }
+                    $this->wikipediaThrottle();
                 }
             }
 
@@ -106,6 +108,7 @@ class CacheHotImages extends Command
                     } else {
                         $stats['failed']++;
                     }
+                    $this->wikipediaThrottle();
                 }
             }
 
@@ -240,6 +243,16 @@ class CacheHotImages extends Command
         $filtered = array_filter($common, fn ($w) => $w >= $minAcceptable);
         usort($filtered, fn ($a, $b) => abs($a - $target) <=> abs($b - $target));
         return array_values($filtered);
+    }
+
+    /**
+     * Wikipedia recommends ≤200 req/sec but starts throttling much sooner for
+     * "bulk image fetch" patterns from a single IP. Sleeping 400ms after each
+     * uni/city keeps us under ~2.5 req/sec — empirically OK for ~700-entity runs.
+     */
+    private function wikipediaThrottle(): void
+    {
+        usleep(400_000);
     }
 
     /** Fetch URL bytes; null on non-2xx or transport failure. */

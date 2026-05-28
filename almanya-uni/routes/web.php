@@ -253,8 +253,8 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
-    // Long-running; raise PHP limits
-    @set_time_limit(600);
+    // Long-running; raise PHP limits (image-fetch throttling can push past 10 min)
+    @set_time_limit(1500);
     @ini_set('memory_limit', '512M');
 
     $exit = \Illuminate\Support\Facades\Artisan::call('images:cache-hot', array_filter([
