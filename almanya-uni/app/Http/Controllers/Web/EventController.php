@@ -46,7 +46,9 @@ class EventController extends Controller
 
     public function show(string $slug): View
     {
-        $event = Event::active()->where('slug', $slug)->firstOrFail();
+        $event = Event::active()->where('slug', $slug)
+            ->with(['hostUser:id,name,slug,avatar_url,role_label', 'goingRsvps'])
+            ->firstOrFail();
 
         $related = Event::active()
             ->where('id', '!=', $event->id)
@@ -56,6 +58,71 @@ class EventController extends Controller
             ->take(3)
             ->get();
 
-        return view('events.show', compact('event', 'related'));
+        // Mevcut kullanıcının RSVP'si (UI'da göstermek için)
+        $myRsvp = null;
+        if ($user = request()->user()) {
+            $myRsvp = \App\Models\EventRsvp::where('event_id', $event->id)->where('user_id', $user->id)->first();
+        }
+
+        return view('events.show', compact('event', 'related', 'myRsvp'));
+    }
+
+    /**
+     * RSVP submit — anonim veya login.
+     */
+    public function rsvp(Request $request, string $slug): \Illuminate\Http\RedirectResponse
+    {
+        $event = Event::active()->where('slug', $slug)->firstOrFail();
+
+        if ($event->starts_at->isPast()) {
+            return back()->with('rsvp_status', __('This event has already taken place.'));
+        }
+
+        $data = $request->validate([
+            'status'         => 'required|in:going,maybe,cancelled',
+            'attendee_name'  => 'nullable|string|max:80',
+            'attendee_email' => 'nullable|email|max:150',
+            'note'           => 'nullable|string|max:500',
+            'website'        => 'nullable|string|max:200', // honeypot
+        ]);
+
+        if (! empty($data['website'])) {
+            return back()->with('rsvp_status', __('Thanks!'));
+        }
+
+        $user = $request->user();
+        if (! $user) {
+            $request->validate([
+                'attendee_name'  => 'required|string|min:2|max:80',
+                'attendee_email' => 'required|email|max:150',
+            ]);
+        }
+
+        $rsvp = \App\Models\EventRsvp::updateOrCreate(
+            $user
+                ? ['event_id' => $event->id, 'user_id' => $user->id]
+                : ['event_id' => $event->id, 'attendee_email' => $data['attendee_email']],
+            [
+                'attendee_name'  => $user ? null : ($data['attendee_name'] ?? null),
+                'attendee_email' => $user ? null : ($data['attendee_email'] ?? null),
+                'status'         => $data['status'],
+                'note'           => $data['note'] ?? null,
+                'ip_address'     => $request->ip(),
+                'user_agent'     => substr((string) $request->userAgent(), 0, 255),
+            ]
+        );
+
+        // Counts'u güncelle (Event.registered_count + maybe_count)
+        $going = \App\Models\EventRsvp::where('event_id', $event->id)->where('status', 'going')->count();
+        $maybe = \App\Models\EventRsvp::where('event_id', $event->id)->where('status', 'maybe')->count();
+        Event::where('id', $event->id)->update(['registered_count' => $going, 'maybe_count' => $maybe]);
+
+        $msg = match ($data['status']) {
+            'going'     => __('See you there! Your spot is reserved.'),
+            'maybe'     => __('Saved as Maybe — you can update your answer any time.'),
+            'cancelled' => __('Your RSVP is cancelled. We hope to see you next time.'),
+        };
+
+        return back()->with('rsvp_status', $msg)->withFragment('rsvp');
     }
 }

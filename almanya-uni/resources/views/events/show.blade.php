@@ -109,6 +109,116 @@
                 {!! \Illuminate\Support\Str::markdown($event->description_md) !!}
             </section>
         @endif
+
+        {{-- RSVP — Meetup tarzı katılım kaydı --}}
+        @if (! $event->starts_at->isPast())
+            <section id="rsvp" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                        🎟️ {{ __('Are you joining?') }}
+                    </h2>
+                    @if ($event->goingRsvps->count() > 0)
+                        <p class="text-sm text-gray-600">
+                            <span class="font-bold text-emerald-700">{{ $event->goingRsvps->count() }}</span>
+                            {{ __('attending') }}
+                            @if ($event->maybe_count > 0)
+                                · <span class="font-semibold text-amber-700">{{ $event->maybe_count }}</span> {{ __('maybe') }}
+                            @endif
+                        </p>
+                    @endif
+                </div>
+
+                @if (session('rsvp_status'))
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-3 mb-4 text-sm">
+                        ✓ {{ session('rsvp_status') }}
+                    </div>
+                @endif
+
+                @if (isset($myRsvp) && $myRsvp)
+                    <div class="bg-{{ $myRsvp->status === 'going' ? 'emerald' : ($myRsvp->status === 'maybe' ? 'amber' : 'gray') }}-50 border border-{{ $myRsvp->status === 'going' ? 'emerald' : ($myRsvp->status === 'maybe' ? 'amber' : 'gray') }}-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-gray-700">
+                            {{ __('Your current RSVP:') }}
+                            <strong>
+                                @if ($myRsvp->status === 'going') ✅ {{ __('Going') }}
+                                @elseif ($myRsvp->status === 'maybe') 🤔 {{ __('Maybe') }}
+                                @else ❌ {{ __('Cancelled') }}
+                                @endif
+                            </strong>
+                            <span class="text-xs text-gray-500">· {{ __('You can change it any time below.') }}</span>
+                        </p>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('events.rsvp', $event->slug) }}" class="space-y-3">
+                    @csrf
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="submit" name="status" value="going"
+                                class="px-3 py-3 rounded-lg border-2 border-emerald-300 hover:bg-emerald-50 hover:border-emerald-500 text-emerald-700 font-semibold transition text-sm">
+                            ✅ {{ __('Going') }}
+                        </button>
+                        <button type="submit" name="status" value="maybe"
+                                class="px-3 py-3 rounded-lg border-2 border-amber-300 hover:bg-amber-50 hover:border-amber-500 text-amber-700 font-semibold transition text-sm">
+                            🤔 {{ __('Maybe') }}
+                        </button>
+                        <button type="submit" name="status" value="cancelled"
+                                class="px-3 py-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 text-gray-600 font-semibold transition text-sm">
+                            ❌ {{ __('Can\'t make it') }}
+                        </button>
+                    </div>
+
+                    @guest
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+                            <input type="text" name="attendee_name" maxlength="80" required
+                                   value="{{ old('attendee_name') }}"
+                                   placeholder="{{ __('Your name') }}"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                            <input type="email" name="attendee_email" maxlength="150" required
+                                   value="{{ old('attendee_email') }}"
+                                   placeholder="{{ __('Email (for Zoom link)') }}"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                        </div>
+                        <p class="text-[11px] text-gray-400">{{ __('Email is only used to send you the Zoom/event link before the start.') }}</p>
+                    @endguest
+
+                    <textarea name="note" maxlength="500" rows="2"
+                              placeholder="{{ __('Optional note for the host (e.g. specific question)') }}"
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">{{ old('note') }}</textarea>
+
+                    {{-- Honeypot --}}
+                    <input type="text" name="website" tabindex="-1" autocomplete="off"
+                           style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+                </form>
+            </section>
+
+            {{-- Attendees list --}}
+            @if ($event->goingRsvps->count() > 0)
+                <section class="bg-white border border-gray-200 rounded-xl p-6">
+                    <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        👥 {{ __('Who\'s coming') }}
+                        <span class="text-sm font-normal text-gray-500">({{ $event->goingRsvps->count() }})</span>
+                    </h2>
+                    <div class="flex flex-wrap gap-3">
+                        @foreach ($event->goingRsvps->take(30) as $rsvp)
+                            <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full pl-1 pr-3 py-1" title="{{ $rsvp->display_name }}">
+                                @if ($rsvp->display_avatar)
+                                    <img src="{{ $rsvp->display_avatar }}" alt="{{ $rsvp->display_name }}" class="w-7 h-7 rounded-full object-cover">
+                                @else
+                                    <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs">
+                                        {{ mb_substr($rsvp->display_name, 0, 1) }}
+                                    </div>
+                                @endif
+                                <span class="text-xs font-medium text-gray-700">{{ \Illuminate\Support\Str::limit($rsvp->display_name, 20) }}</span>
+                            </div>
+                        @endforeach
+                        @if ($event->goingRsvps->count() > 30)
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-semibold">
+                                +{{ $event->goingRsvps->count() - 30 }} {{ __('more') }}
+                            </div>
+                        @endif
+                    </div>
+                </section>
+            @endif
+        @endif
     </main>
 
     {{-- Sidebar --}}

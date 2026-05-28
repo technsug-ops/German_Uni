@@ -43,6 +43,19 @@ class Event extends Model
         return $this->belongsTo(User::class, 'host_user_id');
     }
 
+    public function rsvps()
+    {
+        return $this->hasMany(EventRsvp::class)->orderByDesc('created_at');
+    }
+
+    public function goingRsvps()
+    {
+        return $this->hasMany(EventRsvp::class)
+            ->where('status', 'going')
+            ->with('user:id,name,slug,avatar_url')
+            ->orderByDesc('created_at');
+    }
+
     /**
      * 30+ event tipi — 7 kategoriye ayrılmış. Admin event oluştururken
      * tip seçince kategori otomatik atanabilir (helpers altında).

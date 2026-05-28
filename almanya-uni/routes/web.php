@@ -172,6 +172,9 @@ $routes = function () {
     // Events / Etkinlikler
     Route::get('/events', [\App\Http\Controllers\Web\EventController::class, 'index'])->name('events.index');
     Route::get('/events/{slug}', [\App\Http\Controllers\Web\EventController::class, 'show'])->name('events.show');
+    Route::post('/events/{slug}/rsvp', [\App\Http\Controllers\Web\EventController::class, 'rsvp'])
+        ->middleware('throttle:10,10')
+        ->name('events.rsvp');
     Route::redirect('/etkinlikler', '/events', 301);
 
     // Mentors / Mentorlar
