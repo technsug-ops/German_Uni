@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * "Yapra Test" → "Yaprak" + #2 (editor) ve #3 (admin) → #1 (ana) merge.
+ * "Yapra Test" + duplicate "Yapra" accounts → tek "Damla Karakaya" hesabı.
  *
  * Production'da #1 = Yapra Test, #2 = Yapra (editor), #3 = Yapra (admin) varsa
- * hepsi tek bir Yaprak'a birleşir. Idempotent: zaten merged ise hiçbir şey yapmaz.
+ * hepsi tek bir Damla Karakaya'ya birleşir. Idempotent: zaten merged ise no-op.
  *
  * NOT: User ID'leri production'da farklı olabilir. Bu migration email tabanlı
  * eşleştirme yapar; ID assumption'ı yok.
@@ -17,24 +17,24 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // 1) Ana hedef user: Yapra Test (email yapra-test1@gmail.com) → "Yaprak" yap
+        // 1) Ana hedef user: Yapra Test (email yapra-test1@gmail.com) → "Damla Karakaya" yap
         $main = DB::table('users')->where('email', 'yapra-test1@gmail.com')->first();
         if (! $main) {
             // Fallback: ID=1 olan user
             $main = DB::table('users')->where('id', 1)->first();
             if (! $main) {
-                echo "Yaprak target user not found, skipping merge.\n";
+                echo "Target user not found, skipping merge.\n";
                 return;
             }
         }
         $mainId = $main->id;
 
         DB::table('users')->where('id', $mainId)->update([
-            'name' => 'Yaprak',
-            'slug' => Schema::hasColumn('users', 'slug') ? 'yaprak' : null,
-            'role_label'  => $main->role_label  ?: 'Kurucu & Baş Editör',
+            'name' => 'Damla Karakaya',
+            'slug' => Schema::hasColumn('users', 'slug') ? 'damla-karakaya' : null,
+            'role_label'  => 'İçerik Editörü',
             'is_author'   => true,
-            'bio'         => $main->bio ?: "AlmanyaUni'in kurucusu. Türk öğrencilerin Almanya yolculuğunda doğru ve güncel bilgiye erişimini sağlamak için 2026'da bu platformu kurdu. Resmi kaynaklardan derlenmiş, topluluk deneyimleriyle zenginleştirilmiş içerikleri yazıyor.",
+            'bio'         => "AlmanyaUni'de Türk öğrencilerin Almanya yolculuğunda doğru ve güncel bilgiye erişimi için içerik üretiyor. Resmi kaynaklardan derlenmiş, topluluk deneyimleriyle zenginleştirilmiş rehberleri yazıyor.",
             'updated_at'  => now(),
         ]);
 
