@@ -31,6 +31,8 @@ class Profession extends Model
         'description_tr',
         'steckbrief',
         'info_fields',
+        'info_fields_tr',
+        'info_fields_en',
         'image_url',
         'last_synced_at',
         'is_active',
@@ -38,6 +40,8 @@ class Profession extends Model
 
     protected $casts = [
         'info_fields'    => 'array',
+        'info_fields_tr' => 'array',
+        'info_fields_en' => 'array',
         'last_synced_at' => 'datetime',
         'is_active'      => 'boolean',
     ];
