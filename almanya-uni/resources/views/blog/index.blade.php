@@ -49,6 +49,95 @@
 </div>
 
 <div class="max-w-[1400px] mx-auto px-4 py-10">
+    {{-- Filtre toolbar --}}
+    @php
+        $hasActiveFilter = ! empty($filters['author']) || ! empty($filters['length']) || ($filters['sort'] ?? 'newest') !== 'newest' || ! empty($searchQ);
+        $baseUrl = ! empty($active_category) ? route('blog.category', $active_category->slug) : route('blog.index');
+        $buildUrl = function (array $override) use ($baseUrl, $filters, $searchQ) {
+            $params = array_filter(array_merge([
+                'q'      => $searchQ,
+                'author' => $filters['author'] ?? null,
+                'sort'   => ($filters['sort'] ?? 'newest') !== 'newest' ? $filters['sort'] : null,
+                'length' => $filters['length'] ?? null,
+            ], $override));
+            return $baseUrl . (empty($params) ? '' : '?' . http_build_query($params));
+        };
+    @endphp
+    <div class="bg-white border border-gray-200 rounded-xl p-4 mb-6 flex flex-wrap items-center gap-3 text-sm">
+        {{-- Sıralama --}}
+        <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Sort:') }}</span>
+            @foreach ([
+                'newest'  => ['label' => __('Newest'),  'icon' => '🆕'],
+                'oldest'  => ['label' => __('Oldest'),  'icon' => '📅'],
+                'popular' => ['label' => __('Popular'), 'icon' => '🔥'],
+            ] as $key => $meta)
+                @php $isActive = ($filters['sort'] ?? 'newest') === $key; @endphp
+                <a href="{{ $buildUrl(['sort' => $key === 'newest' ? null : $key]) }}"
+                   class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $isActive ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                    <span>{{ $meta['icon'] }}</span> {{ $meta['label'] }}
+                </a>
+            @endforeach
+        </div>
+
+        <span class="text-gray-300 hidden md:inline">|</span>
+
+        {{-- Okuma süresi --}}
+        <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Length:') }}</span>
+            @foreach ([
+                'short'  => ['label' => __('Short (≤5 min)'), 'icon' => '⚡'],
+                'medium' => ['label' => __('Medium (5–15 min)'), 'icon' => '📖'],
+                'long'   => ['label' => __('Long (>15 min)'),  'icon' => '🧭'],
+            ] as $key => $meta)
+                @php $isActive = ($filters['length'] ?? null) === $key; @endphp
+                <a href="{{ $buildUrl(['length' => $isActive ? null : $key]) }}"
+                   class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $isActive ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                    <span>{{ $meta['icon'] }}</span> {{ $meta['label'] }}
+                </a>
+            @endforeach
+        </div>
+
+        @if ($hasActiveFilter)
+            <span class="text-gray-300 hidden md:inline">|</span>
+            <a href="{{ $baseUrl }}" class="inline-flex items-center gap-1 text-xs text-rose-600 hover:text-rose-700 font-semibold">
+                ✕ {{ __('Clear filters') }}
+            </a>
+            <span class="text-xs text-gray-500 ml-auto">
+                {{ __(':n results', ['n' => $posts->total()]) }}
+            </span>
+        @endif
+    </div>
+
+    {{-- Yazar filtresi - chip row --}}
+    @if (! empty($authorsList) && $authorsList->isNotEmpty())
+        <div class="bg-white border border-gray-200 rounded-xl p-4 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">✍️ {{ __('Filter by author:') }}</span>
+                @if (! empty($filters['author']))
+                    <a href="{{ $buildUrl(['author' => null]) }}" class="text-[11px] text-rose-600 hover:underline">✕ {{ __('All authors') }}</a>
+                @endif
+            </div>
+            <div class="flex flex-wrap gap-2">
+                @foreach ($authorsList as $a)
+                    @php $isActive = ($filters['author'] ?? null) === $a->slug; @endphp
+                    <a href="{{ $buildUrl(['author' => $isActive ? null : $a->slug]) }}"
+                       class="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border-2 transition {{ $isActive ? 'border-primary-600 bg-primary-50' : 'border-gray-200 hover:border-primary-300 bg-white' }}">
+                        @if ($a->avatar_url)
+                            <img src="{{ $a->avatar_url }}" alt="{{ $a->name }}" class="w-7 h-7 rounded-full object-cover">
+                        @else
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-primary-600 to-primary-800 text-white text-xs font-bold flex items-center justify-center">
+                                {{ strtoupper(mb_substr($a->name, 0, 1)) }}
+                            </div>
+                        @endif
+                        <span class="text-xs font-semibold {{ $isActive ? 'text-primary-900' : 'text-gray-700' }}">{{ $a->name }}</span>
+                        <span class="text-[10px] {{ $isActive ? 'text-primary-700' : 'text-gray-400' }}">({{ $a->posts_count }})</span>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Posts -->
         <div class="lg:col-span-3">

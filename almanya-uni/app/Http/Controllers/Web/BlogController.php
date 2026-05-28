@@ -14,12 +14,57 @@ class BlogController extends Controller
 
     public function index(Request $request): View
     {
-        $q = trim((string) $request->query('q', ''));
+        $filters = $this->parseFilters($request);
 
         $query = Post::published()
             ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
 
-        if ($q !== '' && mb_strlen($q) >= 2) {
+        $this->applyFilters($query, $filters);
+
+        $paginator = $this->applySort($query, $filters['sort'])
+            ->paginate(self::PER_PAGE)
+            ->withQueryString();
+
+        return view('blog.index', [
+            'posts' => $paginator,
+            'categories' => $this->sidebarCategories(),
+            'authorsList' => $this->authorsForFilter(),
+            'filters' => $filters,
+            'searchQ' => $filters['q'],
+            'page_title' => $filters['q'] !== '' ? __('Search:') . ' ' . $filters['q'] : __('Blog'),
+            'page_description' => $filters['q'] !== ''
+                ? __('Blog posts matching ":q"', ['q' => $filters['q']])
+                : __('Guides on studying in Germany — university applications, language tests, student life and more.'),
+        ]);
+    }
+
+    /**
+     * @return array{q:string,author:?string,sort:string,length:?string}
+     */
+    private function parseFilters(Request $request): array
+    {
+        $sort = (string) $request->query('sort', 'newest');
+        if (! in_array($sort, ['newest', 'oldest', 'popular'], true)) {
+            $sort = 'newest';
+        }
+
+        $length = $request->query('length');
+        if (! in_array($length, ['short', 'medium', 'long'], true)) {
+            $length = null;
+        }
+
+        return [
+            'q'      => trim((string) $request->query('q', '')),
+            'author' => $request->query('author') ?: null,   // user.slug
+            'sort'   => $sort,
+            'length' => $length,
+        ];
+    }
+
+    private function applyFilters($query, array $filters): void
+    {
+        if ($filters['q'] !== '' && mb_strlen($filters['q']) >= 2) {
+            $q = $filters['q'];
             $query->where(function ($w) use ($q) {
                 $w->where('title', 'like', '%' . $q . '%')
                   ->orWhere('excerpt', 'like', '%' . $q . '%')
@@ -27,19 +72,44 @@ class BlogController extends Controller
             });
         }
 
-        $paginator = $query->orderByDesc('published_at')
-            ->paginate(self::PER_PAGE)
-            ->withQueryString();
+        if ($filters['author']) {
+            $authorId = \App\Models\User::where('slug', $filters['author'])->value('id');
+            if ($authorId) {
+                $query->where(function ($w) use ($authorId) {
+                    $w->where('user_id', $authorId)
+                      ->orWhere('co_author_id', $authorId);
+                });
+            }
+        }
 
-        return view('blog.index', [
-            'posts' => $paginator,
-            'categories' => $this->sidebarCategories(),
-            'searchQ' => $q,
-            'page_title' => $q !== '' ? __('Search:') . ' ' . $q : __('Blog'),
-            'page_description' => $q !== ''
-                ? __('Blog posts matching ":q"', ['q' => $q])
-                : __('Guides on studying in Germany — university applications, language tests, student life and more.'),
-        ]);
+        if ($filters['length'] === 'short') {
+            $query->where('reading_minutes', '<=', 5);
+        } elseif ($filters['length'] === 'medium') {
+            $query->whereBetween('reading_minutes', [6, 15]);
+        } elseif ($filters['length'] === 'long') {
+            $query->where('reading_minutes', '>', 15);
+        }
+    }
+
+    private function applySort($query, string $sort)
+    {
+        return match ($sort) {
+            'oldest'  => $query->orderBy('published_at'),
+            'popular' => $query->orderByDesc('view_count')->orderByDesc('published_at'),
+            default   => $query->orderByDesc('published_at'),
+        };
+    }
+
+    private function authorsForFilter()
+    {
+        return \App\Models\User::where(function ($q) {
+                $q->where('is_author', true)->orWhere('is_editor', true)->orWhere('is_admin', true);
+            })
+            ->whereNotNull('slug')
+            ->withCount(['posts' => fn ($q) => $q->where('is_published', true)->where('locale', app()->getLocale())])
+            ->having('posts_count', '>', 0)
+            ->orderByDesc('posts_count')
+            ->get(['id', 'name', 'slug', 'avatar_url', 'role_label']);
     }
 
     public function show(string $slug): View
@@ -115,21 +185,15 @@ class BlogController extends Controller
     public function category(string $slug, Request $request): View
     {
         $category = Category::active()->where('slug', $slug)->firstOrFail();
-        $q = trim((string) $request->query('q', ''));
+        $filters = $this->parseFilters($request);
 
         $query = Post::published()
             ->where('category_id', $category->id)
             ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
 
-        if ($q !== '' && mb_strlen($q) >= 2) {
-            $query->where(function ($w) use ($q) {
-                $w->where('title', 'like', '%' . $q . '%')
-                  ->orWhere('excerpt', 'like', '%' . $q . '%')
-                  ->orWhere('content_md', 'like', '%' . $q . '%');
-            });
-        }
+        $this->applyFilters($query, $filters);
 
-        $paginator = $query->orderByDesc('published_at')
+        $paginator = $this->applySort($query, $filters['sort'])
             ->paginate(self::PER_PAGE)
             ->withQueryString();
 
@@ -137,8 +201,10 @@ class BlogController extends Controller
             'posts' => $paginator,
             'categories' => $this->sidebarCategories(),
             'active_category' => $category,
-            'searchQ' => $q,
-            'page_title' => $q !== '' ? __('Search in :cat:', ['cat' => $category->name]) . ' ' . $q : $category->name,
+            'authorsList' => $this->authorsForFilter(),
+            'filters' => $filters,
+            'searchQ' => $filters['q'],
+            'page_title' => $filters['q'] !== '' ? __('Search in :cat:', ['cat' => $category->name]) . ' ' . $filters['q'] : $category->name,
             'page_description' => $category->description
                 ?: ($category->name . ' kategorisindeki tüm yazılar.'),
         ]);
