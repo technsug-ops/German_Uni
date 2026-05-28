@@ -313,4 +313,140 @@ class PageFaq
             ],
         ];
     }
+
+    /** Cost of Living calculator FAQ — DAAD official data, monthly minimum, city differences. */
+    public static function forCostOfLiving(): array
+    {
+        return [
+            ['q' => __('How much does it cost to live in Germany as a student?'),
+             'a' => __('Officially, **DAAD estimates around €992/month** for students in Germany (rent + food + transport + insurance + leisure). Sperrkonto requires exactly this amount × 12 = **€11,904/year** as financial proof for the visa. Real cost varies €850–€1,500 by city.')],
+            ['q' => __('Which German cities are cheapest for students?'),
+             'a' => __('Most affordable: **Leipzig, Dresden, Magdeburg, Halle, Chemnitz** (€700–900/month). Most expensive: **Munich, Frankfurt, Hamburg, Stuttgart, Düsseldorf** (€1,100–1,400/month). University tuition fees are zero at most public unis regardless of city.')],
+            ['q' => __('Is the €992/month Sperrkonto amount fixed?'),
+             'a' => __('Yes — for the **2025/26 academic year**, the German embassy requires the standard DAAD rate. It updates roughly annually. Check the embassy of your country of residence for current figures before applying.')],
+            ['q' => __('Are there hidden semester fees on top of living costs?'),
+             'a' => __('Yes: **Semesterbeitrag (semester contribution)** of **€100–430** depending on university. This typically includes the **Semesterticket** (free public transport across the federal state) and Studentenwerk services. Tuition itself is free at most public unis.')],
+            ['q' => __('Can I work as a student to reduce costs?'),
+             'a' => __('International students can work **120 full days / 240 half days per year** without an additional permit. As a **Werkstudent** with a related field job, you can earn up to **€520/month tax-free** and gain experience aligned with your studies.')],
+        ];
+    }
+
+    /** Visa Cost calculator FAQ — total costs, breakdown, refunds. */
+    public static function forVisaCost(): array
+    {
+        return [
+            ['q' => __('How much does a German student visa cost in total?'),
+             'a' => __('The **visa fee itself is €75**. But total costs including required documents reach **€12,200–€13,000**: Sperrkonto setup (€89–€150) + Sperrkonto block amount (€11,904) + insurance (€110–€140) + uni-assist fee (€75) + translations (€80–€200) + APS (~€250 in some countries) + flight (€300–€600).')],
+            ['q' => __('Is the visa fee refundable if rejected?'),
+             'a' => __('No — the **€75 visa fee is non-refundable** even if your application is rejected. You can appeal within one month if rejection seems unjustified. Sperrkonto block amount IS refundable if visa fails (refund process 2–4 weeks).')],
+            ['q' => __('Can I avoid the Sperrkonto requirement?'),
+             'a' => __('Three alternatives: (1) **Scholarship letter** showing equivalent monthly support, (2) **Parent guarantee (Verpflichtungserklärung)** from someone in Germany, (3) Some unis accept a **bank guarantee** from a German bank. Sperrkonto is the most common path for self-funded students.')],
+            ['q' => __('Do I need health insurance before applying for the visa?'),
+             'a' => __('Yes — **travel insurance covering minimum €30,000 for the first 90 days** is required at visa interview. After arrival, you switch to **mandatory student health insurance (€110–€140/month)** like TK, AOK, or Barmer for the rest of your stay.')],
+            ['q' => __('How long does the German student visa process take?'),
+             'a' => __('Appointment booking: **4–12 weeks wait** at consulates. After interview: **6–12 weeks processing**. Plan to start **at least 4 months before** your intended program start. Some consulates (Istanbul, Tehran, Ankara) have longer queues — book as early as possible.')],
+        ];
+    }
+
+    /** Budget Planner tool FAQ — Werkstudent rules, savings goal, Bafög. */
+    public static function forBudgetPlanner(): array
+    {
+        return [
+            ['q' => __('How much can I earn as a student in Germany?'),
+             'a' => __('International students: **120 full days or 240 half days per year**. As a **Werkstudent** (working student in your field) you can work **up to 20 hours/week during semester, full-time during semester break**. Maximum tax-free monthly income via mini-job: **€520**.')],
+            ['q' => __('What is Bafög and am I eligible?'),
+             'a' => __('**Bafög** is German federal student aid (loan + grant, 50/50). International students CAN qualify if they have **permanent residency in Germany** or specific status (refugee, EU citizen residing in Germany 5+ years). New international students from outside EU are generally **not eligible**.')],
+            ['q' => __('How much should I save before coming to Germany?'),
+             'a' => __('Recommended: **first 2–3 months expenses on top of Sperrkonto** = **€2,500–€4,500** extra. Reason: Sperrkonto releases €992/month, but you need cash for first-week costs (deposit, Anmeldung, initial groceries, etc.) before the first release arrives.')],
+            ['q' => __('Do I need to pay German tax on my student income?'),
+             'a' => __('If you earn **under €12,096/year** (2025 limit), you owe **zero income tax**. Above that: progressive rates from 14%. You always file annual tax declaration as Werkstudent — you usually get back most withheld tax in the refund.')],
+            ['q' => __('Are scholarships counted as income in budget planning?'),
+             'a' => __('For visa: yes — scholarships count toward the €992/month financial proof. For income tax: most scholarships (DAAD, Erasmus+, Deutschlandstipendium) are **tax-free**. Always include them in monthly income estimates when planning.')],
+        ];
+    }
+
+    /** University Match quiz FAQ. */
+    public static function forRecommendation(): array
+    {
+        return [
+            ['q' => __('How does the university match quiz work?'),
+             'a' => __('The quiz collects **5 simple inputs**: budget, field of interest, language preference (German/English/both), city size, and academic level. Behind the scenes it scores all 600+ active German universities and returns the top matches with a percentage score + reason explanation.')],
+            ['q' => __('How accurate are the quiz recommendations?'),
+             'a' => __('The quiz is a **starting point, not final advice** — designed to surface 5–10 unis you might not have considered. Always verify by visiting each university\'s official page for specific admission requirements, exact tuition, and current deadlines before committing.')],
+            ['q' => __('Can I retake the quiz?'),
+             'a' => __('Yes — there are no limits. Each retake recalculates from scratch. If your circumstances change (different budget, language ability, etc.), just rerun the quiz. No login required.')],
+            ['q' => __('Does the quiz consider scholarship eligibility?'),
+             'a' => __('Not directly. The quiz focuses on academic + language fit. After getting your matches, use our **/scholarships** page to filter scholarships by your nationality, field, and program level separately.')],
+            ['q' => __('Why didn\'t my dream university appear in results?'),
+             'a' => __('Likely reason: **language mismatch or budget filter**. Many top unis (TUM, LMU, Heidelberg) primarily teach in German at Bachelor level — if you selected English-only, they may rank lower. Try adjusting filters to "Both" or German.')],
+        ];
+    }
+
+    /** Career Compass (RIASEC) FAQ. */
+    public static function forCareerCompass(): array
+    {
+        return [
+            ['q' => __('What is RIASEC and how does this tool use it?'),
+             'a' => __('**RIASEC** (Holland Codes) is a validated career-interest model with 6 dimensions: Realistic, Investigative, Artistic, Social, Enterprising, Conventional. Our quiz scores your top 3 codes and matches them to real professions in Germany from our 3,500+ profession database.')],
+            ['q' => __('Where does the profession data come from?'),
+             'a' => __('Primary source: **BERUFENET** (Bundesagentur für Arbeit) — Germany\'s official labour market database. Salary ranges, training paths, and demand indicators are sourced from BERUFENET + DESTATIS national statistics.')],
+            ['q' => __('How is this different from a regular career quiz?'),
+             'a' => __('Most career quizzes give vague answers like "you should be a manager". We tie your profile to **specific German labour market data** — exact profession titles, training paths (Studium vs Ausbildung), salary expectations in Germany, and matching university programs.')],
+            ['q' => __('Is the quiz scientifically validated?'),
+             'a' => __('The **RIASEC framework itself** is validated (Holland, 1959; updated continually). Our specific 12-question implementation is calibrated against Holland\'s reference set but is a **starter quiz**, not a clinical assessment. For high-stakes career decisions, consult a vocational psychologist.')],
+            ['q' => __('Can I save my career compass results?'),
+             'a' => __('With a free account, your top 3 RIASEC profile and matched professions are saved to your dashboard. Anonymous users can copy the result URL — it embeds your scores and reconstructs the page when visited.')],
+        ];
+    }
+
+    /** Application Calendar FAQ — deadlines, intakes. */
+    public static function forDeadlines(): array
+    {
+        return [
+            ['q' => __('When are German university application deadlines?'),
+             'a' => __('Two main intakes: **Winter semester** (Oct start) deadline typically **15 July**; **Summer semester** (Apr start) deadline **15 January**. Many programs accept applications earlier — some private unis are rolling. Always verify on the official program page.')],
+            ['q' => __('Are deadlines different for international students?'),
+             'a' => __('Yes — international applicants typically have **earlier deadlines** (often **30 May for winter / 30 November for summer**) to allow visa processing time. uni-assist applications generally close **6 weeks before** the official faculty deadline.')],
+            ['q' => __('Can I add these deadlines to my calendar?'),
+             'a' => __('Yes — every deadline on our /tools/deadlines page has an **iCal (.ics) export link**. Click it and your reminder is added directly to Apple Calendar, Google Calendar, or Outlook with a 2-week-before reminder pre-set.')],
+            ['q' => __('What if I miss a deadline?'),
+             'a' => __('Some programs offer a **"late application" (Nachrückverfahren)** for unfilled spots — usually open 2–6 weeks after the main deadline. Open programs (NC-frei) often have **rolling admissions**. Check the university\'s own portal for exact policy.')],
+            ['q' => __('Should I apply for both intakes to be safe?'),
+             'a' => __('If your program offers both, yes — applying for both **doubles your chances** and the winter intake usually has more program options. Some students start with summer (less competition) and switch to winter rhythm after the first year.')],
+        ];
+    }
+
+    /** Eligibility Checker tool FAQ. */
+    public static function forEligibility(): array
+    {
+        return [
+            ['q' => __('How does the eligibility checker work?'),
+             'a' => __('You enter your country and high-school diploma type. The tool maps it against the **Anabin database** (Germany\'s official foreign-credentials catalogue) and tells you: (a) **direct university entry**, (b) **Studienkolleg required first**, or (c) **2 years of home-country university** before German entry.')],
+            ['q' => __('What is Anabin?'),
+             'a' => __('**Anabin** is the official Standing Conference of Education Ministers (KMK) database evaluating foreign academic qualifications. German universities **must** check Anabin when admitting international students — it\'s the legal reference for diploma equivalence.')],
+            ['q' => __('My diploma isn\'t in Anabin — what do I do?'),
+             'a' => __('Three options: (1) Apply via **uni-assist** which has its own equivalence experts, (2) Contact the **target university directly** (some accept individual assessments), (3) Take the **TestAS** (Test für Ausländische Studierende) which is universally accepted.')],
+            ['q' => __('How accurate is this checker?'),
+             'a' => __('We use the **official Anabin classification** so the eligibility outcome is the same the university would see. But the **final admission decision** rests with each university — some have stricter requirements (high GPA cutoff, specific subjects, language). Use this checker as starting point.')],
+            ['q' => __('What is Studienkolleg and how long does it take?'),
+             'a' => __('**Studienkolleg** is a 1-year (2-semester) foundation program at a German university that prepares students whose diploma is not directly equivalent. Five tracks exist: **T-Kurs** (engineering/science), **M-Kurs** (medical), **W-Kurs** (economics), **G-Kurs** (humanities), **S-Kurs** (language/social).')],
+        ];
+    }
+
+    /** Grade Converter (modified Bavarian formula) FAQ. */
+    public static function forGradeConverter(): array
+    {
+        return [
+            ['q' => __('What is the modifizierte bayerische Formel?'),
+             'a' => __('The **modified Bavarian formula** is the official equation used by DAAD and uni-assist to convert foreign grades to the German 1.0–4.0 scale. Formula: **x = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin)** where Nmax is your country\'s top grade, Nmin is the passing grade, and Nd is your earned grade.')],
+            ['q' => __('Will my converted grade be accepted by every university?'),
+             'a' => __('Most German universities accept the modified Bavarian formula because it\'s the **uni-assist standard**. Some universities have their own conversion table that may differ slightly — check the target university\'s "Anerkennung" or "Anrechnung von Studienleistungen" page.')],
+            ['q' => __('I have multiple grading systems on my transcript — which do I use?'),
+             'a' => __('Most often **the final cumulative GPA** (e.g. 3.45/4.0 or 75/100). If your transcript has both percentage AND letter grades, percentage is preferred for the formula because it gives finer granularity.')],
+            ['q' => __('How does the German 1.0–4.0 scale work?'),
+             'a' => __('**1.0 = sehr gut (excellent)**, **2.0 = gut (good)**, **3.0 = befriedigend (satisfactory)**, **4.0 = ausreichend (sufficient = pass)**, **5.0 = nicht ausreichend (fail)**. Lower is better. A 1.0 average is very rare — typical good students average 1.5–2.5.')],
+            ['q' => __('My GPA is on a 4.0 scale (USA). How does that map?'),
+             'a' => __('Approximate mapping: **3.7–4.0 (A) ≈ 1.0–1.5 German**, **3.0–3.6 (B) ≈ 1.6–2.5 German**, **2.0–2.9 (C) ≈ 2.6–3.5 German**, **1.0–1.9 (D) ≈ 3.6–4.0 German**. Use the calculator for exact value based on your specific institution.')],
+        ];
+    }
 }

@@ -187,4 +187,11 @@
         </aside>
     </form>
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about Student Budget Planning')"
+    :subtitle="__('Werkstudent rules, Bafög eligibility, and pre-arrival savings')"
+    :faqs="\App\Support\PageFaq::forBudgetPlanner()"
+/>
 @endsection

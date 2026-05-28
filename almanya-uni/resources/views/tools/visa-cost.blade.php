@@ -133,4 +133,11 @@
         </aside>
     </form>
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about German Student Visa Costs')"
+    :subtitle="__('Total cost breakdown, refund policy, and required documents')"
+    :faqs="\App\Support\PageFaq::forVisaCost()"
+/>
 @endsection

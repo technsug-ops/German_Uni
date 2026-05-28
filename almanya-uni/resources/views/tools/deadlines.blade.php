@@ -221,4 +221,11 @@
         </p>
     </div>
 </section>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about German Application Deadlines')"
+    :subtitle="__('Winter vs. summer intake, late deadlines, and iCal calendar export')"
+    :faqs="\App\Support\PageFaq::forDeadlines()"
+/>
 @endsection

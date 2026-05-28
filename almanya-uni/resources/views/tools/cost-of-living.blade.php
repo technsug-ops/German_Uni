@@ -385,4 +385,11 @@
 
     </div>
 </section>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about Cost of Living in Germany')"
+    :subtitle="__('Monthly expenses, Sperrkonto requirement, and city-by-city comparison')"
+    :faqs="\App\Support\PageFaq::forCostOfLiving()"
+/>
 @endsection

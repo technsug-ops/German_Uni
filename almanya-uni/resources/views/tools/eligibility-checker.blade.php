@@ -212,4 +212,11 @@
         </p>
     </section>
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about University Eligibility')"
+    :subtitle="__('Anabin classification, Studienkolleg path, and diploma recognition')"
+    :faqs="\App\Support\PageFaq::forEligibility()"
+/>
 @endsection

@@ -485,4 +485,11 @@
 @endif
 
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about the University Match Quiz')"
+    :subtitle="__('How the recommendation engine scores 600+ universities for your profile')"
+    :faqs="\App\Support\PageFaq::forRecommendation()"
+/>
 @endsection

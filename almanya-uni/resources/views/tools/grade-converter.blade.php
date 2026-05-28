@@ -109,4 +109,11 @@
         </p>
     </div>
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about Grade Conversion')"
+    :subtitle="__('Modified Bavarian formula, university acceptance, and 4.0 → German scale')"
+    :faqs="\App\Support\PageFaq::forGradeConverter()"
+/>
 @endsection

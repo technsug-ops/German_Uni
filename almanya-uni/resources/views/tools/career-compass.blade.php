@@ -313,4 +313,11 @@
 @endif
 
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about Career Compass')"
+    :subtitle="__('RIASEC methodology, BERUFENET data, and validity of the quiz')"
+    :faqs="\App\Support\PageFaq::forCareerCompass()"
+/>
 @endsection
