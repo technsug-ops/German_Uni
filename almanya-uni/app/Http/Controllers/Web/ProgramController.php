@@ -14,7 +14,7 @@ class ProgramController extends Controller
 {
     private const PER_PAGE = 20;
 
-    public function index(Request $request): View
+    public function index(Request $request): View|\Illuminate\Http\Response
     {
         $filters = $this->cleanFilters($request);
 
@@ -120,7 +120,16 @@ class ProgramController extends Controller
             ->where('admission_mode', '!=', '')
             ->exists();
 
-        return view('programs.index', [
+        $hasFilter = (bool) (
+            ($filters['q'] ?? null) || ($filters['degree'] ?? null) || ($filters['language'] ?? null)
+            || ($filters['field'] ?? null) || ($filters['state'] ?? null) || ($filters['uni'] ?? null)
+            || ($filters['has_tr'] ?? null) || ($filters['free_only'] ?? null)
+            || ($filters['no_app_fee'] ?? null) || ($filters['uni_assist'] ?? null)
+            || ($filters['semester'] ?? null) || ($filters['deadline_open'] ?? null)
+            || ($filters['duration_range'] ?? null)
+        );
+
+        $viewData = [
             'programs'  => $programs,
             'filters'   => $filters,
             'fields'    => $fields,
@@ -128,7 +137,17 @@ class ProgramController extends Controller
             'total_all' => $totalAll,
             'total_en'  => $totalEn,
             'admission_data_available' => $admissionDataAvailable,
-        ]);
+            'hasFilter' => $hasFilter,
+            'nonEuTuitionStates' => ['baden-wurttemberg', 'sachsen-anhalt'],
+        ];
+
+        // XHR — return only the grid partial (async filter UX)
+        if ($request->ajax() || $request->wantsJson() || $request->boolean('partial')) {
+            return response(view('programs._grid', $viewData)->render())
+                ->header('Content-Type', 'text/html; charset=utf-8');
+        }
+
+        return view('programs.index', $viewData);
     }
 
     public function show(string $slug): View
