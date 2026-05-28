@@ -50,6 +50,12 @@ class Post extends Model
         return $this->hasMany(PostComment::class)->orderByDesc('is_pinned')->orderBy('created_at');
     }
 
+    /** Same translation_group_id, different locale (TR/EN/DE/FR variants of this post). */
+    public function siblings(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(self::class, 'translation_group_id', 'translation_group_id');
+    }
+
     public function approvedComments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PostComment::class)

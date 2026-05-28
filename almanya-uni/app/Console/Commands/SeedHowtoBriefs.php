@@ -131,6 +131,17 @@ class SeedHowtoBriefs extends Command
             'topic_filter' => 'burs',
             'notes' => 'DAAD master/PhD: Türk için en güçlü, €850-1.300/ay. Deutschlandstipendium: %50 not + sosyal angajman, üni başvuru. Parti vakıfları: sosyal/akademik aktif olmak şart, 2 yıllık süreç. Erasmus+: hâlâ Türk üniyle başlamış olmak gerek.',
         ],
+        [
+            'title' => 'Yeminli Tercüme Rehberi 2026 — Diploma ve Resmi Belgeleri Almanya Başvurusu İçin',
+            'slug' => 'yeminli-tercume-rehberi-diploma-almanya-2026',
+            'audience' => 'aday_ogrenci',
+            'topic' => 'uni_assist',
+            'primary_keyword' => 'yeminli tercüme almanya başvuru',
+            'secondary_keywords' => ['noter onaylı tercüme', 'apostil türkiye', 'beglaubigte übersetzung', 'diploma tercümesi maliyet', 'transkript çevirisi', 'lise diploması tercüme'],
+            'pain_point' => 'Türk başvuru sahipleri diploma + transkript + nüfus belgesini Almanya için çevirmesi gerek ama hangisi yeminli (Türk noter onaylı) hangisi apostil, hangisi Beglaubigte Übersetzung? Türkiye\'de mi Almanya\'da mı yaptırmalı, ücret ne kadar (€10-50 sayfa başına), uni-assist hangi formatı kabul eder, sahte tercüman riski nasıl bertaraf edilir?',
+            'topic_filter' => 'uni_assist',
+            'notes' => 'Türkiye\'de noter onaylı tercüman ucuz (€10-20/sayfa) + apostil ekstra. Almanya\'da Beglaubigte Übersetzung €30-50/sayfa, hizli ama pahalı. uni-assist hem Türk noter onaylı + apostili hem Alman Beglaubigte\'yi kabul eder. Diploma + transkript + doğum belgesi (bazı eyaletlerde) gerekli. Adalet Bakanlığı yeminli tercüman listesi: https://www.adalet.gov.tr/. Almanya BDÜ resmi liste. AFFILIATE FRIENDLY: gelecekte tercüme bürosu önerebilir.',
+        ],
     ];
 
     protected $signature = 'content:seed-howto-briefs

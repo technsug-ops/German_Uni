@@ -59,11 +59,11 @@
 
 <div class="max-w-[1400px] mx-auto px-4 py-10">
     @if ($mentors->isEmpty())
-        <div class="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-xl p-12 text-center">
-            <div class="text-6xl mb-4">🤝</div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">{{ __('Mentor network is still in its early phase') }}</h2>
-            <p class="text-gray-600 max-w-xl mx-auto mb-6">
-                {{ __('No active mentors right now, but coming soon! We are bringing alumni with successful careers in Germany into our network. If you want to be a mentor, reach out.') }}
+        <div class="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-xl p-8 md:p-10 text-center mb-12">
+            <div class="text-5xl mb-3">🤝</div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">{{ __('Mentor network is still in its early phase') }}</h2>
+            <p class="text-sm text-gray-600 max-w-xl mx-auto mb-5">
+                {{ __('No active mentors right now. We are recruiting alumni with successful careers in Germany. Apply below or check matching events.') }}
             </p>
             <div class="flex flex-wrap gap-3 justify-center">
                 <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Mentor%20Application"
@@ -85,6 +85,105 @@
 
         <div class="mt-8">{{ $mentors->links() }}</div>
     @endif
+
+    {{-- Hangi konularda mentor arıyoruz --}}
+    <section class="mt-14">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">🎯 {{ __('Which topics are we recruiting mentors for?') }}</h2>
+            <p class="text-sm text-gray-600 max-w-2xl mx-auto">{{ __('We pair students with alumni based on their stage of the journey. If your experience matches any of the topics below, your help is invaluable.') }}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @php
+                $topics = [
+                    ['icon' => '🎓', 'title' => __('University selection (BSc/MSc)'), 'desc' => __('Which uni for which field, NC vs NC-frei, ranking vs fit decisions.')],
+                    ['icon' => '📝', 'title' => __('Application & uni-assist'), 'desc' => __('VPD timing, document set, common rejection reasons, dual application strategy.')],
+                    ['icon' => '🛂', 'title' => __('Visa & Sperrkonto'), 'desc' => __('Consulate appointment hacks, Sperrkonto provider choice, financial proof alternatives.')],
+                    ['icon' => '🏠', 'title' => __('Anmeldung & first week'), 'desc' => __('Bürgeramt strategy, Wohnungsgeberbestätigung, GEZ exemption, IBAN setup.')],
+                    ['icon' => '💼', 'title' => __('Werkstudent + job hunting'), 'desc' => __('Where to find roles, CV/Anschreiben format, interview language strategy.')],
+                    ['icon' => '🧪', 'title' => __('Master / PhD path'), 'desc' => __('Research proposal, supervisor contact, scholarship + Stipendium applications.')],
+                    ['icon' => '🩺', 'title' => __('Medicine / dentistry'), 'desc' => __('Approbation, Heilpraktikergesetz, hospital placement (Famulatur, PJ).')],
+                    ['icon' => '🇩🇪', 'title' => __('German language B1→C1'), 'desc' => __('TestDaF/DSH prep, immersion routines, Goethe/telc exam strategy.')],
+                    ['icon' => '🌱', 'title' => __('Daily life & integration'), 'desc' => __('Healthcare, taxes, German bureaucracy survival, community + Turkish associations.')],
+                ];
+            @endphp
+            @foreach ($topics as $t)
+                <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-emerald-300 transition">
+                    <div class="text-2xl mb-2">{{ $t['icon'] }}</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">{{ $t['title'] }}</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">{{ $t['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- Mentor olma süreci --}}
+    <section class="mt-14 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 md:p-8">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">📋 {{ __('How becoming a mentor works') }}</h2>
+            <p class="text-sm text-gray-600">{{ __('Light process — most applications are reviewed within 7 days.') }}</p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-sm">1</span>
+                    <h3 class="font-bold text-gray-900">{{ __('Apply') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('Send an email with LinkedIn, current city/role, the topic(s) you can mentor on, and (optional) hourly rate or "free" preference.') }}</p>
+            </li>
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-sm">2</span>
+                    <h3 class="font-bold text-gray-900">{{ __('Verification') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('We verify your LinkedIn / education / current role and reach out for a short 15-min video chat to confirm fit and tone.') }}</p>
+            </li>
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 text-white font-bold text-sm">3</span>
+                    <h3 class="font-bold text-gray-900">{{ __('Go live') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('Your profile + Calendly is published. Students book directly. You receive bookings via email; AlmanyaUni handles discovery + landing page.') }}</p>
+            </li>
+        </ol>
+    </section>
+
+    {{-- Avantajlar --}}
+    <section class="mt-14">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">🌟 {{ __('Why become a mentor on AlmanyaUni') }}</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            @php
+                $perks = [
+                    ['icon' => '📣', 'title' => __('Visibility'), 'desc' => __('Personal mentor profile + dedicated SEO-indexed URL — your expertise gets discovered.')],
+                    ['icon' => '💶', 'title' => __('Earning option'), 'desc' => __('Set your own hourly rate (or stay free). AlmanyaUni does not take commission in the first year.')],
+                    ['icon' => '🎁', 'title' => __('Premium access'), 'desc' => __('Active mentors get free AlmanyaUni Premium membership + early access to new tools.')],
+                    ['icon' => '🤝', 'title' => __('Community'), 'desc' => __('Private Slack with other mentors, monthly peer-learning calls, networking with alumni.')],
+                ];
+            @endphp
+            @foreach ($perks as $p)
+                <div class="bg-white border border-gray-200 rounded-xl p-5 text-center">
+                    <div class="text-3xl mb-2">{{ $p['icon'] }}</div>
+                    <h3 class="font-bold text-gray-900 text-sm mb-1">{{ $p['title'] }}</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">{{ $p['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- SSS --}}
+    <x-faq-section
+        class="mt-14"
+        :title="__('Frequently Asked Questions for Mentors')"
+        :subtitle="__('How sessions work, what we expect, and what you get.')"
+        :faqs="[
+            ['q' => __('Do I have to be alumni of a specific university?'), 'a' => __('No — anyone who has built professional or academic experience in Germany can apply (Bachelor onwards). What matters is the real-life knowledge you can pass on.')],
+            ['q' => __('Can I mentor in Turkish only?'), 'a' => __('Yes. Most mentees prefer Turkish for clarity. German + English mentors are also welcome and often paired with international audiences.')],
+            ['q' => __('How much time do I need to commit?'), 'a' => __('Average mentor takes 1-3 sessions per month (30-60 min each). You set your own availability through Calendly — pause anytime.')],
+            ['q' => __('Is mentoring paid?'), 'a' => __('You decide. Many mentors stay free (especially when starting). Others set €15-60/hour. AlmanyaUni takes 0% commission in the first year of the program.')],
+            ['q' => __('What if a student asks a question I don\'t know the answer to?'), 'a' => __('Honesty is the rule — saying \"this is outside my experience, here is a resource I trust\" is more valuable than guessing. We provide a knowledge base + can connect you with other mentors.')],
+        ]"
+    />
 </div>
 
 {{-- CTA: mentor ol --}}
