@@ -171,6 +171,12 @@ class PublishBlogAssets extends Command
     private function parseMarkdown(string $md): ?array
     {
         $md = trim($md);
+
+        // Bazı asset'ler ```markdown ... ``` ile sarılmış — temizle
+        if (preg_match('/^```(?:markdown|md)?\s*\n(.+)\n```\s*$/s', $md, $w)) {
+            $md = trim($w[1]);
+        }
+
         if (! preg_match('/^---\s*\n(.+?)\n---\s*\n(.+)$/s', $md, $m)) {
             // frontmatter yok, sadece body — title gerek
             return null;
