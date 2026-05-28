@@ -67,6 +67,12 @@
                             @if ($p->posts_count > 0)
                                 <p class="text-xs text-gray-400 mt-2">✍️ {{ __(':count posts', ['count' => $p->posts_count]) }}</p>
                             @endif
+                            @if ($p->slug)
+                                <a href="{{ route('author.show', $p->slug) }}" @click.stop
+                                   class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 mt-3">
+                                    📄 {{ __('View profile') }} →
+                                </a>
+                            @endif
                         </div>
                     </article>
                 @endforeach
@@ -94,6 +100,12 @@
                         @endif
                         @if ($p->posts_count > 0)
                             <span class="inline-block mt-3 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700">{{ __(':count posts', ['count' => $p->posts_count]) }}</span>
+                        @endif
+                        @if ($p->slug)
+                            <a href="{{ route('author.show', $p->slug) }}" @click.stop
+                               class="block text-[11px] font-semibold text-indigo-600 hover:text-indigo-800 mt-2">
+                                📄 {{ __('View profile') }} →
+                            </a>
                         @endif
                     </article>
                 @endforeach

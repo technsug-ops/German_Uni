@@ -31,7 +31,7 @@ class AboutController extends Controller
                 ->take(20)
                 ->select('id', 'user_id', 'title', 'slug', 'published_at', 'reading_minutes')])
             ->orderByDesc('posts_count')
-            ->get(['id', 'name', 'role_label', 'bio', 'avatar_url', 'is_admin']);
+            ->get(['id', 'name', 'slug', 'role_label', 'bio', 'avatar_url', 'is_admin']);
 
         // Statüye göre grupla
         $founders = $people->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
@@ -59,6 +59,35 @@ class AboutController extends Controller
         return view('about.team', compact('founders', 'editors', 'others', 'mentors', 'contributors', 'totalPosts', 'totalContributions'));
     }
 
+
+    /**
+     * Individual author profile page — dedicated URL per author (E-E-A-T + Schema.org Person + ProfilePage).
+     */
+    public function author(string $slug): View
+    {
+        $author = User::where('slug', $slug)
+            ->where(fn ($q) => $q->where('is_author', true)
+                ->orWhere('is_editor', true)
+                ->orWhere('is_admin', true))
+            ->firstOrFail();
+
+        $posts = Post::where('user_id', $author->id)
+            ->where('is_published', true)
+            ->where('locale', app()->getLocale())
+            ->whereNotNull('published_at')
+            ->with('category:id,name,slug,color')
+            ->orderByDesc('published_at')
+            ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id', 'view_count', 'helpful_count']);
+
+        $stats = [
+            'posts'        => $posts->count(),
+            'total_views'  => $posts->sum('view_count'),
+            'first_post'   => $posts->last()?->published_at,
+            'latest_post'  => $posts->first()?->published_at,
+        ];
+
+        return view('about.author', compact('author', 'posts', 'stats'));
+    }
 
     public function index(): View
     {

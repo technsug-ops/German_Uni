@@ -13,6 +13,8 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'locale',
+        'translation_group_id',
         'user_id',
         'category_id',
         'title',
