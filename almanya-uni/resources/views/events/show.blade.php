@@ -5,7 +5,53 @@
 <x-seo
     :title="$event->meta_title ?: $event->title"
     :description="$event->meta_description ?: \Illuminate\Support\Str::limit(strip_tags($event->description_md), 160)"
+    :image="$event->banner_url"
 />
+
+{{-- Schema.org Event — Google "Events on Google" rich snippet eligibility --}}
+@push('head')
+<script type="application/ld+json">{!! json_encode(array_filter([
+    '@context'    => 'https://schema.org',
+    '@type'       => $event->mode === 'online' ? 'OnlineEvent' : 'Event',
+    'name'        => $event->title,
+    'description' => \Illuminate\Support\Str::limit(strip_tags($event->description_md ?? ''), 500),
+    'startDate'   => $event->starts_at?->toIso8601String(),
+    'endDate'     => $event->ends_at?->toIso8601String(),
+    'eventStatus' => 'https://schema.org/EventScheduled',
+    'eventAttendanceMode' => match ($event->mode) {
+        'online'  => 'https://schema.org/OnlineEventAttendanceMode',
+        'hybrid'  => 'https://schema.org/MixedEventAttendanceMode',
+        default   => 'https://schema.org/OfflineEventAttendanceMode',
+    },
+    'inLanguage'  => app()->getLocale(),
+    'image'       => $event->banner_url ? [$event->banner_url] : null,
+    'url'         => url()->current(),
+    'location'    => $event->mode === 'online'
+        ? ['@type' => 'VirtualLocation', 'url' => $event->online_url ?: url()->current()]
+        : array_filter([
+            '@type'   => 'Place',
+            'name'    => $event->location_name,
+            'address' => array_filter([
+                '@type'           => 'PostalAddress',
+                'addressLocality' => $event->location_city,
+                'addressCountry'  => 'DE',
+            ]),
+        ]),
+    'organizer'   => $event->host ? [
+        '@type' => 'Person',
+        'name'  => $event->host,
+    ] : null,
+    'offers'      => [
+        '@type'         => 'Offer',
+        'price'         => (string) ($event->price_eur ?? 0),
+        'priceCurrency' => 'EUR',
+        'availability'  => 'https://schema.org/InStock',
+        'validFrom'     => $event->created_at?->toIso8601String(),
+        'url'           => $event->registration_url ?: url()->current(),
+    ],
+    'isAccessibleForFree' => ($event->price_eur ?? 0) == 0,
+]), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+@endpush
 
 @section('content')
 
@@ -114,6 +160,33 @@
                     {!! __('Starts in <strong>:time</strong>', ['time' => $event->starts_at->diffForHumans(null, true)]) !!}
                 </p>
             @endif
+
+            {{-- Paylaş --}}
+            @php
+                $shareUrl = urlencode(url()->current());
+                $shareText = urlencode($event->title . ' — ' . $event->starts_at->format('d M Y, H:i'));
+            @endphp
+            <div class="pt-4 mt-4 border-t border-gray-100">
+                <p class="text-xs text-gray-500 mb-2 text-center">{{ __('Share this event') }}</p>
+                <div class="flex items-center justify-center gap-2">
+                    <a href="https://wa.me/?text={{ $shareText }}%20{{ $shareUrl }}" target="_blank" rel="noopener"
+                       aria-label="{{ __('Share on WhatsApp') }}"
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition" title="WhatsApp">💬</a>
+                    <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareText }}" target="_blank" rel="noopener"
+                       aria-label="{{ __('Share on X / Twitter') }}"
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-900 hover:bg-black text-white transition font-bold" title="X (Twitter)">𝕏</a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank" rel="noopener"
+                       aria-label="{{ __('Share on LinkedIn') }}"
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-700 hover:bg-blue-800 text-white transition" title="LinkedIn">in</a>
+                    <a href="https://t.me/share/url?url={{ $shareUrl }}&text={{ $shareText }}" target="_blank" rel="noopener"
+                       aria-label="{{ __('Share on Telegram') }}"
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-500 hover:bg-sky-600 text-white transition" title="Telegram">✈️</a>
+                    <button type="button"
+                            onclick="navigator.clipboard.writeText('{{ url()->current() }}').then(() => { this.textContent='✓'; setTimeout(() => this.textContent='🔗', 1500); })"
+                            aria-label="{{ __('Copy link') }}"
+                            class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition" title="{{ __('Copy link') }}">🔗</button>
+                </div>
+            </div>
         </div>
 
         @if ($related->isNotEmpty())
