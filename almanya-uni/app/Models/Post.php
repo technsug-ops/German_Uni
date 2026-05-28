@@ -45,6 +45,21 @@ class Post extends Model
         'gallery_images'         => 'array',
     ];
 
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostComment::class)->orderByDesc('is_pinned')->orderBy('created_at');
+    }
+
+    public function approvedComments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostComment::class)
+            ->where('status', 'approved')
+            ->whereNull('parent_id')
+            ->with(['user:id,name,slug,avatar_url', 'replies.user:id,name,slug,avatar_url'])
+            ->orderByDesc('is_pinned')
+            ->orderByDesc('created_at');
+    }
+
     public function getFormattedAudioDurationAttribute(): ?string
     {
         if (! $this->audio_duration_seconds) return null;

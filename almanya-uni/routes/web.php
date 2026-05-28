@@ -73,6 +73,9 @@ $routes = function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
     Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+    Route::post('/blog/{slug}/comment', [BlogController::class, 'storeComment'])
+        ->middleware('throttle:5,10')
+        ->name('blog.comment.store');
 
     Route::get('/faq', [FaqController::class, 'index'])->name('faqs.index');
     Route::get('/faq/{topic}', [FaqController::class, 'topic'])->name('faqs.topic');

@@ -562,4 +562,155 @@ document.addEventListener('alpine:init', () => {
 })();
 </script>
 @endpush
+
+{{-- ============================================================
+     YORUMLAR — UGC + E-E-A-T sinyali
+     ============================================================ --}}
+<section id="comments" class="bg-gray-50 border-t border-gray-200 mt-12">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+            💬 {{ __('Comments') }}
+            @if ($post->approvedComments->count() > 0)
+                <span class="text-base font-normal text-gray-500">({{ $post->approvedComments->count() }})</span>
+            @endif
+        </h2>
+        <p class="text-sm text-gray-600 mb-6">{{ __('Share your experience or ask a question. Comments are reviewed before publishing.') }}</p>
+
+        {{-- Status flash (after submit) --}}
+        @if (session('comment_status'))
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-4 mb-6 text-sm">
+                ✓ {{ session('comment_status') }}
+            </div>
+        @endif
+
+        {{-- Comment form --}}
+        <form method="POST" action="{{ route('blog.comment.store', $post->slug) }}" class="bg-white border border-gray-200 rounded-xl p-5 mb-8">
+            @csrf
+            <textarea name="body" required minlength="10" maxlength="3000" rows="4"
+                placeholder="{{ __('Your comment...') }}"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm">{{ old('body') }}</textarea>
+
+            @guest
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                    <input type="text" name="author_name" maxlength="80" required value="{{ old('author_name') }}"
+                        placeholder="{{ __('Name (required)') }}"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                    <input type="email" name="author_email" maxlength="150" required value="{{ old('author_email') }}"
+                        placeholder="{{ __('Email (not published, required)') }}"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                </div>
+                <p class="text-[11px] text-gray-400 mt-2">{{ __('Your email is never shown publicly — only used to notify you if your comment receives a reply.') }}</p>
+            @endguest
+
+            {{-- Honeypot (gizli, bot dolduracak) --}}
+            <input type="text" name="website" tabindex="-1" autocomplete="off"
+                style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+
+            @error('body')
+                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
+            @enderror
+            @error('author_name')
+                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
+            @enderror
+            @error('author_email')
+                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
+            @enderror
+
+            <div class="flex items-center justify-between mt-4">
+                <p class="text-xs text-gray-500">{{ __('Be respectful — spam/abusive comments are removed.') }}</p>
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2 rounded-lg text-sm transition">
+                    {{ __('Post comment') }} →
+                </button>
+            </div>
+        </form>
+
+        {{-- Comments list --}}
+        @if ($post->approvedComments->isNotEmpty())
+            <div class="space-y-5">
+                @foreach ($post->approvedComments as $comment)
+                    <article id="comment-{{ $comment->id }}" class="bg-white border border-gray-200 rounded-xl p-4">
+                        <div class="flex items-start gap-3">
+                            @if ($comment->display_avatar)
+                                <img src="{{ $comment->display_avatar }}" alt="{{ $comment->display_name }}"
+                                    class="w-10 h-10 rounded-full object-cover flex-shrink-0">
+                            @else
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                    {{ mb_substr($comment->display_name, 0, 1) }}
+                                </div>
+                            @endif
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 flex-wrap mb-1">
+                                    @if ($comment->user?->slug)
+                                        <a href="{{ route('author.show', $comment->user->slug) }}"
+                                           class="font-semibold text-sm text-gray-900 hover:text-indigo-600">{{ $comment->display_name }}</a>
+                                    @else
+                                        <span class="font-semibold text-sm text-gray-900">{{ $comment->display_name }}</span>
+                                    @endif
+                                    @if ($comment->is_pinned)
+                                        <span class="text-[10px] uppercase font-bold tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded">📌 {{ __('Pinned') }}</span>
+                                    @endif
+                                    <time class="text-xs text-gray-400" datetime="{{ $comment->created_at->toIso8601String() }}">
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </time>
+                                </div>
+                                <div class="prose prose-sm max-w-none text-gray-700 whitespace-pre-line leading-relaxed">{{ $comment->body }}</div>
+
+                                {{-- Replies --}}
+                                @if ($comment->replies->isNotEmpty())
+                                    <div class="mt-4 pl-4 border-l-2 border-gray-100 space-y-3">
+                                        @foreach ($comment->replies as $reply)
+                                            <div id="comment-{{ $reply->id }}" class="flex items-start gap-2">
+                                                @if ($reply->display_avatar)
+                                                    <img src="{{ $reply->display_avatar }}" alt="{{ $reply->display_name }}" class="w-7 h-7 rounded-full object-cover flex-shrink-0">
+                                                @else
+                                                    <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-[11px] flex-shrink-0">
+                                                        {{ mb_substr($reply->display_name, 0, 1) }}
+                                                    </div>
+                                                @endif
+                                                <div class="flex-1">
+                                                    <div class="flex items-center gap-2 mb-0.5">
+                                                        <span class="font-semibold text-xs text-gray-900">{{ $reply->display_name }}</span>
+                                                        <time class="text-[11px] text-gray-400">{{ $reply->created_at->diffForHumans() }}</time>
+                                                    </div>
+                                                    <p class="text-xs text-gray-700 whitespace-pre-line leading-relaxed">{{ $reply->body }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        @else
+            <div class="text-center py-8 text-sm text-gray-500">
+                {{ __('No comments yet. Be the first to share your experience!') }}
+            </div>
+        @endif
+    </div>
+</section>
+
+{{-- Schema.org Comment + commentCount --}}
+@if ($post->approvedComments->count() > 0)
+    @push('head')
+    <script type="application/ld+json">{!! json_encode([
+        '@context'      => 'https://schema.org',
+        '@type'         => 'DiscussionForumPosting',
+        '@id'           => url()->current() . '#comments',
+        'commentCount'  => $post->approvedComments->count(),
+        'comment'       => $post->approvedComments->take(20)->map(fn ($c) => array_filter([
+            '@type'        => 'Comment',
+            'text'         => \Illuminate\Support\Str::limit($c->body, 500),
+            'dateCreated'  => $c->created_at->toIso8601String(),
+            'author'       => array_filter([
+                '@type' => 'Person',
+                'name'  => $c->display_name,
+                'url'   => $c->user?->slug ? route('author.show', $c->user->slug) : null,
+            ]),
+        ]))->all(),
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+    @endpush
+@endif
+
 @endsection

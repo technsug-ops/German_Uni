@@ -31,7 +31,7 @@ class BlogController extends Controller
     public function show(string $slug): View
     {
         $post = Post::published()
-            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color'])
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color', 'approvedComments'])
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -51,6 +51,51 @@ class BlogController extends Controller
             'related' => $related,
             'categories' => $this->sidebarCategories(),
         ]);
+    }
+
+    /**
+     * Yorum gönder — anonim veya login. pending status, admin onayından sonra public.
+     */
+    public function storeComment(\Illuminate\Http\Request $request, string $slug): \Illuminate\Http\RedirectResponse
+    {
+        $post = Post::published()->where('slug', $slug)->firstOrFail();
+
+        $data = $request->validate([
+            'body'         => 'required|string|min:10|max:3000',
+            'parent_id'    => 'nullable|integer|exists:post_comments,id',
+            'author_name'  => 'nullable|string|max:80',
+            'author_email' => 'nullable|email|max:150',
+            'website'      => 'nullable|string|max:200', // honeypot — boş olmalı
+        ]);
+
+        // Honeypot: bot dolduruysa sessizce yut
+        if (! empty($data['website'])) {
+            return back()->with('comment_status', __('Thanks for your comment — it\'s pending review.'));
+        }
+
+        $user = $request->user();
+        if (! $user) {
+            $request->validate([
+                'author_name'  => 'required|string|min:2|max:80',
+                'author_email' => 'required|email|max:150',
+            ]);
+        }
+
+        \App\Models\PostComment::create([
+            'post_id'      => $post->id,
+            'user_id'      => $user?->id,
+            'parent_id'    => $data['parent_id'] ?? null,
+            'author_name'  => $user ? null : ($data['author_name'] ?? null),
+            'author_email' => $user ? null : ($data['author_email'] ?? null),
+            'body'         => $data['body'],
+            'status'       => 'pending',
+            'ip_address'   => $request->ip(),
+            'user_agent'   => substr((string) $request->userAgent(), 0, 255),
+        ]);
+
+        return back()
+            ->with('comment_status', __('Thanks for your comment — it\'s pending review.'))
+            ->withFragment('comments');
     }
 
     public function category(string $slug): View
