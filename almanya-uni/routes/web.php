@@ -296,6 +296,85 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     return response()->json(['migrate' => $migrate, 'seed' => $seed]);
 })->middleware('throttle:5,1');
 
+// Token-gated single-image cache override — for cases where a uni has no
+// usable Wikipedia image and we want to point to a custom CDN URL instead.
+//   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
+Route::get('/_system/cache-custom', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    $type = $request->query('type', 'uni');         // uni | city | uni-logo
+    $slug = (string) $request->query('slug', '');
+    $url = (string) $request->query('url', '');
+    $width = (int) $request->query('width', $type === 'uni-logo' ? 120 : 600);
+
+    if (! $slug || ! preg_match('/^[a-z0-9-]+$/', $slug)) {
+        return response()->json(['error' => 'Invalid slug'], 400);
+    }
+    if (! preg_match('#^https?://#i', $url)) {
+        return response()->json(['error' => 'Invalid url'], 400);
+    }
+    if (! in_array($type, ['uni', 'city', 'uni-logo'], true)) {
+        return response()->json(['error' => 'Invalid type'], 400);
+    }
+
+    $subdir = match ($type) {
+        'uni' => 'unis',
+        'city' => 'cities',
+        'uni-logo' => 'uni-logos',
+    };
+    $cacheRoot = public_path("img/cache/$subdir");
+    if (! is_dir($cacheRoot)) @mkdir($cacheRoot, 0775, true);
+    $destPath = "$cacheRoot/$slug.webp";
+
+    if (! extension_loaded('gd') || ! function_exists('imagewebp')) {
+        return response()->json(['error' => 'GD/WebP missing on server'], 500);
+    }
+
+    try {
+        $response = \Illuminate\Support\Facades\Http::timeout(30)
+            ->withHeaders(['User-Agent' => 'AlmanyaUni/1.0 (image cache; tech@applytogerman.com)'])
+            ->retry(1, 500)
+            ->get($url);
+        if (! $response->successful()) {
+            return response()->json(['error' => 'Source HTTP ' . $response->status()], 422);
+        }
+        $bytes = $response->body();
+        if (strlen($bytes) < 100 || strlen($bytes) > 12 * 1024 * 1024) {
+            return response()->json(['error' => 'Source too small or too large: ' . strlen($bytes) . 'b'], 422);
+        }
+        $src = @imagecreatefromstring($bytes);
+        if (! $src) return response()->json(['error' => 'GD cannot decode source'], 422);
+
+        $srcW = imagesx($src);
+        $srcH = imagesy($src);
+        $newW = min($width, $srcW);
+        $newH = (int) round($srcH * ($newW / $srcW));
+        $dst = imagecreatetruecolor($newW, $newH);
+        imagealphablending($dst, false);
+        imagesavealpha($dst, true);
+        $tr = imagecolorallocatealpha($dst, 0, 0, 0, 127);
+        imagefilledrectangle($dst, 0, 0, $newW, $newH, $tr);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newW, $newH, $srcW, $srcH);
+        $ok = imagewebp($dst, $destPath, 82);
+        imagedestroy($src);
+        imagedestroy($dst);
+
+        if (! $ok) return response()->json(['error' => 'WebP encode failed'], 500);
+        return response()->json([
+            'ok' => true,
+            'path' => "/img/cache/$subdir/$slug.webp",
+            'size' => filesize($destPath),
+            'dimensions' => "{$newW}x{$newH}",
+            'source_size' => strlen($bytes),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+})->middleware('throttle:20,1');
+
 // Token-gated stats reset — wipe demo/test traffic numbers to start fresh
 //   curl "https://applytogerman.com/_system/reset-stats?token=XXX&dry-run=1"  (preview)
 //   curl "https://applytogerman.com/_system/reset-stats?token=XXX"            (apply)
