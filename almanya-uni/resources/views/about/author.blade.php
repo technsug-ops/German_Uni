@@ -166,6 +166,43 @@
         </div>
     @endif
 
+    {{-- Etkinlikler (host olarak) --}}
+    @if (! empty($events) && $events->isNotEmpty())
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+                📅 {{ __('Events hosted by :name', ['name' => $author->name]) }}
+                @if ($stats['upcoming_events'] > 0)
+                    <span class="text-sm font-normal text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">{{ __(':n upcoming', ['n' => $stats['upcoming_events']]) }}</span>
+                @endif
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                @foreach ($events as $e)
+                    @php
+                        $title = match (app()->getLocale()) {
+                            'de' => $e->title_de ?: $e->title_tr,
+                            'en' => $e->title_en ?: $e->title_tr,
+                            default => $e->title_tr ?: $e->title_de,
+                        };
+                        $isUpcoming = $e->starts_at && $e->starts_at->isFuture();
+                    @endphp
+                    <a href="{{ route('events.show', $e->slug) }}"
+                       class="block bg-white border {{ $isUpcoming ? 'border-emerald-300' : 'border-gray-200' }} rounded-xl p-5 hover:shadow-md transition">
+                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                            @if ($isUpcoming)
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">{{ __('Upcoming') }}</span>
+                            @else
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{{ __('Past') }}</span>
+                            @endif
+                            <span class="text-[10px] font-semibold text-gray-600">{{ $e->mode === 'online' ? '💻 ' . __('Online') : '📍 ' . $e->location_city }}</span>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900 line-clamp-2">{{ $title }}</h3>
+                        <p class="text-xs text-gray-500 mt-2">📅 {{ $e->starts_at?->translatedFormat('d M Y, H:i') }}</p>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
     <div class="mt-10 text-center">
         <a href="{{ route('team') }}" class="inline-flex items-center gap-2 text-sm text-indigo-600 hover:underline">
             ← {{ __('Back to team') }}

@@ -13,7 +13,7 @@ class Event extends Model
 
     protected $fillable = [
         'type', 'category_id', 'title_tr', 'title_en', 'title_de', 'slug',
-        'description_md_tr', 'description_md_en', 'description_md_de', 'host',
+        'description_md_tr', 'description_md_en', 'description_md_de', 'host', 'host_user_id',
         'sponsor', 'sponsor_logo_url', 'reward', 'target_audience', 'difficulty', 'duration_minutes', 'tags',
         'starts_at', 'ends_at', 'timezone',
         'mode', 'online_url', 'location_name', 'location_city',
@@ -36,6 +36,11 @@ class Event extends Model
     public function category()
     {
         return $this->belongsTo(EventCategory::class);
+    }
+
+    public function hostUser()
+    {
+        return $this->belongsTo(User::class, 'host_user_id');
     }
 
     /**

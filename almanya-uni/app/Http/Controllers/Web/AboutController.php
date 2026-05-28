@@ -79,14 +79,21 @@ class AboutController extends Controller
             ->orderByDesc('published_at')
             ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id', 'view_count', 'helpful_count']);
 
+        $events = \App\Models\Event::where('host_user_id', $author->id)
+            ->where('is_active', true)
+            ->orderByDesc('starts_at')
+            ->get(['id', 'title_tr', 'title_en', 'title_de', 'slug', 'starts_at', 'mode', 'location_city', 'type']);
+
         $stats = [
             'posts'        => $posts->count(),
             'total_views'  => $posts->sum('view_count'),
             'first_post'   => $posts->last()?->published_at,
             'latest_post'  => $posts->first()?->published_at,
+            'events'       => $events->count(),
+            'upcoming_events' => $events->where('starts_at', '>', now())->count(),
         ];
 
-        return view('about.author', compact('author', 'posts', 'stats'));
+        return view('about.author', compact('author', 'posts', 'events', 'stats'));
     }
 
     public function index(): View

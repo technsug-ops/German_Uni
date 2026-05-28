@@ -85,8 +85,18 @@
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">{{ $event->title }}</h1>
-        @if ($event->host)
-            <p class="text-lg opacity-90 mb-2">👤 {{ $event->host }}</p>
+        @if ($event->host || $event->hostUser)
+            <p class="text-lg opacity-90 mb-2">
+                👤
+                @if ($event->hostUser?->slug)
+                    <a href="{{ route('author.show', $event->hostUser->slug) }}" class="hover:underline">{{ $event->hostUser->name ?? $event->host }}</a>
+                    @if ($event->hostUser->role_label)
+                        <span class="opacity-75 text-sm">· {{ $event->hostUser->role_label }}</span>
+                    @endif
+                @else
+                    {{ $event->host }}
+                @endif
+            </p>
         @endif
     </div>
 </section>
