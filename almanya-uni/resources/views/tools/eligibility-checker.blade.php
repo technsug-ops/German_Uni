@@ -46,6 +46,7 @@
                         <option value="{{ $key }}" @selected(($old['country'] ?? '') === $key)>{{ $c['flag'] }} {{ $c['name'] }}</option>
                     @endforeach
                 </select>
+                <p class="text-xs text-gray-500 mt-1.5">{{ __('Choose the country where you completed your most recent diploma — not your citizenship.') }}</p>
             </div>
 
             {{-- Current degree --}}
