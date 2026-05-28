@@ -433,6 +433,57 @@ class PageFaq
         ];
     }
 
+    /**
+     * Per-profession FAQ — type-aware (Ausbildung vs Studienberuf vs Weiterbildung).
+     * Renders generic Q/A grounded in BERUFENET + Anabin facts about the German labour market.
+     */
+    public static function forProfession(\App\Models\Profession $p): array
+    {
+        $name = $p->name_tr ?: $p->name_de;
+        $nameDe = $p->name_de;
+        $type = $p->type ?: 'other';
+
+        $pathLine = match ($type) {
+            'ausbildung'    => __('a **3-year dual Ausbildung** — combining a vocational school (Berufsschule) with paid on-the-job training at a company. No university degree required.'),
+            'studienberuf'  => __('a **Studienberuf** — meaning you need a **university Bachelor\'s or Master\'s degree** from a German or recognised foreign university.'),
+            'weiterbildung' => __('a **Weiterbildung** path — advanced specialisation that builds on an existing Ausbildung or degree (e.g. Meister, Fachwirt, certified course).'),
+            'grundberuf'    => __('a **Grundberuf** — an entry-level occupation that requires no formal vocational training or specific degree.'),
+            default         => __('a standard regulated occupation. Specific qualifications depend on the role.'),
+        };
+
+        $durationLine = match ($type) {
+            'ausbildung'    => __('Typically **3 years** (sometimes 3.5). Salary during Ausbildung: roughly **€900–€1,300/month gross** in year 1, rising each year.'),
+            'studienberuf'  => __('University education: **3 years Bachelor + 2 years Master (typical)**. Many positions require the full 5-year track, especially in engineering, law, and medicine.'),
+            'weiterbildung' => __('**1–3 years** part-time alongside work, depending on the specific Meisterkurs or specialisation. Many programs are evening/weekend.'),
+            default         => __('Varies by role — entry possible in some cases without formal qualification; verification required at the employer level.'),
+        };
+
+        return [
+            [
+                'q' => __('What does a :name do in Germany?', ['name' => $name]),
+                'a' => $p->description ?: ($p->clean_steckbrief
+                    ? \Illuminate\Support\Str::limit($p->clean_steckbrief, 280)
+                    : __('A :name is :path Day-to-day tasks vary by employer; check BERUFENET (the official Bundesagentur für Arbeit job database) for the precise role profile.', ['name' => $nameDe, 'path' => $pathLine])),
+            ],
+            [
+                'q' => __('Is :name an Ausbildung or a degree path?', ['name' => $name]),
+                'a' => __('In Germany, ":name" follows :path', ['name' => $nameDe, 'path' => $pathLine]),
+            ],
+            [
+                'q' => __('How long does it take to qualify as :name?', ['name' => $name]),
+                'a' => $durationLine,
+            ],
+            [
+                'q' => __('Can foreigners work as :name in Germany?', ['name' => $name]),
+                'a' => __('Yes — Germany has an **EU Blue Card** track for university graduates and the **Skilled Workers Immigration Act (Fachkräfteeinwanderungsgesetz)** for vocationally qualified workers. Foreign qualifications must be recognised — start with the [anabin.kmk.org](https://anabin.kmk.org/) database or [anerkennung-in-deutschland.de](https://www.anerkennung-in-deutschland.de/) for the official equivalence check.'),
+            ],
+            [
+                'q' => __('What is the typical salary for :name in Germany?', ['name' => $name]),
+                'a' => __('Salaries vary by region, employer size, and experience. For accurate, current figures, consult **BERUFENET** (search for ":nameDe") or **gehalt.de** / **stepstone.de Gehaltsreport**. As a rough national rule: Studienberufe typically pay 20–40% more than Ausbildung paths at entry.', ['nameDe' => $nameDe]),
+            ],
+        ];
+    }
+
     /** Grade Converter (modified Bavarian formula) FAQ. */
     public static function forGradeConverter(): array
     {

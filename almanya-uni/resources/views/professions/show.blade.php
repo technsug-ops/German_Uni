@@ -275,4 +275,11 @@
         @endif
     </aside>
 </div>
+
+{{-- Auto-FAQ (AIO + Featured Snippet) — type-aware per profession --}}
+<x-faq-section
+    :title="__('Frequently Asked Questions about :name', ['name' => $profession->name_tr ?: $profession->name_de])"
+    :subtitle="__('Education path, salary, recognition, and entry routes for foreigners')"
+    :faqs="\App\Support\PageFaq::forProfession($profession)"
+/>
 @endsection
