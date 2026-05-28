@@ -21,7 +21,12 @@
 @else
     <div class="content-blocks space-y-8">
     @foreach($blocks as $block)
-        @php $type = $block['type'] ?? null; @endphp
+        @php
+            $type = $block['type'] ?? null;
+            $blockId = ! empty($block['h'])
+                ? \Illuminate\Support\Str::slug($block['h'])
+                : ($type ? \Illuminate\Support\Str::slug($type) : null);
+        @endphp
 
         {{-- ────────────────────────────── HERO ────────────────────────────── --}}
         @if($type === 'hero')
@@ -41,7 +46,7 @@
         @elseif($type === 'section')
             <section class="prose prose-lg max-w-none prose-p:text-gray-700 prose-headings:text-gray-900">
                 @if(!empty($block['h']))
-                    <h2 class="!text-2xl !font-bold !mb-3">{{ $block['h'] }}</h2>
+                    <h2 @if($blockId) id="{{ $blockId }}" @endif class="!text-2xl !font-bold !mb-3 scroll-mt-24">{{ $block['h'] }}</h2>
                 @endif
                 {!! $md($block['body_md'] ?? '') !!}
             </section>
@@ -50,7 +55,7 @@
         @elseif($type === 'quick_facts')
             <section>
                 @if(!empty($block['h']))
-                    <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                    <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                 @endif
                 <dl class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     @foreach($block['items'] ?? [] as $item)
@@ -83,7 +88,7 @@
             @if($imgs->isNotEmpty())
                 <section data-gallery="{{ $galleryId }}">
                     @if(!empty($block['h']))
-                        <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                         @foreach($imgs as $idx => $img)
@@ -132,7 +137,7 @@
             @if($embedUrl)
                 <section>
                     @if(!empty($block['h']))
-                        <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="aspect-video rounded-2xl overflow-hidden bg-black ring-1 ring-gray-200">
                         <iframe src="{{ $embedUrl }}" class="w-full h-full" frameborder="0" loading="lazy" allowfullscreen
@@ -145,7 +150,7 @@
             @elseif($videoUrl)
                 <section>
                     @if(!empty($block['h']))
-                        <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <a href="{{ $videoUrl }}" target="_blank" rel="noopener"
                        class="block bg-white ring-1 ring-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 text-gray-900">
@@ -159,7 +164,7 @@
             @if(!empty($block['rows']))
                 <section>
                     @if(!empty($block['h']))
-                        <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="overflow-x-auto rounded-lg ring-1 ring-gray-200">
                         <table class="w-full text-sm">
@@ -193,7 +198,7 @@
         @elseif($type === 'cost_of_living')
             @if(!empty($block['items']))
                 <section>
-                    <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] ?? __('Monthly Cost of Living (approx.)') }}</h2>
+                    <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('Monthly Cost of Living (approx.)') }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         @foreach($block['items'] as $item)
                             <div class="bg-white ring-1 ring-gray-200 rounded-lg p-4 shadow-sm">
@@ -227,7 +232,7 @@
             @if(!empty($block['items']))
                 <section>
                     @if(!empty($block['h']))
-                        <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         @foreach($block['items'] as $place)
@@ -275,7 +280,7 @@
         {{-- ────────────────────────────── STUDENT CULTURE ────────────────────────────── --}}
         @elseif($type === 'student_culture')
             <section class="bg-gradient-to-br from-amber-50 to-orange-50 ring-1 ring-amber-200 rounded-2xl p-6 shadow-sm">
-                <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] ?? __('Student Culture') }}</h2>
+                <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('Student Culture') }}</h2>
                 @if(!empty($block['body_md']))
                     <div class="text-[15px] leading-relaxed text-gray-800 space-y-3 [&_strong]:font-semibold [&_strong]:text-gray-900 [&_a]:text-amber-700 [&_a]:underline">
                         {!! $md($block['body_md']) !!}
@@ -297,7 +302,7 @@
         @elseif($type === 'faq')
             <section>
                 @if(!empty($block['h']))
-                    <h2 class="text-xl font-bold mb-4 text-gray-900">{{ $block['h'] }}</h2>
+                    <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-4 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                 @endif
                 <div class="space-y-3">
                     @foreach($block['items'] ?? [] as $faq)
@@ -328,7 +333,7 @@
         {{-- ────────────────────────────── UNIVERSITIES IN CITY ────────────────────────────── --}}
         @elseif($type === 'universities_in_city')
             <section class="bg-gradient-to-br from-blue-50 to-cyan-50 ring-1 ring-blue-200 rounded-2xl p-6 shadow-sm">
-                <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] ?? __('Universities') }}</h2>
+                <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('Universities') }}</h2>
                 <div class="grid grid-cols-3 gap-3 mb-4 text-sm text-gray-900">
                     <div><span class="font-bold text-2xl">{{ $block['total'] ?? 0 }}</span> <span class="text-gray-700">{{ __('total') }}</span></div>
                     <div><span class="font-bold text-2xl">{{ $block['public'] ?? 0 }}</span> <span class="text-gray-700">{{ __('public') }}</span></div>
@@ -344,7 +349,7 @@
         {{-- ────────────────────────────── PROGRAMS SUMMARY ────────────────────────────── --}}
         @elseif($type === 'programs_summary')
             <section class="bg-gradient-to-br from-emerald-50 to-teal-50 ring-1 ring-emerald-200 rounded-2xl p-6 shadow-sm">
-                <h2 class="text-xl font-bold mb-3 text-gray-900">{{ $block['h'] ?? __('Programs') }}</h2>
+                <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('Programs') }}</h2>
                 <div class="grid grid-cols-4 gap-3 text-sm text-gray-900">
                     <div><span class="font-bold text-2xl">{{ $block['total'] ?? 0 }}</span> <span class="text-gray-700">{{ __('total') }}</span></div>
                     <div><span class="font-bold text-2xl">{{ $block['bachelor'] ?? 0 }}</span> <span class="text-gray-700">Bachelor</span></div>
@@ -361,7 +366,7 @@
                         <div class="flex items-center gap-2">
                             <span class="text-2xl">💬</span>
                             <div>
-                                <h2 class="text-xl font-bold text-gray-900">{{ $block['h'] ?? __('AlmanyaUni Forum') }}</h2>
+                                <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('AlmanyaUni Forum') }}</h2>
                                 <p class="text-xs text-primary-700 font-medium">{{ __('Experiences from our international student community') }}</p>
                             </div>
                         </div>
@@ -403,7 +408,7 @@
             @if(!empty($block['items']))
                 <section class="bg-gradient-to-br from-violet-50 to-purple-50 ring-1 ring-violet-200 rounded-2xl p-6 shadow-sm">
                     <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                        <h2 class="text-xl font-bold text-gray-900">💬 {{ $block['h'] ?? __('Community Discussions') }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24">💬 {{ $block['h'] ?? __('Community Discussions') }}</h2>
                         @if(!empty($block['source']))
                             <span class="text-xs text-violet-700 font-medium uppercase tracking-wide">{{ __('Source:') }} {{ $block['source'] }}</span>
                         @endif
@@ -442,7 +447,7 @@
             @if(!empty($block['items']))
                 <section>
                     @if(!empty($block['h']))
-                        <h2 class="text-lg font-bold mb-3 text-gray-900">{{ $block['h'] }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-lg font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="flex flex-wrap gap-2">
                         @foreach($block['items'] as $link)

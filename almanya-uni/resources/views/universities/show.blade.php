@@ -434,7 +434,8 @@
                 @if ($cityHighlights->isNotEmpty())
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
                         @foreach ($cityHighlights as $hl)
-                            <a href="{{ route('cities.show', $city->slug) }}" class="block rounded-lg border border-gray-200 hover:border-primary-400 hover:shadow-sm bg-gray-50 hover:bg-white transition p-4">
+                            @php $anchor = \Illuminate\Support\Str::slug($hl['h']); @endphp
+                            <a href="{{ route('cities.show', $city->slug) }}#{{ $anchor }}" class="block rounded-lg border border-gray-200 hover:border-primary-400 hover:shadow-sm bg-gray-50 hover:bg-white transition p-4">
                                 <h3 class="font-bold text-gray-900 text-sm mb-1 leading-snug">{{ $hl['h'] }}</h3>
                                 <p class="text-xs text-gray-600 leading-relaxed">{{ $hl['text'] }}</p>
                                 <span class="inline-block mt-2 text-xs font-semibold text-primary-600">{{ __('devamı') }} →</span>
