@@ -3,46 +3,56 @@
     if (! $event) return;
     $startTs = $event->starts_at->timestamp * 1000;
     $isLive = $event->is_live ?? false;
-    $bannerColor = $event->type_color ?? '#1E40AF';
+    // Sıcak amber→turuncu→kırmızı gradient — hero'nun mavi/indigo'su ile maksimum kontrast.
+    // Live durumunda tam kırmızı, upcoming'de amber-to-orange.
+    $bannerGradient = $isLive
+        ? 'linear-gradient(90deg, #dc2626 0%, #ea580c 100%)'
+        : 'linear-gradient(90deg, #f59e0b 0%, #f97316 60%, #ef4444 100%)';
+    $bannerCta = route('events.show', $event->slug) . '#rsvp';
 @endphp
 
 <div id="eventBanner"
      data-start="{{ $startTs }}"
      data-storage-key="event-banner-{{ $event->id }}"
-     class="hidden relative z-30 text-white shadow-md border-b-2 border-white/20"
-     style="background: linear-gradient(90deg, {{ $bannerColor }}, {{ $bannerColor }}ee);">
-    <div class="max-w-[1400px] mx-auto px-4 py-2 flex items-center gap-3 text-sm">
-        <span class="text-lg shrink-0">{{ $event->type_emoji }}</span>
+     class="hidden relative z-30 text-white shadow-lg border-b-2 border-amber-300/60"
+     style="background: {{ $bannerGradient }}; box-shadow: 0 4px 12px -4px rgba(239,68,68,0.4);">
+    <div class="max-w-[1400px] mx-auto px-4 py-2.5 flex items-center gap-3 text-sm">
+        {{-- Emoji + pulse glow --}}
+        <span class="relative shrink-0 inline-flex items-center justify-center">
+            <span class="absolute inset-0 rounded-full bg-white/30 animate-ping" style="animation-duration: 2s;"></span>
+            <span class="relative text-xl">{{ $isLive ? '🔴' : $event->type_emoji }}</span>
+        </span>
+
         <div class="flex-1 min-w-0 flex items-center gap-3 flex-wrap">
             @if ($isLive)
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider">
-                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white text-red-600 text-[10px] font-extrabold uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
                     {{ __('Live') }}
                 </span>
-                <strong class="truncate">{{ $event->type_label }} "{{ $event->title }}"</strong>
-                <span class="text-white/80 text-xs whitespace-nowrap">— {{ __('on air now') }}</span>
+                <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline">"{{ $event->title }}"</a>
+                <span class="text-white/95 text-xs whitespace-nowrap font-semibold">— {{ __('on air now') }}</span>
             @else
-                <strong class="truncate">{{ $event->type_label }} "{{ $event->title }}" — {{ __('starts in') }}</strong>
-                <div class="flex items-center gap-1 tabular-nums font-mono text-sm">
-                    <span class="bg-black/30 px-1.5 py-0.5 rounded"><span data-cd="d">--</span><span class="text-[10px] opacity-70 ml-0.5">{{ __('D') }}</span></span>
-                    <span class="opacity-60">:</span>
-                    <span class="bg-black/30 px-1.5 py-0.5 rounded"><span data-cd="h">--</span><span class="text-[10px] opacity-70 ml-0.5">{{ __('H') }}</span></span>
-                    <span class="opacity-60">:</span>
-                    <span class="bg-black/30 px-1.5 py-0.5 rounded"><span data-cd="m">--</span><span class="text-[10px] opacity-70 ml-0.5">{{ __('M') }}</span></span>
+                <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline drop-shadow-sm">{{ $event->type_label }}: "{{ $event->title }}"</a>
+                <span class="text-white/95 text-xs whitespace-nowrap font-semibold">{{ __('starts in') }}</span>
+                <div class="flex items-center gap-1 tabular-nums font-mono">
+                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="d">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('D') }}</span></span>
+                    <span class="opacity-70">:</span>
+                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="h">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('H') }}</span></span>
+                    <span class="opacity-70">:</span>
+                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="m">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('M') }}</span></span>
                 </div>
             @endif
         </div>
 
-        @if ($event->registration_url || $event->online_url)
-            <a href="{{ $event->registration_url ?: $event->online_url }}"
-               target="_blank" rel="noopener"
-               class="inline-flex items-center gap-1.5 px-3 py-1 bg-white text-gray-900 font-semibold text-xs rounded hover:bg-gray-100 transition shrink-0">
-                {{ $isLive ? __('Join now →') : ($event->price_eur > 0 ? __('Register →') : __('Free registration →')) }}
-            </a>
-        @endif
+        {{-- CTA — RSVP varsa öncelikli, sonra registration_url, sonra online_url --}}
+        <a href="{{ $isLive && $event->online_url ? $event->online_url : $bannerCta }}"
+           @if($isLive) target="_blank" rel="noopener" @endif
+           class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white text-rose-700 font-extrabold text-xs rounded shadow-md hover:bg-amber-50 hover:scale-105 active:scale-100 transition shrink-0">
+            {{ $isLive ? '🔴 ' . __('Join now →') : '🎟️ ' . __('RSVP free →') }}
+        </a>
 
         <button id="eventBannerClose"
-                class="shrink-0 w-7 h-7 rounded hover:bg-white/15 flex items-center justify-center text-white/70 hover:text-white transition text-lg"
+                class="shrink-0 w-7 h-7 rounded hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition text-lg"
                 aria-label="{{ __('Close') }}" title="{{ __('Hide for 24 hours') }}">×</button>
     </div>
 </div>
