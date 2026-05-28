@@ -39,14 +39,15 @@ return new class extends Migration
         ]);
 
         // 2) Diğer "Yapra" user'larını bul (Yaprak ana user hariç) — merge et + sil
+        // NOT: admin@almanyauni.de ve editor@almanyauni.com gerçek sistem hesapları,
+        // sadece "Yapra" name'i ile eşleşenler temizlenir (defensive — yanlış silmeyi önler).
         $duplicates = DB::table('users')
             ->where('id', '!=', $mainId)
             ->where(function ($q) {
                 $q->where('name', 'Yapra')
-                  ->orWhere('name', 'Yapra Test')
-                  ->orWhere('email', 'editor@almanyauni.com')
-                  ->orWhere('email', 'admin@almanyauni.de');
+                  ->orWhere('name', 'Yapra Test');
             })
+            ->whereNotIn('email', ['admin@almanyauni.de', 'editor@almanyauni.com']) // koru: gerçek admin/editor hesapları
             ->pluck('id')
             ->all();
 
