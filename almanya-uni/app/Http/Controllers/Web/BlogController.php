@@ -17,7 +17,7 @@ class BlogController extends Controller
         $q = trim((string) $request->query('q', ''));
 
         $query = Post::published()
-            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color']);
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
 
         if ($q !== '' && mb_strlen($q) >= 2) {
             $query->where(function ($w) use ($q) {
@@ -119,7 +119,7 @@ class BlogController extends Controller
 
         $query = Post::published()
             ->where('category_id', $category->id)
-            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color']);
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
 
         if ($q !== '' && mb_strlen($q) >= 2) {
             $query->where(function ($w) use ($q) {

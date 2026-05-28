@@ -96,6 +96,20 @@
                                             @endif
                                             <span class="font-semibold text-gray-700">{{ $post->author->name }}</span>
                                         </div>
+                                        @if ($post->coAuthor)
+                                            <div class="flex items-center gap-1.5 text-gray-500 text-xs">
+                                                <span>{{ __('with') }}</span>
+                                                @if ($post->coAuthor->avatar_url)
+                                                    <img src="{{ $post->coAuthor->avatar_url }}" alt="{{ $post->coAuthor->name }}"
+                                                         class="w-5 h-5 rounded-full object-cover" loading="lazy">
+                                                @else
+                                                    <div class="w-5 h-5 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white text-[10px] font-bold flex items-center justify-center">
+                                                        {{ strtoupper(mb_substr($post->coAuthor->name, 0, 1)) }}
+                                                    </div>
+                                                @endif
+                                                <span class="font-semibold text-gray-700">{{ $post->coAuthor->name }}</span>
+                                            </div>
+                                        @endif
                                         <span class="text-gray-300">·</span>
                                     @endif
                                     <div class="text-gray-500 flex items-center gap-2">

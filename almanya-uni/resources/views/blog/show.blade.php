@@ -75,6 +75,9 @@
             <div class="flex flex-wrap items-center gap-3 text-sm pb-6 mb-8 border-b border-gray-200">
                 @if ($post->author)
                     <div class="flex items-center gap-3">
+                        @if ($post->author->slug)
+                            <a href="{{ route('author.show', $post->author->slug) }}" class="flex items-center gap-3 hover:opacity-90 transition">
+                        @endif
                         @if ($post->author->avatar_url)
                             <img src="{{ $post->author->avatar_url }}" alt="{{ $post->author->name }}"
                                  class="w-11 h-11 rounded-full object-cover ring-2 ring-primary-100" loading="lazy" decoding="async">
@@ -94,7 +97,37 @@
                                 <p class="text-xs text-primary-700">{{ $post->author->role_label }}</p>
                             @endif
                         </div>
+                        @if ($post->author->slug)
+                            </a>
+                        @endif
                     </div>
+
+                    @if ($post->coAuthor)
+                        <span class="text-gray-400 text-sm">{{ __('with') }}</span>
+                        <div class="flex items-center gap-2">
+                            @if ($post->coAuthor->slug)
+                                <a href="{{ route('author.show', $post->coAuthor->slug) }}" class="flex items-center gap-2 hover:opacity-90 transition">
+                            @endif
+                            @if ($post->coAuthor->avatar_url)
+                                <img src="{{ $post->coAuthor->avatar_url }}" alt="{{ $post->coAuthor->name }}"
+                                     class="w-9 h-9 rounded-full object-cover ring-1 ring-gray-200" loading="lazy">
+                            @else
+                                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white text-sm font-bold flex items-center justify-center">
+                                    {{ strtoupper(mb_substr($post->coAuthor->name, 0, 1)) }}
+                                </div>
+                            @endif
+                            <div class="leading-tight">
+                                <p class="font-semibold text-gray-800 text-sm">{{ $post->coAuthor->name }}</p>
+                                @if ($post->coAuthor->role_label)
+                                    <p class="text-[11px] text-gray-500">{{ \Illuminate\Support\Str::limit($post->coAuthor->role_label, 32) }}</p>
+                                @endif
+                            </div>
+                            @if ($post->coAuthor->slug)
+                                </a>
+                            @endif
+                        </div>
+                    @endif
+
                     <span class="text-gray-300">·</span>
                 @endif
                 <div class="text-gray-500 flex flex-wrap items-center gap-2">

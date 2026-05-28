@@ -16,6 +16,7 @@ class Post extends Model
         'locale',
         'translation_group_id',
         'user_id',
+        'co_author_id',
         'category_id',
         'title',
         'slug',
@@ -89,6 +90,11 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function coAuthor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'co_author_id');
     }
 
     public function category(): BelongsTo
