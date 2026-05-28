@@ -208,7 +208,7 @@
                                             </time>
                                             <span>·</span>
                                         @endif
-                                        <span>{{ $post->reading_minutes }} dk okuma</span>
+                                        <span>{{ __(':n min read', ['n' => $post->reading_minutes]) }}</span>
                                     </div>
                                 </div>
                             </div>

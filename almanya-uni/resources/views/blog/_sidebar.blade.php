@@ -20,7 +20,7 @@
                             @if ($cat->color)
                                 <span class="inline-block w-3 h-3 rounded-full" style="background-color: {{ $cat->color }}"></span>
                             @endif
-                            {{ $cat->name }}
+                            {{ __($cat->name) }}
                         </span>
                         <span class="text-xs text-gray-500">{{ $cat->posts_count ?? 0 }}</span>
                     </a>
@@ -33,7 +33,7 @@
                                        class="flex items-center justify-between px-3 py-1.5 rounded text-sm {{ $activeId === $child->id ? 'bg-primary-100 text-primary-800 font-semibold' : 'text-gray-600 hover:bg-gray-50' }}">
                                         <span class="flex items-center gap-2">
                                             <span class="text-gray-400">↳</span>
-                                            {{ $child->name }}
+                                            {{ __($child->name) }}
                                         </span>
                                         <span class="text-xs text-gray-400">{{ $child->posts_count ?? 0 }}</span>
                                     </a>

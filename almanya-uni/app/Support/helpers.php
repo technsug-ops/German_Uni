@@ -120,9 +120,7 @@ if (! function_exists('localized_url')) {
      */
     function localized_url(string $targetLocale): string
     {
-        $current = app()->getLocale();
-        $default = config('locale.default', 'tr');
-        $path    = trim(request()->path(), '/');
+        $path = trim(request()->path(), '/');
 
         // Mevcut path'ten varsa locale prefix'i çıkar
         $locales = array_keys(config('locale.locales', []));
@@ -133,8 +131,9 @@ if (! function_exists('localized_url')) {
             }
         }
 
-        $prefix = $targetLocale === $default ? '' : "/$targetLocale";
-        $newUrl = url($prefix . '/' . $path);
+        // Route definition tüm dillerde /{locale} prefix bekler (default dahil).
+        // Default için prefix atlamak EN'ye geçişi kırardı (URL hiçbir route'a eşleşmezdi).
+        $newUrl = url('/' . $targetLocale . '/' . $path);
         $query  = request()->getQueryString();
         return $query ? $newUrl . '?' . $query : $newUrl;
     }
