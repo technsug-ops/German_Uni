@@ -192,23 +192,41 @@ class CacheHotImages extends Command
      * Try several Wikipedia thumbnail widths before falling back to original.
      * Standard widths that Wikipedia caches eagerly tend to succeed; arbitrary widths
      * (and uncached files) return HTTP 400.
+     *
+     * Three Wikipedia URL families handled:
+     *   - upload.wikimedia.org/wikipedia/commons/X/YY/File.ext   (raw original)
+     *     → build .../thumb/X/YY/File.ext/NNNpx-File.ext  (.png suffix for SVG)
+     *   - commons.wikimedia.org/wiki/Special:FilePath/Name       (proxy URL)
+     *     → request ?width=NNN; Wikipedia redirects to upload.wikimedia.org thumb
+     *       AND rasterizes SVG→PNG automatically. Critical for logo URLs.
+     *   - Anything else passes through unchanged.
      */
     private function candidateUrls(string $originalUrl, int $targetWidth): array
     {
         $list = [];
-        // For Wikipedia URLs, build thumb candidates at common cached sizes near target
-        if (preg_match('#upload\.wikimedia\.org/wikipedia/commons/([0-9a-f]/[0-9a-f]{2})/([^/?]+)$#i', $originalUrl, $m)) {
-            $hashPath = $m[1];
-            $filename = $m[2];
-            $base = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' . $hashPath . '/' . $filename;
-            $widthCandidates = $this->thumbWidthCandidates($targetWidth);
+        $widthCandidates = $this->thumbWidthCandidates($targetWidth);
+
+        // Family 1: upload.wikimedia.org direct file → build thumb URLs
+        if (preg_match('#^(https?://upload\.wikimedia\.org/wikipedia/commons/)([0-9a-f]/[0-9a-f]{2})/([^/?]+)$#i', $originalUrl, $m)) {
+            $base = $m[1] . 'thumb/' . $m[2] . '/' . $m[3];
             foreach ($widthCandidates as $w) {
-                $thumbName = $w . 'px-' . $filename;
-                if (preg_match('/\.svg$/i', $filename)) $thumbName .= '.png';
+                $thumbName = $w . 'px-' . $m[3];
+                if (preg_match('/\.svg$/i', $m[3])) $thumbName .= '.png';
                 $list[] = $base . '/' . $thumbName;
             }
         }
-        // Always include the original as last resort
+        // Family 2: commons.wikimedia.org/wiki/Special:FilePath → use ?width= param
+        // Wikipedia rasterizes SVG→PNG automatically when width set (critical for logos)
+        elseif (str_contains($originalUrl, 'commons.wikimedia.org/wiki/Special:FilePath')) {
+            $clean = preg_replace('/[?&]width=\d+/', '', $originalUrl);
+            $clean = rtrim($clean, '?&');
+            foreach ($widthCandidates as $w) {
+                $sep = str_contains($clean, '?') ? '&' : '?';
+                $list[] = $clean . $sep . 'width=' . $w;
+            }
+        }
+
+        // Always include the original URL as final fallback
         $list[] = $originalUrl;
         return $list;
     }
