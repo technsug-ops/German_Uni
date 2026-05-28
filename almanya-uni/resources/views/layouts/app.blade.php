@@ -315,30 +315,20 @@
 
             {{-- Right side: auth-aware --}}
             <div class="hidden md:flex items-center gap-3 text-sm">
-                {{-- Locale switcher — sadece birden çok aktif dil varsa göster --}}
+                {{-- Locale switcher — kompakt inline segmented (no dropdown) --}}
                 @if ($activeLocales->count() > 1)
-                <div class="relative" id="localeMenuWrap">
-                    <button type="button" id="localeMenuBtn"
-                            class="min-h-[44px] inline-flex items-center gap-1.5 px-3 rounded-md hover:bg-white/10 transition text-sm"
-                            aria-haspopup="true" aria-expanded="false" aria-label="{{ __('Switch language') }}">
-                        <span>{{ $localeConfig['flag'] ?? '🌐' }}</span>
-                        <span class="uppercase font-semibold">{{ app()->getLocale() }}</span>
-                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                    </button>
-                    <div id="localeMenu" class="hidden absolute right-0 mt-2 w-40 bg-white text-gray-900 rounded-md shadow-lg border border-gray-200 py-1 z-50">
+                    <div role="group" aria-label="{{ __('Switch language') }}"
+                         class="inline-flex items-center bg-white/5 rounded-md p-0.5 text-xs">
                         @foreach ($activeLocales as $loc)
-                            @php $cfg = config("locale.locales.$loc"); @endphp
+                            @php $cfg = config("locale.locales.$loc"); $isCurrent = app()->getLocale() === $loc; @endphp
                             <a href="{{ localized_url($loc) }}"
-                               class="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 text-sm {{ app()->getLocale() === $loc ? 'font-bold bg-gray-50' : '' }}"
-                               title="{{ $cfg['native_name'] }}"
-                               hreflang="{{ $loc }}">
-                                <span>{{ $cfg['flag'] }}</span>
-                                <span>{{ $cfg['native_name'] }}</span>
-                                @if (app()->getLocale() === $loc) <span class="ml-auto text-primary-600">✓</span> @endif
+                               hreflang="{{ $loc }}"
+                               aria-current="{{ $isCurrent ? 'page' : 'false' }}"
+                               class="inline-flex items-center px-2 py-1 rounded font-semibold uppercase tracking-wide transition {{ $isCurrent ? 'bg-white text-primary-900 shadow-sm' : 'text-primary-100 hover:text-white hover:bg-white/10' }}">
+                                {{ $loc }}
                             </a>
                         @endforeach
                     </div>
-                </div>
                 @endif
 
                 {{-- Theme toggle (light/dark) --}}
@@ -639,19 +629,7 @@
                     });
                 }
 
-                // Locale switcher dropdown
-                const lBtn = document.getElementById('localeMenuBtn');
-                const lMenu = document.getElementById('localeMenu');
-                const lWrap = document.getElementById('localeMenuWrap');
-                if (lBtn && lMenu && lWrap) {
-                    lBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        lMenu.classList.toggle('hidden');
-                    });
-                    document.addEventListener('click', (e) => {
-                        if (! lWrap.contains(e.target)) lMenu.classList.add('hidden');
-                    });
-                }
+                // Locale switcher is now an inline segmented control — no JS needed.
 
                 // "Daha ▼" nav dropdown
                 const mrBtn = document.getElementById('moreMenuBtn');
