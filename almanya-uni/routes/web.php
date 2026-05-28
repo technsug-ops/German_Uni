@@ -298,7 +298,18 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
         $seed = \Illuminate\Support\Facades\Artisan::output();
     }
 
-    return response()->json(['migrate' => $migrate, 'seed' => $seed]);
+    // Cache temizliği — yeni migration/seed sonrası eski view + config snapshot'ları geçersiz
+    $cache = [];
+    foreach (['view:clear', 'cache:clear', 'config:clear', 'route:clear'] as $cmd) {
+        \Illuminate\Support\Facades\Artisan::call($cmd);
+        $cache[$cmd] = trim(\Illuminate\Support\Facades\Artisan::output());
+    }
+
+    return response()->json([
+        'migrate' => $migrate,
+        'seed'    => $seed,
+        'cache'   => $cache,
+    ]);
 })->middleware('throttle:5,1');
 
 // Token-gated single-image cache override — for cases where a uni has no
