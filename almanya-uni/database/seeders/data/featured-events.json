@@ -1,0 +1,32 @@
+[
+    {
+        "type": "webinar",
+        "title_tr": "Almanya'da Mentor Olmak: Ne Beklemeli, Nasıl Başlamalı?",
+        "title_de": "Mentor in Deutschland werden: Was erwartet dich, wie startest du?",
+        "title_en": "Becoming a Mentor in Germany: What to Expect, How to Start",
+        "slug": "mentor-olmak-almanya-2026-05-31",
+        "description_md_tr": "AlmanyaUni mentor programı için bilgilendirme webinarı.\n\n**Almanya'da yaşayan\/çalışan Türk profesyoneller, mezunlar ve öğrenciler için:**\n\n- Mentor olmak ne demek, ne kadar zaman ayırman gerekir?\n- Hangi konularda mentor arıyoruz (üniversite seçimi, vize, Anmeldung, Werkstudent, Master\/PhD, tıp, Almanca, günlük hayat)\n- Süreç nasıl ilerler — başvurudan ilk seansa\n- Ücretli\/ücretsiz seçenekleri, AlmanyaUni'nin komisyon politikası\n- Mevcut platform tanıtımı + canlı demo\n\n**Format:** 30 dk sunum + 30 dk soru-cevap. Halil ev sahipliğinde.",
+        "description_md_en": "Informational webinar about the AlmanyaUni mentor program.\n\n**For Turkish professionals, alumni, and students living\/working in Germany:**\n\n- What does being a mentor mean, how much time do you need?\n- What topics we're recruiting mentors for (uni selection, visa, Anmeldung, Werkstudent, Master\/PhD, medicine, German, daily life)\n- How the process works — from application to first session\n- Paid\/free options, AlmanyaUni's commission policy\n- Platform walkthrough + live demo\n\n**Format:** 30 min talk + 30 min Q&A. Hosted by Halil.",
+        "description_md_de": "Informations-Webinar zum AlmanyaUni-Mentorprogramm.\n\n**Für türkische Fachkräfte, Alumni und Studierende, die in Deutschland leben\/arbeiten:**\n\n- Was bedeutet Mentor sein, wie viel Zeit musst du investieren?\n- Für welche Themen suchen wir Mentoren (Studienauswahl, Visum, Anmeldung, Werkstudent, Master\/PhD, Medizin, Deutsch, Alltag)\n- Wie funktioniert der Prozess — von der Bewerbung bis zur ersten Session\n- Bezahlte\/kostenlose Optionen, Provisionspolitik von AlmanyaUni\n- Plattform-Walkthrough + Live-Demo\n\n**Format:** 30 Min Vortrag + 30 Min Q&A. Moderation: Halil.",
+        "host": "Halil",
+        "target_audience": "mevcut_ogrenci,phd_adayi,genel",
+        "difficulty": "beginner",
+        "duration_minutes": 60,
+        "tags": "[\"mentor\",\"webinar\",\"almanya\",\"kariyer\",\"topluluk\"]",
+        "starts_at": "2026-05-31 19:00:00",
+        "ends_at": "2026-05-31 20:00:00",
+        "timezone": "Europe\/Berlin",
+        "mode": "online",
+        "online_url": null,
+        "location_name": "Online (Zoom)",
+        "location_city": "Berlin",
+        "registration_url": null,
+        "max_attendees": null,
+        "registration_required": false,
+        "price_eur": "0.00",
+        "is_featured": true,
+        "is_active": true,
+        "meta_title": "AlmanyaUni Mentor Webinarı — 31 Mayıs 2026",
+        "meta_description": "Almanya'da mentor olmak için bilgilendirme webinarı. 31 Mayıs 19:00 (Berlin). Halil ev sahipliğinde, ücretsiz."
+    }
+]
