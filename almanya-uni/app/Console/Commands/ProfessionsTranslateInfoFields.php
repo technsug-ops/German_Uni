@@ -23,22 +23,42 @@ use Illuminate\Support\Facades\Http;
  */
 class ProfessionsTranslateInfoFields extends Command
 {
-    private const TARGET_KEYS = [
-        'Aufgaben und Tätigkeiten kompakt',
-        'Zugang zur Tätigkeit',
-        'Verdienst/Einkommen',
-        'Arbeitsorte',
-        'Arbeitsbereiche/Branchen',
-        'Weiterbildung (beruflicher Aufstieg)',
-    ];
-
-    private const SHORT_KEYS = [
-        'Aufgaben und Tätigkeiten kompakt'     => 'tasks',
-        'Zugang zur Tätigkeit'                 => 'access',
-        'Verdienst/Einkommen'                  => 'salary',
-        'Arbeitsorte'                          => 'workplace',
-        'Arbeitsbereiche/Branchen'             => 'sectors',
-        'Weiterbildung (beruflicher Aufstieg)' => 'progression',
+    /**
+     * Each short-key maps to a list of BERUFENET fallback field names.
+     * BERUFENET has different schemas for Beruf (occupation) vs Studiengang (study program)
+     * vs Weiterbildung — we accept the first matching field from each list.
+     */
+    private const FIELD_MAP = [
+        'tasks' => [
+            'Aufgaben und Tätigkeiten kompakt',
+            'Studieninhalte',
+            'Weiterbildungsinhalte',
+            'Mögliche Tätigkeitsfelder',
+        ],
+        'access' => [
+            'Zugang zur Tätigkeit',
+            'Zugangsvoraussetzungen für das Studium',
+            'Zugangsvoraussetzungen für die Weiterbildung',
+        ],
+        'salary' => [
+            'Verdienst/Einkommen',
+            'Vergütung während des Studiums',
+            'Weiterbildungsvergütung',
+        ],
+        'workplace' => [
+            'Arbeitsorte',
+            'Lernorte',
+        ],
+        'sectors' => [
+            'Arbeitsbereiche/Branchen',
+            'Mögliche Tätigkeitsfelder',
+            'Abschluss-/Berufsbezeichnungen',
+        ],
+        'progression' => [
+            'Weiterbildung (beruflicher Aufstieg)',
+            'Mögliche weiterführende Studienfächer',
+            'Perspektiven nach der Weiterbildung',
+        ],
     ];
 
     protected $signature = 'professions:translate-info-fields
@@ -132,10 +152,13 @@ class ProfessionsTranslateInfoFields extends Command
     {
         $out = [];
         $info = $p->info_fields ?: [];
-        foreach (self::TARGET_KEYS as $key) {
-            $val = $info[$key] ?? null;
-            if ($val && mb_strlen(trim($val)) > 5) {
-                $out[self::SHORT_KEYS[$key]] = mb_substr($val, 0, 800);
+        foreach (self::FIELD_MAP as $short => $candidates) {
+            foreach ($candidates as $key) {
+                $val = $info[$key] ?? null;
+                if ($val && mb_strlen(trim($val)) > 5) {
+                    $out[$short] = mb_substr($val, 0, 800);
+                    break;
+                }
             }
         }
         return $out;

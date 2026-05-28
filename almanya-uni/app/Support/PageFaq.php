@@ -511,17 +511,20 @@ class PageFaq
     private static function mapGermanBuckets(array $info): array
     {
         $map = [
-            'tasks'       => 'Aufgaben und Tätigkeiten kompakt',
-            'access'      => 'Zugang zur Tätigkeit',
-            'salary'      => 'Verdienst/Einkommen',
-            'workplace'   => 'Arbeitsorte',
-            'sectors'     => 'Arbeitsbereiche/Branchen',
-            'progression' => 'Weiterbildung (beruflicher Aufstieg)',
+            'tasks'       => ['Aufgaben und Tätigkeiten kompakt', 'Studieninhalte', 'Weiterbildungsinhalte', 'Mögliche Tätigkeitsfelder'],
+            'access'      => ['Zugang zur Tätigkeit', 'Zugangsvoraussetzungen für das Studium', 'Zugangsvoraussetzungen für die Weiterbildung'],
+            'salary'      => ['Verdienst/Einkommen', 'Vergütung während des Studiums', 'Weiterbildungsvergütung'],
+            'workplace'   => ['Arbeitsorte', 'Lernorte'],
+            'sectors'     => ['Arbeitsbereiche/Branchen', 'Mögliche Tätigkeitsfelder', 'Abschluss-/Berufsbezeichnungen'],
+            'progression' => ['Weiterbildung (beruflicher Aufstieg)', 'Mögliche weiterführende Studienfächer', 'Perspektiven nach der Weiterbildung'],
         ];
         $out = [];
-        foreach ($map as $short => $long) {
-            if (! empty($info[$long])) {
-                $out[$short] = $info[$long];
+        foreach ($map as $short => $candidates) {
+            foreach ($candidates as $key) {
+                if (! empty($info[$key])) {
+                    $out[$short] = $info[$key];
+                    break;
+                }
             }
         }
         return $out;
