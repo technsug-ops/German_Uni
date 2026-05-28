@@ -22,6 +22,29 @@
         @endif
         <h1 class="text-3xl md:text-4xl font-bold mb-3">{{ $page_title }}</h1>
         <p class="text-lg text-primary-100 max-w-3xl">{{ $page_description }}</p>
+
+        {{-- Blog arama --}}
+        <form method="GET"
+              action="{{ !empty($active_category) ? route('blog.category', $active_category->slug) : route('blog.index') }}"
+              class="mt-5 max-w-2xl">
+            <div class="relative">
+                <input type="search" name="q" value="{{ $searchQ ?? '' }}"
+                       placeholder="{{ !empty($active_category) ? __('Search in :cat...', ['cat' => $active_category->name]) : __('Search blog posts (title or content)...') }}"
+                       minlength="2" maxlength="80"
+                       class="w-full pl-11 pr-32 py-3 text-gray-900 placeholder-gray-500 bg-white border-2 border-white/40 rounded-lg focus:border-white focus:ring-2 focus:ring-white/40 shadow-md">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-primary-700 hover:bg-primary-800 text-white font-semibold px-4 py-2 rounded text-sm transition">
+                    {{ __('Search') }}
+                </button>
+            </div>
+            @if (! empty($searchQ))
+                <div class="mt-2 text-sm text-primary-100 flex items-center gap-3 flex-wrap">
+                    <span>{{ __('Results for') }} <strong class="text-white">"{{ $searchQ }}"</strong></span>
+                    <a href="{{ !empty($active_category) ? route('blog.category', $active_category->slug) : route('blog.index') }}"
+                       class="text-white underline hover:no-underline">✕ {{ __('Clear search') }}</a>
+                </div>
+            @endif
+        </form>
     </div>
 </div>
 
@@ -51,10 +74,11 @@
                                         {{ __($post->category->name) }}
                                     </a>
                                 @endif
-                                <h2 class="text-2xl font-bold mb-3 leading-tight">
+                                <h2 class="text-2xl font-bold mb-3 leading-tight flex items-start gap-2 flex-wrap">
                                     <a href="{{ route('blog.show', $post->slug) }}" class="text-gray-900 hover:text-primary-600 transition">
                                         {{ $post->title }}
                                     </a>
+                                    <x-new-badge :date="$post->published_at" />
                                 </h2>
                                 @if ($post->excerpt)
                                     <p class="text-gray-700 leading-relaxed mb-4">{{ $post->excerpt }}</p>

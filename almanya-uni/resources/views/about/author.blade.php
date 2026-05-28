@@ -147,7 +147,10 @@
                             {{ $p->category->name }}
                         </span>
                     @endif
-                    <h3 class="text-base font-bold text-gray-900 mt-2 line-clamp-2">{{ $p->title }}</h3>
+                    <h3 class="text-base font-bold text-gray-900 mt-2 line-clamp-2 flex items-start gap-2 flex-wrap">
+                        <span>{{ $p->title }}</span>
+                        <x-new-badge :date="$p->published_at" />
+                    </h3>
                     @if ($p->excerpt)
                         <p class="text-sm text-gray-600 mt-2 line-clamp-3 leading-relaxed">{{ $p->excerpt }}</p>
                     @endif

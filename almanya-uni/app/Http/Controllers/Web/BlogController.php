@@ -14,17 +14,31 @@ class BlogController extends Controller
 
     public function index(Request $request): View
     {
-        $paginator = Post::published()
-            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color'])
-            ->orderByDesc('published_at')
+        $q = trim((string) $request->query('q', ''));
+
+        $query = Post::published()
+            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color']);
+
+        if ($q !== '' && mb_strlen($q) >= 2) {
+            $query->where(function ($w) use ($q) {
+                $w->where('title', 'like', '%' . $q . '%')
+                  ->orWhere('excerpt', 'like', '%' . $q . '%')
+                  ->orWhere('content_md', 'like', '%' . $q . '%');
+            });
+        }
+
+        $paginator = $query->orderByDesc('published_at')
             ->paginate(self::PER_PAGE)
             ->withQueryString();
 
         return view('blog.index', [
             'posts' => $paginator,
             'categories' => $this->sidebarCategories(),
-            'page_title' => __('Blog'),
-            'page_description' => __('Guides on studying in Germany — university applications, language tests, student life and more.'),
+            'searchQ' => $q,
+            'page_title' => $q !== '' ? __('Search:') . ' ' . $q : __('Blog'),
+            'page_description' => $q !== ''
+                ? __('Blog posts matching ":q"', ['q' => $q])
+                : __('Guides on studying in Germany — university applications, language tests, student life and more.'),
         ]);
     }
 
@@ -98,14 +112,24 @@ class BlogController extends Controller
             ->withFragment('comments');
     }
 
-    public function category(string $slug): View
+    public function category(string $slug, Request $request): View
     {
         $category = Category::active()->where('slug', $slug)->firstOrFail();
+        $q = trim((string) $request->query('q', ''));
 
-        $paginator = Post::published()
+        $query = Post::published()
             ->where('category_id', $category->id)
-            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color'])
-            ->orderByDesc('published_at')
+            ->with(['author:id,name,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color']);
+
+        if ($q !== '' && mb_strlen($q) >= 2) {
+            $query->where(function ($w) use ($q) {
+                $w->where('title', 'like', '%' . $q . '%')
+                  ->orWhere('excerpt', 'like', '%' . $q . '%')
+                  ->orWhere('content_md', 'like', '%' . $q . '%');
+            });
+        }
+
+        $paginator = $query->orderByDesc('published_at')
             ->paginate(self::PER_PAGE)
             ->withQueryString();
 
@@ -113,7 +137,8 @@ class BlogController extends Controller
             'posts' => $paginator,
             'categories' => $this->sidebarCategories(),
             'active_category' => $category,
-            'page_title' => $category->name,
+            'searchQ' => $q,
+            'page_title' => $q !== '' ? __('Search in :cat:', ['cat' => $category->name]) . ' ' . $q : $category->name,
             'page_description' => $category->description
                 ?: ($category->name . ' kategorisindeki tüm yazılar.'),
         ]);
