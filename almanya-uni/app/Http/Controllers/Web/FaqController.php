@@ -80,8 +80,10 @@ class FaqController extends Controller
     {
         $topic = FaqTopic::active()->where('slug', $slug)->firstOrFail();
 
+        // Locale-aware: only show FAQs in the current site language
         $faqs = $topic->faqs()
             ->where('is_published', true)
+            ->where('locale', app()->getLocale())
             ->orderByDesc('has_answer')
             ->orderBy('sort_order')
             ->get(['id', 'slug', 'question', 'intent', 'has_answer', 'answer_minutes', 'answer_html', 'faq_topic_id']);
@@ -92,14 +94,32 @@ class FaqController extends Controller
         ]);
     }
 
-    public function show(string $topicSlug, string $slug): View
+    public function show(string $topicSlug, string $slug)
     {
         $topic = FaqTopic::active()->where('slug', $topicSlug)->firstOrFail();
 
         $faq = Faq::published()
             ->where('faq_topic_id', $topic->id)
             ->where('slug', $slug)
-            ->firstOrFail();
+            ->first();
+
+        // Slug exists but in a different locale (translation group) — redirect to the
+        // current-locale sibling instead of 404.
+        if (! $faq) {
+            $otherLocale = Faq::where('is_published', true)
+                ->where('faq_topic_id', $topic->id)
+                ->where('slug', $slug)
+                ->first();
+            if ($otherLocale && $otherLocale->translation_group_id) {
+                $sibling = Faq::published()
+                    ->where('translation_group_id', $otherLocale->translation_group_id)
+                    ->first();
+                if ($sibling) {
+                    return redirect()->route('faqs.show', [$topic->slug, $sibling->slug], 301);
+                }
+            }
+            throw new NotFoundHttpException();
+        }
 
         Faq::where('id', $faq->id)->increment('view_count');
 
