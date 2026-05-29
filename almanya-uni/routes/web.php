@@ -288,30 +288,48 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     }
     @set_time_limit(300);
 
-    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-    $migrate = \Illuminate\Support\Facades\Artisan::output();
+    $errors = [];
+    $migrate = null;
+    $seed = null;
+
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        $migrate = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        $errors['migrate'] = $e->getMessage();
+        $migrate = \Illuminate\Support\Facades\Artisan::output() ?: 'no output';
+    }
 
     $seedClass = $request->query('seed');
-    $seed = null;
     if ($seedClass && preg_match('/^[A-Za-z0-9_]+Seeder$/', $seedClass)) {
-        \Illuminate\Support\Facades\Artisan::call('db:seed', [
-            '--class' => 'Database\\Seeders\\' . $seedClass,
-            '--force' => true,
-        ]);
-        $seed = \Illuminate\Support\Facades\Artisan::output();
+        try {
+            \Illuminate\Support\Facades\Artisan::call('db:seed', [
+                '--class' => 'Database\\Seeders\\' . $seedClass,
+                '--force' => true,
+            ]);
+            $seed = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $errors['seed'] = $e->getMessage();
+            $seed = \Illuminate\Support\Facades\Artisan::output() ?: 'no output';
+        }
     }
 
     // Cache temizliği — yeni migration/seed sonrası eski view + config snapshot'ları geçersiz
     $cache = [];
     foreach (['view:clear', 'cache:clear', 'config:clear', 'route:clear'] as $cmd) {
-        \Illuminate\Support\Facades\Artisan::call($cmd);
-        $cache[$cmd] = trim(\Illuminate\Support\Facades\Artisan::output());
+        try {
+            \Illuminate\Support\Facades\Artisan::call($cmd);
+            $cache[$cmd] = trim(\Illuminate\Support\Facades\Artisan::output());
+        } catch (\Throwable $e) {
+            $cache[$cmd] = 'ERROR: ' . $e->getMessage();
+        }
     }
 
     return response()->json([
         'migrate' => $migrate,
         'seed'    => $seed,
         'cache'   => $cache,
+        'errors'  => $errors,
     ]);
 })->middleware('throttle:5,1');
 
