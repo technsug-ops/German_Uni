@@ -30,6 +30,11 @@
                     👤 <span class="truncate">{{ $event->host }}</span>
                 </p>
             @endif
+            @if ($event->language_flag)
+                <p class="flex items-center gap-1.5 text-gray-500">
+                    🗣️ <span>{{ $event->language_flag }} {{ $event->language_label }}</span>
+                </p>
+            @endif
             @if ($event->mode === 'offline' && $event->location_city)
                 <p class="flex items-center gap-1.5">
                     📍 <span>{{ $event->location_city }}</span>

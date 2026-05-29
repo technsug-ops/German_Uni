@@ -82,6 +82,11 @@
             @else
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs">💻 {{ __('Online') }}</span>
             @endif
+            @if ($event->language_flag)
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold ring-1 ring-white/30" title="{{ __('Event language') }}">
+                    {{ $event->language_flag }} {{ $event->language_label }}
+                </span>
+            @endif
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">{{ $event->title }}</h1>

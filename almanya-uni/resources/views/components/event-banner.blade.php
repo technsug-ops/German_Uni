@@ -34,6 +34,11 @@
             @else
                 <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline drop-shadow-sm">{{ $event->type_label }}: "{{ $event->title }}"</a>
                 <span class="text-white/95 text-xs whitespace-nowrap font-semibold">{{ __('starts in') }}</span>
+                @if ($event->language_flag)
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur text-[11px] font-bold whitespace-nowrap" title="{{ __('Event language') }}">
+                        {{ $event->language_flag }} {{ $event->language_label }}
+                    </span>
+                @endif
                 <div class="flex items-center gap-1 tabular-nums font-mono">
                     <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="d">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('D') }}</span></span>
                     <span class="opacity-70">:</span>

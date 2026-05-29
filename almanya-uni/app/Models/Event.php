@@ -14,7 +14,7 @@ class Event extends Model
     protected $fillable = [
         'type', 'category_id', 'title_tr', 'title_en', 'title_de', 'slug',
         'description_md_tr', 'description_md_en', 'description_md_de', 'host', 'host_user_id',
-        'sponsor', 'sponsor_logo_url', 'reward', 'target_audience', 'difficulty', 'duration_minutes', 'tags',
+        'sponsor', 'sponsor_logo_url', 'reward', 'target_audience', 'difficulty', 'duration_minutes', 'tags', 'presentation_language',
         'starts_at', 'ends_at', 'timezone',
         'mode', 'online_url', 'location_name', 'location_city',
         'registration_url', 'max_attendees', 'registered_count', 'registration_required', 'price_eur',
@@ -41,6 +41,28 @@ class Event extends Model
     public function hostUser()
     {
         return $this->belongsTo(User::class, 'host_user_id');
+    }
+
+    public function getLanguageLabelAttribute(): ?string
+    {
+        return match ($this->presentation_language) {
+            'tr'    => 'Türkçe',
+            'en'    => 'English',
+            'de'    => 'Deutsch',
+            'multi' => 'Türkçe + Almanca',
+            default => null,
+        };
+    }
+
+    public function getLanguageFlagAttribute(): ?string
+    {
+        return match ($this->presentation_language) {
+            'tr'    => '🇹🇷',
+            'en'    => '🇬🇧',
+            'de'    => '🇩🇪',
+            'multi' => '🌍',
+            default => null,
+        };
     }
 
     public function rsvps()
