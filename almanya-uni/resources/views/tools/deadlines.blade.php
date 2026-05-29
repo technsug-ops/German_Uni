@@ -123,7 +123,7 @@
     </div>
 </section>
 
-{{-- RESULTS --}}
+{{-- RESULTS — grouped by urgency window --}}
 <div class="max-w-[1400px] mx-auto px-4 py-8">
     @if ($programs->isEmpty())
         <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
@@ -132,56 +132,105 @@
             <a href="{{ route('tools.deadlines') }}" class="text-primary-600 hover:underline">{{ __('Reset filters') }} →</a>
         </div>
     @else
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            @foreach ($programs as $p)
-                @php
-                    [$sem, $deadline] = $showSemester($p);
-                    if (!$deadline) continue;
-                    $daysLeft = (int) $today->diffInDays($deadline, false);
-                    $urgencyClass = match (true) {
-                        $daysLeft < 14 => 'bg-red-50 border-red-200 text-red-700',
-                        $daysLeft < 30 => 'bg-amber-50 border-amber-200 text-amber-700',
-                        $daysLeft < 90 => 'bg-blue-50 border-blue-200 text-blue-700',
-                        default        => 'bg-gray-50 border-gray-200 text-gray-700',
-                    };
-                @endphp
-                <article class="bg-white border border-gray-200 hover:border-indigo-400 hover:shadow-md transition rounded-xl p-4 flex flex-col">
-                    <div class="flex items-start justify-between gap-2 mb-2">
-                        <div class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full {{ $urgencyClass }} font-semibold">
-                            {{ $sem === 'winter' ? '❄️ ' . __('Winter') : '☀️ ' . __('Summer') }}
-                            ·
-                            {{ $deadline->format('d.m.Y') }}
-                        </div>
-                        <span class="text-xs font-bold {{ $daysLeft < 30 ? 'text-red-600' : 'text-gray-500' }}">
-                            {{ __(':n days', ['n' => $daysLeft]) }}
+        @php
+            // Group programs by urgency bucket. Each item carries its resolved [sem, deadline, daysLeft].
+            $buckets = [
+                'urgent'  => ['label' => '🔥 ' . __('Next 30 days'),     'border' => 'border-red-300',    'badge' => 'bg-red-100 text-red-800',       'items' => []],
+                'soon'    => ['label' => '📅 ' . __('1–3 months'),       'border' => 'border-amber-300',  'badge' => 'bg-amber-100 text-amber-800',   'items' => []],
+                'planned' => ['label' => '📆 ' . __('3–6 months'),       'border' => 'border-blue-300',   'badge' => 'bg-blue-100 text-blue-800',     'items' => []],
+                'future'  => ['label' => '🗓️ ' . __('Later'),            'border' => 'border-gray-300',   'badge' => 'bg-gray-100 text-gray-700',     'items' => []],
+            ];
+            foreach ($programs as $p) {
+                [$sem, $deadline] = $showSemester($p);
+                if (! $deadline) continue;
+                $daysLeft = (int) $today->diffInDays($deadline, false);
+                $key = match (true) {
+                    $daysLeft < 30  => 'urgent',
+                    $daysLeft < 90  => 'soon',
+                    $daysLeft < 180 => 'planned',
+                    default         => 'future',
+                };
+                $buckets[$key]['items'][] = compact('p', 'sem', 'deadline', 'daysLeft');
+            }
+        @endphp
+
+        <div class="space-y-8">
+            @foreach ($buckets as $key => $bucket)
+                @continue(empty($bucket['items']))
+                <section>
+                    <header class="flex items-baseline justify-between gap-3 mb-3 pb-2 border-b-2 {{ $bucket['border'] }}">
+                        <h2 class="text-base md:text-lg font-bold text-gray-900">{{ $bucket['label'] }}</h2>
+                        <span class="text-xs md:text-sm text-gray-500 font-semibold">
+                            {{ trans_choice('{1} :n program|[2,*] :n programs', count($bucket['items']), ['n' => number_format(count($bucket['items']))]) }}
                         </span>
-                    </div>
+                    </header>
 
-                    <a href="{{ route('programs.show', $p->slug) }}"
-                       class="font-semibold text-gray-900 hover:text-indigo-600 leading-tight mb-1 line-clamp-2">
-                        {{ $p->name_de }}
-                    </a>
+                    <ul class="divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden bg-white">
+                        @foreach ($bucket['items'] as $row)
+                            @php $p = $row['p']; $sem = $row['sem']; $deadline = $row['deadline']; $daysLeft = $row['daysLeft']; @endphp
+                            <li class="hover:bg-gray-50 transition">
+                                <div class="grid grid-cols-12 items-center gap-3 px-3 md:px-4 py-3">
+                                    {{-- Date + days left --}}
+                                    <div class="col-span-4 md:col-span-2 flex md:flex-col items-baseline md:items-start gap-2 md:gap-0.5">
+                                        <span class="text-sm md:text-base font-bold text-gray-900 tabular-nums">{{ $deadline->format('d.m.Y') }}</span>
+                                        <span class="inline-flex text-[11px] font-bold px-1.5 py-0.5 rounded {{ $bucket['badge'] }} tabular-nums">
+                                            {{ __(':n days', ['n' => $daysLeft]) }}
+                                        </span>
+                                    </div>
 
-                    <div class="flex items-center gap-2 text-xs text-gray-600 mt-1">
-                        @if ($p->university?->logo_url)
-                            <img src="{{ $p->university->logo_url }}" alt="" class="w-5 h-5 object-contain shrink-0" loading="lazy" decoding="async">
-                        @endif
-                        <a href="{{ route('universities.show', $p->university->slug) }}" class="hover:text-indigo-600 truncate">{{ $p->university?->name_de }}</a>
-                    </div>
+                                    {{-- Semester --}}
+                                    <div class="hidden md:block col-span-1">
+                                        <span class="text-xs text-gray-600 font-medium" title="{{ $sem === 'winter' ? __('Winter') : __('Summer') }}">
+                                            {{ $sem === 'winter' ? '❄️' : '☀️' }}
+                                        </span>
+                                    </div>
 
-                    <div class="flex flex-wrap gap-1.5 mt-2 text-xs">
-                        <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700">{{ $degreeLabel($p->degree) }}</span>
-                        <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700">{{ $langLabel($p->language) }}</span>
-                        @if ($p->field)
-                            <span class="px-1.5 py-0.5 rounded text-xs" style="background-color: {{ $p->field->color }}20; color: {{ $p->field->color }}">{{ $p->field->icon }} {{ $p->field->name_tr }}</span>
-                        @endif
-                    </div>
+                                    {{-- Program + uni --}}
+                                    <div class="col-span-8 md:col-span-6 min-w-0">
+                                        <a href="{{ route('programs.show', $p->slug) }}"
+                                           class="block font-semibold text-gray-900 hover:text-indigo-600 leading-tight truncate">
+                                            {{ $p->name_de }}
+                                        </a>
+                                        <a href="{{ route('universities.show', $p->university->slug) }}"
+                                           class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-indigo-600 truncate mt-0.5">
+                                            @if ($p->university?->logo_url)
+                                                <img src="{{ $p->university->logo_url }}" alt="" class="w-4 h-4 object-contain shrink-0" loading="lazy" decoding="async">
+                                            @endif
+                                            <span class="truncate">{{ $p->university?->name_de }}</span>
+                                        </a>
+                                    </div>
 
-                    <a href="{{ route('tools.deadlines.ics', ['slugs' => $p->slug, 'semester' => $sem]) }}"
-                       class="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold transition">
-                        📥 {{ __('Add to my calendar (.ics)') }}
-                    </a>
-                </article>
+                                    {{-- Meta chips --}}
+                                    <div class="col-span-12 md:col-span-2 flex flex-wrap items-center gap-1 text-[11px] md:justify-end">
+                                        <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 font-medium">{{ $degreeLabel($p->degree) }}</span>
+                                        @if ($p->language)
+                                            <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 font-medium" title="{{ $langLabel($p->language) }}">
+                                                {{ $p->language === 'both' ? '🇬🇧🇩🇪' : ($p->language === 'en' ? '🇬🇧' : '🇩🇪') }}
+                                            </span>
+                                        @endif
+                                        @if ($p->field)
+                                            <span class="px-1.5 py-0.5 rounded font-medium truncate max-w-[120px]"
+                                                  style="background-color: {{ $p->field->color }}20; color: {{ $p->field->color }}"
+                                                  title="{{ $p->field->name_tr }}">
+                                                {{ $p->field->icon }}
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    {{-- .ics download --}}
+                                    <div class="col-span-12 md:col-span-1 flex md:justify-end">
+                                        <a href="{{ route('tools.deadlines.ics', ['slugs' => $p->slug, 'semester' => $sem]) }}"
+                                           class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition"
+                                           title="{{ __('Add to my calendar (.ics)') }}"
+                                           aria-label="{{ __('Add to my calendar (.ics)') }}">
+                                            📥
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </section>
             @endforeach
         </div>
 
