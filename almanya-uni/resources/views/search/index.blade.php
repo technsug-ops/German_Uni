@@ -213,7 +213,7 @@
                                 </div>
                             @else
                                 <div class="w-20 h-20 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shrink-0">
-                                    <span class="text-2xl font-extrabold text-white">{{ mb_substr($uni$p->name, 0, 2) }}</span>
+                                    <span class="text-2xl font-extrabold text-white">{{ mb_substr($uni->name, 0, 2) }}</span>
                                 </div>
                             @endif
                             <div class="flex-1 min-w-0">
@@ -253,7 +253,7 @@
                         <a href="{{ route('programs.show', $p->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 flex flex-col">
                             <div class="flex items-start justify-between gap-2 mb-2">
-                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p$p->name }}</h3>
+                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p->name }}</h3>
                                 @if ($p->language)
                                     <span class="text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap
                                         @if ($p->language === 'en') bg-blue-100 text-blue-700
@@ -305,11 +305,11 @@
                                     <span class="text-lg shrink-0">{{ $prof->field->icon }}</span>
                                 @endif
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug flex-1">
-                                    {{ $prof->name_tr ?: $prof$p->name }}
+                                    {{ $prof->name_tr ?: $prof->name }}
                                 </h3>
                             </div>
-                            @if ($prof->name_tr && $prof->name_tr !== $prof$p->name)
-                                <p class="text-xs text-gray-500 italic">{{ $prof$p->name }}</p>
+                            @if ($prof->name_tr && $prof->name_tr !== $prof->name)
+                                <p class="text-xs text-gray-500 italic">{{ $prof->name }}</p>
                             @endif
                             <div class="flex flex-wrap gap-2 mt-2 text-xs">
                                 @if ($prof->type && isset($profTypeLabels[$prof->type]))
@@ -405,7 +405,7 @@
                             <span class="text-2xl">{{ $field->icon ?? '📚' }}</span>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 truncate">{{ $field->name }}</h3>
-                                <p class="text-xs text-gray-500 truncate">{{ $field$p->name }}</p>
+                                <p class="text-xs text-gray-500 truncate">{{ $field->name }}</p>
                             </div>
                         </a>
                     @endforeach

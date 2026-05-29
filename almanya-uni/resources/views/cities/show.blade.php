@@ -260,7 +260,7 @@
                                 @if ($p->field?->icon)
                                     <span class="text-base shrink-0">{{ $p->field->icon }}</span>
                                 @endif
-                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug flex-1">{{ $p$p->name }}</h3>
+                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug flex-1">{{ $p->name }}</h3>
                             </div>
                             <div class="flex flex-wrap gap-1.5 mt-2 text-xs">
                                 <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700">{{ ucfirst($p->degree) }}</span>
@@ -293,7 +293,7 @@
                                          class="w-14 h-14 object-contain shrink-0 bg-white rounded ring-1 ring-gray-100 p-1" loading="lazy" decoding="async"/>
                                 @else
                                     <div class="w-14 h-14 shrink-0 rounded bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-xl">
-                                        {{ mb_substr($u$p->name, 0, 1) }}
+                                        {{ mb_substr($u->name, 0, 1) }}
                                     </div>
                                 @endif
                                 <div class="flex-1 min-w-0">

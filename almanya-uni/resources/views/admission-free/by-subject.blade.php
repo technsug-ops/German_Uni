@@ -4,7 +4,7 @@
 
 <x-seo
     :title="$field->name_tr . ': ' . $programs->total() . ' ' . __('NC Frei Programs')"
-    :description="__(':field German university programs you can apply to without NC (zulassungsfrei). Open admission, no quota.', ['field' => $field$p->name])"
+    :description="__(':field German university programs you can apply to without NC (zulassungsfrei). Open admission, no quota.', ['field' => $field->name])"
 />
 
 @section('content')
@@ -24,7 +24,7 @@
             {{ $field->icon }} {{ $field->name }}: {{ __('NC Frei Programs') }}
         </h1>
         <p class="text-lg text-emerald-100 max-w-3xl">
-            {{ __('Programs in :field in Germany you can apply to without NC.', ['field' => $field$p->name]) }}
+            {{ __('Programs in :field in Germany you can apply to without NC.', ['field' => $field->name]) }}
             {{ __('No Numerus Clausus — admission is guaranteed once you complete the required documents.') }}
         </p>
     </div>
@@ -46,10 +46,10 @@
                         {{ __('For this information you can use Hochschulkompass\'s official Zulassungsmodus filter:') }}
                     </p>
                     <div class="flex flex-wrap gap-3">
-                        <a href="{{ hochschulkompass_url($field$p->name, 'zulassungsfrei') }}"
+                        <a href="{{ hochschulkompass_url($field->name, 'zulassungsfrei') }}"
                            target="_blank" rel="noopener"
                            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
-                            🔓 Hochschulkompass: {{ $field$p->name }} NC Frei →
+                            🔓 Hochschulkompass: {{ $field->name }} NC Frei →
                         </a>
                         <a href="{{ route('programs.index', ['field' => $field->slug]) }}"
                            class="inline-block bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold px-5 py-2.5 rounded-lg transition">
@@ -68,7 +68,7 @@
                     {{ __('Out of :total :field programs in total.', ['total' => number_format($total_in_field, 0, ',', '.'), 'field' => $field->name_tr]) }}
                 </p>
             </div>
-            <a href="{{ hochschulkompass_url($field$p->name, 'zulassungsfrei') }}" target="_blank" rel="noopener"
+            <a href="{{ hochschulkompass_url($field->name, 'zulassungsfrei') }}" target="_blank" rel="noopener"
                class="text-xs text-emerald-700 hover:text-emerald-900 underline">
                 {{ __('More on Hochschulkompass ↗') }}
             </a>
@@ -83,7 +83,7 @@
                             <img src="{{ $p->university->logo_url }}" alt="" class="w-12 h-12 object-contain bg-gray-50 rounded p-1 flex-shrink-0" loading="lazy" decoding="async">
                         @endif
                         <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-gray-900 leading-snug">{{ $p$p->name }}</h3>
+                            <h3 class="font-bold text-gray-900 leading-snug">{{ $p->name }}</h3>
                             <p class="text-sm text-gray-600 mt-1">
                                 {{ $p->university->display_name }}
                                 @if ($p->university->city) · {{ $p->university->city->name }} @endif

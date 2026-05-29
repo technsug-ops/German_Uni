@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', $university$p->name . ' — ' . __('NC-Free (Zulassungsfrei) Programs') . '  — ' . brand('name'))
+@section('title', $university->name . ' — ' . __('NC-Free (Zulassungsfrei) Programs') . '  — ' . brand('name'))
 
 <x-seo
-    :title="$university$p->name . ': ' . __('NC-Free Programs')"
-    :description="$university$p->name . ' — ' . __('Programs you can apply to without NC (zulassungsfrei). Open admission, no quota limit.')"
+    :title="$university->name . ': ' . __('NC-Free Programs')"
+    :description="$university->name . ' — ' . __('Programs you can apply to without NC (zulassungsfrei). Open admission, no quota limit.')"
 />
 
 @section('content')
@@ -24,7 +24,7 @@
             {{ $university->display_name }}: {{ __('NC-Free Programs') }}
         </h1>
         <p class="text-lg text-emerald-100 max-w-3xl">
-            {!! __('Programs at <strong>:uni</strong> you can apply to <strong>without NC</strong>. No quota limit — if you submit the required documents, you get in.', ['uni' => e($university$p->name)]) !!}
+            {!! __('Programs at <strong>:uni</strong> you can apply to <strong>without NC</strong>. No quota limit — if you submit the required documents, you get in.', ['uni' => e($university->name)]) !!}
         </p>
     </div>
 </section>
@@ -38,16 +38,16 @@
                 <div class="flex-1">
                     <h2 class="text-xl font-bold text-blue-900 mb-2">{{ __('NC-Free Data Loading') }}</h2>
                     <p class="text-blue-800 mb-4">
-                        {!! __('Our database holds a total of <strong>:total</strong> programs at <strong>:uni</strong>, but the NC status for each one has not yet arrived from our partner data provider.', ['total' => number_format($total_at_uni, 0, ',', '.'), 'uni' => e($university$p->name)]) !!}
+                        {!! __('Our database holds a total of <strong>:total</strong> programs at <strong>:uni</strong>, but the NC status for each one has not yet arrived from our partner data provider.', ['total' => number_format($total_at_uni, 0, ',', '.'), 'uni' => e($university->name)]) !!}
                     </p>
                     <p class="text-blue-800 mb-4">
                         {{ __('For this information you can use the official Hochschulkompass filter:') }}
                     </p>
                     <div class="flex flex-wrap gap-3">
-                        <a href="{{ hochschulkompass_url($university$p->name, 'zulassungsfrei') }}"
+                        <a href="{{ hochschulkompass_url($university->name, 'zulassungsfrei') }}"
                            target="_blank" rel="noopener"
                            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
-                            🔓 Hochschulkompass: {{ $university->short_name ?? $university$p->name }} {{ __('NC-Free') }} →
+                            🔓 Hochschulkompass: {{ $university->short_name ?? $university->name }} {{ __('NC-Free') }} →
                         </a>
                         <a href="{{ route('universities.show', $university->slug) }}"
                            class="inline-block bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold px-5 py-2.5 rounded-lg transition">
@@ -64,7 +64,7 @@
                     {!! __('<strong class="text-emerald-900 text-lg">:found</strong> NC-Free programs · Out of :total programs total.', ['found' => $programs->total(), 'total' => number_format($total_at_uni, 0, ',', '.')]) !!}
                 </p>
             </div>
-            <a href="{{ hochschulkompass_url($university$p->name, 'zulassungsfrei') }}" target="_blank" rel="noopener"
+            <a href="{{ hochschulkompass_url($university->name, 'zulassungsfrei') }}" target="_blank" rel="noopener"
                class="text-xs text-emerald-700 hover:text-emerald-900 underline">
                 {{ __('View on Hochschulkompass too') }} ↗
             </a>
@@ -74,7 +74,7 @@
             @foreach ($programs as $p)
                 <a href="{{ route('programs.show', $p->slug) }}"
                    class="block bg-white border border-gray-200 hover:border-emerald-400 hover:shadow-md transition rounded-xl p-5">
-                    <h3 class="font-bold text-gray-900 leading-snug mb-1">{{ $p$p->name }}</h3>
+                    <h3 class="font-bold text-gray-900 leading-snug mb-1">{{ $p->name }}</h3>
                     <div class="flex flex-wrap gap-2 mt-2 text-xs">
                         <span class="inline-block bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">🔓 {{ __('NC-Free') }}</span>
                         <span class="inline-block text-gray-600">{{ ucfirst($p->degree) }}</span>
@@ -96,7 +96,7 @@
     @endif
 
     <section class="mt-12 bg-gray-50 border border-gray-200 rounded-xl p-6">
-        <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Application tips for :uni', ['uni' => $university$p->name]) }}</h2>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Application tips for :uni', ['uni' => $university->name]) }}</h2>
         <ul class="space-y-2 text-sm text-gray-700">
             <li>{!! __('• NC-Free programs may still require application via <strong>Uni-Assist</strong> (for Uni-Assist member universities)') !!}</li>
             <li>{!! __('• For German-taught programs you need at least <strong>TestDaF TDN 4</strong> or <strong>DSH 2</strong>') !!}</li>
