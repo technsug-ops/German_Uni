@@ -113,6 +113,15 @@ class University extends Model
      *   EN: "Technische Universität München (Munich Technical University)"
      *   DE: "Technische Universität München"
      */
+    /**
+     * Alias so polymorphic relations (e.g. Favorite.favoriteable) can call
+     * $item->name uniformly across Uni / Program / Profession / City.
+     */
+    public function getNameAttribute(): string
+    {
+        return $this->display_name;
+    }
+
     public function getDisplayNameAttribute(): string
     {
         $de = (string) ($this->name_de ?? '');

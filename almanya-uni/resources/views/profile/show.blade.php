@@ -348,7 +348,7 @@
                         <li>
                             <a href="{{ $url }}" class="flex items-center justify-between gap-2 p-2 hover:bg-gray-50 rounded transition">
                                 <div class="min-w-0 flex-1">
-                                    <p class="text-sm font-semibold text-gray-900 truncate">{{ $item?->name_de ?? __('(deleted)') }}</p>
+                                    <p class="text-sm font-semibold text-gray-900 truncate">{{ $item?->name ?? __('(deleted)') }}</p>
                                     <p class="text-xs text-gray-500">{{ $typeLabel }} · {{ $f->created_at->diffForHumans() }}</p>
                                 </div>
                                 <span class="text-pink-500">❤</span>
@@ -581,7 +581,7 @@
                                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         @else
                                             <div class="w-full h-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
-                                                <span class="text-3xl font-extrabold text-white/90">{{ mb_substr($item->name_de, 0, 2) }}</span>
+                                                <span class="text-3xl font-extrabold text-white/90">{{ mb_substr($item->name, 0, 2) }}</span>
                                             </div>
                                         @endif
                                         @if($item->logo_url && $item->image_url)
@@ -591,7 +591,7 @@
                                         @endif
                                     </div>
                                     <div class="p-3">
-                                        <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-tight line-clamp-2 text-sm">{{ $item->name_de }}</h3>
+                                        <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-tight line-clamp-2 text-sm">{{ $item->name }}</h3>
                                         @if($item->city)
                                             <p class="text-xs text-gray-500 mt-1">📍 {{ $item->city->name }}</p>
                                         @endif
@@ -646,7 +646,7 @@
                            class="block bg-gray-50 hover:bg-primary-50 border border-gray-200 hover:border-primary-400 rounded-lg p-4 transition">
                             <div class="flex items-start justify-between gap-2">
                                 <div class="flex-1 min-w-0">
-                                    <p class="font-semibold text-gray-900 leading-snug">{{ $item->name_de }}</p>
+                                    <p class="font-semibold text-gray-900 leading-snug">{{ $item->name }}</p>
                                     <p class="text-xs text-gray-500 mt-1">
                                         @if($item->degree){{ ucfirst($item->degree) }} · @endif
                                         @if($item->university) {{ $item->university->display_name }} @endif
@@ -678,7 +678,7 @@
                     @if ($item)
                         <a href="{{ route('professions.show', $item->slug) }}"
                            class="block bg-gray-50 hover:bg-primary-50 border border-gray-200 hover:border-primary-400 rounded-lg p-4 transition">
-                            <p class="font-semibold text-gray-900 leading-snug">{{ $item->name_de }}</p>
+                            <p class="font-semibold text-gray-900 leading-snug">{{ $item->name }}</p>
                             <p class="text-xs text-gray-500 mt-1">{{ $f->created_at->diffForHumans() }}</p>
                         </a>
                     @endif
@@ -782,7 +782,7 @@
                     <li class="py-3">
                         <a href="{{ $url }}" class="flex items-center justify-between gap-3 hover:bg-gray-50 rounded p-2 -m-2 transition">
                             <div class="min-w-0 flex-1">
-                                <p class="font-semibold text-gray-900 truncate">{{ $a->label ?? $item->name_de }}</p>
+                                <p class="font-semibold text-gray-900 truncate">{{ $a->label ?? $item->name }}</p>
                                 <p class="text-xs text-gray-500">{{ $type }} · {{ $a->viewed_at?->diffForHumans() }}</p>
                             </div>
                             <span class="text-gray-400">→</span>

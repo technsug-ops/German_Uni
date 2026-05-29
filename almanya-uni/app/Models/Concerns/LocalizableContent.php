@@ -39,4 +39,17 @@ trait LocalizableContent
     {
         return $this->localized('description');
     }
+
+    /**
+     * $model->name → same fallback chain on name_{tr,en,de}.
+     * Polymorphic relations (Favorite.favoriteable) can call $item->name
+     * uniformly across Program, Profession, City, FieldOfStudy, etc.
+     */
+    public function getNameAttribute(): ?string
+    {
+        // Only override when explicit name_{locale} columns exist on the model.
+        // Otherwise return the underlying raw 'name' attribute (if any).
+        $localized = $this->localized('name');
+        return $localized !== null ? $localized : ($this->attributes['name'] ?? null);
+    }
 }
