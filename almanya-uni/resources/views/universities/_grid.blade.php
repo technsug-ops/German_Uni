@@ -20,6 +20,9 @@
                     'from-indigo-500 to-violet-500',
                 ];
                 $palette = $palettes[$seed % count($palettes)];
+                $cover = \App\Support\CoverImage::forUniversity($uni);
+                $coverUrl = $cover['url'];
+                $coverIsPool = $cover['source'] === 'pool';
             @endphp
             <a href="{{ route('universities.show', $uni['slug']) }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
@@ -34,12 +37,13 @@
                         </span>
                     </div>
 
-                    @if(!empty($uni['image_url']))
-                        <img src="{{ $uni['image_url'] }}" alt=""
+                    @if($coverUrl)
+                        <img src="{{ $coverUrl }}" alt=""
                              loading="lazy" decoding="async"
                              onerror="this.remove()"
-                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 {{ !empty($uni['image_is_fallback']) ? 'opacity-90' : '' }}"/>
-                        @if(!empty($uni['image_is_fallback']) && $uni['city_name'])
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 {{ $coverIsPool ? 'opacity-90' : '' }}"/>
+                        @if($coverIsPool && !empty($uni['city_name']))
+                            {{-- City landmark fallback — overlay pin so users know it's the city, not the uni --}}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                             <span class="absolute bottom-2 right-2 inline-flex items-center gap-1 text-[10px] text-white/90 bg-black/40 backdrop-blur px-1.5 py-0.5 rounded">
                                 📍 {{ $uni['city_name'] }}
@@ -53,7 +57,7 @@
                         </span>
                     @endif
 
-                    @if($uni['logo_url'] && !empty($uni['image_url']))
+                    @if($uni['logo_url'] && $coverUrl)
                         <div class="absolute bottom-2 left-2 w-12 h-12 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
                             <img src="{{ $uni['logo_url'] }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
                         </div>

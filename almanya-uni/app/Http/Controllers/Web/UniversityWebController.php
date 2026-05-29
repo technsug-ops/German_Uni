@@ -92,12 +92,14 @@ class UniversityWebController extends Controller
             ->paginate(48)
             ->withQueryString()
             ->through(fn ($u) => [
+                'id' => $u->id,
                 'slug' => $u->slug,
                 'name_de' => $u->name_de,
                 'logo_url' => $u->logo_url,
-                // image fallback chain: kendi → şehir → null (gradient)
-                'image_url' => $u->image_url ?: $u->city?->image_url,
-                'image_is_fallback' => empty($u->image_url) && ! empty($u->city?->image_url),
+                // Raw own-image only. _grid resolves the 3-layer fallback
+                // (own → city landmark pool → gradient) via App\Support\CoverImage.
+                'image_url' => $u->image_url,
+                'city_slug' => $u->city?->slug,
                 'city_name' => $u->city?->name,
                 'state_name' => $u->city?->state?->name,
                 'founded_year' => $u->founded_year,
