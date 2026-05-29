@@ -230,7 +230,80 @@
                                             @endif
                                         </button>
                                     </form>
+
+                                    @auth
+                                        <button type="button" x-data
+                                                @click="$dispatch('step-expand-{{ $step['key'] }}')"
+                                                class="text-xs font-semibold text-indigo-700 hover:underline">
+                                            📝 {{ $tracker->stepNote($step['key']) ? __('Edit note + deadline') : __('Add note / deadline') }}
+                                        </button>
+                                    @endauth
                                 </div>
+
+                                {{-- Step metadata: completed_at + deadline countdown + note --}}
+                                @php
+                                    $completedAt = $tracker->stepCompletedAt($step['key']);
+                                    $deadline    = $tracker->stepDeadline($step['key']);
+                                    $note        = $tracker->stepNote($step['key']);
+                                @endphp
+
+                                @if ($completedAt || $deadline || $note)
+                                    <div class="mt-3 pt-3 border-t border-gray-100 flex flex-wrap gap-3 text-xs">
+                                        @if ($completedAt)
+                                            <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-50 text-emerald-800 font-semibold">
+                                                ✅ {{ __('Done :ago', ['ago' => $completedAt->diffForHumans()]) }}
+                                            </span>
+                                        @endif
+                                        @if ($deadline)
+                                            @php $daysLeft = (int) now()->startOfDay()->diffInDays($deadline->startOfDay(), false); @endphp
+                                            <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md font-semibold
+                                                {{ $daysLeft < 0 ? 'bg-rose-50 text-rose-800' : ($daysLeft <= 7 ? 'bg-amber-50 text-amber-800' : 'bg-blue-50 text-blue-800') }}">
+                                                📅 {{ $deadline->translatedFormat('d M Y') }}
+                                                @if ($daysLeft >= 0)
+                                                    <span class="text-xs font-normal">({{ __(':n days left', ['n' => $daysLeft]) }})</span>
+                                                @else
+                                                    <span class="text-xs font-normal">({{ __('overdue') }})</span>
+                                                @endif
+                                            </span>
+                                        @endif
+                                        @if ($note)
+                                            <div class="w-full mt-1 p-2 rounded-lg bg-gray-50 border border-gray-200 text-sm text-gray-700 whitespace-pre-line">
+                                                💬 {{ $note }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endif
+
+                                {{-- Inline edit form (auth only) — toggled by Alpine listener --}}
+                                @auth
+                                    <div x-data="{ open: false }"
+                                         x-show="open"
+                                         x-cloak
+                                         @step-expand-{{ $step['key'] }}.window="open = !open"
+                                         class="mt-3 p-3 rounded-lg bg-indigo-50/50 border border-indigo-200">
+                                        <form method="POST" action="{{ route('journey.step.update', $step['key']) }}" class="space-y-2">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div>
+                                                <label class="block text-xs font-semibold text-gray-700 mb-1">📅 {{ __('Deadline (optional)') }}</label>
+                                                <input type="date" name="deadline"
+                                                       value="{{ $deadline?->toDateString() }}"
+                                                       min="{{ now()->toDateString() }}"
+                                                       class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs font-semibold text-gray-700 mb-1">💬 {{ __('Personal note (only you can see)') }}</label>
+                                                <textarea name="note" rows="3" maxlength="2000"
+                                                          placeholder="{{ __('e.g. Documents collected from TU Berlin, deadline 15 January') }}"
+                                                          class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg">{{ $note }}</textarea>
+                                            </div>
+                                            <div class="flex justify-end gap-2">
+                                                <button type="button" @click="open = false" class="text-xs font-semibold text-gray-600 hover:text-gray-900 px-3 py-1.5">{{ __('Cancel') }}</button>
+                                                <button type="submit" class="text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md">💾 {{ __('Save') }}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                @endauth
                             </div>
                         </div>
                     </div>

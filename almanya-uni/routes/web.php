@@ -224,6 +224,7 @@ $routes = function () {
     // Application Tracker — locale grubu içinde (mega menü doğru locale alabilsin)
     Route::get('/journey',                       [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'show'])->name('journey.show');
     Route::post('/journey/step/{step}/toggle',   [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'toggle'])->name('journey.step.toggle');
+    Route::patch('/journey/step/{step}',         [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'updateStep'])->name('journey.step.update');
     Route::patch('/journey/update',              [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'update'])->name('journey.update');
 
     // Premium pricing

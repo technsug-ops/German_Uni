@@ -60,6 +60,19 @@ Schedule::command('newsletter:digest', ['--days' => 7, '--send' => true])
 | yaklaşan deadline (30 gün) + yeni program (favori üni'lerde, 14 gün) + ilgili blog.
 | Boş içerikli kullanıcıya mail göndermez (no spam).
 */
+/*
+|--------------------------------------------------------------------------
+| Journey reminder — stalled application tracker users
+|--------------------------------------------------------------------------
+| Salı 10:00 — 14+ gündür hareketsiz olan kullanıcılara sıradaki adım hatırlatması.
+| email_reminders=true + tamamlanmamış adımı olanlar.
+*/
+Schedule::command('journey:remind-inactive --send')
+    ->weeklyOn(2, '10:00')
+    ->withoutOverlapping(30)
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/journey-reminder.log'));
+
 Schedule::command('favorites:digest')
     ->weeklyOn(0, '18:00')
     ->withoutOverlapping(30)

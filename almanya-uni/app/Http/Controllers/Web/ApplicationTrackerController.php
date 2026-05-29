@@ -52,6 +52,37 @@ class ApplicationTrackerController extends Controller
         return back()->with('status', __('Journey updated.'));
     }
 
+    /** Per-step note + deadline persist (auth only — guest gets soft prompt). */
+    public function updateStep(Request $request, string $stepKey): RedirectResponse
+    {
+        $validStep = collect(ApplicationTracker::STEPS)->firstWhere('key', $stepKey);
+        abort_unless($validStep, 404);
+
+        $data = $request->validate([
+            'note'     => 'nullable|string|max:2000',
+            'deadline' => 'nullable|date|after_or_equal:today',
+        ]);
+
+        $user = $request->user();
+        if (! $user) {
+            return back()->with('error', __('Login required to save notes and deadlines.'));
+        }
+
+        $tracker = $user->applicationTracker ?? ApplicationTracker::create([
+            'user_id'         => $user->id,
+            'started_at'      => now(),
+            'steps_completed' => [],
+        ]);
+
+        $tracker->setStepData(
+            $stepKey,
+            $data['note']     ?? null,
+            isset($data['deadline']) ? \Carbon\Carbon::parse($data['deadline'])->toDateString() : null
+        );
+
+        return back()->with('status', __('Step saved.'));
+    }
+
     public function update(Request $request): RedirectResponse
     {
         $data = $request->validate([

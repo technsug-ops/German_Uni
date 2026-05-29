@@ -73,16 +73,66 @@ class ApplicationTracker extends Model
         if (! in_array($stepKey, $completed, true)) {
             $completed[] = $stepKey;
             $this->steps_completed = $completed;
-            $this->last_activity_at = now();
-            $this->save();
         }
+        // Always (re)stamp completed_at
+        $data = (array) $this->steps_data;
+        $data[$stepKey]['completed_at'] = now()->toIso8601String();
+        $this->steps_data = $data;
+        $this->last_activity_at = now();
+        $this->save();
     }
 
     public function unmarkStep(string $stepKey): void
     {
         $completed = array_values(array_diff((array) $this->steps_completed, [$stepKey]));
         $this->steps_completed = $completed;
+        $data = (array) $this->steps_data;
+        if (isset($data[$stepKey]['completed_at'])) {
+            unset($data[$stepKey]['completed_at']);
+        }
+        $this->steps_data = $data;
         $this->last_activity_at = now();
         $this->save();
+    }
+
+    // ════════ Per-step accessors (note / deadline / completed_at) ════════
+
+    public function stepCompletedAt(string $key): ?\Carbon\Carbon
+    {
+        $iso = data_get((array) $this->steps_data, "{$key}.completed_at");
+        return $iso ? \Carbon\Carbon::parse($iso) : null;
+    }
+
+    public function stepDeadline(string $key): ?\Carbon\Carbon
+    {
+        $iso = data_get((array) $this->steps_data, "{$key}.deadline");
+        return $iso ? \Carbon\Carbon::parse($iso) : null;
+    }
+
+    public function stepNote(string $key): ?string
+    {
+        return data_get((array) $this->steps_data, "{$key}.note");
+    }
+
+    public function setStepData(string $key, ?string $note = null, ?string $deadline = null): void
+    {
+        $data = (array) $this->steps_data;
+        if ($note !== null)     $data[$key]['note']     = $note;
+        if ($deadline !== null) $data[$key]['deadline'] = $deadline;
+        $this->steps_data = $data;
+        $this->last_activity_at = now();
+        $this->save();
+    }
+
+    /** Days since last activity — null if never started. */
+    public function daysSinceActivity(): ?int
+    {
+        if (! $this->last_activity_at) return null;
+        return (int) now()->diffInDays($this->last_activity_at);
+    }
+
+    public function nextStep(): ?array
+    {
+        return $this->currentStep();
     }
 }
