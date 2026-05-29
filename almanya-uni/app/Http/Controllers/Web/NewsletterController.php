@@ -69,7 +69,9 @@ class NewsletterController extends Controller
         $sub->save();
 
         try {
-            Mail::to($sub->email)->send(new NewsletterConfirmation($sub));
+            // queue() yerine send() değil: bounce-control + rate-limit için job queue'da yürür
+            Mail::to($sub->email)->queue(new NewsletterConfirmation($sub));
+            $sub->update(['last_sent_at' => now()]);
         } catch (\Throwable $e) {
             Log::error('Newsletter mail failed', ['email' => $sub->email, 'err' => $e->getMessage()]);
             return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed', 500);
@@ -107,11 +109,11 @@ class NewsletterController extends Controller
         $sub->confirmed_at = now();
         $sub->save();
 
-        // Welcome email — kurulum sıfır spam: tek seferlik, locale-aware, en
-        // değerli 5 tool ile lead-nurture. Mail::send hatası confirm akışını
-        // bozmamalı (UI başarılı sonuç gösterir, log'a yaz).
+        // Welcome email — locale-aware, en değerli 5 tool ile lead-nurture.
+        // Queue ile yollar: confirm() response'unu bekletmez, rate-limit kuyruğunda yürür.
         try {
-            \Illuminate\Support\Facades\Mail::to($sub->email)->send(new NewsletterWelcome($sub));
+            \Illuminate\Support\Facades\Mail::to($sub->email)->queue(new NewsletterWelcome($sub));
+            $sub->update(['last_sent_at' => now()]);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::warning('Newsletter welcome mail failed', [
                 'email' => $sub->email,

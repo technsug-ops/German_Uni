@@ -17,7 +17,8 @@ class NewsletterDigest extends Command
         {--days=7 : Son N günde enrich edilenler}
         {--send : Gerçekten gönder (yoksa dry-run)}
         {--limit=15 : Maksimum içerik sayısı}
-        {--only=* : Sadece bu email\'lere gönder}';
+        {--only=* : Sadece bu email\'lere gönder}
+        {--throttle=100 : Aboneler arası bekleme (ms) — SMTP rate limit için}';
 
     protected $description = 'Haftalık digest e-postası — son N günde enrich edilen içerikler abonelere';
 
@@ -104,13 +105,13 @@ class NewsletterDigest extends Command
             'states' => collect($items)->where('category', '🗺️ Eyalet')->count(),
         ];
 
-        // Aboneler
-        $query = Subscriber::whereNotNull('confirmed_at')->whereNull('unsubscribed_at');
+        // Aboneler — Reachable scope: confirmed + not unsubscribed + not bounced/complained
+        $query = Subscriber::reachable();
         if ($onlys = (array) $this->option('only')) {
             $query->whereIn('email', $onlys);
         }
         $subs = $query->get();
-        $this->info("👥 {$subs->count()} abone hedefleniyor");
+        $this->info("👥 {$subs->count()} reachable abone hedefleniyor (hard-bounce + complaint hariç)");
 
         if (!$this->option('send')) {
             $this->warn('⚠️ Dry-run modu — gerçek e-mail göndermiyor. --send ile gönder.');
@@ -127,15 +128,22 @@ class NewsletterDigest extends Command
         $bar = $this->output->createProgressBar($subs->count());
         $bar->start();
 
+        // Rate limiter: SMTP providers throttle hızlı blast'ları. Brevo free 300/day,
+        // pay-as-you-go ~10/sec sustained. 100ms aralık = 10/sec; konservatif.
+        $throttleMs = (int) ($this->option('throttle') ?? 100);
+
         foreach ($subs as $sub) {
             try {
-                Mail::send(new WeeklyDigest($sub, $items, $stats));
+                // queue() ile yolla: queue worker drain eder, sync block YOK
+                Mail::to($sub->email)->queue(new WeeklyDigest($sub, $items, $stats));
+                $sub->update(['last_sent_at' => now()]);
                 $sent++;
             } catch (\Throwable $e) {
                 $this->newLine();
                 $this->error("  {$sub->email}: " . substr($e->getMessage(), 0, 100));
                 $failed++;
             }
+            if ($throttleMs > 0) usleep($throttleMs * 1000);
             $bar->advance();
         }
         $bar->finish();

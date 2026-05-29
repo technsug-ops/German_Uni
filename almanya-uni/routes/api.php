@@ -17,6 +17,12 @@ Route::post('partner/webhook', [PartnerWebhookController::class, 'handle'])
     ->middleware('throttle:120,1')
     ->name('partner.webhook');
 
+// Brevo transactional event webhook — bounce/complaint/click/open
+// Auth: X-Brevo-Webhook-Token header (config services.brevo.webhook_token)
+Route::post('webhooks/brevo', [\App\Http\Controllers\Webhooks\BrevoWebhookController::class, 'handle'])
+    ->middleware('throttle:200,1')
+    ->name('webhooks.brevo');
+
 Route::prefix('v1')->middleware('api.throttle')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register'])->middleware('throttle:5,1');

@@ -21,11 +21,20 @@ class Subscriber extends Model
         'unsubscribe_reason',
         'ip_address',
         'user_agent',
+        'bounce_count', 'bounced_at', 'complaint_at',
+        'last_sent_at', 'last_open_at', 'last_click_at',
+        'open_count', 'click_count', 'webhook_meta',
     ];
 
     protected $casts = [
         'confirmed_at'    => 'datetime',
         'unsubscribed_at' => 'datetime',
+        'bounced_at'      => 'datetime',
+        'complaint_at'    => 'datetime',
+        'last_sent_at'    => 'datetime',
+        'last_open_at'    => 'datetime',
+        'last_click_at'   => 'datetime',
+        'webhook_meta'    => 'array',
     ];
 
     protected static function booted(): void
@@ -53,6 +62,18 @@ class Subscriber extends Model
     public function scopeUnsubscribed(Builder $q): Builder
     {
         return $q->whereNotNull('unsubscribed_at');
+    }
+
+    /** Hard-bounced or complained — should never receive another mail. */
+    public function scopeDeliverable(Builder $q): Builder
+    {
+        return $q->whereNull('bounced_at')->whereNull('complaint_at');
+    }
+
+    /** Mailable-ready: confirmed + not unsubscribed + deliverable. */
+    public function scopeReachable(Builder $q): Builder
+    {
+        return $q->confirmed()->deliverable();
     }
 
     public function getIsConfirmedAttribute(): bool

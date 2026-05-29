@@ -63,4 +63,11 @@ return [
         'sync_schedule'  => env('PARTNER_SYNC_SCHEDULE', 'daily'),
     ],
 
+    'brevo' => [
+        // Brevo transactional event webhook — must match X-Brevo-Webhook-Token header
+        'webhook_token' => env('BREVO_WEBHOOK_TOKEN'),
+        // Optional API key for transactional sends + list management (if not using SMTP)
+        'api_key'       => env('BREVO_API_KEY'),
+    ],
+
 ];
