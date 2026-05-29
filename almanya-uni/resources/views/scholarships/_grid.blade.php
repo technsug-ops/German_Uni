@@ -41,10 +41,10 @@
                 @endif
                 <div class="mt-auto flex flex-wrap gap-1.5">
                     @foreach ($sch->subjects->take(3) as $sub)
-                        <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs">{{ $sub->name_en ?? $sub->name_de }}</span>
+                        <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs">{{ $sub->name }}</span>
                     @endforeach
                     @foreach ($sch->statuses->take(2) as $st)
-                        <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs">{{ $st->name_en ?? $st->name_de }}</span>
+                        <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs">{{ $st->name }}</span>
                     @endforeach
                 </div>
             </a>

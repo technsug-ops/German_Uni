@@ -160,7 +160,7 @@
                     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">{{ __('Target group') }}</h3>
                     <div class="flex flex-wrap gap-1.5">
                         @foreach ($scholarship->statuses as $s)
-                            <span class="px-2 py-1 rounded-full bg-amber-50 text-amber-700 text-sm">{{ $s->name_en ?? $s->name_de }}</span>
+                            <span class="px-2 py-1 rounded-full bg-amber-50 text-amber-700 text-sm">{{ $s->name }}</span>
                         @endforeach
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">{{ __('Subject group') }}</h3>
                     <div class="flex flex-wrap gap-1.5">
                         @foreach ($scholarship->subjects as $sub)
-                            <span class="px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm">{{ $sub->name_en ?? $sub->name_de }}</span>
+                            <span class="px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm">{{ $sub->name }}</span>
                         @endforeach
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">{{ __('Intention') }}</h3>
                     <div class="flex flex-wrap gap-1.5">
                         @foreach ($scholarship->intentions as $i)
-                            <span class="px-2 py-1 rounded-full bg-purple-50 text-purple-700 text-sm">{{ $i->name_en ?? $i->name_de }}</span>
+                            <span class="px-2 py-1 rounded-full bg-purple-50 text-purple-700 text-sm">{{ $i->name }}</span>
                         @endforeach
                     </div>
                 </div>

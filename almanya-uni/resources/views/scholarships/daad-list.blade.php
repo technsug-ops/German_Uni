@@ -51,7 +51,7 @@
                         <option value="0">{{ __('All') }}</option>
                         @foreach ($statuses as $s)
                             <option value="{{ $s->id }}" @selected($filters['target'] === $s->id)>
-                                {{ $s->name_en ?? $s->name_de }}
+                                {{ $s->name }}
                             </option>
                         @endforeach
                     </select>
@@ -63,7 +63,7 @@
                         <option value="">{{ __('All') }}</option>
                         @foreach ($subjects as $sub)
                             <option value="{{ $sub->code }}" @selected($filters['subject'] === $sub->code)>
-                                {{ $sub->name_en ?? $sub->name_de }}
+                                {{ $sub->name }}
                             </option>
                         @endforeach
                     </select>
@@ -75,7 +75,7 @@
                         <option value="0">{{ __('All') }}</option>
                         @foreach ($intentions as $i)
                             <option value="{{ $i->id }}" @selected($filters['intention'] === $i->id)>
-                                {{ $i->name_en ?? $i->name_de }}
+                                {{ $i->name }}
                             </option>
                         @endforeach
                     </select>
