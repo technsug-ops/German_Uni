@@ -175,6 +175,9 @@ $routes = function () {
     Route::post('/events/{slug}/rsvp', [\App\Http\Controllers\Web\EventController::class, 'rsvp'])
         ->middleware('throttle:10,10')
         ->name('events.rsvp');
+    Route::post('/events/{slug}/review', [\App\Http\Controllers\Web\EventController::class, 'review'])
+        ->middleware('throttle:5,10')
+        ->name('events.review');
     Route::redirect('/etkinlikler', '/events', 301);
 
     // Mentors / Mentorlar

@@ -47,7 +47,7 @@ class EventController extends Controller
     public function show(string $slug): View
     {
         $event = Event::active()->where('slug', $slug)
-            ->with(['hostUser:id,name,slug,avatar_url,role_label', 'goingRsvps'])
+            ->with(['hostUser:id,name,slug,avatar_url,role_label', 'goingRsvps', 'approvedReviews'])
             ->firstOrFail();
 
         $related = Event::active()
@@ -124,5 +124,53 @@ class EventController extends Controller
         };
 
         return back()->with('rsvp_status', $msg)->withFragment('rsvp');
+    }
+
+    /**
+     * Etkinlik için review/rating bırak (sadece geçmiş etkinlikler).
+     */
+    public function review(Request $request, string $slug): \Illuminate\Http\RedirectResponse
+    {
+        $event = Event::active()->where('slug', $slug)->firstOrFail();
+
+        if ($event->starts_at->isFuture()) {
+            return back()->with('review_status', __('Reviews open after the event ends.'));
+        }
+
+        $data = $request->validate([
+            'rating'         => 'required|integer|min:1|max:5',
+            'body'           => 'nullable|string|max:1500',
+            'attendee_name'  => 'nullable|string|max:80',
+            'attendee_email' => 'nullable|email|max:150',
+            'website'        => 'nullable|string|max:200',
+        ]);
+
+        if (! empty($data['website'])) {
+            return back()->with('review_status', __('Thanks!'));
+        }
+
+        $user = $request->user();
+        if (! $user) {
+            $request->validate([
+                'attendee_name'  => 'required|string|min:2|max:80',
+                'attendee_email' => 'required|email|max:150',
+            ]);
+        }
+
+        \App\Models\EventReview::create([
+            'event_id'       => $event->id,
+            'user_id'        => $user?->id,
+            'rating'         => $data['rating'],
+            'attendee_name'  => $user ? null : ($data['attendee_name'] ?? null),
+            'attendee_email' => $user ? null : ($data['attendee_email'] ?? null),
+            'body'           => $data['body'] ?? null,
+            'status'         => 'pending',
+            'ip_address'     => $request->ip(),
+            'user_agent'     => substr((string) $request->userAgent(), 0, 255),
+        ]);
+
+        return back()
+            ->with('review_status', __('Thanks for your review — it\'s pending moderation.'))
+            ->withFragment('reviews');
     }
 }

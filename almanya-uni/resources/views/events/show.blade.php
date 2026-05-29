@@ -205,6 +205,139 @@
                 </form>
             </section>
 
+            {{-- Reviews (only after event ends) --}}
+        @endif
+
+        @if ($event->starts_at->isPast())
+            <section id="reviews" class="bg-white border border-gray-200 rounded-xl p-6">
+                @php
+                    $approvedReviews = $event->approvedReviews;
+                    $reviewCount = $approvedReviews->count();
+                    $avgRating = $reviewCount > 0 ? round($approvedReviews->avg('rating'), 1) : null;
+                @endphp
+
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                        ⭐ {{ __('Reviews') }}
+                        @if ($reviewCount > 0)
+                            <span class="text-base font-normal text-gray-500">({{ $reviewCount }})</span>
+                        @endif
+                    </h2>
+                    @if ($avgRating)
+                        <div class="text-sm text-gray-700">
+                            <span class="text-lg text-amber-500">{{ str_repeat('★', round($avgRating)) }}{{ str_repeat('☆', 5 - round($avgRating)) }}</span>
+                            <strong>{{ $avgRating }}</strong> / 5
+                        </div>
+                    @endif
+                </div>
+
+                @if (session('review_status'))
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-3 mb-4 text-sm">
+                        ✓ {{ session('review_status') }}
+                    </div>
+                @endif
+
+                {{-- Form --}}
+                <form method="POST" action="{{ route('events.review', $event->slug) }}" class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 space-y-3">
+                    @csrf
+                    <div>
+                        <p class="text-sm font-semibold text-gray-700 mb-2">{{ __('Your rating') }}:</p>
+                        <div class="flex items-center gap-1" id="rating-stars">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <label class="cursor-pointer text-3xl text-gray-300 hover:text-amber-400 transition" data-star="{{ $i }}">
+                                    <input type="radio" name="rating" value="{{ $i }}" required class="sr-only">
+                                    ★
+                                </label>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <textarea name="body" maxlength="1500" rows="3"
+                              placeholder="{{ __('What did you think? (optional)') }}"
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm"></textarea>
+
+                    @guest
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <input type="text" name="attendee_name" maxlength="80" required placeholder="{{ __('Your name') }}"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                            <input type="email" name="attendee_email" maxlength="150" required placeholder="{{ __('Email (not published)') }}"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-indigo-500 text-sm">
+                        </div>
+                    @endguest
+
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition">
+                        ⭐ {{ __('Submit review') }}
+                    </button>
+                </form>
+
+                {{-- Reviews list --}}
+                @if ($approvedReviews->isNotEmpty())
+                    <div class="space-y-4">
+                        @foreach ($approvedReviews as $r)
+                            <article id="review-{{ $r->id }}" class="bg-white border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-start gap-3">
+                                    @if ($r->display_avatar)
+                                        <img src="{{ $r->display_avatar }}" alt="{{ $r->display_name }}" class="w-9 h-9 rounded-full object-cover flex-shrink-0">
+                                    @else
+                                        <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                            {{ mb_substr($r->display_name, 0, 1) }}
+                                        </div>
+                                    @endif
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center gap-2 flex-wrap">
+                                            <span class="font-semibold text-sm text-gray-900">{{ $r->display_name }}</span>
+                                            <span class="text-amber-500 text-sm">{{ $r->stars }}</span>
+                                            @if ($r->is_pinned)
+                                                <span class="text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded">📌 {{ __('Featured') }}</span>
+                                            @endif
+                                            <time class="text-xs text-gray-400 ml-auto" datetime="{{ $r->created_at->toIso8601String() }}">{{ $r->created_at->diffForHumans() }}</time>
+                                        </div>
+                                        @if ($r->body)
+                                            <p class="text-sm text-gray-700 mt-1 whitespace-pre-line leading-relaxed">{{ $r->body }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="text-center text-sm text-gray-500 py-4">{{ __('No reviews yet — be the first.') }}</p>
+                @endif
+            </section>
+
+            {{-- Schema.org AggregateRating + Review --}}
+            @if ($reviewCount > 0)
+                @push('head')
+                <script type="application/ld+json">{!! json_encode([
+                    '@context' => 'https://schema.org',
+                    '@type'    => 'Event',
+                    'name'     => $event->title,
+                    'aggregateRating' => [
+                        '@type'       => 'AggregateRating',
+                        'ratingValue' => (string) $avgRating,
+                        'reviewCount' => $reviewCount,
+                        'bestRating'  => '5',
+                        'worstRating' => '1',
+                    ],
+                    'review' => $approvedReviews->take(10)->map(fn ($r) => array_filter([
+                        '@type'        => 'Review',
+                        'reviewRating' => [
+                            '@type'       => 'Rating',
+                            'ratingValue' => (string) $r->rating,
+                            'bestRating'  => '5',
+                        ],
+                        'author'       => ['@type' => 'Person', 'name' => $r->display_name],
+                        'datePublished'=> $r->created_at->format('Y-m-d'),
+                        'reviewBody'   => $r->body,
+                    ]))->all(),
+                ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+                @endpush
+            @endif
+        @endif
+
+        @if (! $event->starts_at->isPast())
             {{-- Attendees list --}}
             @if ($event->goingRsvps->count() > 0)
                 <section class="bg-white border border-gray-200 rounded-xl p-6">
@@ -234,6 +367,26 @@
                 </section>
             @endif
         @endif
+
+        @push('scripts')
+        <script>
+        (function(){
+            const labels = document.querySelectorAll('#rating-stars label');
+            const inputs = document.querySelectorAll('#rating-stars input');
+            function paint(n) {
+                labels.forEach((l, i) => { l.style.color = i < n ? '#f59e0b' : '#d1d5db'; });
+            }
+            labels.forEach((l, i) => {
+                l.addEventListener('mouseenter', () => paint(i + 1));
+                l.addEventListener('mouseleave', () => {
+                    const selected = document.querySelector('#rating-stars input:checked');
+                    paint(selected ? parseInt(selected.value) : 0);
+                });
+                l.addEventListener('click', () => { inputs[i].checked = true; paint(i + 1); });
+            });
+        })();
+        </script>
+        @endpush
     </main>
 
     {{-- Sidebar --}}

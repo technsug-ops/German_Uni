@@ -71,6 +71,20 @@ class Event extends Model
         return $this->hasMany(EventRsvp::class)->orderByDesc('created_at');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(EventReview::class)->orderByDesc('is_pinned')->orderByDesc('created_at');
+    }
+
+    public function approvedReviews()
+    {
+        return $this->hasMany(EventReview::class)
+            ->where('status', 'approved')
+            ->with('user:id,name,slug,avatar_url')
+            ->orderByDesc('is_pinned')
+            ->orderByDesc('created_at');
+    }
+
     public function parentEvent()
     {
         return $this->belongsTo(Event::class, 'parent_event_id');
