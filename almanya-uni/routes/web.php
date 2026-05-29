@@ -136,19 +136,6 @@ $routes = function () {
         Route::get('/sperrkonto', [\App\Http\Controllers\Web\BlockedAccountController::class, 'index'])->name('blocked-account');
         Route::get('/sperrkonto/country/{country}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'country'])->name('blocked-account.country');
         Route::get('/sperrkonto/{slug}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'show'])->name('blocked-account.show');
-
-        // Application Tracker — 8-step Almanya başvuru dashboard'u
-        Route::get('/application-tracker', [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'index'])->name('application-tracker');
-        Route::post('/application-tracker/start', [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'start'])
-            ->middleware('throttle:5,1')
-            ->name('application-tracker.start');
-        Route::post('/application-tracker/step/{stepId}', [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'updateStep'])
-            ->where('stepId', '[1-8]')
-            ->middleware('throttle:30,1')
-            ->name('application-tracker.step');
-        Route::post('/application-tracker/reset', [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'reset'])
-            ->middleware('throttle:5,1')
-            ->name('application-tracker.reset');
     });
     Route::redirect('/araclar/kariyer-pusulasi', '/tools/career-compass', 301);
     Route::redirect('/tools/bloke-hesap', '/tools/sperrkonto', 301);
