@@ -829,6 +829,11 @@
                 </div>
             </div>
 
+            {{-- Trust badges slot — TrustPilot, Google Reviews, vb. (admin'den eklenir) --}}
+            <div class="mt-4 pt-4 border-t border-primary-800/50">
+                <x-trust-badges slot="footer" :heading="__('Trusted by international students')" />
+            </div>
+
             {{-- Web development credit (techNS UG — Technology Next Station) --}}
             <div class="mt-4 pt-4 border-t border-primary-800/50 flex justify-center items-center text-xs text-primary-400">
                 <span>{{ __('Web development by') }}</span>
