@@ -169,47 +169,65 @@ jobs:
           date -u +"%Y-%m-%dT%H:%M:%SZ" > ./upload-staging/.deploy-pulse
           ls -lh ./upload-staging/
 
-      # Native curl upload — SamKirkland action'ın IPv6 negotiation regression'ı
-      # KAS'a karşı ECONNRESET veriyordu (8+ ardışık fail). curl --ipv4 ile
-      # tek session, retry built-in. (FTP_HOST ftp://... olmaksızın hostname olarak verilir.)
-      - name: Upload bundle via FTPS (curl, IPv4 forced)
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: |
-          set -e
-          HOST="${FTP_HOST#ftp://}"   # strip scheme if accidentally included
-          HOST="${HOST#ftps://}"
-          HOST="${HOST%/}"            # strip trailing slash
+      # SamKirkland action — workflow-level retry için 3 deneme
+      # (Curl yaklaşımı 14 ardışık fail aldı, SamKirkland #114'te başarılıydı.
+      #  Şimdi action'a dönüp WORKFLOW-level retry ekliyoruz: 3 deneme arasında
+      #  20s bekle. Önceki ECONNRESET tek-vuruşluk transient'lerse retry çözer.)
+      - name: Upload bundle via FTPS (attempt 1)
+        id: ftp1
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./upload-staging/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
 
-          # Upload bundle first
-          echo "→ Uploading deploy-bundle.zip ($(du -h ./upload-staging/deploy-bundle.zip | cut -f1))…"
-          curl --fail --silent --show-error \
-               --ipv4 \
-               --ftp-pasv \
-               --ssl-reqd \
-               --connect-timeout 30 \
-               --max-time 600 \
-               --retry 5 --retry-delay 10 --retry-connrefused \
-               --user "$FTP_USER:$FTP_PASS" \
-               --upload-file ./upload-staging/deploy-bundle.zip \
-               "ftp://$HOST/almanya-uni/storage/app/deploy-bundle.zip"
-          echo "✅ bundle uploaded"
+      - name: Wait before retry (if attempt 1 failed)
+        if: steps.ftp1.outcome == 'failure'
+        run: sleep 20
 
-          # Then upload the pulse — extract trigger
-          echo "→ Uploading .deploy-pulse…"
-          curl --fail --silent --show-error \
-               --ipv4 \
-               --ftp-pasv \
-               --ssl-reqd \
-               --connect-timeout 30 \
-               --max-time 60 \
-               --retry 5 --retry-delay 5 --retry-connrefused \
-               --user "$FTP_USER:$FTP_PASS" \
-               --upload-file ./upload-staging/.deploy-pulse \
-               "ftp://$HOST/almanya-uni/storage/app/.deploy-pulse"
-          echo "✅ pulse uploaded"
+      - name: Upload bundle via FTPS (attempt 2)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./upload-staging/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
+
+      - name: Wait before final retry (if attempt 2 failed)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        run: sleep 30
+
+      - name: Upload bundle via FTPS (attempt 3 — final)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./upload-staging/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
 
       # ─────────────────────────────────────────────────────
       # 8. Auto-trigger: server'da _deploy.php'yi çağır
