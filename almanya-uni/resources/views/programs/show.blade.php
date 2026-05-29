@@ -11,14 +11,14 @@
     $langLabels = ['en' => __('English'), 'de' => __('German'), 'both' => __('German + English')];
     $langLabel  = $langLabels[$program->language] ?? $program->language;
 
-    $title = $program->name_de . ' — ' . $degreeLabel . ' @ ' . $program->university->name_de;
+    $title = $program->name . ' — ' . $degreeLabel . ' @ ' . $program->university->display_name;
     $description = $program->description
         ? \Illuminate\Support\Str::limit($program->description, 160)
         : ($program->description_en
             ? \Illuminate\Support\Str::limit($program->description_en, 160)
             : __(':uni :program :degree program — application requirements, deadlines, tuition and detailed information.', [
-                'uni' => $program->university->name_de,
-                'program' => $program->name_de,
+                'uni' => $program->university->display_name,
+                'program' => $program->name,
                 'degree' => $degreeLabel,
             ]));
 @endphp
@@ -31,7 +31,7 @@
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
     ['name' => __('Home'), 'url' => route('home')],
     ['name' => __('Programs'), 'url' => route('programs.index')],
-    ['name' => $program->name_de, 'url' => route('programs.show', $program->slug)],
+    ['name' => $program->name, 'url' => route('programs.show', $program->slug)],
 ])" />
 
 @section('content')
@@ -53,7 +53,7 @@
                 {{ $program->university->display_name }}
             </a>
             <span class="opacity-60">›</span>
-            <span class="text-white truncate">{{ $program->name_de }}</span>
+            <span class="text-white truncate">{{ $program->name }}</span>
         </nav>
 
         <div class="flex flex-wrap items-center gap-2 mb-3">
@@ -74,7 +74,7 @@
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-3 drop-shadow">
-            {{ $program->name_de }}
+            {{ $program->name }}
         </h1>
 
         @if ($program->degree_specification)
@@ -181,7 +181,7 @@
                 </p>
                 <div class="flex flex-wrap gap-2">
                     @if ($program->field)
-                        <a href="{{ route('professions.index', ['q' => $program->field->name_de]) }}"
+                        <a href="{{ route('professions.index', ['q' => $program->field->name]) }}"
                            class="inline-block bg-white border border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50 text-emerald-900 px-3 py-1.5 rounded-full text-sm font-semibold transition">
                             🔎 {{ __('See :field professions', ['field' => $program->field->name]) }}
                         </a>
@@ -223,8 +223,8 @@
                     @foreach ($related as $r)
                         <a href="{{ route('programs.show', $r->slug) }}"
                            class="block bg-gray-50 hover:bg-primary-50 border border-gray-200 hover:border-primary-400 rounded-lg p-4 transition">
-                            <p class="font-semibold text-gray-900 leading-tight mb-1">{{ $r->name_de }}</p>
-                            <p class="text-xs text-gray-600">{{ $r->university->name_de }}</p>
+                            <p class="font-semibold text-gray-900 leading-tight mb-1">{{ $r->name }}</p>
+                            <p class="text-xs text-gray-600">{{ $r->university->display_name }}</p>
                             @if ($r->degree_specification)
                                 <p class="text-xs text-gray-500 mt-1">{{ $r->degree_specification }}</p>
                             @endif
@@ -377,7 +377,7 @@
                     @if (! is_null($program->nc_value))
                         <p class="text-xs text-gray-700 mt-1">{{ __('Last cut-off NC:') }} <strong>{{ number_format($program->nc_value, 2, ',', '') }}</strong></p>
                     @endif
-                    <a href="{{ hochschulkompass_url($program->name_de) }}"
+                    <a href="{{ hochschulkompass_url($program->name) }}"
                        target="_blank" rel="noopener"
                        class="inline-flex items-center gap-1 text-xs text-blue-700 hover:text-blue-900 hover:underline mt-2">
                         {{ __('Up-to-date info on Hochschulkompass') }} ↗
@@ -406,7 +406,7 @@
 
         <header class="mb-2">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Understand this program in context') }}</h2>
-            <p class="text-gray-600 mt-1">{{ __('Highlights about living in :city and :uni', ['city' => $program->university->city->name, 'uni' => $program->university->name_de]) }}</p>
+            <p class="text-gray-600 mt-1">{{ __('Highlights about living in :city and :uni', ['city' => $program->university->city->name, 'uni' => $program->university->display_name]) }}</p>
         </header>
 
         {{-- ───── Şehirde yaşam maliyeti teaser ───── --}}
@@ -491,7 +491,7 @@
 {{-- Featured-snippet box (AIO target: Q + concise answer + steps) --}}
 <div class="max-w-4xl mx-auto px-4">
     <x-featured-snippet
-        :question="__('How do I apply to :program at :uni?', ['program' => $program->name_de, 'uni' => $program->university->display_name])"
+        :question="__('How do I apply to :program at :uni?', ['program' => $program->name, 'uni' => $program->university->display_name])"
         :answer="__('Most international applicants apply via uni-assist (document verification + APS for some countries). Prepare your secondary/Bachelor diploma, transcripts, language certificate (DSH/TestDaF or IELTS/TOEFL), motivation letter and CV. Non-EU students also need a Sperrkonto (~11,904 EUR/year) for the visa.')"
         :steps="[
             ['title' => __('Check requirements'), 'description' => __('Verify your degree is recognised + meet language/grade thresholds.')],
@@ -506,7 +506,7 @@
 {{-- Auto-generated FAQ (AIO + Featured Snippet eligibility) — multi-lang via __() --}}
 <x-faq-section
     :title="__('Frequently Asked Questions')"
-    :subtitle="__('Quick answers about :program at :uni', ['program' => $program->name_de, 'uni' => $program->university->display_name])"
+    :subtitle="__('Quick answers about :program at :uni', ['program' => $program->name, 'uni' => $program->university->display_name])"
     :faqs="\App\Support\PageFaq::forProgram($program)"
 />
 

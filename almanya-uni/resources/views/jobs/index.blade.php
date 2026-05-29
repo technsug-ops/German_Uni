@@ -145,7 +145,7 @@
                                 <span class="inline-flex items-center gap-1 font-semibold">{{ $job->position_label }}</span>
                                 @if ($job->university)
                                     <span>·</span>
-                                    <span>🎓 {{ $job->university->short_name ?: $job->university->name_de }}</span>
+                                    <span>🎓 {{ $job->university->short_name ?: $job->university->display_name }}</span>
                                 @endif
                                 @if ($job->city)
                                     <span>·</span>

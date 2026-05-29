@@ -75,7 +75,7 @@
                                 {{ $field->name }}
                             </h3>
                         </div>
-                        <p class="text-xs text-gray-500">{{ $field->name_de }}</p>
+                        <p class="text-xs text-gray-500">{{ $field->name }}</p>
                     </div>
                 </a>
             @endforeach

@@ -4,7 +4,7 @@
 
 <x-seo
     :title="$job->title"
-    :description="$job->excerpt ?: __('Academic position at') . ' ' . ($job->university?->name_de ?: 'Germany')"
+    :description="$job->excerpt ?: __('Academic position at') . ' ' . ($job->university?->display_name ?: 'Germany')"
 />
 
 @push('head')
@@ -24,7 +24,7 @@
     },
     'hiringOrganization' => $job->university ? [
         '@type' => 'CollegeOrUniversity',
-        'name'  => $job->university->name_de,
+        'name'  => $job->university->display_name,
         'sameAs' => url('/universities/' . $job->university->slug),
     ] : null,
     'jobLocation' => $job->city ? [
@@ -76,7 +76,7 @@
             @if ($job->university)
                 <span>·</span>
                 <a href="{{ route('universities.show', $job->university->slug) }}" class="text-white hover:underline">
-                    🎓 {{ $job->university->name_de }}
+                    🎓 {{ $job->university->display_name }}
                 </a>
             @endif
             @if ($job->city)
@@ -214,7 +214,7 @@
                                 <p class="text-xs text-gray-600 mt-1">
                                     {{ $r->position_label }}
                                     @if ($r->university)
-                                        · {{ $r->university->short_name ?: $r->university->name_de }}
+                                        · {{ $r->university->short_name ?: $r->university->display_name }}
                                     @endif
                                 </p>
                             </div>
