@@ -475,6 +475,40 @@ Route::get('/_system/reset-stats', function (\Illuminate\Http\Request $request) 
     ]);
 })->middleware('throttle:5,1');
 
+// One-shot log tailer — SYSTEM_TOKEN protected. For diagnosing prod 500s when
+// we don't have shell access (KAS shared hosting). Returns last N lines of the
+// default channel log. Default 200, max 2000. Sensitive — token required.
+//   curl "https://applytogerman.com/_system/log-tail?token=XXX&lines=150"
+Route::get('/_system/log-tail', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+
+    $lines = (int) min(2000, max(10, $request->query('lines', 200)));
+    $logPath = storage_path('logs/laravel.log');
+    if (! is_file($logPath)) {
+        return response()->json(['error' => 'log not found', 'path' => $logPath], 404);
+    }
+
+    // Stream-tail: read from end. For typical 200-line tails this is cheap.
+    $fp = fopen($logPath, 'rb');
+    $bufSize = 8192;
+    $size = filesize($logPath);
+    $pos = $size;
+    $chunk = '';
+    while ($pos > 0 && substr_count($chunk, "\n") <= $lines) {
+        $read = min($bufSize, $pos);
+        $pos -= $read;
+        fseek($fp, $pos);
+        $chunk = fread($fp, $read) . $chunk;
+    }
+    fclose($fp);
+    $tail = implode("\n", array_slice(explode("\n", $chunk), -$lines));
+    return response($tail, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:30,1');
+
 // Dual-brand robots.txt — absolute Sitemap URL + brand-aware
 Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
     $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
