@@ -1,8 +1,19 @@
 @php
     $title = $scholarship->name_en ?? $scholarship->name_de ?? ('DAAD #' . $scholarship->sap_objid);
-    $intro = $scholarship->introductionText('en') ?? $scholarship->introductionText('de');
+    $loc = app()->getLocale();
+    // DAAD verisi sadece EN/DE'de var. Locale-aware tercih:
+    //   - DE locale → DE öncelik, EN fallback
+    //   - TR / EN / diğer → EN öncelik, DE fallback
+    $intro = $loc === 'de'
+        ? ($scholarship->introductionText('de') ?? $scholarship->introductionText('en'))
+        : ($scholarship->introductionText('en') ?? $scholarship->introductionText('de'));
     $qEn = $scholarship->qText('en');
     $qDe = $scholarship->qText('de');
+    // Eligibility: tercih edilen dil + ikincisi (varsa) toggle ile
+    $qPrimary       = $loc === 'de' ? ($qDe ?: $qEn)            : ($qEn ?: $qDe);
+    $qPrimaryLabel  = $loc === 'de' ? ($qDe ? 'Deutsch' : 'English') : ($qEn ? 'English' : 'Deutsch');
+    $qSecondary     = $loc === 'de' ? ($qDe ? $qEn : null)      : ($qEn ? $qDe : null);
+    $qSecondaryLabel= $loc === 'de' ? 'English'                 : 'Deutsch';
 @endphp
 
 @extends('layouts.app')
@@ -70,20 +81,17 @@
                 </div>
             @endif
 
-            {{-- BAŞVURU KOŞULLARI --}}
-            @if ($qEn || $qDe)
+            {{-- BAŞVURU KOŞULLARI — locale-aware tek dil + ikincisi toggle --}}
+            @if ($qPrimary)
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
                     <h2 class="text-lg font-bold text-gray-900 mb-3">✅ {{ __('Eligibility') }}</h2>
-                    @if ($qEn)
-                        <details class="mb-3" open>
-                            <summary class="cursor-pointer font-semibold text-gray-800 mb-2">English</summary>
-                            <div class="prose prose-sm max-w-none text-gray-700 mt-2">{!! $qEn !!}</div>
-                        </details>
-                    @endif
-                    @if ($qDe)
-                        <details class="mb-3">
-                            <summary class="cursor-pointer font-semibold text-gray-800 mb-2">Deutsch</summary>
-                            <div class="prose prose-sm max-w-none text-gray-700 mt-2">{!! $qDe !!}</div>
+                    <div class="prose prose-sm max-w-none text-gray-700">{!! $qPrimary !!}</div>
+                    @if ($qSecondary)
+                        <details class="mt-4 text-sm">
+                            <summary class="cursor-pointer text-gray-600 hover:text-gray-900">
+                                🌐 {{ __('Show :lang version', ['lang' => $qSecondaryLabel]) }}
+                            </summary>
+                            <div class="prose prose-sm max-w-none text-gray-700 mt-3 pt-3 border-t border-gray-100">{!! $qSecondary !!}</div>
                         </details>
                     @endif
                 </div>
@@ -132,9 +140,10 @@
                         @foreach ($related as $r)
                             <a href="{{ route('scholarships.show', $r->slug) }}"
                                class="block p-4 rounded-lg border border-gray-200 hover:border-primary-500 hover:bg-primary-50 transition">
-                                <div class="font-semibold text-gray-900 line-clamp-1">{{ $r->name_en ?? $r->name_de }}</div>
-                                @if ($r->programmname_en)
-                                    <div class="text-xs text-gray-500 line-clamp-1 mt-1">{{ $r->programmname_en }}</div>
+                                <div class="font-semibold text-gray-900 line-clamp-1">{{ $loc === 'de' ? ($r->name_de ?? $r->name_en) : ($r->name_en ?? $r->name_de) }}</div>
+                                @php $programmname = $loc === 'de' ? ($r->programmname_de ?? $r->programmname_en) : ($r->programmname_en ?? $r->programmname_de); @endphp
+                                @if ($programmname)
+                                    <div class="text-xs text-gray-500 line-clamp-1 mt-1">{{ $programmname }}</div>
                                 @endif
                             </a>
                         @endforeach
