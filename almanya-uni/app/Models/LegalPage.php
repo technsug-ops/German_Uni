@@ -27,9 +27,13 @@ class LegalPage extends Model
 
     public static function findByKey(string $key): ?self
     {
-        return Cache::remember("legal_page_$key", now()->addMinutes(15), fn () =>
-            self::where('key', $key)->where('is_published', true)->first()
-        );
+        // Cache deliberately disabled: prod was flapping 500s on /tr/impressum and
+        // /tr/cerez-politikasi (same controller, same view, others worked) — telltale
+        // sign of a poisoned serialized cache value across shared workers. Legal
+        // pages are visited rarely; a single indexed lookup costs <1ms, the cache
+        // saved nothing meaningful but cost us availability. Re-enable later if
+        // traffic justifies, with a cache key version (e.g. legal_page_v2_$key).
+        return self::where('key', $key)->where('is_published', true)->first();
     }
 
     public function getTitle(?string $locale = null): string
