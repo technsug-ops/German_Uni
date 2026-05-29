@@ -200,6 +200,15 @@
         {{-- Methodology — tüm ranking tipleri için (QS/THE/ARWU/Community/Largest/Oldest/Field). i18n via __() --}}
         <x-ranking-methodology :methodology="$methodology" />
 
+        @if ($methodology && ! empty($methodology['indicators']))
+            <div class="mt-4 text-center">
+                <a href="{{ route('rankings.methodology', $config['slug']) }}"
+                   class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">
+                    📐 {{ __('Full methodology page') }} →
+                </a>
+            </div>
+        @endif
+
         <div class="mt-10 bg-primary-50 border border-primary-200 rounded-lg p-6 text-center">
             <h3 class="text-xl font-bold mb-2">{{ __('Didn\'t find what you were looking for?') }}</h3>
             <p class="text-gray-700 mb-4">{{ __('Browse rankings in other categories.') }}</p>

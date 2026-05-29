@@ -90,6 +90,7 @@ $routes = function () {
 
     Route::get('/rankings', [RankingController::class, 'index'])->name('rankings.index');
     Route::get('/rankings/{slug}', [RankingController::class, 'show'])->name('rankings.show');
+    Route::get('/rankings/{slug}/methodology', [RankingController::class, 'methodology'])->name('rankings.methodology');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
 

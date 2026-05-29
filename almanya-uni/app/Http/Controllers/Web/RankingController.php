@@ -67,6 +67,28 @@ class RankingController extends Controller
         return view('rankings.show', [
             'config' => $config,
             'universities' => $universities,
+            'methodology' => RankingService::methodologyFor($config['count_label'] ?? $config['slug']),
+        ]);
+    }
+
+    /**
+     * Methodology page — explains how a ranking is computed (indicators + weights + source).
+     */
+    public function methodology(string $slug)
+    {
+        $config = $this->rankings->resolve($slug);
+        if (! $config) {
+            throw new NotFoundHttpException("Ranking not found: {$slug}");
+        }
+
+        $methodology = RankingService::methodologyFor($config['count_label'] ?? $config['slug']);
+        if (! $methodology) {
+            return redirect()->route('rankings.show', $slug);
+        }
+
+        return view('rankings.methodology', [
+            'config' => $config,
+            'methodology' => $methodology,
         ]);
     }
 }
