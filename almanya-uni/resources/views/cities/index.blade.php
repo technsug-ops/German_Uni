@@ -38,20 +38,16 @@
         <form method="GET" action="{{ route('cities.index') }}" class="space-y-3"
               data-async-filter-form="#async-filter-results"
               data-no-loading>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_220px_180px_auto_auto] gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_180px_auto_auto] gap-3">
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
                     <input type="text" name="q" value="{{ $filters['q'] ?? '' }}"
                            placeholder="{{ __('Search city (Berlin, München, Hamburg…)') }}"
                            class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"/>
                 </div>
-                <select name="state"
-                        class="px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900">
-                    <option value="">🗺️ {{ __('All states') }}</option>
-                    @foreach($states as $st)
-                        <option value="{{ $st->slug }}" @selected(($filters['state'] ?? '') === $st->slug)>{{ $st->name }}</option>
-                    @endforeach
-                </select>
+                {{-- State filter rendered as upper chip row below; hidden input keeps the
+                     value in this form so async filter still posts it. --}}
+                <input type="hidden" name="state" value="{{ $filters['state'] ?? '' }}"/>
                 <select name="sort" class="px-4 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900">
                     <option value="uni_count" @selected(($filters['sort'] ?? 'uni_count') === 'uni_count')>📚 {{ __('University count (most → least)') }}</option>
                     <option value="population" @selected(($filters['sort'] ?? '') === 'population')>👥 {{ __('Population (most → least)') }}</option>
@@ -66,6 +62,32 @@
                         {{ __('Reset') }}
                     </a>
                 @endif
+            </div>
+
+            {{-- State badge row — primary geographic filter, sits above the
+                 size/density chips so users see it first. --}}
+            <div class="flex items-center flex-wrap gap-1.5 pt-2 border-t border-gray-100">
+                <span class="text-xs text-gray-500 mr-1 shrink-0">🗺️ {{ __('State:') }}</span>
+                <a href="{{ request()->fullUrlWithQuery(['state' => null]) }}"
+                   class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition
+                          {{ empty($filters['state'] ?? null)
+                              ? 'bg-primary-600 text-white border-primary-600'
+                              : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
+                    {{ __('All') }}
+                </a>
+                @foreach($states as $st)
+                    @php $isActive = ($filters['state'] ?? '') === $st->slug; @endphp
+                    <a href="{{ request()->fullUrlWithQuery(['state' => $isActive ? null : $st->slug]) }}"
+                       class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition
+                              {{ $isActive
+                                  ? 'bg-primary-600 text-white border-primary-600'
+                                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
+                        <span>{{ $st->name }}</span>
+                        @if($st->cities_count > 0)
+                            <span class="opacity-70 text-[10px]">({{ $st->cities_count }})</span>
+                        @endif
+                    </a>
+                @endforeach
             </div>
 
             {{-- Hızlı chip filtreleri --}}

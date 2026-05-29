@@ -59,7 +59,13 @@ class CityController extends Controller
         };
 
         $cities = $query->paginate(48)->withQueryString();
-        $states = State::orderBy('name_de')->get(['slug', 'name_tr', 'name_de','name_en','name_de']);
+
+        // States are shown as upper chip-row filter on the cities index. We count
+        // only cities that have at least one active university so the badge total
+        // matches the actual filtered listing (zero-uni cities are hidden anyway).
+        $states = State::orderBy('name_de')
+            ->withCount(['cities' => fn ($q) => $q->whereHas('universities', fn ($u) => $u->where('is_active', 1))])
+            ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en']);
 
         $viewData = [
             'cities' => $cities,
