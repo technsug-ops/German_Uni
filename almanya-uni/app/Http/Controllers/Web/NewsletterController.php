@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Mail\NewsletterConfirmation;
+use App\Mail\NewsletterWelcome;
 use App\Models\Subscriber;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -105,6 +106,18 @@ class NewsletterController extends Controller
 
         $sub->confirmed_at = now();
         $sub->save();
+
+        // Welcome email — kurulum sıfır spam: tek seferlik, locale-aware, en
+        // değerli 5 tool ile lead-nurture. Mail::send hatası confirm akışını
+        // bozmamalı (UI başarılı sonuç gösterir, log'a yaz).
+        try {
+            \Illuminate\Support\Facades\Mail::to($sub->email)->send(new NewsletterWelcome($sub));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Newsletter welcome mail failed', [
+                'email' => $sub->email,
+                'err'   => $e->getMessage(),
+            ]);
+        }
 
         return view('newsletter.result', [
             'success' => true,
