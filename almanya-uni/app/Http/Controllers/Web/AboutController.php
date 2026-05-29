@@ -21,9 +21,8 @@ class AboutController extends Controller
      */
     public function team(): View
     {
-        // Yazar/editör kullanıcıları (Yapra Test ve admin-only hariç) + blog sayısı
+        // Yazar/editör kullanıcıları + blog sayısı (Halil id=1 = Kurucu, dahil edilir)
         $people = User::where(fn ($q) => $q->where('is_author', true)->orWhere('role_label', '!=', null))
-            ->whereNotIn('id', [1]) // test kullanıcısı
             ->withCount(['posts' => fn ($q) => $q->where('is_published', true)])
             ->with(['posts' => fn ($q) => $q->where('is_published', true)
                 ->whereNotNull('published_at')
