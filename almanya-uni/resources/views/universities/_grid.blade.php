@@ -24,24 +24,27 @@
             <a href="{{ route('universities.show', $uni['slug']) }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
 
-                {{-- Cover image --}}
-                <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
+                {{-- Cover image — gradient baseline always renders; image overlays on top.
+                     If the URL 404s, errors, or is blocked, onerror removes the <img> and the
+                     gradient + initials show through. alt="" prevents broken-image text leaks. --}}
+                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span class="text-4xl font-extrabold text-white/90 drop-shadow text-center px-4 select-none">
+                            {{ mb_substr($uni['name_de'], 0, 2) }}
+                        </span>
+                    </div>
+
                     @if(!empty($uni['image_url']))
-                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }}"
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 {{ !empty($uni['image_is_fallback']) ? 'opacity-90' : '' }}"/>
+                        <img src="{{ $uni['image_url'] }}" alt=""
+                             loading="lazy" decoding="async"
+                             onerror="this.remove()"
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 {{ !empty($uni['image_is_fallback']) ? 'opacity-90' : '' }}"/>
                         @if(!empty($uni['image_is_fallback']) && $uni['city_name'])
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                             <span class="absolute bottom-2 right-2 inline-flex items-center gap-1 text-[10px] text-white/90 bg-black/40 backdrop-blur px-1.5 py-0.5 rounded">
                                 📍 {{ $uni['city_name'] }}
                             </span>
                         @endif
-                    @else
-                        <div class="w-full h-full bg-gradient-to-br {{ $palette }} flex items-center justify-center">
-                            <span class="text-4xl font-extrabold text-white/90 drop-shadow text-center px-4">
-                                {{ mb_substr($uni['name_de'], 0, 2) }}
-                            </span>
-                        </div>
                     @endif
 
                     @if($uni['type'])
