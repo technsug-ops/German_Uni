@@ -18,9 +18,15 @@
             <span class="text-white">{{ __('Events') }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">📅 {{ __('Events') }}</h1>
-        <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
+        <p class="text-lg md:text-xl text-indigo-100 max-w-3xl mb-5">
             {{ __('Live webinars, workshops, university open days, panels and student meetups. All free (unless otherwise noted).') }}
         </p>
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">🎟️ {{ __('Free by default') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">📝 {{ __('No registration required') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">🎥 {{ __('Recording later') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">💬 {{ __('Live Q&A') }}</span>
+        </div>
     </div>
 </section>
 
@@ -113,5 +119,88 @@
             </div>
         </section>
     @endif
+
+    {{-- Event types — tanıtım kartları --}}
+    <section class="mt-14 mb-10">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">🎯 {{ __('What kind of events do we run?') }}</h2>
+            <p class="text-sm text-gray-600 max-w-2xl mx-auto">{{ __('Six recurring formats — pick what fits your stage of the journey.') }}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @php
+                $formats = [
+                    ['icon' => '🎙️', 'title' => __('Live webinar (60 min)'), 'desc' => __('30-min topic-deep dive + 30-min Q&A on Zoom. Most fundamentals (visa, Sperrkonto, Anabin) covered here.')],
+                    ['icon' => '🛠️', 'title' => __('Hands-on workshop (90 min)'), 'desc' => __('Bring your own laptop: live uni-assist application, Sperrkonto setup, real Bürgeramt appointment search.')],
+                    ['icon' => '🎤', 'title' => __('Expert panel (75 min)'), 'desc' => __('3-4 alumni or experts on one theme (Werkstudent law, scholarship strategy, German bureaucracy).')],
+                    ['icon' => '🤝', 'title' => __('Mentor matching night (60 min)'), 'desc' => __('Speed-dating-style: 6-min rotations with 5-6 mentors. Find your mentor in one evening.')],
+                    ['icon' => '🏫', 'title' => __('University open day (online)'), 'desc' => __('Direct calls with German uni admissions offices — TUM, LMU, Heidelberg, etc.')],
+                    ['icon' => '☕', 'title' => __('Student meetup (offline)'), 'desc' => __('In-person meetups in Berlin, Munich, Frankfurt, Hamburg. Free, casual, Turkish + English.')],
+                ];
+            @endphp
+            @foreach ($formats as $f)
+                <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-indigo-300 transition">
+                    <div class="text-2xl mb-2">{{ $f['icon'] }}</div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">{{ $f['title'] }}</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">{{ $f['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- Nasıl katılırım (3 adım) --}}
+    <section class="mb-10 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6 md:p-8">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">📋 {{ __('How attendance works') }}</h2>
+            <p class="text-sm text-gray-600">{{ __('Three simple steps — no commitment, no spam.') }}</p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-white font-bold text-sm">1</span>
+                    <h3 class="font-bold text-gray-900">{{ __('RSVP if you want') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('Click "Going" on the event page. Your name appears in the attendees grid. RSVP is optional — drop-ins also welcome.') }}</p>
+            </li>
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-white font-bold text-sm">2</span>
+                    <h3 class="font-bold text-gray-900">{{ __('Get the Zoom link') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('We post the link on the event page 1 hour before start. If you RSVPed with email, we send it directly too. No login walls.') }}</p>
+            </li>
+            <li class="bg-white border border-gray-200 rounded-lg p-5">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-white font-bold text-sm">3</span>
+                    <h3 class="font-bold text-gray-900">{{ __('Watch live or recording') }}</h3>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">{{ __('Live for Q&A; otherwise the recording goes up within 48 hours on the same event page. Public + free forever.') }}</p>
+            </li>
+        </ol>
+    </section>
+
+    {{-- Speaker / öneri CTA --}}
+    <section class="mb-10 bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-200 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div>
+            <h2 class="text-xl md:text-2xl font-bold text-amber-900 mb-2">🎤 {{ __('Want to speak at an AlmanyaUni event?') }}</h2>
+            <p class="text-sm text-amber-800 max-w-2xl">{{ __('Are you an alum, professional, or topic expert? We run 2-3 events a month — apply to host one. Your topic, our audience, free promotion.') }}</p>
+        </div>
+        <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Speaker%20Application"
+           class="shrink-0 inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition whitespace-nowrap">
+            ✍ {{ __('Apply as speaker') }}
+        </a>
+    </section>
+
+    {{-- SSS --}}
+    <x-faq-section
+        :title="__('Frequently Asked Questions about Events')"
+        :subtitle="__('Format, RSVP, recordings, and language')"
+        :faqs="[
+            ['q' => __('Are events really free?'), 'a' => __('Yes — every AlmanyaUni event is free by default. If a specific event has a fee (rare; usually for a hands-on workshop with materials cost), it is clearly shown with a €X badge on the event card and in the sticky sidebar.')],
+            ['q' => __('Do I have to register?'), 'a' => __('No. You can RSVP if you want your spot counted, or if you want the Zoom link delivered via email. But drop-ins (just click the live Zoom link on the event page) are equally welcome.')],
+            ['q' => __('What language are events in?'), 'a' => __('Each event page shows a flag chip with the presentation language: 🇹🇷 Türkçe, 🇬🇧 English, 🇩🇪 Deutsch, or 🌍 multi (Turkish + German). Most events are in Turkish; international panels are in English.')],
+            ['q' => __('Will there be a recording?'), 'a' => __('Yes for most webinars and panels. The recording goes up on the same event page within 48 hours. Workshops with live exercises are not recorded (interaction matters).')],
+            ['q' => __('Can I propose a topic?'), 'a' => __('Absolutely — that is how half our events get planned. Email technsug@gmail.com with your topic, your background, and a sentence on why this audience needs it.')],
+        ]"
+    />
 </div>
 @endsection
