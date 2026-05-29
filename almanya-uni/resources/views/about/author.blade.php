@@ -49,6 +49,20 @@
                 'name'  => brand('name'),
                 'url'   => url('/'),
             ],
+            // E-E-A-T enrichment (only emit when populated)
+            'knowsAbout'    => ! empty($author->expertise) ? array_values((array) $author->expertise) : null,
+            'knowsLanguage' => ! empty($author->languages_spoken) ? array_values((array) $author->languages_spoken) : null,
+            'alumniOf'      => ! empty($author->education) ? array_map(fn ($e) => array_filter([
+                '@type' => 'EducationalOrganization',
+                'name'  => $e['school'] ?? null,
+                'url'   => $e['url'] ?? null,
+            ]), (array) $author->education) : null,
+            'memberOf'      => ! empty($author->member_of) ? array_map(fn ($m) => array_filter([
+                '@type' => 'Organization',
+                'name'  => is_array($m) ? ($m['name'] ?? null) : $m,
+                'url'   => is_array($m) ? ($m['url'] ?? null) : null,
+            ]), (array) $author->member_of) : null,
+            'award'         => ! empty($author->awards) ? array_values((array) $author->awards) : null,
         ]),
     ],
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
@@ -107,6 +121,112 @@
 </section>
 
 <div class="max-w-[1100px] mx-auto px-4 py-10">
+
+    {{-- E-E-A-T panel: expertise / languages / years (Schema.org Person.knowsAbout/knowsLanguage) --}}
+    @if (! empty($author->expertise) || ! empty($author->languages_spoken) || $author->years_experience)
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {{-- Expertise --}}
+                @if (! empty($author->expertise))
+                    <div class="md:col-span-2">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🎯 {{ __('Expertise') }}</h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            @foreach ((array) $author->expertise as $topic)
+                                <span class="inline-block bg-white border border-indigo-200 text-indigo-900 text-xs font-semibold px-2.5 py-1 rounded-full">{{ $topic }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+                {{-- Languages + Years --}}
+                <div class="space-y-3">
+                    @if (! empty($author->languages_spoken))
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🗣️ {{ __('Languages') }}</h3>
+                            <div class="flex flex-wrap gap-1">
+                                @foreach ((array) $author->languages_spoken as $code)
+                                    @php
+                                        $flag = ['tr' => '🇹🇷', 'en' => '🇬🇧', 'de' => '🇩🇪', 'fr' => '🇫🇷', 'es' => '🇪🇸',
+                                                 'it' => '🇮🇹', 'pl' => '🇵🇱', 'ru' => '🇷🇺', 'ar' => '🇸🇦', 'fa' => '🇮🇷'][$code] ?? '🌐';
+                                        $label = ['tr' => __('Turkish'), 'en' => __('English'), 'de' => __('German'), 'fr' => __('French'),
+                                                  'es' => __('Spanish'), 'it' => __('Italian'), 'pl' => __('Polish'),
+                                                  'ru' => __('Russian'), 'ar' => __('Arabic'), 'fa' => __('Persian (Farsi)')][$code] ?? $code;
+                                    @endphp
+                                    <span class="inline-flex items-center gap-1 bg-white border border-indigo-200 text-xs font-semibold px-2 py-1 rounded">
+                                        {{ $flag }} {{ $label }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if ($author->years_experience)
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">⏳ {{ __('Years of experience') }}</h3>
+                            <p class="text-lg font-extrabold text-indigo-900">{{ $author->years_experience }}+ {{ __('years') }}</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            {{-- Education timeline --}}
+            @if (! empty($author->education))
+                <div class="mt-5 pt-5 border-t border-indigo-200">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🎓 {{ __('Education') }}</h3>
+                    <ul class="space-y-1.5">
+                        @foreach ((array) $author->education as $edu)
+                            <li class="flex items-start gap-2 text-sm text-gray-800">
+                                <span class="text-indigo-500">•</span>
+                                <span>
+                                    <strong>{{ $edu['school'] ?? '' }}</strong>
+                                    @if (! empty($edu['degree']))
+                                        — {{ $edu['degree'] }}
+                                    @endif
+                                    @if (! empty($edu['year']))
+                                        <span class="text-xs text-gray-500 ml-1">({{ $edu['year'] }})</span>
+                                    @endif
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            {{-- Member of + Awards + Featured in --}}
+            @if (! empty($author->member_of) || ! empty($author->awards) || ! empty($author->featured_in))
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 pt-5 border-t border-indigo-200">
+                    @if (! empty($author->member_of))
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🤝 {{ __('Member of') }}</h3>
+                            <ul class="text-sm text-gray-800 space-y-1">
+                                @foreach ((array) $author->member_of as $org)
+                                    <li>• {{ is_array($org) ? ($org['name'] ?? '') : $org }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (! empty($author->awards))
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🏆 {{ __('Awards') }}</h3>
+                            <ul class="text-sm text-gray-800 space-y-1">
+                                @foreach ((array) $author->awards as $a)
+                                    <li>• {{ $a }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (! empty($author->featured_in))
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">📰 {{ __('Featured in') }}</h3>
+                            <ul class="text-sm text-gray-800 space-y-1">
+                                @foreach ((array) $author->featured_in as $f)
+                                    <li>• {{ is_array($f) ? ($f['name'] ?? '') : $f }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+            @endif
+        </div>
+    @endif
 
     {{-- Stats --}}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">

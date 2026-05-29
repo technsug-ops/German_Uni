@@ -21,6 +21,8 @@ use Laravel\Sanctum\HasApiTokens;
     'high_school_type', 'status', 'german_level', 'english_level',
     'target_field_id', 'target_degree', 'target_semester',
     'monthly_budget_eur', 'preferred_state_id', 'bio', 'last_active_at',
+    'expertise', 'education', 'member_of', 'languages_spoken',
+    'awards', 'featured_in', 'years_experience',
 ])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
@@ -39,6 +41,12 @@ class User extends Authenticatable implements FilamentUser
             'is_author'         => 'boolean',
             'is_contributor'    => 'boolean',
             'social_links'      => 'array',
+            'expertise'         => 'array',
+            'education'         => 'array',
+            'member_of'         => 'array',
+            'languages_spoken'  => 'array',
+            'awards'            => 'array',
+            'featured_in'       => 'array',
         ];
     }
 
