@@ -1039,9 +1039,9 @@ class ToolsController extends Controller
         }
 
         $universities = $uniQ
-            ->with(['city:id,name_tr,name_en,name_de,slug,population,avg_rent_min,avg_rent_max,state_id', 'city.state:id,name_tr,name_en,name_de,region','name_en','name_de'])
+            ->with(['city:id,name_tr,name_en,name_de,slug,population,avg_rent_min,avg_rent_max,state_id', 'city.state:id,name_tr,name_en,name_de,region'])
             ->limit(60)
-            ->get(['id', 'slug', 'name_de', 'short_name', 'type', 'city_id', 'logo_url', 'student_count', 'founded_year']);
+            ->get(['id', 'slug', 'name_de', 'name_en', 'short_name', 'type', 'city_id', 'logo_url', 'student_count', 'founded_year']);
 
         // 3) Her üniversiteye skor ver + neden eşleşti listesi
         $scored = $universities->map(function ($uni) use ($answers, $fieldId, $fieldSlug) {
