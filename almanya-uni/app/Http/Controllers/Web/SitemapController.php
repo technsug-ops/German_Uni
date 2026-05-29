@@ -186,6 +186,7 @@ class SitemapController extends Controller
         $urls[] = $this->entry(route('states.index'), now(), 'weekly', 0.9);
         $urls[] = $this->entry(route('scholarships.index'), now(), 'weekly', 0.9);
         $urls[] = $this->entry(route('scholarships.daad'), now(), 'weekly', 0.95);
+        $urls[] = $this->entry(route('jobs.index'), now(), 'daily', 0.85);
         $urls[] = $this->entry(route('rankings.index'), now(), 'weekly', 0.8);
         $urls[] = $this->entry(route('compare.index'), now(), 'monthly', 0.5);
         $urls[] = $this->entry(route('blog.index'), now(), 'daily', 0.8);
@@ -328,6 +329,22 @@ class SitemapController extends Controller
                         $p->updated_at,
                         $hasContent ? 'monthly' : 'yearly',
                         $hasContent ? ($p->description_tr ? 0.75 : 0.6) : 0.4
+                    );
+                }
+            });
+
+        // Akademik iş ilanları — sadece aktif + son başvuru geçmemiş
+        \App\Models\JobPosting::active()
+            ->select(['slug', 'updated_at', 'is_featured'])
+            ->orderBy('id')
+            ->chunk(500, function ($chunk) use (&$urls) {
+                foreach ($chunk as $j) {
+                    if (! $j->slug) continue;
+                    $urls[] = $this->entry(
+                        route('jobs.show', $j->slug),
+                        $j->updated_at,
+                        'daily',
+                        $j->is_featured ? 0.85 : 0.7
                     );
                 }
             });

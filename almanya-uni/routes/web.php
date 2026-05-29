@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\FaqController;
 use App\Http\Controllers\Web\FieldController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\HousingController;
+use App\Http\Controllers\Web\JobController;
 use App\Http\Controllers\Web\LegalController;
 use App\Http\Controllers\Web\MapController;
 use App\Http\Controllers\Web\NewsletterController;
@@ -110,6 +111,9 @@ $routes = function () {
 
     // Burslar — DB tabanlı DAAD scholarship database (166 burs) + statik rehberler.
     // Specific path'ler /scholarships/{slug} CATCH-ALL'tan ÖNCE tanımlanmalı.
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/{slug}', [JobController::class, 'show'])->name('jobs.show');
+
     Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
     Route::get('/scholarships/guide', [ScholarshipController::class, 'staticIndex'])->name('scholarships.guide');
     Route::get('/scholarships/daad', [ScholarshipController::class, 'daad'])->name('scholarships.daad');
