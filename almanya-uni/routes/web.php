@@ -344,10 +344,23 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
         }
     }
 
+    // PHP OPCache reset — without this, edited Model/Controller files keep
+    // running their previous bytecode in long-lived PHP-FPM workers and
+    // changes won't appear until natural revalidation (5+ minutes on KAS).
+    $opcache = [];
+    if (function_exists('opcache_get_status')) {
+        $opcache['enabled_before'] = (bool) (opcache_get_status(false)['opcache_enabled'] ?? false);
+        $opcache['reset'] = function_exists('opcache_reset') ? (bool) opcache_reset() : false;
+    } else {
+        $opcache['enabled_before'] = false;
+        $opcache['reset'] = false;
+    }
+
     return response()->json([
         'migrate' => $migrate,
         'seed'    => $seed,
         'cache'   => $cache,
+        'opcache' => $opcache,
         'errors'  => $errors,
     ]);
 })->middleware('throttle:5,1');
