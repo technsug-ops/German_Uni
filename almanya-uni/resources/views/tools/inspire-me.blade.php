@@ -140,10 +140,10 @@
                     <div class="p-5">
                         <p class="text-xs font-bold uppercase tracking-wider text-amber-600 mb-1.5">🏆 {{ __('Scholarship') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-amber-700 transition">
-                            {{ \Illuminate\Support\Str::limit($scholarship->name_en ?: $scholarship->name_de, 80) }}
+                            {{ \Illuminate\Support\Str::limit($scholarship->name, 80) }}
                         </h2>
-                        @if ($scholarship->programmname_en)
-                            <p class="text-xs text-gray-600">{{ \Illuminate\Support\Str::limit($scholarship->programmname_en, 80) }}</p>
+                        @if ($scholarship->programmname)
+                            <p class="text-xs text-gray-600">{{ \Illuminate\Support\Str::limit($scholarship->programmname, 80) }}</p>
                         @endif
                     </div>
                 </a>

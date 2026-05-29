@@ -1,5 +1,5 @@
 @php
-    $title = $scholarship->name_en ?? $scholarship->name_de ?? ('DAAD #' . $scholarship->sap_objid);
+    $title = $scholarship->name;
     $loc = app()->getLocale();
     // DAAD verisi sadece EN/DE'de var. Locale-aware tercih:
     //   - DE locale → DE öncelik, EN fallback
@@ -53,8 +53,8 @@
             @endif
         </div>
 
-        @if ($scholarship->programmname_en ?? $scholarship->programmname_de)
-            <p class="text-primary-100">{{ $scholarship->programmname_en ?? $scholarship->programmname_de }}</p>
+        @if ($scholarship->programmname)
+            <p class="text-primary-100">{{ $scholarship->programmname }}</p>
         @endif
 
         @if ($scholarship->removed_at)
@@ -140,7 +140,7 @@
                         @foreach ($related as $r)
                             <a href="{{ route('scholarships.show', $r->slug) }}"
                                class="block p-4 rounded-lg border border-gray-200 hover:border-primary-500 hover:bg-primary-50 transition">
-                                <div class="font-semibold text-gray-900 line-clamp-1">{{ $loc === 'de' ? ($r->name_de ?? $r->name_en) : ($r->name_en ?? $r->name_de) }}</div>
+                                <div class="font-semibold text-gray-900 line-clamp-1">{{ $r->name }}</div>
                                 @php $programmname = $loc === 'de' ? ($r->programmname_de ?? $r->programmname_en) : ($r->programmname_en ?? $r->programmname_de); @endphp
                                 @if ($programmname)
                                     <div class="text-xs text-gray-500 line-clamp-1 mt-1">{{ $programmname }}</div>

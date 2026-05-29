@@ -454,16 +454,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             @foreach ($featured_scholarships as $s)
                 <a href="{{ route('scholarships.show', $s->slug) }}"
-                   title="{{ $s->name_en ?: $s->name_de }}{{ $s->is_daad ? ' — DAAD' : '' }}"
+                   title="{{ $s->name }}{{ $s->is_daad ? ' — DAAD' : '' }}"
                    class="group bg-white rounded-lg border border-emerald-100 hover:border-emerald-400 hover:shadow-md transition p-4">
                     @if ($s->is_daad)
                         <span class="inline-block text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold mb-2">DAAD</span>
                     @endif
                     <h3 class="font-semibold text-gray-900 group-hover:text-emerald-700 leading-tight text-sm line-clamp-2">
-                        {{ $s->name_en ?: $s->name_de }}
+                        {{ $s->name }}
                     </h3>
-                    @if ($s->programmname_en)
-                        <p class="text-xs text-gray-500 mt-1.5 line-clamp-2">{{ \Illuminate\Support\Str::limit($s->programmname_en, 80) }}</p>
+                    @if ($s->programmname)
+                        <p class="text-xs text-gray-500 mt-1.5 line-clamp-2">{{ \Illuminate\Support\Str::limit($s->programmname, 80) }}</p>
                     @endif
                 </a>
             @endforeach

@@ -344,10 +344,10 @@
                             <div class="flex items-start justify-between gap-3">
                                 <div class="flex-1">
                                     <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">
-                                        {{ $s->name_en ?: $s$p->name }}
+                                        {{ $s->name }}
                                     </h3>
-                                    @if ($s->programmname_en ?: $s->programmname_de)
-                                        <p class="text-sm text-gray-600 mt-1 line-clamp-2">{{ \Illuminate\Support\Str::limit($s->programmname_en ?: $s->programmname_de, 150) }}</p>
+                                    @if ($s->programmname)
+                                        <p class="text-sm text-gray-600 mt-1 line-clamp-2">{{ \Illuminate\Support\Str::limit($s->programmname, 150) }}</p>
                                     @endif
                                 </div>
                                 @if ($s->is_daad)

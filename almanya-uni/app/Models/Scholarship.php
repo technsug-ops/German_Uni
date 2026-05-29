@@ -112,6 +112,27 @@ class Scholarship extends Model
             ?? ('DAAD #' . $this->sap_objid);
     }
 
+    /**
+     * Locale-aware scholarship name. DAAD source delivers DE + EN.
+     * DE locale → DE primary; everyone else → EN primary, DE fallback.
+     * Last resort: DAAD #ID placeholder.
+     */
+    public function getNameAttribute(): string
+    {
+        $de = (string) ($this->attributes['name_de'] ?? '');
+        $en = (string) ($this->attributes['name_en'] ?? '');
+        $primary = app()->getLocale() === 'de' ? ($de ?: $en) : ($en ?: $de);
+        return $primary !== '' ? $primary : ('DAAD #' . ($this->attributes['sap_objid'] ?? '?'));
+    }
+
+    /** Locale-aware programmname (sub-programme label inside the parent grant). */
+    public function getProgrammnameAttribute(): ?string
+    {
+        $de = $this->attributes['programmname_de'] ?? null;
+        $en = $this->attributes['programmname_en'] ?? null;
+        return app()->getLocale() === 'de' ? ($de ?: $en) : ($en ?: $de);
+    }
+
     public function searchableAs(): string
     {
         return 'scholarships';

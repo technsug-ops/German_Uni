@@ -22,7 +22,7 @@
                class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-5 flex flex-col">
                 <div class="flex items-start justify-between gap-2 mb-2">
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 line-clamp-2">
-                        {{ $sch->name_en ?? $sch->name_de ?? 'DAAD #' . $sch->sap_objid }}
+                        {{ $sch->name }}
                     </h3>
                     @if ($sch->is_daad)
                         <span class="shrink-0 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">DAAD</span>
@@ -30,9 +30,9 @@
                         <span class="shrink-0 px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold">{{ __('Partner') }}</span>
                     @endif
                 </div>
-                @if ($sch->programmname_en ?? $sch->programmname_de)
+                @if ($sch->programmname)
                     <p class="text-xs text-gray-500 mb-3 line-clamp-1">
-                        {{ $sch->programmname_en ?? $sch->programmname_de }}
+                        {{ $sch->programmname }}
                     </p>
                 @endif
                 @php $intro = $sch->introductionText('en') ?? $sch->introductionText('de'); @endphp
