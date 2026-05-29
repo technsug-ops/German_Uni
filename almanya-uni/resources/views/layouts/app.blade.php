@@ -838,6 +838,9 @@
         </div>
     </footer>
 
+    {{-- ════ NEWSLETTER STICKY FOOTER — 12 s sonra slide-up, 14-day cookie ════ --}}
+    <x-newsletter-sticky source="sticky-footer" />
+
     {{-- ════ POPUP'lar — admin'den yönetiliyor, sayfa-bazlı + zaman-bazlı ════ --}}
     @php
         try {
