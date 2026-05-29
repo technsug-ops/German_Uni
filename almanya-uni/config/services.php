@@ -70,4 +70,11 @@ return [
         'api_key'       => env('BREVO_API_KEY'),
     ],
 
+    'resend' => [
+        // Resend Svix-signed webhook secret (whsec_… format, copy from Resend dashboard)
+        'webhook_secret' => env('RESEND_WEBHOOK_SECRET'),
+        // Optional Resend API key (re_…) for native API sends instead of SMTP
+        'key'            => env('RESEND_API_KEY'),
+    ],
+
 ];

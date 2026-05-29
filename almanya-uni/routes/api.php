@@ -23,6 +23,12 @@ Route::post('webhooks/brevo', [\App\Http\Controllers\Webhooks\BrevoWebhookContro
     ->middleware('throttle:200,1')
     ->name('webhooks.brevo');
 
+// Resend transactional event webhook — bounce/complaint/click/open
+// Auth: Svix HMAC signature (svix-id, svix-timestamp, svix-signature headers)
+Route::post('webhooks/resend', [\App\Http\Controllers\Webhooks\ResendWebhookController::class, 'handle'])
+    ->middleware('throttle:300,1')
+    ->name('webhooks.resend');
+
 Route::prefix('v1')->middleware('api.throttle')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register'])->middleware('throttle:5,1');
