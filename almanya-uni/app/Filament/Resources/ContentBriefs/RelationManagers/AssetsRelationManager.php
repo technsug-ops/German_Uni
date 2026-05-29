@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ContentBriefs\RelationManagers;
 use App\Models\ContentAsset;
 use App\Models\ContentBrief;
 use App\Services\Content\ContentGenerationService;
+use App\Services\Content\ContentTranslator;
 use App\Services\Content\ImageGenerationService;
 use App\Services\Content\TextToSpeechService;
 use App\Services\Content\VideoComposerService;
@@ -35,6 +36,11 @@ class AssetsRelationManager extends RelationManager
                 ->label('Platform')
                 ->required()
                 ->options(ContentAsset::TYPES),
+            Select::make('language')
+                ->label('Dil')
+                ->required()
+                ->default('tr')
+                ->options(ContentAsset::LANGUAGES),
             Select::make('status')
                 ->required()
                 ->options(ContentAsset::STATUSES)
@@ -77,6 +83,7 @@ class AssetsRelationManager extends RelationManager
             ])
             ->filters([
                 SelectFilter::make('asset_type')->options(ContentAsset::TYPES),
+                SelectFilter::make('language')->label('Dil')->options(ContentAsset::LANGUAGES),
                 SelectFilter::make('status')->options(ContentAsset::STATUSES),
             ])
             ->headerActions([
@@ -128,6 +135,59 @@ class AssetsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
+                Action::make('translate10')
+                    ->label('🌍 10 dile çevir')
+                    ->color('info')
+                    ->visible(fn (ContentAsset $record) => empty($record->source_asset_id))
+                    ->requiresConfirmation()
+                    ->modalHeading('10 dile çevir')
+                    ->modalDescription('Bu asset TR/EN/DE/FR/ES/IT/PL/RU/AR/FA dillerine Gemini ile çevirilir. Mevcut çeviriler atlanır. ~3-5 dk sürer.')
+                    ->action(function (ContentAsset $record) {
+                        try {
+                            $translator = app(ContentTranslator::class);
+                            $results = $translator->translateToAll($record, false, 2);
+                            $ok = collect($results)->reject(fn ($r) => $r instanceof \Throwable)->count();
+                            $fail = count($results) - $ok;
+                            Notification::make()
+                                ->title("🌍 {$ok} dile çevrildi" . ($fail ? " ({$fail} hata)" : ''))
+                                ->color($ok > 0 ? 'success' : 'danger')
+                                ->persistent()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Notification::make()
+                                ->title('❌ Çeviri hatası')
+                                ->body(substr($e->getMessage(), 0, 200))
+                                ->danger()
+                                ->persistent()
+                                ->send();
+                        }
+                    }),
+                Action::make('translateOne')
+                    ->label('🌐 Tek dile çevir')
+                    ->color('gray')
+                    ->visible(fn (ContentAsset $record) => empty($record->source_asset_id))
+                    ->schema([
+                        Select::make('target_language')
+                            ->label('Hedef Dil')
+                            ->required()
+                            ->options(collect(ContentAsset::LANGUAGES)->except('tr')->toArray()),
+                    ])
+                    ->action(function (ContentAsset $record, array $data) {
+                        try {
+                            $translator = app(ContentTranslator::class);
+                            $new = $translator->translate($record, $data['target_language']);
+                            Notification::make()
+                                ->title('✅ ' . ($new->language) . ' çevirisi hazır (#' . $new->id . ')')
+                                ->success()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Notification::make()
+                                ->title('❌ Çeviri hatası')
+                                ->body(substr($e->getMessage(), 0, 200))
+                                ->danger()
+                                ->send();
+                        }
+                    }),
                 Action::make('regenerate')
                     ->label('🔄 Yeniden üret')
                     ->color('warning')

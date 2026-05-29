@@ -10,27 +10,53 @@ use App\Models\ContentBrief;
  */
 class ContentPrompts
 {
-    public function build(ContentBrief $brief, string $assetType): string
+    public function build(ContentBrief $brief, string $assetType, string $language = 'tr'): string
     {
-        $base = $this->baseContext($brief);
+        $base = $this->baseContext($brief, $language);
 
-        return match ($assetType) {
-            'blog'          => $this->blog($brief, $base),
-            'youtube_long'  => $this->youtubeLong($brief, $base),
-            'youtube_short' => $this->youtubeShort($brief, $base),
-            'tiktok'        => $this->tiktok($brief, $base),
-            'instagram'     => $this->instagram($brief, $base),
-            'twitter'       => $this->twitter($brief, $base),
-            'linkedin'      => $this->linkedin($brief, $base),
-            'pinterest'     => $this->pinterest($brief, $base),
-            'podcast'       => $this->podcast($brief, $base),
-            'newsletter'    => $this->newsletter($brief, $base),
-            'visual_brief'  => $this->visualBrief($brief, $base),
+        $body = match ($assetType) {
+            'blog'             => $this->blog($brief, $base),
+            'youtube_long'     => $this->youtubeLong($brief, $base),
+            'youtube_short'    => $this->youtubeShort($brief, $base),
+            'tiktok'           => $this->tiktok($brief, $base),
+            'instagram'        => $this->instagram($brief, $base),
+            'twitter'          => $this->twitter($brief, $base),
+            'linkedin'         => $this->linkedin($brief, $base),
+            'pinterest'        => $this->pinterest($brief, $base),
+            'podcast'          => $this->podcast($brief, $base),
+            'newsletter'       => $this->newsletter($brief, $base),
+            'visual_brief'     => $this->visualBrief($brief, $base),
+            'infographic_data' => $this->infographicData($brief, $base),
+            'faq_page'         => $this->faqPage($brief, $base),
+            'quiz'             => $this->quiz($brief, $base),
+            'social_carousel'  => $this->socialCarousel($brief, $base),
+            'email_sequence'   => $this->emailSequence($brief, $base),
             default => throw new \InvalidArgumentException("Unknown asset: $assetType"),
         };
+
+        // Language directive (non-TR → final language guard at the top of the prompt)
+        if ($language !== 'tr') {
+            $langName = self::LANGUAGE_NAMES[$language] ?? $language;
+            $body = "OUTPUT LANGUAGE: $langName ({$language}). Write the entire output in $langName, including titles, captions, hashtags, CTAs, code-level metadata. Do NOT mix in Turkish.\n\n" . $body;
+        }
+
+        return $body;
     }
 
-    private function baseContext(ContentBrief $brief): string
+    public const LANGUAGE_NAMES = [
+        'tr' => 'Turkish',
+        'en' => 'English',
+        'de' => 'German',
+        'fr' => 'French',
+        'es' => 'Spanish',
+        'it' => 'Italian',
+        'pl' => 'Polish',
+        'ru' => 'Russian',
+        'ar' => 'Arabic',
+        'fa' => 'Persian (Farsi)',
+    ];
+
+    private function baseContext(ContentBrief $brief, string $language = 'tr'): string
     {
         $audience = ContentBrief::AUDIENCES[$brief->audience] ?? $brief->audience;
         $tone = ContentBrief::TONES[$brief->brand_tone] ?? $brief->brand_tone;
@@ -410,6 +436,265 @@ GÖREV: Newsletter section (e-posta için, mevcut AlmanyaUni newsletter sistemin
 ## 🎨 GÖRSEL
 - Header banner: konu + AlmanyaUni logo
 - Tek "feature image" önerisi (1200x600)
+TXT;
+    }
+
+    // ===============================================================
+    // NEW FORMATS (deutschland.de multi-format storytelling)
+    // ===============================================================
+
+    private function infographicData(ContentBrief $brief, string $base): string
+    {
+        return $base . "\n\n" . <<<TXT
+GÖREV: İnfografik için STRUCTURED JSON üret (designer/developer'a verilebilir).
+Statistik, callout, akış, alıntı kombinasyonu.
+
+ÇIKTI: SADECE geçerli JSON (no markdown fences, no commentary).
+
+JSON ŞEMA:
+{
+  "title": "İnfografik başlığı (max 60 char)",
+  "subtitle": "Alt başlık (max 120 char)",
+  "intro": "1-2 cümlelik intro",
+  "hero_stat": {
+    "value": "ana metrik (örn. '%87')",
+    "label": "neyi temsil ediyor",
+    "source": "kaynak link/açıklama"
+  },
+  "sections": [
+    {
+      "type": "stat_grid|process|comparison|timeline|callout|fact_list",
+      "title": "bölüm başlığı",
+      "items": [
+        {
+          "icon": "emoji (örn. 💰)",
+          "label": "kısa etiket",
+          "value": "sayı veya kısa metin",
+          "note": "opsiyonel not"
+        }
+      ]
+    }
+  ],
+  "callouts": [
+    {"icon": "⚠️|💡|✅|❌", "title": "...", "body": "..."}
+  ],
+  "sources": [
+    {"label": "kaynağın adı", "url": "https://..."}
+  ],
+  "color_palette": ["#1E40AF", "#F97316", "#10B981"]
+}
+
+ÖNEMLİ:
+- En az 3 section, en az 1 hero_stat, en az 2 callout.
+- Her sayı için SOURCES'a ekle (boş bırakma).
+- Tahmin yapma — bilmiyorsan "Verified by official source needed" yaz.
+TXT;
+    }
+
+    private function faqPage(ContentBrief $brief, string $base): string
+    {
+        return $base . "\n\n" . <<<TXT
+GÖREV: Schema.org FAQPage formatında 10-15 SSS üret.
+İçerik AIO (AI Overviews / ChatGPT / Gemini) için optimize edilmeli — direkt cevap döner.
+
+ÇIKTI FORMAT (Markdown + sona JSON-LD):
+
+# {Title} — Sıkça Sorulan Sorular
+
+> **Not:** Bu sayfa Schema.org FAQPage olarak yapılandırılır — Google Rich Results'a uygundur.
+
+## Q1: [Soru — kullanıcı dilinde, doğal, long-tail]
+**A:** [40-80 kelime arası kesin cevap. Sayı varsa belirt. Kaynak varsa link öner.]
+
+## Q2: ...
+[10-15 soru-cevap]
+
+---
+
+## JSON-LD (FAQPage)
+\`\`\`json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "...",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "..."
+      }
+    }
+  ]
+}
+\`\`\`
+
+KURALLAR:
+- Her cevap 40-80 kelime.
+- "Bilmiyorum" mevcutsa "Kaynaktan teyit et" formuna yaz.
+- Anchor link (#q1, #q2...) üret.
+TXT;
+    }
+
+    private function quiz(ContentBrief $brief, string $base): string
+    {
+        return $base . "\n\n" . <<<TXT
+GÖREV: Konuyla ilgili 5 soruluk interaktif quiz JSON şeması üret.
+Sonuç ekranında "Hangi tipsin?" feedback'i + kişiselleştirilmiş öneri verir.
+
+ÇIKTI: SADECE geçerli JSON.
+
+JSON ŞEMA:
+{
+  "title": "Quiz başlığı (max 60 char)",
+  "intro": "1-2 cümle, ne öğrenecekler",
+  "estimated_time_min": 2,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Soru metni",
+      "type": "single|multi",
+      "options": [
+        {"key": "a", "label": "seçenek metni", "weights": {"profile_A": 2, "profile_B": 0}}
+      ]
+    }
+    // 5 soru
+  ],
+  "profiles": [
+    {
+      "key": "profile_A",
+      "title": "Profil başlığı",
+      "icon": "🎓",
+      "description": "2-3 cümle profil tasviri",
+      "recommendations": [
+        {"type": "internal_link", "url": "/tools/pathway-finder", "label": "Yol Bulucu testi"},
+        {"type": "internal_link", "url": "/scholarships", "label": "Bursları incele"}
+      ]
+    }
+    // 3-4 profil
+  ],
+  "scoring_logic": "argmax(sum(weights))",
+  "share_text": "Sonucu paylaşmak için kullanılacak kısa metin"
+}
+
+KURALLAR:
+- Sorular ayrımcı olmalı (her cevap farklı profile yönlendirmeli).
+- En az 3 profil, max 5.
+- recommendations en az 2 internal link içermeli.
+- Eğlenceli ama bilgilendirici ton.
+TXT;
+    }
+
+    private function socialCarousel(ContentBrief $brief, string $base): string
+    {
+        return $base . "\n\n" . <<<TXT
+GÖREV: Instagram + LinkedIn için 10-slide carousel deck üret (1080×1350 dikey).
+Her slide'ın görsel + metin spec'i.
+
+ÇIKTI FORMAT (Markdown):
+
+# Carousel: {Title}
+
+**Hedef platform:** Instagram + LinkedIn (yeniden kullanılabilir)
+**Slide sayısı:** 10
+
+---
+
+## Slide 1 — Kapak
+- **Headline:** [Max 8 kelime, büyük punto]
+- **Subheadline:** [Max 12 kelime, küçük punto]
+- **CTA:** "Kaydır →"
+- **Görsel önerisi:** [renk, kompozisyon, vibe]
+- **Alt text:** [SEO için]
+
+## Slide 2 — Pain point
+- **Headline:** ...
+- **Body bullet (max 3):** ...
+- **Görsel önerisi:** ...
+
+## Slide 3-8 — Ana içerik (5-6 takeaway)
+[her slide aynı yapıda]
+
+## Slide 9 — Özet
+- **Headline:** "Özet"
+- **Bullet (4 madde):** ...
+
+## Slide 10 — CTA
+- **Headline:** "Daha fazlası..."
+- **CTA:** "@almanyauni.de" + "Profilden Linke bak"
+- **Görsel:** AlmanyaUni logo + brand renk
+
+---
+
+## 📝 Caption (post text)
+[2000 char altı, hook + value + soft CTA]
+Ana keyword: {$brief->primary_keyword}
+Hashtags: 8-12 adet
+
+## 🎨 Stil notu
+- Renk paleti: #1E40AF, #F97316, white, soft gray
+- Font: modern sans (Inter/Poppins)
+- Her slide'da AlmanyaUni footer (logo + handle)
+TXT;
+    }
+
+    private function emailSequence(ContentBrief $brief, string $base): string
+    {
+        return $base . "\n\n" . <<<TXT
+GÖREV: 5 adımlı email drip sequence üret. Yeni abone → konuya bağlı 5 günlük seri.
+
+ÇIKTI FORMAT (Markdown):
+
+# Email Sequence: {Title}
+**Hedef abone:** {brief.audience}
+**Seri uzunluğu:** 5 mail (gün 0, 1, 3, 5, 7)
+**Hedef:** Engagement + tool/blog tıklamaları + topluluk üyeliği
+
+---
+
+## Mail 1 — Hoş geldin (gün 0)
+**Subject:** [40 char altı, %30+ open hedef]
+**Preheader:** [120 char altı]
+**Body:**
+- Selamlama (kişiselleştirme: {name})
+- Ne öğrenecekler özet (3 bullet)
+- İlk hızlı kazanım: [1 somut link]
+- CTA: tek button
+
+## Mail 2 — Pain point (gün 1)
+**Subject:** ...
+**Body:**
+- Hook: en yaygın 3 hatayı listele
+- Her hata → çözüm linki
+- CTA: blog post linki
+
+## Mail 3 — Tool / Resource (gün 3)
+**Subject:** ...
+**Body:**
+- Ücretsiz araç tanıt: [tools/...]
+- 3 dakikalık demo step-by-step
+- CTA: aracı dene
+
+## Mail 4 — Sosyal kanıt (gün 5)
+**Subject:** ...
+**Body:**
+- 2-3 öğrenci hikayesi (gerçek topluluk alıntısı)
+- "Sen de bu yolu izle"
+- CTA: topluluk üyeliği
+
+## Mail 5 — Premium upsell (gün 7)
+**Subject:** ...
+**Body:**
+- Tüm faydaları özetle
+- Premium nedir → 3 sayı
+- Soft CTA: "Daha fazla öğren" (push satış yok)
+
+---
+
+## 📊 Performans hedefleri
+- Mail 1 open rate: %40+
+- Mail 3 click rate: %15+
+- Mail 5 unsubscribe < %1
 TXT;
     }
 
