@@ -23,6 +23,7 @@ use Laravel\Sanctum\HasApiTokens;
     'monthly_budget_eur', 'preferred_state_id', 'bio', 'last_active_at',
     'expertise', 'education', 'member_of', 'languages_spoken',
     'awards', 'featured_in', 'years_experience',
+    'role_label_en', 'role_label_de', 'bio_en', 'bio_de',
 ])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
@@ -53,6 +54,37 @@ class User extends Authenticatable implements FilamentUser
     /**
      * Avatar URL veya null. Eğer avatar_url boşsa, isim initialleri için fallback üret.
      */
+    /**
+     * Locale-aware role label.
+     * For 'en' / 'de' prefer the dedicated column; fall back to the TR primary column.
+     */
+    public function getRoleLabelAttribute(?string $value): ?string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && ! empty($this->attributes['role_label_en'])) {
+            return $this->attributes['role_label_en'];
+        }
+        if ($locale === 'de' && ! empty($this->attributes['role_label_de'])) {
+            return $this->attributes['role_label_de'];
+        }
+        return $value;
+    }
+
+    /**
+     * Locale-aware bio (free-text). Same fallback chain as role_label.
+     */
+    public function getBioAttribute(?string $value): ?string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && ! empty($this->attributes['bio_en'])) {
+            return $this->attributes['bio_en'];
+        }
+        if ($locale === 'de' && ! empty($this->attributes['bio_de'])) {
+            return $this->attributes['bio_de'];
+        }
+        return $value;
+    }
+
     public function getAvatarOrInitialsAttribute(): array
     {
         $initial = strtoupper(mb_substr($this->name ?: '?', 0, 1));
