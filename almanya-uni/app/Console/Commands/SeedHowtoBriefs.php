@@ -252,6 +252,68 @@ class SeedHowtoBriefs extends Command
             'topic_filter' => 'uni_assist',
             'notes' => 'Türk lise mezunu Bachelor için modifizierte bayerische Formel ile not dönüştürülür. NC tıp 1.0-1.2, hukuk 2.0-2.5, mühendislik 2.5-3.0, sosyal bilim 1.8-2.8. İngilizce Bachelor: nadir, çoğu Berlin/Frankfurt private + Jacobs Bremen. Anabin H+ direkt başvuru, H+- 1 yıl uni + tekrar başvuru veya Studienkolleg, H- Studienkolleg zorunlu. uni-assist genelde gerekli (özel devlet üniversiteleri direkt). Deadline 15 Temmuz (kış) / 15 Ocak (yaz).',
         ],
+
+        // ════════ 2026-05-29 turn: 5 yeni howto brief (CRO #2) ════════
+
+        [
+            'title' => 'Almanca Öğrenme Yol Haritası 2026 — Sıfırdan C1\'e Adım Adım Rehber',
+            'slug' => 'almanca-ogrenme-yol-haritasi-2026',
+            'audience' => 'aday_ogrenci',
+            'topic' => 'dil',
+            'primary_keyword' => 'almanca öğrenme yol haritası',
+            'secondary_keywords' => ['a1\'den c1\'e almanca', 'telc deutschtest', 'testdaf hazırlık', 'goethe sertifikası', 'almanca dil okulu süresi'],
+            'pain_point' => 'Sıfırdan başlayan Türk öğrenci: A1\'den C1\'e gerçek süre ne kadar (6 ay mı 2 yıl mı), Türkiye\'de Goethe Enstitüsü mü Almanya\'da Sprachkurs mu daha mantıklı, TestDaF / DSH / telc — hangisini hangi üni ister, TOEFL/IELTS yetmiyor mu? Para hesabı: Türkiye\'de A2-B1 vs Almanya\'da B1-C1 vs sadece Almanya\'da A1-C1?',
+            'topic_filter' => 'dil',
+            'notes' => 'Tipik süreler: A1 = 80-100 saat (~3 ay yarı zamanlı), A1→C1 toplam 600-1000 saat. Türkiye Goethe: A1-A2 €350-700/seviye (8 hafta). Almanya Sprachkurs: €300-600/ay yoğun. Üniversite kabul için: TestDaF (4×4 minimum), DSH-2, telc Hochschule C1, Goethe C2. STEM Master için İngilizce yetebilir ama vize için B1 Almanca yine pratik. Studienkollege için B2/C1 şart. Konsolosluk vize görüşmesi: B1 Almanca + İngilizce + Türkçe karışık.',
+        ],
+
+        [
+            'title' => 'Almanya\'da Randevu Hileleri 2026 — Bürgeramt, Konsolosluk, Ausländerbehörde Termin Bulma',
+            'slug' => 'almanya-randevu-hileleri-2026',
+            'audience' => 'mevcut_ogrenci',
+            'topic' => 'anmeldung',
+            'primary_keyword' => 'almanya termin nasıl bulunur',
+            'secondary_keywords' => ['bürgeramt randevu yok', 'ausländerbehörde termin', 'auswärtiges amt vize randevu', 'walk-in termin almanya', 'erstattung randevu'],
+            'pain_point' => 'Almanya\'da her şey termin gerektiriyor ama termin yok. Berlin Bürgeramt 4-6 hafta ileride, Münih Ausländerbehörde 8-12 hafta, Konsolosluk vize randevusu 2-4 ay. Walk-in mümkün mü, ne zaman gidilir, "Notfall" termin nasıl alınır, otomatik refresh script\'leri etik mi, hangi şehirlerde randevu daha rahat?',
+            'topic_filter' => 'anmeldung',
+            'notes' => 'Berlin Anmeldung: 14 günde 1 kez sabah 7-9 walk-in (random), termin online refresh: gece yarısı + sabah 5. Münih Ausländerbehörde: 8-12 hafta termin ama "Notfall" e-mail (visa süresi 14 gün altı kalsa) çalışıyor. Frankfurt: walk-in yok, mecbur termin. Hamburg Bürgeramt: walk-in 7:30 numbra çek, sabah 11\'e kadar bekle. Konsolosluk vize: vidextranet.de auto-refresh OR ajans (€100-300). Tüm şehirler için: bekleme süreleri tablosu + Hilfe.de\'den çoklu noktada randevu arama.',
+        ],
+
+        [
+            'title' => 'Almanya Öğrenci Vize Görüşmesi 2026 — Tipik Sorular, Dokümanlar, Red Sebepleri',
+            'slug' => 'almanya-ogrenci-vize-gorusmesi-2026',
+            'audience' => 'aday_ogrenci',
+            'topic' => 'vize',
+            'primary_keyword' => 'almanya vize mülakat soruları',
+            'secondary_keywords' => ['öğrenci vizesi red sebepleri', 'sperrkonto vize görüşme', 'vize hazırlık türk öğrenci', 'studienvisum görüşme', 'studienbewerber visum'],
+            'pain_point' => 'Türk öğrenci konsolosluğa vize görüşmesine girecek: ne soracaklar, hangi dokümanları yanına almalı (kabul mektubu + Sperrkonto + sigorta + APS varsa + dil belgesi + finansman beyanı), Almanca mı Türkçe mi sorulur, "Almanya\'ya neden gidiyorsun?" sorusuna nasıl cevap verilir, en yaygın red sebepleri ve nasıl önlenir, Sperrkonto eksiği vize iptaline yol açar mı?',
+            'topic_filter' => 'vize',
+            'notes' => 'Studienvisum görüşmesi 15-30 dk. Sorulanlar: 1) Almanya\'yı neden seçtin, 2) Bu üniversiteyi neden, 3) Bu programı neden, 4) Almancan ne seviyede (kanıtla), 5) Finansmanı kim sağlıyor + Sperrkonto kaynak, 6) Mezuniyet sonrası planın, 7) Aileden Almanya\'da kim var. Dil: TR + DE + EN karma — başvuran ne tercih ederse. Dokümanlar: kabul (Zulassungsbescheid), Sperrkonto bestätigung, sağlık sigortası bestätigung, kira sözleşmesi VEYA Verpflichtungserklärung, APS (gerekiyorsa), Almanca/İngilizce dil belgesi, Lebenslauf + Motivationsschreiben + Bildungsweg. Yaygın red: Sperrkonto yetersiz (€11.904/yıl güncel), motivasyon eksik (sadece Almanya değil Avrupa de istiyorsun gibi), Almanca seviyesi düşük + İngilizce program değil.',
+        ],
+
+        [
+            'title' => 'BAföG Türk Öğrenci Rehberi 2026 — Hak Kazanma Şartları ve Alternatif Bursları',
+            'slug' => 'bafog-turk-ogrenci-2026',
+            'audience' => 'aday_ogrenci',
+            'topic' => 'burs',
+            'primary_keyword' => 'bafög türk öğrenci',
+            'secondary_keywords' => ['bafög yabancı öğrenci', 'auslandsbafög türkiye', 'türk öğrenci alman bursu', 'daad bafög alternatif', 'türk vatandaşı bafög'],
+            'pain_point' => 'Türk pasaportlu öğrenci BAföG alabilir mi? Genel cevap "hayır" ama istisnalar var: (a) Türkiye\'de doğmuş ama Almanya\'da en az 5 yıl yaşamış aile çocuğu, (b) AB vatandaşı evliliği, (c) Mavi kart sahibi ebeveyn, (d) Mülteci/koruma statüsü. Türk öğrencinin başvuracağı alternatif burslar: DAAD (memurun çocuğu için kolay), Stipendienlotse, Konrad Adenauer (politik aktif), Hanns Seidel (CSU), Friedrich Ebert (sol), Studienstiftung (akademik dehası), ülkeye dönüş şartı var mı?',
+            'topic_filter' => 'burs',
+            'notes' => 'BAföG için Türk vatandaşı genelde HAYIR. İstisnalar: AB vatandaşı evliliği → tam BAföG. Almanya\'da en az 5 yıl yaşamış aile + 2 yıl çalışmış ebeveyn → tam BAföG. Mülteci → tam BAföG. Auslandsbafög: Almanya vatandaşı olan ama yurtdışında okuyan için, Türk öğrenci alamaz. Stipendienlotse.de: 1.500+ burs, filtreleme. DAAD: Türkiye\'den 30+ farklı burs (master 850-1000€/ay). En kolay başvurulan: Studienstiftung (devlet kabulü gerek, hocadan referans), Hans-Böckler (sendika üyesi aile), Konrad Adenauer (CDU politik aktivite), Friedrich-Ebert (SPD), Hanns-Seidel (CSU+Bayern). Bazı bursların ülkeye dönüş "şartı yok" diyor ama aktif şekilde Almanya\'daki Türk topluluğuna katkı bekliyor.',
+        ],
+
+        [
+            'title' => 'Almanya\'da Konut Bulma 2026 — WG, Studentenwerk, Schufa, Kaution Detay Rehberi',
+            'slug' => 'almanya-konut-bulma-wg-schufa-2026',
+            'audience' => 'aday_ogrenci',
+            'topic' => 'konut',
+            'primary_keyword' => 'almanya öğrenci konut bulma',
+            'secondary_keywords' => ['wg gesucht almanya', 'studentenwerk yurt başvuru', 'schufa öğrenci almanya', 'kaution kiraya verene', 'almanya kiralık şehir karşılaştırma'],
+            'pain_point' => 'Almanya\'ya gelen Türk öğrenci 6-8 ay önceden Studentenwerk yurt başvurusu yapmalı ama yine de yetişmeyebilir. WG-Gesucht\'da Türk öğrencilere "merhaba senin gibi 50 kişi yazdı" cevabı. Schufa skorunu nasıl alır, kefil yoksa Kaution-Bürgschaft alternatifi mümkün mü, München vs Leipzig kira farkı 3x — ucuz şehirde dil sorunu, pahalı şehirde para sorunu, ortası ne?',
+            'topic_filter' => 'konut',
+            'notes' => 'Studentenwerk: 250-450€/ay, başvuru 6-12 ay önceden. WG-Gesucht: 350-700€/ay (paylaşımlı), 30-60 yazışma/odaya kabul edilmek için. Schufa: kayıt için Anmeldung şart, ücretsiz "Schufa Bonitätsauskunft" yılda 1 kez. Kaution-Bürgschaft (Kautionsversicherung): aylık 5-10€ ödeme + kefil çağırma yerine sigorta. Şehir kira ortalama 1 oda: Münih €1.200, Frankfurt €900, Berlin €750, Hamburg €700, Leipzig €450, Halle €350. Pahalı şehirlerde uzaktaki banliyö (Münih -> Garching, Berlin -> Potsdam) %30 daha ucuz + transit dahil. Bahnticket-Inklusiv yurtlar var. ImmoScout24, Studenten-WG, eBay Kleinanzeigen, Facebook gruplar. Aldığın eve kalmadan önce "Möblierte Untermiete" 1-2 ay seçeneği kullan, sonra kalıcı bul.',
+        ],
     ];
 
     protected $signature = 'content:seed-howto-briefs
