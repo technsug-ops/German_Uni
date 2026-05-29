@@ -644,32 +644,52 @@ Route::prefix('{locale}')
     ->middleware('set.locale')
     ->group($routes);
 
-// Bare root (applytogerman.com) → tercih edilen dile (default hazırsa o, değilse ilk aktif) 302
-Route::get('/', function () {
-    $default = config('locale.default', 'en');
+/**
+ * Host-aware default locale resolver — shared by both the bare-root redirect
+ * and the locale-less fallback below. Mirrors the logic in
+ * App\Http\Middleware\SetLocale::resolveDefaultFromDomain so /, /about, and
+ * /tr all agree on what "default" means for the current brand.
+ *
+ *   almanyauni.com/    → /tr  (TR-first brand)
+ *   applytogerman.com/ → /en  (intl brand)
+ */
+$__brandDefaultLocale = function (\Illuminate\Http\Request $request): string {
+    $host     = strtolower(preg_replace('/^www\./', '', $request->getHost()));
+    // NB: $host contains dots ("almanyauni.com"). config('brand.domains.almanyauni.com')
+    // would treat each dot as nesting and miss the key — fetch the array first then index.
+    $domains  = config('brand.domains', []);
+    $brandKey = $domains[$host] ?? null;
+    $brands   = config('brand.brands', []);
+    $brand    = $brands[$brandKey] ?? [];
+    $default  = $brand['default_locale'] ?? config('locale.default', 'en');
+
     $cfg = config("locale.locales.$default", []);
-    $target = (! empty($cfg['active']) && empty($cfg['coming_soon']))
-        ? $default
-        : collect(config('locale.locales', []))
-            ->filter(fn ($c) => ! empty($c['active']) && empty($c['coming_soon']))
-            ->keys()->first();
-    return redirect('/' . ($target ?? 'tr'), 302);
+    if (! empty($cfg['active']) && empty($cfg['coming_soon'])) {
+        return $default;
+    }
+
+    return collect(config('locale.locales', []))
+        ->filter(fn ($c) => ! empty($c['active']) && empty($c['coming_soon']))
+        ->keys()->first() ?? 'tr';
+};
+
+// Bare root → brand's default locale (almanyauni.com → /tr, applytogerman.com → /en)
+Route::get('/', function (\Illuminate\Http\Request $request) use ($__brandDefaultLocale) {
+    return redirect('/' . $__brandDefaultLocale($request), 302);
 });
 
-// Locale prefix'siz eski/dış linkler (/universities) → ilk aktif dile yönlendir (loop-safe)
-Route::fallback(function (\Illuminate\Http\Request $request) {
+// Locale-prefix'siz eski/dış linkler (/universities) → brand'in default diline yönlendir (loop-safe)
+Route::fallback(function (\Illuminate\Http\Request $request) use ($__brandDefaultLocale) {
     $path  = trim($request->path(), '/');
     $first = explode('/', $path)[0] ?? '';
     if (in_array($first, array_keys(config('locale.locales', [])), true)) {
-        // Locale prefix'li ama route bulunamadı → 404. Locale'i set et ki 404 sayfası doğru dilde render olsun
+        // Locale prefix'li ama route bulunamadı → 404. Locale'i set et ki 404 sayfası doğru dilde render olsun.
         \Illuminate\Support\Facades\App::setLocale($first);
         abort(404);
     }
-    $active = collect(config('locale.locales', []))
-        ->filter(fn ($c) => ! empty($c['active']) && empty($c['coming_soon']))
-        ->keys()->first() ?? 'tr';
+    $target = $__brandDefaultLocale($request);
     $qs = $request->getQueryString();
-    return redirect('/' . $active . ($path ? '/' . $path : '') . ($qs ? '?' . $qs : ''), 302);
+    return redirect('/' . $target . ($path ? '/' . $path : '') . ($qs ? '?' . $qs : ''), 302);
 });
 
 // ─────────── Auth-protected, locale-bağımsız ───────────

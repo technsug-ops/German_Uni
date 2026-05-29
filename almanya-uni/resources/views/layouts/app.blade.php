@@ -13,10 +13,12 @@
     {{-- Theme bootstrap (BEFORE first paint to avoid flash) — reads localStorage + prefers-color-scheme --}}
     <script>
         (function () {
+            // Light by default, only dark when the user explicitly opted in.
+            // (Honoring prefers-color-scheme felt jarring — many TR/DE users have
+            // OS-level dark on for OLED savings but want this site light. Toggle
+            // is one tap away in header.)
             try {
-                var pref = localStorage.getItem('theme');
-                var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (pref === 'dark' || (!pref && systemDark)) {
+                if (localStorage.getItem('theme') === 'dark') {
                     document.documentElement.classList.add('dark');
                 }
             } catch (e) { /* localStorage blocked: stay light */ }
@@ -506,12 +508,12 @@
                     </a>
                 @endif
 
-                {{-- Dil değiştirici — kompakt segmented control --}}
-                @if ($activeLocales->count() > 1)
-                    <div class="pt-3 mt-3 border-t border-white/15">
-                        <div class="flex items-center gap-2 px-1">
+                {{-- Dil + tema değiştirici — aynı satırda kompakt --}}
+                <div class="pt-3 mt-3 border-t border-white/15 flex items-center gap-3 px-1">
+                    @if ($activeLocales->count() > 1)
+                        <div class="flex items-center gap-2 flex-1">
                             <span class="text-[10px] uppercase tracking-wider text-primary-300 font-bold shrink-0">🌐 {{ __('Dil') }}</span>
-                            <div class="inline-flex items-center bg-white/10 rounded-md p-0.5 ml-auto">
+                            <div class="inline-flex items-center bg-white/10 rounded-md p-0.5">
                                 @foreach ($activeLocales as $loc)
                                     @php $cfg = config("locale.locales.$loc"); @endphp
                                     <a href="{{ localized_url($loc) }}"
@@ -524,8 +526,10 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+                    {{-- Mobile theme toggle (desktop'tan farklı: drawer'da hep görünür) --}}
+                    <x-theme-toggle class="text-primary-100 hover:text-white shrink-0" />
+                </div>
 
                 <div class="pt-2 mt-2 border-t border-white/15">
                     @auth
@@ -873,24 +877,18 @@
     }
     </script>
 
-    {{-- Theme toggle handler — clicks the #themeToggle button to flip .dark class + persist --}}
+    {{-- Theme toggle handler — wires every .js-theme-toggle to flip .dark + persist.
+         Multiple instances supported so desktop header + mobile drawer share state. --}}
     <script>
     (function () {
-        var btn = document.getElementById('themeToggle');
-        if (!btn) return;
-        btn.addEventListener('click', function () {
-            var isDark = document.documentElement.classList.toggle('dark');
-            try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
-        });
-        // Listen for OS-level theme changes when user hasn't set explicit preference
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-                try {
-                    if (localStorage.getItem('theme')) return; // user has explicit pref
-                    document.documentElement.classList.toggle('dark', e.matches);
-                } catch (err) {}
+        var btns = document.querySelectorAll('.js-theme-toggle');
+        if (!btns.length) return;
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var isDark = document.documentElement.classList.toggle('dark');
+                try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
             });
-        }
+        });
     })();
     </script>
 

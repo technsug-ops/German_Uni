@@ -1,11 +1,14 @@
 {{--
-    Theme toggle (light/dark/system).
-    Stores user preference in localStorage; falls back to prefers-color-scheme.
-    The initial theme is applied via inline <script> in <head> BEFORE first paint
-    to prevent flash-of-wrong-theme (see layouts/app.blade.php head).
+    Theme toggle (light/dark). Class-based hook (.js-theme-toggle) so multiple
+    instances — desktop header bar and mobile drawer — can coexist; the JS in
+    layouts/app.blade.php wires up all of them. Stored in localStorage. Initial
+    theme is applied via inline <script> in <head> BEFORE first paint to prevent
+    flash-of-wrong-theme.
 --}}
-<button type="button" id="themeToggle"
-        class="min-w-[44px] min-h-[44px] hover:bg-white/10 rounded-md transition inline-flex items-center justify-center"
+<button type="button"
+        {{ $attributes->class([
+            'js-theme-toggle min-w-[44px] min-h-[44px] hover:bg-white/10 rounded-md transition inline-flex items-center justify-center',
+        ]) }}
         title="{{ __('Theme') }}"
         aria-label="{{ __('Switch theme') }}">
     {{-- Sun (visible in dark mode) --}}
