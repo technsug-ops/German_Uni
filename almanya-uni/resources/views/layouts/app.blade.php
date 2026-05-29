@@ -153,14 +153,18 @@
                     <button class="{{ $btnBase }} {{ $kesfetActive ? $active : $inactive }}"
                             type="button" aria-haspopup="true" aria-expanded="false"
                             aria-label="{{ __('Explore menu') }}">
-                        🔍 {{ __('Explore') }}
-                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                        {{ __('Explore') }}
+                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
                     <div class="{{ $panelWrap }} w-[520px]">
                         <div class="{{ $panelCard }}">
-                            <div class="{{ $megaHead }}">
-                                <p class="text-sm font-bold text-gray-900">🔍 {{ __('Explore') }}</p>
-                                <p class="text-xs text-gray-500">{{ number_format($navCounts['universities'], 0, ',', '.') }} {{ __('universities') }} · {{ number_format($navCounts['programs'], 0, ',', '.') }} {{ __('programs') }} · {{ number_format($navCounts['cities'], 0, ',', '.') }} {{ __('cities') }}</p>
+                            <div class="{{ $megaHead }} flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                                <span>
+                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ __('Explore') }}</span>
+                                    <span class="block text-xs text-gray-500">{{ number_format($navCounts['universities'], 0, ',', '.') }} {{ __('universities') }} · {{ number_format($navCounts['programs'], 0, ',', '.') }} {{ __('programs') }} · {{ number_format($navCounts['cities'], 0, ',', '.') }} {{ __('cities') }}</span>
+                                </span>
                             </div>
                             <div class="grid grid-cols-2 gap-0.5">
                                 @foreach ($kesfetItems as $item)
@@ -177,7 +181,8 @@
                             </div>
                             @if (\App\Models\MenuPage::isKeyEnabled('compare.index'))
                             <a href="{{ route('compare.index') }}" class="flex items-center justify-center gap-2 mt-1 px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold text-sm hover:from-primary-700 hover:to-primary-800 transition" title="{{ __('Compare') }} — {{ __('2-4 universities side by side') }}">
-                                ⚖️ {{ __('Compare') }} <span class="text-primary-200 font-normal">— {{ __('2-4 universities side by side') }}</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5 .52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg>
+                                {{ __('Compare') }} <span class="text-primary-200 font-normal">— {{ __('2-4 universities side by side') }}</span>
                             </a>
                             @endif
                         </div>
@@ -192,14 +197,18 @@
                     <button class="{{ $btnBase }} {{ $araclarActive ? $active : $inactive }}"
                             type="button" aria-haspopup="true" aria-expanded="false"
                             aria-label="{{ __('Tools menu') }}">
-                        🛠️ {{ __('Tools') }}
-                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437"/></svg>
+                        {{ __('Tools') }}
+                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
                     <div class="{{ $panelWrap }} w-[540px]">
                         <div class="{{ $panelCard }}">
-                            <div class="{{ $megaHead }}">
-                                <p class="text-sm font-bold text-gray-900">🛠️ {{ __('Decision Tools') }}</p>
-                                <p class="text-xs text-gray-500">{{ __('Decide with numbers, don\'t guess') }}</p>
+                            <div class="{{ $megaHead }} flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437"/></svg>
+                                <span>
+                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ __('Decision Tools') }}</span>
+                                    <span class="block text-xs text-gray-500">{{ __('Decide with numbers, don\'t guess') }}</span>
+                                </span>
                             </div>
                             <div class="grid grid-cols-2 gap-0.5">
                                 @foreach ($araclarItems as $item)
@@ -229,14 +238,18 @@
                     <button class="{{ $btnBase }} {{ $firsatActive ? $active : $inactive }}"
                             type="button" aria-haspopup="true" aria-expanded="false"
                             aria-label="{{ __('Opportunities menu') }}">
-                        🎖️ {{ __('Opportunities') }}
-                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/></svg>
+                        {{ __('Opportunities') }}
+                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
                     <div class="{{ $panelWrap }} w-[440px]">
                         <div class="{{ $panelCard }}">
-                            <div class="{{ $megaHead }}">
-                                <p class="text-sm font-bold text-gray-900">🎖️ {{ __('Opportunities') }}</p>
-                                <p class="text-xs text-gray-500">{{ __('Scholarship · event · mentor') }}</p>
+                            <div class="{{ $megaHead }} flex items-center gap-2">
+                                <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/></svg>
+                                <span>
+                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ __('Opportunities') }}</span>
+                                    <span class="block text-xs text-gray-500">{{ __('Scholarship · event · mentor') }}</span>
+                                </span>
                             </div>
                             <div class="space-y-0.5">
                                 @foreach ($firsatItems as $item)
@@ -263,14 +276,18 @@
                     <button class="{{ $btnBase }} {{ $icerikActive ? $active : $inactive }}"
                             type="button" aria-haspopup="true" aria-expanded="false"
                             aria-label="{{ __('Content menu') }}">
-                        📚 {{ __('Content') }}
-                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+                        {{ __('Content') }}
+                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
                     <div class="{{ $panelWrap }} w-[400px]">
                         <div class="{{ $panelCard }}">
-                            <div class="{{ $megaHead }}">
-                                <p class="text-sm font-bold text-gray-900">📚 {{ __('Content & Community') }}</p>
-                                <p class="text-xs text-gray-500">{{ __('Guides · questions · team') }}</p>
+                            <div class="{{ $megaHead }} flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+                                <span>
+                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ __('Content & Community') }}</span>
+                                    <span class="block text-xs text-gray-500">{{ __('Guides · questions · team') }}</span>
+                                </span>
                             </div>
                             <div class="space-y-0.5">
                                 @foreach ($icerikItems as $item)
@@ -311,7 +328,8 @@
             <a href="{{ $pricingUrl }}"
                class="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-md border-2 border-amber-400/60 hover:border-amber-300 hover:bg-amber-500/10 text-amber-200 hover:text-white font-semibold text-sm transition whitespace-nowrap"
                title="{{ $pricingItem->label }}{{ $pricingItem->description ? ' — ' . $pricingItem->description : '' }}">
-                {{ $pricingItem->icon ?: '✨' }} {{ $pricingItem->label }}
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 0 0-3.09 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg>
+                {{ $pricingItem->label }}
             </a>
             @endif
 
@@ -349,7 +367,9 @@
                          class="hidden absolute right-0 mt-2 w-96 max-w-[calc(100vw-2rem)] bg-white text-gray-900 rounded-xl shadow-2xl border border-gray-200 z-50 overflow-hidden">
                         <form action="{{ route('search.index') }}" method="GET" class="p-3 border-b border-gray-100">
                             <div class="relative">
-                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                                </span>
                                 <input type="text" name="q" id="headerSearchInput"
                                        placeholder="{{ __('University, city, program...') }}"
                                        autocomplete="off"
@@ -385,15 +405,22 @@
                             <span class="hidden lg:inline">{{ auth()->user()->name }}</span>
                             <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                         </button>
-                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-md shadow-lg border border-gray-200 py-1 z-50">
-                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-50" title="{{ __('Profile') }}">👤 {{ __('Profile') }}</a>
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-52 bg-white text-gray-900 rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                            <a href="{{ route('profile.edit') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-gray-50" title="{{ __('Profile') }}">
+                                <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+                                {{ __('Profile') }}
+                            </a>
                             @if (auth()->user()->is_admin)
-                                <a href="/admin" class="block px-4 py-2 hover:bg-gray-50" title="{{ __('Admin Panel') }}">⚙️ {{ __('Admin Panel') }}</a>
+                                <a href="/admin" class="flex items-center gap-2.5 px-4 py-2 hover:bg-gray-50" title="{{ __('Admin Panel') }}">
+                                    <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                                    {{ __('Admin Panel') }}
+                                </a>
                             @endif
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-50 text-red-600">
-                                    ↪ {{ __('Log out') }}
+                                <button type="submit" class="w-full flex items-center gap-2.5 px-4 py-2 hover:bg-gray-50 text-red-600">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+                                    {{ __('Log out') }}
                                 </button>
                             </form>
                         </div>
@@ -426,18 +453,27 @@
                 {{-- Hızlı arama --}}
                 <form action="{{ route('search.index') }}" method="GET" class="mb-3">
                     <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-primary-300">🔍</span>
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-primary-300 pointer-events-none">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                        </span>
                         <input type="text" name="q" placeholder="{{ __('Quick search…') }}"
-                               class="w-full pl-9 pr-3 py-2 text-sm rounded-md bg-white/10 placeholder-primary-300 text-white focus:bg-white/20 focus:outline-none">
+                               class="w-full pl-10 pr-3 py-2.5 text-sm rounded-md bg-white/10 placeholder-primary-300 text-white focus:bg-white/20 focus:outline-none">
                     </div>
                 </form>
 
                 @php
+                    // SVG paths — keys match $mobileGroups below.
+                    $mobileGroupIcons = [
+                        'kesfet'    => '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>',
+                        'araclar'   => '<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437"/>',
+                        'firsatlar' => '<path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>',
+                        'icerik'    => '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>',
+                    ];
                     $mobileGroups = [
-                        'kesfet'    => ['label' => __('Explore'),              'icon' => '🔍'],
-                        'araclar'   => ['label' => __('Tools'),                'icon' => '🛠️'],
-                        'firsatlar' => ['label' => __('Opportunities'),        'icon' => '🎁'],
-                        'icerik'    => ['label' => __('Content & Community'),  'icon' => '📚'],
+                        'kesfet'    => ['label' => __('Explore')],
+                        'araclar'   => ['label' => __('Tools')],
+                        'firsatlar' => ['label' => __('Opportunities')],
+                        'icerik'    => ['label' => __('Content & Community')],
                     ];
                     // Forum sadece TR locale'de (phpBB sadece Türkçe konfigürasyonu var)
                     $forumStandalone = app()->getLocale() === 'tr'
@@ -456,14 +492,13 @@
                             {{-- Accordion başlığı --}}
                             <button type="button"
                                     @click="open = (open === '{{ $gKey }}' ? null : '{{ $gKey }}')"
-                                    class="w-full flex items-center justify-between px-3 py-2.5 hover:bg-white/10 transition">
-                                <span class="flex items-center gap-2 text-white font-semibold">
-                                    <span>{{ $gMeta['icon'] }}</span>
+                                    class="w-full min-h-[44px] flex items-center justify-between px-3 py-2.5 hover:bg-white/10 transition">
+                                <span class="flex items-center gap-2.5 text-white font-semibold">
+                                    <svg class="w-5 h-5 text-primary-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">{!! $mobileGroupIcons[$gKey] ?? '' !!}</svg>
                                     <span>{{ $gMeta['label'] }}</span>
                                     <span class="text-[10px] bg-white/15 text-primary-100 px-1.5 py-0.5 rounded-full font-bold">{{ $totalCount }}</span>
                                 </span>
-                                <span class="text-primary-300 transition-transform"
-                                      :class="open === '{{ $gKey }}' ? 'rotate-90' : ''">›</span>
+                                <svg class="w-4 h-4 text-primary-300 transition-transform" :class="open === '{{ $gKey }}' ? 'rotate-90' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
                             </button>
 
                             {{-- Accordion içerik --}}
@@ -499,8 +534,8 @@
                 @php $pricingMobile = \App\Models\MenuPage::findByKey('pricing'); @endphp
                 @if ($pricingMobile && ($pricingMobileUrl = $pricingMobile->resolved_url))
                     <a href="{{ $pricingMobileUrl }}"
-                       class="mt-3 flex items-center gap-2 px-3 py-2.5 rounded-lg bg-gradient-to-r from-amber-500/20 to-amber-600/20 border border-amber-400/40 text-amber-200 hover:bg-amber-500/30 hover:text-white transition font-semibold">
-                        <span>{{ $pricingMobile->icon ?: '✨' }}</span>
+                       class="mt-3 flex items-center gap-2.5 px-3 py-3 rounded-lg bg-gradient-to-r from-amber-500/20 to-amber-600/20 border border-amber-400/40 text-amber-200 hover:bg-amber-500/30 hover:text-white transition font-semibold min-h-[44px]">
+                        <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 0 0-3.09 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg>
                         <span class="flex-1">{{ $pricingMobile->label }}</span>
                         @if ($pricingMobile->description)
                             <span class="text-[10px] text-amber-300/80 font-normal">{{ $pricingMobile->description }}</span>
@@ -512,7 +547,10 @@
                 <div class="pt-3 mt-3 border-t border-white/15 flex items-center gap-3 px-1">
                     @if ($activeLocales->count() > 1)
                         <div class="flex items-center gap-2 flex-1">
-                            <span class="text-[10px] uppercase tracking-wider text-primary-300 font-bold shrink-0">🌐 {{ __('Dil') }}</span>
+                            <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-primary-300 font-bold shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                                {{ __('Dil') }}
+                            </span>
                             <div class="inline-flex items-center bg-white/10 rounded-md p-0.5">
                                 @foreach ($activeLocales as $loc)
                                     @php $cfg = config("locale.locales.$loc"); @endphp
@@ -534,20 +572,27 @@
                 <div class="pt-2 mt-2 border-t border-white/15">
                     @auth
                         <p class="px-3 py-1 text-xs text-primary-200">{{ __('Hello, :name', ['name' => auth()->user()->name]) }}</p>
-                        <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white" title="{{ __('Profile') }}">👤 {{ __('Profile') }}</a>
+                        <a href="{{ route('profile.edit') }}" class="flex items-center gap-2.5 px-3 py-2.5 rounded-md text-primary-100 hover:bg-white/10 hover:text-white min-h-[44px]" title="{{ __('Profile') }}">
+                            <svg class="w-4 h-4 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+                            {{ __('Profile') }}
+                        </a>
                         @if (auth()->user()->is_admin)
-                            <a href="/admin" class="block px-3 py-2 rounded-md text-primary-100 hover:bg-white/10 hover:text-white" title="{{ __('Admin Panel') }}">⚙️ {{ __('Admin Panel') }}</a>
+                            <a href="/admin" class="flex items-center gap-2.5 px-3 py-2.5 rounded-md text-primary-100 hover:bg-white/10 hover:text-white min-h-[44px]" title="{{ __('Admin Panel') }}">
+                                <svg class="w-4 h-4 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                                {{ __('Admin Panel') }}
+                            </a>
                         @endif
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-red-300 hover:bg-white/10" title="{{ __('Log out') }}">
-                                ↪ {{ __('Log out') }}
+                            <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-red-300 hover:bg-white/10 min-h-[44px]" title="{{ __('Log out') }}">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+                                {{ __('Log out') }}
                             </button>
                         </form>
                     @else
                         <div class="flex gap-2">
-                            <a href="{{ route('login') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-white/10 hover:bg-white/20" title="{{ __('Log in') }}">{{ __('Log in') }}</a>
-                            <a href="{{ route('register') }}" class="flex-1 text-center px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 font-semibold" title="{{ __('Sign up') }} — {{ __('Create your free account') }}">{{ __('Sign up') }}</a>
+                            <a href="{{ route('login') }}" class="flex-1 text-center px-3 py-3 rounded-md bg-white/10 hover:bg-white/20 min-h-[44px] inline-flex items-center justify-center" title="{{ __('Log in') }}">{{ __('Log in') }}</a>
+                            <a href="{{ route('register') }}" class="flex-1 text-center px-3 py-3 rounded-md bg-accent-500 hover:bg-accent-600 font-semibold min-h-[44px] inline-flex items-center justify-center" title="{{ __('Sign up') }} — {{ __('Create your free account') }}">{{ __('Sign up') }}</a>
                         </div>
                     @endauth
                 </div>
