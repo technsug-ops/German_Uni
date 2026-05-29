@@ -53,7 +53,7 @@
             <span class="text-5xl">{{ $field->icon }}</span>
             <div>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow">{{ $field->name }}</h1>
-                <p class="text-white/80 text-sm md:text-base mt-1">{{ $field->name_de }}</p>
+                <p class="text-white/80 text-sm md:text-base mt-1">{{ $field$p->name }}</p>
             </div>
         </div>
         <div class="flex flex-wrap gap-2 text-sm mt-4">
@@ -113,7 +113,7 @@
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                 @else
                                     <div class="w-full h-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
-                                        <span class="text-3xl font-extrabold text-white/90">{{ mb_substr($u->name_de, 0, 2) }}</span>
+                                        <span class="text-3xl font-extrabold text-white/90">{{ mb_substr($u$p->name, 0, 2) }}</span>
                                     </div>
                                 @endif
                                 <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
@@ -202,7 +202,7 @@
                     @foreach ($bachelorPrograms as $p)
                         <a href="{{ route('programs.show', $p->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4">
-                            <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p->name_de }}</h3>
+                            <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p$p->name }}</h3>
                             @if ($p->university)
                                 <p class="text-xs text-gray-500 mt-1">@ {{ $p->university->display_name }}</p>
                             @endif
@@ -226,8 +226,8 @@
                             <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">
                                 {{ $p->name }}
                             </h3>
-                            @if ($p->name && $p->name !== $p->name_de)
-                                <p class="text-xs text-gray-500 italic mt-0.5">{{ $p->name_de }}</p>
+                            @if ($p->name && $p->name !== $p$p->name)
+                                <p class="text-xs text-gray-500 italic mt-0.5">{{ $p$p->name }}</p>
                             @endif
                             @if ($p->description)
                                 <p class="text-xs text-gray-600 mt-1 line-clamp-2">{{ \Illuminate\Support\Str::limit($p->description, 140) }}</p>
@@ -251,7 +251,7 @@
                     @foreach ($masterPrograms as $p)
                         <a href="{{ route('programs.show', $p->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4">
-                            <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p->name_de }}</h3>
+                            <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p$p->name }}</h3>
                             @if ($p->university)
                                 <p class="text-xs text-gray-500 mt-1">@ {{ $p->university->display_name }}</p>
                             @endif

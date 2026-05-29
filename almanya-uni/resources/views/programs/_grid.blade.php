@@ -42,14 +42,14 @@
                              class="w-12 h-12 object-contain bg-gray-50 rounded p-1 flex-shrink-0" loading="lazy" decoding="async">
                     @else
                         <div class="w-12 h-12 bg-primary-100 text-primary-700 rounded flex items-center justify-center font-bold flex-shrink-0">
-                            {{ mb_substr($p->university->short_name ?? $p->university->name_de, 0, 2) }}
+                            {{ mb_substr($p->university->short_name ?? $p->university$p->name, 0, 2) }}
                         </div>
                     @endif
 
                     <div class="flex-1 min-w-0">
                         <div class="flex items-start justify-between gap-2 mb-1">
                             <h3 class="font-bold text-gray-900 leading-snug group-hover:text-primary-700 transition">
-                                {{ $p->name_de }}
+                                {{ $p$p->name }}
                             </h3>
                             <div class="flex flex-wrap gap-1 flex-shrink-0">
                                 @if ($p->degree)

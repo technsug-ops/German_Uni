@@ -10,28 +10,28 @@
     ];
     [$typeLabel, $typeEmoji] = $typeLabels[$profession->type ?? 'other'];
 
-    $title = ($profession->name_tr ?: $profession->name_de) . ' — ' . __('Profession Description') . '  — ' . brand('name');
+    $title = ($profession->name_tr ?: $profession->name) . ' — ' . __('Profession Description') . '  — ' . brand('name');
     $description = $profession->description
         ? \Illuminate\Support\Str::limit($profession->description, 160)
         : ($profession->clean_steckbrief
             ? \Illuminate\Support\Str::limit($profession->clean_steckbrief, 160)
-            : ($profession->description_de
-                ? \Illuminate\Support\Str::limit($profession->description_de, 160)
-                : __('Description, education path, and tasks for the profession :name in Germany.', ['name' => $profession->name_de])));
+            : ($profession->description
+                ? \Illuminate\Support\Str::limit($profession->description, 160)
+                : __('Description, education path, and tasks for the profession :name in Germany.', ['name' => $profession->name])));
 @endphp
 
 @section('title', $title)
-<x-seo :title="$profession->name_de" :description="$description" :image="route('og.image', ['type' => 'profession', 'slug' => $profession->slug . '.png'])" />
+<x-seo :title="$profession->name" :description="$description" :image="route('og.image', ['type' => 'profession', 'slug' => $profession->slug . '.png'])" />
 
 @php
     $occupationName = $profession->name_tr
-        ? $profession->name_tr . ' (' . $profession->name_de . ')'
-        : $profession->name_de;
+        ? $profession->name_tr . ' (' . $profession->name . ')'
+        : $profession->name;
 
     $occupationDesc = $profession->description
         ?: ($profession->clean_steckbrief
-            ?: ($profession->description_de
-                ?: __('The profession :name in Germany', ['name' => $profession->name_de])));
+            ?: ($profession->description
+                ?: __('The profession :name in Germany', ['name' => $profession->name])));
 
     $jsonLd = [
         '@context'          => 'https://schema.org',
@@ -60,13 +60,13 @@
     }
 
     if ($profession->field?->name_tr) {
-        $jsonLd['skills'] = $profession->field->name_tr;
+        $jsonLd['skills'] = $profession->field->name;
     }
 
     if (! empty($pathwayPrograms) && $pathwayPrograms->isNotEmpty()) {
         $jsonLd['educationRequirements'] = $pathwayPrograms->map(fn ($p) => [
             '@type'       => 'EducationalOccupationalProgram',
-            'name'        => $p->name_de,
+            'name'        => $p->name,
             'programType' => $p->degree,
             'url'         => route('programs.show', $p->slug),
         ])->take(5)->values()->all();
@@ -77,9 +77,9 @@
         ['name' => __('Professions'),  'url' => route('professions.index')],
     ];
     if ($profession->field) {
-        $breadcrumbItems[] = ['name' => $profession->field->name_tr, 'url' => route('fields.show', $profession->field->slug)];
+        $breadcrumbItems[] = ['name' => $profession->field->name, 'url' => route('fields.show', $profession->field->slug)];
     }
-    $breadcrumbItems[] = ['name' => $profession->name_de, 'url' => url()->current()];
+    $breadcrumbItems[] = ['name' => $profession->name, 'url' => url()->current()];
 
     $breadcrumbJsonLd = [
         '@context'        => 'https://schema.org',
@@ -112,14 +112,14 @@
             <a href="{{ route('professions.index') }}" class="hover:text-white">{{ __('Professions') }}</a>
             @if ($profession->field)
                 <span class="mx-2 opacity-60">›</span>
-                <a href="{{ route('fields.show', $profession->field->slug) }}" class="hover:text-white">{{ $profession->field->name_tr }}</a>
+                <a href="{{ route('fields.show', $profession->field->slug) }}" class="hover:text-white">{{ $profession->field->name }}</a>
             @endif
             <span class="mx-2 opacity-60">›</span>
-            <span class="text-white">{{ $profession->name_de }}</span>
+            <span class="text-white">{{ $profession->name }}</span>
         </nav>
 
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-2">{{ $profession->name_de }}</h1>
-        @if ($profession->short_name && $profession->short_name !== $profession->name_de)
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-2">{{ $profession->name }}</h1>
+        @if ($profession->short_name && $profession->short_name !== $profession->name)
             <p class="text-white/85 text-lg mb-3">{{ $profession->short_name }}</p>
         @endif
 
@@ -130,7 +130,7 @@
             @if ($profession->field)
                 <a href="{{ route('fields.show', $profession->field->slug) }}"
                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25">
-                    {{ $profession->field->icon }} {{ $profession->field->name_tr }}
+                    {{ $profession->field->icon }} {{ $profession->field->name }}
                 </a>
             @endif
             @if ($profession->kldb_code)
@@ -146,7 +146,7 @@
     <main class="lg:col-span-2 space-y-6">
         @if ($profession->description)
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What is :name?', ['name' => $profession->name_tr ?: $profession->name_de]) }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What is :name?', ['name' => $profession->name_tr ?: $profession->name]) }}</h2>
                 <div class="blog-content text-gray-800 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! app(\App\Services\Content\BlogAutoLinker::class)->process(nl2br(e($profession->description))) !!}</div>
             </section>
         @endif
@@ -158,10 +158,10 @@
             </section>
         @endif
 
-        @if ($profession->description_de)
+        @if ($profession->description)
             <section class="bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('Beschreibung (German)') }}</h2>
-                <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ $profession->description_de }}</p>
+                <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ $profession->description }}</p>
             </section>
         @endif
 
@@ -172,13 +172,13 @@
                     <h2 class="text-xl font-bold text-gray-900">🎓 {{ __('Programs that lead to this profession') }}</h2>
                     @if($profession->field)
                         <a href="{{ route('fields.show', $profession->field->slug) }}" class="text-sm text-primary-600 hover:underline">
-                            {{ __(':field field', ['field' => $profession->field->name_tr]) }} →
+                            {{ __(':field field', ['field' => $profession->field->name]) }} →
                         </a>
                     @endif
                 </div>
                 <p class="text-sm text-gray-700 mb-4">
-                    {!! __('The profession <strong>:name</strong> in Germany is generally reached through', ['name' => $profession->name_de]) !!}
-                    @if($profession->field) {!! __('programs in the <strong>:field</strong> field:', ['field' => $profession->field->name_tr]) !!} @else {{ __('these programs:') }} @endif
+                    {!! __('The profession <strong>:name</strong> in Germany is generally reached through', ['name' => $profession->name]) !!}
+                    @if($profession->field) {!! __('programs in the <strong>:field</strong> field:', ['field' => $profession->field->name]) !!} @else {{ __('these programs:') }} @endif
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     @foreach ($pathwayPrograms as $p)
@@ -188,7 +188,7 @@
                                 <img src="{{ $p->university->logo_url }}" alt="" class="w-10 h-10 object-contain bg-white rounded shrink-0 p-0.5" loading="lazy" decoding="async"/>
                             @endif
                             <div class="flex-1 min-w-0">
-                                <h3 class="font-semibold text-gray-900 group-hover:text-amber-700 leading-snug text-sm">{{ $p->name_de }}</h3>
+                                <h3 class="font-semibold text-gray-900 group-hover:text-amber-700 leading-snug text-sm">{{ $p->name }}</h3>
                                 <p class="text-xs text-gray-500 mt-0.5">
                                     {{ ucfirst($p->degree) }}@if($p->university) · {{ $p->university->display_name }}@endif
                                 </p>
@@ -266,7 +266,7 @@
                     @foreach ($related as $r)
                         <li>
                             <a href="{{ route('professions.show', $r->slug) }}" class="text-primary-700 hover:text-primary-900 hover:underline">
-                                {{ $r->name_de }}
+                                {{ $r->name }}
                             </a>
                         </li>
                     @endforeach
@@ -278,7 +278,7 @@
 
 {{-- Auto-FAQ (AIO + Featured Snippet) — type-aware per profession --}}
 <x-faq-section
-    :title="__('Frequently Asked Questions about :name', ['name' => $profession->name_tr ?: $profession->name_de])"
+    :title="__('Frequently Asked Questions about :name', ['name' => $profession->name_tr ?: $profession->name])"
     :subtitle="__('Education path, salary, recognition, and entry routes for foreigners')"
     :faqs="\App\Support\PageFaq::forProfession($profession)"
 />

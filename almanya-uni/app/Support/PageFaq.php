@@ -441,7 +441,9 @@ class PageFaq
      */
     public static function forProfession(\App\Models\Profession $p): array
     {
-        $name = $p->name_tr ?: $p->name_de;
+        // Locale-aware: $p->name follows the LocalizableContent fallback chain
+        // (tr → en → de for tr locale, en → de → tr for en, de → en → tr for de).
+        $name   = $p->name ?: $p->name_de;
         $nameDe = $p->name_de;
         $type = $p->type ?: 'other';
 

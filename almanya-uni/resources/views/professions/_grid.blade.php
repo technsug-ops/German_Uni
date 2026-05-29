@@ -35,10 +35,10 @@
         @foreach ($professions as $p)
             @php
                 [$tLabel, $tEmoji, $tColor] = $typeLabels[$p->type ?? 'other'];
-                if ($p->description_de) {
-                    $raw = $p->description_de;
-                    $raw = preg_replace('/^(Studienfach|Aufgaben und Tätigkeiten|Aufgaben und Tatigkeiten|Beruf|Berufsbezeichnung)\s*/u', '', $raw);
-                    $body = \Illuminate\Support\Str::limit(trim($raw), 180);
+                // Locale-aware description (model trait picks $loc → fallback chain)
+                if ($desc = $p->description) {
+                    $desc = preg_replace('/^(Studienfach|Aufgaben und Tätigkeiten|Aufgaben und Tatigkeiten|Beruf|Berufsbezeichnung)\s*/u', '', $desc);
+                    $body = \Illuminate\Support\Str::limit(trim($desc), 180);
                 } elseif ($p->clean_steckbrief) {
                     $body = \Illuminate\Support\Str::limit($p->clean_steckbrief, 180);
                 } else {
@@ -65,7 +65,7 @@
                     @endif
                 </div>
                 <h3 class="font-bold text-gray-900 leading-snug group-hover:text-primary-700 transition mb-2 break-words">
-                    {{ \Illuminate\Support\Str::limit($p->name_de, 70) }}
+                    {{ \Illuminate\Support\Str::limit($p->name, 70) }}
                 </h3>
 
                 @if ($body)
