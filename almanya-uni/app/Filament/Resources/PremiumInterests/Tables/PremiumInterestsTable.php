@@ -53,6 +53,18 @@ class PremiumInterestsTable
                         default     => $state,
                     }),
 
+                IconColumn::make('wants_beta')
+                    ->label('🚀 Beta')
+                    ->boolean()
+                    ->trueColor('purple')
+                    ->falseColor('gray'),
+
+                TextColumn::make('beta_invited_at')
+                    ->label('Beta davet')
+                    ->dateTime('d.m.Y')
+                    ->placeholder('—')
+                    ->toggleable(),
+
                 TextColumn::make('locale')
                     ->label('Dil')
                     ->badge()
@@ -108,6 +120,14 @@ class PremiumInterestsTable
                     ->label('İletişime geçilenler')
                     ->query(fn (Builder $q) => $q->where('contacted', true)),
 
+                Filter::make('beta_candidates')
+                    ->label('🚀 Beta adayları (henüz davet edilmedi)')
+                    ->query(fn (Builder $q) => $q->where('wants_beta', true)->whereNull('beta_invited_at')),
+
+                Filter::make('beta_invited')
+                    ->label('Beta\'ya davet edildi')
+                    ->query(fn (Builder $q) => $q->whereNotNull('beta_invited_at')),
+
                 SelectFilter::make('tier_interest')
                     ->label('Tier ilgisi')
                     ->options([
@@ -136,6 +156,17 @@ class PremiumInterestsTable
                     ->color('info')
                     ->url(fn ($record) => 'mailto:' . $record->email . '?subject=' . rawurlencode('AlmanyaUni Premium hakkında'))
                     ->openUrlInNewTab(),
+
+                Action::make('inviteToBeta')
+                    ->label('🚀 Beta\'ya davet et')
+                    ->color('purple')
+                    ->visible(fn ($record) => $record->wants_beta && ! $record->beta_invited_at)
+                    ->requiresConfirmation()
+                    ->modalDescription('Beta tester davet maili gönderilecek + beta_invited_at zaman damgalanacak.')
+                    ->action(function ($record) {
+                        $record->update(['beta_invited_at' => now()]);
+                        Notification::make()->title('Beta daveti işaretlendi')->body('Manuel davet mailini şimdi mailto ile gönderebilirsin.')->success()->send();
+                    }),
 
                 EditAction::make(),
             ])

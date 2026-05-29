@@ -9,18 +9,59 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="bg-gradient-to-br from-primary-700 via-indigo-600 to-purple-600 text-white">
-    <div class="max-w-[1400px] mx-auto px-4 py-12 md:py-16 text-center">
-        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-4">
-            ⭐ {{ __('Coming soon') }}
-        </span>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow mb-4">
-            {{ __('Free always — Premium when you need more') }}
+{{-- HERO with decorative sparkles + animated CTA + live social proof --}}
+<section class="relative bg-gradient-to-br from-primary-700 via-indigo-600 to-purple-600 text-white overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-50">
+        <svg class="absolute top-8 left-[10%] w-12 h-12 animate-pulse" viewBox="0 0 24 24" fill="white" fill-opacity="0.4"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+        <svg class="absolute top-1/3 right-[12%] w-10 h-10 animate-pulse" style="animation-delay: 0.7s" viewBox="0 0 24 24" fill="white" fill-opacity="0.5"><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="absolute bottom-12 left-[18%] w-16 h-16 animate-pulse" style="animation-delay: 1.4s" viewBox="0 0 24 24" fill="white" fill-opacity="0.3"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+        <svg class="absolute bottom-8 right-[20%] w-8 h-8 animate-bounce" style="animation-duration: 3s" viewBox="0 0 24 24" fill="white" fill-opacity="0.35"><path d="M12 2 L13 10 L22 12 L13 14 L12 22 L11 14 L2 12 L11 10 Z"/></svg>
+        <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-amber-400/30 rounded-full blur-3xl"></div>
+        <div class="absolute -top-10 -right-10 w-80 h-80 bg-indigo-400/30 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-[1400px] mx-auto px-4 py-14 md:py-20 text-center">
+        @php $total = $counts['total'] ?? 0; @endphp
+
+        @if ($total >= 5)
+            <span class="inline-flex items-center gap-2 bg-white/15 border border-white/25 backdrop-blur px-4 py-1.5 rounded-full text-sm font-semibold mb-4 animate-pulse" style="animation-duration: 3s">
+                🔥 {{ __(':n people already on the early-bird list', ['n' => number_format($total)]) }}
+            </span>
+        @else
+            <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-4">
+                ⭐ {{ __('Coming soon') }}
+            </span>
+        @endif
+
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] drop-shadow mb-4">
+            {{ __('Free always') }}
+            <span class="bg-gradient-to-r from-amber-200 via-pink-200 to-white bg-clip-text text-transparent">
+                — {{ __('Premium when you need more') }}
+            </span>
         </h1>
-        <p class="text-lg md:text-xl text-primary-100 max-w-2xl mx-auto">
+        <p class="text-lg md:text-xl text-primary-100 max-w-2xl mx-auto mb-7">
             {{ __('All universities, programs, tools and FAQs stay free forever. Premium adds 1-on-1 mentor support, advanced tools, and a personalized journey.') }}
         </p>
+
+        <a href="#interest-form" class="group relative inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 text-white font-bold px-7 py-4 rounded-xl shadow-2xl transition">
+            <span class="absolute inset-0 rounded-xl bg-amber-400 opacity-50 animate-ping group-hover:hidden" style="animation-duration: 2s"></span>
+            <span class="relative">⭐ {{ __('Lock 20% lifetime discount') }}</span>
+            <span class="relative group-hover:translate-x-1 transition">→</span>
+        </a>
+
+        @if ($total >= 5)
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-sm text-primary-100">
+                @if (($counts['beta_signups'] ?? 0) > 0)
+                    <span class="flex items-center gap-1">🚀 <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
+                @endif
+                @if (($counts['premium_tier'] ?? 0) > 0)
+                    <span class="flex items-center gap-1">⭐ <strong>{{ $counts['premium_tier'] }}</strong> {{ __('Premium') }}</span>
+                @endif
+                @if (($counts['pro_tier'] ?? 0) > 0)
+                    <span class="flex items-center gap-1">💎 <strong>{{ $counts['pro_tier'] }}</strong> {{ __('Pro') }}</span>
+                @endif
+            </div>
+        @endif
     </div>
 </section>
 
@@ -143,6 +184,18 @@
                           class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:border-amber-500 focus:ring-1 focus:ring-amber-500">{{ old('note') }}</textarea>
             </div>
 
+            {{-- Beta tester opt-in — bonus path before public launch --}}
+            <div class="bg-white rounded-xl border-2 border-purple-200 p-4">
+                <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" name="wants_beta" value="1" {{ old('wants_beta') ? 'checked' : '' }}
+                           class="mt-0.5 w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500">
+                    <span>
+                        <span class="block font-bold text-purple-900 text-sm">🚀 {{ __('Join the beta tester program') }}</span>
+                        <span class="block text-xs text-gray-600 mt-0.5">{{ __('Get 3 months free + lifetime 30% off in exchange for feedback. We invite ~20 testers in the next 2 weeks.') }}</span>
+                    </span>
+                </label>
+            </div>
+
             <x-math-captcha compact />
 
             <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-lg shadow-md transition">
@@ -150,6 +203,16 @@
             </button>
             <p class="text-xs text-gray-500 text-center">{{ __('No spam. Single email when premium launches. Unsubscribe anytime.') }}</p>
         </form>
+
+        {{-- Live counter footer --}}
+        @if (($counts['total'] ?? 0) >= 5)
+            <div class="mt-6 pt-5 border-t border-amber-200 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-700">
+                <span class="flex items-center gap-1.5"><span class="text-lg">👥</span> <strong>{{ number_format($counts['total']) }}</strong> {{ __('signups so far') }}</span>
+                @if ($counts['beta_signups'] > 0)
+                    <span class="flex items-center gap-1.5"><span class="text-lg">🚀</span> <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
+                @endif
+            </div>
+        @endif
     </section>
 
     {{-- FAQ --}}
