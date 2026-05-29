@@ -82,6 +82,22 @@ class ToolsController extends Controller
                 'route'       => route('tools.blocked-account'),
                 'live'        => true,
             ],
+            [
+                'slug'        => 'pathway-finder',
+                'title'       => __('Germany Pathway Finder'),
+                'description' => __('5 questions → Studienkolleg, Bachelor, Master, PhD, Ausbildung or Sprachkurs. Real durations + costs.'),
+                'icon'        => '🧭',
+                'route'       => route('tools.pathway-finder'),
+                'live'        => true,
+            ],
+            [
+                'slug'        => 'professional-recognition',
+                'title'       => __('Professional Recognition'),
+                'description' => __('Is your profession recognised in Germany? 6 popular jobs — authority, timeline, cost.'),
+                'icon'        => '🛡️',
+                'route'       => route('tools.professional-recognition'),
+                'live'        => true,
+            ],
         ];
 
         return view('tools.index', compact('tools'));
@@ -1721,6 +1737,273 @@ class ToolsController extends Controller
             'egypt'     => ['name' => 'Egypt',       'flag' => '🇪🇬', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
             'morocco'   => ['name' => 'Morocco',     'flag' => '🇲🇦', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
             'syria'     => ['name' => 'Syria',       'flag' => '🇸🇾', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+        ];
+    }
+
+    // ===============================================================
+    // PATHWAY FINDER — 5 soruda Almanya rotanı bul (Studienkolleg /
+    // Bachelor / Master / PhD / Ausbildung / Sprachkurs)
+    // ===============================================================
+
+    public function pathwayFinder(Request $request): View
+    {
+        $result = null;
+        $old = [];
+
+        if ($request->isMethod('post')) {
+            $data = $request->validate([
+                'education_level' => 'required|in:high_school,bachelor_student,bachelor_grad,master_grad,working',
+                'german_level'    => 'required|in:none,a1_a2,b1_b2,c1_plus',
+                'age_band'        => 'required|in:17_22,23_28,29_35,35_plus',
+                'budget_monthly'  => 'required|in:under_800,800_1100,1100_plus',
+                'timeline'        => 'required|in:fast_6m,normal_1y,long_2y',
+            ]);
+            $old = $data;
+            $result = $this->runPathwayFinder($data);
+        }
+
+        return view('tools.pathway-finder', [
+            'result'   => $result,
+            'old'      => $old,
+            'pathways' => self::pathwaysCatalog(),
+        ]);
+    }
+
+    private function runPathwayFinder(array $a): array
+    {
+        // Score each pathway from a baseline of 0
+        $scores = [
+            'studienkolleg' => 0,
+            'bachelor'      => 0,
+            'master'        => 0,
+            'phd'           => 0,
+            'ausbildung'    => 0,
+            'sprachkurs'    => 0,
+        ];
+        $notes = [];
+
+        // Education level → primary route signal
+        switch ($a['education_level']) {
+            case 'high_school':
+                $scores['studienkolleg'] += 6;
+                $scores['bachelor']      += 5;
+                $scores['ausbildung']    += 4;
+                $scores['sprachkurs']    += 2;
+                $notes[] = __('Direct bachelor admission depends on your country\'s Anabin status — many countries require Studienkolleg first.');
+                break;
+            case 'bachelor_student':
+                $scores['bachelor']   += 5;
+                $scores['sprachkurs'] += 2;
+                $notes[] = __('Transfer credits depend on the German university — apply with full transcript and module descriptions.');
+                break;
+            case 'bachelor_grad':
+                $scores['master']     += 7;
+                $scores['ausbildung'] += 2;
+                $scores['sprachkurs'] += 2;
+                break;
+            case 'master_grad':
+                $scores['phd']        += 7;
+                $scores['master']     += 3;
+                $scores['sprachkurs'] += 1;
+                break;
+            case 'working':
+                $scores['ausbildung'] += 5;
+                $scores['master']     += 4;
+                $scores['sprachkurs'] += 3;
+                $notes[] = __('Working professionals with 2+ years experience often qualify for "Berufsbegleitend" (work-study) or Fachhochschule master programmes.');
+                break;
+        }
+
+        // German level
+        switch ($a['german_level']) {
+            case 'none':
+                $scores['sprachkurs']    += 6;
+                $scores['studienkolleg'] += 2;
+                $scores['ausbildung']    += 1;
+                $scores['bachelor']      += 1;
+                $notes[] = __('Without German you need 12–18 months of language study first — every other pathway becomes harder.');
+                break;
+            case 'a1_a2':
+                $scores['sprachkurs']    += 4;
+                $scores['studienkolleg'] += 3;
+                $scores['ausbildung']    += 2;
+                break;
+            case 'b1_b2':
+                $scores['studienkolleg'] += 4;
+                $scores['bachelor']      += 4;
+                $scores['ausbildung']    += 3;
+                $scores['master']        += 3;
+                break;
+            case 'c1_plus':
+                $scores['bachelor']   += 5;
+                $scores['master']     += 5;
+                $scores['phd']        += 4;
+                $scores['ausbildung'] += 3;
+                $notes[] = __('C1+ German opens every door — focus on programme fit instead of language barriers.');
+                break;
+        }
+
+        // Age band
+        switch ($a['age_band']) {
+            case '17_22':
+                $scores['studienkolleg'] += 3;
+                $scores['bachelor']      += 4;
+                $scores['ausbildung']    += 3;
+                break;
+            case '23_28':
+                $scores['master']     += 4;
+                $scores['bachelor']   += 2;
+                $scores['ausbildung'] += 3;
+                break;
+            case '29_35':
+                $scores['master']     += 3;
+                $scores['phd']        += 3;
+                $scores['ausbildung'] += 4;
+                $notes[] = __('After 30, Studienkolleg + Bachelor (8+ years) is rarely the best ROI — Master or Ausbildung pays off faster.');
+                break;
+            case '35_plus':
+                $scores['ausbildung'] += 5;
+                $scores['master']     += 2;
+                $scores['phd']        += 2;
+                $notes[] = __('Ausbildung pays a salary from day 1 (~€1,000–1,300/month) — best path when university entry is harder.');
+                break;
+        }
+
+        // Budget
+        switch ($a['budget_monthly']) {
+            case 'under_800':
+                $scores['ausbildung']    += 4;  // gets paid
+                $scores['phd']           += 3;  // often gets stipend
+                $scores['studienkolleg'] += 1;
+                $notes[] = __('Under €800/month budget is risky. Realistic only with Ausbildung (paid) or PhD (stipend). State universities + WG + cheaper city helps.');
+                break;
+            case '800_1100':
+                $scores['bachelor']      += 3;
+                $scores['master']        += 3;
+                $scores['studienkolleg'] += 2;
+                $scores['ausbildung']    += 2;
+                break;
+            case '1100_plus':
+                $scores['bachelor'] += 4;
+                $scores['master']   += 4;
+                $scores['phd']      += 3;
+                break;
+        }
+
+        // Timeline
+        switch ($a['timeline']) {
+            case 'fast_6m':
+                $scores['ausbildung'] += 4;
+                $scores['sprachkurs'] += 3;
+                $scores['master']     += 2;
+                $notes[] = __('Realistic timelines: Sprachkurs/Ausbildung = 6–12 months. Master = 2 years. Bachelor + Studienkolleg = 4–5 years.');
+                break;
+            case 'normal_1y':
+                $scores['master']        += 3;
+                $scores['studienkolleg'] += 2;
+                $scores['ausbildung']    += 2;
+                break;
+            case 'long_2y':
+                $scores['bachelor']      += 4;
+                $scores['studienkolleg'] += 4;
+                $scores['phd']           += 3;
+                break;
+        }
+
+        arsort($scores);
+        $top = array_keys($scores);
+        $catalog = self::pathwaysCatalog();
+
+        return [
+            'top_pathway'    => $catalog[$top[0]],
+            'second_pathway' => $catalog[$top[1]] ?? null,
+            'third_pathway'  => $catalog[$top[2]] ?? null,
+            'scores'         => $scores,
+            'notes'          => $notes,
+        ];
+    }
+
+    private static function pathwaysCatalog(): array
+    {
+        return [
+            'studienkolleg' => [
+                'key'        => 'studienkolleg',
+                'icon'       => '🏫',
+                'name'       => 'Studienkolleg',
+                'subtitle'   => __('Foundation year — bridge to bachelor'),
+                'duration'   => __('1 year + Bachelor 3 years = 4 years total'),
+                'language'   => __('B2 German required'),
+                'cost'       => __('€100–500/semester (public)'),
+                'best_for'   => __('High school grads from Anabin H+- or H- countries who need to bridge to a Bachelor.'),
+                'next_url'   => '/tools/studienkolleg',
+                'next_label' => __('Find a Studienkolleg'),
+                'colors'     => ['from-blue-600', 'to-cyan-600', 'border-blue-300', 'text-blue-900'],
+            ],
+            'bachelor' => [
+                'key'        => 'bachelor',
+                'icon'       => '🎓',
+                'name'       => __('Bachelor'),
+                'subtitle'   => __('Direct undergraduate study (3–4 years)'),
+                'duration'   => __('3–4 years'),
+                'language'   => __('B2/C1 German OR English (international programmes)'),
+                'cost'       => __('€100–500/semester (public) · €5,000+/year (private)'),
+                'best_for'   => __('High school grads from H+ Anabin countries or those with completed Studienkolleg.'),
+                'next_url'   => '/universities',
+                'next_label' => __('Explore universities'),
+                'colors'     => ['from-indigo-600', 'to-violet-600', 'border-indigo-300', 'text-indigo-900'],
+            ],
+            'master' => [
+                'key'        => 'master',
+                'icon'       => '📚',
+                'name'       => __('Master'),
+                'subtitle'   => __('Specialised postgraduate (1.5–2 years)'),
+                'duration'   => __('1.5–2 years'),
+                'language'   => __('B2 German OR IELTS 6.5+/TOEFL 90+ for English programmes'),
+                'cost'       => __('€100–500/semester (public)'),
+                'best_for'   => __('Bachelor graduates wanting deeper specialisation. Many English-taught options.'),
+                'next_url'   => '/programs?type=master',
+                'next_label' => __('Browse Master programmes'),
+                'colors'     => ['from-emerald-600', 'to-teal-600', 'border-emerald-300', 'text-emerald-900'],
+            ],
+            'phd' => [
+                'key'        => 'phd',
+                'icon'       => '🔬',
+                'name'       => __('PhD / Doctorate'),
+                'subtitle'   => __('Research doctorate (3–5 years)'),
+                'duration'   => __('3–5 years'),
+                'language'   => __('English usually sufficient'),
+                'cost'       => __('Often funded (€1,200–2,500/month stipend)'),
+                'best_for'   => __('Master graduates with research interest. Apply directly to a Doktorvater (supervisor).'),
+                'next_url'   => '/scholarships',
+                'next_label' => __('See PhD scholarships'),
+                'colors'     => ['from-purple-600', 'to-fuchsia-600', 'border-purple-300', 'text-purple-900'],
+            ],
+            'ausbildung' => [
+                'key'        => 'ausbildung',
+                'icon'       => '🔧',
+                'name'       => 'Ausbildung',
+                'subtitle'   => __('Paid vocational training (2–3.5 years)'),
+                'duration'   => __('2–3.5 years'),
+                'language'   => __('B1/B2 German typically required'),
+                'cost'       => __('PAID: €900–1,300/month from year 1'),
+                'best_for'   => __('Career changers, ages 25+, or those who want a guaranteed job + visa pathway without university.'),
+                'next_url'   => '/blog',
+                'next_label' => __('Read Ausbildung guides'),
+                'colors'     => ['from-amber-600', 'to-orange-600', 'border-amber-300', 'text-amber-900'],
+            ],
+            'sprachkurs' => [
+                'key'        => 'sprachkurs',
+                'icon'       => '💬',
+                'name'       => __('Sprachkurs (Language School)'),
+                'subtitle'   => __('Intensive German course (6–18 months)'),
+                'duration'   => __('6–18 months until B2/C1'),
+                'language'   => __('Starts from A1'),
+                'cost'       => __('€300–800/month (Sprachkurs visa: §16f)'),
+                'best_for'   => __('Step 1 for everyone without B2 German. Required before Studienkolleg, Bachelor (German-taught), or Ausbildung.'),
+                'next_url'   => '/tools/visa-cost',
+                'next_label' => __('Visa cost calculator'),
+                'colors'     => ['from-rose-600', 'to-pink-600', 'border-rose-300', 'text-rose-900'],
+            ],
         ];
     }
 }

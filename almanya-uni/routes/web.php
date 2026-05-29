@@ -141,6 +141,10 @@ $routes = function () {
         // Professional Recognition (Mesleki Denklik) — Euroversity insight
         Route::match(['get', 'post'], '/professional-recognition', [ToolsController::class, 'professionalRecognition'])
             ->name('professional-recognition');
+
+        // Pathway Finder — deutschland.de style quiz: 5 questions → Studienkolleg/Bachelor/Master/PhD/Ausbildung/Sprachkurs
+        Route::match(['get', 'post'], '/pathway-finder', [ToolsController::class, 'pathwayFinder'])
+            ->name('pathway-finder');
     });
     Route::redirect('/araclar/kariyer-pusulasi', '/tools/career-compass', 301);
     Route::redirect('/tools/bloke-hesap', '/tools/sperrkonto', 301);
