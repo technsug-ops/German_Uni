@@ -145,6 +145,9 @@ $routes = function () {
         // Pathway Finder — deutschland.de style quiz: 5 questions → Studienkolleg/Bachelor/Master/PhD/Ausbildung/Sprachkurs
         Route::match(['get', 'post'], '/pathway-finder', [ToolsController::class, 'pathwayFinder'])
             ->name('pathway-finder');
+
+        // Inspire Me — MyGuide style random discovery (uni / city / programme / scholarship / profession / field)
+        Route::get('/inspire-me', [ToolsController::class, 'inspireMe'])->name('inspire-me');
     });
     Route::redirect('/araclar/kariyer-pusulasi', '/tools/career-compass', 301);
     Route::redirect('/tools/bloke-hesap', '/tools/sperrkonto', 301);

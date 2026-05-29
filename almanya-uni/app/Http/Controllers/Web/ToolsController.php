@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\CityCostData;
 use App\Models\FieldOfStudy;
+use App\Models\Profession;
 use App\Models\Program;
+use App\Models\Scholarship;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,6 +90,14 @@ class ToolsController extends Controller
                 'description' => __('5 questions → Studienkolleg, Bachelor, Master, PhD, Ausbildung or Sprachkurs. Real durations + costs.'),
                 'icon'        => '🧭',
                 'route'       => route('tools.pathway-finder'),
+                'live'        => true,
+            ],
+            [
+                'slug'        => 'inspire-me',
+                'title'       => __('Inspire Me'),
+                'description' => __('Stuck choosing? Random university + city + programme + scholarship + profession + field. Each refresh = 6 new picks.'),
+                'icon'        => '✨',
+                'route'       => route('tools.inspire-me'),
                 'live'        => true,
             ],
             [
@@ -1921,6 +1931,62 @@ class ToolsController extends Controller
             'scores'         => $scores,
             'notes'          => $notes,
         ];
+    }
+
+    // ===============================================================
+    // INSPIRE ME — random discovery widget (MyGuide pattern).
+    // Server-side randomisation across 6 entity types.
+    // ===============================================================
+
+    public function inspireMe(): View
+    {
+        // Each pick is server-rendered. Refresh = new picks.
+        $seed = random_int(0, PHP_INT_MAX);
+        mt_srand($seed);
+
+        $uni = University::where('is_active', true)
+            ->whereNotNull('content_blocks')
+            ->whereNotNull('image_url')
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_de', 'name_en', 'name_tr', 'short_name', 'logo_url', 'image_url', 'student_count', 'type', 'founded_year', 'city_id', 'content_blocks']);
+
+        $city = City::where('is_active', true)
+            ->whereNotNull('content_blocks')
+            ->whereNotNull('image_url')
+            ->has('universities')
+            ->whereNotIn('slug', ['harburg-q1635', 'nordrhein-westfalen-q1198', 'bayern-q980', 'nord-q1997469', 'schleswig-holstein-q1194', 'rheinland-pfalz-q1200'])
+            ->withCount(['universities' => fn ($q) => $q->where('is_active', 1)])
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_de', 'name_en', 'name_tr', 'state_id', 'image_url', 'population', 'content_blocks']);
+
+        $program = Program::where('is_active', true)
+            ->whereIn('language', ['en', 'both'])
+            ->with(['university:id,slug,name_de,name_en,name_tr,short_name', 'field:id,slug,name_tr,name_en,name_de,icon'])
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_en', 'name_de', 'university_id', 'field_of_study_id', 'degree', 'duration_semesters', 'language', 'cost_per_semester_eur']);
+
+        $scholarship = Scholarship::whereNull('removed_at')
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_en', 'name_de', 'programmname_en', 'is_daad']);
+
+        $profession = Profession::where('is_active', true)
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_tr', 'name_de', 'cluster_label', 'description_tr']);
+
+        $field = FieldOfStudy::active()
+            ->withCount(['programs' => fn ($q) => $q->where('is_active', 1)])
+            ->having('programs_count', '>', 0)
+            ->inRandomOrder()
+            ->first(['id', 'slug', 'name_tr', 'name_en', 'name_de', 'icon', 'color']);
+
+        return view('tools.inspire-me', [
+            'uni'         => $uni,
+            'city'        => $city,
+            'program'     => $program,
+            'scholarship' => $scholarship,
+            'profession'  => $profession,
+            'field'       => $field,
+        ]);
     }
 
     private static function pathwaysCatalog(): array
