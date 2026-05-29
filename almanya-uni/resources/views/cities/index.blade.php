@@ -64,33 +64,7 @@
                 @endif
             </div>
 
-            {{-- State badge row — primary geographic filter, sits above the
-                 size/density chips so users see it first. --}}
-            <div class="flex items-center flex-wrap gap-1.5 pt-2 border-t border-gray-100">
-                <span class="text-xs text-gray-500 mr-1 shrink-0">🗺️ {{ __('State:') }}</span>
-                <a href="{{ request()->fullUrlWithQuery(['state' => null]) }}"
-                   class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition
-                          {{ empty($filters['state'] ?? null)
-                              ? 'bg-primary-600 text-white border-primary-600'
-                              : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                    {{ __('All') }}
-                </a>
-                @foreach($states as $st)
-                    @php $isActive = ($filters['state'] ?? '') === $st->slug; @endphp
-                    <a href="{{ request()->fullUrlWithQuery(['state' => $isActive ? null : $st->slug]) }}"
-                       class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition
-                              {{ $isActive
-                                  ? 'bg-primary-600 text-white border-primary-600'
-                                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                        <span>{{ $st->name }}</span>
-                        @if($st->cities_count > 0)
-                            <span class="opacity-70 text-[10px]">({{ $st->cities_count }})</span>
-                        @endif
-                    </a>
-                @endforeach
-            </div>
-
-            {{-- Hızlı chip filtreleri --}}
+            {{-- Hızlı chip filtreleri (state filtresi sol sidebar'da, aşağıda) --}}
             <div class="flex items-center flex-wrap gap-2 pt-2 border-t border-gray-100">
                 <span class="text-xs text-gray-500 mr-1">{{ __('City size:') }}</span>
 
@@ -148,8 +122,58 @@
 {{-- ─────────────── RESULTS ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        <div id="async-filter-results" data-async-filter aria-live="polite" aria-busy="false">
-            @include('cities._grid')
+        <div class="lg:grid lg:grid-cols-[240px_1fr] lg:gap-6">
+
+            {{-- ── Sol sidebar: eyaletler ── --}}
+            {{-- <details> handles mobile collapse for free. On lg+ we hide the
+                 <summary> and force the <nav> visible via lg:!block (overrides
+                 the browser's `details:not([open]) > *:not(summary)` UA rule). --}}
+            <aside class="mb-6 lg:mb-0">
+                <details class="group" @if(! empty($filters['state'] ?? null)) open @endif>
+                    <summary class="lg:hidden cursor-pointer select-none flex items-center justify-between gap-2 px-4 py-3 bg-white rounded-lg border border-gray-200 text-sm font-semibold text-gray-900">
+                        <span class="inline-flex items-center gap-2">🗺️ {{ __('Filter by state') }}</span>
+                        <span class="text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+                    </summary>
+                    <nav aria-label="{{ __('Filter by state') }}"
+                         class="mt-2 lg:mt-0 lg:!block lg:sticky lg:top-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
+                        <div class="px-4 py-3 border-b border-gray-100 text-xs font-semibold text-gray-500 uppercase tracking-wide hidden lg:block">
+                            🗺️ {{ __('States') }}
+                        </div>
+                        <ul class="divide-y divide-gray-100 max-h-[70vh] overflow-y-auto">
+                            @php $allActive = empty($filters['state'] ?? null); @endphp
+                            <li>
+                                <a href="{{ request()->fullUrlWithQuery(['state' => null]) }}"
+                                   class="flex items-center justify-between px-4 py-2 text-sm transition
+                                          {{ $allActive
+                                              ? 'bg-primary-50 text-primary-700 font-semibold border-l-4 border-primary-600'
+                                              : 'text-gray-700 hover:bg-gray-50 border-l-4 border-transparent' }}">
+                                    <span>{{ __('All states') }}</span>
+                                </a>
+                            </li>
+                            @foreach($states as $st)
+                                @php $isActive = ($filters['state'] ?? '') === $st->slug; @endphp
+                                <li>
+                                    <a href="{{ request()->fullUrlWithQuery(['state' => $isActive ? null : $st->slug]) }}"
+                                       class="flex items-center justify-between gap-2 px-4 py-2 text-sm transition
+                                              {{ $isActive
+                                                  ? 'bg-primary-50 text-primary-700 font-semibold border-l-4 border-primary-600'
+                                                  : 'text-gray-700 hover:bg-gray-50 border-l-4 border-transparent' }}">
+                                        <span class="truncate">{{ $st->name }}</span>
+                                        @if($st->cities_count > 0)
+                                            <span class="text-xs text-gray-400 shrink-0">{{ $st->cities_count }}</span>
+                                        @endif
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
+                </details>
+            </aside>
+
+            {{-- ── Sağ ana: sonuçlar ── --}}
+            <div id="async-filter-results" data-async-filter aria-live="polite" aria-busy="false">
+                @include('cities._grid')
+            </div>
         </div>
     </div>
 </section>
