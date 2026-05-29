@@ -30,7 +30,7 @@ class UserResource extends Resource
     protected static ?string $pluralModelLabel = 'Kullanıcılar';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 90;
-    protected static string|\UnitEnum|null $navigationGroup = 'Yönetim';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function form(Schema $schema): Schema
     {

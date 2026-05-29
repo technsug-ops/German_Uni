@@ -24,7 +24,7 @@ class EventResource extends Resource
     protected static ?string $pluralModelLabel = 'Etkinlikler';
     protected static ?string $recordTitleAttribute = 'title_tr';
     protected static ?int $navigationSort = 35;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Topluluk';
 
     public static function form(Schema $schema): Schema
     {

@@ -24,7 +24,7 @@ class StateResource extends Resource
     protected static ?string $pluralModelLabel = 'Eyaletler';
     protected static ?string $recordTitleAttribute = 'name_de';
     protected static ?int $navigationSort = 21;
-    protected static string|\UnitEnum|null $navigationGroup = 'Lügat';
+    protected static string|\UnitEnum|null $navigationGroup = 'Akademik Veri';
 
     public static function form(Schema $schema): Schema
     {

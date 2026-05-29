@@ -24,7 +24,7 @@ class ProgramResource extends Resource
     protected static ?string $pluralModelLabel = 'Programlar';
     protected static ?string $recordTitleAttribute = 'name_de';
     protected static ?int $navigationSort = 2;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Akademik Veri';
 
     public static function form(Schema $schema): Schema
     {

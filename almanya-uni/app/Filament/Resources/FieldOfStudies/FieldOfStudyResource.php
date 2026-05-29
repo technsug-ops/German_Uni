@@ -24,7 +24,7 @@ class FieldOfStudyResource extends Resource
     protected static ?string $pluralModelLabel = 'Alan Grupları';
     protected static ?string $recordTitleAttribute = 'name_tr';
     protected static ?int $navigationSort = 22;
-    protected static string|\UnitEnum|null $navigationGroup = 'Lügat';
+    protected static string|\UnitEnum|null $navigationGroup = 'Akademik Veri';
 
     public static function form(Schema $schema): Schema
     {

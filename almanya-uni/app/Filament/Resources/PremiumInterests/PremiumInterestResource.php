@@ -29,7 +29,7 @@ class PremiumInterestResource extends Resource
     protected static ?string $pluralModelLabel = 'Premium Leadleri';
     protected static ?string $recordTitleAttribute = 'email';
     protected static ?int $navigationSort = 78;
-    protected static string|\UnitEnum|null $navigationGroup = 'İletişim';
+    protected static string|\UnitEnum|null $navigationGroup = 'Topluluk';
 
     public static function form(Schema $schema): Schema
     {

@@ -30,7 +30,7 @@ class ApiClientResource extends Resource
     protected static ?string $pluralModelLabel = 'API İstemcileri';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 60;
-    protected static string|\UnitEnum|null $navigationGroup = 'Entegrasyonlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function form(Schema $schema): Schema
     {

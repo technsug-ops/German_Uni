@@ -24,7 +24,7 @@ class PostResource extends Resource
     protected static ?string $pluralModelLabel = 'Blog Yazıları';
     protected static ?string $recordTitleAttribute = 'title';
     protected static ?int $navigationSort = 10;
-    protected static string|\UnitEnum|null $navigationGroup = 'Blog';
+    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
 
     public static function form(Schema $schema): Schema
     {

@@ -24,7 +24,7 @@ class MentorResource extends Resource
     protected static ?string $pluralModelLabel = 'Mentorlar';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 36;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Topluluk';
 
     public static function form(Schema $schema): Schema
     {

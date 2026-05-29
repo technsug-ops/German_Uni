@@ -24,7 +24,7 @@ class JobPostingResource extends Resource
     protected static ?string $pluralModelLabel = 'İş İlanları';
     protected static ?string $recordTitleAttribute = 'title';
     protected static ?int $navigationSort = 36;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Akademik Veri';
 
     public static function form(Schema $schema): Schema
     {

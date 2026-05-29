@@ -27,7 +27,7 @@ class SocialLinkResource extends Resource
     protected static ?string $modelLabel = 'Sosyal Link';
     protected static ?string $pluralModelLabel = 'Sosyal Medya';
     protected static ?int $navigationSort = 80;
-    protected static string|\UnitEnum|null $navigationGroup = 'Ayarlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     /** Yalnızca tam admin. */
     public static function canViewAny(): bool

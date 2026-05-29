@@ -24,7 +24,7 @@ class CategoryResource extends Resource
     protected static ?string $pluralModelLabel = 'Kategoriler';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 11;
-    protected static string|\UnitEnum|null $navigationGroup = 'Blog';
+    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
 
     public static function form(Schema $schema): Schema
     {

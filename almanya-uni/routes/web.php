@@ -206,6 +206,9 @@ $routes = function () {
     // Mentors / Mentorlar
     Route::get('/mentors', [\App\Http\Controllers\Web\MentorController::class, 'index'])->name('mentors.index');
     Route::get('/mentors/{slug}', [\App\Http\Controllers\Web\MentorController::class, 'show'])->name('mentors.show');
+    Route::post('/mentors/{slug}/book', [\App\Http\Controllers\Web\MentorController::class, 'book'])
+        ->middleware(['auth', 'throttle:5,60'])
+        ->name('mentors.book');
     Route::redirect('/mentorlar', '/mentors', 301);
 
     // City listesi + detay (locale grubu içinde → /tr/cities, /en/cities ...)

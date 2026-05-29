@@ -24,7 +24,7 @@ class HousingProviderResource extends Resource
     protected static ?string $pluralModelLabel = 'Yurt Sağlayıcılar';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 35;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Kaynaklar';
 
     public static function form(Schema $schema): Schema
     {

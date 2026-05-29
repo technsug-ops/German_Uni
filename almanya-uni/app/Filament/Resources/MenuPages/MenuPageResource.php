@@ -23,7 +23,7 @@ class MenuPageResource extends Resource
     protected static ?string $pluralModelLabel = 'Menü Sayfaları';
     protected static ?string $recordTitleAttribute = 'label';
     protected static ?int $navigationSort = 5;
-    protected static string|\UnitEnum|null $navigationGroup = 'Site Ayarları';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function form(Schema $schema): Schema
     {

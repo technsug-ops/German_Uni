@@ -32,7 +32,7 @@ class ScrapedProgramResource extends Resource
     protected static ?string $modelLabel = 'Scraped Program';
     protected static ?string $pluralModelLabel = 'Scrape Review Queue';
     protected static ?int $navigationSort = 71;
-    protected static string|\UnitEnum|null $navigationGroup = 'Entegrasyonlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function getNavigationBadge(): ?string
     {

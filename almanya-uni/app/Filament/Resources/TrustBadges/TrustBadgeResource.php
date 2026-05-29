@@ -35,7 +35,7 @@ class TrustBadgeResource extends Resource
     protected static ?string $modelLabel = 'Güven Rozeti';
     protected static ?string $pluralModelLabel = 'Güven Rozetleri';
     protected static ?int $navigationSort = 39;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pazarlama';
 
     public static function form(Schema $schema): Schema
     {

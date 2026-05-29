@@ -19,7 +19,7 @@ class ContributionResource extends Resource
     protected static ?string $modelLabel = 'Katkı';
     protected static ?string $pluralModelLabel = 'Topluluk Katkıları';
     protected static ?int $navigationSort = 37;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Topluluk';
 
     public static function getNavigationBadge(): ?string
     {

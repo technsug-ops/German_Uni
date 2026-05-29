@@ -24,7 +24,7 @@ class ScholarshipResource extends Resource
     protected static ?string $pluralModelLabel = 'DAAD Bursları';
     protected static ?string $recordTitleAttribute = 'name_en';
     protected static ?int $navigationSort = 30;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Akademik Veri';
 
     public static function form(Schema $schema): Schema
     {

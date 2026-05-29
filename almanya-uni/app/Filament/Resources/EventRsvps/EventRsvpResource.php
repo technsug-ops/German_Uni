@@ -21,7 +21,7 @@ class EventRsvpResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTicket;
 
-    protected static string|UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|UnitEnum|null $navigationGroup = 'Topluluk';
 
     protected static ?string $navigationLabel = 'Etkinlik Kayıtları';
 

@@ -29,7 +29,7 @@ class SubscriberResource extends Resource
     protected static ?string $pluralModelLabel = 'Aboneler';
     protected static ?string $recordTitleAttribute = 'email';
     protected static ?int $navigationSort = 80;
-    protected static string|\UnitEnum|null $navigationGroup = 'İletişim';
+    protected static string|\UnitEnum|null $navigationGroup = 'Topluluk';
 
     public static function form(Schema $schema): Schema
     {

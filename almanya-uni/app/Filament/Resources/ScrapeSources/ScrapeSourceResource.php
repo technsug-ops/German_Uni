@@ -41,7 +41,7 @@ class ScrapeSourceResource extends Resource
     protected static ?string $modelLabel = 'Scrape Source';
     protected static ?string $pluralModelLabel = 'Scrape Sources';
     protected static ?int $navigationSort = 70;
-    protected static string|\UnitEnum|null $navigationGroup = 'Entegrasyonlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function form(Schema $schema): Schema
     {

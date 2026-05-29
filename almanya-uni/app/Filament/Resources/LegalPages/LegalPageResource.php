@@ -24,7 +24,7 @@ class LegalPageResource extends Resource
     protected static ?string $pluralModelLabel = 'Yasal Sayfalar';
     protected static ?string $recordTitleAttribute = 'key';
     protected static ?int $navigationSort = 90;
-    protected static string|\UnitEnum|null $navigationGroup = 'Ayarlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     public static function form(Schema $schema): Schema
     {

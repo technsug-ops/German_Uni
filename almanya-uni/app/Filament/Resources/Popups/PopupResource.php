@@ -24,7 +24,7 @@ class PopupResource extends Resource
     protected static ?string $pluralModelLabel = 'Popup\'lar';
     protected static ?string $recordTitleAttribute = 'key';
     protected static ?int $navigationSort = 38;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pazarlama';
 
     public static function form(Schema $schema): Schema
     {

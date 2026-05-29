@@ -24,7 +24,7 @@ class BlockedAccountProviderResource extends Resource
     protected static ?string $pluralModelLabel = 'Bloke Hesap Sağlayıcılar';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?int $navigationSort = 36;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static string|\UnitEnum|null $navigationGroup = 'Kaynaklar';
 
     public static function form(Schema $schema): Schema
     {
