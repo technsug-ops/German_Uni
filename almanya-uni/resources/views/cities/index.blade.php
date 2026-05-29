@@ -124,18 +124,23 @@
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="lg:grid lg:grid-cols-[240px_1fr] lg:gap-6">
 
-            {{-- ── Sol sidebar: eyaletler ── --}}
-            {{-- <details> handles mobile collapse for free. On lg+ we hide the
-                 <summary> and force the <nav> visible via lg:!block (overrides
-                 the browser's `details:not([open]) > *:not(summary)` UA rule). --}}
+            {{-- ── Sol sidebar: eyaletler ──
+                 Why not <details>? Its UA rendering hides non-summary children
+                 via a shadow slot, which CSS (even lg:!block !important) can't
+                 override — so on desktop the sidebar disappeared when no state
+                 was active. Checkbox-peer is the CSS-only alternative that
+                 plays nice with Tailwind responsive variants. --}}
             <aside class="mb-6 lg:mb-0">
-                <details class="group" @if(! empty($filters['state'] ?? null)) open @endif>
-                    <summary class="lg:hidden cursor-pointer select-none flex items-center justify-between gap-2 px-4 py-3 bg-white rounded-lg border border-gray-200 text-sm font-semibold text-gray-900">
-                        <span class="inline-flex items-center gap-2">🗺️ {{ __('Filter by state') }}</span>
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform">▾</span>
-                    </summary>
-                    <nav aria-label="{{ __('Filter by state') }}"
-                         class="mt-2 lg:mt-0 lg:!block lg:sticky lg:top-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
+                <input type="checkbox" id="state-filter-toggle"
+                       class="peer sr-only"
+                       @if(! empty($filters['state'] ?? null)) checked @endif>
+                <label for="state-filter-toggle"
+                       class="lg:hidden cursor-pointer select-none flex items-center justify-between gap-2 px-4 py-3 bg-white rounded-lg border border-gray-200 text-sm font-semibold text-gray-900 mb-2">
+                    <span class="inline-flex items-center gap-2">🗺️ {{ __('Filter by state') }}</span>
+                    <span class="text-gray-400">▾</span>
+                </label>
+                <nav aria-label="{{ __('Filter by state') }}"
+                     class="hidden peer-checked:block lg:!block lg:sticky lg:top-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
                         <div class="px-4 py-3 border-b border-gray-100 text-xs font-semibold text-gray-500 uppercase tracking-wide hidden lg:block">
                             🗺️ {{ __('States') }}
                         </div>
