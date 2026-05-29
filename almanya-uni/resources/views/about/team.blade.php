@@ -156,7 +156,7 @@
                                         {{ $p->bio }}
                                     </blockquote>
                                 @endif
-                                <div class="flex flex-wrap gap-3 mt-4">
+                                <div class="flex flex-wrap gap-3 mt-4 items-center">
                                     @if ($p->posts_count > 0)
                                         <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900">✍️ {{ __(':count posts', ['count' => $p->posts_count]) }}</span>
                                     @endif
@@ -166,6 +166,32 @@
                                             📄 {{ __('View profile') }} →
                                         </a>
                                     @endif
+                                    {{-- Social pills (LinkedIn, X, GitHub, vb.) admin-ekledigi social_links'ten --}}
+                                    @php
+                                        $socials = (array) ($p->social_links ?? []);
+                                        $iconMap = [
+                                            'linkedin' => ['emoji' => '💼', 'prefix' => 'https://linkedin.com/in/'],
+                                            'twitter'  => ['emoji' => '𝕏',  'prefix' => 'https://x.com/'],
+                                            'x'        => ['emoji' => '𝕏',  'prefix' => 'https://x.com/'],
+                                            'github'   => ['emoji' => '⌨️', 'prefix' => 'https://github.com/'],
+                                            'website'  => ['emoji' => '🌐', 'prefix' => ''],
+                                            'url'      => ['emoji' => '🌐', 'prefix' => ''],
+                                            'email'    => ['emoji' => '✉️', 'prefix' => 'mailto:'],
+                                        ];
+                                    @endphp
+                                    @foreach ($socials as $type => $val)
+                                        @if (! $val) @continue @endif
+                                        @php
+                                            $m = $iconMap[strtolower((string) $type)] ?? null;
+                                            if (! $m) continue;
+                                            $url = str_starts_with($val, 'http') || str_starts_with($val, 'mailto:') ? $val : $m['prefix'] . ltrim($val, '@/');
+                                        @endphp
+                                        <a href="{{ $url }}" target="_blank" rel="noopener noreferrer me" @click.stop
+                                           class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/80 hover:bg-white border border-gray-200 transition shadow-sm"
+                                           title="{{ ucfirst($type) }}">
+                                            <span class="text-sm">{{ $m['emoji'] }}</span>
+                                        </a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -218,16 +244,31 @@
                             <p class="text-xs text-gray-700 leading-relaxed line-clamp-3 mb-3">{{ $p->bio }}</p>
                         @endif
 
-                        <div class="flex flex-wrap gap-1.5 justify-center">
+                        <div class="flex flex-wrap gap-1.5 justify-center items-center">
                             @if ($p->posts_count > 0)
-                                <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full {{ $t['badge'] }}">✍️ {{ $p->posts_count }} {{ __('posts') }}</span>
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full {{ $t['badge'] }}">✍️ {{ $p->posts_count }}</span>
                             @endif
                             @if ($p->slug)
                                 <a href="{{ route('author.show', $p->slug) }}" @click.stop
-                                   class="inline-flex items-center text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 transition">
+                                   class="inline-flex items-center text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 transition" title="{{ __('View profile') }}">
                                     📄
                                 </a>
                             @endif
+                            @php $socials = (array) ($p->social_links ?? []); @endphp
+                            @foreach ($socials as $type => $val)
+                                @if (! $val) @continue @endif
+                                @php
+                                    $lt = strtolower((string) $type);
+                                    $emoji = ['linkedin' => '💼','twitter' => '𝕏','x' => '𝕏','github' => '⌨️','website' => '🌐','url' => '🌐','email' => '✉️'][$lt] ?? null;
+                                    if (! $emoji) continue;
+                                    $url = str_starts_with($val, 'http') || str_starts_with($val, 'mailto:') ? $val
+                                        : (['linkedin' => 'https://linkedin.com/in/','twitter' => 'https://x.com/','x' => 'https://x.com/','github' => 'https://github.com/','email' => 'mailto:'][$lt] ?? '') . ltrim($val, '@/');
+                                @endphp
+                                <a href="{{ $url }}" target="_blank" rel="noopener noreferrer me" @click.stop
+                                   class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/90 hover:bg-white border border-gray-200 text-xs shadow-sm transition" title="{{ ucfirst($type) }}">
+                                    {{ $emoji }}
+                                </a>
+                            @endforeach
                         </div>
                     </article>
                 @endforeach

@@ -55,6 +55,13 @@ $routes = function () {
         ->middleware('throttle:5,1')
         ->name('feedback.store');
 
+    // Popup tracking — view/click/dismiss counter endpoints
+    Route::post('/popups/{popup}/track/{event}', function (\App\Models\Popup $popup, string $event) {
+        if (! in_array($event, ['view', 'click', 'dismiss'], true)) abort(400);
+        $popup->increment($event . '_count');
+        return response()->json(['ok' => true]);
+    })->where('event', 'view|click|dismiss')->middleware('throttle:60,1')->name('popups.track');
+
     // Newsletter — double opt-in akış
     Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
         ->middleware('throttle:10,1')

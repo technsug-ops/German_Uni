@@ -828,8 +828,31 @@
                     <p class="text-primary-400 text-xs">{{ __('Up-to-date guide on studying in Germany') }}</p>
                 </div>
             </div>
+
+            {{-- Web development credit (techNS UG — Technology Next Station) --}}
+            <div class="mt-4 pt-4 border-t border-primary-800/50 flex justify-center items-center text-xs text-primary-400">
+                <span>{{ __('Web development by') }}</span>
+                <span class="ml-1.5 font-bold text-primary-200">techNS UG</span>
+                <span class="ml-1.5 opacity-70">— {{ __('Technology Next Station') }}</span>
+            </div>
         </div>
     </footer>
+
+    {{-- ════ POPUP'lar — admin'den yönetiliyor, sayfa-bazlı + zaman-bazlı ════ --}}
+    @php
+        try {
+            $activePopups = \App\Models\Popup::allForCurrentRequest(
+                request()->route()?->getName(),
+                '/' . trim(request()->path(), '/')
+            );
+        } catch (\Throwable $e) {
+            // popups tablosu henüz migrate edilmemişse sessiz geç
+            $activePopups = collect();
+        }
+    @endphp
+    @foreach ($activePopups as $popup)
+        <x-popup :popup="$popup" />
+    @endforeach
 
     {{-- PWA Service Worker registration --}}
     <script>
