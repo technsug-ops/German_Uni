@@ -1345,9 +1345,206 @@ class ToolsController extends Controller
     }
 
     // ════════════════════════════════════════════════════════════════════
-    // ELIGIBILITY CHECKER — Diploman Alman üniversitesine uygun mu?
-    // Anabin sınıflandırması bazlı kural matrisi (MVP — 15 ülke).
+    // PROFESSIONAL RECOGNITION (Mesleki Denklik) — Almanya'da çalışabilmek
+    // için Anerkennung gerekli mi? Hangi kurum, ne kadar sürer, maliyet?
     // ════════════════════════════════════════════════════════════════════
+    public function professionalRecognition(Request $request): View
+    {
+        $professions = self::recognitionProfessions();
+        $result = null;
+
+        if ($request->isMethod('post')) {
+            $data = $request->validate([
+                'profession_key' => 'required|string',
+                'country_origin' => 'nullable|string|max:8',
+                'work_experience_years' => 'nullable|integer|min:0|max:50',
+            ]);
+
+            $key = $data['profession_key'];
+            if (isset($professions[$key])) {
+                $profession = $professions[$key];
+                $result = $this->assessProfessionalRecognition($profession, $data);
+            }
+        }
+
+        return view('tools.professional-recognition', [
+            'professions' => $professions,
+            'result' => $result,
+            'old' => $request->all(),
+        ]);
+    }
+
+    /**
+     * Almanya'da Anerkennung kanonik mesleklerin matrisi.
+     * Veri kaynakları: anerkennung-in-deutschland.de + BERUFENET + Bundesärztekammer.
+     */
+    private static function recognitionProfessions(): array
+    {
+        return [
+            'doctor' => [
+                'name' => 'Hekim (Doktor)',
+                'name_en' => 'Medical Doctor',
+                'icon' => '🩺',
+                'regulated' => true,
+                'authority' => 'Landesärztekammer (eyalet tabipler odası)',
+                'authority_url' => 'https://www.bundesaerztekammer.de/',
+                'estimated_months' => '6–18',
+                'estimated_cost_eur' => '€400–800',
+                'language_required' => 'B2/C1 Almanca + medikal C1 sınav (Fachsprachenprüfung)',
+                'process_steps' => [
+                    'Diploma + transkript Beglaubigte Übersetzung',
+                    'Approbation (lisans) için Anerkennungsbehörde\'ye başvuru',
+                    'Eyaletin Gleichwertigkeitsprüfung\'ı (denklik testi) — gerekirse Kenntnisprüfung (8 saatlik bilgi testi)',
+                    'Fachsprachenprüfung (medikal Almanca sınavı)',
+                    'Approbation belgesi düzenlenir',
+                ],
+                'pitfalls' => [
+                    'Anerkennung olmadan asistan olarak çalışılamaz (Berufserlaubnis ile geçici 2 yıl mümkün, sonra Approbation şart)',
+                    'Eyalet bazlı denklik testleri farklı — Bavyera daha katı, Berlin görece esnek',
+                    'Türk diploması için klinik staj eksikse Kenntnisprüfung mecburi',
+                ],
+            ],
+            'engineer' => [
+                'name' => 'Mühendis',
+                'name_en' => 'Engineer',
+                'icon' => '⚙️',
+                'regulated' => false,
+                'authority' => 'IHK FOSA (Foreign Skills Approval) — opsiyonel sertifikasyon',
+                'authority_url' => 'https://www.ihk-fosa.de/',
+                'estimated_months' => '0–3',
+                'estimated_cost_eur' => '€0 (opsiyonel: €100–500 IHK FOSA)',
+                'language_required' => 'B1/B2 (işverene göre)',
+                'process_steps' => [
+                    'Doğrudan iş başvurusu yapabilirsin (regulated meslek değil)',
+                    'CV + diploma çevirisi yeterli, Anerkennung ZORUNLU DEĞİL',
+                    '(Opsiyonel) IHK FOSA üzerinden "Zeugnisbewertung" — denklik belgesi maaş pazarlığında işe yarar',
+                    '"Beratender Ingenieur" (consulting engineer) gibi spesifik ünvan için ayrı kayıt gerek',
+                ],
+                'pitfalls' => [
+                    'Diploma denkliği iş için şart değil ama Blue Card için ZAB Zeugnisbewertung istenir',
+                    'Public sector pozisyonlar genelde resmi denklik bekler — özel sektör daha esnek',
+                    'Almanca B2 olmadan Junior pozisyon nadir, Senior yabancı dilde mümkün',
+                ],
+            ],
+            'nurse' => [
+                'name' => 'Hemşire',
+                'name_en' => 'Nurse',
+                'icon' => '👩‍⚕️',
+                'regulated' => true,
+                'authority' => 'Eyalet sağlık otoritesi (örn. Regierungspräsidium Düsseldorf)',
+                'authority_url' => 'https://www.anerkennung-in-deutschland.de/',
+                'estimated_months' => '4–12',
+                'estimated_cost_eur' => '€200–600',
+                'language_required' => 'B2 Almanca + bazı eyaletlerde sağlık dili sınavı',
+                'process_steps' => [
+                    'Diploma + müfredat + 2 yıl Türk hemşirelik tecrübesi belgesi',
+                    'Eyalet otoritesine "Berufserlaubnis" başvurusu',
+                    'Eğitim farkı tespit edilirse 6 aya kadar Anpassungslehrgang (uyum kursu) veya Kenntnisprüfung',
+                    'B2 Almanca + bazı eyaletlerde Pflege-Fachsprachenprüfung',
+                    'Anerkennung belgesi → tam yetkili hemşire olarak çalışma',
+                ],
+                'pitfalls' => [
+                    'Türk müfredatı 3 yıllık olduğu için bazı eyaletler doğrudan onayladığı halde NRW gibi eyaletler kursu ister',
+                    'Pflegehelfer (yardımcı) olarak işe başlanabilir ama maaş %30 düşük',
+                    'Hızlı yol: "Triple Win" programı (GIZ + Bundesagentur) — 6–9 ay tüm süreç paketlenmiş',
+                ],
+            ],
+            'teacher' => [
+                'name' => 'Öğretmen',
+                'name_en' => 'Teacher',
+                'icon' => '🎓',
+                'regulated' => true,
+                'authority' => 'Eyalet Kultusministerium (eğitim bakanlığı)',
+                'authority_url' => 'https://www.anerkennung-in-deutschland.de/',
+                'estimated_months' => '12–24',
+                'estimated_cost_eur' => '€200–500',
+                'language_required' => 'C1/C2 Almanca + Almanca branş bilgisi',
+                'process_steps' => [
+                    'Hangi okul tipinde öğretmenlik (ilkokul / Gymnasium / meslek okulu) — başvuru otoritesini etkiler',
+                    'Diploma + tezler + pedagojik formasyon belgesi çevirisi',
+                    'Eyalet bakanlığına resmi "Lehrerlaubnis" başvurusu',
+                    'Eğitim eksiği için 6–24 ay "Anpassungsmaßnahme" (uyum eğitimi)',
+                    'Quereinstieg programları (yan giriş) yeni öğretmen açığı olan branşlarda hızlı yol',
+                ],
+                'pitfalls' => [
+                    'Branşa göre çok değişken — STEM açıkken sosyal bilim kontenjanı dolu',
+                    'Tek branş yetmez, çoğu eyalet 2 branş ister',
+                    'Devlet okulu için Beamter (memur) statüsüne C1+ ve 45 yaş altı şart genelde',
+                ],
+            ],
+            'it_specialist' => [
+                'name' => 'IT Uzmanı / Yazılım Geliştirici',
+                'name_en' => 'IT Specialist / Software Developer',
+                'icon' => '💻',
+                'regulated' => false,
+                'authority' => 'Yok — direkt iş başvurusu serbest',
+                'authority_url' => 'https://www.make-it-in-germany.com/en/working-in-germany/it-specialists',
+                'estimated_months' => '0',
+                'estimated_cost_eur' => '€0',
+                'language_required' => 'B1 Almanca veya B2 İngilizce (işverene göre)',
+                'process_steps' => [
+                    'Diploma + iş tecrübesi + portfolio ile doğrudan başvuru',
+                    'Anerkennung GEREKMEZ — IT serbest meslek',
+                    'Blue Card için lisans diploması + €45.300 yıllık maaş şart',
+                    'Diploma yoksa "Fachkräfteeinwanderungsgesetz" altında 3+ yıl tecrübe + €50.000 maaş ile Blue Card mümkün',
+                ],
+                'pitfalls' => [
+                    'En kolay sektör ama remote-only pozisyonlar Blue Card için yetmiyor — fiziksel iş yeri Almanya\'da olmalı',
+                    'Junior pozisyon bulmak yetenek/portfolio gerek, Senior daha kolay',
+                    'Self-employed IT için ayrı vize var ama özel: "Freiberufler"',
+                ],
+            ],
+            'lawyer' => [
+                'name' => 'Avukat',
+                'name_en' => 'Lawyer',
+                'icon' => '⚖️',
+                'regulated' => true,
+                'authority' => 'Eyalet Anwaltskammer',
+                'authority_url' => 'https://www.brak.de/',
+                'estimated_months' => '24–48',
+                'estimated_cost_eur' => '€500–1500',
+                'language_required' => 'C1/C2 Almanca + Alman hukuku bilgisi',
+                'process_steps' => [
+                    'Türk hukuk diploması doğrudan tanınmıyor — Alman hukuku eğitimi gerek',
+                    'Universität\'te 2–4 yıl Aufbaustudium (yapı tamamlama eğitimi) — bazıları Master LL.M.',
+                    '1. ve 2. Staatsexamen (devlet sınavları) — Alman öğrencileriyle aynı kademe',
+                    'Referendariat (2 yıl staj) — devlet hizmetinde maaşlı staj',
+                    'Tam Anwalt yetkisi → Anwaltskammer\'a kayıt',
+                ],
+                'pitfalls' => [
+                    'Almanya\'da Türk hukuku üzerine "Beratungsanwalt" (danışman avukat) olabilirsin — Staatsexamen gerekmez ama yetkilerin sınırlı',
+                    'AB hukuku odaklı LL.M. sonrası bazı uluslararası firmalar işe alır',
+                    'Tam yol uzun + pahalı — 5–7 yıllık taahhüt',
+                ],
+            ],
+        ];
+    }
+
+    private function assessProfessionalRecognition(array $profession, array $data): array
+    {
+        $exp = (int) ($data['work_experience_years'] ?? 0);
+        $notes = [];
+
+        if ($exp >= 5 && ! $profession['regulated']) {
+            $notes[] = '✅ ' . $exp . ' yıl tecrübe ile Senior pozisyon hedefleyebilirsin — Anerkennung\'a gerek yok.';
+        }
+        if ($profession['regulated'] && $exp < 2) {
+            $notes[] = '⚠️ Regulated meslek + 2 yıldan az tecrübe = denklik testleri daha sıkı olabilir.';
+        }
+        if (in_array($data['country_origin'] ?? 'TR', ['TR', 'tr'])) {
+            $notes[] = 'ℹ️ Türk diplomaları için spesifik: Çevirilerin Beglaubigte Übersetzung olması ve transkriptin notu içermesi şart.';
+        }
+
+        return [
+            'profession' => $profession,
+            'verdict' => $profession['regulated']
+                ? 'regulated'
+                : 'free',
+            'next_step_url' => 'https://www.anerkennung-in-deutschland.de/',
+            'notes' => $notes,
+        ];
+    }
+
     public function studienkolleg(Request $request): View
     {
         $query = \App\Models\Studienkolleg::active()

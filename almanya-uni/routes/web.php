@@ -137,6 +137,10 @@ $routes = function () {
         Route::get('/sperrkonto', [\App\Http\Controllers\Web\BlockedAccountController::class, 'index'])->name('blocked-account');
         Route::get('/sperrkonto/country/{country}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'country'])->name('blocked-account.country');
         Route::get('/sperrkonto/{slug}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'show'])->name('blocked-account.show');
+
+        // Professional Recognition (Mesleki Denklik) — Euroversity insight
+        Route::match(['get', 'post'], '/professional-recognition', [ToolsController::class, 'professionalRecognition'])
+            ->name('professional-recognition');
     });
     Route::redirect('/araclar/kariyer-pusulasi', '/tools/career-compass', 301);
     Route::redirect('/tools/bloke-hesap', '/tools/sperrkonto', 301);
