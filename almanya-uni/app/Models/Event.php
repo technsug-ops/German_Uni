@@ -15,6 +15,7 @@ class Event extends Model
         'type', 'category_id', 'title_tr', 'title_en', 'title_de', 'slug',
         'description_md_tr', 'description_md_en', 'description_md_de', 'host', 'host_user_id',
         'sponsor', 'sponsor_logo_url', 'reward', 'target_audience', 'difficulty', 'duration_minutes', 'tags', 'presentation_language',
+        'recurrence_rule', 'parent_event_id',
         'starts_at', 'ends_at', 'timezone',
         'mode', 'online_url', 'location_name', 'location_city',
         'registration_url', 'max_attendees', 'registered_count', 'registration_required', 'price_eur',
@@ -68,6 +69,117 @@ class Event extends Model
     public function rsvps()
     {
         return $this->hasMany(EventRsvp::class)->orderByDesc('created_at');
+    }
+
+    public function parentEvent()
+    {
+        return $this->belongsTo(Event::class, 'parent_event_id');
+    }
+
+    public function childEvents()
+    {
+        return $this->hasMany(Event::class, 'parent_event_id')->orderBy('starts_at');
+    }
+
+    public function isRecurring(): bool
+    {
+        return ! empty($this->recurrence_rule);
+    }
+
+    public function isSeriesChild(): bool
+    {
+        return ! empty($this->parent_event_id);
+    }
+
+    public function isSeriesParent(): bool
+    {
+        return $this->isRecurring() || $this->childEvents()->exists();
+    }
+
+    /**
+     * Recurrence rule'a göre next occurrence DateTime'ı.
+     * weekly +7gün, biweekly +14gün, monthly +1 ay.
+     */
+    public function nextOccurrenceFrom(\Illuminate\Support\Carbon $from): ?\Illuminate\Support\Carbon
+    {
+        if (! $this->isRecurring()) return null;
+        return match ($this->recurrence_rule) {
+            'weekly'   => $from->copy()->addWeek(),
+            'biweekly' => $from->copy()->addWeeks(2),
+            'monthly'  => $from->copy()->addMonth(),
+            default    => null,
+        };
+    }
+
+    /**
+     * Bu parent event'ten N kopya üret (Filament admin action'dan çağrılır).
+     * Her kopya parent'ın verilerini taşır, sadece tarih ileri kayar.
+     */
+    public function generateSeriesOccurrences(int $count): array
+    {
+        if (! $this->isRecurring()) {
+            throw new \LogicException('Event has no recurrence_rule set.');
+        }
+        if ($this->parent_event_id) {
+            throw new \LogicException('Series children cannot generate further occurrences.');
+        }
+
+        $created = [];
+        $lastStart = $this->starts_at;
+        $duration = $this->ends_at ? $this->starts_at->diffInMinutes($this->ends_at) : ($this->duration_minutes ?: 60);
+
+        for ($i = 0; $i < $count; $i++) {
+            $nextStart = $this->nextOccurrenceFrom($lastStart);
+            if (! $nextStart) break;
+
+            // Slug çakışmasını önle (parent slug + tarih)
+            $childSlug = $this->slug . '-' . $nextStart->format('Y-m-d');
+            if (self::where('slug', $childSlug)->exists()) {
+                $lastStart = $nextStart;
+                continue;
+            }
+
+            $child = self::create([
+                'type'                  => $this->type,
+                'category_id'           => $this->category_id,
+                'title_tr'              => $this->title_tr,
+                'title_en'              => $this->title_en,
+                'title_de'              => $this->title_de,
+                'slug'                  => $childSlug,
+                'description_md_tr'     => $this->description_md_tr,
+                'description_md_en'     => $this->description_md_en,
+                'description_md_de'     => $this->description_md_de,
+                'host'                  => $this->host,
+                'host_user_id'          => $this->host_user_id,
+                'target_audience'       => $this->target_audience,
+                'difficulty'            => $this->difficulty,
+                'duration_minutes'      => $duration,
+                'tags'                  => $this->tags,
+                'starts_at'             => $nextStart,
+                'ends_at'               => $nextStart->copy()->addMinutes($duration),
+                'timezone'              => $this->timezone,
+                'mode'                  => $this->mode,
+                'location_name'         => $this->location_name,
+                'location_city'         => $this->location_city,
+                'max_attendees'         => $this->max_attendees,
+                'registered_count'      => 0,
+                'maybe_count'           => 0,
+                'registration_required' => $this->registration_required,
+                'price_eur'             => $this->price_eur,
+                'banner_color'          => $this->banner_color,
+                'is_featured'           => false,
+                'is_active'             => true,
+                'meta_title'            => $this->meta_title,
+                'meta_description'      => $this->meta_description,
+                'presentation_language' => $this->presentation_language,
+                'parent_event_id'       => $this->id,
+                // recurrence_rule SADECE parent'ta — child'da boş bırak
+            ]);
+            $created[] = $child;
+            $lastStart = $nextStart;
+        }
+
+        return $created;
     }
 
     public function goingRsvps()

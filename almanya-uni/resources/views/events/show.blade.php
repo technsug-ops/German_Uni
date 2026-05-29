@@ -87,6 +87,16 @@
                     {{ $event->language_flag }} {{ $event->language_label }}
                 </span>
             @endif
+            @if ($event->isRecurring())
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/30 backdrop-blur text-xs font-bold ring-1 ring-amber-300/50" title="{{ __('This event repeats') }}">
+                    🔁 {{ match($event->recurrence_rule) { 'weekly' => __('Weekly'), 'biweekly' => __('Every 2 weeks'), 'monthly' => __('Monthly'), default => __('Repeating') } }}
+                </span>
+            @elseif ($event->isSeriesChild())
+                <a href="{{ $event->parentEvent ? route('events.show', $event->parentEvent->slug) : '#' }}"
+                   class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/30 backdrop-blur text-xs font-bold ring-1 ring-amber-300/50 hover:bg-amber-400/50 transition" title="{{ __('Part of a series — click to see the original') }}">
+                    📆 {{ __('Part of series') }}
+                </a>
+            @endif
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">{{ $event->title }}</h1>

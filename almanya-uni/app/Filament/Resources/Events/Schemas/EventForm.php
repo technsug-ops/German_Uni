@@ -142,6 +142,26 @@ class EventForm
                 DateTimePicker::make('ends_at')->label('Bitiş')->seconds(false),
                 TextInput::make('timezone')->default('Europe/Berlin')->maxLength(32),
 
+                Select::make('recurrence_rule')
+                    ->label('🔁 Tekrar (opsiyonel)')
+                    ->options([
+                        'weekly'   => 'Her hafta',
+                        'biweekly' => 'İki haftada bir',
+                        'monthly'  => 'Ayda bir',
+                    ])
+                    ->placeholder('Tekrarsız (tek seferlik)')
+                    ->helperText('Tekrar seçersen, kaydettikten sonra "🔁 Seriyi N kopya ileri uzat" buton görünür'),
+
+                Select::make('presentation_language')
+                    ->label('🗣️ Sunum dili')
+                    ->options([
+                        'tr'    => '🇹🇷 Türkçe',
+                        'en'    => '🇬🇧 English',
+                        'de'    => '🇩🇪 Deutsch',
+                        'multi' => '🌍 Çoklu (Türkçe + Almanca)',
+                    ])
+                    ->default('tr'),
+
                 Select::make('mode')
                     ->label('Tip')
                     ->options([
