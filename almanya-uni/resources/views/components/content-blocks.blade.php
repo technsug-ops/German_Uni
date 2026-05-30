@@ -300,7 +300,7 @@
                     <ul class="mt-4 space-y-2 text-sm">
                         @foreach($block['highlights'] as $h)
                             <li class="flex items-start gap-2 text-gray-900">
-                                <span class="text-amber-600 text-base leading-tight">✦</span>
+                                <x-svg-icon name="star" class="w-4 h-4 mt-0.5 text-amber-600 shrink-0" />
                                 <span class="font-medium">{{ $h }}</span>
                             </li>
                         @endforeach
