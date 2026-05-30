@@ -100,7 +100,7 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('programs.show', $program->slug) }}" class="block">
                     <div class="aspect-[16/10] bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center relative">
-                        <div class="text-6xl opacity-90 flex items-center justify-center">{!! $program->field?->icon ?: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>' !!}</div>
+                        <div class="opacity-90 flex items-center justify-center text-white">{!! $program->field ? e_icon($program->field->icon, 'w-16 h-16') : view('components.svg-icon', ['name' => 'book-open', 'class' => 'w-16 h-16'])->render() !!}</div>
                         @if ($program->language === 'en')
                             <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">🇬🇧 EN</span>
                         @elseif ($program->language === 'both')
@@ -179,7 +179,7 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('fields.show', $field->slug) }}" class="block">
                     <div class="aspect-[16/10] flex items-center justify-center" style="background: linear-gradient(135deg, {{ $field->color ?: '#6366f1' }}99, {{ $field->color ?: '#6366f1' }})">
-                        <div class="text-6xl flex items-center justify-center">{!! $field->icon ?: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>' !!}</div>
+                        <div class="flex items-center justify-center text-white">{!! e_icon($field->icon, 'w-16 h-16') !!}</div>
                     </div>
                     <div class="p-5">
                         <p class="text-xs font-bold uppercase tracking-wider mb-1.5 inline-flex items-center gap-1" style="color: {{ $field->color ?: '#6366f1' }}"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Field of Study') }}</p>

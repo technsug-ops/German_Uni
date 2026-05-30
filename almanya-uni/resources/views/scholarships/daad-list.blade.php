@@ -17,10 +17,10 @@
             <span class="text-white">{{ __('Scholarships') }}</span>
         </nav>
         <div class="flex flex-wrap items-center gap-3">
-            <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">🎓 {{ __('DAAD Scholarship Database') }}</h1>
+            <h1 class="text-3xl md:text-4xl font-extrabold leading-tight inline-flex items-center gap-3"><x-svg-icon name="academic-cap" class="w-8 h-8" /> {{ __('DAAD Scholarship Database') }}</h1>
             <a href="{{ route('scholarships.guide') }}"
                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-sm font-medium ring-1 ring-white/20 transition">
-                📚 {{ __('All scholarship sources guide') }} →
+                <x-svg-icon name="book-open" class="w-4 h-4" /> {{ __('All scholarship sources guide') }} →
             </a>
         </div>
         <p class="text-primary-100 max-w-3xl mt-3">

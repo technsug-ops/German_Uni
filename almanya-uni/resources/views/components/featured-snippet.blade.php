@@ -2,7 +2,7 @@
     'question' => null,
     'answer' => null,
     'steps' => [],
-    'icon' => '💡',
+    'icon' => 'light-bulb',
 ])
 
 @php
@@ -14,7 +14,7 @@
 @if ($question && $answer)
     <section class="featured-snippet bg-gradient-to-br from-primary-50 to-accent-50 border-l-4 border-primary-500 rounded-r-xl p-5 md:p-6 my-6 shadow-sm">
         <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-3 flex items-start gap-2">
-            <span class="shrink-0 mt-0.5">{{ $icon }}</span>
+            <span class="shrink-0 mt-1 text-primary-600"><x-svg-icon :name="$icon" class="w-5 h-5" /></span>
             <span>{{ $question }}</span>
         </h2>
         <p class="text-gray-800 leading-relaxed">

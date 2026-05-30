@@ -547,7 +547,7 @@
                            class="group block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-lg p-4">
                             <div class="flex items-start gap-2 mb-2">
                                 @if ($f->topic->icon)
-                                    <span class="text-xl">{{ $f->topic->icon }}</span>
+                                    <span style="color: {{ $f->topic->color ?? '#1E40AF' }};">{!! e_icon($f->topic->icon, 'w-5 h-5') !!}</span>
                                 @endif
                                 <span class="text-xs font-semibold uppercase tracking-wide"
                                       style="color: {{ $f->topic->color ?? '#1E40AF' }}">

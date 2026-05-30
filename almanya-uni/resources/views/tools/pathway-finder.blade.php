@@ -224,7 +224,7 @@
             @foreach ($pathways as $p)
                 <article class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition">
                     <div class="flex items-start gap-3">
-                        <div class="text-3xl shrink-0">{{ $p['icon'] }}</div>
+                        <div class="shrink-0 text-primary-600">{!! e_icon($p['icon'], 'w-8 h-8') !!}</div>
                         <div class="flex-1 min-w-0">
                             <h3 class="font-bold text-gray-900">{{ $p['name'] }}</h3>
                             <p class="text-xs text-gray-500 mt-0.5">{{ $p['subtitle'] }}</p>

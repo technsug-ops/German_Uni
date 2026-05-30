@@ -28,22 +28,22 @@
 
         {{-- Subject --}}
         <section class="bg-white border border-gray-200 rounded-xl p-6">
-            <h2 class="text-lg font-bold text-gray-900 mb-3">📧 {{ __('Subject (Betreff)') }}</h2>
+            <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="envelope" class="w-5 h-5 text-gray-500" /> {{ __('Subject (Betreff)') }}</h2>
             <div class="bg-gray-50 border border-gray-200 rounded p-3 font-mono text-sm" id="mailSubject">{{ $template->subject_de }}</div>
-            <button onclick="copyText('mailSubject', this)" class="mt-3 text-sm font-semibold bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded transition">📋 {{ __('Copy') }}</button>
+            <button onclick="copyText('mailSubject', this)" class="mt-3 text-sm font-semibold bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded transition inline-flex items-center gap-1.5"><x-svg-icon name="check" class="w-4 h-4" /> {{ __('Copy') }}</button>
         </section>
 
         {{-- Body --}}
         <section class="bg-white border border-gray-200 rounded-xl p-6">
-            <h2 class="text-lg font-bold text-gray-900 mb-3">✍️ {{ __('Email Body (German)') }}</h2>
+            <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="pencil" class="w-5 h-5 text-gray-500" /> {{ __('Email Body (German)') }}</h2>
             <div class="bg-gray-50 border border-gray-200 rounded p-4 font-mono text-sm whitespace-pre-line leading-relaxed" id="mailBody">{{ $template->body_de }}</div>
-            <button onclick="copyText('mailBody', this)" class="mt-3 text-sm font-semibold bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded transition">📋 {{ __('Copy') }}</button>
+            <button onclick="copyText('mailBody', this)" class="mt-3 text-sm font-semibold bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded transition inline-flex items-center gap-1.5"><x-svg-icon name="check" class="w-4 h-4" /> {{ __('Copy') }}</button>
         </section>
 
         {{-- Placeholder açıklamaları --}}
         @if (! empty($template->placeholders))
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                <h2 class="text-lg font-bold text-blue-900 mb-3">🔧 {{ __('Fields to fill in') }}</h2>
+                <h2 class="text-lg font-bold text-blue-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="wrench-screwdriver" class="w-5 h-5" /> {{ __('Fields to fill in') }}</h2>
                 <p class="text-sm text-blue-800 mb-3">{{ __('Replace the placeholders inside curly braces with your own information:') }}</p>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($template->placeholders as $ph)
@@ -56,7 +56,7 @@
         {{-- Açıklama / İpuçları --}}
         @if ($template->body_tr_explanation)
             <section class="bg-amber-50 border border-amber-200 rounded-xl p-6">
-                <h2 class="text-lg font-bold text-amber-900 mb-3">💡 {{ __('Explanation & Tips') }}</h2>
+                <h2 class="text-lg font-bold text-amber-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('Explanation & Tips') }}</h2>
                 <div class="text-amber-900 leading-relaxed whitespace-pre-line">{{ $template->body_tr_explanation }}</div>
             </section>
         @endif
