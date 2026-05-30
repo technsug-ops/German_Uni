@@ -58,6 +58,18 @@
                         </span>
                     @endif
 
+                    {{-- Admin-only "image missing" marker — shows on cards using the gradient
+                         fallback (no own image_url AND no city pool match). Visible only to
+                         logged-in admins so the public view stays clean. --}}
+                    @auth
+                        @if(auth()->user()->is_admin && empty($uni['image_url']))
+                            <span class="absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-500/90 text-white text-[10px] font-bold uppercase tracking-wider shadow-md ring-1 ring-white/30">
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                                {{ __('Image missing') }}
+                            </span>
+                        @endif
+                    @endauth
+
                     @if($uni['logo_url'] && $coverUrl)
                         <div class="absolute bottom-2 left-2 w-12 h-12 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
                             <img src="{{ $uni['logo_url'] }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
