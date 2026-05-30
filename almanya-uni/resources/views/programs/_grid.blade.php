@@ -91,32 +91,45 @@
                             @if ($p->field)
                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white"
                                       style="background-color: {{ $p->field->color }};">
-                                    {{ $p->field->icon }} {{ $p->field->name }}
+                                    {!! e_icon($p->field->icon, 'w-3 h-3') !!} {{ $p->field->name }}
                                 </span>
                             @endif
                             @if ($p->degree_specification)
                                 <span>{{ $p->degree_specification }}</span>
                             @endif
                             @if ($p->duration_semesters)
-                                <span>⏱️ {{ $p->duration_semesters }} {{ __('sem') }}</span>
+                                <span class="inline-flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                                    {{ $p->duration_semesters }} {{ __('sem') }}
+                                </span>
                             @endif
                             @if (! is_null($p->tuition_fee_eur))
-                                <span>
-                                    💶 {{ $p->tuition_fee_eur == 0
+                                <span class="inline-flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                                    {{ $p->tuition_fee_eur == 0
                                         ? __('Free')
                                         : number_format($p->tuition_fee_eur, 0, ',', '.') . ' €/' . __('sem') }}
                                 </span>
                             @elseif ($p->university?->city?->state && in_array($p->university->city->state->slug, $nonEuTuitionStates))
-                                <span class="text-orange-700">💶 {{ __('Non-EU: ~€1,500/sem') }}</span>
+                                <span class="text-orange-700 inline-flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                                    {{ __('Non-EU: ~€1,500/sem') }}
+                                </span>
                             @endif
                             @if ($p->application_deadline_winter)
-                                <span>📅 {{ __('Winter:') }} {{ $p->application_deadline_winter->format('d.m') }}</span>
+                                <span class="inline-flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                                    {{ __('Winter:') }} {{ $p->application_deadline_winter->format('d.m') }}
+                                </span>
                             @endif
                             @if ($p->application_deadline_summer)
-                                <span>📅 {{ __('Summer:') }} {{ $p->application_deadline_summer->format('d.m') }}</span>
+                                <span class="inline-flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                                    {{ __('Summer:') }} {{ $p->application_deadline_summer->format('d.m') }}
+                                </span>
                             @endif
                             @if ($p->university?->is_uni_assist_member)
-                                <span class="text-blue-700">📋 Uni-Assist</span>
+                                <span class="text-blue-700">Uni-Assist</span>
                             @endif
                             @if ($p->admission_mode === 'zulassungsfrei')
                                 <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">🔓 {{ __('NC Frei') }}</span>

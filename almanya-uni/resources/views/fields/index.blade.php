@@ -56,9 +56,9 @@
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         @else
-                            <div class="w-full h-full flex items-center justify-center text-7xl"
+                            <div class="w-full h-full flex items-center justify-center"
                                  style="background: linear-gradient(135deg, {{ $field->color }}33, {{ $field->color }}66);">
-                                <span>{{ $field->icon }}</span>
+                                <span class="text-white" style="color: {{ $field->color }};">{!! e_icon($field->icon, 'w-16 h-16') !!}</span>
                             </div>
                         @endif
                         @if($field->content_blocks)
@@ -70,7 +70,7 @@
                     </div>
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="text-2xl">{{ $field->icon }}</span>
+                            <span style="color: {{ $field->color }};">{!! e_icon($field->icon, 'w-6 h-6') !!}</span>
                             <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight">
                                 {{ $field->name }}
                             </h3>

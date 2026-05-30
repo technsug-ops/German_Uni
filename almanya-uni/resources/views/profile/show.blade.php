@@ -542,7 +542,7 @@
                     <select name="target_field_id" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-primary-500 focus:outline-none">
                         <option value="">— {{ __('Select') }} —</option>
                         @foreach ($fields as $f)
-                            <option value="{{ $f->id }}" @selected(old('target_field_id', $user->target_field_id) == $f->id)>{{ $f->icon }} {{ $f->name }}</option>
+                            <option value="{{ $f->id }}" @selected(old('target_field_id', $user->target_field_id) == $f->id)>{{ $f->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -725,7 +725,7 @@
                                 @if($item->field)
                                     <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium text-white shrink-0"
                                           style="background-color: {{ $item->field->color }};">
-                                        {{ $item->field->icon }}
+                                        {!! e_icon($item->field->icon, 'w-3.5 h-3.5') !!}
                                     </span>
                                 @endif
                             </div>
