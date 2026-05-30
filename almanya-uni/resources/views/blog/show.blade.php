@@ -537,7 +537,7 @@ document.addEventListener('alpine:init', () => {
         vote(type) {
             this.voted = type;
             localStorage.setItem('post-feedback-' + postId, type);
-            this.thanks = type === 'up' ? '{{ __('👍 Thanks for your feedback!') }}' : '{{ __('😔 Sorry. We will review your feedback.') }}';
+            this.thanks = type === 'up' ? '{{ __('Thanks for your feedback!') }}' : '{{ __('Sorry. We will review your feedback.') }}';
 
             // POST analytics (varsa endpoint'e)
             try {

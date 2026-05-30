@@ -288,17 +288,17 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                 @php
                     $daad = [
-                        [__('🏠 Rent (utilities included)'), '410 €', 'rent'],
-                        [__('🍽️ Food'), '198 €', 'food'],
-                        [__('🏥 Health insurance + doctor + medicine'), '100 €', 'health'],
-                        [__('🚌 Transport'), '89 €', 'transport'],
-                        [__('🎓 Tuition fee'), '76 €', 'tuition'],
-                        [__('🎭 Leisure / culture / sport'), '65 €', 'leisure'],
-                        [__('👕 Clothing'), '46 €', 'clothing'],
-                        [__('💳 Semester contribution'), '36 €', 'contribution'],
-                        [__('📚 Study materials'), '31 €', 'materials'],
-                        [__('📞 Phone / Internet / TV license'), '32 €', 'phone'],
-                        [__('🛒 Other'), '144 €', 'other'],
+                        [__('Rent (utilities included)'), '410 €', 'rent'],
+                        [__('Food'), '198 €', 'food'],
+                        [__('Health insurance + doctor + medicine'), '100 €', 'health'],
+                        [__('Transport'), '89 €', 'transport'],
+                        [__('Tuition fee'), '76 €', 'tuition'],
+                        [__('Leisure / culture / sport'), '65 €', 'leisure'],
+                        [__('Clothing'), '46 €', 'clothing'],
+                        [__('Semester contribution'), '36 €', 'contribution'],
+                        [__('Study materials'), '31 €', 'materials'],
+                        [__('Phone / Internet / TV license'), '32 €', 'phone'],
+                        [__('Other'), '144 €', 'other'],
                     ];
                 @endphp
                 @foreach ($daad as [$label, $amount, $key])

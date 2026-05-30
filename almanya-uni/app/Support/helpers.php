@@ -215,3 +215,92 @@ if (! function_exists('wikimedia_thumb')) {
         return $url;
     }
 }
+
+if (! function_exists('e_icon')) {
+    /**
+     * Map a DB-stored emoji to an inline Heroicons outline SVG so the chrome
+     * matches the rest of the modernised UI. Returns the original emoji
+     * unchanged if we don't have a mapping for it (admins can still pick
+     * exotic emojis from Filament for one-off pages).
+     *
+     * Usage in Blade:
+     *   {!! e_icon($item->icon, 'w-5 h-5') !!}
+     *
+     * The mapping mirrors resources/views/components/svg-icon.blade.php's
+     * naming, but we inline the SVG here so callers don't have to think
+     * about the component vs. string-fallback split.
+     */
+    function e_icon(?string $emoji, string $class = 'w-5 h-5'): string
+    {
+        if (! $emoji) return '';
+
+        // DB icon → Heroicons name (covers the icons currently stored in
+        // MenuPage, FieldOfStudy and a few content tables).
+        static $map = [
+            '🎓' => 'academic-cap',
+            '📚' => 'book-open',
+            '🏙️' => 'building-office',
+            '🏘️' => 'building-office',
+            '🏛️' => 'building-office',
+            '🌆' => 'building-office',
+            '🗺️' => 'map',
+            '🎯' => 'target',
+            '🛠️' => 'wrench-screwdriver',
+            '🔧' => 'wrench-screwdriver',
+            '🔍' => 'search',
+            '🎁' => 'sparkles',
+            '🎖️' => 'sparkles',
+            '🏆' => 'trophy',
+            '🥇' => 'trophy',
+            '💰' => 'banknotes',
+            '💳' => 'banknotes',
+            '📅' => 'calendar',
+            '📆' => 'calendar',
+            '🗓️' => 'calendar',
+            '✨' => 'sparkles',
+            '⭐' => 'star',
+            '💡' => 'light-bulb',
+            '🚀' => 'rocket-launch',
+            '📍' => 'map-pin',
+            '🔗' => 'link',
+            '✅' => 'check-circle',
+            '❌' => 'x-circle',
+            '⚠️' => 'exclamation-triangle',
+            'ℹ️' => 'information-circle',
+            '🤝' => 'users',
+            '👥' => 'users',
+            '👤' => 'user',
+            '🌍' => 'globe',
+            '🌐' => 'globe',
+            '💼' => 'briefcase',
+            '🏠' => 'home',
+            '⚖️' => 'scale',
+            '📊' => 'chart-bar',
+            '📈' => 'chart-bar',
+            '📉' => 'chart-bar',
+            '⚙️' => 'cog',
+            '💻' => 'cog',
+            '❤️' => 'heart',
+            '🩺' => 'heart',
+            '🏥' => 'heart',
+            '✏️' => 'pencil',
+            '📝' => 'pencil',
+            '🧪' => 'beaker',
+            '🔬' => 'beaker',
+            '🎬' => 'photo',
+            '🎭' => 'photo',
+            '🎵' => 'sparkles',
+        ];
+
+        $name = $map[$emoji] ?? null;
+        if (! $name) {
+            // Unknown emoji — keep it (admin's deliberate choice for niche pages).
+            // Wrap with a span so callers get consistent inline-block layout.
+            return '<span class="inline-block">' . e($emoji) . '</span>';
+        }
+
+        // Render via the same component the rest of the UI uses, so the icon
+        // catalogue stays single-sourced. The component handles class merging.
+        return view('components.svg-icon', ['name' => $name, 'class' => $class])->render();
+    }
+}

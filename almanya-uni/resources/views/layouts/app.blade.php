@@ -170,7 +170,7 @@
                                 @foreach ($kesfetItems as $item)
                                     @if ($url = $item->resolved_url)
                                         <a href="{{ $url }}" class="{{ $itemCls }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
-                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
+                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-primary-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0">
                                                 <span class="block font-semibold text-gray-900 leading-tight">{{ $item->label }}</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
@@ -214,7 +214,7 @@
                                 @foreach ($araclarItems as $item)
                                     @if ($url = $item->resolved_url)
                                         <a href="{{ $url }}" class="{{ $itemCls }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
-                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
+                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-primary-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0 flex-1">
                                                 <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-rose-100 text-rose-700">{{ $item->badge }}</span>@endif</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
@@ -255,7 +255,7 @@
                                 @foreach ($firsatItems as $item)
                                     @if ($url = $item->resolved_url)
                                         <a href="{{ $url }}" class="group/mi flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-emerald-50 transition">
-                                            <span class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
+                                            <span class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0 flex-1">
                                                 <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-amber-100 text-amber-700">{{ $item->badge }}</span>@endif</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
@@ -293,7 +293,7 @@
                                 @foreach ($icerikItems as $item)
                                     @if ($url = $item->resolved_url)
                                         <a href="{{ $url }}" class="group/mi flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-50 transition">
-                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-lg shrink-0">{{ $item->icon }}</span>
+                                            <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-primary-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0 flex-1">
                                                 <span class="block font-semibold text-gray-900 leading-tight">{{ $item->label }}</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
@@ -316,7 +316,7 @@
                 <a href="{{ $forumUrl }}"
                    class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-accent-500 hover:bg-accent-600 text-white font-semibold text-sm shadow-md transition whitespace-nowrap"
                    title="Forum — 2027'de açılıyor">
-                    {{ $forumItem->icon }} {{ $forumItem->label }}
+                    <span class="inline-flex items-center justify-center w-4 h-4">{!! e_icon($forumItem->icon, 'w-4 h-4') !!}</span> {{ $forumItem->label }}
                     <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-white/25 ml-1">2027</span>
                 </a>
                 @endif
@@ -506,7 +506,7 @@
                                 @foreach ($items as $item)
                                     @if ($url = $item->resolved_url)
                                         <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white {{ $item->key === 'tools.index' ? 'text-xs italic' : '' }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
-                                            <span class="shrink-0">{{ $item->icon }}</span>
+                                            <span class="shrink-0 inline-flex items-center justify-center w-4 h-4 text-primary-300">{!! e_icon($item->icon, 'w-4 h-4') !!}</span>
                                             <span class="flex-1 truncate">{{ $item->label }}</span>
                                             @if ($item->badge)
                                                 <span class="shrink-0 text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-400 text-amber-900">{{ $item->badge }}</span>
@@ -518,7 +518,7 @@
                                     @foreach ($forumStandalone as $std)
                                         @if ($url = $std->resolved_url)
                                             <a href="{{ $url }}" class="flex items-center gap-2 px-4 py-2 text-primary-100 hover:bg-white/10 hover:text-white" title="{{ $std->label }}">
-                                                <span class="shrink-0">{{ $std->icon }}</span>
+                                                <span class="shrink-0 inline-flex items-center justify-center w-4 h-4 text-primary-300">{!! e_icon($std->icon, 'w-4 h-4') !!}</span>
                                                 <span class="flex-1 truncate">{{ $std->label }}</span>
                                             </a>
                                         @endif

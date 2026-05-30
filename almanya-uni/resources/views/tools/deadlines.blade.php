@@ -272,7 +272,7 @@
             </div>
         </div>
         <p class="text-xs text-gray-500 mt-4">
-            {{ __('⚠️ Deadlines may vary by uni and program. Verify on the uni\'s official site.') }}
+            {{ __('Deadlines may vary by uni and program. Verify on the uni\'s official site.') }}
             <a href="{{ route('blog.show', 'uni-assist-basvuru-rehberi-a-z-almanya-universite-hayalinize-adim-adim-ulasin') }}" class="text-indigo-600 hover:underline">{{ __('Uni-Assist guide') }} →</a>
         </p>
     </div>
