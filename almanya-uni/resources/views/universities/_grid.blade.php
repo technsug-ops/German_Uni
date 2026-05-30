@@ -46,7 +46,8 @@
                             {{-- City landmark fallback — overlay pin so users know it's the city, not the uni --}}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                             <span class="absolute bottom-2 right-2 inline-flex items-center gap-1 text-[10px] text-white/90 bg-black/40 backdrop-blur px-1.5 py-0.5 rounded">
-                                📍 {{ $uni['city_name'] }}
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                                {{ $uni['city_name'] }}
                             </span>
                         @endif
                     @endif
@@ -68,8 +69,9 @@
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight line-clamp-2 mb-1">
                         {{ $uni['name_de'] }}
                     </h3>
-                    <p class="text-xs text-gray-500 mb-3">
-                        📍 {{ $uni['city_name'] ?? __('Unknown') }}@if (!empty($uni['state_name'])) · {{ $uni['state_name'] }}@endif
+                    <p class="text-xs text-gray-500 mb-3 inline-flex items-center gap-1">
+                        <svg class="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                        <span class="truncate">{{ $uni['city_name'] ?? __('Unknown') }}@if (!empty($uni['state_name'])) · {{ $uni['state_name'] }}@endif</span>
                     </p>
                     <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
                         @if($uni['student_count'])

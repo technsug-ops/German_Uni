@@ -82,7 +82,7 @@
                 <select name="field" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All fields') }}</option>
                     @foreach ($fields as $f)
-                        <option value="{{ $f->slug }}" @selected($filters['field'] === $f->slug)>{{ $f->icon }} {{ $f->name }}</option>
+                        <option value="{{ $f->slug }}" @selected($filters['field'] === $f->slug)>{{ $f->name }}</option>
                     @endforeach
                 </select>
                 <select name="semester" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
@@ -216,10 +216,11 @@
                                             </span>
                                         @endif
                                         @if ($p->field)
-                                            <span class="px-1.5 py-0.5 rounded font-medium truncate max-w-[120px]"
+                                            <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-medium truncate max-w-[150px]"
                                                   style="background-color: {{ $p->field->color }}20; color: {{ $p->field->color }}"
                                                   title="{{ $p->field->name_tr }}">
-                                                {{ $p->field->icon }}
+                                                {!! e_icon($p->field->icon, 'w-3.5 h-3.5') !!}
+                                                <span class="truncate">{{ $p->field->name }}</span>
                                             </span>
                                         @endif
                                     </div>
