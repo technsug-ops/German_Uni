@@ -10,15 +10,18 @@
                 @elseif ($provider->type === 'private_chain') from-indigo-500 to-purple-500
                 @else from-amber-500 to-orange-500
                 @endif
-                text-white text-2xl flex items-center justify-center">
-                {{ $provider->type_emoji }}
+                text-white flex items-center justify-center">
+                {!! e_icon($provider->type_emoji, 'w-7 h-7') !!}
             </div>
         @endif
         <div class="flex-1 min-w-0">
             <h3 class="font-bold text-gray-900 group-hover:text-emerald-700 leading-tight">{{ $provider->name }}</h3>
             <p class="text-[11px] text-gray-500 mt-0.5">{{ $provider->type_label }}</p>
             @if ($provider->is_featured)
-                <span class="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">⭐ Öne Çıkan</span>
+                <span class="inline-flex items-center gap-1 mt-1 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">
+                    <x-svg-icon name="star" class="w-3 h-3" />
+                    Öne Çıkan
+                </span>
             @endif
         </div>
     </div>
