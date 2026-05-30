@@ -53,7 +53,11 @@
         <a href="{{ $isLive && $event->online_url ? $event->online_url : $bannerCta }}"
            @if($isLive) target="_blank" rel="noopener" @endif
            class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white text-rose-700 font-extrabold text-xs rounded shadow-md hover:bg-amber-50 hover:scale-105 active:scale-100 transition shrink-0">
-            {{ $isLive ? '🔴 ' . __('Join now →') : '🎟️ ' . __('RSVP free →') }}
+            @if ($isLive)
+                <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span> {{ __('Join now →') }}
+            @else
+                <x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ __('RSVP free →') }}
+            @endif
         </a>
 
         <button id="eventBannerClose"

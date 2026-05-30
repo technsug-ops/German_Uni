@@ -2,7 +2,7 @@
     'title' => null,
     'subtitle' => null,
     'faqs' => [],
-    'icon' => '❓',
+    'icon' => 'question-mark-circle',
     'compact' => false,
 ])
 
@@ -19,7 +19,10 @@
         <div class="max-w-4xl mx-auto px-4">
             @if ($title)
                 <header class="mb-6">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ $icon }} {{ $title }}</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon :name="$icon" class="w-6 h-6 text-primary-600" />
+                        {{ $title }}
+                    </h2>
                     @if ($subtitle)
                         <p class="text-gray-600 mt-1">{{ $subtitle }}</p>
                     @endif

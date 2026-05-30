@@ -250,7 +250,10 @@
                         {{-- SOL: Logo + Tip + Featured badge --}}
                         <div class="p-6 bg-gradient-to-br from-gray-50 to-white border-r border-gray-100 flex flex-col items-center justify-center text-center">
                             @if ($p->is_featured)
-                                <span class="inline-block mb-2 px-2 py-0.5 text-xs font-bold rounded-full bg-amber-400 text-amber-900">⭐ {{ __('FEATURED') }}</span>
+                                <span class="inline-flex items-center gap-1 mb-2 px-2 py-0.5 text-xs font-bold rounded-full bg-amber-400 text-amber-900">
+                                    <x-svg-icon name="star" class="w-3 h-3" />
+                                    {{ __('FEATURED') }}
+                                </span>
                             @endif
                             @if ($p->logo_url)
                                 <img src="{{ $p->logo_url }}" alt="{{ $p->name }} logo" class="h-16 max-w-full object-contain mb-3" loading="lazy">

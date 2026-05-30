@@ -733,7 +733,7 @@
                         if (!data.results || data.results.length === 0) {
                             hsResults.innerHTML = `
                                 <div class="p-6 text-center">
-                                    <div class="text-3xl mb-2">🔍</div>
+                                    <svg class="w-8 h-8 mx-auto mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
                                     <p class="text-sm text-gray-600">{{ __('No results for') }} "${escapeHtml(data.q)}"</p>
                                 </div>`;
                             hsResults.classList.remove('hidden');
