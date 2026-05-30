@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // SetLocale GLOBAL DEĞİL — sadece {locale} route grubuna uygulanır (routes/web.php).
         // Global olursa sitemap/rss/api gibi locale-bağımsız route'larda da çalışıp /tr'ye yönlendirir.
         $middleware->web(append: [
+            \App\Http\Middleware\ThrottleScrapers::class,
             \App\Http\Middleware\TrackPageView::class,
             \App\Http\Middleware\EnsurePageEnabled::class,
         ]);

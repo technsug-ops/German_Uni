@@ -38,7 +38,9 @@ use Illuminate\Support\Facades\Route;
 $routes = function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+    Route::get('/search', [SearchController::class, 'index'])
+        ->middleware('throttle:30,1')
+        ->name('search.index');
     Route::get('/search/suggest', \App\Http\Controllers\Web\SearchSuggestController::class)
         ->middleware('throttle:60,1')
         ->name('search.suggest');
@@ -662,7 +664,9 @@ Route::get('/og/{type}/{slug}', [\App\Http\Controllers\Web\OgImageController::cl
     ->name('og.image');
 Route::get('/rss.xml', [\App\Http\Controllers\Web\FeedController::class, 'rss'])->name('feed.rss');
 Route::get('/feed', fn () => redirect('/rss.xml', 301));
-Route::get('/api/map/universities', [MapController::class, 'universitiesJson'])->name('map.universities.json');
+Route::get('/api/map/universities', [MapController::class, 'universitiesJson'])
+    ->middleware('throttle:30,1')
+    ->name('map.universities.json');
 
 // ─────────── Çok-dilli routing ───────────
 // Default dil (config('locale.default')) prefix'siz (root); diğer diller /tr, /de, /fr prefix'li.

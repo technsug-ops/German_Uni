@@ -13,8 +13,21 @@
 |
 */
 
-$origins = array_values(array_filter(array_map('trim', explode(',', env('CORS_ALLOWED_ORIGINS', '*')))));
-$patterns = array_values(array_filter(array_map('trim', explode(',', env('CORS_ALLOWED_ORIGIN_PATTERNS', '')))));
+// Güvenli varsayılan: env hiç set edilmemişse PROD'da `*`'a düşme — bilinen
+// brand domain'lerine kilitlen (scraper'ın tarayıcıdan API kazımasını engeller).
+// Sadece local/dev'de `*` serbest (geliştirme kolaylığı).
+// Not: config dosyaları çok erken yüklenir → app()->environment() yerine env()
+// kullan (o aşamada 'env' container binding'i henüz hazır değil).
+$isDev = in_array(env('APP_ENV', 'production'), ['local', 'testing'], true);
+$defaultOrigins = $isDev
+    ? '*'
+    : 'https://almanyauni.com,https://www.almanyauni.com,https://applytogerman.com,https://www.applytogerman.com';
+$defaultPatterns = $isDev
+    ? ''
+    : 'https://*.almanyauni.com,https://*.applytogerman.com';
+
+$origins = array_values(array_filter(array_map('trim', explode(',', env('CORS_ALLOWED_ORIGINS', $defaultOrigins)))));
+$patterns = array_values(array_filter(array_map('trim', explode(',', env('CORS_ALLOWED_ORIGIN_PATTERNS', $defaultPatterns)))));
 
 return [
 

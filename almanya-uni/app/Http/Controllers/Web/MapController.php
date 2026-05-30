@@ -7,6 +7,7 @@ use App\Models\State;
 use App\Models\University;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class MapController extends Controller
@@ -68,24 +69,38 @@ class MapController extends Controller
                 ->orWhere('short_name', 'like', $like));
         }
 
-        $rows = $query->with('city:id,name_tr,name_en,name_de,slug')
-            ->get([
-                'id', 'slug', 'name_de', 'short_name', 'type',
-                'latitude', 'longitude', 'city_id', 'student_count', 'logo_url',
-            ])
-            ->map(fn ($u) => [
-                'id'    => $u->id,
-                'slug'  => $u->slug,
-                'name'  => $u->name_de,
-                'short' => $u->short_name,
-                'type'  => $u->type,
-                'lat'   => (float) $u->latitude,
-                'lng'   => (float) $u->longitude,
-                'city'  => $u->city?->name,
-                'students' => $u->student_count,
-                'logo'  => $u->logo_url,
-            ])
-            ->values();
+        // Cache per filter-combo for 1h. The map dataset changes rarely (uni
+        // coordinates are near-static), so this serves real visitors instantly
+        // AND means a scraper hitting it repeatedly never touches the DB — the
+        // expensive work happens once per hour per distinct filter set.
+        $cacheKey = 'map_unis:' . md5(json_encode([
+            $request->input('type'),
+            $request->input('state'),
+            $request->input('english'),
+            $request->input('size'),
+            $request->input('q'),
+        ]));
+
+        $rows = Cache::remember($cacheKey, 3600, function () use ($query) {
+            return $query->with('city:id,name_tr,name_en,name_de,slug')
+                ->get([
+                    'id', 'slug', 'name_de', 'short_name', 'type',
+                    'latitude', 'longitude', 'city_id', 'student_count', 'logo_url',
+                ])
+                ->map(fn ($u) => [
+                    'id'    => $u->id,
+                    'slug'  => $u->slug,
+                    'name'  => $u->name_de,
+                    'short' => $u->short_name,
+                    'type'  => $u->type,
+                    'lat'   => (float) $u->latitude,
+                    'lng'   => (float) $u->longitude,
+                    'city'  => $u->city?->name,
+                    'students' => $u->student_count,
+                    'logo'  => $u->logo_url,
+                ])
+                ->values();
+        });
 
         return response()->json([
             'count' => $rows->count(),
