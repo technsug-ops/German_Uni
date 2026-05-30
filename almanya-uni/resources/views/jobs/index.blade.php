@@ -90,7 +90,7 @@
                 <select name="field" class="w-full px-2 py-2 border border-gray-300 rounded-lg text-sm">
                     <option value="">{{ __('All') }}</option>
                     @foreach ($fields as $f)
-                        <option value="{{ $f->slug }}" @selected(($filters['field'] ?? '') === $f->slug)>{{ $f->icon }} {{ $f->name_tr }}</option>
+                        <option value="{{ $f->slug }}" @selected(($filters['field'] ?? '') === $f->slug)>{{ $f->name_tr }}</option>
                     @endforeach
                 </select>
             </div>

@@ -161,7 +161,7 @@
 
             <div class="space-y-4">
                 <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ Study Scholarships for Foreign Graduates ({{ __('All fields') }})</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> Study Scholarships for Foreign Graduates ({{ __('All fields') }})</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('The main DAAD scholarship for foreign bachelor graduates. Open to all fields.') }}
                     </p>
@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ Helmut-Schmidt-Programme (Public Policy & Good Governance)</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> Helmut-Schmidt-Programme (Public Policy & Good Governance)</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('Elite program for those who want to become leaders in public policy, democracy, economy. Limited quota, highly competitive.') }}
                     </p>
@@ -188,7 +188,7 @@
                 </div>
 
                 <div class="bg-emerald-50 rounded-lg p-4 border-l-4 border-emerald-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ EPOS — Development-Related Postgraduate Courses</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> EPOS — Development-Related Postgraduate Courses</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('Specific master programs for developing countries (development, engineering, health, environment). English master programs at 45+ German universities.') }}
                     </p>
@@ -235,7 +235,7 @@
 
             <div class="space-y-4">
                 <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ Research Grants — Doctoral Programmes in Germany</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> Research Grants — Doctoral Programmes in Germany</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('For international researchers who want to do a full PhD in Germany. All scientific fields.') }}
                     </p>
@@ -248,7 +248,7 @@
                 </div>
 
                 <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ Bi-nationally Supervised Doctoral Degree (Co-tutelle)</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> Bi-nationally Supervised Doctoral Degree (Co-tutelle)</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('Continue your PhD at your home university + work with a co-supervisor in Germany. Dual degree.') }}
                     </p>
@@ -293,7 +293,7 @@
 
             <div class="space-y-4">
                 <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ Research Stays for University Academics & Scientists</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> Research Stays for University Academics & Scientists</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('1-3 month research stay in Germany for academics working at a foreign university.') }}
                     </p>
@@ -303,7 +303,7 @@
                 </div>
 
                 <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ DAAD PRIME — Postdoctoral Researchers International Mobility</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> DAAD PRIME — Postdoctoral Researchers International Mobility</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('For those who want to do a postdoc abroad and return to Germany, or vice versa. Hybrid model.') }}
                     </p>
@@ -338,7 +338,7 @@
 
             <div class="space-y-4">
                 <div class="bg-amber-50 rounded-lg p-4 border-l-4 border-amber-500">
-                    <h3 class="font-bold text-gray-900 mb-1">⭐ University Summer Course Grants (Hochschulsommerkurse)</h3>
+                    <h3 class="font-bold text-gray-900 mb-1"><svg class="inline-block w-4 h-4 text-amber-500 align-text-bottom" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z"/></svg> University Summer Course Grants (Hochschulsommerkurse)</h3>
                     <p class="text-sm text-gray-700 mb-2">
                         {{ __('3-4 week German + academic course at a German university during summer months.') }}
                     </p>

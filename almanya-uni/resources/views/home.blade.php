@@ -428,7 +428,7 @@
                 <a href="{{ route('fields.show', $field->slug) }}"
                    title="{{ $field->name }} — {{ number_format($field->programs_count) }} {{ __('programs') }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-5 text-center">
-                    <div class="text-4xl mb-2">{{ $field->icon ?: '' }}</div>
+                    <div class="mb-2 flex justify-center" style="color: {{ $field->color ?? '#1e40af' }};">{!! e_icon($field->icon, 'w-10 h-10') !!}</div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm mb-1 leading-tight">{{ $field->name }}</h3>
                     <p class="text-xs text-gray-500">{{ number_format($field->programs_count) }} {{ __('programs') }}</p>
                 </a>
