@@ -49,18 +49,22 @@
             <p class="text-primary-100 text-lg mb-3 opacity-80">{{ $state->getAttributes()['name_de'] }}</p>
         @endif
         <div class="flex flex-wrap gap-2 text-sm mt-3">
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🏙️ {{ __(':n university cities', ['n' => $totals['cities_with_unis']]) }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="building-office" class="w-4 h-4" />
+                {{ __(':n university cities', ['n' => $totals['cities_with_unis']]) }}
             </span>
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🎓 {{ __(':n universities', ['n' => $totals['unis']]) }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="academic-cap" class="w-4 h-4" />
+                {{ __(':n universities', ['n' => $totals['unis']]) }}
             </span>
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🟢 {{ __(':p public · :v private', ['p' => $totals['public'], 'v' => $totals['private']]) }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="check-circle" class="w-4 h-4" />
+                {{ __(':p public · :v private', ['p' => $totals['public'], 'v' => $totals['private']]) }}
             </span>
             @if($state->capital)
-                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    🏛️ {{ __('Capital:') }} {{ $state->capital }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                    <x-svg-icon name="map-pin" class="w-4 h-4" />
+                    {{ __('Capital:') }} {{ $state->capital }}
                 </span>
             @endif
             @if (! empty($regionLabel))
@@ -69,8 +73,9 @@
                 </span>
             @endif
             @if ($state->population)
-                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    👥 {{ __(':n population', ['n' => number_format($state->population, 0, ',', '.')]) }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                    <x-svg-icon name="users" class="w-4 h-4" />
+                    {{ __(':n population', ['n' => number_format($state->population, 0, ',', '.')]) }}
                 </span>
             @endif
         </div>
@@ -85,7 +90,7 @@
             <x-content-blocks :blocks="$state->content_blocks" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
-                <div class="text-5xl mb-3">📝</div>
+                <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>
                 <h2 class="text-xl font-bold text-gray-900 mb-2">{{ __('Detailed content coming soon') }}</h2>
                 <p class="text-gray-600 max-w-lg mx-auto">{{ __('A rich guide for this state is being prepared.') }}</p>
             </div>
@@ -95,7 +100,7 @@
         @if($cities->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🏙️ {{ __('Cities in :state', ['state' => $state->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-6 h-6" /> {{ __('Cities in :state', ['state' => $state->name]) }}</h2>
                     <a href="{{ route('cities.index', ['state' => $state->slug]) }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -128,7 +133,7 @@
         @if($topUnis->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🎓 {{ __('Featured universities') }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="academic-cap" class="w-6 h-6" /> {{ __('Featured universities') }}</h2>
                     <a href="{{ route('universities.index', ['state' => $state->slug]) }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -150,7 +155,7 @@
                             @endif
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-snug line-clamp-2">{{ $u->display_name }}</h3>
-                                <p class="text-xs text-gray-500 mt-1">📍 {{ $u->city?->name ?? '—' }}</p>
+                                <p class="text-xs text-gray-500 mt-1 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $u->city?->name ?? '—' }}</p>
                                 @if($u->student_count)
                                     <p class="text-xs text-accent-600 font-semibold mt-1">{{ __(':n students', ['n' => number_format($u->student_count)]) }}</p>
                                 @endif
@@ -165,14 +170,14 @@
         @if (! empty($topFields) && $topFields->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🎯 {{ __('Strong fields in :state', ['state' => $state->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="target" class="w-6 h-6" /> {{ __('Strong fields in :state', ['state' => $state->name]) }}</h2>
                     <a href="{{ route('fields.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('All fields') }} →</a>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     @foreach ($topFields as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
-                            <div class="text-3xl mb-1">{{ $field->icon ?? '📚' }}</div>
+                            <div class="text-3xl mb-1">{{ $field->icon ?: '' }}</div>
                             <h3 class="font-bold text-sm text-gray-900 group-hover:text-primary-600 leading-tight">{{ $field->name }}</h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __(':n programs', ['n' => $field->programs_count]) }}</p>
                         </a>
@@ -185,7 +190,7 @@
         @if (! empty($relatedPosts) && $relatedPosts->count() > 0)
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">📝 {{ __('Articles related to :state', ['state' => $state->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Articles related to :state', ['state' => $state->name]) }}</h2>
                     <a href="{{ route('blog.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('Blog') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -217,7 +222,7 @@
 <section class="bg-white border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-            <h2 class="text-2xl font-bold text-gray-900">🗺️ {{ $state->latitude ? __('Neighboring states') : __('Other states') }}</h2>
+            <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="map" class="w-6 h-6" /> {{ $state->latitude ? __('Neighboring states') : __('Other states') }}</h2>
             <a href="{{ route('states.index') }}" class="text-sm text-primary-600 hover:underline font-semibold">{{ __('All') }} →</a>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">

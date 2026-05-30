@@ -76,11 +76,11 @@
                 </span>
             @endif
             @if ($event->mode === 'offline')
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs">📍 {{ __('In person') }}</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ __('In person') }}</span>
             @elseif ($event->mode === 'hybrid')
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs">🔄 {{ __('Hybrid') }}</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs"><x-svg-icon name="arrow-path" class="w-3.5 h-3.5" /> {{ __('Hybrid') }}</span>
             @else
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs">💻 {{ __('Online') }}</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Online') }}</span>
             @endif
             @if ($event->language_flag)
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold ring-1 ring-white/30" title="{{ __('Event language') }}">
@@ -89,20 +89,20 @@
             @endif
             @if ($event->isRecurring())
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/30 backdrop-blur text-xs font-bold ring-1 ring-amber-300/50" title="{{ __('This event repeats') }}">
-                    🔁 {{ match($event->recurrence_rule) { 'weekly' => __('Weekly'), 'biweekly' => __('Every 2 weeks'), 'monthly' => __('Monthly'), default => __('Repeating') } }}
+                    <x-svg-icon name="arrow-path" class="w-3.5 h-3.5" /> {{ match($event->recurrence_rule) { 'weekly' => __('Weekly'), 'biweekly' => __('Every 2 weeks'), 'monthly' => __('Monthly'), default => __('Repeating') } }}
                 </span>
             @elseif ($event->isSeriesChild())
                 <a href="{{ $event->parentEvent ? route('events.show', $event->parentEvent->slug) : '#' }}"
                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/30 backdrop-blur text-xs font-bold ring-1 ring-amber-300/50 hover:bg-amber-400/50 transition" title="{{ __('Part of a series — click to see the original') }}">
-                    📆 {{ __('Part of series') }}
+                    <x-svg-icon name="calendar-days" class="w-3.5 h-3.5" /> {{ __('Part of series') }}
                 </a>
             @endif
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">{{ $event->title }}</h1>
         @if ($event->host || $event->hostUser)
-            <p class="text-lg opacity-90 mb-2">
-                👤
+            <p class="text-lg opacity-90 mb-2 inline-flex items-center gap-1.5">
+                <x-svg-icon name="user" class="w-4 h-4" />
                 @if ($event->hostUser?->slug)
                     <a href="{{ route('author.show', $event->hostUser->slug) }}" class="hover:underline">{{ $event->hostUser->name ?? $event->host }}</a>
                     @if ($event->hostUser->role_label)
@@ -130,7 +130,7 @@
             <section id="rsvp" class="bg-white border border-gray-200 rounded-xl p-6">
                 <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                        🎟️ {{ __('Are you joining?') }}
+                        <x-svg-icon name="tag" class="w-6 h-6" /> {{ __('Are you joining?') }}
                     </h2>
                     @if ($event->goingRsvps->count() > 0)
                         <p class="text-sm text-gray-600">
@@ -144,8 +144,9 @@
                 </div>
 
                 @if (session('rsvp_status'))
-                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-3 mb-4 text-sm">
-                        ✓ {{ session('rsvp_status') }}
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-3 mb-4 text-sm inline-flex items-center gap-2">
+                        <x-svg-icon name="check-circle" class="w-4 h-4" />
+                        {{ session('rsvp_status') }}
                     </div>
                 @endif
 
@@ -153,10 +154,10 @@
                     <div class="bg-{{ $myRsvp->status === 'going' ? 'emerald' : ($myRsvp->status === 'maybe' ? 'amber' : 'gray') }}-50 border border-{{ $myRsvp->status === 'going' ? 'emerald' : ($myRsvp->status === 'maybe' ? 'amber' : 'gray') }}-200 rounded-lg p-3 mb-4">
                         <p class="text-sm text-gray-700">
                             {{ __('Your current RSVP:') }}
-                            <strong>
-                                @if ($myRsvp->status === 'going') ✅ {{ __('Going') }}
-                                @elseif ($myRsvp->status === 'maybe') 🤔 {{ __('Maybe') }}
-                                @else ❌ {{ __('Cancelled') }}
+                            <strong class="inline-flex items-center gap-1">
+                                @if ($myRsvp->status === 'going') <x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Going') }}
+                                @elseif ($myRsvp->status === 'maybe') <x-svg-icon name="information-circle" class="w-4 h-4" /> {{ __('Maybe') }}
+                                @else <x-svg-icon name="x-circle" class="w-4 h-4" /> {{ __('Cancelled') }}
                                 @endif
                             </strong>
                             <span class="text-xs text-gray-500">· {{ __('You can change it any time below.') }}</span>
@@ -168,16 +169,16 @@
                     @csrf
                     <div class="grid grid-cols-3 gap-2">
                         <button type="submit" name="status" value="going"
-                                class="px-3 py-3 rounded-lg border-2 border-emerald-300 hover:bg-emerald-50 hover:border-emerald-500 text-emerald-700 font-semibold transition text-sm">
-                            ✅ {{ __('Going') }}
+                                class="px-3 py-3 rounded-lg border-2 border-emerald-300 hover:bg-emerald-50 hover:border-emerald-500 text-emerald-700 font-semibold transition text-sm inline-flex items-center justify-center gap-1.5">
+                            <x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Going') }}
                         </button>
                         <button type="submit" name="status" value="maybe"
-                                class="px-3 py-3 rounded-lg border-2 border-amber-300 hover:bg-amber-50 hover:border-amber-500 text-amber-700 font-semibold transition text-sm">
-                            🤔 {{ __('Maybe') }}
+                                class="px-3 py-3 rounded-lg border-2 border-amber-300 hover:bg-amber-50 hover:border-amber-500 text-amber-700 font-semibold transition text-sm inline-flex items-center justify-center gap-1.5">
+                            <x-svg-icon name="information-circle" class="w-4 h-4" /> {{ __('Maybe') }}
                         </button>
                         <button type="submit" name="status" value="cancelled"
-                                class="px-3 py-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 text-gray-600 font-semibold transition text-sm">
-                            ❌ {{ __('Can\'t make it') }}
+                                class="px-3 py-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 text-gray-600 font-semibold transition text-sm inline-flex items-center justify-center gap-1.5">
+                            <x-svg-icon name="x-circle" class="w-4 h-4" /> {{ __('Can\'t make it') }}
                         </button>
                     </div>
 
@@ -233,7 +234,7 @@
 
                 @if (session('review_status'))
                     <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg p-3 mb-4 text-sm">
-                        ✓ {{ session('review_status') }}
+                        <span class="inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-4 h-4" /> {{ session('review_status') }}</span>
                     </div>
                 @endif
 
@@ -290,7 +291,7 @@
                                             <span class="font-semibold text-sm text-gray-900">{{ $r->display_name }}</span>
                                             <span class="text-amber-500 text-sm">{{ $r->stars }}</span>
                                             @if ($r->is_pinned)
-                                                <span class="text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded">📌 {{ __('Featured') }}</span>
+                                                <span class="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded"><x-svg-icon name="star" class="w-3 h-3" /> {{ __('Featured') }}</span>
                                             @endif
                                             <time class="text-xs text-gray-400 ml-auto" datetime="{{ $r->created_at->toIso8601String() }}">{{ $r->created_at->diffForHumans() }}</time>
                                         </div>
@@ -342,7 +343,7 @@
             @if ($event->goingRsvps->count() > 0)
                 <section class="bg-white border border-gray-200 rounded-xl p-6">
                     <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        👥 {{ __('Who\'s coming') }}
+                        <x-svg-icon name="users" class="w-5 h-5" /> {{ __('Who\'s coming') }}
                         <span class="text-sm font-normal text-gray-500">({{ $event->goingRsvps->count() }})</span>
                     </h2>
                     <div class="flex flex-wrap gap-3">
@@ -392,7 +393,7 @@
     {{-- Sidebar --}}
     <aside class="space-y-4">
         <div class="bg-white border-2 rounded-xl p-6 sticky top-20 shadow-lg" style="border-color: {{ $event->type_color }};">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">📅 {{ __('Details') }}</h3>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 inline-flex items-center gap-1.5"><x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Details') }}</h3>
 
             <div class="space-y-3 text-sm">
                 <div>
@@ -420,7 +421,7 @@
                     @if ($event->price_eur > 0)
                         <p class="font-bold text-amber-700">{{ number_format($event->price_eur, 0, ',', '.') }} €</p>
                     @else
-                        <p class="font-bold text-emerald-700">🎟️ {{ __('Free') }}</p>
+                        <p class="font-bold text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="tag" class="w-4 h-4" /> {{ __('Free') }}</p>
                     @endif
                 </div>
                 @if ($event->max_attendees)
@@ -439,7 +440,7 @@
                    target="_blank" rel="noopener"
                    class="block mt-5 text-center py-3 rounded-lg text-white font-bold transition shadow-md hover:opacity-90"
                    style="background: {{ $event->type_color }};">
-                    {{ $event->is_live ? '🔴 ' . __('Join Now') : ($event->price_eur > 0 ? '💳 ' . __('Register') : '🎟️ ' . __('Register Free')) }}
+                    {{ $event->is_live ? __('Join Now') : ($event->price_eur > 0 ? __('Register') : __('Register Free')) }}
                 </a>
             @endif
 
@@ -459,7 +460,7 @@
                 <div class="flex items-center justify-center gap-2">
                     <a href="https://wa.me/?text={{ $shareText }}%20{{ $shareUrl }}" target="_blank" rel="noopener"
                        aria-label="{{ __('Share on WhatsApp') }}"
-                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition" title="WhatsApp">💬</a>
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition" title="WhatsApp"><x-svg-icon name="chat" class="w-4 h-4" /></a>
                     <a href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareText }}" target="_blank" rel="noopener"
                        aria-label="{{ __('Share on X / Twitter') }}"
                        class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-900 hover:bg-black text-white transition font-bold" title="X (Twitter)">𝕏</a>
@@ -468,11 +469,13 @@
                        class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-700 hover:bg-blue-800 text-white transition" title="LinkedIn">in</a>
                     <a href="https://t.me/share/url?url={{ $shareUrl }}&text={{ $shareText }}" target="_blank" rel="noopener"
                        aria-label="{{ __('Share on Telegram') }}"
-                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-500 hover:bg-sky-600 text-white transition" title="Telegram">✈️</a>
+                       class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-500 hover:bg-sky-600 text-white transition" title="Telegram"><x-svg-icon name="plane" class="w-4 h-4" /></a>
                     <button type="button"
-                            onclick="navigator.clipboard.writeText('{{ url()->current() }}').then(() => { this.textContent='✓'; setTimeout(() => this.textContent='🔗', 1500); })"
+                            onclick="navigator.clipboard.writeText('{{ url()->current() }}').then(() => { this.dataset.copied='1'; setTimeout(() => { this.dataset.copied=''; }, 1500); })"
                             aria-label="{{ __('Copy link') }}"
-                            class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition" title="{{ __('Copy link') }}">🔗</button>
+                            class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition" title="{{ __('Copy link') }}">
+                        <x-svg-icon name="link" class="w-4 h-4" />
+                    </button>
                 </div>
             </div>
         </div>

@@ -52,15 +52,15 @@
 {{-- TOC --}}
 <section class="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-[1400px] mx-auto px-4 py-3 flex flex-wrap gap-2 overflow-x-auto text-sm">
-        <a href="#overview" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">📋 {{ __('Overview') }}</a>
-        <a href="#bachelor" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">🎓 {{ __('Bachelor') }}</a>
-        <a href="#master" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">📚 {{ __('Master') }}</a>
-        <a href="#phd" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">🔬 PhD</a>
-        <a href="#postdoc" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">🎯 Postdoc</a>
-        <a href="#summer" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">🌞 {{ __('Summer School') }}</a>
-        <a href="#art" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">🎨 {{ __('Arts') }}</a>
-        <a href="#how-to" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">📝 {{ __('Application') }}</a>
-        <a href="#contact" class="px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap">📞 {{ __('Turkey Office') }}</a>
+        <a href="#overview" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="list-bullet" class="w-3.5 h-3.5" /> {{ __('Overview') }}</a>
+        <a href="#bachelor" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Bachelor') }}</a>
+        <a href="#master" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Master') }}</a>
+        <a href="#phd" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> PhD</a>
+        <a href="#postdoc" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="target" class="w-3.5 h-3.5" /> Postdoc</a>
+        <a href="#summer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Summer School') }}</a>
+        <a href="#art" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="photo" class="w-3.5 h-3.5" /> {{ __('Arts') }}</a>
+        <a href="#how-to" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('Application') }}</a>
+        <a href="#contact" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ __('Turkey Office') }}</a>
     </div>
 </section>
 
@@ -69,7 +69,10 @@
 
         {{-- ═══════ OVERVIEW ═══════ --}}
         <article id="overview" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">📋 {{ __('What is DAAD, why is it important?') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="list-bullet" class="w-6 h-6" />
+                {{ __('What is DAAD, why is it important?') }}
+            </h2>
             <p class="text-gray-700 leading-relaxed mb-4">
                 {!! __('DAAD (<em>Deutscher Akademischer Austauschdienst</em>) was founded in 1925 and is the world\'s largest academic exchange organization. Funded by the German federal government, it is an <strong>independent</strong> academic bridge. The <strong>most trusted and comprehensive</strong> scholarship source for international students.') !!}
             </p>
@@ -95,14 +98,14 @@
 
             <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div class="flex items-start gap-3 bg-emerald-50 rounded-lg p-3">
-                    <span class="text-2xl shrink-0">✅</span>
+                    <span class="text-emerald-600 shrink-0"><x-svg-icon name="check-circle" class="w-6 h-6" /></span>
                     <div>
                         <p class="font-semibold text-emerald-900">{{ __('What does it cover?') }}</p>
                         <p class="text-emerald-800">{{ __('All costs from DAAD: stipend + health insurance + travel + research allowance') }}</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3 bg-amber-50 rounded-lg p-3">
-                    <span class="text-2xl shrink-0">⚠️</span>
+                    <span class="text-amber-600 shrink-0"><x-svg-icon name="exclamation-triangle" class="w-6 h-6" /></span>
                     <div>
                         <p class="font-semibold text-amber-900">{{ __('Is it repayable?') }}</p>
                         <p class="text-amber-800">{{ __('No — it is a grant (non-repayable). The only condition: stay in Germany and complete the program.') }}</p>
@@ -113,7 +116,10 @@
 
         {{-- ═══════ BACHELOR ═══════ --}}
         <article id="bachelor" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">🎓 {{ __('Bachelor Scholarships') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="academic-cap" class="w-6 h-6" />
+                {{ __('Bachelor Scholarships') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {!! __('<strong>Important:</strong> DAAD generally does <strong>not</strong> award direct scholarships to new bachelor students. Comprehensive options are limited for international students at the bachelor stage — alternatives below.') !!}
             </p>
@@ -145,7 +151,10 @@
 
         {{-- ═══════ MASTER ═══════ --}}
         <article id="master" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">📚 {{ __('Master Scholarships') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="book-open" class="w-6 h-6" />
+                {{ __('Master Scholarships') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {!! __('DAAD\'s <strong>most active</strong> scholarship category. The most realistic application route for international students. Monthly <strong>934 €</strong> + health insurance + travel + 460 € research allowance.') !!}
             </p>
@@ -216,7 +225,10 @@
 
         {{-- ═══════ PhD ═══════ --}}
         <article id="phd" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">🔬 {{ __('PhD (Doctoral) Scholarships') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="beaker" class="w-6 h-6" />
+                {{ __('PhD (Doctoral) Scholarships') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {!! __('Doctoral level is DAAD\'s <strong>flagship category</strong>. Monthly <strong>1,300 €</strong> and above, for 3-4 years. Comprehensive options for those who want to pursue a doctorate from abroad.') !!}
             </p>
@@ -271,7 +283,10 @@
 
         {{-- ═══════ POSTDOC ═══════ --}}
         <article id="postdoc" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">🎯 {{ __('Postdoc & Academic Scholarships') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="target" class="w-6 h-6" />
+                {{ __('Postdoc & Academic Scholarships') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {!! __('The highest-amount DAAD scholarships for post-doctoral researchers — starting from <strong>2,150 €</strong>/month.') !!}
             </p>
@@ -313,7 +328,10 @@
 
         {{-- ═══════ SUMMER ═══════ --}}
         <article id="summer" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">🌞 {{ __('Summer School & Short-Term') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="sparkles" class="w-6 h-6" />
+                {{ __('Summer School & Short-Term') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {{ __('For a short Germany experience. Language + culture + academic content for 3-4 weeks.') }}
             </p>
@@ -361,7 +379,10 @@
 
         {{-- ═══════ ARTS ═══════ --}}
         <article id="art" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">🎨 {{ __('Arts, Architecture & Film') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="photo" class="w-6 h-6" />
+                {{ __('Arts, Architecture & Film') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {{ __('DAAD\'s art-focused programs for creative disciplines.') }}
             </p>
@@ -389,7 +410,10 @@
 
         {{-- ═══════ HOW TO APPLY ═══════ --}}
         <article id="how-to" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">📝 {{ __('Application Process — Step by Step') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="document-text" class="w-6 h-6" />
+                {{ __('Application Process — Step by Step') }}
+            </h2>
 
             <div class="space-y-4">
                 <div class="flex gap-4">
@@ -463,14 +487,20 @@
         {{-- ═══════ LOCAL OFFICE ═══════ --}}
         <article id="contact" class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl ring-1 ring-blue-200 p-6 md:p-8">
             @if (app()->getLocale() === 'tr')
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">📞 DAAD Türkiye Ofisi (İstanbul)</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="map-pin" class="w-6 h-6" />
+                DAAD Türkiye Ofisi (İstanbul)
+            </h2>
             <p class="text-gray-700 mb-5">
                 Türk öğrenciler için <strong>resmi yerel ofis</strong>. Mülakatlar burada yapılır, sorular için randevu alabilirsin.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-4">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">📍 Adres</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1 inline-flex items-center gap-1">
+                        <x-svg-icon name="map-pin" class="w-3.5 h-3.5" />
+                        Adres
+                    </p>
                     <p class="text-sm text-gray-900">
                         İnönü Caddesi No: 59<br>
                         Gümüşsuyu, Taksim<br>
@@ -478,7 +508,10 @@
                     </p>
                 </div>
                 <div class="bg-white rounded-lg p-4">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">🌐 İletişim</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1 inline-flex items-center gap-1">
+                        <x-svg-icon name="globe" class="w-3.5 h-3.5" />
+                        İletişim
+                    </p>
                     <p class="text-sm text-gray-900">
                         <a href="https://www.daad-turkey.org/" target="_blank" class="text-primary-600 hover:underline">daad-turkey.org</a><br>
                         <a href="mailto:info@daad-turkey.org" class="text-primary-600 hover:underline">info@daad-turkey.org</a><br>
@@ -487,7 +520,10 @@
                 </div>
             </div>
             @else
-            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">📞 {{ __('DAAD Regional Offices') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="map-pin" class="w-6 h-6" />
+                {{ __('DAAD Regional Offices') }}
+            </h2>
             <p class="text-gray-700 mb-5">
                 {!! __('DAAD has <strong>regional information centers</strong> in many countries. Interviews are held there, and you can book appointments for questions.') !!}
             </p>
@@ -499,12 +535,12 @@
             <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                 <a href="https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/" target="_blank"
                    class="block bg-white rounded-lg p-3 hover:bg-blue-50 transition text-center">
-                    <div class="text-2xl mb-1">🔍</div>
+                    <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="search" class="w-6 h-6" /></div>
                     <p class="font-semibold text-gray-900">Database</p>
                 </a>
                 <a href="https://portal.daad.de" target="_blank"
                    class="block bg-white rounded-lg p-3 hover:bg-blue-50 transition text-center">
-                    <div class="text-2xl mb-1">🌐</div>
+                    <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="globe" class="w-6 h-6" /></div>
                     <p class="font-semibold text-gray-900">Portal</p>
                 </a>
                 <a href="https://www.daad.de/en/" target="_blank"
@@ -521,7 +557,7 @@
                 @else
                 <a href="https://www.daad.de/en/the-daad/offices-and-representatives/" target="_blank"
                    class="block bg-white rounded-lg p-3 hover:bg-blue-50 transition text-center">
-                    <div class="text-2xl mb-1">🌍</div>
+                    <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="globe" class="w-6 h-6" /></div>
                     <p class="font-semibold text-gray-900">{{ __('Local Offices') }}</p>
                 </a>
                 @endif
@@ -530,7 +566,7 @@
 
         {{-- SOURCE --}}
         <p class="text-xs text-gray-500 text-center">
-            📖 {{ __('Source:') }} <a href="https://www.daad.de" target="_blank" class="text-primary-600 hover:underline">{{ __('DAAD official site') }}</a> ·
+            <span class="inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Source:') }}</span> <a href="https://www.daad.de" target="_blank" class="text-primary-600 hover:underline">{{ __('DAAD official site') }}</a> ·
             DAAD Stipendienprogramme 2022 PDF · {{ __('Updated:') }} 2025
         </p>
 

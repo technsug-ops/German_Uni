@@ -32,7 +32,10 @@
             <span class="mx-2">/</span>
             <span>{{ __('Cost of Living') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">💰 {{ __('Cost of Living Calculator') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3 inline-flex items-center gap-2">
+            <x-svg-icon name="banknotes" class="w-8 h-8" />
+            {{ __('Cost of Living Calculator') }}
+        </h1>
         <p class="text-primary-100 max-w-3xl">
             {{ __('What will your monthly expenses be as a student in Germany? Pick a city, housing type and lifestyle — see realistic numbers.') }}
         </p>
@@ -80,7 +83,7 @@
     @if ($result)
         @if (($result['source'] ?? null) === 'ai')
             <div class="mb-4 bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm flex items-start gap-3">
-                <span class="text-2xl shrink-0">⚠️</span>
+                <span class="text-amber-600 shrink-0"><x-svg-icon name="exclamation-triangle" class="w-6 h-6" /></span>
                 <div>
                     <p class="font-semibold text-amber-900 mb-1">{{ __('Approximate data — AI generated') }}</p>
                     <p class="text-amber-800">{{ $result['source_note'] ?? __('No manually verified data for this city. The numbers below were estimated by AI from Wikipedia and community information. Verify with the city\'s official page for accurate info.') }}</p>
@@ -145,7 +148,10 @@
             </table>
 
             <div class="border-t border-gray-200 px-6 py-4 bg-accent-50">
-                <h3 class="font-semibold text-accent-900 mb-1">🏦 {{ __('Sperrkonto (Blocked Account)') }}</h3>
+                <h3 class="font-semibold text-accent-900 mb-1 inline-flex items-center gap-1.5">
+                    <x-svg-icon name="banknotes" class="w-4 h-4" />
+                    {{ __('Sperrkonto (Blocked Account)') }}
+                </h3>
                 <p class="text-sm text-accent-800">
                     {{ __('Minimum yearly amount required for visa as of 2025:') }}
                     <strong>{{ number_format($result['blocked_account'], 0, ',', '.') }} €</strong>
@@ -168,7 +174,8 @@
 
         <header>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
-                📚 {{ __('DAAD Official Information') }}
+                <x-svg-icon name="book-open" class="w-3.5 h-3.5" />
+                {{ __('DAAD Official Information') }}
             </div>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">{{ __('Education & Living Costs in Germany') }}</h2>
             <p class="text-gray-600 text-lg max-w-3xl">
@@ -178,7 +185,10 @@
 
         {{-- SPERRKONTO --}}
         <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">🏦 {{ __('Sperrkonto (Blocked Account)') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <x-svg-icon name="banknotes" class="w-6 h-6" />
+                {{ __('Sperrkonto (Blocked Account)') }}
+            </h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
                 <div class="bg-primary-50 ring-1 ring-primary-200 rounded-lg p-4">
                     <p class="text-xs uppercase tracking-wider text-primary-700 font-semibold">{{ __('Monthly minimum') }}</p>
@@ -208,7 +218,10 @@
 
         {{-- ÖĞRENİM ÜCRETİ --}}
         <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">🎓 {{ __('Tuition Fees') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <x-svg-icon name="academic-cap" class="w-6 h-6" />
+                {{ __('Tuition Fees') }}
+            </h3>
             <p class="text-gray-700 mb-5">
                 {{ __('The vast majority of') }} <strong>{{ __('higher education institutions in Germany are state-funded') }}</strong>.
                 {{ __('Bachelor\'s and most master\'s programs have') }} <strong>{{ __('NO tuition fee') }}</strong>.
@@ -240,7 +253,10 @@
 
         {{-- DÖNEM KATKISI --}}
         <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">💳 {{ __('Semester Contribution') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <x-svg-icon name="banknotes" class="w-6 h-6" />
+                {{ __('Semester Contribution') }}
+            </h3>
             <p class="text-gray-700 mb-4">
                 {{ __('All students pay a contribution of') }} <strong>70-430 €</strong> {{ __('once per semester. This is NOT a tuition fee — it includes student services + AStA + often') }} <strong>Semesterticket</strong>.
             </p>
@@ -248,19 +264,22 @@
             <div class="bg-gray-50 rounded-lg p-4">
                 <p class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-3">{{ __('Example: University of Cologne 2024/25 WS — 304.25 €') }}</p>
                 <ul class="space-y-1.5 text-sm">
-                    <li class="flex justify-between"><span class="text-gray-700">🚊 {{ __('Semesterticket (transport)') }}</span><strong>176,40 €</strong></li>
-                    <li class="flex justify-between"><span class="text-gray-700">🏛️ {{ __('Student services (Studierendenwerk)') }}</span><strong>110,00 €</strong></li>
-                    <li class="flex justify-between"><span class="text-gray-700">🗳️ {{ __('AStA (student government)') }}</span><strong>11,00 €</strong></li>
-                    <li class="flex justify-between"><span class="text-gray-700">⚽ {{ __('Student sports') }}</span><strong>1,75 €</strong></li>
-                    <li class="flex justify-between"><span class="text-gray-700">📋 {{ __('Faculty student council') }}</span><strong>2,60 €</strong></li>
-                    <li class="flex justify-between"><span class="text-gray-700">📑 {{ __('Administrative fee') }}</span><strong>2,50 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="truck" class="w-3.5 h-3.5" /> {{ __('Semesterticket (transport)') }}</span><strong>176,40 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Student services (Studierendenwerk)') }}</span><strong>110,00 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('AStA (student government)') }}</span><strong>11,00 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('Student sports') }}</span><strong>1,75 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="list-bullet" class="w-3.5 h-3.5" /> {{ __('Faculty student council') }}</span><strong>2,60 €</strong></li>
+                    <li class="flex justify-between"><span class="text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('Administrative fee') }}</span><strong>2,50 €</strong></li>
                 </ul>
             </div>
         </div>
 
         {{-- DAAD 22. SOSYAL ARAŞTIRMA --}}
         <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">📊 {{ __('DAAD 22nd Social Survey (2023)') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <x-svg-icon name="chart-bar" class="w-6 h-6" />
+                {{ __('DAAD 22nd Social Survey (2023)') }}
+            </h3>
             <p class="text-gray-700 mb-4">
                 {{ __('According to DZHW\'s official survey, the average monthly cost of') }} <strong>{{ __('all students') }}</strong>.
                 <em>{{ __('Higher in practice for international students') }}</em> — {{ __('these figures also cover Germans + those living with family.') }}
@@ -303,7 +322,10 @@
 
         {{-- ULUSLARARASI ÖĞRENCİ GERÇEĞİ --}}
         <div class="bg-gradient-to-br from-amber-50 to-orange-50 ring-1 ring-amber-200 rounded-2xl p-6">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">⚠️ {{ __('International Student Reality') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <x-svg-icon name="exclamation-triangle" class="w-6 h-6 text-amber-600" />
+                {{ __('International Student Reality') }}
+            </h3>
             <p class="text-gray-700 mb-4 leading-relaxed">
                 {{ __('DAAD\'s 876 €/month average covers German students + those living with family + old rental contracts.') }}
                 <strong>{{ __('Real cost is higher for a newly arrived international student') }}</strong>:
@@ -334,7 +356,10 @@
 
         {{-- FİNANSMAN --}}
         <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">💼 {{ __('Financing Options') }}</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <x-svg-icon name="briefcase" class="w-6 h-6" />
+                {{ __('Financing Options') }}
+            </h3>
             <p class="text-gray-700 mb-4">
                 {{ __('International students do not have') }} <strong>{{ __('unlimited work permission') }}</strong>. {{ __('A side job can boost your budget but covering all expenses is hard. Applying for scholarships is critical.') }}
             </p>
@@ -342,7 +367,7 @@
                 <a href="https://www.daad.de/en/study-and-research-in-germany/scholarships/"
                    target="_blank" rel="noopener"
                    class="group flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary-50 transition">
-                    <div class="text-2xl">🎯</div>
+                    <div class="text-primary-600"><x-svg-icon name="target" class="w-6 h-6" /></div>
                     <div>
                         <p class="font-bold text-gray-900 group-hover:text-primary-700">{{ __('DAAD Scholarships') }}</p>
                         <p class="text-xs text-gray-600 mt-0.5">{{ __('Official German exchange service — exclusively for international students') }}</p>
@@ -351,7 +376,7 @@
                 <a href="https://www.stipendienlotse.de"
                    target="_blank" rel="noopener"
                    class="group flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary-50 transition">
-                    <div class="text-2xl">🔍</div>
+                    <div class="text-primary-600"><x-svg-icon name="search" class="w-6 h-6" /></div>
                     <div>
                         <p class="font-bold text-gray-900 group-hover:text-primary-700">Stipendienlotse</p>
                         <p class="text-xs text-gray-600 mt-0.5">{{ __('Federal government scholarship search platform') }}</p>
@@ -369,7 +394,7 @@
                 <a href="https://www.studentenwerke.de"
                    target="_blank" rel="noopener"
                    class="group flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary-50 transition">
-                    <div class="text-2xl">🏛️</div>
+                    <div class="text-primary-600"><x-svg-icon name="building-office" class="w-6 h-6" /></div>
                     <div>
                         <p class="font-bold text-gray-900 group-hover:text-primary-700">Studentenwerke</p>
                         <p class="text-xs text-gray-600 mt-0.5">{{ __('Dormitories + emergency aid funds') }}</p>
@@ -380,7 +405,7 @@
 
         {{-- KAYNAK CITATION --}}
         <p class="text-xs text-gray-500 text-center">
-            📖 {{ __('Source:') }} <a href="https://www.daad.de/en/study-and-research-in-germany/plan-your-studies/tuition-fees-and-living-expenses/" target="_blank" rel="noopener" class="text-primary-600 hover:underline">{{ __('DAAD — Education & Living Costs') }}</a> · {{ __('DZHW 22nd Social Survey 2023') }} · Auswärtiges Amt 2025
+            <span class="inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Source:') }}</span> <a href="https://www.daad.de/en/study-and-research-in-germany/plan-your-studies/tuition-fees-and-living-expenses/" target="_blank" rel="noopener" class="text-primary-600 hover:underline">{{ __('DAAD — Education & Living Costs') }}</a> · {{ __('DZHW 22nd Social Survey 2023') }} · Auswärtiges Amt 2025
         </p>
 
     </div>

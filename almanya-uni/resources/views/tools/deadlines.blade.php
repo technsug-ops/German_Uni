@@ -49,7 +49,10 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Application Calendar') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">📅 {{ __('Application Calendar') }}</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="calendar" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Application Calendar') }}
+        </h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
             {{ __('Filter upcoming application deadlines and add them to your calendar. Winter (Wintersemester) September-July, Summer (Sommersemester) January-March.') }}
         </p>
@@ -84,8 +87,8 @@
                 </select>
                 <select name="semester" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All semesters') }}</option>
-                    <option value="winter" @selected($filters['semester'] === 'winter')>❄️ {{ __('Winter') }}</option>
-                    <option value="summer" @selected($filters['semester'] === 'summer')>☀️ {{ __('Summer') }}</option>
+                    <option value="winter" @selected($filters['semester'] === 'winter')>{{ __('Winter') }}</option>
+                    <option value="summer" @selected($filters['semester'] === 'summer')>{{ __('Summer') }}</option>
                 </select>
                 <button class="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition">{{ __('Search') }}</button>
             </div>
@@ -95,18 +98,19 @@
                 <span class="text-xs text-gray-500 mr-1">{{ __('Time:') }}</span>
                 @php
                     $windows = [
-                        'next-30d'  => '🔥 ' . __('Next 30 days'),
-                        'next-90d'  => '📅 ' . __('3 months'),
-                        'next-6mo'  => '📆 ' . __('6 months'),
-                        'next-year' => '🗓️ ' . __('1 year'),
+                        'next-30d'  => ['fire',           __('Next 30 days')],
+                        'next-90d'  => ['calendar',       __('3 months')],
+                        'next-6mo'  => ['calendar-days',  __('6 months')],
+                        'next-year' => ['calendar-days',  __('1 year')],
                     ];
                 @endphp
-                @foreach ($windows as $val => $lbl)
+                @foreach ($windows as $val => [$ico, $lbl])
                     <a href="{{ request()->fullUrlWithQuery(['window' => $val]) }}"
-                       class="text-xs px-3 py-1.5 rounded-full border transition
+                       class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                               {{ ($filters['window'] ?? 'next-90d') === $val
                                  ? 'bg-indigo-600 text-white border-indigo-600'
                                  : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' }}">
+                        <x-svg-icon name="{{ $ico }}" class="w-3.5 h-3.5" />
                         {{ $lbl }}
                     </a>
                 @endforeach
@@ -127,7 +131,7 @@
 <div class="max-w-[1400px] mx-auto px-4 py-8">
     @if ($programs->isEmpty())
         <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
-            <div class="text-5xl mb-3">🔍</div>
+            <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="search" class="w-12 h-12" /></div>
             <p class="text-yellow-900 font-semibold mb-2">{{ __('No programs found with these filters.') }}</p>
             <a href="{{ route('tools.deadlines') }}" class="text-primary-600 hover:underline">{{ __('Reset filters') }} →</a>
         </div>
@@ -135,10 +139,10 @@
         @php
             // Group programs by urgency bucket. Each item carries its resolved [sem, deadline, daysLeft].
             $buckets = [
-                'urgent'  => ['label' => '🔥 ' . __('Next 30 days'),     'border' => 'border-red-300',    'badge' => 'bg-red-100 text-red-800',       'items' => []],
-                'soon'    => ['label' => '📅 ' . __('1–3 months'),       'border' => 'border-amber-300',  'badge' => 'bg-amber-100 text-amber-800',   'items' => []],
-                'planned' => ['label' => '📆 ' . __('3–6 months'),       'border' => 'border-blue-300',   'badge' => 'bg-blue-100 text-blue-800',     'items' => []],
-                'future'  => ['label' => '🗓️ ' . __('Later'),            'border' => 'border-gray-300',   'badge' => 'bg-gray-100 text-gray-700',     'items' => []],
+                'urgent'  => ['label' => __('Next 30 days'),     'icon' => 'fire',           'border' => 'border-red-300',    'badge' => 'bg-red-100 text-red-800',       'items' => []],
+                'soon'    => ['label' => __('1–3 months'),       'icon' => 'calendar',       'border' => 'border-amber-300',  'badge' => 'bg-amber-100 text-amber-800',   'items' => []],
+                'planned' => ['label' => __('3–6 months'),       'icon' => 'calendar-days',  'border' => 'border-blue-300',   'badge' => 'bg-blue-100 text-blue-800',     'items' => []],
+                'future'  => ['label' => __('Later'),            'icon' => 'calendar-days',  'border' => 'border-gray-300',   'badge' => 'bg-gray-100 text-gray-700',     'items' => []],
             ];
             foreach ($programs as $p) {
                 [$sem, $deadline] = $showSemester($p);
@@ -159,7 +163,10 @@
                 @continue(empty($bucket['items']))
                 <section>
                     <header class="flex items-baseline justify-between gap-3 mb-3 pb-2 border-b-2 {{ $bucket['border'] }}">
-                        <h2 class="text-base md:text-lg font-bold text-gray-900">{{ $bucket['label'] }}</h2>
+                        <h2 class="text-base md:text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                            <x-svg-icon name="{{ $bucket['icon'] }}" class="w-5 h-5" />
+                            {{ $bucket['label'] }}
+                        </h2>
                         <span class="text-xs md:text-sm text-gray-500 font-semibold">
                             {{ trans_choice('{1} :n program|[2,*] :n programs', count($bucket['items']), ['n' => number_format(count($bucket['items']))]) }}
                         </span>
@@ -180,8 +187,8 @@
 
                                     {{-- Semester --}}
                                     <div class="hidden md:block col-span-1">
-                                        <span class="text-xs text-gray-600 font-medium" title="{{ $sem === 'winter' ? __('Winter') : __('Summer') }}">
-                                            {{ $sem === 'winter' ? '❄️' : '☀️' }}
+                                        <span class="inline-flex items-center text-xs text-gray-600 font-medium" title="{{ $sem === 'winter' ? __('Winter') : __('Summer') }}">
+                                            <x-svg-icon name="{{ $sem === 'winter' ? 'sparkles' : 'sparkles' }}" class="w-4 h-4" />
                                         </span>
                                     </div>
 
@@ -223,7 +230,7 @@
                                            class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition"
                                            title="{{ __('Add to my calendar (.ics)') }}"
                                            aria-label="{{ __('Add to my calendar (.ics)') }}">
-                                            📥
+                                            <x-svg-icon name="calendar" class="w-4 h-4" />
                                         </a>
                                     </div>
                                 </div>
@@ -243,10 +250,10 @@
 {{-- BİLGİ BANDI --}}
 <section class="max-w-[1400px] mx-auto px-4 pb-12">
     <div class="bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-200 rounded-xl p-6">
-        <h3 class="font-bold text-gray-900 mb-2">💡 {{ __('Application Periods in Germany') }}</h3>
+        <h3 class="font-bold text-gray-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('Application Periods in Germany') }}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
             <div>
-                <p class="font-semibold mb-1">❄️ Wintersemester ({{ __('Winter') }})</p>
+                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="sparkles" class="w-4 h-4" /> Wintersemester ({{ __('Winter') }})</p>
                 <ul class="list-disc list-inside space-y-1 text-xs">
                     <li>{{ __('Starts in October, runs through February') }}</li>
                     <li>{!! __('Most unis: <strong>July 15</strong> deadline') !!}</li>
@@ -255,7 +262,7 @@
                 </ul>
             </div>
             <div>
-                <p class="font-semibold mb-1">☀️ Sommersemester ({{ __('Summer') }})</p>
+                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="sparkles" class="w-4 h-4" /> Sommersemester ({{ __('Summer') }})</p>
                 <ul class="list-disc list-inside space-y-1 text-xs">
                     <li>{{ __('Starts in April, runs through September') }}</li>
                     <li>{!! __('Most unis: <strong>January 15</strong> deadline') !!}</li>

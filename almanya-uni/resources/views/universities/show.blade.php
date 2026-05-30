@@ -109,11 +109,15 @@
                 @endif
 
                 <div class="flex flex-wrap gap-2 text-sm">
-                    <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">🏛️ {{ $typeLabel }}</span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                        <x-svg-icon name="building-office" class="w-4 h-4" />
+                        {{ $typeLabel }}
+                    </span>
                     @if ($university['city_name'])
                         <a href="{{ route('cities.show', $university['city_slug'] ?? '') }}"
-                           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25">
-                            📍 {{ $university['city_name'] }}@if ($university['state_name']) · {{ $university['state_name'] }}@endif
+                           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25">
+                            <x-svg-icon name="map-pin" class="w-4 h-4" />
+                            {{ $university['city_name'] }}@if ($university['state_name']) · {{ $university['state_name'] }}@endif
                         </a>
                     @endif
                 </div>
@@ -146,15 +150,15 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-5">
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $university['founded_year'] ?? '—' }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5">🚩 {{ __('Kuruluş yılı') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="flag" class="w-3.5 h-3.5" /> {{ __('Kuruluş yılı') }}</div>
                     </div>
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $university['student_count'] ? number_format($university['student_count'], 0, ',', '.') : '—' }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5">👥 {{ __('Öğrenci sayısı') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Öğrenci sayısı') }}</div>
                     </div>
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $typeLabel }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5">🏛️ {{ __('Tür') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Tür') }}</div>
                     </div>
                 </div>
 
@@ -174,7 +178,7 @@
                         @if ($progNcFree > 0)
                             <a href="{{ route('admission-free.by-university', $university['slug']) }}" class="flex-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progNcFree }}</div>
-                                <div class="text-xs opacity-90 mt-0.5">🔓 {{ __('NC-frei (sınavsız) program') }} ↗</div>
+                                <div class="text-xs opacity-90 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> {{ __('NC-frei (sınavsız) program') }} ↗</div>
                             </a>
                         @endif
                     </div>
@@ -209,7 +213,10 @@
                           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
                 @endpush
                 <div class="bg-white p-6 rounded-xl border border-gray-200">
-                    <h2 class="text-xl font-bold mb-3">📍 {{ __('Konum') }}</h2>
+                    <h2 class="text-xl font-bold mb-3 inline-flex items-center gap-2">
+                        <x-svg-icon name="map-pin" class="w-5 h-5" />
+                        {{ __('Konum') }}
+                    </h2>
                     <div id="uniMiniMap"
                          data-lat="{{ $university['coordinates']['latitude'] }}"
                          data-lng="{{ $university['coordinates']['longitude'] }}"
@@ -250,7 +257,7 @@
                     <h2 class="text-xl font-bold mb-3">{{ __('Kaynaklar') }}</h2>
                     <div class="flex flex-wrap gap-3 text-sm">
                         @if ($university['website_url'])
-                            <a href="{{ $university['website_url'] }}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 font-semibold text-gray-800">🌐 {{ __('Resmi website') }} ↗</a>
+                            <a href="{{ $university['website_url'] }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 font-semibold text-gray-800"><x-svg-icon name="globe" class="w-4 h-4" /> {{ __('Resmi website') }} ↗</a>
                         @endif
                         @if ($university['wikipedia_url_de'])
                             <a href="{{ $university['wikipedia_url_de'] }}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 font-semibold text-gray-800">Wikipedia (DE) ↗</a>
@@ -268,9 +275,15 @@
             <div class="bg-white p-6 rounded-xl border border-gray-200 mb-6 sticky top-20 space-y-3">
                 <x-favorite-button :model="$university_model" type="university" size="lg" :block="true" />
                 <a href="{{ route('admission-free.by-university', $university['slug']) }}"
-                   class="block text-center w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">🔓 {{ __('NC-frei Programlar') }}</a>
+                   class="inline-flex items-center justify-center gap-1.5 w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
+                    <x-svg-icon name="check-circle" class="w-4 h-4" />
+                    {{ __('NC-frei Programlar') }}
+                </a>
                 <a href="{{ route('compare.index', ['slugs' => $university['slug']]) }}"
-                   class="block text-center w-full bg-primary-500 text-white py-3 rounded-lg font-semibold hover:bg-primary-600 transition">⚖️ {{ __('Karşılaştırmaya Ekle') }}</a>
+                   class="inline-flex items-center justify-center gap-1.5 w-full bg-primary-500 text-white py-3 rounded-lg font-semibold hover:bg-primary-600 transition">
+                    <x-svg-icon name="scale" class="w-4 h-4" />
+                    {{ __('Karşılaştırmaya Ekle') }}
+                </a>
                 @if ($university['website_url'])
                     <a href="{{ $university['website_url'] }}" target="_blank" rel="noopener"
                        class="block text-center w-full bg-accent-500 text-white py-3 rounded-lg font-semibold hover:bg-accent-600 transition">{{ __('Üniversite Sitesi') }} ↗</a>
@@ -292,9 +305,9 @@
         @if ($programs->isNotEmpty())
             @php
                 $degreeLabels = [
-                    'bachelor' => ['Bachelor', '🎓'], 'master' => ['Master', '🎯'],
-                    'phd' => ['PhD', '🔬'], 'staatsexamen' => ['Staatsexamen', '⚖️'],
-                    'diplom' => ['Diplom', '📜'], 'magister' => ['Magister', '📜'], 'other' => [__('Diğer'), '📚'],
+                    'bachelor' => ['Bachelor', 'academic-cap'], 'master' => ['Master', 'target'],
+                    'phd' => ['PhD', 'beaker'], 'staatsexamen' => ['Staatsexamen', 'scale'],
+                    'diplom' => ['Diplom', 'document-text'], 'magister' => ['Magister', 'document-text'], 'other' => [__('Diğer'), 'book-open'],
                 ];
             @endphp
             <div class="bg-white p-6 rounded-xl border border-gray-200">
@@ -310,9 +323,9 @@
                 </div>
 
                 @foreach ($programs_by_degree as $degree => $items)
-                    @php [$label, $emoji] = $degreeLabels[$degree] ?? [ucfirst($degree), '📚']; @endphp
+                    @php [$label, $iconName] = $degreeLabels[$degree] ?? [ucfirst($degree), 'book-open']; @endphp
                     <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3 flex items-center gap-2">
-                        <span>{{ $emoji }}</span> {{ $label }}
+                        <x-svg-icon name="{{ $iconName }}" class="w-5 h-5" /> {{ $label }}
                         <span class="text-sm font-normal text-gray-500">({{ $items->count() }})</span>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -346,13 +359,13 @@
                                         </span>
                                     @endif
                                     @if ($p->duration_semesters)
-                                        <span class="text-gray-600">⏱️ {{ $p->duration_semesters }} {{ __('sem') }}</span>
+                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ $p->duration_semesters }} {{ __('sem') }}</span>
                                     @endif
                                     @if ($p->admission_mode === 'zulassungsfrei')
-                                        <span class="text-amber-700 font-semibold">🔓 NC-frei</span>
+                                        <span class="inline-flex items-center gap-1 text-amber-700 font-semibold"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> NC-frei</span>
                                     @endif
                                     @if (! is_null($p->tuition_fee_eur))
-                                        <span class="text-gray-600">💶 {{ $p->tuition_fee_eur == 0 ? __('Ücretsiz') : number_format($p->tuition_fee_eur, 0, ',', '.') . ' € / ' . __('sem') }}</span>
+                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="currency-euro" class="w-3.5 h-3.5" /> {{ $p->tuition_fee_eur == 0 ? __('Ücretsiz') : number_format($p->tuition_fee_eur, 0, ',', '.') . ' € / ' . __('sem') }}</span>
                                     @endif
                                 </div>
                                 @if ($p->description)
@@ -386,22 +399,22 @@
                     ])->values();
                 // Sadece verisi olan stat kartlarını topla — boş kutu olmasın
                 $cityStats = [];
-                $cityStats[] = ['v' => $cityUniCount, 'l' => '🏛️ ' . __('Üniversite'), 'c' => 'bg-primary-600 text-white'];
+                $cityStats[] = ['v' => $cityUniCount, 'l' => __('Üniversite'), 'i' => 'building-office', 'c' => 'bg-primary-600 text-white'];
                 if (($cityPrograms ?? 0) > 0) {
-                    $cityStats[] = ['v' => number_format($cityPrograms, 0, ',', '.'), 'l' => '📚 ' . __('Program'), 'c' => 'bg-indigo-600 text-white'];
+                    $cityStats[] = ['v' => number_format($cityPrograms, 0, ',', '.'), 'l' => __('Program'), 'i' => 'book-open', 'c' => 'bg-indigo-600 text-white'];
                 }
                 if (($cityStudents ?? 0) > 0) {
-                    $cityStats[] = ['v' => number_format($cityStudents, 0, ',', '.'), 'l' => '🎓 ' . __('Öğrenci'), 'c' => 'bg-sky-600 text-white'];
+                    $cityStats[] = ['v' => number_format($cityStudents, 0, ',', '.'), 'l' => __('Öğrenci'), 'i' => 'academic-cap', 'c' => 'bg-sky-600 text-white'];
                 }
                 if ($city->population) {
-                    $cityStats[] = ['v' => number_format($city->population, 0, ',', '.'), 'l' => '👥 ' . __('Nüfus'), 'c' => 'bg-gray-50 border border-gray-200 text-gray-900'];
+                    $cityStats[] = ['v' => number_format($city->population, 0, ',', '.'), 'l' => __('Nüfus'), 'i' => 'users', 'c' => 'bg-gray-50 border border-gray-200 text-gray-900'];
                 }
                 if ($city->avg_rent_min) {
                     $rent = number_format($city->avg_rent_min, 0, ',', '.') . '€' . ($city->avg_rent_max ? '–' . number_format($city->avg_rent_max, 0, ',', '.') . '€' : '');
-                    $cityStats[] = ['v' => $rent, 'l' => '🏠 ' . __('WG kira / ay'), 'c' => 'bg-emerald-600 text-white'];
+                    $cityStats[] = ['v' => $rent, 'l' => __('WG kira / ay'), 'i' => 'home', 'c' => 'bg-emerald-600 text-white'];
                 }
                 if ($city->stw_capacity) {
-                    $cityStats[] = ['v' => number_format($city->stw_capacity, 0, ',', '.'), 'l' => '🛏️ ' . __('Yurt kapasitesi'), 'c' => 'bg-amber-500 text-white'];
+                    $cityStats[] = ['v' => number_format($city->stw_capacity, 0, ',', '.'), 'l' => __('Yurt kapasitesi'), 'i' => 'home', 'c' => 'bg-amber-500 text-white'];
                 }
             @endphp
             <div class="bg-white p-6 rounded-xl border border-gray-200">
@@ -412,7 +425,7 @@
                     <div>
                         <h2 class="text-2xl font-bold text-gray-900">{{ $city->name }}</h2>
                         @if ($university['state_name'])
-                            <p class="text-sm text-gray-500">📍 {{ __('Eyalet') }}: {{ $university['state_name'] }}</p>
+                            <p class="text-sm text-gray-500 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ __('Eyalet') }}: {{ $university['state_name'] }}</p>
                         @endif
                     </div>
                 </div>
@@ -421,7 +434,10 @@
                     @foreach ($cityStats as $s)
                         <div class="rounded-lg p-4 {{ $s['c'] }}">
                             <div class="text-2xl font-extrabold">{{ $s['v'] }}</div>
-                            <div class="text-xs {{ str_contains($s['c'], 'text-white') ? 'opacity-90' : 'text-gray-500' }} mt-0.5">{{ $s['l'] }}</div>
+                            <div class="text-xs {{ str_contains($s['c'], 'text-white') ? 'opacity-90' : 'text-gray-500' }} mt-0.5 inline-flex items-center gap-1">
+                                <x-svg-icon name="{{ $s['i'] }}" class="w-3.5 h-3.5" />
+                                {{ $s['l'] }}
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -473,8 +489,8 @@
 <section class="bg-gray-50 border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-            <h2 class="text-2xl font-bold text-gray-900">
-                🎓
+            <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2">
+                <x-svg-icon name="academic-cap" class="w-6 h-6" />
                 @if ($university['city_name'])
                     {{ $university['city_name'] }} {{ __('şehrindeki diğer üniversiteler') }}
                 @else

@@ -12,7 +12,10 @@
 {{-- HERO --}}
 <section class="bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white">
     <div class="max-w-[1400px] mx-auto px-4 py-12">
-        <span class="inline-block bg-accent-500 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">🏠 {{ __('New') }}</span>
+        <span class="inline-flex items-center gap-1.5 bg-accent-500 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+            <x-svg-icon name="home" class="w-3.5 h-3.5" />
+            {{ __('New') }}
+        </span>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">{{ __('How to Find Housing in Germany?') }}</h1>
         <p class="text-lg text-primary-100 max-w-3xl">
             {!! __('Finding housing in Germany is complex but manageable. Step-by-step guide for <strong>Studierendenwerk dorms</strong>, <strong>WG (shared rooms)</strong> and private apartments, ready-to-use <strong>German email templates</strong>, and <strong>real experiences</strong> from international students.') !!}
@@ -34,8 +37,9 @@
 
 @if (session('status'))
     <div class="max-w-[1400px] mx-auto px-4 pt-6">
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-green-800">
-            ✓ {{ session('status') }}
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 inline-flex items-center gap-2">
+            <x-svg-icon name="check-circle" class="w-5 h-5" />
+            {{ session('status') }}
         </div>
     </div>
 @endif
@@ -47,40 +51,40 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="bg-white border border-gray-200 rounded-xl p-6">
-            <div class="text-3xl mb-3">🏫</div>
+            <div class="text-primary-600 mb-3"><x-svg-icon name="building-office" class="w-8 h-8" /></div>
             <h3 class="font-bold text-gray-900 mb-2">{{ __('Studierendenwerk Dorms') }}</h3>
             <p class="text-sm text-gray-600 mb-3">{{ __('Public student dorms. Cheap, furnished, but long waitlists.') }}</p>
             <ul class="text-xs text-gray-500 space-y-1 mb-4">
-                <li>✓ {{ __('Rent between 180-550 €/month') }}</li>
-                <li>✓ {{ __('Furnished + internet included') }}</li>
-                <li>✗ {{ __('2-18 month waitlist') }}</li>
-                <li>✗ {{ __('Limited spots') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> {{ __('Rent between 180-550 €/month') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> {{ __('Furnished + internet included') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> {{ __('2-18 month waitlist') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> {{ __('Limited spots') }}</li>
             </ul>
             <a href="#dorms" class="text-sm font-semibold text-primary-600 hover:text-primary-800">{{ __('Dorms in 15 cities') }} →</a>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-xl p-6">
-            <div class="text-3xl mb-3">🤝</div>
+            <div class="text-primary-600 mb-3"><x-svg-icon name="users" class="w-8 h-8" /></div>
             <h3 class="font-bold text-gray-900 mb-2">{{ __('WG (Shared Room)') }}</h3>
             <p class="text-sm text-gray-600 mb-3">{{ __('Most common student housing type. Find listings on WG-Gesucht, apply, meet.') }}</p>
             <ul class="text-xs text-gray-500 space-y-1 mb-4">
-                <li>✓ {{ __('Fast (1-3 weeks)') }}</li>
-                <li>✓ 250-700 €/{{ __('month') }}</li>
-                <li>✓ {{ __('Social life') }}</li>
-                <li>✗ {{ __('Casting process is tiring') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> {{ __('Fast (1-3 weeks)') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> 250-700 €/{{ __('month') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> {{ __('Social life') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> {{ __('Casting process is tiring') }}</li>
             </ul>
             <a href="#templates" class="text-sm font-semibold text-primary-600 hover:text-primary-800">{{ __('WG email template') }} →</a>
         </div>
 
         <div class="bg-white border border-gray-200 rounded-xl p-6">
-            <div class="text-3xl mb-3">🏢</div>
+            <div class="text-primary-600 mb-3"><x-svg-icon name="building-office" class="w-8 h-8" /></div>
             <h3 class="font-bold text-gray-900 mb-2">{{ __('Private Apartment / Studio') }}</h3>
             <p class="text-sm text-gray-600 mb-3">{{ __('ImmoScout, eBay Kleinanzeigen. Solo apartment if your budget allows.') }}</p>
             <ul class="text-xs text-gray-500 space-y-1 mb-4">
-                <li>✓ {{ __('Private space') }}</li>
-                <li>✗ 600-1500 €/{{ __('month') }}</li>
-                <li>✗ {{ __('SCHUFA + Sperrkonto + 3 payslips') }}</li>
-                <li>✗ {{ __('Hard for foreigners') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="check" class="w-3.5 h-3.5 text-emerald-600" /> {{ __('Private space') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> 600-1500 €/{{ __('month') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> {{ __('SCHUFA + Sperrkonto + 3 payslips') }}</li>
+                <li class="inline-flex items-center gap-1"><x-svg-icon name="x-mark" class="w-3.5 h-3.5 text-red-500" /> {{ __('Hard for foreigners') }}</li>
             </ul>
             <a href="#templates" class="text-sm font-semibold text-primary-600 hover:text-primary-800">{{ __('Wohnungsanfrage template') }} →</a>
         </div>
@@ -92,15 +96,16 @@
     <div class="max-w-[1400px] mx-auto px-4 py-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
             <div class="md:col-span-2">
-                <h2 class="text-2xl md:text-3xl font-extrabold mb-2">🏛️ {{ __('29 Studierendenwerk + 8 Private Companies + 4 Portals') }}</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-2 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-7 h-7" /> {{ __('29 Studierendenwerk + 8 Private Companies + 4 Portals') }}</h2>
                 <p class="text-emerald-100">
                     {{ __('Student dorms in Germany = 2 main categories. Public (cheap, long wait) and private companies (fast, expensive). We have all prices, capacities, waiting times and direct contact links.') }}
                 </p>
             </div>
             <div class="md:text-right">
                 <a href="{{ route('housing.providers') }}"
-                   class="inline-block bg-white text-emerald-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">
-                    🔎 {{ __('All Providers') }} →
+                   class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">
+                    <x-svg-icon name="search" class="w-5 h-5" />
+                    {{ __('All Providers') }} →
                 </a>
             </div>
         </div>
@@ -113,12 +118,12 @@
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">💶 {{ __('How much in which city?') }}</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="currency-euro" class="w-7 h-7" /> {{ __('How much in which city?') }}</h2>
                 <p class="text-gray-600 mt-1">{{ __('Current 2025 rent ranges (€/month) for the most popular student cities') }}</p>
             </div>
             <a href="{{ route('tools.budget-planner') }}"
                class="inline-flex items-center gap-1.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-4 py-2 rounded-lg text-sm transition shadow-md whitespace-nowrap">
-                📈 {{ __('Budget planner') }} →
+                <x-svg-icon name="arrow-trending-up" class="w-4 h-4" /> {{ __('Budget planner') }} →
             </a>
         </div>
 
@@ -128,10 +133,10 @@
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
                             <th class="text-left px-4 py-3 font-semibold text-gray-700">{{ __('City') }}</th>
-                            <th class="text-right px-4 py-3 font-semibold text-gray-700">🤝 WG</th>
-                            <th class="text-right px-4 py-3 font-semibold text-gray-700">🏢 {{ __('Studio') }}</th>
-                            <th class="text-right px-4 py-3 font-semibold text-gray-700">🏘️ {{ __('Apartment') }}</th>
-                            <th class="text-right px-4 py-3 font-semibold text-gray-700">🎓 {{ __('Uni') }}</th>
+                            <th class="text-right px-4 py-3 font-semibold text-gray-700"><span class="inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> WG</span></th>
+                            <th class="text-right px-4 py-3 font-semibold text-gray-700"><span class="inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Studio') }}</span></th>
+                            <th class="text-right px-4 py-3 font-semibold text-gray-700"><span class="inline-flex items-center gap-1"><x-svg-icon name="home" class="w-3.5 h-3.5" /> {{ __('Apartment') }}</span></th>
+                            <th class="text-right px-4 py-3 font-semibold text-gray-700"><span class="inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Uni') }}</span></th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
@@ -160,19 +165,19 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6">
             <a href="{{ route('tools.cost-of-living') }}"
                class="block bg-white border border-gray-200 hover:border-primary-400 hover:shadow transition rounded-xl p-4 text-center">
-                <div class="text-2xl mb-1">💰</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></div>
                 <p class="font-semibold text-gray-900 text-sm">{{ __('Cost of living calculator') }}</p>
                 <p class="text-xs text-gray-500 mt-1">{{ __('Rent + food + transport + insurance') }}</p>
             </a>
             <a href="{{ route('tools.budget-planner') }}"
                class="block bg-white border border-gray-200 hover:border-primary-400 hover:shadow transition rounded-xl p-4 text-center">
-                <div class="text-2xl mb-1">📈</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="arrow-trending-up" class="w-6 h-6" /></div>
                 <p class="font-semibold text-gray-900 text-sm">{{ __('Budget planner') }}</p>
                 <p class="text-xs text-gray-500 mt-1">{{ __('Income vs expense + savings target') }}</p>
             </a>
             <a href="{{ route('blog.show', 'sperrkonto-2025-tam-rehber-almanya-vizesi-icin-bloke-hesap') }}"
                class="block bg-white border border-gray-200 hover:border-primary-400 hover:shadow transition rounded-xl p-4 text-center">
-                <div class="text-2xl mb-1">🏦</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></div>
                 <p class="font-semibold text-gray-900 text-sm">{{ __('Sperrkonto guide') }}</p>
                 <p class="text-xs text-gray-500 mt-1">992€/{{ __('month') }} × 12 = 11.904€</p>
             </a>
@@ -186,7 +191,7 @@
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">📧 {{ __('Ready-to-use German Email Templates') }}</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="envelope" class="w-7 h-7" /> {{ __('Ready-to-use German Email Templates') }}</h2>
                 <p class="text-gray-600 mt-1">{{ __('Don\'t know German? Fill in these ready templates, copy-paste and send. Each one has a line-by-line explanation.') }}</p>
             </div>
         </div>
@@ -216,7 +221,7 @@
 <section id="dorms" class="max-w-[1400px] mx-auto px-4 py-12">
     <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
         <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🏫 {{ __('Studierendenwerk Dorms') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-7 h-7" /> {{ __('Studierendenwerk Dorms') }}</h2>
             <p class="text-gray-600 mt-1">{{ __('Official student dorm guide for 15 major cities — application links and waiting times.') }}</p>
         </div>
     </div>
@@ -230,15 +235,16 @@
                         <p class="text-xs text-gray-500">{{ $d->organization }}</p>
                     </div>
                     @if ($d->waitlist_avg)
-                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                            ⏱ {{ $d->waitlist_avg }}
+                        <span class="inline-flex items-center gap-1 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
+                            <x-svg-icon name="clock" class="w-3 h-3" />
+                            {{ $d->waitlist_avg }}
                         </span>
                     @endif
                 </div>
 
                 @if ($d->rent_min_eur || $d->rent_max_eur)
-                    <p class="text-sm text-gray-700 mb-2">
-                        💶 <strong>{{ $d->rent_min_eur }}-{{ $d->rent_max_eur }} €</strong>/{{ __('month') }}
+                    <p class="text-sm text-gray-700 mb-2 inline-flex items-center gap-1">
+                        <x-svg-icon name="currency-euro" class="w-4 h-4" /> <strong>{{ $d->rent_min_eur }}-{{ $d->rent_max_eur }} €</strong>/{{ __('month') }}
                     </p>
                 @endif
 
@@ -249,12 +255,12 @@
                 <div class="flex flex-wrap gap-2 text-xs">
                     <a href="{{ $d->website_url }}" target="_blank" rel="noopener"
                        class="inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold px-3 py-1.5 rounded-md transition">
-                        🌐 {{ __('Official Site') }}
+                        <x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Official Site') }}
                     </a>
                     @if ($d->application_url)
                         <a href="{{ $d->application_url }}" target="_blank" rel="noopener"
                            class="inline-flex items-center gap-1 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-3 py-1.5 rounded-md transition">
-                            ✍ {{ __('Apply') }} →
+                            <x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('Apply') }} →
                         </a>
                     @endif
                 </div>
@@ -268,13 +274,14 @@
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">💬 {{ __('Community Experiences') }}</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="chat" class="w-7 h-7" /> {{ __('Community Experiences') }}</h2>
                 <p class="text-gray-600 mt-1">{{ __('Real experiences from international students. Scam warnings, landlord conversations, neighborhood tips.') }}</p>
             </div>
             @auth
                 <a href="{{ route('housing.tip-create') }}"
-                   class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-5 py-2.5 rounded-lg transition">
-                    ✍ {{ __('Share Your Experience') }}
+                   class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-5 py-2.5 rounded-lg transition">
+                    <x-svg-icon name="pencil" class="w-4 h-4" />
+                    {{ __('Share Your Experience') }}
                 </a>
             @else
                 <a href="{{ route('login') }}"
@@ -308,7 +315,7 @@
                         </div>
                         <p class="text-sm text-gray-700 line-clamp-4 mb-3">{{ $tip->content }}</p>
                         <p class="text-xs text-gray-500">
-                            @if ($tip->city_name) 📍 {{ $tip->city_name }} · @endif
+                            @if ($tip->city_name) <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $tip->city_name }}</span> · @endif
                             {{ $tip->user->name ?? __('Anonymous') }} · {{ $tip->created_at->diffForHumans() }}
                         </p>
                     </article>
@@ -323,31 +330,31 @@
 
 {{-- Ev arama altın kuralları --}}
 <section class="max-w-[1400px] mx-auto px-4 py-12">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">🚦 {{ __('Golden Rules for Housing Search in Germany') }}</h2>
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 inline-flex items-center gap-2"><x-svg-icon name="exclamation-triangle" class="w-7 h-7" /> {{ __('Golden Rules for Housing Search in Germany') }}</h2>
 
     <div class="space-y-3">
         @php
             $housingRules = app()->getLocale() === 'tr' ? [
-                ['🚨', 'Asla peşin para yatırma!', 'Ev sahibinin "rezervasyon için 500€ yolla" demesi %99 dolandırıcılık. Sözleşme imzalanmadan, anahtarı görmeden, gerçek kişiyi (video bile yetmez) görmeden para gönderme. Klassik sahteci: "Ben İngiltere\'deyim, anahtarı Airbnb gibi vereceğim" der.'],
-                ['📅', 'Erken başla — minimum 4 ay önce', 'Üniversite kabul mektubun gelir gelmez yurt başvurusu yap. WG aramaya da semestir başlamadan 6-8 hafta önce başla. Son hafta bulmak imkansız.'],
-                ['📄', 'Belgeleri önceden hazırla', 'Sperrkonto onayı, üniversite kabul mektubu, pasaport kopyası, varsa Türkçe + Almanca CV. Vermieter bunları talep ettiğinde 1 saatte cevap verebilmelisin.'],
-                ['💬', 'Almanca mail at, hatalı bile olsa', 'Vermieter (ev sahibi) İngilizce başvuruyu genelde okumaz veya ikinci sıraya koyar. Mail şablonlarımızı kullan — hatasız Almanca çıkacak.'],
-                ['🎥', 'Video-call öner', 'Almanya\'da değilsen, Vermieter\'in "kim olduğunu nasıl bileyim" endişesi var. Video-call (Zoom/WhatsApp) önerirsen ciddi izlenim verirsin.'],
-                ['🏘', 'Şehir merkezi şart değil', 'Yurt veya kira merkezde 600€ ise, S-Bahn ile 20 dk uzakta 350€\'ya benzer kalite bulabilirsin. Almanya\'da toplu ulaşım iyi.'],
-                ['✅', 'Anmeldung\'u 14 gün içinde yap', 'Eve taşınınca 14 gün içinde Bürgeramt\'a kaydını yaptırman ZORUNLU. Wohnungsgeberbestätigung Vermieter\'den almak şart. Bunu Anmeldung olmadan banka hesabı açamazsın, vize uzatamazsın.'],
+                ['exclamation-triangle', 'Asla peşin para yatırma!', 'Ev sahibinin "rezervasyon için 500€ yolla" demesi %99 dolandırıcılık. Sözleşme imzalanmadan, anahtarı görmeden, gerçek kişiyi (video bile yetmez) görmeden para gönderme. Klassik sahteci: "Ben İngiltere\'deyim, anahtarı Airbnb gibi vereceğim" der.'],
+                ['calendar',             'Erken başla — minimum 4 ay önce', 'Üniversite kabul mektubun gelir gelmez yurt başvurusu yap. WG aramaya da semestir başlamadan 6-8 hafta önce başla. Son hafta bulmak imkansız.'],
+                ['document-text',        'Belgeleri önceden hazırla', 'Sperrkonto onayı, üniversite kabul mektubu, pasaport kopyası, varsa Türkçe + Almanca CV. Vermieter bunları talep ettiğinde 1 saatte cevap verebilmelisin.'],
+                ['chat',                 'Almanca mail at, hatalı bile olsa', 'Vermieter (ev sahibi) İngilizce başvuruyu genelde okumaz veya ikinci sıraya koyar. Mail şablonlarımızı kullan — hatasız Almanca çıkacak.'],
+                ['play',                 'Video-call öner', 'Almanya\'da değilsen, Vermieter\'in "kim olduğunu nasıl bileyim" endişesi var. Video-call (Zoom/WhatsApp) önerirsen ciddi izlenim verirsin.'],
+                ['home',                 'Şehir merkezi şart değil', 'Yurt veya kira merkezde 600€ ise, S-Bahn ile 20 dk uzakta 350€\'ya benzer kalite bulabilirsin. Almanya\'da toplu ulaşım iyi.'],
+                ['check-circle',         'Anmeldung\'u 14 gün içinde yap', 'Eve taşınınca 14 gün içinde Bürgeramt\'a kaydını yaptırman ZORUNLU. Wohnungsgeberbestätigung Vermieter\'den almak şart. Bunu Anmeldung olmadan banka hesabı açamazsın, vize uzatamazsın.'],
             ] : [
-                ['🚨', 'Never pay upfront!', 'If a landlord says "send 500€ to reserve", it\'s 99% a scam. Don\'t send money before signing a contract, seeing the keys, and meeting the real person (a video isn\'t enough). Classic scammer line: "I\'m in the UK, I\'ll give you the keys Airbnb-style".'],
-                ['📅', 'Start early — minimum 4 months ahead', 'Apply for a dorm as soon as your acceptance letter arrives. Start the WG search 6-8 weeks before the semester begins. Finding something the last week is impossible.'],
-                ['📄', 'Prepare your documents in advance', 'Sperrkonto confirmation, university acceptance letter, passport copy, and your CV (in English and German if possible). You should be able to respond within an hour when the Vermieter requests them.'],
-                ['💬', 'Email in German, even if imperfect', 'Vermieter (landlord) usually ignores English applications or puts them at the bottom of the pile. Use our email templates — flawless German guaranteed.'],
-                ['🎥', 'Suggest a video call', 'If you\'re not in Germany, the Vermieter wonders "how do I know who you are?". Suggesting a video call (Zoom/WhatsApp) makes a serious impression.'],
-                ['🏘', 'The city center is not mandatory', 'If a dorm or rent in the center costs 600€, you can find similar quality 20 minutes away by S-Bahn for 350€. Public transport in Germany is great.'],
-                ['✅', 'Do your Anmeldung within 14 days', 'After moving in, you MUST register at the Bürgeramt within 14 days. Getting the Wohnungsgeberbestätigung from the Vermieter is required. Without Anmeldung you can\'t open a bank account or extend your visa.'],
+                ['exclamation-triangle', 'Never pay upfront!', 'If a landlord says "send 500€ to reserve", it\'s 99% a scam. Don\'t send money before signing a contract, seeing the keys, and meeting the real person (a video isn\'t enough). Classic scammer line: "I\'m in the UK, I\'ll give you the keys Airbnb-style".'],
+                ['calendar',             'Start early — minimum 4 months ahead', 'Apply for a dorm as soon as your acceptance letter arrives. Start the WG search 6-8 weeks before the semester begins. Finding something the last week is impossible.'],
+                ['document-text',        'Prepare your documents in advance', 'Sperrkonto confirmation, university acceptance letter, passport copy, and your CV (in English and German if possible). You should be able to respond within an hour when the Vermieter requests them.'],
+                ['chat',                 'Email in German, even if imperfect', 'Vermieter (landlord) usually ignores English applications or puts them at the bottom of the pile. Use our email templates — flawless German guaranteed.'],
+                ['play',                 'Suggest a video call', 'If you\'re not in Germany, the Vermieter wonders "how do I know who you are?". Suggesting a video call (Zoom/WhatsApp) makes a serious impression.'],
+                ['home',                 'The city center is not mandatory', 'If a dorm or rent in the center costs 600€, you can find similar quality 20 minutes away by S-Bahn for 350€. Public transport in Germany is great.'],
+                ['check-circle',         'Do your Anmeldung within 14 days', 'After moving in, you MUST register at the Bürgeramt within 14 days. Getting the Wohnungsgeberbestätigung from the Vermieter is required. Without Anmeldung you can\'t open a bank account or extend your visa.'],
             ];
         @endphp
         @foreach ($housingRules as [$icon, $title, $text])
             <div class="bg-white border border-gray-200 rounded-xl p-5 flex items-start gap-4">
-                <span class="text-3xl flex-shrink-0">{{ $icon }}</span>
+                <span class="text-primary-600 flex-shrink-0"><x-svg-icon name="{{ $icon }}" class="w-8 h-8" /></span>
                 <div>
                     <h3 class="font-bold text-gray-900 mb-1">{{ $title }}</h3>
                     <p class="text-sm text-gray-700 leading-relaxed">{{ $text }}</p>
@@ -365,8 +372,9 @@
             {{ __('A story, tip, or even a scam warning from your housing search in Germany is very valuable for the next student. Sign up, share your experience — everyone benefits.') }}
         </p>
         @auth
-            <a href="{{ route('housing.tip-create') }}" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">
-                ✍ {{ __('Share My Experience') }}
+            <a href="{{ route('housing.tip-create') }}" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">
+                <x-svg-icon name="pencil" class="w-5 h-5" />
+                {{ __('Share My Experience') }}
             </a>
         @else
             <a href="{{ route('register') }}" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">

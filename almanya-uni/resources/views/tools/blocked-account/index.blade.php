@@ -20,8 +20,9 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Blocked Account Finder') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            🏦 {{ __('Blocked Account (Sperrkonto) Finder') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="banknotes" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Blocked Account (Sperrkonto) Finder') }}
         </h1>
         <p class="text-lg md:text-xl text-blue-100 max-w-3xl">
             {!! __('You need to deposit <strong class="text-white">€11,904</strong> to a blocked account for the Germany student visa. Compare providers side by side and pick the most suitable.') !!}
@@ -64,12 +65,12 @@
         ]"
     />
     {{-- ════════════════════════════════════════════════════════════════ --}}
-    {{-- 💰 CALCULATOR — Sperrkonto Total Cost Calculator                    --}}
+    {{-- CALCULATOR — Sperrkonto Total Cost Calculator                       --}}
     {{-- ════════════════════════════════════════════════════════════════ --}}
     <section x-data="sperrkontoCalc()" class="mb-10 bg-white border-2 border-emerald-200 rounded-2xl shadow-sm overflow-hidden">
         <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border-b border-emerald-100 px-6 py-4">
             <h2 class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                🧮 {{ __('Blocked Account Calculator') }}
+                <x-svg-icon name="chart-bar" class="w-6 h-6" /> {{ __('Blocked Account Calculator') }}
             </h2>
             <p class="text-sm text-gray-600 mt-1">{{ __('Calculate the total cost of your Sperrkonto including monthly deposit + setup fee + service charges.') }}</p>
         </div>
@@ -169,8 +170,9 @@
                     <p class="text-xs text-gray-500 mt-1" x-text="'≈ $' + (total * 1.08).toLocaleString('de-DE', {maximumFractionDigits: 0}) + ' USD'"></p>
                 </div>
 
-                <div class="mt-3 text-xs text-gray-500 leading-relaxed">
-                    💡 {{ __('Deposit is your own money — you withdraw it monthly. Setup + service fees are paid to the provider.') }}
+                <div class="mt-3 text-xs text-gray-500 leading-relaxed inline-flex items-start gap-1.5">
+                    <x-svg-icon name="light-bulb" class="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                    {{ __('Deposit is your own money — you withdraw it monthly. Setup + service fees are paid to the provider.') }}
                 </div>
             </div>
         </div>
@@ -210,20 +212,24 @@
         <span class="text-sm font-semibold text-gray-700 mr-2">{{ __('Filter:') }}</span>
         @php
             $chips = [
-                null        => [__('All'), '🏦'],
-                'cheapest'  => [__('Cheapest'), '💰'],
-                'turkish'   => [__('Turkish support'), '🇹🇷'],
-                'insurance' => [__('Insurance included'), '🏥'],
-                'fast'      => [__('Fast (≤7 days)'), '⚡'],
-                'fintech'   => ['FinTech', '📱'],
-                'bank'      => [__('Bank'), '🏛️'],
+                null        => [__('All'),                'banknotes',        null],
+                'cheapest'  => [__('Cheapest'),           'currency-euro',    null],
+                'turkish'   => [__('Turkish support'),    null,               '🇹🇷'],
+                'insurance' => [__('Insurance included'), 'shield-check',     null],
+                'fast'      => [__('Fast (≤7 days)'),     'fire',             null],
+                'fintech'   => ['FinTech',                'cursor-arrow-rays', null],
+                'bank'      => [__('Bank'),               'building-office',  null],
             ];
         @endphp
-        @foreach ($chips as $key => [$label, $icon])
+        @foreach ($chips as $key => [$label, $iconName, $flag])
             <a href="{{ route('tools.blocked-account', $key ? ['filter' => $key] : []) }}"
                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition
                       {{ $filter === $key ? 'bg-primary-600 text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                <span>{{ $icon }}</span>
+                @if ($flag)
+                    <span>{{ $flag }}</span>
+                @else
+                    <x-svg-icon name="{{ $iconName }}" class="w-3.5 h-3.5" />
+                @endif
                 <span>{{ $label }}</span>
             </a>
         @endforeach
@@ -293,7 +299,7 @@
                             <div class="flex flex-wrap gap-1.5 mb-3">
                                 @if ($p->combo_insurance)
                                     <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100">
-                                        🏥 {{ __('Insurance combo') }}
+                                        <x-svg-icon name="shield-check" class="w-3.5 h-3.5" /> {{ __('Insurance combo') }}
                                         @if ($p->insurance_provider_name)
                                             <span class="opacity-75">· {{ $p->insurance_provider_name }}</span>
                                         @endif
@@ -301,12 +307,12 @@
                                 @endif
                                 @if ($p->has_mobile_app)
                                     <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-blue-50 text-blue-700 ring-1 ring-blue-100">
-                                        📱 {{ __('Mobile app') }}
+                                        <x-svg-icon name="cursor-arrow-rays" class="w-3.5 h-3.5" /> {{ __('Mobile app') }}
                                     </span>
                                 @endif
                                 @if ($p->bafin_licensed)
                                     <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-purple-50 text-purple-700 ring-1 ring-purple-100">
-                                        ✓ {{ __('BaFin licensed') }}
+                                        <x-svg-icon name="check" class="w-3.5 h-3.5" /> {{ __('BaFin licensed') }}
                                     </span>
                                 @endif
                                 @if (is_array($p->supported_languages) && in_array('tr', $p->supported_languages))
@@ -321,7 +327,7 @@
                                 <ul class="space-y-1 text-sm">
                                     @foreach (array_slice($p->pros, 0, 3) as $pro)
                                         <li class="flex items-start gap-2 text-gray-700">
-                                            <span class="text-emerald-500 mt-0.5">✓</span>
+                                            <span class="text-emerald-500 mt-0.5"><x-svg-icon name="check" class="w-4 h-4" /></span>
                                             <span>{{ $pro }}</span>
                                         </li>
                                     @endforeach
@@ -356,7 +362,7 @@
     {{-- BİLGİLENDİRME / SSS --}}
     <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-blue-50 border border-blue-100 rounded-xl p-6">
-            <h2 class="text-xl font-bold text-blue-900 mb-3">💡 {{ __('What is Sperrkonto?') }}</h2>
+            <h2 class="text-xl font-bold text-blue-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('What is Sperrkonto?') }}</h2>
             <p class="text-blue-800 leading-relaxed text-sm">
                 {!! __('It is the blocked account mandatory for the Germany student visa. You deposit enough money for a year (<strong>€11,904</strong> for 2026) at a German bank, and after arrival you can withdraw <strong>€992</strong> monthly. After you get the visa and arrive in Germany the account is "unblocked".') !!}
             </p>
@@ -374,7 +380,7 @@
         </div>
         @else
         <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-            <h2 class="text-xl font-bold text-emerald-900 mb-3">🌍 {{ __('For international students') }}</h2>
+            <h2 class="text-xl font-bold text-emerald-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="globe" class="w-5 h-5" /> {{ __('For international students') }}</h2>
             <ul class="text-emerald-800 text-sm space-y-2 leading-relaxed">
                 <li>{!! __('• <strong>German embassies/consulates</strong> accept all major providers (Expatrio, Fintiba, Coracle, Deutsche Bank).') !!}</li>
                 <li>{!! __('• Online FinTechs (Expatrio/Fintiba/Coracle) are active within <strong>1-5 days</strong>.') !!}</li>
@@ -388,29 +394,29 @@
     {{-- Cross-link --}}
     <section class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
         <a href="{{ route('tools.visa-cost') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-400 hover:shadow-sm transition">
-            <p class="text-2xl mb-1">💸</p>
+            <p class="mb-1 text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></p>
             <p class="font-bold text-gray-900">{{ __('Visa Cost') }}</p>
             <p class="text-xs text-gray-500 mt-0.5">{{ __('Total visa budget') }}</p>
         </a>
         <a href="{{ route('tools.budget-planner') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-400 hover:shadow-sm transition">
-            <p class="text-2xl mb-1">📊</p>
+            <p class="mb-1 text-primary-600"><x-svg-icon name="chart-bar" class="w-6 h-6" /></p>
             <p class="font-bold text-gray-900">{{ __('Budget Planner') }}</p>
             <p class="text-xs text-gray-500 mt-0.5">{{ __('Monthly living expenses') }}</p>
         </a>
         <a href="{{ route('tools.deadlines') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-400 hover:shadow-sm transition">
-            <p class="text-2xl mb-1">📅</p>
+            <p class="mb-1 text-primary-600"><x-svg-icon name="calendar" class="w-6 h-6" /></p>
             <p class="font-bold text-gray-900">{{ __('Application Calendar') }}</p>
             <p class="text-xs text-gray-500 mt-0.5">{{ __('Deadlines + ICS export') }}</p>
         </a>
     </section>
 
     {{-- ════════════════════════════════════════════════════════════════ --}}
-    {{-- 🌍 SPERRKONTO BY COUNTRY                                            --}}
+    {{-- SPERRKONTO BY COUNTRY                                               --}}
     {{-- ════════════════════════════════════════════════════════════════ --}}
     <section class="mt-12 mb-8">
         <div class="flex items-end justify-between mb-5 flex-wrap gap-3">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900">🌍 {{ __('Sperrkonto by Country') }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="globe" class="w-6 h-6" /> {{ __('Sperrkonto by Country') }}</h2>
                 <p class="text-sm text-gray-600 mt-1">{{ __('Country-specific guides for the top 10 international student origins.') }}</p>
             </div>
         </div>

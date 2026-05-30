@@ -21,7 +21,10 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Budget Planner') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">📈 {{ __('Budget Planner') }}</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="arrow-trending-up" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Budget Planner') }}
+        </h1>
         <p class="text-lg md:text-xl text-emerald-100 max-w-3xl">
             {{ __('Add up your monthly income sources + city-based expenses, set your savings goal. See instantly whether your budget is enough and by how much.') }}
         </p>
@@ -35,7 +38,7 @@
         <div class="space-y-5">
             {{-- 1. ŞEHİR + HOUSING --}}
             <section class="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><span class="text-2xl">🏙️</span> {{ __('City and accommodation') }}</h3>
+                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><x-svg-icon name="building-office" class="w-6 h-6" /> {{ __('City and accommodation') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <select name="city" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm">
                         <option value="">{{ __('Select city...') }}</option>
@@ -49,9 +52,9 @@
                         <option value="apartment" @selected($housing === 'apartment')>{{ __('Apartment') }}</option>
                     </select>
                     <select name="lifestyle" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm">
-                        <option value="frugal" @selected($lifestyle === 'frugal')>🪙 {{ __('Frugal') }}</option>
-                        <option value="normal" @selected($lifestyle === 'normal')>⚖️ {{ __('Normal') }}</option>
-                        <option value="comfortable" @selected($lifestyle === 'comfortable')>✨ {{ __('Comfortable') }}</option>
+                        <option value="frugal" @selected($lifestyle === 'frugal')>{{ __('Frugal') }}</option>
+                        <option value="normal" @selected($lifestyle === 'normal')>{{ __('Normal') }}</option>
+                        <option value="comfortable" @selected($lifestyle === 'comfortable')>{{ __('Comfortable') }}</option>
                     </select>
                 </div>
                 @if ($expense)
@@ -60,27 +63,27 @@
                         <a href="{{ route('tools.cost-of-living', ['city' => $selected_city_id, 'housing' => $housing, 'lifestyle' => $lifestyle]) }}" class="ml-2 text-emerald-600 hover:underline">{{ __('Detailed breakdown') }} →</a>
                     </p>
                 @else
-                    <p class="text-xs text-amber-600 mt-3">⚠️ {{ __('Pick a city → an automatic expense estimate will appear.') }}</p>
+                    <p class="text-xs text-amber-600 mt-3 inline-flex items-center gap-1"><x-svg-icon name="exclamation-triangle" class="w-3.5 h-3.5" /> {{ __('Pick a city → an automatic expense estimate will appear.') }}</p>
                 @endif
             </section>
 
             {{-- 2. GELİR KAYNAKLARI --}}
             <section class="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><span class="text-2xl">💰</span> {{ __('Monthly income sources') }}</h3>
+                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><x-svg-icon name="banknotes" class="w-6 h-6" /> {{ __('Monthly income sources') }}</h3>
 
                 @php
                     $incomeItems = [
-                        'sperrkonto'  => ['🏦', __('Sperrkonto withdrawal'), __('€992 standard (annual €11,904 ÷ 12)')],
-                        'scholarship' => ['🎖️', __('Scholarship (monthly)'), __('DAAD €992, other scholarships range €300-1500')],
-                        'job'         => ['👷', __('Work income (Werkstudent etc.)'), __('Max €538 under Werkstudent status (tax advantage)')],
-                        'family'      => ['👨‍👩‍👧', __('Family support'), __('Money transfer from home')],
+                        'sperrkonto'  => ['banknotes',     __('Sperrkonto withdrawal'), __('€992 standard (annual €11,904 ÷ 12)')],
+                        'scholarship' => ['trophy',        __('Scholarship (monthly)'), __('DAAD €992, other scholarships range €300-1500')],
+                        'job'         => ['briefcase',     __('Work income (Werkstudent etc.)'), __('Max €538 under Werkstudent status (tax advantage)')],
+                        'family'      => ['users',         __('Family support'), __('Money transfer from home')],
                     ];
                 @endphp
 
                 <div class="space-y-3">
                     @foreach ($incomeItems as $key => [$icon, $lbl, $desc])
                         <div class="flex items-start gap-3 pb-3 border-b border-gray-100 last:border-0">
-                            <div class="text-2xl shrink-0">{{ $icon }}</div>
+                            <div class="text-emerald-600 shrink-0"><x-svg-icon name="{{ $icon }}" class="w-6 h-6" /></div>
                             <div class="flex-1">
                                 <label class="text-sm font-medium text-gray-900 block">{{ $lbl }}</label>
                                 <p class="text-xs text-gray-500">{{ $desc }}</p>
@@ -104,7 +107,7 @@
 
             {{-- 3. TASARRUF HEDEFİ --}}
             <section class="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><span class="text-2xl">🎯</span> {{ __('Monthly savings goal') }}</h3>
+                <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2"><x-svg-icon name="target" class="w-6 h-6" /> {{ __('Monthly savings goal') }}</h3>
                 <div class="flex items-center gap-3">
                     <input type="range" name="savings_goal" value="{{ $savings_goal }}"
                            min="0" max="500" step="25"
@@ -119,25 +122,25 @@
         {{-- ───── SAĞ: Özet ───── --}}
         <aside class="space-y-4">
             <div class="bg-white border-2 border-emerald-500 rounded-xl p-6 sticky top-20 shadow-lg">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">📊 {{ __('Budget Summary') }}</h3>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 inline-flex items-center gap-1.5"><x-svg-icon name="chart-bar" class="w-4 h-4" /> {{ __('Budget Summary') }}</h3>
 
                 <div class="space-y-3 text-sm">
                     <div class="flex items-baseline justify-between">
-                        <span class="text-gray-600">📥 {{ __('Income') }}</span>
+                        <span class="text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="plus" class="w-3.5 h-3.5" /> {{ __('Income') }}</span>
                         <strong class="text-emerald-700">{{ number_format($total_income, 0, ',', '.') }} €</strong>
                     </div>
                     <div class="flex items-baseline justify-between pb-3 border-b border-gray-100">
-                        <span class="text-gray-600">📤 {{ __('Expense') }}</span>
+                        <span class="text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="minus" class="w-3.5 h-3.5" /> {{ __('Expense') }}</span>
                         <strong class="text-red-700">{{ number_format($expense_total, 0, ',', '.') }} €</strong>
                     </div>
                     <div class="flex items-baseline justify-between">
-                        <span class="text-gray-700 font-semibold">⚖️ {{ __('Net (income - expense)') }}</span>
+                        <span class="text-gray-700 font-semibold inline-flex items-center gap-1"><x-svg-icon name="scale" class="w-3.5 h-3.5" /> {{ __('Net (income - expense)') }}</span>
                         <strong class="text-xl {{ $net_balance >= 0 ? 'text-emerald-700' : 'text-red-700' }}">
                             {{ ($net_balance >= 0 ? '+' : '') . number_format($net_balance, 0, ',', '.') }} €
                         </strong>
                     </div>
                     <div class="flex items-baseline justify-between text-xs">
-                        <span class="text-gray-500">🎯 {{ __('Goal') }}</span>
+                        <span class="text-gray-500 inline-flex items-center gap-1"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Goal') }}</span>
                         <span class="font-semibold text-gray-700">{{ $savings_goal }} € / {{ __('month') }}</span>
                     </div>
                 </div>
@@ -145,15 +148,15 @@
                 {{-- Durum --}}
                 <div class="mt-5 p-3 rounded-lg {{ $covers_goal && $expense_total > 0 ? 'bg-emerald-50 border border-emerald-200' : ($net_balance < 0 ? 'bg-red-50 border border-red-200' : 'bg-amber-50 border border-amber-200') }}">
                     @if ($expense_total === 0)
-                        <p class="text-sm font-semibold text-amber-800">⚠️ {{ __('Pick a city first') }}</p>
+                        <p class="text-sm font-semibold text-amber-800 inline-flex items-center gap-1.5"><x-svg-icon name="exclamation-triangle" class="w-4 h-4" /> {{ __('Pick a city first') }}</p>
                     @elseif ($net_balance < 0)
-                        <p class="text-sm font-semibold text-red-800">❌ {{ __('Your budget is not enough') }}</p>
+                        <p class="text-sm font-semibold text-red-800 inline-flex items-center gap-1.5"><x-svg-icon name="x-circle" class="w-4 h-4" /> {{ __('Your budget is not enough') }}</p>
                         <p class="text-xs text-red-700 mt-1">{{ __(':amount€ short. Increase income or reduce expenses.', ['amount' => abs($net_balance)]) }}</p>
                     @elseif ($covers_goal)
-                        <p class="text-sm font-semibold text-emerald-800">✅ {{ __('Goal achieved!') }}</p>
+                        <p class="text-sm font-semibold text-emerald-800 inline-flex items-center gap-1.5"><x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Goal achieved!') }}</p>
                         <p class="text-xs text-emerald-700 mt-1">{{ __(':amount€ extra savings available.', ['amount' => $net_balance - $savings_goal]) }}</p>
                     @else
-                        <p class="text-sm font-semibold text-amber-800">⚠️ {{ __('Not enough for the goal') }}</p>
+                        <p class="text-sm font-semibold text-amber-800 inline-flex items-center gap-1.5"><x-svg-icon name="exclamation-triangle" class="w-4 h-4" /> {{ __('Not enough for the goal') }}</p>
                         <p class="text-xs text-amber-700 mt-1">{{ __(':amount€ more needed.', ['amount' => $savings_goal - $net_balance]) }}</p>
                     @endif
                 </div>
@@ -179,9 +182,9 @@
 
                 {{-- Cross-links --}}
                 <div class="mt-5 pt-4 border-t border-gray-100 space-y-2">
-                    <a href="{{ route('scholarships.daad') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline">🎖️ {{ __('Find a scholarship (boost income)') }}</a>
-                    <a href="{{ route('blog.show', 'almanyada-ogrenci-isleri-20-saat-kurali-vergi-ve-saglik-sigortasi-rehberi') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline">💼 {{ __('Werkstudent guide') }}</a>
-                    <a href="{{ route('tools.cost-of-living') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline">💰 {{ __('City cost breakdown') }}</a>
+                    <a href="{{ route('scholarships.daad') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="trophy" class="w-4 h-4" /> {{ __('Find a scholarship (boost income)') }}</span></a>
+                    <a href="{{ route('blog.show', 'almanyada-ogrenci-isleri-20-saat-kurali-vergi-ve-saglik-sigortasi-rehberi') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="briefcase" class="w-4 h-4" /> {{ __('Werkstudent guide') }}</span></a>
+                    <a href="{{ route('tools.cost-of-living') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="banknotes" class="w-4 h-4" /> {{ __('City cost breakdown') }}</span></a>
                 </div>
             </div>
         </aside>

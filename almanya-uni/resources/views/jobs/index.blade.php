@@ -27,8 +27,9 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Academic Jobs') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            💼 {{ __('Academic Jobs in Germany') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="briefcase" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Academic Jobs in Germany') }}
         </h1>
         <p class="text-lg md:text-xl text-gray-300 max-w-3xl mb-5">
             {{ __('Curated PhD, Postdoc, Lecturer, Professor and Research positions across German higher-education institutions.') }}
@@ -37,19 +38,19 @@
         {{-- Hero stats --}}
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
             <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3">
-                <div class="text-xs uppercase tracking-wider opacity-80">📋 {{ __('Open positions') }}</div>
+                <div class="text-xs uppercase tracking-wider opacity-80 inline-flex items-center gap-1"><x-svg-icon name="list-bullet" class="w-3.5 h-3.5" /> {{ __('Open positions') }}</div>
                 <div class="text-2xl font-extrabold">{{ number_format($stats['total']) }}</div>
             </div>
             <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3">
-                <div class="text-xs uppercase tracking-wider opacity-80">🔬 {{ __('PhD') }}</div>
+                <div class="text-xs uppercase tracking-wider opacity-80 inline-flex items-center gap-1"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> {{ __('PhD') }}</div>
                 <div class="text-2xl font-extrabold">{{ number_format($stats['phd']) }}</div>
             </div>
             <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3">
-                <div class="text-xs uppercase tracking-wider opacity-80">🧪 {{ __('Postdoc') }}</div>
+                <div class="text-xs uppercase tracking-wider opacity-80 inline-flex items-center gap-1"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> {{ __('Postdoc') }}</div>
                 <div class="text-2xl font-extrabold">{{ number_format($stats['postdoc']) }}</div>
             </div>
             <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3">
-                <div class="text-xs uppercase tracking-wider opacity-80">⏰ {{ __('Expiring soon') }}</div>
+                <div class="text-xs uppercase tracking-wider opacity-80 inline-flex items-center gap-1"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Expiring soon') }}</div>
                 <div class="text-2xl font-extrabold text-amber-300">{{ number_format($stats['expiring']) }}</div>
             </div>
         </div>
@@ -62,7 +63,7 @@
     <form method="GET" action="{{ route('jobs.index') }}" class="bg-white border border-gray-200 rounded-xl shadow-sm p-4 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3 items-end">
             <div class="md:col-span-2">
-                <label class="block text-xs font-bold text-gray-700 mb-1">🔍 {{ __('Keyword') }}</label>
+                <label class="block text-xs font-bold text-gray-700 mb-1 inline-flex items-center gap-1"><x-svg-icon name="search" class="w-3.5 h-3.5" /> {{ __('Keyword') }}</label>
                 <input type="text" name="q" value="{{ $filters['q'] ?? '' }}" placeholder="{{ __('e.g. machine learning, mechanical, ...') }}"
                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
             </div>
@@ -81,7 +82,7 @@
                     <option value="">{{ __('All') }}</option>
                     <option value="en" @selected(($filters['lang'] ?? '') === 'en')>🇬🇧 EN</option>
                     <option value="de" @selected(($filters['lang'] ?? '') === 'de')>🇩🇪 DE</option>
-                    <option value="both" @selected(($filters['lang'] ?? '') === 'both')>🌍 {{ __('Both') }}</option>
+                    <option value="both" @selected(($filters['lang'] ?? '') === 'both')>{{ __('Both') }}</option>
                 </select>
             </div>
             <div>
@@ -96,7 +97,7 @@
             <div class="flex flex-col gap-2">
                 <label class="inline-flex items-center gap-2 text-xs">
                     <input type="checkbox" name="remote_only" value="1" @checked($filters['remote_only'] ?? false) class="rounded border-gray-300">
-                    <span class="font-semibold text-gray-700">🌐 {{ __('Remote only') }}</span>
+                    <span class="font-semibold text-gray-700 inline-flex items-center gap-1"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Remote only') }}</span>
                 </label>
                 <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold px-4 py-2 rounded-lg shadow-sm">
                     {{ __('Filter') }}
@@ -118,12 +119,12 @@
     {{-- JOB LIST --}}
     @if ($jobs->isEmpty())
         <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-8 text-center">
-            <div class="text-5xl mb-3">📭</div>
+            <div class="flex justify-center mb-3 text-amber-600"><x-svg-icon name="envelope" class="w-12 h-12" /></div>
             <h2 class="text-xl font-bold text-gray-900 mb-2">{{ __('No matching positions') }}</h2>
             <p class="text-sm text-gray-700 mb-4">{{ __('Try removing some filters, or check the related links below.') }}</p>
             <div class="flex flex-wrap items-center justify-center gap-2">
                 <a href="{{ route('jobs.index') }}" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-lg text-sm">{{ __('Clear all filters') }}</a>
-                <a href="{{ route('scholarships.index') }}" class="px-4 py-2 bg-white border-2 border-gray-300 hover:bg-gray-50 text-gray-900 font-bold rounded-lg text-sm">🏆 {{ __('Browse scholarships') }}</a>
+                <a href="{{ route('scholarships.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border-2 border-gray-300 hover:bg-gray-50 text-gray-900 font-bold rounded-lg text-sm"><x-svg-icon name="trophy" class="w-4 h-4" /> {{ __('Browse scholarships') }}</a>
             </div>
         </div>
     @else
@@ -131,7 +132,7 @@
             @foreach ($jobs as $job)
                 <article class="bg-white border-2 {{ $job->is_featured ? 'border-amber-300' : 'border-gray-200' }} rounded-xl p-5 hover:shadow-lg transition group">
                     @if ($job->is_featured)
-                        <p class="inline-flex items-center gap-1 mb-2 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">⭐ {{ __('Featured') }}</p>
+                        <p class="inline-flex items-center gap-1 mb-2 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-bold rounded-full"><x-svg-icon name="star" class="w-3 h-3" /> {{ __('Featured') }}</p>
                     @endif
                     <div class="flex items-start gap-4 flex-wrap">
                         <div class="text-4xl shrink-0">{{ $job->position_icon }}</div>
@@ -145,22 +146,22 @@
                                 <span class="inline-flex items-center gap-1 font-semibold">{{ $job->position_label }}</span>
                                 @if ($job->university)
                                     <span>·</span>
-                                    <span>🎓 {{ $job->university->short_name ?: $job->university->display_name }}</span>
+                                    <span class="inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ $job->university->short_name ?: $job->university->display_name }}</span>
                                 @endif
                                 @if ($job->city)
                                     <span>·</span>
-                                    <span>📍 {{ $job->city->name }}</span>
+                                    <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $job->city->name }}</span>
                                 @endif
                                 @if ($job->is_remote)
                                     <span>·</span>
-                                    <span class="text-emerald-700 font-semibold">🌐 {{ __('Remote OK') }}</span>
+                                    <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Remote OK') }}</span>
                                 @endif
                                 @if ($job->language === 'en')
                                     <span>·</span><span>🇬🇧 English</span>
                                 @elseif ($job->language === 'de')
                                     <span>·</span><span>🇩🇪 Deutsch</span>
                                 @elseif ($job->language === 'both')
-                                    <span>·</span><span>🌍 EN + DE</span>
+                                    <span>·</span><span class="inline-flex items-center gap-1"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> EN + DE</span>
                                 @endif
                             </div>
                             @if ($job->excerpt)
@@ -174,7 +175,7 @@
                                 @php $days = $job->days_until_deadline; @endphp
                                 <div class="text-xs font-bold {{ $days < 7 ? 'text-rose-600' : ($days < 14 ? 'text-amber-600' : 'text-gray-600') }}">
                                     @if ($days >= 0)
-                                        ⏰ {{ $days }} {{ __('days left') }}
+                                        <span class="inline-flex items-center gap-1"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ $days }} {{ __('days left') }}</span>
                                     @else
                                         {{ __('Closed') }}
                                     @endif
@@ -182,7 +183,7 @@
                                 <div class="text-xs text-gray-500">{{ $job->deadline_at->translatedFormat('d M Y') }}</div>
                             @endif
                             @if ($job->salary_display)
-                                <div class="text-xs font-semibold text-emerald-700">💰 {{ $job->salary_display }}</div>
+                                <div class="text-xs font-semibold text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ $job->salary_display }}</div>
                             @endif
                         </div>
                     </div>
@@ -197,7 +198,7 @@
 
     {{-- Bottom info card --}}
     <section class="mt-12 bg-gradient-to-r from-slate-50 to-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-2">💡 {{ __('About academic jobs in Germany') }}</h2>
+        <h2 class="text-xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('About academic jobs in Germany') }}</h2>
         <ul class="text-sm text-gray-700 space-y-2 leading-relaxed list-disc list-inside">
             <li>{{ __('Most academic positions follow the TV-L pay scale (E13 / E14) — standard for public universities.') }}</li>
             <li>{{ __('PhD positions are usually 65–100% TV-L E13 (€1,800–2,800/month gross, 3–4 years).') }}</li>

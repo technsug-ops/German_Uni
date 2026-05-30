@@ -18,8 +18,9 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Inspire Me') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            ✨ {{ __('Inspire Me — Discover Germany') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="sparkles" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Inspire Me — Discover Germany') }}
         </h1>
         <p class="text-lg md:text-xl text-pink-100 max-w-3xl mb-5">
             {{ __('Stuck choosing? Each refresh = 6 random picks: a university, a city, an English-taught programme, a scholarship, a profession and a study field.') }}
@@ -27,7 +28,7 @@
         <form method="GET" action="{{ route('tools.inspire-me') }}">
             <button type="submit"
                     class="inline-flex items-center gap-2 bg-white text-pink-700 hover:bg-pink-50 font-bold px-6 py-3 rounded-lg shadow-md transition">
-                🎲 {{ __('Shuffle — show me 6 new picks') }}
+                <x-svg-icon name="arrow-path" class="w-5 h-5" /> {{ __('Shuffle — show me 6 new picks') }}
             </button>
         </form>
     </div>
@@ -48,19 +49,19 @@
                         </div>
                     @endif
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1.5">🎓 {{ __('University') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('University') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-indigo-700 transition">
                             {{ $uni->short_name ?: $uni->name_de }}
                         </h2>
                         <div class="flex flex-wrap gap-1.5 text-xs text-gray-600">
                             @if ($uni->city)
-                                <span>📍 {{ $uni->city->name }}</span>
+                                <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni->city->name }}</span>
                             @endif
                             @if ($uni->student_count)
-                                <span>·</span><span>👥 {{ number_format($uni->student_count) }} {{ __('students') }}</span>
+                                <span>·</span><span class="inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ number_format($uni->student_count) }} {{ __('students') }}</span>
                             @endif
                             @if ($uni->founded_year && $uni->founded_year > 1000)
-                                <span>·</span><span>🗓️ {{ $uni->founded_year }}</span>
+                                <span>·</span><span class="inline-flex items-center gap-1"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ $uni->founded_year }}</span>
                             @endif
                         </div>
                     </div>
@@ -79,14 +80,14 @@
                         </div>
                     @endif
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1.5">🏙️ {{ __('City') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('City') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-emerald-700 transition">
                             {{ $city->name }}
                         </h2>
                         <div class="flex flex-wrap gap-1.5 text-xs text-gray-600">
-                            <span>🎓 {{ $city->universities_count }} {{ __('universities') }}</span>
+                            <span class="inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ $city->universities_count }} {{ __('universities') }}</span>
                             @if ($city->population)
-                                <span>·</span><span>👥 {{ number_format($city->population) }} {{ __('population') }}</span>
+                                <span>·</span><span class="inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ number_format($city->population) }} {{ __('population') }}</span>
                             @endif
                         </div>
                     </div>
@@ -99,7 +100,7 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('programs.show', $program->slug) }}" class="block">
                     <div class="aspect-[16/10] bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center relative">
-                        <div class="text-6xl opacity-90">{{ $program->field?->icon ?: '📚' }}</div>
+                        <div class="text-6xl opacity-90 flex items-center justify-center">{!! $program->field?->icon ?: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>' !!}</div>
                         @if ($program->language === 'en')
                             <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">🇬🇧 EN</span>
                         @elseif ($program->language === 'both')
@@ -107,13 +108,13 @@
                         @endif
                     </div>
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1.5">📖 {{ __('Programme') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Programme') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-blue-700 transition">
                             {{ \Illuminate\Support\Str::limit($program->name_en ?: $program->name_de, 70) }}
                         </h2>
                         <div class="flex flex-wrap gap-1.5 text-xs text-gray-600">
                             @if ($program->university)
-                                <span>🎓 {{ $program->university->short_name ?: $program->university->name_de }}</span>
+                                <span class="inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ $program->university->short_name ?: $program->university->name_de }}</span>
                             @endif
                             @if ($program->degree)
                                 <span>·</span><span>{{ ucfirst($program->degree) }}</span>
@@ -132,13 +133,13 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('scholarships.show', $scholarship->slug) }}" class="block">
                     <div class="aspect-[16/10] bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 flex items-center justify-center relative">
-                        <div class="text-6xl">💰</div>
+                        <div class="text-white"><x-svg-icon name="banknotes" class="w-16 h-16" /></div>
                         @if ($scholarship->is_daad)
                             <span class="absolute top-3 right-3 px-2 py-1 bg-white/30 backdrop-blur-sm rounded text-xs font-bold text-white">DAAD</span>
                         @endif
                     </div>
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-amber-600 mb-1.5">🏆 {{ __('Scholarship') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-amber-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('Scholarship') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-amber-700 transition">
                             {{ \Illuminate\Support\Str::limit($scholarship->name, 80) }}
                         </h2>
@@ -155,15 +156,15 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('professions.show', $profession->slug) }}" class="block">
                     <div class="aspect-[16/10] bg-gradient-to-br from-slate-600 via-gray-700 to-zinc-800 flex items-center justify-center">
-                        <div class="text-6xl">💼</div>
+                        <div class="text-white"><x-svg-icon name="briefcase" class="w-16 h-16" /></div>
                     </div>
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">🧑‍💼 {{ __('Profession') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="briefcase" class="w-3.5 h-3.5" /> {{ __('Profession') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-slate-800 transition">
                             {{ $profession->name_tr ?: $profession->name_de }}
                         </h2>
                         @if ($profession->cluster_label)
-                            <p class="text-xs text-gray-600">📂 {{ $profession->cluster_label }}</p>
+                            <p class="text-xs text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ $profession->cluster_label }}</p>
                         @endif
                         @if ($profession->description_tr)
                             <p class="text-xs text-gray-700 mt-2 leading-relaxed">{{ \Illuminate\Support\Str::limit(strip_tags($profession->description_tr), 100) }}</p>
@@ -178,14 +179,14 @@
             <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
                 <a href="{{ route('fields.show', $field->slug) }}" class="block">
                     <div class="aspect-[16/10] flex items-center justify-center" style="background: linear-gradient(135deg, {{ $field->color ?: '#6366f1' }}99, {{ $field->color ?: '#6366f1' }})">
-                        <div class="text-6xl">{{ $field->icon ?: '🎯' }}</div>
+                        <div class="text-6xl flex items-center justify-center">{!! $field->icon ?: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>' !!}</div>
                     </div>
                     <div class="p-5">
-                        <p class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: {{ $field->color ?: '#6366f1' }}">🎯 {{ __('Field of Study') }}</p>
+                        <p class="text-xs font-bold uppercase tracking-wider mb-1.5 inline-flex items-center gap-1" style="color: {{ $field->color ?: '#6366f1' }}"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Field of Study') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight">
                             {{ $field->name_tr }}
                         </h2>
-                        <p class="text-xs text-gray-600">📚 {{ $field->programs_count }} {{ __('programmes available') }}</p>
+                        <p class="text-xs text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ $field->programs_count }} {{ __('programmes available') }}</p>
                     </div>
                 </a>
             </article>
@@ -195,22 +196,25 @@
 
     {{-- Bottom CTA --}}
     <div class="mt-10 text-center bg-gradient-to-r from-fuchsia-50 to-pink-50 border-2 border-pink-200 rounded-2xl p-6 md:p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">🎲 {{ __('Not quite the inspiration you needed?') }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2">
+            <x-svg-icon name="arrow-path" class="w-6 h-6" />
+            {{ __('Not quite the inspiration you needed?') }}
+        </h2>
         <p class="text-sm text-gray-700 mb-5">{{ __('Hit shuffle for 6 fresh picks. Or take the structured route — quizzes that match your profile in 5 questions.') }}</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
             <form method="GET" action="{{ route('tools.inspire-me') }}">
                 <button type="submit"
                         class="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition">
-                    🔄 {{ __('Shuffle again') }}
+                    <x-svg-icon name="arrow-path" class="w-4 h-4" /> {{ __('Shuffle again') }}
                 </button>
             </form>
             <a href="{{ route('tools.pathway-finder') }}"
                class="inline-flex items-center gap-2 bg-white text-gray-900 hover:bg-gray-50 border-2 border-gray-300 font-bold px-6 py-3 rounded-lg transition">
-                🧭 {{ __('Pathway Finder quiz') }}
+                <x-svg-icon name="map" class="w-4 h-4" /> {{ __('Pathway Finder quiz') }}
             </a>
             <a href="{{ route('tools.recommendation') }}"
                class="inline-flex items-center gap-2 bg-white text-gray-900 hover:bg-gray-50 border-2 border-gray-300 font-bold px-6 py-3 rounded-lg transition">
-                🎯 {{ __('University Match quiz') }}
+                <x-svg-icon name="target" class="w-4 h-4" /> {{ __('University Match quiz') }}
             </a>
         </div>
     </div>

@@ -19,7 +19,10 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ __('Career Compass') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">🧭 {{ __('Career Compass') }}</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="map" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Career Compass') }}
+        </h1>
         <p class="text-lg md:text-xl text-rose-50 max-w-3xl">
             {!! __('Not which university — <strong>which profession</strong>? In 12 questions we analyze your aptitude (RIASEC) + values to match you to suitable professions among 3,500+ real ones in Germany.') !!}
         </p>
@@ -32,71 +35,71 @@
     @php
         // RIASEC soruları: her seçenek bir harf. Değer soruları: ikili tercih.
         $riasecQuestions = [
-            ['q1', '🌅', __('A free Saturday — which is most appealing?'), [
-                ['R', '🔧', __('Repair/assemble something')],
-                ['I', '🔬', __('Explore science/technology')],
-                ['A', '🎨', __('Work on art/music/writing')],
-                ['S', '🤝', __('Meet friends / help others')],
+            ['q1', 'sparkles', __('A free Saturday — which is most appealing?'), [
+                ['R', 'wrench-screwdriver', __('Repair/assemble something')],
+                ['I', 'beaker',             __('Explore science/technology')],
+                ['A', 'sparkles',           __('Work on art/music/writing')],
+                ['S', 'users',              __('Meet friends / help others')],
             ]],
-            ['q2', '👥', __('Your natural role in a group project?'), [
-                ['R', '🛠️', __('Doing the practical work, building')],
-                ['I', '🧩', __('Analyzing the problem')],
-                ['A', '🖌️', __('Making the presentation/design')],
-                ['E', '📣', __('Leader organizing people')],
+            ['q2', 'users', __('Your natural role in a group project?'), [
+                ['R', 'wrench-screwdriver', __('Doing the practical work, building')],
+                ['I', 'puzzle',             __('Analyzing the problem')],
+                ['A', 'pencil',             __('Making the presentation/design')],
+                ['E', 'chat',               __('Leader organizing people')],
             ]],
-            ['q3', '🏆', __('Which praise makes you happier?'), [
-                ['R', '💪', __('"Well done, you are very skilled"')],
-                ['I', '🧠', __('"You are very smart, great analysis"')],
-                ['A', '✨', __('"You are very creative"')],
-                ['S', '❤️', __('"You get along great with people"')],
+            ['q3', 'trophy', __('Which praise makes you happier?'), [
+                ['R', 'wrench-screwdriver', __('"Well done, you are very skilled"')],
+                ['I', 'light-bulb',         __('"You are very smart, great analysis"')],
+                ['A', 'sparkles',           __('"You are very creative"')],
+                ['S', 'heart',              __('"You get along great with people"')],
             ]],
-            ['q4', '💡', __('What excites you about the business world?'), [
-                ['R', '🏗️', __('Building something tangible')],
-                ['I', '🔍', __('Solving a puzzle/data')],
-                ['E', '🚀', __('Starting and running your own business')],
-                ['C', '📋', __('Working in an orderly, systematic way')],
+            ['q4', 'light-bulb', __('What excites you about the business world?'), [
+                ['R', 'building-storefront', __('Building something tangible')],
+                ['I', 'search',              __('Solving a puzzle/data')],
+                ['E', 'rocket-launch',       __('Starting and running your own business')],
+                ['C', 'list-bullet',         __('Working in an orderly, systematic way')],
             ]],
-            ['q5', '📚', __('Favorite type of class at school?'), [
-                ['R', '⚙️', __('Lab / workshop')],
-                ['I', '📐', __('Math / science')],
-                ['A', '🎭', __('Art / literature')],
-                ['S', '🌍', __('Social studies / history')],
+            ['q5', 'book-open', __('Favorite type of class at school?'), [
+                ['R', 'cog',     __('Lab / workshop')],
+                ['I', 'beaker',  __('Math / science')],
+                ['A', 'sparkles', __('Art / literature')],
+                ['S', 'globe',   __('Social studies / history')],
             ]],
-            ['q6', '🧗', __('When you face a problem?'), [
-                ['R', '🙌', __('I try right away, solve with my hands')],
-                ['I', '🔬', __('I research, look for a logical solution')],
-                ['A', '🌈', __('I try a creative, unconventional way')],
-                ['C', '🗂️', __('I plan in detail, go step by step')],
+            ['q6', 'mountain', __('When you face a problem?'), [
+                ['R', 'wrench-screwdriver', __('I try right away, solve with my hands')],
+                ['I', 'beaker',             __('I research, look for a logical solution')],
+                ['A', 'sparkles',           __('I try a creative, unconventional way')],
+                ['C', 'list-bullet',        __('I plan in detail, go step by step')],
             ]],
-            ['q7', '🏢', __('Which environment suits you?'), [
-                ['R', '🏞️', __('Workshop / field / outdoors')],
-                ['I', '🧪', __('Laboratory / research center')],
-                ['A', '🎬', __('Studio / creative agency')],
-                ['C', '🏦', __('Office / corporate')],
-                ['S', '🏥', __('Hospital / school / aid organization')],
+            ['q7', 'building-office', __('Which environment suits you?'), [
+                ['R', 'wrench-screwdriver',   __('Workshop / field / outdoors')],
+                ['I', 'beaker',               __('Laboratory / research center')],
+                ['A', 'photo',                __('Studio / creative agency')],
+                ['C', 'building-office',      __('Office / corporate')],
+                ['S', 'shield-check',         __('Hospital / school / aid organization')],
             ]],
         ];
 
         $valueQuestions = [
-            ['v_income', '⚖️', __('More important in career choice?'), [
-                ['income', '💰', __('High and guaranteed salary')],
-                ['meaning', '🌱', __('Meaningful work that benefits society')],
+            ['v_income', 'scale', __('More important in career choice?'), [
+                ['income',  'banknotes', __('High and guaranteed salary')],
+                ['meaning', 'sparkles',  __('Meaningful work that benefits society')],
             ]],
-            ['v_rhythm', '📅', __('Your ideal workday?'), [
-                ['stable', '🔁', __('Same routine, predictable')],
-                ['dynamic', '⚡', __('Different every day, dynamic')],
+            ['v_rhythm', 'calendar', __('Your ideal workday?'), [
+                ['stable',  'arrow-path', __('Same routine, predictable')],
+                ['dynamic', 'fire',       __('Different every day, dynamic')],
             ]],
-            ['v_place', '📍', __('Where would you like to work?'), [
-                ['office', '🖥️', __('Desk / office')],
-                ['field', '🚶', __('In the field / moving around')],
+            ['v_place', 'map-pin', __('Where would you like to work?'), [
+                ['office', 'building-office', __('Desk / office')],
+                ['field',  'truck',           __('In the field / moving around')],
             ]],
-            ['v_path', '🎓', __('Education path preference?'), [
-                ['theory', '🏛️', __('University (academic, in-depth)')],
-                ['practice', '🔨', __('Practical vocational training (Ausbildung, on-the-job)')],
+            ['v_path', 'academic-cap', __('Education path preference?'), [
+                ['theory',   'building-office',    __('University (academic, in-depth)')],
+                ['practice', 'wrench-screwdriver', __('Practical vocational training (Ausbildung, on-the-job)')],
             ]],
-            ['v_security', '🛡️', __('Which is closer to you?'), [
-                ['security', '🏠', __('Stable, guaranteed position')],
-                ['freedom', '🕊️', __('My own business, flexibility, freedom')],
+            ['v_security', 'shield-check', __('Which is closer to you?'), [
+                ['security', 'home',         __('Stable, guaranteed position')],
+                ['freedom',  'rocket-launch', __('My own business, flexibility, freedom')],
             ]],
         ];
 
@@ -122,10 +125,10 @@
             @csrf
 
             @foreach ($allQuestions as $idx => $q)
-                @php [$name, $emoji, $title, $opts] = $q; @endphp
+                @php [$name, $iconKey, $title, $opts] = $q; @endphp
                 <div x-show="currentStep === {{ $idx }}" x-transition.duration.300ms class="space-y-5">
                     <div class="text-center mb-6">
-                        <div class="text-5xl mb-3">{{ $emoji }}</div>
+                        <div class="flex justify-center mb-3 text-rose-600"><x-svg-icon name="{{ $iconKey }}" class="w-12 h-12" /></div>
                         <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ $title }}</h2>
                         @if ($idx < 7)
                             <p class="text-gray-400 text-xs mt-2 uppercase tracking-wider font-bold">{{ __('Aptitude profile') }}</p>
@@ -134,11 +137,11 @@
                         @endif
                     </div>
                     <div class="grid grid-cols-1 {{ count($opts) <= 2 ? 'md:grid-cols-2' : 'md:grid-cols-2' }} gap-3">
-                        @foreach ($opts as [$val, $oemoji, $label])
+                        @foreach ($opts as [$val, $optIcon, $label])
                             <label class="block cursor-pointer">
                                 <input type="radio" name="{{ $name }}" value="{{ $val }}" x-model="answers.{{ $name }}" class="sr-only peer">
                                 <div class="border-2 border-gray-200 peer-checked:border-rose-500 peer-checked:bg-rose-50 rounded-xl p-4 flex items-center gap-3 transition hover:border-rose-300">
-                                    <span class="text-3xl flex-shrink-0">{{ $oemoji }}</span>
+                                    <span class="flex-shrink-0 text-rose-600"><x-svg-icon name="{{ $optIcon }}" class="w-8 h-8" /></span>
                                     <span class="font-semibold text-gray-900">{{ $label }}</span>
                                 </div>
                             </label>
@@ -160,13 +163,19 @@
                             class="font-bold px-6 py-3 rounded-lg transition shadow-md">{{ __('Continue') }} →</button>
                     <button type="submit" x-show="currentStep === totalSteps - 1" :disabled="! canProceed()"
                             :class="canProceed() ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'"
-                            class="font-bold px-6 py-3 rounded-lg transition shadow-md">🧭 {{ __('Show My Profile') }}</button>
+                            class="font-bold px-6 py-3 rounded-lg transition shadow-md inline-flex items-center gap-2">
+                        <x-svg-icon name="map" class="w-4 h-4" />
+                        {{ __('Show My Profile') }}
+                    </button>
                 </div>
             </div>
         </form>
     </div>
 
-    <p class="text-xs text-gray-400 text-center mt-4">💡 {{ __('This is not a psychological diagnosis — it is a profession discovery tool based on your aptitude + value profile.') }}</p>
+    <p class="text-xs text-gray-400 text-center mt-4 inline-flex items-center gap-1.5 justify-center w-full">
+        <x-svg-icon name="light-bulb" class="w-4 h-4" />
+        {{ __('This is not a psychological diagnosis — it is a profession discovery tool based on your aptitude + value profile.') }}
+    </p>
 
     <script>
         function compassApp(total) {
@@ -213,7 +222,10 @@
     </section>
 
     {{-- PROFESSIONS --}}
-    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">🎯 {{ __(':count Professions That Suit You', ['count' => count($result['professions'])]) }}</h2>
+    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 inline-flex items-center gap-2">
+        <x-svg-icon name="target" class="w-7 h-7" />
+        {{ __(':count Professions That Suit You', ['count' => count($result['professions'])]) }}
+    </h2>
 
     @if (empty($result['professions']))
         <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-8 text-center">
@@ -237,16 +249,19 @@
                                 </div>
                             </div>
                             @if ($i === 0)
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-rose-100 text-rose-700 whitespace-nowrap">⭐ {{ __('Best Match') }}</span>
+                                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-rose-100 text-rose-700 whitespace-nowrap">
+                                    <x-svg-icon name="star" class="w-3 h-3" />
+                                    {{ __('Best Match') }}
+                                </span>
                             @endif
                         </div>
 
                         {{-- Detay --}}
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-2 mb-1 flex-wrap">
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->icon ?? '📚' }} {{ $p['field']?->name_tr }}</span>
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->icon ?: '' }} {{ $p['field']?->name_tr }}</span>
                                 <span class="text-xs px-2 py-0.5 rounded-full {{ $p['type'] === 'studienberuf' ? 'bg-indigo-100 text-indigo-700' : ($p['type'] === 'ausbildung' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700') }}">
-                                    {{ ['studienberuf'=>'🎓 ' . __('University profession'),'ausbildung'=>'🔨 Ausbildung','weiterbildung'=>'📈 ' . __('Advanced training'),'grundberuf'=>'📋 ' . __('Basic profession')][$p['type']] ?? $p['type'] }}
+                                    {{ ['studienberuf'=>__('University profession'),'ausbildung'=>'Ausbildung','weiterbildung'=>__('Advanced training'),'grundberuf'=>__('Basic profession')][$p['type']] ?? $p['type'] }}
                                 </span>
                             </div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight mb-1">{{ $p['name_tr'] }}</h3>
@@ -255,10 +270,13 @@
                             {{-- Technical reasoning --}}
                             @if (! empty($p['reasons_tech']))
                                 <div class="bg-blue-50 rounded-lg p-3 mb-2">
-                                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-1">🧠 {{ __('Technical match') }}</p>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-1 inline-flex items-center gap-1.5">
+                                        <x-svg-icon name="light-bulb" class="w-3.5 h-3.5" />
+                                        {{ __('Technical match') }}
+                                    </p>
                                     <ul class="space-y-1 text-sm text-gray-700">
                                         @foreach ($p['reasons_tech'] as $r)
-                                            <li class="flex items-start gap-2"><span class="text-blue-500">✓</span><span>{{ $r }}</span></li>
+                                            <li class="flex items-start gap-2"><span class="text-blue-500"><x-svg-icon name="check" class="w-3.5 h-3.5" /></span><span>{{ $r }}</span></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -267,10 +285,13 @@
                             {{-- Emotional reasoning --}}
                             @if (! empty($p['reasons_emo']))
                                 <div class="bg-rose-50 rounded-lg p-3 mb-3">
-                                    <p class="text-[11px] font-bold uppercase tracking-wider text-rose-600 mb-1">❤️ {{ __('Value match') }}</p>
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-rose-600 mb-1 inline-flex items-center gap-1.5">
+                                        <x-svg-icon name="heart" class="w-3.5 h-3.5" />
+                                        {{ __('Value match') }}
+                                    </p>
                                     <ul class="space-y-1 text-sm text-gray-700">
                                         @foreach ($p['reasons_emo'] as $r)
-                                            <li class="flex items-start gap-2"><span class="text-rose-500">✓</span><span>{{ $r }}</span></li>
+                                            <li class="flex items-start gap-2"><span class="text-rose-500"><x-svg-icon name="check" class="w-3.5 h-3.5" /></span><span>{{ $r }}</span></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -289,11 +310,19 @@
     {{-- İLGİLİ PROGRAMLAR --}}
     @if ($result['programs']->isNotEmpty())
         <section class="mt-8 bg-white border border-gray-200 rounded-2xl p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">🎓 {{ __('Programs you can study in Germany in these fields') }}</h3>
+            <h3 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">
+                <x-svg-icon name="academic-cap" class="w-6 h-6" />
+                {{ __('Programs you can study in Germany in these fields') }}
+            </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 @foreach ($result['programs'] as $prog)
                     <a href="{{ route('programs.show', $prog->slug) }}" class="flex items-start gap-3 p-3 border border-gray-100 rounded-lg hover:bg-gray-50 hover:border-rose-300 transition">
-                        <span class="text-xl flex-shrink-0">{{ $prog->language === 'en' ? '🇬🇧' : ($prog->language === 'both' ? '🌐' : '🇩🇪') }}</span>
+                        <span class="text-xl flex-shrink-0 flex items-center">
+                            @if ($prog->language === 'en') 🇬🇧
+                            @elseif ($prog->language === 'both') <x-svg-icon name="globe" class="w-5 h-5 text-rose-600" />
+                            @else 🇩🇪
+                            @endif
+                        </span>
                         <div class="flex-1 min-w-0">
                             <p class="font-semibold text-sm text-gray-900 leading-tight">{{ $prog->name_tr ?: $prog->name_de }}</p>
                             <p class="text-xs text-gray-500 mt-0.5">{{ $prog->university?->name_de }} · {{ ucfirst($prog->degree) }}</p>
@@ -306,9 +335,18 @@
 
     {{-- CTA --}}
     <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3">
-        <a href="{{ route('tools.career-compass') }}" class="text-center bg-white border-2 border-rose-200 hover:border-rose-400 text-rose-700 font-semibold py-3 rounded-lg transition">🔄 {{ __('Try again') }}</a>
-        <a href="{{ route('tools.recommendation') }}" class="text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition shadow-md">🎯 {{ __('Find your university now') }} →</a>
-        <button type="button" onclick="navigator.share ? navigator.share({title:'{{ __('My Career Compass Result') }}',text:'{{ __('I got:') }} {{ $result['profile']['title'] }}',url:location.href}) : (navigator.clipboard.writeText(location.href), alert('{{ __('Link copied') }}'))" class="bg-white border-2 border-amber-200 hover:border-amber-400 text-amber-700 font-semibold py-3 rounded-lg transition">📤 {{ __('Share result') }}</button>
+        <a href="{{ route('tools.career-compass') }}" class="inline-flex items-center justify-center gap-1.5 bg-white border-2 border-rose-200 hover:border-rose-400 text-rose-700 font-semibold py-3 rounded-lg transition">
+            <x-svg-icon name="arrow-path" class="w-4 h-4" />
+            {{ __('Try again') }}
+        </a>
+        <a href="{{ route('tools.recommendation') }}" class="inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition shadow-md">
+            <x-svg-icon name="target" class="w-4 h-4" />
+            {{ __('Find your university now') }} →
+        </a>
+        <button type="button" onclick="navigator.share ? navigator.share({title:'{{ __('My Career Compass Result') }}',text:'{{ __('I got:') }} {{ $result['profile']['title'] }}',url:location.href}) : (navigator.clipboard.writeText(location.href), alert('{{ __('Link copied') }}'))" class="inline-flex items-center justify-center gap-1.5 bg-white border-2 border-amber-200 hover:border-amber-400 text-amber-700 font-semibold py-3 rounded-lg transition">
+            <x-svg-icon name="link" class="w-4 h-4" />
+            {{ __('Share result') }}
+        </button>
     </div>
 @endif
 

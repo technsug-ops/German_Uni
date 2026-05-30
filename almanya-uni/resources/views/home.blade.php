@@ -59,7 +59,7 @@
                 <a href="{{ route('map.index') }}"
                    title="{{ __('Explore on Map') }} — {{ __(':count universities on interactive map', ['count' => $totals['universities_on_map']]) }}"
                    class="group inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/60 backdrop-blur px-5 py-3 rounded-xl font-semibold transition shadow-lg">
-                    <span class="text-2xl">🗺️</span>
+                    <span class="text-white"><x-svg-icon name="map" class="w-7 h-7" /></span>
                     <span class="flex flex-col items-start leading-tight">
                         <span class="text-white">{{ __('Explore on Map') }}</span>
                         <span class="text-xs text-primary-200 font-normal">{{ __(':count universities on interactive map', ['count' => $totals['universities_on_map']]) }}</span>
@@ -76,9 +76,9 @@
                 <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="Technische Universität München">TUM</a>
                 <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">Heidelberg</a>
                 <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
-                <a href="{{ route('scholarships.daad') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">🎖️ {{ __('DAAD Scholarship') }}</a>
-                <a href="{{ route('tools.visa-cost') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">💸 {{ __('Visa cost') }}</a>
-                <a href="{{ route('tools.deadlines') }}" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition">📅 {{ __('Deadline calendar') }}</a>
+                <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('DAAD Scholarship') }}</a>
+                <a href="{{ route('tools.visa-cost') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Visa cost') }}</a>
+                <a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Deadline calendar') }}</a>
             </div>
         </div>
 
@@ -106,13 +106,13 @@
                 </div>
                 <div class="mt-6 pt-5 border-t border-white/15 text-sm">
                     <div class="flex items-center gap-2 text-primary-100 mb-1.5">
-                        <span class="text-green-300">✓</span> {{ __('100% free, no signup') }}
+                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('100% free, no signup') }}
                     </div>
                     <div class="flex items-center gap-2 text-primary-100 mb-1.5">
-                        <span class="text-green-300">✓</span> {{ __('Multilingual + up-to-date sources') }}
+                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('Multilingual + up-to-date sources') }}
                     </div>
                     <div class="flex items-center gap-2 text-primary-100">
-                        <span class="text-green-300">✓</span> {{ __('Distilled from 10+ years of education consulting experience') }}
+                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('Distilled from 10+ years of education consulting experience') }}
                     </div>
                 </div>
             </div>
@@ -167,22 +167,22 @@
         {{-- 4 trust pillar --}}
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-5xl mx-auto">
             <div>
-                <div class="text-3xl mb-1">🔓</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="check-circle" class="w-8 h-8" /></div>
                 <p class="text-sm font-bold text-gray-900">{{ __('100% Free') }}</p>
                 <p class="text-xs text-gray-500 mt-0.5">{{ __('No signup, no paywall') }}</p>
             </div>
             <div>
-                <div class="text-3xl mb-1">📊</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="chart-bar" class="w-8 h-8" /></div>
                 <p class="text-sm font-bold text-gray-900">{{ __('Official sources only') }}</p>
                 <p class="text-xs text-gray-500 mt-0.5">{{ __('DAAD, Wikidata, BERUFENET') }}</p>
             </div>
             <div>
-                <div class="text-3xl mb-1">🎓</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="academic-cap" class="w-8 h-8" /></div>
                 <p class="text-sm font-bold text-gray-900">{{ __('10+ years of consulting') }}</p>
                 <p class="text-xs text-gray-500 mt-0.5">{{ __('Real-world experience') }}</p>
             </div>
             <div>
-                <div class="text-3xl mb-1">🌐</div>
+                <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="globe" class="w-8 h-8" /></div>
                 <p class="text-sm font-bold text-gray-900">{{ __('3 languages') }}</p>
                 <p class="text-xs text-gray-500 mt-0.5">{{ __('TR · EN · DE — full coverage') }}</p>
             </div>
@@ -314,7 +314,10 @@
                                      class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             @endif
                             @if(!empty($city['has_content']))
-                                <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">✦ {{ __('Guide') }}</span>
+                                <span class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                                    <x-svg-icon name="sparkles" class="w-3 h-3" />
+                                    {{ __('Guide') }}
+                                </span>
                             @endif
                             <span class="absolute bottom-2 right-2 inline-block px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
                                 {{ $city['universities_count'] }} {{ __('uni') }}
@@ -387,7 +390,7 @@
                 <div class="p-4 flex-1 flex flex-col">
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight line-clamp-2 mb-1">{{ $uni['name_de'] }}</h3>
                     @if($uni['city_name'])
-                        <p class="text-xs text-gray-500 mb-3">📍 {{ $uni['city_name'] }}</p>
+                        <p class="text-xs text-gray-500 mb-3 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni['city_name'] }}</p>
                     @endif
                     <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
                         @if($uni['student_count'])
@@ -412,7 +415,10 @@
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🎯 {{ __('Popular Study Fields') }}</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
+                    <x-svg-icon name="target" class="w-7 h-7" />
+                    {{ __('Popular Study Fields') }}
+                </h2>
                 <p class="text-gray-600 text-sm">{{ __('Top 6 fields by program count — choose your path') }}</p>
             </div>
             <a href="{{ route('fields.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All fields') }} →</a>
@@ -422,7 +428,7 @@
                 <a href="{{ route('fields.show', $field->slug) }}"
                    title="{{ $field->name }} — {{ number_format($field->programs_count) }} {{ __('programs') }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-5 text-center">
-                    <div class="text-4xl mb-2">{{ $field->icon ?? '📚' }}</div>
+                    <div class="text-4xl mb-2">{{ $field->icon ?: '' }}</div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm mb-1 leading-tight">{{ $field->name }}</h3>
                     <p class="text-xs text-gray-500">{{ number_format($field->programs_count) }} {{ __('programs') }}</p>
                 </a>
@@ -433,7 +439,7 @@
 @endif
 
 {{-- =================================================================== --}}
-{{-- 🎖️ DAAD BURSU HIGHLIGHT --}}
+{{-- DAAD BURSU HIGHLIGHT --}}
 {{-- =================================================================== --}}
 @if (! empty($featured_scholarships) && $featured_scholarships->count() > 0)
 <section class="max-w-[1400px] mx-auto px-4 py-14">
@@ -441,13 +447,13 @@
         <div class="flex items-start justify-between mb-6 flex-wrap gap-3">
             <div>
                 <span class="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-2">
-                    🎖️ {{ __(':count Scholarship Programs', ['count' => $totals['scholarships']]) }}
+                    <span class="inline-flex items-center gap-1"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __(':count Scholarship Programs', ['count' => $totals['scholarships']]) }}</span>
                 </span>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Study in Germany with a Scholarship') }}</h2>
                 <p class="text-gray-600 text-sm mt-1">{{ __('DAAD, EPOS, Helmut-Schmidt and more — lightens the Sperrkonto burden') }}</p>
             </div>
             <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition shadow-md whitespace-nowrap" title="{{ __('DAAD Guide') }} — {{ __('German Academic Exchange Service') }}">
-                🎖️ {{ __('DAAD Guide') }} →
+                <span class="inline-flex items-center gap-1.5"><x-svg-icon name="trophy" class="w-4 h-4" /> {{ __('DAAD Guide') }}</span> →
             </a>
         </div>
 
@@ -473,14 +479,14 @@
 @endif
 
 {{-- =================================================================== --}}
-{{-- 🛠️ 6 ARAÇ TANITIMI --}}
+{{-- 6 ARAÇ TANITIMI --}}
 {{-- =================================================================== --}}
 <section class="bg-gradient-to-br from-primary-50 to-accent-50 py-14 border-y border-primary-100">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
                 <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-700 mb-2">
-                    🛠️ {{ __('Interactive tools') }}
+                    <span class="inline-flex items-center gap-1"><x-svg-icon name="wrench-screwdriver" class="w-3.5 h-3.5" /> {{ __('Interactive tools') }}</span>
                 </span>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('6 tools to help you decide') }}</h2>
                 <p class="text-gray-600 text-sm mt-1">{{ __('Is your budget enough, how much is the visa, when is the nearest deadline — calculate instantly') }}</p>
@@ -490,19 +496,19 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             @php
                 $homeTools = [
-                    ['route' => route('tools.cost-of-living'), 'icon' => '💰', 'lbl' => __('Cost of Living'),   'desc' => __('130 cities')],
-                    ['route' => route('tools.budget-planner'), 'icon' => '📈', 'lbl' => __('Budget Planner'),   'desc' => __('Net calc')],
-                    ['route' => route('tools.visa-cost'),      'icon' => '💸', 'lbl' => __('Visa Cost'),        'desc' => __('10 items')],
-                    ['route' => route('tools.deadlines'),      'icon' => '📅', 'lbl' => __('Application Calendar'), 'desc' => __('ICS export')],
-                    ['route' => route('tools.grade-converter'),'icon' => '📊', 'lbl' => __('Grade Converter'),  'desc' => 'TR→DE'],
-                    ['route' => route('tools.recommendation'), 'icon' => '🎯', 'lbl' => __('Uni Quiz'),         'desc' => __('5 questions')],
+                    ['route' => route('tools.cost-of-living'), 'icon' => 'banknotes',          'lbl' => __('Cost of Living'),   'desc' => __('130 cities')],
+                    ['route' => route('tools.budget-planner'), 'icon' => 'arrow-trending-up',  'lbl' => __('Budget Planner'),   'desc' => __('Net calc')],
+                    ['route' => route('tools.visa-cost'),      'icon' => 'currency-euro',      'lbl' => __('Visa Cost'),        'desc' => __('10 items')],
+                    ['route' => route('tools.deadlines'),      'icon' => 'calendar',           'lbl' => __('Application Calendar'), 'desc' => __('ICS export')],
+                    ['route' => route('tools.grade-converter'),'icon' => 'chart-bar',          'lbl' => __('Grade Converter'),  'desc' => 'TR→DE'],
+                    ['route' => route('tools.recommendation'), 'icon' => 'target',             'lbl' => __('Uni Quiz'),         'desc' => __('5 questions')],
                 ];
             @endphp
             @foreach ($homeTools as $t)
                 <a href="{{ $t['route'] }}"
                    title="{{ $t['lbl'] }} — {{ $t['desc'] }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
-                    <div class="text-3xl mb-2">{{ $t['icon'] }}</div>
+                    <div class="flex justify-center mb-2 text-primary-600"><x-svg-icon name="{{ $t['icon'] }}" class="w-7 h-7" /></div>
                     <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 text-sm leading-tight">{{ $t['lbl'] }}</h3>
                     <p class="text-xs text-gray-500 mt-1">{{ $t['desc'] }}</p>
                 </a>
@@ -643,7 +649,7 @@
         <a href="{{ route('tools.recommendation') }}"
            class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition"
            title="{{ __('Uni Match Quiz') }} — {{ __('5 questions, the best universities for you.') }}">
-            🎯 {{ __('Start quiz — 60 seconds') }}
+            <span class="inline-flex items-center gap-1.5"><x-svg-icon name="target" class="w-4 h-4" /> {{ __('Start quiz — 60 seconds') }}</span>
         </a>
     </div>
 </section>

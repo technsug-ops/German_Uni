@@ -20,8 +20,9 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Pathway Finder') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            🧭 {{ __('Which Germany pathway is right for you?') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
+            <x-svg-icon name="map" class="w-8 h-8 md:w-10 md:h-10" />
+            {{ __('Which Germany pathway is right for you?') }}
         </h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
             {{ __('5 questions → Studienkolleg, Bachelor, Master, PhD, Ausbildung or Sprachkurs. Each path with real duration, cost and language requirements.') }}
@@ -40,11 +41,11 @@
             <label class="block text-sm font-bold text-gray-900 mb-2">1. {{ __('What is your current education level?') }}</label>
             <select name="education_level" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
                 <option value="">{{ __('Select...') }}</option>
-                <option value="high_school" @selected(($old['education_level'] ?? '') === 'high_school')>🎒 {{ __('High school graduate') }}</option>
-                <option value="bachelor_student" @selected(($old['education_level'] ?? '') === 'bachelor_student')>📖 {{ __('Currently in Bachelor (want to transfer)') }}</option>
-                <option value="bachelor_grad" @selected(($old['education_level'] ?? '') === 'bachelor_grad')>🎓 {{ __('Bachelor graduate') }}</option>
-                <option value="master_grad" @selected(($old['education_level'] ?? '') === 'master_grad')>📚 {{ __('Master graduate') }}</option>
-                <option value="working" @selected(($old['education_level'] ?? '') === 'working')>💼 {{ __('Working professional (2+ years)') }}</option>
+                <option value="high_school" @selected(($old['education_level'] ?? '') === 'high_school')>{{ __('High school graduate') }}</option>
+                <option value="bachelor_student" @selected(($old['education_level'] ?? '') === 'bachelor_student')>{{ __('Currently in Bachelor (want to transfer)') }}</option>
+                <option value="bachelor_grad" @selected(($old['education_level'] ?? '') === 'bachelor_grad')>{{ __('Bachelor graduate') }}</option>
+                <option value="master_grad" @selected(($old['education_level'] ?? '') === 'master_grad')>{{ __('Master graduate') }}</option>
+                <option value="working" @selected(($old['education_level'] ?? '') === 'working')>{{ __('Working professional (2+ years)') }}</option>
             </select>
         </div>
 
@@ -102,7 +103,7 @@
 
         <button type="submit"
                 class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-lg shadow-md transition">
-            🔍 {{ __('Show me my pathway') }}
+            <x-svg-icon name="search" class="w-5 h-5" /> {{ __('Show me my pathway') }}
         </button>
     </form>
 
@@ -116,7 +117,7 @@
         <section class="space-y-6">
             {{-- HERO RESULT CARD --}}
             <div class="bg-gradient-to-br {{ $from }} {{ $to }} text-white rounded-2xl p-6 md:p-8 shadow-lg">
-                <p class="text-sm font-bold uppercase tracking-wider opacity-90 mb-2">⭐ {{ __('Best match for you') }}</p>
+                <p class="text-sm font-bold uppercase tracking-wider opacity-90 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="star" class="w-4 h-4" /> {{ __('Best match for you') }}</p>
                 <div class="flex items-start gap-4 flex-wrap mb-4">
                     <div class="text-6xl">{{ $top['icon'] }}</div>
                     <div class="flex-1 min-w-0">
@@ -127,15 +128,15 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">
                     <div class="bg-white/15 backdrop-blur-sm rounded-lg p-3">
-                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5">⏱️ {{ __('Duration') }}</div>
+                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5 inline-flex items-center gap-1"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Duration') }}</div>
                         <div class="text-sm font-bold">{{ $top['duration'] }}</div>
                     </div>
                     <div class="bg-white/15 backdrop-blur-sm rounded-lg p-3">
-                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5">🗣️ {{ __('Language') }}</div>
+                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5 inline-flex items-center gap-1"><x-svg-icon name="language" class="w-3.5 h-3.5" /> {{ __('Language') }}</div>
                         <div class="text-sm font-bold">{{ $top['language'] }}</div>
                     </div>
                     <div class="bg-white/15 backdrop-blur-sm rounded-lg p-3 col-span-2 md:col-span-1">
-                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5">💰 {{ __('Cost') }}</div>
+                        <div class="text-xs uppercase tracking-wider opacity-80 mb-0.5 inline-flex items-center gap-1"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Cost') }}</div>
                         <div class="text-sm font-bold">{{ $top['cost'] }}</div>
                     </div>
                 </div>
@@ -153,7 +154,7 @@
             {{-- Personal notes --}}
             @if (! empty($result['notes']))
                 <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                    <p class="font-bold text-gray-900 text-sm mb-2">💡 {{ __('Notes based on your answers') }}</p>
+                    <p class="font-bold text-gray-900 text-sm mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="light-bulb" class="w-4 h-4" /> {{ __('Notes based on your answers') }}</p>
                     <ul class="space-y-2">
                         @foreach ($result['notes'] as $note)
                             <li class="flex gap-2 items-start text-sm text-gray-700">
@@ -173,7 +174,7 @@
                         @php [$pFrom, $pTo, $pBorder, $pText] = $p['colors']; @endphp
                         <article class="bg-white border-2 {{ $pBorder }} rounded-xl p-5">
                             <p class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
-                                {{ $i === 0 ? '🥈 ' . __('Second choice') : '🥉 ' . __('Also worth considering') }}
+                                {{ $i === 0 ? __('Second choice') : __('Also worth considering') }}
                             </p>
                             <div class="flex items-start gap-3 mb-3">
                                 <div class="text-4xl">{{ $p['icon'] }}</div>
@@ -194,7 +195,7 @@
             {{-- Bar chart of all pathway scores --}}
             <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <summary class="cursor-pointer px-5 py-3 font-bold text-sm text-gray-900 hover:bg-gray-50 select-none">
-                    📊 {{ __('See how all pathways scored for you') }}
+                    <span class="inline-flex items-center gap-1.5"><x-svg-icon name="chart-bar" class="w-4 h-4" /> {{ __('See how all pathways scored for you') }}</span>
                 </summary>
                 <div class="p-5 space-y-2.5">
                     @php $maxScore = max($result['scores']); @endphp
@@ -217,7 +218,7 @@
 
     {{-- All pathways overview (always visible at bottom) --}}
     <section class="mt-14">
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">📚 {{ __('All 6 Germany pathways') }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-6 h-6" /> {{ __('All 6 Germany pathways') }}</h2>
         <p class="text-sm text-gray-600 mb-5">{{ __('Real durations + costs + language requirements. The quiz above picks the best fit; here is the full menu.') }}</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             @foreach ($pathways as $p)

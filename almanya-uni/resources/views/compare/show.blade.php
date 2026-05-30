@@ -28,7 +28,7 @@
     };
 
     $boolBadge = fn ($v) => $v
-        ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold">✓ ' . e(__('Yes')) . '</span>'
+        ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-3.5 h-3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> ' . e(__('Yes')) . '</span>'
         : '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-100 text-gray-500 text-xs">— ' . e(__('No')) . '</span>';
 @endphp
 
@@ -62,7 +62,7 @@
 
         @if ($too_few)
             <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-8 text-center">
-                <div class="text-5xl mb-3">⚖️</div>
+                <div class="flex justify-center mb-3 text-yellow-700"><x-svg-icon name="scale" class="w-12 h-12" /></div>
                 <p class="font-semibold text-yellow-900 mb-2">{{ __('At least 2 universities required') }}</p>
                 <p class="text-sm text-yellow-800 mb-4">{{ __('You need to pick 2 to 4 universities to compare.') }}</p>
                 <a href="{{ route('compare.index', ['slugs' => $slug_csv]) }}"
@@ -97,7 +97,7 @@
                         <div class="p-3">
                             <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-snug line-clamp-2 text-sm">{{ $uni['name_de'] }}</h3>
                             @if ($uni['city_name'])
-                                <p class="text-xs text-gray-500 mt-1">📍 {{ $uni['city_name'] }}@if ($uni['state_name']) · {{ $uni['state_name'] }}@endif</p>
+                                <p class="text-xs text-gray-500 mt-1 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni['city_name'] }}@if ($uni['state_name']) · {{ $uni['state_name'] }}@endif</p>
                             @endif
                         </div>
                     </a>
@@ -118,7 +118,7 @@
                         <tbody class="divide-y divide-gray-100">
                             {{-- AKADEMİK GROUP --}}
                             <tr class="bg-primary-50">
-                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider">📚 {{ __('Academic') }}</td>
+                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Academic') }}</span></td>
                             </tr>
                             <tr>
                                 <td class="bg-gray-50 px-4 py-3 font-semibold text-gray-700">{{ __('Type') }}</td>
@@ -134,7 +134,7 @@
                                         @if ($u['founded_year'])
                                             {{ $u['founded_year'] }}
                                             @if ($isOldest)
-                                                <span class="text-emerald-600 text-xs ml-1" title="{{ __('Oldest') }}">🏆</span>
+                                                <span class="inline-flex items-center text-emerald-600 ml-1" title="{{ __('Oldest') }}"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /></span>
                                             @endif
                                         @else
                                             <span class="text-gray-400">—</span>
@@ -150,7 +150,7 @@
                                         @if ($u['student_count'])
                                             {{ number_format($u['student_count']) }}
                                             @if ($isMax)
-                                                <span class="text-emerald-600 text-xs ml-1" title="{{ __('Largest') }}">🏆</span>
+                                                <span class="inline-flex items-center text-emerald-600 ml-1" title="{{ __('Largest') }}"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /></span>
                                             @endif
                                         @else
                                             <span class="text-gray-400">—</span>
@@ -161,7 +161,7 @@
 
                             {{-- PROGRAMLAR GROUP --}}
                             <tr class="bg-primary-50">
-                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider">🎓 {{ __('Programs') }}</td>
+                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Programs') }}</span></td>
                             </tr>
                             <tr>
                                 <td class="bg-gray-50 px-4 py-3 font-semibold text-gray-700">{{ __('Total programs') }}</td>
@@ -170,7 +170,7 @@
                                     <td class="px-4 py-3 {{ $isMax ? 'bg-emerald-50 font-semibold' : '' }}">
                                         @if ($t > 0)
                                             <a href="{{ route('programs.index', ['uni' => $u['slug']]) }}" class="text-primary-600 hover:underline">{{ $t }}</a>
-                                            @if ($isMax) <span class="text-emerald-600 text-xs ml-1" title="{{ __('Most') }}">🏆</span> @endif
+                                            @if ($isMax) <span class="inline-flex items-center text-emerald-600 ml-1" title="{{ __('Most') }}"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /></span> @endif
                                         @else <span class="text-gray-400">—</span> @endif
                                     </td>
                                 @endforeach
@@ -202,7 +202,7 @@
                                             <div class="flex items-baseline gap-2">
                                                 <span>{{ $e }}</span>
                                                 <span class="text-xs text-gray-500">({{ $pct }}%)</span>
-                                                @if ($isMax) <span class="text-emerald-600 text-xs" title="{{ __('Most English-taught') }}">🏆</span> @endif
+                                                @if ($isMax) <span class="inline-flex items-center text-emerald-600" title="{{ __('Most English-taught') }}"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /></span> @endif
                                             </div>
                                             <div class="mt-1 w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
                                                 <div class="bg-blue-500 h-full" style="width: {{ $pct }}%"></div>
@@ -222,7 +222,7 @@
                                                 @foreach ($u['top_fields'] as $f)
                                                     <a href="{{ route('fields.show', $f['slug']) }}"
                                                        class="inline-flex items-center gap-1.5 text-xs text-gray-700 hover:text-primary-600 transition">
-                                                        <span>{{ $f['icon'] ?? '📚' }}</span>
+                                                        <span>{{ $f['icon'] ?: '' }}</span>
                                                         <span class="font-medium">{{ $f['name'] }}</span>
                                                         <span class="text-gray-400">({{ $f['count'] }})</span>
                                                     </a>
@@ -237,7 +237,7 @@
 
                             {{-- LOKASYON & ŞEHİR --}}
                             <tr class="bg-primary-50">
-                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider">🗺️ {{ __('Location') }}</td>
+                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="map" class="w-3.5 h-3.5" /> {{ __('Location') }}</span></td>
                             </tr>
                             <tr>
                                 <td class="bg-gray-50 px-4 py-3 font-semibold text-gray-700">{{ __('City') }}</td>
@@ -260,9 +260,9 @@
                                 @foreach ($universities as $u)
                                     @php
                                         $sizeBadge = match ($u['city_size'] ?? null) {
-                                            'metropol' => ['🌆 ' . __('Metropolis'), 'bg-rose-50 text-rose-700'],
-                                            'orta'     => ['🏙️ ' . __('Medium'), 'bg-blue-50 text-blue-700'],
-                                            'küçük'    => ['🏘️ ' . __('Small'), 'bg-amber-50 text-amber-700'],
+                                            'metropol' => ['building-office', __('Metropolis'), 'bg-rose-50 text-rose-700'],
+                                            'orta'     => ['building-office', __('Medium'),     'bg-blue-50 text-blue-700'],
+                                            'küçük'    => ['home',            __('Small'),      'bg-amber-50 text-amber-700'],
                                             default    => null,
                                         };
                                     @endphp
@@ -271,7 +271,7 @@
                                             <div class="flex items-baseline gap-2">
                                                 <strong class="text-gray-900">{{ number_format($u['city_population']) }}</strong>
                                                 @if ($sizeBadge)
-                                                    <span class="text-xs px-1.5 py-0.5 rounded {{ $sizeBadge[1] }}">{{ $sizeBadge[0] }}</span>
+                                                    <span class="inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded {{ $sizeBadge[2] }}"><x-svg-icon name="{{ $sizeBadge[0] }}" class="w-3 h-3" /> {{ $sizeBadge[1] }}</span>
                                                 @endif
                                             </div>
                                         @else
@@ -296,7 +296,7 @@
 
                             {{-- BAŞVURU --}}
                             <tr class="bg-primary-50">
-                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider">📝 {{ __('Application') }}</td>
+                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('Application') }}</span></td>
                             </tr>
                             <tr>
                                 <td class="bg-gray-50 px-4 py-3 font-semibold text-gray-700">{{ __('Uni-Assist member') }}</td>
@@ -343,7 +343,7 @@
 
                             {{-- AlmanyaUni İÇERİĞİ --}}
                             <tr class="bg-primary-50">
-                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider">📖 {{ __('AlmanyaUni Guide') }}</td>
+                                <td colspan="{{ $cols + 1 }}" class="px-4 py-2 text-xs font-bold text-primary-700 uppercase tracking-wider"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('AlmanyaUni Guide') }}</span></td>
                             </tr>
                             <tr>
                                 <td class="bg-gray-50 px-4 py-3 font-semibold text-gray-700">{{ __('Detailed guide') }}</td>
@@ -351,7 +351,7 @@
                                     <td class="px-4 py-3">
                                         @if ($u['has_content'])
                                             <a href="{{ route('universities.show', $u['slug']) }}" class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold hover:bg-emerald-100">
-                                                ✦ {{ __('Available') }} →
+                                                <span class="inline-flex items-center gap-1"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Available') }}</span> →
                                             </a>
                                         @else
                                             <span class="inline-block px-2 py-0.5 rounded bg-gray-100 text-gray-500 text-xs">— {{ __('Coming soon') }}</span>

@@ -59,17 +59,20 @@
         <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight drop-shadow">{{ $city->name }}</h1>
         <div class="flex flex-wrap gap-2 text-sm">
             @if($city->state)
-                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    🗺️ {{ $city->state->name }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                    <x-svg-icon name="map" class="w-4 h-4" />
+                    {{ $city->state->name }}
                 </span>
             @endif
             @if($city->population)
-                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    👥 {{ number_format($city->population, 0, ',', '.') }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                    <x-svg-icon name="users" class="w-4 h-4" />
+                    {{ number_format($city->population, 0, ',', '.') }}
                 </span>
             @endif
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🎓 {{ __(':n universities', ['n' => $city->universities->count()]) }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="academic-cap" class="w-4 h-4" />
+                {{ __(':n universities', ['n' => $city->universities->count()]) }}
             </span>
         </div>
     </div>
@@ -84,7 +87,7 @@
             <x-content-blocks :blocks="$city->content_blocks" :exclude-url="'/cities/' . $city->slug" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
-                <div class="text-5xl mb-3">📝</div>
+                <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>
                 <h2 class="text-xl font-bold text-gray-900 mb-2">{{ __('Content Not Ready Yet') }}</h2>
                 <p class="text-gray-600 max-w-lg mx-auto">
                     {{ __('A detailed page for this city (cost of living, places to visit, student culture) will be added soon.') }}
@@ -97,19 +100,19 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div>
                     <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ $city->universities->count() }}</p>
-                    <p class="text-xs text-gray-600 mt-1">🎓 {{ __('University') }}</p>
+                    <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('University') }}</p>
                 </div>
                 @if (! empty($topPrograms))
                     <div>
                         <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ \App\Models\Program::whereIn('university_id', $city->universities->pluck('id'))->where('is_active', 1)->count() }}</p>
-                        <p class="text-xs text-gray-600 mt-1">📚 {{ __('Program') }}</p>
+                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Program') }}</p>
                     </div>
                 @endif
                 @if ($city->population)
                     <div>
                         <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ number_format($city->population, 0, ',', '.') }}</p>
-                        <p class="text-xs text-gray-600 mt-1">
-                            👥 {{ __('Population') }}
+                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center flex-wrap">
+                            <x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Population') }}
                             @if ($citySize)
                                 <span class="ml-1 inline-block px-1.5 py-0.5 rounded text-[10px] bg-{{ $citySize[2] }}-100 text-{{ $citySize[2] }}-700">{{ $citySize[0] }} {{ $citySize[1] }}</span>
                             @endif
@@ -119,7 +122,7 @@
                 <div>
                     <a href="{{ route('tools.cost-of-living', ['city' => $city->id]) }}" class="block hover:opacity-80">
                         <p class="text-2xl md:text-3xl font-extrabold text-accent-600">€</p>
-                        <p class="text-xs text-gray-600 mt-1">💰 {{ __('Cost calculator') }} →</p>
+                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Cost calculator') }} →</p>
                     </a>
                 </div>
             </div>
@@ -137,18 +140,23 @@
             @endphp
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🏠 {{ __('Housing options in :city', ['city' => $city->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="home" class="w-6 h-6" /> {{ __('Housing options in :city', ['city' => $city->name]) }}</h2>
                     <a href="{{ route('housing.providers') }}" class="text-sm text-primary-600 hover:underline">{{ __('All providers') }} →</a>
                 </div>
 
                 @if ($city->avg_rent_min)
-                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 mb-4 text-sm">
-                        💶 <strong>{{ __('Average dorm price:') }}</strong> €{{ $city->avg_rent_min }}–€{{ $city->avg_rent_max }}/{{ __('mo') }}
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 mb-4 text-sm inline-flex flex-wrap items-center gap-1">
+                        <x-svg-icon name="currency-euro" class="w-4 h-4 text-amber-700" />
+                        <strong>{{ __('Average dorm price:') }}</strong> €{{ $city->avg_rent_min }}–€{{ $city->avg_rent_max }}/{{ __('mo') }}
                         @if ($city->stw_capacity)
-                            · 🛏️ <strong>{{ __('STW capacity:') }}</strong> {{ __(':n beds', ['n' => number_format($city->stw_capacity, 0, ',', '.')]) }}
+                            <span>·</span>
+                            <x-svg-icon name="home" class="w-4 h-4 text-amber-700" />
+                            <strong>{{ __('STW capacity:') }}</strong> {{ __(':n beds', ['n' => number_format($city->stw_capacity, 0, ',', '.')]) }}
                         @endif
                         @if ($city->stw_waiting)
-                            · ⏳ <strong>{{ __('Waiting time:') }}</strong> {{ $city->stw_waiting }}
+                            <span>·</span>
+                            <x-svg-icon name="clock" class="w-4 h-4 text-amber-700" />
+                            <strong>{{ __('Waiting time:') }}</strong> {{ $city->stw_waiting }}
                         @endif
                     </div>
                 @endif
@@ -163,7 +171,7 @@
                             <a href="{{ route('housing.provider-show', $stw->slug) }}"
                                class="group block bg-white border-2 border-emerald-300 hover:border-emerald-500 hover:shadow-lg transition rounded-xl p-5">
                                 <div class="flex items-start gap-3 mb-2">
-                                    <div class="w-12 h-12 rounded bg-gradient-to-br from-emerald-500 to-teal-500 text-white text-2xl flex items-center justify-center">🏛️</div>
+                                    <div class="w-12 h-12 rounded bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center"><x-svg-icon name="building-office" class="w-7 h-7" /></div>
                                     <div class="flex-1 min-w-0">
                                         <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">{{ __('Public (Studierendenwerk)') }}</p>
                                         <h3 class="font-bold text-gray-900 group-hover:text-emerald-700 leading-tight">{{ $stw->name }}</h3>
@@ -197,7 +205,7 @@
                     @if ($cityChains->isNotEmpty())
                         <div class="bg-white border-2 border-indigo-300 rounded-xl p-5">
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="w-12 h-12 rounded bg-gradient-to-br from-indigo-500 to-purple-500 text-white text-2xl flex items-center justify-center">🏢</div>
+                                <div class="w-12 h-12 rounded bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex items-center justify-center"><x-svg-icon name="building-office" class="w-7 h-7" /></div>
                                 <div class="flex-1 min-w-0">
                                     <p class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">{{ __('Private operator') }} ({{ $cityChains->count() }})</p>
                                     <h3 class="font-bold text-gray-900 leading-tight">{{ __('Fast + Furnished + Pricey') }}</h3>
@@ -218,8 +226,8 @@
                     @endif
                 </div>
 
-                <p class="text-xs text-gray-500 mt-3 text-center">
-                    💡 <strong>{{ __('Strategy:') }}</strong> {{ __('Apply to STW early (long waiting list); check private providers in parallel.') }}
+                <p class="text-xs text-gray-500 mt-3 text-center inline-flex items-center gap-1 justify-center flex-wrap">
+                    <x-svg-icon name="light-bulb" class="w-3.5 h-3.5" /> <strong>{{ __('Strategy:') }}</strong> {{ __('Apply to STW early (long waiting list); check private providers in parallel.') }}
                     <a href="{{ route('housing.index') }}" class="text-primary-600 hover:underline">{{ __('Housing guide') }} →</a>
                 </p>
             </section>
@@ -229,14 +237,14 @@
         @if (! empty($topFieldsInCity) && $topFieldsInCity->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🎯 {{ __('Strongest fields in :city', ['city' => $city->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="target" class="w-6 h-6" /> {{ __('Strongest fields in :city', ['city' => $city->name]) }}</h2>
                     <a href="{{ route('fields.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('All fields') }} →</a>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     @foreach ($topFieldsInCity as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
-                            <div class="text-3xl mb-1">{{ $field->icon ?? '📚' }}</div>
+                            <div class="text-3xl mb-1">{{ $field->icon ?: '' }}</div>
                             <h3 class="font-bold text-sm text-gray-900 group-hover:text-primary-600 leading-tight">{{ $field->name }}</h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __(':n programs', ['n' => $field->programs_count]) }}</p>
                         </a>
@@ -249,7 +257,7 @@
         @if (! empty($topPrograms) && $topPrograms->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">📚 {{ __('Popular programs in :city', ['city' => $city->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-6 h-6" /> {{ __('Popular programs in :city', ['city' => $city->name]) }}</h2>
                     <a href="{{ route('programs.index', ['q' => $city->name]) }}" class="text-sm text-primary-600 hover:underline">{{ __('All programs') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -322,7 +330,7 @@
         @if (! empty($relatedPosts) && $relatedPosts->count() > 0)
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">📝 {{ __('Articles about :city', ['city' => $city->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Articles about :city', ['city' => $city->name]) }}</h2>
                     <a href="{{ route('blog.index') }}" class="text-sm text-primary-600 hover:underline">Blog →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -382,7 +390,7 @@
 @if ($cityTopFields->isNotEmpty() || $hasEnPrograms)
 <section class="bg-gradient-to-br from-gray-50 to-white border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">🔍 {{ __('Popular searches in :city', ['city' => $city->name]) }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="search" class="w-6 h-6" /> {{ __('Popular searches in :city', ['city' => $city->name]) }}</h2>
         <p class="text-sm text-gray-600 mb-6">{{ __('Filtered program lists for common queries') }}</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -402,7 +410,7 @@
                 <a href="{{ route('programs.city-field', [$city->slug, $f->slug]) }}"
                    title="{{ $f->name }} — {{ $city->name }}"
                    class="group flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md rounded-xl p-4 transition">
-                    <span class="text-3xl shrink-0">{{ $f->icon ?? '📚' }}</span>
+                    <span class="text-3xl shrink-0">{{ $f->icon ?: '' }}</span>
                     <div class="min-w-0">
                         <p class="font-bold text-gray-900 group-hover:text-primary-700 leading-tight">{{ __(':field in :city', ['field' => $f->name, 'city' => $city->name]) }}</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ $f->programs_in_city_count }} {{ __('programs') }}</p>
@@ -421,8 +429,8 @@
 <section class="bg-white border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-            <h2 class="text-2xl font-bold text-gray-900">
-                🏙️
+            <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2">
+                <x-svg-icon name="building-office" class="w-6 h-6" />
                 @if ($city->state)
                     {{ __('Other cities in :state', ['state' => $city->state->name]) }}
                 @else

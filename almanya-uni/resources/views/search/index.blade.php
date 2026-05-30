@@ -84,34 +84,34 @@
         <div class="max-w-[1400px] mx-auto px-4 pb-3 flex items-center gap-2 overflow-x-auto text-xs">
             <span class="text-gray-500">{{ __(':n results', ['n' => number_format($grandTotal)]) }} @if ($took_ms !== null)({{ $took_ms }}ms)@endif:</span>
             @if ($totals['universities'])
-                <a href="#unis" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🎓 {{ __('Universities') }} ({{ $totals['universities'] }})</a>
+                <a href="#unis" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Universities') }} ({{ $totals['universities'] }})</a>
             @endif
             @if ($totals['cities'])
-                <a href="#cities" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🏙️ {{ __('Cities') }} ({{ $totals['cities'] }})</a>
+                <a href="#cities" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Cities') }} ({{ $totals['cities'] }})</a>
             @endif
             @if ($totals['programs'])
-                <a href="#programs" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">📚 {{ __('Programs') }} ({{ $totals['programs'] }})</a>
+                <a href="#programs" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Programs') }} ({{ $totals['programs'] }})</a>
             @endif
             @if ($totals['professions'] ?? 0)
-                <a href="#professions" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">💼 {{ __('Professions') }} ({{ $totals['professions'] }})</a>
+                <a href="#professions" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="briefcase" class="w-3.5 h-3.5" /> {{ __('Professions') }} ({{ $totals['professions'] }})</a>
             @endif
             @if ($totals['scholarships'] ?? 0)
-                <a href="#scholarships" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🎖️ {{ __('Scholarships') }} ({{ $totals['scholarships'] }})</a>
+                <a href="#scholarships" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('Scholarships') }} ({{ $totals['scholarships'] }})</a>
             @endif
             @if ($totals['posts'] ?? 0)
-                <a href="#posts" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">📝 {{ __('Blog') }} ({{ $totals['posts'] }})</a>
+                <a href="#posts" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('Blog') }} ({{ $totals['posts'] }})</a>
             @endif
             @if ($totals['fields'] ?? 0)
-                <a href="#fields" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🌐 {{ __('Fields') }} ({{ $totals['fields'] }})</a>
+                <a href="#fields" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Fields') }} ({{ $totals['fields'] }})</a>
             @endif
             @if ($totals['studienkollegs'] ?? 0)
-                <a href="#studienkollegs" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🎓 {{ __('Studienkolleg') }} ({{ $totals['studienkollegs'] }})</a>
+                <a href="#studienkollegs" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Studienkolleg') }} ({{ $totals['studienkollegs'] }})</a>
             @endif
             @if ($totals['housing'] ?? 0)
-                <a href="#housing" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🏠 {{ __('Housing') }} ({{ $totals['housing'] }})</a>
+                <a href="#housing" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="home" class="w-3.5 h-3.5" /> {{ __('Housing') }} ({{ $totals['housing'] }})</a>
             @endif
             @if ($totals['sperrkonto'] ?? 0)
-                <a href="#sperrkonto" class="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap">🏦 {{ __('Sperrkonto') }} ({{ $totals['sperrkonto'] }})</a>
+                <a href="#sperrkonto" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 whitespace-nowrap"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Sperrkonto') }} ({{ $totals['sperrkonto'] }})</a>
             @endif
         </div>
     </div>
@@ -119,13 +119,16 @@
     <div class="max-w-[1400px] mx-auto px-4 py-6">
         @if ($grandTotal === 0)
             <div class="py-12 px-6 text-center bg-white rounded-2xl border border-gray-200 shadow-sm max-w-2xl mx-auto">
-                <div class="text-5xl mb-4">🔍</div>
+                <div class="flex justify-center mb-4 text-gray-400"><x-svg-icon name="search" class="w-12 h-12" /></div>
                 <p class="text-gray-900 text-lg md:text-xl font-semibold mb-2">{!! __('No results found for "<strong>:q</strong>"', ['q' => e($q)]) !!}</p>
                 <p class="text-gray-500 text-sm mb-6">{{ __('Try a different word. Spelling, language, or abbreviations do not matter.') }}</p>
 
                 {{-- Suggested actions --}}
                 <div class="bg-primary-50 border border-primary-100 rounded-xl p-4 mb-5 text-left">
-                    <p class="text-xs font-bold uppercase tracking-wider text-primary-700 mb-2">💡 {{ __('Tips') }}</p>
+                    <p class="text-xs font-bold uppercase tracking-wider text-primary-700 mb-2 inline-flex items-center gap-1.5">
+                        <x-svg-icon name="light-bulb" class="w-3.5 h-3.5" />
+                        {{ __('Tips') }}
+                    </p>
                     <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
                         <li>{{ __('Shorter keywords often work better (e.g. "TUM" instead of "Technische Universität München")') }}</li>
                         <li>{{ __('Try the English or German name (e.g. "Munich" instead of "München")') }}</li>
@@ -137,16 +140,16 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                     @php
                         $browse = [
-                            ['url' => route('universities.index'), 'icon' => '🎓', 'label' => __('All Universities')],
-                            ['url' => route('cities.index'), 'icon' => '🏙️', 'label' => __('Cities')],
-                            ['url' => route('programs.index'), 'icon' => '📚', 'label' => __('Programs')],
-                            ['url' => route('faqs.index'), 'icon' => '❓', 'label' => __('FAQ')],
+                            ['url' => route('universities.index'), 'icon' => 'academic-cap',     'label' => __('All Universities')],
+                            ['url' => route('cities.index'),       'icon' => 'building-office',  'label' => __('Cities')],
+                            ['url' => route('programs.index'),     'icon' => 'book-open',        'label' => __('Programs')],
+                            ['url' => route('faqs.index'),         'icon' => 'information-circle','label' => __('FAQ')],
                         ];
                     @endphp
                     @foreach ($browse as $b)
                         <a href="{{ $b['url'] }}"
                            class="bg-white border border-gray-200 hover:border-primary-400 hover:bg-primary-50 rounded-lg p-3 transition text-sm font-medium text-gray-700">
-                            <div class="text-2xl mb-1">{{ $b['icon'] }}</div>
+                            <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="{{ $b['icon'] }}" class="w-6 h-6" /></div>
                             {{ $b['label'] }}
                         </a>
                     @endforeach
@@ -158,7 +161,10 @@
         @if ($cities->isNotEmpty())
             <section id="cities" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🏙️ {{ __('Cities') }} <span class="text-sm font-normal text-gray-500">({{ $totals['cities'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="building-office" class="w-5 h-5" />
+                        {{ __('Cities') }} <span class="text-sm font-normal text-gray-500">({{ $totals['cities'] }})</span>
+                    </h2>
                     @if ($totals['cities'] > $cities->count())
                         <a href="{{ route('cities.index', ['q' => $q]) }}" class="text-sm text-primary-600 hover:underline">{{ __('See all') }} →</a>
                     @endif
@@ -194,7 +200,10 @@
         @if ($universities->isNotEmpty())
             <section id="unis" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🎓 {{ __('Universities') }} <span class="text-sm font-normal text-gray-500">({{ $totals['universities'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="academic-cap" class="w-5 h-5" />
+                        {{ __('Universities') }} <span class="text-sm font-normal text-gray-500">({{ $totals['universities'] }})</span>
+                    </h2>
                     @if ($totals['universities'] > $universities->count())
                         <a href="{{ route('universities.index', ['q' => $q]) }}" class="text-sm text-primary-600 hover:underline">{{ __('See all') }} →</a>
                     @endif
@@ -219,17 +228,17 @@
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $uni->display_name }}</h3>
                                 <p class="text-xs text-gray-500 mt-1">
-                                    📍 {{ $uni->city?->name ?? '—' }}@if ($uni->city?->state?->name) · {{ $uni->city->state->name }}@endif
+                                    <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni->city?->name ?? '—' }}@if ($uni->city?->state?->name) · {{ $uni->city->state->name }}@endif</span>
                                 </p>
                                 <div class="flex flex-wrap gap-2 mt-2 text-xs">
                                     @if ($uni->type)
                                         <span class="inline-block px-2 py-0.5 rounded bg-primary-50 text-primary-700 font-medium">{{ $typeLabel($uni->type) }}</span>
                                     @endif
                                     @if ($uni->student_count)
-                                        <span class="text-gray-600">👥 {{ number_format($uni->student_count) }}</span>
+                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ number_format($uni->student_count) }}</span>
                                     @endif
                                     @if ($uni->founded_year)
-                                        <span class="text-gray-600">📅 {{ $uni->founded_year }}</span>
+                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ $uni->founded_year }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -243,7 +252,10 @@
         @if ($programs->isNotEmpty())
             <section id="programs" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">📚 {{ __('Programs') }} <span class="text-sm font-normal text-gray-500">({{ $totals['programs'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="book-open" class="w-5 h-5" />
+                        {{ __('Programs') }} <span class="text-sm font-normal text-gray-500">({{ $totals['programs'] }})</span>
+                    </h2>
                     @if ($totals['programs'] > $programs->count())
                         <a href="{{ route('programs.index', ['q' => $q]) }}" class="text-sm text-primary-600 hover:underline">{{ __('See all') }} →</a>
                     @endif
@@ -291,7 +303,10 @@
             @endphp
             <section id="professions" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">💼 {{ __('Professions') }} <span class="text-sm font-normal text-gray-500">({{ $totals['professions'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="briefcase" class="w-5 h-5" />
+                        {{ __('Professions') }} <span class="text-sm font-normal text-gray-500">({{ $totals['professions'] }})</span>
+                    </h2>
                     @if ($totals['professions'] > $professions->count())
                         <a href="{{ route('professions.index', ['q' => $q]) }}" class="text-sm text-primary-600 hover:underline">{{ __('See all') }} →</a>
                     @endif
@@ -332,7 +347,10 @@
         @if (($scholarships ?? collect())->isNotEmpty())
             <section id="scholarships" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🎖️ {{ __('Scholarships') }} <span class="text-sm font-normal text-gray-500">({{ $totals['scholarships'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="trophy" class="w-5 h-5" />
+                        {{ __('Scholarships') }} <span class="text-sm font-normal text-gray-500">({{ $totals['scholarships'] }})</span>
+                    </h2>
                     @if ($totals['scholarships'] > $scholarships->count())
                         <a href="{{ route('scholarships.index', ['q' => $q]) }}" class="text-sm text-primary-600 hover:underline">{{ __('See all') }} →</a>
                     @endif
@@ -364,7 +382,10 @@
         @if (($posts ?? collect())->isNotEmpty())
             <section id="posts" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">📝 {{ __('Blog posts') }} <span class="text-sm font-normal text-gray-500">({{ $totals['posts'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="document-text" class="w-5 h-5" />
+                        {{ __('Blog posts') }} <span class="text-sm font-normal text-gray-500">({{ $totals['posts'] }})</span>
+                    </h2>
                     @if ($totals['posts'] > $posts->count())
                         <a href="{{ route('blog.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('Blog') }} →</a>
                     @endif
@@ -395,14 +416,17 @@
         @if (($fields ?? collect())->isNotEmpty())
             <section id="fields" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🌐 {{ __('Study Fields') }} <span class="text-sm font-normal text-gray-500">({{ $totals['fields'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="globe" class="w-5 h-5" />
+                        {{ __('Study Fields') }} <span class="text-sm font-normal text-gray-500">({{ $totals['fields'] }})</span>
+                    </h2>
                     <a href="{{ route('fields.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </header>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                     @foreach ($fields as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-3 flex items-center gap-3">
-                            <span class="text-2xl">{{ $field->icon ?? '📚' }}</span>
+                            <span class="text-2xl">{{ $field->icon ?: '' }}</span>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 truncate">{{ $field->name }}</h3>
                                 <p class="text-xs text-gray-500 truncate">{{ $field->name }}</p>
@@ -416,14 +440,17 @@
         @if (($studienkollegs ?? collect())->isNotEmpty())
             <section id="studienkollegs" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🎓 {{ __('Studienkolleg') }} <span class="text-sm font-normal text-gray-500">({{ $totals['studienkollegs'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="academic-cap" class="w-5 h-5" />
+                        {{ __('Studienkolleg') }} <span class="text-sm font-normal text-gray-500">({{ $totals['studienkollegs'] }})</span>
+                    </h2>
                     <a href="{{ route('tools.studienkolleg') }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </header>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     @foreach ($studienkollegs as $sk)
                         <a href="{{ route('tools.studienkolleg') }}#{{ $sk->slug }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-violet-500 hover:shadow-md transition p-3 flex items-start gap-3">
-                            <span class="text-2xl">🎓</span>
+                            <span class="text-2xl text-primary-600"><x-svg-icon name="academic-cap" class="w-6 h-6" /></span>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-violet-600">{{ $sk->name }}</h3>
                                 <p class="text-xs text-gray-500">{{ $sk->city_name_cache }} · {{ $sk->type === 'privat' ? __('Private') : __('Public (free)') }}</p>
@@ -437,7 +464,10 @@
         @if (($housing ?? collect())->isNotEmpty())
             <section id="housing" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🏠 {{ __('Housing Providers') }} <span class="text-sm font-normal text-gray-500">({{ $totals['housing'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="home" class="w-5 h-5" />
+                        {{ __('Housing Providers') }} <span class="text-sm font-normal text-gray-500">({{ $totals['housing'] }})</span>
+                    </h2>
                     <a href="{{ route('housing.providers') }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </header>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -447,7 +477,7 @@
                             @if ($hp->logo_url)
                                 <img src="{{ $hp->logo_url }}" alt="" class="w-10 h-10 object-contain rounded">
                             @else
-                                <span class="text-2xl">🏠</span>
+                                <span class="text-2xl text-primary-600"><x-svg-icon name="home" class="w-6 h-6" /></span>
                             @endif
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-emerald-600">{{ $hp->name }}</h3>
@@ -462,7 +492,10 @@
         @if (($sperrkonto ?? collect())->isNotEmpty())
             <section id="sperrkonto" class="mb-10">
                 <header class="flex items-baseline justify-between mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🏦 {{ __('Blocked Account (Sperrkonto)') }} <span class="text-sm font-normal text-gray-500">({{ $totals['sperrkonto'] }})</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 inline-flex items-center gap-2">
+                        <x-svg-icon name="banknotes" class="w-5 h-5" />
+                        {{ __('Blocked Account (Sperrkonto)') }} <span class="text-sm font-normal text-gray-500">({{ $totals['sperrkonto'] }})</span>
+                    </h2>
                     <a href="{{ route('tools.blocked-account') }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </header>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -472,7 +505,7 @@
                             @if ($ba->logo_url)
                                 <img src="{{ $ba->logo_url }}" alt="" class="w-10 h-10 object-contain rounded">
                             @else
-                                <span class="text-2xl">🏦</span>
+                                <span class="text-2xl text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></span>
                             @endif
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-blue-600">{{ $ba->name }}</h3>

@@ -57,18 +57,21 @@
             </div>
         </div>
         <div class="flex flex-wrap gap-2 text-sm mt-4">
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🎓 {{ number_format($totals['all']) }} {{ __('programs') }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="academic-cap" class="w-4 h-4" />
+                {{ number_format($totals['all']) }} {{ __('programs') }}
             </span>
             <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
                 🇬🇧 {{ $totals['english'] }} {{ __('English') }}
             </span>
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🏛️ {{ $totals['unis'] }} {{ __('universities') }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon name="building-office" class="w-4 h-4" />
+                {{ $totals['unis'] }} {{ __('universities') }}
             </span>
             @if($totals['professions'] > 0)
-                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    💼 {{ $totals['professions'] }} {{ __('professions') }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                    <x-svg-icon name="briefcase" class="w-4 h-4" />
+                    {{ $totals['professions'] }} {{ __('professions') }}
                 </span>
             @endif
             <a href="{{ route('programs.index', ['field' => $field->slug]) }}"
@@ -88,7 +91,7 @@
             <x-content-blocks :blocks="$field->content_blocks" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm mb-8">
-                <div class="text-5xl mb-3">📝</div>
+                <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>
                 <h2 class="text-xl font-bold text-gray-900 mb-2">{{ __('Detailed content coming soon') }}</h2>
                 <p class="text-gray-600 max-w-lg mx-auto">
                     {{ __('Careers, course content and application details for this field are being prepared. In the meantime, browse the program and university lists below.') }}
@@ -100,7 +103,7 @@
         @if($topUnis->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🏛️ {{ __('Top universities in :field', ['field' => $field->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-6 h-6" /> {{ __('Top universities in :field', ['field' => $field->name]) }}</h2>
                     <a href="{{ route('universities.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('All universities') }} →</a>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -133,7 +136,7 @@
         @if (! empty($topCities) && $topCities->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🏙️ {{ __('Best cities for :field', ['field' => $field->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-6 h-6" /> {{ __('Best cities for :field', ['field' => $field->name]) }}</h2>
                     <a href="{{ route('cities.index') }}" class="text-sm text-primary-600 hover:underline" title="{{ __('All cities') }}">{{ __('All cities') }} →</a>
                 </div>
                 <p class="text-sm text-gray-600 mb-4">{!! __('Cities offering the most programs in this field. Compare the Sperrkonto burden, cost of living and student life with the <a href=":url" class="text-primary-600 hover:underline">cost calculator</a>.', ['url' => route('tools.cost-of-living')]) !!}</p>
@@ -141,9 +144,9 @@
                     @foreach ($topCities as $c)
                         @php
                             $sizeBadge = match (true) {
-                                $c->population > 1_000_000 => ['🌆', __('Metropolis')],
-                                $c->population > 200_000   => ['🏙️', __('Mid-size')],
-                                $c->population > 0          => ['🏘️', __('Small')],
+                                $c->population > 1_000_000 => ['building-office', __('Metropolis')],
+                                $c->population > 200_000   => ['building-office', __('Mid-size')],
+                                $c->population > 0          => ['home',            __('Small')],
                                 default                     => null,
                             };
                         @endphp
@@ -153,7 +156,7 @@
                             <h3 class="font-bold text-gray-900 group-hover:text-primary-600 leading-tight">{{ $c->name }}</h3>
                             <p class="text-sm font-semibold text-primary-700 mt-1">{{ $c->program_count }} {{ __('programs') }}</p>
                             @if ($sizeBadge)
-                                <p class="text-xs text-gray-500 mt-1">{{ $sizeBadge[0] }} {{ $sizeBadge[1] }}</p>
+                                <p class="text-xs text-gray-500 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="{{ $sizeBadge[0] }}" class="w-3.5 h-3.5" /> {{ $sizeBadge[1] }}</p>
                             @endif
                         </a>
                     @endforeach
@@ -162,7 +165,7 @@
 
             {{-- Cross-linking: field × degree landing pages --}}
             <section class="mt-8">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">🎓 {{ __(':field by degree', ['field' => $field->name]) }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="academic-cap" class="w-5 h-5" /> {{ __(':field by degree', ['field' => $field->name]) }}</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     @foreach (['bachelor', 'master', 'phd'] as $deg)
                         @php
@@ -172,15 +175,15 @@
                                 'phd' => __('PhD'),
                             };
                             $degIcon = match ($deg) {
-                                'bachelor' => '🎓',
-                                'master' => '🎯',
-                                'phd' => '🔬',
+                                'bachelor' => 'academic-cap',
+                                'master' => 'target',
+                                'phd' => 'beaker',
                             };
                         @endphp
                         <a href="{{ route('programs.field-degree', [$field->slug, $deg]) }}"
                            title="{{ $degLabel }} {{ $field->name }} — {{ __('Germany') }}"
                            class="group flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md rounded-xl p-4 transition">
-                            <span class="text-3xl shrink-0">{{ $degIcon }}</span>
+                            <span class="text-primary-600 shrink-0"><x-svg-icon name="{{ $degIcon }}" class="w-8 h-8" /></span>
                             <div class="min-w-0">
                                 <p class="font-bold text-gray-900 group-hover:text-primary-700 leading-tight">{{ $degLabel }} {{ $field->name }}</p>
                                 <p class="text-xs text-gray-500 mt-0.5">{{ __('All programs across Germany') }}</p>
@@ -195,7 +198,7 @@
         @if($bachelorPrograms->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🎓 {{ __('Bachelor Programs') }} <span class="text-base font-normal text-gray-500">({{ $totals['bachelor'] }})</span></h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="academic-cap" class="w-6 h-6" /> {{ __('Bachelor Programs') }} <span class="text-base font-normal text-gray-500">({{ $totals['bachelor'] }})</span></h2>
                     <a href="{{ route('programs.index', ['field' => $field->slug, 'degree' => 'bachelor']) }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -216,7 +219,7 @@
         @if(!empty($topProfessions) && $topProfessions->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">💼 {{ __('Professions in :field', ['field' => $field->name]) }} <span class="text-base font-normal text-gray-500">({{ $totals['professions'] }})</span></h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="briefcase" class="w-6 h-6" /> {{ __('Professions in :field', ['field' => $field->name]) }} <span class="text-base font-normal text-gray-500">({{ $totals['professions'] }})</span></h2>
                     <a href="{{ route('professions.index', ['field' => $field->slug]) }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -244,7 +247,7 @@
         @if($masterPrograms->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">🎯 {{ __('Master Programs') }} <span class="text-base font-normal text-gray-500">({{ $totals['master'] }})</span></h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="target" class="w-6 h-6" /> {{ __('Master Programs') }} <span class="text-base font-normal text-gray-500">({{ $totals['master'] }})</span></h2>
                     <a href="{{ route('programs.index', ['field' => $field->slug, 'degree' => 'master']) }}" class="text-sm text-primary-600 hover:underline">{{ __('All') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -265,7 +268,7 @@
         @if (! empty($relatedPosts) && $relatedPosts->count() > 0)
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-2xl font-bold text-gray-900">📝 {{ __('Posts about :field', ['field' => $field->name]) }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Posts about :field', ['field' => $field->name]) }}</h2>
                     <a href="{{ route('blog.index') }}" class="text-sm text-primary-600 hover:underline">{{ __('Blog') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -297,7 +300,7 @@
 <section class="bg-white border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-baseline justify-between mb-5 flex-wrap gap-2">
-            <h2 class="text-2xl font-bold text-gray-900">🎯 {{ __('Other study fields') }}</h2>
+            <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="target" class="w-6 h-6" /> {{ __('Other study fields') }}</h2>
             <a href="{{ route('fields.index') }}" class="text-sm text-primary-600 hover:underline font-semibold">{{ __('All') }} →</a>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
