@@ -16,11 +16,11 @@
     <div aria-hidden="true" class="absolute inset-0 opacity-10 pointer-events-none"
          style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"></div>
 
-    <div class="relative max-w-[1400px] mx-auto px-4 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <div class="relative max-w-[1400px] mx-auto px-4 py-14 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {{-- Left: copy + search --}}
         <div class="lg:col-span-7">
-            <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-5">
-                <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
+            <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide mb-5">
+                <span class="text-accent-400"><x-svg-icon name="academic-cap" class="w-4 h-4" /></span>
                 {{ __('For international students · 2026 updated') }}
             </span>
 
@@ -31,12 +31,12 @@
                 <strong class="text-white">{{ number_format($totals['programs'], 0, ',', '.') }}</strong> {{ __('programs') }},
                 <strong class="text-white">{{ $totals['universities'] }}</strong> {{ __('universities') }},
                 <strong class="text-white">{{ $totals['cities'] }}</strong> {{ __('cities') }}.
-                {{ __(':n English-taught programs, cost-of-living calculator, map and :faqs answered questions — all in one place.', ['n' => number_format($totals['programs_en'], 0, ',', '.'), 'faqs' => $faq_stats['total']]) }}
+                {{ __('English programs, scholarships, visa costs and deadlines — all on one platform.') }}
             </p>
 
             {{-- Search --}}
             <form action="/arama" method="GET" class="mb-4">
-                <div class="flex flex-col sm:flex-row gap-2 bg-white p-2 rounded-xl shadow-2xl">
+                <div class="flex flex-col sm:flex-row gap-2 bg-white p-2 rounded-2xl shadow-2xl">
                     <div class="flex items-center flex-1 px-3">
                         <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"/>
@@ -47,73 +47,95 @@
                             placeholder="{{ __('TUM, Berlin, Engineering, Medicine...') }}"
                             class="flex-1 px-3 py-3 text-gray-900 placeholder-gray-400 focus:outline-none bg-transparent"
                         >
+                        <a href="{{ route('search.index') }}" title="{{ __('Advanced search') }}"
+                           class="hidden sm:flex items-center text-gray-400 hover:text-primary-600 px-2 border-l border-gray-200 transition">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h12M3 12h9M3 17h6M17 7l3 0M14 12l6 0M11 17l9 0"/>
+                            </svg>
+                        </a>
                     </div>
-                    <button type="submit" class="bg-accent-500 hover:bg-accent-600 active:bg-accent-700 px-7 py-3 rounded-lg font-semibold transition shadow-md">
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 active:bg-accent-700 px-7 py-3.5 rounded-xl font-semibold transition shadow-md">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"/>
+                        </svg>
                         {{ __('Search Universities') }}
                     </button>
                 </div>
             </form>
 
-            {{-- Map CTA — alternatif yol --}}
-            <div class="mb-5">
-                <a href="{{ route('map.index') }}"
-                   title="{{ __('Explore on Map') }} — {{ __(':count universities on interactive map', ['count' => $totals['universities_on_map']]) }}"
-                   class="group inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/60 backdrop-blur px-5 py-3 rounded-xl font-semibold transition shadow-lg">
-                    <span class="text-white"><x-svg-icon name="map" class="w-7 h-7" /></span>
-                    <span class="flex flex-col items-start leading-tight">
-                        <span class="text-white">{{ __('Explore on Map') }}</span>
-                        <span class="text-xs text-primary-200 font-normal">{{ __(':count universities on interactive map', ['count' => $totals['universities_on_map']]) }}</span>
-                    </span>
-                    <svg class="w-5 h-5 text-white group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3"/>
-                    </svg>
-                </a>
-            </div>
-
             {{-- Quick chips --}}
-            <div class="flex flex-wrap gap-2 text-sm">
+            <div class="flex flex-wrap items-center gap-2 text-sm">
                 <span class="text-primary-200 mr-1">{{ __('Popular:') }}</span>
-                <a href="{{ route('search.index', ['q' => 'TUM']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition" title="Technische Universität München">TUM</a>
-                <a href="{{ route('search.index', ['q' => 'Heidelberg']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">Heidelberg</a>
-                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
-                <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('DAAD Scholarship') }}</a>
-                <a href="{{ route('tools.visa-cost') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Visa cost') }}</a>
-                <a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1 bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Deadline calendar') }}</a>
+                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
+                <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('DAAD Scholarship') }}</a>
+                <a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Deadline calendar') }}</a>
+                <a href="{{ route('search.index') }}" class="text-accent-400 hover:text-accent-300 font-semibold px-2 transition">{{ __('See all popular searches') }} →</a>
             </div>
         </div>
 
-        {{-- Right: stats card --}}
-        <div class="lg:col-span-5">
-            <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-6 shadow-2xl">
-                <p class="text-xs uppercase tracking-wider text-primary-200 mb-4">{{ __('Germany at a glance') }}</p>
-                <div class="grid grid-cols-2 gap-5">
-                    <div>
-                        <div class="text-4xl font-extrabold text-white">{{ number_format($totals['programs'], 0, ',', '.') }}</div>
-                        <div class="text-sm text-primary-100">{{ __('Programs / Majors') }}</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-extrabold text-white">{{ $totals['universities'] }}</div>
-                        <div class="text-sm text-primary-100">{{ __('Universities') }}</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-extrabold text-accent-400">{{ number_format($totals['programs_en'], 0, ',', '.') }}</div>
-                        <div class="text-sm text-primary-100">{{ __('English programs') }}</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-extrabold text-white">{{ $faq_stats['total'] }}</div>
-                        <div class="text-sm text-primary-100">{{ __('Answered FAQs') }}</div>
-                    </div>
+        {{-- Right: Brandenburg hero image (brand-aware: foto = ApplyToGerman/AlmanyaUni ikisinde de) --}}
+        <div class="lg:col-span-5 hidden lg:block">
+            <div class="relative">
+                {{-- soft blob arka --}}
+                <div aria-hidden="true" class="absolute -inset-4 bg-gradient-to-br from-accent-500/20 to-primary-400/10 blur-2xl rounded-[40%]"></div>
+                <img src="{{ asset('img/hero/brandenburg.webp') }}"
+                     alt="{{ __('Brandenburg Gate, Berlin') }}"
+                     width="1400" height="933"
+                     fetchpriority="high" decoding="async"
+                     class="relative w-full h-auto rounded-3xl shadow-2xl ring-1 ring-white/10 object-cover">
+                {{-- uçak rozeti (seyahat ipucu) --}}
+                <div aria-hidden="true" class="absolute -top-3 -right-2 text-white/80 rotate-12">
+                    <svg class="w-9 h-9 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z"/></svg>
                 </div>
-                <div class="mt-6 pt-5 border-t border-white/15 text-sm">
-                    <div class="flex items-center gap-2 text-primary-100 mb-1.5">
-                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('100% free, no signup') }}
-                    </div>
-                    <div class="flex items-center gap-2 text-primary-100 mb-1.5">
-                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('Multilingual + up-to-date sources') }}
-                    </div>
-                    <div class="flex items-center gap-2 text-primary-100">
-                        <span class="text-green-300"><x-svg-icon name="check" class="w-4 h-4" /></span> {{ __('Distilled from 10+ years of education consulting experience') }}
-                    </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- ===== Stat kartı şeridi (mockup: 4 metrik, beyaz kart, renkli ikon daireleri) ===== --}}
+    <div class="relative max-w-[1400px] mx-auto px-4 pb-14 md:pb-20">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-7 grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 lg:divide-x divide-gray-100">
+            {{-- Program --}}
+            <div class="flex items-center gap-4 px-2">
+                <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center shadow-sm">
+                    <x-svg-icon name="book-open" class="w-6 h-6" />
+                </span>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-primary-900 leading-none">{{ number_format($totals['programs'], 0, ',', '.') }}</div>
+                    <div class="text-sm font-semibold text-gray-900 mt-1">{{ __('Programs') }}</div>
+                    <div class="text-xs text-gray-500">{{ __('All majors') }}</div>
+                </div>
+            </div>
+            {{-- Üniversite --}}
+            <div class="flex items-center gap-4 px-2 lg:pl-6">
+                <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-500 text-white flex items-center justify-center shadow-sm">
+                    <x-svg-icon name="academic-cap" class="w-6 h-6" />
+                </span>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-primary-900 leading-none">{{ $totals['universities'] }}</div>
+                    <div class="text-sm font-semibold text-gray-900 mt-1">{{ __('Universities') }}</div>
+                    <div class="text-xs text-gray-500">{{ __('All across Germany') }}</div>
+                </div>
+            </div>
+            {{-- Şehir --}}
+            <div class="flex items-center gap-4 px-2 lg:pl-6">
+                <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+                    <x-svg-icon name="map-pin" class="w-6 h-6" />
+                </span>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-primary-900 leading-none">{{ $totals['cities'] }}</div>
+                    <div class="text-sm font-semibold text-gray-900 mt-1">{{ __('Cities') }}</div>
+                    <div class="text-xs text-gray-500">{{ __('In every region') }}</div>
+                </div>
+            </div>
+            {{-- İngilizce Program --}}
+            <div class="flex items-center gap-4 px-2 lg:pl-6">
+                <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-accent-500 text-white flex items-center justify-center shadow-sm">
+                    <x-svg-icon name="globe" class="w-6 h-6" />
+                </span>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-primary-900 leading-none">{{ number_format($totals['programs_en'], 0, ',', '.') }}</div>
+                    <div class="text-sm font-semibold text-gray-900 mt-1">{{ __('English Programs') }}</div>
+                    <div class="text-xs text-gray-500">{{ __('Fully in English') }}</div>
                 </div>
             </div>
         </div>
