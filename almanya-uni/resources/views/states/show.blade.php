@@ -177,7 +177,7 @@
                     @foreach ($topFields as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
-                            <div class="text-3xl mb-1">{{ $field->icon ?: '' }}</div>
+                            <div class="mb-1 flex justify-center" style="color: {{ $field->color ?? '#1e40af' }};">{!! e_icon($field->icon, 'w-10 h-10') !!}</div>
                             <h3 class="font-bold text-sm text-gray-900 group-hover:text-primary-600 leading-tight">{{ $field->name }}</h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __(':n programs', ['n' => $field->programs_count]) }}</p>
                         </a>

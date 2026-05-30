@@ -244,7 +244,7 @@
                     @foreach ($topFieldsInCity as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
-                            <div class="text-3xl mb-1">{{ $field->icon ?: '' }}</div>
+                            <div class="mb-1 flex justify-center" style="color: {{ $field->color ?? '#1e40af' }};">{!! e_icon($field->icon, 'w-10 h-10') !!}</div>
                             <h3 class="font-bold text-sm text-gray-900 group-hover:text-primary-600 leading-tight">{{ $field->name }}</h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __(':n programs', ['n' => $field->programs_count]) }}</p>
                         </a>
@@ -266,7 +266,7 @@
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4">
                             <div class="flex items-start gap-2 mb-1">
                                 @if ($p->field?->icon)
-                                    <span class="text-base shrink-0">{{ $p->field->icon }}</span>
+                                    <span class="shrink-0" style="color: {{ $p->field->color ?? '#1e40af' }};">{!! e_icon($p->field->icon, 'w-4 h-4') !!}</span>
                                 @endif
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug flex-1">{{ $p->name }}</h3>
                             </div>
@@ -410,7 +410,7 @@
                 <a href="{{ route('programs.city-field', [$city->slug, $f->slug]) }}"
                    title="{{ $f->name }} — {{ $city->name }}"
                    class="group flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md rounded-xl p-4 transition">
-                    <span class="text-3xl shrink-0">{{ $f->icon ?: '' }}</span>
+                    <span class="shrink-0" style="color: {{ $f->color ?? '#1e40af' }};">{!! e_icon($f->icon, 'w-8 h-8') !!}</span>
                     <div class="min-w-0">
                         <p class="font-bold text-gray-900 group-hover:text-primary-700 leading-tight">{{ __(':field in :city', ['field' => $f->name, 'city' => $city->name]) }}</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ $f->programs_in_city_count }} {{ __('programs') }}</p>

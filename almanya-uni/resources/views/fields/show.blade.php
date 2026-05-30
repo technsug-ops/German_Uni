@@ -50,7 +50,7 @@
             <span class="text-white">{{ $field->name }}</span>
         </nav>
         <div class="flex items-center gap-3 mb-2">
-            <span class="text-5xl">{{ $field->icon }}</span>
+            <span class="text-white">{!! e_icon($field->icon, 'w-14 h-14') !!}</span>
             <div>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow">{{ $field->name }}</h1>
                 <p class="text-white/80 text-sm md:text-base mt-1">{{ $field->name }}</p>
@@ -313,9 +313,9 @@
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         @else
-                            <div class="w-full h-full flex items-center justify-center text-5xl"
+                            <div class="w-full h-full flex items-center justify-center"
                                  style="background: linear-gradient(135deg, {{ $f->color }}33, {{ $f->color }}66);">
-                                <span>{{ $f->icon }}</span>
+                                <span style="color: {{ $f->color ?? '#1e40af' }};">{!! e_icon($f->icon, 'w-12 h-12') !!}</span>
                             </div>
                         @endif
                         <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
@@ -323,8 +323,8 @@
                         </span>
                     </div>
                     <div class="p-3">
-                        <div class="flex items-center gap-1 leading-tight">
-                            <span class="text-lg">{{ $f->icon }}</span>
+                        <div class="flex items-center gap-1.5 leading-tight">
+                            <span style="color: {{ $f->color ?? '#1e40af' }};">{!! e_icon($f->icon, 'w-4 h-4') !!}</span>
                             <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition text-sm truncate">{{ $f->name }}</h3>
                         </div>
                     </div>
