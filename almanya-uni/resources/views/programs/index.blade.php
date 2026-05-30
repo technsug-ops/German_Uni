@@ -183,7 +183,7 @@
                         <select name="field" onchange="this.form.submit()" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
                             <option value="">{{ __('All') }}</option>
                             @foreach ($fields as $f)
-                                <option value="{{ $f->slug }}" @selected($filters['field'] === $f->slug)>{{ $f->icon }} {{ $f->name }}</option>
+                                <option value="{{ $f->slug }}" @selected($filters['field'] === $f->slug)>{{ $f->name }}</option>
                             @endforeach
                         </select>
                     </div>
