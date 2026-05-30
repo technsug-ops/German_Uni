@@ -836,7 +836,7 @@
                         <li><a href="{{ route('rankings.index') }}" class="hover:text-white transition" title="{{ __('Rankings') }} — {{ __('University rankings') }}">{{ __('Rankings') }}</a></li>
                         <li><a href="{{ route('faqs.index') }}" class="hover:text-white transition" title="{{ __('Frequently Asked Questions') }}">{{ __('FAQ') }}</a></li>
                         <li><a href="{{ route('blog.index') }}" class="hover:text-white transition" title="{{ __('Blog') }} — {{ __('Guides and tips') }}">{{ __('Blog') }}</a></li>
-                        <li><a href="{{ route('glossary.index') }}" class="hover:text-white transition" title="{{ __('Germany Education Glossary') }} — APS, DAAD, Anabin, Sperrkonto">📘 {{ __('Glossary') }}</a></li>
+                        <li><a href="{{ route('glossary.index') }}" class="hover:text-white transition" title="{{ __('Germany Education Glossary') }} — APS, DAAD, Anabin, Sperrkonto">{{ __('Glossary') }}</a></li>
                     </ul>
                 </div>
                 <div>
@@ -846,7 +846,7 @@
                         <li><a href="{{ route('tools.grade-converter') }}" class="hover:text-white transition" title="{{ __('Grade Converter') }} — {{ __('Convert your GPA to German system') }}">{{ __('Grade Converter') }}</a></li>
                         <li><a href="{{ route('tools.recommendation') }}" class="hover:text-white transition" title="{{ __('University Recommendation') }} — {{ __('Find the best fit for you') }}">{{ __('University Recommendation') }}</a></li>
                         <li><a href="{{ route('compare.index') }}" class="hover:text-white transition" title="{{ __('Compare') }} — {{ __('2-4 universities side by side') }}">{{ __('Compare') }}</a></li>
-                        <li><a href="{{ route('professions.index') }}" class="hover:text-white transition" title="{{ __('Professions') }} — {{ __('Job market in Germany') }}">{{ __('Professions') }} 🔒</a></li>
+                        <li><a href="{{ route('professions.index') }}" class="hover:text-white transition inline-flex items-center gap-1.5" title="{{ __('Professions') }} — {{ __('Job market in Germany') }}">{{ __('Professions') }} <svg class="w-3.5 h-3.5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg></a></li>
                     </ul>
                 </div>
                 <div>
@@ -856,7 +856,7 @@
                         <li><a href="mailto:technsug@gmail.com" class="hover:text-white transition" title="{{ __('Contact') }} — technsug@gmail.com">{{ __('Contact') }}</a></li>
                         <li><a href="mailto:technsug@gmail.com?subject=Contribute" class="hover:text-white transition" title="{{ __('Contribute') }} — {{ __('Help improve the site') }}">{{ __('Contribute') }}</a></li>
                         @if (\App\Models\MenuPage::isKeyEnabled('pricing'))
-                        <li><a href="{{ route('pricing') }}" class="text-amber-300 hover:text-amber-200 transition font-semibold" title="{{ __('Premium') }} — {{ __('Mentor sessions, ad-free, 24h SLA') }}">✨ {{ __('Premium') }}</a></li>
+                        <li><a href="{{ route('pricing') }}" class="text-amber-300 hover:text-amber-200 transition font-semibold inline-flex items-center gap-1.5" title="{{ __('Premium') }} — {{ __('Mentor sessions, ad-free, 24h SLA') }}"><svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 0 0-3.09 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg> {{ __('Premium') }}</a></li>
                         @endif
                         <li><a href="{{ route('legal.impressum') }}" class="hover:text-white transition" title="{{ __('Imprint') }}">{{ __('Imprint') }}</a></li>
                         <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition" title="{{ __('Privacy Policy') }}">{{ __('Privacy Policy') }}</a></li>

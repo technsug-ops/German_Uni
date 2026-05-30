@@ -94,7 +94,7 @@
                 <a href="{{ request()->fullUrlWithQuery(['language' => $filters['language'] === 'en' ? null : 'en']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['language'] === 'en' ? 'bg-blue-600 text-white border-blue-600' : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100' }}">
-                    🇬🇧 {{ __('English only') }}
+                    {{ __('English only') }}
                 </a>
 
                 {{-- 2) Türkçe açıklamalı (description_tr) --}}
@@ -102,7 +102,7 @@
                 <a href="{{ request()->fullUrlWithQuery(['has_tr' => $filters['has_tr'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['has_tr'] ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' }}">
-                    🇹🇷 Türkçe rehberli
+                    Türkçe rehberli
                 </a>
                 @endif
 
@@ -110,35 +110,35 @@
                 <a href="{{ request()->fullUrlWithQuery(['degree' => $filters['degree'] === 'bachelor' ? null : 'bachelor']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['degree'] === 'bachelor' ? 'bg-amber-600 text-white border-amber-600' : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100' }}">
-                    🎓 Bachelor
+                    Bachelor
                 </a>
 
                 {{-- 4) Master only --}}
                 <a href="{{ request()->fullUrlWithQuery(['degree' => $filters['degree'] === 'master' ? null : 'master']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['degree'] === 'master' ? 'bg-purple-600 text-white border-purple-600' : 'bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100' }}">
-                    🎓 Master
+                    Master
                 </a>
 
                 {{-- 5) Başvuru ücretsiz --}}
                 <a href="{{ request()->fullUrlWithQuery(['no_app_fee' => $filters['no_app_fee'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['no_app_fee'] ? 'bg-teal-600 text-white border-teal-600' : 'bg-teal-50 text-teal-700 border-teal-200 hover:bg-teal-100' }}">
-                    💰 {{ __('Free application') }}
+                    {{ __('Free application') }}
                 </a>
 
                 {{-- 6) Deadline açık --}}
                 <a href="{{ request()->fullUrlWithQuery(['deadline_open' => $filters['deadline_open'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['deadline_open'] ? 'bg-rose-600 text-white border-rose-600' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
-                    📅 {{ __('Open deadline') }}
+                    {{ __('Open deadline') }}
                 </a>
 
                 {{-- 7) Uni-Assist üzerinden --}}
                 <a href="{{ request()->fullUrlWithQuery(['uni_assist' => $filters['uni_assist'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['uni_assist'] ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' }}">
-                    🤝 {{ __('Uni-Assist member') }}
+                    {{ __('Uni-Assist member') }}
                 </a>
             </div>
 
@@ -292,29 +292,29 @@
                 </div>
 
                 {{-- INTERNATIONAL STUDENT FİLTRELERİ --}}
-                <h3 class="text-xs font-bold uppercase tracking-wider text-accent-700 mb-3 mt-2">🌍 {{ __('International Student Filters') }}</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-accent-700 mb-3 mt-2">{{ __('International Student Filters') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
                     @if (app()->getLocale() === 'tr')
                     <label class="flex items-center gap-2 text-sm cursor-pointer p-2 bg-amber-50 hover:bg-amber-100 rounded border border-amber-200">
                         <input type="checkbox" name="has_tr" value="1" onchange="this.form.submit()" @checked($filters['has_tr']) class="rounded border-gray-300 text-primary-600">
-                        <span>🇹🇷 Türkçe açıklamalı</span>
+                        <span>Türkçe açıklamalı</span>
                     </label>
                     @endif
                     <label class="flex items-center gap-2 text-sm cursor-pointer p-2 bg-amber-50 hover:bg-amber-100 rounded border border-amber-200">
                         <input type="checkbox" name="uni_assist" value="1" onchange="this.form.submit()" @checked($filters['uni_assist']) class="rounded border-gray-300 text-primary-600">
-                        <span>📋 {{ __('Uni-Assist member') }}</span>
+                        <span>{{ __('Uni-Assist member') }}</span>
                     </label>
                     <label class="flex items-center gap-2 text-sm cursor-pointer p-2 bg-amber-50 hover:bg-amber-100 rounded border border-amber-200">
                         <input type="checkbox" name="free_only" value="1" onchange="this.form.submit()" @checked($filters['free_only']) class="rounded border-gray-300 text-primary-600">
-                        <span>💰 {{ __('Tuition-free') }}</span>
+                        <span>{{ __('Tuition-free') }}</span>
                     </label>
                     <label class="flex items-center gap-2 text-sm cursor-pointer p-2 bg-amber-50 hover:bg-amber-100 rounded border border-amber-200">
                         <input type="checkbox" name="no_app_fee" value="1" onchange="this.form.submit()" @checked($filters['no_app_fee']) class="rounded border-gray-300 text-primary-600">
-                        <span>📝 {{ __('Free application') }}</span>
+                        <span>{{ __('Free application') }}</span>
                     </label>
                     <label class="flex items-center gap-2 text-sm cursor-pointer p-2 bg-amber-50 hover:bg-amber-100 rounded border border-amber-200">
                         <input type="checkbox" name="deadline_open" value="1" onchange="this.form.submit()" @checked($filters['deadline_open']) class="rounded border-gray-300 text-primary-600">
-                        <span>📅 {{ __('Open applications') }}</span>
+                        <span>{{ __('Open applications') }}</span>
                     </label>
                     <div class="text-xs text-gray-500 p-2 self-center">
                         {!! __('Studienkolleg, VPD, TestDaF level, etc. <strong>coming soon</strong>.') !!}
@@ -409,7 +409,7 @@
 {{-- Uluslararası öğrenci bilgi banner --}}
 <div class="bg-amber-50 border-b border-amber-200">
     <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-start gap-3 text-sm">
-        <span class="text-xl flex-shrink-0">💡</span>
+        <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
         <p class="text-amber-900">
             {!! __('<strong>Critical for international students:</strong> Depending on your high school type, a Bachelor\'s may require <strong>1 year of Studienkolleg</strong>. For German programs you need <strong>TestDaF TDN 4 / DSH 2</strong>; for English programs <strong>IELTS 6.5</strong>. In <strong>Baden-Württemberg</strong> and <strong>Sachsen-Anhalt</strong>, non-EU students pay a <strong>€1,500/sem</strong> tuition fee.') !!}
             <a href="{{ route('faqs.topic', 'vize') }}" class="underline hover:text-amber-950">{{ __('FAQ') }} →</a>
