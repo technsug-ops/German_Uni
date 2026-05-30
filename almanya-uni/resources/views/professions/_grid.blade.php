@@ -1,11 +1,11 @@
 {{-- Professions grid partial — also returned standalone for XHR async-filter updates. --}}
 @php
     $typeLabels = $typeLabels ?? [
-        'ausbildung'    => ['Ausbildung', '🛠️', 'green'],
-        'studienberuf'  => ['Studienberuf', '🎓', 'blue'],
-        'weiterbildung' => ['Weiterbildung', '📈', 'purple'],
-        'grundberuf'    => ['Grundberuf', '🧱', 'amber'],
-        'other'         => [__('Other'), '📚', 'gray'],
+        'ausbildung'    => ['Ausbildung', 'wrench-screwdriver', 'green'],
+        'studienberuf'  => ['Studienberuf', 'academic-cap', 'blue'],
+        'weiterbildung' => ['Weiterbildung', 'chart-bar', 'purple'],
+        'grundberuf'    => ['Grundberuf', 'briefcase', 'amber'],
+        'other'         => [__('Other'), 'book-open', 'gray'],
     ];
     $hasFilter = $hasFilter ?? (bool) (($filters['q'] ?? null) || ($filters['type'] ?? null) || ($filters['field'] ?? null));
 @endphp
@@ -27,14 +27,14 @@
         :description="__('Try the full profession list or browse by field of study.')"
         :actions="[
             ['label' => __('All Professions'), 'url' => route('professions.index'), 'primary' => true],
-            ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
+            ['label' => __('Browse by field'), 'url' => route('fields.index')],
         ]"
     />
 @else
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($professions as $p)
             @php
-                [$tLabel, $tEmoji, $tColor] = $typeLabels[$p->type ?? 'other'];
+                [$tLabel, $tIcon, $tColor] = $typeLabels[$p->type ?? 'other'];
                 // Locale-aware description (model trait picks $loc → fallback chain)
                 if ($desc = $p->description) {
                     $desc = preg_replace('/^(Studienfach|Aufgaben und Tätigkeiten|Aufgaben und Tatigkeiten|Beruf|Berufsbezeichnung)\s*/u', '', $desc);
@@ -57,7 +57,7 @@
                             @default        bg-gray-100 text-gray-700
                         @endswitch
                     ">
-                        <span>{{ $tEmoji }}</span>
+                        <x-svg-icon :name="$tIcon" class="w-3 h-3" />
                         <span class="truncate">{{ $tLabel }}</span>
                     </span>
                     @if ($p->kldb_code)

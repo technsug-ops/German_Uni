@@ -2,13 +2,13 @@
 
 @php
     $typeLabels = [
-        'ausbildung'    => ['Ausbildung', '🛠️'],
-        'studienberuf'  => ['Studienberuf', '🎓'],
-        'weiterbildung' => ['Weiterbildung', '📈'],
-        'grundberuf'    => ['Grundberuf', '🧱'],
-        'other'         => [__('Other'), '📚'],
+        'ausbildung'    => ['Ausbildung', 'wrench-screwdriver'],
+        'studienberuf'  => ['Studienberuf', 'academic-cap'],
+        'weiterbildung' => ['Weiterbildung', 'chart-bar'],
+        'grundberuf'    => ['Grundberuf', 'briefcase'],
+        'other'         => [__('Other'), 'book-open'],
     ];
-    [$typeLabel, $typeEmoji] = $typeLabels[$profession->type ?? 'other'];
+    [$typeLabel, $typeIcon] = $typeLabels[$profession->type ?? 'other'];
 
     $title = ($profession->name_tr ?: $profession->name) . ' — ' . __('Profession Description') . '  — ' . brand('name');
     $description = $profession->description
@@ -124,13 +124,13 @@
         @endif
 
         <div class="flex flex-wrap gap-2 text-sm mt-3">
-            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                {{ $typeEmoji }} {{ $typeLabel }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
+                <x-svg-icon :name="$typeIcon" class="w-4 h-4" /> {{ $typeLabel }}
             </span>
             @if ($profession->field)
                 <a href="{{ route('fields.show', $profession->field->slug) }}"
-                   class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25">
-                    {{ $profession->field->icon }} {{ $profession->field->name }}
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25">
+                    {!! e_icon($profession->field->icon, 'w-4 h-4') !!} {{ $profession->field->name }}
                 </a>
             @endif
             @if ($profession->kldb_code)
@@ -169,7 +169,7 @@
         @if (!empty($pathwayPrograms) && $pathwayPrograms->isNotEmpty())
             <section class="bg-gradient-to-br from-amber-50 to-orange-50 ring-1 ring-amber-200 rounded-xl p-6 shadow-sm">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                    <h2 class="text-xl font-bold text-gray-900">🎓 {{ __('Programs that lead to this profession') }}</h2>
+                    <h2 class="text-xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="academic-cap" class="w-5 h-5 text-amber-700" /> {{ __('Programs that lead to this profession') }}</h2>
                     @if($profession->field)
                         <a href="{{ route('fields.show', $profession->field->slug) }}" class="text-sm text-primary-600 hover:underline">
                             {{ __(':field field', ['field' => $profession->field->name]) }} →
@@ -229,7 +229,7 @@
             <dl class="space-y-3 text-sm">
                 <div>
                     <dt class="text-gray-500">{{ __('Type') }}</dt>
-                    <dd class="font-semibold">{{ $typeEmoji }} {{ $typeLabel }}</dd>
+                    <dd class="font-semibold inline-flex items-center gap-1.5"><x-svg-icon :name="$typeIcon" class="w-4 h-4 text-gray-600" /> {{ $typeLabel }}</dd>
                 </div>
                 @if ($profession->kldb_code)
                     <div>

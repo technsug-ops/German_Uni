@@ -64,30 +64,31 @@
         </nav>
 
         @if ($job->is_featured)
-            <span class="inline-flex items-center gap-1 mb-3 px-3 py-1 bg-amber-400 text-amber-900 text-xs font-bold rounded-full">⭐ {{ __('Featured position') }}</span>
+            <span class="inline-flex items-center gap-1 mb-3 px-3 py-1 bg-amber-400 text-amber-900 text-xs font-bold rounded-full"><x-svg-icon name="star" class="w-3.5 h-3.5" /> {{ __('Featured position') }}</span>
         @endif
 
-        <h1 class="text-2xl md:text-4xl font-extrabold leading-tight drop-shadow mb-3">
-            {{ $job->position_icon }} {{ $job->title }}
+        <h1 class="text-2xl md:text-4xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3">
+            <span class="inline-flex">{!! e_icon($job->position_icon, 'w-7 h-7 md:w-8 md:h-8') !!}</span>
+            <span>{{ $job->title }}</span>
         </h1>
 
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-300">
             <span class="font-semibold text-white">{{ $job->position_label }}</span>
             @if ($job->university)
                 <span>·</span>
-                <a href="{{ route('universities.show', $job->university->slug) }}" class="text-white hover:underline">
-                    🎓 {{ $job->university->display_name }}
+                <a href="{{ route('universities.show', $job->university->slug) }}" class="inline-flex items-center gap-1 text-white hover:underline">
+                    <x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ $job->university->display_name }}
                 </a>
             @endif
             @if ($job->city)
                 <span>·</span>
-                <a href="{{ route('cities.show', $job->city->slug) }}" class="text-white hover:underline">
-                    📍 {{ $job->city->name }}
+                <a href="{{ route('cities.show', $job->city->slug) }}" class="inline-flex items-center gap-1 text-white hover:underline">
+                    <x-svg-icon name="map-pin" class="w-4 h-4" /> {{ $job->city->name }}
                 </a>
             @endif
             @if ($job->is_remote)
                 <span>·</span>
-                <span class="px-2 py-0.5 bg-emerald-500/30 text-emerald-200 rounded-full text-xs font-bold">🌐 {{ __('Remote OK') }}</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-500/30 text-emerald-200 rounded-full text-xs font-bold"><x-svg-icon name="globe" class="w-3 h-3" /> {{ __('Remote OK') }}</span>
             @endif
         </div>
     </div>
@@ -110,7 +111,7 @@
             {{-- Description --}}
             @if ($job->description)
                 <article class="bg-white border border-gray-200 rounded-xl p-6 prose max-w-none prose-headings:text-gray-900 prose-a:text-indigo-700">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">📝 {{ __('Position description') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="pencil" class="w-5 h-5 text-indigo-600" /> {{ __('Position description') }}</h2>
                     {!! \Illuminate\Support\Str::markdown($job->description) !!}
                 </article>
             @endif
@@ -118,7 +119,7 @@
             {{-- Requirements --}}
             @if ($job->requirements)
                 <article class="bg-white border border-gray-200 rounded-xl p-6 prose max-w-none">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">✅ {{ __('Requirements') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-5 h-5 text-emerald-600" /> {{ __('Requirements') }}</h2>
                     {!! \Illuminate\Support\Str::markdown($job->requirements) !!}
                 </article>
             @endif
@@ -126,10 +127,10 @@
             {{-- Apply CTA (large) --}}
             @if ($job->application_url)
                 <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-6 md:p-8 text-center shadow-lg">
-                    <h2 class="text-2xl font-bold mb-2">📨 {{ __('Ready to apply?') }}</h2>
+                    <h2 class="text-2xl font-bold mb-2 inline-flex items-center gap-2 justify-center"><x-svg-icon name="envelope" class="w-6 h-6 text-white" /> {{ __('Ready to apply?') }}</h2>
                     @if ($job->deadline_at)
-                        <p class="text-sm opacity-90 mb-4">
-                            ⏰ {{ __('Application deadline:') }} <strong>{{ $job->deadline_at->translatedFormat('d M Y') }}</strong>
+                        <p class="text-sm opacity-90 mb-4 inline-flex items-center gap-1.5 justify-center">
+                            <x-svg-icon name="clock" class="w-4 h-4" /> {{ __('Application deadline:') }} <strong>{{ $job->deadline_at->translatedFormat('d M Y') }}</strong>
                         </p>
                     @endif
                     <a href="{{ $job->application_url }}" target="_blank" rel="noopener noreferrer nofollow"
@@ -146,45 +147,45 @@
         {{-- SIDEBAR --}}
         <aside class="space-y-4">
             <div class="bg-white border border-gray-200 rounded-xl p-5 sticky top-4">
-                <h3 class="font-bold text-gray-900 mb-3">📌 {{ __('At a glance') }}</h3>
+                <h3 class="font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="map-pin" class="w-5 h-5 text-indigo-600" /> {{ __('At a glance') }}</h3>
                 <dl class="space-y-2.5 text-sm">
                     <div>
                         <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider">{{ __('Employment') }}</dt>
-                        <dd class="text-gray-900 font-semibold">
+                        <dd class="text-gray-900 font-semibold inline-flex items-center gap-1.5">
                             @switch($job->employment_type)
-                                @case('full_time')  ⏰ {{ __('Full time') }} @break
-                                @case('part_time')  ⏱️ {{ __('Part time') }} @break
-                                @case('fixed_term') 📅 {{ __('Fixed term') }} @break
-                                @case('permanent')  ♾️ {{ __('Permanent') }} @break
+                                @case('full_time')  <x-svg-icon name="clock" class="w-4 h-4 text-gray-500" /> {{ __('Full time') }} @break
+                                @case('part_time')  <x-svg-icon name="clock" class="w-4 h-4 text-gray-500" /> {{ __('Part time') }} @break
+                                @case('fixed_term') <x-svg-icon name="calendar" class="w-4 h-4 text-gray-500" /> {{ __('Fixed term') }} @break
+                                @case('permanent')  <x-svg-icon name="shield-check" class="w-4 h-4 text-gray-500" /> {{ __('Permanent') }} @break
                             @endswitch
                         </dd>
                     </div>
                     @if ($job->salary_display)
                         <div>
-                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider">💰 {{ __('Compensation') }}</dt>
+                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider inline-flex items-center gap-1.5"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Compensation') }}</dt>
                             <dd class="text-emerald-700 font-bold">{{ $job->salary_display }}</dd>
                         </div>
                     @endif
                     @if ($job->field)
                         <div>
-                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider">🎯 {{ __('Field') }}</dt>
+                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider inline-flex items-center gap-1.5"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Field') }}</dt>
                             <dd>
-                                <a href="{{ route('fields.show', $job->field->slug) }}" class="text-indigo-700 hover:underline font-semibold">
-                                    {{ $job->field->icon }} {{ $job->field->name_tr }}
+                                <a href="{{ route('fields.show', $job->field->slug) }}" class="inline-flex items-center gap-1.5 text-indigo-700 hover:underline font-semibold">
+                                    {!! e_icon($job->field->icon, 'w-4 h-4') !!} {{ $job->field->name_tr }}
                                 </a>
                             </dd>
                         </div>
                     @endif
                     @if ($job->posted_at)
                         <div>
-                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider">📅 {{ __('Posted') }}</dt>
+                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider inline-flex items-center gap-1.5"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Posted') }}</dt>
                             <dd class="text-gray-700">{{ $job->posted_at->translatedFormat('d M Y') }} ({{ $job->posted_at->diffForHumans() }})</dd>
                         </div>
                     @endif
                     @if ($job->deadline_at)
                         @php $days = $job->days_until_deadline; @endphp
                         <div>
-                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider">⏰ {{ __('Deadline') }}</dt>
+                            <dt class="text-xs font-bold text-gray-500 uppercase tracking-wider inline-flex items-center gap-1.5"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Deadline') }}</dt>
                             <dd class="font-bold {{ $days < 7 ? 'text-rose-600' : ($days < 14 ? 'text-amber-600' : 'text-gray-900') }}">
                                 {{ $job->deadline_at->translatedFormat('d M Y') }}
                                 @if ($days >= 0)
@@ -203,12 +204,12 @@
     {{-- Related --}}
     @if ($related->isNotEmpty())
         <section class="mt-12">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">🔗 {{ __('Related positions') }}</h2>
+            <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="link" class="w-5 h-5 text-indigo-600" /> {{ __('Related positions') }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 @foreach ($related as $r)
                     <a href="{{ route('jobs.show', $r->slug) }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition">
                         <div class="flex items-start gap-3">
-                            <div class="text-3xl shrink-0">{{ $r->position_icon }}</div>
+                            <div class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600">{!! e_icon($r->position_icon, 'w-5 h-5') !!}</div>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-bold text-gray-900 leading-snug">{{ \Illuminate\Support\Str::limit($r->title, 80) }}</h3>
                                 <p class="text-xs text-gray-600 mt-1">

@@ -78,11 +78,11 @@
             @endif
         </nav>
 
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3 flex-wrap">
             @if (isset($field) && $field->icon)
-                {{ $field->icon }}
+                <span class="inline-flex">{!! e_icon($field->icon, 'w-8 h-8 md:w-10 md:h-10') !!}</span>
             @endif
-            {{ $h1 }}
+            <span>{{ $h1 }}</span>
         </h1>
         <p class="text-lg md:text-xl text-primary-100 max-w-3xl">
             <strong class="text-white">{{ number_format($totalCount, 0, ',', '.') }}</strong>
@@ -123,7 +123,7 @@
     <div class="lg:col-span-3">
         @if ($programs->count() === 0)
             <div class="bg-amber-50 border border-amber-200 rounded-2xl p-8 text-center">
-                <div class="text-5xl mb-3">📭</div>
+                <div class="inline-flex items-center justify-center w-16 h-16 mx-auto mb-3 rounded-full bg-amber-100 text-amber-600"><x-svg-icon name="x-circle" class="w-9 h-9" /></div>
                 <h2 class="text-xl font-bold text-amber-900 mb-2">{{ __('No programs match this filter') }}</h2>
                 <p class="text-amber-800 mb-5">{{ __('Try a different city, field or remove some filters.') }}</p>
                 <a href="{{ route('programs.index') }}" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold px-5 py-2.5 rounded-lg transition" title="{{ __('All Programs') }}">{{ __('See all programs') }} →</a>
@@ -140,7 +140,7 @@
                                      class="w-12 h-12 rounded-lg object-contain bg-gray-50 ring-1 ring-gray-200 shrink-0"
                                      loading="lazy" decoding="async">
                             @else
-                                <div class="w-12 h-12 rounded-lg bg-primary-50 flex items-center justify-center text-2xl shrink-0">🎓</div>
+                                <div class="w-12 h-12 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center shrink-0"><x-svg-icon name="academic-cap" class="w-6 h-6" /></div>
                             @endif
                             <div class="flex-1 min-w-0">
                                 <h2 class="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary-700 leading-tight mb-1">{{ $program->name }}</h2>
@@ -155,10 +155,10 @@
                                         <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold">🇬🇧/🇩🇪 {{ __('Both') }}</span>
                                     @endif
                                     @if ($program->duration_semesters)
-                                        <span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700">⏱ {{ $program->duration_semesters }} {{ __('sem') }}</span>
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-100 text-gray-700"><x-svg-icon name="clock" class="w-3 h-3" /> {{ $program->duration_semesters }} {{ __('sem') }}</span>
                                     @endif
                                     @if (! $program->tuition_fee_eur)
-                                        <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold">💸 {{ __('Free') }}</span>
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold"><x-svg-icon name="banknotes" class="w-3 h-3" /> {{ __('Free') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -178,8 +178,8 @@
         {{-- Related fields in same city --}}
         @if (isset($otherFields) && $otherFields->count() > 0)
             <section class="bg-white border border-gray-200 rounded-2xl p-5">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3">
-                    🎯 {{ __('Other fields in :city', ['city' => $city->name]) }}
+                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3 inline-flex items-center gap-1.5">
+                    <x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Other fields in :city', ['city' => $city->name]) }}
                 </h2>
                 <ul class="space-y-2 text-sm">
                     @foreach ($otherFields as $f)
@@ -187,7 +187,7 @@
                             <a href="{{ route('programs.city-field', [$city->slug, $f->slug]) }}"
                                title="{{ $f->name }} — {{ $city->name }}"
                                class="flex items-center gap-2 text-gray-700 hover:text-primary-700">
-                                <span>{{ $f->icon ?? '📚' }}</span>
+                                <span class="inline-flex w-4 h-4 text-primary-600">{!! $f->icon ? e_icon($f->icon, 'w-4 h-4') : view('components.svg-icon', ['name' => 'book-open', 'class' => 'w-4 h-4'])->render() !!}</span>
                                 <span>{{ $f->name }}</span>
                             </a>
                         </li>
@@ -199,8 +199,8 @@
         {{-- Related cities for same field/language --}}
         @if (isset($otherCities) && $otherCities->count() > 0)
             <section class="bg-white border border-gray-200 rounded-2xl p-5">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3">
-                    🏙️
+                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3 inline-flex items-center gap-1.5">
+                    <x-svg-icon name="building-office" class="w-3.5 h-3.5" />
                     @if (isset($field))
                         {{ __(':field in other cities', ['field' => $field->name]) }}
                     @elseif (isset($language))
@@ -232,12 +232,12 @@
 
         {{-- Tools CTA --}}
         <section class="bg-gradient-to-br from-primary-50 to-accent-50 border border-primary-200 rounded-2xl p-5">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-primary-700 mb-3">🛠️ {{ __('Helpful tools') }}</h2>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-primary-700 mb-3 inline-flex items-center gap-1.5"><x-svg-icon name="wrench-screwdriver" class="w-3.5 h-3.5" /> {{ __('Helpful tools') }}</h2>
             <ul class="space-y-2 text-sm">
-                <li><a href="{{ route('tools.cost-of-living') }}" class="text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Cost of Living') }}">💰 {{ __('Cost of Living') }}</a></li>
-                <li><a href="{{ route('tools.deadlines') }}" class="text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Application Calendar') }}">📅 {{ __('Application Calendar') }}</a></li>
-                <li><a href="{{ route('tools.eligibility-checker') }}" class="text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Eligibility Checker') }}">🎓 {{ __('Eligibility Checker') }}</a></li>
-                <li><a href="{{ route('glossary.index') }}" class="text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Glossary') }}">📘 {{ __('Glossary') }}</a></li>
+                <li><a href="{{ route('tools.cost-of-living') }}" class="inline-flex items-center gap-1.5 text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Cost of Living') }}"><x-svg-icon name="banknotes" class="w-4 h-4" /> {{ __('Cost of Living') }}</a></li>
+                <li><a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1.5 text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Application Calendar') }}"><x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Application Calendar') }}</a></li>
+                <li><a href="{{ route('tools.eligibility-checker') }}" class="inline-flex items-center gap-1.5 text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Eligibility Checker') }}"><x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ __('Eligibility Checker') }}</a></li>
+                <li><a href="{{ route('glossary.index') }}" class="inline-flex items-center gap-1.5 text-primary-700 hover:text-primary-900 font-medium" title="{{ __('Glossary') }}"><x-svg-icon name="book-open" class="w-4 h-4" /> {{ __('Glossary') }}</a></li>
             </ul>
         </section>
     </aside>

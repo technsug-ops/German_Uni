@@ -16,7 +16,7 @@
 
 @if(empty($blocks))
     <div class="text-gray-500 text-sm italic">
-        {{ __('No content has been generated for this page yet. From the admin panel you can hit "🪄 Generate Page".') }}
+        {{ __('No content has been generated for this page yet. From the admin panel you can hit "Generate Page".') }}
     </div>
 @else
     <div class="content-blocks space-y-8">
@@ -153,8 +153,8 @@
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <a href="{{ $videoUrl }}" target="_blank" rel="noopener"
-                       class="block bg-white ring-1 ring-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 text-gray-900">
-                        🎬 {{ __('Watch video') }} ↗ <span class="text-sm text-gray-600">{{ $videoUrl }}</span>
+                       class="flex items-center justify-center gap-2 bg-white ring-1 ring-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 text-gray-900">
+                        <x-svg-icon name="play" class="w-5 h-5 text-primary-600" /> {{ __('Watch video') }} ↗ <span class="text-sm text-gray-600">{{ $videoUrl }}</span>
                     </a>
                 </section>
             @endif
@@ -237,12 +237,16 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         @foreach($block['items'] as $place)
                             @php
-                                $icons = [
-                                    'library' => '📚', 'museum' => '🏛️', 'square' => '🏙️',
-                                    'park' => '🌳', 'landmark' => '🗿', 'cafe' => '☕',
-                                    'restaurant' => '🍽️', 'university' => '🎓',
+                                $iconNameMap = [
+                                    'library' => 'book-open', 'museum' => 'building-office', 'square' => 'building-office',
+                                    'park' => 'leaf', 'landmark' => 'flag', 'cafe' => 'cake',
+                                    'restaurant' => 'cake', 'university' => 'academic-cap',
+                                    'church' => 'building-office', 'monument' => 'flag', 'theater' => 'photo',
+                                    'shopping' => 'shopping-bag', 'nature' => 'leaf', 'bar' => 'cake',
+                                    'club' => 'photo', 'castle' => 'building-office', 'bridge' => 'map',
+                                    'market' => 'shopping-bag', 'stadium' => 'trophy', 'zoo' => 'paw',
                                 ];
-                                $icon = $place['icon'] ?? $icons[$place['type'] ?? ''] ?? '📍';
+                                $iconName = $iconNameMap[$place['type'] ?? ''] ?? 'map-pin';
                                 // Map English place-type enums to localised labels (i18n keys)
                                 $placeTypeLabels = [
                                     'library' => 'Library', 'museum' => 'Museum', 'square' => 'Square',
@@ -257,7 +261,13 @@
                                 $placeTypeLabel = $placeType ? __($placeTypeLabels[$placeType] ?? ucfirst($placeType)) : '';
                             @endphp
                             <div class="flex items-start gap-3 bg-white ring-1 ring-gray-200 rounded-lg p-4 shadow-sm">
-                                <div class="text-2xl shrink-0">{{ $icon }}</div>
+                                <div class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary-50 text-primary-600">
+                                    @if (! empty($place['icon']))
+                                        {!! e_icon($place['icon'], 'w-5 h-5') !!}
+                                    @else
+                                        <x-svg-icon :name="$iconName" class="w-5 h-5" />
+                                    @endif
+                                </div>
                                 <div class="flex-1 min-w-0">
                                     <div class="font-semibold text-gray-900">{{ $place['name'] ?? '' }}</div>
                                     @if($placeTypeLabel)
@@ -364,7 +374,7 @@
                 <section class="bg-gradient-to-br from-primary-50 to-accent-50 ring-2 ring-primary-300 rounded-2xl p-6 shadow-md">
                     <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                         <div class="flex items-center gap-2">
-                            <span class="text-2xl">💬</span>
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary-100 text-primary-700"><x-svg-icon name="chat-bubble" class="w-6 h-6" /></span>
                             <div>
                                 <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('AlmanyaUni Forum') }}</h2>
                                 <p class="text-xs text-primary-700 font-medium">{{ __('Experiences from our international student community') }}</p>
@@ -390,10 +400,10 @@
                                     </div>
                                     <div class="text-right text-xs text-gray-600 shrink-0">
                                         @if(!empty($t['views']))
-                                            <div class="font-semibold text-primary-700">👁️ {{ number_format($t['views']) }}</div>
+                                            <div class="font-semibold text-primary-700 inline-flex items-center gap-1"><x-svg-icon name="cursor-arrow-rays" class="w-3 h-3" /> {{ number_format($t['views']) }}</div>
                                         @endif
                                         @if(!empty($t['replies']))
-                                            <div>💬 {{ __(':n replies', ['n' => $t['replies']]) }}</div>
+                                            <div class="inline-flex items-center gap-1"><x-svg-icon name="chat-bubble" class="w-3 h-3" /> {{ __(':n replies', ['n' => $t['replies']]) }}</div>
                                         @endif
                                     </div>
                                 </a>
@@ -408,7 +418,7 @@
             @if(!empty($block['items']))
                 <section class="bg-gradient-to-br from-violet-50 to-purple-50 ring-1 ring-violet-200 rounded-2xl p-6 shadow-sm">
                     <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24">💬 {{ $block['h'] ?? __('Community Discussions') }}</h2>
+                        <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24 inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-5 h-5 text-violet-600" /> {{ $block['h'] ?? __('Community Discussions') }}</h2>
                         @if(!empty($block['source']))
                             <span class="text-xs text-violet-700 font-medium uppercase tracking-wide">{{ __('Source:') }} {{ $block['source'] }}</span>
                         @endif
@@ -428,10 +438,10 @@
                                     </div>
                                     <div class="text-right text-xs text-gray-600 shrink-0">
                                         @if(!empty($t['views']))
-                                            <div class="font-semibold text-violet-700">👁️ {{ number_format($t['views']) }}</div>
+                                            <div class="font-semibold text-violet-700 inline-flex items-center gap-1"><x-svg-icon name="cursor-arrow-rays" class="w-3 h-3" /> {{ number_format($t['views']) }}</div>
                                         @endif
                                         @if(!empty($t['replies']))
-                                            <div>💬 {{ __(':n replies', ['n' => $t['replies']]) }}</div>
+                                            <div class="inline-flex items-center gap-1"><x-svg-icon name="chat-bubble" class="w-3 h-3" /> {{ __(':n replies', ['n' => $t['replies']]) }}</div>
                                         @endif
                                     </div>
                                 </a>

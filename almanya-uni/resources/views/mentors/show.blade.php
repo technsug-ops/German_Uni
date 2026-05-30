@@ -35,7 +35,7 @@
                     <p class="text-lg md:text-xl text-emerald-100">{{ $mentor->headline }}</p>
                 @endif
                 @if ($mentor->city)
-                    <p class="text-sm text-emerald-200 mt-1">📍 {{ $mentor->city }}</p>
+                    <p class="text-sm text-emerald-200 mt-1 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-4 h-4" /> {{ $mentor->city }}</p>
                 @endif
             </div>
         </div>
@@ -56,10 +56,10 @@
                 <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Background') }}</h2>
                 <div class="space-y-2 text-sm">
                     @if ($mentor->current_role || $mentor->current_company)
-                        <p>💼 <strong>{{ $mentor->current_role }}</strong>@if ($mentor->current_company) · {{ $mentor->current_company }}@endif</p>
+                        <p class="flex items-start gap-2"><x-svg-icon name="briefcase" class="w-4 h-4 mt-0.5 text-gray-500" /> <span><strong>{{ $mentor->current_role }}</strong>@if ($mentor->current_company) · {{ $mentor->current_company }}@endif</span></p>
                     @endif
                     @if ($mentor->university)
-                        <p>🎓 <strong>{{ $mentor->university }}</strong>@if ($mentor->field_of_study) · {{ $mentor->field_of_study }}@endif @if ($mentor->graduation_year)({{ $mentor->graduation_year }})@endif</p>
+                        <p class="flex items-start gap-2"><x-svg-icon name="academic-cap" class="w-4 h-4 mt-0.5 text-gray-500" /> <span><strong>{{ $mentor->university }}</strong>@if ($mentor->field_of_study) · {{ $mentor->field_of_study }}@endif @if ($mentor->graduation_year)({{ $mentor->graduation_year }})@endif</span></p>
                     @endif
                 </div>
             </section>
@@ -80,13 +80,13 @@
 
     <aside class="space-y-4">
         <div class="bg-white border-2 border-emerald-500 rounded-xl p-6 sticky top-20 shadow-lg">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">📅 {{ __('Mentoring Details') }}</h3>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 inline-flex items-center gap-1.5"><x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Mentoring Details') }}</h3>
 
             <div class="space-y-3 text-sm">
                 <div class="flex items-baseline justify-between">
                     <span class="text-gray-600">{{ __('Rate') }}</span>
                     @if ($mentor->is_free)
-                        <strong class="text-emerald-700">🎁 {{ __('Free') }}</strong>
+                        <strong class="text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="sparkles" class="w-4 h-4" /> {{ __('Free') }}</strong>
                     @else
                         <strong class="text-amber-700 text-lg">{{ number_format($mentor->rate_eur, 0, ',', '.') }} €</strong>
                     @endif
@@ -115,8 +115,8 @@
             @auth
                 <div x-data="{ open: false }" class="mt-5">
                     <button @click="open = true"
-                            class="w-full py-3 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold transition shadow-md">
-                        🎥 {{ __('Book a Jitsi session') }}
+                            class="w-full py-3 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold transition shadow-md inline-flex items-center justify-center gap-2">
+                        <x-svg-icon name="play" class="w-5 h-5" /> {{ __('Book a Jitsi session') }}
                     </button>
 
                     {{-- Booking modal --}}
@@ -130,18 +130,18 @@
                             <button type="button" @click="open = false"
                                     class="absolute top-3 right-3 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-lg">×</button>
 
-                            <h3 class="text-xl font-extrabold text-gray-900 mb-1">📅 {{ __('Book with :name', ['name' => $mentor->name]) }}</h3>
+                            <h3 class="text-xl font-extrabold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="calendar" class="w-5 h-5 text-emerald-600" /> {{ __('Book with :name', ['name' => $mentor->name]) }}</h3>
                             <p class="text-sm text-gray-600 mb-4">{{ __('Auto-generated Jitsi link, no third-party account needed.') }}</p>
 
                             <div class="space-y-3">
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-700 mb-1">📅 {{ __('Date & time') }}</label>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Date & time') }}</label>
                                     <input type="datetime-local" name="scheduled_at" required
                                            min="{{ now()->addHour()->format('Y-m-d\TH:i') }}"
                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-700 mb-1">⏱️ {{ __('Duration') }}</label>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Duration') }}</label>
                                     <select name="duration_minutes" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
                                         <option value="15">15 {{ __('minutes') }}</option>
                                         <option value="30" selected>30 {{ __('minutes') }}</option>
@@ -150,19 +150,19 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-700 mb-1">💬 {{ __('Topic (optional)') }}</label>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="chat-bubble" class="w-3.5 h-3.5" /> {{ __('Topic (optional)') }}</label>
                                     <input type="text" name="topic" maxlength="200"
                                            placeholder="{{ __('e.g. Studienkolleg application timeline') }}"
                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-700 mb-1">📝 {{ __('Background / questions') }}</label>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('Background / questions') }}</label>
                                     <textarea name="notes" rows="3" maxlength="2000"
                                               placeholder="{{ __('Share what you want to discuss so the mentor can prepare.') }}"
                                               class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"></textarea>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-700 mb-1">🗣️ {{ __('Preferred language') }}</label>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="language" class="w-3.5 h-3.5" /> {{ __('Preferred language') }}</label>
                                     <select name="preferred_language" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
                                         <option value="tr">🇹🇷 Türkçe</option>
                                         <option value="en">🇬🇧 English</option>
@@ -172,8 +172,8 @@
                             </div>
 
                             <button type="submit"
-                                    class="w-full mt-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition">
-                                🎥 {{ __('Confirm booking') }}
+                                    class="w-full mt-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition inline-flex items-center justify-center gap-2">
+                                <x-svg-icon name="play" class="w-4 h-4" /> {{ __('Confirm booking') }}
                             </button>
                             <p class="text-xs text-gray-500 text-center mt-2">{{ __('You and the mentor will receive an email with the Jitsi link.') }}</p>
                         </form>
@@ -181,32 +181,32 @@
                 </div>
             @else
                 <a href="{{ route('login') }}"
-                   class="block mt-5 text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md">
-                    🔐 {{ __('Login to book') }}
+                   class="flex items-center justify-center gap-2 mt-5 text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md">
+                    <x-svg-icon name="lock-closed" class="w-4 h-4" /> {{ __('Login to book') }}
                 </a>
             @endauth
 
             @if ($mentor->contact_url && ! str_starts_with($mentor->contact_url, 'mailto:'))
                 <a href="{{ $mentor->contact_url }}"
                    target="_blank" rel="noopener"
-                   class="block mt-2 text-center py-2 rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold transition text-sm">
-                    📅 {{ __('Or use external calendar') }} ↗
+                   class="flex items-center justify-center gap-2 mt-2 text-center py-2 rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold transition text-sm">
+                    <x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Or use external calendar') }} ↗
                 </a>
             @endif
 
             {{-- Sosyal --}}
             <div class="flex items-center justify-center gap-3 mt-4 pt-4 border-t border-gray-100">
                 @if ($mentor->linkedin_url)
-                    <a href="{{ $mentor->linkedin_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-blue-700" title="LinkedIn">💼</a>
+                    <a href="{{ $mentor->linkedin_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-blue-700" title="LinkedIn"><x-svg-icon name="briefcase" class="w-5 h-5" /></a>
                 @endif
                 @if ($mentor->twitter_url)
                     <a href="{{ $mentor->twitter_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-blue-500" title="Twitter">𝕏</a>
                 @endif
                 @if ($mentor->github_url)
-                    <a href="{{ $mentor->github_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-gray-900" title="GitHub">⌨️</a>
+                    <a href="{{ $mentor->github_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-gray-900" title="GitHub"><x-svg-icon name="computer" class="w-5 h-5" /></a>
                 @endif
                 @if ($mentor->website_url)
-                    <a href="{{ $mentor->website_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-emerald-700" title="Website">🌐</a>
+                    <a href="{{ $mentor->website_url }}" target="_blank" rel="noopener" class="text-gray-500 hover:text-emerald-700" title="Website"><x-svg-icon name="globe" class="w-5 h-5" /></a>
                 @endif
             </div>
         </div>

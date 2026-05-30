@@ -21,11 +21,11 @@
         </p>
         <div class="flex flex-wrap gap-4 text-sm">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span class="text-2xl">🗺️</span>
+                <x-svg-icon name="map" class="w-6 h-6" />
                 <span>{!! __('<strong class="text-lg">:n</strong> states', ['n' => $states->count()]) !!}</span>
             </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span class="text-2xl">🏛️</span>
+                <x-svg-icon name="building-office" class="w-6 h-6" />
                 <span>{!! __('<strong class="text-lg">:n</strong> universities', ['n' => number_format($states->sum('uni_count'))]) !!}</span>
             </div>
         </div>
@@ -40,27 +40,27 @@
 
             @php
                 $regionChips = [
-                    'nord'  => ['🌊 ' . __('North'), 'HH, HB, NDS, SH, MV',
+                    'nord'  => [__('North'), 'globe', 'HH, HB, NDS, SH, MV',
                         'bg-blue-600 text-white border-blue-600',
                         'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'],
-                    'sued'  => ['⛰️ ' . __('South'), 'BY, BW',
+                    'sued'  => [__('South'), 'mountain', 'BY, BW',
                         'bg-amber-600 text-white border-amber-600',
                         'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'],
-                    'west'  => ['🏭 ' . __('West'), 'NRW, RP, HE, SL',
+                    'west'  => [__('West'), 'wrench-screwdriver', 'NRW, RP, HE, SL',
                         'bg-emerald-600 text-white border-emerald-600',
                         'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'],
-                    'ost'   => ['🌅 ' . __('East'), 'BE, BB, SN, ST, TH',
+                    'ost'   => [__('East'), 'sparkles', 'BE, BB, SN, ST, TH',
                         'bg-rose-600 text-white border-rose-600',
                         'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100'],
                 ];
             @endphp
 
-            @foreach ($regionChips as $val => [$lbl, $hint, $activeCls, $idleCls])
+            @foreach ($regionChips as $val => [$lbl, $iconName, $hint, $activeCls, $idleCls])
                 <a href="{{ request()->fullUrlWithQuery(['region' => ($filters['region'] ?? '') === $val ? null : $val]) }}"
                    class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition
                           {{ ($filters['region'] ?? '') === $val ? $activeCls : $idleCls }}"
                    title="{{ $hint }}">
-                    {{ $lbl }}
+                    <x-svg-icon :name="$iconName" class="w-3.5 h-3.5" /> {{ $lbl }}
                 </a>
             @endforeach
 
@@ -69,17 +69,17 @@
 
             @php
                 $sortChips = [
-                    'name'       => '🔤 ' . __('Alphabetical'),
-                    'uni_count'  => '🎓 ' . __('Uni count'),
-                    'population' => '👥 ' . __('Population'),
+                    'name'       => ['list-bullet', __('Alphabetical')],
+                    'uni_count'  => ['academic-cap', __('Uni count')],
+                    'population' => ['users', __('Population')],
                 ];
             @endphp
 
-            @foreach ($sortChips as $val => $lbl)
+            @foreach ($sortChips as $val => [$iconName, $lbl])
                 <a href="{{ request()->fullUrlWithQuery(['sort' => $val]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ ($filters['sort'] ?? 'name') === $val ? 'bg-gray-800 text-white border-gray-800' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50' }}">
-                    {{ $lbl }}
+                    <x-svg-icon :name="$iconName" class="w-3.5 h-3.5" /> {{ $lbl }}
                 </a>
             @endforeach
 
@@ -101,8 +101,8 @@
                 :title="__('No states available right now')"
                 :description="__('Try browsing cities directly while we are updating the catalog.')"
                 :actions="[
-                    ['label' => __('Cities'), 'url' => route('cities.index'), 'primary' => true, 'icon' => '🏙️'],
-                    ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+                    ['label' => __('Cities'), 'url' => route('cities.index'), 'primary' => true],
+                    ['label' => __('Universities'), 'url' => route('universities.index')],
                 ]"
             />
         @else
@@ -125,7 +125,7 @@
                             </div>
                         @endif
                         @if($state->content_blocks)
-                            <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">✦ {{ __('Guide') }}</span>
+                            <span class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm"><x-svg-icon name="sparkles" class="w-3 h-3" /> {{ __('Guide') }}</span>
                         @endif
                         <span class="absolute bottom-2 right-2 inline-block px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
                             {{ __(':n unis', ['n' => $state->uni_count]) }}

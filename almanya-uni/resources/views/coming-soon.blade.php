@@ -22,10 +22,10 @@
                 'cta_notify' => 'Notify me at launch',
                 'features_title' => 'What you\'ll find here',
                 'features' => [
-                    ['📚', 'Comprehensive guides for international students in Germany'],
-                    ['🎓', '645 official Hochschulen + 15,782 programs — searchable database'],
-                    ['💬', 'Active community forum (Turkish + English categories)'],
-                    ['🛠️', 'Cost-of-living calculator, grade converter, application timeline'],
+                    ['book-open', 'Comprehensive guides for international students in Germany'],
+                    ['academic-cap', '645 official Hochschulen + 15,782 programs — searchable database'],
+                    ['chat-bubble', 'Active community forum (Turkish + English categories)'],
+                    ['wrench-screwdriver', 'Cost-of-living calculator, grade converter, application timeline'],
                 ],
                 'footer' => 'We\'re translating university descriptions, blog posts, and FAQs. Expected launch: Q3 2026.',
                 'switch_back' => '🇹🇷 Switch back to Turkish',
@@ -38,10 +38,10 @@
                 'cta_notify' => 'Bei Veröffentlichung benachrichtigen',
                 'features_title' => 'Was du hier finden wirst',
                 'features' => [
-                    ['📚', 'Umfassende Ratgeber für internationale Studierende in Deutschland'],
-                    ['🎓', '645 offizielle Hochschulen + 15.782 Studiengänge — durchsuchbare Datenbank'],
-                    ['💬', 'Aktives Community-Forum (Türkische + Englische Kategorien)'],
-                    ['🛠️', 'Lebenshaltungskosten-Rechner, Notenumrechner, Bewerbungstimeline'],
+                    ['book-open', 'Umfassende Ratgeber für internationale Studierende in Deutschland'],
+                    ['academic-cap', '645 offizielle Hochschulen + 15.782 Studiengänge — durchsuchbare Datenbank'],
+                    ['chat-bubble', 'Aktives Community-Forum (Türkische + Englische Kategorien)'],
+                    ['wrench-screwdriver', 'Lebenshaltungskosten-Rechner, Notenumrechner, Bewerbungstimeline'],
                 ],
                 'footer' => 'Wir übersetzen Hochschulbeschreibungen, Blogbeiträge und FAQs. Geplanter Start: Q3 2026.',
                 'switch_back' => '🇹🇷 Zurück zu Türkisch',
@@ -81,7 +81,7 @@
     <header class="border-b border-white/10">
         <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 font-extrabold text-xl">
-                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-accent-500">🎓</span>
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-accent-500">{!! view('components.svg-icon', ['name' => 'academic-cap', 'class' => 'w-5 h-5 text-white'])->render() !!}</span>
                 <span>AlmanyaUni</span>
             </a>
             <a href="/?_l=tr"
@@ -96,7 +96,7 @@
 
             <div class="text-center mb-12">
                 <span class="inline-flex items-center gap-2 bg-accent-500/20 border border-accent-500/40 text-accent-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                    ⏳ {{ $strings['badge'] }}
+                    {!! view('components.svg-icon', ['name' => 'clock', 'class' => 'w-4 h-4'])->render() !!} {{ $strings['badge'] }}
                 </span>
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-5">
                     {{ $strings['title'] }}
@@ -114,7 +114,7 @@
                     <ul class="space-y-3">
                         @foreach ($strings['features'] as [$icon, $text])
                             <li class="flex items-start gap-3 text-primary-50">
-                                <span class="text-2xl flex-shrink-0">{{ $icon }}</span>
+                                <span class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-accent-500/20 text-accent-400">{!! view('components.svg-icon', ['name' => $icon, 'class' => 'w-5 h-5'])->render() !!}</span>
                                 <span class="leading-relaxed pt-0.5">{{ $text }}</span>
                             </li>
                         @endforeach
@@ -128,8 +128,8 @@
                     {{ $strings['cta_back'] }} →
                 </a>
                 <a href="mailto:technsug@gmail.com?subject={{ urlencode($strings['cta_notify']) }}&body={{ urlencode('Locale: ' . $locale) }}"
-                   class="flex-1 bg-white/10 hover:bg-white/20 border border-white/20 transition text-center px-6 py-3.5 rounded-lg font-semibold">
-                    ✉️ {{ $strings['cta_notify'] }}
+                   class="flex-1 inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 transition text-center px-6 py-3.5 rounded-lg font-semibold">
+                    {!! view('components.svg-icon', ['name' => 'envelope', 'class' => 'w-4 h-4'])->render() !!} {{ $strings['cta_notify'] }}
                 </a>
             </div>
 

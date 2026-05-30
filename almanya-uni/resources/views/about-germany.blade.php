@@ -70,7 +70,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($reasons as $i => $r)
             <article class="bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-xl p-5 flex gap-4">
-                <div class="text-4xl shrink-0">{{ $r['icon'] }}</div>
+                <div class="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary-50 text-primary-600">{!! e_icon($r['icon'], 'w-7 h-7') !!}</div>
                 <div class="min-w-0">
                     <h3 class="font-bold text-gray-900 mb-1 leading-tight">
                         <span class="text-xs text-primary-600 font-extrabold mr-1">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}.</span>
@@ -87,7 +87,7 @@
 <section class="bg-gray-50 border-y border-gray-200 py-14">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="text-center mb-10">
-            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">🗺️ {{ __('City-Industry Map') }}</h2>
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3 inline-flex items-center gap-3 justify-center"><x-svg-icon name="map" class="w-8 h-8 text-primary-600" /> {{ __('City-Industry Map') }}</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">
                 {{ __('In which city should you study your field? Germany\'s industry map is the most important input for your career plan — because internships + jobs cluster by city.') }}
             </p>
@@ -126,7 +126,7 @@
         <div class="text-center mt-8">
             <a href="{{ route('cities.index') }}"
                class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow-sm">
-                🏙️ {{ __('All student cities (:count) →', ['count' => $stats['cities']]) }}
+                <x-svg-icon name="building-office" class="w-5 h-5" /> {{ __('All student cities (:count) →', ['count' => $stats['cities']]) }}
             </a>
         </div>
     </div>
@@ -136,23 +136,23 @@
 <section class="max-w-[1400px] mx-auto px-4 py-14">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">🎓 {{ __('Higher Education Structure') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="academic-cap" class="w-7 h-7 text-primary-600" /> {{ __('Higher Education Structure') }}</h2>
             <div class="space-y-4">
                 <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
-                    <h3 class="font-bold text-emerald-900 mb-2">🟢 {{ __('Public Universities (~85%)') }}</h3>
+                    <h3 class="font-bold text-emerald-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-5 h-5 text-emerald-600" /> {{ __('Public Universities (~85%)') }}</h3>
                     <p class="text-sm text-emerald-800 leading-relaxed">
                         {{ __('Tuition fee is') }} <strong>{{ __('FREE') }}</strong>, {{ __('only') }} <strong>€150-350/{{ __('semester') }}</strong> {{ __('semester contribution.') }}
                         {{ __('This includes campus services and regional public transport pass.') }}
                     </p>
                 </div>
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
-                    <h3 class="font-bold text-amber-900 mb-2">🟠 {{ __('Private Universities (~15%)') }}</h3>
+                    <h3 class="font-bold text-amber-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="currency-euro" class="w-5 h-5 text-amber-600" /> {{ __('Private Universities (~15%)') }}</h3>
                     <p class="text-sm text-amber-800 leading-relaxed">
                         <strong>€6,000-15,000/{{ __('year') }}</strong> {{ __('tuition fee. More English-taught programs, more flexible admissions. IU, Constructor, Hertie School are well-known.') }}
                     </p>
                 </div>
                 <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                    <h3 class="font-bold text-blue-900 mb-2">🔧 {{ __('Universities of Applied Sciences (FH/HAW)') }}</h3>
+                    <h3 class="font-bold text-blue-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="wrench-screwdriver" class="w-5 h-5 text-blue-600" /> {{ __('Universities of Applied Sciences (FH/HAW)') }}</h3>
                     <p class="text-sm text-blue-800 leading-relaxed">
                         {{ __('Practice-oriented colleges. Mandatory industry internships for engineering + business. Employment rate is') }}
                         <strong>{{ __('15-20% higher') }}</strong> {{ __('than classical universities.') }}
@@ -162,7 +162,7 @@
         </div>
 
         <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">💸 {{ __('Annual Cost Summary') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="banknotes" class="w-7 h-7 text-primary-600" /> {{ __('Annual Cost Summary') }}</h2>
             <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <table class="w-full text-sm">
                     <thead class="bg-gray-50">
@@ -201,8 +201,8 @@
             </div>
             <p class="text-xs text-gray-500 mt-2">{{ __('Blocked account is withdrawn after arrival — not a net expense.') }}</p>
             <div class="mt-4 flex flex-wrap gap-2">
-                <a href="{{ route('tools.visa-cost') }}" class="text-sm px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 font-semibold">💸 {{ __('Calculate Visa Cost') }}</a>
-                <a href="{{ route('tools.budget-planner') }}" class="text-sm px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 font-semibold">📈 {{ __('Budget Planner') }}</a>
+                <a href="{{ route('tools.visa-cost') }}" class="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 font-semibold"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Calculate Visa Cost') }}</a>
+                <a href="{{ route('tools.budget-planner') }}" class="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 font-semibold"><x-svg-icon name="chart-bar" class="w-3.5 h-3.5" /> {{ __('Budget Planner') }}</a>
             </div>
         </div>
     </div>
@@ -239,7 +239,7 @@
     {{-- EN/DE/FR: Generic international student community --}}
     <section class="bg-gradient-to-r from-indigo-700 to-purple-600 text-white py-14">
         <div class="max-w-[1400px] mx-auto px-4">
-            <h2 class="text-2xl md:text-4xl font-bold mb-4">🌐 {{ __('International Student Community in Germany') }}</h2>
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 inline-flex items-center gap-3"><x-svg-icon name="globe" class="w-8 h-8" /> {{ __('International Student Community in Germany') }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div class="bg-white/15 backdrop-blur rounded-lg p-5">
                     <p class="text-3xl font-bold mb-1">400K+</p>
@@ -270,7 +270,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <a href="{{ route('tools.recommendation') }}"
            class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
-            <div class="text-4xl mb-3">🎯</div>
+            <div class="inline-flex items-center justify-center w-14 h-14 mx-auto mb-3 rounded-xl bg-primary-50 text-primary-600"><x-svg-icon name="target" class="w-8 h-8" /></div>
             <h3 class="font-bold text-gray-900 mb-1">{{ __('University Match Quiz') }}</h3>
             <p class="text-sm text-gray-600">{{ __('8 questions to show your top 5 universities') }}</p>
         </a>
@@ -282,7 +282,7 @@
         </a>
         <a href="{{ route('programs.index') }}"
            class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
-            <div class="text-4xl mb-3">📚</div>
+            <div class="inline-flex items-center justify-center w-14 h-14 mx-auto mb-3 rounded-xl bg-primary-50 text-primary-600"><x-svg-icon name="book-open" class="w-8 h-8" /></div>
             <h3 class="font-bold text-gray-900 mb-1">{{ __(':count English Programs', ['count' => number_format($stats['programs_en'], 0, ',', '.')]) }}</h3>
             <p class="text-sm text-gray-600">{{ __('No German? No problem — search directly.') }}</p>
         </a>
@@ -290,7 +290,7 @@
 
     @if ($latestPosts->isNotEmpty())
         <div class="mt-12">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">📰 {{ __('Related Guides') }}</h3>
+            <h3 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="newspaper" class="w-6 h-6 text-primary-600" /> {{ __('Related Guides') }}</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach ($latestPosts as $p)
                     <a href="{{ route('blog.show', $p->slug) }}"

@@ -90,7 +90,7 @@
                             <p class="font-semibold text-gray-900 flex items-center gap-1.5">
                                 {{ $post->author->name }}
                                 @if ($post->author->is_contributor)
-                                    <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700" title="{{ __('Community Contributor') }}">🌱</span>
+                                    <span class="inline-flex items-center gap-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700" title="{{ __('Community Contributor') }}"><x-svg-icon name="leaf" class="w-3 h-3" /></span>
                                 @endif
                             </p>
                             @if ($post->author->role_label)
@@ -205,7 +205,7 @@
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.786L4.21 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.21l4.173-3.786a1 1 0 011-.138z"/><path d="M14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 11-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zM12.95 5.05a1 1 0 011.414 0A5.983 5.983 0 0116 10a5.983 5.983 0 01-1.636 4.95 1 1 0 11-1.414-1.414A3.987 3.987 0 0014 10a3.987 3.987 0 00-1.05-2.536 1 1 0 010-1.414z"/></svg>
                         </div>
                         <div>
-                            <p class="text-sm font-semibold text-gray-900">🎧 {{ __('Audio Narration (Podcast)') }}</p>
+                            <p class="text-sm font-semibold text-gray-900 inline-flex items-center gap-1.5"><x-svg-icon name="play" class="w-4 h-4 text-primary-600" /> {{ __('Audio Narration (Podcast)') }}</p>
                             <p class="text-xs text-gray-600">{{ __('You can also follow this article by listening') }}
                                 @if ($post->audio_duration_seconds)
                                     — <span class="font-mono">{{ $post->formatted_audio_duration }}</span>
@@ -223,7 +223,7 @@
             {{-- Server-rendered TOC (visible to AIO/Bing crawlers without JS) — shown when ≥2 H2s --}}
             @if (count($toc) >= 2)
                 <nav id="post-toc-ssr" class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-8" aria-label="{{ __('Table of Contents') }}">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">📑 {{ __('In this article') }}</p>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3 inline-flex items-center gap-1.5"><x-svg-icon name="list-bullet" class="w-3.5 h-3.5" /> {{ __('In this article') }}</p>
                     <ol class="space-y-1.5 text-sm">
                         @foreach ($toc as $i => $entry)
                             <li class="flex items-start gap-2">
@@ -274,10 +274,10 @@
                     <p class="text-sm font-semibold text-gray-700">{{ __('Was this guide helpful?') }}</p>
                     <div class="flex gap-2">
                         <button @click="vote('up')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 hover:border-green-400 hover:bg-green-50 text-gray-700 hover:text-green-700 text-sm font-medium transition">
-                            👍 {{ __('Yes') }}
+                            <x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Yes') }}
                         </button>
                         <button @click="vote('down')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 hover:border-red-400 hover:bg-red-50 text-gray-700 hover:text-red-700 text-sm font-medium transition">
-                            👎 {{ __('No') }}
+                            <x-svg-icon name="x-circle" class="w-4 h-4" /> {{ __('No') }}
                         </button>
                     </div>
                 </div>
@@ -299,12 +299,12 @@
                     <a href="https://wa.me/?text={{ urlencode($post->title . ' ' . request()->fullUrl()) }}"
                        target="_blank" rel="noopener"
                        class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-green-500 hover:text-white text-gray-700 px-4 py-2 rounded-lg font-semibold text-sm transition">
-                        💬 WhatsApp
+                        <x-svg-icon name="chat-bubble" class="w-4 h-4" /> WhatsApp
                     </a>
                     <a href="https://t.me/share/url?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($post->title) }}"
                        target="_blank" rel="noopener"
                        class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-blue-500 hover:text-white text-gray-700 px-4 py-2 rounded-lg font-semibold text-sm transition">
-                        ✈️ Telegram
+                        <x-svg-icon name="plane" class="w-4 h-4" /> Telegram
                     </a>
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}"
                        target="_blank" rel="noopener"
@@ -313,7 +313,7 @@
                     </a>
                     <button onclick="copyPostLink(this)"
                        class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-primary-600 hover:text-white text-gray-700 px-4 py-2 rounded-lg font-semibold text-sm transition">
-                        🔗 <span data-label>{{ __('Copy link') }}</span>
+                        <x-svg-icon name="link" class="w-4 h-4" /> <span data-label>{{ __('Copy link') }}</span>
                     </button>
                 </div>
             </div>
@@ -352,16 +352,28 @@
                                                 'github'   => 'https://github.com/' . $value,
                                                 default    => $value,
                                             };
+                                            $socialIcon = match ($type) {
+                                                'email' => 'envelope',
+                                                'linkedin' => 'briefcase',
+                                                'github' => 'computer',
+                                                default => null,
+                                            };
+                                            $isTwitter = $type === 'twitter';
                                             $label = match ($type) {
-                                                'email' => '✉️ ' . $value,
-                                                'twitter' => '𝕏 @' . ltrim($value, '@'),
-                                                'linkedin' => '💼 LinkedIn',
-                                                'github' => '⌨️ GitHub',
+                                                'email' => $value,
+                                                'twitter' => '@' . ltrim($value, '@'),
+                                                'linkedin' => 'LinkedIn',
+                                                'github' => 'GitHub',
                                                 default => $type,
                                             };
                                         @endphp
                                         <a href="{{ $url }}" target="_blank" rel="noopener"
                                            class="inline-flex items-center gap-1 text-xs bg-white border border-gray-200 hover:border-primary-300 text-gray-700 hover:text-primary-700 px-3 py-1.5 rounded-md transition">
+                                            @if ($isTwitter)
+                                                <span>𝕏</span>
+                                            @elseif ($socialIcon)
+                                                <x-svg-icon :name="$socialIcon" class="w-3.5 h-3.5" />
+                                            @endif
                                             {{ $label }}
                                         </a>
                                     @endforeach
@@ -411,7 +423,7 @@
                 <nav id="post-toc" class="hidden lg:block bg-white border border-gray-200 rounded-xl overflow-hidden">
                     <button type="button" id="post-toc-toggle"
                             class="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition">
-                        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">📑 {{ __('Table of Contents') }}</span>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 inline-flex items-center gap-1.5"><x-svg-icon name="list-bullet" class="w-3.5 h-3.5" /> {{ __('Table of Contents') }}</span>
                         <svg id="post-toc-chevron" class="w-4 h-4 text-gray-400 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                         </svg>
@@ -602,7 +614,7 @@ document.addEventListener('alpine:init', () => {
 <section id="comments" class="bg-gray-50 border-t border-gray-200 mt-12">
     <div class="max-w-3xl mx-auto px-4 py-12">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-            💬 {{ __('Comments') }}
+            <x-svg-icon name="chat-bubble" class="w-7 h-7 text-indigo-600" /> {{ __('Comments') }}
             @if ($post->approvedComments->count() > 0)
                 <span class="text-base font-normal text-gray-500">({{ $post->approvedComments->count() }})</span>
             @endif
@@ -680,7 +692,7 @@ document.addEventListener('alpine:init', () => {
                                         <span class="font-semibold text-sm text-gray-900">{{ $comment->display_name }}</span>
                                     @endif
                                     @if ($comment->is_pinned)
-                                        <span class="text-[10px] uppercase font-bold tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded">📌 {{ __('Pinned') }}</span>
+                                        <span class="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded"><x-svg-icon name="flag" class="w-3 h-3" /> {{ __('Pinned') }}</span>
                                     @endif
                                     <time class="text-xs text-gray-400" datetime="{{ $comment->created_at->toIso8601String() }}">
                                         {{ $comment->created_at->diffForHumans() }}

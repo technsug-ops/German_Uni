@@ -27,8 +27,8 @@
         :description="__('Try relaxing the filters or change your search term.')"
         :actions="[
             ['label' => __('All Programs'), 'url' => route('programs.index'), 'primary' => true],
-            ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
-            ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+            ['label' => __('Browse by field'), 'url' => route('fields.index')],
+            ['label' => __('Universities'), 'url' => route('universities.index')],
         ]"
     />
 @else
@@ -132,11 +132,11 @@
                                 <span class="text-blue-700">Uni-Assist</span>
                             @endif
                             @if ($p->admission_mode === 'zulassungsfrei')
-                                <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">🔓 {{ __('NC Frei') }}</span>
+                                <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold"><x-svg-icon name="lock-closed" class="w-3 h-3" /> {{ __('NC Frei') }}</span>
                             @elseif ($p->admission_mode === 'oertlich')
-                                <span class="text-orange-700">⚠️ {{ __('Local NC') }}</span>
+                                <span class="inline-flex items-center gap-1 text-orange-700"><x-svg-icon name="exclamation-triangle" class="w-3 h-3" /> {{ __('Local NC') }}</span>
                             @elseif ($p->admission_mode === 'bundesweit')
-                                <span class="text-red-700">🚦 {{ __('Nationwide NC') }}</span>
+                                <span class="inline-flex items-center gap-1 text-red-700"><x-svg-icon name="flag" class="w-3 h-3" /> {{ __('Nationwide NC') }}</span>
                             @endif
                         </div>
 

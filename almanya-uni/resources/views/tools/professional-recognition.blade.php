@@ -20,8 +20,8 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Professional Recognition') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            🛡️ {{ __('Is your profession recognised in Germany?') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3">
+            <x-svg-icon name="shield-check" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Is your profession recognised in Germany?') }}
         </h1>
         <p class="text-lg md:text-xl text-amber-100 max-w-3xl">
             {{ __('Check whether your job is regulated (Anerkennung required) or free, which authority handles it, expected timeline and cost. 6 most common professions, real data.') }}
@@ -42,7 +42,7 @@
                     <option value="">{{ __('Select profession...') }}</option>
                     @foreach ($professions as $key => $p)
                         <option value="{{ $key }}" @selected(($old['profession_key'] ?? '') === $key)>
-                            {{ $p['icon'] }} {{ __($p['name_en']) }}
+                            {{ __($p['name_en']) }}
                             {{ $p['regulated'] ? ' · ' . __('Regulated') : ' · ' . __('Free') }}
                         </option>
                     @endforeach
@@ -59,8 +59,8 @@
         <input type="hidden" name="country_origin" value="TR">
 
         <button type="submit"
-                class="mt-5 w-full md:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3 rounded-lg shadow-md transition">
-            🔍 {{ __('Check recognition') }}
+                class="mt-5 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3 rounded-lg shadow-md transition">
+            <x-svg-icon name="search" class="w-5 h-5" /> {{ __('Check recognition') }}
         </button>
     </form>
 
@@ -70,13 +70,13 @@
         <section class="space-y-6">
             <div class="bg-white border-2 border-amber-300 rounded-2xl p-6 md:p-8 shadow-md">
                 <div class="flex items-start gap-4 flex-wrap mb-4">
-                    <div class="text-5xl">{{ $p['icon'] }}</div>
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-amber-100 text-amber-700">{!! e_icon($p['icon'], 'w-7 h-7') !!}</div>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ __($p['name_en']) }}</h2>
                         @if ($p['regulated'])
-                            <span class="inline-flex items-center gap-1 mt-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-sm font-bold">🛡️ {{ __('Regulated profession — Anerkennung required') }}</span>
+                            <span class="inline-flex items-center gap-1 mt-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-sm font-bold"><x-svg-icon name="shield-check" class="w-4 h-4" /> {{ __('Regulated profession — Anerkennung required') }}</span>
                         @else
-                            <span class="inline-flex items-center gap-1 mt-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-bold">✅ {{ __('Free profession — no Anerkennung needed') }}</span>
+                            <span class="inline-flex items-center gap-1 mt-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-bold"><x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Free profession — no Anerkennung needed') }}</span>
                         @endif
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 {{-- Authority --}}
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
                     <div class="flex items-start gap-3">
-                        <div class="text-2xl shrink-0">🏛️</div>
+                        <div class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-amber-100 text-amber-700"><x-svg-icon name="building-office" class="w-5 h-5" /></div>
                         <div>
                             <p class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-1">{{ __('Responsible authority') }}</p>
                             <p class="text-sm font-semibold text-gray-900">{{ $p['authority'] }}</p>
@@ -113,7 +113,7 @@
                 </div>
 
                 {{-- Process steps --}}
-                <h3 class="text-lg font-bold text-gray-900 mb-3">📋 {{ __('Process steps') }}</h3>
+                <h3 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="list-bullet" class="w-5 h-5 text-amber-700" /> {{ __('Process steps') }}</h3>
                 <ol class="space-y-2 mb-6">
                     @foreach ($p['process_steps'] as $i => $step)
                         <li class="flex gap-3 items-start">
@@ -125,7 +125,7 @@
 
                 {{-- Pitfalls --}}
                 @if (! empty($p['pitfalls']))
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">⚠️ {{ __('Common pitfalls') }}</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="exclamation-triangle" class="w-5 h-5 text-amber-600" /> {{ __('Common pitfalls') }}</h3>
                     <ul class="space-y-2 mb-6">
                         @foreach ($p['pitfalls'] as $pitfall)
                             <li class="flex gap-2 items-start text-sm text-gray-700">
@@ -139,7 +139,7 @@
                 {{-- Personal notes --}}
                 @if (! empty($result['notes']))
                     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 space-y-2">
-                        <p class="font-bold text-gray-900 text-sm mb-1">💡 {{ __('Personal notes based on your input') }}</p>
+                        <p class="font-bold text-gray-900 text-sm mb-1 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-4 h-4 text-blue-600" /> {{ __('Personal notes based on your input') }}</p>
                         @foreach ($result['notes'] as $note)
                             <p class="text-sm text-gray-700">{{ $note }}</p>
                         @endforeach
@@ -149,7 +149,7 @@
 
             {{-- CTA --}}
             <div class="bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300 rounded-xl p-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">📖 {{ __('Official authority resource') }}</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2 justify-center"><x-svg-icon name="book-open" class="w-5 h-5 text-amber-700" /> {{ __('Official authority resource') }}</h3>
                 <p class="text-sm text-gray-700 mb-4">{{ __('For exact paperwork checklist + your state\'s specific authority, the official Anerkennung portal is the canonical source.') }}</p>
                 <a href="{{ $result['next_step_url'] }}" target="_blank" rel="noopener noreferrer nofollow"
                    class="inline-flex items-center gap-2 bg-amber-700 hover:bg-amber-800 text-white font-bold px-6 py-3 rounded-lg shadow-md transition">
@@ -161,19 +161,19 @@
 
     {{-- All professions index (always visible) --}}
     <section class="mt-14">
-        <h2 class="text-2xl font-bold text-gray-900 mb-5">📚 {{ __('All covered professions') }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-5 inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-6 h-6 text-amber-700" /> {{ __('All covered professions') }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             @foreach ($professions as $key => $p)
                 <article class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition">
                     <div class="flex items-start gap-3">
-                        <div class="text-3xl shrink-0">{{ $p['icon'] }}</div>
+                        <div class="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-amber-50 text-amber-700">{!! e_icon($p['icon'], 'w-6 h-6') !!}</div>
                         <div class="flex-1 min-w-0">
                             <h3 class="font-bold text-gray-900">{{ __($p['name_en']) }}</h3>
-                            <p class="text-xs text-gray-500 mt-0.5">
+                            <p class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1">
                                 @if ($p['regulated'])
-                                    🛡️ {{ __('Regulated') }} · {{ $p['estimated_months'] }} {{ __('months') }} · {{ $p['estimated_cost_eur'] }}
+                                    <x-svg-icon name="shield-check" class="w-3 h-3" /> {{ __('Regulated') }} · {{ $p['estimated_months'] }} {{ __('months') }} · {{ $p['estimated_cost_eur'] }}
                                 @else
-                                    ✅ {{ __('Free') }} · {{ __('No Anerkennung needed') }}
+                                    <x-svg-icon name="check-circle" class="w-3 h-3" /> {{ __('Free') }} · {{ __('No Anerkennung needed') }}
                                 @endif
                             </p>
                             <p class="text-xs text-gray-600 mt-1">{{ \Illuminate\Support\Str::limit($p['authority'], 60) }}</p>
@@ -182,8 +182,8 @@
                 </article>
             @endforeach
         </div>
-        <p class="text-xs text-gray-500 mt-4 italic">
-            ℹ️ {{ __('Data sources: anerkennung-in-deutschland.de · BERUFENET · Bundesärztekammer · IHK FOSA. Verify on the official authority page before formal application.') }}
+        <p class="text-xs text-gray-500 mt-4 italic inline-flex items-start gap-1.5">
+            <x-svg-icon name="information-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" /> <span>{{ __('Data sources: anerkennung-in-deutschland.de · BERUFENET · Bundesärztekammer · IHK FOSA. Verify on the official authority page before formal application.') }}</span>
         </p>
     </section>
 

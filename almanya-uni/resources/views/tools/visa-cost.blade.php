@@ -20,8 +20,8 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Visa Cost') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            💸 {{ __('Visa Cost Calculator') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3">
+            <x-svg-icon name="banknotes" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Visa Cost Calculator') }}
         </h1>
         <p class="text-lg md:text-xl text-emerald-100 max-w-3xl">
             {{ __('Every cost of the German student visa process on one page. From Sperrkonto to the flight ticket — what you must not skip, and what you get back.') }}
@@ -37,7 +37,7 @@
                 @php $value = $values[$key]; $isRecov = !empty($item['recoverable']); @endphp
                 <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-300 transition">
                     <div class="flex items-start gap-3">
-                        <div class="text-3xl shrink-0">{{ $item['icon'] }}</div>
+                        <div class="shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-lg bg-primary-50 text-primary-600">{!! e_icon($item['icon'], 'w-6 h-6') !!}</div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-baseline justify-between gap-2 flex-wrap">
                                 <h3 class="font-semibold text-gray-900">
@@ -70,15 +70,15 @@
                 </div>
             @endforeach
 
-            <p class="text-xs text-gray-500 pt-2 px-1">
-                💡 {!! __('<strong>Tip:</strong> You can change the number next to each item to match your own situation. The form saves automatically.') !!}
+            <p class="text-xs text-gray-500 pt-2 px-1 inline-flex items-start gap-1.5">
+                <x-svg-icon name="light-bulb" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-500" /> <span>{!! __('<strong>Tip:</strong> You can change the number next to each item to match your own situation. The form saves automatically.') !!}</span>
             </p>
         </div>
 
         {{-- ───── Sağ: Sticky özet ───── --}}
         <aside class="space-y-4">
             <div class="bg-white border-2 border-emerald-500 rounded-xl p-6 sticky top-20 shadow-lg">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">📊 {{ __('Summary') }}</h3>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 inline-flex items-center gap-1.5"><x-svg-icon name="chart-bar" class="w-4 h-4" /> {{ __('Summary') }}</h3>
 
                 <div class="space-y-3">
                     <div class="flex items-baseline justify-between pb-3 border-b border-gray-100">
@@ -101,27 +101,27 @@
 
                 <div class="mt-6 pt-5 border-t border-gray-100 space-y-3">
                     <a href="{{ route('blog.show', 'sperrkonto-2025-tam-rehber-almanya-vizesi-icin-bloke-hesap') }}"
-                       class="block text-center w-full px-4 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition">
-                        📚 {{ __('Sperrkonto Guide') }}
+                       class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition">
+                        <x-svg-icon name="book-open" class="w-4 h-4" /> {{ __('Sperrkonto Guide') }}
                     </a>
                     <a href="{{ route('blog.show', 'almanya-vize-randevusu-nasil-alinir-idata-cilesi-ve-hizli-cozum-yollari') }}"
-                       class="block text-center w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm transition">
-                        🗓️ {{ __('Visa Appointment Guide') }}
+                       class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm transition">
+                        <x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Visa Appointment Guide') }}
                     </a>
                     <a href="{{ route('scholarships.daad') }}"
-                       class="block text-center w-full px-4 py-2.5 rounded-lg bg-white border border-emerald-300 hover:bg-emerald-50 text-emerald-700 font-semibold text-sm transition">
-                        🎖️ {{ __('DAAD Scholarships (reduce the cost)') }}
+                       class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-white border border-emerald-300 hover:bg-emerald-50 text-emerald-700 font-semibold text-sm transition">
+                        <x-svg-icon name="sparkles" class="w-4 h-4" /> {{ __('DAAD Scholarships (reduce the cost)') }}
                     </a>
                 </div>
 
-                <p class="text-xs text-gray-400 mt-5 leading-relaxed border-t border-gray-100 pt-4">
-                    ℹ️ {{ __('Numbers are average values for 2025. Consulate fees and insurance prices may change over time.') }}
+                <p class="text-xs text-gray-400 mt-5 leading-relaxed border-t border-gray-100 pt-4 flex items-start gap-1.5">
+                    <x-svg-icon name="information-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" /> <span>{{ __('Numbers are average values for 2025. Consulate fees and insurance prices may change over time.') }}</span>
                 </p>
             </div>
 
             {{-- "Genel ortalama" karşılaştırma --}}
             <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-5">
-                <p class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">📈 {{ __('Comparison') }}</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="chart-bar" class="w-3.5 h-3.5" /> {{ __('Comparison') }}</p>
                 <p class="text-sm text-amber-900 leading-relaxed">
                     <strong>{{ __('International student average:') }}</strong> ~13.000 € ({{ __('Sperrkonto included') }})<br>
                     <strong>{{ __('Your total:') }}</strong>

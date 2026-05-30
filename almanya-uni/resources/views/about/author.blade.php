@@ -99,17 +99,21 @@
                         @foreach ($sameAs as $url)
                             @php
                                 $host = parse_url($url, PHP_URL_HOST) ?: '';
-                                $icon = match (true) {
-                                    str_contains($host, 'linkedin') => '💼',
-                                    str_contains($host, 'x.com'), str_contains($host, 'twitter') => '𝕏',
-                                    str_contains($host, 'github')   => '⌨️',
-                                    str_starts_with($url, 'mailto') => '✉️',
-                                    default                          => '🌐',
+                                $iconName = match (true) {
+                                    str_contains($host, 'linkedin') => 'briefcase',
+                                    str_contains($host, 'github')   => 'computer',
+                                    str_starts_with($url, 'mailto') => 'envelope',
+                                    default                          => 'globe',
                                 };
+                                $isTwitter = str_contains($host, 'x.com') || str_contains($host, 'twitter');
                             @endphp
                             <a href="{{ $url }}" target="_blank" rel="noopener nofollow me"
                                class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium transition">
-                                <span>{{ $icon }}</span>
+                                @if ($isTwitter)
+                                    <span>𝕏</span>
+                                @else
+                                    <x-svg-icon :name="$iconName" class="w-3.5 h-3.5" />
+                                @endif
                                 <span>{{ str_replace(['https://', 'http://', 'mailto:'], '', $url) }}</span>
                             </a>
                         @endforeach
@@ -129,7 +133,7 @@
                 {{-- Expertise --}}
                 @if (! empty($author->expertise))
                     <div class="md:col-span-2">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🎯 {{ __('Expertise') }}</h3>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Expertise') }}</h3>
                         <div class="flex flex-wrap gap-1.5">
                             @foreach ((array) $author->expertise as $topic)
                                 <span class="inline-block bg-white border border-indigo-200 text-indigo-900 text-xs font-semibold px-2.5 py-1 rounded-full">{{ $topic }}</span>
@@ -141,7 +145,7 @@
                 <div class="space-y-3">
                     @if (! empty($author->languages_spoken))
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🗣️ {{ __('Languages') }}</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="language" class="w-3.5 h-3.5" /> {{ __('Languages') }}</h3>
                             <div class="flex flex-wrap gap-1">
                                 @foreach ((array) $author->languages_spoken as $code)
                                     @php
@@ -160,7 +164,7 @@
                     @endif
                     @if ($author->years_experience)
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">⏳ {{ __('Years of experience') }}</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Years of experience') }}</h3>
                             <p class="text-lg font-extrabold text-indigo-900">{{ $author->years_experience }}+ {{ __('years') }}</p>
                         </div>
                     @endif
@@ -170,7 +174,7 @@
             {{-- Education timeline --}}
             @if (! empty($author->education))
                 <div class="mt-5 pt-5 border-t border-indigo-200">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🎓 {{ __('Education') }}</h3>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Education') }}</h3>
                     <ul class="space-y-1.5">
                         @foreach ((array) $author->education as $edu)
                             <li class="flex items-start gap-2 text-sm text-gray-800">
@@ -195,7 +199,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 pt-5 border-t border-indigo-200">
                     @if (! empty($author->member_of))
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🤝 {{ __('Member of') }}</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Member of') }}</h3>
                             <ul class="text-sm text-gray-800 space-y-1">
                                 @foreach ((array) $author->member_of as $org)
                                     <li>• {{ is_array($org) ? ($org['name'] ?? '') : $org }}</li>
@@ -205,7 +209,7 @@
                     @endif
                     @if (! empty($author->awards))
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">🏆 {{ __('Awards') }}</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('Awards') }}</h3>
                             <ul class="text-sm text-gray-800 space-y-1">
                                 @foreach ((array) $author->awards as $a)
                                     <li>• {{ $a }}</li>
@@ -215,7 +219,7 @@
                     @endif
                     @if (! empty($author->featured_in))
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">📰 {{ __('Featured in') }}</h3>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="newspaper" class="w-3.5 h-3.5" /> {{ __('Featured in') }}</h3>
                             <ul class="text-sm text-gray-800 space-y-1">
                                 @foreach ((array) $author->featured_in as $f)
                                     <li>• {{ is_array($f) ? ($f['name'] ?? '') : $f }}</li>
@@ -256,7 +260,7 @@
 
     {{-- Articles list --}}
     @if ($posts->isNotEmpty())
-        <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">✍️ {{ __('Articles by :name', ['name' => $author->name]) }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2"><x-svg-icon name="pencil" class="w-6 h-6 text-indigo-600" /> {{ __('Articles by :name', ['name' => $author->name]) }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($posts as $p)
                 <a href="{{ route('blog.show', $p->slug) }}"
@@ -276,9 +280,9 @@
                     @endif
                     <div class="flex items-center gap-3 mt-3 text-xs text-gray-400">
                         @if ($p->published_at)
-                            <span>📅 {{ $p->published_at->format('d.m.Y') }}</span>
+                            <span class="inline-flex items-center gap-1"><x-svg-icon name="calendar" class="w-3 h-3" /> {{ $p->published_at->format('d.m.Y') }}</span>
                         @endif
-                        <span>⏱️ {{ $p->reading_minutes }} {{ __('min') }}</span>
+                        <span class="inline-flex items-center gap-1"><x-svg-icon name="clock" class="w-3 h-3" /> {{ $p->reading_minutes }} {{ __('min') }}</span>
                     </div>
                 </a>
             @endforeach
@@ -293,7 +297,7 @@
     @if (! empty($events) && $events->isNotEmpty())
         <div class="mt-12">
             <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2">
-                📅 {{ __('Events hosted by :name', ['name' => $author->name]) }}
+                <x-svg-icon name="calendar" class="w-6 h-6 text-indigo-600" /> {{ __('Events hosted by :name', ['name' => $author->name]) }}
                 @if ($stats['upcoming_events'] > 0)
                     <span class="text-sm font-normal text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">{{ __(':n upcoming', ['n' => $stats['upcoming_events']]) }}</span>
                 @endif
@@ -316,10 +320,16 @@
                             @else
                                 <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{{ __('Past') }}</span>
                             @endif
-                            <span class="text-[10px] font-semibold text-gray-600">{{ $e->mode === 'online' ? '💻 ' . __('Online') : '📍 ' . $e->location_city }}</span>
+                            <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-gray-600">
+                                @if ($e->mode === 'online')
+                                    <x-svg-icon name="computer" class="w-3 h-3" /> {{ __('Online') }}
+                                @else
+                                    <x-svg-icon name="map-pin" class="w-3 h-3" /> {{ $e->location_city }}
+                                @endif
+                            </span>
                         </div>
                         <h3 class="text-base font-bold text-gray-900 line-clamp-2">{{ $title }}</h3>
-                        <p class="text-xs text-gray-500 mt-2">📅 {{ $e->starts_at?->translatedFormat('d M Y, H:i') }}</p>
+                        <p class="text-xs text-gray-500 mt-2 inline-flex items-center gap-1"><x-svg-icon name="calendar" class="w-3 h-3" /> {{ $e->starts_at?->translatedFormat('d M Y, H:i') }}</p>
                     </a>
                 @endforeach
             </div>

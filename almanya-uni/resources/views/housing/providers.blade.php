@@ -19,26 +19,26 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ __('Providers') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">🏛️ {{ __('Student Dorm Providers') }}</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3"><x-svg-icon name="building-office" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Student Dorm Providers') }}</h1>
         <p class="text-lg md:text-xl text-emerald-100 max-w-3xl">
             {{ __('Student dorms in Germany = 2 categories. Public (Studierendenwerk) → cheap but long waiting. Private companies (The Fizz, YouniQ) → fast but expensive. Apply to both in parallel.') }}
         </p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
             <div class="bg-white/10 backdrop-blur rounded-lg p-3">
                 <p class="text-2xl font-bold">{{ $stats['studierendenwerk'] }}</p>
-                <p class="text-xs text-emerald-100">🏛️ Studierendenwerk</p>
+                <p class="text-xs text-emerald-100 inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> Studierendenwerk</p>
             </div>
             <div class="bg-white/10 backdrop-blur rounded-lg p-3">
                 <p class="text-2xl font-bold">{{ $stats['private_chain'] }}</p>
-                <p class="text-xs text-emerald-100">🏢 {{ __('Private Company') }}</p>
+                <p class="text-xs text-emerald-100 inline-flex items-center gap-1"><x-svg-icon name="briefcase" class="w-3.5 h-3.5" /> {{ __('Private Company') }}</p>
             </div>
             <div class="bg-white/10 backdrop-blur rounded-lg p-3">
                 <p class="text-2xl font-bold">{{ $stats['platform'] }}</p>
-                <p class="text-xs text-emerald-100">🌐 {{ __('Platform / Portal') }}</p>
+                <p class="text-xs text-emerald-100 inline-flex items-center gap-1"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Platform / Portal') }}</p>
             </div>
             <div class="bg-white/10 backdrop-blur rounded-lg p-3">
                 <p class="text-2xl font-bold">{{ number_format($stats['total_capacity'], 0, ',', '.') }}</p>
-                <p class="text-xs text-emerald-100">🛏️ {{ __('Total STW beds') }}</p>
+                <p class="text-xs text-emerald-100 inline-flex items-center gap-1"><x-svg-icon name="home" class="w-3.5 h-3.5" /> {{ __('Total STW beds') }}</p>
             </div>
         </div>
     </div>
@@ -70,9 +70,9 @@
         </a>
         @foreach (\App\Models\HousingProvider::TYPES as $key => $meta)
             <a href="{{ route('housing.providers', ['type' => $key]) }}"
-               class="text-xs px-3 py-1.5 rounded-full border transition
+               class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition
                       {{ $type === $key ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                {{ $meta['emoji'] }} {{ $meta['label'] }}
+                {!! e_icon($meta['emoji'] ?? '', 'w-3.5 h-3.5') !!} {{ $meta['label'] }}
             </a>
         @endforeach
     </div>
@@ -84,7 +84,7 @@
     @if ($grouped->has('private_chain') && (! $type || $type === 'private_chain'))
         <section>
             <div class="flex items-baseline justify-between mb-4">
-                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">🏢 {{ __('Private Dorm Companies') }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2"><x-svg-icon name="briefcase" class="w-7 h-7 text-emerald-700" /> {{ __('Private Dorm Companies') }}</h2>
                 <span class="text-xs text-gray-500">{{ __(':count companies', ['count' => $grouped['private_chain']->count()]) }}</span>
             </div>
             <p class="text-sm text-gray-600 mb-4 max-w-3xl">
@@ -102,11 +102,12 @@
     @if ($grouped->has('studierendenwerk') && (! $type || $type === 'studierendenwerk'))
         <section>
             <div class="flex items-baseline justify-between mb-4">
-                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">🏛️ {{ __('Studierendenwerk (Public)') }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2"><x-svg-icon name="building-office" class="w-7 h-7 text-emerald-700" /> {{ __('Studierendenwerk (Public)') }}</h2>
                 <span class="text-xs text-gray-500">{{ __(':count regional bodies', ['count' => $grouped['studierendenwerk']->count()]) }}</span>
             </div>
-            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-5 text-sm text-amber-900">
-                ⚠️ {!! __('<strong>Apply early!</strong> Waiting list is 1–7 semesters. Apply as soon as you get your university acceptance; the process runs in parallel.') !!}
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-5 text-sm text-amber-900 flex items-start gap-2">
+                <x-svg-icon name="exclamation-triangle" class="w-5 h-5 flex-shrink-0 text-amber-600" />
+                <span>{!! __('<strong>Apply early!</strong> Waiting list is 1–7 semesters. Apply as soon as you get your university acceptance; the process runs in parallel.') !!}</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($grouped['studierendenwerk'] as $p)
@@ -119,7 +120,7 @@
     {{-- 3) PLATFORMLAR --}}
     @if ($grouped->has('platform') && (! $type || $type === 'platform'))
         <section>
-            <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">🌐 {{ __('Search Portals') }}</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2"><x-svg-icon name="globe" class="w-7 h-7 text-emerald-700" /> {{ __('Search Portals') }}</h2>
             <p class="text-sm text-gray-600 mb-4 max-w-3xl">
                 {{ __('Active portals for WG (shared apartment) and private rentals. WG-Gesucht is the #1 choice for international students.') }}
             </p>
@@ -133,13 +134,13 @@
 
     {{-- CTA --}}
     <div class="bg-gradient-to-r from-emerald-700 to-teal-600 text-white rounded-xl p-8 text-center">
-        <h3 class="text-2xl font-bold mb-2">🏠 {{ __('Which city has which option?') }}</h3>
+        <h3 class="text-2xl font-bold mb-2 inline-flex items-center gap-2 justify-center"><x-svg-icon name="home" class="w-7 h-7" /> {{ __('Which city has which option?') }}</h3>
         <p class="text-emerald-100 mb-4 max-w-2xl mx-auto">
             {{ __('To compare dorm options by city, go to the Cities page or jump directly to the city you want to move to.') }}
         </p>
         <a href="{{ route('cities.index') }}"
-           class="inline-block bg-white text-emerald-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">
-            🏙️ {{ __('City Comparison') }} →
+           class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">
+            <x-svg-icon name="building-office" class="w-5 h-5" /> {{ __('City Comparison') }} →
         </a>
     </div>
 </div>

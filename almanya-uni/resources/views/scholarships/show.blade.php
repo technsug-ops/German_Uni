@@ -58,8 +58,8 @@
         @endif
 
         @if ($scholarship->removed_at)
-            <div class="mt-4 inline-block px-3 py-2 rounded-lg bg-rose-500/30 ring-1 ring-rose-200 text-sm">
-                ⚠️ {{ __('This scholarship was not seen in the last DAAD database sync (:date). It may no longer be active.', ['date' => $scholarship->removed_at->format('d M Y')]) }}
+            <div class="mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-rose-500/30 ring-1 ring-rose-200 text-sm">
+                <x-svg-icon name="exclamation-triangle" class="w-4 h-4 flex-shrink-0" /> <span>{{ __('This scholarship was not seen in the last DAAD database sync (:date). It may no longer be active.', ['date' => $scholarship->removed_at->format('d M Y')]) }}</span>
             </div>
         @endif
     </div>
@@ -74,7 +74,7 @@
             {{-- AÇIKLAMA --}}
             @if ($intro)
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">📝 {{ __('About the Scholarship') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="pencil" class="w-5 h-5 text-primary-600" /> {{ __('About the Scholarship') }}</h2>
                     <div class="prose prose-sm max-w-none text-gray-700">
                         {!! $intro !!}
                     </div>
@@ -84,12 +84,12 @@
             {{-- BAŞVURU KOŞULLARI — locale-aware tek dil + ikincisi toggle --}}
             @if ($qPrimary)
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">✅ {{ __('Eligibility') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-5 h-5 text-emerald-600" /> {{ __('Eligibility') }}</h2>
                     <div class="prose prose-sm max-w-none text-gray-700">{!! $qPrimary !!}</div>
                     @if ($qSecondary)
                         <details class="mt-4 text-sm">
-                            <summary class="cursor-pointer text-gray-600 hover:text-gray-900">
-                                🌐 {{ __('Show :lang version', ['lang' => $qSecondaryLabel]) }}
+                            <summary class="cursor-pointer text-gray-600 hover:text-gray-900 inline-flex items-center gap-1.5">
+                                <x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Show :lang version', ['lang' => $qSecondaryLabel]) }}
                             </summary>
                             <div class="prose prose-sm max-w-none text-gray-700 mt-3 pt-3 border-t border-gray-100">{!! $qSecondary !!}</div>
                         </details>
@@ -100,7 +100,7 @@
             {{-- DEADLINE --}}
             @if ($scholarship->deadline)
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">📅 {{ __('Application Dates') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="calendar" class="w-5 h-5 text-primary-600" /> {{ __('Application Dates') }}</h2>
                     @if ($scholarship->deadline->general_en ?? $scholarship->deadline->general_de)
                         <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4 text-sm text-gray-800">
                             {!! $scholarship->deadline->general_en ?? $scholarship->deadline->general_de !!}
@@ -127,15 +127,15 @@
             {{-- RESMİ DAAD LİNKİ --}}
             @if ($scholarship->detail_url)
                 <a href="{{ $scholarship->detail_url }}" target="_blank" rel="noopener noreferrer"
-                   class="block bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-5 text-center font-semibold transition">
-                    🔗 {{ __('See full details on the official DAAD scholarship page') }} →
+                   class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-5 text-center font-semibold transition">
+                    <x-svg-icon name="link" class="w-5 h-5" /> {{ __('See full details on the official DAAD scholarship page') }} →
                 </a>
             @endif
 
             {{-- İLGİLİ BURSLAR --}}
             @if ($related->isNotEmpty())
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 class="text-lg font-bold text-gray-900 mb-3">🔍 {{ __('Related Scholarships') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="search" class="w-5 h-5 text-primary-600" /> {{ __('Related Scholarships') }}</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         @foreach ($related as $r)
                             <a href="{{ route('scholarships.show', $r->slug) }}"

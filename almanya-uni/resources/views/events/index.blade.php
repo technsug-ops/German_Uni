@@ -17,15 +17,15 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ __('Events') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">📅 {{ __('Events') }}</h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3"><x-svg-icon name="calendar" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Events') }}</h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl mb-5">
             {{ __('Live webinars, workshops, university open days, panels and student meetups. All free (unless otherwise noted).') }}
         </p>
         <div class="flex flex-wrap items-center gap-3 text-sm">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">🎟️ {{ __('Free by default') }}</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">📝 {{ __('No registration required') }}</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">🎥 {{ __('Recording later') }}</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">💬 {{ __('Live Q&A') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25"><x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ __('Free by default') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25"><x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('No registration required') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25"><x-svg-icon name="play" class="w-3.5 h-3.5" /> {{ __('Recording later') }}</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25"><x-svg-icon name="chat-bubble" class="w-3.5 h-3.5" /> {{ __('Live Q&A') }}</span>
         </div>
     </div>
 </section>
@@ -43,9 +43,9 @@
             </a>
             @foreach ($categories as $cat)
                 <a href="{{ route('events.index', ['category' => $cat->slug]) }}"
-                   class="text-xs px-3 py-1.5 rounded-full border transition
+                   class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $category === $cat->slug ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                    {{ $cat->icon }} {{ $cat->name_tr }}
+                    {!! e_icon($cat->icon, 'w-3.5 h-3.5') !!} {{ $cat->name_tr }}
                 </a>
             @endforeach
         </div>
@@ -61,9 +61,9 @@
                     <span class="text-xs text-gray-400 mr-1">{{ __('Type:') }}</span>
                     @foreach ($typesInCat as $key => $meta)
                         <a href="{{ route('events.index', ['type' => $key]) }}"
-                           class="text-[11px] px-2.5 py-1 rounded-full border transition
+                           class="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full border transition
                                   {{ $type === $key ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' }}">
-                            {{ $meta['emoji'] }} {{ $meta['label'] }}
+                            {!! e_icon($meta['emoji'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
                         </a>
                     @endforeach
                 </div>
@@ -94,7 +94,7 @@
 
     {{-- UPCOMING --}}
     <section class="mb-10">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">🔜 {{ __('Upcoming events (:count)', ['count' => $upcoming->count()]) }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="arrow-right" class="w-6 h-6 text-indigo-600" /> {{ __('Upcoming events (:count)', ['count' => $upcoming->count()]) }}</h2>
         @if ($upcoming->isEmpty())
             <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
                 <p class="text-yellow-900">{{ __('No upcoming events at the moment. Subscribe to our newsletter to get announcements first.') }}</p>
@@ -111,7 +111,7 @@
     {{-- PAST --}}
     @if ($past->isNotEmpty())
         <section class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-700 mb-4">📚 {{ __('Past events') }}</h2>
+            <h2 class="text-2xl font-bold text-gray-700 mb-4 inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-6 h-6" /> {{ __('Past events') }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 opacity-75">
                 @foreach ($past as $e)
                     @include('events._card', ['event' => $e, 'isLive' => false, 'isPast' => true])
@@ -123,23 +123,23 @@
     {{-- Event types — tanıtım kartları --}}
     <section class="mt-14 mb-10">
         <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">🎯 {{ __('What kind of events do we run?') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2 justify-center"><x-svg-icon name="target" class="w-7 h-7 text-indigo-600" /> {{ __('What kind of events do we run?') }}</h2>
             <p class="text-sm text-gray-600 max-w-2xl mx-auto">{{ __('Six recurring formats — pick what fits your stage of the journey.') }}</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @php
                 $formats = [
-                    ['icon' => '🎙️', 'title' => __('Live webinar (60 min)'), 'desc' => __('30-min topic-deep dive + 30-min Q&A on Zoom. Most fundamentals (visa, Sperrkonto, Anabin) covered here.')],
-                    ['icon' => '🛠️', 'title' => __('Hands-on workshop (90 min)'), 'desc' => __('Bring your own laptop: live uni-assist application, Sperrkonto setup, real Bürgeramt appointment search.')],
-                    ['icon' => '🎤', 'title' => __('Expert panel (75 min)'), 'desc' => __('3-4 alumni or experts on one theme (Werkstudent law, scholarship strategy, German bureaucracy).')],
-                    ['icon' => '🤝', 'title' => __('Mentor matching night (60 min)'), 'desc' => __('Speed-dating-style: 6-min rotations with 5-6 mentors. Find your mentor in one evening.')],
-                    ['icon' => '🏫', 'title' => __('University open day (online)'), 'desc' => __('Direct calls with German uni admissions offices — TUM, LMU, Heidelberg, etc.')],
-                    ['icon' => '☕', 'title' => __('Student meetup (offline)'), 'desc' => __('In-person meetups in Berlin, Munich, Frankfurt, Hamburg. Free, casual, Turkish + English.')],
+                    ['icon' => 'chat-bubble', 'title' => __('Live webinar (60 min)'), 'desc' => __('30-min topic-deep dive + 30-min Q&A on Zoom. Most fundamentals (visa, Sperrkonto, Anabin) covered here.')],
+                    ['icon' => 'wrench-screwdriver', 'title' => __('Hands-on workshop (90 min)'), 'desc' => __('Bring your own laptop: live uni-assist application, Sperrkonto setup, real Bürgeramt appointment search.')],
+                    ['icon' => 'users', 'title' => __('Expert panel (75 min)'), 'desc' => __('3-4 alumni or experts on one theme (Werkstudent law, scholarship strategy, German bureaucracy).')],
+                    ['icon' => 'sparkles', 'title' => __('Mentor matching night (60 min)'), 'desc' => __('Speed-dating-style: 6-min rotations with 5-6 mentors. Find your mentor in one evening.')],
+                    ['icon' => 'building-office', 'title' => __('University open day (online)'), 'desc' => __('Direct calls with German uni admissions offices — TUM, LMU, Heidelberg, etc.')],
+                    ['icon' => 'cake', 'title' => __('Student meetup (offline)'), 'desc' => __('In-person meetups in Berlin, Munich, Frankfurt, Hamburg. Free, casual, Turkish + English.')],
                 ];
             @endphp
             @foreach ($formats as $f)
                 <div class="bg-white border border-gray-200 rounded-xl p-5 hover:border-indigo-300 transition">
-                    <div class="text-2xl mb-2">{{ $f['icon'] }}</div>
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 mb-2"><x-svg-icon :name="$f['icon']" class="w-5 h-5" /></div>
                     <h3 class="font-bold text-gray-900 text-base mb-1">{{ $f['title'] }}</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">{{ $f['desc'] }}</p>
                 </div>
@@ -150,7 +150,7 @@
     {{-- Nasıl katılırım (3 adım) --}}
     <section class="mb-10 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6 md:p-8">
         <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">📋 {{ __('How attendance works') }}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 inline-flex items-center gap-2 justify-center"><x-svg-icon name="list-bullet" class="w-7 h-7 text-indigo-600" /> {{ __('How attendance works') }}</h2>
             <p class="text-sm text-gray-600">{{ __('Three simple steps — no commitment, no spam.') }}</p>
         </div>
         <ol class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -181,12 +181,12 @@
     {{-- Speaker / öneri CTA --}}
     <section class="mb-10 bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-200 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
         <div>
-            <h2 class="text-xl md:text-2xl font-bold text-amber-900 mb-2">🎤 {{ __('Want to speak at an AlmanyaUni event?') }}</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-amber-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-6 h-6 text-amber-700" /> {{ __('Want to speak at an AlmanyaUni event?') }}</h2>
             <p class="text-sm text-amber-800 max-w-2xl">{{ __('Are you an alum, professional, or topic expert? We run 2-3 events a month — apply to host one. Your topic, our audience, free promotion.') }}</p>
         </div>
         <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Speaker%20Application"
            class="shrink-0 inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition whitespace-nowrap">
-            ✍ {{ __('Apply as speaker') }}
+            <x-svg-icon name="pencil" class="w-4 h-4" /> {{ __('Apply as speaker') }}
         </a>
     </section>
 

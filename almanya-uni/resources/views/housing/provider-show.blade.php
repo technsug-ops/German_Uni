@@ -28,16 +28,16 @@
         </nav>
 
         <div class="flex items-start gap-5">
-            <div class="w-20 h-20 md:w-28 md:h-28 rounded-lg bg-white/15 backdrop-blur flex items-center justify-center text-4xl md:text-5xl shadow-xl">
+            <div class="w-20 h-20 md:w-28 md:h-28 rounded-lg bg-white/15 backdrop-blur flex items-center justify-center shadow-xl text-white">
                 @if ($provider->logo_url)
                     <img src="{{ $provider->logo_url }}" alt="" class="w-full h-full object-contain p-2">
                 @else
-                    {{ $provider->type_emoji }}
+                    {!! e_icon($provider->type_emoji, 'w-12 h-12 md:w-14 md:h-14') !!}
                 @endif
             </div>
             <div class="flex-1 min-w-0">
-                <span class="inline-block text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/20 mb-2">
-                    {{ $provider->type_emoji }} {{ $provider->type_label }}
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/20 mb-2">
+                    {!! e_icon($provider->type_emoji, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
                 </span>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-1">{{ $provider->name }}</h1>
                 @if ($provider->price_min)
@@ -60,7 +60,7 @@
         {{-- ÖZELLİKLER --}}
         @if (! empty($provider->features))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">✨ {{ __('Features') }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="sparkles" class="w-5 h-5 text-emerald-600" /> {{ __('Features') }}</h2>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($provider->features as $f)
                         <span class="text-xs px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">{{ str_replace('_', ' ', $f) }}</span>
@@ -72,7 +72,7 @@
         {{-- ŞEHİR LİSTESİ --}}
         @if ($citiesWithProvider->isNotEmpty())
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">📍 {{ __('Cities where this provider operates (:count)', ['count' => $citiesWithProvider->count()]) }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="map-pin" class="w-5 h-5 text-emerald-600" /> {{ __('Cities where this provider operates (:count)', ['count' => $citiesWithProvider->count()]) }}</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
                     @foreach ($citiesWithProvider as $c)
                         <a href="{{ route('cities.show', $c->slug) }}"
@@ -87,7 +87,7 @@
             </section>
         @elseif (! empty($provider->cities) && is_array($provider->cities))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">📍 {{ __('Cities') }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="map-pin" class="w-5 h-5 text-emerald-600" /> {{ __('Cities') }}</h2>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($provider->cities as $c)
                         <span class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700">{{ $c }}</span>
@@ -104,7 +104,7 @@
                     @foreach ($related as $r)
                         <a href="{{ route('housing.provider-show', $r->slug) }}"
                            class="flex items-center gap-3 p-3 border border-gray-100 rounded hover:bg-gray-50 transition">
-                            <span class="text-2xl">{{ $r->type_emoji }}</span>
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600">{!! e_icon($r->type_emoji, 'w-5 h-5') !!}</span>
                             <div class="flex-1 min-w-0">
                                 <p class="font-semibold text-sm text-gray-900 truncate">{{ $r->name }}</p>
                                 @if ($r->price_min)
@@ -120,7 +120,7 @@
 
     <aside class="space-y-4">
         <div class="bg-white border-2 border-emerald-500 rounded-xl p-6 sticky top-20 shadow-lg">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">📋 {{ __('Quick Info') }}</h3>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4 inline-flex items-center gap-1.5"><x-svg-icon name="list-bullet" class="w-4 h-4" /> {{ __('Quick Info') }}</h3>
 
             <div class="space-y-3 text-sm">
                 @if ($provider->price_min)
@@ -158,24 +158,27 @@
             @if ($provider->website)
                 <a href="{{ $provider->website }}"
                    target="_blank" rel="noopener nofollow"
-                   class="block mt-5 text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md">
-                    🌐 {{ __('Go to Official Site') }}
+                   class="flex items-center justify-center gap-2 mt-5 text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md">
+                    <x-svg-icon name="globe" class="w-5 h-5" /> {{ __('Go to Official Site') }}
                 </a>
                 <p class="text-[11px] text-gray-500 text-center mt-2">{{ __('Application is always made on the official site') }}</p>
             @endif
         </div>
 
         @if ($provider->type === 'studierendenwerk')
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-900">
-                💡 <strong>{{ __('Tip:') }}</strong> {{ __('Studierendenwerk applications have long waiting lists. Apply as soon as you receive your university admission — and review private companies in parallel.') }}
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-900 flex items-start gap-2">
+                <x-svg-icon name="light-bulb" class="w-5 h-5 flex-shrink-0 text-amber-600" />
+                <span><strong>{{ __('Tip:') }}</strong> {{ __('Studierendenwerk applications have long waiting lists. Apply as soon as you receive your university admission — and review private companies in parallel.') }}</span>
             </div>
         @elseif ($provider->type === 'private_chain')
-            <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 text-sm text-indigo-900">
-                💡 <strong>{{ __('Tip:') }}</strong> {{ __('Private companies\' inventory changes by the minute. On their official sites, use the "Verfügbar / Available" filter to see open rooms.') }}
+            <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 text-sm text-indigo-900 flex items-start gap-2">
+                <x-svg-icon name="light-bulb" class="w-5 h-5 flex-shrink-0 text-indigo-600" />
+                <span><strong>{{ __('Tip:') }}</strong> {{ __('Private companies\' inventory changes by the minute. On their official sites, use the "Verfügbar / Available" filter to see open rooms.') }}</span>
             </div>
         @else
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-900">
-                💡 <strong>{{ __('Tip:') }}</strong> {{ __('On WG-Gesucht, a profile photo + short intro in German/English increases your reply rate 3x.') }}
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-900 flex items-start gap-2">
+                <x-svg-icon name="light-bulb" class="w-5 h-5 flex-shrink-0 text-amber-600" />
+                <span><strong>{{ __('Tip:') }}</strong> {{ __('On WG-Gesucht, a profile photo + short intro in German/English increases your reply rate 3x.') }}</span>
             </div>
         @endif
     </aside>

@@ -21,8 +21,8 @@
             <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ __('Eligibility Checker') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            🎓 {{ __('Is your diploma recognized in Germany?') }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3">
+            <x-svg-icon name="academic-cap" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Is your diploma recognized in Germany?') }}
         </h1>
         <p class="text-lg md:text-xl text-blue-100 max-w-3xl">
             {{ __('Free 30-second check — based on official Anabin classification. Find out if you can apply directly, need a Studienkolleg, or other requirements.') }}
@@ -99,16 +99,16 @@
     @if ($result)
         @php
             $verdictMeta = match ($result['verdict']) {
-                'ok'             => ['emoji' => '✅', 'color' => 'emerald', 'label' => __('You can apply directly'), 'desc' => __('Your diploma is recognized — proceed with university application.')],
-                'conditional'    => ['emoji' => '🟡', 'color' => 'amber',   'label' => __('Conditional eligibility'), 'desc' => __('Some requirements need attention — see below.')],
-                'needs_prep'     => ['emoji' => '📚', 'color' => 'blue',    'label' => __('Preparation required'), 'desc' => __('You need a foundation course (Studienkolleg) or equivalent before applying.')],
-                'not_eligible'   => ['emoji' => '❌', 'color' => 'rose',    'label' => __('Path not viable'), 'desc' => __('Your current path does not match the target — see suggestions.')],
+                'ok'             => ['icon' => 'check-circle', 'color' => 'emerald', 'label' => __('You can apply directly'), 'desc' => __('Your diploma is recognized — proceed with university application.')],
+                'conditional'    => ['icon' => 'exclamation-triangle', 'color' => 'amber',   'label' => __('Conditional eligibility'), 'desc' => __('Some requirements need attention — see below.')],
+                'needs_prep'     => ['icon' => 'book-open', 'color' => 'blue',    'label' => __('Preparation required'), 'desc' => __('You need a foundation course (Studienkolleg) or equivalent before applying.')],
+                'not_eligible'   => ['icon' => 'x-circle', 'color' => 'rose',    'label' => __('Path not viable'), 'desc' => __('Your current path does not match the target — see suggestions.')],
             };
         @endphp
 
         <section class="bg-{{ $verdictMeta['color'] }}-50 border-2 border-{{ $verdictMeta['color'] }}-300 rounded-2xl p-6 md:p-8 mb-6" id="result">
             <div class="flex items-start gap-4 mb-5">
-                <span class="text-5xl">{{ $verdictMeta['emoji'] }}</span>
+                <span class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-full bg-{{ $verdictMeta['color'] }}-100 text-{{ $verdictMeta['color'] }}-700"><x-svg-icon :name="$verdictMeta['icon']" class="w-8 h-8" /></span>
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wider text-{{ $verdictMeta['color'] }}-700 mb-1">{{ __('Result') }}</p>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-{{ $verdictMeta['color'] }}-900">{{ $verdictMeta['label'] }}</h2>
@@ -152,13 +152,13 @@
             {{-- Required steps --}}
             <div class="flex flex-wrap gap-2 mt-5">
                 @if ($result['needs_studienkolleg'])
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">📚 {{ __('Studienkolleg required') }}</span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Studienkolleg required') }}</span>
                 @endif
                 @if ($result['needs_aps'])
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">📜 {{ __('APS certificate required') }}</span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('APS certificate required') }}</span>
                 @endif
                 @if ($result['needs_testas'])
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-100 text-cyan-800 text-xs font-semibold">📝 {{ __('TestAS recommended') }}</span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-100 text-cyan-800 text-xs font-semibold"><x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('TestAS recommended') }}</span>
                 @endif
             </div>
         </section>
@@ -168,19 +168,19 @@
             <h3 class="text-xl font-bold text-gray-900 mb-4">{{ __('Recommended next steps') }}</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <a href="https://anabin.kmk.org/anabin.html" target="_blank" rel="noopener nofollow" class="block bg-gradient-to-br from-blue-50 to-white border border-blue-200 hover:border-blue-400 rounded-xl p-4 transition">
-                    <p class="font-bold text-gray-900 mb-1">🔍 {{ __('Verify on Anabin (official)') }}</p>
+                    <p class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="search" class="w-4 h-4 text-blue-600" /> {{ __('Verify on Anabin (official)') }}</p>
                     <p class="text-xs text-gray-600">{{ __('Cross-check the official KMK database for your specific university + diploma.') }}</p>
                 </a>
                 <a href="{{ route('tools.recommendation') }}" class="block bg-gradient-to-br from-purple-50 to-white border border-purple-200 hover:border-purple-400 rounded-xl p-4 transition">
-                    <p class="font-bold text-gray-900 mb-1">🎯 {{ __('University Match Quiz') }}</p>
+                    <p class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="target" class="w-4 h-4 text-purple-600" /> {{ __('University Match Quiz') }}</p>
                     <p class="text-xs text-gray-600">{{ __('5 questions → universities that fit your profile.') }}</p>
                 </a>
                 <a href="{{ route('tools.blocked-account') }}" class="block bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 hover:border-emerald-400 rounded-xl p-4 transition">
-                    <p class="font-bold text-gray-900 mb-1">🏦 {{ __('Blocked Account Finder') }}</p>
+                    <p class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="building-library" class="w-4 h-4 text-emerald-600" /> {{ __('Blocked Account Finder') }}</p>
                     <p class="text-xs text-gray-600">{{ __('Required €11,904 for the student visa — compare providers.') }}</p>
                 </a>
                 <a href="{{ route('tools.deadlines') }}" class="block bg-gradient-to-br from-amber-50 to-white border border-amber-200 hover:border-amber-400 rounded-xl p-4 transition">
-                    <p class="font-bold text-gray-900 mb-1">📅 {{ __('Application Deadlines') }}</p>
+                    <p class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="calendar" class="w-4 h-4 text-amber-600" /> {{ __('Application Deadlines') }}</p>
                     <p class="text-xs text-gray-600">{{ __('Winter (mid-July) + Summer (mid-January) intake calendar.') }}</p>
                 </a>
             </div>

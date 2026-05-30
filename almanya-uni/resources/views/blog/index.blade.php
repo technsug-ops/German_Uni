@@ -32,7 +32,7 @@
                        placeholder="{{ !empty($active_category) ? __('Search in :cat...', ['cat' => $active_category->name]) : __('Search blog posts (title or content)...') }}"
                        minlength="2" maxlength="80"
                        class="w-full pl-11 pr-32 py-3 text-gray-900 placeholder-gray-500 bg-white border-2 border-white/40 rounded-lg focus:border-white focus:ring-2 focus:ring-white/40 shadow-md">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><x-svg-icon name="search" class="w-4 h-4" /></span>
                 <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-primary-700 hover:bg-primary-800 text-white font-semibold px-4 py-2 rounded text-sm transition">
                     {{ __('Search') }}
                 </button>
@@ -68,14 +68,14 @@
         <div class="flex items-center gap-2">
             <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Sort:') }}</span>
             @foreach ([
-                'newest'  => ['label' => __('Newest'),  'icon' => '🆕'],
-                'oldest'  => ['label' => __('Oldest'),  'icon' => '📅'],
-                'popular' => ['label' => __('Popular'), 'icon' => '🔥'],
+                'newest'  => ['label' => __('Newest'),  'icon' => 'sparkles'],
+                'oldest'  => ['label' => __('Oldest'),  'icon' => 'calendar'],
+                'popular' => ['label' => __('Popular'), 'icon' => 'fire'],
             ] as $key => $meta)
                 @php $isActive = ($filters['sort'] ?? 'newest') === $key; @endphp
                 <a href="{{ $buildUrl(['sort' => $key === 'newest' ? null : $key]) }}"
                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $isActive ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                    <span>{{ $meta['icon'] }}</span> {{ $meta['label'] }}
+                    <x-svg-icon :name="$meta['icon']" class="w-3.5 h-3.5" /> {{ $meta['label'] }}
                 </a>
             @endforeach
         </div>
@@ -86,14 +86,14 @@
         <div class="flex items-center gap-2">
             <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Length:') }}</span>
             @foreach ([
-                'short'  => ['label' => __('Short (≤5 min)'), 'icon' => '⚡'],
-                'medium' => ['label' => __('Medium (5–15 min)'), 'icon' => '📖'],
-                'long'   => ['label' => __('Long (>15 min)'),  'icon' => '🧭'],
+                'short'  => ['label' => __('Short (≤5 min)'), 'icon' => 'rocket-launch'],
+                'medium' => ['label' => __('Medium (5–15 min)'), 'icon' => 'book-open'],
+                'long'   => ['label' => __('Long (>15 min)'),  'icon' => 'compass'],
             ] as $key => $meta)
                 @php $isActive = ($filters['length'] ?? null) === $key; @endphp
                 <a href="{{ $buildUrl(['length' => $isActive ? null : $key]) }}"
                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $isActive ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                    <span>{{ $meta['icon'] }}</span> {{ $meta['label'] }}
+                    <x-svg-icon :name="$meta['icon']" class="w-3.5 h-3.5" /> {{ $meta['label'] }}
                 </a>
             @endforeach
         </div>
@@ -113,7 +113,7 @@
     @if (! empty($authorsList) && $authorsList->isNotEmpty())
         <div class="bg-white border border-gray-200 rounded-xl p-4 mb-6">
             <div class="flex items-center gap-2 mb-3">
-                <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">✍️ {{ __('Filter by author:') }}</span>
+                <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide inline-flex items-center gap-1.5"><x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('Filter by author:') }}</span>
                 @if (! empty($filters['author']))
                     <a href="{{ $buildUrl(['author' => null]) }}" class="text-[11px] text-rose-600 hover:underline">✕ {{ __('All authors') }}</a>
                 @endif
@@ -147,7 +147,7 @@
                     :title="__('No posts yet.')"
                     :description="__('New content for this category is coming soon. Browse our FAQ in the meantime.')"
                     :actions="[
-                        ['label' => __('FAQ'), 'url' => route('faqs.index'), 'primary' => true, 'icon' => '❓'],
+                        ['label' => __('FAQ'), 'url' => route('faqs.index'), 'primary' => true],
                         ['label' => __('All blog posts'), 'url' => route('blog.index')],
                     ]"
                 />

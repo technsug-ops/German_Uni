@@ -9,11 +9,11 @@
 
 @php
     $typeLabels = [
-        'ausbildung'    => ['Ausbildung', '🛠️', 'green'],
-        'studienberuf'  => ['Studienberuf', '🎓', 'blue'],
-        'weiterbildung' => ['Weiterbildung', '📈', 'purple'],
-        'grundberuf'    => ['Grundberuf', '🧱', 'amber'],
-        'other'         => [__('Other'), '📚', 'gray'],
+        'ausbildung'    => ['Ausbildung', 'wrench-screwdriver', 'green'],
+        'studienberuf'  => ['Studienberuf', 'academic-cap', 'blue'],
+        'weiterbildung' => ['Weiterbildung', 'chart-bar', 'purple'],
+        'grundberuf'    => ['Grundberuf', 'briefcase', 'amber'],
+        'other'         => [__('Other'), 'book-open', 'gray'],
     ];
     $hasFilter = (bool) ($filters['q'] || $filters['type'] || $filters['field']);
 @endphp
@@ -46,8 +46,8 @@
                 <div class="md:col-span-3">
                     <select name="type" onchange="this.form.submit()" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 bg-white">
                         <option value="">{{ __('All types') }}</option>
-                        @foreach ($typeLabels as $k => [$label, $emoji, $color])
-                            <option value="{{ $k }}" @selected($filters['type'] === $k)>{{ $emoji }} {{ $label }} ({{ $totals[$k] ?? 0 }})</option>
+                        @foreach ($typeLabels as $k => [$label, $iconName, $color])
+                            <option value="{{ $k }}" @selected($filters['type'] === $k)>{{ $label }} ({{ $totals[$k] ?? 0 }})</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,9 +69,9 @@
                     </a>
                     @foreach ($fields as $f)
                         <a href="{{ route('professions.index', array_filter(['q' => $filters['q'], 'type' => $filters['type'], 'field' => $f->slug])) }}"
-                           class="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full border transition
+                           class="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border transition
                                   {{ $filters['field'] === $f->slug ? 'bg-primary-600 text-white border-primary-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                            <span>{{ $f->icon }}</span>
+                            {!! e_icon($f->icon, 'w-3.5 h-3.5') !!}
                             <span>{{ $f->name }}</span>
                             <span class="opacity-60">({{ $f->professions_count }})</span>
                         </a>

@@ -36,8 +36,8 @@
                     {{ $provider->name }}
                 </h1>
                 <p class="mt-1 text-blue-100">
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/15 ring-1 ring-white/20 text-sm">
-                        {{ $provider->type_emoji }} {{ $provider->type_label }}
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/15 ring-1 ring-white/20 text-sm">
+                        {!! e_icon($provider->type_emoji, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
                     </span>
                     @if ($provider->backend_bank)
                         <span class="ml-2 text-sm opacity-90">{{ __('Bank:') }} {{ $provider->backend_bank }}</span>
@@ -56,7 +56,7 @@
     <div class="space-y-8">
         {{-- FACT BOX --}}
         <section class="bg-white border border-gray-200 rounded-xl p-6">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">💰 {{ __('Pricing') }}</h2>
+            <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="banknotes" class="w-5 h-5 text-primary-600" /> {{ __('Pricing') }}</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div>
                     <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">{{ __('Setup fee') }}</p>
@@ -92,7 +92,7 @@
         {{-- SAĞLIK SİGORTASI --}}
         @if ($provider->combo_insurance)
             <section class="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-emerald-900 mb-2">🏥 {{ __('Health Insurance Combo') }}</h2>
+                <h2 class="text-xl font-bold text-emerald-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="heart" class="w-5 h-5 text-emerald-600" /> {{ __('Health Insurance Combo') }}</h2>
                 <p class="text-emerald-800">
                     {{ __('This provider offers a health insurance combo package together with the blocked account.') }}
                     @if ($provider->insurance_provider_name)
@@ -140,7 +140,7 @@
         {{-- UZUN AÇIKLAMA --}}
         @if ($provider->description_long)
             <section class="prose prose-sm max-w-none bg-white border border-gray-200 rounded-xl p-6">
-                <h2>📖 {{ __('Detailed Review') }}</h2>
+                <h2 class="inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-5 h-5 text-primary-600" /> {{ __('Detailed Review') }}</h2>
                 {!! \Illuminate\Support\Str::markdown($provider->description_long) !!}
             </section>
         @endif
@@ -148,7 +148,7 @@
         {{-- EK ÖZELLİKLER --}}
         @if (is_array($provider->features) && count($provider->features))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">✨ {{ __('Additional Features') }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="sparkles" class="w-5 h-5 text-primary-600" /> {{ __('Additional Features') }}</h2>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($provider->features as $f)
                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-800">{{ $f }}</span>
@@ -162,7 +162,7 @@
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6 space-y-4">
                 @if ($provider->visa_recognition_note)
                     <div>
-                        <h3 class="font-bold text-blue-900 mb-1">🛂 {{ __('Visa Recognition') }}</h3>
+                        <h3 class="font-bold text-blue-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="shield-check" class="w-4 h-4" /> {{ __('Visa Recognition') }}</h3>
                         <p class="text-blue-800">{{ $provider->visa_recognition_note }}</p>
                     </div>
                 @endif
@@ -218,7 +218,7 @@
             <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm">
                 @if ($provider->has_mobile_app)
                     <div class="flex items-center gap-2 text-gray-700">
-                        <span>📱</span><span>{{ __('Mobile app') }}</span>
+                        <x-svg-icon name="computer" class="w-4 h-4 text-gray-500" /><span>{{ __('Mobile app') }}</span>
                     </div>
                 @endif
                 @if ($provider->bafin_licensed)
@@ -228,7 +228,7 @@
                 @endif
                 @if (is_array($provider->supported_languages) && count($provider->supported_languages))
                     <div class="text-gray-700">
-                        <p class="font-semibold mb-1">🌐 {{ __('Support languages') }}</p>
+                        <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="globe" class="w-4 h-4" /> {{ __('Support languages') }}</p>
                         <div class="flex flex-wrap gap-1">
                             @foreach ($provider->supported_languages as $lang)
                                 <span class="px-2 py-0.5 text-xs rounded bg-gray-100 uppercase">{{ $lang }}</span>

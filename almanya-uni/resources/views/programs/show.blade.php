@@ -68,7 +68,7 @@
             @if ($program->field)
                 <span class="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full"
                       style="background-color: {{ $program->field->color }}; color: white;">
-                    {{ $program->field->icon }} {{ $program->field->name }}
+                    {!! e_icon($program->field->icon, 'w-3.5 h-3.5') !!} {{ $program->field->name }}
                 </span>
             @endif
         </div>
@@ -92,7 +92,7 @@
             @if($program->university->city)
                 <a href="{{ route('cities.show', $program->university->city->slug) }}"
                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25 text-sm">
-                    📍 {{ $program->university->city->name }}
+                    <x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $program->university->city->name }}
                     @if($program->university->city->state) · {{ $program->university->city->state->name }}@endif
                 </a>
             @endif
@@ -131,7 +131,7 @@
                     </details>
                 @else
                     <div class="flex items-start gap-3 mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-900">
-                        <span class="text-lg">ℹ️</span>
+                        <x-svg-icon name="information-circle" class="w-5 h-5 flex-shrink-0 text-yellow-600" />
                         <p>{{ __('A translated description for this program is not ready yet — the original English text is shown below.') }}</p>
                     </div>
                     <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Program Description') }} <span class="text-sm font-normal text-gray-500">({{ __('English') }})</span></h2>
@@ -144,7 +144,7 @@
         @if ($program->qualification_requirements_tr)
             <section class="bg-accent-50 border border-accent-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-accent-900 mb-3 flex items-center gap-2">
-                    📋 {{ __('Application Requirements') }}
+                    <x-svg-icon name="list-bullet" class="w-6 h-6" /> {{ __('Application Requirements') }}
                 </h2>
                 <div class="text-accent-900 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! nl2br(e($program->qualification_requirements_tr)) !!}</div>
             </section>
@@ -154,7 +154,7 @@
         @if ($program->language_requirements_tr)
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    🗣️ {{ __('Language Requirements') }}
+                    <x-svg-icon name="language" class="w-6 h-6" /> {{ __('Language Requirements') }}
                 </h2>
                 <div class="text-blue-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($program->language_requirements_tr)) !!}</div>
             </section>
@@ -164,7 +164,7 @@
         @if ($program->required_documents_tr)
             <section class="bg-purple-50 border border-purple-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-purple-900 mb-3 flex items-center gap-2">
-                    📑 {{ __('Required Documents') }}
+                    <x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Required Documents') }}
                 </h2>
                 <div class="text-purple-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($program->required_documents_tr)) !!}</div>
             </section>
@@ -174,7 +174,7 @@
         @if (! empty($program->subjects) || $program->field)
             <section class="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-emerald-900 mb-2 flex items-center gap-2">
-                    💼 {{ __('Which Professions Does This Program Open Up?') }}
+                    <x-svg-icon name="briefcase" class="w-6 h-6" /> {{ __('Which Professions Does This Program Open Up?') }}
                 </h2>
                 <p class="text-sm text-emerald-800 mb-4">
                     {{ __('Related profession searches from Bundesagentur für Arbeit (BERUFENET) data:') }}
@@ -182,8 +182,8 @@
                 <div class="flex flex-wrap gap-2">
                     @if ($program->field)
                         <a href="{{ route('professions.index', ['q' => $program->field->name]) }}"
-                           class="inline-block bg-white border border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50 text-emerald-900 px-3 py-1.5 rounded-full text-sm font-semibold transition">
-                            🔎 {{ __('See :field professions', ['field' => $program->field->name]) }}
+                           class="inline-flex items-center gap-1.5 bg-white border border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50 text-emerald-900 px-3 py-1.5 rounded-full text-sm font-semibold transition">
+                            <x-svg-icon name="search" class="w-3.5 h-3.5" /> {{ __('See :field professions', ['field' => $program->field->name]) }}
                         </a>
                     @endif
                     @foreach (array_slice($program->subjects ?? [], 0, 4) as $subj)
@@ -358,7 +358,7 @@
 
                 {{-- NC durumu --}}
                 <div class="pt-2 mt-3 border-t border-gray-100">
-                    <p class="text-xs text-gray-500 mb-1">🔓 {{ __('NC (Zulassungsmodus)') }}</p>
+                    <p class="text-xs text-gray-500 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="lock-closed" class="w-3 h-3" /> {{ __('NC (Zulassungsmodus)') }}</p>
                     @if ($program->admission_mode === 'zulassungsfrei')
                         <p class="text-sm font-semibold text-emerald-700">{{ __('NC Frei (Zulassungsfrei)') }} ✓</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ __('You can apply to this program without an NC.') }}</p>
@@ -413,7 +413,7 @@
         @if (!empty($city_cost))
             <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                 <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
-                    <h3 class="text-xl font-bold text-gray-900">💶 {{ $program->university->city->name }} — {{ $city_cost['h'] ?? __('Monthly cost of living') }}</h3>
+                    <h3 class="text-xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="currency-euro" class="w-6 h-6 text-primary-600" /> {{ $program->university->city->name }} — {{ $city_cost['h'] ?? __('Monthly cost of living') }}</h3>
                     <a href="{{ route('cities.show', $program->university->city->slug) }}"
                        class="text-sm text-primary-600 hover:underline font-semibold">{{ __('See city guide') }} →</a>
                 </div>
@@ -438,17 +438,23 @@
         @if (!empty($city_places) && !empty($city_places['items']))
             <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                 <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
-                    <h3 class="text-xl font-bold text-gray-900">📍 {{ $program->university->city->name }} — {{ __('Places to Visit') }}</h3>
+                    <h3 class="text-xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="map-pin" class="w-6 h-6 text-primary-600" /> {{ $program->university->city->name }} — {{ __('Places to Visit') }}</h3>
                     <a href="{{ route('cities.show', $program->university->city->slug) }}"
                        class="text-sm text-primary-600 hover:underline font-semibold">{{ __('See all') }} →</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     @php
-                        $icons = ['library' => '📚', 'museum' => '🏛️', 'square' => '🏙️', 'park' => '🌳', 'landmark' => '🗿', 'cafe' => '☕'];
+                        $placeIconMap = ['library' => 'book-open', 'museum' => 'building-office', 'square' => 'building-office', 'park' => 'leaf', 'landmark' => 'flag', 'cafe' => 'cake'];
                     @endphp
                     @foreach (array_slice($city_places['items'], 0, 4) as $place)
                         <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-3 ring-1 ring-gray-200">
-                            <div class="text-xl shrink-0">{{ $place['icon'] ?? $icons[$place['type'] ?? ''] ?? '📍' }}</div>
+                            <div class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-50 text-primary-600">
+                                @if (! empty($place['icon']))
+                                    {!! e_icon($place['icon'], 'w-4 h-4') !!}
+                                @else
+                                    <x-svg-icon :name="$placeIconMap[$place['type'] ?? ''] ?? 'map-pin'" class="w-4 h-4" />
+                                @endif
+                            </div>
                             <div class="flex-1 min-w-0">
                                 <div class="font-semibold text-gray-900 text-sm">{{ $place['name'] ?? '' }}</div>
                                 @if (!empty($place['description']))
@@ -465,7 +471,7 @@
         @if (!empty($uni_faq) && !empty($uni_faq['items']))
             <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                 <div class="flex items-baseline justify-between flex-wrap gap-2 mb-3">
-                    <h3 class="text-xl font-bold text-gray-900">❓ {{ $program->university->display_name }} — {{ __('Frequently Asked') }}</h3>
+                    <h3 class="text-xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="question-mark-circle" class="w-6 h-6 text-primary-600" /> {{ $program->university->display_name }} — {{ __('Frequently Asked') }}</h3>
                     <a href="{{ route('universities.show', $program->university->slug) }}"
                        class="text-sm text-primary-600 hover:underline font-semibold">{{ __('See all') }} →</a>
                 </div>

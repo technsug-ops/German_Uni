@@ -75,8 +75,9 @@
             <span class="opacity-60">›</span>
             <span class="text-white">{{ $entry['title'] }}</span>
         </nav>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            {{ $entry['icon'] }} {{ $entry['title'] }}
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3 flex-wrap">
+            <span class="inline-flex">{!! e_icon($entry['icon'], 'w-8 h-8 md:w-10 md:h-10') !!}</span>
+            <span>{{ $entry['title'] }}</span>
         </h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
             {{ $entry['short'] }}
@@ -147,7 +148,7 @@
                     <a href="{{ $entry['official_url'] }}" target="_blank" rel="noopener nofollow"
                        class="inline-flex items-center gap-2 text-indigo-700 hover:text-indigo-900 font-semibold"
                        title="{{ $entry['title'] }} — {{ __('Official site') }}">
-                        🔗 {{ parse_url($entry['official_url'], PHP_URL_HOST) }} →
+                        <x-svg-icon name="link" class="w-4 h-4" /> {{ parse_url($entry['official_url'], PHP_URL_HOST) }} →
                     </a>
                 </div>
             @endif
@@ -156,7 +157,7 @@
         {{-- FAQ section --}}
         @if (! empty($entry['faq']))
             <section class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">❓ {{ __('Frequently Asked Questions') }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="question-mark-circle" class="w-6 h-6 text-indigo-600" /> {{ __('Frequently Asked Questions') }}</h2>
                 <div class="space-y-3">
                     @foreach ($entry['faq'] as $i => $item)
                         <details class="group bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg p-4 transition cursor-pointer">
@@ -177,13 +178,13 @@
         {{-- Related entries --}}
         @if (! empty($related))
             <section class="bg-white border border-gray-200 rounded-2xl p-5">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3">🔗 {{ __('Related terms') }}</h2>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-600 mb-3 inline-flex items-center gap-1.5"><x-svg-icon name="link" class="w-3.5 h-3.5" /> {{ __('Related terms') }}</h2>
                 <div class="space-y-2">
                     @foreach ($related as $rel)
                         <a href="{{ route('glossary.show', $rel['slug']) }}"
                            title="{{ $rel['title'] }}"
                            class="group flex items-start gap-3 p-3 bg-gray-50 hover:bg-indigo-50 rounded-lg transition">
-                            <span class="text-2xl shrink-0">{{ $rel['icon'] }}</span>
+                            <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600">{!! e_icon($rel['icon'], 'w-5 h-5') !!}</span>
                             <div class="min-w-0">
                                 <p class="font-semibold text-gray-900 group-hover:text-indigo-700 leading-tight">{{ $rel['title'] }}</p>
                                 <p class="text-xs text-gray-600 line-clamp-2 mt-0.5">{{ $rel['short'] }}</p>
@@ -196,12 +197,12 @@
 
         {{-- Tools CTA --}}
         <section class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-5">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-700 mb-3">🛠️ {{ __('Related Tools') }}</h2>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-700 mb-3 inline-flex items-center gap-1.5"><x-svg-icon name="wrench-screwdriver" class="w-3.5 h-3.5" /> {{ __('Related Tools') }}</h2>
             <ul class="space-y-2 text-sm">
-                <li><a href="{{ route('tools.eligibility-checker') }}" class="text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Eligibility Checker') }}">🎓 {{ __('Eligibility Checker') }}</a></li>
-                <li><a href="{{ route('tools.deadlines') }}" class="text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Application Calendar') }}">📅 {{ __('Application Calendar') }}</a></li>
-                <li><a href="{{ route('tools.cost-of-living') }}" class="text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Cost of Living') }}">💰 {{ __('Cost of Living') }}</a></li>
-                <li><a href="{{ route('faqs.index') }}" class="text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('FAQ') }}">💬 {{ __('Frequently Asked Questions') }}</a></li>
+                <li><a href="{{ route('tools.eligibility-checker') }}" class="inline-flex items-center gap-1.5 text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Eligibility Checker') }}"><x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ __('Eligibility Checker') }}</a></li>
+                <li><a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1.5 text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Application Calendar') }}"><x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Application Calendar') }}</a></li>
+                <li><a href="{{ route('tools.cost-of-living') }}" class="inline-flex items-center gap-1.5 text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('Cost of Living') }}"><x-svg-icon name="banknotes" class="w-4 h-4" /> {{ __('Cost of Living') }}</a></li>
+                <li><a href="{{ route('faqs.index') }}" class="inline-flex items-center gap-1.5 text-indigo-700 hover:text-indigo-900 font-medium" title="{{ __('FAQ') }}"><x-svg-icon name="chat-bubble" class="w-4 h-4" /> {{ __('Frequently Asked Questions') }}</a></li>
             </ul>
         </section>
     </aside>
