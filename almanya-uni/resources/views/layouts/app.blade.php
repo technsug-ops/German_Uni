@@ -940,9 +940,9 @@
     {{-- ════════ Feedback Widget ════════ --}}
     <div id="feedbackContainer">
         <button type="button" id="feedbackToggle"
-                class="fixed bottom-4 right-4 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-600 hover:bg-primary-700 text-white shadow-lg flex items-center justify-center text-xl md:text-2xl transition hover:scale-110"
+                class="fixed bottom-4 right-4 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-600 hover:bg-primary-700 text-white shadow-lg flex items-center justify-center transition hover:scale-110"
                 title="{{ __('Feedback') }}" aria-label="{{ __('Feedback') }}">
-            💬
+            <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
         </button>
 
         <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end md:items-center justify-center p-4">
@@ -950,7 +950,10 @@
                 <div class="p-6">
                     <div class="flex items-start justify-between mb-4">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900">💬 {{ __('Feedback') }}</h3>
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+                                {{ __('Feedback') }}
+                            </h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Tell us about a bug, suggestion or issue') }}</p>
                         </div>
                         <button type="button" id="feedbackClose"
@@ -961,12 +964,12 @@
                         <div>
                             <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Topic type *') }}</label>
                             <select name="type" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
-                                <option value="general">💬 {{ __('General') }}</option>
-                                <option value="bug">🐛 {{ __('Bug report') }}</option>
-                                <option value="suggestion">💡 {{ __('Suggestion') }}</option>
-                                <option value="content">📝 {{ __('Content correction') }}</option>
-                                <option value="partnership">🤝 {{ __('Partnership') }}</option>
-                                <option value="other">❓ {{ __('Other') }}</option>
+                                <option value="general">{{ __('General') }}</option>
+                                <option value="bug">{{ __('Bug report') }}</option>
+                                <option value="suggestion">{{ __('Suggestion') }}</option>
+                                <option value="content">{{ __('Content correction') }}</option>
+                                <option value="partnership">{{ __('Partnership') }}</option>
+                                <option value="other">{{ __('Other') }}</option>
                             </select>
                         </div>
 
