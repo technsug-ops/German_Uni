@@ -81,6 +81,9 @@ class MapController extends Controller
             $request->input('q'),
         ]));
 
+        // Düz array cache'le (Collection/model DEĞİL) — Eloquent collection'ları
+        // serialize edilemeyen şeyler taşıyabilir ("serialize() gets called"
+        // hatası). Array her zaman güvenli serialize olur.
         $rows = Cache::remember($cacheKey, 3600, function () use ($query) {
             return $query->with('city:id,name_tr,name_en,name_de,slug')
                 ->get([
@@ -99,11 +102,12 @@ class MapController extends Controller
                     'students' => $u->student_count,
                     'logo'  => $u->logo_url,
                 ])
-                ->values();
+                ->values()
+                ->all();
         });
 
         return response()->json([
-            'count' => $rows->count(),
+            'count' => count($rows),
             'items' => $rows,
         ]);
     }
