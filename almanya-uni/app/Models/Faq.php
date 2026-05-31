@@ -102,6 +102,31 @@ class Faq extends Model
     }
 
     /**
+     * Türkçe fonksiyon-kelimeleri — bir metnin "hâlâ Türkçe" olduğunun GÜVENİLİR
+     * sinyali. Tek diakritik (ş/ğ/ı) yetmez: EN/DE metinler meşru Türkçe özel ad
+     * içerebilir (TEV = Türk Eğitim Vakfı, İzmir, Doğukan...). Bu kelimeler ise
+     * yalnız Türkçe cümlede geçer, özel adda değil.
+     */
+    public static function looksTurkish(?string $text): bool
+    {
+        if (! $text) return false;
+        // Slug/URL gürültüsünü at: iç bağlantı URL'leri TR slug içerir
+        // (ör. ...goethe-online-kursu-nasil-...) → prose İngilizce olsa da eşleşir.
+        $t = preg_replace('/\]\([^)]*\)/u', '] ', $text);            // markdown link hedefi (url)
+        $t = preg_replace('/https?:\/\/\S+/u', ' ', (string) $t);     // çıplak url
+        $t = preg_replace('/`[^`]*`/u', ' ', (string) $t);            // kod span
+        $t = preg_replace('/[a-z0-9]+(?:-[a-z0-9]+)+/iu', ' ', (string) $t); // hyphen-slug
+        return (bool) preg_match('/(için|nedir|nas[ıi]l|nelerdir|gerekli|gerekir|de[ğg]il|yap[ıi]l|al[ıi]n[ıi]r|edilir|kullan[ıi]l|sa[ğg]lar|m[ıi]d[ıi]r|şunlard[ıi]r|kadard[ıi]r|vard[ıi]r|yoktur|çünkü|ayr[ıi]ca|olarak|öğrenci|başvuru|gerekiyor|şeklinde)/u', (string) $t);
+    }
+
+    /** Satır bozuk mu: cevap soruya kaynamış (>200) ya da hâlâ Türkçe prose. */
+    public function contentIsBroken(): bool
+    {
+        if (mb_strlen((string) $this->question) > 200) return true;
+        return self::looksTurkish($this->question) || self::looksTurkish($this->answer_md);
+    }
+
+    /**
      * Detect intent from the question text. Used at seed time to tag rows.
      */
     public static function detectIntent(string $question): string

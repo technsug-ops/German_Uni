@@ -63,11 +63,10 @@ class TranslateFaqs extends Command
                 ->keyBy('translation_group_id');
 
             // Hedef satırları filtrele
-            $targets = $rows->filter(function (Faq $r) use ($tr, $force, $onlyBroken) {
+            $targets = $rows->filter(function (Faq $r) use ($tr, $force) {
                 if (! isset($tr[$r->translation_group_id])) return false;
                 if ($force) return true;
-                if ($onlyBroken) return $this->isBroken($r);
-                return $this->isBroken($r); // varsayılan = sadece bozuk
+                return $r->contentIsBroken(); // varsayılan/only-broken = sadece bozuk
             })->values();
 
             if ($limit > 0) $targets = $targets->take($limit);
@@ -108,16 +107,6 @@ class TranslateFaqs extends Command
         $this->info("━━━━━━━━━━━━━━━━━━━━━━━");
         $this->info("✅ {$totalFixed} FAQ satırı düzeltildi" . ($dry ? ' (DRY)' : ''));
         return self::SUCCESS;
-    }
-
-    /** Soru cevapla kaynamış mı, ya da hâlâ Türkçe mi? */
-    private function isBroken(Faq $r): bool
-    {
-        if (mb_strlen((string) $r->question) > 200) return true; // cevap soruya kaynamış
-        $trPattern = '/[şğıİ]|\b(için|nedir|nasıl|gerekli|kaç|mı|mi)\b/u';
-        if (preg_match($trPattern, (string) $r->question)) return true;
-        if (preg_match('/[şğı]/u', (string) $r->answer_md)) return true;
-        return false;
     }
 
     /** @param array<int,array{q:string,a:string}> $pairs @return array<int,array>|null */

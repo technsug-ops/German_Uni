@@ -86,7 +86,7 @@ class ExportTranslations extends Command
             ->whereNotNull('translation_group_id')
             ->chunk(200, function ($rows) use (&$out, &$count) {
                 foreach ($rows as $r) {
-                    if ($this->faqLooksBroken($r)) continue; // bozuğu taşımayalım
+                    if ($r->contentIsBroken()) continue; // bozuğu taşımayalım
                     $key = $r->translation_group_id . ':' . $r->locale;
                     $out[$key] = [
                         'question'       => $r->question,
@@ -101,14 +101,6 @@ class ExportTranslations extends Command
 
         $this->writeGz("$dir/faq_translations.json.gz", $out);
         $this->info("✅ faq: {$count} sağlam EN/DE satır → faq_translations.json.gz (" . $this->kb("$dir/faq_translations.json.gz") . ')');
-    }
-
-    private function faqLooksBroken(Faq $r): bool
-    {
-        if (mb_strlen((string) $r->question) > 200) return true;
-        if (preg_match('/[şğıİ]/u', (string) $r->question)) return true;
-        if (preg_match('/[şğı]/u', (string) $r->answer_md)) return true;
-        return false;
     }
 
     private function writeGz(string $path, array $data): void

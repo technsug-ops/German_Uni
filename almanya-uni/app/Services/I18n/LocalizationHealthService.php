@@ -86,13 +86,10 @@ class LocalizationHealthService
         $base = Faq::where('locale', 'tr')->count();
         $row['total'] = $base;
         foreach (['en', 'de'] as $loc) {
-            $total = Faq::where('locale', $loc)->count();
-            $broken = Faq::where('locale', $loc)
-                ->where(function ($w) {
-                    $w->whereRaw('CHAR_LENGTH(question) > 200')
-                      ->orWhereRaw("question REGEXP '[şğıİ]'")
-                      ->orWhereRaw("answer_md REGEXP '[şğı]'");
-                })->count();
+            $total = 0; $broken = 0;
+            Faq::where('locale', $loc)->select('question', 'answer_md')->chunk(200, function ($rows) use (&$total, &$broken) {
+                foreach ($rows as $r) { $total++; if ($r->contentIsBroken()) $broken++; }
+            });
             $ok = max(0, $total - $broken);
             $row['locales'][$loc] = ['done' => $ok, 'missing' => $broken, 'pct' => $total ? round(100 * $ok / $total) : 100];
         }
