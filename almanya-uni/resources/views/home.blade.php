@@ -11,37 +11,45 @@
 {{-- =================================================================== --}}
 {{-- HERO --}}
 {{-- =================================================================== --}}
-<section class="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-900 to-primary-800 text-white">
+<section class="relative overflow-hidden bg-gradient-to-b from-primary-900 to-primary-800 lg:bg-gradient-to-br lg:from-primary-800 lg:via-primary-900 lg:to-primary-800 text-white">
     {{-- ===== MASAÜSTÜ: full-bleed yatay panorama (solunda lacivert geçiş) ===== --}}
     {{-- Gemini ile üretildi, logo temizlendi, WebP optimize. --}}
     <div aria-hidden="true" class="hidden lg:block absolute inset-0 z-0">
         <img src="{{ asset('img/hero/hero-desktop.webp') }}" alt=""
-             width="2400" height="771"
+             width="2180" height="771"
              fetchpriority="high" decoding="async"
              class="w-full h-full object-cover object-center">
         {{-- Soldan (yazı tarafı) lacivert → sağa şeffaf --}}
         <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/40 to-transparent"></div>
     </div>
 
-    {{-- ===== MOBİL: üstte temiz görsel bandı (kapı net), içerik altında lacivert zeminde ===== --}}
-    <div aria-hidden="true" class="lg:hidden relative z-0">
+    {{-- ===== MOBİL: full-bleed arka plan (kapı sağ-üstte, yazı sol/alt lacivert zeminde) ===== --}}
+    {{-- Görsel zaten çoğunlukla lacivert; ağır overlay gerekmez. object-right-top → kapı sağ-üstte kalır. --}}
+    <div aria-hidden="true" class="lg:hidden absolute inset-0 z-0">
         <img src="{{ asset('img/hero/hero-mobile.webp') }}" alt=""
-             width="1000" height="1676"
+             width="1200" height="1800"
              fetchpriority="high" decoding="async"
-             class="w-full h-[42vh] min-h-[300px] object-cover object-center">
-        {{-- Bandın altı lacivere erisin (içeriğe yumuşak geçiş) + üstte hafif karartma --}}
-        <div class="absolute inset-0 bg-gradient-to-b from-primary-900/30 via-transparent to-primary-900"></div>
+             class="w-full h-full object-cover object-right-top">
+        {{-- En altta hafif navy — alt içerik (stat kartları) net dursun --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/50 via-transparent to-transparent"></div>
     </div>
 
     {{-- ince nokta deseni (tüm hero) --}}
     <div aria-hidden="true" class="absolute inset-0 z-0 opacity-[0.06] pointer-events-none"
          style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"></div>
 
-    <div class="relative z-10 max-w-[1400px] mx-auto px-4 py-12 md:py-16 lg:py-20">
+    <div class="relative z-10 max-w-[1400px] mx-auto px-4 pt-5 pb-10 md:py-16 lg:py-20">
         {{-- Badge --}}
-        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide mb-5">
+        @php
+            // Rozet metnini "·" işaretinden 2 satıra böl: "...İÇİN" (1. satır) + "2026 GÜNCEL" (2. satır)
+            $__badgeParts = array_map('trim', explode('·', __('For international students · 2026 updated'), 2));
+        @endphp
+        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3.5 py-1.5 rounded-2xl text-[11px] font-semibold uppercase tracking-wide mb-5">
             <span class="text-accent-400"><x-svg-icon name="academic-cap" class="w-4 h-4" /></span>
-            {{ __('For international students · 2026 updated') }}
+            <span class="flex flex-col leading-[1.2] text-left">
+                <span>{{ $__badgeParts[0] }}</span>
+                @isset($__badgeParts[1])<span>{{ $__badgeParts[1] }}</span>@endisset
+            </span>
         </span>
 
         {{-- Başlık --}}
