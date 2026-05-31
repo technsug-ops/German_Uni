@@ -46,7 +46,7 @@ class TranslateContentAssets extends Command
 
         $langOption = $this->option('lang');
         $targets = $langOption === 'all'
-            ? array_diff(ContentTranslator::SUPPORTED_LANGUAGES, [$this->option('source-lang')])
+            ? array_diff(ContentTranslator::supportedLanguages(), [$this->option('source-lang')])
             : [$langOption];
 
         $this->info("🌍 Will translate {$total} asset(s) → " . count($targets) . ' language(s) (' . implode(', ', $targets) . ')');

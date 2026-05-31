@@ -107,8 +107,12 @@ CITY
 - "cost_of_living": Bu üniversite şehrindeki tahmini öğrenci yaşam maliyeti.
 UNI;
 
+        $voice = \App\Services\Content\ContentVoice::for('tr');
+
         return <<<TXT
 Sen AlmanyaUni içerik editörüsün. Türk öğrencilere hitap eden, SEO-uyumlu ve doğal Türkçe içerik bloğu üretiyorsun.
+
+$voice
 
 VARLIK TÜRÜ: $entityType
 İSİM: $name

@@ -15,20 +15,11 @@ use Illuminate\Support\Facades\Log;
  */
 class ContentTranslator
 {
-    public const SUPPORTED_LANGUAGES = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pl', 'ru', 'ar', 'fa'];
-
-    public const LANGUAGE_NAMES = [
-        'tr' => 'Turkish',
-        'en' => 'English',
-        'de' => 'German',
-        'fr' => 'French',
-        'es' => 'Spanish',
-        'it' => 'Italian',
-        'pl' => 'Polish',
-        'ru' => 'Russian',
-        'ar' => 'Arabic',
-        'fa' => 'Persian (Farsi)',
-    ];
+    /** Valid translation targets = every locale in the registry (config/locale.php). */
+    public static function supportedLanguages(): array
+    {
+        return ContentVoice::allLocales();
+    }
 
     public function __construct(private ?string $apiKey = null)
     {
@@ -42,7 +33,7 @@ class ContentTranslator
      */
     public function translate(ContentAsset $asset, string $targetLang, bool $force = false): ContentAsset
     {
-        if (! in_array($targetLang, self::SUPPORTED_LANGUAGES, true)) {
+        if (! in_array($targetLang, self::supportedLanguages(), true)) {
             throw new \InvalidArgumentException("Unsupported language: {$targetLang}");
         }
 
@@ -64,13 +55,19 @@ class ContentTranslator
             throw new \RuntimeException('GEMINI_API_KEY is not configured.');
         }
 
-        $sourceLangName = self::LANGUAGE_NAMES[$asset->language] ?? 'Turkish';
-        $targetLangName = self::LANGUAGE_NAMES[$targetLang]    ?? $targetLang;
+        $sourceLangName = ContentVoice::languageName($asset->language);
+        $targetLangName = ContentVoice::languageName($targetLang);
+
+        // Localize to the target language's native register (e.g. DE -> "du", not "Sie").
+        $voice = ContentVoice::for($targetLang);
 
         $prompt = <<<TXT
 You are a professional content translator and localizer for the AlmanyaUni / ApplyToGerman platform — a guide for international students applying to German universities.
 
-TASK: Translate the following content from {$sourceLangName} to {$targetLangName}.
+TASK: Translate AND LOCALIZE the following content from {$sourceLangName} to {$targetLangName}. This is not a literal translation — render it in the native register and idiom of the target language per the VOICE rules below.
+
+TARGET-LANGUAGE VOICE & REGISTER (follow strictly):
+{$voice}
 
 PRESERVATION RULES (CRITICAL):
 1. Preserve Markdown structure EXACTLY (headings, lists, tables, code blocks, blockquotes).
@@ -138,7 +135,7 @@ TXT;
     public function translateToAll(ContentAsset $asset, bool $force = false, int $sleepBetween = 2): array
     {
         $results = [];
-        foreach (self::SUPPORTED_LANGUAGES as $lang) {
+        foreach (ContentVoice::contentLocales() as $lang) {
             if ($lang === $asset->language) continue;
             try {
                 $results[$lang] = $this->translate($asset, $lang, $force);
