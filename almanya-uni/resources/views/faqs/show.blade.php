@@ -74,9 +74,9 @@
             <span>{{ $faq->answer_minutes }} {{ __('min read') }}</span>
             <span>·</span>
         @endif
-        @if ($faq->intent && $faq->intent !== 'bilgi')
+        @if ($faq->intentLabel())
             <span class="inline-block bg-primary-50 text-primary-700 px-2 py-0.5 rounded text-xs font-semibold">
-                {{ ucfirst($faq->intent) }}
+                {{ $faq->intentLabel() }}
             </span>
             <span>·</span>
         @endif

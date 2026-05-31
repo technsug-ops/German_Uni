@@ -4,6 +4,7 @@ namespace App\Services\I18n;
 
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Faq;
 use App\Models\FaqTopic;
 use App\Models\FieldOfStudy;
 use App\Models\Post;
@@ -26,7 +27,8 @@ class LocalizationHealthService
         return [
             $this->uiStrings(),
             $this->taxonomy('Blog Kategorileri', Category::class),
-            $this->taxonomy('FAQ Konuları', FaqTopic::class),
+            $this->taxonomy('FAQ Konuları (ad)', FaqTopic::class),
+            $this->faqContent(),
             $this->blocks('Şehir içeriği', City::class),
             $this->blocks('Üniversite içeriği', University::class),
             $this->blocks('Alan içeriği', FieldOfStudy::class),
@@ -73,6 +75,26 @@ class LocalizationHealthService
         foreach (['en', 'de'] as $loc) {
             $done = $model::whereNotNull("content_blocks_$loc")->count();
             $row['locales'][$loc] = ['done' => $done, 'missing' => max(0, $total - $done), 'pct' => $total ? round(100 * min($done, $total) / $total) : 100];
+        }
+        return $row;
+    }
+
+    /** FAQ soru/cevap içeriği: TR sızıntısı veya cevabı-soruya-kaynamış satırlar. */
+    private function faqContent(): array
+    {
+        $row = ['type' => 'FAQ soru/cevap', 'total' => 0, 'locales' => [], 'missing_label' => 'bozuk/TR sızıntı'];
+        $base = Faq::where('locale', 'tr')->count();
+        $row['total'] = $base;
+        foreach (['en', 'de'] as $loc) {
+            $total = Faq::where('locale', $loc)->count();
+            $broken = Faq::where('locale', $loc)
+                ->where(function ($w) {
+                    $w->whereRaw('CHAR_LENGTH(question) > 200')
+                      ->orWhereRaw("question REGEXP '[şğıİ]'")
+                      ->orWhereRaw("answer_md REGEXP '[şğı]'");
+                })->count();
+            $ok = max(0, $total - $broken);
+            $row['locales'][$loc] = ['done' => $ok, 'missing' => $broken, 'pct' => $total ? round(100 * $ok / $total) : 100];
         }
         return $row;
     }

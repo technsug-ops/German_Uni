@@ -84,9 +84,9 @@
                                 {{ __('Coming soon') }}
                             </span>
                         @endif
-                        @if ($faq->intent && $faq->intent !== 'bilgi')
+                        @if ($faq->intentLabel())
                             <span class="inline-block bg-primary-50 text-primary-700 px-2 py-0.5 rounded">
-                                {{ ucfirst($faq->intent) }}
+                                {{ $faq->intentLabel() }}
                             </span>
                         @endif
                     </div>

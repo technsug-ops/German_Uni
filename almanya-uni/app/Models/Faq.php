@@ -82,6 +82,26 @@ class Faq extends Model
     }
 
     /**
+     * Localized label for the intent badge. The `intent` column stores a
+     * Turkish-derived slug (seed-time classification); the badge must never
+     * leak that slug — it is rendered through __() per active locale.
+     * 'bilgi' (generic) returns null → no badge shown.
+     */
+    public function intentLabel(): ?string
+    {
+        return match ($this->intent) {
+            'nasil'    => __('How-to'),
+            'ne-kadar' => __('How much'),
+            'ne-zaman' => __('When'),
+            'hangi'    => __('Which'),
+            'var-mi'   => __('Recommendations'),
+            'neden'    => __('Why'),
+            'community' => __('Community'),
+            default    => null,
+        };
+    }
+
+    /**
      * Detect intent from the question text. Used at seed time to tag rows.
      */
     public static function detectIntent(string $question): string
