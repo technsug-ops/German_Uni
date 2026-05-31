@@ -42,7 +42,10 @@ return [
      *   3. Bing/Yandex için de aynı şekilde
      */
     'verification' => [
-        'google' => env('GOOGLE_SITE_VERIFICATION'),
+        // Google Search Console — HTML etiketi yöntemi (URL ön eki mülkü için).
+        // Admin Entegrasyonlar > Search Console doldurulunca o öncelikli; boşsa bu
+        // fallback kullanılır. Token herkese açık (HTML kaynağında zaten görünür).
+        'google' => env('GOOGLE_SITE_VERIFICATION', 'YaN3XkNVLe2SYQt8QGhj0NRwMsXD_aIFFjSX3JJcRpw'),
         'bing'   => env('BING_SITE_VERIFICATION'),
         'yandex' => env('YANDEX_SITE_VERIFICATION'),
     ],
