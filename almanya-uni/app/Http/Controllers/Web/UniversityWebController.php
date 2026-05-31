@@ -181,7 +181,8 @@ class UniversityWebController extends Controller
             'city_slug' => $university->city?->slug,
             'state_name' => $university->city?->state?->name,
             'coordinates' => $university->coordinates,
-            'content_blocks' => $university->content_blocks,
+            // Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (yoksa null → blade gizler)
+            'content_blocks' => $university->localizedBlocks(),
             'image_url' => $university->image_url,
         ];
 

@@ -185,9 +185,9 @@
                 @endif
             </div>
 
-            {{-- AI içerik blokları / açıklama (hero görseli sidebar'a taşındı) --}}
-            {{-- content_blocks TR locale-only (single-language). EN/DE'de description_* fallback --}}
-            @if (!empty($blocksNoHero) && app()->getLocale() === 'tr')
+            {{-- AI içerik blokları — locale-aware ($university['content_blocks'] = controller'da localizedBlocks).
+                 EN/DE çevirisi yoksa $blocksNoHero boş → bu blok gizli, TR sızıntısı olmaz. --}}
+            @if (!empty($blocksNoHero))
                 <div class="bg-white p-6 rounded-xl border border-gray-200">
                     <x-content-blocks :blocks="$blocksNoHero" :exclude-url="'/universities/' . $university['slug']" />
                 </div>

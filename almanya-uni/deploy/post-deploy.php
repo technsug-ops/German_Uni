@@ -96,43 +96,46 @@ if (file_exists($bundleFile)) {
 if ($allOk) {
     chdir($appRoot);
 
-    // ── DB migrations (non-fatal) ──
-    // Yeni migration'ları uygula. Başarısız olsa bile deploy'u BLOKLAMAZ
-    // (allOk'a dokunmaz) — cache rebuild yine de çalışır, site ayakta kalır.
-    // Migration sorunu logda görünür, manuel müdahale edilir.
-    {
-        $output = [];
-        $exitCode = 0;
-        exec('php artisan migrate --force --no-interaction 2>&1', $output, $exitCode);
-        if ($exitCode === 0) {
-            $log('✅ php artisan migrate --force');
-        } else {
-            $log('⚠️  migrate --force başarısız (deploy devam ediyor) — ' . implode(' | ', array_slice($output, 0, 3)));
-        }
+    // Artisan'ı Laravel kernel üzerinden çağır — exec('php artisan ...') KAS cron
+    // ortamında `php` PATH'te olmadığı / exec kısıtlı olduğu için sessizce
+    // başarısız olabiliyordu (migration'lar hiç uygulanmıyordu). Kernel::call
+    // PHP binary'sine ve exec'e bağımlı değil.
+    $kernel = null;
+    try {
+        require $appRoot . '/vendor/autoload.php';
+        $laravel = require $appRoot . '/bootstrap/app.php';
+        $kernel = $laravel->make(Illuminate\Contracts\Console\Kernel::class);
+        $kernel->bootstrap();
+    } catch (\Throwable $e) {
+        $log('❌ Laravel bootstrap FAIL — ' . $e->getMessage());
+        $kernel = null;
     }
 
-    // Bu komutlar SIRA ÖNEMLİ — clear önce, cache sonra
-    $commands = [
-        'php artisan view:clear',
-        'php artisan config:clear',
-        'php artisan route:clear',
-        'php artisan cache:clear',
-        'php artisan config:cache',
-        'php artisan route:cache',
-        'php artisan view:cache',
-    ];
-
-    foreach ($commands as $cmd) {
-        $output = [];
-        $exitCode = 0;
-        exec($cmd . ' 2>&1', $output, $exitCode);
-
-        if ($exitCode !== 0) {
-            $allOk = false;
-            $log("❌ FAIL: $cmd (exit $exitCode) — " . implode(' | ', array_slice($output, 0, 3)));
-        } else {
-            $log("✅ $cmd");
+    $artisan = function (string $command, array $params = []) use (&$kernel, $log): bool {
+        if (! $kernel) return false;
+        try {
+            $code = $kernel->call($command, $params);
+            $out = trim((string) $kernel->output());
+            if ($code === 0) {
+                $log("✅ artisan $command");
+                return true;
+            }
+            $log("⚠️  artisan $command exit $code — " . mb_substr($out, 0, 300));
+        } catch (\Throwable $e) {
+            $log("⚠️  artisan $command exception — " . mb_substr($e->getMessage(), 0, 300));
         }
+        return false;
+    };
+
+    // ── DB migrations (non-fatal) — başarısız olsa bile cache rebuild + site ayakta ──
+    $artisan('migrate', ['--force' => true, '--no-interaction' => true]);
+
+    // Cache: SIRA ÖNEMLİ — clear önce, cache sonra
+    foreach (['view:clear', 'config:clear', 'route:clear', 'cache:clear'] as $cmd) {
+        $artisan($cmd);
+    }
+    foreach (['config:cache', 'route:cache', 'view:cache'] as $cmd) {
+        if (! $artisan($cmd)) $allOk = false;
     }
 }
 
