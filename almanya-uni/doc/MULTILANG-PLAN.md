@@ -54,6 +54,26 @@ Registry'de `direction=rtl`. Layout `<html dir="{{ config('locale.locales.'.app(
 1. **Biçim/voice tutarlılığı** [bu sistem]: register (du/you/sen + jenerik), native terim, az-AI. Otomatik, her dil.
 2. **Topluluk-güdümlü içerik derinliği** [ayrı pass]: Forum 120K + Telegram 142K + visa/denklik 716K havuzundan gerçek sorular/pain-point → hangi içerik eksik, hangi FAQ gerekli. `[[feedback-community-insights-mandatory]]` — her ÜRETİMDE zorunlu girdi.
 
-## 7. Rollout Önceliği (öneri)
+## 7. Rollout Önceliği — VERİ TEMELLİ (Almanya'ya öğrenci akışı)
 
-tr (birincil) → en/de (aktif) → fr/es (büyük uluslararası kitle) → ar/fa (yüksek Almanya'ya öğrenci akışı, RTL) → ru/pl/it/pt → zh. Her dilde: UI → hero/landing → tool sayfaları → blog → kategori/şehir/üni intro.
+**Karar (2026-05-31):** Şimdi yalnızca **tr / en / de** (aktif). Diğer diller **V2**'de peyderpey, **Almanya'ya en çok öğrenci gönderen ülkeler** baz alınarak.
+
+Güncel akış (Wissenschaft weltoffen 2024/25, Bildungsausländer):
+| # | Ülke | ~Öğrenci | Kapsayan dil |
+|---|---|---|---|
+| 1 | Hindistan | ~49.000 | **EN** ✅ (akademik dil) |
+| 2 | Çin | ~38.700 | **zh** ⬅ V2 #1 |
+| 3 | Türkiye | ~18.100 | **TR** ✅ |
+| 4 | İran | ~15.200 | **fa** (rtl) ⬅ V2 #2 |
+| 5 | Avusturya | ~15.400 | **DE** ✅ |
+| 6 | Suriye | ~13.400 | **ar** (rtl) ⬅ V2 #3 |
+
+Aktif 3 dil (tr/en/de) zaten en büyük 1./3./5. kaynakları kapsıyor. **Kapsanmayan en büyük gruplar: Çin, İran, Suriye (+MENA agregatı).**
+
+**V2 sırası:** `zh` (Çin) → `fa` (İran, rtl) → `ar` (Suriye + Mısır/Fas/Tunus/Cezayir agregat, rtl) → sonra `ru` (Rusya/Ukrayna) → `fr` (frankofon Afrika: Kamerun/Fas/Tunus) → `it` → `es` → `pt`/`pl`. (Sayılar yıllık güncellenir; kilitlemeden önce kaynak doğrula.)
+
+> RTL avantajı: ilk üç V2 dilinin ikisi (fa, ar) RTL — RTL layout işi erken yapılırsa iki büyük kitleye birden hizmet eder.
+
+Her dilde içerik sırası: UI → hero/landing → tool sayfaları → blog → kategori/şehir/üni intro.
+
+**Kaynaklar:** [Wissenschaft weltoffen (DAAD/DZHW)](https://www.wissenschaft-weltoffen.de/en/interactive/foreign-students-in-germany-by-country-of-origin/), [ICEF Monitor 2025](https://monitor.icef.com/2025/12/there-are-now-more-than-400000-international-students-in-germany/).
