@@ -16,52 +16,54 @@
      data-storage-key="event-banner-{{ $event->id }}"
      class="hidden relative z-30 text-white shadow-lg border-b-2 border-amber-300/60"
      style="background: {{ $bannerGradient }}; box-shadow: 0 4px 12px -4px rgba(239,68,68,0.4);">
-    <div class="max-w-[1400px] mx-auto px-4 py-2.5 flex items-center gap-3 text-sm">
-        {{-- Emoji + pulse glow --}}
+    <div class="max-w-[1400px] mx-auto px-4 py-1.5 flex items-center gap-2 sm:gap-3 text-sm">
+        {{-- Emoji + pulse glow (mobilde küçük) --}}
         <span class="relative shrink-0 inline-flex items-center justify-center">
             <span class="absolute inset-0 rounded-full bg-white/30 animate-ping" style="animation-duration: 2s;"></span>
-            <span class="relative text-xl">{{ $isLive ? '🔴' : $event->type_emoji }}</span>
+            <span class="relative text-base sm:text-xl">{{ $isLive ? '🔴' : $event->type_emoji }}</span>
         </span>
 
-        <div class="flex-1 min-w-0 flex items-center gap-3 flex-wrap">
+        <div class="flex-1 min-w-0 flex items-center gap-2 sm:gap-3 flex-nowrap overflow-hidden">
             @if ($isLive)
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white text-red-600 text-[10px] font-extrabold uppercase tracking-wider">
+                <span class="shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white text-red-600 text-[10px] font-extrabold uppercase tracking-wider">
                     <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
                     {{ __('Live') }}
                 </span>
-                <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline">"{{ $event->title }}"</a>
-                <span class="text-white/95 text-xs whitespace-nowrap font-semibold">— {{ __('on air now') }}</span>
+                <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline min-w-0">"{{ $event->title }}"</a>
+                <span class="hidden md:inline text-white/95 text-xs whitespace-nowrap font-semibold">— {{ __('on air now') }}</span>
             @else
-                <a href="{{ route('events.show', $event->slug) }}" class="font-bold truncate hover:underline drop-shadow-sm">{{ $event->type_label }}: "{{ $event->title }}"</a>
-                <span class="text-white/95 text-xs whitespace-nowrap font-semibold">{{ __('starts in') }}</span>
+                <a href="{{ route('events.show', $event->slug) }}" class="font-semibold truncate hover:underline drop-shadow-sm min-w-0">{{ $event->type_label }}: "{{ $event->title }}"</a>
                 @if ($event->language_flag)
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur text-[11px] font-bold whitespace-nowrap" title="{{ __('Event language') }}">
+                    <span class="hidden md:inline-flex shrink-0 items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur text-[11px] font-bold whitespace-nowrap" title="{{ __('Event language') }}">
                         {{ $event->language_flag }} {{ $event->language_label }}
                     </span>
                 @endif
-                <div class="flex items-center gap-1 tabular-nums font-mono">
-                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="d">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('D') }}</span></span>
-                    <span class="opacity-70">:</span>
-                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="h">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('H') }}</span></span>
-                    <span class="opacity-70">:</span>
-                    <span class="bg-black/35 px-2 py-0.5 rounded font-bold text-sm shadow-sm"><span data-cd="m">--</span><span class="text-[10px] opacity-80 ml-0.5">{{ __('M') }}</span></span>
+                {{-- Geri sayım: mobilde kompakt (kutusuz), masaüstünde kutulu --}}
+                <div class="shrink-0 flex items-center gap-1 tabular-nums font-mono whitespace-nowrap">
+                    <span class="bg-black/30 px-1.5 py-0.5 rounded font-bold text-xs sm:text-sm"><span data-cd="d">--</span><span class="text-[10px] opacity-80">{{ __('D') }}</span></span>
+                    <span class="opacity-60">:</span>
+                    <span class="bg-black/30 px-1.5 py-0.5 rounded font-bold text-xs sm:text-sm"><span data-cd="h">--</span><span class="text-[10px] opacity-80">{{ __('H') }}</span></span>
+                    <span class="opacity-60">:</span>
+                    <span class="bg-black/30 px-1.5 py-0.5 rounded font-bold text-xs sm:text-sm"><span data-cd="m">--</span><span class="text-[10px] opacity-80">{{ __('M') }}</span></span>
                 </div>
             @endif
         </div>
 
-        {{-- CTA — RSVP varsa öncelikli, sonra registration_url, sonra online_url --}}
+        {{-- CTA — mobilde kısa ("Katıl"), masaüstünde tam --}}
         <a href="{{ $isLive && $event->online_url ? $event->online_url : $bannerCta }}"
            @if($isLive) target="_blank" rel="noopener" @endif
-           class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white text-rose-700 font-extrabold text-xs rounded shadow-md hover:bg-amber-50 hover:scale-105 active:scale-100 transition shrink-0">
+           class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 bg-white text-rose-700 font-extrabold text-xs rounded shadow-md hover:bg-amber-50 transition">
             @if ($isLive)
                 <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span> {{ __('Join now →') }}
             @else
-                <x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ __('RSVP free →') }}
+                <x-svg-icon name="tag" class="w-3.5 h-3.5" />
+                <span class="hidden sm:inline">{{ __('RSVP free →') }}</span>
+                <span class="sm:hidden">{{ __('Join') }}</span>
             @endif
         </a>
 
         <button id="eventBannerClose"
-                class="shrink-0 w-7 h-7 rounded hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition text-lg"
+                class="shrink-0 w-6 h-6 rounded hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition text-lg"
                 aria-label="{{ __('Close') }}" title="{{ __('Hide for 24 hours') }}">×</button>
     </div>
 </div>
