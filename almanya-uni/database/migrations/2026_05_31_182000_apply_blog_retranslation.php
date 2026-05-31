@@ -26,16 +26,20 @@ return new class extends Migration
         if (! is_array($data)) return;
 
         foreach ($data as $rec) {
-            $post = Post::where('slug', $rec['slug'])->where('locale', $rec['locale'])->first();
-            if (! $post) continue;
-            if ((string) $post->content_md === (string) ($rec['content_md'] ?? '')) continue;
+            try {
+                $post = Post::where('slug', $rec['slug'])->where('locale', $rec['locale'])->first();
+                if (! $post) continue;
+                if ((string) $post->content_md === (string) ($rec['content_md'] ?? '')) continue;
 
-            $post->title            = $rec['title']            ?? $post->title;
-            $post->excerpt          = $rec['excerpt']          ?? $post->excerpt;
-            $post->meta_title       = $rec['meta_title']       ?? $post->meta_title;
-            $post->meta_description = $rec['meta_description'] ?? $post->meta_description;
-            $post->content_md       = $rec['content_md']       ?? $post->content_md;
-            $post->save(); // regenerates content_html
+                $post->title            = $rec['title']            ?? $post->title;
+                $post->excerpt          = $rec['excerpt']          ?? $post->excerpt;
+                $post->meta_title       = $rec['meta_title']       ?? $post->meta_title;
+                $post->meta_description = $rec['meta_description'] ?? $post->meta_description;
+                $post->content_md       = $rec['content_md']       ?? $post->content_md;
+                $post->save(); // regenerates content_html
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning("apply_blog_retranslation skip {$rec['slug']}: " . $e->getMessage());
+            }
         }
     }
 

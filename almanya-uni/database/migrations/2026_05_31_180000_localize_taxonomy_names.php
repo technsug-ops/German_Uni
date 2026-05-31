@@ -35,6 +35,9 @@ return new class extends Migration
             'Başvuru'           => ['en' => 'Application',         'de' => 'Bewerbung'],
             'Öğrenci Hayatı'    => ['en' => 'Student Life',        'de' => 'Studierendenleben'],
         ];
+        // Schema column adds above are the critical part (guarded); data fills below
+        // are wrapped so a failed UPDATE never aborts the migrate chain.
+        try {
         foreach ($categories as $tr => $v) {
             DB::table('categories')->where('name', $tr)->update(['name_en' => $v['en'], 'name_de' => $v['de']]);
         }
@@ -67,6 +70,9 @@ return new class extends Migration
                 'description_en' => 'Free + Premium memberships',
                 'description_de' => 'Kostenlose + Premium-Mitgliedschaften',
             ]);
+        }
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('localize_taxonomy_names data fill: ' . $e->getMessage());
         }
     }
 

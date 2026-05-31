@@ -38,21 +38,25 @@ return new class extends Migration
         if (! Schema::hasTable('posts')) return;
 
         foreach ($this->fixes as $slug => $vals) {
-            $post = DB::table('posts')->where('slug', $slug)->first();
-            if (! $post) continue; // post not on this environment — skip
+            try {
+                $post = DB::table('posts')->where('slug', $slug)->first();
+                if (! $post) continue; // post not on this environment — skip
 
-            $update = [];
-            foreach ($vals as $field => $value) {
-                $current = (string) ($post->{$field} ?? '');
-                // Only set when empty OR still Turkish (contains ı/ş/ğ/İ).
-                if ($current === '' || preg_match('/[ışğİ]/u', $current)) {
-                    $update[$field] = $value;
+                $update = [];
+                foreach ($vals as $field => $value) {
+                    $current = (string) ($post->{$field} ?? '');
+                    // Only set when empty OR still Turkish (contains ı/ş/ğ/İ).
+                    if ($current === '' || preg_match('/[ışğİ]/u', $current)) {
+                        $update[$field] = $value;
+                    }
                 }
-            }
 
-            if ($update) {
-                $update['updated_at'] = now();
-                DB::table('posts')->where('id', $post->id)->update($update);
+                if ($update) {
+                    $update['updated_at'] = now();
+                    DB::table('posts')->where('id', $post->id)->update($update);
+                }
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning("fix_translated_post_meta_leak skip {$slug}: " . $e->getMessage());
             }
         }
     }

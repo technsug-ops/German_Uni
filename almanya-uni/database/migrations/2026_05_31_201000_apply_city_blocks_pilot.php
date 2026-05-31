@@ -25,12 +25,16 @@ return new class extends Migration
         if (! is_array($data)) return;
 
         foreach ($data as $slug => $loc) {
-            $city = DB::table('cities')->where('slug', $slug)->first();
-            if (! $city) continue;
-            $update = [];
-            if (! empty($loc['en']) && empty($city->content_blocks_en)) $update['content_blocks_en'] = json_encode($loc['en'], JSON_UNESCAPED_UNICODE);
-            if (! empty($loc['de']) && empty($city->content_blocks_de)) $update['content_blocks_de'] = json_encode($loc['de'], JSON_UNESCAPED_UNICODE);
-            if ($update) DB::table('cities')->where('id', $city->id)->update($update);
+            try {
+                $city = DB::table('cities')->where('slug', $slug)->first();
+                if (! $city) continue;
+                $update = [];
+                if (! empty($loc['en']) && empty($city->content_blocks_en)) $update['content_blocks_en'] = json_encode($loc['en'], JSON_UNESCAPED_UNICODE);
+                if (! empty($loc['de']) && empty($city->content_blocks_de)) $update['content_blocks_de'] = json_encode($loc['de'], JSON_UNESCAPED_UNICODE);
+                if ($update) DB::table('cities')->where('id', $city->id)->update($update);
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning("apply_city_blocks_pilot skip {$slug}: " . $e->getMessage());
+            }
         }
     }
 

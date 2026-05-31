@@ -33,20 +33,26 @@ return new class extends Migration
         if (! is_array($data)) return;
 
         foreach ($data as $slug => $fields) {
-            $post = Post::where('slug', $slug)->where('locale', 'de')->first();
-            if (! $post) continue;
+            // Defensive: a single bad record must never throw and abort the whole
+            // `migrate` run (that would block later SCHEMA migrations → prod 500).
+            try {
+                $post = Post::where('slug', $slug)->where('locale', 'de')->first();
+                if (! $post) continue;
 
-            // Only rewrite if the stored content still differs (i.e. still formal).
-            if ((string) $post->content_md === (string) ($fields['content_md'] ?? '')) {
-                continue;
+                // Only rewrite if the stored content still differs (i.e. still formal).
+                if ((string) $post->content_md === (string) ($fields['content_md'] ?? '')) {
+                    continue;
+                }
+
+                $post->title            = $fields['title']            ?? $post->title;
+                $post->excerpt          = $fields['excerpt']          ?? $post->excerpt;
+                $post->meta_title       = $fields['meta_title']       ?? $post->meta_title;
+                $post->meta_description = $fields['meta_description'] ?? $post->meta_description;
+                $post->content_md       = $fields['content_md']       ?? $post->content_md;
+                $post->save(); // regenerates content_html via model boot
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning("convert_blog_posts_to_du skip {$slug}: " . $e->getMessage());
             }
-
-            $post->title            = $fields['title']            ?? $post->title;
-            $post->excerpt          = $fields['excerpt']          ?? $post->excerpt;
-            $post->meta_title       = $fields['meta_title']       ?? $post->meta_title;
-            $post->meta_description = $fields['meta_description'] ?? $post->meta_description;
-            $post->content_md       = $fields['content_md']       ?? $post->content_md;
-            $post->save(); // regenerates content_html via model boot
         }
     }
 
