@@ -74,7 +74,7 @@ class AboutController extends Controller
             ->where('is_published', true)
             ->where('locale', app()->getLocale())
             ->whereNotNull('published_at')
-            ->with('category:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('category')
             ->orderByDesc('published_at')
             ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id', 'view_count', 'helpful_count']);
 
@@ -111,7 +111,7 @@ class AboutController extends Controller
         // Son 3 blog post
         $recentPosts = Post::where('is_published', 1)->where('locale', app()->getLocale())
             ->whereNotNull('published_at')
-            ->with('category:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('category')
             ->orderByDesc('published_at')
             ->take(3)
             ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);

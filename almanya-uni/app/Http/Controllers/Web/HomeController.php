@@ -70,7 +70,7 @@ class HomeController extends Controller
             ->toArray();
 
         $latest_posts = Post::published()
-            ->with('category:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('category')
             ->orderByDesc('published_at')
             ->limit(3)
             ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id'])
@@ -89,14 +89,14 @@ class HomeController extends Controller
         $featured_faqs = Faq::published()
             ->answered()
             ->where('is_featured', true)
-            ->with('topic:id,name,name_tr,name_en,name_de,slug,color,icon')
+            ->with('topic')
             ->limit(4)
             ->get(['id', 'slug', 'question', 'faq_topic_id', 'answer_minutes']);
 
         if ($featured_faqs->isEmpty()) {
             $featured_faqs = Faq::published()
                 ->answered()
-                ->with('topic:id,name,name_tr,name_en,name_de,slug,color,icon')
+                ->with('topic')
                 ->orderByDesc('view_count')
                 ->orderBy('sort_order')
                 ->limit(4)

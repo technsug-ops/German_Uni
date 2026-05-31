@@ -120,7 +120,7 @@ class StateController extends Controller
                 $q->where('title', 'like', '%' . $state->name_de . '%')
                   ->orWhere('content_md', 'like', '%' . $state->name_de . '%');
             })
-            ->with('category:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('category')
             ->orderByDesc('published_at')
             ->take(3)
             ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);

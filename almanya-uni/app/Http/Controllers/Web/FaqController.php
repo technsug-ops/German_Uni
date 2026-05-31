@@ -27,7 +27,7 @@ class FaqController extends Controller
         $featured = Faq::published()
             ->answered()
             ->where('is_featured', true)
-            ->with('topic:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('topic')
             ->limit(6)
             ->get(['id', 'slug', 'question', 'faq_topic_id', 'answer_minutes']);
 
@@ -35,7 +35,7 @@ class FaqController extends Controller
         $popular = Faq::published()
             ->answered()
             ->where('view_count', '>', 0)
-            ->with('topic:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('topic')
             ->orderByDesc('view_count')
             ->limit(5)
             ->get(['id', 'slug', 'question', 'faq_topic_id', 'answer_minutes', 'view_count']);
@@ -43,7 +43,7 @@ class FaqController extends Controller
         // Son güncellenen 5 soru
         $recent = Faq::published()
             ->answered()
-            ->with('topic:id,name,name_tr,name_en,name_de,slug,color')
+            ->with('topic')
             ->orderByDesc('updated_at')
             ->limit(5)
             ->get(['id', 'slug', 'question', 'faq_topic_id', 'answer_minutes', 'updated_at']);
@@ -57,7 +57,7 @@ class FaqController extends Controller
                     $w->where('question', 'like', $like)
                       ->orWhere('answer_html', 'like', $like);
                 })
-                ->with('topic:id,name,name_tr,name_en,name_de,slug,color,icon')
+                ->with('topic')
                 ->orderByDesc('has_answer')
                 ->orderByDesc('view_count')
                 ->limit(20)
