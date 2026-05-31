@@ -10,7 +10,6 @@ use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 
@@ -181,17 +180,31 @@ class Integrations extends Page
     {
         $state = $this->form->getState();
 
-        foreach (self::KEYS as $key) {
-            $value = $state[$key] ?? null;
+        try {
+            foreach (self::KEYS as $key) {
+                $value = $state[$key] ?? null;
 
-            // Toggle → '1'/'0' string olarak sakla (boş = null mantığını bozmasın)
-            if ($key === 'tracking_require_consent') {
-                $value = ! empty($value) ? '1' : '0';
-            } elseif (is_string($value)) {
-                $value = trim($value) ?: null;
+                // Toggle → '1'/'0' string olarak sakla (boş = null mantığını bozmasın)
+                if ($key === 'tracking_require_consent') {
+                    $value = ! empty($value) ? '1' : '0';
+                } elseif (is_string($value)) {
+                    $value = trim($value) ?: null;
+                }
+
+                Setting::set($key, $value, 'integrations');
             }
+        } catch (\Throwable $e) {
+            // En olası sebep: settings tablosu henüz migrate edilmemiş (canlı).
+            // Opak 500 yerine net yönlendirme göster.
+            report($e);
+            Notification::make()
+                ->title('❌ Kaydedilemedi — settings tablosu yok gibi görünüyor')
+                ->body('Sunucuda `php artisan migrate --force` çalıştırılmalı (settings tablosunu oluşturur). Detay: ' . $e->getMessage())
+                ->danger()
+                ->persistent()
+                ->send();
 
-            Setting::set($key, $value, 'integrations');
+            return;
         }
 
         Notification::make()
