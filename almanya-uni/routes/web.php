@@ -733,6 +733,31 @@ Route::fallback(function (\Illuminate\Http\Request $request) use ($__brandDefaul
 // ─────────── Auth-protected, locale-bağımsız ───────────
 
 Route::middleware('auth')->group(function () {
+    // GEÇİCİ — admin migrate teşhis/fix (SSH yok; tarayıcıdan migrate çalıştırır + çıktı gösterir).
+    // İş bitince KALDIR. Sadece is_admin.
+    Route::get('/admin/ops/migrate', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+        $out = "=== migrate:status ===\n";
+        \Illuminate\Support\Facades\Artisan::call('migrate:status');
+        $out .= \Illuminate\Support\Facades\Artisan::output();
+        if (request()->boolean('run')) {
+            $out .= "\n=== migrate --force ===\n";
+            try {
+                \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true, '--no-interaction' => true]);
+                $out .= \Illuminate\Support\Facades\Artisan::output();
+            } catch (\Throwable $e) {
+                $out .= "EXCEPTION: " . $e->getMessage() . "\n";
+            }
+            $out .= "\n=== migrate:status (sonra) ===\n";
+            \Illuminate\Support\Facades\Artisan::call('migrate:status');
+            $out .= \Illuminate\Support\Facades\Artisan::output();
+        } else {
+            $out .= "\n[ Uygulamak için: bu URL'ye ?run=1 ekle ]\n";
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
