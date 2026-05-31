@@ -17,7 +17,7 @@ class BlogController extends Controller
         $filters = $this->parseFilters($request);
 
         $query = Post::published()
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,name_tr,name_en,name_de,slug,color']);
 
         $this->applyFilters($query, $filters);
 
@@ -115,7 +115,7 @@ class BlogController extends Controller
     public function show(string $slug): View
     {
         $post = Post::published()
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'category:id,name,slug,color', 'approvedComments'])
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'category:id,name,name_tr,name_en,name_de,slug,color', 'approvedComments'])
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -189,7 +189,7 @@ class BlogController extends Controller
 
         $query = Post::published()
             ->where('category_id', $category->id)
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,slug,color']);
+            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category:id,name,name_tr,name_en,name_de,slug,color']);
 
         $this->applyFilters($query, $filters);
 

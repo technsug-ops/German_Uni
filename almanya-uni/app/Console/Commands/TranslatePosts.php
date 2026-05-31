@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Post;
+use App\Services\Content\ContentVoice;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -163,11 +164,21 @@ class TranslatePosts extends Command
         }
         $localeList = implode(', ', $sectionDefs);
 
-        $sourceContent = mb_substr($p->content_md, 0, 12000); // büyük post'lar için kes
+        // Translate the FULL source (long guides run 15-23k chars); 24k output tokens cover it.
+        $sourceContent = mb_substr($p->content_md, 0, 30000);
+
+        // Per-locale register + native + anti-AI-slop voice (du for DE, "you" for EN, …).
+        $voiceBlock = '';
+        foreach ($locales as $loc) {
+            $voiceBlock .= "\n--- {$loc} ---\n" . ContentVoice::for($loc) . "\n";
+        }
 
         $prompt = <<<TXT
-You are translating a Turkish blog post about studying in Germany for AlmanyaUni / ApplyToGerman.
-Translate the SOURCE faithfully into {$localeList}. Preserve markdown formatting (headings, bold, lists, tables, blockquotes, links). Keep German technical terms verbatim (Sperrkonto, Studienkolleg, Ausbildung, Rundfunkbeitrag, etc.) with translation in parentheses when first mentioned.
+You are localizing a Turkish blog post about studying in Germany for AlmanyaUni / ApplyToGerman.
+Translate AND localize the SOURCE into {$localeList} — native and idiomatic, NOT literal. Render the ENTIRE source (every section to the end). Preserve markdown formatting (headings, bold, lists, tables, blockquotes, links). Keep German technical terms verbatim (Sperrkonto, Studienkolleg, Ausbildung, Rundfunkbeitrag, etc.) with a gloss in parentheses on first mention.
+
+VOICE & REGISTER per target locale (follow strictly):
+{$voiceBlock}
 
 SOURCE (Turkish):
 

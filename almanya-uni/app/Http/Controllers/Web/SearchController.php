@@ -109,7 +109,7 @@ class SearchController extends Controller
 
         $postTotal = (clone $postBase)->count();
         $posts = $postBase
-            ->with('category:id,name,slug,color')
+            ->with('category:id,name,name_tr,name_en,name_de,slug,color')
             ->orderByRaw("CASE WHEN title LIKE ? THEN 0 ELSE 1 END", [$like])
             ->orderByDesc('published_at')
             ->limit(self::PER_TYPE)

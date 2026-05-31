@@ -11,10 +11,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\LocalizableContent;
 
     protected $fillable = [
         'parent_id',
         'name',
+        'name_tr',
+        'name_en',
+        'name_de',
         'slug',
         'description',
         'color',

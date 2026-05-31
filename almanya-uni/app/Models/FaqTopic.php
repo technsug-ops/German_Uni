@@ -10,9 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class FaqTopic extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\LocalizableContent;
 
     protected $fillable = [
         'name',
+        'name_tr',
+        'name_en',
+        'name_de',
         'slug',
         'icon',
         'description',

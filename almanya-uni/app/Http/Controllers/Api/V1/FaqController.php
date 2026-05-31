@@ -24,7 +24,7 @@ class FaqController extends Controller
         $query = Faq::query()
             ->where('is_published', true)
             ->where('has_answer', true)
-            ->with('topic:id,slug,name,icon');
+            ->with('topic:id,slug,name,name_tr,name_en,name_de,icon');
 
         if (!empty($validated['q'])) {
             $term = '%' . str_replace(['%', '_'], ['\%', '\_'], $validated['q']) . '%';
