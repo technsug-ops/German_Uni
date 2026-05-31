@@ -442,12 +442,13 @@
                     @endforeach
                 </div>
 
-                @if ($cityIntro)
+                {{-- content_blocks tek-dil (TR); EN/DE'de TR sızıntısını önlemek için gate (enrichment çevirisi backlog: doc/MULTILANG-PLAN) --}}
+                @if ($cityIntro && app()->getLocale() === 'tr')
                     <p class="text-gray-700 leading-relaxed mb-5">{{ \Illuminate\Support\Str::limit($cityIntro, 480) }}</p>
                 @endif
 
-                {{-- Öne çıkanlar (yaşam, barınma, kültür) — şehir rehberinden --}}
-                @if ($cityHighlights->isNotEmpty())
+                {{-- Öne çıkanlar (yaşam, barınma, kültür) — şehir rehberinden (sadece TR) --}}
+                @if ($cityHighlights->isNotEmpty() && app()->getLocale() === 'tr')
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
                         @foreach ($cityHighlights as $hl)
                             @php $anchor = \Illuminate\Support\Str::slug($hl['h']); @endphp
