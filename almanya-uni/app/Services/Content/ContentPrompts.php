@@ -36,31 +36,21 @@ class ContentPrompts
 
         // Language directive (non-TR → final language guard at the top of the prompt)
         if ($language !== 'tr') {
-            $langName = self::LANGUAGE_NAMES[$language] ?? $language;
-            $body = "OUTPUT LANGUAGE: $langName ({$language}). Write the entire output in $langName, including titles, captions, hashtags, CTAs, code-level metadata. Do NOT mix in Turkish.\n\n" . $body;
+            $langName = ContentVoice::languageName($language);
+            $body = "OUTPUT LANGUAGE: $langName ({$language}). Write the ENTIRE output in $langName — titles, captions, hashtags, CTAs, frontmatter values, all metadata. Do NOT mix in Turkish or any other language.\n\n" . $body;
         }
 
         return $body;
     }
 
-    public const LANGUAGE_NAMES = [
-        'tr' => 'Turkish',
-        'en' => 'English',
-        'de' => 'German',
-        'fr' => 'French',
-        'es' => 'Spanish',
-        'it' => 'Italian',
-        'pl' => 'Polish',
-        'ru' => 'Russian',
-        'ar' => 'Arabic',
-        'fa' => 'Persian (Farsi)',
-    ];
-
     private function baseContext(ContentBrief $brief, string $language = 'tr'): string
     {
         $audience = ContentBrief::AUDIENCES[$brief->audience] ?? $brief->audience;
         $tone = ContentBrief::TONES[$brief->brand_tone] ?? $brief->brand_tone;
-        $sourceQ = $brief->source_questions ? "\n\nTopluluk'tan gerçek sorular (referans, doğal kullanıcı dilini yansıt):\n- " . implode("\n- ", array_slice($brief->source_questions, 0, 10)) : '';
+        $sourceQ = $brief->source_questions ? "\n\nTopluluk'tan gerçek sorular (referans — bu, kullanıcıların GERÇEKTE merak ettiği; doğal kullanıcı dilini ve bu pain-point'leri içeriğe işle):\n- " . implode("\n- ", array_slice($brief->source_questions, 0, 10)) : '';
+
+        // Per-language register + native terminology + anti-AI-slop quality (single source of truth).
+        $voice = ContentVoice::for($language);
 
         return <<<TXT
 KONU: {$brief->title}
@@ -69,12 +59,9 @@ ANA ANAHTAR KELİME: {$brief->primary_keyword}
 İKİNCİL KELİMELER: {$this->kw($brief)}
 PAIN POINT: {$brief->pain_point}
 TONLAMA: $tone
-PROJE: AlmanyaUni — Türk öğrencilerin Almanya'da eğitim alma rehberi (almanyauni.de){$sourceQ}
+PROJE: AlmanyaUni — uluslararası (özellikle Türk) öğrencilerin Almanya'da eğitim rehberi{$sourceQ}
 
-ÖNEMLİ İLKELER:
-- Türkçe yaz, Almanca terimleri açıkla (örn: "Sperrkonto (bloke hesap)").
-- Tahmin/yalan/hayali sayı kullanma. Bilmiyorsan "üniversitenin resmi sayfasından doğrulayın" de.
-- Doğal Türk öğrenci dili (Telegram dilinden ipuçları yukarıda).
+$voice
 TXT;
     }
 
