@@ -12,23 +12,25 @@
 {{-- HERO --}}
 {{-- =================================================================== --}}
 <section class="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-900 to-primary-800 text-white">
-    {{-- ===== Full-bleed Brandenburg görseli — responsive (masaüstü yatay / mobil dikey) ===== --}}
-    {{-- Gemini ile üretildi, logo temizlendi, WebP optimize (desktop 100KB / mobil 103KB). --}}
-    <div aria-hidden="true" class="absolute inset-0 z-0">
-        {{-- Mobil: dikey --}}
-        <img src="{{ asset('img/hero/hero-mobile.webp') }}" alt=""
-             width="1000" height="1676"
-             fetchpriority="high" decoding="async"
-             class="lg:hidden w-full h-full object-cover object-center">
-        {{-- Masaüstü: yatay panorama (solunda lacivert geçiş baked-in) --}}
+    {{-- ===== MASAÜSTÜ: full-bleed yatay panorama (solunda lacivert geçiş) ===== --}}
+    {{-- Gemini ile üretildi, logo temizlendi, WebP optimize. --}}
+    <div aria-hidden="true" class="hidden lg:block absolute inset-0 z-0">
         <img src="{{ asset('img/hero/hero-desktop.webp') }}" alt=""
              width="2400" height="771"
              fetchpriority="high" decoding="async"
-             class="hidden lg:block w-full h-full object-cover object-center">
-        {{-- Yazı okunabilirliği: soldan (yazı tarafı) lacivert → sağa şeffaf --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/70 lg:via-primary-900/40 to-transparent"></div>
-        {{-- Mobilde alttan da koyulaştır (stat/arama net dursun) --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/20 to-transparent lg:hidden"></div>
+             class="w-full h-full object-cover object-center">
+        {{-- Soldan (yazı tarafı) lacivert → sağa şeffaf --}}
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/40 to-transparent"></div>
+    </div>
+
+    {{-- ===== MOBİL: üstte temiz görsel bandı (kapı net), içerik altında lacivert zeminde ===== --}}
+    <div aria-hidden="true" class="lg:hidden relative z-0">
+        <img src="{{ asset('img/hero/hero-mobile.webp') }}" alt=""
+             width="1000" height="1676"
+             fetchpriority="high" decoding="async"
+             class="w-full h-[42vh] min-h-[300px] object-cover object-center">
+        {{-- Bandın altı lacivere erisin (içeriğe yumuşak geçiş) + üstte hafif karartma --}}
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-900/30 via-transparent to-primary-900"></div>
     </div>
 
     {{-- ince nokta deseni (tüm hero) --}}
@@ -43,7 +45,7 @@
         </span>
 
         {{-- Başlık --}}
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-5 max-w-3xl drop-shadow-sm">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-5 max-w-3xl [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
             {!! __('The short path to finding the <span class="text-accent-400">right university</span> in Germany.') !!}
         </h1>
         <p class="text-lg md:text-xl text-primary-100 max-w-2xl mb-7">
