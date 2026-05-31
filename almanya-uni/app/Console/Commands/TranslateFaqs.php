@@ -131,6 +131,8 @@ class TranslateFaqs extends Command
             $items .= "\n[$i] SORU: {$p['q']}\nCEVAP: {$p['a']}\n";
         }
 
+        $shape = $this->jsonShape($pairs);
+
         $prompt = <<<TXT
 You are translating FAQ entries for AlmanyaUni (a guide for students applying to Germany) from Turkish into {$langName}.
 
@@ -148,7 +150,7 @@ SOURCE ITEMS (Turkish):
 
 Return ONLY this JSON, one object per index:
 {
-$this->jsonShape($pairs)
+$shape
 }
 TXT;
 
