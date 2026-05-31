@@ -24,7 +24,7 @@ class TranslateFaqs extends Command
         {--only-broken : Sadece bozuk satırlar (soru>200 veya TR sızıntısı)}
         {--force : Tüm satırları yeniden çevir}
         {--limit=0 : Dil başına maksimum satır (0=hepsi)}
-        {--batch=8 : API çağrısı başına soru/cevap çifti}
+        {--batch=4 : API çağrısı başına soru/cevap çifti}
         {--sleep=2 : Çağrılar arası bekleme (sn)}
         {--dry-run : Önizleme, kaydetme}';
 
@@ -159,7 +159,7 @@ TXT;
                 $resp = Http::asJson()->timeout(180)->withHeaders(['x-goog-api-key' => $key])
                     ->post(self::API . self::MODEL . ':generateContent', [
                         'contents' => [['parts' => [['text' => $prompt]]]],
-                        'generationConfig' => ['temperature' => 0.4, 'maxOutputTokens' => 16000, 'responseMimeType' => 'application/json'],
+                        'generationConfig' => ['temperature' => 0.4, 'maxOutputTokens' => 24000, 'responseMimeType' => 'application/json'],
                     ]);
                 if (! $resp->ok()) { if ($attempt < 2) { sleep(5); continue; } $this->error('   HTTP ' . $resp->status()); return null; }
                 $text = trim($resp->json()['candidates'][0]['content']['parts'][0]['text'] ?? '');
