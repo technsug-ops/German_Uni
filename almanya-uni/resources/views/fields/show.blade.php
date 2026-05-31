@@ -86,9 +86,10 @@
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
 
-        {{-- content_blocks varsa render (sadece TR locale — content_blocks single-language) --}}
-        @if(!empty($field->content_blocks) && app()->getLocale() === 'tr')
-            <x-content-blocks :blocks="$field->content_blocks" />
+        {{-- Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (yoksa fallback) --}}
+        @php $fieldBlocks = $field->localizedBlocks(); @endphp
+        @if(!empty($fieldBlocks))
+            <x-content-blocks :blocks="$fieldBlocks" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm mb-8">
                 <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>

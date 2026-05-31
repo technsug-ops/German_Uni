@@ -12,6 +12,7 @@ class University extends Model
     use HasFactory;
     use Searchable;
     use \App\Models\Concerns\LocalizableContent;
+    use \App\Models\Concerns\LocalizesContentBlocks;
 
     protected $fillable = [
         'wikidata_id',
@@ -67,6 +68,8 @@ class University extends Model
         'last_synced_at',
         'is_active',
         'content_blocks',
+        'content_blocks_en',
+        'content_blocks_de',
         'last_enriched_at',
     ];
 
@@ -78,6 +81,8 @@ class University extends Model
         'is_uni_assist_member' => 'boolean',
         'hrk_member' => 'boolean',
         'content_blocks' => 'array',
+        'content_blocks_en' => 'array',
+        'content_blocks_de' => 'array',
         'last_enriched_at' => 'datetime',
         'community_mention_updated_at' => 'datetime',
         'rankings_synced_at' => 'datetime',

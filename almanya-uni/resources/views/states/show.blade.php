@@ -86,8 +86,10 @@
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
 
-        @if(!empty($state->content_blocks) && app()->getLocale() === 'tr')
-            <x-content-blocks :blocks="$state->content_blocks" />
+        {{-- Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (yoksa fallback) --}}
+        @php $stateBlocks = $state->localizedBlocks(); @endphp
+        @if(!empty($stateBlocks))
+            <x-content-blocks :blocks="$stateBlocks" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
                 <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>

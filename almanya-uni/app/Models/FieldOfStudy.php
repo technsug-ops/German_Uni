@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class FieldOfStudy extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\LocalizesContentBlocks;
 
     protected $table = 'fields_of_study';
 
@@ -22,6 +23,8 @@ class FieldOfStudy extends Model
         'color',
         'image_url',
         'content_blocks',
+        'content_blocks_en',
+        'content_blocks_de',
         'last_enriched_at',
         'sort_order',
         'is_active',
@@ -30,6 +33,8 @@ class FieldOfStudy extends Model
     protected $casts = [
         'is_active' => 'boolean',
         'content_blocks' => 'array',
+        'content_blocks_en' => 'array',
+        'content_blocks_de' => 'array',
         'last_enriched_at' => 'datetime',
     ];
 

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class State extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\LocalizesContentBlocks;
 
     protected $fillable = [
         'wikidata_id',
@@ -20,6 +21,8 @@ class State extends Model
         'population',
         'image_url',
         'content_blocks',
+        'content_blocks_en',
+        'content_blocks_de',
         'last_enriched_at',
         'latitude',
         'longitude',
@@ -31,6 +34,8 @@ class State extends Model
         'longitude' => 'decimal:7',
         'is_active' => 'boolean',
         'content_blocks' => 'array',
+        'content_blocks_en' => 'array',
+        'content_blocks_de' => 'array',
         'last_enriched_at' => 'datetime',
     ];
 
