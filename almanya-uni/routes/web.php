@@ -758,6 +758,23 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GEÇİCİ — çeviri import (content_blocks_en/de + FAQ EN/DE). Local'de
+    // `i18n:export-content` ile üretilen gzip veri dosyalarını prod DB'ye uygular.
+    // Re-runnable (idempotent). ?force=1 dolu blokların üzerine de yazar.
+    Route::get('/admin/ops/import-content', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('i18n:import-content', array_filter([
+                '--force' => request()->boolean('force'),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
