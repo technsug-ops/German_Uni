@@ -17,7 +17,7 @@ class City extends Model
         'name_tr', 'name_de', 'name_en', 'slug',
         'latitude', 'longitude', 'population',
         'is_active', 'image_url',
-        'content_blocks', 'last_enriched_at',
+        'content_blocks', 'content_blocks_en', 'content_blocks_de', 'last_enriched_at',
     ];
 
     protected $casts = [
@@ -25,9 +25,25 @@ class City extends Model
         'longitude' => 'decimal:7',
         'is_active' => 'boolean',
         'content_blocks' => 'array',
+        'content_blocks_en' => 'array',
+        'content_blocks_de' => 'array',
         'private_chain_slugs' => 'array',
         'last_enriched_at' => 'datetime',
     ];
+
+    /**
+     * Locale-aware enrichment blocks. TR → source content_blocks; EN/DE →
+     * translated content_blocks_{locale} (null until translated, so the blade
+     * hides them instead of leaking Turkish). See doc/MULTILANG-PLAN (Enrichment-B).
+     */
+    public function localizedBlocks(?string $locale = null): ?array
+    {
+        $locale ??= app()->getLocale();
+        if ($locale === 'tr') {
+            return $this->content_blocks;
+        }
+        return $this->{'content_blocks_' . $locale} ?: null;
+    }
 
     public function getNameAttribute(): string
     {

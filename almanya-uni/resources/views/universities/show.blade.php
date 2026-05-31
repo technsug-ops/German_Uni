@@ -386,11 +386,13 @@
     <div x-show="tab==='sehir'" x-cloak>
         @if ($city)
             @php
-                $cityIntro = $city->content_blocks
-                    ? \App\Support\Seo::descriptionFromBlocks($city->content_blocks, '')
+                // Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (null until translated → gizli)
+                $cityBlocksLocalized = $city->localizedBlocks();
+                $cityIntro = $cityBlocksLocalized
+                    ? \App\Support\Seo::descriptionFromBlocks($cityBlocksLocalized, '')
                     : '';
                 // MGU "Highlight" tarzı: şehir içerik bloklarından 3 öne çıkan (yaşam/barınma/kültür)
-                $cityHighlights = collect($city->content_blocks ?? [])
+                $cityHighlights = collect($cityBlocksLocalized ?? [])
                     ->filter(fn ($b) => ! empty($b['h']) && ! empty($b['body_md']))
                     ->take(3)
                     ->map(fn ($b) => [
@@ -442,13 +444,13 @@
                     @endforeach
                 </div>
 
-                {{-- content_blocks tek-dil (TR); EN/DE'de TR sızıntısını önlemek için gate (enrichment çevirisi backlog: doc/MULTILANG-PLAN) --}}
-                @if ($cityIntro && app()->getLocale() === 'tr')
+                {{-- cityIntro/cityHighlights locale-aware blok'tan gelir (EN/DE: çeviri varsa, yoksa boş → gizli) --}}
+                @if ($cityIntro)
                     <p class="text-gray-700 leading-relaxed mb-5">{{ \Illuminate\Support\Str::limit($cityIntro, 480) }}</p>
                 @endif
 
-                {{-- Öne çıkanlar (yaşam, barınma, kültür) — şehir rehberinden (sadece TR) --}}
-                @if ($cityHighlights->isNotEmpty() && app()->getLocale() === 'tr')
+                {{-- Öne çıkanlar (yaşam, barınma, kültür) — şehir rehberinden --}}
+                @if ($cityHighlights->isNotEmpty())
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
                         @foreach ($cityHighlights as $hl)
                             @php $anchor = \Illuminate\Support\Str::slug($hl['h']); @endphp

@@ -82,9 +82,10 @@
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
 
-        {{-- Content blocks sadece TR (locale-aware enrichment backlog'da) --}}
-        @if(!empty($city->content_blocks) && app()->getLocale() === 'tr')
-            <x-content-blocks :blocks="$city->content_blocks" :exclude-url="'/cities/' . $city->slug" />
+        {{-- Locale-aware enrichment: TR=content_blocks, EN/DE=content_blocks_{locale} (null → fallback paneli) --}}
+        @php $cityBlocks = $city->localizedBlocks(); @endphp
+        @if(!empty($cityBlocks))
+            <x-content-blocks :blocks="$cityBlocks" :exclude-url="'/cities/' . $city->slug" />
         @else
             <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
                 <div class="flex justify-center mb-3 text-gray-400"><x-svg-icon name="document-text" class="w-12 h-12" /></div>

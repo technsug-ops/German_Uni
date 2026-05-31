@@ -1,0 +1,1938 @@
+{
+    "berlin-q64": {
+        "en": [
+            {
+                "alt": "Berlin",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Berlin.svg/langde-330px-Flag_of_Berlin.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "Berlin, the heart, capital, and largest city of Germany, is one of the most attractive destinations for students dreaming of studying and living in Germany. With a population of approximately 3.7 million, it's the European Union's most populous city, known for its dynamic culture, rich history, and world-class educational institutions. If you're looking to study in Germany, Berlin offers not just academic opportunities but also an unforgettable experience with its multicultural environment, vibrant student life, and countless cultural events. With 57 universities and over 1700 program options, **Berlin is student-friendly**, making it an ideal starting point to shape your future. At AlmanyaUni, we're here to guide you through your study and life journey in Berlin."
+            },
+            {
+                "h": "Quick Facts",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "City Name",
+                        "value": "Berlin"
+                    },
+                    {
+                        "label": "State",
+                        "value": "Berlin"
+                    },
+                    {
+                        "label": "Population",
+                        "value": "Approx. 3.7 Million (EU's most populous city)"
+                    },
+                    {
+                        "label": "Number of Universities",
+                        "value": "57 (49 public, 3 private)"
+                    },
+                    {
+                        "label": "Total Programs Available",
+                        "value": "1715+"
+                    },
+                    {
+                        "label": "Prominent Universities",
+                        "value": "Freie Universität Berlin, Humboldt-Universität zu Berlin, Technische Universität Berlin, Hochschule für Technik und Wirtschaft Berlin, Berliner Hochschule für Technik"
+                    }
+                ]
+            },
+            {
+                "h": "Study in Berlin: Why the Capital?",
+                "type": "section",
+                "body_md": "Berlin isn't just Germany's political capital; it's also a hub for science and education. The city's 57 universities and colleges offer over 1700 programs across a wide range of fields, from engineering and social sciences to arts and medicine. World-renowned institutions like Freie Universität Berlin, Humboldt-Universität zu Berlin, and Technische Universität Berlin are major draws for international students. A common question students ask is, 'Do Berlin universities offer conditional admission?' or 'What's the conditional admission level for FU Berlin and TU Berlin?' Generally, these established public universities require a C1 level of German language proficiency and may have limited options for conditional admission. However, some programs or private universities (like the Berlin School of Business and Innovation - BSBI, which often prompts questions like 'Has anyone gone to BSBI Berlin?') might offer different admission criteria. If you're looking for conditional admission for popular fields like software engineering, the best approach is to thoroughly check each university's official admission requirements and contact them directly. Berlin offers unique opportunities to shape your future with its academic diversity and research possibilities."
+            },
+            {
+                "h": "Accommodation and Living in Berlin: Apartments, Dorms, and Registration",
+                "type": "section",
+                "body_md": "When you're a student in Berlin, the **cost of living**, especially accommodation, is often one of the first things you'll wonder about. Our forums show 'Looking for a WG/dorm in Berlin' threads viewed tens of thousands of times, highlighting just how crucial finding housing is. We frequently see questions like, 'I'm going to Berlin in November for a year of prep, looking for an apartment or dorm.' Finding accommodation in Berlin can be tough, especially at the start of a semester. Student dorms, managed by the `Studierendenwerk Berlin` (student services organization), are usually the most affordable option, but application processes are long, and spots are limited. So, apply very early. `WG` (Wohngemeinschaft – shared apartment) rooms are also very popular among students, and you can find listings on platforms like WG-Gesucht.de. \n\nAnother critical step is `Anmeldung` (registration of residence). Questions like, 'I'm staying in Berlin, and my language course is in Berlin, but if I do my `Anmeldung` from Brandenburg, will it cause problems later?' reveal the complexity of bureaucratic processes. Remember, in Germany, you are legally required to register your residence (`Anmeldung`) at the address where you actually live. Registering from a different state can lead to serious issues with the `Ausländerbehörde` (Foreigners' Office) for things like visa extensions or residence permits. Therefore, it's vital to complete your `Anmeldung` correctly and on time at your actual address. Our forum's 'Berlin - Residence Permit Application Guide' will also help you with these matters."
+            },
+            {
+                "h": "Language Courses and Bureaucratic Processes in Berlin",
+                "type": "section",
+                "body_md": "For students looking to study in Germany, language courses and the subsequent bureaucratic processes are incredibly important. In our Telegram group, we often see questions like, 'My visa came through, and I'm in Germany. I'm doing a Master's, but first, I'll do a language course. My course is in Heidelberg, but I want to do a language course in Berlin. Will the `Ausländerbehörde` (Foreigners' Office) cause problems?' The language course and residence information you provided in your visa application are crucial for the `Ausländerbehörde`. If you want to change your course location, you absolutely must inform the relevant `Ausländerbehörde` and get their approval. Making changes without approval can create issues with your visa or residence permit process. \n\nAnother common question is, 'Can anyone recommend an affordable language school in Berlin?' This shows students are looking for budget-friendly options. In Berlin, `Volkshochschule - VHS` (Adult Education Centers) generally offer affordable and high-quality German courses. Besides these, many private language schools like BSI Sprachschule and GLS Sprachenzentrum are also available. You can compare course prices, programs, and locations to find the best fit for you. Remember, your language course must align with your visa purpose, and consistent attendance is critical to maintaining your legal status in Germany."
+            },
+            {
+                "h": "Monthly Cost of Living (Estimated)",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "Varies depending on distance from city center and room size.",
+                        "label": "Rent (shared WG room)",
+                        "amount": "400-650"
+                    },
+                    {
+                        "note": "Depends on personal preferences and frequency of eating out.",
+                        "label": "Food and Groceries",
+                        "amount": "200-350"
+                    },
+                    {
+                        "note": "Often included in student fees or discounted at most universities.",
+                        "label": "Transportation (Semesterticket)",
+                        "amount": "0-35"
+                    },
+                    {
+                        "note": "Student rate.",
+                        "label": "Health Insurance (Mandatory)",
+                        "amount": "110-120"
+                    },
+                    {
+                        "note": "Varies based on personal needs.",
+                        "label": "Other Expenses (Social, Entertainment, Communication)",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "810-1355",
+                "currency": "EUR"
+            },
+            {
+                "h": "Places to Visit and Student Hangouts",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Brandenburg Gate (Brandenburger Tor)",
+                        "type": "landmark",
+                        "description": "Berlin's iconic historical monument and the heart of the city."
+                    },
+                    {
+                        "url": null,
+                        "name": "Reichstag Building (Reichstagsgebäude)",
+                        "type": "landmark",
+                        "description": "Historic building housing the German Federal Parliament, famous for its glass dome."
+                    },
+                    {
+                        "url": null,
+                        "name": "Museum Island (Museumsinsel)",
+                        "type": "museum",
+                        "description": "A cultural complex featuring five world-class museums on the UNESCO World Heritage list."
+                    },
+                    {
+                        "url": null,
+                        "name": "Tiergarten",
+                        "type": "park",
+                        "description": "A large green space in the city center, ideal for relaxation and sports."
+                    },
+                    {
+                        "url": null,
+                        "name": "Alexanderplatz",
+                        "type": "square",
+                        "description": "One of Berlin's busiest squares, a hub for shopping and meeting."
+                    },
+                    {
+                        "url": null,
+                        "name": "East Side Gallery",
+                        "type": "landmark",
+                        "description": "An open-air art gallery on the longest remaining section of the Berlin Wall."
+                    },
+                    {
+                        "url": null,
+                        "name": "Berlin State Library (Staatsbibliothek zu Berlin)",
+                        "type": "library",
+                        "description": "One of Germany's largest academic libraries, an excellent study environment for students."
+                    }
+                ]
+            },
+            {
+                "h": "Student Life and Culture",
+                "type": "student_culture",
+                "body_md": "With its young and dynamic population, Berlin offers a unique lifestyle for students. The city's multicultural nature embraces students from all over the world. You can find a different event, concert, or exhibition almost every day of the week. Its nightlife, art galleries, alternative cafes, and bars make Berlin one of Europe's most exciting cities. As a student, your **Semesterticket** (semester ticket) often allows you to use public transportation (subway, tram, bus) for free or at a very low cost, giving you the freedom to explore every corner of the city. Bicycle culture is also very strong; it's one of the most popular and eco-friendly ways to get around. Being a student in Berlin means not just studying, but also making international friends, experiencing different cultures, and seizing countless opportunities to support your personal growth.",
+                "highlights": [
+                    "Multicultural and international student environment",
+                    "Bike-friendly city structure and widespread bicycle use",
+                    "Vibrant nightlife, art, and music scene",
+                    "Affordable or free public transport with the Semesterticket",
+                    "Countless cultural events, festivals, and museums"
+                ]
+            },
+            {
+                "h": "Video",
+                "url": null,
+                "type": "video",
+                "title": "Being a Student in Berlin: A Guide to Life and Education",
+                "platform": "youtube",
+                "description": "A video recommendation featuring Turkish students sharing their experiences studying in Berlin, providing information about life, accommodation, transportation, and university opportunities in the city. It should include visuals reflecting the general atmosphere and student life."
+            },
+            {
+                "h": "Frequently Asked Questions",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "Consistency between your visa's purpose and your registered location is important. You'll need to inform the `Ausländerbehörde` (Foreigners' Office) about the language course change and may need to prove that your new course aligns with your visa's purpose. Making changes without approval can lead to problems.",
+                        "q": "My visa was issued for a language course in Heidelberg, but I want to do a language course in Berlin. Will the Foreigners' Office cause problems?"
+                    },
+                    {
+                        "a": "Finding accommodation in Berlin can be challenging, especially during the fall semester. It's highly recommended to apply for student dorms (`Studierendenwerk Berlin`) very early. You can also check online platforms like WG-Gesucht.de for `WG` (shared apartment) listings or look into private dorms. Starting early and being flexible are key.",
+                        "q": "Is it hard to find an apartment or dorm in Berlin? I'm going in November for prep, what should I do?"
+                    },
+                    {
+                        "a": "No, registering your residence (`Anmeldung`) in a different state than where you actually live is not legal and can lead to serious problems with your `Ausländerbehörde` (Foreigners' Office) procedures (like visa extensions or residence permits) later on. You are legally required to register where you live.",
+                        "q": "If I register my residence (`Anmeldung`) in Brandenburg while living in Berlin, will it be a problem?"
+                    },
+                    {
+                        "a": "Berlin offers many language course options. `Volkshochschule - VHS` (Adult Education Centers) are generally more affordable. Additionally, private schools like BSI Sprachschule and GLS Sprachenzentrum are available. You can compare prices and programs to find the best fit for you.",
+                        "q": "Do you have recommendations for affordable language courses in Berlin?"
+                    },
+                    {
+                        "a": "Established universities like FU Berlin and TU Berlin typically require direct C1 level German proficiency or its equivalent and may have limited conditional admission options. However, some universities or programs (especially private universities) might offer conditional admission. It's always best to check each university's official website for their specific admission requirements.",
+                        "q": "Do Freie Universität Berlin (FU Berlin) and Technische Universität Berlin (TU Berlin) offer conditional admission? Are there any universities in Berlin where I can get conditional admission for Software Engineering?"
+                    },
+                    {
+                        "a": "BSBI is a private business and innovation school operating in Berlin. It generally offers English-taught programs, and its admission requirements may differ from public universities. You can review the school's website for detailed information on programs and admission conditions, and research BSBI experiences in student forums.",
+                        "q": "Can I get information about Berlin School of Business and Innovation (BSBI)? Has anyone done a Master's there?"
+                    }
+                ]
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Take the first step to make your dreams of studying in Germany a reality! Contact us to get more information about universities and programs in Berlin or to ask your questions."
+            },
+            {
+                "h": "Berlin — Gallery",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "2016 Charite Hospital",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/2016_Charite_Hospital.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2016_Charite_Hospital.jpg"
+                    },
+                    {
+                        "alt": "07.08.21.Bundeskanzleramt",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/07.08.21.Bundeskanzleramt.jpg/960px-07.08.21.Bundeskanzleramt.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:07.08.21.Bundeskanzleramt.jpg"
+                    },
+                    {
+                        "alt": "2011FUBerlin",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2011FUBerlin.jpg/960px-2011FUBerlin.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2011FUBerlin.jpg"
+                    },
+                    {
+                        "alt": "2020-04-16 P4160889 St.Hedwigs-Kathedrale, Bebelplatz",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2020-04-16_P4160889_St.Hedwigs-Kathedrale%2C_Bebelplatz.jpg/960px-2020-04-16_P4160889_St.Hedwigs-Kathedrale%2C_Bebelplatz.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2020-04-16_P4160889_St.Hedwigs-Kathedrale,_Bebelplatz.jpg"
+                    },
+                    {
+                        "alt": "2022-03-22 ALBA Berlin gegen FC Barcelona Bàsquet (EuroLeague 2021-22) by Sandro Halank–082",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_%28EuroLeague_2021-22%29_by_Sandro_Halank%E2%80%93082.jpg/960px-2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_%28EuroLeague_2021-22%29_by_Sandro_Halank%E2%80%93082.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_(EuroLeague_2021-22)_by_Sandro_Halank%E2%80%93082.jpg"
+                    },
+                    {
+                        "alt": "2023 Cube Berlin 4 2",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2023_Cube_Berlin_4_2.jpg/960px-2023_Cube_Berlin_4_2.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2023_Cube_Berlin_4_2.jpg"
+                    },
+                    {
+                        "alt": "AVROs danstoernooi in het Kurhaus te Scheveningen optreden van Conny Froboess, Bestanddeelnr 911-0298",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess%2C_Bestanddeelnr_911-0298.jpg/960px-AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess%2C_Bestanddeelnr_911-0298.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess,_Bestanddeelnr_911-0298.jpg"
+                    },
+                    {
+                        "alt": "Abgeordnetenhaus",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Abgeordnetenhaus.jpg/960px-Abgeordnetenhaus.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Abgeordnetenhaus.jpg"
+                    },
+                    {
+                        "alt": "AntennePrenzlauer Berg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/AntennePrenzlauer_Berg.jpg/960px-AntennePrenzlauer_Berg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AntennePrenzlauer_Berg.jpg"
+                    },
+                    {
+                        "alt": "Baureihe 483-484 der S-Bahn Berlin",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Baureihe_483-484_der_S-Bahn_Berlin.jpg/960px-Baureihe_483-484_der_S-Bahn_Berlin.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Baureihe_483-484_der_S-Bahn_Berlin.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Community Discussions about Berlin",
+                "type": "related_forum_topics",
+                "items": [
+                    {
+                        "url": "https://community.deutschstudent.com/viewtopic.php?t=7269&sid=46e707c15b053b8e589fb84fe86f3fac",
+                        "title": "Berlin - Residence Permit Application Guide",
+                        "views": 28974,
+                        "replies": 18,
+                        "category": "state"
+                    },
+                    {
+                        "url": "https://community.deutschstudent.com/viewtopic.php?t=13710&sid=d710e84023930554283a9a6485557dc",
+                        "title": "Looking for a WG/dorm in Berlin",
+                        "views": 27025,
+                        "replies": 18,
+                        "category": "guide"
+                    }
+                ],
+                "source": "DeutschStudent"
+            },
+            {
+                "h": "Universities in Berlin (57)",
+                "type": "universities_in_city",
+                "total": 57,
+                "public": 49,
+                "private": 3,
+                "top_unis": [
+                    "Freie Universität Berlin, E-Medien",
+                    "Institut für Kunst- und Bildgeschichte (IKB) der Humboldt-Universität zu Berlin",
+                    "Technische Universität Berlin Institut für Technische Akustik",
+                    "Hochschule für Technik und Wirtschaft Berlin",
+                    "Berliner Hochschule für Technik"
+                ]
+            },
+            {
+                "h": "Useful Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q64",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 52.5166667,
+                        "longitude": 13.3833333
+                    },
+                    "name": "Berlin",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Berlin.svg/langde-330px-Flag_of_Berlin.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Berlin",
+                        "https://en.wikipedia.org/wiki/Berlin",
+                        "https://tr.wikipedia.org/wiki/Berlin"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Berlin",
+                        "addressCountry": "DE",
+                        "addressLocality": "Berlin"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "Berlin, the heart, capital, and largest city of Germany, is one of the most attractive destinations for students dreaming of studying and living in Germany. With a population of approximately 3.7 million, it's the European Union's most populous city, known for its dynamic culture, rich history, and world-class educational institutions. If you're looking to study in Germany, Berlin offers not just academic opportunities but also an unforgettable experience with its multicultural environment, vibrant student life, and countless cultural events. With 57 universities and over 1700 program options, **Berlin is student-friendly**, making it an ideal starting point to shape your future. At AlmanyaUni, we're here to guide you through your study and life journey in Berlin.",
+                    "alternateName": "Berlin",
+                    "containedInPlace": {
+                        "name": "Berlin",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ],
+        "de": [
+            {
+                "alt": "Berlin",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Berlin.svg/langde-330px-Flag_of_Berlin.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "Das Herz Deutschlands, seine Hauptstadt und größte Stadt, **Berlin**, ist für türkische Studierende eines der attraktivsten Ziele, um ihre Träume vom Studieren und Leben in Deutschland zu verwirklichen. Mit rund 3,7 Millionen Einwohnern ist Berlin die bevölkerungsreichste Stadt der Europäischen Union und zeichnet sich durch seine dynamische Kultur, reiche Geschichte und erstklassige Bildungseinrichtungen aus. Für alle, die in Deutschland studieren möchten, bietet Berlin nicht nur akademische Möglichkeiten, sondern verspricht auch ein unvergessliches Erlebnis mit seiner multikulturellen Struktur, dem lebendigen Studentenleben und unzähligen kulturellen Veranstaltungen. Mit 57 Universitäten und über 1700 Studiengängen ist **Berlin** der ideale Ausgangspunkt, um deine Zukunft in einem studentenfreundlichen Umfeld zu gestalten. Wir von AlmanyaUni sind hier, um dich auf deinem Studien- und Lebensweg in Berlin zu begleiten."
+            },
+            {
+                "h": "Schnelle Fakten",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "Stadtname",
+                        "value": "Berlin"
+                    },
+                    {
+                        "label": "Bundesland",
+                        "value": "Berlin"
+                    },
+                    {
+                        "label": "Bevölkerung",
+                        "value": "Rund 3,7 Millionen (bevölkerungsreichste Stadt der EU)"
+                    },
+                    {
+                        "label": "Anzahl der Hochschulen",
+                        "value": "57 (49 staatlich, 3 privat)"
+                    },
+                    {
+                        "label": "Gesamtzahl der Studiengänge",
+                        "value": "1715+"
+                    },
+                    {
+                        "label": "Bekannte Hochschulen",
+                        "value": "Freie Universität Berlin, Humboldt-Universität zu Berlin, Technische Universität Berlin, Hochschule für Technik und Wirtschaft Berlin, Berliner Hochschule für Technik"
+                    }
+                ]
+            },
+            {
+                "h": "Studieren in Berlin: Warum die Hauptstadt?",
+                "type": "section",
+                "body_md": "Berlin ist nicht nur die politische, sondern auch eine der Wissenschafts- und Bildungshauptstädte Deutschlands. Die 57 Universitäten und Hochschulen der Stadt bieten über 1700 Studiengänge in einem breiten Spektrum an – von Ingenieurwissenschaften über Sozialwissenschaften und Kunst bis hin zur Medizin. Insbesondere weltweit anerkannte Einrichtungen wie die Freie Universität Berlin, die Humboldt-Universität zu Berlin und die Technische Universität Berlin sind Anziehungspunkte für internationale Studierende. Eine häufig gestellte Frage unter türkischen Studierenden ist: 'Bieten Berliner Hochschulen eine bedingte Zulassung an?' oder 'Wie sind die Anforderungen für eine bedingte Zulassung an der FU Berlin und der TU Berlin?' Generell verlangen diese renommierten staatlichen Universitäten ein C1-Niveau in Deutsch als Sprachnachweis und sind bei bedingten Zulassungen eher restriktiv. Einige Studiengänge oder private Hochschulen (wie z.B. die Berlin School of Business and Innovation – BSBI, zu der oft Fragen wie 'Gibt es jemanden, der an der BSBI Berlin studiert?' kommen) können jedoch andere Zulassungsvoraussetzungen haben. Wenn du eine bedingte Zulassung für beliebte Fächer wie Software Engineering suchst, ist es am besten, die offiziellen Zulassungsvoraussetzungen jeder Hochschule detailliert zu prüfen und direkt Kontakt mit der Universität aufzunehmen. Berlin bietet dir mit seiner akademischen Vielfalt und den Forschungsmöglichkeiten eine einzigartige Chance, deine Zukunft zu gestalten."
+            },
+            {
+                "h": "Wohnen und Leben in Berlin: WG, Wohnheim und Anmeldung",
+                "type": "section",
+                "body_md": "Die Lebenshaltungskosten in Berlin als Studierende*r und insbesondere die Wohnungssuche gehören zu den Themen, die unsere türkischen Studierenden am meisten interessieren. In unseren Foren wurde der Beitrag 'Ich suche eine WG/ein Wohnheim in Berlin' zehntausendfach aufgerufen, was zeigt, wie wichtig die Wohnungssuche ist. Besonders häufig begegnen uns Fragen wie 'Ich fahre im November nach Berlin und suche für ein Jahr Vorbereitung eine Wohnung oder ein Wohnheim'. Eine Unterkunft in Berlin zu finden, kann besonders zu Semesterbeginn herausfordernd sein. Studierendenwohnheime (Studierendenwerk Berlin) sind oft die günstigste Option, aber die Bewerbungsverfahren sind langwierig und die Plätze begrenzt. Deshalb empfehlen wir dir, dich sehr frühzeitig zu bewerben. WG-Zimmer (Wohngemeinschaft – geteilte Wohnung) sind bei Studierenden ebenfalls sehr beliebt, und du kannst Anzeigen auf Plattformen wie WG-Gesucht.de verfolgen. \n\nEin weiteres wichtiges Thema ist die 'Anmeldung' (Meldepflicht). Fragen wie 'Ich wohne in Berlin und mein Sprachkurs ist auch in Berlin, aber wenn ich meine Anmeldung in Brandenburg mache, gibt es später Probleme?' zeigen die Komplexität der bürokratischen Prozesse. Beachte: Wo du in Deutschland legal wohnst, dort musst du auch deine Anmeldung vornehmen. Eine Anmeldung in einem anderen Bundesland kann bei deinen Angelegenheiten mit der Ausländerbehörde (Visumsverlängerung, Aufenthaltserlaubnis etc.) zu ernsthaften Problemen führen. Deshalb ist es von entscheidender Bedeutung, deine Anmeldung korrekt und fristgerecht an deiner Wohnadresse vorzunehmen. Unser 'Leitfaden zur Beantragung des Aufenthaltstitels in Berlin' in unseren Foren wird dir ebenfalls in diesen Fragen weiterhelfen."
+            },
+            {
+                "h": "Sprachkurse und bürokratische Prozesse in Berlin",
+                "type": "section",
+                "body_md": "Für türkische Studierende, die in Deutschland studieren möchten, sind Sprachkurse und die anschließenden bürokratischen Prozesse von großer Bedeutung. In unserer Telegram-Gruppe begegnen uns häufig Fragen wie: 'Mein Visum ist da und ich bin in Deutschland. Ich werde einen Master machen, aber zuerst einen Sprachkurs besuchen. Mein Sprachkurs ist in Heidelberg, aber ich möchte den Sprachkurs in Berlin machen. Macht die Ausländerbehörde das zum Problem?' Die in deinem Visumsantrag angegebenen Informationen zum Sprachkurs und Wohnort sind für die Ausländerbehörde wichtig. Wenn du deinen Kursort ändern möchtest, musst du dies unbedingt der zuständigen Ausländerbehörde mitteilen und eine Genehmigung einholen. Änderungen ohne Genehmigung können in deinen Visums- oder Aufenthaltserlaubnisverfahren Probleme verursachen. \n\nDie Frage 'Kann jemand eine günstige Sprachschule in Berlin empfehlen?' zeigt auch, dass unsere Studierenden nach budgetfreundlichen Optionen suchen. In Berlin bieten die Volkshochschulen (VHS) in der Regel preiswerte und qualitativ hochwertige Deutschkurse an. Darüber hinaus gibt es viele private Sprachschulen wie die BSI Sprachschule oder das GLS Sprachenzentrum. Vergleiche die Preise, Programme und Standorte der Kurse, um die für dich passende Option zu finden. Denke daran: Dein Sprachkurs muss dem Visumszweck entsprechen und deine regelmäßige Teilnahme ist entscheidend, um deinen legalen Status in Deutschland zu wahren."
+            },
+            {
+                "h": "Monatliche Lebenshaltungskosten (Schätzung)",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "Variiert je nach Entfernung zum Stadtzentrum und Zimmergröße.",
+                        "label": "Miete (WG-Zimmer)",
+                        "amount": "400-650"
+                    },
+                    {
+                        "note": "Abhängig von persönlichen Vorlieben und der Häufigkeit des Essengehens.",
+                        "label": "Essen und Lebensmitteleinkäufe",
+                        "amount": "200-350"
+                    },
+                    {
+                        "note": "Meist im Semesterbeitrag enthalten oder ermäßigt.",
+                        "label": "Transport (Semesterticket)",
+                        "amount": "0-35"
+                    },
+                    {
+                        "note": "Studententarif.",
+                        "label": "Krankenversicherung (Pflicht)",
+                        "amount": "110-120"
+                    },
+                    {
+                        "note": "Variiert je nach persönlichen Bedürfnissen.",
+                        "label": "Sonstige Ausgaben (Soziales, Freizeit, Kommunikation)",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "810-1355",
+                "currency": "EUR"
+            },
+            {
+                "h": "Sehenswürdigkeiten und Studenten-Hotspots",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Brandenburger Tor",
+                        "type": "landmark",
+                        "description": "Das historische Wahrzeichen Berlins und das Herz der Stadt."
+                    },
+                    {
+                        "url": null,
+                        "name": "Reichstagsgebäude",
+                        "type": "landmark",
+                        "description": "Das historische Gebäude, das den Deutschen Bundestag beherbergt und für seine Glaskuppel bekannt ist."
+                    },
+                    {
+                        "url": null,
+                        "name": "Museumsinsel",
+                        "type": "museum",
+                        "description": "Ein Kulturkomplex mit fünf weltberühmten Museen, die zum UNESCO-Weltkulturerbe gehören."
+                    },
+                    {
+                        "url": null,
+                        "name": "Tiergarten",
+                        "type": "park",
+                        "description": "Die große Grünfläche im Herzen der Stadt, ideal zum Entspannen und Sporttreiben."
+                    },
+                    {
+                        "url": null,
+                        "name": "Alexanderplatz",
+                        "type": "square",
+                        "description": "Einer der belebtesten Plätze Berlins, ein Treffpunkt und Einkaufszentrum."
+                    },
+                    {
+                        "url": null,
+                        "name": "East Side Gallery",
+                        "type": "landmark",
+                        "description": "Die längste erhaltene Teilstrecke der Berliner Mauer, die als Open-Air-Galerie dient."
+                    },
+                    {
+                        "url": null,
+                        "name": "Staatsbibliothek zu Berlin",
+                        "type": "library",
+                        "description": "Eine der größten wissenschaftlichen Bibliotheken Deutschlands, ein hervorragender Lernort für Studierende."
+                    }
+                ]
+            },
+            {
+                "h": "Studentenleben und Kultur",
+                "type": "student_culture",
+                "body_md": "Berlin bietet mit seiner jungen und dynamischen Bevölkerung einen einzigartigen Lebensstil für Studierende. Die Stadt empfängt mit ihrer multikulturellen Struktur Studierende aus aller Welt. An jedem Tag der Woche kannst du auf eine andere Veranstaltung, ein Konzert oder eine Ausstellung stoßen. Das Nachtleben, Kunstgalerien, alternative Cafés und Bars machen Berlin zu einer der aufregendsten Städte Europas. Studierende können dank des **Semestertickets** die öffentlichen Verkehrsmittel (U-Bahn, Straßenbahn, Bus) meist kostenlos oder sehr günstig nutzen, was dir die Freiheit gibt, jeden Winkel der Stadt zu erkunden. Auch die Fahrradkultur ist sehr ausgeprägt; es ist eines der beliebtesten und umweltfreundlichsten Fortbewegungsmittel in der Stadt. Student in Berlin zu sein, bedeutet nicht nur zu lernen, sondern auch internationale Freundschaften zu schließen, verschiedene Kulturen zu erleben und unzählige Möglichkeiten zur persönlichen Entwicklung zu nutzen.",
+                "highlights": [
+                    "Multikulturelles und internationales studentisches Umfeld",
+                    "Fahrradfreundliche Stadtstruktur und weit verbreitete Fahrradnutzung",
+                    "Reiches Nachtleben, Kunst- und Musikszene",
+                    "Günstiger oder kostenloser ÖPNV mit dem Semesterticket",
+                    "Zahlreiche kulturelle Veranstaltungen, Festivals und Museen"
+                ]
+            },
+            {
+                "h": "Video",
+                "url": null,
+                "type": "video",
+                "title": "Student in Berlin sein: Dein Leitfaden für Leben und Studium",
+                "platform": "youtube",
+                "description": "Ein Video, das die Erfahrungen türkischer Studierender in Berlin teilt und Informationen über das Leben, die Unterkunft, den Transport und die Studienmöglichkeiten in der Stadt gibt. Es sollte Bilder enthalten, die die allgemeine Atmosphäre und das Studentenleben der Stadt widerspiegeln."
+            },
+            {
+                "h": "Häufig gestellte Fragen",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "Die Konsistenz zwischen dem Zweck deines Visums und dem Ort, an dem du eingeschrieben bist, ist wichtig. Eine Änderung des Sprachkurses musst du der Ausländerbehörde mitteilen und nachweisen, dass dein neuer Kurs dem Visumszweck entspricht. Änderungen ohne Genehmigung können Probleme verursachen.",
+                        "q": "Mein Visum wurde für einen Sprachkurs in Heidelberg ausgestellt, aber ich möchte einen Sprachkurs in Berlin besuchen. Macht die Ausländerbehörde Probleme?"
+                    },
+                    {
+                        "a": "Eine Unterkunft in Berlin zu finden, besonders im Herbstsemester, kann herausfordernd sein. Für Studierendenwohnheime (Studierendenwerk Berlin) solltest du dich sehr frühzeitig bewerben. WG-Anzeigen (Wohngemeinschaft) kannst du auf Online-Plattformen (wie WG-Gesucht.de) verfolgen oder dich nach privaten Wohnheimen umsehen. Frühzeitig zu beginnen und flexibel zu sein, ist wichtig.",
+                        "q": "Ist es schwer, eine Wohnung oder ein Wohnheim in Berlin zu finden? Ich fahre im November zur Vorbereitung, wie sollte ich vorgehen?"
+                    },
+                    {
+                        "a": "Nein, es ist nicht legal, deine Anmeldung in einem anderen Bundesland als deinem Wohnort vorzunehmen, und dies kann später bei deinen Angelegenheiten mit der Ausländerbehörde (Visumsverlängerung, Aufenthaltserlaubnis etc.) zu ernsthaften Problemen führen. Wo du wohnst, dort musst du dich auch anmelden.",
+                        "q": "Gibt es ein Problem, wenn ich meine Anmeldung in Berlin von Brandenburg aus mache?"
+                    },
+                    {
+                        "a": "In Berlin gibt es viele Sprachkursoptionen. Die Volkshochschulen (VHS) sind in der Regel preiswerter. Es gibt auch private Schulen wie die BSI Sprachschule oder das GLS Sprachenzentrum. Vergleiche Preise und Programme, um die für dich passende Option zu finden.",
+                        "q": "Hast du Empfehlungen für günstige Sprachkurse in Berlin?"
+                    },
+                    {
+                        "a": "Renommierte Universitäten wie die FU Berlin und die TU Berlin verlangen in der Regel direkt ein C1-Niveau in Deutsch oder ein Äquivalent und sind bei bedingten Zulassungen eher restriktiv. Einige Universitäten oder Studiengänge (insbesondere private Hochschulen) können jedoch eine bedingte Zulassung anbieten. Am besten überprüfst du die jeweiligen Zulassungsvoraussetzungen auf den offiziellen Webseiten der Universitäten.",
+                        "q": "Bieten die Freie Universität Berlin (FU Berlin) und die Technische Universität Berlin (TU Berlin) eine bedingte Zulassung an? Gibt es in Berlin Universitäten, an denen ich eine bedingte Zulassung für Software Engineering erhalten kann?"
+                    },
+                    {
+                        "a": "Die BSBI ist eine private Hochschule für Wirtschaft und Innovation in Berlin. Sie bietet in der Regel englischsprachige Studiengänge an, und die Zulassungsvoraussetzungen können sich von denen staatlicher Universitäten unterscheiden. Informiere dich auf der Webseite der Hochschule über die Studiengänge und Zulassungsbedingungen und suche in Studierendenforen nach Erfahrungen mit der BSBI.",
+                        "q": "Kann ich Informationen über die Berlin School of Business and Innovation (BSBI) erhalten? Studiert dort jemand einen Master?"
+                    }
+                ]
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Mache den ersten Schritt, um deine Studienträume in Deutschland zu verwirklichen! Kontaktiere uns, um mehr über die Hochschulen und Studiengänge in Berlin zu erfahren oder deine Fragen zu stellen."
+            },
+            {
+                "h": "Berlin — Görseller",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "2016 Charite Hospital",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/2016_Charite_Hospital.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2016_Charite_Hospital.jpg"
+                    },
+                    {
+                        "alt": "07.08.21.Bundeskanzleramt",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/07.08.21.Bundeskanzleramt.jpg/960px-07.08.21.Bundeskanzleramt.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:07.08.21.Bundeskanzleramt.jpg"
+                    },
+                    {
+                        "alt": "2011FUBerlin",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2011FUBerlin.jpg/960px-2011FUBerlin.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2011FUBerlin.jpg"
+                    },
+                    {
+                        "alt": "2020-04-16 P4160889 St.Hedwigs-Kathedrale, Bebelplatz",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2020-04-16_P4160889_St.Hedwigs-Kathedrale%2C_Bebelplatz.jpg/960px-2020-04-16_P4160889_St.Hedwigs-Kathedrale,_Bebelplatz.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2020-04-16_P4160889_St.Hedwigs-Kathedrale,_Bebelplatz.jpg"
+                    },
+                    {
+                        "alt": "2022-03-22 ALBA Berlin gegen FC Barcelona Bàsquet (EuroLeague 2021-22) by Sandro Halank–082",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_%28EuroLeague_2021-22%29_by_Sandro_Halank%E2%80%93082.jpg/960px-2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_%28EuroLeague_2021-22%29_by_Sandro_Halank%E2%80%93082.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2022-03-22_ALBA_Berlin_gegen_FC_Barcelona_B%C3%A0squet_(EuroLeague_2021-22)_by_Sandro_Halank%E2%80%93082.jpg"
+                    },
+                    {
+                        "alt": "2023 Cube Berlin 4 2",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2023_Cube_Berlin_4_2.jpg/960px-2023_Cube_Berlin_4_2.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2023_Cube_Berlin_4_2.jpg"
+                    },
+                    {
+                        "alt": "AVROs danstoernooi in het Kurhaus te Scheveningen optreden van Conny Froboess, Bestanddeelnr 911-0298",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess%2C_Bestanddeelnr_911-0298.jpg/960px-AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess%2C_Bestanddeelnr_911-0298.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AVROs_danstoernooi_in_het_Kurhaus_te_Scheveningen_optreden_van_Conny_Froboess,_Bestanddeelnr_911-0298.jpg"
+                    },
+                    {
+                        "alt": "Abgeordnetenhaus",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Abgeordnetenhaus.jpg/960px-Abgeordnetenhaus.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Abgeordnetenhaus.jpg"
+                    },
+                    {
+                        "alt": "AntennePrenzlauer Berg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/AntennePrenzlauer_Berg.jpg/960px-AntennePrenzlauer_Berg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AntennePrenzlauer_Berg.jpg"
+                    },
+                    {
+                        "alt": "Baureihe 483-484 der S-Bahn Berlin",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Baureihe_483-484_der_S-Bahn_Berlin.jpg/960px-Baureihe_483-484_der_S-Bahn_Berlin.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Baureihe_483-484_der_S-Bahn_Berlin.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Community-Diskussionen über Berlin",
+                "type": "related_forum_topics",
+                "items": [
+                    {
+                        "url": "https://community.deutschstudent.com/viewtopic.php?t=7269&sid=46e707c15b053b8e589fb84fe86f3fac",
+                        "title": "Berlin - Leitfaden zur Beantragung des Aufenthaltstitels",
+                        "views": 28974,
+                        "replies": 18,
+                        "category": "eyalet"
+                    },
+                    {
+                        "url": "https://community.deutschstudent.com/viewtopic.php?t=13710&sid=d710e84023930554283a9a64485557dc",
+                        "title": "Ich suche eine WG/ein Wohnheim in Berlin",
+                        "views": 27025,
+                        "replies": 18,
+                        "category": "rehber"
+                    }
+                ],
+                "source": "DeutschStudent"
+            },
+            {
+                "h": "Hochschulen in Berlin (57)",
+                "type": "universities_in_city",
+                "total": 57,
+                "public": 49,
+                "private": 3,
+                "top_unis": [
+                    "Freie Universität Berlin, E-Medien",
+                    "Institut für Kunst- und Bildgeschichte (IKB) der Humboldt-Universität zu Berlin",
+                    "Technische Universität Berlin Institut für Technische Akustik",
+                    "Hochschule für Technik und Wirtschaft Berlin",
+                    "Berliner Hochschule für Technik"
+                ]
+            },
+            {
+                "h": "Nützliche Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/Berlin",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q64",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 52.5166667,
+                        "longitude": 13.3833333
+                    },
+                    "name": "Berlin",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Berlin.svg/langde-330px-Flag_of_Berlin.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Berlin",
+                        "https://en.wikipedia.org/wiki/Berlin",
+                        "https://tr.wikipedia.org/wiki/Berlin"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Berlin",
+                        "addressCountry": "DE",
+                        "addressLocality": "Berlin"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "Das Herz Deutschlands, seine Hauptstadt und größte Stadt, **Berlin**, ist für türkische Studierende eines der attraktivsten Ziele, um ihre Träume vom Studieren und Leben in Deutschland zu verwirklichen. Mit rund 3,7 Millionen Einwohnern ist Berlin die bevölkerungsreichste Stadt der Europäischen Union und zeichnet sich durch seine dynamische Kultur, reiche Geschichte und erstklassige Bildungseinrichtungen aus. Für alle, die in Deutschland studieren möchten, bietet Berlin nicht nur akademische Möglichkeiten, sondern verspricht auch ein unvergessliches Erlebnis mit seiner multikulturellen Struktur, dem lebendigen Studentenleben und unzähligen kulturellen Veranstaltungen. Mit 57 Universitäten und über 1700 Studiengängen ist **Berlin** der ideale Ausgangspunkt, um deine Zukunft in einem studentenfreundlichen Umfeld zu gestalten. Wir von AlmanyaUni sind hier, um dich auf deinem Studien- und Lebensweg in Berlin zu begleiten.",
+                    "alternateName": "Berlin",
+                    "containedInPlace": {
+                        "name": "Berlin",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ]
+    },
+    "munchen-q1726": {
+        "en": [
+            {
+                "alt": "Munich",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DEU_M%C3%BCnchen_COA.svg/langde-330px-DEU_M%C3%BCnchen_COA.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "Munich (München), the capital of Bavaria and Germany's third-largest city, is a highly attractive study destination for Turkish students. With its well-established universities, rich cultural scene, high quality of life, and robust economy, Munich stands out. Globally recognized institutions like the Technical University of Munich (TU München) and Ludwig Maximilian University of Munich (LMU München) offer a wide range of study programs, from engineering to social sciences. Topics frequently discussed in our forums, such as \"Does TU München offer direct admission with a B2 Telc certificate?\", highlight the city's popularity in education. Its proximity to the Alps, the beautiful Isar River, and vibrant student life promise an unforgettable experience for anyone looking to study in Germany."
+            },
+            {
+                "h": "Quick Facts",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "Population",
+                        "value": "1.604.384 (as of November 30, 2024)"
+                    },
+                    {
+                        "label": "State",
+                        "value": "Bavaria (Bayern)"
+                    },
+                    {
+                        "label": "Number of Universities",
+                        "value": "19 (18 public)"
+                    },
+                    {
+                        "label": "Total Programs",
+                        "value": "586"
+                    },
+                    {
+                        "label": "Population Density",
+                        "value": "Approx. 4,500 people/km² (Germany's densest city)"
+                    },
+                    {
+                        "label": "Key Universities",
+                        "value": "Technische Universität München (TUM), Ludwig-Maximilians-Universität München (LMU)"
+                    },
+                    {
+                        "label": "Location",
+                        "value": "North of the Alps, on the Isar River"
+                    }
+                ]
+            },
+            {
+                "h": "Study Opportunities and Universities",
+                "type": "section",
+                "body_md": "As one of Germany's leading centers for science and research, Munich offers Turkish students 586 different program options across its 19 universities (18 of which are public). Among the city's most prestigious educational institutions are the Technical University of Munich (TUM) and Ludwig Maximilian University of Munich (LMU). TUM, with its global reputation especially in engineering and natural sciences, is highly popular among Turkish students. Forum discussions with titles like \"Does TU München offer direct admission with a B2 Telc certificate?\" show just how closely Turkish students follow this university. LMU, on the other hand, boasts a strong academic tradition in humanities, social sciences, and medicine. Universities in Munich offer their graduates bright career opportunities with modern campuses, international student-friendly environments, and strong industry connections. Additionally, other colleges and private universities in the city provide quality education options for various interests."
+            },
+            {
+                "h": "Estimated Monthly Cost of Living",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "WG room, shared apartment; Munich is known for high rental costs",
+                        "label": "Rent (shared)",
+                        "amount": "550-850"
+                    },
+                    {
+                        "label": "Food",
+                        "amount": "250-350"
+                    },
+                    {
+                        "note": "Student-discounted monthly ticket",
+                        "label": "Transportation",
+                        "amount": "50-70"
+                    },
+                    {
+                        "note": "Fixed student rate",
+                        "label": "Health Insurance",
+                        "amount": "120-130"
+                    },
+                    {
+                        "label": "Other (leisure, personal)",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "1070-1600",
+                "currency": "EUR"
+            },
+            {
+                "h": "Life and Student Life in Munich",
+                "type": "section",
+                "body_md": "Munich, nestled in the heart of Bavaria, is a unique city where traditional German culture blends with modern urban life. Its proximity to the Alps offers countless opportunities for outdoor sports and weekend getaways, while the banks of the Isar River become a popular social hub for students, especially in summer. The city is also culturally rich, with year-round festivals, world-renowned museums, and art galleries. You'll find numerous cafes, bars, and beer gardens for students. Munich is also known as one of Germany's safest cities, with a highly developed public transportation network. Cycling is also widespread, making it easy to get around the city by bike. Despite its high cost of living, Munich offers students a dynamic and fulfilling university experience with its career and social opportunities."
+            },
+            {
+                "h": "Places to Visit and Student Hangouts",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Marienplatz",
+                        "type": "square",
+                        "description": "The city's heart, Munich's most iconic square with the New Town Hall and the famous Glockenspiel."
+                    },
+                    {
+                        "url": null,
+                        "name": "Englischer Garten",
+                        "type": "park",
+                        "description": "One of Europe's largest urban parks, featuring a river where you can surf, beer gardens, and vast green spaces."
+                    },
+                    {
+                        "url": null,
+                        "name": "Deutsches Museum",
+                        "type": "museum",
+                        "description": "One of the world's largest museums of science and technology, offering interactive exhibits."
+                    },
+                    {
+                        "url": null,
+                        "name": "BMW Welt",
+                        "type": "landmark",
+                        "description": "A modern experience and exhibition center where you can explore the history, future, and vehicles of the BMW brand."
+                    },
+                    {
+                        "url": null,
+                        "name": "Pinakotheken (Alte, Neue, Moderne)",
+                        "type": "museum",
+                        "description": "A complex housing a wide range of artworks from the Renaissance to modern art across three different museums."
+                    },
+                    {
+                        "url": null,
+                        "name": "Viktualienmarkt",
+                        "type": "market",
+                        "description": "A vibrant and traditional market where you can find fresh produce, local delicacies, and international cuisines."
+                    },
+                    {
+                        "url": null,
+                        "name": "Olympiapark",
+                        "type": "park",
+                        "description": "A large park and recreational area that hosted the 1972 Olympics, now a venue for concerts and events."
+                    }
+                ]
+            },
+            {
+                "h": "Student Life and Culture",
+                "type": "student_culture",
+                "body_md": "Munich is one of Germany's most dynamic student cities. Thanks to its large student population, it boasts a vibrant social life. Beyond university-organized events, you'll find many student clubs, sports activities, and cultural organizations throughout the city. The banks of the Isar River are a popular spot for students to picnic, sunbathe, and socialize, especially in warm weather. Many beer gardens (Biergarten) in the city are meeting points for both locals and students, especially during summer. Munich's public transportation network (MVV) is highly developed, and students can easily explore the city with discounted tickets. Cycling culture is also very prevalent; the city is equipped with a network of bike paths. Munich offers students a wide range of leisure activities with cultural events, festivals (like Oktoberfest), museums, and theaters. Its proximity to the Alps also creates fantastic opportunities for winter sports and hiking.",
+                "highlights": [
+                    "Vibrant social life and rich student clubs",
+                    "Developed and integrated public transportation network (MVV)",
+                    "Strong cycling culture and extensive bike paths",
+                    "Opportunities for socializing along the Isar River and in beer gardens",
+                    "Year-round festivals and cultural events (e.g., Oktoberfest)",
+                    "Nature and winter sports opportunities thanks to its proximity to the Alps"
+                ]
+            },
+            {
+                "h": "Video",
+                "url": null,
+                "type": "video",
+                "title": "Being a Student in Munich: City Guide and University Life",
+                "platform": "youtube",
+                "description": "A detailed guide video from the perspective of Turkish students, covering Munich's student life, universities, places to visit, and cost of living."
+            },
+            {
+                "h": "Frequently Asked Questions",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "As a mechatronics engineer residing in Munich, we recommend you first visit the websites of official institutions like the Zentralstelle für ausländisches Bildungswesen (ZAB) or IHK FOSA for degree recognition procedures. The process can vary depending on your country of graduation and university. Generally, German translations of your diploma, transcript, and course contents are required. You can find up-to-date information to help you with the recognition process on our AlmanyaUni forums or by contacting the helplines of the relevant institutions.",
+                        "q": "Hello everyone, I'm a mechatronics engineer residing in Munich. I want to get my degree recognized. Has anyone done this recently and can help me?"
+                    },
+                    {
+                        "a": "As frequently discussed in our forums, the Technical University of Munich (TUM) may offer direct admission with a B2 level TELC certificate for some programs. However, this can vary depending on the specific program and current admission requirements. To get the most accurate and up-to-date information, you should always check the admission requirements for the relevant program directly on TUM's official website or contact the student administration office.",
+                        "q": "Does TU München offer direct admission with a B2 Telc certificate?"
+                    },
+                    {
+                        "a": "Munich is one of Germany's most expensive cities. Rental costs, in particular, are higher compared to other major cities (excluding Berlin and Hamburg). However, the job opportunities and high quality of life it offers can balance these costs. Staying in student dorms or shared apartments (WG) is one of the best ways to reduce expenses.",
+                        "q": "How do the cost of living in Munich compare to other German cities?"
+                    },
+                    {
+                        "a": "Munich, with one of Germany's strongest economies, offers ample part-time job opportunities for students. It's possible to find work, especially in the technology, automotive, and service sectors (restaurants, cafes, retail). Good German language skills will significantly increase your chances of finding a job. University career centers and online job portals are good resources for this.",
+                        "q": "What are the opportunities for finding part-time jobs while studying at university in Munich?"
+                    },
+                    {
+                        "a": "For most university programs in Munich, a C1 level of German proficiency (proven by certificates like TestDaF, DSH, or Goethe C1) is generally required. However, some international programs or master's programs may be offered in English, in which case English proficiency (IELTS, TOEFL) is required. As mentioned above, a B2 level may be accepted in some cases, but this is an exception and should be checked on a program-by-program basis.",
+                        "q": "What German language level is required to apply to universities in Munich?"
+                    }
+                ]
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Need more information to turn your university dreams in Munich into reality? Join our AlmanyaUni forums to connect with other Turkish students, ask your questions, and benefit from their experiences!"
+            },
+            {
+                "h": "Munich — Images",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "2008-07-15 Munich Nymphenburgerpark Amalienburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg/960px-2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg"
+                    },
+                    {
+                        "alt": "4 Cylinders, Munich, Germany, 2013-02-11, DD 02",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/4_Cilindros%2C_M%C3%BAnich%2C_Alemania%2C_2013-02-11%2C_DD_02.JPG/960px-4_Cilindros%2C_M%C3%BAnich%2C_Alemania%2C_2013-02-11%2C_DD_02.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:4_Cilindros,_M%C3%BAnich,_Alemania,_2013-02-11,_DD_02.JPG"
+                    },
+                    {
+                        "alt": "Aerial image of the Aussegnungshalle of Ostfriedhof in Munich (view from the south)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_%28view_from_the_south%29.jpg/960px-Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_%28view_from_the_south%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_(view_from_the_south).jpg"
+                    },
+                    {
+                        "alt": "Aerial image of the Königsplatz in Munich (view from the southeast)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_%28view_from_the_southeast%29.jpg/960px-Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_%28view_from_the_southeast%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_(view_from_the_southeast).jpg"
+                    },
+                    {
+                        "alt": "Aerial image of the Munich prison (view from the southwest)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Aerial_image_of_the_Munich_prison_%28view_from_the_southwest%29.jpg/960px-Aerial_image_of_the_Munich_prison_%28view_from_the_southwest%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Munich_prison_(view_from_the_southwest).jpg"
+                    },
+                    {
+                        "alt": "Munich Academy",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Akademie_Muenchen.jpg/960px-Akademie_Muenchen.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Akademie_Muenchen.jpg"
+                    },
+                    {
+                        "alt": "Allianz Arena daylight Richard Bartz",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Allianz_arena_daylight_Richard_Bartz.jpg/960px-Allianz_arena_daylight_Richard_Bartz.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Allianz_arena_daylight_Richard_Bartz.jpg"
+                    },
+                    {
+                        "alt": "Alte Münze (Munich)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Alte_M%C3%BCnze_%28M%C3%BCnchen%29.jpg/960px-Alte_M%C3%BCnze_%28M%C3%BCnchen%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alte_M%C3%BCnze_(M%C3%BCnchen).jpg"
+                    },
+                    {
+                        "alt": "Alter Peter from the Town Hall",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alter-peter_vom-rathaus.jpg/960px-Alter-peter_vom-rathaus.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alter-peter_vom-rathaus.jpg"
+                    },
+                    {
+                        "alt": "Old Palace of Justice",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/AlterJustizpalast.jpg/960px-AlterJustizpalast.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AlterJustizpalast.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Universities in Munich (19)",
+                "type": "universities_in_city",
+                "total": 19,
+                "public": 18,
+                "private": 0,
+                "top_unis": [
+                    "Technische Universität München",
+                    "Ludwig-Maximilians-Universität München",
+                    "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+                    "Fachhochschule Macromedia",
+                    "Hochschule für Musik und Theater München"
+                ]
+            },
+            {
+                "h": "Useful Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/M%C3%BCnchen",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Munich",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/M%C3%BCnih",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q1726",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 48.1375,
+                        "longitude": 11.575
+                    },
+                    "name": "Munich",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DEU_M%C3%BCnchen_COA.svg/langde-330px-DEU_M%C3%BCnchen_COA.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/M%C3%BCnchen",
+                        "https://en.wikipedia.org/wiki/Munich",
+                        "https://tr.wikipedia.org/wiki/M%C3%BCnih"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Bayern",
+                        "addressCountry": "DE",
+                        "addressLocality": "München"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "Munich (München), the capital of Bavaria and Germany's third-largest city, is a highly attractive study destination for Turkish students. With its well-established universities, rich cultural scene, high quality of life, and robust economy, Munich stands out. Globally recognized institutions like the Technical University of Munich (TU München) and Ludwig Maximilian University of Munich (LMU München) offer a wide range of study programs, from engineering to social sciences. Topics frequently discussed in our forums, such as 'Does TU München offer direct admission with a B2 Telc certificate?', highlight the city's popularity in education. Its proximity to the Alps, the beautiful Isar River, and vibrant student life promise an unforgettable experience for anyone looking to study in Germany.",
+                    "alternateName": "Munich",
+                    "containedInPlace": {
+                        "name": "Bavaria",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ],
+        "de": [
+            {
+                "alt": "München",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DEU_M%C3%BCnchen_COA.svg/langde-330px-DEU_M%C3%BCnchen_COA.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "München, die Hauptstadt des Bundeslandes Bayern und die drittgrößte Stadt Deutschlands, ist ein attraktives Bildungszentrum für türkische Studierende. Die Stadt zeichnet sich durch ihre renommierten Universitäten und ihr reiches kulturelles Angebot aus und besticht zudem durch eine hohe Lebensqualität und eine starke Wirtschaft. Insbesondere weltweit anerkannte Institutionen wie die \"TU München\" und die \"LMU München\" bieten dir ein breites Spektrum an Studienmöglichkeiten, von Ingenieurwissenschaften bis zu Sozialwissenschaften. Themen wie \"TU München vergibt direkte Zulassungen mit B2 Telc\", die in unseren Foren häufig diskutiert werden, unterstreichen die Beliebtheit der Stadt im Bildungsbereich. Mit ihrer Nähe zu den Alpen, der Schönheit der Isar und einem lebhaften Studentenleben verspricht dir München ein unvergessliches Erlebnis, wenn du in Deutschland studieren möchtest."
+            },
+            {
+                "h": "Schnellübersicht",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "Einwohnerzahl",
+                        "value": "1.604.384 (Stand: 30. November 2024)"
+                    },
+                    {
+                        "label": "Bundesland",
+                        "value": "Bayern"
+                    },
+                    {
+                        "label": "Anzahl der Hochschulen",
+                        "value": "19 (davon 18 staatlich)"
+                    },
+                    {
+                        "label": "Gesamtzahl der Studiengänge",
+                        "value": "586"
+                    },
+                    {
+                        "label": "Bevölkerungsdichte",
+                        "value": "Ca. 4.500 Personen/km² (dichteste Stadt Deutschlands)"
+                    },
+                    {
+                        "label": "Wichtige Universitäten",
+                        "value": "Technische Universität München (TUM), Ludwig-Maximilians-Universität München (LMU)"
+                    },
+                    {
+                        "label": "Lage",
+                        "value": "Nördlich der Alpen, an der Isar"
+                    }
+                ]
+            },
+            {
+                "h": "Studienmöglichkeiten und Universitäten",
+                "type": "section",
+                "body_md": "München, eines der Wissenschafts- und Forschungszentren Deutschlands, bietet türkischen Studierenden mit 19 Hochschulen (davon 18 staatlich) insgesamt 586 verschiedene Studiengänge. Zu den renommiertesten Bildungseinrichtungen der Stadt zählen die \"Technische Universität München (TUM)\" und die \"Ludwig-Maximilians-Universität München (LMU)\". Die TUM, die insbesondere in den Ingenieur- und Naturwissenschaften weltweit einen hervorragenden Ruf genießt, ist auch bei türkischen Studierenden sehr beliebt. Themen wie \"TU München vergibt direkte Zulassungen mit B2 Telc\" in unseren Foren zeigen, wie genau diese Universität von türkischen Studierenden verfolgt wird. Die LMU hingegen hat eine starke akademische Tradition in den Geistes-, Sozial- und Medizinwissenschaften. Die Münchner Universitäten bieten ihren Absolventinnen und Absolventen mit modernen Campusanlagen, internationalen studierendenfreundlichen Umgebungen und starken Verbindungen zur Industrie glänzende Karrierechancen. Darüber hinaus bieten weitere Hochschulen und private Universitäten in der Stadt qualitativ hochwertige Bildungsangebote für verschiedene Interessensgebiete."
+            },
+            {
+                "h": "Geschätzte monatliche Lebenshaltungskosten",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "WG-Zimmer, München ist bekannt für hohe Mietkosten",
+                        "label": "Miete (WG-Zimmer)",
+                        "amount": "550-850"
+                    },
+                    {
+                        "label": "Essen",
+                        "amount": "250-350"
+                    },
+                    {
+                        "note": "Monatsticket mit Studentenrabatt",
+                        "label": "Transport",
+                        "amount": "50-70"
+                    },
+                    {
+                        "note": "Fester Studententarif",
+                        "label": "Krankenversicherung",
+                        "amount": "120-130"
+                    },
+                    {
+                        "label": "Sonstiges (Freizeit, Persönliches)",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "1070-1600",
+                "currency": "EUR"
+            },
+            {
+                "h": "Leben und Studentenleben in München",
+                "type": "section",
+                "body_md": "München, im Herzen Bayerns gelegen, ist eine einzigartige Stadt, die traditionelle deutsche Kultur mit modernem Stadtleben verbindet. Dank ihrer Nähe zu den Alpen bietet sie unzählige Möglichkeiten für Outdoor-Sportarten und Wochenendausflüge, während die Ufer der Isar besonders in den Sommermonaten zum Treffpunkt für Studierende werden. Die Stadt ist auch kulturell sehr reich, mit ganzjährigen Festivals, weltberühmten Museen und Kunstgalerien. Für Studierende gibt es zahlreiche Cafés, Bars und Biergärten. München gilt zudem als eine der sichersten Städte Deutschlands und verfügt über ein hervorragend ausgebautes öffentliches Verkehrsnetz. Auch das Fahrradfahren ist weit verbreitet, und du kannst dich bequem mit dem Fahrrad in der Stadt fortbewegen. Trotz der hohen Lebenshaltungskosten bietet München Studierenden mit seinen Karriere- und sozialen Möglichkeiten ein dynamisches und erfülltes Studienerlebnis."
+            },
+            {
+                "h": "Sehenswürdigkeiten und Studenten-Hotspots",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Marienplatz",
+                        "type": "square",
+                        "description": "Das Herz der Stadt, der ikonischste Platz Münchens mit dem Neuen Rathaus und dem berühmten Glockenspiel."
+                    },
+                    {
+                        "url": null,
+                        "name": "Englischer Garten",
+                        "type": "park",
+                        "description": "Einer der größten Stadtparks Europas, mit einem Fluss zum Surfen, Biergärten und weitläufigen Grünflächen."
+                    },
+                    {
+                        "url": null,
+                        "name": "Deutsches Museum",
+                        "type": "museum",
+                        "description": "Eines der größten Museen für Wissenschaft und Technik weltweit, mit interaktiven Ausstellungen."
+                    },
+                    {
+                        "url": null,
+                        "name": "BMW Welt",
+                        "type": "landmark",
+                        "description": "Ein modernes Erlebnis- und Ausstellungszentrum, in dem du die Geschichte, Zukunft und Fahrzeuge der Marke BMW entdecken kannst."
+                    },
+                    {
+                        "url": null,
+                        "name": "Pinakotheken (Alte, Neue, Moderne)",
+                        "type": "museum",
+                        "description": "Ein Komplex aus drei Museen, der eine breite Palette von Kunstwerken von der Renaissance bis zur modernen Kunst beherbergt."
+                    },
+                    {
+                        "url": null,
+                        "name": "Viktualienmarkt",
+                        "type": "market",
+                        "description": "Ein lebhafter und traditioneller Markt, auf dem du frische Produkte, lokale Spezialitäten und internationale Küche findest."
+                    },
+                    {
+                        "url": null,
+                        "name": "Olympiapark",
+                        "type": "park",
+                        "description": "Ein weitläufiger Park und Erholungsgebiet, das die Olympischen Spiele von 1972 beherbergte und heute Schauplatz von Konzerten und Veranstaltungen ist."
+                    }
+                ]
+            },
+            {
+                "h": "Studentenleben und Kultur",
+                "type": "student_culture",
+                "body_md": "München ist eine der dynamischsten Studentenstädte Deutschlands. Dank der hohen Studierendenzahl bietet sie ein lebendiges Sozialleben. Neben den von den Universitäten organisierten Veranstaltungen gibt es in der ganzen Stadt zahlreiche Studentenclubs, Sportaktivitäten und kulturelle Organisationen. Die Ufer der Isar sind besonders bei warmem Wetter ein beliebter Ort, an dem Studierende picknicken, sonnenbaden und sich treffen. Viele Biergärten in der Stadt sind, besonders im Sommer, ein Treffpunkt für Einheimische und Studierende gleichermaßen. Das öffentliche Verkehrsnetz (MVV) in München ist sehr gut ausgebaut, und Studierende können die Stadt mit ermäßigten Tickets leicht erkunden. Die Fahrradkultur ist ebenfalls sehr verbreitet; die Stadt ist mit einem Netz von Radwegen ausgestattet. München bietet Studierenden mit kulturellen Veranstaltungen, Festivals (wie dem Oktoberfest), Museen und Theatern eine breite Palette an Freizeitaktivitäten. Die Nähe zu den Alpen schafft zudem großartige Möglichkeiten für Wintersport und Wanderungen.",
+                "highlights": [
+                    "Lebhaftes Sozialleben und vielfältige Studentenclubs",
+                    "Gut ausgebautes und integriertes öffentliches Verkehrsnetz (MVV)",
+                    "Starke Fahrradkultur und weitläufige Radwege",
+                    "Möglichkeiten zum Socializen an den Isar-Ufern und in Biergärten",
+                    "Ganzjährige Festivals und kulturelle Veranstaltungen (z.B. Oktoberfest)",
+                    "Natur- und Wintersportmöglichkeiten dank der Nähe zu den Alpen"
+                ]
+            },
+            {
+                "h": "Video",
+                "url": null,
+                "type": "video",
+                "title": "Student sein in München: Stadtführer und Unileben",
+                "platform": "youtube",
+                "description": "Ein Guide-Video aus der Sicht türkischer Studierender, das das Studentenleben, die Universitäten, Sehenswürdigkeiten und Lebenshaltungskosten in München detailliert beschreibt."
+            },
+            {
+                "h": "Häufig gestellte Fragen",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "Als Mechatronik-Ingenieur mit Wohnsitz in München empfehlen wir dir, für die Anerkennungsverfahren zunächst die Webseiten offizieller Institutionen wie der \"Zentralstelle für ausländisches Bildungswesen (ZAB)\" oder der \"IHK FOSA\" zu besuchen. Der Prozess kann je nach Herkunftsland und Universität variieren. In der Regel werden Übersetzungen von Diplom, Transkript und Kursinhalten ins Deutsche verlangt. Aktuelle Informationen und Unterstützung zum Anerkennungsprozess findest du in unseren AlmanyaUni Foren oder über die Beratungsstellen der jeweiligen Institutionen.",
+                        "q": "Hallo zusammen, ich bin Mechatronik-Ingenieur und wohne in München. Ich möchte meine Anerkennung erhalten. Gibt es jemanden, der diese Prozesse kürzlich durchlaufen hat und mir helfen kann?"
+                    },
+                    {
+                        "a": "Wie in unseren Foren häufig diskutiert, kann die Technische Universität München (TUM) für einige Studiengänge eine direkte Zulassung mit einem B2 TELC-Zertifikat erteilen. Dies kann jedoch je nach Fachbereich und den aktuellen Zulassungsvoraussetzungen variieren. Um die genauesten und aktuellsten Informationen zu erhalten, solltest du immer die Zulassungsvoraussetzungen des jeweiligen Fachbereichs direkt auf der offiziellen Webseite der TUM überprüfen oder dich an die Studienberatung wenden.",
+                        "q": "Vergibt die TU München direkte Zulassungen mit B2 Telc?"
+                    },
+                    {
+                        "a": "München ist eine der teuersten Städte Deutschlands. Insbesondere die Mietkosten sind im Vergleich zu anderen Großstädten (außer Berlin, Hamburg) höher. Die angebotenen Arbeitsmöglichkeiten und die hohe Lebensqualität können diese Kosten jedoch ausgleichen. Studentenwohnheime oder Wohngemeinschaften (WG) sind die besten Wege, um die Kosten zu senken.",
+                        "q": "Wie sind die Lebenshaltungskosten in München im Vergleich zu anderen deutschen Städten?"
+                    },
+                    {
+                        "a": "Da München eine der stärksten Volkswirtschaften Deutschlands hat, gibt es für Studierende viele Möglichkeiten für Nebenjobs. Insbesondere in den Bereichen Technologie, Automobil und Dienstleistungen (Restaurants, Cafés, Einzelhandel) ist es möglich, Arbeit zu finden. Gute Deutschkenntnisse erhöhen deine Chancen, einen Job zu finden. Die Karrierezentren der Universitäten und Online-Stellenbörsen sind hierfür gute Quellen.",
+                        "q": "Welche Möglichkeiten gibt es, während des Studiums in München einen Nebenjob zu finden?"
+                    },
+                    {
+                        "a": "Für die meisten Studiengänge an Münchner Universitäten wird in der Regel ein Deutschniveau von C1 (nachgewiesen durch Zertifikate wie TestDaF, DSH, Goethe C1) verlangt. Einige internationale Studiengänge oder Masterprogramme können jedoch auf Englisch angeboten werden, und in diesem Fall ist ein Englischnachweis (IELTS, TOEFL) erforderlich. Wie oben erwähnt, kann in einigen Fällen auch ein B2-Niveau akzeptiert werden, dies ist jedoch eine Ausnahme und muss fachbereichsbezogen überprüft werden.",
+                        "q": "Welches Deutschniveau ist für die Bewerbung an Münchner Universitäten erforderlich?"
+                    }
+                ]
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Benötigst du weitere Informationen, um deine Studienpläne in München zu verwirklichen? Tritt unseren AlmanyaUni Foren bei, um dich mit anderen türkischen Studierenden auszutauschen, deine Fragen zu stellen und von ihren Erfahrungen zu profitieren!"
+            },
+            {
+                "h": "München — Impressionen",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "2008-07-15Muenchen Nymphenburgerpark Amalienburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg/960px-2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:2008-07-15Muenchen_Nymphenburgerpark_Amalienburg.jpg"
+                    },
+                    {
+                        "alt": "4 Cilindros, Múnich, Alemania, 2013-02-11, DD 02",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/4_Cilindros%2C_M%C3%BAnich%2C_Alemania%2C_2013-02-11%2C_DD_02.JPG/960px-4_Cilindros%2C_M%C3%BAnich%2C_Alemania%2C_2013-02-11%2C_DD_02.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:4_Cilindros,_M%C3%BAnich,_Alemania,_2013-02-11,_DD_02.JPG"
+                    },
+                    {
+                        "alt": "Aerial image of the Aussegnungshalle of Ostfriedhof in Munich (view from the south)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_%28view_from_the_south%29.jpg/960px-Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_%28view_from_the_south%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Aussegnungshalle_of_Ostfriedhof_in_Munich_(view_from_the_south).jpg"
+                    },
+                    {
+                        "alt": "Aerial image of the Königsplatz in Munich (view from the southeast)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_%28view_from_the_southeast%29.jpg/960px-Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_%28view_from_the_southeast%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_K%C3%B6nigsplatz_in_Munich_(view_from_the_southeast).jpg"
+                    },
+                    {
+                        "alt": "Aerial image of the Munich prison (view from the southwest)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Aerial_image_of_the_Munich_prison_%28view_from_the_southwest%29.jpg/960px-Aerial_image_of_the_Munich_prison_%28view_from_the_southwest%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Munich_prison_(view_from_the_southwest).jpg"
+                    },
+                    {
+                        "alt": "Akademie Muenchen",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Akademie_Muenchen.jpg/960px-Akademie_Muenchen.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Akademie_Muenchen.jpg"
+                    },
+                    {
+                        "alt": "Allianz arena daylight Richard Bartz",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Allianz_arena_daylight_Richard_Bartz.jpg/960px-Allianz_arena_daylight_Richard_Bartz.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Allianz_arena_daylight_Richard_Bartz.jpg"
+                    },
+                    {
+                        "alt": "Alte Münze (München)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Alte_M%C3%BCnze_%28M%C3%BCnchen%29.jpg/960px-Alte_M%C3%BCnze_%28M%C3%BCnchen%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alte_M%C3%BCnze_(M%C3%BCnchen).jpg"
+                    },
+                    {
+                        "alt": "Alter-peter vom-rathaus",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alter-peter_vom-rathaus.jpg/960px-Alter-peter_vom-rathaus.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alter-peter_vom-rathaus.jpg"
+                    },
+                    {
+                        "alt": "AlterJustizpalast",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/AlterJustizpalast.jpg/960px-AlterJustizpalast.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:AlterJustizpalast.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Universitäten in München (19)",
+                "type": "universities_in_city",
+                "total": 19,
+                "public": 18,
+                "private": 0,
+                "top_unis": [
+                    "Technische Universität München",
+                    "Ludwig-Maximilians-Universität München",
+                    "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+                    "Fachhochschule Macromedia",
+                    "Hochschule für Musik und Theater München"
+                ]
+            },
+            {
+                "h": "Nützliche Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/M%C3%BCnchen",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Munich",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/M%C3%BCnih",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q1726",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 48.1375,
+                        "longitude": 11.575
+                    },
+                    "name": "München",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DEU_M%C3%BCnchen_COA.svg/langde-330px-DEU_M%C3%BCnchen_COA.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/M%C3%BCnchen",
+                        "https://en.wikipedia.org/wiki/Munich",
+                        "https://tr.wikipedia.org/wiki/M%C3%BCnih"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Bayern",
+                        "addressCountry": "DE",
+                        "addressLocality": "München"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "München, die Hauptstadt des Bundeslandes Bayern und die drittgrößte Stadt Deutschlands, ist ein attraktives Bildungszentrum für türkische Studierende. Die Stadt zeichnet sich durch ihre renommierten Universitäten und ihr reiches kulturelles Angebot aus und besticht zudem durch eine hohe Lebensqualität und eine starke Wirtschaft. Insbesondere weltweit anerkannte Institutionen wie die \"TU München\" und die \"LMU München\" bieten dir ein breites Spektrum an Studienmöglichkeiten, von Ingenieurwissenschaften bis zu Sozialwissenschaften. Themen wie \"TU München vergibt direkte Zulassungen mit B2 Telc\", die in unseren Foren häufig diskutiert werden, unterstreichen die Beliebtheit der Stadt im Bildungsbereich. Mit ihrer Nähe zu den Alpen, der Schönheit der Isar und einem lebhaften Studentenleben verspricht dir München ein unvergessliches Erlebnis, wenn du in Deutschland studieren möchtest.",
+                    "alternateName": "Münih",
+                    "containedInPlace": {
+                        "name": "Bayern",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ]
+    },
+    "hamburg-q1055": {
+        "en": [
+            {
+                "alt": "Hamburg",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_Hamburg.svg/langde-330px-Flag_of_Hamburg.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "Hamburg, the Pearl of Northern Germany and a Free and Hanseatic City, is the country's second-largest metropolis after Berlin. It offers an attractive education and living hub for Turkish students. This port city, built on the branches of the Elbe River, stands out with its rich history, modern architecture, and vibrant student life. If you're a Turkish student thinking about studying in Hamburg, we at AlmanyaUni are here to help. We cover the topics you're most curious about, offering city-specific tips and useful information. Discussions under the title \"STUDYING - LIVING IN HAMBURG\" on our forums have garnered thousands of views, proving the city's popularity among students. Hamburg promises an unforgettable experience, not just with its academic opportunities, but also with its cultural diversity, green spaces, and international atmosphere."
+            },
+            {
+                "h": "Quick Facts",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "State",
+                        "value": "Hamburg (City-State)"
+                    },
+                    {
+                        "label": "Population",
+                        "value": "1.9 milyondan fazla"
+                    },
+                    {
+                        "label": "Number of Universities",
+                        "value": "23 (çoğunluğu devlet)"
+                    },
+                    {
+                        "label": "Total Programs",
+                        "value": "541"
+                    },
+                    {
+                        "label": "Key Universities",
+                        "value": "Universität Hamburg, Hochschule für Angewandte Wissenschaften Hamburg, TUHH"
+                    },
+                    {
+                        "label": "Port",
+                        "value": "Germany's largest, Europe's 3rd largest port"
+                    },
+                    {
+                        "label": "Location",
+                        "value": "On the Elbe River, near the North Sea"
+                    }
+                ]
+            },
+            {
+                "h": "University Education in Hamburg: Opportunities and Possibilities",
+                "type": "section",
+                "body_md": "Hamburg is a significant hub for higher education in Germany, boasting 23 universities and over 541 different program options. The vast majority of universities in the city are public, offering attractive educational opportunities for Turkish students. Institutions like Universität Hamburg, Hochschule für Angewandte Wissenschaften Hamburg, and the technically-focused Technische Universität Hamburg (TUHH) offer a wide range of bachelor's and master's programs. Questions frequently asked by our students, such as \"Is anyone studying computer science at TUHH Hamburg?\", show just how much interest there is in engineering and IT fields. Hamburg opens significant career doors for students, not only with its academic quality but also with its research-oriented structure. Support services for international students and various student communities ease your adaptation process to the city and provide a rich learning environment."
+            },
+            {
+                "h": "Estimated Monthly Cost of Living",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "Shared flat (WG – Wohngemeinschaft) room or student dormitory",
+                        "label": "Rent (shared WG)",
+                        "amount": "350-550"
+                    },
+                    {
+                        "note": "Groceries and occasional dining out",
+                        "label": "Food",
+                        "amount": "200-350"
+                    },
+                    {
+                        "note": "Varies by university, often included in the semester contribution",
+                        "label": "Transportation (Semesterticket)",
+                        "amount": "0-50"
+                    },
+                    {
+                        "note": "Statutory health insurance",
+                        "label": "Health Insurance",
+                        "amount": "110-120"
+                    },
+                    {
+                        "note": "Social activities, personal expenses",
+                        "label": "Entertainment/Other",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "760-1270",
+                "currency": "EUR"
+            },
+            {
+                "h": "Places to Visit and Student Hangouts",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Elbphilharmonie",
+                        "type": "landmark",
+                        "description": "The city's iconic concert hall and architectural marvel. The harbor view from its terrace is captivating."
+                    },
+                    {
+                        "url": null,
+                        "name": "Miniatur Wunderland",
+                        "type": "museum",
+                        "description": "The world's largest miniature railway exhibition, captivating visitors of all ages."
+                    },
+                    {
+                        "url": null,
+                        "name": "Speicherstadt and HafenCity",
+                        "type": "landmark",
+                        "description": "The historic warehouse district and modern port city project, a UNESCO World Heritage site."
+                    },
+                    {
+                        "url": null,
+                        "name": "Planten un Blomen",
+                        "type": "park",
+                        "description": "A large botanical garden and park in the heart of the city, famous for its water light shows."
+                    },
+                    {
+                        "url": null,
+                        "name": "Reeperbahn",
+                        "type": "square",
+                        "description": "Hamburg's famous entertainment and nightlife district."
+                    },
+                    {
+                        "url": null,
+                        "name": "Alster Lake",
+                        "type": "park",
+                        "description": "This lake in the middle of the city is ideal for rowing, sailing, and relaxing by the shore."
+                    }
+                ]
+            },
+            {
+                "h": "Student Life and Culture",
+                "type": "student_culture",
+                "body_md": "Hamburg stands out with its dynamic and multicultural student life. Having 23 universities in the city creates a young and vibrant atmosphere. Green areas, parks, and cafes around the Elbe and Alster rivers are popular spots where students can socialize between classes or on weekends. Biking is an important part of city transportation, and thanks to the developed network of bike paths, you can easily explore the city. Thanks to the Semesterticket (semester ticket) offered by universities, public transport is quite affordable; in some universities, it's even included in the semester contribution. Hamburg hosts various festivals, concerts, and cultural events throughout the year. The international atmosphere, a result of being a port city, offers opportunities to meet people from different cultures and gain a global perspective. Student clubs, sports activities, and volunteering projects offer great opportunities for you to expand your social circles and pick up new hobbies.",
+                "highlights": [
+                    "International and multicultural atmosphere",
+                    "Developed public transportation network (Semesterticket advantage)",
+                    "Bike-friendly city structure",
+                    "Social and recreational areas around the Elbe and Alster",
+                    "Rich cultural event and festival calendar"
+                ]
+            },
+            {
+                "h": "Frequently Asked Questions (from Turkish Students)",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "Some universities in Hamburg, or institutions they partner with, may offer conditional admission (bedingte Zulassung – conditional acceptance) with zero German proficiency in specific cases. However, this varies by university and program. Generally, you'll need to commit to reaching a certain German level (e.g., B1). For the most current and accurate information, it's important to check the official admission requirements of your target university or contact our AlmanyaUni consultants.",
+                        "q": "Is it possible to get conditional admission to universities in Hamburg with zero German language proficiency?"
+                    },
+                    {
+                        "a": "The diploma recognition (denklik – equivalence) process at Universität Hamburg, or in Germany generally, can vary depending on your country of graduation and your field of study. Typically, your diploma's equivalence in Germany is checked via the Anabin database. For detailed information and the application process, you should contact the university's international office (Akademisches Auslandsamt – Academic Foreign Office) or relevant recognition bodies (e.g., Zeugnisanerkennungsstelle – Certificate Recognition Office). Many Turkish students have shared their experiences on this topic in our forums.",
+                        "q": "How does the diploma recognition (denklik) process work at Universität Hamburg? Has anyone applied?"
+                    },
+                    {
+                        "a": "Hamburg is home to many quality language courses for learning German. The Goethe-Institut, Volkshochschule (VHS), and various private language schools (e.g., DeutschAkademie, TANDEM Hamburg) are popular options. Some universities may also offer their own language courses. When choosing a course, we recommend considering price, location, class hours, and student reviews.",
+                        "q": "Are there any recommended language courses in Hamburg?"
+                    },
+                    {
+                        "a": "As one of Germany's largest and most economically developed cities, Hamburg's cost of living can be slightly higher compared to smaller cities in the country. Rent, in particular, is a significant expense. However, you can balance your budget by staying in student dormitories or shared apartments (WG). It's possible to maintain a budget-friendly lifestyle with student discounts, the Semesterticket, and affordable grocery shopping. The average monthly cost of living can range between 750-1200 Euros.",
+                        "q": "Are the living costs in Hamburg really 'exorbitant'?"
+                    },
+                    {
+                        "a": "Some German universities offer language courses for international students, either in-house or through partner institutions. Not all universities in Hamburg may have their own direct language schools, but some might provide preparatory courses or German classes for students with conditional admission. For the most accurate information on this, you should contact the international student office (Akademisches Auslandsamt) of the university you plan to apply to.",
+                        "q": "Do universities in Hamburg have their own language schools?"
+                    }
+                ]
+            },
+            {
+                "h": "Being a Student in Hamburg",
+                "url": null,
+                "type": "video",
+                "title": "Discover Hamburg: Germany's Port City and Student Paradise",
+                "platform": "youtube",
+                "description": "This video offers a general overview of student life, cultural richness, and university opportunities in Hamburg. It would be beneficial to include the city's iconic structures, student hangouts, transportation network, and the experiences of Turkish students."
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Do you need more information to turn your university dreams in Hamburg into reality? Contact our expert team at AlmanyaUni and simplify your application process! Take the first step towards your education in Germany with our personalized consulting services."
+            },
+            {
+                "h": "Hamburg — Visuals",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "Flag of Hohenzollern-Hechingen and Sigmaringen",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Flag_of_Hohenzollern-Hechingen_and_Sigmaringen.png",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Flag_of_Hohenzollern-Hechingen_and_Sigmaringen.png"
+                    },
+                    {
+                        "alt": "11-09-04-fotoflug-nordsee-by-RalfR-001",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/11-09-04-fotoflug-nordsee-by-RalfR-001.jpg/960px-11-09-04-fotoflug-nordsee-by-RalfR-001.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:11-09-04-fotoflug-nordsee-by-RalfR-001.jpg"
+                    },
+                    {
+                        "alt": "1730 Hamburg Covens & Mortier",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/1730_Hamburg_Covens_%26_Mortier.JPG/960px-1730_Hamburg_Covens_%26_Mortier.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:1730_Hamburg_Covens_%26_Mortier.JPG"
+                    },
+                    {
+                        "alt": "Aerial image of the Eurogate and Burchardkai container terminals (view from the southeast)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_%28view_from_the_southeast%29.jpg/960px-Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_%28view_from_the_southeast%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_(view_from_the_southeast).jpg"
+                    },
+                    {
+                        "alt": "Alte Wallgraben in Planten un Blomen",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Alte_Wallgraben_in_Planten_un_Blomen.jpg/960px-Alte_Wallgraben_in_Planten_un_Blomen.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alte_Wallgraben_in_Planten_un_Blomen.jpg"
+                    },
+                    {
+                        "alt": "Bahnlinien im HVV",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Bahnlinien_im_HVV.png/960px-Bahnlinien_im_HVV.png",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Bahnlinien_im_HVV.png"
+                    },
+                    {
+                        "alt": "Consulate General USA Hamburg 2",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Consulate_General_USA_Hamburg_2.jpg/960px-Consulate_General_USA_Hamburg_2.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Consulate_General_USA_Hamburg_2.jpg"
+                    },
+                    {
+                        "alt": "DB 490117 Near Harburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/DB_490117_Near_Harburg.jpg/960px-DB_490117_Near_Harburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:DB_490117_Near_Harburg.jpg"
+                    },
+                    {
+                        "alt": "Elbbrücken mit Cruise Center",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Elbbr%C3%BCcken_mit_Cruise_Center.JPG/960px-Elbbr%C3%BCcken_mit_Cruise_Center.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Elbbr%C3%BCcken_mit_Cruise_Center.JPG"
+                    },
+                    {
+                        "alt": "Elbphilharmonie, Hamburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Elbphilharmonie%2C_Hamburg.jpg/960px-Elbphilharmonie%2C_Hamburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Elbphilharmonie,_Hamburg.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Universities in Hamburg (23)",
+                "type": "universities_in_city",
+                "total": 23,
+                "public": 19,
+                "private": 1,
+                "top_unis": [
+                    "Universität Hamburg",
+                    "Hochschule für Angewandte Wissenschaften Hamburg",
+                    "Hamburger Fern-Hochschule, gemeinnützige GmbH",
+                    "Europäische Fernhochschule Hamburg",
+                    "Institut B-10: Wasserbau"
+                ]
+            },
+            {
+                "h": "Useful Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q1055",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 53.55,
+                        "longitude": 10
+                    },
+                    "name": "Hamburg",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_Hamburg.svg/langde-330px-Flag_of_Hamburg.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Hamburg",
+                        "https://en.wikipedia.org/wiki/Hamburg",
+                        "https://tr.wikipedia.org/wiki/Hamburg"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Hamburg",
+                        "addressCountry": "DE",
+                        "addressLocality": "Hamburg"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "Hamburg, the Pearl of Northern Germany and a Free and Hanseatic City, is the country's second-largest metropolis after Berlin. It offers an attractive education and living hub for Turkish students. This port city, built on the branches of the Elbe River, stands out with its rich history, modern architecture, and vibrant student life. If you're a Turkish student thinking about studying in Hamburg, we at AlmanyaUni are here to help. We cover the topics you're most curious about, offering city-specific tips and useful information. Discussions under the title \"STUDYING - LIVING IN HAMBURG\" on our forums have garnered thousands of views, proving the city's popularity among students. Hamburg promises an unforgettable experience, not just with its academic opportunities, but also with its cultural diversity, green spaces, and international atmosphere.",
+                    "alternateName": "Hamburg",
+                    "containedInPlace": {
+                        "name": "Hamburg",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ],
+        "de": [
+            {
+                "alt": "Hamburg",
+                "type": "hero",
+                "source": "wikipedia",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_Hamburg.svg/langde-330px-Flag_of_Hamburg.svg.png"
+            },
+            {
+                "h": null,
+                "type": "intro",
+                "body_md": "Hamburg, die Perle Norddeutschlands und Freie und Hansestadt, ist nach Berlin die zweitgrößte Metropole des Landes und bietet dir als türkischem Studenten ein attraktives Zentrum zum Studieren und Leben. Diese Hafenstadt, die sich an den Armen der Elbe erstreckt, zeichnet sich durch ihre reiche Geschichte, moderne Architektur und ein pulsierendes Studentenleben aus. Als AlmanyaUni beleuchten wir die Themen, die dich als türkischen Studenten, der ein Studium in Hamburg in Betracht zieht, am meisten interessieren, und geben dir stadtspezifische Tipps und nützliche Informationen. Besonders die Diskussionen in unseren Foren unter dem Titel „WER IN HAMBURG STUDIERT – WER IN HAMBURG LEBT“, die tausendfach aufgerufen wurden, belegen die Beliebtheit dieser Stadt unter Studenten. Hamburg verspricht dir nicht nur akademische Möglichkeiten, sondern auch ein unvergessliches Erlebnis durch seine kulturelle Vielfalt, grünen Oasen und internationale Atmosphäre."
+            },
+            {
+                "h": "Auf einen Blick",
+                "type": "quick_facts",
+                "items": [
+                    {
+                        "label": "Bundesland",
+                        "value": "Hamburg (Stadtstaat)"
+                    },
+                    {
+                        "label": "Bevölkerung",
+                        "value": "1.9 milyondan fazla"
+                    },
+                    {
+                        "label": "Anzahl der Hochschulen",
+                        "value": "23 (çoğunluğu devlet)"
+                    },
+                    {
+                        "label": "Gesamtzahl der Studiengänge",
+                        "value": "541"
+                    },
+                    {
+                        "label": "Wichtige Hochschulen",
+                        "value": "Universität Hamburg, Hochschule für Angewandte Wissenschaften Hamburg, TUHH"
+                    },
+                    {
+                        "label": "Hafen",
+                        "value": "Almanya'nın en büyük, Avrupa'nın 3. büyük limanı"
+                    },
+                    {
+                        "label": "Lage",
+                        "value": "Elbe Nehri üzerinde, Kuzey Denizi'ne yakın"
+                    }
+                ]
+            },
+            {
+                "h": "Studieren in Hamburg: Chancen und Möglichkeiten",
+                "type": "section",
+                "body_md": "Hamburg ist mit 23 Hochschulen und über 541 verschiedenen Studiengängen ein wichtiges Zentrum für Hochschulbildung in Deutschland. Die meisten Hochschulen in der Stadt sind staatlich und bieten dir als türkischem Studenten attraktive Studienmöglichkeiten. Besonders Einrichtungen wie die Universität Hamburg, die Hochschule für Angewandte Wissenschaften Hamburg und die in technischen Bereichen herausragende Technische Universität Hamburg (TUHH) bieten dir eine breite Palette an Bachelor- und Masterstudiengängen. Häufig gestellte Fragen unter unseren Studenten wie „Gibt es jemanden, der Informatik an der TUHH Hamburg studiert?“ zeigen, wie groß das Interesse an Ingenieur- und Informatikstudiengängen ist. Hamburg öffnet dir nicht nur durch seine akademische Qualität, sondern auch durch seine Forschungsorientierung wichtige Türen für deine Karriere. Unterstützungsdienste für internationale Studenten und vielfältige studentische Gemeinschaften erleichtern dir die Eingewöhnung in die Stadt und schaffen eine bereichernde Lernumgebung."
+            },
+            {
+                "h": "Monatliche Lebenshaltungskosten (Schätzung)",
+                "type": "cost_of_living",
+                "items": [
+                    {
+                        "note": "WG-Zimmer oder Studentenwohnheim",
+                        "label": "Miete (WG-Zimmer)",
+                        "amount": "350-550"
+                    },
+                    {
+                        "note": "Lebensmitteleinkäufe und gelegentliches Auswärtsessen",
+                        "label": "Essen",
+                        "amount": "200-350"
+                    },
+                    {
+                        "note": "Variiert je nach Hochschule, oft im Semesterbeitrag enthalten",
+                        "label": "Verkehr (Semesterticket)",
+                        "amount": "0-50"
+                    },
+                    {
+                        "note": "Gesetzliche Krankenversicherung",
+                        "label": "Krankenversicherung",
+                        "amount": "110-120"
+                    },
+                    {
+                        "note": "Soziale Aktivitäten, persönliche Ausgaben",
+                        "label": "Freizeit/Sonstiges",
+                        "amount": "100-200"
+                    }
+                ],
+                "total": "760-1270",
+                "currency": "EUR"
+            },
+            {
+                "h": "Sehenswürdigkeiten und Studenten-Hotspots",
+                "type": "places",
+                "items": [
+                    {
+                        "url": null,
+                        "name": "Elbphilharmonie",
+                        "type": "landmark",
+                        "description": "Hamburgs ikonischer Konzertsaal und architektonisches Meisterwerk. Der Hafenblick von der Terrasse ist atemberaubend."
+                    },
+                    {
+                        "url": null,
+                        "name": "Miniatur Wunderland",
+                        "type": "museum",
+                        "description": "Die größte Modelleisenbahnanlage der Welt, die Besucher jeden Alters begeistert."
+                    },
+                    {
+                        "url": null,
+                        "name": "Speicherstadt und HafenCity",
+                        "type": "landmark",
+                        "description": "Das historische Lagerhausviertel, UNESCO-Weltkulturerbe, und das moderne Hafenstadtprojekt."
+                    },
+                    {
+                        "url": null,
+                        "name": "Planten un Blomen",
+                        "type": "park",
+                        "description": "Ein großer botanischer Garten und Park im Herzen der Stadt, bekannt für seine Wasserspiele."
+                    },
+                    {
+                        "url": null,
+                        "name": "Reeperbahn",
+                        "type": "square",
+                        "description": "Hamburgs berühmtes Vergnügungs- und Nachtlebenviertel."
+                    },
+                    {
+                        "url": null,
+                        "name": "Alstersee",
+                        "type": "park",
+                        "description": "Dieser See mitten in der Stadt ist ideal zum Rudern, Segeln und Entspannen am Ufer."
+                    }
+                ]
+            },
+            {
+                "h": "Studentenleben und Kultur",
+                "type": "student_culture",
+                "body_md": "Hamburg zeichnet sich durch ein dynamisches und multikulturelles Studentenleben aus. Die 23 Hochschulen der Stadt schaffen eine junge und lebendige Atmosphäre. Grünflächen, Parks und Cafés rund um die Elbe und Alster sind beliebte Orte, an denen du dich in den Pausen oder am Wochenende mit Kommilitonen treffen kannst. Das Fahrrad ist ein wichtiges Fortbewegungsmittel in der Stadt, und dank des gut ausgebauten Radwegenetzes kannst du Hamburg bequem erkunden. Dank des von den Hochschulen angebotenen Semestertickets (semesterweites ÖPNV-Ticket) sind die öffentlichen Verkehrsmittel sehr günstig, bei einigen Hochschulen sogar im Semesterbeitrag enthalten. Hamburg ist das ganze Jahr über Gastgeber für diverse Festivals, Konzerte und kulturelle Veranstaltungen. Die internationale Atmosphäre als Hafenstadt bietet dir die Möglichkeit, Menschen aus verschiedenen Kulturen kennenzulernen und eine globale Perspektive zu entwickeln. Studentenclubs, Sportaktivitäten und Freiwilligenprojekte bieten dir großartige Möglichkeiten, deinen sozialen Kreis zu erweitern und neue Hobbys zu entdecken.",
+                "highlights": [
+                    "Internationale und multikulturelle Atmosphäre",
+                    "Gut ausgebautes öffentliches Verkehrsnetz (Vorteil des Semestertickets)",
+                    "Fahrradfreundliche Stadtstruktur",
+                    "Soziale und Freizeitmöglichkeiten rund um Elbe und Alster",
+                    "Reicher Kalender an kulturellen Veranstaltungen und Festivals"
+                ]
+            },
+            {
+                "h": "Häufig gestellte Fragen (von türkischen Studenten)",
+                "type": "faq",
+                "items": [
+                    {
+                        "a": "Einige Hochschulen in Hamburg oder mit Sprachschulen kooperierende Einrichtungen können in bestimmten Fällen eine bedingte Zulassung (bedingte Zulassung) ohne Deutschkenntnisse anbieten. Dies variiert jedoch je nach Hochschule und Studiengang. Meistens wird die Zusage verlangt, ein bestimmtes Deutschniveau (z.B. B1) zu erreichen. Für die aktuellsten und genauesten Informationen solltest du die offiziellen Zulassungsvoraussetzungen deiner Wunschhochschule prüfen oder unsere AlmanyaUni-Berater kontaktieren.",
+                        "q": "Ist es möglich, an Hamburger Hochschulen eine bedingte Zulassung ohne Deutschkenntnisse zu erhalten?"
+                    },
+                    {
+                        "a": "Der Prozess der Diplom-Anerkennung (Diplom-Anerkennung/Denklik) an der Universität Hamburg oder generell in Deutschland kann je nach Herkunftsland und Studienfach variieren. In der Regel wird die Gleichwertigkeit deines Diploms über die Anabin-Datenbank geprüft. Für detaillierte Informationen und den Bewerbungsprozess solltest du dich an das Akademische Auslandsamt der Universität oder die zuständigen Anerkennungsstellen (z.B. Zeugnisanerkennungsstelle) wenden. In unseren Foren gibt es viele türkische Studenten, die ihre Erfahrungen dazu geteilt haben.",
+                        "q": "Wie läuft der Prozess der Diplom-Anerkennung (Denklik) an der Universität Hamburg ab? Hat sich schon jemand beworben?"
+                    },
+                    {
+                        "a": "Hamburg bietet viele hochwertige Sprachkurse zum Deutschlernen. Das Goethe-Institut, die Volkshochschule (VHS) und verschiedene private Sprachschulen (z.B. DeutschAkademie, TANDEM Hamburg) sind beliebte Optionen. Einige Hochschulen bieten möglicherweise auch eigene Sprachkurse an. Bei der Auswahl eines Kurses solltest du Preise, Lage, Unterrichtszeiten und Studentenbewertungen berücksichtigen.",
+                        "q": "Gibt es empfohlene Sprachkurse in Hamburg?"
+                    },
+                    {
+                        "a": "Da Hamburg eine der größten und wirtschaftlich entwickeltesten Städte Deutschlands ist, können die Lebenshaltungskosten im Vergleich zu kleineren Städten des Landes etwas höher sein. Besonders die Mietkosten sind ein wichtiger Posten. Du kannst dein Budget jedoch ausgleichen, indem du in Studentenwohnheimen oder Wohngemeinschaften (WG) wohnst. Mit Studentenrabatten, dem Semesterticket und günstigen Lebensmitteleinkäufen ist es möglich, ein budgetfreundliches Leben zu führen. Die durchschnittlichen monatlichen Lebenshaltungskosten können zwischen 750 und 1200 Euro liegen.",
+                        "q": "Sind die Lebenshaltungskosten in Hamburg wirklich 'extrem' hoch?"
+                    },
+                    {
+                        "a": "Einige deutsche Hochschulen bieten Sprachkurse für internationale Studenten entweder direkt oder über Kooperationen mit anderen Einrichtungen an. Nicht alle Hochschulen in Hamburg haben möglicherweise eine eigene Sprachschule, aber einige könnten Vorbereitungskurse oder Deutschunterricht für Studenten mit bedingter Zulassung anbieten. Die genauesten Informationen dazu erhältst du beim Akademischen Auslandsamt der Hochschule, an der du dich bewerben möchtest.",
+                        "q": "Haben die Hochschulen in Hamburg eigene Sprachschulen?"
+                    }
+                ]
+            },
+            {
+                "h": "Student sein in Hamburg",
+                "url": null,
+                "type": "video",
+                "title": "Entdecke Hamburg: Deutschlands Hafenstadt und Studentenparadies",
+                "platform": "youtube",
+                "description": "Dieses Video bietet dir einen Überblick über das Studentenleben, die kulturellen Reichtümer und die Studienmöglichkeiten in Hamburg. Es wäre hilfreich, wenn ikonische Gebäude der Stadt, Studenten-Hotspots, das Verkehrsnetz und die Erfahrungen türkischer Studenten gezeigt würden."
+            },
+            {
+                "h": null,
+                "type": "cta",
+                "body_md": "Brauchst du weitere Informationen, um deine Studienpläne in Hamburg zu verwirklichen? Kontaktiere unser Expertenteam bei AlmanyaUni und vereinfache deinen Bewerbungsprozess! Mit unseren maßgeschneiderten Beratungsdiensten machst du den ersten Schritt zu deinem Studium in Deutschland."
+            },
+            {
+                "h": "Hamburg — Impressionen",
+                "type": "gallery",
+                "items": [
+                    {
+                        "alt": "Flagge von Hohenzollern-Hechingen und Sigmaringen",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Flag_of_Hohenzollern-Hechingen_and_Sigmaringen.png",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Flag_of_Hohenzollern-Hechingen_and_Sigmaringen.png"
+                    },
+                    {
+                        "alt": "11-09-04-Fotoflug-Nordsee-von-RalfR-001",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/11-09-04-fotoflug-nordsee-by-RalfR-001.jpg/960px-11-09-04-fotoflug-nordsee-by-RalfR-001.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:11-09-04-fotoflug-nordsee-by-RalfR-001.jpg"
+                    },
+                    {
+                        "alt": "1730 Hamburg Covens & Mortier",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/1730_Hamburg_Covens_%26_Mortier.JPG/960px-1730_Hamburg_Covens_%26_Mortier.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:1730_Hamburg_Covens_%26_Mortier.JPG"
+                    },
+                    {
+                        "alt": "Luftbild der Containerterminals Eurogate und Burchardkai (Blick von Südosten)",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_%28view_from_the_southeast%29.jpg/960px-Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_%28view_from_the_southeast%29.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_(view_from_the_southeast).jpg"
+                    },
+                    {
+                        "alt": "Alter Wallgraben in Planten un Blomen",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Alte_Wallgraben_in_Planten_un_Blomen.jpg/960px-Alte_Wallgraben_in_Planten_un_Blomen.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Alte_Wallgraben_in_Planten_un_Blomen.jpg"
+                    },
+                    {
+                        "alt": "Bahnlinien im HVV",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Bahnlinien_im_HVV.png/960px-Bahnlinien_im_HVV.png",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Bahnlinien_im_HVV.png"
+                    },
+                    {
+                        "alt": "Generalkonsulat USA Hamburg 2",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Consulate_General_USA_Hamburg_2.jpg/960px-Consulate_General_USA_Hamburg_2.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Consulate_General_USA_Hamburg_2.jpg"
+                    },
+                    {
+                        "alt": "DB 490117 bei Harburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/DB_490117_Near_Harburg.jpg/960px-DB_490117_Near_Harburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:DB_490117_Near_Harburg.jpg"
+                    },
+                    {
+                        "alt": "Elbbrücken mit Cruise Center",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Elbbr%C3%BCcken_mit_Cruise_Center.JPG/960px-Elbbr%C3%BCcken_mit_Cruise_Center.JPG",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Elbbr%C3%BCcken_mit_Cruise_Center.JPG"
+                    },
+                    {
+                        "alt": "Elbphilharmonie, Hamburg",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Elbphilharmonie%2C_Hamburg.jpg/960px-Elbphilharmonie%2C_Hamburg.jpg",
+                        "source_url": "https://commons.wikimedia.org/wiki/File:Elbphilharmonie,_Hamburg.jpg"
+                    }
+                ],
+                "source": "wikipedia"
+            },
+            {
+                "h": "Hochschulen in Hamburg (23)",
+                "type": "universities_in_city",
+                "total": 23,
+                "public": 19,
+                "private": 1,
+                "top_unis": [
+                    "Universität Hamburg",
+                    "Hochschule für Angewandte Wissenschaften Hamburg",
+                    "Hamburger Fern-Hochschule, gemeinnützige GmbH",
+                    "Europäische Fernhochschule Hamburg",
+                    "Institut B-10: Wasserbau"
+                ]
+            },
+            {
+                "h": "Nützliche Links",
+                "type": "external_links",
+                "items": [
+                    {
+                        "url": "https://de.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (DE)"
+                    },
+                    {
+                        "url": "https://en.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (EN)"
+                    },
+                    {
+                        "url": "https://tr.wikipedia.org/wiki/Hamburg",
+                        "type": "wikipedia",
+                        "label": "Wikipedia (TR)"
+                    },
+                    {
+                        "url": "https://www.wikidata.org/wiki/Q1055",
+                        "type": "wikidata",
+                        "label": "Wikidata"
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 53.55,
+                        "longitude": 10
+                    },
+                    "name": "Hamburg",
+                    "@type": "City",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Flag_of_Hamburg.svg/langde-330px-Flag_of_Hamburg.svg.png",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Hamburg",
+                        "https://en.wikipedia.org/wiki/Hamburg",
+                        "https://tr.wikipedia.org/wiki/Hamburg"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Hamburg",
+                        "addressCountry": "DE",
+                        "addressLocality": "Hamburg"
+                    },
+                    "@context": "https://schema.org",
+                    "description": "Hamburg, die Perle Norddeutschlands und Freie und Hansestadt, ist nach Berlin die zweitgrößte Metropole des Landes und bietet dir als türkischem Studenten ein attraktives Zentrum zum Studieren und Leben. Diese Hafenstadt, die sich an den Armen der Elbe erstreckt, zeichnet sich durch ihre reiche Geschichte, moderne Architektur und ein pulsierendes Studentenleben aus. Als AlmanyaUni beleuchten wir die Themen, die dich als türkischen Studenten, der ein Studium in Hamburg in Betracht zieht, am meisten interessieren, und geben dir stadtspezifische Tipps und nützliche Informationen. Besonders die Diskussionen in unseren Foren unter dem Titel „WER IN HAMBURG STUDIERT – WER IN HAMBURG LEBT“, die tausendfach aufgerufen wurden, belegen die Beliebtheit dieser Stadt unter Studenten. Hamburg verspricht dir nicht nur akademische Möglichkeiten, sondern auch ein unvergessliches Erlebnis durch seine kulturelle Vielfalt, grünen Oasen und internationale Atmosphäre.",
+                    "alternateName": "Hamburg",
+                    "containedInPlace": {
+                        "name": "Hamburg",
+                        "@type": "AdministrativeArea"
+                    }
+                },
+                "type": "schema_jsonld"
+            }
+        ]
+    }
+}
