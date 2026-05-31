@@ -333,3 +333,16 @@ if (! function_exists('e_icon')) {
         return view('components.svg-icon', ['name' => $name, 'class' => $class])->render();
     }
 }
+
+if (! function_exists('setting')) {
+    /**
+     * Global key-value ayar oku (cache'li, settings tablosu).
+     *
+     *   setting('google_analytics_id')        → değer | null
+     *   setting('foo', 'varsayılan')          → değer | 'varsayılan'
+     */
+    function setting(string $key, mixed $default = null): mixed
+    {
+        return \App\Models\Setting::get($key, $default);
+    }
+}

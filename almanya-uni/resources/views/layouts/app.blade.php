@@ -75,16 +75,19 @@
     @stack('meta')
     @stack('head')
 
-    {{-- Search Console verification tag'leri (.env'den) --}}
-    @if($v = config('seo.verification.google'))
+    {{-- Search Console / Bing / Yandex doğrulama — admin Entegrasyonlar ayarı, yoksa .env fallback --}}
+    @if($v = setting('google_site_verification', config('seo.verification.google')))
         <meta name="google-site-verification" content="{{ $v }}">
     @endif
-    @if($v = config('seo.verification.bing'))
+    @if($v = setting('bing_site_verification', config('seo.verification.bing')))
         <meta name="msvalidate.01" content="{{ $v }}">
     @endif
-    @if($v = config('seo.verification.yandex'))
+    @if($v = setting('yandex_site_verification', config('seo.verification.yandex')))
         <meta name="yandex-verification" content="{{ $v }}">
     @endif
+
+    {{-- Pazarlama & analitik izleyiciler (GA4, Ads, GTM, Meta, TikTok) — onay-bağımlı --}}
+    @include('partials._tracking_head')
 
     {{-- RSS feed discovery --}}
     <link rel="alternate" type="application/rss+xml" title="{{ brand('name') . ' — ' . __('Latest Content') }}" href="{{ url('/rss.xml') }}">
@@ -98,6 +101,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased transition-colors">
+
+    {{-- İzleyici noscript fallback'leri (GTM iframe + Meta img) --}}
+    @include('partials._tracking_body')
 
     {{-- Skip-to-content link (a11y: visible on keyboard focus) --}}
     <a href="#main-content"
@@ -1089,8 +1095,17 @@
             <span class="text-3xl">🍪</span>
             <div>
                 <h3 id="cookieConsentTitle" class="font-bold text-gray-900 mb-1">{{ __('Cookie Preferences') }}</h3>
+                @php
+                    // Harici pazarlama/analitik izleyici yapılandırılmış mı? (GA4/Ads/GTM/Meta/TikTok)
+                    $__hasExternalTrackers = setting('google_analytics_id') || setting('google_ads_id')
+                        || setting('google_tag_manager_id') || setting('meta_pixel_id') || setting('tiktok_pixel_id');
+                @endphp
                 <p class="text-sm text-gray-600 leading-relaxed">
-                    {{ __('We keep') }} <strong>{{ __('anonymous visitor statistics') }}</strong> {{ __('to improve the site (no Google Analytics, hosted on our own server). Your IP is hashed, no personal info is stored.') }}
+                    @if ($__hasExternalTrackers)
+                        {{ __('We use cookies for anonymous visitor statistics and, with your consent, analytics & marketing tools (e.g. Google, Meta, TikTok) to improve the site and measure our campaigns.') }}
+                    @else
+                        {{ __('We keep') }} <strong>{{ __('anonymous visitor statistics') }}</strong> {{ __('to improve the site (no Google Analytics, hosted on our own server). Your IP is hashed, no personal info is stored.') }}
+                    @endif
                     <a href="{{ route('legal.cookies') }}" class="text-primary-600 hover:underline">{{ __('Details') }}</a>
                 </p>
             </div>
@@ -1134,12 +1149,16 @@
         accept?.addEventListener('click', function () {
             localStorage.setItem(KEY, 'accepted');
             setCookie('almanyauni_consent', 'accepted', 365);
+            // Pazarlama/analitik izleyicileri etkinleştir (GA4, Ads, Meta, TikTok)
+            if (typeof window.grantTrackingConsent === 'function') window.grantTrackingConsent();
             hide();
         });
 
         reject?.addEventListener('click', function () {
             localStorage.setItem(KEY, 'rejected');
             setCookie('almanyauni_consent', 'rejected', 365);
+            // İzleyicileri reddet (Google Consent Mode → denied)
+            if (typeof window.denyTrackingConsent === 'function') window.denyTrackingConsent();
             // Analytics tracker cookie sil
             document.cookie = 'almanyauni_uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             hide();
