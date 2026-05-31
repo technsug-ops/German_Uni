@@ -96,6 +96,21 @@ if (file_exists($bundleFile)) {
 if ($allOk) {
     chdir($appRoot);
 
+    // ── DB migrations (non-fatal) ──
+    // Yeni migration'ları uygula. Başarısız olsa bile deploy'u BLOKLAMAZ
+    // (allOk'a dokunmaz) — cache rebuild yine de çalışır, site ayakta kalır.
+    // Migration sorunu logda görünür, manuel müdahale edilir.
+    {
+        $output = [];
+        $exitCode = 0;
+        exec('php artisan migrate --force --no-interaction 2>&1', $output, $exitCode);
+        if ($exitCode === 0) {
+            $log('✅ php artisan migrate --force');
+        } else {
+            $log('⚠️  migrate --force başarısız (deploy devam ediyor) — ' . implode(' | ', array_slice($output, 0, 3)));
+        }
+    }
+
     // Bu komutlar SIRA ÖNEMLİ — clear önce, cache sonra
     $commands = [
         'php artisan view:clear',
