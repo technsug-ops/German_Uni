@@ -56,6 +56,22 @@ jobs:
           php artisan key:generate
           mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/framework/testing bootstrap/cache storage/logs
 
+      # TÜM blade view'leri derle + PHP-geçerli mi lint'le. Render gerektirmez →
+      # veri olmadan da yakalar (ör. landing'deki `$program->university$p->name`
+      # gibi blade-içi PHP syntax hatalarını). php -l, view:cache'in yazdığı
+      # derlenmiş PHP'yi denetler.
+      - name: Blade derleme lint (tüm view'ler)
+        working-directory: almanya-uni
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: |
+          php artisan view:cache
+          find storage/framework/views -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
+          php artisan view:clear
+
       - name: Run safety-net tests (MySQL)
         working-directory: almanya-uni
         env:

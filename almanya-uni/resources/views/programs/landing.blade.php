@@ -132,11 +132,11 @@
             <div class="space-y-3">
                 @foreach ($programs as $program)
                     <a href="{{ route('programs.show', $program->slug) }}"
-                       title="{{ $program->name }} — {{ $program->university$p->name ?? '' }}"
+                       title="{{ $program->name }} — {{ $program->university->name ?? '' }}"
                        class="group block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl p-5 transition">
                         <div class="flex items-start gap-4">
                             @if (! empty($program->university->logo_url))
-                                <img src="{{ $program->university->logo_url }}" alt="{{ $program->university$p->name }}"
+                                <img src="{{ $program->university->logo_url }}" alt="{{ $program->university->name }}"
                                      class="w-12 h-12 rounded-lg object-contain bg-gray-50 ring-1 ring-gray-200 shrink-0"
                                      loading="lazy" decoding="async">
                             @else
@@ -144,7 +144,7 @@
                             @endif
                             <div class="flex-1 min-w-0">
                                 <h2 class="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary-700 leading-tight mb-1">{{ $program->name }}</h2>
-                                <p class="text-sm text-gray-600 mb-2">{{ $program->university$p->name ?? '' }} · {{ $program->university->city->name ?? '' }}</p>
+                                <p class="text-sm text-gray-600 mb-2">{{ $program->university->name ?? '' }} · {{ $program->university->city->name ?? '' }}</p>
                                 <div class="flex flex-wrap gap-1.5 text-xs">
                                     <span class="px-2 py-0.5 rounded bg-primary-50 text-primary-700 font-semibold">{{ __(ucfirst($program->degree)) }}</span>
                                     @if ($program->language === 'en')
