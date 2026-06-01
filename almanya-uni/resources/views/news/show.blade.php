@@ -52,7 +52,7 @@
         @endif
     @endif
 
-    <div class="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary-600">
+    <div class="blog-content prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6 prose-img:w-full">
         {!! $post->content_html !!}
     </div>
 

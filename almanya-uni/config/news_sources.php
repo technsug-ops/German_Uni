@@ -18,8 +18,25 @@ return [
     'max_age_days'   => 45,
 
     'feeds' => [
-        // ✅ DOĞRULANDI — çalışan feed. Geniş uluslararası eğitim kaynağı →
-        // 'keywords' ile SADECE Almanya-alakalı haberler aday olur.
+        // ✅ Google News RSS — her zaman güncel Almanya içeriği döner (100+ item).
+        // Sorgu zaten Almanya-odaklı; keyword filtre güvenlik ağı. Link = Google
+        // yönlendirmesi (kaynağa gider); AI taslak başlık+özetten ÖZGÜN brief üretir.
+        [
+            'name'             => 'Google News · Vize & Göç',
+            'url'              => 'https://news.google.com/rss/search?q=Germany%20student%20visa%20OR%20Chancenkarte%20OR%20%22skilled%20immigration%22&hl=en-US&gl=US&ceid=US:en',
+            'default_category' => 'visa-residence',
+            'keywords'         => ['Germany', 'German', 'Deutschland', 'Chancenkarte', 'visa', 'immigration'],
+            'enabled'          => true,
+        ],
+        [
+            'name'             => 'Google News · Üniversite & Burs',
+            'url'              => 'https://news.google.com/rss/search?q=%22study%20in%20Germany%22%20(university%20OR%20DAAD%20OR%20scholarship%20OR%20students)&hl=en-US&gl=US&ceid=US:en',
+            'default_category' => 'universities',
+            'keywords'         => ['Germany', 'German', 'Deutschland', 'DAAD', 'university', 'scholarship'],
+            'enabled'          => true,
+        ],
+
+        // ✅ DOĞRULANDI — geniş uluslararası eğitim kaynağı; keyword ile Almanya süzülür.
         [
             'name'             => 'ICEF Monitor',
             'url'              => 'https://monitor.icef.com/feed/',

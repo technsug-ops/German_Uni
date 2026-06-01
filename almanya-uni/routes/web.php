@@ -784,6 +784,23 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Otomatik haber çekme (Mod 1) — KAS'ta SSH yok; tarayıcıdan veya KAS
+    // Cronjob bu URL'yi çağırarak RSS kaynaklardan aday çeker. Idempotent (dedupe).
+    Route::get('/admin/ops/news-fetch', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('news:fetch', array_filter([
+                '--dry-run' => request()->boolean('dry'),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        $out .= "\n[ Adaylar: /admin/news-candidates → İçeriği Çek → AI Taslak → Paylaş ]\n";
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
