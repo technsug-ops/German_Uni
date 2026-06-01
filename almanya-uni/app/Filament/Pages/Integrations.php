@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Models\Setting;
 use BackedEnum;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Actions\Action as FormAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
@@ -58,6 +59,8 @@ class Integrations extends Page
         'tiktok_pixel_id',
         // Davranış
         'tracking_require_consent',
+        // FlatReklam SEO API
+        'flatreklam_api_token',
     ];
 
     public static function canAccess(): bool
@@ -161,6 +164,21 @@ class Integrations extends Page
                             ->label('Çerez onayı zorunlu (önerilir)')
                             ->helperText('Açık: GA/Ads/Meta/TikTok yalnızca ziyaretçi çerezleri kabul ettikten sonra çalışır (Google Consent Mode v2 ile varsayılan reddedilir). Kapalı: izleyiciler herkese hemen yüklenir — yalnızca yasal yükümlülüğünüz yoksa.')
                             ->default(true),
+                    ]),
+
+                Section::make('FlatReklam SEO API')
+                    ->description('FlatReklam paneli sitenin SEO kaynaklarını (blog · etkinlik · yasal sayfa) bu token ile okur/günceller. Base URL: ' . url('/api/flatreklam/v1'))
+                    ->icon(Heroicon::OutlinedKey)
+                    ->components([
+                        TextInput::make('flatreklam_api_token')
+                            ->label('API Token')
+                            ->helperText('Boş = entegrasyon kapalı (503 döner). "Üret"e bas → Kaydet → token\'ı FlatReklam müşteri kartına (customApiToken) yapıştır. Base URL\'i de customApiBaseUrl alanına gir.')
+                            ->suffixAction(
+                                FormAction::make('generate')
+                                    ->icon(Heroicon::OutlinedArrowPath)
+                                    ->label('Üret')
+                                    ->action(fn (callable $set) => $set('flatreklam_api_token', \Illuminate\Support\Str::random(48)))
+                            ),
                     ]),
             ]);
     }

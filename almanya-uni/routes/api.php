@@ -33,6 +33,15 @@ Route::post('webhooks/resend', [\App\Http\Controllers\Webhooks\ResendWebhookCont
     ->middleware('throttle:300,1')
     ->name('webhooks.resend');
 
+// FlatReklam Özel Site SEO API (v1) — sağlayıcı sözleşmesi.
+// Auth: flatreklam.auth (Bearer = setting('flatreklam_api_token')).
+Route::prefix('flatreklam/v1')->middleware(['flatreklam.auth', 'throttle:60,1'])->group(function () {
+    Route::get('ping', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'ping']);
+    Route::get('seo-resources', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'index']);
+    Route::get('seo-resources/{id}', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'show']);
+    Route::patch('seo-resources/{id}', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'update']);
+});
+
 Route::prefix('v1')->middleware('api.throttle')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('register', [AuthController::class, 'register'])->middleware('throttle:5,1');
