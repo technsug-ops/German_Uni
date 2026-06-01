@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class City extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\FulltextSearch;
 
     protected $fillable = [
         'wikidata_id', 'state_id',

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Profession extends Model
 {
     use HasFactory;
+    use \App\Models\Concerns\FulltextSearch;
     use \App\Models\Concerns\LocalizableContent;
 
     public function getNameAttribute(): ?string

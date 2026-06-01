@@ -11,6 +11,7 @@ class University extends Model
 {
     use HasFactory;
     use Searchable;
+    use \App\Models\Concerns\FulltextSearch;
     use \App\Models\Concerns\LocalizableContent;
     use \App\Models\Concerns\LocalizesContentBlocks;
 

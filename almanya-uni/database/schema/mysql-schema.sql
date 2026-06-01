@@ -197,6 +197,7 @@ CREATE TABLE `cities` (
   KEY `cities_wikidata_id_index` (`wikidata_id`),
   KEY `cities_slug_index` (`slug`),
   KEY `cities_state_id_index` (`state_id`),
+  FULLTEXT KEY `ft_cities_search` (`name_de`,`name_tr`,`name_en`),
   CONSTRAINT `cities_state_id_foreign` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1147,6 +1148,7 @@ CREATE TABLE `professions` (
   KEY `professions_cluster_index` (`cluster`),
   KEY `professions_type_index` (`type`),
   KEY `professions_is_active_index` (`is_active`),
+  FULLTEXT KEY `ft_professions_search` (`name_de`,`name_tr`,`description_tr`,`description_de`),
   CONSTRAINT `professions_field_of_study_id_foreign` FOREIGN KEY (`field_of_study_id`) REFERENCES `fields_of_study` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1207,6 +1209,7 @@ CREATE TABLE `programs` (
   KEY `programs_degree_index` (`degree`),
   KEY `programs_partner_id_index` (`partner_id`),
   KEY `programs_is_online_index` (`is_online`),
+  FULLTEXT KEY `ft_programs_search` (`name_de`,`description_tr`,`description_en`),
   CONSTRAINT `programs_field_of_study_id_foreign` FOREIGN KEY (`field_of_study_id`) REFERENCES `fields_of_study` (`id`) ON DELETE SET NULL,
   CONSTRAINT `programs_university_id_foreign` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1774,6 +1777,7 @@ CREATE TABLE `universities` (
   KEY `universities_the_world_rank_index` (`the_world_rank`),
   KEY `universities_community_mention_score_index` (`community_mention_score`),
   KEY `universities_arwu_world_rank_index` (`arwu_world_rank`),
+  FULLTEXT KEY `ft_universities_search` (`name_de`,`name_en`,`name_tr`,`short_name`),
   CONSTRAINT `universities_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2098,3 +2102,4 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (126,'2026_05_31_18
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (127,'2026_05_31_190000_apply_blog_completion',101);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (128,'2026_05_31_200000_add_localized_content_blocks',102);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (129,'2026_05_31_201000_apply_city_blocks_pilot',103);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (130,'2026_06_01_160000_add_fulltext_search_indexes',104);

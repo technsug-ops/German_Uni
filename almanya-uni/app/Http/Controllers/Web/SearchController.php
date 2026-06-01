@@ -45,13 +45,7 @@ class SearchController extends Controller
         // ─────────── UNIVERSITIES ───────────
         $uniBase = University::query()
             ->where('is_active', 1)
-            ->where(function ($w) use ($like) {
-                $w->where('name_de', 'like', $like)
-                    ->orWhere('name_en', 'like', $like)
-                    ->orWhere('name_tr', 'like', $like)
-                    ->orWhere('short_name', 'like', $like)
-                    ->orWhere('content_blocks', 'like', $like);
-            });
+            ->searchFulltext($q, ['name_de', 'name_en', 'name_tr', 'short_name']);
 
         $uniTotal = (clone $uniBase)->count();
         $universities = $uniBase
@@ -63,13 +57,8 @@ class SearchController extends Controller
 
         // ─────────── CITIES ───────────
         $cityBase = City::query()
-            ->where(function ($w) use ($like) {
-                $w->where('name_de', 'like', $like)
-                    ->orWhere('name_tr', 'like', $like)
-                    ->orWhere('name_en', 'like', $like)
-                    ->orWhere('content_blocks', 'like', $like);
-            })
-            ->whereHas('universities', fn ($q) => $q->where('is_active', 1));
+            ->searchFulltext($q, ['name_de', 'name_tr', 'name_en'])
+            ->whereHas('universities', fn ($u) => $u->where('is_active', 1));
 
         $cityTotal = (clone $cityBase)->count();
         $cities = $cityBase
@@ -83,11 +72,7 @@ class SearchController extends Controller
         // ─────────── PROGRAMS ───────────
         $progBase = Program::query()
             ->where('is_active', 1)
-            ->where(function ($w) use ($like) {
-                $w->where('name_de', 'like', $like)
-                    ->orWhere('description_tr', 'like', $like)
-                    ->orWhere('description_en', 'like', $like);
-            });
+            ->searchFulltext($q, ['name_de', 'description_tr', 'description_en']);
 
         $progTotal = (clone $progBase)->count();
         $programs = $progBase
@@ -118,13 +103,7 @@ class SearchController extends Controller
         // ─────────── PROFESSIONS ───────────
         $profBase = Profession::query()
             ->where('is_active', 1)
-            ->where(function ($w) use ($like) {
-                $w->where('name_de', 'like', $like)
-                    ->orWhere('name_tr', 'like', $like)
-                    ->orWhere('description_tr', 'like', $like)
-                    ->orWhere('description_de', 'like', $like)
-                    ->orWhere('kldb_code', 'like', $like);
-            });
+            ->searchFulltext($q, ['name_de', 'name_tr', 'description_tr', 'description_de']);
 
         $profTotal = (clone $profBase)->count();
         $professions = $profBase
