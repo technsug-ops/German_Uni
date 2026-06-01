@@ -15,10 +15,11 @@
     $gtmId          = setting('google_tag_manager_id');
     $metaPixel      = setting('meta_pixel_id');
     $tiktokPixel    = setting('tiktok_pixel_id');
+    $clarityId      = setting('microsoft_clarity_id');
     $requireConsent = (bool) setting('tracking_require_consent', '1');
 
     $hasGtag    = $gaId || $adsId;                  // gtag.js gerekiyor mu?
-    $anyTracker = $hasGtag || $gtmId || $metaPixel || $tiktokPixel;
+    $anyTracker = $hasGtag || $gtmId || $metaPixel || $tiktokPixel || $clarityId;
 
     // Sunucu tarafı onay durumu (dönen ziyaretçi için ilk render'da doğru başlasın)
     $consentCookie  = request()->cookie('almanyauni_consent'); // accepted | rejected | null
@@ -80,6 +81,18 @@
         }(window, document, 'ttq');
     };
 
+    // ── Microsoft Clarity: onay gelene dek YÜKLENMEZ (ısı haritası + oturum kaydı) ──
+    var clarityId = @json($clarityId);
+    window.__initClarity = function () {
+        if (!clarityId || window.__clarityLoaded) return;
+        window.__clarityLoaded = true;
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", clarityId);
+    };
+
     // ── Onay güncelleyicileri (çerez banner'ı çağırır) ──
     window.grantTrackingConsent = function () {
         @if ($hasGtag || $gtmId)
@@ -90,6 +103,7 @@
         @endif
         window.__initMetaPixel();
         window.__initTikTokPixel();
+        window.__initClarity();
     };
     window.denyTrackingConsent = function () {
         @if ($hasGtag || $gtmId)
@@ -104,6 +118,7 @@
     // Onay zaten var (ya gerekmiyor ya da ziyaretçi daha önce kabul etmiş)
     window.__initMetaPixel();
     window.__initTikTokPixel();
+    window.__initClarity();
     @endif
 })();
 </script>

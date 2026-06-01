@@ -56,6 +56,8 @@ class Integrations extends Page
         'meta_pixel_id',
         // TikTok
         'tiktok_pixel_id',
+        // Microsoft Clarity
+        'microsoft_clarity_id',
         // Davranış
         'tracking_require_consent',
         // FlatReklam SEO API
@@ -153,6 +155,18 @@ class Integrations extends Page
                             ->label('TikTok Pixel Kimliği')
                             ->placeholder('Örn: CABCD1234EFGH5678')
                             ->helperText('TikTok Ads Manager → Varlıklar → Etkinlikler → Web etkinlikleri → Pixel kimliği.'),
+                    ]),
+
+                Section::make('Microsoft Clarity')
+                    ->description('Isı haritası + oturum kayıtları — ücretsiz davranış analitiği. Çerez onayına bağlı yüklenir.')
+                    ->icon(Heroicon::OutlinedChartBarSquare)
+                    ->components([
+                        TextInput::make('microsoft_clarity_id')
+                            ->label('Clarity Proje Kimliği')
+                            ->placeholder('Örn: x0g83n2ju1')
+                            ->helperText('clarity.microsoft.com → Settings → Overview → Project ID (clarity.ms/tag/ ardındaki kod).')
+                            ->rule('regex:/^[a-z0-9]+$/i')
+                            ->validationMessages(['regex' => 'Yalnızca harf ve rakam.']),
                     ]),
 
                 Section::make('Gizlilik & Onay')
