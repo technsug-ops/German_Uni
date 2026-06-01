@@ -24,6 +24,9 @@ auth.json
 /almanya-uni/dumps/
 /almanya-uni/deploy/*.sql
 /almanya-uni/deploy/*.sql.gz
+# İstisna: Laravel schema dump (sadece şema, veri yok) — migrate:fresh + CI için commit edilir
+!/almanya-uni/database/schema/
+!/almanya-uni/database/schema/*.sql
 
 # ==== Operasyon / dağıtım / iç dökümanlar (sunucu IP, hesap, token, strateji) ====
 /almanya-uni/deploy/setup.php
