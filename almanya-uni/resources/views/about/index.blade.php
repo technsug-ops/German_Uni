@@ -4,7 +4,7 @@
 
 <x-seo
     :title="__('About — Public-Benefit Germany Education Guide')"
-    :description="__('AlmanyaUni is a public-benefit Germany education and career platform — built with official data, community experience, and volunteer effort.')"
+    :description="__(':brand is a public-benefit Germany education and career platform — built with official data, community experience, and volunteer effort.', ['brand' => brand('name')])"
 />
 
 @section('content')
@@ -22,7 +22,7 @@
         </h1>
         <p class="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto">
             @if (app()->getLocale() === 'tr')
-                AlmanyaUni — Türk öğrenciler için başladık, dünyaya açılıyoruz.
+                {{ brand('name') }} — Türk öğrenciler için başladık, dünyaya açılıyoruz.
                 Resmi kaynaklardan derlediğimiz veriler, topluluğun deneyimi ve gönüllülerin emeği ile büyüyen
                 <strong class="text-white">kamu yararına</strong> bir platformuz.
             @else
@@ -35,7 +35,7 @@
 {{-- ============ STATS ============ --}}
 <section class="bg-white border-b border-gray-200">
     <div class="max-w-[1400px] mx-auto px-4 py-12">
-        <h2 class="text-center text-sm font-semibold uppercase tracking-wider text-gray-500 mb-8">{{ __('What\'s on AlmanyaUni') }}</h2>
+        <h2 class="text-center text-sm font-semibold uppercase tracking-wider text-gray-500 mb-8">{{ __('What\'s on :brand', ['brand' => brand('name')]) }}</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <a href="{{ route('universities.index') }}" class="block hover:opacity-80 transition">
                 <p class="text-3xl md:text-4xl font-extrabold text-primary-700">{{ number_format($stats['universities'], 0, ',', '.') }}</p>
@@ -111,7 +111,7 @@
                     anlam çıkarmaya çalışıyor. Bu zamanın çoğu israf.
                 </p>
                 <p>
-                    <strong class="text-primary-700">AlmanyaUni'nin amacı net:</strong> Almanya'da öğrencilik kararına dair her sorunun
+                    <strong class="text-primary-700">{{ brand('name') }}'nin amacı net:</strong> Almanya'da öğrencilik kararına dair her sorunun
                     cevabını — vize gereksinimleri, hangi üniversitenin hangi programa nasıl baktığı, yaşam maliyetinin gerçekçi rakamları,
                     Studienkolleg gerekliliği, başvuru deadline'ları, hangi mesleğin hangi diploma ile yapıldığı — tek yerde, Türkçe ve güncel tutmak.
                 </p>
@@ -125,7 +125,7 @@
                     {!! __('Germany has one of the world\'s highest-quality and <strong>tuition-free</strong> education systems — but the information needed to access this opportunity is still scattered, German-heavy, and complex. Prospective students spend hours every year on forums, old blog posts, and calls trying to make sense of it. Most of that time is wasted.') !!}
                 </p>
                 <p>
-                    {!! __('<strong>AlmanyaUni\'s purpose is clear:</strong> to keep every answer about studying in Germany — visa requirements, how each university evaluates which program, realistic cost-of-living numbers, Studienkolleg requirements, application deadlines, which profession needs which diploma — in one place, current and accessible in your language.') !!}
+                    {!! __('<strong>:brand\'s purpose is clear:</strong> to keep every answer about studying in Germany — visa requirements, how each university evaluates which program, realistic cost-of-living numbers, Studienkolleg requirements, application deadlines, which profession needs which diploma — in one place, current and accessible in your language.', ['brand' => brand('name')]) !!}
                 </p>
                 <p>
                     {!! __('We do this <strong>for the public good</strong>. Most content is <strong>free and will stay free.</strong> We sustain the site through ads and volunteer support; the bulk of revenue goes to content production, translation, and technical infrastructure. Our goal: <em>to be the most trusted first stop for every student bringing value from anywhere to Germany.</em>') !!}
@@ -139,7 +139,7 @@
 <section class="max-w-[1400px] mx-auto px-4 py-16">
     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 text-center">{{ __('Team') }}</h2>
     <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
-        {{ __('AlmanyaUni is built by a small but passionate team and a growing volunteer community.') }}
+        {{ __(':brand is built by a small but passionate team and a growing volunteer community.', ['brand' => brand('name')]) }}
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         @foreach ($team as $m)
@@ -216,7 +216,7 @@
                class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-primary-600 mb-2"><x-svg-icon name="bell" class="w-8 h-8" /></div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Share') }}</h3>
-                <p class="text-sm text-gray-600">{{ __('Recommend AlmanyaUni to friends planning to study in Germany. Reach is the most valuable help.') }}</p>
+                <p class="text-sm text-gray-600">{{ __('Recommend :brand to friends planning to study in Germany. Reach is the most valuable help.', ['brand' => brand('name')]) }}</p>
             </a>
             <button type="button" onclick="document.getElementById('feedbackToggle')?.click()" title="{{ __('Feedback') }}"
                     class="text-left block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition w-full">

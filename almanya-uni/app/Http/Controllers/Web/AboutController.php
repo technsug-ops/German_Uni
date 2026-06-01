@@ -122,9 +122,19 @@ class AboutController extends Controller
         $pick     = fn ($u, $f) => ($loc !== 'tr' ? ($u->{$f . '_' . $loc} ?? null) : null) ?: $u->{$f};
         $initials = fn ($n) => collect(explode(' ', trim((string) $n)))->map(fn ($p) => mb_substr($p, 0, 1))->take(2)->implode('');
 
-        $founderUsers = User::where(fn ($q) => $q->where('is_author', true)->orWhereNotNull('role_label'))
+        $founderUsers = User::where(fn ($q) => $q->where('is_author', true)->orWhereNotNull('role_label')->orWhere('is_admin', true))
             ->get(['id', 'name', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url'])
-            ->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
+            ->filter(function ($u) {
+                // Rol hangi locale kolonunda olursa olsun yakala (base=TR role_label + _en/_de).
+                $r = mb_strtolower(implode(' ', array_filter([$u->role_label, $u->role_label_en, $u->role_label_de])));
+                return str_contains($r, 'kurucu') || str_contains($r, 'founder') || str_contains($r, 'gründer');
+            });
+
+        // Güvenlik ağı: rol etiketi beklenmedikse kurucu = admin (boş ekip teaser olmasın).
+        if ($founderUsers->isEmpty()) {
+            $founderUsers = User::where('is_admin', true)->orderBy('id')->limit(1)
+                ->get(['id', 'name', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url']);
+        }
 
         $team = $founderUsers->map(fn ($u) => [
             'name'   => $u->name,
