@@ -185,13 +185,13 @@
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Write Content') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Share your own experience in Germany, application process, or city impression as a blog post.') }}</p>
             </a>
-            <a href="mailto:technsug@gmail.com?subject={{ urlencode('AlmanyaUni — Translate') }}" title="{{ __('Translate') }}"
+            <a href="{{ route('contact', ['type' => 'partnership', 'subject' => 'Translate']) }}" title="{{ __('Translate') }}"
                class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-primary-600 mb-2"><x-svg-icon name="globe" class="w-8 h-8" /></div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Translate') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('Help translate German university descriptions or program details into other languages.') }}</p>
             </a>
-            <a href="mailto:technsug@gmail.com?subject={{ urlencode('AlmanyaUni — Develop') }}" title="{{ __('Develop') }}"
+            <a href="{{ route('contact', ['type' => 'partnership', 'subject' => 'Develop']) }}" title="{{ __('Develop') }}"
                class="block bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-400 hover:shadow-md transition">
                 <div class="text-primary-600 mb-2"><x-svg-icon name="cog" class="w-8 h-8" /></div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ __('Develop') }}</h3>
@@ -218,9 +218,9 @@
         </div>
 
         <div class="text-center mt-10">
-            <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Contribute" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">
+            <a href="{{ route('contact', ['type' => 'partnership']) }}" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-3.5 rounded-lg shadow-lg transition">
                 <x-svg-icon name="envelope" class="w-5 h-5" />
-                {{ __('Email Us — Contribute') }}
+                {{ __('Contact Us — Contribute') }}
             </a>
         </div>
     </div>
@@ -294,10 +294,10 @@
             {{ __('Couldn\'t find an answer in FAQ, want to suggest a missing blog topic, or share your own experience? Email us.') }}
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:technsug@gmail.com?subject=AlmanyaUni"
+            <a href="{{ route('contact', ['type' => 'general']) }}"
                class="inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-gray-100 font-bold px-8 py-3 rounded-lg shadow-lg transition">
                 <x-svg-icon name="envelope" class="w-5 h-5" />
-                {{ __('Send email') }}
+                {{ __('Contact us') }}
             </a>
             <a href="{{ route('faqs.index') }}"
                class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-3 rounded-lg transition">

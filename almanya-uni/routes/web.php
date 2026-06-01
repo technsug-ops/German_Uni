@@ -226,6 +226,10 @@ $routes = function () {
         Route::post('/deneyim-paylas', [\App\Http\Controllers\Web\ContributionController::class, 'store'])->middleware('throttle:5,1')->name('contribute.store');
     });
 
+    // İletişim / gönüllü formu — PUBLIC (auth grubu DIŞINDA; ziyaretçi de yazabilir)
+    Route::get('/iletisim', [\App\Http\Controllers\Web\ContactController::class, 'create'])->name('contact');
+    Route::post('/iletisim', [\App\Http\Controllers\Web\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+
     // Application Tracker — locale grubu içinde (mega menü doğru locale alabilsin)
     Route::get('/journey',                       [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'show'])->name('journey.show');
     Route::post('/journey/step/{step}/toggle',   [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'toggle'])->name('journey.step.toggle');
