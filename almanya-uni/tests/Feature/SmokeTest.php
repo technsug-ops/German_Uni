@@ -53,6 +53,8 @@ class SmokeTest extends TestCase
             route('contact'),
             '/tr/search?q=informatik', // FULLTEXT arama yolu (whereFullText + fallback)
             '/tr/search?q=be',          // kısa sorgu → LIKE fallback
+            '/tr/search/suggest?q=informatik', // autocomplete FULLTEXT (her tuş)
+            '/tr/search/suggest?q=in',         // autocomplete kısa → LIKE fallback
             '/api/docs',
             '/login',
             '/register',
