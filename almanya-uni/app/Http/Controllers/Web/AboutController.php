@@ -119,10 +119,10 @@ class AboutController extends Controller
         // Team — manuel kurgu, sonradan veritabanına alınabilir
         $team = [
             [
-                'name' => 'Yapra',
+                'name' => 'Halil Yaprakli',
                 'role' => __('Founder &amp; Developer'),
                 'bio'  => __('Built the platform to help international students navigate higher education in Germany. Manages product strategy and engineering.'),
-                'avatar' => 'Y',
+                'avatar' => 'HY',
                 'color' => 'accent',
                 'social' => [
                     ['icon' => '✉️', 'label' => 'technsug@gmail.com', 'url' => 'mailto:technsug@gmail.com'],

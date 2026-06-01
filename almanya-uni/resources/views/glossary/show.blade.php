@@ -67,7 +67,7 @@
 
 {{-- HERO --}}
 <section class="bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 text-white">
-    <div class="max-w-[900px] mx-auto px-4 py-10 md:py-14">
+    <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-14">
         <nav class="text-sm text-indigo-100 mb-3 flex items-center gap-2 flex-wrap">
             <a href="{{ route('home') }}" class="hover:text-white">{{ __('Home') }}</a>
             <span class="opacity-60">›</span>
@@ -85,7 +85,7 @@
     </div>
 </section>
 
-<div class="max-w-[900px] mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="max-w-[1400px] mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
     {{-- Main content --}}
     <article class="lg:col-span-2">
