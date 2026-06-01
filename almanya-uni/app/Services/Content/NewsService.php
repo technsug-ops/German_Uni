@@ -151,6 +151,54 @@ TXT;
         return true;
     }
 
+    // ───────────────────── 2.5) AI görsel (resim yoksa) ─────────────────────
+
+    /**
+     * Habere uygun ÖZGÜN bir editöryel İLLÜSTRASYON üretir (Imagen 4 fast).
+     * Fotoğraf değil, flat/vektör illüstrasyon → "sahte haber fotoğrafı" riski yok.
+     * public/images/news/ altına kaydeder, web yolunu döndürür (yoksa null).
+     */
+    public function generateImage(NewsCandidate $c): ?string
+    {
+        if (! $this->apiKey) return null;
+
+        $title = $c->draft_title ?: $c->orig_title ?: 'studying in Germany';
+        $cat   = $c->suggested_category_id ? Category::find($c->suggested_category_id)?->name_en : null;
+
+        $prompt = 'Clean modern editorial FLAT VECTOR ILLUSTRATION (NOT a photograph) for a news article titled: "'
+            . $title . '". Subject: international students studying or immigrating to Germany'
+            . ($cat ? ', topic: ' . $cat : '')
+            . '. Calm professional palette with subtle German flag accents (black, red, gold). '
+            . 'Friendly, minimal, conceptual. ABSOLUTELY NO text, NO words, NO letters, NO logos. 16:9.';
+
+        try {
+            $resp = Http::timeout(120)->withHeaders(['x-goog-api-key' => $this->apiKey])
+                ->post(self::ENDPOINT . 'imagen-4.0-fast-generate-001:predict', [
+                    'instances'  => [['prompt' => $prompt]],
+                    'parameters' => ['sampleCount' => 1, 'aspectRatio' => '16:9'],
+                ]);
+
+            $b64 = data_get($resp->json(), 'predictions.0.bytesBase64Encoded');
+            if (! $b64) {
+                Log::warning('NewsService image empty: ' . mb_substr($resp->body(), 0, 200));
+                return null;
+            }
+
+            $dir = public_path('images/news');
+            if (! is_dir($dir)) @mkdir($dir, 0775, true);
+            $file = ($c->id ?: substr(sha1($title), 0, 8)) . '-' . substr((string) Str::uuid(), 0, 6) . '.png';
+
+            if (@file_put_contents($dir . '/' . $file, base64_decode($b64)) === false) {
+                Log::warning('NewsService image write failed: ' . $dir . ' (yazma izni?)');
+                return null;
+            }
+            return '/images/news/' . $file;
+        } catch (\Throwable $e) {
+            Log::warning('NewsService image exc: ' . mb_substr($e->getMessage(), 0, 150));
+            return null;
+        }
+    }
+
     // ───────────────────────── 3) Yayınla (çoklu dil) ─────────────────────────
 
     /**
@@ -161,6 +209,15 @@ TXT;
     {
         if (! $c->hasDraft()) {
             throw new \RuntimeException('Taslak yok — önce taslağı üret/gir.');
+        }
+
+        // Uygun görsel yoksa AI ile konuya yakın illüstrasyon üret.
+        if (empty($c->image_url)) {
+            $img = $this->generateImage($c);
+            if ($img) {
+                $c->image_url = $img;
+                $c->save();
+            }
         }
 
         $primary = $c->primary_locale ?: 'tr';

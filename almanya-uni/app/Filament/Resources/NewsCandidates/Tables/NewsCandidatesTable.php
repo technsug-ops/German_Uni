@@ -98,6 +98,24 @@ class NewsCandidatesTable
                             : Notification::make()->title('Taslak üretilemedi (Gemini)')->danger()->send();
                     }),
 
+                // AI görsel üret (resim yoksa) — habere uygun illüstrasyon
+                Action::make('image')
+                    ->label('AI Görsel')
+                    ->icon('heroicon-o-photo')
+                    ->color('gray')
+                    ->visible(fn (NewsCandidate $r) => empty($r->image_url) && $r->status !== NewsCandidate::STATUS_PUBLISHED)
+                    ->requiresConfirmation()
+                    ->modalDescription('Habere uygun ÖZGÜN bir illüstrasyon üretilir (Imagen, token harcar). Paylaşırken resim yoksa zaten otomatik üretilir.')
+                    ->action(function (NewsCandidate $r) {
+                        $img = app(NewsService::class)->generateImage($r);
+                        if ($img) {
+                            $r->update(['image_url' => $img]);
+                            Notification::make()->title('Görsel üretildi')->success()->send();
+                        } else {
+                            Notification::make()->title('Görsel üretilemedi (log\'a bak — yazma izni/Imagen).')->danger()->send();
+                        }
+                    }),
+
                 // Paylaş: çoklu dilde yayınla
                 Action::make('publish')
                     ->label('Paylaş')
