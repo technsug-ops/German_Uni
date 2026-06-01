@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: AlmanyaUni Public API
-  version: "1.0.0"
+  version: "1.1.0"
   summary: Almanya üniversiteleri, programları ve mesleklerine açık erişim.
   description: |
     AlmanyaUni Public API; 645 resmi Hochschule, 15.782 program, 3.560 meslek ve 207 SSS kaydını
@@ -32,11 +32,11 @@ servers:
     description: Local dev
 tags:
   - name: Universities
-    description: 986 Alman üniversitesi (devlet, özel, FH, sanat, din).
+    description: 603 aktif Alman üniversitesi (devlet, özel, FH, sanat, din).
   - name: Programs
-    description: 15.782 bölüm/program kaydı (lisans, master, doktora).
+    description: 18.306 bölüm/program kaydı (lisans, master, doktora).
   - name: Cities
-    description: 180 şehir.
+    description: 130 şehir.
   - name: States
     description: 16 federal eyalet.
   - name: Fields of Study
@@ -44,7 +44,15 @@ tags:
   - name: Professions
     description: 3.560 BERUFENET mesleği.
   - name: FAQs
-    description: 207 sık sorulan soru (vize, dil, başvuru, yaşam vb.).
+    description: 269 sık sorulan soru (vize, dil, başvuru, yaşam vb.).
+  - name: Scholarships
+    description: 166 burs (DAAD + diğer), tanıtım + soru-cevaplarıyla.
+  - name: Housing
+    description: 41 yurt/konaklama sağlayıcısı (STW + özel + portal).
+  - name: Blocked Accounts
+    description: Sperrkonto sağlayıcıları — ücret, onay süresi, sigorta karşılaştırması.
+  - name: Blog
+    description: Çok dilli blog yazıları (tr/en/de).
   - name: Auth
     description: Hesap oluşturma, oturum açma, token yönetimi.
 security: []
@@ -443,6 +451,131 @@ paths:
               schema: { type: object, properties: { data: { $ref: "#/components/schemas/Faq" } } }
         "404": { $ref: "#/components/responses/NotFound" }
 
+  /scholarships:
+    get:
+      tags: [Scholarships]
+      summary: Burs listesi
+      parameters:
+        - { in: query, name: q, schema: { type: string }, description: "İsimde arama" }
+        - { in: query, name: daad_only, schema: { type: boolean }, description: "Sadece DAAD" }
+        - { in: query, name: per_page, schema: { type: integer, default: 20, maximum: 100 } }
+      responses:
+        "200":
+          description: Sayfalı burs listesi
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/ScholarshipSummary" } } } }
+  /scholarships/{slugOrId}:
+    get:
+      tags: [Scholarships]
+      summary: Tek burs (sorular + tanıtım)
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - { in: query, name: lang, schema: { type: string, enum: [en, de], default: en } }
+      responses:
+        "200":
+          description: Burs detayı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/Scholarship" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /housing-providers:
+    get:
+      tags: [Housing]
+      summary: Yurt/konaklama sağlayıcıları
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: type, schema: { type: string }, description: "stw | private_chain | portal ..." }
+        - { in: query, name: city, schema: { type: string } }
+        - { in: query, name: lang, schema: { type: string, enum: [tr, en, de], default: en } }
+        - { in: query, name: per_page, schema: { type: integer, default: 30, maximum: 100 } }
+      responses:
+        "200":
+          description: Sayfalı sağlayıcı listesi
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/HousingProvider" } } } }
+  /housing-providers/{slugOrId}:
+    get:
+      tags: [Housing]
+      summary: Tek sağlayıcı
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - { in: query, name: lang, schema: { type: string, enum: [tr, en, de], default: en } }
+      responses:
+        "200":
+          description: Sağlayıcı detayı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/HousingProvider" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /blocked-accounts:
+    get:
+      tags: [Blocked Accounts]
+      summary: Sperrkonto (bloke hesap) sağlayıcıları
+      parameters:
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: combo_insurance, schema: { type: boolean } }
+        - { in: query, name: bafin_licensed, schema: { type: boolean } }
+        - { in: query, name: sort, schema: { type: string, enum: [setup_fee_eur, monthly_fee_eur, yearly_fee_eur, activation_days_min, sort_order] } }
+        - { in: query, name: order, schema: { type: string, enum: [asc, desc] } }
+        - { in: query, name: lang, schema: { type: string, enum: [tr, en, de], default: en } }
+        - { in: query, name: per_page, schema: { type: integer, default: 30, maximum: 100 } }
+      responses:
+        "200":
+          description: Sağlayıcı listesi (ücret + onay süresi karşılaştırması)
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/BlockedAccountProvider" } } } }
+  /blocked-accounts/{slugOrId}:
+    get:
+      tags: [Blocked Accounts]
+      summary: Tek Sperrkonto sağlayıcısı
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - { in: query, name: lang, schema: { type: string, enum: [tr, en, de], default: en } }
+      responses:
+        "200":
+          description: Sağlayıcı detayı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/BlockedAccountProvider" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /blog:
+    get:
+      tags: [Blog]
+      summary: Blog yazıları (dile göre)
+      parameters:
+        - { in: query, name: lang, schema: { type: string, enum: [tr, en, de], default: en } }
+        - { in: query, name: q, schema: { type: string } }
+        - { in: query, name: category, schema: { type: string } }
+        - { in: query, name: sort, schema: { type: string, enum: [published_at, view_count] } }
+        - { in: query, name: order, schema: { type: string, enum: [asc, desc] } }
+        - { in: query, name: per_page, schema: { type: integer, default: 15, maximum: 50 } }
+      responses:
+        "200":
+          description: Sayfalı yazı listesi
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { type: array, items: { $ref: "#/components/schemas/BlogPostSummary" } } } }
+  /blog/{slugOrId}:
+    get:
+      tags: [Blog]
+      summary: Tek blog yazısı (tam içerik)
+      parameters:
+        - { in: path, name: slugOrId, required: true, schema: { type: string } }
+        - { in: query, name: include_markdown, schema: { type: boolean }, description: "content_md de döndür" }
+      responses:
+        "200":
+          description: Yazı detayı
+          content:
+            application/json:
+              schema: { type: object, properties: { data: { $ref: "#/components/schemas/BlogPost" } } }
+        "404": { $ref: "#/components/responses/NotFound" }
+
   /auth/register:
     post:
       tags: [Auth]
@@ -635,6 +768,84 @@ components:
         icon: { type: string, nullable: true }
         color: { type: string, nullable: true }
         faqs_count: { type: integer, nullable: true }
+    ScholarshipSummary:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name: { type: string }
+        name_de: { type: string, nullable: true }
+        name_en: { type: string, nullable: true }
+        is_daad: { type: boolean }
+        detail_url: { type: string, nullable: true }
+    Scholarship:
+      allOf:
+        - $ref: "#/components/schemas/ScholarshipSummary"
+        - type: object
+          properties:
+            program_name: { type: string, nullable: true }
+            introduction: { type: array, items: { type: object }, nullable: true }
+            questions: { type: array, items: { type: object }, nullable: true }
+            last_seen_at: { type: string, format: date-time, nullable: true }
+    HousingProvider:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name: { type: string }
+        type: { type: string }
+        description: { type: string, nullable: true }
+        website: { type: string, nullable: true }
+        logo_url: { type: string, nullable: true }
+        price_min: { type: integer, nullable: true }
+        price_max: { type: integer, nullable: true }
+        cities: { type: string, nullable: true }
+        features: { type: array, items: { type: string }, nullable: true }
+        total_capacity: { type: integer, nullable: true }
+        is_featured: { type: boolean }
+    BlockedAccountProvider:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        name: { type: string }
+        type: { type: string }
+        backend_bank: { type: string, nullable: true }
+        description: { type: string, nullable: true }
+        website_url: { type: string, nullable: true }
+        fees:
+          type: object
+          properties:
+            setup_eur: { type: number, nullable: true }
+            monthly_eur: { type: number, nullable: true }
+            yearly_eur: { type: number, nullable: true }
+        combo_insurance: { type: boolean }
+        bafin_licensed: { type: boolean }
+        pros: { type: array, items: { type: string }, nullable: true }
+        cons: { type: array, items: { type: string }, nullable: true }
+        is_featured: { type: boolean }
+    BlogPostSummary:
+      type: object
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        locale: { type: string }
+        title: { type: string }
+        excerpt: { type: string, nullable: true }
+        featured_image: { type: string, nullable: true }
+        reading_minutes: { type: integer, nullable: true }
+        view_count: { type: integer }
+        published_at: { type: string, format: date-time, nullable: true }
+        category: { $ref: "#/components/schemas/FaqTopic" }
+    BlogPost:
+      allOf:
+        - $ref: "#/components/schemas/BlogPostSummary"
+        - type: object
+          properties:
+            content_html: { type: string, nullable: true }
+            meta_title: { type: string, nullable: true }
+            meta_description: { type: string, nullable: true }
+            available_locales: { type: array, items: { type: string } }
     User:
       type: object
       properties:
