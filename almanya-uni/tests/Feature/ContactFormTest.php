@@ -14,6 +14,12 @@ class ContactFormTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutVite();
+    }
+
     public function test_contact_form_renders(): void
     {
         $this->get(route('contact', ['type' => 'partnership', 'subject' => 'Translate']))

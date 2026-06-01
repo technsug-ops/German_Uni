@@ -19,6 +19,14 @@ class SmokeTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // CI'da Vite assets build edilmez → @vite manifest hatası verir.
+        // Render testlerinde asset'leri stub'la (built-asset bağımlılığı yok).
+        $this->withoutVite();
+    }
+
     /** 5xx = fatal. 2xx/3xx/4xx kabul (boş DB'de 404/302 normal). */
     private function assertNotServerError(string $url, ?int $status = null): void
     {
