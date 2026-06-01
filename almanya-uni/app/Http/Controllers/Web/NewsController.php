@@ -71,6 +71,17 @@ class NewsController extends Controller
 
         Post::where('id', $post->id)->increment('view_count');
 
+        // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (404 önler).
+        if ($post->translation_group_id) {
+            $localeUrls = Post::news()
+                ->where('translation_group_id', $post->translation_group_id)
+                ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+                ->get(['locale', 'slug'])
+                ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/haberler/' . $s->slug)])
+                ->all();
+            view()->share('localeUrls', $localeUrls);
+        }
+
         $related = Post::published()->news()->newsOrder()
             ->when($post->category_id, fn ($q) => $q->where('category_id', $post->category_id))
             ->where('id', '!=', $post->id)

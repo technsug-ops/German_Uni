@@ -120,6 +120,14 @@ if (! function_exists('localized_url')) {
      */
     function localized_url(string $targetLocale): string
     {
+        // Slug-bazlı sayfalar (blog/haber) farklı locale'de FARKLI slug kullanır
+        // (posts.slug global unique). Controller, dil-kardeşlerin GERÇEK URL'lerini
+        // 'localeUrls' ile paylaşır → naif prefix-swap'ın 404'ünü önler.
+        $override = view()->shared('localeUrls');
+        if (is_array($override) && ! empty($override[$targetLocale])) {
+            return $override[$targetLocale];
+        }
+
         $path = trim(request()->path(), '/');
 
         // Mevcut path'ten varsa locale prefix'i çıkar

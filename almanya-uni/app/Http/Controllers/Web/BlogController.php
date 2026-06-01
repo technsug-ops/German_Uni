@@ -121,6 +121,18 @@ class BlogController extends Controller
 
         Post::where('id', $post->id)->increment('view_count');
 
+        // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (slug locale'e göre
+        // farklı: tr=base, en=base-en, de=base-de → naif prefix-swap 404 verirdi).
+        if ($post->translation_group_id) {
+            $localeUrls = Post::blogType()
+                ->where('translation_group_id', $post->translation_group_id)
+                ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+                ->get(['locale', 'slug'])
+                ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/blog/' . $s->slug)])
+                ->all();
+            view()->share('localeUrls', $localeUrls);
+        }
+
         $related = $post->category_id
             ? Post::published()
                 ->where('category_id', $post->category_id)
