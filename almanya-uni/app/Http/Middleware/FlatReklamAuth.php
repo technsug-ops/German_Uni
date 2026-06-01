@@ -14,17 +14,27 @@ class FlatReklamAuth
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $expected = (string) setting('flatreklam_api_token', '');
-        if ($expected === '') {
-            return response()->json(['error' => 'FlatReklam entegrasyonu yapılandırılmamış', 'code' => 'NOT_CONFIGURED'], 503);
+        $provided = (string) ($request->bearerToken() ?: $request->getPassword() ?: '');
+        if ($provided === '') {
+            return response()->json(['error' => 'Token eksik', 'code' => 'UNAUTHORIZED'], 401);
         }
 
-        $provided = $request->bearerToken() ?: $request->getPassword();
-
-        if (! $provided || ! hash_equals($expected, (string) $provided)) {
-            return response()->json(['error' => 'Geçersiz veya eksik token', 'code' => 'UNAUTHORIZED'], 401);
+        // 1) Entegrasyonlar → FlatReklam ayar token'ı (basit yol)
+        $settingToken = (string) setting('flatreklam_api_token', '');
+        if ($settingToken !== '' && hash_equals($settingToken, $provided)) {
+            return $next($request);
         }
 
-        return $next($request);
+        // 2) API İstemcileri (ApiClient) Sanctum token'ı — aktif client'a aitse kabul
+        $pat = \Laravel\Sanctum\PersonalAccessToken::findToken($provided);
+        if ($pat
+            && $pat->tokenable instanceof \App\Models\ApiClient
+            && $pat->tokenable->is_active) {
+            $pat->forceFill(['last_used_at' => now()])->save();
+            $request->setUserResolver(fn () => $pat->tokenable);
+            return $next($request);
+        }
+
+        return response()->json(['error' => 'Geçersiz token', 'code' => 'UNAUTHORIZED'], 401);
     }
 }
