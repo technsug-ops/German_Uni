@@ -245,47 +245,46 @@ TXT;
             ? Category::find($c->suggested_category_id)
             : Category::where('kind', 'news')->where('slug', 'practical')->first();
 
-        // Birincil dil Post'u
-        $primaryPost = Post::create(array_merge(
-            $this->postPayload($primary, $c->draft_title, $c->draft_excerpt, $c->draft_md),
-            [
-                'translation_group_id' => $group,
-                'type'                 => 'news',
-                'user_id'              => $userId,
-                'category_id'          => $category?->id,
-                'source_url'           => $c->source_url,
-                'source_name'          => $c->source_name,
-                'event_date'           => $c->event_date,
-                'news_priority'        => $c->priority ?? 0,
-                'featured_image'       => $c->image_url,
-            ]
-        ));
+        // Çevirileri ÖNCE al — İngilizce başlık, İngilizce slug tabanı için gerekli.
+        // Sadece AKTİF diller (tr/en/de). coming_soon dilleri otomatik çevrilmez (YMYL+token).
+        $targets = array_values(array_diff(self::activeLocales(), [$primary]));
+        $tr = ($targets && $this->apiKey)
+            ? $this->translate($c->draft_title, $c->draft_excerpt ?? '', $c->draft_md, $targets)
+            : [];
 
+        // SLUG TABANI = İNGİLİZCE (linkler İngilizce olmalı). Birincil = taban,
+        // diğer diller = taban-{locale} (posts.slug global unique).
+        $enTitle  = ($primary === 'en') ? $c->draft_title : ($tr['en']['title'] ?? $c->draft_title);
+        $baseSlug = Str::limit(Str::slug((string) $enTitle), 80, '') ?: 'news';
+        $baseSlug .= '-' . now()->format('ymdHis') . substr((string) Str::uuid(), 0, 4);
+
+        $common = [
+            'translation_group_id' => $group,
+            'type'                 => 'news',
+            'user_id'              => $userId,
+            'category_id'          => $category?->id,
+            'source_url'           => $c->source_url,
+            'source_name'          => $c->source_name,
+            'event_date'           => $c->event_date,
+            'news_priority'        => $c->priority ?? 0,
+            'featured_image'       => $c->image_url,
+        ];
+
+        // Birincil dil (İngilizce slug tabanı)
+        Post::create(array_merge(
+            $this->postPayload($primary, $c->draft_title, $c->draft_excerpt, $c->draft_md, $baseSlug),
+            $common
+        ));
         $done = [$primary];
 
-        // Sadece AKTİF diller (UI'da yayında olanlar; tr/en/de). coming_soon
-        // dilleri haberlerde otomatik çevrilmez — YMYL insan-onayı + token kontrolü.
-        $targets = array_values(array_diff(self::activeLocales(), [$primary]));
-        if ($targets && $this->apiKey) {
-            $tr = $this->translate($c->draft_title, $c->draft_excerpt ?? '', $c->draft_md, $targets);
-            foreach ($targets as $loc) {
-                if (empty($tr[$loc]['title']) || empty($tr[$loc]['content_md'])) continue;
-                Post::create(array_merge(
-                    $this->postPayload($loc, $tr[$loc]['title'], $tr[$loc]['excerpt'] ?? '', $tr[$loc]['content_md'], $tr[$loc]['slug'] ?? null),
-                    [
-                        'translation_group_id' => $group,
-                        'type'                 => 'news',
-                        'user_id'              => $userId,
-                        'category_id'          => $category?->id,
-                        'source_url'           => $c->source_url,
-                        'source_name'          => $c->source_name,
-                        'event_date'           => $c->event_date,
-                        'news_priority'        => $c->priority ?? 0,
-                        'featured_image'       => $c->image_url,
-                    ]
-                ));
-                $done[] = $loc;
-            }
+        // Diğer aktif diller (aynı İngilizce taban + locale eki)
+        foreach ($targets as $loc) {
+            if (empty($tr[$loc]['title']) || empty($tr[$loc]['content_md'])) continue;
+            Post::create(array_merge(
+                $this->postPayload($loc, $tr[$loc]['title'], $tr[$loc]['excerpt'] ?? '', $tr[$loc]['content_md'], $baseSlug . '-' . $loc),
+                $common
+            ));
+            $done[] = $loc;
         }
 
         $c->update([
@@ -307,11 +306,8 @@ TXT;
     }
 
     /** Tek dil Post alan kümesi (content_html, reading_minutes Post::saving hook'unda). */
-    private function postPayload(string $locale, string $title, ?string $excerpt, string $md, ?string $slug = null): array
+    private function postPayload(string $locale, string $title, ?string $excerpt, string $md, string $slug): array
     {
-        $slug = $slug ? Str::slug($slug) : Str::slug($title);
-        $slug = Str::limit($slug, 200, '') . '-' . now()->format('ymdHis') . substr((string) Str::uuid(), 0, 4);
-
         return [
             'locale'           => $locale,
             'title'            => Str::limit($title, 250, ''),
