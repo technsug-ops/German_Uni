@@ -102,6 +102,21 @@ class SmokeTest extends TestCase
         $this->getJson('/api/flatreklam/v1/ping')->assertStatus(401);
     }
 
+    public function test_news_module_can_be_toggled(): void
+    {
+        // Varsayılan (kayıt yok) → modül açık → 200
+        $this->get(route('news.index'))->assertStatus(200);
+
+        // Admin "Menü Sayfa Yönetimi"nden kapatınca → menüden gizli + URL 404
+        \App\Models\MenuPage::create([
+            'key' => 'news.index', 'label' => 'Haberler', 'group' => 'icerik',
+            'link_type' => 'route', 'is_enabled' => false,
+        ]);
+        \App\Models\MenuPage::flushCache();
+
+        $this->get(route('news.index'))->assertStatus(404);
+    }
+
     public function test_admin_pages_render_for_admin(): void
     {
         $admin = User::factory()->create(['is_admin' => true]);

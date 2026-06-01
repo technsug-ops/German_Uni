@@ -149,6 +149,7 @@ CREATE TABLE `categories` (
   `name_en` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `name_tr` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kind` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'blog',
   `description` text COLLATE utf8mb4_unicode_ci,
   `color` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sort_order` int unsigned NOT NULL DEFAULT '0',
@@ -159,6 +160,7 @@ CREATE TABLE `categories` (
   UNIQUE KEY `categories_slug_unique` (`slug`),
   KEY `categories_is_active_sort_order_index` (`is_active`,`sort_order`),
   KEY `categories_parent_id_foreign` (`parent_id`),
+  KEY `categories_kind_index` (`kind`),
   CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -869,6 +871,40 @@ CREATE TABLE `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `news_candidates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `news_candidates` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `origin` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'manual',
+  `status` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `source_name` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_url` varchar(600) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_hash` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orig_title` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `raw_excerpt` text COLLATE utf8mb4_unicode_ci,
+  `fetched_content` longtext COLLATE utf8mb4_unicode_ci,
+  `image_url` varchar(600) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `suggested_category_id` bigint unsigned DEFAULT NULL,
+  `primary_locale` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'tr',
+  `priority` smallint NOT NULL DEFAULT '0',
+  `draft_title` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `draft_excerpt` text COLLATE utf8mb4_unicode_ci,
+  `draft_md` longtext COLLATE utf8mb4_unicode_ci,
+  `meta` json DEFAULT NULL,
+  `published_group_id` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `decided_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `news_candidates_suggested_category_id_foreign` (`suggested_category_id`),
+  KEY `news_candidates_origin_index` (`origin`),
+  KEY `news_candidates_status_index` (`status`),
+  KEY `news_candidates_url_hash_index` (`url_hash`),
+  CONSTRAINT `news_candidates_suggested_category_id_foreign` FOREIGN KEY (`suggested_category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `page_views`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -1030,6 +1066,7 @@ CREATE TABLE `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `locale` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'tr',
   `translation_group_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'blog',
   `user_id` bigint unsigned DEFAULT NULL,
   `co_author_id` bigint unsigned DEFAULT NULL,
   `category_id` bigint unsigned DEFAULT NULL,
@@ -1043,6 +1080,10 @@ CREATE TABLE `posts` (
   `audio_url` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audio_duration_seconds` int unsigned DEFAULT NULL,
   `video_url` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_url` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_name` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `news_priority` smallint NOT NULL DEFAULT '0',
   `gallery_images` json DEFAULT NULL,
   `reading_minutes` smallint unsigned NOT NULL DEFAULT '1',
   `view_count` int unsigned NOT NULL DEFAULT '0',
@@ -1062,6 +1103,8 @@ CREATE TABLE `posts` (
   KEY `posts_locale_index` (`locale`),
   KEY `posts_translation_group_id_index` (`translation_group_id`),
   KEY `posts_co_author_id_foreign` (`co_author_id`),
+  KEY `posts_type_index` (`type`),
+  KEY `posts_news_priority_index` (`news_priority`),
   CONSTRAINT `posts_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL,
   CONSTRAINT `posts_co_author_id_foreign` FOREIGN KEY (`co_author_id`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
@@ -2104,3 +2147,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (128,'2026_05_31_20
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (129,'2026_05_31_201000_apply_city_blocks_pilot',103);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (130,'2026_06_01_160000_add_fulltext_search_indexes',104);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (131,'2026_06_01_180000_extend_programs_fulltext_with_localized_names',105);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (132,'2026_06_01_200000_add_news_type_to_posts',106);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (133,'2026_06_01_200100_create_news_candidates_table',106);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (134,'2026_06_01_200200_add_kind_to_categories_and_seed_news',106);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (135,'2026_06_01_200300_add_news_menu_page',107);

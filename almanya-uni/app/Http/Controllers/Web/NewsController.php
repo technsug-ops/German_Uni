@@ -4,19 +4,31 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\MenuPage;
 use App\Models\Post;
 use Illuminate\View\View;
 
 /**
  * "Almanya'dan" haber akışı — type='news' Post'lar.
  * Sıralama: admin önceliği (varsa) → en yeni en önde (Post::scopeNewsOrder).
+ *
+ * MODÜL TOGGLE: Admin → Menü Sayfa Yönetimi → "Haberler" kapatılırsa modül
+ * tamamen kapanır — menüden gizlenir (otomatik) + tüm /haberler URL'leri 404.
  */
 class NewsController extends Controller
 {
     private const PER_PAGE = 12;
 
+    /** Modül admin'den kapatıldıysa tüm haber sayfaları 404. */
+    private function ensureModuleEnabled(): void
+    {
+        abort_unless(MenuPage::isKeyEnabled('news.index'), 404);
+    }
+
     public function index(): View
     {
+        $this->ensureModuleEnabled();
+
         $posts = Post::published()->news()->newsOrder()
             ->with(['category', 'author:id,name,slug,avatar_url'])
             ->paginate(self::PER_PAGE);
@@ -32,6 +44,7 @@ class NewsController extends Controller
 
     public function category(string $slug): View
     {
+        $this->ensureModuleEnabled();
         $category = Category::where('kind', 'news')->where('slug', $slug)->firstOrFail();
 
         $posts = Post::published()->news()->newsOrder()
@@ -50,6 +63,7 @@ class NewsController extends Controller
 
     public function show(string $slug): View
     {
+        $this->ensureModuleEnabled();
         $post = Post::published()->news()
             ->with(['category', 'author:id,name,slug,avatar_url,role_label,bio,social_links'])
             ->where('slug', $slug)
