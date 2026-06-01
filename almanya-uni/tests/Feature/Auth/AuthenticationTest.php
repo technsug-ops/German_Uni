@@ -24,6 +24,7 @@ class AuthenticationTest extends TestCase
         $response = $this->post('/login', [
             'email' => $user->email,
             'password' => 'password',
+            ...$this->captcha(),
         ]);
 
         $this->assertAuthenticated();

@@ -63,7 +63,7 @@ jobs:
           DB_PORT: 3306
           DB_USERNAME: root
           DB_PASSWORD: root
-        run: php artisan test tests/Feature/SmokeTest.php tests/Feature/ContactFormTest.php tests/Unit
+        run: php artisan test
 
   build-and-deploy:
     name: Build & Deploy
