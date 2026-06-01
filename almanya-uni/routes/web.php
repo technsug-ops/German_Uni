@@ -832,6 +832,25 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Analytics SIFIRLA — dummy/demo page_views verisini sil (gerçek trafikle başla).
+    // KAS SSH yok → tarayıcıdan ?run=1 ile tetikle. Sadece is_admin.
+    Route::get('/admin/ops/analytics-reset', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(120);
+        $before = \Illuminate\Support\Facades\DB::table('page_views')->count();
+        if (! request()->boolean('run')) {
+            return response("page_views satır: {$before}\n\n[ Silmek için: bu URL'ye ?run=1 ekle ]\n", 200)
+                ->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+        try {
+            \Illuminate\Support\Facades\Artisan::call('analytics:reset', ['--force' => true]);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response("Önce: {$before} satır\n{$out}", 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
