@@ -160,10 +160,27 @@ TXT;
      */
     public function generateImage(NewsCandidate $c): ?string
     {
-        if (! $this->apiKey) return null;
+        return $this->illustration(
+            $c->draft_title ?: $c->orig_title ?: 'studying in Germany',
+            $c->suggested_category_id ? Category::find($c->suggested_category_id)?->name_en : null,
+            (string) ($c->id ?: substr(sha1($c->draft_title ?? 'news'), 0, 8))
+        );
+    }
 
-        $title = $c->draft_title ?: $c->orig_title ?: 'studying in Germany';
-        $cat   = $c->suggested_category_id ? Category::find($c->suggested_category_id)?->name_en : null;
+    /** Yayınlanmış bir Post için illüstrasyon (backfill komutu kullanır). */
+    public function generatePostImage(\App\Models\Post $post): ?string
+    {
+        return $this->illustration(
+            $post->title ?: 'studying in Germany',
+            $post->category?->name_en,
+            'post' . $post->id
+        );
+    }
+
+    /** Ortak Imagen illüstrasyon üretimi + public/images/news kaydı. */
+    private function illustration(string $title, ?string $cat, string $idHint): ?string
+    {
+        if (! $this->apiKey) return null;
 
         $prompt = 'Clean modern editorial FLAT VECTOR ILLUSTRATION (NOT a photograph) for a news article titled: "'
             . $title . '". Subject: international students studying or immigrating to Germany'
@@ -186,7 +203,7 @@ TXT;
 
             $dir = public_path('images/news');
             if (! is_dir($dir)) @mkdir($dir, 0775, true);
-            $file = ($c->id ?: substr(sha1($title), 0, 8)) . '-' . substr((string) Str::uuid(), 0, 6) . '.png';
+            $file = preg_replace('/[^a-z0-9]+/i', '', $idHint) . '-' . substr((string) Str::uuid(), 0, 6) . '.png';
 
             if (@file_put_contents($dir . '/' . $file, base64_decode($b64)) === false) {
                 Log::warning('NewsService image write failed: ' . $dir . ' (yazma izni?)');

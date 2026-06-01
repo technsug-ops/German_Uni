@@ -801,6 +801,22 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Görseli olmayan yayınlanmış haberlere AI illüstrasyon (tek seferlik backfill).
+    Route::get('/admin/ops/news-backfill-images', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('news:backfill-images', array_filter([
+                '--dry-run' => request()->boolean('dry'),
+                '--limit'   => (int) request()->integer('limit'),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
