@@ -64,13 +64,13 @@
         </p>
 
         {{-- Arama: mobilde buton altta tam genişlik, masaüstünde yan yana --}}
-        <form action="/arama" method="GET" class="max-w-4xl mb-5">
+        <form action="/arama" method="GET" class="max-w-4xl mb-5 relative" id="heroSearchForm" autocomplete="off">
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-white/95 backdrop-blur p-2 rounded-2xl shadow-2xl">
                 <div class="flex items-center flex-1 px-3 min-w-0">
                     <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"/>
                     </svg>
-                    <input type="text" name="q"
+                    <input type="text" name="q" id="heroSearchInput" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false"
                            placeholder="{{ __('TUM, Berlin, Engineering, Medicine...') }}"
                            class="flex-1 min-w-0 px-3 py-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none bg-transparent">
                     <a href="{{ route('search.index') }}" title="{{ __('Advanced search') }}"
@@ -87,7 +87,69 @@
                     {{ __('Search Universities') }}
                 </button>
             </div>
+
+            {{-- Canlı autocomplete dropdown (header search ile aynı /search/suggest) --}}
+            <div id="heroSearchResults"
+                 class="hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 max-h-[70vh] overflow-y-auto text-left">
+            </div>
         </form>
+
+        <script>
+        (function () {
+            const input = document.getElementById('heroSearchInput');
+            const box = document.getElementById('heroSearchResults');
+            const form = document.getElementById('heroSearchForm');
+            if (! input || ! box) return;
+
+            let timer = null, req = null;
+            const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+            function render(data) {
+                if (! data.results || data.results.length === 0) {
+                    box.innerHTML = `<div class="p-5 text-center text-sm text-gray-500">{{ __('No results for') }} "${esc(data.q)}"</div>`;
+                    box.classList.remove('hidden');
+                    return;
+                }
+                let html = '<ul class="divide-y divide-gray-100">';
+                data.results.forEach(r => {
+                    const img = r.image
+                        ? `<img src="${esc(r.image)}" alt="" class="w-10 h-10 object-cover rounded shrink-0 bg-gray-100" loading="lazy">`
+                        : `<div class="w-10 h-10 rounded bg-primary-100 flex items-center justify-center text-base shrink-0">${esc(r.icon || '·')}</div>`;
+                    html += `<li><a href="${esc(r.url)}" class="flex items-start gap-3 p-3 hover:bg-gray-50 transition">
+                        ${img}
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs text-gray-500 mb-0.5">${esc(r.type_label)}</p>
+                            <p class="font-semibold text-gray-900 text-sm leading-tight truncate">${esc(r.title)}</p>
+                            ${r.subtitle ? `<p class="text-xs text-gray-500 truncate">${esc(r.subtitle)}</p>` : ''}
+                        </div></a></li>`;
+                });
+                html += '</ul>';
+                if (data.all_url) {
+                    html += `<a href="${esc(data.all_url)}" class="block p-3 text-center text-sm text-primary-600 hover:bg-primary-50 font-semibold border-t border-gray-100">{{ __('See all results →') }}</a>`;
+                }
+                box.innerHTML = html;
+                box.classList.remove('hidden');
+            }
+
+            input.addEventListener('input', e => {
+                const q = e.target.value.trim();
+                clearTimeout(timer);
+                if (q.length < 2) { box.classList.add('hidden'); box.innerHTML = ''; return; }
+                timer = setTimeout(async () => {
+                    if (req) req.abort();
+                    const ctrl = new AbortController(); req = ctrl;
+                    try {
+                        const res = await fetch('/{{ app()->getLocale() }}/search/suggest?q=' + encodeURIComponent(q), { signal: ctrl.signal, headers: { 'Accept': 'application/json' } });
+                        if (res.ok) render(await res.json());
+                    } catch (_) {}
+                }, 250);
+            });
+
+            document.addEventListener('click', e => { if (! form.contains(e.target)) box.classList.add('hidden'); });
+            input.addEventListener('focus', () => { if (box.innerHTML.trim()) box.classList.remove('hidden'); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.add('hidden'); });
+        })();
+        </script>
 
         {{-- ===== Stat şeridi (sol) + Haritada Keşfet kartı (sağ) — yan yana ===== --}}
         <div class="grid lg:grid-cols-5 gap-4 mb-5 items-stretch">

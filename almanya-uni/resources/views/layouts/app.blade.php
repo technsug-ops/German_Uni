@@ -787,7 +787,7 @@
                             const ctrl = new AbortController();
                             currentReq = ctrl;
                             try {
-                                const res = await fetch('/search/suggest?q=' + encodeURIComponent(q), {
+                                const res = await fetch('/{{ app()->getLocale() }}/search/suggest?q=' + encodeURIComponent(q), {
                                     signal: ctrl.signal,
                                     headers: { 'Accept': 'application/json' },
                                 });
