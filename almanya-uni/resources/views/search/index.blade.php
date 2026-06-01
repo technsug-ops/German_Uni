@@ -117,7 +117,25 @@
     </div>
 
     <div class="max-w-[1400px] mx-auto px-4 py-6">
-        @if ($grandTotal === 0)
+        {{-- ────────── TOOLS / CONCEPTS (sinonim eşleşmeleri) ────────── --}}
+        @if (! empty($tools))
+            <section id="tools" class="mb-10">
+                <header class="mb-4">
+                    <h2 class="text-lg font-bold text-gray-900">🔧 {{ __('Tools & Calculators') }}</h2>
+                </header>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    @foreach ($tools as $tool)
+                        <a href="{{ $tool['url'] }}"
+                           class="flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl p-4 transition">
+                            <span class="text-2xl flex-shrink-0">{{ $tool['icon'] }}</span>
+                            <span class="font-semibold text-gray-900">{{ $tool['title'] }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
+        @if ($grandTotal === 0 && empty($tools))
             <div class="py-12 px-6 text-center bg-white rounded-2xl border border-gray-200 shadow-sm max-w-2xl mx-auto">
                 <div class="flex justify-center mb-4 text-gray-400"><x-svg-icon name="search" class="w-12 h-12" /></div>
                 <p class="text-gray-900 text-lg md:text-xl font-semibold mb-2">{!! __('No results found for "<strong>:q</strong>"', ['q' => e($q)]) !!}</p>

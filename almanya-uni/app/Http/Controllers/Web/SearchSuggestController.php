@@ -24,10 +24,11 @@ class SearchSuggestController extends Controller
             return response()->json(['results' => [], 'q' => $q]);
         }
 
-        $key = 'search:suggest:v2:' . md5(mb_strtolower($q));
+        $key = 'search:suggest:v3:' . md5(mb_strtolower($q));
         $results = Cache::remember($key, 300, function () use ($q) {
             $like = '%' . $q . '%';
-            $all = [];
+            // Kavram/sinonim eşleşmeleri en üstte (sperrkonto = blocked account = bloke hesap)
+            $all = \App\Support\SearchTools::match($q);
 
             // Universities (top 4)
             University::query()

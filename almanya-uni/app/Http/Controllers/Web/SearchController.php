@@ -35,12 +35,16 @@ class SearchController extends Controller
                 'housing' => collect(),
                 'sperrkonto' => collect(),
                 'totals' => ['universities' => 0, 'cities' => 0, 'programs' => 0, 'posts' => 0, 'professions' => 0, 'scholarships' => 0, 'fields' => 0, 'studienkollegs' => 0, 'housing' => 0, 'sperrkonto' => 0],
+                'tools' => [],
                 'took_ms' => null,
             ]);
         }
 
         $started = microtime(true);
         $like = '%' . $q . '%';
+
+        // Kavram/sinonim eşleşmeleri (sperrkonto = blocked account = bloke hesap → araç)
+        $tools = \App\Support\SearchTools::match($q);
 
         // ─────────── UNIVERSITIES ───────────
         $uniBase = University::query()
@@ -225,6 +229,7 @@ class SearchController extends Controller
                 'housing' => $hpTotal,
                 'sperrkonto' => $baTotal,
             ],
+            'tools' => $tools,
             'took_ms' => $tookMs,
         ]);
     }

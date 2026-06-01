@@ -82,6 +82,19 @@ class SmokeTest extends TestCase
         }
     }
 
+    public function test_concept_synonym_search_finds_tool(): void
+    {
+        // "blocked account" (EN) → Sperrkonto aracını bulmalı (sinonim katmanı).
+        // Config-driven, veriden bağımsız → boş DB'de de çalışır.
+        $this->get('/en/search?q=blocked account')
+            ->assertStatus(200)
+            ->assertSee('Sperrkonto', false);
+
+        $this->get('/tr/search?q=bloke hesap')
+            ->assertStatus(200)
+            ->assertSee('Sperrkonto', false);
+    }
+
     public function test_flatreklam_requires_token(): void
     {
         // Token yapılandırılmamış → 401 (NOT_CONFIGURED yoksa UNAUTHORIZED) — 5xx olmamalı
