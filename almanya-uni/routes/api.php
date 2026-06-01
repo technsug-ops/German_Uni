@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\Api\PartnerWebhookController;
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\BlockedAccountController;
+use App\Http\Controllers\Api\V1\BlogController;
 use App\Http\Controllers\Api\V1\CityController;
 use App\Http\Controllers\Api\V1\FaqController;
+use App\Http\Controllers\Api\V1\HousingProviderController;
 use App\Http\Controllers\Api\V1\FieldOfStudyController;
 use App\Http\Controllers\Api\V1\ProfessionController;
 use App\Http\Controllers\Api\V1\ProgramController;
+use App\Http\Controllers\Api\V1\ScholarshipController;
 use App\Http\Controllers\Api\V1\StateController;
 use App\Http\Controllers\Api\V1\UniversityController;
 use App\Http\Controllers\Api\V1\WebhookSubscriptionController;
@@ -67,6 +71,18 @@ Route::prefix('v1')->middleware('api.throttle')->group(function () {
     Route::get('faqs', [FaqController::class, 'index']);
     Route::get('faqs/topics', [FaqController::class, 'topics']);
     Route::get('faqs/{slugOrId}', [FaqController::class, 'show']);
+
+    Route::get('scholarships', [ScholarshipController::class, 'index']);
+    Route::get('scholarships/{slugOrId}', [ScholarshipController::class, 'show']);
+
+    Route::get('housing-providers', [HousingProviderController::class, 'index']);
+    Route::get('housing-providers/{slugOrId}', [HousingProviderController::class, 'show']);
+
+    Route::get('blocked-accounts', [BlockedAccountController::class, 'index']);
+    Route::get('blocked-accounts/{slugOrId}', [BlockedAccountController::class, 'show']);
+
+    Route::get('blog', [BlogController::class, 'index']);
+    Route::get('blog/{slugOrId}', [BlogController::class, 'show']);
 
     // 3. parti'lerin event abonelikleri — ApiClient bearer + `webhooks:manage` ability.
     // free plan'da abone olunamaz (403), partner/enterprise olabilir.
