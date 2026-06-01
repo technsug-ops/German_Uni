@@ -23,12 +23,12 @@
 @endphp
 
 @if (count($tickerItems) >= 1)
-<section aria-label="{{ __('News from Germany') }}"
-         class="bg-gray-900 text-white border-y border-gray-800 overflow-hidden">
-    <div class="max-w-[1400px] mx-auto flex items-stretch">
+<section aria-label="{{ __('News from Germany') }}" class="py-3">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <div class="flex items-stretch rounded-xl overflow-hidden bg-primary-900 text-white shadow-sm ring-1 ring-primary-800/60">
         {{-- Sabit etiket --}}
         <a href="{{ route('news.index') }}"
-           class="flex items-center gap-1.5 bg-accent-500 hover:bg-accent-400 text-gray-900 px-4 py-2.5 font-bold text-xs md:text-sm whitespace-nowrap transition flex-shrink-0">
+           class="flex items-center gap-1.5 bg-accent-500 hover:bg-accent-400 text-white px-4 py-2.5 font-bold text-xs md:text-sm whitespace-nowrap transition flex-shrink-0">
             <x-svg-icon name="newspaper" class="w-4 h-4" />
             <span class="hidden sm:inline">{{ __('News from Germany') }}</span>
             <span class="sm:hidden">{{ __('News') }}</span>
@@ -46,6 +46,7 @@
                 @endforeach
             </div>
         </div>
+        </div>
     </div>
 </section>
 
@@ -57,7 +58,7 @@
     }
     .news-ticker-track {
         width: max-content;
-        animation: news-ticker-scroll 45s linear infinite;
+        animation: news-ticker-scroll 28s linear infinite;
         will-change: transform;
     }
     .news-ticker-viewport:hover .news-ticker-track { animation-play-state: paused; }

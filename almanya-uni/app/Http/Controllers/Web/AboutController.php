@@ -116,27 +116,39 @@ class AboutController extends Controller
             ->take(3)
             ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
 
-        // Team — manuel kurgu, sonradan veritabanına alınabilir
-        $team = [
-            [
-                'name' => 'Halil Yaprakli',
-                'role' => __('Founder &amp; Developer'),
-                'bio'  => __('Built the platform to help international students navigate higher education in Germany. Manages product strategy and engineering.'),
-                'avatar' => 'HY',
-                'color' => 'accent',
-                'social' => [
-                    ['icon' => '✉️', 'label' => 'technsug@gmail.com', 'url' => 'mailto:technsug@gmail.com'],
-                ],
-            ],
-            [
-                'name' => __('You?'),
-                'role' => __('Volunteer / Contributor'),
-                'bio'  => __(':brand grows with community support. Join us with translation, content writing, developer contributions, or sharing your student experience.', ['brand' => brand('name')]),
-                'avatar' => '+',
-                'color' => 'primary',
-                'social' => [
-                    ['icon' => '✉️', 'label' => __('Write to us'), 'url' => 'mailto:technsug@gmail.com?subject=Contribution'],
-                ],
+        // Team — TEK KAYNAK: kurucu(lar) DB'den (/ekip ile aynı User kayıtları,
+        // role_label='Kurucu'). Hardcoded array kaldırıldı → bir daha bayatlamaz.
+        $loc      = app()->getLocale();
+        $pick     = fn ($u, $f) => ($loc !== 'tr' ? ($u->{$f . '_' . $loc} ?? null) : null) ?: $u->{$f};
+        $initials = fn ($n) => collect(explode(' ', trim((string) $n)))->map(fn ($p) => mb_substr($p, 0, 1))->take(2)->implode('');
+
+        $founderUsers = User::where(fn ($q) => $q->where('is_author', true)->orWhereNotNull('role_label'))
+            ->get(['id', 'name', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url'])
+            ->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
+
+        $team = $founderUsers->map(fn ($u) => [
+            'name'   => $u->name,
+            'role'   => __('Founder &amp; Developer'),
+            'bio'    => ($loc === 'tr' ? $u->bio : ($u->{'bio_' . $loc} ?? null))
+                        ?: __('Built the platform to help international students navigate higher education in Germany. Manages product strategy and engineering.'),
+            'image'  => $u->avatar_url,
+            'avatar' => $initials($u->name),
+            'color'  => 'accent',
+            'social' => array_values(array_filter([
+                $u->id === 1 ? ['icon' => '✉️', 'label' => 'technsug@gmail.com', 'url' => 'mailto:technsug@gmail.com'] : null,
+            ])),
+        ])->values()->all();
+
+        // Statik "Sen?" gönüllü CTA (gerçek kişi değil → DB'ye girmez)
+        $team[] = [
+            'name'   => __('You?'),
+            'role'   => __('Volunteer / Contributor'),
+            'bio'    => __(':brand grows with community support. Join us with translation, content writing, developer contributions, or sharing your student experience.', ['brand' => brand('name')]),
+            'image'  => null,
+            'avatar' => '+',
+            'color'  => 'primary',
+            'social' => [
+                ['icon' => '✉️', 'label' => __('Write to us'), 'url' => 'mailto:technsug@gmail.com?subject=Contribution'],
             ],
         ];
 
