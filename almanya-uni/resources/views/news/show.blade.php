@@ -34,7 +34,7 @@
         @if ($post->category)
             <span class="px-2 py-0.5 rounded-full text-white font-medium" style="background-color: {{ $post->category->color }}">{{ $post->category->name }}</span>
         @endif
-        <span class="text-gray-500">{{ ($post->event_date ?? $post->published_at)?->translatedFormat('d MMMM Y') }}</span>
+        <span class="text-gray-500">{{ ($post->event_date ?? $post->published_at)?->translatedFormat('d F Y') }}</span>
         <span class="text-gray-400">· {{ $post->reading_minutes }} {{ __('min read') }}</span>
     </div>
 
@@ -76,7 +76,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         @foreach ($related as $r)
             <a href="{{ route('news.show', $r->slug) }}" class="group block p-4 rounded-lg border border-gray-200 hover:border-primary-400 hover:shadow transition">
-                <p class="text-xs text-gray-400 mb-1">{{ ($r->event_date ?? $r->published_at)?->translatedFormat('d MMM Y') }}</p>
+                <p class="text-xs text-gray-400 mb-1">{{ ($r->event_date ?? $r->published_at)?->translatedFormat('d F Y') }}</p>
                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-700 leading-snug">{{ $r->title }}</h3>
             </a>
         @endforeach

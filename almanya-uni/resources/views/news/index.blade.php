@@ -67,7 +67,7 @@
                             @if ($p->news_priority > 0)
                                 <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 font-medium">📌 {{ __('Featured') }}</span>
                             @endif
-                            <span class="text-gray-400 ml-auto">{{ ($p->event_date ?? $p->published_at)?->translatedFormat('d MMM Y') }}</span>
+                            <span class="text-gray-400 ml-auto">{{ ($p->event_date ?? $p->published_at)?->translatedFormat('d F Y') }}</span>
                         </div>
                         <h2 class="font-bold text-gray-900 leading-snug group-hover:text-primary-700 transition mb-2">{{ $p->title }}</h2>
                         <p class="text-sm text-gray-600 line-clamp-3 flex-1">{{ $p->excerpt }}</p>
