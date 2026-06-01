@@ -5,7 +5,6 @@ namespace App\Filament\Pages;
 use App\Models\Setting;
 use BackedEnum;
 use Filament\Actions\Action;
-use Filament\Forms\Components\Actions\Action as FormAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
@@ -171,14 +170,8 @@ class Integrations extends Page
                     ->icon(Heroicon::OutlinedKey)
                     ->components([
                         TextInput::make('flatreklam_api_token')
-                            ->label('API Token')
-                            ->helperText('Boş = entegrasyon kapalı (503 döner). "Üret"e bas → Kaydet → token\'ı FlatReklam müşteri kartına (customApiToken) yapıştır. Base URL\'i de customApiBaseUrl alanına gir.')
-                            ->suffixAction(
-                                FormAction::make('generate')
-                                    ->icon(Heroicon::OutlinedArrowPath)
-                                    ->label('Üret')
-                                    ->action(fn (callable $set) => $set('flatreklam_api_token', \Illuminate\Support\Str::random(48)))
-                            ),
+                            ->label('API Token (opsiyonel)')
+                            ->helperText('İSTEĞE BAĞLI sabit token. Önerilen yol: /admin → API İstemcileri → "Token üret" (iptal/rotate/takip var). Buraya bir token yapıştırırsan o da geçerli olur. Base URL: ' . url('/api/flatreklam/v1')),
                     ]),
             ]);
     }
