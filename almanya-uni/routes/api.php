@@ -35,11 +35,18 @@ Route::post('webhooks/resend', [\App\Http\Controllers\Webhooks\ResendWebhookCont
 
 // FlatReklam Özel Site SEO API (v1) — sağlayıcı sözleşmesi.
 // Auth: flatreklam.auth (Bearer = setting('flatreklam_api_token')).
-Route::prefix('flatreklam/v1')->middleware(['flatreklam.auth', 'throttle:60,1'])->group(function () {
-    Route::get('ping', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'ping']);
-    Route::get('seo-resources', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'index']);
-    Route::get('seo-resources/{id}', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'show']);
-    Route::patch('seo-resources/{id}', [\App\Http\Controllers\Api\FlatReklam\SeoController::class, 'update']);
+// Hem /api/flatreklam/v1/* hem /api/flatreklam/* base URL'i çalışır (panelin
+// /v1 ekleyip eklemediği belirsiz — ikisini de kabul ediyoruz).
+$flatreklamRoutes = function () {
+    $c = \App\Http\Controllers\Api\FlatReklam\SeoController::class;
+    Route::get('ping', [$c, 'ping']);
+    Route::get('seo-resources', [$c, 'index']);
+    Route::get('seo-resources/{id}', [$c, 'show']);
+    Route::patch('seo-resources/{id}', [$c, 'update']);
+};
+Route::middleware(['flatreklam.auth', 'throttle:60,1'])->group(function () use ($flatreklamRoutes) {
+    Route::prefix('flatreklam/v1')->group($flatreklamRoutes);
+    Route::prefix('flatreklam')->group($flatreklamRoutes);
 });
 
 Route::prefix('v1')->middleware('api.throttle')->group(function () {
