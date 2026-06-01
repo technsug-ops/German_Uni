@@ -34,8 +34,31 @@ class ImportTranslations extends Command
             $this->importBlocks("$dir/$file.json.gz", $table, $force);
         }
         $this->importFaqs("$dir/faq_translations.json.gz");
+        $this->importProgramNames("$dir/program_names.json.gz");
 
         return self::SUCCESS;
+    }
+
+    /** Program isim karşılıkları (name_tr/name_en) — slug ile eşleştirir. */
+    private function importProgramNames(string $path): void
+    {
+        $data = $this->readGz($path);
+        if ($data === null) return;
+
+        $applied = 0;
+        foreach ($data as $slug => $rec) {
+            try {
+                $update = [];
+                if (! empty($rec['tr'])) $update['name_tr'] = $rec['tr'];
+                if (! empty($rec['en'])) $update['name_en'] = $rec['en'];
+                if (! $update) continue;
+                $n = DB::table('programs')->where('slug', $slug)->update($update);
+                if ($n) $applied++;
+            } catch (\Throwable $e) {
+                \Log::warning("import program name skip {$slug}: " . $e->getMessage());
+            }
+        }
+        $this->info("✅ programs (isim): {$applied} satır güncellendi");
     }
 
     private function importBlocks(string $path, string $table, bool $force): void

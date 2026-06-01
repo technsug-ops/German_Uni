@@ -42,6 +42,7 @@ class ExportTranslations extends Command
 
         foreach ($entities as $entity) {
             if ($entity === 'faq') { $this->exportFaqs($dir); continue; }
+            if ($entity === 'program-names') { $this->exportProgramNames($dir); continue; }
             if (! isset(self::BLOCK_ENTITIES[$entity])) { $this->warn("bilinmeyen entity: $entity"); continue; }
             [$model, $file] = self::BLOCK_ENTITIES[$entity];
             $this->exportBlocks($entity, $model, "$dir/$file.json.gz");
@@ -101,6 +102,30 @@ class ExportTranslations extends Command
 
         $this->writeGz("$dir/faq_translations.json.gz", $out);
         $this->info("✅ faq: {$count} sağlam EN/DE satır → faq_translations.json.gz (" . $this->kb("$dir/faq_translations.json.gz") . ')');
+    }
+
+    /** Program isimlerinin sayfa-dili karşılığı (name_tr/name_en) — slug ile anahtarlı. */
+    private function exportProgramNames(string $dir): void
+    {
+        $out = [];
+        $count = 0;
+        \App\Models\Program::query()
+            ->where(function ($w) {
+                $w->whereNotNull('name_tr')->orWhereNotNull('name_en');
+            })
+            ->select('slug', 'name_tr', 'name_en')
+            ->chunk(500, function ($rows) use (&$out, &$count) {
+                foreach ($rows as $r) {
+                    if (! $r->slug) continue;
+                    $rec = [];
+                    if ($r->name_tr) $rec['tr'] = $r->name_tr;
+                    if ($r->name_en) $rec['en'] = $r->name_en;
+                    if ($rec) { $out[$r->slug] = $rec; $count++; }
+                }
+            });
+
+        $this->writeGz("$dir/program_names.json.gz", $out);
+        $this->info("✅ program-names: {$count} kayıt → program_names.json.gz (" . $this->kb("$dir/program_names.json.gz") . ')');
     }
 
     private function writeGz(string $path, array $data): void
