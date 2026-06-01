@@ -283,7 +283,9 @@
                         <a href="{{ route('programs.show', $p->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 flex flex-col">
                             <div class="flex items-start justify-between gap-2 mb-2">
-                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ $p->name }}</h3>
+                                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">
+                                    <x-program-name :program="$p" />
+                                </h3>
                                 @if ($p->language)
                                     <span class="text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap
                                         @if ($p->language === 'en') bg-blue-100 text-blue-700

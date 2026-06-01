@@ -1,0 +1,59 @@
+🟢 Küçük temizlik (her biri 10-30 dk)
+
+#	İş	Etki
+1	Home page Scholarship name_en ?: name_de locale leak	TR sayfada EN/DE scholarship adları
+2	Profile favorites polymorphic $item->name_de	Favori kartları DE
+3	17 Wikipedia image rasterize fail (cache-custom ile manuel)	17 üni karta default ikon
+4	#77 (uni-assist) EN+DE manuel translation düzeltme	Belirli blog post'unda EN/DE eksik
+🟡 Orta iş (1-3 saat)
+
+#	İş	Etki
+5	Content factory: 5 yeni howto brief (Almanca öğrenme, randevu sistemi, vize görüşmesi, BAföG, Anmeldung)	Blog büyüme
+6	Mentor model i18n (boş tablo, mentor eklerken aktive olur)	Defensive coding
+7	Newsletter signup CRO — sticky footer subscribe widget	Subscriber growth
+8	OG image refresh cron — yeni içeriğe otomatik	Sosyal paylaşım kalitesi
+🔵 Büyük modüller (1-3 gün)
+
+#	İş	Etki
+9	Premium MVP — pricing sayfa + Stripe + abone tier farkı	Gelir kanalı
+10	Mentor sistemi (Cal.com + Jitsi entegrasyon, mentor profil)	Premium değer
+11	Application Tracker derinleştirme — kullanıcı bazlı progress save	Engagement
+12	deutschland.de multi-format storytelling — video script + podcast + infographic auto-gen	Content varyasyon
+🟣 Pasif (kullanıcı/zaman gerekli)
+
+Forum (2027'e ertelendi)
+Antivirus reputation (zamanla çözülür)
+Google/Bing webmaster ekleme
+Öneri sıralama
+A. Hızlı kazanım turu (toplam ~2-3 saat) → 1-4 çöz, 5-6 yap, görsel olarak temiz site.
+
+B. Stratejik tur → 9-10-11 (Premium MVP) — gelir + engagement temeli.
+
+C. İçerik turu → 5 + 12 — blog büyümesi ivme.
+
+Hangisi? Yoksa şimdilik mola?
+
+
+
+
+etsy en guncel panel
+
+	/ buna benzer si
+https://www.study-in-germany.com/de/
+https://www.reddit.com/r/germany/?tl=de
+ (Lebenslauf, motivasyon mektubu, Wohnheim başvurusu) 
+Olur, bekliyorum. Şablonları getirdiğinde her birine tek tek bakarız — Lebenslauf, motivasyon mektubu, Sperrkonto, Wohnheim, tavsiye mektubu, hepsine. Alman akademik konvansiyonlarına uygunluk, uni-assist/VPD süreçleriyle uyum, dil tonu, hangi belgenin hangi başvuru adımına oturduğu... bunların üstünden geçeriz.
+Bu arada hazırlık olsun diye küçük bir not: almanyauni'deki blog başlıklarından biri tam senin işine yarayacak — uni-assist VPD red sebepleri ve çözümleri üzerine yeni bir yazıları vardı. Şablonları optimize ederken o tipik red gerekçelerini önceden karşılayacak şekilde kurgularsan, belgeler sadece "düzgün" değil, "reddedilmeyi azaltan" hale gelir. Asıl değer farkı orada çıkar.
+Hazır olduğunda dön, devam ederiz. Kolay gelsin.
+
+Sablonlari profesyonel hale getir ucretli yap
+
+
+# tüm projeyi snapshot'a döndür
+git reset --hard v1-frontend-snapshot-2026-05-30
+
+# sadece bir dosyayı geri al
+git checkout v1-frontend-snapshot-2026-05-30 -- almanya-uni/resources/views/layouts/app.blade.php
+
+# fark gör
+git diff v1-frontend-snapshot-2026-05-30..HEAD -- almanya-uni/resources/views/

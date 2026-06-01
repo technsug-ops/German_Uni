@@ -74,7 +74,7 @@
         </div>
 
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-3 drop-shadow">
-            {{ $program->name }}
+            <x-program-name :program="$program" localized-class="block text-lg md:text-xl font-medium text-primary-100/90 mt-1" />
         </h1>
 
         @if ($program->degree_specification)

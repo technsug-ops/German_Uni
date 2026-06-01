@@ -99,4 +99,32 @@ class Program extends Model
         }
         return array_map('trim', explode(',', $this->language));
     }
+
+    /**
+     * Programlarda GÖRÜNEN birincil isim DAİMA resmi isimdir (name_de) —
+     * başvuru doğruluğu + SEO için (title/meta/h1/breadcrumb/arama/JSON-LD).
+     * name_tr/name_en sadece <x-program-name> içinde küçük punto YARDIMCI
+     * olarak gösterilir; asıl ismi EZMEZ. Bu, LocalizableContent'in
+     * locale-aware getNameAttribute'unu programlar için bilinçli ezer
+     * (name_tr dolunca her yerin Türkçeye dönmesini engeller).
+     */
+    public function getNameAttribute(): ?string
+    {
+        foreach (['name_de', 'name_en', 'name_tr'] as $c) {
+            if (! empty($this->attributes[$c] ?? null)) {
+                return $this->attributes[$c];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Sayfa dilindeki isim karşılığı — resmi isimden farklıysa döner, yoksa null.
+     * <x-program-name> bunu küçük punto yardımcı satır olarak gösterir.
+     */
+    public function getLocalizedNameAttribute(): ?string
+    {
+        $val = $this->attributes['name_' . app()->getLocale()] ?? null;
+        return ($val && $val !== $this->name) ? $val : null;
+    }
 }

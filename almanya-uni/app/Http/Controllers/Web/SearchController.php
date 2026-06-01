@@ -87,7 +87,7 @@ class SearchController extends Controller
             ->orderByRelevance($q, ['name_de', 'name_en', 'name_tr', 'description_tr', 'description_en'])
             ->orderBy('name_de')
             ->limit(self::PER_TYPE)
-            ->get(['id', 'name_de', 'slug', 'university_id', 'degree', 'language', 'field_of_study_id']);
+            ->get(['id', 'name_de', 'name_en', 'name_tr', 'slug', 'university_id', 'degree', 'language', 'field_of_study_id']);
 
         // ─────────── BLOG POSTS ───────────
         $postBase = Post::query()

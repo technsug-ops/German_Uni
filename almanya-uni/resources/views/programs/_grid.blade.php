@@ -49,7 +49,7 @@
                     <div class="flex-1 min-w-0">
                         <div class="flex items-start justify-between gap-2 mb-1">
                             <h3 class="font-bold text-gray-900 leading-snug group-hover:text-primary-700 transition">
-                                {{ $p->name }}
+                                <x-program-name :program="$p" />
                             </h3>
                             <div class="flex flex-wrap gap-1 flex-shrink-0">
                                 @if ($p->degree)
