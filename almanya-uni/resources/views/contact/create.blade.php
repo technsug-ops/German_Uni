@@ -44,7 +44,7 @@
         <div>
             <label for="type" class="block text-sm font-semibold text-gray-800 mb-1.5">{{ __('Subject area') }}</label>
             <select name="type" id="type"
-                    class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500">
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400">
                 @foreach ($types as $key => $label)
                     <option value="{{ $key }}" @selected(old('type', $presetType) === $key)>{{ $label }}</option>
                 @endforeach
@@ -55,13 +55,13 @@
             <div>
                 <label for="name" class="block text-sm font-semibold text-gray-800 mb-1.5">{{ __('Your name') }}</label>
                 <input type="text" name="name" id="name" value="{{ old('name', auth()->user()?->name) }}" maxlength="120"
-                       class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                       class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
                        placeholder="{{ __('Optional') }}">
             </div>
             <div>
                 <label for="email" class="block text-sm font-semibold text-gray-800 mb-1.5">{{ __('Email') }} <span class="text-red-500">*</span></label>
                 <input type="email" name="email" id="email" value="{{ old('email', auth()->user()?->email) }}" required maxlength="255"
-                       class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                       class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
                        placeholder="you@example.com">
             </div>
         </div>
@@ -69,14 +69,14 @@
         <div>
             <label for="subject" class="block text-sm font-semibold text-gray-800 mb-1.5">{{ __('Subject') }}</label>
             <input type="text" name="subject" id="subject" value="{{ old('subject', $presetSubject) }}" maxlength="200"
-                   class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
                    placeholder="{{ __('Optional') }}">
         </div>
 
         <div>
             <label for="message" class="block text-sm font-semibold text-gray-800 mb-1.5">{{ __('Message') }} <span class="text-red-500">*</span></label>
             <textarea name="message" id="message" rows="6" required minlength="10" maxlength="5000"
-                      class="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
                       placeholder="{{ __('How can we help?') }}">{{ old('message') }}</textarea>
         </div>
 
