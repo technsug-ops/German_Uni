@@ -78,13 +78,13 @@ class SearchController extends Controller
         // ─────────── PROGRAMS ───────────
         $progBase = Program::query()
             ->where('is_active', 1)
-            ->searchFulltext($q, ['name_de', 'description_tr', 'description_en']);
+            ->searchFulltext($q, ['name_de', 'name_en', 'name_tr', 'description_tr', 'description_en']);
 
         $progTotal = (clone $progBase)->count();
         $programs = $progBase
             ->with('university:id,name_de,slug,logo_url', 'field:id,name_tr,name_en,name_de,color,icon')
             ->orderByRaw("CASE WHEN name_de LIKE ? THEN 0 ELSE 1 END", [$like])
-            ->orderByRelevance($q, ['name_de', 'description_tr', 'description_en'])
+            ->orderByRelevance($q, ['name_de', 'name_en', 'name_tr', 'description_tr', 'description_en'])
             ->orderBy('name_de')
             ->limit(self::PER_TYPE)
             ->get(['id', 'name_de', 'slug', 'university_id', 'degree', 'language', 'field_of_study_id']);

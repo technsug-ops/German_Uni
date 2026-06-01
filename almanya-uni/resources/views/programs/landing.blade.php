@@ -143,7 +143,7 @@
                                 <div class="w-12 h-12 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center shrink-0"><x-svg-icon name="academic-cap" class="w-6 h-6" /></div>
                             @endif
                             <div class="flex-1 min-w-0">
-                                <h2 class="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary-700 leading-tight mb-1">{{ $program->name }}</h2>
+                                <h2 class="text-base md:text-lg font-bold text-gray-900 group-hover:text-primary-700 leading-tight mb-1"><x-program-name :program="$program" /></h2>
                                 <p class="text-sm text-gray-600 mb-2">{{ $program->university->name ?? '' }} · {{ $program->university->city->name ?? '' }}</p>
                                 <div class="flex flex-wrap gap-1.5 text-xs">
                                     <span class="px-2 py-0.5 rounded bg-primary-50 text-primary-700 font-semibold">{{ __(ucfirst($program->degree)) }}</span>

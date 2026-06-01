@@ -1209,7 +1209,7 @@ CREATE TABLE `programs` (
   KEY `programs_degree_index` (`degree`),
   KEY `programs_partner_id_index` (`partner_id`),
   KEY `programs_is_online_index` (`is_online`),
-  FULLTEXT KEY `ft_programs_search` (`name_de`,`description_tr`,`description_en`),
+  FULLTEXT KEY `ft_programs_search` (`name_de`,`name_en`,`name_tr`,`description_tr`,`description_en`),
   CONSTRAINT `programs_field_of_study_id_foreign` FOREIGN KEY (`field_of_study_id`) REFERENCES `fields_of_study` (`id`) ON DELETE SET NULL,
   CONSTRAINT `programs_university_id_foreign` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2103,3 +2103,4 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (127,'2026_05_31_19
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (128,'2026_05_31_200000_add_localized_content_blocks',102);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (129,'2026_05_31_201000_apply_city_blocks_pilot',103);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (130,'2026_06_01_160000_add_fulltext_search_indexes',104);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (131,'2026_06_01_180000_extend_programs_fulltext_with_localized_names',105);

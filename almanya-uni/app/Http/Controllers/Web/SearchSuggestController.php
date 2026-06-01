@@ -70,7 +70,7 @@ class SearchSuggestController extends Controller
             // Programs (top 3)
             Program::query()
                 ->where('is_active', 1)
-                ->searchFulltext($q, ['name_de', 'description_tr', 'description_en'])
+                ->searchFulltext($q, ['name_de', 'name_en', 'name_tr', 'description_tr', 'description_en'])
                 ->with('university:id,slug,name_de,logo_url')
                 ->orderBy('name_de')
                 ->limit(3)
