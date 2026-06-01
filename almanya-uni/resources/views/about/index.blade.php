@@ -172,7 +172,7 @@
 </section>
 
 {{-- ============ CONTRIBUTE ============ --}}
-<section class="bg-gradient-to-br from-accent-50 to-white border-t border-accent-100">
+<section id="contribute" class="scroll-mt-24 bg-gradient-to-br from-accent-50 to-white border-t border-accent-100">
     <div class="max-w-[1400px] mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 text-center">{{ __('How You Can Contribute') }}</h2>
         <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
