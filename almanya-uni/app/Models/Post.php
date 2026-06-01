@@ -15,6 +15,11 @@ class Post extends Model
     protected $fillable = [
         'locale',
         'translation_group_id',
+        'type',
+        'source_url',
+        'source_name',
+        'event_date',
+        'news_priority',
         'user_id',
         'co_author_id',
         'category_id',
@@ -44,6 +49,8 @@ class Post extends Model
         'view_count'             => 'integer',
         'audio_duration_seconds' => 'integer',
         'gallery_images'         => 'array',
+        'event_date'             => 'date',
+        'news_priority'          => 'integer',
     ];
 
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
@@ -139,6 +146,29 @@ class Post extends Model
     public function scopeForLocale(Builder $query, ?string $locale = null): Builder
     {
         return $query->where('locale', $locale ?? app()->getLocale());
+    }
+
+    /** Sadece blog yazıları (haber değil). type yoksa eski kayıtlar blog sayılır. */
+    public function scopeBlogType(Builder $query): Builder
+    {
+        return $query->where(fn ($w) => $w->where('type', 'blog')->orWhereNull('type'));
+    }
+
+    /** Sadece haberler. */
+    public function scopeNews(Builder $query): Builder
+    {
+        return $query->where('type', 'news');
+    }
+
+    /**
+     * Haber sıralaması: admin önceliği (yüksek önde) → en yeni → id.
+     * Öncelik verilmezse (priority=0, varsayılan) saf "en yeni en önde".
+     */
+    public function scopeNewsOrder(Builder $query): Builder
+    {
+        return $query->orderByDesc('news_priority')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id');
     }
 
     public function translations()

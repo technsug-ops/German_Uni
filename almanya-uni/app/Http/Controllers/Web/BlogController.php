@@ -16,7 +16,7 @@ class BlogController extends Controller
     {
         $filters = $this->parseFilters($request);
 
-        $query = Post::published()
+        $query = Post::published()->blogType()
             ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category']);
 
         $this->applyFilters($query, $filters);
@@ -184,10 +184,12 @@ class BlogController extends Controller
 
     public function category(string $slug, Request $request): View
     {
-        $category = Category::active()->where('slug', $slug)->firstOrFail();
+        $category = Category::active()->where('slug', $slug)
+            ->where(fn ($w) => $w->where('kind', 'blog')->orWhereNull('kind'))
+            ->firstOrFail();
         $filters = $this->parseFilters($request);
 
-        $query = Post::published()
+        $query = Post::published()->blogType()
             ->where('category_id', $category->id)
             ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category']);
 
@@ -215,6 +217,7 @@ class BlogController extends Controller
         $publishedCount = fn ($q) => $q->where('is_published', true)->whereNotNull('published_at');
 
         return Category::active()
+            ->where(fn ($w) => $w->where('kind', 'blog')->orWhereNull('kind'))
             ->topLevel()
             ->withCount(['posts' => $publishedCount])
             ->with(['children' => fn ($q) => $q->active()

@@ -45,6 +45,7 @@ class SmokeTest extends TestCase
             route('about'),
             route('faqs.index'),
             route('blog.index'),
+            route('news.index'),
             route('scholarships.index'),
             route('universities.index'),
             route('cities.index'),
@@ -107,5 +108,9 @@ class SmokeTest extends TestCase
 
         // /admin/integrations bu oturumda FormAction yüzünden 500 vermişti.
         $this->actingAs($admin)->get('/admin/integrations')->assertStatus(200);
+
+        // Haber Akışı resource (3-mod panel) — Filament render hatasını yakala.
+        $this->actingAs($admin)->get('/admin/news-candidates')->assertStatus(200);
+        $this->actingAs($admin)->get('/admin/news-candidates/create')->assertStatus(200);
     }
 }

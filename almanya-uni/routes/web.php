@@ -87,6 +87,11 @@ $routes = function () {
         ->middleware('throttle:5,10')
         ->name('blog.comment.store');
 
+    // Haber akışı — "Almanya'dan" (type='news' Post'lar)
+    Route::get('/haberler', [\App\Http\Controllers\Web\NewsController::class, 'index'])->name('news.index');
+    Route::get('/haberler/kategori/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'category'])->name('news.category');
+    Route::get('/haberler/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'show'])->name('news.show');
+
     Route::get('/faq', [FaqController::class, 'index'])->name('faqs.index');
     Route::get('/faq/{topic}', [FaqController::class, 'topic'])->name('faqs.topic');
     Route::get('/faq/{topic}/{slug}', [FaqController::class, 'show'])->name('faqs.show');
