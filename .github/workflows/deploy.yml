@@ -14,8 +14,60 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # ════════════════════════════════════════════════════════════
+  # Deploy ÖNCESİ güvenlik ağı — testler geçmezse deploy OLMAZ.
+  # Bu oturumda 2 prod-500'ünü (Filament render + form POST) yakalar.
+  # ════════════════════════════════════════════════════════════
+  test:
+    name: Safety-net tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: almanyauni_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s --health-timeout=5s --health-retries=15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, gd, pdo_mysql, bcmath, zip, curl, fileinfo, openssl
+          coverage: none
+          tools: composer:v2
+
+      - name: Composer install (with dev)
+        working-directory: almanya-uni
+        run: composer install --optimize-autoloader --no-interaction --no-progress --prefer-dist
+
+      - name: Prepare env + storage dirs
+        working-directory: almanya-uni
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/framework/testing bootstrap/cache storage/logs
+
+      - name: Run safety-net tests (MySQL)
+        working-directory: almanya-uni
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: php artisan test tests/Feature/SmokeTest.php tests/Feature/ContactFormTest.php tests/Unit
+
   build-and-deploy:
     name: Build & Deploy
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
