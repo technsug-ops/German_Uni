@@ -55,6 +55,7 @@ class SearchController extends Controller
         $universities = $uniBase
             ->with('city:id,name_tr,name_en,name_de,slug,state_id', 'city.state:id,name_tr,name_en,name_de')
             ->orderByRaw("CASE WHEN name_de LIKE ? THEN 0 ELSE 1 END", [$like])
+            ->orderByRelevance($q, ['name_de', 'name_en', 'name_tr', 'short_name'])
             ->orderByDesc('student_count')
             ->limit(self::PER_TYPE)
             ->get(['id', 'name_de', 'slug', 'logo_url', 'image_url', 'type', 'city_id', 'student_count', 'founded_year']);
@@ -69,6 +70,7 @@ class SearchController extends Controller
             ->with('state:id,name_tr,name_en,name_de')
             ->withCount(['universities' => fn ($q) => $q->where('is_active', 1)])
             ->orderByRaw("CASE WHEN name_de LIKE ? OR name_tr LIKE ? THEN 0 ELSE 1 END", [$like, $like])
+            ->orderByRelevance($q, ['name_de', 'name_tr', 'name_en'])
             ->orderByDesc('universities_count')
             ->limit(self::PER_TYPE)
             ->get(['id', 'name_de', 'name_tr', 'slug', 'image_url', 'state_id', 'population','name_en','name_de']);
@@ -82,6 +84,7 @@ class SearchController extends Controller
         $programs = $progBase
             ->with('university:id,name_de,slug,logo_url', 'field:id,name_tr,name_en,name_de,color,icon')
             ->orderByRaw("CASE WHEN name_de LIKE ? THEN 0 ELSE 1 END", [$like])
+            ->orderByRelevance($q, ['name_de', 'description_tr', 'description_en'])
             ->orderBy('name_de')
             ->limit(self::PER_TYPE)
             ->get(['id', 'name_de', 'slug', 'university_id', 'degree', 'language', 'field_of_study_id']);
@@ -113,6 +116,7 @@ class SearchController extends Controller
         $professions = $profBase
             ->with('field:id,name_tr,name_en,name_de,icon,color')
             ->orderByRaw("CASE WHEN name_de LIKE ? OR name_tr LIKE ? THEN 0 ELSE 1 END", [$like, $like])
+            ->orderByRelevance($q, ['name_de', 'name_tr', 'description_tr', 'description_de'])
             ->orderBy('name_de')
             ->limit(self::PER_TYPE)
             ->get(['id', 'name_de', 'name_tr', 'slug', 'kldb_code', 'type', 'field_of_study_id','name_en','name_de']);
