@@ -184,7 +184,7 @@
             <h2 class="text-xl md:text-2xl font-bold text-amber-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-6 h-6 text-amber-700" /> {{ __('Want to speak at an AlmanyaUni event?') }}</h2>
             <p class="text-sm text-amber-800 max-w-2xl">{{ __('Are you an alum, professional, or topic expert? We run 2-3 events a month — apply to host one. Your topic, our audience, free promotion.') }}</p>
         </div>
-        <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Speaker%20Application"
+        <a href="{{ route('contact', ['type' => 'partnership', 'subject' => 'Speaker Application']) }}"
            class="shrink-0 inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-lg shadow-md transition whitespace-nowrap">
             <x-svg-icon name="pencil" class="w-4 h-4" /> {{ __('Apply as speaker') }}
         </a>

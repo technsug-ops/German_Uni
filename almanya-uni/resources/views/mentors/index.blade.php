@@ -66,7 +66,7 @@
                 {{ __('No active mentors right now. We are recruiting alumni with successful careers in Germany. Apply below or check matching events.') }}
             </p>
             <div class="flex flex-wrap gap-3 justify-center">
-                <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Mentor%20Application"
+                <a href="{{ route('contact', ['type' => 'partnership', 'subject' => 'Mentor Application']) }}"
                    class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition">
                     <x-svg-icon name="pencil" class="w-4 h-4" /> {{ __('Apply as a mentor') }}
                 </a>
@@ -193,7 +193,7 @@
         <p class="text-emerald-100 mb-6 max-w-2xl mx-auto">
             {{ __('Join as a mentor and guide newly arrived students. 30 min sharing = years of a student\'s journey.') }}
         </p>
-        <a href="mailto:technsug@gmail.com?subject=AlmanyaUni%20Mentor%20Application"
+        <a href="{{ route('contact', ['type' => 'partnership', 'subject' => 'Mentor Application']) }}"
            class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold shadow-lg transition">
             <x-svg-icon name="pencil" class="w-4 h-4" /> {{ __('Apply as a mentor') }}
         </a>
