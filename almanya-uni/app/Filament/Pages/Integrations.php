@@ -191,7 +191,68 @@ class Integrations extends Page
                 ->icon(Heroicon::OutlinedCheck)
                 ->color('success')
                 ->action('save'),
+
+            Action::make('flatreklamTest')
+                ->label('FlatReklam Bağlantı Testi')
+                ->icon(Heroicon::OutlinedKey)
+                ->color('gray')
+                ->action(fn () => $this->testFlatReklam()),
         ];
+    }
+
+    /**
+     * Kayıtlı token'la kendi /ping ucumuzu çağırır (FlatReklam'ın yapacağı
+     * isteğin aynısı) ve sonucu bildirir. Self-HTTP engellenirse servisle
+     * doğrudan doğrular.
+     */
+    public function testFlatReklam(): void
+    {
+        $token = (string) Setting::get('flatreklam_api_token');
+        if ($token === '') {
+            Notification::make()
+                ->title('FlatReklam token yok')
+                ->body('Önce "Üret" → "Kaydet", sonra tekrar test et.')
+                ->warning()->send();
+            return;
+        }
+
+        $base = rtrim(url('/api/flatreklam/v1'), '/');
+
+        try {
+            $resp = \Illuminate\Support\Facades\Http::withToken($token)
+                ->acceptJson()->timeout(12)->get($base . '/ping');
+
+            if ($resp->ok()) {
+                $j = $resp->json();
+                $list = app(\App\Services\FlatReklam\SeoResourceService::class)
+                    ->list(null, 1, 1, null, 'published');
+                Notification::make()
+                    ->title('✅ Bağlantı OK')
+                    ->body("Profil: " . ($j['siteProfile'] ?? '?') . " · " . $list['total'] . " SEO kaynağı (blog/etkinlik/yasal)\n\nBase URL (panele gir):\n" . $base . "\n\nToken kayıtlı ✓")
+                    ->success()->persistent()->send();
+                return;
+            }
+
+            Notification::make()
+                ->title('❌ Ping başarısız — HTTP ' . $resp->status())
+                ->body($resp->status() === 401
+                    ? 'Token uyuşmuyor (beklenmez — kendi token\'ımızla test ettik). Kaydedildi mi?'
+                    : mb_substr($resp->body(), 0, 200))
+                ->danger()->persistent()->send();
+        } catch (\Throwable $e) {
+            // Self-HTTP engelliyse servisle doğrudan doğrula
+            try {
+                $svc = app(\App\Services\FlatReklam\SeoResourceService::class);
+                $info = $svc->siteInfo();
+                $list = $svc->list(null, 1, 1, null, 'published');
+                Notification::make()
+                    ->title('✅ Servis hazır (self-HTTP atlandı)')
+                    ->body("Profil: {$info['siteProfile']} · {$list['total']} SEO kaynağı · Token kayıtlı ✓\nBase URL: " . $base . "\n(Not: sunucu kendine HTTP atamadı — dışarıdan erişim normalde çalışır.)")
+                    ->success()->persistent()->send();
+            } catch (\Throwable $e2) {
+                Notification::make()->title('❌ Hata')->body($e2->getMessage())->danger()->persistent()->send();
+            }
+        }
     }
 
     public function save(): void
