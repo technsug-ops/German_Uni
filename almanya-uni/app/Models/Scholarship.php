@@ -19,10 +19,12 @@ class Scholarship extends Model
         'sap_target_system',
         'name_de',
         'name_en',
+        'name_tr',
         'langname_de',
         'langname_en',
         'programmname_de',
         'programmname_en',
+        'programmname_tr',
         'programmtyp_id',
         'slug',
         'introduction_json',
@@ -117,12 +119,31 @@ class Scholarship extends Model
      * DE locale → DE primary; everyone else → EN primary, DE fallback.
      * Last resort: DAAD #ID placeholder.
      */
+    /**
+     * Locale-aware ad. Kaynak-dili lokalizasyon kuralı: orijinal DAAD adı (de/en)
+     * KORUNUR; /tr'de yerel ad parantezde. /de Almanca, /en İngilizce official.
+     *   TR: "Prussian Cultural Heritage Foundation... (Prusya Kültür Mirası... Burs Programı)"
+     *   EN: "Prussian Cultural Heritage Foundation: Grant Programme"
+     *   DE: "Stiftung Preußischer Kulturbesitz (SPK): Stipendienprogramm"
+     * Özel ad/akronim → name_tr orijinalle aynıysa parantez gösterilmez.
+     */
     public function getNameAttribute(): string
     {
         $de = (string) ($this->attributes['name_de'] ?? '');
         $en = (string) ($this->attributes['name_en'] ?? '');
-        $primary = app()->getLocale() === 'de' ? ($de ?: $en) : ($en ?: $de);
-        return $primary !== '' ? $primary : ('DAAD #' . ($this->attributes['sap_objid'] ?? '?'));
+        $tr = (string) ($this->attributes['name_tr'] ?? '');
+        $locale = app()->getLocale();
+
+        // Sayfa diline göre official/orijinal primary
+        $primary = $locale === 'de' ? ($de ?: $en) : ($en ?: $de);
+        if ($primary === '') {
+            return 'DAAD #' . ($this->attributes['sap_objid'] ?? '?');
+        }
+        // /tr: orijinal + (yerel) — yerel yoksa/aynıysa sadece orijinal
+        if ($locale === 'tr' && $tr !== '' && mb_strtolower(trim($tr)) !== mb_strtolower(trim($primary))) {
+            return "{$primary} ({$tr})";
+        }
+        return $primary;
     }
 
     /** Locale-aware programmname (sub-programme label inside the parent grant). */
@@ -130,7 +151,10 @@ class Scholarship extends Model
     {
         $de = $this->attributes['programmname_de'] ?? null;
         $en = $this->attributes['programmname_en'] ?? null;
-        return app()->getLocale() === 'de' ? ($de ?: $en) : ($en ?: $de);
+        $tr = $this->attributes['programmname_tr'] ?? null;
+        $locale = app()->getLocale();
+        if ($locale === 'tr' && ! empty($tr)) return $tr;
+        return $locale === 'de' ? ($de ?: $en) : ($en ?: $de);
     }
 
     public function searchableAs(): string

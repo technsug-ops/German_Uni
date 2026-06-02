@@ -1,12 +1,11 @@
 @php
     $title = $scholarship->name;
     $loc = app()->getLocale();
-    // DAAD verisi sadece EN/DE'de var. Locale-aware tercih:
-    //   - DE locale → DE öncelik, EN fallback
-    //   - TR / EN / diğer → EN öncelik, DE fallback
-    $intro = $loc === 'de'
-        ? ($scholarship->introductionText('de') ?? $scholarship->introductionText('en'))
-        : ($scholarship->introductionText('en') ?? $scholarship->introductionText('de'));
+    // Locale-aware açıklama: önce sayfa dili (TR çevirisi scholarships:localize ile
+    // introduction_json['tr']'e yazılır), sonra EN→DE fallback (kaynak-dili kuralı).
+    $intro = $scholarship->introductionText($loc)
+        ?? $scholarship->introductionText('en')
+        ?? $scholarship->introductionText('de');
     $qEn = $scholarship->qText('en');
     $qDe = $scholarship->qText('de');
     // Eligibility: tercih edilen dil + ikincisi (varsa) toggle ile

@@ -814,6 +814,24 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GEÇİCİ — DAAD burslarını TR'ye lokalize et (ad + açıklama). DAAD sadece
+    // de/en veriyor → /tr'de İngilizce sızıyor. Re-runnable: name_tr boşları çevirir.
+    Route::get('/admin/ops/scholarships-localize', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('scholarships:localize', array_filter([
+                '--limit' => (int) request()->integer('limit'),
+                '--force' => request()->boolean('force'),
+                '--delay' => (int) request()->integer('delay', 250),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Otomatik haber çekme (Mod 1) — KAS'ta SSH yok; tarayıcıdan veya KAS
     // Cronjob bu URL'yi çağırarak RSS kaynaklardan aday çeker. Idempotent (dedupe).
     Route::get('/admin/ops/news-fetch', function () {
