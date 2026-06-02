@@ -94,18 +94,25 @@ class NewsFetch extends Command
                     continue;
                 }
 
-                NewsCandidate::create([
-                    'origin'                => NewsCandidate::ORIGIN_AUTO,
-                    'status'                => NewsCandidate::STATUS_PENDING,
-                    'source_name'           => $feed['name'],
-                    'source_url'            => $it['link'],
-                    'url_hash'              => $hash,
-                    'orig_title'            => mb_substr($it['title'], 0, 300),
-                    'raw_excerpt'           => $it['summary'] ? mb_substr($it['summary'], 0, 1000) : null,
-                    'event_date'            => $it['date']?->toDateString(),
-                    'suggested_category_id' => $catId,
-                    'primary_locale'        => 'tr',
-                ]);
+                try {
+                    NewsCandidate::create([
+                        'origin'                => NewsCandidate::ORIGIN_AUTO,
+                        'status'                => NewsCandidate::STATUS_PENDING,
+                        'source_name'           => $feed['name'],
+                        'source_url'            => $it['link'],
+                        'url_hash'              => $hash,
+                        'orig_title'            => mb_substr($it['title'], 0, 300),
+                        'raw_excerpt'           => $it['summary'] ? mb_substr($it['summary'], 0, 1000) : null,
+                        'event_date'            => $it['date']?->toDateString(),
+                        'suggested_category_id' => $catId,
+                        'primary_locale'        => 'tr',
+                    ]);
+                } catch (\Throwable $e) {
+                    // Tek bozuk satır tüm çekimi öldürmesin — atla, devam et.
+                    $take--;
+                    $this->warn('   ⚠️ atlandı: ' . mb_substr($e->getMessage(), 0, 90));
+                    continue;
+                }
                 $created++;
                 $this->info('   ➕ ' . mb_substr($it['title'], 0, 70));
             }
