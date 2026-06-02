@@ -166,8 +166,8 @@
                         @if ($profession->cluster_label)
                             <p class="text-xs text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ $profession->cluster_label }}</p>
                         @endif
-                        @if ($profession->description_tr)
-                            <p class="text-xs text-gray-700 mt-2 leading-relaxed">{{ \Illuminate\Support\Str::limit(strip_tags($profession->description_tr), 100) }}</p>
+                        @if ($profession->description)
+                            <p class="text-xs text-gray-700 mt-2 leading-relaxed">{{ \Illuminate\Support\Str::limit(strip_tags($profession->description), 100) }}</p>
                         @endif
                     </div>
                 </a>

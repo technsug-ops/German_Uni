@@ -16,13 +16,9 @@
             },
         ]);
 
-        // Locale-aware description fallback (önce current locale, sonra en→de→tr)
-        $locale = app()->getLocale();
-        $descFallback = $university['description_' . $locale]
-            ?? $university['description_en']
-            ?? $university['description_de']
-            ?? $university['description_tr']
-            ?? $autoDesc;
+        // Locale-aware description fallback. strict: EN/DE meta'da Türkçe sızmaz
+        // (çeviri yoksa otomatik EN açıklamaya düşer).
+        $descFallback = localized_pick($university, 'description', strict: true) ?? $autoDesc;
         $uniDesc = \App\Support\Seo::descriptionFromBlocks($university['content_blocks'] ?? null, $descFallback);
 
         $uniOgImage = $university_model->image_url
@@ -191,15 +187,9 @@
                 <div class="bg-white p-6 rounded-xl border border-gray-200">
                     <x-content-blocks :blocks="$blocksNoHero" :exclude-url="'/universities/' . $university['slug']" />
                 </div>
-            @elseif ($university['description_tr'] || $university['description_de'] || $university['description_en'])
-                @php
-                    // Locale-aware description: tr → en → de → tr (her dilin önce kendi)
-                    $locale = app()->getLocale();
-                    $primary = $university['description_' . $locale] ?? null;
-                    if (! $primary) {
-                        $primary = $university['description_en'] ?? $university['description_de'] ?? $university['description_tr'];
-                    }
-                @endphp
+            @elseif ($primary = localized_pick($university, 'description', strict: true))
+                {{-- strict: EN/DE sayfada sadece o dilin (ya da EN/DE) açıklaması;
+                     yalnız TR varsa $primary null → blok gizlenir, Türkçe sızmaz. --}}
                 <div class="bg-white p-6 rounded-xl border border-gray-200">
                     <h2 class="text-2xl font-bold mb-4">{{ __('About') }}</h2>
                     <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ $primary }}</p>

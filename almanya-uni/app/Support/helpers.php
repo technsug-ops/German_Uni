@@ -342,6 +342,38 @@ if (! function_exists('e_icon')) {
     }
 }
 
+if (! function_exists('localized_pick')) {
+    /**
+     * Tek lokalizasyon politikası — array/stdClass satırlar için (toArray edilmiş
+     * model'ler, raw DB rows). Model nesneleri için App\Models\Concerns\
+     * LocalizableContent::localized() ile AYNI mantık.
+     *
+     * "{field}_{loc}" kolonlarını config/locale.php fallback zincirine göre dener,
+     * ilk dolu değeri döndürür. $strict=true (serbest-metin/prose) ise aktif dil TR
+     * değilken zincirden 'tr' ÇIKARILIR → EN/DE sayfada Türkçe sızmaz (çeviri yoksa
+     * null → blade gizler). name/başlık gibi kimlik alanlarında $strict=false bırak.
+     */
+    function localized_pick(array|object $row, string $field, ?string $locale = null, bool $strict = false): ?string
+    {
+        $locale ??= app()->getLocale();
+        $chain = config("locale.content_fallback.$locale", config('locale.content_fallback_default', ['en', 'de', 'tr']));
+
+        if ($strict && $locale !== 'tr') {
+            $chain = array_values(array_filter($chain, fn ($l) => $l !== 'tr'));
+        }
+
+        foreach ($chain as $loc) {
+            $key = "{$field}_{$loc}";
+            $val = is_array($row) ? ($row[$key] ?? null) : ($row->{$key} ?? null);
+            if (! empty($val)) {
+                return $val;
+            }
+        }
+
+        return null;
+    }
+}
+
 if (! function_exists('setting')) {
     /**
      * Global key-value ayar oku (cache'li, settings tablosu).

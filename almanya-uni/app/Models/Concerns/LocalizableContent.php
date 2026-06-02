@@ -9,10 +9,22 @@ namespace App\Models\Concerns;
  */
 trait LocalizableContent
 {
-    public function localized(string $field, ?string $locale = null): ?string
+    /**
+     * @param bool $strict  Serbest-metin (prose) alanları için true ver: aktif dil TR
+     *                      değilse fallback zincirinden 'tr' ÇIKARILIR → EN/DE sayfada
+     *                      Türkçe sızmaz (çeviri yoksa null döner, blade gizler).
+     *                      name/başlık gibi kimlik alanlarında false bırak (TR'ye
+     *                      düşmek boş bırakmaktan iyidir).
+     */
+    public function localized(string $field, ?string $locale = null, bool $strict = false): ?string
     {
         $locale ??= app()->getLocale();
         $chain = config("locale.content_fallback.$locale", [$locale, 'en', 'de', 'tr']);
+
+        // Aktif dilde sessiz TR-fallback yasağı (i18n konsolidasyon #3).
+        if ($strict && $locale !== 'tr') {
+            $chain = array_values(array_filter($chain, fn ($l) => $l !== 'tr'));
+        }
 
         foreach ($chain as $loc) {
             $column = "{$field}_{$loc}";
@@ -37,7 +49,8 @@ trait LocalizableContent
      */
     public function getDescriptionAttribute(): ?string
     {
-        return $this->localized('description');
+        // Serbest-metin → strict: EN/DE sayfada Türkçe açıklama sızmaz (gizlenir).
+        return $this->localized('description', strict: true);
     }
 
     /**
