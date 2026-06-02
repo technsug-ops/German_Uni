@@ -30,6 +30,7 @@ class ProfessionsTranslateInfoFields extends Command
         {--sleep=2 : Meslekler arası bekleme (saniye)}
         {--force : Tüm alanları yeniden çevir (info_fields_tr dolu olsa da)}
         {--missing : info_fields_tr dolu olsa da eksik alanı olanları da tara (çeyreklik resync)}
+        {--lang= : Sadece bu dili çevir (tr veya en). Boş = ikisi birden. Tek-dil çağrı yarı yük.}
         {--slug= : Tek bir meslek (slug)}
         {--dry-run : Önizleme, kaydetme}';
 
@@ -45,6 +46,20 @@ class ProfessionsTranslateInfoFields extends Command
 
         $force = (bool) $this->option('force');
 
+        // Hedef diller: --lang=tr|en → tek dil (yarı yük); boş → ikisi.
+        $lang = strtolower(trim((string) $this->option('lang')));
+        $langs = match ($lang) {
+            'tr'    => ['tr'],
+            'en'    => ['en'],
+            ''      => ['tr', 'en'],
+            default => null,
+        };
+        if ($langs === null) {
+            $this->error("--lang sadece 'tr' veya 'en' olabilir (boş = ikisi).");
+            return self::FAILURE;
+        }
+        $cols = array_map(fn ($l) => "info_fields_{$l}", $langs);
+
         $q = Profession::query()
             ->whereNotNull('info_fields')
             ->where('info_fields', '!=', '[]');
@@ -56,12 +71,14 @@ class ProfessionsTranslateInfoFields extends Command
         } elseif ($force) {
             // tüm meslekler (genelde --slug ile birlikte; tüm tabloda --limit ile ilerlemez)
         } elseif ($missingMode) {
-            // info_fields_tr dolu olsa da eksik alanı olabilir → hepsini tara, döngüde key-bazlı atla.
+            // info_fields_{lang} dolu olsa da eksik alanı olabilir → hepsini tara, döngüde key-bazlı atla.
             // Çeyreklik resync: --limit=0 (sınırsız) çalıştır; az API çağrısı (sadece eksikler).
         } else {
-            // İlk backfill: sadece hiç çevrilmemişler → whereNull batch'leri ilerler (stuck olmaz).
-            $q->where(function ($w) {
-                $w->whereNull('info_fields_tr')->orWhere('info_fields_tr', '[]');
+            // İlk backfill: hedef dil(ler)den herhangi biri hiç çevrilmemişse al → batch ilerler (stuck olmaz).
+            $q->where(function ($w) use ($cols) {
+                foreach ($cols as $col) {
+                    $w->orWhereNull($col)->orWhere($col, '[]');
+                }
             });
         }
 
@@ -96,14 +113,18 @@ class ProfessionsTranslateInfoFields extends Command
             }
 
             $source = is_array($p->info_fields) ? $p->info_fields : [];
-            $tr = is_array($p->info_fields_tr) ? $p->info_fields_tr : [];
-            $en = is_array($p->info_fields_en) ? $p->info_fields_en : [];
+            $current = ['tr' => is_array($p->info_fields_tr) ? $p->info_fields_tr : [],
+                        'en' => is_array($p->info_fields_en) ? $p->info_fields_en : []];
 
-            // Çevrilecek key'ler: kaynakta var, (force değilse) tr VEYA en'de eksik.
+            // Çevrilecek key'ler: kaynakta var, (force değilse) hedef dil(ler)den birinde eksik.
             $missing = [];
             foreach ($source as $key => $val) {
                 if (! is_string($val) || mb_strlen(trim($val)) < 5) continue;
-                if ($force || ! isset($tr[$key]) || ! isset($en[$key])) {
+                $needs = $force;
+                foreach ($langs as $l) {
+                    if (! isset($current[$l][$key])) { $needs = true; break; }
+                }
+                if ($needs) {
                     $missing[$key] = mb_substr(trim($val), 0, self::MAX_VALUE);
                 }
             }
@@ -113,24 +134,28 @@ class ProfessionsTranslateInfoFields extends Command
                 continue;
             }
 
-            $this->line(sprintf('[%d/%d] %s — %d alan', $i + 1, $total, mb_substr($p->name_de, 0, 50), count($missing)));
+            $this->line(sprintf('[%d/%d] %s — %d alan [%s]', $i + 1, $total, mb_substr($p->name_de, 0, 50), count($missing), implode('+', $langs)));
 
             $allOk = true;
             foreach (array_chunk($missing, self::CHUNK, true) as $chunk) {
-                $result = $this->callGemini($chunk, $p->name_de, $apiKey);
+                $result = $this->callGemini($chunk, $p->name_de, $apiKey, $langs);
                 if (! $result) { $allOk = false; break; }
-                foreach ($result['tr'] as $k => $v) { $tr[$k] = $v; }
-                foreach ($result['en'] as $k => $v) { $en[$k] = $v; }
+                foreach ($langs as $l) {
+                    foreach ($result[$l] as $k => $v) { $current[$l][$k] = $v; }
+                }
             }
 
             if (! $allOk) { $failed++; continue; }
 
             if ($this->option('dry-run')) {
-                $this->info('  ✅ ' . count($missing) . ' alan (dry-run)');
+                $this->info('  ✅ ' . count($missing) . ' alan (dry-run, ' . implode('+', $langs) . ')');
                 $success++;
             } else {
-                $p->update(['info_fields_tr' => $tr, 'info_fields_en' => $en]);
-                $this->info('  ✅ TR: ' . count($tr) . ' · EN: ' . count($en) . ' alan');
+                // Sadece hedef dil sütun(lar)ını yaz; diğeri DB'deki hâliyle korunur.
+                $update = [];
+                foreach ($langs as $l) { $update["info_fields_{$l}"] = $current[$l]; }
+                $p->update($update);
+                $this->info('  ✅ ' . implode(' · ', array_map(fn ($l) => strtoupper($l) . ': ' . count($current[$l]) . ' alan', $langs)));
                 $success++;
             }
 
@@ -147,52 +172,61 @@ class ProfessionsTranslateInfoFields extends Command
         if (! $force && ! $missingMode && ! $this->option('slug')) {
             $remaining = Profession::query()
                 ->whereNotNull('info_fields')->where('info_fields', '!=', '[]')
-                ->where(function ($w) {
-                    $w->whereNull('info_fields_tr')->orWhere('info_fields_tr', '[]');
+                ->where(function ($w) use ($cols) {
+                    foreach ($cols as $col) {
+                        $w->orWhereNull($col)->orWhere($col, '[]');
+                    }
                 })->count();
+            $tag = implode('+', $langs);
             $this->info($remaining > 0
-                ? "⏳ KALAN: {$remaining} meslek — bu URL'yi tekrar çağır."
-                : '🎉 TAMAMLANDI — kalan meslek yok.');
+                ? "⏳ KALAN ({$tag}): {$remaining} meslek — bu URL'yi tekrar çağır."
+                : "🎉 TAMAMLANDI ({$tag}) — kalan meslek yok.");
         }
 
         return $failed > 0 && $success === 0 ? self::FAILURE : self::SUCCESS;
     }
 
     /**
-     * Bir Almanca {key: value} chunk'ını TR + EN'ye çevirir, AYNI key'lerle döndürür.
-     * @return array{tr: array<string,string>, en: array<string,string>}|null
+     * Bir Almanca {key: value} chunk'ını hedef dil(ler)e çevirir, AYNI key'lerle döndürür.
+     * @param  array<int,string>  $langs  ['tr'], ['en'] veya ['tr','en']
+     * @return array{tr?: array<string,string>, en?: array<string,string>}|null
      */
-    private function callGemini(array $source, string $nameDe, string $apiKey): ?array
+    private function callGemini(array $source, string $nameDe, string $apiKey, array $langs = ['tr', 'en']): ?array
     {
         $sourceJson = json_encode($source, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         $keysJson = json_encode(array_keys($source), JSON_UNESCAPED_UNICODE);
 
+        $names = ['tr' => 'Türkçe', 'en' => 'İngilizce'];
+        $hedefDiller = implode(' ve ', array_map(fn ($l) => $names[$l], $langs));
+        $maasOrnek = in_array('tr', $langs, true)
+            ? 'TR "Maaş bilgisi değişkendir, BERUFENET\'i kontrol edin"'
+            : 'EN "Earnings vary; check BERUFENET"';
+        $cikti = implode(",\n  ", array_map(fn ($l) => "\"{$l}\": { <her kaynak key için " . $names[$l] . " çeviri> }", $langs));
+
         $prompt = <<<TXT
 Sen AlmanyaUni'nin meslek editörüsün. BERUFENET'ten alınan ALMANCA meslek bilgi alanlarını
-Türkçe ve İngilizce'ye çeviriyorsun. Türk lise/üniversite öğrencisi okuyacak.
+{$hedefDiller} diline çeviriyorsun. Türk lise/üniversite öğrencisi okuyacak.
 
 ALMAN MESLEK ADI: {$nameDe}
 
 KAYNAK (Almanca, JSON — key = BERUFENET alan adı, value = Almanca metin):
 {$sourceJson}
 
-GÖREV: Her value'yu hem Türkçe hem İngilizce'ye çevir. Doğal, akıcı, kısa cümleler.
+GÖREV: Her value'yu {$hedefDiller} diline çevir. Doğal, akıcı, kısa cümleler.
 
 KURALLAR:
 - Halüsinasyon yok — kaynakta olmayan rakam/süre/maaş/yer ekleme.
 - Almanya'ya özgü kavramları KORU + ilk geçişte parantezle aç: Ausbildung (mesleki eğitim),
   Studium (lisans), Berufsschule (meslek okulu), IHK, Bundesland (eyalet), BERUFENET.
-- Maaş/rakam söylenemiyorsa ("können nicht ... getroffen werden") → sade ver:
-  TR "Maaş bilgisi değişkendir, BERUFENET'i kontrol edin" / EN "Earnings vary; check BERUFENET".
+- Maaş/rakam söylenemiyorsa ("können nicht ... getroffen werden") → sade ver: {$maasOrnek}.
 - Liste/link içeren alanları (kaynaklar, borsalar, dernekler) kısa ve düz çevir, uydurma ekleme.
 - Madde imi yok; kısa paragraf. Lise mezunu anlasın.
 
 ÇIKTI: SADECE şu JSON, başka açıklama yok. Key'leri kaynaktakiyle BİREBİR AYNI bırak:
 {
-  "tr": { <her kaynak key için Türkçe çeviri> },
-  "en": { <her kaynak key için İngilizce çeviri> }
+  {$cikti}
 }
-Çevrilecek key listesi (ikisinde de aynen kullan): {$keysJson}
+Çevrilecek key listesi (aynen kullan): {$keysJson}
 TXT;
 
         for ($attempt = 0; $attempt < 3; $attempt++) {
@@ -219,7 +253,7 @@ TXT;
                 }
 
                 $text = $resp->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
-                $parsed = $this->parseJson($text);
+                $parsed = $this->parseJson($text, $langs);
                 if ($parsed) {
                     return $parsed;
                 }
@@ -236,7 +270,8 @@ TXT;
         return null;
     }
 
-    private function parseJson(string $text): ?array
+    /** @param array<int,string> $langs */
+    private function parseJson(string $text, array $langs = ['tr', 'en']): ?array
     {
         $text = trim($text);
         if (preg_match('/```(?:json)?\s*\n?(.+)\n?```/s', $text, $m)) {
@@ -244,13 +279,18 @@ TXT;
         }
 
         $data = json_decode($text, true);
-        if (! is_array($data) || ! isset($data['tr']) || ! isset($data['en'])) {
+        if (! is_array($data)) {
             return null;
         }
 
-        return [
-            'tr' => array_filter((array) $data['tr'], fn ($v) => is_string($v) && trim($v) !== ''),
-            'en' => array_filter((array) $data['en'], fn ($v) => is_string($v) && trim($v) !== ''),
-        ];
+        $out = [];
+        foreach ($langs as $l) {
+            if (! isset($data[$l]) || ! is_array($data[$l])) {
+                return null; // hedef dil eksik → geçersiz, retry
+            }
+            $out[$l] = array_filter((array) $data[$l], fn ($v) => is_string($v) && trim($v) !== '');
+        }
+
+        return $out;
     }
 }
