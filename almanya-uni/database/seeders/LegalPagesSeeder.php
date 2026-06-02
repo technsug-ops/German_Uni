@@ -179,7 +179,7 @@ ABD'ye veri aktarımı **yapılmaz**.
 
 ## 6. Çerezler
 
-Detaylar için [Çerez Politikası](/cerez-politikasi) sayfamızı inceleyin. Kısaca:
+Detaylar için [Çerez Politikası](/cookie-policy) sayfamızı inceleyin. Kısaca:
 
 - **Zorunlu:** Oturum çerezi (CSRF, login), dil tercihi
 - **Analitik:** Anonim ziyaretçi sayımı (sadece consent verildiyse)
@@ -260,7 +260,7 @@ We share data only with:
 
 ## 6. Cookies
 
-See our [Cookie Policy](/en/cerez-politikasi). Summary:
+See our [Cookie Policy](/en/cookie-policy). Summary:
 
 - **Essential:** Session (CSRF, login), language preference
 - **Analytics:** Anonymous visitor counts (only with consent)
@@ -341,7 +341,7 @@ Daten geben wir nur an folgende Kategorien weiter:
 
 ## 6. Cookies
 
-Details siehe unsere [Cookie-Richtlinie](/de/cerez-politikasi). Kurz:
+Details siehe unsere [Cookie-Richtlinie](/de/cookie-policy). Kurz:
 
 - **Notwendig:** Session (CSRF, Login), Sprachwahl
 - **Statistik:** Anonyme Besucherzählung (nur mit Einwilligung)
@@ -647,7 +647,7 @@ Hizmeti veya bölümlerini önceden bildirimle veya bildirimsiz değiştirme/son
 
 ## 9. Sorumluluk Sınırlandırması
 
-İçerik tavsiye niteliğinde değildir — detaylar için [Yasal Uyarı](/yasal-uyari) sayfamızı inceleyin. Kasıt veya ağır ihmal dışında, hizmet kesintisi veya bilgi yanlışlığından doğan **dolaylı zararlardan sorumlu değiliz**. Hayat-vücut-sağlık zararları ve ProdHaftG kapsamı saklıdır.
+İçerik tavsiye niteliğinde değildir — detaylar için [Yasal Uyarı](/disclaimer) sayfamızı inceleyin. Kasıt veya ağır ihmal dışında, hizmet kesintisi veya bilgi yanlışlığından doğan **dolaylı zararlardan sorumlu değiliz**. Hayat-vücut-sağlık zararları ve ProdHaftG kapsamı saklıdır.
 
 ## 10. Uygulanacak Hukuk ve Yargı Yeri
 
@@ -723,7 +723,7 @@ We reserve the right to modify or discontinue the Service with or without notice
 
 ## 9. Limitation of Liability
 
-Content is informational, not advisory — see our [Disclaimer](/en/yasal-uyari). Except for intent or gross negligence, we are not liable for **indirect damages** from service interruptions or inaccurate information. Damages to life-body-health and ProdHaftG remain unaffected.
+Content is informational, not advisory — see our [Disclaimer](/en/disclaimer). Except for intent or gross negligence, we are not liable for **indirect damages** from service interruptions or inaccurate information. Damages to life-body-health and ProdHaftG remain unaffected.
 
 ## 10. Governing Law and Jurisdiction
 
@@ -799,7 +799,7 @@ Wir behalten uns vor, den Dienst mit oder ohne Ankündigung zu ändern oder einz
 
 ## 9. Haftungsbeschränkung
 
-Inhalte sind informativ, keine Beratung — siehe [Haftungsausschluss](/de/yasal-uyari). Außer bei Vorsatz oder grober Fahrlässigkeit haften wir nicht für **indirekte Schäden** durch Betriebsunterbrechungen oder ungenaue Informationen. Schäden an Leben, Körper, Gesundheit und ProdHaftG bleiben unberührt.
+Inhalte sind informativ, keine Beratung — siehe [Haftungsausschluss](/de/disclaimer). Außer bei Vorsatz oder grober Fahrlässigkeit haften wir nicht für **indirekte Schäden** durch Betriebsunterbrechungen oder ungenaue Informationen. Schäden an Leben, Körper, Gesundheit und ProdHaftG bleiben unberührt.
 
 ## 10. Anwendbares Recht und Gerichtsstand
 

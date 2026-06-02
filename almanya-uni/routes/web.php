@@ -45,14 +45,15 @@ $routes = function () {
         ->middleware('throttle:60,1')
         ->name('search.suggest');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
-    Route::get('/ekip', [AboutController::class, 'team'])->name('team');
-    Route::redirect('/team', '/ekip', 301);
-    Route::get('/yazar/{slug}', [AboutController::class, 'author'])->name('author.show');
-    Route::redirect('/author/{slug}', '/yazar/{slug}', 301);
-    Route::get('/almanyada-egitim', [\App\Http\Controllers\Web\AboutGermanyController::class, 'index'])->name('study.germany');
-    Route::redirect('/about-germany', '/almanyada-egitim', 301);
-    Route::redirect('/neden-almanya', '/almanyada-egitim', 301);
-    Route::redirect('/yazarlar', '/ekip', 301);
+    Route::get('/team', [AboutController::class, 'team'])->name('team');
+    Route::redirect('/ekip', '/team', 301);
+    Route::get('/author/{slug}', [AboutController::class, 'author'])->name('author.show');
+    Route::redirect('/yazar/{slug}', '/author/{slug}', 301);
+    Route::get('/study-in-germany', [\App\Http\Controllers\Web\AboutGermanyController::class, 'index'])->name('study.germany');
+    Route::redirect('/almanyada-egitim', '/study-in-germany', 301);
+    Route::redirect('/about-germany', '/study-in-germany', 301);
+    Route::redirect('/neden-almanya', '/study-in-germany', 301);
+    Route::redirect('/yazarlar', '/team', 301);
     Route::post('/feedback', [\App\Http\Controllers\Web\FeedbackController::class, 'store'])
         ->middleware('throttle:5,1')
         ->name('feedback.store');
@@ -74,11 +75,15 @@ $routes = function () {
         ->name('newsletter.unsubscribe');
 
     // Legal pages — KVKK + GDPR + TMG (DB-driven, admin-editable via Filament)
-    Route::get('/gizlilik',     [LegalController::class, 'privacy'])->name('legal.privacy');
-    Route::get('/kosullar',     [LegalController::class, 'terms'])->name('legal.terms');
-    Route::get('/cerez-politikasi', [LegalController::class, 'cookies'])->name('legal.cookies');
-    Route::get('/impressum',    [LegalController::class, 'impressum'])->name('legal.impressum');
-    Route::get('/yasal-uyari',  [LegalController::class, 'disclaimer'])->name('legal.disclaimer');
+    Route::get('/privacy',       [LegalController::class, 'privacy'])->name('legal.privacy');
+    Route::get('/terms',         [LegalController::class, 'terms'])->name('legal.terms');
+    Route::get('/cookie-policy', [LegalController::class, 'cookies'])->name('legal.cookies');
+    Route::get('/impressum',     [LegalController::class, 'impressum'])->name('legal.impressum'); // Almanca yasal terim — korunur
+    Route::get('/disclaimer',    [LegalController::class, 'disclaimer'])->name('legal.disclaimer');
+    Route::redirect('/gizlilik', '/privacy', 301);
+    Route::redirect('/kosullar', '/terms', 301);
+    Route::redirect('/cerez-politikasi', '/cookie-policy', 301);
+    Route::redirect('/yasal-uyari', '/disclaimer', 301);
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
@@ -88,9 +93,13 @@ $routes = function () {
         ->name('blog.comment.store');
 
     // Haber akışı — "Almanya'dan" (type='news' Post'lar)
-    Route::get('/haberler', [\App\Http\Controllers\Web\NewsController::class, 'index'])->name('news.index');
-    Route::get('/haberler/kategori/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'category'])->name('news.category');
-    Route::get('/haberler/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'show'])->name('news.show');
+    Route::get('/news', [\App\Http\Controllers\Web\NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/category/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'category'])->name('news.category');
+    Route::get('/news/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'show'])->name('news.show');
+    // Eski Türkçe path'ler → İngilizce canonical (SEO/var olan linkler için 301)
+    Route::redirect('/haberler/kategori/{slug}', '/news/category/{slug}', 301);
+    Route::redirect('/haberler/{slug}', '/news/{slug}', 301);
+    Route::redirect('/haberler', '/news', 301);
 
     Route::get('/faq', [FaqController::class, 'index'])->name('faqs.index');
     Route::get('/faq/{topic}', [FaqController::class, 'topic'])->name('faqs.topic');
@@ -227,13 +236,15 @@ $routes = function () {
         Route::post('/housing/tips', [HousingController::class, 'storeTip'])->name('housing.tip-store');
 
         // Topluluk katkısı (deneyim/ipucu paylaşımı)
-        Route::get('/deneyim-paylas', [\App\Http\Controllers\Web\ContributionController::class, 'create'])->name('contribute');
-        Route::post('/deneyim-paylas', [\App\Http\Controllers\Web\ContributionController::class, 'store'])->middleware('throttle:5,1')->name('contribute.store');
+        Route::get('/contribute', [\App\Http\Controllers\Web\ContributionController::class, 'create'])->name('contribute');
+        Route::post('/contribute', [\App\Http\Controllers\Web\ContributionController::class, 'store'])->middleware('throttle:5,1')->name('contribute.store');
     });
+    Route::redirect('/deneyim-paylas', '/contribute', 301);
 
     // İletişim / gönüllü formu — PUBLIC (auth grubu DIŞINDA; ziyaretçi de yazabilir)
-    Route::get('/iletisim', [\App\Http\Controllers\Web\ContactController::class, 'create'])->name('contact');
-    Route::post('/iletisim', [\App\Http\Controllers\Web\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+    Route::get('/contact', [\App\Http\Controllers\Web\ContactController::class, 'create'])->name('contact');
+    Route::post('/contact', [\App\Http\Controllers\Web\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+    Route::redirect('/iletisim', '/contact', 301);
 
     // Application Tracker — locale grubu içinde (mega menü doğru locale alabilsin)
     Route::get('/journey',                       [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'show'])->name('journey.show');
@@ -784,6 +795,25 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GEÇİCİ — eksik prose (program/üni açıklaması) TR→EN/DE doldur. Strict fallback
+    // ile EN/DE'de gizlenen içeriği native (ContentVoice) çeviriyle görünür kılar.
+    // Re-runnable: sadece boş alanları doldurur. ?type=program|university|all &limit=N
+    Route::get('/admin/ops/fill-prose', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('i18n:fill-prose', array_filter([
+                '--type'  => request()->string('type', 'all')->value(),
+                '--limit' => (int) request()->integer('limit'),
+                '--delay' => (int) request()->integer('delay', 250),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Otomatik haber çekme (Mod 1) — KAS'ta SSH yok; tarayıcıdan veya KAS
     // Cronjob bu URL'yi çağırarak RSS kaynaklardan aday çeker. Idempotent (dedupe).
     Route::get('/admin/ops/news-fetch', function () {
@@ -808,6 +838,7 @@ Route::middleware('auth')->group(function () {
         try {
             \Illuminate\Support\Facades\Artisan::call('news:backfill-images', array_filter([
                 '--dry-run' => request()->boolean('dry'),
+                '--force'   => request()->boolean('force'), // metinli/eski görselleri yenile
                 '--limit'   => (int) request()->integer('limit'),
             ]));
             $out = \Illuminate\Support\Facades\Artisan::output();

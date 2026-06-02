@@ -77,7 +77,7 @@ class NewsController extends Controller
                 ->where('translation_group_id', $post->translation_group_id)
                 ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
                 ->get(['locale', 'slug'])
-                ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/haberler/' . $s->slug)])
+                ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/news/' . $s->slug)])
                 ->all();
             view()->share('localeUrls', $localeUrls);
         }

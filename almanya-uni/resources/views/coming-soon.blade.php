@@ -127,7 +127,7 @@
                    class="flex-1 bg-accent-500 hover:bg-accent-600 transition text-center px-6 py-3.5 rounded-lg font-bold shadow-lg">
                     {{ $strings['cta_back'] }} →
                 </a>
-                <a href="/{{ $locale }}/iletisim?type=general&subject={{ urlencode($strings['cta_notify']) }}"
+                <a href="/{{ $locale }}/contact?type=general&subject={{ urlencode($strings['cta_notify']) }}"
                    class="flex-1 inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 transition text-center px-6 py-3.5 rounded-lg font-semibold">
                     {!! view('components.svg-icon', ['name' => 'envelope', 'class' => 'w-4 h-4'])->render() !!} {{ $strings['cta_notify'] }}
                 </a>
