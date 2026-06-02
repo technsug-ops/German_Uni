@@ -39,11 +39,20 @@ class NewsCandidatesTable
                 TextColumn::make('draft_title')
                     ->label('Başlık')
                     ->state(fn (NewsCandidate $r) => $r->draft_title ?: $r->orig_title ?: '—')
-                    ->limit(60)->wrap()->weight('bold')->searchable(['draft_title', 'orig_title']),
-                TextColumn::make('suggestedCategory.name_tr')->label('Kategori')->badge()->toggleable(),
-                TextColumn::make('source_name')->label('Kaynak')->toggleable(),
+                    ->weight('bold')
+                    ->wrap()
+                    ->lineClamp(2)
+                    ->description(fn (NewsCandidate $r) => $r->source_name ?: null)
+                    ->tooltip(fn (NewsCandidate $r) => $r->draft_title ?: $r->orig_title)
+                    ->searchable(['draft_title', 'orig_title'])
+                    ->grow(),
+                TextColumn::make('suggestedCategory.name_tr')->label('Kategori')->badge()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('source_name')->label('Kaynak')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('priority')->label('Öncelik')->badge()
-                    ->color(fn ($state) => $state > 0 ? 'warning' : 'gray')->toggleable(),
+                    ->color(fn ($state) => $state > 0 ? 'warning' : 'gray')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')->label('Eklendi')->dateTime('d.m.Y H:i')->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
