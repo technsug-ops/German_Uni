@@ -21,13 +21,16 @@ class ProfessionController extends Controller
 
         $query = Profession::query()->where('is_active', true);
 
-        if ($filters['q']) {
-            $q = $filters['q'];
-            $query->where(function ($w) use ($q) {
-                $w->where('name_de', 'like', "%$q%")
-                  ->orWhere('short_name', 'like', "%$q%")
-                  ->orWhere('kldb_code', 'like', "%$q%")
-                  ->orWhere('description_de', 'like', "%$q%");
+        // Katmanlı arama: indexli alanlar FULLTEXT (alaka) + kod/kısa-ad LIKE.
+        $q = $filters['q'];
+        $like = $q ? '%' . str_replace(['%', '_'], ['\%', '\_'], $q) . '%' : null;
+        $ftCols = ['name_de', 'name_tr', 'description_tr', 'description_de'];
+
+        if ($q) {
+            $query->where(function ($w) use ($q, $like, $ftCols) {
+                $w->searchFulltext($q, $ftCols)
+                  ->orWhere('short_name', 'like', $like)
+                  ->orWhere('kldb_code', 'like', $like);
             });
         }
 
@@ -38,7 +41,12 @@ class ProfessionController extends Controller
             $query->whereHas('field', fn ($f) => $f->where('slug', $filters['field']));
         }
 
-        $professions = $query->orderBy('name_de')->paginate(self::PER_PAGE)->withQueryString();
+        $professions = $query
+            ->when($q, fn ($qq) => $qq
+                ->orderByRaw('CASE WHEN name_de LIKE ? OR name_tr LIKE ? THEN 0 ELSE 1 END', [$like, $like])
+                ->orderByRelevance($q, $ftCols))
+            ->orderBy('name_de')
+            ->paginate(self::PER_PAGE)->withQueryString();
 
         $totals = [
             'all'           => Profession::where('is_active', true)->count(),

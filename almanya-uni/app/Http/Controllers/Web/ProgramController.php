@@ -27,14 +27,27 @@ class ProgramController extends Controller
                 'field:id,slug,name_tr,name_en,name_de,icon,color',
             ]);
 
-        // Arama
-        if ($filters['q']) {
-            $q = $filters['q'];
-            $query->where(function ($w) use ($q) {
-                $w->where('name_de',   'like', "%$q%")
-                  ->orWhere('name_en', 'like', "%$q%")
-                  ->orWhere('name_tr', 'like', "%$q%")
-                  ->orWhereHas('university', fn ($u) => $u->where('name_de', 'like', "%$q%"));
+        // Arama — katmanlı (ana sayfa SearchController prensibi):
+        //   1) Program kendi alanlarında FULLTEXT (token-aware + alaka skoru)
+        //   2) Üniversite adı (örn "Darmstadt", "TU München")
+        //   3) Şehir adı (örn "Münih", "Köln")
+        // Sıralama relevance bloğunda (aşağıda) MATCH skoruna göre yapılır.
+        $searchCols = ['name_de', 'name_en', 'name_tr', 'description_tr', 'description_en'];
+        $q = $filters['q'];
+        $like = $q ? '%' . str_replace(['%', '_'], ['\%', '\_'], $q) . '%' : null;
+
+        if ($q) {
+            $query->where(function ($w) use ($q, $like, $searchCols) {
+                $w->searchFulltext($q, $searchCols)
+                  ->orWhereHas('university', fn ($u) => $u
+                        ->where('name_de', 'like', $like)
+                        ->orWhere('name_en', 'like', $like)
+                        ->orWhere('name_tr', 'like', $like)
+                        ->orWhere('short_name', 'like', $like))
+                  ->orWhereHas('university.city', fn ($c) => $c
+                        ->where('name_de', 'like', $like)
+                        ->orWhere('name_tr', 'like', $like)
+                        ->orWhere('name_en', 'like', $like));
             });
         }
 
@@ -100,8 +113,15 @@ class ProgramController extends Controller
             'name'        => $query->orderBy('name_de'),
             'duration'    => $query->orderBy('duration_semesters'),
             'deadline'    => $query->orderByRaw('LEAST(COALESCE(application_deadline_winter, "9999-12-31"), COALESCE(application_deadline_summer, "9999-12-31"))'),
-            default       => $query->orderByRaw('CASE WHEN description_tr IS NULL THEN 1 ELSE 0 END')
-                                   ->orderBy('name_de'),
+            // Varsayılan/relevance: arama varsa isim-eşleşmesi + FULLTEXT alaka skoru
+            // önde (ana sayfa prensibi); arama yoksa TR-açıklamalılar önde.
+            default       => $q
+                ? $query->orderByRaw('CASE WHEN name_de LIKE ? THEN 0 WHEN (name_en LIKE ? OR name_tr LIKE ?) THEN 1 ELSE 2 END', [$like, $like, $like])
+                         ->orderByRelevance($q, $searchCols)
+                         ->orderByRaw('CASE WHEN description_tr IS NULL THEN 1 ELSE 0 END')
+                         ->orderBy('name_de')
+                : $query->orderByRaw('CASE WHEN description_tr IS NULL THEN 1 ELSE 0 END')
+                        ->orderBy('name_de'),
         };
 
         $programs = $query->paginate(self::PER_PAGE)->withQueryString();

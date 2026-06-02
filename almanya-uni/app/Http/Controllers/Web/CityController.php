@@ -19,11 +19,13 @@ class CityController extends Controller
             ->with('state:id,slug,name_de,name_tr,name_en')
             ->having('universities_count', '>', 0);
 
+        // Katmanlı arama: şehir adlarında FULLTEXT + isim-eşleşmesi/alaka önde.
         if ($request->filled('q')) {
             $s = $request->input('q');
-            $query->where(fn ($w) => $w->where('name_de', 'like', "%$s%")
-                ->orWhere('name_tr', 'like', "%$s%")
-                ->orWhere('name_en', 'like', "%$s%"));
+            $like = '%' . str_replace(['%', '_'], ['\%', '\_'], $s) . '%';
+            $query->searchFulltext($s, ['name_de', 'name_tr', 'name_en'])
+                  ->orderByRaw('CASE WHEN name_de LIKE ? OR name_tr LIKE ? THEN 0 ELSE 1 END', [$like, $like])
+                  ->orderByRelevance($s, ['name_de', 'name_tr', 'name_en']);
         }
 
         if ($request->filled('state')) {

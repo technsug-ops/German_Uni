@@ -29,7 +29,7 @@
         let abortController = null;
         let debounceTimer = null;
 
-        async function submitForm(pushState = true) {
+        async function submitForm(pushState = true, scroll = true) {
             // Cancel any in-flight request
             if (abortController) abortController.abort();
             abortController = new AbortController();
@@ -68,8 +68,11 @@
                     history.pushState({ asyncFilter: true }, '', cleanUrl);
                 }
 
-                // Smooth scroll to results
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Smooth scroll to results — only on explicit actions (submit/pagination),
+                // NOT on live text typing (yanking the viewport away on every keystroke).
+                if (scroll) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             } catch (err) {
                 if (err.name === 'AbortError') return;
                 console.error('Async filter failed:', err);
@@ -92,11 +95,13 @@
                 debounceTimer = setTimeout(() => submitForm(true), 150);
             });
         });
-        // Text inputs — debounce longer to avoid hammering the server
+        // Text inputs — debounce longer to avoid hammering the server.
+        // scroll=false: live typing must NOT scroll the page (kullanıcı yazarken
+        // her karakterde sayfa aşağı kaymasın — sonuçlar yerinde güncellenir).
         form.querySelectorAll('input[type=text], input[type=search]').forEach(input => {
             input.addEventListener('input', () => {
                 clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(() => submitForm(true), 500);
+                debounceTimer = setTimeout(() => submitForm(true, false), 500);
             });
         });
 
