@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Http;
  */
 class ProfessionsTranslateInfoFields extends Command
 {
-    private const CHUNK = 10;        // tek Gemini çağrısında çevrilecek alan sayısı
+    private const CHUNK = 6;         // tek Gemini çağrısında çevrilecek alan sayısı (TR+EN çıktısı token'ı şişirir)
     private const MAX_VALUE = 1000;  // alan başına kaynak char sınırı
 
     protected $signature = 'professions:translate-info-fields
@@ -204,7 +204,10 @@ TXT;
                         'contents' => [['parts' => [['text' => $prompt]]]],
                         'generationConfig' => [
                             'temperature'      => 0.4,
-                            'maxOutputTokens'  => 8000,
+                            // 2.5-flash varsayılan "thinking" output bütçesini yiyip JSON'u "en"e
+                            // gelmeden kesiyordu (parse fail). Çeviri reasoning istemez → kapat.
+                            'thinkingConfig'   => ['thinkingBudget' => 0],
+                            'maxOutputTokens'  => 16000,
                             'responseMimeType' => 'application/json',
                         ],
                     ]);
