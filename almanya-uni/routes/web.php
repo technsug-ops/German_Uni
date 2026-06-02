@@ -398,6 +398,31 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     ]);
 })->middleware('throttle:5,1');
 
+// Token-gated meslek (BERUFENET) çeviri backfill — KAS Cronjob bunu curl ile
+// oturumsuz çağırır (admin /admin/ops/... ise oturum ister). Zaman bütçesiyle
+// her çağrı ~max_seconds kadar çalışıp temiz çıkar; "KALAN: X" / "TAMAMLANDI" basar.
+//   KAS Cronjob (2 dk'da bir): curl "https://applytogerman.com/_system/professions-translate?token=XXX"
+Route::get('/_system/professions-translate', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(120);
+    try {
+        \Illuminate\Support\Facades\Artisan::call('professions:translate-info-fields', array_filter([
+            '--limit'       => (int) $request->integer('limit', 0),
+            '--max-seconds' => (int) $request->integer('max_seconds', 50),
+            '--sleep'       => (int) $request->integer('sleep', 1),
+            '--missing'     => $request->boolean('missing'),
+        ], fn ($v) => $v !== false && $v !== null));
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        $out = 'EXCEPTION: ' . $e->getMessage();
+    }
+    return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:30,1');
+
 // Token-gated single-image cache override — for cases where a uni has no
 // usable Wikipedia image and we want to point to a custom CDN URL instead.
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
