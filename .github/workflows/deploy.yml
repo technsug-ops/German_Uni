@@ -248,10 +248,10 @@ jobs:
           date -u +"%Y-%m-%dT%H:%M:%SZ" > ./upload-staging/.deploy-pulse
           ls -lh ./upload-staging/
 
-      # SamKirkland action — workflow-level retry için 3 deneme
-      # (Curl yaklaşımı 14 ardışık fail aldı, SamKirkland #114'te başarılıydı.
-      #  Şimdi action'a dönüp WORKFLOW-level retry ekliyoruz: 3 deneme arasında
-      #  20s bekle. Önceki ECONNRESET tek-vuruşluk transient'lerse retry çözer.)
+      # SamKirkland action — WORKFLOW-level retry: 5 deneme, escalating bekleme
+      # (KAS FTPS ECONNRESET deploy yogunlugunda karasiz; 5 deneme + 30/45/60/90s bekleme
+      #  transient/oturum-limiti hatalarini riding-out eder. 2026-06-02 3->5 artirildi.)
+
       - name: Upload bundle via FTPS (attempt 1)
         id: ftp1
         continue-on-error: true
@@ -267,10 +267,11 @@ jobs:
           state-name: .ftp-deploy-bundle-state.json
           log-level: standard
           dangerous-clean-slate: false
+          timeout: 60000
 
-      - name: Wait before retry (if attempt 1 failed)
+      - name: Wait before FTPS attempt 2
         if: steps.ftp1.outcome == 'failure'
-        run: sleep 20
+        run: sleep 30
 
       - name: Upload bundle via FTPS (attempt 2)
         id: ftp2
@@ -288,13 +289,16 @@ jobs:
           state-name: .ftp-deploy-bundle-state.json
           log-level: standard
           dangerous-clean-slate: false
+          timeout: 60000
 
-      - name: Wait before final retry (if attempt 2 failed)
+      - name: Wait before FTPS attempt 3
         if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
-        run: sleep 30
+        run: sleep 45
 
-      - name: Upload bundle via FTPS (attempt 3 — final)
+      - name: Upload bundle via FTPS (attempt 3)
+        id: ftp3
         if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -307,6 +311,49 @@ jobs:
           state-name: .ftp-deploy-bundle-state.json
           log-level: standard
           dangerous-clean-slate: false
+          timeout: 60000
+
+      - name: Wait before FTPS attempt 4
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure' && steps.ftp3.outcome == 'failure'
+        run: sleep 60
+
+      - name: Upload bundle via FTPS (attempt 4)
+        id: ftp4
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure' && steps.ftp3.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./upload-staging/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
+          timeout: 60000
+
+      - name: Wait before FTPS attempt 5
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure' && steps.ftp3.outcome == 'failure' && steps.ftp4.outcome == 'failure'
+        run: sleep 90
+
+      - name: Upload bundle via FTPS (attempt 5 — final)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure' && steps.ftp3.outcome == 'failure' && steps.ftp4.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: ./upload-staging/
+          server-dir: /almanya-uni/storage/app/
+          state-name: .ftp-deploy-bundle-state.json
+          log-level: standard
+          dangerous-clean-slate: false
+          timeout: 60000
 
       # ─────────────────────────────────────────────────────
       # 8. Auto-trigger: server'da _deploy.php'yi çağır
