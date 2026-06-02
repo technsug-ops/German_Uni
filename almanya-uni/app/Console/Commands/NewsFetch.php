@@ -207,6 +207,23 @@ class NewsFetch extends Command
                 return $items;
             }
 
+            // RSS 1.0 / RDF (ör. Deutsche Welle) — item'lar kök altında (channel kardeşi),
+            // tarih dc:date namespace'inde. RSS 2.0/Atom'dan önce burada yakalanmaz çünkü
+            // channel->item ve entry yok; bu yüzden bu dalda işlenir.
+            if (isset($xml->item)) {
+                $dc = 'http://purl.org/dc/elements/1.1/';
+                foreach ($xml->item as $item) {
+                    $dcDate = (string) ($item->children($dc)->date ?? '');
+                    $items[] = [
+                        'title'   => trim((string) $item->title) ?: null,
+                        'link'    => trim((string) $item->link) ?: null,
+                        'summary' => trim(strip_tags((string) $item->description)) ?: null,
+                        'date'    => $this->parseDate($dcDate ?: (string) $item->pubDate),
+                    ];
+                }
+                return $items;
+            }
+
             // Atom
             if (isset($xml->entry)) {
                 foreach ($xml->entry as $entry) {
