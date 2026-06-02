@@ -149,7 +149,7 @@
                     <svg class="w-4 h-4 transition-transform" id="advArrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                     </svg>
-                    {{ __('Erweiterte Suche / Advanced Search') }}
+                    {{ __('Advanced Search') }}
                     @if ($advancedActive)
                         <span class="inline-block w-2 h-2 rounded-full bg-accent-500 animate-pulse" title="{{ __('Active filters present') }}"></span>
                     @endif
@@ -166,12 +166,12 @@
             <div id="advPanel" class="{{ $advancedActive ? '' : 'hidden' }} mt-4 pt-4 border-t border-gray-100">
 
                 {{-- STUDIENGANGSMERKMALE (Program Özellikleri) --}}
-                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">{{ __('Studiengangsmerkmale (Program Properties)') }}</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">{{ __('Program properties') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
 
                     {{-- Studienform — DB'de boş, "yakında" --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Studienform</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Study form') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
@@ -179,7 +179,7 @@
 
                     {{-- Fächergruppen (Alan) --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Fächergruppen <span class="text-gray-400">({{ __('Field') }})</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Field') }}</label>
                         <select name="field" onchange="this.form.submit()" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
                             <option value="">{{ __('All') }}</option>
                             @foreach ($fields as $f)
@@ -190,7 +190,7 @@
 
                     {{-- Studienbeginn (Sömestre) --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Studienbeginn <span class="text-gray-400">({{ __('Semester') }})</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Start semester') }}</label>
                         <select name="semester" onchange="this.form.submit()" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
                             <option value="">{{ __('All') }}</option>
                             @foreach ($semesterLabels as $k => $label)
@@ -201,7 +201,7 @@
 
                     {{-- Süre --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Studiendauer <span class="text-gray-400">({{ __('Duration') }})</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Duration') }}</label>
                         <select name="duration_range" onchange="this.form.submit()" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
                             <option value="">{{ __('All') }}</option>
                             @foreach ($durationLabels as $k => $label)
@@ -212,7 +212,7 @@
 
                     {{-- Zulassungsmodus (NC) — DB'de boş --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Zulassungsmodus <span class="text-gray-400">(NC)</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Admission mode') }} <span class="text-gray-400">(NC)</span></label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
@@ -220,7 +220,7 @@
 
                     {{-- Studieren ohne Abitur — DB'de yok --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Studieren ohne Abitur</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Study without Abitur') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
@@ -228,7 +228,7 @@
 
                     {{-- Mastertyp — DB'de yok --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Mastertyp</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Master type') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
@@ -238,18 +238,18 @@
                     <div class="flex items-end">
                         <label class="flex items-center gap-2 text-sm cursor-not-allowed text-gray-400">
                             <input type="checkbox" disabled class="rounded">
-                            <span>Doppelabschluss <span class="text-gray-300">({{ __('coming soon') }})</span></span>
+                            <span>{{ __('Double degree') }} <span class="text-gray-300">({{ __('coming soon') }})</span></span>
                         </label>
                     </div>
                 </div>
 
                 {{-- HOCHSCHULMERKMALE --}}
-                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 mt-2">{{ __('Hochschulmerkmale, geografische Merkmale (University and geographic properties)') }}</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 mt-2">{{ __('University and geographic properties') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
 
                     {{-- Hochschulname --}}
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Hochschulname <span class="text-gray-400">(slug)</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('University name') }} <span class="text-gray-400">(slug)</span></label>
                         <input type="text" name="uni" value="{{ $filters['uni'] }}"
                                placeholder="{{ __('e.g. universitat-heidelberg-q151510') }}"
                                class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
@@ -257,7 +257,7 @@
 
                     {{-- Bundesland (Eyalet) --}}
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Bundesland <span class="text-gray-400">({{ __('State') }})</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Federal state') }}</label>
                         <select name="state" onchange="this.form.submit()" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
                             <option value="">{{ __('All') }}</option>
                             @foreach ($states as $s)
@@ -268,23 +268,23 @@
 
                     {{-- Hochschultyp / Trägerschaft --}}
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Hochschultyp</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('University type') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Trägerschaft</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Funding type') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon') }}</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">PLZ <span class="text-gray-400">({{ __('Postal code') }})</span></label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Postal code') }} <span class="text-gray-400">(PLZ)</span></label>
                         <input type="text" disabled placeholder="{{ __('Coming soon') }}" class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">im Umkreis von</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Within radius') }}</label>
                         <select disabled class="w-full border border-gray-200 rounded px-3 py-2 text-sm bg-gray-50 text-gray-400 cursor-not-allowed">
                             <option>{{ __('Coming soon (5/10/25/50 km)') }}</option>
                         </select>
@@ -335,11 +335,11 @@
                     <div class="flex gap-2 w-full sm:w-auto">
                         <a href="{{ route('programs.index') }}"
                            class="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition text-sm font-semibold">
-                            ↻ Zurücksetzen
+                            ↻ {{ __('Reset all') }}
                         </a>
                         <button type="submit"
                                 class="flex-1 sm:flex-initial bg-primary-700 hover:bg-primary-800 text-white font-bold px-8 py-2.5 rounded-lg transition">
-                            {{ __(':n Treffer anzeigen', ['n' => number_format($programs->total(), 0, ',', '.')]) }}
+                            {{ __('Show :n results', ['n' => number_format($programs->total(), 0, ',', '.')]) }}
                         </button>
                     </div>
                 </div>
@@ -352,7 +352,7 @@
     {{-- DB'de NC verisi VAR — kendi filter chip'lerimizi göster --}}
     <div class="bg-blue-50 border-b border-blue-200">
         <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center gap-3 text-sm flex-wrap">
-            <span class="text-blue-900 font-semibold flex-shrink-0">🔓 Zulassungsmodus:</span>
+            <span class="text-blue-900 font-semibold flex-shrink-0">🔓 {{ __('Admission mode') }}:</span>
             <a href="{{ request()->fullUrlWithQuery(['admission' => 'zulassungsfrei', 'page' => null]) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'zulassungsfrei'
