@@ -24,19 +24,19 @@
                    {{ $isFav
                         ? 'bg-pink-50 border-pink-300 text-pink-700 hover:bg-pink-100'
                         : 'bg-white border-gray-300 text-gray-700 hover:border-pink-400 hover:bg-pink-50' }}"
-            aria-label="Favorile">
+            aria-label="{{ __('Favorite') }}">
         <svg class="fav-icon w-4 h-4 {{ $isFav ? 'fill-current' : '' }}" fill="{{ $isFav ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 20 4.318 12.682a4.5 4.5 0 0 1 0-6.364Z"/>
         </svg>
-        <span class="fav-label">{{ $isFav ? 'Favoride' : 'Favorile' }}</span>
+        <span class="fav-label">{{ $isFav ? __('In favorites') : __('Favorite') }}</span>
     </button>
 @else
     <a href="{{ route('login') }}"
        class="{{ $widthClass }} flex items-center justify-center rounded-lg border bg-white border-gray-300 text-gray-700 hover:border-pink-400 hover:bg-pink-50 transition font-semibold {{ $sizeClasses }}"
-       title="Favorilemek için giriş yap">
+       title="{{ __('Log in to favorite') }}">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 20 4.318 12.682a4.5 4.5 0 0 1 0-6.364Z"/>
         </svg>
-        <span>Favorile</span>
+        <span>{{ __('Favorite') }}</span>
     </a>
 @endauth

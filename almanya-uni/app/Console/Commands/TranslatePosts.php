@@ -40,9 +40,13 @@ class TranslatePosts extends Command
         } elseif ($ids = $this->option('posts')) {
             $q->whereIn('id', explode(',', $ids));
         } elseif ($this->option('all-untranslated')) {
-            $q->whereDoesntHave('siblings', function ($q) {
-                $q->whereIn('locale', ['en', 'de']);
-            });
+            // EN VEYA DE eksik olan tüm TR post'lar (yalnız ikisi-birden-eksik değil).
+            // Loop içindeki $needed = array_diff(['en','de'], $existing) tamamlananı atlar.
+            $q->whereNotNull('translation_group_id')
+              ->where(function ($w) {
+                  $w->whereDoesntHave('siblings', fn ($s) => $s->where('locale', 'en'))
+                    ->orWhereDoesntHave('siblings', fn ($s) => $s->where('locale', 'de'));
+              });
         } else {
             $this->error('Bir hedef seç: --post=N, --posts=A,B,C veya --all-untranslated');
             return self::INVALID;
