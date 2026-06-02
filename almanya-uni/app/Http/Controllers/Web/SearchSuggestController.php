@@ -217,10 +217,8 @@ class SearchSuggestController extends Controller
                     ];
                 });
 
-            // Blog posts (top 2)
-            Post::query()
-                ->where('is_published', 1)
-                ->whereNotNull('published_at')
+            // Blog posts (top 2) — published() = aktif locale (TR'de DE/EN sızmaz)
+            Post::published()
                 ->where(fn ($w) => $w->where('title', 'like', $like)
                     ->orWhere('excerpt', 'like', $like))
                 ->with('category:id,name,color')

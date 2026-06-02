@@ -90,9 +90,9 @@ class SearchController extends Controller
             ->get(['id', 'name_de', 'name_en', 'name_tr', 'slug', 'university_id', 'degree', 'language', 'field_of_study_id']);
 
         // ─────────── BLOG POSTS ───────────
-        $postBase = Post::query()
-            ->where('is_published', 1)
-            ->whereNotNull('published_at')
+        // published() = yayınlanmış + gelecek-tarihli değil + AKTİF LOCALE.
+        // Locale filtresi şart: /tr aramasında Almanca/İngilizce blog sızmasın.
+        $postBase = Post::published()
             ->where(function ($w) use ($like) {
                 $w->where('title', 'like', $like)
                     ->orWhere('excerpt', 'like', $like)
