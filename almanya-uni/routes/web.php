@@ -911,6 +911,24 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // "Almanya'da Yaşam & Kültür" taslak brief'lerini seed et (status=draft, asset üretmez).
+    // The Local "german-habits" gibi içeriklerden KONU ilhamı; içerik özgün üretilecek.
+    // Idempotent (slug). Backlog: /admin/content-briefs.
+    Route::get('/admin/ops/seed-culture-briefs', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(120);
+        try {
+            \Illuminate\Support\Facades\Artisan::call('content:seed-culture-briefs', array_filter([
+                '--skip-existing' => request()->boolean('skip_existing'),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        $out .= "\n[ Taslaklar: /admin/content-briefs → fikri geliştir → Hazır → asset üret ]\n";
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Görseli olmayan yayınlanmış haberlere AI illüstrasyon (tek seferlik backfill).
     Route::get('/admin/ops/news-backfill-images', function () {
         abort_unless(auth()->user()?->is_admin, 403);
