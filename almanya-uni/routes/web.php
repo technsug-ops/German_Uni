@@ -832,6 +832,28 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Eksik çevirileri TAMAMLA — blog (TR→EN/DE) + FAQ. Gemini ile prod DB'ye yazar.
+    // Idempotent: tamamlananı atlar. Timeout olursa (uzun Gemini) tekrar çağır.
+    Route::get('/admin/ops/translate-missing', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        @ini_set('max_execution_time', '600');
+        $out = '';
+        try {
+            \Illuminate\Support\Facades\Artisan::call('content:translate-posts', [
+                '--all-untranslated' => true, '--sleep' => 1,
+            ]);
+            $out .= "=== blog ===\n" . \Illuminate\Support\Facades\Artisan::output();
+            \Illuminate\Support\Facades\Artisan::call('faq:translate', [
+                '--locale' => 'en,de', '--only-broken' => true, '--sleep' => 1,
+            ]);
+            $out .= "\n=== faq ===\n" . \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out .= "\nEXCEPTION (tekrar çağır, kaldığı yerden devam eder): " . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Analytics SIFIRLA — dummy/demo page_views verisini sil (gerçek trafikle başla).
     // KAS SSH yok → tarayıcıdan ?run=1 ile tetikle. Sadece is_admin.
     Route::get('/admin/ops/analytics-reset', function () {
