@@ -408,13 +408,19 @@ Route::get('/_system/professions-translate', function (\Illuminate\Http\Request 
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
-    @set_time_limit(120);
+    // PHP'ye gateway'den fazla pay ver: gateway 504 dönse bile FPM çalışmaya
+    // devam edip o ana kadarki meslekleri kaydetmeyi sürdürür (her meslek tek tek yazılır).
+    @set_time_limit(180);
     try {
         \Illuminate\Support\Facades\Artisan::call('professions:translate-info-fields', array_filter([
             '--limit'       => (int) $request->integer('limit', 0),
-            '--max-seconds' => (int) $request->integer('max_seconds', 50),
-            '--sleep'       => (int) $request->integer('sleep', 1),
+            // Cron için yüksek varsayılan (~5× iş/çağrı). Erken gateway timeout zararsız:
+            // tamamlanan meslekler kaydedildi, sonraki cron tick'i whereNull ile devam eder.
+            '--max-seconds' => (int) $request->integer('max_seconds', 110),
+            '--sleep'       => (int) $request->integer('sleep', 0),
             '--lang'        => $request->query('lang'), // tr | en | boş(ikisi)
+            '--shards'      => (int) $request->integer('shards', 1),
+            '--shard'       => (int) $request->integer('shard', 0),
             '--missing'     => $request->boolean('missing'),
         ], fn ($v) => $v !== false && $v !== null));
         $out = \Illuminate\Support\Facades\Artisan::output();
@@ -873,9 +879,11 @@ Route::middleware('auth')->group(function () {
             }
             \Illuminate\Support\Facades\Artisan::call('professions:translate-info-fields', array_filter([
                 '--limit'       => (int) request()->integer('limit', 0),
-                '--max-seconds' => (int) request()->integer('max_seconds', 40), // gateway timeout'tan önce temiz çık
-                '--sleep'       => (int) request()->integer('sleep', 1),
-                '--lang'        => request()->query('lang'), // tr | en | boş(ikisi)
+                '--max-seconds' => (int) request()->integer('max_seconds', 45), // gateway timeout'tan önce temiz çık
+                '--sleep'       => (int) request()->integer('sleep', 0),
+                '--lang'        => request()->query('lang'),                    // tr | en | boş(ikisi)
+                '--shards'      => (int) request()->integer('shards', 1),       // paralel sekme
+                '--shard'       => (int) request()->integer('shard', 0),
                 '--force'       => request()->boolean('force'),
                 '--missing'     => request()->boolean('missing'),
             ], fn ($v) => $v !== false && $v !== null));

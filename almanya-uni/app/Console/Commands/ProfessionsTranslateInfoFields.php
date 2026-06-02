@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Http;
  */
 class ProfessionsTranslateInfoFields extends Command
 {
-    private const CHUNK = 6;         // tek Gemini çağrısında çevrilecek alan sayısı (TR+EN çıktısı token'ı şişirir)
+    // Tek dilde çıktı yarı yük → daha büyük chunk güvenli (daha az çağrı = daha hızlı).
+    private const CHUNK_SINGLE = 12; // --lang=tr|en (tek dil)
+    private const CHUNK_BOTH = 6;    // tr+en birlikte (çıktı 2×)
     private const MAX_VALUE = 1000;  // alan başına kaynak char sınırı
 
     protected $signature = 'professions:translate-info-fields
@@ -31,6 +33,8 @@ class ProfessionsTranslateInfoFields extends Command
         {--force : Tüm alanları yeniden çevir (info_fields_tr dolu olsa da)}
         {--missing : info_fields_tr dolu olsa da eksik alanı olanları da tara (çeyreklik resync)}
         {--lang= : Sadece bu dili çevir (tr veya en). Boş = ikisi birden. Tek-dil çağrı yarı yük.}
+        {--shards=1 : Paralel sekme sayısı (id %% shards). Birden çok sekme = N× hız, çakışmasız.}
+        {--shard=0 : Bu sekmenin dilim indeksi (0..shards-1).}
         {--slug= : Tek bir meslek (slug)}
         {--dry-run : Önizleme, kaydetme}';
 
@@ -59,10 +63,18 @@ class ProfessionsTranslateInfoFields extends Command
             return self::FAILURE;
         }
         $cols = array_map(fn ($l) => "info_fields_{$l}", $langs);
+        $chunkSize = count($langs) === 1 ? self::CHUNK_SINGLE : self::CHUNK_BOTH;
+
+        // Paralel sekmeler: id %% shards = shard → her sekme farklı dilim, çakışmasız.
+        $shards = max(1, (int) $this->option('shards'));
+        $shard = max(0, min($shards - 1, (int) $this->option('shard')));
 
         $q = Profession::query()
             ->whereNotNull('info_fields')
             ->where('info_fields', '!=', '[]');
+        if ($shards > 1) {
+            $q->whereRaw('id % ? = ?', [$shards, $shard]);
+        }
 
         $missingMode = (bool) $this->option('missing');
 
@@ -96,7 +108,8 @@ class ProfessionsTranslateInfoFields extends Command
             return self::SUCCESS;
         }
 
-        $this->info("📚 {$total} meslek info_fields çevrilecek (chunk: " . self::CHUNK . ', sleep: ' . $this->option('sleep') . 's)');
+        $shardInfo = $shards > 1 ? ", shard: {$shard}/{$shards}" : '';
+        $this->info("📚 {$total} meslek info_fields çevrilecek (chunk: {$chunkSize}, sleep: " . $this->option('sleep') . "s{$shardInfo})");
         $this->newLine();
 
         $success = 0; $failed = 0; $skipped = 0;
@@ -137,7 +150,7 @@ class ProfessionsTranslateInfoFields extends Command
             $this->line(sprintf('[%d/%d] %s — %d alan [%s]', $i + 1, $total, mb_substr($p->name_de, 0, 50), count($missing), implode('+', $langs)));
 
             $allOk = true;
-            foreach (array_chunk($missing, self::CHUNK, true) as $chunk) {
+            foreach (array_chunk($missing, $chunkSize, true) as $chunk) {
                 $result = $this->callGemini($chunk, $p->name_de, $apiKey, $langs);
                 if (! $result) { $allOk = false; break; }
                 foreach ($langs as $l) {
