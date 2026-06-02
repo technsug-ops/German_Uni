@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
  */
 class NewsFetch extends Command
 {
-    protected $signature = 'news:fetch {--source= : Sadece bu kaynak adı} {--dry-run}';
+    protected $signature = 'news:fetch {--source= : Sadece bu kaynak adı} {--dry-run} {--max-seconds=0 : Zaman bütçesi (sn) — KAS gateway timeout öncesi temiz çık}';
     protected $description = 'RSS/Atom kaynaklardan haber adayı çeker (onay öncesi gelen kutusu)';
 
     public function handle(): int
@@ -30,6 +30,8 @@ class NewsFetch extends Command
 
         $only = $this->option('source');
         $dry  = (bool) $this->option('dry-run');
+        $maxSeconds = (int) $this->option('max-seconds');
+        $started = microtime(true);
         $feeds = $this->loadFeeds($only);
         if ($feeds->isEmpty()) {
             $this->warn('Aktif kaynak yok.');
@@ -38,9 +40,17 @@ class NewsFetch extends Command
 
         $catMap = Category::where('kind', 'news')->pluck('id', 'slug');
 
-        $created = 0; $skipped = 0;
+        $created = 0; $skipped = 0; $processed = 0;
+        $total = $feeds->count();
 
         foreach ($feeds as $feed) {
+            // Zaman bütçesi: gateway öldürmeden önce temiz çık (kısmi ilerleme kayıtlı).
+            if ($maxSeconds > 0 && (microtime(true) - $started) >= $maxSeconds) {
+                $kalan = $total - $processed;
+                $this->warn("⏳ Süre doldu — {$kalan} kaynak kaldı (tekrar çalıştır).");
+                break;
+            }
+            $processed++;
             $this->line("📡 {$feed['name']} — {$feed['url']}");
             $maxPer = $feed['max_per_source'] ?: $maxPerGlobal;
             $items = $this->parseFeed($feed['url']);
@@ -104,7 +114,7 @@ class NewsFetch extends Command
         }
 
         $this->newLine();
-        $this->info("✅ Yeni aday: {$created}, atlanan (mevcut): {$skipped}");
+        $this->info("✅ Yeni aday: {$created}, atlanan (mevcut): {$skipped} ({$processed}/{$total} kaynak)");
         return self::SUCCESS;
     }
 
@@ -167,7 +177,7 @@ class NewsFetch extends Command
     private function parseFeed(string $url): ?array
     {
         try {
-            $resp = Http::timeout(25)
+            $resp = Http::connectTimeout(6)->timeout(10)
                 ->withHeaders(['User-Agent' => 'Mozilla/5.0 (compatible; AlmanyaUniBot/1.0)'])
                 ->get($url);
             if (! $resp->ok()) return null;

@@ -25,8 +25,20 @@ class ListNewsSources extends ListRecords
                 ->modalHeading('Otomatik haber çek')
                 ->modalDescription('Tüm AKTİF kaynaklardan yeni aday çekilir. Onaylayıp yayınlamadan yayına çıkmaz.')
                 ->action(function () {
-                    Artisan::call('news:fetch');
-                    $out = trim(Artisan::output());
+                    // Zaman bütçesi: KAS gateway timeout'undan önce temiz çık.
+                    // Kalan kaynak olursa tekrar bas — kısmi ilerleme zaten kayıtlı.
+                    @set_time_limit(120);
+                    try {
+                        Artisan::call('news:fetch', ['--max-seconds' => 35]);
+                        $out = trim(Artisan::output());
+                    } catch (\Throwable $e) {
+                        Notification::make()
+                            ->title('Çekme hatası')
+                            ->body($e->getMessage())
+                            ->danger()
+                            ->send();
+                        return;
+                    }
                     Notification::make()
                         ->title('Otomatik çekme tamamlandı')
                         ->body($out ?: 'Çıktı yok.')
