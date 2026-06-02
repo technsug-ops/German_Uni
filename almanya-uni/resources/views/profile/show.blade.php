@@ -118,6 +118,9 @@
 {{-- ============================================ --}}
 @if ($activeTab === 'dashboard')
 
+    {{-- ════ BAŞVURU YOL HARİTASI (en yüksek getirili özellik — görünür kıl) ════ --}}
+    <x-journey-progress-card />
+
     {{-- ════ ONBOARDING (yeni kullanıcı/düşük skor) ════ --}}
     @php
         $favCount = $user->favorites()->count();
