@@ -81,6 +81,17 @@ jobs:
           DB_PASSWORD: root
         run: php artisan test
 
+      # i18n disiplin gate: çevirisiz __() anahtarı (TR/DE eksik) varsa build durur.
+      # Sızıntıyı deploy ÖNCESİ yakalar (i18n:audit missing>0 → exit 1). leaky bilgi amaçlı.
+      - name: i18n sızıntı denetimi (leak gate)
+        working-directory: almanya-uni
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: php artisan i18n:audit --leaky
+
   build-and-deploy:
     name: Build & Deploy
     needs: test
