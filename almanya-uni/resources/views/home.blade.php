@@ -64,7 +64,7 @@
         </p>
 
         {{-- Arama: mobilde buton altta tam genişlik, masaüstünde yan yana --}}
-        <form action="/arama" method="GET" class="max-w-4xl mb-5 relative" id="heroSearchForm" autocomplete="off">
+        <form action="{{ route('search.index') }}" method="GET" class="max-w-4xl mb-5 relative" id="heroSearchForm" autocomplete="off">
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-white/95 backdrop-blur p-2 rounded-2xl shadow-2xl">
                 <div class="flex items-center flex-1 px-3 min-w-0">
                     <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
