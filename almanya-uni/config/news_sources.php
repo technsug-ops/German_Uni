@@ -9,7 +9,9 @@
  *    (telif: birebir basmıyoruz, atıf + deep-link veriyoruz).
  *  - default_category: önerilen haber kategorisi slug'ı (categories.kind='news').
  *
- * Yeni kaynak = buraya bir satır. Kod değişikliği gerekmez.
+ * NOT: Kaynaklar artık DB'den (news_sources tablosu / admin "Haber Kaynakları"
+ * paneli) okunur. Bu dosya YALNIZCA tablo henüz migrate edilmemişse/boşsa
+ * fallback + ilk seed kaynağıdır. Canlıda kaynak eklemek/düzenlemek için paneli kullan.
  */
 return [
     // Otomatik çekimde her kaynaktan en fazla kaç aday alınsın
