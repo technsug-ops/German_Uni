@@ -15,15 +15,16 @@ use Illuminate\Console\Command;
  */
 class NewsBackfillImages extends Command
 {
-    protected $signature = 'news:backfill-images {--limit=0 : Maks grup} {--dry-run}';
-    protected $description = 'Görseli olmayan yayınlanmış haberlere AI illüstrasyon üretir (grup bazında)';
+    protected $signature = 'news:backfill-images {--limit=0 : Maks grup} {--dry-run} {--force : Görseli OLANLARI da yeniden üret (metinli/eski görselleri yenile)}';
+    protected $description = 'Yayınlanmış haberlere AI illüstrasyon üretir (grup bazında). --force ile mevcutları da yeniler.';
 
     public function handle(): int
     {
         $svc = app(NewsService::class);
+        $force = (bool) $this->option('force');
 
         $groups = Post::news()
-            ->where(fn ($q) => $q->whereNull('featured_image')->orWhere('featured_image', ''))
+            ->when(! $force, fn ($q) => $q->where(fn ($w) => $w->whereNull('featured_image')->orWhere('featured_image', '')))
             ->whereNotNull('translation_group_id')
             ->orderByDesc('published_at')
             ->get(['id', 'translation_group_id', 'title', 'category_id'])

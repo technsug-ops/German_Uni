@@ -182,11 +182,13 @@ TXT;
     {
         if (! $this->apiKey) return null;
 
-        $prompt = 'Clean modern editorial FLAT VECTOR ILLUSTRATION (NOT a photograph) for a news article titled: "'
-            . $title . '". Subject: international students studying or immigrating to Germany'
-            . ($cat ? ', topic: ' . $cat : '')
-            . '. Calm professional palette with subtle German flag accents (black, red, gold). '
-            . 'Friendly, minimal, conceptual. ABSOLUTELY NO text, NO words, NO letters, NO logos. 16:9.';
+        // ÖNEMLİ: başlığı prompt'a VERME. Imagen tırnak içindeki başlığı görsele
+        // basıyor (üstelik bozuk + Türkçe) → diller-arası ortak görselde sızıntı.
+        // Konuyu yalnız kategoriden türet, metni çok katmanlı yasakla.
+        $prompt = 'Clean modern editorial FLAT VECTOR ILLUSTRATION (NOT a photograph), purely visual conceptual scene about international students studying or immigrating to Germany'
+            . ($cat ? ', theme: ' . $cat : '')
+            . '. Friendly, minimal, professional palette with subtle German flag accents (black, red, gold). 16:9 wide composition. '
+            . 'CRITICAL CONSTRAINT: the image must contain absolutely NO text of any kind — no words, no letters, no numbers, no headlines, no captions, no labels, no signage, no logos, and no speech bubbles containing text. Imagery only.';
 
         try {
             $resp = Http::timeout(120)->withHeaders(['x-goog-api-key' => $this->apiKey])
