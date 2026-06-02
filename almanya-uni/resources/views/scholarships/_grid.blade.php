@@ -35,7 +35,9 @@
                         {{ $sch->programmname }}
                     </p>
                 @endif
-                @php $intro = $sch->introductionText('en') ?? $sch->introductionText('de'); @endphp
+                @php $intro = $sch->introductionText(app()->getLocale())
+                    ?? $sch->introductionText('en')
+                    ?? $sch->introductionText('de'); @endphp
                 @if ($intro)
                     <p class="text-sm text-gray-600 line-clamp-3 mb-4">{{ \Illuminate\Support\Str::limit(strip_tags($intro), 200) }}</p>
                 @endif
