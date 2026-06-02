@@ -91,6 +91,29 @@ class BerufenetImport extends Command
                     $payload['last_synced_at'] = now();
                     $payload['is_active'] = true;
 
+                    // ── Akıllı sync: mevcut çevirileri koru, SADECE Almanca değeri değişen
+                    // (veya silinen) info_fields key'lerinin TR/EN çevirisini düşür. Böylece
+                    // re-sync sonrası translate-run yalnızca değişen alanı yeniden çevirir.
+                    $existing = Profession::where('berufenet_id', $berufenetId)->first();
+                    if ($existing) {
+                        $oldInfo = is_array($existing->info_fields) ? $existing->info_fields : [];
+                        $newInfo = $payload['info_fields'] ?? [];
+                        $tr = is_array($existing->info_fields_tr) ? $existing->info_fields_tr : [];
+                        $en = is_array($existing->info_fields_en) ? $existing->info_fields_en : [];
+                        $pruned = 0;
+                        foreach (array_keys($tr + $en) as $k) {
+                            if (($oldInfo[$k] ?? null) !== ($newInfo[$k] ?? null)) { // değişti veya silindi
+                                unset($tr[$k], $en[$k]);
+                                $pruned++;
+                            }
+                        }
+                        if ($pruned > 0) {
+                            $payload['info_fields_tr'] = $tr;
+                            $payload['info_fields_en'] = $en;
+                            $stats['retranslate'] = ($stats['retranslate'] ?? 0) + 1;
+                        }
+                    }
+
                     $record = Profession::updateOrCreate(
                         ['berufenet_id' => $berufenetId],
                         $payload

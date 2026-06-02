@@ -7,68 +7,32 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
 /**
- * BERUFENET info_fields verilerini TR + EN'ye çevirir.
+ * BERUFENET info_fields (Almanca) → TR + EN, TÜM alanlar, key-bazlı idempotent.
  *
- * Strateji: Tek bir Gemini çağrısında 6 yararlı başlığı her iki dile çevir.
- * Bu sayede her meslek için 1 API çağrısı yeterli, 3.560 meslek × 1 çağrı.
- * Sleep=2 ile ~2-3 saat sürer, maliyet ~$3-5.
+ * Çıktı Almanca key ile yazılır: info_fields_tr = { 'Trends' => '…', 'Kompetenzen' => '…' } (+ _en).
+ * View (show.blade) bu key'leri BerufenetLabels sözlüğüyle eşleyip locale'e göre gösterir.
  *
- * Hedef alanlar (BERUFENET):
- *  - Aufgaben und Tätigkeiten kompakt → görev özeti
- *  - Zugang zur Tätigkeit            → mesleğe erişim koşulları
- *  - Verdienst/Einkommen             → maaş
- *  - Arbeitsorte                     → çalışma yerleri
- *  - Arbeitsbereiche/Branchen        → sektörler
- *  - Weiterbildung (beruflicher Aufstieg) → ilerleme yolu
+ * İdempotency KEY bazında: kaynak info_fields key'lerinden info_fields_tr/_en'de EKSİK olanlar
+ * çevrilir; doluysa atlanır. Böylece BerufenetImport diff'te bir key'in çevirisini silince
+ * sadece o key yeniden çevrilir ("sadece değişeni işle").
+ *
+ * Token güvenliği: değer başına ~1000 char kırpılır; eksik key'ler CHUNK'lara bölünüp
+ * (varsayılan 10) ayrı Gemini çağrılarıyla çevrilir → uzun/çok alanlı mesleklerde güvenli JSON.
  */
 class ProfessionsTranslateInfoFields extends Command
 {
-    /**
-     * Each short-key maps to a list of BERUFENET fallback field names.
-     * BERUFENET has different schemas for Beruf (occupation) vs Studiengang (study program)
-     * vs Weiterbildung — we accept the first matching field from each list.
-     */
-    private const FIELD_MAP = [
-        'tasks' => [
-            'Aufgaben und Tätigkeiten kompakt',
-            'Studieninhalte',
-            'Weiterbildungsinhalte',
-            'Mögliche Tätigkeitsfelder',
-        ],
-        'access' => [
-            'Zugang zur Tätigkeit',
-            'Zugangsvoraussetzungen für das Studium',
-            'Zugangsvoraussetzungen für die Weiterbildung',
-        ],
-        'salary' => [
-            'Verdienst/Einkommen',
-            'Vergütung während des Studiums',
-            'Weiterbildungsvergütung',
-        ],
-        'workplace' => [
-            'Arbeitsorte',
-            'Lernorte',
-        ],
-        'sectors' => [
-            'Arbeitsbereiche/Branchen',
-            'Mögliche Tätigkeitsfelder',
-            'Abschluss-/Berufsbezeichnungen',
-        ],
-        'progression' => [
-            'Weiterbildung (beruflicher Aufstieg)',
-            'Mögliche weiterführende Studienfächer',
-            'Perspektiven nach der Weiterbildung',
-        ],
-    ];
+    private const CHUNK = 10;        // tek Gemini çağrısında çevrilecek alan sayısı
+    private const MAX_VALUE = 1000;  // alan başına kaynak char sınırı
 
     protected $signature = 'professions:translate-info-fields
         {--limit=50 : Bu çalıştırmada işlenecek meslek sayısı (0 = sınırsız)}
-        {--sleep=2 : Gemini rate-limit için bekleme (saniye)}
-        {--force : info_fields_tr dolu olsa da yeniden çevir}
+        {--sleep=2 : Meslekler arası bekleme (saniye)}
+        {--force : Tüm alanları yeniden çevir (info_fields_tr dolu olsa da)}
+        {--missing : info_fields_tr dolu olsa da eksik alanı olanları da tara (çeyreklik resync)}
         {--slug= : Tek bir meslek (slug)}
         {--dry-run : Önizleme, kaydetme}';
 
-    protected $description = 'BERUFENET info_fields\'\'ı 6 yararlı başlık için TR + EN\'ye çevirir.';
+    protected $description = 'BERUFENET info_fields\'ın TÜM alanlarını TR + EN\'ye çevirir (key-bazlı idempotent).';
 
     public function handle(): int
     {
@@ -78,12 +42,26 @@ class ProfessionsTranslateInfoFields extends Command
             return self::FAILURE;
         }
 
-        $q = Profession::query()->whereNotNull('info_fields')->where('info_fields', '!=', '[]');
+        $force = (bool) $this->option('force');
+
+        $q = Profession::query()
+            ->whereNotNull('info_fields')
+            ->where('info_fields', '!=', '[]');
+
+        $missingMode = (bool) $this->option('missing');
 
         if ($slug = $this->option('slug')) {
             $q->where('slug', $slug);
-        } elseif (! $this->option('force')) {
-            $q->whereNull('info_fields_tr');
+        } elseif ($force) {
+            // tüm meslekler (genelde --slug ile birlikte; tüm tabloda --limit ile ilerlemez)
+        } elseif ($missingMode) {
+            // info_fields_tr dolu olsa da eksik alanı olabilir → hepsini tara, döngüde key-bazlı atla.
+            // Çeyreklik resync: --limit=0 (sınırsız) çalıştır; az API çağrısı (sadece eksikler).
+        } else {
+            // İlk backfill: sadece hiç çevrilmemişler → whereNull batch'leri ilerler (stuck olmaz).
+            $q->where(function ($w) {
+                $w->whereNull('info_fields_tr')->orWhere('info_fields_tr', '[]');
+            });
         }
 
         $limit = (int) $this->option('limit');
@@ -100,38 +78,48 @@ class ProfessionsTranslateInfoFields extends Command
             return self::SUCCESS;
         }
 
-        $this->info("📚 {$total} meslek info_fields çevrilecek (sleep: " . $this->option('sleep') . 's)');
+        $this->info("📚 {$total} meslek info_fields çevrilecek (chunk: " . self::CHUNK . ', sleep: ' . $this->option('sleep') . 's)');
         $this->newLine();
 
         $success = 0; $failed = 0; $skipped = 0;
-        $start = now();
 
         foreach ($items as $i => $p) {
-            $this->line(sprintf('[%d/%d] %s', $i + 1, $total, mb_substr($p->name_de, 0, 70)));
+            $source = is_array($p->info_fields) ? $p->info_fields : [];
+            $tr = is_array($p->info_fields_tr) ? $p->info_fields_tr : [];
+            $en = is_array($p->info_fields_en) ? $p->info_fields_en : [];
 
-            $sourceFields = $this->extractSource($p);
-            if (empty($sourceFields)) {
-                $this->warn('  ⚠️ Kaynak alanların hiçbiri yok — atlandı');
+            // Çevrilecek key'ler: kaynakta var, (force değilse) tr VEYA en'de eksik.
+            $missing = [];
+            foreach ($source as $key => $val) {
+                if (! is_string($val) || mb_strlen(trim($val)) < 5) continue;
+                if ($force || ! isset($tr[$key]) || ! isset($en[$key])) {
+                    $missing[$key] = mb_substr(trim($val), 0, self::MAX_VALUE);
+                }
+            }
+
+            if (empty($missing)) {
                 $skipped++;
                 continue;
             }
 
-            $result = $this->callGemini($sourceFields, $p->name_de, $apiKey);
+            $this->line(sprintf('[%d/%d] %s — %d alan', $i + 1, $total, mb_substr($p->name_de, 0, 50), count($missing)));
 
-            if (! $result) {
-                $failed++;
-                continue;
+            $allOk = true;
+            foreach (array_chunk($missing, self::CHUNK, true) as $chunk) {
+                $result = $this->callGemini($chunk, $p->name_de, $apiKey);
+                if (! $result) { $allOk = false; break; }
+                foreach ($result['tr'] as $k => $v) { $tr[$k] = $v; }
+                foreach ($result['en'] as $k => $v) { $en[$k] = $v; }
             }
 
+            if (! $allOk) { $failed++; continue; }
+
             if ($this->option('dry-run')) {
-                $this->info('  ✅ ' . count($result['tr']) . ' TR + ' . count($result['en']) . ' EN alan');
+                $this->info('  ✅ ' . count($missing) . ' alan (dry-run)');
                 $success++;
             } else {
-                $p->update([
-                    'info_fields_tr' => $result['tr'],
-                    'info_fields_en' => $result['en'],
-                ]);
-                $this->info('  ✅ TR: ' . count($result['tr']) . ' · EN: ' . count($result['en']) . ' alan');
+                $p->update(['info_fields_tr' => $tr, 'info_fields_en' => $en]);
+                $this->info('  ✅ TR: ' . count($tr) . ' · EN: ' . count($en) . ' alan');
                 $success++;
             }
 
@@ -140,73 +128,48 @@ class ProfessionsTranslateInfoFields extends Command
             }
         }
 
-        $duration = $start->diffInSeconds(now());
         $this->newLine();
         $this->info('━━━━━━━━━━━━━━━━━━━━━━━━━');
-        $this->info("✅ {$success} başarılı, ⏭️ {$skipped} atlandı (kaynak yok), ❌ {$failed} başarısız, ⏱️ {$duration}s");
+        $this->info("✅ {$success} başarılı · ⏭️ {$skipped} atlandı (zaten tam) · ❌ {$failed} başarısız");
 
         return $failed > 0 && $success === 0 ? self::FAILURE : self::SUCCESS;
     }
 
-    private function extractSource(Profession $p): array
-    {
-        $out = [];
-        $info = $p->info_fields ?: [];
-        foreach (self::FIELD_MAP as $short => $candidates) {
-            foreach ($candidates as $key) {
-                $val = $info[$key] ?? null;
-                if ($val && mb_strlen(trim($val)) > 5) {
-                    $out[$short] = mb_substr($val, 0, 800);
-                    break;
-                }
-            }
-        }
-        return $out;
-    }
-
+    /**
+     * Bir Almanca {key: value} chunk'ını TR + EN'ye çevirir, AYNI key'lerle döndürür.
+     * @return array{tr: array<string,string>, en: array<string,string>}|null
+     */
     private function callGemini(array $source, string $nameDe, string $apiKey): ?array
     {
         $sourceJson = json_encode($source, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        $keysJson = json_encode(array_keys($source), JSON_UNESCAPED_UNICODE);
 
         $prompt = <<<TXT
-Sen AlmanyaUni'nin meslek editörüsün. BERUFENET'ten alınan ALMANCA meslek bilgilerini Türkçe ve İngilizce'ye çeviriyorsun.
+Sen AlmanyaUni'nin meslek editörüsün. BERUFENET'ten alınan ALMANCA meslek bilgi alanlarını
+Türkçe ve İngilizce'ye çeviriyorsun. Türk lise/üniversite öğrencisi okuyacak.
 
 ALMAN MESLEK ADI: {$nameDe}
 
-KAYNAK (Almanca, JSON):
+KAYNAK (Almanca, JSON — key = BERUFENET alan adı, value = Almanca metin):
 {$sourceJson}
 
-GÖREV: Her alanı hem Türkçe hem İngilizce'ye çevir. Doğal, akıcı, kısa cümlelerle.
+GÖREV: Her value'yu hem Türkçe hem İngilizce'ye çevir. Doğal, akıcı, kısa cümleler.
 
 KURALLAR:
-- Halüsinasyon yok — kaynakta olmayan rakam/süre/maaş yazma
-- Almanca terim varsa parantez içinde aç (örn. "Ausbildung (mesleki eğitim)" / "Ausbildung (vocational training)")
-- "können nicht getroffen werden" gibi standart "rakam söylenemez" cevapları → "Salary data varies, please check BERUFENET" / "Maaş bilgisi değişken, BERUFENET'i kontrol edin" şeklinde sade ver
-- Lise mezunu Türk öğrenci anlayacak sade dil
-- Madde imi yok, kısa paragraf — her alan 1-3 cümle yeterli
-- Almanya'ya özgü kavramları aynen koru (Ausbildung, Berufsschule, Studium, IHK, BERUFENET)
+- Halüsinasyon yok — kaynakta olmayan rakam/süre/maaş/yer ekleme.
+- Almanya'ya özgü kavramları KORU + ilk geçişte parantezle aç: Ausbildung (mesleki eğitim),
+  Studium (lisans), Berufsschule (meslek okulu), IHK, Bundesland (eyalet), BERUFENET.
+- Maaş/rakam söylenemiyorsa ("können nicht ... getroffen werden") → sade ver:
+  TR "Maaş bilgisi değişkendir, BERUFENET'i kontrol edin" / EN "Earnings vary; check BERUFENET".
+- Liste/link içeren alanları (kaynaklar, borsalar, dernekler) kısa ve düz çevir, uydurma ekleme.
+- Madde imi yok; kısa paragraf. Lise mezunu anlasın.
 
-ÇIKTI: TAM olarak bu JSON formatında ver, başka açıklama yok:
+ÇIKTI: SADECE şu JSON, başka açıklama yok. Key'leri kaynaktakiyle BİREBİR AYNI bırak:
 {
-  "tr": {
-    "tasks": "...",
-    "access": "...",
-    "salary": "...",
-    "workplace": "...",
-    "sectors": "...",
-    "progression": "..."
-  },
-  "en": {
-    "tasks": "...",
-    "access": "...",
-    "salary": "...",
-    "workplace": "...",
-    "sectors": "...",
-    "progression": "..."
-  }
+  "tr": { <her kaynak key için Türkçe çeviri> },
+  "en": { <her kaynak key için İngilizce çeviri> }
 }
-
-Kaynakta olmayan alanı boş string "" olarak ver. Sadece JSON, başka şey yok.
+Çevrilecek key listesi (ikisinde de aynen kullan): {$keysJson}
 TXT;
 
         for ($attempt = 0; $attempt < 3; $attempt++) {
@@ -217,38 +180,28 @@ TXT;
                     ->post('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', [
                         'contents' => [['parts' => [['text' => $prompt]]]],
                         'generationConfig' => [
-                            'temperature'     => 0.4,
-                            'maxOutputTokens' => 8000,
+                            'temperature'      => 0.4,
+                            'maxOutputTokens'  => 8000,
                             'responseMimeType' => 'application/json',
                         ],
                     ]);
 
                 if (! $resp->ok()) {
-                    if ($attempt < 2) {
-                        sleep(5);
-                        continue;
-                    }
-                    $this->error('  HTTP ' . $resp->status() . ' — ' . mb_substr($resp->body(), 0, 200));
+                    if ($attempt < 2) { sleep(5); continue; }
+                    $this->error('  HTTP ' . $resp->status() . ' — ' . mb_substr($resp->body(), 0, 160));
                     return null;
                 }
 
-                $data = $resp->json();
-                $text = $data['candidates'][0]['content']['parts'][0]['text'] ?? '';
+                $text = $resp->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
                 $parsed = $this->parseJson($text);
                 if ($parsed) {
                     return $parsed;
                 }
-                if ($attempt < 2) {
-                    sleep(3);
-                    continue;
-                }
-                $this->error('  Parse fail: ' . mb_substr($text, 0, 200));
+                if ($attempt < 2) { sleep(3); continue; }
+                $this->error('  Parse fail: ' . mb_substr($text, 0, 160));
                 return null;
             } catch (\Throwable $e) {
-                if ($attempt < 2) {
-                    sleep(5);
-                    continue;
-                }
+                if ($attempt < 2) { sleep(5); continue; }
                 $this->error('  ' . mb_substr($e->getMessage(), 0, 150));
                 return null;
             }
@@ -270,8 +223,8 @@ TXT;
         }
 
         return [
-            'tr' => array_filter((array) $data['tr'], fn ($v) => is_string($v) && $v !== ''),
-            'en' => array_filter((array) $data['en'], fn ($v) => is_string($v) && $v !== ''),
+            'tr' => array_filter((array) $data['tr'], fn ($v) => is_string($v) && trim($v) !== ''),
+            'en' => array_filter((array) $data['en'], fn ($v) => is_string($v) && trim($v) !== ''),
         ];
     }
 }

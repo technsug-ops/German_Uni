@@ -199,20 +199,34 @@
             </section>
         @endif
 
-        @if (! empty($profession->info_fields))
+        @php
+            // Locale-aware "Detaylı Bilgiler": /de ham Almanca tüm alanlar; /tr & /en SADECE
+            // çevrili alanlar (eksik çeviri gizlenir → ham Almanca sızmaz). info_fields'in
+            // orijinal (BERUFENET) sırası korunur; başlık BerufenetLabels sözlüğünden gelir.
+            $loc = app()->getLocale();
+            $sourceFields = $profession->info_fields ?? [];
+            $localized = $loc === 'de' ? null : ($profession->{'info_fields_' . $loc} ?? []);
+            $rows = [];
+            foreach ($sourceFields as $key => $deContent) {
+                $label = \App\Support\BerufenetLabels::get($key, $loc);
+                if (! $label) continue; // bilinmeyen başlık → gizle
+                $content = $loc === 'de' ? $deContent : ($localized[$key] ?? null);
+                if (! $content || mb_strlen((string) $content) < 5) continue; // çevirisi yoksa gizle
+                $rows[$label] = $content;
+            }
+        @endphp
+        @if (! empty($rows))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ __('Detailed Information') }}</h2>
                 <div class="space-y-4">
-                    @foreach ($profession->info_fields as $heading => $content)
-                        @if ($content && mb_strlen($content) > 5)
-                            <details class="group border-b border-gray-100 pb-3 last:border-0">
-                                <summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary-700 transition flex items-center gap-2 list-none">
-                                    <span class="group-open:rotate-90 transition-transform text-gray-400">▶</span>
-                                    {{ $heading }}
-                                </summary>
-                                <p class="mt-2 text-gray-700 text-sm leading-relaxed pl-6">{{ \Illuminate\Support\Str::limit($content, 1500) }}</p>
-                            </details>
-                        @endif
+                    @foreach ($rows as $heading => $content)
+                        <details class="group border-b border-gray-100 pb-3 last:border-0">
+                            <summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary-700 transition flex items-center gap-2 list-none">
+                                <span class="group-open:rotate-90 transition-transform text-gray-400">▶</span>
+                                {{ $heading }}
+                            </summary>
+                            <p class="mt-2 text-gray-700 text-sm leading-relaxed pl-6">{{ \Illuminate\Support\Str::limit($content, 1500) }}</p>
+                        </details>
                     @endforeach
                 </div>
             </section>

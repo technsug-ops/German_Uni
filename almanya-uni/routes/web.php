@@ -832,6 +832,32 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GEÇİCİ — BERUFENET meslek info_fields'ını TR+EN'ye çevir (tüm alanlar, key-bazlı).
+    // İlk backfill:  ?reset=1 (bir kez, eski şema tr/en'i sıfırlar) → sonra ?limit=200 (tekrar tekrar)
+    // Çeyreklik resync (import diff'ten sonra): ?missing=1&limit=0
+    Route::get('/admin/ops/professions-translate', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        $out = '';
+        try {
+            if (request()->boolean('reset')) {
+                $n = \App\Models\Profession::whereNotNull('info_fields_tr')
+                    ->update(['info_fields_tr' => null, 'info_fields_en' => null]);
+                $out .= "RESET: {$n} meslek info_fields_tr/en sıfırlandı.\n\n";
+            }
+            \Illuminate\Support\Facades\Artisan::call('professions:translate-info-fields', array_filter([
+                '--limit'   => (int) request()->integer('limit', 200),
+                '--sleep'   => (int) request()->integer('sleep', 1),
+                '--force'   => request()->boolean('force'),
+                '--missing' => request()->boolean('missing'),
+            ], fn ($v) => $v !== false && $v !== null));
+            $out .= \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out .= 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Otomatik haber çekme (Mod 1) — KAS'ta SSH yok; tarayıcıdan veya KAS
     // Cronjob bu URL'yi çağırarak RSS kaynaklardan aday çeker. Idempotent (dedupe).
     Route::get('/admin/ops/news-fetch', function () {
