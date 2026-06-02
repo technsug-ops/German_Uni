@@ -846,10 +846,11 @@ Route::middleware('auth')->group(function () {
                 $out .= "RESET: {$n} meslek info_fields_tr/en sıfırlandı.\n\n";
             }
             \Illuminate\Support\Facades\Artisan::call('professions:translate-info-fields', array_filter([
-                '--limit'   => (int) request()->integer('limit', 200),
-                '--sleep'   => (int) request()->integer('sleep', 1),
-                '--force'   => request()->boolean('force'),
-                '--missing' => request()->boolean('missing'),
+                '--limit'       => (int) request()->integer('limit', 0),
+                '--max-seconds' => (int) request()->integer('max_seconds', 40), // gateway timeout'tan önce temiz çık
+                '--sleep'       => (int) request()->integer('sleep', 1),
+                '--force'       => request()->boolean('force'),
+                '--missing'     => request()->boolean('missing'),
             ], fn ($v) => $v !== false && $v !== null));
             $out .= \Illuminate\Support\Facades\Artisan::output();
         } catch (\Throwable $e) {

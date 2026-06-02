@@ -26,6 +26,7 @@ class ProfessionsTranslateInfoFields extends Command
 
     protected $signature = 'professions:translate-info-fields
         {--limit=50 : Bu çalıştırmada işlenecek meslek sayısı (0 = sınırsız)}
+        {--max-seconds=0 : Bu süreden sonra yeni mesleğe başlama, dur (0 = sınırsız). Gateway timeout için.}
         {--sleep=2 : Meslekler arası bekleme (saniye)}
         {--force : Tüm alanları yeniden çevir (info_fields_tr dolu olsa da)}
         {--missing : info_fields_tr dolu olsa da eksik alanı olanları da tara (çeyreklik resync)}
@@ -82,8 +83,18 @@ class ProfessionsTranslateInfoFields extends Command
         $this->newLine();
 
         $success = 0; $failed = 0; $skipped = 0;
+        $maxSeconds = (int) $this->option('max-seconds');
+        $started = microtime(true);
+        $stoppedByTime = false;
 
         foreach ($items as $i => $p) {
+            // Gateway timeout koruması: süre dolduysa yeni mesleğe başlama, temiz çık.
+            if ($maxSeconds > 0 && (microtime(true) - $started) >= $maxSeconds) {
+                $stoppedByTime = true;
+                $this->warn("⏱️ Zaman bütçesi ({$maxSeconds}s) doldu — {$i}/{$total} işlendi, kalanı için tekrar çağır.");
+                break;
+            }
+
             $source = is_array($p->info_fields) ? $p->info_fields : [];
             $tr = is_array($p->info_fields_tr) ? $p->info_fields_tr : [];
             $en = is_array($p->info_fields_en) ? $p->info_fields_en : [];
@@ -131,6 +142,18 @@ class ProfessionsTranslateInfoFields extends Command
         $this->newLine();
         $this->info('━━━━━━━━━━━━━━━━━━━━━━━━━');
         $this->info("✅ {$success} başarılı · ⏭️ {$skipped} atlandı (zaten tam) · ❌ {$failed} başarısız");
+
+        // İlk backfill modunda kalan (hiç çevrilmemiş) meslek sayısını bildir → "bitti mi?" göstergesi.
+        if (! $force && ! $missingMode && ! $this->option('slug')) {
+            $remaining = Profession::query()
+                ->whereNotNull('info_fields')->where('info_fields', '!=', '[]')
+                ->where(function ($w) {
+                    $w->whereNull('info_fields_tr')->orWhere('info_fields_tr', '[]');
+                })->count();
+            $this->info($remaining > 0
+                ? "⏳ KALAN: {$remaining} meslek — bu URL'yi tekrar çağır."
+                : '🎉 TAMAMLANDI — kalan meslek yok.');
+        }
 
         return $failed > 0 && $success === 0 ? self::FAILURE : self::SUCCESS;
     }
