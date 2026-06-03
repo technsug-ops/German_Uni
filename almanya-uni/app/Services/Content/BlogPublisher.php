@@ -33,9 +33,9 @@ class BlogPublisher
         $decode = fn (?string $s) => $s === null ? '' : html_entity_decode($s, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $title = $decode($parsed['title']);
         $slug = Str::limit($parsed['slug'] ?: Str::slug($title), 250, '');
-        // AI uydurma İÇ link üretiyor → 404. İç/relatif linkleri düz metne çevir
-        // (dış kaynak linkleri kalır). content_md kaydı + html ikisi de temiz olsun.
-        $body = $this->neutralizeInternalLinks($parsed['body']);
+        // AI iç linkleri çözümle: gerçek yayınlanmış yazıya bağla (doğru URL), yoksa
+        // düz metne indir. Dış kaynak linkleri + resimler korunur. (404 üretmez.)
+        $body = $this->resolveInternalLinks($parsed['body'], $asset->language ?: 'tr');
         $contentHtml = Str::markdown($body, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
         $excerpt = Str::limit($decode($parsed['excerpt']) ?: strip_tags($contentHtml), 250, '...');
 
@@ -104,34 +104,88 @@ class BlogPublisher
     }
 
     /**
-     * AI'ın ürettiği İÇ (kendi domain / relatif) markdown linklerini düz metne çevirir
-     * → uydurma slug'lar 404 vermesin. Dış kaynak linkleri ve resimler ( ![]() ) korunur.
+     * AI'ın ürettiği İÇ markdown linklerini ÇÖZÜMLER:
+     *  - dış kaynak linki / resim → korunur
+     *  - iç link → gerçek yayınlanmış yazı (slug veya başlık tam eşleşme) bulunursa
+     *    doğru yerel URL'ye yeniden yazılır; bulunmazsa düz metne indirilir (404 yok).
      */
-    public function neutralizeInternalLinks(string $md): string
+    public function resolveInternalLinks(string $md, string $locale = 'tr'): string
     {
         $internalHosts = ['applytogerman.com', 'almanyauni.com'];
 
         $out = preg_replace_callback(
             '/(?<!\!)\[([^\]]+)\]\(\s*([^)\s]+)(?:\s+"[^"]*")?\s*\)/u',
-            function ($m) use ($internalHosts) {
+            function ($m) use ($internalHosts, $locale) {
                 $text = $m[1];
-                $url = $m[2];
+                $url = trim($m[2]);
+
                 if (preg_match('#^https?://#i', $url)) {
                     $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+                    $isInternal = false;
                     foreach ($internalHosts as $h) {
-                        if (str_contains($host, $h)) {
-                            return $text; // iç link → düz metin
-                        }
+                        if (str_contains($host, $h)) { $isInternal = true; break; }
                     }
-                    return $m[0]; // dış kaynak linki kalır
+                    if (! $isInternal) {
+                        return $m[0]; // dış kaynak linki → korunur
+                    }
+                    $url = (string) parse_url($url, PHP_URL_PATH); // kendi domain → path'i iç link gibi işle
                 }
-                // Relatif / #anchor / scheme'siz → iç link → düz metin
-                return $text;
+
+                // Anchor / mailto / tel → dokunma
+                if ($url === '' || $url[0] === '#' || str_starts_with($url, 'mailto:') || str_starts_with($url, 'tel:')) {
+                    return $m[0];
+                }
+
+                // Aday slug = path'in son segmenti (locale/blog/ önekleri atılır)
+                $path = strtok($url, '?#') ?: $url;
+                $segments = array_values(array_filter(explode('/', trim($path, '/'))));
+                $candidate = (string) end($segments);
+
+                $post = $this->findPostForLink($candidate, $text, $locale);
+                if ($post) {
+                    return '[' . $text . '](' . url($post->locale . '/blog/' . $post->slug) . ')';
+                }
+                return $text; // gerçek hedef yok → düz metin
             },
             $md
         );
 
         return $out ?? $md; // preg null dönerse orijinali koru (güvenli)
+    }
+
+    /** İç link için gerçek yayınlanmış Post bul (slug/başlık tam eşleşme); hedef dildeki kardeşi yeğle. */
+    private function findPostForLink(string $candidateSlug, string $text, string $locale): ?Post
+    {
+        $textSlug = Str::slug($text);
+        if ($candidateSlug === '' && $textSlug === '') {
+            return null;
+        }
+
+        $post = Post::query()
+            ->where('is_published', true)
+            ->where(function ($q) use ($candidateSlug, $textSlug) {
+                if ($candidateSlug !== '') { $q->where('slug', $candidateSlug); }
+                if ($textSlug !== '') { $q->orWhere('slug', $textSlug); }
+            })
+            ->first();
+
+        if (! $post) {
+            return null;
+        }
+
+        // Hedef dilde kardeş varsa ona bağla (aynı translation_group)
+        if ($post->translation_group_id && $post->locale !== $locale) {
+            $sibling = Post::query()
+                ->where('translation_group_id', $post->translation_group_id)
+                ->where('locale', $locale)
+                ->where('is_published', true)
+                ->first();
+            if ($sibling) {
+                return $sibling;
+            }
+        }
+
+        return $post;
     }
 
     /**

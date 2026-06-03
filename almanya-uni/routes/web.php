@@ -1020,6 +1020,27 @@ Route::middleware('auth')->group(function () {
             ->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Yazılardaki AI iç linklerini çöz: gerçek yazıya bağla / hedefsizi düz metne indir.
+    // ?dry=1 önizleme, ?run=1 uygula, ?limit=N. Idempotent.
+    Route::get('/admin/ops/resolve-post-links', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+        if (! request()->boolean('run') && ! request()->boolean('dry')) {
+            return response("Önizleme: ?dry=1 · Uygula: ?run=1 · (&limit=N)\n", 200)
+                ->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+        try {
+            \Illuminate\Support\Facades\Artisan::call('content:resolve-post-links', array_filter([
+                '--dry-run' => request()->boolean('dry'),
+                '--limit'   => (int) request()->integer('limit'),
+            ]));
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // GEÇİCİ teşhis — son log satırları (admin, salt-okunur). İş bitince KALDIR.
     // ?lines=200 & ?grep=ERROR gibi filtre.
     Route::get('/admin/ops/tail-log', function () {
