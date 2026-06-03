@@ -226,7 +226,9 @@ class BlogController extends Controller
 
     private function sidebarCategories()
     {
-        $publishedCount = fn ($q) => $q->where('is_published', true)->whereNotNull('published_at');
+        // Aktif dile göre say — TR+EN+DE çevirileri 1 yazıyı 3 göstermesin.
+        $publishedCount = fn ($q) => $q->where('is_published', true)->whereNotNull('published_at')
+            ->where('locale', app()->getLocale());
 
         return Category::active()
             ->where(fn ($w) => $w->where('kind', 'blog')->orWhereNull('kind'))

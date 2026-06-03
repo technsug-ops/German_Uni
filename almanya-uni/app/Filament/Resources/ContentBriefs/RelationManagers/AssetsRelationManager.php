@@ -274,6 +274,13 @@ class AssetsRelationManager extends RelationManager
                     ->color('success')
                     ->visible(fn (ContentAsset $record) => $record->asset_type === 'blog' && ! empty($record->body_md))
                     ->schema([
+                        Select::make('author_id')
+                            ->label('Yazar')
+                            ->options(fn () => \App\Models\User::orderBy('name')->pluck('name', 'id'))
+                            ->default(fn (ContentAsset $record) => $record->brief?->author_id ?? auth()->id())
+                            ->searchable()
+                            ->required()
+                            ->helperText('Yazının görünen yazarı (E-E-A-T). Varsayılan: brief yazarı veya sen.'),
                         Toggle::make('go_live')
                             ->label('Hemen yayınla (canlı)')
                             ->default(true)
@@ -297,27 +304,31 @@ class AssetsRelationManager extends RelationManager
                         }
 
                         $brief = $record->brief;
-                        $slug = Str::limit($parsed['slug'] ?: Str::slug($parsed['title']), 250, '');
+                        // AI çıktısındaki HTML entity'leri (&quot; vb.) çöz — başlık/özet temiz görünsün.
+                        $decode = fn (?string $s) => $s === null ? '' : html_entity_decode($s, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                        $title = $decode($parsed['title']);
+                        $slug = Str::limit($parsed['slug'] ?: Str::slug($title), 250, '');
                         $contentHtml = Str::markdown($parsed['body'], [
                             'html_input' => 'allow',
                             'allow_unsafe_links' => false,
                         ]);
-                        $excerpt = Str::limit($parsed['excerpt'] ?: strip_tags($contentHtml), 250, '...');
+                        $excerpt = Str::limit($decode($parsed['excerpt']) ?: strip_tags($contentHtml), 250, '...');
                         $goLive = (bool) ($data['go_live'] ?? false);
                         $translateAll = (bool) ($data['translate_all'] ?? false);
+                        $authorId = (int) ($data['author_id'] ?? $brief?->author_id ?? auth()->id() ?? 1);
 
                         $existing = Post::where('slug', $slug)->first();
                         $payload = [
                             'locale'               => $record->language ?: 'tr',
                             'translation_group_id' => $existing?->translation_group_id ?? (string) Str::uuid(),
-                            'user_id'              => auth()->id() ?? 1,
+                            'user_id'              => $authorId,
                             'category_id'          => self::resolveCategoryId($brief?->topic),
-                            'title'                => Str::limit($parsed['title'], 250, ''),
+                            'title'                => Str::limit($title, 250, ''),
                             'slug'                 => $slug,
                             'excerpt'              => $excerpt,
                             'content_md'           => $parsed['body'],
                             'content_html'         => $contentHtml,
-                            'meta_title'           => Str::limit($parsed['title'], 250, ''),
+                            'meta_title'           => Str::limit($title, 250, ''),
                             'meta_description'     => $excerpt,
                             'reading_minutes'      => max(1, (int) round(str_word_count(strip_tags($contentHtml)) / 220)),
                             'is_published'         => $goLive,

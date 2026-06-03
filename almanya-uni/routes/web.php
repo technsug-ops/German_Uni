@@ -1002,6 +1002,24 @@ Route::middleware('auth')->group(function () {
         return response("Önce: {$before} satır\n{$out}", 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // OG görsel cache'ini temizle — eski (Türkçe gliflerin kutu çıktığı) PNG'ler
+    // silinir, sonraki istekte yeni fontla yeniden üretilir. ?run=1 ile siler.
+    Route::get('/admin/ops/clear-og-cache', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $dir = storage_path('app/public/og');
+        $files = is_dir($dir) ? \Illuminate\Support\Facades\File::allFiles($dir) : [];
+        $count = count($files);
+        if (! request()->boolean('run')) {
+            return response("OG cache: {$count} PNG\n\n[ Silmek için: bu URL'ye ?run=1 ekle ]\n", 200)
+                ->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+        foreach ($files as $f) {
+            @unlink($f->getPathname());
+        }
+        return response("Silindi: {$count} OG PNG. Yeni fontla yeniden üretilecekler.\n", 200)
+            ->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
