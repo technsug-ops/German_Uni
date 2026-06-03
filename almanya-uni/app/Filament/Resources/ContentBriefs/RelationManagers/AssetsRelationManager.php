@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\ContentBriefs\RelationManagers;
 
+use App\Models\Category;
 use App\Models\ContentAsset;
 use App\Models\ContentBrief;
+use App\Models\Post;
 use App\Services\Content\ContentGenerationService;
 use App\Services\Content\ContentTranslator;
 use App\Services\Content\ImageGenerationService;
@@ -15,7 +17,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ViewField;
+use Illuminate\Support\Str;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
@@ -264,9 +268,123 @@ class AssetsRelationManager extends RelationManager
                             ->persistent()
                             ->send();
                     }),
+                Action::make('publishToBlog')
+                    ->label('📤 Blog\'a Aktar')
+                    ->color('success')
+                    ->visible(fn (ContentAsset $record) => $record->asset_type === 'blog' && ! empty($record->body_md))
+                    ->schema([
+                        Toggle::make('go_live')
+                            ->label('Hemen yayınla (canlı)')
+                            ->default(false)
+                            ->helperText('Kapalı: Blog Yazıları\'na TASLAK olarak düşer, sen kontrol edip yayına alırsın (önerilen). Açık: anında canlı.'),
+                    ])
+                    ->modalHeading('Blog yazısına aktar')
+                    ->modalDescription('Bu asset bir Blog Yazısı (Post) olarak oluşturulur/güncellenir. Markdown frontmatter (title/slug/excerpt) gerekir.')
+                    ->action(function (ContentAsset $record, array $data) {
+                        $parsed = self::parseAssetMarkdown((string) $record->body_md);
+                        if (! $parsed) {
+                            Notification::make()
+                                ->title('❌ Markdown aktarılamadı')
+                                ->body('Frontmatter (--- title: ... ---) veya başlık eksik. Asset\'i "Yeniden üret" ile tazele.')
+                                ->danger()->persistent()->send();
+                            return;
+                        }
+
+                        $brief = $record->brief;
+                        $slug = Str::limit($parsed['slug'] ?: Str::slug($parsed['title']), 250, '');
+                        $contentHtml = Str::markdown($parsed['body'], [
+                            'html_input' => 'allow',
+                            'allow_unsafe_links' => false,
+                        ]);
+                        $excerpt = Str::limit($parsed['excerpt'] ?: strip_tags($contentHtml), 250, '...');
+                        $goLive = (bool) ($data['go_live'] ?? false);
+
+                        $existing = Post::where('slug', $slug)->first();
+                        $payload = [
+                            'locale'               => $record->language ?: 'tr',
+                            'translation_group_id' => $existing?->translation_group_id ?? (string) Str::uuid(),
+                            'user_id'              => auth()->id() ?? 1,
+                            'category_id'          => self::resolveCategoryId($brief?->topic),
+                            'title'                => Str::limit($parsed['title'], 250, ''),
+                            'slug'                 => $slug,
+                            'excerpt'              => $excerpt,
+                            'content_md'           => $parsed['body'],
+                            'content_html'         => $contentHtml,
+                            'meta_title'           => Str::limit($parsed['title'], 250, ''),
+                            'meta_description'     => $excerpt,
+                            'reading_minutes'      => max(1, (int) round(str_word_count(strip_tags($contentHtml)) / 220)),
+                            'is_published'         => $goLive,
+                            'published_at'         => $existing?->published_at ?? now(),
+                        ];
+
+                        $post = $existing ? tap($existing)->update($payload) : Post::create($payload);
+                        $record->update(['status' => $goLive ? 'published' : 'ready']);
+
+                        Notification::make()
+                            ->title($goLive ? '✅ Yayında!' : '📝 Taslak Post oluşturuldu')
+                            ->body(($existing ? 'Güncellendi' : 'Oluşturuldu') . ': ' . mb_substr($post->title, 0, 50)
+                                . ($goLive ? '' : ' — Blog Yazıları\'ndan yayına al.'))
+                            ->success()->persistent()->send();
+                    }),
                 EditAction::make(),
                 DeleteAction::make(),
             ])
             ;
+    }
+
+    /** brief.topic → blog kategori id. Kültür konuları yeni üst kategoriye gider. */
+    private static function resolveCategoryId(?string $topic): int
+    {
+        $map = [
+            'vize' => 6, 'randevu' => 6, 'uni_assist' => 8, 'dil' => 7, 'sinav' => 7,
+            'yurt' => 9, 'sehir' => 9, 'studienkolleg' => 1, 'master' => 1,
+            'sigorta' => 5, 'para' => 5, 'sperrkonto' => 5,
+        ];
+        if ($topic && isset($map[$topic])) {
+            return $map[$topic];
+        }
+        // Kültür/yaşam konuları → "Almanya'da Yaşam & Kültür"
+        if (in_array($topic, ['yasam', 'konut', 'kultur'], true)) {
+            $id = Category::where('slug', 'german-life-culture')->value('id');
+            if ($id) {
+                return (int) $id;
+            }
+        }
+        return 1; // güvenli default
+    }
+
+    /**
+     * Asset body_md'sinden YAML frontmatter + body ayıklar (PublishBlogAssets ile aynı kural).
+     * @return array{title:string,slug:?string,excerpt:?string,body:string}|null
+     */
+    private static function parseAssetMarkdown(string $md): ?array
+    {
+        $md = trim($md);
+        if (preg_match('/^```(?:markdown|md)?\s*\n(.+)\n```\s*$/s', $md, $w)) {
+            $md = trim($w[1]);
+        }
+        if (! preg_match('/^---\s*\n(.+?)\n---\s*\n(.+)$/s', $md, $m)) {
+            return null;
+        }
+        $body = trim($m[2]);
+        $meta = [];
+        foreach (preg_split('/\n/', $m[1]) as $line) {
+            if (preg_match('/^(\w+):\s*(.+)$/', trim($line), $kv)) {
+                $val = trim($kv[2]);
+                if (preg_match('/^"(.+)"$/', $val, $q) || preg_match("/^'(.+)'$/", $val, $q)) {
+                    $val = $q[1];
+                }
+                $meta[$kv[1]] = $val;
+            }
+        }
+        if (empty($meta['title'])) {
+            return null;
+        }
+        return [
+            'title'   => $meta['title'],
+            'slug'    => $meta['slug'] ?? null,
+            'excerpt' => $meta['excerpt'] ?? null,
+            'body'    => $body,
+        ];
     }
 }
