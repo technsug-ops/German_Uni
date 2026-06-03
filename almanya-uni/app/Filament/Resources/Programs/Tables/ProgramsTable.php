@@ -23,7 +23,7 @@ class ProgramsTable
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $q) => $q->with('university:id,name_de', 'field:id,name_tr,icon'))
+            ->modifyQueryUsing(fn (Builder $q) => $q->with('university', 'field'))
             ->defaultSort('id', 'desc')
             ->columns([
                 TextColumn::make('name_de')

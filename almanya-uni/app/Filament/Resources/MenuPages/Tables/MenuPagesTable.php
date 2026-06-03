@@ -23,7 +23,9 @@ class MenuPagesTable
         return $table
             ->columns([
                 TextColumn::make('group')->label('Grup')->badge()
-                    ->formatStateUsing(fn (?string $state) => MenuPage::GROUPS[$state]['emoji'] . ' ' . (MenuPage::GROUPS[$state]['label'] ?? $state))
+                    ->formatStateUsing(fn (?string $state) => isset(MenuPage::GROUPS[$state])
+                        ? (MenuPage::GROUPS[$state]['emoji'] . ' ' . MenuPage::GROUPS[$state]['label'])
+                        : ($state ?? '—'))
                     ->color(fn (?string $state) => match ($state) {
                         'kesfet'     => 'info',
                         'araclar'    => 'primary',
@@ -61,7 +63,9 @@ class MenuPagesTable
             ->groups([
                 \Filament\Tables\Grouping\Group::make('group')
                     ->label('Grup')
-                    ->getTitleFromRecordUsing(fn ($r) => MenuPage::GROUPS[$r->group]['emoji'] . ' ' . (MenuPage::GROUPS[$r->group]['label'] ?? $r->group))
+                    ->getTitleFromRecordUsing(fn ($r) => ($r && isset(MenuPage::GROUPS[$r->group]))
+                        ? (MenuPage::GROUPS[$r->group]['emoji'] . ' ' . MenuPage::GROUPS[$r->group]['label'])
+                        : ($r->group ?? '—'))
                     ->collapsible(),
             ])
             ->defaultGroup('group')

@@ -25,7 +25,7 @@ class UniversitiesTable
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $q) => $q->with('city:id,name_de,state_id', 'city.state:id,name_de'))
+            ->modifyQueryUsing(fn (Builder $q) => $q->with('city.state'))
             ->defaultSort('name_de')
             ->columns([
                 ImageColumn::make('logo_url')
