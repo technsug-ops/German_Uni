@@ -23,7 +23,9 @@ class ProgramsTable
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $q) => $q->with('university', 'field'))
+            // NOT: ->modifyQueryUsing(...->with()) v4'te tablo özet/filtre sorgusunu
+            // bozuyordu (model null → newQueryWithoutRelationships, Filament #17275).
+            // İlişki kolonlarını Filament zaten otomatik eager-load eder.
             ->defaultSort('id', 'desc')
             ->columns([
                 TextColumn::make('name_de')

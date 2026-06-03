@@ -25,7 +25,9 @@ class UniversitiesTable
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $q) => $q->with('city.state'))
+            // NOT: ->modifyQueryUsing(...->with()) v4'te tablo özet/filtre sorgusunu
+            // bozuyordu (model null → newQueryWithoutRelationships, Filament #17275).
+            // İlişki kolonlarını Filament zaten otomatik eager-load eder.
             ->defaultSort('name_de')
             ->columns([
                 ImageColumn::make('logo_url')
