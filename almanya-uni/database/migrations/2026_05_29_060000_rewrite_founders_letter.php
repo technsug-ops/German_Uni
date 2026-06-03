@@ -59,7 +59,7 @@ Bu sahne her gece var. Sadece bu mesaj değil — **vize randevusunun neden 7 ay
 
 ## Bu Sistemin Bu Kadar Karmaşık Olması Gerekmiyor
 
-Adım Halil Yaprakli. Almanya'ya geldim, sürecini yaşadım, eve döndüm, geri geldim, kalmaya karar verdim. Her aşamasında "bunu kim önceden söyleseydi keşke" dediğim onlarca an oldu. Sperrkonto'da Coracle yerine Expatrio seçtim çünkü adres beyanı daha hızlıydı; bunu bilemediğim için ilk başvurumda iki ay kaybettim. uni-assist'e VPD almadan başvurdum, dosyam bekletildi; bunu bilseydim Mart yerine Ocak'ta başvururdum. Bu örnekler birikiyor — ve her biri **bilgi eşitsizliğinin** somut bir maliyeti.
+Adım Halil Yaprakli. Almanya'ya geldim, sürecini yaşadım, eve döndüm, geri geldim, kalmaya karar verdim. Her aşamasında "bunu keşke biri önceden söyleseydi" dediğim onlarca an oldu. Sperrkonto'da Coracle yerine Expatrio seçtim çünkü adres beyanı daha hızlıydı; bunu bilemediğim için ilk başvurumda iki ay kaybettim. uni-assist'e VPD almadan başvurdum, dosyam bekletildi; bunu bilseydim Mart yerine Ocak'ta başvururdum. Bu örnekler birikiyor — ve her biri **bilgi eşitsizliğinin** somut bir maliyeti.
 
 Almanya'nın akademik sistemi karmaşık olabilir ama anlaşılmaz değildir. Bilgi resmi kanallarda — DAAD'da, Hochschulkompass'ta, KMK Anabin'de, Bundesagentur'un BERUFENET'inde — ücretsiz olarak duruyor. Ama bu bilgi Almanca, çoğu zaman bürokratik dilde, ve bir Türk öğrenci için "diploma denklikleri Anabin'de H+, H+-, H-, GO-1, GO-3 olarak sınıflandırılır" cümlesini görmek bir hayli ürkütücü. Yaptığımız şey bu cümleyi açıyor, Türkçeye çeviriyor, Türk öğrenci için ne anlama geldiğini örnekle gösteriyor.
 
