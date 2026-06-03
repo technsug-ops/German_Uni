@@ -369,6 +369,12 @@
             <p class="text-blue-800 leading-relaxed text-sm">
                 {!! __('It is the blocked account mandatory for the Germany student visa. You deposit enough money for a year (<strong>€11,904</strong> for 2026) at a German bank, and after arrival you can withdraw <strong>€992</strong> monthly. After you get the visa and arrive in Germany the account is "unblocked".') !!}
             </p>
+            {{-- Regülasyon rakamının kaynağı (GEO #3 güven sinyali + halüsinasyon savunması) --}}
+            <x-source-note
+                :sources="[['name' => 'Auswärtiges Amt', 'url' => 'https://www.auswaertiges-amt.de/'], 'BAföG-Höchstsatz']"
+                updated="2026-06-04"
+                class="!bg-white/60 !border-blue-100"
+            />
         </div>
 
         @if (app()->getLocale() === 'tr')
