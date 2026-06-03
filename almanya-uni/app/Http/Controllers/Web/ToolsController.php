@@ -583,6 +583,16 @@ class ToolsController extends Controller
         ]);
     }
 
+    /**
+     * Almanya öğrenci vizesi randevu rehberi (iData, Türkiye).
+     * Statik içerik — tüm figürler doğrulandı + kaynak künyeli (halüsinasyon savunması).
+     * TR çekirdek spearhead: 24K Telegram randevu mesajı, rakipsiz boşluk.
+     */
+    public function visaAppointment(): View
+    {
+        return view('tools.visa-appointment');
+    }
+
     public function recommendation(Request $request): View
     {
         $answers = null;
