@@ -1,0 +1,7 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+/* Filament vendor teması source(none) ile gelir → utility'ler yalnız aşağıdaki
+   @source yollarından taranır. Custom Filament sayfaları/blade'leri (Analytics,
+   Yayın Kokpiti, localization-health...) Tailwind utility'lerini buradan derler. */
+@source '../../../../app/Filament';
+@source '../../../../resources/views/filament';
