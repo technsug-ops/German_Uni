@@ -6,6 +6,13 @@
     :description="__('Germany university, visa, and cost of living guide for international students. :unis universities, :faqs answered questions, interactive tools.', ['unis' => $totals['universities'], 'faqs' => $faq_stats['total']])"
 />
 
+{{-- Dataset schema — program/üni/şehir veritabanı makine-okunur (AI "quotable" istatistik sinyali) --}}
+<x-json-ld :data="\App\Support\Seo::dataset([
+    'programs' => $totals['programs'],
+    'universities' => $totals['universities'],
+    'cities' => $totals['cities'],
+])" />
+
 @section('content')
 
 {{-- =================================================================== --}}

@@ -170,14 +170,71 @@ class Seo
 
         $defaultSameAs = config('seo.organization.sameAs', []);
 
-        return [
+        // Çift-marka: aynı kurumun diğer adı alternateName olarak verilir →
+        // AI/arama motorları tek temiz varlık (entity) kurar (ApplyToGerman ↔ AlmanyaUni).
+        $alternateName = brand_key() === 'applytogerman' ? 'AlmanyaUni' : 'ApplyToGerman';
+
+        return self::clean([
             '@context' => 'https://schema.org',
             '@type' => 'EducationalOrganization',
             'name' => $brandName,
+            'alternateName' => $alternateName,
             'url' => $url,
             'logo' => $logo,
             'sameAs' => array_values(array_unique(array_merge($defaultSameAs, $social))),
+        ]);
+    }
+
+    /**
+     * schema.org Dataset — program/üniversite veritabanını makine-okunur tanımlar.
+     * AI motorlarının alıntıladığı "quotable" istatistik sinyali (X program · Y üni · Z şehir).
+     * $stats: ['programs' => int, 'universities' => int, 'cities' => int]
+     */
+    public static function dataset(array $stats = []): array
+    {
+        $brandName = brand('name');
+        $url = 'https://' . brand('domain');
+
+        $measured = [];
+        $map = [
+            'programs'     => __('study programs'),
+            'universities' => __('universities'),
+            'cities'       => __('cities'),
         ];
+        $descParts = [];
+        foreach ($map as $key => $label) {
+            $val = (int) ($stats[$key] ?? 0);
+            if ($val <= 0) {
+                continue;
+            }
+            $measured[] = [
+                '@type' => 'PropertyValue',
+                'name'  => $label,
+                'value' => $val,
+            ];
+            $descParts[] = number_format($val) . ' ' . $label;
+        }
+
+        $description = $descParts
+            ? trim($brandName . ' — ' . implode(' · ', $descParts))
+            : $brandName;
+
+        return self::clean([
+            '@context' => 'https://schema.org',
+            '@type' => 'Dataset',
+            'name' => $brandName . ' — ' . __('German universities & study programs'),
+            'description' => $description,
+            'url' => $url,
+            'keywords' => ['Germany', 'universities', 'study programs', 'Hochschule', 'Studium', 'international students'],
+            'inLanguage' => app()->getLocale(),
+            'isAccessibleForFree' => true,
+            'creator' => [
+                '@type' => 'Organization',
+                'name' => $brandName,
+                'url' => $url,
+            ],
+            'variableMeasured' => $measured ?: null,
+        ]);
     }
 
     public static function website(): array
