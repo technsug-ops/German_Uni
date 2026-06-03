@@ -36,7 +36,9 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
             ])
             ->favicon(asset('favicon.ico'))
-            ->viteTheme('resources/css/filament/admin/theme.css')
+            // NOT: ->viteTheme(...) prod'da admin-geneli 500'e yol açtı (manifest/asset
+            // çözümü). Geri alındı; admin vendor CSS'iyle çalışır. Custom sayfa CSS'i
+            // için güvenli yöntem ayrıca kurulacak (theme.css + vite input duruyor).
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
