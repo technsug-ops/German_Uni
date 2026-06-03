@@ -86,12 +86,12 @@ return new class extends Migration
             });
         }
 
-        // Mega menüye ekle (Araçlar grubu) — idempotent
+        // Mega menüye ekle (Keşfet grubu) — idempotent
         if (Schema::hasTable('menu_pages')) {
             $now = now();
             $menu = [
-                ['key' => 'language-courses.index',    'label' => 'Dil Kursları',    'icon' => '🗣️', 'description' => 'Üniversite + özel + online', 'group' => 'araclar', 'sort_order' => 70],
-                ['key' => 'translation-offices.index', 'label' => 'Yeminli Tercüme', 'icon' => '📜', 'description' => 'Diploma & belge çevirisi',   'group' => 'araclar', 'sort_order' => 71],
+                ['key' => 'language-courses.index',    'label' => 'Dil Kursları',    'icon' => '🗣️', 'description' => 'Üniversite + özel + online', 'group' => 'kesfet', 'sort_order' => 95],
+                ['key' => 'translation-offices.index', 'label' => 'Yeminli Tercüme', 'icon' => '📜', 'description' => 'Diploma & belge çevirisi',   'group' => 'kesfet', 'sort_order' => 96],
             ];
             foreach ($menu as $row) {
                 DB::table('menu_pages')->updateOrInsert(
