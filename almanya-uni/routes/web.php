@@ -208,6 +208,14 @@ $routes = function () {
     Route::get('/housing/templates/{slug}', [HousingController::class, 'template'])->name('housing.template');
     Route::get('/housing/tips', [HousingController::class, 'tips'])->name('housing.tips');
 
+    // Partner dizinleri (Dil Kursları + Yeminli Tercüme) — herkese açık + lead-gen
+    Route::get('/language-courses', [\App\Http\Controllers\Web\PartnerController::class, 'languageCourses'])->name('language-courses.index');
+    Route::get('/language-courses/{slug}', [\App\Http\Controllers\Web\PartnerController::class, 'languageCourse'])->name('language-courses.show');
+    Route::get('/translation-offices', [\App\Http\Controllers\Web\PartnerController::class, 'translationOffices'])->name('translation-offices.index');
+    Route::get('/translation-offices/{slug}', [\App\Http\Controllers\Web\PartnerController::class, 'translationOffice'])->name('translation-offices.show');
+    Route::post('/partner-lead', [\App\Http\Controllers\Web\PartnerController::class, 'storeLead'])->name('partner-lead.store');
+    Route::get('/go/{kind}/{id}', [\App\Http\Controllers\Web\PartnerController::class, 'click'])->name('partner.click')->whereNumber('id');
+
     // Events / Etkinlikler
     Route::get('/events', [\App\Http\Controllers\Web\EventController::class, 'index'])->name('events.index');
     Route::get('/events/{slug}', [\App\Http\Controllers\Web\EventController::class, 'show'])->name('events.show');
