@@ -36,6 +36,15 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
             ])
             ->favicon(asset('favicon.ico'))
+            // Sidebar grup sırası (deterministik). Sistem en sonda; Operasyonlar onun başında.
+            ->navigationGroups([
+                'İçerik',
+                'Akademik Veri',
+                'Topluluk',
+                'Pazarlama',
+                'Kaynaklar',
+                'Sistem',
+            ])
             // NOT: ->viteTheme(...) prod'da admin-geneli 500'e yol açtı (manifest/asset
             // çözümü). Geri alındı; admin vendor CSS'iyle çalışır. Custom sayfa CSS'i
             // için güvenli yöntem ayrıca kurulacak (theme.css + vite input duruyor).

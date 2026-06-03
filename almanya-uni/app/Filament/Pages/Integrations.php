@@ -30,9 +30,9 @@ class Integrations extends Page
 
     protected static ?string $title = 'Pazarlama & Analitik Entegrasyonları';
 
-    protected static ?int $navigationSort = 90;
+    protected static ?int $navigationSort = 3;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Ayarlar';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     protected string $view = 'filament.pages.integrations';
 

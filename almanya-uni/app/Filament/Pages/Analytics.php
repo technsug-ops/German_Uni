@@ -16,6 +16,7 @@ class Analytics extends Page
     protected static ?string $navigationLabel = '📊 Analitik';
     protected static ?string $title = 'Analitik — Detaylı Trafik';
     protected static ?int $navigationSort = 2;
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     protected string $view = 'filament.pages.analytics';
 

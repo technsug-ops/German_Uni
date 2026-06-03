@@ -17,8 +17,8 @@ class LocalizationHealth extends Page
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedLanguage;
     protected static ?string $navigationLabel = '🌐 Dil Durumu';
     protected static ?string $title = 'Dil Durumu / İçerik Senkronizasyonu';
-    protected static ?int $navigationSort = 90;
-    protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
+    protected static ?int $navigationSort = 4;
+    protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     protected string $view = 'filament.pages.localization-health';
 

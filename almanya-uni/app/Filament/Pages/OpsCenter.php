@@ -18,7 +18,7 @@ class OpsCenter extends Page
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
     protected static ?string $navigationLabel = '🛠️ Operasyonlar';
     protected static ?string $title = 'Operasyonlar';
-    protected static ?int $navigationSort = 98;
+    protected static ?int $navigationSort = 1;
     protected static string|\UnitEnum|null $navigationGroup = 'Sistem';
 
     protected string $view = 'filament.pages.ops-center';
