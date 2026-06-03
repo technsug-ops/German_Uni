@@ -19,6 +19,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ViewField;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -275,12 +276,17 @@ class AssetsRelationManager extends RelationManager
                     ->schema([
                         Toggle::make('go_live')
                             ->label('Hemen yayınla (canlı)')
-                            ->default(false)
-                            ->helperText('Kapalı: Blog Yazıları\'na TASLAK olarak düşer, sen kontrol edip yayına alırsın (önerilen). Açık: anında canlı.'),
+                            ->default(true)
+                            ->helperText('Açık: anında /blog\'da canlı. Kapalı: Blog Yazıları\'na TASLAK düşer, sen yayına alırsın.'),
+                        Toggle::make('translate_all')
+                            ->label('EN + DE\'ye çevir & yayınla (haber gibi)')
+                            ->default(true)
+                            ->helperText('Açık: TR yayınlanırken İngilizce + Almanca\'ya da çevrilip yayınlanır (Gemini, ~15-40 sn). Yalnız "Hemen yayınla" açıkken çalışır.'),
                     ])
                     ->modalHeading('Blog yazısına aktar')
                     ->modalDescription('Bu asset bir Blog Yazısı (Post) olarak oluşturulur/güncellenir. Markdown frontmatter (title/slug/excerpt) gerekir.')
                     ->action(function (ContentAsset $record, array $data) {
+                        @set_time_limit(180);
                         $parsed = self::parseAssetMarkdown((string) $record->body_md);
                         if (! $parsed) {
                             Notification::make()
@@ -298,6 +304,7 @@ class AssetsRelationManager extends RelationManager
                         ]);
                         $excerpt = Str::limit($parsed['excerpt'] ?: strip_tags($contentHtml), 250, '...');
                         $goLive = (bool) ($data['go_live'] ?? false);
+                        $translateAll = (bool) ($data['translate_all'] ?? false);
 
                         $existing = Post::where('slug', $slug)->first();
                         $payload = [
@@ -320,8 +327,33 @@ class AssetsRelationManager extends RelationManager
                         $post = $existing ? tap($existing)->update($payload) : Post::create($payload);
                         $record->update(['status' => $goLive ? 'published' : 'ready']);
 
+                        // Haber paritesi: yayınlanırken TR → EN + DE çevir & yayınla (aynı grup).
+                        // Yalnız birincil dil TR ise ve yayına alınıyorsa.
+                        $translated = [];
+                        if ($goLive && $translateAll && ($record->language ?: 'tr') === 'tr') {
+                            try {
+                                Artisan::call('content:translate-posts', [
+                                    '--post'  => $post->id,
+                                    '--force' => true,
+                                    '--sleep' => 0,
+                                ]);
+                                $out = Artisan::output();
+                                foreach (['en' => 'EN', 'de' => 'DE'] as $loc => $lbl) {
+                                    if (str_contains($out, $loc)) {
+                                        $translated[] = $lbl;
+                                    }
+                                }
+                            } catch (\Throwable $e) {
+                                Notification::make()
+                                    ->title('⚠️ TR yayında ama çeviri başarısız')
+                                    ->body('EN/DE çevirisini sonra "Eksik çevirileri tamamla" ile dene. ' . mb_substr($e->getMessage(), 0, 120))
+                                    ->warning()->persistent()->send();
+                            }
+                        }
+
+                        $langNote = $translated ? ' + ' . implode(' & ', $translated) . ' çevrildi' : '';
                         Notification::make()
-                            ->title($goLive ? '✅ Yayında!' : '📝 Taslak Post oluşturuldu')
+                            ->title($goLive ? '✅ Yayında!' . $langNote : '📝 Taslak Post oluşturuldu')
                             ->body(($existing ? 'Güncellendi' : 'Oluşturuldu') . ': ' . mb_substr($post->title, 0, 50)
                                 . ($goLive ? '' : ' — Blog Yazıları\'ndan yayına al.'))
                             ->success()->persistent()->send();
