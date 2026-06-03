@@ -157,8 +157,13 @@
         zoom: 6,
         minZoom: 5,
         maxZoom: 18,
-        scrollWheelZoom: true,
+        scrollWheelZoom: false,        // sayfa kaydırması haritayı zoom'lamasın
     });
+
+    // İyi UX: haritaya tıklayınca tekerlek-zoom açılır, fare çıkınca kapanır.
+    // Böylece sayfa rahat kayar; zoom istenince haritaya tıklamak yeter.
+    map.on('click', () => map.scrollWheelZoom.enable());
+    map.on('mouseout', () => map.scrollWheelZoom.disable());
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
