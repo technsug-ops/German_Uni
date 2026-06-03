@@ -1020,6 +1020,36 @@ Route::middleware('auth')->group(function () {
             ->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GEÇİCİ teşhis — son log satırları (admin, salt-okunur). İş bitince KALDIR.
+    // ?lines=200 & ?grep=ERROR gibi filtre.
+    Route::get('/admin/ops/tail-log', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $files = glob(storage_path('logs') . '/*.log') ?: [];
+        if (! $files) {
+            return response("Log dosyası yok.\n", 200)->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+        usort($files, fn ($a, $b) => filemtime($b) <=> filemtime($a));
+        $f = $files[0];
+        $size = filesize($f);
+        $read = (int) min($size, 256 * 1024); // son 256KB
+        $fp = fopen($f, 'r');
+        if ($read > 0) {
+            fseek($fp, -$read, SEEK_END);
+        }
+        $content = (string) fread($fp, max($read, 1));
+        fclose($fp);
+
+        $lines = explode("\n", $content);
+        if ($g = request()->string('grep')->value()) {
+            $lines = array_values(array_filter($lines, fn ($l) => stripos($l, $g) !== false));
+        }
+        $n = (int) request()->integer('lines', 180);
+        $tail = implode("\n", array_slice($lines, -$n));
+
+        return response("FILE: {$f} ({$size} bytes)\n" . str_repeat('─', 40) . "\n" . $tail . "\n", 200)
+            ->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
     Route::get('/dashboard', function () {
         return redirect()->route('profile.edit');
