@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gelir Modelleri — AlmanyaUni / ApplyToGerman</title>
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --indigo:#4f46e5; --indigo-50:#eef2ff; --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:32px 20px 64px}
+  header.doc{background:linear-gradient(135deg,#4338ca,#6d28d9 55%,#7c3aed);color:#fff;
+    border-radius:18px;padding:28px 28px 24px;margin-bottom:28px;box-shadow:0 10px 30px rgba(79,70,229,.25)}
+  header.doc .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+  header.doc h1{margin:.25rem 0 .35rem;font-size:30px;line-height:1.15;font-weight:800}
+  header.doc p{margin:0;opacity:.92;font-size:14.5px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;
+    padding:3px 10px;border-radius:999px}
+  .b-live{background:#dcfce7;color:#166534}
+  .b-infra{background:#fef9c3;color:#854d0e}
+  .b-plan{background:#fee2e2;color:#991b1b}
+  header .badge{background:rgba(255,255,255,.16);color:#fff}
+  h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    margin:36px 0 12px;font-weight:700}
+  .stream{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+  .stream h3{margin:0 0 8px;font-size:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .stream .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+    border-radius:8px;background:var(--indigo-50);color:var(--indigo);font-size:13px;font-weight:800;flex:none}
+  .stream p{margin:.35rem 0}
+  .stream .lbl{font-weight:700;color:#334155}
+  .tag{display:inline-block;background:#f1f5f9;color:#475569;border:1px solid var(--line);
+    font-size:12px;border-radius:6px;padding:1px 7px;margin:2px 3px 0 0}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#475569}
+  tr:last-child td{border-bottom:0}
+  .mix{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:6px}
+  .mix .cell{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .mix .pct{font-size:24px;font-weight:800;color:var(--indigo)}
+  .mix .cap{font-size:12px;color:var(--muted);margin-top:2px}
+  .note{background:var(--indigo-50);border:1px solid #c7d2fe;border-radius:12px;padding:14px 16px;
+    color:#3730a3;font-size:14px;margin-top:18px}
+  footer{margin-top:34px;color:var(--muted);font-size:12.5px;text-align:center}
+  @media(max-width:640px){.mix{grid-template-columns:1fr 1fr}header.doc h1{font-size:24px}}
+  @media print{body{background:#fff}header.doc{box-shadow:none}.wrap{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <div class="kicker">AlmanyaUni · ApplyToGerman</div>
+    <h1>Gelir Modelleri</h1>
+    <p>Ücretsiz çekirdek korunur; para katmanları değeri <strong>bölmez, ekler</strong>.</p>
+    <div class="legend">
+      <span class="badge"><span class="badge b-live">🟢 canlı</span></span>
+      <span class="badge"><span class="badge b-infra">🟡 altyapı var, gelir yok</span></span>
+      <span class="badge"><span class="badge b-plan">🔴 planlı</span></span>
+    </div>
+  </header>
+
+  <h2>8 Gelir Akışı</h2>
+
+  <div class="stream">
+    <h3><span class="num">1</span> Affiliate / Lead-Gen <span class="badge b-infra">🟡 ana ilk gelir</span></h3>
+    <p><span class="lbl">Ne:</span> Öğrencinin zaten ihtiyaç duyduğu hizmetlere küratörlü dizinler + yönlendirme.</p>
+    <p><span class="lbl">Nasıl:</span> Partner dizinleri (admin'den yönetilir) → "Web sitesi" tık takibi (<code>click_count</code>/<code>/go</code>) + "İlgileniyorum" formu (Lead). Gelir: <strong>per-click</strong>, <strong>per-lead</strong> veya <strong>% komisyon</strong>.</p>
+    <p><span class="lbl">Dikeyler:</span>
+      <span class="tag">Dil kursları 🟢 8</span><span class="tag">Yeminli tercüme 🟢 4</span>
+      <span class="tag">Bloke hesap (Sperrkonto)</span><span class="tag">Sağlık sigortası</span>
+      <span class="tag">Banka (N26/DKB)</span><span class="tag">Konut/yurt</span>
+      <span class="tag">SIM</span><span class="tag">Uçak</span><span class="tag">Kitap</span><span class="tag">APS/uni-assist</span></p>
+    <p><span class="lbl">Sıradaki:</span> gerçek affiliate anlaşmaları + <code>affiliate_url</code> doldur + lead → partner aktarımı.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">2</span> Premium Abonelik <span class="badge b-infra">🟡 €14/ay vaadi</span></h3>
+    <p><span class="lbl">Ne:</span> Reklamsız + mentor seansı + portal bildirimleri (deadline/burs) + kişisel öneri + öncelikli destek (24s SLA) + Pro tier.</p>
+    <p><span class="lbl">Nasıl:</span> Stripe/Paddle + Laravel Notifications + Cal.com/Jitsi mentor.</p>
+    <p><span class="lbl">Sıradaki:</span> Premium MVP — önce 2-3 net değer (mentor + bildirim + reklamsız), sonra genişlet.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">3</span> B2B (Üniversite / Acente / Kurum) <span class="badge b-plan">🔴</span></h3>
+    <p><span class="lbl">Ne:</span> Öne çıkan listeleme, "doğrulanmış profil", recruitment lead'i, anonim trend verisi raporu.</p>
+    <p><span class="lbl">Nasıl:</span> Featured flag (var) + B2B paneli + sözleşme. Yüksek bilet, düşük hacim.</p>
+    <p><span class="lbl">Sıradaki:</span> trafik otoritesi oluşunca (B2B trafik ister).</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">4</span> Veri / API <span class="badge b-infra">🟡</span></h3>
+    <p><span class="lbl">Ne:</span> Public REST API (var) + FlatReklam SEO API (var). Ücretli tier'lar (rate-limit + premium uçlar).</p>
+    <p><span class="lbl">Sıradaki:</span> ücretli plan tanımı; niş ama yüksek-marj.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">5</span> Reklam / Sponsorluk <span class="badge b-infra">🟡</span></h3>
+    <p><span class="lbl">Ne:</span> Blog/araç sayfalarındaki "Reklam alanı (yakında)" banner'ları; sponsorlu içerik (etiketli).</p>
+    <p><span class="lbl">Nasıl:</span> Doğrudan sponsorluk > programatik (kalite + UX için). Consent Mode v2 hazır.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">6</span> Mentor Marketplace Komisyonu <span class="badge b-infra">🟡</span></h3>
+    <p><span class="lbl">Ne:</span> Mentor seansı ücretinden komisyon (mentor sistemi + sessions var). Premium ile bağlanabilir.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">7</span> Kendi Dijital Ürünler <span class="badge b-plan">🔴</span></h3>
+    <p><span class="lbl">Ne:</span> Ücretli derin rehberler (APS/DSH/vize paketi), webinar, şablon paketleri, e-kitap. Content Factory üretebiliyor → premium gated.</p>
+  </div>
+
+  <div class="stream">
+    <h3><span class="num">8</span> İş İlanları (Academic Job Board) <span class="badge b-infra">🟡</span></h3>
+    <p><span class="lbl">Ne:</span> Akademik/Werkstudent ilanları (JobPosting var) — ücretli ilan + öne çıkarma.</p>
+  </div>
+
+  <h2>Önceliklendirme &amp; Sıralama</h2>
+  <table>
+    <thead><tr><th>Sıra</th><th>Akış</th><th>Neden önce</th><th>Ufuk</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Affiliate / lead-gen</strong></td><td>altyapı hazır, CAC~0, hızlı ilk €</td><td>30 gün–3 ay</td></tr>
+      <tr><td>2</td><td><strong>Premium MVP</strong></td><td>retention + tahmin edilebilir MRR</td><td>3–6 ay</td></tr>
+      <tr><td>3</td><td>Mentor komisyonu</td><td>premium ile sinerjik</td><td>6 ay</td></tr>
+      <tr><td>4</td><td>Reklam / sponsorluk</td><td>trafik eşiği gerektirir</td><td>6–12 ay</td></tr>
+      <tr><td>5</td><td>B2B + API + ürünler</td><td>otorite/ölçek gerektirir</td><td>12 ay+</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Hedef Gelir Karışımı (3 Yıl)</h2>
+  <div class="mix">
+    <div class="cell"><div class="pct">40%</div><div class="cap">Affiliate</div></div>
+    <div class="cell"><div class="pct">35%</div><div class="cap">Premium + Mentor</div></div>
+    <div class="cell"><div class="pct">15%</div><div class="cap">B2B / Sponsor</div></div>
+    <div class="cell"><div class="pct">10%</div><div class="cap">API / Ürün</div></div>
+  </div>
+
+  <div class="note">
+    <strong>Altın kural:</strong> Her gelir hamlesi "öğrenciye zarar vermez, güveni artırır" testinden geçmeli.
+    Affiliate'te <code>rel=sponsored</code>, sponsorlu içerikte etiket, premium'da ücretsiz çekirdek korunur.
+  </div>
+
+  <footer>AlmanyaUni / ApplyToGerman · Yaşayan belge · 2026-06-03</footer>
+</div>
+</body>
+</html>
