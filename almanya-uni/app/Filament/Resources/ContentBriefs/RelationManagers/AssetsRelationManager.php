@@ -294,78 +294,27 @@ class AssetsRelationManager extends RelationManager
                     ->modalDescription('Bu asset bir Blog Yazısı (Post) olarak oluşturulur/güncellenir. Markdown frontmatter (title/slug/excerpt) gerekir.')
                     ->action(function (ContentAsset $record, array $data) {
                         @set_time_limit(180);
-                        $parsed = self::parseAssetMarkdown((string) $record->body_md);
-                        if (! $parsed) {
-                            Notification::make()
-                                ->title('❌ Markdown aktarılamadı')
-                                ->body('Frontmatter (--- title: ... ---) veya başlık eksik. Asset\'i "Yeniden üret" ile tazele.')
+                        $res = app(\App\Services\Content\BlogPublisher::class)->publish($record, [
+                            'go_live'   => (bool) ($data['go_live'] ?? false),
+                            'author_id' => $data['author_id'] ?? null,
+                            'translate' => (bool) ($data['translate_all'] ?? false),
+                        ]);
+
+                        if (! ($res['ok'] ?? false)) {
+                            Notification::make()->title('❌ Aktarılamadı')->body($res['message'] ?? '')
                                 ->danger()->persistent()->send();
                             return;
                         }
-
-                        $brief = $record->brief;
-                        // AI çıktısındaki HTML entity'leri (&quot; vb.) çöz — başlık/özet temiz görünsün.
-                        $decode = fn (?string $s) => $s === null ? '' : html_entity_decode($s, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                        $title = $decode($parsed['title']);
-                        $slug = Str::limit($parsed['slug'] ?: Str::slug($title), 250, '');
-                        $contentHtml = Str::markdown($parsed['body'], [
-                            'html_input' => 'allow',
-                            'allow_unsafe_links' => false,
-                        ]);
-                        $excerpt = Str::limit($decode($parsed['excerpt']) ?: strip_tags($contentHtml), 250, '...');
-                        $goLive = (bool) ($data['go_live'] ?? false);
-                        $translateAll = (bool) ($data['translate_all'] ?? false);
-                        $authorId = (int) ($data['author_id'] ?? $brief?->author_id ?? auth()->id() ?? 1);
-
-                        $existing = Post::where('slug', $slug)->first();
-                        $payload = [
-                            'locale'               => $record->language ?: 'tr',
-                            'translation_group_id' => $existing?->translation_group_id ?? (string) Str::uuid(),
-                            'user_id'              => $authorId,
-                            'category_id'          => self::resolveCategoryId($brief?->topic),
-                            'title'                => Str::limit($title, 250, ''),
-                            'slug'                 => $slug,
-                            'excerpt'              => $excerpt,
-                            'content_md'           => $parsed['body'],
-                            'content_html'         => $contentHtml,
-                            'meta_title'           => Str::limit($title, 250, ''),
-                            'meta_description'     => $excerpt,
-                            'reading_minutes'      => max(1, (int) round(str_word_count(strip_tags($contentHtml)) / 220)),
-                            'is_published'         => $goLive,
-                            'published_at'         => $existing?->published_at ?? now(),
-                        ];
-
-                        $post = $existing ? tap($existing)->update($payload) : Post::create($payload);
-                        $record->update(['status' => $goLive ? 'published' : 'ready']);
-
-                        // Haber paritesi: yayınlanırken TR → EN + DE çevir & yayınla (aynı grup).
-                        // Yalnız birincil dil TR ise ve yayına alınıyorsa.
-                        $translated = [];
-                        if ($goLive && $translateAll && ($record->language ?: 'tr') === 'tr') {
-                            try {
-                                Artisan::call('content:translate-posts', [
-                                    '--post'  => $post->id,
-                                    '--force' => true,
-                                    '--sleep' => 0,
-                                ]);
-                                $out = Artisan::output();
-                                foreach (['en' => 'EN', 'de' => 'DE'] as $loc => $lbl) {
-                                    if (str_contains($out, $loc)) {
-                                        $translated[] = $lbl;
-                                    }
-                                }
-                            } catch (\Throwable $e) {
-                                Notification::make()
-                                    ->title('⚠️ TR yayında ama çeviri başarısız')
-                                    ->body('EN/DE çevirisini sonra "Eksik çevirileri tamamla" ile dene. ' . mb_substr($e->getMessage(), 0, 120))
-                                    ->warning()->persistent()->send();
-                            }
+                        if (! empty($res['warn'])) {
+                            Notification::make()->title('⚠️ TR yayında ama çeviri eksik')
+                                ->body($res['warn'] . ' — sonra "Eksik çevirileri tamamla".')->warning()->persistent()->send();
                         }
 
-                        $langNote = $translated ? ' + ' . implode(' & ', $translated) . ' çevrildi' : '';
+                        $goLive = (bool) ($data['go_live'] ?? false);
+                        $langNote = ! empty($res['translated']) ? ' + ' . implode(' & ', $res['translated']) . ' çevrildi' : '';
                         Notification::make()
                             ->title($goLive ? '✅ Yayında!' . $langNote : '📝 Taslak Post oluşturuldu')
-                            ->body(($existing ? 'Güncellendi' : 'Oluşturuldu') . ': ' . mb_substr($post->title, 0, 50)
+                            ->body(($res['created'] ?? false ? 'Oluşturuldu' : 'Güncellendi') . ': ' . mb_substr($res['post']->title ?? '', 0, 50)
                                 . ($goLive ? '' : ' — Blog Yazıları\'ndan yayına al.'))
                             ->success()->persistent()->send();
                     }),
@@ -373,61 +322,5 @@ class AssetsRelationManager extends RelationManager
                 DeleteAction::make(),
             ])
             ;
-    }
-
-    /** brief.topic → blog kategori id. Kültür konuları yeni üst kategoriye gider. */
-    private static function resolveCategoryId(?string $topic): int
-    {
-        $map = [
-            'vize' => 6, 'randevu' => 6, 'uni_assist' => 8, 'dil' => 7, 'sinav' => 7,
-            'yurt' => 9, 'sehir' => 9, 'studienkolleg' => 1, 'master' => 1,
-            'sigorta' => 5, 'para' => 5, 'sperrkonto' => 5,
-        ];
-        if ($topic && isset($map[$topic])) {
-            return $map[$topic];
-        }
-        // Kültür/yaşam konuları → "Almanya'da Yaşam & Kültür"
-        if (in_array($topic, ['yasam', 'konut', 'kultur'], true)) {
-            $id = Category::where('slug', 'german-life-culture')->value('id');
-            if ($id) {
-                return (int) $id;
-            }
-        }
-        return 1; // güvenli default
-    }
-
-    /**
-     * Asset body_md'sinden YAML frontmatter + body ayıklar (PublishBlogAssets ile aynı kural).
-     * @return array{title:string,slug:?string,excerpt:?string,body:string}|null
-     */
-    private static function parseAssetMarkdown(string $md): ?array
-    {
-        $md = trim($md);
-        if (preg_match('/^```(?:markdown|md)?\s*\n(.+)\n```\s*$/s', $md, $w)) {
-            $md = trim($w[1]);
-        }
-        if (! preg_match('/^---\s*\n(.+?)\n---\s*\n(.+)$/s', $md, $m)) {
-            return null;
-        }
-        $body = trim($m[2]);
-        $meta = [];
-        foreach (preg_split('/\n/', $m[1]) as $line) {
-            if (preg_match('/^(\w+):\s*(.+)$/', trim($line), $kv)) {
-                $val = trim($kv[2]);
-                if (preg_match('/^"(.+)"$/', $val, $q) || preg_match("/^'(.+)'$/", $val, $q)) {
-                    $val = $q[1];
-                }
-                $meta[$kv[1]] = $val;
-            }
-        }
-        if (empty($meta['title'])) {
-            return null;
-        }
-        return [
-            'title'   => $meta['title'],
-            'slug'    => $meta['slug'] ?? null,
-            'excerpt' => $meta['excerpt'] ?? null,
-            'body'    => $body,
-        ];
     }
 }
