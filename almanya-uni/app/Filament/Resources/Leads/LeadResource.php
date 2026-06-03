@@ -27,6 +27,10 @@ class LeadResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
+        // Tablo henüz migrate edilmediyse rozet sorgusu admin'i 500'e düşürmesin.
+        if (! \Illuminate\Support\Facades\Schema::hasTable('leads')) {
+            return null;
+        }
         $new = static::getModel()::where('status', 'new')->count();
         return $new > 0 ? (string) $new : null;
     }
