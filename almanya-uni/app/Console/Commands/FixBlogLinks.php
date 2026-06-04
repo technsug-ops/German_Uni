@@ -46,8 +46,10 @@ class FixBlogLinks extends Command
             $linksBefore += count(array_filter($before, fn ($x) => $x['type'] === 'link'));
             $imagesBefore += count(array_filter($before, fn ($x) => $x['type'] === 'image'));
 
+            // AI artefaktları (görünür JSON-LD + "Sonuç + CTA") → temizle
+            $md = $publisher->stripContentArtifacts($orig);
             // 2-4: linkleri çöz, 5: bozuk resimleri kaldır
-            $md = $publisher->resolveInternalLinks($orig, $loc);
+            $md = $publisher->resolveInternalLinks($md, $loc);
             $md = $publisher->stripBrokenImages($md);
 
             $after = $publisher->collectInternalLinks($md);

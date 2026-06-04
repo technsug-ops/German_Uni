@@ -232,6 +232,23 @@ class BlogPublisher
     }
 
     /**
+     * AI üretim artefaktlarını temizler:
+     *  - İçeriğe sızmış görünür JSON-LD blokları (`<script ld+json>` veya kod-fence içinde)
+     *    — bunlar bozuk almanyauni.com/images linklerini de içerir
+     *  - "Sonuç + CTA" gibi şablon-placeholder başlıkları → "Sonuç"
+     */
+    public function stripContentArtifacts(string $md): string
+    {
+        // Kod-fence içine sarılmış JSON-LD (görünür çöp)
+        $md = preg_replace('/```[a-zA-Z]*\s*\R?<script[^>]*application\/ld\+json.*?<\/script>\s*\R?```/su', '', $md) ?? $md;
+        // Çıplak JSON-LD <script> blokları
+        $md = preg_replace('/<script[^>]*application\/ld\+json.*?<\/script>/su', '', $md) ?? $md;
+        // Şablon-placeholder başlık: "## Sonuç + CTA" → "## Sonuç"
+        $md = preg_replace('/^(#{1,6}\s*)Sonu[çc]\s*\+\s*CTA\s*$/um', '$1Sonuç', $md) ?? $md;
+        return $md;
+    }
+
+    /**
      * İçerikteki tüm İÇ link + resimleri kataloglar (read-only) — "tabela".
      * @return array<int,array{type:string,text:string,url:string}>
      */
