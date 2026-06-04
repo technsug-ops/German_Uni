@@ -16,10 +16,10 @@
     'description' => __('Sperrkonto 992 €/month, tuition fees by state, semester contribution 70-430 €, real international student costs 950-2,200 €.'),
     'datePublished' => '2026-05-19',
     'inLanguage' => app()->getLocale(),
-    'author' => ['@type' => 'Organization', 'name' => 'AlmanyaUni'],
+    'author' => ['@type' => 'Organization', 'name' => brand('name')],
     'publisher' => [
         '@type' => 'Organization',
-        'name' => 'AlmanyaUni',
+        'name' => brand('name'),
         'url' => url('/'),
     ],
 ]" />

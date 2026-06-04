@@ -82,7 +82,7 @@
         <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 font-extrabold text-xl">
                 <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-accent-500">{!! view('components.svg-icon', ['name' => 'academic-cap', 'class' => 'w-5 h-5 text-white'])->render() !!}</span>
-                <span>AlmanyaUni</span>
+                <span>{{ brand('name') }}</span>
             </a>
             <a href="/?_l=tr"
                class="bg-accent-500 hover:bg-accent-600 transition px-4 py-2 rounded-lg font-semibold text-sm">
@@ -141,7 +141,7 @@
 
     <footer class="border-t border-white/10 py-6">
         <p class="text-center text-xs text-primary-300">
-            &copy; {{ date('Y') }} AlmanyaUni · technsug@gmail.com
+            &copy; {{ date('Y') }} {{ brand('name') }} · technsug@gmail.com
         </p>
     </footer>
 

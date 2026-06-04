@@ -20,8 +20,8 @@
     'description' => __('DAAD\'s 166+ scholarship programs: bachelor, master, PhD, postdoc, summer school, arts. Monthly 934-2,670 € support.'),
     'inLanguage' => app()->getLocale(),
     'datePublished' => '2026-05-19',
-    'author' => ['@type' => 'Organization', 'name' => 'AlmanyaUni'],
-    'publisher' => ['@type' => 'Organization', 'name' => 'AlmanyaUni', 'url' => url('/')],
+    'author' => ['@type' => 'Organization', 'name' => brand('name')],
+    'publisher' => ['@type' => 'Organization', 'name' => brand('name'), 'url' => url('/')],
 ]" />
 
 @section('content')
