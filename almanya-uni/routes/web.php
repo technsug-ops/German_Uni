@@ -164,6 +164,9 @@ $routes = function () {
         // Almanya öğrenci vizesi randevu rehberi (iData, Türkiye) — TR çekirdek spearhead
         Route::get('/visa-appointment', [ToolsController::class, 'visaAppointment'])->name('visa-appointment');
 
+        // Almanca dil sertifikaları karşılaştırma rehberi (TestDaF/DSH/telc/Goethe) — TR çekirdek #2
+        Route::get('/language-certificates', [ToolsController::class, 'languageCertificates'])->name('language-certificates');
+
         Route::get('/sperrkonto', [\App\Http\Controllers\Web\BlockedAccountController::class, 'index'])->name('blocked-account');
         Route::get('/sperrkonto/country/{country}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'country'])->name('blocked-account.country');
         Route::get('/sperrkonto/{slug}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'show'])->name('blocked-account.show');
@@ -184,6 +187,7 @@ $routes = function () {
     Route::redirect('/araclar/sperrkonto', '/tools/sperrkonto', 301);
     Route::redirect('/tools/vize-randevu', '/tools/visa-appointment', 301);
     Route::redirect('/araclar/vize-randevu', '/tools/visa-appointment', 301);
+    Route::redirect('/tools/dil-sertifikalari', '/tools/language-certificates', 301);
 
     // University Reviews — UGC + helpful votes (i18n)
     Route::post('/universities/{uniSlug}/reviews', [\App\Http\Controllers\Web\UniversityReviewController::class, 'store'])

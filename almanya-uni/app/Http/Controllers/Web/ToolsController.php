@@ -593,6 +593,16 @@ class ToolsController extends Controller
         return view('tools.visa-appointment');
     }
 
+    /**
+     * Almanca dil sertifikaları karşılaştırma rehberi (TestDaF / DSH / telc / Goethe).
+     * TR çekirdek #2 tema (34.6K Telegram "dil" mesajı: "TestDaF mı DSH mı"). Evrensel
+     * içerik → düzgün i18n. Tüm figürler doğrulandı + kaynak künyeli.
+     */
+    public function languageCertificates(): View
+    {
+        return view('tools.language-certificates');
+    }
+
     public function recommendation(Request $request): View
     {
         $answers = null;
