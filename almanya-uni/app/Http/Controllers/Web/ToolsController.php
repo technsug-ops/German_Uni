@@ -85,6 +85,23 @@ class ToolsController extends Controller
                 'live'        => true,
             ],
             [
+                'slug'        => 'visa-appointment',
+                'title'       => __('Visa Appointment (iData)'),
+                'description' => __('Step-by-step Germany student visa appointment via iData in Turkey: process, fees, offices.'),
+                'icon'        => '🛂',
+                'route'       => route('tools.visa-appointment'),
+                'live'        => true,
+                'locales'     => ['tr'], // iData yalnızca Türkiye'den başvuranlar için → sadece /tr
+            ],
+            [
+                'slug'        => 'language-certificates',
+                'title'       => __('Language Certificates'),
+                'description' => __('TestDaF vs DSH vs telc vs Goethe — which German certificate do you need for university?'),
+                'icon'        => '🎓',
+                'route'       => route('tools.language-certificates'),
+                'live'        => true,
+            ],
+            [
                 'slug'        => 'pathway-finder',
                 'title'       => __('Germany Pathway Finder'),
                 'description' => __('5 questions → Studienkolleg, Bachelor, Master, PhD, Ausbildung or Sprachkurs. Real durations + costs.'),
@@ -109,6 +126,12 @@ class ToolsController extends Controller
                 'live'        => true,
             ],
         ];
+
+        // Locale-özel araçları gizle (ör. iData yalnızca /tr'de).
+        $tools = array_values(array_filter(
+            $tools,
+            fn ($t) => empty($t['locales']) || in_array(app()->getLocale(), $t['locales'], true)
+        ));
 
         return view('tools.index', compact('tools'));
     }
@@ -588,8 +611,13 @@ class ToolsController extends Controller
      * Statik içerik — tüm figürler doğrulandı + kaynak künyeli (halüsinasyon savunması).
      * TR çekirdek spearhead: 24K Telegram randevu mesajı, rakipsiz boşluk.
      */
-    public function visaAppointment(): View
+    public function visaAppointment(): View|\Illuminate\Http\RedirectResponse
     {
+        // iData yalnızca Türkiye'den başvuranları ilgilendirir → sadece Türkçe sayfada göster.
+        if (app()->getLocale() !== 'tr') {
+            return redirect()->route('tools.index');
+        }
+
         return view('tools.visa-appointment');
     }
 
