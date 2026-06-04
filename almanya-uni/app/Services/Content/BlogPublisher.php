@@ -104,10 +104,11 @@ class BlogPublisher
     }
 
     /**
-     * AI'ın ürettiği İÇ markdown linklerini ÇÖZÜMLER:
-     *  - dış kaynak linki / resim → korunur
-     *  - iç link → gerçek yayınlanmış yazı (slug veya başlık tam eşleşme) bulunursa
-     *    doğru yerel URL'ye yeniden yazılır; bulunmazsa düz metne indirilir (404 yok).
+     * AI'ın ürettiği İÇ markdown linklerini ÇÖZÜMLER (route-farkında):
+     *  - dış kaynak linki → korunur
+     *  - iç link → (1) geçerli bir ROUTE'a denk geliyorsa locale-prefix'li canonical
+     *    URL'ye yeniden yazılır; (2) yayınlanmış bir POST'a denk geliyorsa ona bağlanır
+     *    (hedef dildeki kardeşi yeğlenir); (3) hiçbiri değilse düz metne indirilir (404 yok).
      */
     public function resolveInternalLinks(string $md, string $locale = 'tr'): string
     {
@@ -136,21 +137,122 @@ class BlogPublisher
                     return $m[0];
                 }
 
-                // Aday slug = path'in son segmenti (locale/blog/ önekleri atılır)
                 $path = strtok($url, '?#') ?: $url;
-                $segments = array_values(array_filter(explode('/', trim($path, '/'))));
-                $candidate = (string) end($segments);
+                $normalized = $this->normalizePath($path); // locale + blog öneki atılmış, trimli
 
+                // (1) Geçerli route mu? → locale-prefix'li canonical link
+                if ($normalized !== '' && $this->isValidRoutePath($normalized)) {
+                    return '[' . $text . '](/' . $locale . '/' . $normalized . ')';
+                }
+
+                // (2) Yayınlanmış post mu? (slug veya başlık eşleşmesi)
+                $candidate = (string) end(array_values(array_filter(explode('/', $normalized))) ?: ['']);
                 $post = $this->findPostForLink($candidate, $text, $locale);
                 if ($post) {
-                    return '[' . $text . '](' . url($post->locale . '/blog/' . $post->slug) . ')';
+                    return '[' . $text . '](/' . $post->locale . '/blog/' . $post->slug . ')';
                 }
-                return $text; // gerçek hedef yok → düz metin
+
+                return $text; // gerçek hedef yok → düz metin (link kaldırılır)
             },
             $md
         );
 
         return $out ?? $md; // preg null dönerse orijinali koru (güvenli)
+    }
+
+    /** Path'i normalize et: locale öneki ({tr,en,de}) + sondaki / atılır, trimlenir. */
+    private function normalizePath(string $path): string
+    {
+        $path = trim($path, '/');
+        $segments = array_values(array_filter(explode('/', $path)));
+        if ($segments && in_array($segments[0], ['tr', 'en', 'de', 'fr'], true)) {
+            array_shift($segments);
+        }
+        return implode('/', $segments);
+    }
+
+    /**
+     * Normalize edilmiş path geçerli bir public GET route'a denk geliyor mu?
+     * Tüm kayıtlı route'ların STATİK öneklerini (param öncesi) bir kez toplar.
+     */
+    private function isValidRoutePath(string $normalized): bool
+    {
+        static $statics = null;
+        if ($statics === null) {
+            $statics = [];
+            foreach (app('router')->getRoutes() as $route) {
+                if (! in_array('GET', $route->methods(), true)) {
+                    continue;
+                }
+                $uri = preg_replace('#^\{locale\??\}/?#', '', $route->uri()); // {locale}/ öneki at
+                if (str_starts_with($uri, 'admin') || str_starts_with($uri, 'api') || str_starts_with($uri, '_')) {
+                    continue; // admin/api/system route'ları iç-link hedefi değil
+                }
+                $static = trim(preg_replace('#\{.*$#', '', $uri), '/'); // ilk {param} öncesi
+                if ($static !== '') {
+                    $statics[$static] = true;
+                }
+            }
+        }
+
+        if (isset($statics[$normalized])) {
+            return true; // tam eşleşme (index route)
+        }
+        foreach ($statics as $s => $_) {
+            if (str_starts_with($normalized, $s . '/')) {
+                return true; // param route alt-yolu (ör. tools/sperrkonto/{slug})
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Bozuk/dış-barındırılan markdown RESİMLERİNİ kaldırır:
+     *  - almanyauni.com / applytogerman.com altında /images, /img gibi var olmayan yollar
+     *  - mutlak olmayan (relative) ama dosya sistemi/route karşılığı olmayan resimler
+     * Geçerli (asset/CDN) resimler korunur.
+     */
+    public function stripBrokenImages(string $md): string
+    {
+        $out = preg_replace_callback(
+            '/!\[[^\]]*\]\(\s*([^)\s]+)(?:\s+"[^"]*")?\s*\)/u',
+            function ($m) {
+                $url = trim($m[1]);
+                $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+                // Kendi domainimizde /images veya /img altındaki placeholder/bozuk yollar
+                if (($host === '' || str_contains($host, 'almanyauni.com') || str_contains($host, 'applytogerman.com'))
+                    && preg_match('#/(images|img)/#i', (string) parse_url($url, PHP_URL_PATH) ?: $url)) {
+                    return ''; // bozuk resim → kaldır
+                }
+                return $m[0]; // diğer resimler korunur
+            },
+            $md
+        );
+        return $out ?? $md;
+    }
+
+    /**
+     * İçerikteki tüm İÇ link + resimleri kataloglar (read-only) — "tabela".
+     * @return array<int,array{type:string,text:string,url:string}>
+     */
+    public function collectInternalLinks(string $md): array
+    {
+        $found = [];
+        if (preg_match_all('/(!?)\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+"[^"]*")?\s*\)/u', $md, $mm, PREG_SET_ORDER)) {
+            foreach ($mm as $m) {
+                $isImg = $m[1] === '!';
+                $url = trim($m[3]);
+                $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+                $external = preg_match('#^https?://#i', $url)
+                    && ! str_contains($host, 'almanyauni.com')
+                    && ! str_contains($host, 'applytogerman.com');
+                if ($external) {
+                    continue; // dış linkler katalog dışı
+                }
+                $found[] = ['type' => $isImg ? 'image' : 'link', 'text' => $m[2], 'url' => $url];
+            }
+        }
+        return $found;
     }
 
     /** İç link için gerçek yayınlanmış Post bul (slug/başlık tam eşleşme); hedef dildeki kardeşi yeğle. */

@@ -415,6 +415,41 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     ]);
 })->middleware('throttle:5,1');
 
+// Token-gated blog iç-link/resim düzeltme — KAS'ta CLI yok, curl ile çalıştırılır.
+// Varsayılan dry-run (sadece tabela + rapor); &apply=1 ile uygular.
+//   Dry-run:  curl "https://applytogerman.com/_system/fix-blog-links?token=XXX"
+//   Uygula:   curl "https://applytogerman.com/_system/fix-blog-links?token=XXX&apply=1"
+Route::get('/_system/fix-blog-links', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = env('SYSTEM_TOKEN');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(300);
+
+    $args = $request->boolean('apply') ? ['--apply' => true] : [];
+    try {
+        \Illuminate\Support\Facades\Artisan::call('content:fix-blog-links', $args);
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage(), 'output' => \Illuminate\Support\Facades\Artisan::output()], 500);
+    }
+
+    // Uygulandıysa view/opcache temizle (içerik güncel görünsün)
+    if ($request->boolean('apply')) {
+        foreach (['view:clear', 'cache:clear'] as $cmd) {
+            try { \Illuminate\Support\Facades\Artisan::call($cmd); } catch (\Throwable $e) {}
+        }
+        if (function_exists('opcache_reset')) { @opcache_reset(); }
+    }
+
+    return response()->json([
+        'mode' => $request->boolean('apply') ? 'applied' : 'dry-run',
+        'output' => $out,
+        'catalog_file' => 'storage/app/blog-link-catalog.json',
+    ]);
+})->middleware('throttle:5,1');
+
 // Token-gated meslek (BERUFENET) çeviri backfill — KAS Cronjob bunu curl ile
 // oturumsuz çağırır (admin /admin/ops/... ise oturum ister). Zaman bütçesiyle
 // her çağrı ~max_seconds kadar çalışıp temiz çıkar; "KALAN: X" / "TAMAMLANDI" basar.
