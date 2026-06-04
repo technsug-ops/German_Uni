@@ -214,12 +214,16 @@
             $chips = [
                 null        => [__('All'),                'banknotes',        null],
                 'cheapest'  => [__('Cheapest'),           'currency-euro',    null],
+                // "Türkçe destek" sinyali yalnızca TR kitlesini ilgilendirir → sadece /tr
                 'turkish'   => [__('Turkish support'),    null,               '🇹🇷'],
                 'insurance' => [__('Insurance included'), 'shield-check',     null],
                 'fast'      => [__('Fast (≤7 days)'),     'fire',             null],
                 'fintech'   => ['FinTech',                'cursor-arrow-rays', null],
                 'bank'      => [__('Bank'),               'building-office',  null],
             ];
+            if (app()->getLocale() !== 'tr') {
+                unset($chips['turkish']);
+            }
         @endphp
         @foreach ($chips as $key => [$label, $iconName, $flag])
             <a href="{{ route('tools.blocked-account', $key ? ['filter' => $key] : []) }}"
@@ -318,7 +322,8 @@
                                         <x-svg-icon name="check" class="w-3.5 h-3.5" /> {{ __('BaFin licensed') }}
                                     </span>
                                 @endif
-                                @if (is_array($p->supported_languages) && in_array('tr', $p->supported_languages))
+                                {{-- "Türkçe destek" sinyali yalnızca TR kitlesini ilgilendirir → sadece /tr --}}
+                                @if (app()->getLocale() === 'tr' && is_array($p->supported_languages) && in_array('tr', $p->supported_languages))
                                     <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-red-50 text-red-700 ring-1 ring-red-100">
                                         🇹🇷 {{ __('Turkish support') }}
                                     </span>
