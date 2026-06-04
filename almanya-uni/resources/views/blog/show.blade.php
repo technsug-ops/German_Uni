@@ -22,7 +22,9 @@
 
 @php
     $tocData = \App\Support\TocBuilder::process($post->content_html);
-    $contentHtml = $tocData['html'];
+    // KÖK FIX: içerikteki iç linkleri render anında bu sayfanın diline çevir
+    // (önek-siz linkler default locale=en'e düşmesin). [[ContentLinks]]
+    $contentHtml = \App\Support\ContentLinks::localizeHtml($tocData['html'], app()->getLocale());
     $toc = $tocData['toc'];
 @endphp
 

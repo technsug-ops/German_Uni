@@ -146,7 +146,8 @@ class BlogPublisher
                 }
 
                 // (2) Yayınlanmış post mu? (slug veya başlık eşleşmesi)
-                $candidate = (string) end(array_values(array_filter(explode('/', $normalized))) ?: ['']);
+                $segs = array_values(array_filter(explode('/', $normalized)));
+                $candidate = $segs === [] ? '' : (string) $segs[count($segs) - 1];
                 $post = $this->findPostForLink($candidate, $text, $locale);
                 if ($post) {
                     return '[' . $text . '](/' . $post->locale . '/blog/' . $post->slug . ')';
