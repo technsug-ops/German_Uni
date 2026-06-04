@@ -105,8 +105,8 @@
             </section>
         @endif
 
-        {{-- PROS / CONS --}}
-        @if ((is_array($provider->pros) && count($provider->pros)) || (is_array($provider->cons) && count($provider->cons)))
+        {{-- PROS / CONS — pros/cons tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle --}}
+        @if (app()->getLocale() === 'tr' && ((is_array($provider->pros) && count($provider->pros)) || (is_array($provider->cons) && count($provider->cons))))
             <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @if (is_array($provider->pros) && count($provider->pros))
                     <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
@@ -137,16 +137,16 @@
             </section>
         @endif
 
-        {{-- UZUN AÇIKLAMA --}}
-        @if ($provider->description_long)
+        {{-- UZUN AÇIKLAMA — tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle --}}
+        @if (app()->getLocale() === 'tr' && $provider->description_long)
             <section class="prose prose-sm max-w-none bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="inline-flex items-center gap-2"><x-svg-icon name="book-open" class="w-5 h-5 text-primary-600" /> {{ __('Detailed Review') }}</h2>
                 {!! \Illuminate\Support\Str::markdown($provider->description_long) !!}
             </section>
         @endif
 
-        {{-- EK ÖZELLİKLER --}}
-        @if (is_array($provider->features) && count($provider->features))
+        {{-- EK ÖZELLİKLER — tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle --}}
+        @if (app()->getLocale() === 'tr' && is_array($provider->features) && count($provider->features))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="sparkles" class="w-5 h-5 text-primary-600" /> {{ __('Additional Features') }}</h2>
                 <div class="flex flex-wrap gap-2">
@@ -157,8 +157,8 @@
             </section>
         @endif
 
-        {{-- VİZE / TÜRK ÖĞRENCİ --}}
-        @if ($provider->visa_recognition_note || $provider->turkish_students_note)
+        {{-- VİZE / TÜRK ÖĞRENCİ — notlar tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle --}}
+        @if (app()->getLocale() === 'tr' && ($provider->visa_recognition_note || $provider->turkish_students_note))
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6 space-y-4">
                 @if ($provider->visa_recognition_note)
                     <div>

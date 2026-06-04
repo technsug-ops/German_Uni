@@ -84,14 +84,16 @@ class BlockedAccountProvider extends Model
 
     public function getActivationRangeAttribute(): string
     {
+        // Birim locale-aware (gün / days / Tage) — EN/DE sayfalarda TR sızıntısını önle.
+        $unit = __('days');
         if ($this->activation_days_min && $this->activation_days_max) {
             if ($this->activation_days_min === $this->activation_days_max) {
-                return $this->activation_days_min . ' gün';
+                return $this->activation_days_min . ' ' . $unit;
             }
-            return "{$this->activation_days_min}–{$this->activation_days_max} gün";
+            return "{$this->activation_days_min}–{$this->activation_days_max} {$unit}";
         }
         if ($this->activation_days_min) {
-            return $this->activation_days_min . '+ gün';
+            return $this->activation_days_min . '+ ' . $unit;
         }
         return '—';
     }

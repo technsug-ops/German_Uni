@@ -325,8 +325,8 @@
                                 @endif
                             </div>
 
-                            {{-- Pros (varsa, 3'e kadar) --}}
-                            @if (is_array($p->pros) && count($p->pros))
+                            {{-- Pros (varsa, 3'e kadar) — pros tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle (bilgi badge'lerde mevcut) --}}
+                            @if (app()->getLocale() === 'tr' && is_array($p->pros) && count($p->pros))
                                 <ul class="space-y-1 text-sm">
                                     @foreach (array_slice($p->pros, 0, 3) as $pro)
                                         <li class="flex items-start gap-2 text-gray-700">
