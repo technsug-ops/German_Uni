@@ -216,6 +216,7 @@
             <li>• Bekleme listesine kayıt <strong>ücretsiz</strong>; ücreti sadece randevu onaylanınca (48 saat içinde) ödüyorsun.</li>
             <li>• Evrakları <strong>eksiksiz ve düzenli</strong> götür — eksik evrak randevu reddi demek, yeni randevu haftalar kaybettirir.</li>
             <li>• <a href="{{ route('tools.blocked-account') }}" class="underline">Sperrkonto</a> dökümü ve kabul belgesi olmadan başvuru kabul edilmez.</li>
+            <li>• Sperrkonto, vizede maddi durum kanıtı (<strong>Finanzierungsnachweis</strong>) olarak resmi kabul görür; yetkili herhangi bir sağlayıcıda açabilirsin (<a href="https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2621556-2621556" target="_blank" rel="noopener nofollow" class="underline">Almanya Dışişleri · Merkblatt</a>).</li>
             <li>• Sahte "randevu satıcılarına" itibar etme — tek yetkili kanal iData web sitesidir.</li>
         </ul>
     </section>

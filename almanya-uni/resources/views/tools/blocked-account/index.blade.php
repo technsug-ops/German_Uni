@@ -371,7 +371,7 @@
             </p>
             {{-- Regülasyon rakamının kaynağı (GEO #3 güven sinyali + halüsinasyon savunması) --}}
             <x-source-note
-                :sources="[['name' => 'Auswärtiges Amt', 'url' => 'https://www.auswaertiges-amt.de/'], 'BAföG-Höchstsatz']"
+                :sources="[['name' => 'Auswärtiges Amt (Merkblatt)', 'url' => 'https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2621556-2621556'], 'BAföG-Höchstsatz']"
                 updated="2026-06-04"
                 class="!bg-white/60 !border-blue-100"
             />
