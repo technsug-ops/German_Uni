@@ -108,11 +108,14 @@ return new class extends Migration
             $uni->campusCities()->sync($campusIds);
         }
 
-        // Sahte eyalet-adlı "şehir"leri pasifleştir (Berlin/Hamburg/Bremen GERÇEK → hariç)
+        // Sahte eyalet-adlı "şehir"leri pasifleştir (Berlin/Hamburg/Bremen GERÇEK → hariç).
+        // Güvenlik: yalnızca AKTİF ÜNİSİ KALMAYANLARI pasifle (eşlenmemiş üni varsa sahipsiz kalmasın).
         $areaStateNames = State::pluck('name_de')
             ->reject(fn ($n) => in_array($n, ['Berlin', 'Hamburg', 'Freie Hansestadt Bremen'], true))
             ->values()->all();
-        City::whereIn('name_de', $areaStateNames)->update(['is_active' => false]);
+        City::whereIn('name_de', $areaStateNames)
+            ->whereDoesntHave('universities', fn ($q) => $q->where('is_active', 1))
+            ->update(['is_active' => false]);
     }
 
     public function down(): void
