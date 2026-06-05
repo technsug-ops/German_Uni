@@ -29,7 +29,16 @@
     </div>
 </section>
 
-<article class="max-w-3xl mx-auto px-4 py-12 prose prose-lg max-w-none
+{{-- Markdown tablolarının (GDPR veri tablosu) garanti düzgün render'ı: prose'un
+     arbitrary th/td modifier'ları derlenmediğinde sütunlar iç içe geçiyordu. --}}
+<style>
+    .legal-prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .legal-prose th, .legal-prose td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+    .legal-prose thead th { background: #f9fafb; font-weight: 600; }
+    .legal-prose td strong { font-weight: 600; }
+</style>
+
+<article class="legal-prose max-w-3xl mx-auto px-4 py-12 prose prose-lg max-w-none
                 prose-headings:font-extrabold prose-headings:text-gray-900
                 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
                 prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3

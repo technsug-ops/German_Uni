@@ -174,6 +174,15 @@ class University extends Model
         return $this->belongsTo(City::class);
     }
 
+    /**
+     * Ek kampüs şehirleri (birincil city_id dışında). Çok-kampüslü üniler için
+     * (Duisburg-Essen, Erlangen-Nürnberg...). Şehir detay sayfaları bunları da gösterir.
+     */
+    public function campusCities(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(City::class, 'university_campuses');
+    }
+
     public function searchableAs(): string
     {
         return 'universities';

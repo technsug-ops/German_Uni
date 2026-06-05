@@ -86,8 +86,9 @@
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
 
-        {{-- Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (yoksa fallback) --}}
-        @php $stateBlocks = $state->localizedBlocks(); @endphp
+        {{-- Locale-aware: TR=content_blocks, EN/DE=content_blocks_{locale} (yoksa fallback).
+             $stateBlocks controller'dan gelir (canlı üni sayısıyla override edilmiş) --}}
+        @php $stateBlocks = $stateBlocks ?? $state->localizedBlocks(); @endphp
         @if(!empty($stateBlocks))
             <x-content-blocks :blocks="$stateBlocks" />
         @else

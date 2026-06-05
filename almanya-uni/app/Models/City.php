@@ -83,6 +83,15 @@ class City extends Model
         return $this->hasMany(University::class);
     }
 
+    /**
+     * Bu şehirde EK kampüsü olan üniler (birincil şehri başka ama burada da fakültesi var).
+     * Çok-kampüslü üniler için (ör. Duisburg sayfasında Universität Duisburg-Essen).
+     */
+    public function campusUniversities(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(University::class, 'university_campuses');
+    }
+
     public function costData(): HasOne
     {
         return $this->hasOne(CityCostData::class);

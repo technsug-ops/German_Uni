@@ -104,7 +104,7 @@
                        class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition">
                         <x-svg-icon name="book-open" class="w-4 h-4" /> {{ __('Sperrkonto Guide') }}
                     </a>
-                    <a href="{{ route('blog.show', 'almanya-vize-randevusu-nasil-alinir-idata-cilesi-ve-hizli-cozum-yollari') }}"
+                    <a href="{{ route('tools.visa-appointment') }}"
                        class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm transition">
                         <x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Visa Appointment Guide') }}
                     </a>

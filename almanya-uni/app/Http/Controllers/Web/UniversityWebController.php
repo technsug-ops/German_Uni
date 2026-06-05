@@ -17,14 +17,24 @@ class UniversityWebController extends Controller
         $query = University::query()->where('is_active', true);
 
         if ($request->filled('q')) {
-            $search = $request->input('q');
-            $query->where(function ($w) use ($search) {
-                $w->where('name_de', 'like', "%$search%")
-                    ->orWhere('name_en', 'like', "%$search%")
-                    ->orWhere('name_tr', 'like', "%$search%")
-                    ->orWhere('short_name', 'like', "%$search%")
-                    ->orWhere('description_de', 'like', "%$search%");
-            });
+            $search = trim((string) $request->input('q'));
+            // Kelime-bazlı arama: her kelime AYRI eşleşmeli (AND), ama herhangi bir alanda (OR).
+            // Önceki tek-LIKE "TU münchen" gibi kısaltma+şehir aramalarında 0 sonuç veriyordu
+            // ("Technische Universität München" tek bir alanda "TU münchen" substring'ini içermez).
+            $tokens = preg_split('/\s+/', $search, -1, PREG_SPLIT_NO_EMPTY) ?: [$search];
+            foreach ($tokens as $token) {
+                $query->where(function ($w) use ($token) {
+                    $w->where('name_de', 'like', "%$token%")
+                        ->orWhere('name_en', 'like', "%$token%")
+                        ->orWhere('name_tr', 'like', "%$token%")
+                        ->orWhere('short_name', 'like', "%$token%")
+                        ->orWhere('description_de', 'like', "%$token%")
+                        ->orWhereHas('city', fn ($c) => $c
+                            ->where('name_de', 'like', "%$token%")
+                            ->orWhere('name_tr', 'like', "%$token%")
+                            ->orWhere('name_en', 'like', "%$token%"));
+                });
+            }
         }
 
         $type = $request->input('type');

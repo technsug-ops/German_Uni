@@ -494,7 +494,7 @@
                 <x-svg-icon name="arrow-path" class="w-4 h-4" />
                 {{ __('Try again') }}
             </a>
-            <a href="{{ route('compare.index') }}?ids={{ collect($result['universities'])->pluck('id')->take(3)->join(',') }}"
+            <a href="{{ route('compare.index') }}?slugs={{ collect($result['universities'])->pluck('slug')->take(3)->join(',') }}"
                class="inline-flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition shadow-md">
                 <x-svg-icon name="scale" class="w-4 h-4" />
                 {{ __('Compare top 3') }}

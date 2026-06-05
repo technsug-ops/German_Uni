@@ -83,6 +83,23 @@ class StateController extends Controller
                 ->where('is_active', 1)->where('type', 'private')->count(),
         ];
 
+        // ⚠️ Bayat istatistik düzeltmesi: content_blocks içindeki 'universities_in_city'
+        // bloğu enrichment ANINDA hesaplanmış sayıları gömüyor. Sonradan ~üni pasifleşti
+        // (986→645 temizliği) → kart canlı sayı (52) gösterirken blok bayat (72) kalıyordu.
+        // Render anında CANLI sayıyla override et → kart ile detay her zaman uyumlu.
+        $liveTopUniNames = $topUnis->take(8)->pluck('name_de')->filter()->values()->all();
+        $stateBlocks = collect($state->localizedBlocks() ?? [])->map(function ($block) use ($totals, $liveTopUniNames) {
+            if (($block['type'] ?? null) === 'universities_in_city') {
+                $block['total']   = $totals['unis'];
+                $block['public']  = $totals['public'];
+                $block['private'] = $totals['private'];
+                if (! empty($liveTopUniNames)) {
+                    $block['top_unis'] = $liveTopUniNames;
+                }
+            }
+            return $block;
+        })->all();
+
         // Komşu eyaletler — coğrafi mesafeye göre (haversine)
         $otherStates = State::query()
             ->where('id', '!=', $state->id);
@@ -134,6 +151,6 @@ class StateController extends Controller
             default => null,
         };
 
-        return view('states.show', compact('state', 'cities', 'topUnis', 'totals', 'otherStates', 'topFields', 'relatedPosts', 'regionLabel'));
+        return view('states.show', compact('state', 'cities', 'topUnis', 'totals', 'otherStates', 'topFields', 'relatedPosts', 'regionLabel', 'stateBlocks'));
     }
 }

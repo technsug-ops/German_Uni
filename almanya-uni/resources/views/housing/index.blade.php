@@ -257,8 +257,11 @@
                        class="inline-flex items-center gap-1 bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold px-3 py-1.5 rounded-md transition">
                         <x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Official Site') }}
                     </a>
-                    @if ($d->application_url)
-                        <a href="{{ $d->application_url }}" target="_blank" rel="noopener"
+                    {{-- "Başvur" → resmi /wohnen landing (website_url). Tahmin edilen
+                         /online-bewerbung deep-link'leri çürüyüp 404 veriyordu; landing
+                         sayfası her zaman canlı başvuru linkini içerir (tahmin/çürüme yok). --}}
+                    @if ($d->website_url)
+                        <a href="{{ $d->website_url }}" target="_blank" rel="noopener"
                            class="inline-flex items-center gap-1 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-3 py-1.5 rounded-md transition">
                             <x-svg-icon name="pencil" class="w-3.5 h-3.5" /> {{ __('Apply') }} →
                         </a>

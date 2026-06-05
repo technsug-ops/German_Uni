@@ -2,8 +2,8 @@
 
 namespace Tests;
 
+use App\Support\MathCaptcha;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Str;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -17,18 +17,15 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Math-captcha'lı formlar (login / register / forgot-password) için
-     * geçerli captcha alanları. Session'a doğru cevabı seed'ler + key+answer döner.
+     * geçerli captcha alanları. MathCaptcha stateless (HMAC token) olduğundan
+     * gerçek token + doğru cevabı döner (session seed'e gerek yok).
      *
      *   $this->post('/login', ['email' => ..., 'password' => ..., ...$this->captcha()]);
      */
-    protected function captcha(int $answer = 7): array
+    protected function captcha(): array
     {
-        $key = 'test-' . Str::random(10);
-        $this->withSession(['captcha_' . $key => [
-            'answer' => $answer,
-            'expires_at' => now()->addMinutes(30)->timestamp,
-        ]]);
+        $c = MathCaptcha::generate();
 
-        return ['captcha_key' => $key, 'captcha_answer' => $answer];
+        return ['captcha_key' => $c['key'], 'captcha_answer' => $c['a'] + $c['b']];
     }
 }

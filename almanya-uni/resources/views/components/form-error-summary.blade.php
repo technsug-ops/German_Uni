@@ -13,7 +13,7 @@
             </svg>
             <div class="flex-1 min-w-0">
                 <p id="form-error-summary-title" class="font-semibold text-red-900 mb-1">
-                    {{ $title ?? __(':count error|:count errors prevented submission', ['count' => $count]) }}
+                    {{ $title ?? trans_choice(':count error|:count errors prevented submission', $count, ['count' => $count]) }}
                 </p>
                 <ul class="text-sm text-red-700 space-y-1 list-disc list-inside">
                     @foreach ($errors->all() as $error)

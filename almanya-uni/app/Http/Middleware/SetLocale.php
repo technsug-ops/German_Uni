@@ -53,7 +53,14 @@ class SetLocale
     }
 
     /**
-     * Locale = URL prefix (route param). Yoksa default. (SEO için URL otoriter.)
+     * Locale = URL prefix (route param) — SEO için URL otoriter.
+     * URL prefix YOKSA: kullanıcının dil-switcher ile seçtiği dili (cookie/session)
+     * onurlandır; yoksa domain default. Bot'lar cookie göndermediği için domain
+     * default'a düşer → canonical/hreflang stabil kalır (SEO güvenli).
+     *
+     * Bu, kayıt sonrası /dashboard ve prefix'siz akışların kullanıcının seçtiği
+     * dilde kalmasını sağlar (önceden applytogerman.com'da TR seçmiş kullanıcı bile
+     * her geçişte EN'e düşüyordu).
      */
     private function resolveLocale(Request $request, string $default): string
     {
@@ -61,7 +68,19 @@ class SetLocale
 
         $routeLocale = $request->route('locale');
         if ($routeLocale && in_array($routeLocale, $supported, true)) {
-            return $routeLocale;
+            return $routeLocale; // URL otoriter
+        }
+
+        // URL prefix yok → kullanıcının açıkça seçtiği dil (sadece switcher set eder)
+        $chosen = $request->cookie('locale');
+        if (! $chosen && $request->hasSession()) {
+            $chosen = $request->session()->get('locale');
+        }
+        if ($chosen && in_array($chosen, $supported, true)) {
+            $cfg = config("locale.locales.$chosen", []);
+            if (! empty($cfg['active']) && empty($cfg['coming_soon'])) {
+                return $chosen;
+            }
         }
 
         return $default;
