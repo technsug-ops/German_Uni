@@ -22,7 +22,9 @@ class NewsletterController extends Controller
     public function subscribe(Request $request): JsonResponse|RedirectResponse
     {
         $data = $request->validate([
-            'email'           => ['required', 'email:rfc,dns', 'max:191'],
+            // NOT: 'dns' doğrulaması shared hosting'de canlı DNS sorgusu yapar → yavaş/timeout
+            // riskine girer (gateway 500 "Server Error"). RFC format kontrolü yeterli.
+            'email'           => ['required', 'email:rfc', 'max:191'],
             'name'            => ['nullable', 'string', 'max:100'],
             'source'          => ['nullable', 'string', 'max:50'],
             'website'         => ['nullable', 'max:0'],  // 🍯 honeypot — bot doldurursa max=0 fail
@@ -33,6 +35,8 @@ class NewsletterController extends Controller
             'website.max'        => 'Spam algılandı.',
             'gdpr_consent.accepted' => 'KVKK onayı vermelisin.',
         ]);
+
+        try {
 
         $email = strtolower(trim($data['email']));
         $existing = Subscriber::where('email', $email)->first();
@@ -74,10 +78,17 @@ class NewsletterController extends Controller
             $sub->update(['last_sent_at' => now()]);
         } catch (\Throwable $e) {
             Log::error('Newsletter mail failed', ['email' => $sub->email, 'err' => $e->getMessage()]);
-            return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed', 500);
+            // 200 (500 değil): AJAX'ta ham "Server Error" yerine dostça mesaj göster.
+            return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed');
         }
 
         return $this->respond($request, true, 'Doğrulama maili gönderildi! Gelen kutunu kontrol et (spam klasörünü de).', 'pending');
+
+        } catch (\Throwable $e) {
+            // Beklenmedik hata (DB, vb.) → 500 "Server Error" yerine kontrollü JSON.
+            Log::error('Newsletter subscribe failed', ['err' => $e->getMessage()]);
+            return $this->respond($request, false, 'Bir sorun oluştu. Birazdan tekrar dene.', 'error');
+        }
     }
 
     public function confirm(string $token): View

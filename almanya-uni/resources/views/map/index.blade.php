@@ -17,7 +17,11 @@
     <link rel="stylesheet"
           href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
     <style>
-        #uniMap { height: 70vh; min-height: 500px; border-radius: 0.75rem; }
+        /* isolation: harita kendi stacking context'ini kurar → Leaflet'in iç
+           z-index'leri (pane 400, kontrol 1000) header mega-menüsünün ÜSTÜNE
+           çıkamaz. Önceden menü haritanın altında kalıyordu. */
+        #uniMap { height: 70vh; min-height: 500px; border-radius: 0.75rem; position: relative; z-index: 0; isolation: isolate; }
+        .leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 1; }
         .uni-popup { font-family: inherit; }
         .uni-popup h3 { font-weight: 700; font-size: 0.95rem; margin: 0 0 0.3rem; line-height: 1.25; }
         .uni-popup .meta { color: #6b7280; font-size: 0.78rem; margin-bottom: 0.5rem; }

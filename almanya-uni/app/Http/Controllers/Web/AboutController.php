@@ -158,7 +158,9 @@ class AboutController extends Controller
             'avatar' => '+',
             'color'  => 'primary',
             'social' => [
-                ['icon' => '✉️', 'label' => __('Write to us'), 'url' => 'mailto:technsug@gmail.com?subject=Contribution'],
+                // mailto yerine in-app iletişim formu — mail istemcisi olmayan kullanıcıda
+                // da çalışır (sayfanın geri kalanı zaten route('contact') kullanıyor).
+                ['icon' => '✉️', 'label' => __('Write to us'), 'url' => route('contact', ['type' => 'partnership', 'subject' => 'Contribution'])],
             ],
         ];
 

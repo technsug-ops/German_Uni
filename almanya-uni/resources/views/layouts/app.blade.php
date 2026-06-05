@@ -56,8 +56,9 @@
     @endforeach
     <link rel="alternate" hreflang="x-default" href="{{ localized_url($xDefaultLocale) }}">
 
-    {{-- Favicon — brand-aware (modern: SVG, fallback: ICO) --}}
-    <link rel="icon" type="image/svg+xml" href="{{ asset(brand('logo')) }}">
+    {{-- Favicon — KARE + beyaz kutu (koyu/açık sekmede görünür). Geniş wordmark logo
+         favicon olarak okunaksız + koyu sekmede görünmüyordu (QA sayfa 2). --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon.svg') }}">
     <link rel="alternate icon" type="image/x-icon" href="{{ asset(brand('favicon')) }}">
     <link rel="shortcut icon" href="{{ asset(brand('favicon')) }}">
 
@@ -67,7 +68,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="{{ brand('apple_title') }}">
-    <link rel="apple-touch-icon" href="{{ asset(brand('logo')) }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/favicon.svg') }}">
 
     {{-- Self-canonical (her sayfa) — query string'siz mevcut URL (duplicate content önleme) --}}
     <link rel="canonical" href="{{ url(request()->path()) }}">

@@ -33,7 +33,9 @@
             {{ __('All') }}
         </a>
         @foreach ($categories as $cat)
-            @continue(($cat->posts_count ?? 0) < 1 && empty($activeCategory))
+            {{-- Boş kategorileri HER YERDE gizle (liste + kategori sayfası tutarlı olsun);
+                 ama o an aktif olan kategoriyi daima göster. Önceden liste 4, detay 8 sekme gösteriyordu. --}}
+            @continue(($cat->posts_count ?? 0) < 1 && (empty($activeCategory) || $activeCategory->id !== $cat->id))
             <a href="{{ route('news.category', $cat->slug) }}"
                class="px-3 py-1.5 rounded-full text-sm font-medium transition {{ !empty($activeCategory) && $activeCategory->id === $cat->id ? 'text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}"
                @if(!empty($activeCategory) && $activeCategory->id === $cat->id) style="background-color: {{ $cat->color }}" @endif>

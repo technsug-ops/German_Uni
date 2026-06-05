@@ -39,7 +39,7 @@ class ToolsController extends Controller
             [
                 'slug'        => 'uni-onerisi',
                 'title'       => __('University Match Quiz'),
-                'description' => __('5 questions → the German universities that fit you best.'),
+                'description' => __('8 questions → the German universities that fit you best.'),
                 'icon'        => '🎯',
                 'route'       => route('tools.recommendation'),
                 'live'        => true,

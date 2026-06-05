@@ -2,23 +2,23 @@
 
 namespace App\Support;
 
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
-
 /**
  * Lightweight math captcha — adds a simple addition question to forms
  * to deter brute-force/spam bots without third-party services or images.
  *
- * Each form load generates a unique session key holding the answer.
- * Submission must include both the key and the answered number.
+ * STATELESS (HMAC-imzalı token): cevap session yerine, app key ile imzalı
+ * kendinden-doğrulanır bir token'da taşınır. Bu sayede:
+ *  - Doğru cevap session kaybı / TTL bitişi yüzünden reddedilmez (eski bug).
+ *  - Aynı sayfada birden çok captcha (newsletter inline + sticky) çakışmaz.
+ *  - Sayfa cache'lense bile token geçerlilik penceresi boyunca çalışır.
+ * Tekrar-kullanım (replay) penceresi kısa (2 saat) + honeypot + rate-limit ile sınırlı.
  */
 class MathCaptcha
 {
-    private const SESSION_PREFIX = 'captcha_';
-    private const TTL_MINUTES = 30;
+    private const TTL_SECONDS = 7200; // 2 saat
 
     /**
-     * Generate a new captcha question + store its answer in session.
+     * Generate a new captcha question + a signed token carrying the answer.
      *
      * @return array{key:string, question:string, a:int, b:int}
      */
@@ -27,15 +27,10 @@ class MathCaptcha
         $a = random_int(1, 9);
         $b = random_int(1, 9);
         $answer = $a + $b;
-        $key = Str::random(16);
-
-        Session::put(self::SESSION_PREFIX . $key, [
-            'answer' => $answer,
-            'expires_at' => now()->addMinutes(self::TTL_MINUTES)->timestamp,
-        ]);
+        $expires = time() + self::TTL_SECONDS;
 
         return [
-            'key' => $key,
+            'key' => self::makeToken($answer, $expires),
             'question' => "{$a} + {$b}",
             'a' => $a,
             'b' => $b,
@@ -43,9 +38,7 @@ class MathCaptcha
     }
 
     /**
-     * Validate a submitted answer. On success, consume the entry (single-use).
-     * On wrong answer: allow up to 3 retries (prevents bot brute-force,
-     * preserves UX for legit typos).
+     * Validate a submitted answer against the signed token (no session).
      */
     public static function validate(?string $key, $submittedAnswer): bool
     {
@@ -53,31 +46,44 @@ class MathCaptcha
             return false;
         }
 
-        $sessionKey = self::SESSION_PREFIX . $key;
-        $entry = Session::get($sessionKey);
-
-        if (! is_array($entry) || ! isset($entry['answer'], $entry['expires_at'])) {
+        $decoded = base64_decode($key, true);
+        if ($decoded === false) {
             return false;
         }
 
-        if (now()->timestamp > $entry['expires_at']) {
-            Session::forget($sessionKey);
+        $parts = explode('|', $decoded);
+        if (count($parts) !== 3) {
             return false;
         }
 
-        if ((int) $submittedAnswer === (int) $entry['answer']) {
-            Session::forget($sessionKey); // single-use on success
-            return true;
-        }
-
-        // Wrong answer: increment fail counter; expire after 3 wrong tries
-        $attempts = (int) ($entry['attempts'] ?? 0) + 1;
-        if ($attempts >= 3) {
-            Session::forget($sessionKey);
+        [$answer, $expires, $sig] = $parts;
+        if (! ctype_digit($answer) || ! ctype_digit($expires)) {
             return false;
         }
-        $entry['attempts'] = $attempts;
-        Session::put($sessionKey, $entry);
-        return false;
+
+        // Süresi geçmiş token
+        if (time() > (int) $expires) {
+            return false;
+        }
+
+        // İmza doğrulama (constant-time)
+        $expected = self::sign($answer . '|' . $expires);
+        if (! hash_equals($expected, $sig)) {
+            return false;
+        }
+
+        return (int) $submittedAnswer === (int) $answer;
+    }
+
+    private static function makeToken(int $answer, int $expires): string
+    {
+        $payload = $answer . '|' . $expires;
+
+        return base64_encode($payload . '|' . self::sign($payload));
+    }
+
+    private static function sign(string $payload): string
+    {
+        return hash_hmac('sha256', $payload, (string) config('app.key'));
     }
 }

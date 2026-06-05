@@ -49,8 +49,9 @@ class StudentDormSeeder extends Seeder
             [
                 'city' => 'frankfurt-am-main-q1794',
                 'organization' => 'Studierendenwerk Frankfurt am Main',
-                'website' => 'https://www.studierendenwerkfrankfurt.de/wohnen/',
-                'application' => 'https://www.studierendenwerkfrankfurt.de/wohnen/online-bewerbung/',
+                // Domain değişti: studierendenwerkfrankfurt.de (ölü) → swffm.de (2026 doğrulandı)
+                'website' => 'https://www.swffm.de/wohnen/wohnheime',
+                'application' => 'https://www.swffm.de/wohnen/wohnheime',
                 'waitlist' => '6-12 ay',
                 'rent_min' => 230, 'rent_max' => 470,
                 'amenities' => ['möbliert', 'Internet'],

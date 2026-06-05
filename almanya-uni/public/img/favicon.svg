@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ApplyToGerman">
+  <!-- Beyaz yuvarlak kutu: hem KOYU hem AÇIK sekme arkaplanında görünür (QA sayfa 2) -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <!-- Almanya bayrağı şeritleri -->
+  <rect x="14" y="16" width="11" height="10" rx="2" fill="#111827"/>
+  <rect x="14" y="27" width="11" height="10" fill="#dc2626"/>
+  <rect x="14" y="38" width="11" height="10" rx="2" fill="#fbbf24"/>
+  <!-- Apply oku (ileri hareket) -->
+  <path d="M30 27 L41 27 L41 22 L52 32 L41 42 L41 37 L30 37 Z" fill="#dc2626"/>
+</svg>

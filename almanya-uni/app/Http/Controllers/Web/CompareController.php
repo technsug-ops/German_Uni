@@ -14,7 +14,7 @@ class CompareController extends Controller
 
     public function index(Request $request): View
     {
-        $selectedSlugs = $this->parseSlugs($request->input('slugs'));
+        $selectedSlugs = $this->parseSlugs($request->input('slugs'), $request);
         $selected = $this->loadSelected($selectedSlugs);
 
         $candidates = [];
@@ -55,7 +55,7 @@ class CompareController extends Controller
 
     public function show(Request $request): View
     {
-        $selectedSlugs = $this->parseSlugs($request->input('slugs'));
+        $selectedSlugs = $this->parseSlugs($request->input('slugs'), $request);
         $universities = $this->loadSelected($selectedSlugs, fullDetail: true);
 
         return view('compare.show', [
@@ -65,8 +65,26 @@ class CompareController extends Controller
         ]);
     }
 
-    private function parseSlugs(?string $raw): array
+    /**
+     * Seçili üniler: önce ?slugs= (slug CSV), yoksa ?ids= (id CSV → slug çözümü).
+     * Öneri testi gibi yerler id geçebilir; ikisini de destekle (önceden 0/4 boş kalıyordu).
+     */
+    private function parseSlugs(?string $raw, ?Request $request = null): array
     {
+        if (! $raw && $request && $request->filled('ids')) {
+            $ids = collect(explode(',', (string) $request->input('ids')))
+                ->map(fn ($s) => (int) trim($s))
+                ->filter()
+                ->unique()
+                ->take(self::MAX_ITEMS)
+                ->all();
+            if ($ids) {
+                // id sırasını koru
+                $bySlug = University::whereIn('id', $ids)->pluck('slug', 'id');
+                return collect($ids)->map(fn ($id) => $bySlug[$id] ?? null)->filter()->values()->all();
+            }
+        }
+
         if (!$raw) {
             return [];
         }
