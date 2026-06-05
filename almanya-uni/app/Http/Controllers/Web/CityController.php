@@ -14,8 +14,17 @@ class CityController extends Controller
 {
     public function index(Request $request): View|\Illuminate\Http\Response
     {
+        // universities_count = BİRİNCİL (city_id) + KAMPÜS (university_campuses) aktif üni.
+        // Böylece sadece-kampüs şehirler (ör. Duisburg → Duisburg-Essen) de listede çıkar
+        // ve rozet sayısı detay sayfasıyla tutarlı olur.
         $query = City::query()
-            ->withCount(['universities' => fn ($q) => $q->where('is_active', 1)])
+            ->select('cities.*')
+            ->selectRaw('(
+                (select count(*) from universities u where u.city_id = cities.id and u.is_active = 1)
+                + (select count(*) from university_campuses uc
+                   inner join universities u2 on u2.id = uc.university_id
+                   where uc.city_id = cities.id and u2.is_active = 1)
+            ) as universities_count')
             ->with('state:id,slug,name_de,name_tr,name_en')
             ->having('universities_count', '>', 0);
 
@@ -89,6 +98,14 @@ class CityController extends Controller
             ->orWhere('id', $slug)
             ->with(['state', 'universities' => fn ($q) => $q->where('is_active', 1)->orderByDesc('student_count')])
             ->firstOrFail();
+
+        // Çok-kampüslü üniler: birincil şehri başka ama burada da fakültesi olanları ekle
+        // (ör. Duisburg sayfasında Universität Duisburg-Essen). Birincil + kampüs birleşir.
+        $campusUnis = $city->campusUniversities()->where('is_active', 1)->orderByDesc('student_count')->get();
+        if ($campusUnis->isNotEmpty()) {
+            $merged = $city->universities->concat($campusUnis)->unique('id')->sortByDesc('student_count')->values();
+            $city->setRelation('universities', $merged);
+        }
 
         // Benzer şehirler — aynı eyaletten + uni sayısı yakın
         $similarCities = City::query()
