@@ -77,4 +77,10 @@ return [
         'key'            => env('RESEND_API_KEY'),
     ],
 
+    // Token-gated /_system/* operasyon route'ları (cron/elle tetik). KRİTİK: route'larda
+    // env('SYSTEM_TOKEN') KULLANMA — prod'da post-deploy config:cache çalıştırıyor, config
+    // cache'liyken env() config dosyaları DIŞINDA null döner → token hep null → her zaman 403.
+    // config('services.system_token') ise cache'li config'ten okur, çalışır.
+    'system_token' => env('SYSTEM_TOKEN'),
+
 ];

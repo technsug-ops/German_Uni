@@ -326,7 +326,7 @@ Route::get('/sitemap-glossary.xml', [SitemapController::class, 'glossary'])->nam
 //   curl "https://applytogerman.com/_system/cache-hot-images?token=XXX&limit=20"
 Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -351,7 +351,7 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
 // Token-gated migration runner — KAS has no CLI access, run via curl after deploy
 Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -421,7 +421,7 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
 //   Uygula:   curl "https://applytogerman.com/_system/fix-blog-links?token=XXX&apply=1"
 Route::get('/_system/fix-blog-links', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -456,7 +456,7 @@ Route::get('/_system/fix-blog-links', function (\Illuminate\Http\Request $reques
 //   KAS Cronjob (2 dk'da bir): curl "https://applytogerman.com/_system/professions-translate?token=XXX"
 Route::get('/_system/professions-translate', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -492,7 +492,7 @@ Route::get('/_system/professions-translate', function (\Illuminate\Http\Request 
 //   Düzelt: curl ".../_system/enrich-cities?token=XXX&slug=sankt-augustin&force=1"
 Route::get('/_system/enrich-cities', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -518,7 +518,7 @@ Route::get('/_system/enrich-cities', function (\Illuminate\Http\Request $request
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
 Route::get('/_system/cache-custom', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -597,7 +597,7 @@ Route::get('/_system/cache-custom', function (\Illuminate\Http\Request $request)
 //   curl "https://applytogerman.com/_system/reset-stats?token=XXX"            (apply)
 Route::get('/_system/reset-stats', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
@@ -618,7 +618,7 @@ Route::get('/_system/reset-stats', function (\Illuminate\Http\Request $request) 
 //   curl "https://applytogerman.com/_system/log-tail?token=XXX&lines=150"
 Route::get('/_system/log-tail', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $expected = env('SYSTEM_TOKEN');
+    $expected = config('services.system_token');
     if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
         abort(403, 'Invalid token');
     }
