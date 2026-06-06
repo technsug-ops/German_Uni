@@ -387,6 +387,28 @@ if (! function_exists('setting')) {
     }
 }
 
+if (! function_exists('degree_label')) {
+    /**
+     * Akademik derece etiketini AKTİF DİLE göre döndür (TR: Lisans/Yüksek Lisans/Doktora;
+     * EN/DE: Bachelor/Master/PhD). DB'de derece değeri ham (bachelor/master/phd/...) tutulur;
+     * arayüzde bu helper kullanılır — yoksa /tr'de "Bachelor" görünür (QA: dil sızıntısı).
+     */
+    function degree_label(?string $degree): string
+    {
+        $key = strtolower(trim((string) $degree));
+
+        return match ($key) {
+            'bachelor'              => __('Bachelor'),
+            'master'                => __('Master'),
+            'phd', 'doctorate', 'promotion' => __('PhD'),
+            'staatsexamen'          => __('Staatsexamen'),
+            'diplom'                => __('Diplom'),
+            ''                      => '',
+            default                 => ucfirst($key),
+        };
+    }
+}
+
 if (! function_exists('published_post_url')) {
     /**
      * Bir blog yazısının (slug ile) YAYINDA olup olmadığını kontrol eder; yayındaysa

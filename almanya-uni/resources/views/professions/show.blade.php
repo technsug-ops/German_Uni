@@ -151,19 +151,18 @@
             </section>
         @endif
 
-        @if ($profession->clean_steckbrief)
+        {{-- Steckbrief = ham BERUFENET Almanca metni (çevirisi yok). Sadece /de'de göster;
+             /tr & /en'de Almanca sızmamalı (kullanıcı kuralı: ham başka-dil sızmaz). --}}
+        @if ($profession->clean_steckbrief && app()->getLocale() === 'de')
             <section class="bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-3">Steckbrief</h2>
                 <p class="text-gray-800 leading-relaxed">{{ $profession->clean_steckbrief }}</p>
             </section>
         @endif
 
-        @if ($profession->description)
-            <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('Beschreibung (German)') }}</h2>
-                <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ $profession->description }}</p>
-            </section>
-        @endif
+        {{-- NOT: Buradaki ikinci "Beschreibung" bölümü $profession->description'ı (yukarıdaki
+             "What is X?" ile AYNI çevrili metin) tekrar basıyordu + /tr'de "Beschreibung
+             (Almanca)" yanıltıcı başlığıyla. Duplikasyon kaldırıldı. --}}
 
         {{-- Bu mesleğe götüren programlar (alan üzerinden) --}}
         @if (!empty($pathwayPrograms) && $pathwayPrograms->isNotEmpty())

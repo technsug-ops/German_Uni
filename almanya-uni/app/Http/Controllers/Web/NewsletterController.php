@@ -46,8 +46,14 @@ class NewsletterController extends Controller
         }
 
         if ($existing && $existing->is_pending) {
-            // Mevcut pending kaydı — token resend
-            Mail::to($existing->email)->send(new NewsletterConfirmation($existing));
+            // Mevcut pending kaydı — token resend. Mail hatası dış catch'e düşüp
+            // "Bir sorun oluştu" göstermesin diye burada da try-catch + queue().
+            try {
+                Mail::to($existing->email)->queue(new NewsletterConfirmation($existing));
+            } catch (\Throwable $e) {
+                Log::error('Newsletter resend failed', ['email' => $existing->email, 'err' => $e->getMessage()]);
+                return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed');
+            }
             return $this->respond($request, true, 'Doğrulama maili tekrar gönderildi. E-postanı kontrol et.', 'resent');
         }
 

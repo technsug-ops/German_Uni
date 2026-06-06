@@ -56,17 +56,11 @@
     .legal-prose td strong { font-weight: 600; }
 </style>
 
-<article class="legal-prose max-w-3xl mx-auto px-4 py-12 prose prose-lg max-w-none
-                prose-headings:font-extrabold prose-headings:text-gray-900
-                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
-                prose-p:text-gray-700 prose-p:leading-relaxed
-                prose-li:text-gray-700
-                prose-table:text-sm prose-table:my-4
-                prose-th:bg-gray-50 prose-th:p-2 prose-td:p-2 prose-th:border prose-td:border prose-th:border-gray-200 prose-td:border-gray-200
-                prose-a:text-primary-700 prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-gray-900
-                prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:hidden prose-code:after:hidden">
+{{-- NOT: prose* sınıfları frontend bundle'ında derlenmiyor (plugin yok) → hepsi no-op.
+     Özellikle 'max-w-none' (tablolar için eklenmişti) 'max-w-3xl'i ezip metni tam
+     genişliğe yayıyordu (QA: yazı sayfa ölçüleri dışında). Sadece .legal-prose +
+     okunur genişlik bırakıldı; tipografi yukarıdaki <style> bloğunda. --}}
+<article class="legal-prose max-w-3xl mx-auto px-4 py-12">
 
     {!! $page->getRenderedBody() !!}
 

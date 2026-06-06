@@ -3981,5 +3981,8 @@
     "Please provide an email or phone.": "Bitte gib eine E-Mail oder Telefonnummer an.",
     "Find sworn translators": "Vereidigte Übersetzer finden",
     "The new password must be different from your current password.": "Das neue Passwort muss sich von deinem aktuellen Passwort unterscheiden.",
-    "The calendar icon downloads a .ics file — open it to add the deadline to Google, Apple or Outlook Calendar. It is a calendar entry, not a document to view.": "Das Kalendersymbol lädt eine .ics-Datei herunter — öffne sie, um die Frist zu Google, Apple oder Outlook Kalender hinzuzufügen. Es ist ein Kalendereintrag, kein Dokument zum Ansehen."
+    "The calendar icon downloads a .ics file — open it to add the deadline to Google, Apple or Outlook Calendar. It is a calendar entry, not a document to view.": "Das Kalendersymbol lädt eine .ics-Datei herunter — öffne sie, um die Frist zu Google, Apple oder Outlook Kalender hinzuzufügen. Es ist ein Kalendereintrag, kein Dokument zum Ansehen.",
+    "Staatsexamen": "Staatsexamen",
+    "Diplom": "Diplom",
+    "Magister": "Magister"
 }

@@ -274,12 +274,23 @@
             <h3 class="font-bold text-gray-900 mb-1">{{ __('University Match Quiz') }}</h3>
             <p class="text-sm text-gray-600">{{ __('8 questions to show your top 5 universities') }}</p>
         </a>
-        <a href="{{ route('rankings.show', 'turk-ogrenci-favorisi-universiteler') }}"
-           class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
-            <div class="text-4xl mb-3">🇹🇷</div>
-            <h3 class="font-bold text-gray-900 mb-1">{{ __('Turkish Student Favorites') }}</h3>
-            <p class="text-sm text-gray-600">{{ __('uni-assist + English programs + size weighted list') }}</p>
-        </a>
+        {{-- TR-spesifik kart SADECE /tr'de (kural: EN/DE international olmalı, Türk-öğrenci
+             baz alınmamalı). EN/DE'de international muadil (burslar) gösterilir. --}}
+        @if (app()->getLocale() === 'tr')
+            <a href="{{ route('rankings.show', 'turk-ogrenci-favorisi-universiteler') }}"
+               class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
+                <div class="text-4xl mb-3">🇹🇷</div>
+                <h3 class="font-bold text-gray-900 mb-1">{{ __('Turkish Student Favorites') }}</h3>
+                <p class="text-sm text-gray-600">{{ __('uni-assist + English programs + size weighted list') }}</p>
+            </a>
+        @else
+            <a href="{{ route('scholarships.daad') }}"
+               class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
+                <div class="inline-flex items-center justify-center w-14 h-14 mx-auto mb-3 rounded-xl bg-primary-50 text-primary-600"><x-svg-icon name="trophy" class="w-8 h-8" /></div>
+                <h3 class="font-bold text-gray-900 mb-1">{{ __('Scholarships & Funding') }}</h3>
+                <p class="text-sm text-gray-600">{{ __('DAAD and more — funding for international students.') }}</p>
+            </a>
+        @endif
         <a href="{{ route('programs.index') }}"
            class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
             <div class="inline-flex items-center justify-center w-14 h-14 mx-auto mb-3 rounded-xl bg-primary-50 text-primary-600"><x-svg-icon name="book-open" class="w-8 h-8" /></div>

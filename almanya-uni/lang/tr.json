@@ -3921,5 +3921,8 @@
     "Please provide an email or phone.": "Lütfen e-posta veya telefon gir.",
     "Find sworn translators": "Yeminli tercüman bul",
     "The new password must be different from your current password.": "Yeni şifre mevcut şifrenizden farklı olmalıdır.",
-    "The calendar icon downloads a .ics file — open it to add the deadline to Google, Apple or Outlook Calendar. It is a calendar entry, not a document to view.": "Takvim ikonu bir .ics dosyası indirir — açtığında son tarihi Google, Apple veya Outlook Takvim'e ekler. Bu bir takvim kaydıdır, görüntülenecek bir belge değil."
+    "The calendar icon downloads a .ics file — open it to add the deadline to Google, Apple or Outlook Calendar. It is a calendar entry, not a document to view.": "Takvim ikonu bir .ics dosyası indirir — açtığında son tarihi Google, Apple veya Outlook Takvim'e ekler. Bu bir takvim kaydıdır, görüntülenecek bir belge değil.",
+    "Staatsexamen": "Devlet Sınavı (Staatsexamen)",
+    "Diplom": "Diplom",
+    "Magister": "Magister"
 }

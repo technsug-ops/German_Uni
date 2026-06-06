@@ -9,8 +9,8 @@
 
 @php
     $degreeLabels = [
-        'bachelor' => 'Bachelor', 'master' => 'Master', 'phd' => __('PhD'),
-        'staatsexamen' => 'Staatsexamen', 'diplom' => 'Diplom', 'magister' => 'Magister', 'other' => __('Other'),
+        'bachelor' => degree_label('bachelor'), 'master' => degree_label('master'), 'phd' => degree_label('phd'),
+        'staatsexamen' => degree_label('staatsexamen'), 'diplom' => degree_label('diplom'), 'magister' => __('Magister'), 'other' => __('Other'),
     ];
     $langLabels = ['de' => __('German'), 'en' => __('English'), 'both' => __('German + English')];
     $semesterLabels = ['winter' => __('Winter (Wintersemester)'), 'summer' => __('Summer (Sommersemester)')];

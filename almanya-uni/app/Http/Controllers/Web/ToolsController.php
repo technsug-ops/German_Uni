@@ -413,11 +413,13 @@ class ToolsController extends Controller
             });
         }
 
-        // İki sütun arasında en yakın deadline'a göre sırala
+        // En yakın GELECEK deadline'a göre sırala. Geçmiş tarihler (veride çok sayıda
+        // stale 2025 var) sıralamaya KATILMAZ — yoksa stale tarihliler hep en üste gelip
+        // her pencerede aynı ilk sayfa görünüyordu (QA: gün filtresi çalışmıyor sanıldı).
         $programs = $q->orderByRaw('
             LEAST(
-                COALESCE(application_deadline_winter, "9999-12-31"),
-                COALESCE(application_deadline_summer, "9999-12-31")
+                CASE WHEN application_deadline_winter >= CURDATE() THEN application_deadline_winter ELSE "9999-12-31" END,
+                CASE WHEN application_deadline_summer >= CURDATE() THEN application_deadline_summer ELSE "9999-12-31" END
             ) ASC
         ')
         ->paginate(40)

@@ -10,13 +10,7 @@
 <x-tool-schema tool="deadlines" />
 
 @php
-    $degreeLabel = fn ($d) => match ($d) {
-        'bachelor' => 'Bachelor',
-        'master'   => 'Master',
-        'phd'      => 'PhD',
-        'staatsexamen' => 'Staatsexamen',
-        default    => ucfirst((string) $d),
-    };
+    $degreeLabel = fn ($d) => degree_label($d);
     $langLabel = fn ($l) => match ($l) {
         'en'   => '🇬🇧 ' . __('English'),
         'de'   => '🇩🇪 ' . __('German'),
@@ -25,12 +19,20 @@
     };
 
     // Hangi semester'ı göstereceğiz (filter'a göre)?
-    $showSemester = function ($p) use ($filters) {
+    // KRİTİK: en yakın GELECEK (>= bugün) deadline'ı seç. Veride çok sayıda stale 2025
+    // tarihi var; eskiden $w->lt($s) ile geçmiş winter tarihi seçilip "-203 gün" olarak
+    // "Sonraki 30 gün"de görünüyordu (QA: gün filtresi çalışmıyor sanıldı).
+    $showSemester = function ($p) use ($filters, $today) {
         $w = $p->application_deadline_winter;
         $s = $p->application_deadline_summer;
         if ($filters['semester'] === 'winter') return ['winter', $w];
         if ($filters['semester'] === 'summer') return ['summer', $s];
-        // Auto: en yakın olanı seç
+        $wF = $w && $w->gte($today);
+        $sF = $s && $s->gte($today);
+        // İkisi de gelecekse → en yakını; biri gelecekse → o; ikisi de geçmişse fallback
+        if ($wF && $sF) return $w->lt($s) ? ['winter', $w] : ['summer', $s];
+        if ($wF) return ['winter', $w];
+        if ($sF) return ['summer', $s];
         if ($w && $s) return $w->lt($s) ? ['winter', $w] : ['summer', $s];
         if ($w) return ['winter', $w];
         return ['summer', $s];
@@ -69,9 +71,9 @@
                        class="px-3 py-2 rounded-lg border border-gray-300 text-sm">
                 <select name="degree" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All degrees') }}</option>
-                    <option value="bachelor" @selected($filters['degree'] === 'bachelor')>Bachelor</option>
-                    <option value="master" @selected($filters['degree'] === 'master')>Master</option>
-                    <option value="phd" @selected($filters['degree'] === 'phd')>PhD</option>
+                    <option value="bachelor" @selected($filters['degree'] === 'bachelor')>{{ degree_label('bachelor') }}</option>
+                    <option value="master" @selected($filters['degree'] === 'master')>{{ degree_label('master') }}</option>
+                    <option value="phd" @selected($filters['degree'] === 'phd')>{{ degree_label('phd') }}</option>
                 </select>
                 <select name="language" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All languages') }}</option>
