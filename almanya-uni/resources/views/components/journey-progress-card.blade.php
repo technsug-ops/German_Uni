@@ -22,7 +22,14 @@
         </div>
         <a href="{{ route('journey.show') }}"
            class="bg-white text-primary-700 font-bold px-5 py-2.5 rounded-xl hover:bg-primary-50 transition whitespace-nowrap">
-            {{ $jDone > 0 ? __('Continue') : __('Start now') }} →
+            {{-- Tamamlanınca "Continue" yanıltıcıydı → "Review and edit" (adımlar hâlâ düzenlenebilir). --}}
+            @if ($jDone >= $jTotal && $jTotal > 0)
+                {{ __('Review and edit') }} →
+            @elseif ($jDone > 0)
+                {{ __('Continue') }} →
+            @else
+                {{ __('Start now') }} →
+            @endif
         </a>
     </div>
     <div class="mt-4 h-2 rounded-full bg-white/20 overflow-hidden">

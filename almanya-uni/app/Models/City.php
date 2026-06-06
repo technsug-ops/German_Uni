@@ -92,6 +92,32 @@ class City extends Model
         return $this->belongsToMany(University::class, 'university_campuses');
     }
 
+    /**
+     * KANONİK aktif üni sayısı — "dışarıdan" (liste/kart/eyalet) sayım için TEK kaynak.
+     *
+     * Birincil (city_id) + kampüs (university_campuses) aktif ünilerin DISTINCT birleşimi.
+     * `UNION` kullanır → hem birincil/kampüs örtüşmesini hem MÜKERRER kampüs satırlarını
+     * otomatik tekilleştirir. Böylece `universities_count`, detay sayfasındaki
+     * `$city->universities->count()` (concat+unique merge) ile BİREBİR eşittir.
+     *
+     * Geçmiş bug: eski `count(*)` toplamı mükerrer kampüs satırını şişiriyordu (Cottbus:
+     * liste 3 / sayfa 2) ve kampüs-farkında olmayan `withCount` eksik sayıyordu
+     * (Berlin: liste 47 / sayfa 57). Tek kaynak → kart ile detay her zaman uyumlu.
+     */
+    public function scopeWithCampusAwareUniCount($query)
+    {
+        return $query->selectRaw('(
+            select count(*) from (
+                select u.id from universities u
+                    where u.city_id = cities.id and u.is_active = 1
+                union
+                select u2.id from university_campuses uc
+                    inner join universities u2 on u2.id = uc.university_id
+                    where uc.city_id = cities.id and u2.is_active = 1
+            ) as _cau
+        ) as universities_count');
+    }
+
     public function costData(): HasOne
     {
         return $this->hasOne(CityCostData::class);

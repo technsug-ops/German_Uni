@@ -92,6 +92,9 @@ class ProfileController extends Controller
 
         $user->save();
 
+        // Profil tamamlama skoru etkiler → cache temizle ki "+4 puan" anında yansısın.
+        $user->clearScoreCache();
+
         return Redirect::route('profile.edit', ['tab' => 'profile'])->with('status', 'profile-updated');
     }
 

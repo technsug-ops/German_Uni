@@ -132,11 +132,21 @@ if (! function_exists('localized_url')) {
 
         // Mevcut path'ten varsa locale prefix'i çıkar
         $locales = array_keys(config('locale.locales', []));
+        $hadPrefix = false;
         foreach ($locales as $l) {
             if ($path === $l || str_starts_with($path, "$l/")) {
                 $path = ltrim(substr($path, strlen($l)), '/');
+                $hadPrefix = true;
                 break;
             }
+        }
+
+        // Prefix'siz route'lar (ör. /profile, /dashboard — bilinçli olarak locale grubunun
+        // DIŞINDA, set.locale ile cookie'den dil okur). Bunlar için /tr/profile gibi bir URL
+        // üretmek 404 verir (o route yok). Bunun yerine cookie-tabanlı dil değişim route'una
+        // git → aynı sayfa (back()) yeni dilde reload olur. Bug: TR'ye geçince profil 404'lüyordu.
+        if (! $hadPrefix) {
+            return route('locale.switch', ['locale' => $targetLocale]);
         }
 
         // Route definition tüm dillerde /{locale} prefix bekler (default dahil).

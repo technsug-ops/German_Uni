@@ -197,7 +197,10 @@ class User extends Authenticatable implements FilamentUser
                    'target_degree', 'target_semester', 'monthly_budget_eur', 'preferred_state_id'];
         $filled = 0;
         foreach ($fields as $f) {
-            if (! empty($this->$f)) $filled++;
+            // empty() KULLANMA: monthly_budget_eur = 0 geçerli bir cevap ama empty(0)=true
+            // → kullanıcı bütçesini 0 girince "dolu değil" sayılıp %88'de takılıyordu.
+            $v = $this->$f;
+            if ($v !== null && $v !== '' && $v !== []) $filled++;
         }
         return (int) round(100 * $filled / count($fields));
     }
@@ -206,6 +209,17 @@ class User extends Authenticatable implements FilamentUser
      * AlmanyaUni Skor (0-100) — engagement göstergesi.
      * Profil tamamlama 30 + favoriler 30 + aktivite 20 + quiz 15 + hesap yaşı 5.
      */
+    /**
+     * Skor + rozet cache'ini temizle. Favori ekle/çıkar veya profil güncellemesi gibi
+     * skoru etkileyen her değişiklikten sonra çağrılır → kullanıcı kazandığı puanı
+     * ANINDA görür (önceden 10 dk cache yüzünden "puan gelmedi" sanılıyordu).
+     */
+    public function clearScoreCache(): void
+    {
+        \Illuminate\Support\Facades\Cache::forget("user_score:{$this->id}");
+        \Illuminate\Support\Facades\Cache::forget("user_badges:{$this->id}");
+    }
+
     public function getAlmanyauniScoreAttribute(): int
     {
         $cache = "user_score:{$this->id}";

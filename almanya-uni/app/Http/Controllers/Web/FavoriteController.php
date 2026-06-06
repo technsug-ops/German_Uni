@@ -48,6 +48,9 @@ class FavoriteController extends Controller
             $action = 'added';
         }
 
+        // Skor favori sayısına bağlı → cache'i temizle ki puan anında güncellensin.
+        $request->user()->clearScoreCache();
+
         return response()->json([
             'action' => $action,
             'count'  => $model->favorites()->count(),

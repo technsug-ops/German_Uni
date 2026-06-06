@@ -58,8 +58,11 @@ class StateController extends Controller
     {
         $state = State::where('slug', $slug)->firstOrFail();
 
-        $cities = City::where('state_id', $state->id)
-            ->withCount(['universities' => fn ($q) => $q->where('is_active', 1)])
+        // Şehir rozetleri kampüs-farkındalı KANONİK sayımı kullanır → şehir kartı ile
+        // şehir detay sayfası her zaman aynı sayıyı gösterir (City::scopeWithCampusAwareUniCount).
+        $cities = City::where('cities.state_id', $state->id)
+            ->select('cities.*')
+            ->withCampusAwareUniCount()
             ->having('universities_count', '>', 0)
             ->orderByDesc('universities_count')
             ->take(20)

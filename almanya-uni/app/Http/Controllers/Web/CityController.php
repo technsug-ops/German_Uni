@@ -14,21 +14,12 @@ class CityController extends Controller
 {
     public function index(Request $request): View|\Illuminate\Http\Response
     {
-        // universities_count = BİRİNCİL (city_id) + KAMPÜS (university_campuses) aktif üni.
-        // Böylece sadece-kampüs şehirler (ör. Duisburg → Duisburg-Essen) de listede çıkar
-        // ve rozet sayısı detay sayfasıyla tutarlı olur.
-        // DEDUP: kampüs kısmı, birincil şehri ZATEN bu şehir olan üniyi tekrar saymaz
-        // (u2.city_id <> cities.id) — yoksa hem birincil hem kampüs olan üni 2 sayılır
-        // ve liste rozeti detay sayfasından (unique merge) fazla/eksik gösterir.
+        // universities_count = KANONİK campus-farkındalı sayım (City::scopeWithCampusAwareUniCount).
+        // Birincil (city_id) + kampüs (university_campuses) aktif ünilerin DISTINCT birleşimi
+        // → rozet, detay sayfasındaki $city->universities->count() ile BİREBİR eşit.
         $query = City::query()
             ->select('cities.*')
-            ->selectRaw('(
-                (select count(*) from universities u where u.city_id = cities.id and u.is_active = 1)
-                + (select count(*) from university_campuses uc
-                   inner join universities u2 on u2.id = uc.university_id
-                   where uc.city_id = cities.id and u2.is_active = 1
-                     and (u2.city_id is null or u2.city_id <> cities.id))
-            ) as universities_count')
+            ->withCampusAwareUniCount()
             ->with('state:id,slug,name_de,name_tr,name_en')
             ->having('universities_count', '>', 0);
 
