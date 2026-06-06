@@ -158,6 +158,14 @@
             }
         @endphp
 
+        {{-- .ics ne işe yarar açıklaması (QA #4): kullanıcı indirilen .ics'i "açılmıyor"
+             sanıyordu. .ics bir takvim dosyası — çift tıklayınca Google/Apple/Outlook
+             Takvim'e eklenir, bir belge gibi açılmaz. --}}
+        <p class="flex items-start gap-2 text-xs text-gray-500 bg-indigo-50/60 border border-indigo-100 rounded-lg px-3 py-2 mb-5">
+            <x-svg-icon name="calendar" class="w-4 h-4 text-indigo-600 mt-0.5 flex-shrink-0" />
+            <span>{{ __('The calendar icon downloads a .ics file — open it to add the deadline to Google, Apple or Outlook Calendar. It is a calendar entry, not a document to view.') }}</span>
+        </p>
+
         <div class="space-y-8">
             @foreach ($buckets as $key => $bucket)
                 @continue(empty($bucket['items']))
@@ -274,7 +282,10 @@
         </div>
         <p class="text-xs text-gray-500 mt-4">
             {{ __('Deadlines may vary by uni and program. Verify on the uni\'s official site.') }}
-            <a href="{{ route('blog.show', 'uni-assist-basvuru-rehberi-a-z-almanya-universite-hayalinize-adim-adim-ulasin') }}" class="text-indigo-600 hover:underline">{{ __('Uni-Assist guide') }} →</a>
+            @php($uniAssistGuide = published_post_url('uni-assist-basvuru-rehberi-a-z-almanya-universite-hayalinize-adim-adim-ulasin'))
+            @if ($uniAssistGuide)
+            <a href="{{ $uniAssistGuide }}" class="text-indigo-600 hover:underline">{{ __('Uni-Assist guide') }} →</a>
+            @endif
         </p>
     </div>
 </section>

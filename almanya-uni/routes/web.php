@@ -1124,17 +1124,23 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
-    // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
-    Route::get('/dashboard', function () {
-        return redirect()->route('profile.edit');
-    })->name('dashboard');
+    // Dashboard/Profil/Favoriler — prefix'siz (URL /profile) AMA kullanıcı-yüzlü.
+    // set.locale ŞART: yoksa route() global default 'en' kullanır → tüm iç linkler
+    // (üni gez, şehir gez, öneri testi) kullanıcı TR'deyken İngilizce sayfaya sızar.
+    // set.locale cookie/session locale'i okuyup URL::defaults'u kullanıcının diline çeker.
+    Route::middleware('set.locale')->group(function () {
+        // Dashboard — auth sonrası landing (Auth controller'ları buraya yönlendiriyor)
+        Route::get('/dashboard', function () {
+            return redirect()->route('profile.edit');
+        })->name('dashboard');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/favorites/toggle', [\App\Http\Controllers\Web\FavoriteController::class, 'toggle'])->name('favorites.toggle');
-    Route::patch('/profile/favorites/{id}/note', [\App\Http\Controllers\Web\FavoriteController::class, 'updateNote'])->name('favorites.note');
+        Route::post('/favorites/toggle', [\App\Http\Controllers\Web\FavoriteController::class, 'toggle'])->name('favorites.toggle');
+        Route::patch('/profile/favorites/{id}/note', [\App\Http\Controllers\Web\FavoriteController::class, 'updateNote'])->name('favorites.note');
+    });
 });
 
 // Journey routes locale grubunun içinden çağrılır (routes/web.php $routes group'unda eklendi).

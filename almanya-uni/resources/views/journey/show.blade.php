@@ -227,7 +227,7 @@
                                            class="inline-flex items-center gap-1.5 text-sm font-bold px-3 py-1.5 rounded-lg shadow-sm transition
                                                   {{ $done ? 'bg-white border-2 border-emerald-300 text-emerald-700 hover:bg-emerald-100' : 'text-white hover:opacity-90' }}"
                                            @if (! $done) style="background: {{ $phase['hex'] }};" @endif>
-                                            <x-svg-icon name="wrench-screwdriver" class="w-4 h-4" /> {{ __('Open tool') }} →
+                                            <x-svg-icon name="wrench-screwdriver" class="w-4 h-4" /> {{ __($step['tool_label'] ?? 'Open tool') }} →
                                         </a>
                                     @endif
 

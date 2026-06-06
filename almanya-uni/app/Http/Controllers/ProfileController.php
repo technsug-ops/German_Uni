@@ -36,12 +36,12 @@ class ProfileController extends Controller
                 // Note: image_url, logo_url eager-load için varsayılan select yeterli
                 $data['fav_universities'] = $user->favorites()
                     ->where('favoriteable_type', University::class)
-                    ->with(['favoriteable.city:id,name_tr,name_en,name_de,slug','name_en','name_de'])
+                    ->with(['favoriteable.city:id,name_tr,name_en,name_de,slug'])
                     ->latest()
                     ->get();
                 $data['fav_programs'] = $user->favorites()
                     ->where('favoriteable_type', Program::class)
-                    ->with(['favoriteable.university:id,name_de,slug', 'favoriteable.field:id,name_tr,name_en,name_de,icon,color','name_en','name_de'])
+                    ->with(['favoriteable.university:id,name_de,slug', 'favoriteable.field:id,name_tr,name_en,name_de,icon,color'])
                     ->latest()
                     ->get();
                 $data['fav_professions'] = $user->favorites()

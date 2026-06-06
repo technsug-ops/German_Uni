@@ -386,3 +386,26 @@ if (! function_exists('setting')) {
         return \App\Models\Setting::get($key, $default);
     }
 }
+
+if (! function_exists('published_post_url')) {
+    /**
+     * Bir blog yazısının (slug ile) YAYINDA olup olmadığını kontrol eder; yayındaysa
+     * blog URL'ini, değilse null döner. Tool sayfalarındaki sabit "rehber" linkleri
+     * yayında-olmayan/eksik yazıya gidip 404 vermesin diye savunmacı kullanım içindir:
+     *
+     *   @php($guide = published_post_url('werkstudent-rehberi'))
+     *   @if ($guide) <a href="{{ $guide }}">Rehber</a> @endif
+     *
+     * İstek içi statik cache — aynı slug birden çok yerde kullanılsa tek sorgu.
+     */
+    function published_post_url(string $slug): ?string
+    {
+        static $cache = [];
+        if (! array_key_exists($slug, $cache)) {
+            $exists = \App\Models\Post::published()->where('slug', $slug)->exists();
+            $cache[$slug] = $exists ? route('blog.show', $slug) : null;
+        }
+
+        return $cache[$slug];
+    }
+}

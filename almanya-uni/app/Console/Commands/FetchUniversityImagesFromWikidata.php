@@ -30,6 +30,14 @@ class FetchUniversityImagesFromWikidata extends Command
 
     protected $description = 'Auto-populate image_url for universities that have a Q-id in their slug';
 
+    /**
+     * Wikidata P18'i YANLIŞ/alakasız olan entity'ler (ör. üni yerine bir kişi portresi).
+     * Bu Q-id'ler asla otomatik doldurulmaz — yoksa "image_url=null yap" düzeltmesini
+     * her sync'te geri ezip 404/yanlış-görsel hatasını canlandırırlar (QA: Potsdam).
+     * Yeni yanlış görsel bulununca buraya Q-id ekle + image_url'i bir migration ile boşalt.
+     */
+    private const SKIP_QIDS = ['Q153012']; // Q153012 → Universität Potsdam P18'i kişi portresi
+
     public function handle(): int
     {
         $apply  = (bool) $this->option('apply');
@@ -52,6 +60,12 @@ class FetchUniversityImagesFromWikidata extends Command
             // Extract trailing -qNNN id
             if (! preg_match('/-q(\d+)$/i', $uni->slug, $m)) { $miss++; continue; }
             $qid = 'Q' . $m[1];
+
+            // Bilinen-yanlış P18'leri atla (üni yerine kişi/alakasız görsel)
+            if (in_array($qid, self::SKIP_QIDS, true)) {
+                $this->line('  skip  ' . $qid . '  ' . $uni->name_de . '  (denylist: bad P18)');
+                continue;
+            }
 
             $imageFile = $this->fetchP18($qid);
             usleep($sleep * 1000);

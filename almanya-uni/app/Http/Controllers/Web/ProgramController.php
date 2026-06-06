@@ -135,10 +135,15 @@ class ProgramController extends Controller
         $totalAll = Program::where('is_active', true)->count();
         $totalEn  = Program::where('is_active', true)->whereIn('language', ['en', 'both'])->count();
 
-        // NC Frei verisi DB'de var mı? Partner snapshot v2 gelene kadar 0 olabilir.
-        $admissionDataAvailable = Program::whereNotNull('admission_mode')
-            ->where('admission_mode', '!=', '')
-            ->exists();
+        // Kabul türü (admission) — chip'i SADECE o değerde AKTİF program varsa göster.
+        // admission_mode verisi çok seyrek (Partner snapshot v2 bekleniyor); eskiden
+        // "herhangi bir non-null var mı" ile chip'ler çıkıp tıklayınca 0 sonuç dönüyordu
+        // (bundesweit hiç yok). Artık değer-bazlı sayım → boş değerin chip'i hiç render olmaz.
+        $admissionCounts = Program::where('is_active', true)
+            ->whereIn('admission_mode', ['zulassungsfrei', 'oertlich', 'bundesweit'])
+            ->selectRaw('admission_mode, count(*) as c')
+            ->groupBy('admission_mode')
+            ->pluck('c', 'admission_mode');
 
         $hasFilter = (bool) (
             ($filters['q'] ?? null) || ($filters['degree'] ?? null) || ($filters['language'] ?? null)
@@ -156,7 +161,7 @@ class ProgramController extends Controller
             'states'    => $states,
             'total_all' => $totalAll,
             'total_en'  => $totalEn,
-            'admission_data_available' => $admissionDataAvailable,
+            'admission_counts' => $admissionCounts,
             'hasFilter' => $hasFilter,
             'nonEuTuitionStates' => ['baden-wurttemberg', 'sachsen-anhalt'],
         ];

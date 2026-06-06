@@ -17,13 +17,17 @@ class CityController extends Controller
         // universities_count = BİRİNCİL (city_id) + KAMPÜS (university_campuses) aktif üni.
         // Böylece sadece-kampüs şehirler (ör. Duisburg → Duisburg-Essen) de listede çıkar
         // ve rozet sayısı detay sayfasıyla tutarlı olur.
+        // DEDUP: kampüs kısmı, birincil şehri ZATEN bu şehir olan üniyi tekrar saymaz
+        // (u2.city_id <> cities.id) — yoksa hem birincil hem kampüs olan üni 2 sayılır
+        // ve liste rozeti detay sayfasından (unique merge) fazla/eksik gösterir.
         $query = City::query()
             ->select('cities.*')
             ->selectRaw('(
                 (select count(*) from universities u where u.city_id = cities.id and u.is_active = 1)
                 + (select count(*) from university_campuses uc
                    inner join universities u2 on u2.id = uc.university_id
-                   where uc.city_id = cities.id and u2.is_active = 1)
+                   where uc.city_id = cities.id and u2.is_active = 1
+                     and (u2.city_id is null or u2.city_id <> cities.id))
             ) as universities_count')
             ->with('state:id,slug,name_de,name_tr,name_en')
             ->having('universities_count', '>', 0);
@@ -98,6 +102,10 @@ class CityController extends Controller
             ->orWhere('id', $slug)
             ->with(['state', 'universities' => fn ($q) => $q->where('is_active', 1)->orderByDesc('student_count')])
             ->firstOrFail();
+
+        // Kullanıcı aktivitesi — onboarding "Şehirleri keşfet" adımı (3+ şehir) bunu sayar.
+        // (Üni/Program/Profession controller'larında vardı, şehirde eksikti → adım hiç dolmuyordu.)
+        \App\Support\ActivityLogger::log($city, $city->name_de);
 
         // Çok-kampüslü üniler: birincil şehri başka ama burada da fakültesi olanları ekle
         // (ör. Duisburg sayfasında Universität Duisburg-Essen). Birincil + kampüs birleşir.

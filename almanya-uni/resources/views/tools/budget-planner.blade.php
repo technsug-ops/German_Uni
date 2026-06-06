@@ -183,7 +183,10 @@
                 {{-- Cross-links --}}
                 <div class="mt-5 pt-4 border-t border-gray-100 space-y-2">
                     <a href="{{ route('scholarships.daad') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="trophy" class="w-4 h-4" /> {{ __('Find a scholarship (boost income)') }}</span></a>
-                    <a href="{{ route('blog.show', 'almanyada-ogrenci-isleri-20-saat-kurali-vergi-ve-saglik-sigortasi-rehberi') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="briefcase" class="w-4 h-4" /> {{ __('Werkstudent guide') }}</span></a>
+                    @php($werkstudentGuide = published_post_url('almanyada-ogrenci-isleri-20-saat-kurali-vergi-ve-saglik-sigortasi-rehberi'))
+                    @if ($werkstudentGuide)
+                    <a href="{{ $werkstudentGuide }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="briefcase" class="w-4 h-4" /> {{ __('Werkstudent guide') }}</span></a>
+                    @endif
                     <a href="{{ route('tools.cost-of-living') }}" class="block text-center text-sm font-semibold text-emerald-700 hover:underline"><span class="inline-flex items-center gap-1.5"><x-svg-icon name="banknotes" class="w-4 h-4" /> {{ __('City cost breakdown') }}</span></a>
                 </div>
             </div>

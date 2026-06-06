@@ -348,32 +348,39 @@
     </div>
 </section>
 
-@if ($admission_data_available)
-    {{-- DB'de NC verisi VAR — kendi filter chip'lerimizi göster --}}
+@if (($admission_counts ?? collect())->isNotEmpty())
+    {{-- DB'de NC verisi VAR — yalnızca >0 program içeren değerin chip'ini göster.
+         (bundesweit verisi yoksa chip hiç çıkmaz → "tıkla, 0 sonuç" hayal kırıklığı yok.) --}}
     <div class="bg-blue-50 border-b border-blue-200">
         <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center gap-3 text-sm flex-wrap">
             <span class="text-blue-900 font-semibold flex-shrink-0">🔓 {{ __('Admission mode') }}:</span>
+            @if (($admission_counts['zulassungsfrei'] ?? 0) > 0)
             <a href="{{ request()->fullUrlWithQuery(['admission' => 'zulassungsfrei', 'page' => null]) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'zulassungsfrei'
                             ? 'bg-blue-600 text-white'
                             : 'bg-white border border-blue-300 text-blue-700 hover:bg-blue-100' }}">
-                🔓 {{ __('NC Frei (Zulassungsfrei)') }}
+                🔓 {{ __('NC Frei (Zulassungsfrei)') }} ({{ $admission_counts['zulassungsfrei'] }})
             </a>
+            @endif
+            @if (($admission_counts['oertlich'] ?? 0) > 0)
             <a href="{{ request()->fullUrlWithQuery(['admission' => 'oertlich', 'page' => null]) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'oertlich'
                             ? 'bg-blue-600 text-white'
                             : 'bg-white border border-blue-300 text-blue-700 hover:bg-blue-100' }}">
-                {{ __('Local NC (Örtlich)') }}
+                {{ __('Local NC (Örtlich)') }} ({{ $admission_counts['oertlich'] }})
             </a>
+            @endif
+            @if (($admission_counts['bundesweit'] ?? 0) > 0)
             <a href="{{ request()->fullUrlWithQuery(['admission' => 'bundesweit', 'page' => null]) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'bundesweit'
                             ? 'bg-blue-600 text-white'
                             : 'bg-white border border-blue-300 text-blue-700 hover:bg-blue-100' }}">
-                {{ __('Nationwide NC (Bundesweit)') }}
+                {{ __('Nationwide NC (Bundesweit)') }} ({{ $admission_counts['bundesweit'] }})
             </a>
+            @endif
             @if (! empty($filters['admission']))
                 <a href="{{ request()->fullUrlWithQuery(['admission' => null, 'page' => null]) }}" class="text-xs text-gray-600 hover:text-gray-900 underline">{{ __('clear') }}</a>
             @endif

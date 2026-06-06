@@ -217,6 +217,9 @@ class University extends Model
     }
 
     // ── Local WebP cache → HTTPS-force → Wikimedia thumb fallback ──
+    // NOT: ~53 üni'de görsel YALNIZCA cache'te yaşıyor (DB image_url boş) — cache-first
+    // davranışı kasıtlı. Bu yüzden "DB boşsa null dön" YAPMA; yanlış cache'li tekil
+    // vakalar (ör. Potsdam Q153012 kişi-portresi) cache DOSYASI silinerek düzeltilir.
     public function getImageUrlAttribute(?string $value): ?string
     {
         if ($this->slug) {

@@ -100,10 +100,13 @@
                 </div>
 
                 <div class="mt-6 pt-5 border-t border-gray-100 space-y-3">
-                    <a href="{{ route('blog.show', 'sperrkonto-2025-tam-rehber-almanya-vizesi-icin-bloke-hesap') }}"
+                    @php($sperrkontoGuide = published_post_url('sperrkonto-2025-tam-rehber-almanya-vizesi-icin-bloke-hesap'))
+                    @if ($sperrkontoGuide)
+                    <a href="{{ $sperrkontoGuide }}"
                        class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition">
                         <x-svg-icon name="book-open" class="w-4 h-4" /> {{ __('Sperrkonto Guide') }}
                     </a>
+                    @endif
                     <a href="{{ route('tools.visa-appointment') }}"
                        class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm transition">
                         <x-svg-icon name="calendar" class="w-4 h-4" /> {{ __('Visa Appointment Guide') }}
