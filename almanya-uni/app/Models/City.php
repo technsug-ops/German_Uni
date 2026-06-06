@@ -106,15 +106,21 @@ class City extends Model
      */
     public function scopeWithCampusAwareUniCount($query)
     {
+        // İki korelasyonlu SCALAR subquery toplamı — DERIVED TABLE (FROM-subquery) KULLANMA:
+        // korelasyonlu derived table (içinde `cities.id` referansı) MariaDB'de (KAS prod)
+        // desteklenmez → "Unknown column 'cities.id'" → 500. Lokal MySQL 8.0.14+ destekler,
+        // o yüzden lokal'de fark edilmemişti. Bu additive form her MySQL/MariaDB'de çalışır.
+        //
+        // university_campuses'te (university_id, city_id) UNIQUE kısıt var → mükerrer satır
+        // imkânsız; `u2.city_id <> cities.id` ile birincil/kampüs örtüşmesi dışlanır → sonuç
+        // distinct birleşimle BİREBİR aynı = detay sayfasındaki unique-merge count.
         return $query->selectRaw('(
-            select count(*) from (
-                select u.id from universities u
-                    where u.city_id = cities.id and u.is_active = 1
-                union
-                select u2.id from university_campuses uc
-                    inner join universities u2 on u2.id = uc.university_id
-                    where uc.city_id = cities.id and u2.is_active = 1
-            ) as _cau
+            (select count(*) from universities u
+                where u.city_id = cities.id and u.is_active = 1)
+            + (select count(*) from university_campuses uc
+                inner join universities u2 on u2.id = uc.university_id
+                where uc.city_id = cities.id and u2.is_active = 1
+                  and (u2.city_id is null or u2.city_id <> cities.id))
         ) as universities_count');
     }
 
