@@ -1,7 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 48" width="260" height="48" role="img" aria-label="ApplyToGerman">
-  <rect x="2" y="6" width="8" height="12" fill="#ffffff" rx="1"/>
-  <rect x="2" y="18" width="8" height="12" fill="#fbbf24"/>
-  <rect x="2" y="30" width="8" height="12" fill="#dc2626"/>
-  <path d="M14 24 L24 18 L24 22 L34 22 L34 26 L24 26 L24 30 Z" fill="#ffffff"/>
-  <text x="42" y="32" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Apply<tspan fill="#fbbf24" font-weight="500">To</tspan><tspan fill="#ffffff">German</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 48" width="272" height="48" role="img" aria-label="ApplyToGerman">
+  <!-- İkon (beyaz rozet + Almanya bayrağı siyah/kırmızı/sarı + mezuniyet kepi) -->
+  <g transform="translate(2,2) scale(0.6875)">
+    <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+    <rect x="9" y="14" width="7" height="11.5" rx="2" fill="#111827"/>
+    <rect x="9" y="26.25" width="7" height="11.5" fill="#dc2626"/>
+    <rect x="9" y="38.5" width="7" height="11.5" rx="2" fill="#fbbf24"/>
+    <path d="M38 18 L55 25.5 L38 33 L21 25.5 Z" fill="#0f172a"/>
+    <path d="M27 28.2 L27 37 C27 37 32 41 38 41 C44 41 49 37 49 37 L49 28.2 L38 33 Z" fill="#1e293b"/>
+    <circle cx="38" cy="25.5" r="1.7" fill="#fbbf24"/>
+    <path d="M38 25.5 L53.5 26.2 L53.5 40" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="53.5" cy="41.5" r="2" fill="#fbbf24"/>
+  </g>
+  <!-- Wordmark (beyaz, koyu header için) -->
+  <text x="52" y="32" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Apply<tspan fill="#fbbf24" font-weight="500">To</tspan><tspan fill="#ffffff">German</tspan></text>
 </svg>

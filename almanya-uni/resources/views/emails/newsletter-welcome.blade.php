@@ -23,7 +23,7 @@
                 {{-- Hero --}}
                 <tr>
                     <td style="background:linear-gradient(135deg,#1E40AF 0%,#7C3AED 100%);padding:36px 32px 32px;border-bottom:3px solid #F97316;text-align:center;">
-                        <div style="display:inline-block;width:56px;height:56px;background:#F97316;border-radius:12px;text-align:center;line-height:56px;font-size:28px;margin-bottom:14px;">🎓</div>
+                        <img src="{{ asset('img/logos/atg-icon.png') }}" width="56" height="56" alt="" style="display:inline-block;width:56px;height:56px;border-radius:12px;margin-bottom:14px;">
                         <h1 style="color:#fff;font-size:26px;font-weight:800;margin:0 0 8px;">
                             {{ $name
                                 ? __('Welcome, :name!', ['name' => $name])

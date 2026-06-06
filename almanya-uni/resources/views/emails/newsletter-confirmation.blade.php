@@ -22,7 +22,7 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td>
-                                    <div style="display:inline-block;width:44px;height:44px;background:#F97316;border-radius:10px;text-align:center;line-height:44px;font-size:22px;vertical-align:middle;">🎓</div>
+                                    <img src="{{ asset('img/logos/atg-icon.png') }}" width="44" height="44" alt="" style="display:inline-block;width:44px;height:44px;border-radius:10px;vertical-align:middle;">
                                     <span style="color:#fff;font-size:22px;font-weight:800;margin-left:12px;vertical-align:middle;">{{ $brandName }}</span>
                                 </td>
                             </tr>
