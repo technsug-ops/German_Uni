@@ -29,7 +29,16 @@ class CitiesEnrich extends Command
         if ($slug = $this->option('slug')) {
             $query->where('slug', $slug);
         } else {
-            $query->whereHas('universities', fn ($q) => $q->where('is_active', 1), '>=', (int) $this->option('min-unis'));
+            // Campus-only şehirler (ör. Duisburg → tek üni'si Duisburg-Essen'in EK kampüsü;
+            // birincil city_id = Essen) de DAHİL edilmeli. Yoksa whereHas('universities')
+            // birincil üni 0 olduğu için bu şehirleri SONSUZA DEK atlar → sayfa "İçerik
+            // Henüz Hazırlanmadı" kalır (Duisburg + leer/mönchengladbach/bocholt/
+            // recklinghausen/senftenberg). Bkz [[multicampus_and_city_enrichment]].
+            $minUnis = (int) $this->option('min-unis');
+            $query->where(function ($q) use ($minUnis) {
+                $q->whereHas('universities', fn ($u) => $u->where('is_active', 1), '>=', $minUnis)
+                  ->orWhereHas('campusUniversities', fn ($u) => $u->where('universities.is_active', 1));
+            });
             if ($this->option('only-without')) {
                 $query->whereNull('content_blocks');
             }
