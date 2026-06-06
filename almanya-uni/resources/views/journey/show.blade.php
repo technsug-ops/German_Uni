@@ -348,8 +348,9 @@
                 <label class="block text-xs font-semibold text-gray-700 mb-1">{{ __('Target intake') }}</label>
                 <select name="target_intake" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
                     <option value="">{{ __('Choose...') }}</option>
-                    @foreach (['winter-2026' => 'Winter 2026', 'summer-2027' => 'Summer 2027', 'winter-2027' => 'Winter 2027', 'summer-2028' => 'Summer 2028'] as $val => $lbl)
-                        <option value="{{ $val }}" @selected($tracker->target_intake === $val)>{{ $lbl }}</option>
+                    {{-- Mevsim adı çevrilir (TR: Kış/Yaz), yıl olduğu gibi → dil sızıntısı önlenir. --}}
+                    @foreach (['winter-2026' => ['Winter', 2026], 'summer-2027' => ['Summer', 2027], 'winter-2027' => ['Winter', 2027], 'summer-2028' => ['Summer', 2028]] as $val => [$season, $year])
+                        <option value="{{ $val }}" @selected($tracker->target_intake === $val)>{{ __($season) }} {{ $year }}</option>
                     @endforeach
                 </select>
             </div>
