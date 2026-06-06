@@ -34,9 +34,13 @@
             <span class="sm:hidden">{{ __('News') }}</span>
         </a>
 
-        {{-- Kayan band (soldan sağa) — içerik 2x kopyalanır, kesintisiz döngü --}}
+        {{-- Kayan band (soldan sağa) — içerik 2x kopyalanır, kesintisiz döngü.
+             Süre haber SAYISINA orantılı (her haber ~7s, min 50s) → haberlerin ÇOKLUĞU
+             hızı ARTTIRMAZ; sayı ne olursa olsun aynı sakin hızda akar. (Eski sabit 28s
+             yüzünden 12 haberde çok hızlıydı.) Saf CSS — JS yok. --}}
         <div class="news-ticker-viewport relative flex-1 overflow-hidden">
-            <div class="news-ticker-track flex items-center gap-10 py-2.5 pl-6">
+            <div class="news-ticker-track flex items-center gap-10 py-2.5 pl-6"
+                 style="animation-duration: {{ max(50, count($tickerItems) * 7) }}s">
                 @foreach (array_merge($tickerItems, $tickerItems) as $it)
                     <a href="{{ $it['url'] }}"
                        class="inline-flex items-center gap-2 text-sm text-gray-200 hover:text-white whitespace-nowrap">
