@@ -19,7 +19,9 @@ class SearchController extends Controller
 
     public function index(Request $request): View
     {
-        $q = trim((string) $request->input('q', ''));
+        // Maks. 100 karakter — aşırı uzun sorgu ~19 FULLTEXT/LIKE taramasını
+        // (DoS yüzeyi) tetiklemesin. Gerçek aramalar için fazlasıyla yeterli.
+        $q = mb_substr(trim((string) $request->input('q', '')), 0, 100);
 
         if ($q === '') {
             return view('search.index', [

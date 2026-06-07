@@ -113,6 +113,14 @@ class SmokeTest extends TestCase
         }
     }
 
+    /** Aşırı uzun arama sorgusu DoS yüzeyini kısaltır — 5xx olmadan açılmalı. */
+    public function test_search_handles_excessively_long_query(): void
+    {
+        $long = str_repeat('a', 5000);
+        $this->get('/tr/search?q=' . $long)->assertStatus(200);
+        $this->getJson('/tr/search/suggest?q=' . $long)->assertStatus(200);
+    }
+
     public function test_concept_synonym_search_finds_tool(): void
     {
         // "blocked account" (EN) → Sperrkonto aracını bulmalı (sinonim katmanı).

@@ -19,7 +19,9 @@ class SearchSuggestController extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        $q = trim((string) $request->input('q', ''));
+        // Maks. 100 karakter — aşırı uzun sorgu pahalı LIKE/FULLTEXT taramasını
+        // (DoS yüzeyi) sınırlar. Gerçek aramalar için fazlasıyla yeterli.
+        $q = mb_substr(trim((string) $request->input('q', '')), 0, 100);
         if (mb_strlen($q) < 2) {
             return response()->json(['results' => [], 'q' => $q]);
         }
