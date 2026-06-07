@@ -84,7 +84,7 @@
     @endif
     <div class="relative max-w-[1400px] mx-auto px-4 py-10 md:py-14">
         <nav class="text-sm text-primary-100 mb-3">
-            <a href="/" class="hover:text-white">{{ __('Ana Sayfa') }}</a>
+            <a href="/" class="hover:text-white">{{ __('Home') }}</a>
             <span class="mx-2 opacity-60">›</span>
             <a href="{{ route('universities.index') }}" class="hover:text-white">{{ __('Universities') }}</a>
             <span class="mx-2 opacity-60">›</span>
@@ -130,11 +130,11 @@
         @php
             $tabBtn = 'px-5 py-3 font-semibold text-sm border-b-2 -mb-px transition';
         @endphp
-        <button @click="tab='uni'" :class="tab==='uni' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('Üniversite') }}</button>
+        <button @click="tab='uni'" :class="tab==='uni' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('University') }}</button>
         @if ($progTotal > 0)
-            <button @click="tab='prog'" :class="tab==='prog' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('Programlar') }} <span class="text-gray-400">({{ $progTotal }})</span></button>
+            <button @click="tab='prog'" :class="tab==='prog' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('Programs') }} <span class="text-gray-400">({{ $progTotal }})</span></button>
         @endif
-        <button @click="tab='sehir'" :class="tab==='sehir' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('Şehir') }}</button>
+        <button @click="tab='sehir'" :class="tab==='sehir' ? 'border-primary-600 text-primary-700' : 'border-transparent text-gray-500 hover:text-gray-800'" class="{{ $tabBtn }}">{{ __('City') }}</button>
     </div>
 
     {{-- ═══════════ TAB: ÜNİVERSİTE ═══════════ --}}
@@ -146,15 +146,15 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-5">
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $university['founded_year'] ?? '—' }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="flag" class="w-3.5 h-3.5" /> {{ __('Kuruluş yılı') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="flag" class="w-3.5 h-3.5" /> {{ __('Founded') }}</div>
                     </div>
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $university['student_count'] ? number_format($university['student_count'], 0, ',', '.') : '—' }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Öğrenci sayısı') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Student count') }}</div>
                     </div>
                     <div>
                         <div class="text-2xl font-extrabold text-gray-900">{{ $typeLabel }}</div>
-                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Tür') }}</div>
+                        <div class="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="building-office" class="w-3.5 h-3.5" /> {{ __('Type') }}</div>
                     </div>
                 </div>
 
@@ -168,13 +168,13 @@
                         @if ($progEn > 0)
                             <button @click="tab='prog'" class="flex-1 text-left rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progEn }}</div>
-                                <div class="text-xs opacity-90 mt-0.5">🇬🇧 {{ __('İngilizce program') }} →</div>
+                                <div class="text-xs opacity-90 mt-0.5">🇬🇧 {{ __('English-taught programs') }} →</div>
                             </button>
                         @endif
                         @if ($progNcFree > 0)
                             <a href="{{ route('admission-free.by-university', $university['slug']) }}" class="flex-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progNcFree }}</div>
-                                <div class="text-xs opacity-90 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> {{ __('NC-frei (sınavsız) program') }} ↗</div>
+                                <div class="text-xs opacity-90 mt-0.5 inline-flex items-center gap-1"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> {{ __('NC-free programs') }} ↗</div>
                             </a>
                         @endif
                     </div>
@@ -272,11 +272,11 @@
                 <a href="{{ route('compare.index', ['slugs' => $university['slug']]) }}"
                    class="inline-flex items-center justify-center gap-1.5 w-full bg-primary-500 text-white py-3 rounded-lg font-semibold hover:bg-primary-600 transition">
                     <x-svg-icon name="scale" class="w-4 h-4" />
-                    {{ __('Karşılaştırmaya Ekle') }}
+                    {{ __('Add to Compare') }}
                 </a>
                 @if ($university['website_url'])
                     <a href="{{ $university['website_url'] }}" target="_blank" rel="noopener"
-                       class="block text-center w-full bg-accent-500 text-white py-3 rounded-lg font-semibold hover:bg-accent-600 transition">{{ __('Üniversite Sitesi') }} ↗</a>
+                       class="block text-center w-full bg-accent-500 text-white py-3 rounded-lg font-semibold hover:bg-accent-600 transition">{{ __('University Website') }} ↗</a>
                 @endif
             </div>
 
@@ -297,16 +297,16 @@
                 $degreeLabels = [
                     'bachelor' => ['Bachelor', 'academic-cap'], 'master' => ['Master', 'target'],
                     'phd' => ['PhD', 'beaker'], 'staatsexamen' => ['Staatsexamen', 'scale'],
-                    'diplom' => ['Diplom', 'document-text'], 'magister' => ['Magister', 'document-text'], 'other' => [__('Diğer'), 'book-open'],
+                    'diplom' => ['Diplom', 'document-text'], 'magister' => ['Magister', 'document-text'], 'other' => [__('Other'), 'book-open'],
                 ];
             @endphp
             <div class="bg-white p-6 rounded-xl border border-gray-200">
                 <div class="flex items-end justify-between mb-5 flex-wrap gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-900">{{ __('Programlar & Bölümler') }}</h2>
+                        <h2 class="text-2xl font-bold text-gray-900">{{ __('Programs & Departments') }}</h2>
                         <p class="text-sm text-gray-600">
-                            {{ $progTotal }} {{ __('aktif program') }} ·
-                            {{ $progEn }} {{ __('İngilizce') }} ·
+                            {{ $progTotal }} {{ __('active programs') }} ·
+                            {{ $progEn }} {{ __('English') }} ·
                             {{ $progNcFree }} NC-frei
                         </p>
                     </div>
@@ -355,20 +355,20 @@
                                         <span class="inline-flex items-center gap-1 text-amber-700 font-semibold"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> NC-frei</span>
                                     @endif
                                     @if (! is_null($p->tuition_fee_eur))
-                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="currency-euro" class="w-3.5 h-3.5" /> {{ $p->tuition_fee_eur == 0 ? __('Ücretsiz') : number_format($p->tuition_fee_eur, 0, ',', '.') . ' € / ' . __('sem') }}</span>
+                                        <span class="inline-flex items-center gap-1 text-gray-600"><x-svg-icon name="currency-euro" class="w-3.5 h-3.5" /> {{ $p->tuition_fee_eur == 0 ? __('Free') : number_format($p->tuition_fee_eur, 0, ',', '.') . ' € / ' . __('sem') }}</span>
                                     @endif
                                 </div>
                                 @if ($p->description)
                                     <p class="text-sm text-gray-700 mt-3 line-clamp-3">{{ \Illuminate\Support\Str::limit($p->description, 200) }}</p>
                                 @endif
-                                <span class="inline-block mt-3 text-xs font-semibold text-primary-600 group-hover:text-primary-800">{{ __('Detayını gör') }} →</span>
+                                <span class="inline-block mt-3 text-xs font-semibold text-primary-600 group-hover:text-primary-800">{{ __('View details') }} →</span>
                             </a>
                         @endforeach
                     </div>
                 @endforeach
             </div>
         @else
-            <div class="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500">{{ __('Bu üniversite için kayıtlı program bulunmuyor.') }}</div>
+            <div class="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500">{{ __('No programs listed for this university yet.') }}</div>
         @endif
     </div>
 
@@ -391,15 +391,15 @@
                     ])->values();
                 // Sadece verisi olan stat kartlarını topla — boş kutu olmasın
                 $cityStats = [];
-                $cityStats[] = ['v' => $cityUniCount, 'l' => __('Üniversite'), 'i' => 'building-office', 'c' => 'bg-primary-600 text-white'];
+                $cityStats[] = ['v' => $cityUniCount, 'l' => __('University'), 'i' => 'building-office', 'c' => 'bg-primary-600 text-white'];
                 if (($cityPrograms ?? 0) > 0) {
                     $cityStats[] = ['v' => number_format($cityPrograms, 0, ',', '.'), 'l' => __('Program'), 'i' => 'book-open', 'c' => 'bg-indigo-600 text-white'];
                 }
                 if (($cityStudents ?? 0) > 0) {
-                    $cityStats[] = ['v' => number_format($cityStudents, 0, ',', '.'), 'l' => __('Öğrenci'), 'i' => 'academic-cap', 'c' => 'bg-sky-600 text-white'];
+                    $cityStats[] = ['v' => number_format($cityStudents, 0, ',', '.'), 'l' => __('Students'), 'i' => 'academic-cap', 'c' => 'bg-sky-600 text-white'];
                 }
                 if ($city->population) {
-                    $cityStats[] = ['v' => number_format($city->population, 0, ',', '.'), 'l' => __('Nüfus'), 'i' => 'users', 'c' => 'bg-gray-50 border border-gray-200 text-gray-900'];
+                    $cityStats[] = ['v' => number_format($city->population, 0, ',', '.'), 'l' => __('Population'), 'i' => 'users', 'c' => 'bg-gray-50 border border-gray-200 text-gray-900'];
                 }
                 if ($city->avg_rent_min) {
                     $rent = number_format($city->avg_rent_min, 0, ',', '.') . '€' . ($city->avg_rent_max ? '–' . number_format($city->avg_rent_max, 0, ',', '.') . '€' : '');
@@ -447,7 +447,7 @@
                             <a href="{{ route('cities.show', $city->slug) }}#{{ $anchor }}" class="block rounded-lg border border-gray-200 hover:border-primary-400 hover:shadow-sm bg-gray-50 hover:bg-white transition p-4">
                                 <h3 class="font-bold text-gray-900 text-sm mb-1 leading-snug">{{ $hl['h'] }}</h3>
                                 <p class="text-xs text-gray-600 leading-relaxed">{{ $hl['text'] }}</p>
-                                <span class="inline-block mt-2 text-xs font-semibold text-primary-600">{{ __('devamı') }} →</span>
+                                <span class="inline-block mt-2 text-xs font-semibold text-primary-600">{{ __('more') }} →</span>
                             </a>
                         @endforeach
                     </div>
@@ -455,17 +455,17 @@
 
                 <div class="rounded-xl bg-primary-50 border border-primary-100 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
-                        <p class="font-bold text-primary-900">{{ $city->name }} {{ __('hakkında daha fazlası') }}</p>
-                        <p class="text-sm text-primary-700">{{ __('Yaşam maliyeti, barınma, ulaşım, öğrenci hayatı ve tüm üniversiteler.') }}</p>
+                        <p class="font-bold text-primary-900">{{ __('More about :city', ['city' => $city->name]) }}</p>
+                        <p class="text-sm text-primary-700">{{ __('Cost of living, housing, transport, student life and all universities.') }}</p>
                     </div>
                     <a href="{{ route('cities.show', $city->slug) }}"
                        class="shrink-0 inline-block bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-semibold transition whitespace-nowrap">
-                        {{ $city->name }} {{ __('şehir rehberi') }} →
+                        {{ $city->name }} {{ __('city guide') }} →
                     </a>
                 </div>
             </div>
         @else
-            <div class="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500">{{ __('Şehir bilgisi bulunmuyor.') }}</div>
+            <div class="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500">{{ __('No city information available.') }}</div>
         @endif
     </div>
 </div>
@@ -485,16 +485,16 @@
             <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2">
                 <x-svg-icon name="academic-cap" class="w-6 h-6" />
                 @if ($university['city_name'])
-                    {{ $university['city_name'] }} {{ __('şehrindeki diğer üniversiteler') }}
+                    {{ __('Other universities in :city', ['city' => $university['city_name']]) }}
                 @else
-                    {{ __('Benzer üniversiteler') }}
+                    {{ __('Similar universities') }}
                 @endif
             </h2>
-            <a href="{{ route('universities.index') }}" class="text-sm text-primary-600 hover:underline font-semibold">{{ __('Tümü') }} →</a>
+            <a href="{{ route('universities.index') }}" class="text-sm text-primary-600 hover:underline font-semibold">{{ __('All') }} →</a>
         </div>
         @php
             $typeLabelFn = fn ($t) => match ($t) {
-                'public' => __('Devlet'), 'private' => __('Özel'), 'applied_sciences' => 'HAW',
+                'public' => __('Devlet'), 'private' => __('Private'), 'applied_sciences' => 'HAW',
                 'art' => __('Sanat'), 'religion' => __('Dini'), default => $t ? ucfirst($t) : '—',
             };
         @endphp
@@ -522,7 +522,7 @@
                     <div class="p-2.5">
                         <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition text-xs leading-tight line-clamp-2">{{ $u->display_name }}</h3>
                         @if ($u->student_count)
-                            <p class="text-[10px] text-gray-500 mt-1">{{ number_format($u->student_count) }} {{ __('öğrenci') }}</p>
+                            <p class="text-[10px] text-gray-500 mt-1">{{ number_format($u->student_count) }} {{ __('students') }}</p>
                         @endif
                     </div>
                 </a>
@@ -571,8 +571,8 @@
 
 @else
 <div class="max-w-[1400px] mx-auto px-4 py-16 text-center">
-    <h1 class="text-3xl font-bold mb-4">{{ __('Üniversite Bulunamadı') }}</h1>
-    <a href="{{ route('universities.index') }}" class="text-primary-500 hover:text-primary-600 font-semibold">← {{ __('Üniversitelere Geri Dön') }}</a>
+    <h1 class="text-3xl font-bold mb-4">{{ __('University Not Found') }}</h1>
+    <a href="{{ route('universities.index') }}" class="text-primary-500 hover:text-primary-600 font-semibold">← {{ __('Back to Universities') }}</a>
 </div>
 @endif
 @endsection
