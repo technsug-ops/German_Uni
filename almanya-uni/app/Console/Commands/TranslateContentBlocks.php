@@ -47,6 +47,19 @@ class TranslateContentBlocks extends Command
 
         $q = $model::query()->whereNotNull('content_blocks')->where('content_blocks', '<>', '[]');
         if ($ids = $this->option('ids')) $q->whereIn('id', explode(',', $ids));
+
+        // --force YOKKEN: hedef locale'lerden EN AZ BİRİ eksik olan satırları seç. Yoksa
+        // --limit ile tekrar tekrar çağrıldığında (token route + Auto Refresh) hep aynı
+        // ZATEN ÇEVRİLMİŞ ilk satırları çekip skip eder → liste boyunca ASLA ilerlemez.
+        if (! $this->option('force')) {
+            $q->where(function ($sub) use ($locales) {
+                foreach ($locales as $loc) {
+                    $col = 'content_blocks_' . $loc;
+                    $sub->orWhereNull($col)->orWhere($col, '[]');
+                }
+            });
+        }
+
         if (($limit = (int) $this->option('limit')) > 0) $q->limit($limit);
 
         $rows = $q->get();

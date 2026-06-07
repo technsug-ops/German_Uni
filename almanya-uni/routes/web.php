@@ -513,6 +513,36 @@ Route::get('/_system/enrich-cities', function (\Illuminate\Http\Request $request
     return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
 })->middleware('throttle:30,1');
 
+// Token-gated content_blocks TR→EN/DE çeviri (KAS cron/CLI yok → elle + Auto Refresh Plus).
+// content_blocks DB verisidir (git'le gelmez) → prod'da bu route ile üretilir.
+// Komut idempotent + hedefi eksik satırları seçer → küçük limit'le tekrar tekrar çağır,
+// "OK: 0, Fail: 0" / "0 kayıt" diyene dek (gateway timeout zararsız: her satır tek tek save'lenir).
+//   Şehir EN+DE: ".../_system/translate-blocks?token=XXX&entity=city&limit=2"
+//   Tek locale:  ".../_system/translate-blocks?token=XXX&entity=city&locales=en&limit=3"
+//   Diğer:       entity=university|field|state
+Route::get('/_system/translate-blocks', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(600);
+    try {
+        \Illuminate\Support\Facades\Artisan::call('content:translate-blocks', array_filter([
+            '--entity'  => $request->query('entity', 'city'),
+            '--locales' => $request->query('locales', 'en,de'),
+            '--ids'     => $request->query('ids'),
+            '--limit'   => (int) $request->integer('limit', 2),
+            '--force'   => $request->boolean('force'),
+            '--sleep'   => (int) $request->integer('sleep', 1),
+        ], fn ($v) => $v !== false && $v !== null && $v !== ''));
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        $out = 'EXCEPTION: ' . $e->getMessage();
+    }
+    return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:30,1');
+
 // Token-gated single-image cache override — for cases where a uni has no
 // usable Wikipedia image and we want to point to a custom CDN URL instead.
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
