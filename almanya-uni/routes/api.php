@@ -61,44 +61,63 @@ Route::prefix('v1')->middleware('api.throttle')->group(function () {
         });
     });
 
-    Route::get('universities', [UniversityController::class, 'index']);
-    Route::get('universities/top', [UniversityController::class, 'top']);
-    Route::get('universities/compare', [UniversityController::class, 'compare']);
-    Route::get('universities/{slugOrId}/content', [UniversityController::class, 'content']);
-    Route::get('universities/{slugOrId}', [UniversityController::class, 'show']);
+    // ──────────────────────────────────────────────────────────────────
+    // Veri (okuma) API'si — ARTIK İZNE TABİ. Açık erişim kapatıldı:
+    // geçerli bir Sanctum token'ı (ApiClient `apiclient:create` ile verilir,
+    // veya kullanıcı login token'ı) ZORUNLU. ApiClient plan ability'leri
+    // enforce edilir; kullanıcı token'ları '*' aldığı için tümüne erişir.
+    //   free       → read:universities, read:programs, read:reference
+    //   partner    → + webhooks:manage
+    //   enterprise → * (her şey)
+    // ──────────────────────────────────────────────────────────────────
+    Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('states', [StateController::class, 'index']);
-    Route::get('states/{slugOrId}', [StateController::class, 'show']);
+        Route::middleware('ability:read:universities,*')->group(function () {
+            Route::get('universities', [UniversityController::class, 'index']);
+            Route::get('universities/top', [UniversityController::class, 'top']);
+            Route::get('universities/compare', [UniversityController::class, 'compare']);
+            Route::get('universities/{slugOrId}/content', [UniversityController::class, 'content']);
+            Route::get('universities/{slugOrId}', [UniversityController::class, 'show']);
+        });
 
-    Route::get('cities', [CityController::class, 'index']);
-    Route::get('cities/{slugOrId}/content', [CityController::class, 'content']);
-    Route::get('cities/{slugOrId}', [CityController::class, 'show']);
+        Route::middleware('ability:read:programs,*')->group(function () {
+            Route::get('programs', [ProgramController::class, 'index']);
+            Route::get('programs/stats', [ProgramController::class, 'stats']);
+            Route::get('programs/{slugOrId}', [ProgramController::class, 'show']);
+        });
 
-    Route::get('programs', [ProgramController::class, 'index']);
-    Route::get('programs/stats', [ProgramController::class, 'stats']);
-    Route::get('programs/{slugOrId}', [ProgramController::class, 'show']);
+        // Referans veriler (eyalet/şehir/alan/meslek/SSS/burs/yurt/bloke hesap/blog)
+        Route::middleware('ability:read:reference,*')->group(function () {
+            Route::get('states', [StateController::class, 'index']);
+            Route::get('states/{slugOrId}', [StateController::class, 'show']);
 
-    Route::get('fields-of-study', [FieldOfStudyController::class, 'index']);
-    Route::get('fields-of-study/{slugOrId}', [FieldOfStudyController::class, 'show']);
+            Route::get('cities', [CityController::class, 'index']);
+            Route::get('cities/{slugOrId}/content', [CityController::class, 'content']);
+            Route::get('cities/{slugOrId}', [CityController::class, 'show']);
 
-    Route::get('professions', [ProfessionController::class, 'index']);
-    Route::get('professions/{slugOrId}', [ProfessionController::class, 'show']);
+            Route::get('fields-of-study', [FieldOfStudyController::class, 'index']);
+            Route::get('fields-of-study/{slugOrId}', [FieldOfStudyController::class, 'show']);
 
-    Route::get('faqs', [FaqController::class, 'index']);
-    Route::get('faqs/topics', [FaqController::class, 'topics']);
-    Route::get('faqs/{slugOrId}', [FaqController::class, 'show']);
+            Route::get('professions', [ProfessionController::class, 'index']);
+            Route::get('professions/{slugOrId}', [ProfessionController::class, 'show']);
 
-    Route::get('scholarships', [ScholarshipController::class, 'index']);
-    Route::get('scholarships/{slugOrId}', [ScholarshipController::class, 'show']);
+            Route::get('faqs', [FaqController::class, 'index']);
+            Route::get('faqs/topics', [FaqController::class, 'topics']);
+            Route::get('faqs/{slugOrId}', [FaqController::class, 'show']);
 
-    Route::get('housing-providers', [HousingProviderController::class, 'index']);
-    Route::get('housing-providers/{slugOrId}', [HousingProviderController::class, 'show']);
+            Route::get('scholarships', [ScholarshipController::class, 'index']);
+            Route::get('scholarships/{slugOrId}', [ScholarshipController::class, 'show']);
 
-    Route::get('blocked-accounts', [BlockedAccountController::class, 'index']);
-    Route::get('blocked-accounts/{slugOrId}', [BlockedAccountController::class, 'show']);
+            Route::get('housing-providers', [HousingProviderController::class, 'index']);
+            Route::get('housing-providers/{slugOrId}', [HousingProviderController::class, 'show']);
 
-    Route::get('blog', [BlogController::class, 'index']);
-    Route::get('blog/{slugOrId}', [BlogController::class, 'show']);
+            Route::get('blocked-accounts', [BlockedAccountController::class, 'index']);
+            Route::get('blocked-accounts/{slugOrId}', [BlockedAccountController::class, 'show']);
+
+            Route::get('blog', [BlogController::class, 'index']);
+            Route::get('blog/{slugOrId}', [BlogController::class, 'show']);
+        });
+    });
 
     // 3. parti'lerin event abonelikleri — ApiClient bearer + `webhooks:manage` ability.
     // free plan'da abone olunamaz (403), partner/enterprise olabilir.

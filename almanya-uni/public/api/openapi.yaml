@@ -2,14 +2,16 @@ openapi: 3.1.0
 info:
   title: AlmanyaUni Public API
   version: "1.1.0"
-  summary: Almanya üniversiteleri, programları ve mesleklerine açık erişim.
+  summary: Almanya üniversiteleri, programları ve mesleklerine erişim (API anahtarı gerekli).
   description: |
     AlmanyaUni Public API; 645 resmi Hochschule, 15.782 program, 3.560 meslek ve 207 SSS kaydını
     JSON formatında dış uygulamalara sunar. Türk öğrenciler için Almanya'da eğitim verisi
     sağlamayı kolaylaştırmak amacıyla geliştirilmiştir.
 
-    **Kimlik doğrulama:** Çoğu uç nokta açık (okuma için). Yazma/hesap uçları Sanctum
-    bearer token gerektirir. Üst seviye kotalar için API anahtarı (yakında).
+    **Kimlik doğrulama (ZORUNLU):** Tüm veri uçları artık geçerli bir Sanctum
+    bearer token gerektirir — açık/anonim erişim kapatılmıştır. Token'sız istekler
+    `401 Unauthorized` döner. API anahtarı talep etmek için iletişime geçin
+    (`Authorization: Bearer <token>` header'ı ile gönderin).
 
     **Hız sınırı (varsayılan):** 60 req/dk per IP. API anahtarı ile yükseltilebilir
     (Free: 60/dk · Partner: 1.000/dk · Enterprise: 10.000/dk). Her cevapta
@@ -55,7 +57,8 @@ tags:
     description: Çok dilli blog yazıları (tr/en/de).
   - name: Auth
     description: Hesap oluşturma, oturum açma, token yönetimi.
-security: []
+security:
+  - bearerAuth: []
 paths:
   /universities:
     get:

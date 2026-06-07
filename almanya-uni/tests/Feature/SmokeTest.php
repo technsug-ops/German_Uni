@@ -64,8 +64,25 @@ class SmokeTest extends TestCase
         }
     }
 
-    public function test_public_api_endpoints_respond(): void
+    /** Veri API'si artık İZNE TABİ — token'sız istek 401 olmalı (açık erişim yok). */
+    public function test_data_api_requires_authentication(): void
     {
+        foreach ([
+            '/api/v1/universities',
+            '/api/v1/programs',
+            '/api/v1/cities',
+            '/api/v1/scholarships',
+            '/api/v1/blog',
+        ] as $url) {
+            $this->getJson($url)->assertStatus(401);
+        }
+    }
+
+    /** Geçerli token ile (kullanıcı '*' ability) uçlar fatal vermeden açılır. */
+    public function test_data_api_responds_with_valid_token(): void
+    {
+        \Laravel\Sanctum\Sanctum::actingAs(User::factory()->create(), ['*']);
+
         foreach ([
             '/api/v1/universities',
             '/api/v1/scholarships',
