@@ -130,6 +130,11 @@ if ($allOk) {
     // ── DB migrations (non-fatal) — başarısız olsa bile cache rebuild + site ayakta ──
     $artisan('migrate', ['--force' => true, '--no-interaction' => true]);
 
+    // ── İçerik self-heal: content_html boş kalan yazıları content_md'den render et ──
+    // Legacy/mutator-bypass importlarda html üretilmemiş olabilir → blog boş görünür.
+    // Idempotent: dolu olanları atlar, ikinci deploy'da no-op. Non-fatal.
+    $artisan('blog:render-html', ['--apply' => true]);
+
     // Cache: SIRA ÖNEMLİ — clear önce, cache sonra
     foreach (['view:clear', 'config:clear', 'route:clear', 'cache:clear'] as $cmd) {
         $artisan($cmd);
