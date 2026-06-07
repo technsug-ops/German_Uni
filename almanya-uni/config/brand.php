@@ -34,7 +34,7 @@ return [
             'copyright'      => 'ApplyToGerman (AlmanyaUni)',
             'apple_title'    => 'ApplyToGerman',
             'default_locale' => 'tr',
-            'theme_color'    => '#1e40af',
+            'theme_color'    => '#1A1A1A', // Marka siyahı (ApplyToGerman logo sistemi)
         ],
         'applytogerman' => [
             'name'           => 'ApplyToGerman (AlmanyaUni)',
@@ -54,7 +54,7 @@ return [
             'copyright'      => 'ApplyToGerman (AlmanyaUni)',
             'apple_title'    => 'ApplyToGerman',
             'default_locale' => 'en',
-            'theme_color'    => '#0f172a',
+            'theme_color'    => '#1A1A1A', // Marka siyahı (ApplyToGerman logo sistemi)
         ],
     ],
 

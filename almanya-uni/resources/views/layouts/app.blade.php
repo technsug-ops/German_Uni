@@ -64,11 +64,12 @@
 
     {{-- PWA + iOS native --}}
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="{{ brand('theme_color') ?? '#1e40af' }}">
+    <meta name="theme-color" content="{{ brand('theme_color') ?? '#1A1A1A' }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="{{ brand('apple_title') }}">
-    <link rel="apple-touch-icon" href="{{ asset('img/favicon.svg') }}">
+    {{-- iOS apple-touch-icon SVG'yi yok sayar → 180px PNG (ApplyToGerman onyx app ikonu) --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon-180.png') }}">
 
     {{-- Self-canonical (her sayfa) — query string'siz mevcut URL (duplicate content önleme) --}}
     <link rel="canonical" href="{{ url(request()->path()) }}">

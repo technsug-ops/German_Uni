@@ -1,22 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ApplyToGerman">
-  <!-- Beyaz yuvarlatılmış rozet: koyu/açık her zeminde okunur -->
-  <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
-
-  <!-- Almanya bayrağı şeridi (sol kenar): siyah / kırmızı / sarı — üstten alta -->
-  <rect x="9"  y="14" width="7" height="11.5" rx="2" fill="#111827"/>
-  <rect x="9"  y="26.25" width="7" height="11.5" fill="#dc2626"/>
-  <rect x="9"  y="38.5" width="7" height="11.5" rx="2" fill="#fbbf24"/>
-
-  <!-- Mezuniyet kepi (mortarboard) -->
-  <g>
-    <!-- kep tablası (eşkenar dörtgen) -->
-    <path d="M38 18 L55 25.5 L38 33 L21 25.5 Z" fill="#0f172a"/>
-    <!-- başlık tabanı (kafaya oturan kısım) -->
-    <path d="M27 28.2 L27 37 C27 37 32 41 38 41 C44 41 49 37 49 37 L49 28.2 L38 33 Z" fill="#1e293b"/>
-    <!-- düğme -->
-    <circle cx="38" cy="25.5" r="1.7" fill="#fbbf24"/>
-    <!-- püskül -->
-    <path d="M38 25.5 L53.5 26.2 L53.5 40" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="53.5" cy="41.5" r="2" fill="#fbbf24"/>
+  <rect width="64" height="64" rx="14" fill="#0A0A0A"/>
+  <clipPath id="icb"><rect x="36" y="14" width="14" height="36" rx="3"/></clipPath>
+  <g clip-path="url(#icb)">
+    <rect x="36" y="14" width="14" height="12" fill="#1A1A1A"/>
+    <rect x="36" y="26" width="14" height="12" fill="#D81E2C"/>
+    <rect x="36" y="38" width="14" height="12" fill="#F4C430"/>
   </g>
+  <path d="M11 28 L23 28 L23 23 L32 32 L23 41 L23 36 L11 36 Z" fill="#FFFFFF" stroke-linejoin="round"/>
 </svg>

@@ -287,8 +287,9 @@ Route::get('/manifest.json', function (\Illuminate\Http\Request $request) {
     $name = $b['name'] ?? 'AlmanyaUni';
     $shortName = $name;
     $description = $b['tagline'] ?? __('University guide for Germany');
-    $themeColor = $b['theme_color'] ?? '#1e40af';
-    $logo = $b['logo'] ?? '/img/logos/almanyauni.svg';
+    $themeColor = $b['theme_color'] ?? '#1A1A1A';
+    // PWA app ikonu KARE olmalı — geniş wordmark lockup değil, onyx kare ikon (favicon.svg).
+    $appIcon = '/img/favicon.svg';
 
     return response()->json([
         'name' => $name,
@@ -304,7 +305,7 @@ Route::get('/manifest.json', function (\Illuminate\Http\Request $request) {
         'dir' => 'ltr',
         'categories' => ['education', 'lifestyle', 'reference'],
         'icons' => [
-            ['src' => $logo, 'sizes' => 'any', 'type' => 'image/svg+xml', 'purpose' => 'any'],
+            ['src' => $appIcon, 'sizes' => 'any', 'type' => 'image/svg+xml', 'purpose' => 'any'],
             ['src' => '/img/icons/icon-192.png', 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any maskable'],
             ['src' => '/img/icons/icon-512.png', 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any maskable'],
         ],

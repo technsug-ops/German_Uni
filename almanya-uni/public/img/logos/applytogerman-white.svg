@@ -1,16 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 48" width="272" height="48" role="img" aria-label="ApplyToGerman">
-  <!-- İkon (beyaz rozet + Almanya bayrağı siyah/kırmızı/sarı + mezuniyet kepi) -->
-  <g transform="translate(2,2) scale(0.6875)">
-    <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
-    <rect x="9" y="14" width="7" height="11.5" rx="2" fill="#111827"/>
-    <rect x="9" y="26.25" width="7" height="11.5" fill="#dc2626"/>
-    <rect x="9" y="38.5" width="7" height="11.5" rx="2" fill="#fbbf24"/>
-    <path d="M38 18 L55 25.5 L38 33 L21 25.5 Z" fill="#0f172a"/>
-    <path d="M27 28.2 L27 37 C27 37 32 41 38 41 C44 41 49 37 49 37 L49 28.2 L38 33 Z" fill="#1e293b"/>
-    <circle cx="38" cy="25.5" r="1.7" fill="#fbbf24"/>
-    <path d="M38 25.5 L53.5 26.2 L53.5 40" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="53.5" cy="41.5" r="2" fill="#fbbf24"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 48" width="300" height="48" role="img" aria-label="ApplyToGerman">
+  
+  <clipPath id="lkb"><rect x="4" y="8" width="11" height="32" rx="2.5"/></clipPath>
+  <g clip-path="url(#lkb)">
+    <rect x="4" y="8"     width="11" height="10.67" fill="#1A1A1A"/>
+    <rect x="4" y="18.67" width="11" height="10.67" fill="#D81E2C"/>
+    <rect x="4" y="29.33" width="11" height="10.67" fill="#F4C430"/>
   </g>
-  <!-- Wordmark (beyaz, koyu header için) -->
-  <text x="52" y="32" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Apply<tspan fill="#fbbf24" font-weight="500">To</tspan><tspan fill="#ffffff">German</tspan></text>
+  <path d="M19 24 L27 17 L27 21 L39 21 L39 27 L27 27 L27 31 Z" fill="#FFFFFF" stroke-linejoin="round"/>
+  <text x="50" y="32" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.8" fill="#FFFFFF">Apply<tspan fill="#F4C430" font-weight="500">To</tspan><tspan fill="#FFFFFF">German</tspan></text>
 </svg>
