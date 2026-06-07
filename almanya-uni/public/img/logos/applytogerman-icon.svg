@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ApplyToGerman">
   
-  <clipPath id="icb"><rect x="36" y="14" width="14" height="36" rx="3"/></clipPath>
-  <g clip-path="url(#icb)">
-    <rect x="36" y="14" width="14" height="12" fill="#1A1A1A"/>
-    <rect x="36" y="26" width="14" height="12" fill="#D81E2C"/>
-    <rect x="36" y="38" width="14" height="12" fill="#F4C430"/>
+  <clipPath id="ib"><rect x="36" y="14" width="14" height="36" rx="3"/></clipPath>
+  <g clip-path="url(#ib)">
+    <rect x="36" y="14" width="14" height="12.000" fill="#1A1A1A"/>
+    <rect x="36" y="26.000" width="14" height="12.000" fill="#D81E2C"/>
+    <rect x="36" y="38.000" width="14" height="12.000" fill="#F4C430"/>
   </g>
   <path d="M11 28 L23 28 L23 23 L32 32 L23 41 L23 36 L11 36 Z" fill="#FFFFFF" stroke-linejoin="round"/>
 </svg>

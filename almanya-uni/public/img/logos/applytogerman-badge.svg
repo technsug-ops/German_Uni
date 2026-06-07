@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 48" width="300" height="48" role="img" aria-label="ApplyToGerman">
+  <rect x="0" y="2" width="300" height="44" rx="10" fill="#FFFFFF"/>
+  <clipPath id="bb"><rect x="10" y="9" width="11" height="30" rx="2.5"/></clipPath>
+  <g clip-path="url(#bb)">
+    <rect x="10" y="9" width="11" height="10.000" fill="#1A1A1A"/>
+    <rect x="10" y="19.000" width="11" height="10.000" fill="#D81E2C"/>
+    <rect x="10" y="29.000" width="11" height="10.000" fill="#F4C430"/>
+  </g>
+  <path d="M25 24 L33 17.5 L33 21.5 L43 21.5 L43 26.5 L33 26.5 L33 30.5 Z" fill="#1A1A1A" stroke-linejoin="round"/>
+  <text x="56" y="32" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.8" fill="#141414">Apply<tspan fill="#B8860B" font-weight="500">To</tspan><tspan fill="#141414">German</tspan></text>
+</svg>

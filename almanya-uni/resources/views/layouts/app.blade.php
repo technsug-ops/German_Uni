@@ -831,7 +831,8 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-2 md:col-span-1">
                     <a href="{{ route('home') }}" class="flex items-center font-extrabold text-lg mb-3" aria-label="{{ brand('name') }}" title="{{ brand('name') }} — {{ __('Home') }}">
-                        <x-brand-logo variant="white" height="h-8" />
+                        {{-- Footer = büyük/açıklayıcı bağlam → ikincil tagline'lı logo (locale-aware, EN'de V1'e düşer) --}}
+                        <x-brand-tagline-logo variant="white" height="h-10" />
                     </a>
                     <p class="text-primary-200 text-sm">{{ __('University and education guide to Germany for international students.') }}</p>
                     @include('partials._social_icons')
