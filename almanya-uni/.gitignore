@@ -26,3 +26,8 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# MS Office geçici kilit dosyaları (doc açıkken otomatik üretilir)
+~$*
+*.tmp
+.~lock.*
