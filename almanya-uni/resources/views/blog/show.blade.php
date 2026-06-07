@@ -26,7 +26,14 @@
     // (önek-siz linkler default locale=en'e düşmesin). [[ContentLinks]]
     $contentHtml = \App\Support\ContentLinks::localizeHtml($tocData['html'], app()->getLocale());
     $toc = $tocData['toc'];
+    // Auto FAQ schema: içerikteki soru-başlıklarından FAQPage üret (AIO/AEO sinyali).
+    // Görünür accordion EKLEMEZ — sorular zaten gövdede H2 olarak var; sadece JSON-LD.
+    $autoFaqs = \App\Support\FaqExtractor::fromHtml($contentHtml);
 @endphp
+
+@if (count($autoFaqs) >= 2)
+    <x-json-ld :data="\App\Support\Seo::genericFaqPage($autoFaqs)" />
+@endif
 
 @section('content')
 {{-- Reading progress bar (sticky top, JS ile genişler) --}}
