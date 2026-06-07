@@ -13,6 +13,15 @@ class RankingService
 
     public function all(): array
     {
+        // Sıralama listesi günde bir değişir + title/description locale-aware (__())
+        // → per-locale 6 saat cache. Eyalet + alan sorgularını (her istekte) tekrarlamaz.
+        return cache()->remember('rankings.all.' . app()->getLocale(), now()->addHours(6), function () {
+            return $this->buildAll();
+        });
+    }
+
+    private function buildAll(): array
+    {
         $rankings = $this->globalRankings();
 
         // Eyalet bazlı

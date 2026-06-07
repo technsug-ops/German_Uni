@@ -18,6 +18,9 @@ class TrackPageView
     private const COOKIE_NAME = 'almanyauni_uid';
     private const COOKIE_TTL = 60 * 24 * 365; // 1 yıl
 
+    /** terminate()'te yazılacak satır — handle()'da hazırlanır (TTFB'ye girmez). */
+    private ?array $pending = null;
+
     private const EXCLUDED_PATHS = [
         'admin', 'api', 'livewire', 'sanctum',
         '_debugbar', 'telescope', 'horizon',
@@ -37,12 +40,31 @@ class TrackPageView
         $response = $next($request);
 
         try {
+            // Sadece satırı HAZIRLA + (gerekiyorsa) uid cookie'sini response'a yaz.
+            // Asıl DB INSERT terminate()'te — yani response gönderildikten SONRA.
             $this->record($request, $response, microtime(true) - $started);
         } catch (\Throwable $e) {
             \Log::warning('TrackPageView error: ' . $e->getMessage());
         }
 
         return $response;
+    }
+
+    /**
+     * Response istemciye gönderildikten sonra çalışır (PHP-FPM fastcgi_finish_request).
+     * Ağır/yavaş DB yazımı TTFB'ye eklenmez.
+     */
+    public function terminate(Request $request, Response $response): void
+    {
+        if ($this->pending === null) {
+            return;
+        }
+
+        try {
+            DB::table('page_views')->insert($this->pending);
+        } catch (\Throwable $e) {
+            \Log::warning('TrackPageView insert error: ' . $e->getMessage());
+        }
     }
 
     private function record(Request $request, Response $response, float $duration): void
@@ -78,7 +100,8 @@ class TrackPageView
             $refHost = null;
         }
 
-        DB::table('page_views')->insert([
+        // INSERT'i terminate()'e bırak — response gönderildikten sonra yazılır.
+        $this->pending = [
             'session_id' => $sid,
             'user_id' => auth()->id(),
             'path' => mb_substr($path, 0, 500),
@@ -89,7 +112,7 @@ class TrackPageView
             'ip_hash' => md5(($request->ip() ?? '') . config('app.key')),
             'response_ms' => (int) ($duration * 1000),
             'created_at' => now(),
-        ]);
+        ];
     }
 
     private function isBot(string $ua): bool

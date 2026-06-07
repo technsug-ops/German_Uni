@@ -103,10 +103,11 @@ class HomeController extends Controller
                 ->get(['id', 'slug', 'question', 'faq_topic_id', 'answer_minutes']);
         }
 
-        $faq_stats = [
+        // Sayımlar günde bir değişir → 6 saat cache (locale-bağımsız).
+        $faq_stats = cache()->remember('home.faq_stats_v1', now()->addHours(6), fn () => [
             'total'    => Faq::published()->where('has_answer', true)->count(),
             'topics'   => FaqTopic::active()->count(),
-        ];
+        ]);
 
         // 4 öne çıkan burs (DAAD önce, sonra programmname dolu olanlar)
         $featured_scholarships = Scholarship::whereNull('removed_at')
@@ -122,7 +123,8 @@ class HomeController extends Controller
             ->limit(6)
             ->get(['id', 'slug', 'name_tr', 'icon', 'color','name_en','name_de']);
 
-        $totals = [
+        // 9 aggregate count — günde bir değişir → 6 saat cache (locale-bağımsız).
+        $totals = cache()->remember('home.totals_v1', now()->addHours(6), fn () => [
             'universities' => University::where('is_active', true)->count(),
             'universities_on_map' => University::where('is_active', true)->whereNotNull('latitude')->count(),
             'cities'       => City::where('is_active', true)->count(),
@@ -132,7 +134,7 @@ class HomeController extends Controller
             'programs_en'  => Program::where('is_active', true)->whereIn('language', ['en', 'both'])->count(),
             'professions'  => Profession::where('is_active', true)->count(),
             'scholarships' => Scholarship::whereNull('removed_at')->count(),
-        ];
+        ]);
 
         return view('home', [
             'featured_universities' => $featured_universities,

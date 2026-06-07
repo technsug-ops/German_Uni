@@ -11,6 +11,10 @@ class MenuPage extends Model
 {
     public const CACHE_KEY = 'menu_pages.all_v1';
 
+    /** Request-içi memoization — cached() sayfa başına 10+ kez çağrılıyor (forGroup/findByKey/
+     *  isKeyEnabled). Array→Eloquent re-hydration'ı her seferinde tekrarlamamak için. */
+    private static ?Collection $memo = null;
+
     protected $fillable = [
         'key', 'link_type', 'url', 'label', 'icon', 'description', 'badge',
         'group', 'is_enabled', 'protect_route', 'sort_order',
@@ -93,6 +97,10 @@ class MenuPage extends Model
      */
     public static function cached(): Collection
     {
+        if (self::$memo !== null) {
+            return self::$memo;
+        }
+
         $rows = Cache::rememberForever(self::CACHE_KEY, function () {
             return static::enabled()
                 ->orderBy('group')
@@ -102,8 +110,9 @@ class MenuPage extends Model
                 ->toArray();
         });
 
-        // Array'i tekrar Eloquent Collection'a hydrate et (cache serialization güvenli)
-        return new Collection(
+        // Array'i tekrar Eloquent Collection'a hydrate et (cache serialization güvenli).
+        // Request boyunca memoize — tekrar çağrılarda re-hydration yok.
+        return self::$memo = new Collection(
             array_map(fn ($row) => (new static())->forceFill($row)->syncOriginal(), $rows)
         );
     }
@@ -163,6 +172,7 @@ class MenuPage extends Model
      */
     public static function flushCache(): void
     {
+        self::$memo = null;
         Cache::forget(self::CACHE_KEY);
         Cache::forget('menu_pages.statusmap_v1');
     }
