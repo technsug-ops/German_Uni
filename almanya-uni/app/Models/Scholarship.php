@@ -30,6 +30,7 @@ class Scholarship extends Model
         'introduction_json',
         'q_de_json',
         'q_en_json',
+        'q_tr_json',
         'is_daad',
         'is_move',
         'sorting',
@@ -42,6 +43,7 @@ class Scholarship extends Model
         'introduction_json' => 'array',
         'q_de_json'         => 'array',
         'q_en_json'         => 'array',
+        'q_tr_json'         => 'array',
         'is_daad'           => 'boolean',
         'is_move'           => 'boolean',
         'last_seen_at'      => 'datetime',
@@ -102,8 +104,14 @@ class Scholarship extends Model
 
     public function qText(string $lang = 'en'): ?string
     {
-        $field = $lang === 'de' ? 'q_de_json' : 'q_en_json';
-        return $this->textFor($field, $lang);
+        // TR → q_tr_json (varsa); yoksa kaynak-dili fallback (en → de). TR boşken /tr'de
+        // İngilizce uygunluk gösterilir (ham sızıntı değil, view'da etiketli).
+        $field = match ($lang) {
+            'de'    => 'q_de_json',
+            'tr'    => 'q_tr_json',
+            default => 'q_en_json',
+        };
+        return $this->textFor($field, $lang) ?: ($lang === 'tr' ? $this->textFor('q_en_json', 'en') : null);
     }
 
     public function displayName(string $lang = 'en'): string

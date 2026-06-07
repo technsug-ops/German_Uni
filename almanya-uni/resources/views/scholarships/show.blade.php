@@ -8,11 +8,19 @@
         ?? $scholarship->introductionText('de');
     $qEn = $scholarship->qText('en');
     $qDe = $scholarship->qText('de');
-    // Eligibility: tercih edilen dil + ikincisi (varsa) toggle ile
-    $qPrimary       = $loc === 'de' ? ($qDe ?: $qEn)            : ($qEn ?: $qDe);
-    $qPrimaryLabel  = $loc === 'de' ? ($qDe ? 'Deutsch' : 'English') : ($qEn ? 'English' : 'Deutsch');
-    $qSecondary     = $loc === 'de' ? ($qDe ? $qEn : null)      : ($qEn ? $qDe : null);
-    $qSecondaryLabel= $loc === 'de' ? 'English'                 : 'Deutsch';
+    $qTr = $scholarship->textFor('q_tr_json', 'tr'); // ham TR (yoksa null — fallback yok)
+    // Eligibility birincil dil + referans (toggle). /tr'de TR çevirisi varsa birincil TR,
+    // İngilizce referans ikincil (scholarships:localize q_tr_json'ı doldurur). TR yoksa EN.
+    if ($loc === 'tr' && $qTr) {
+        $qPrimary = $qTr;          $qPrimaryLabel  = 'Türkçe';
+        $qSecondary = $qEn ?: $qDe; $qSecondaryLabel = $qEn ? 'English' : 'Deutsch';
+    } elseif ($loc === 'de') {
+        $qPrimary = $qDe ?: $qEn;  $qPrimaryLabel  = $qDe ? 'Deutsch' : 'English';
+        $qSecondary = $qDe ? $qEn : null; $qSecondaryLabel = 'English';
+    } else {
+        $qPrimary = $qEn ?: $qDe;  $qPrimaryLabel  = $qEn ? 'English' : 'Deutsch';
+        $qSecondary = $qEn ? $qDe : null; $qSecondaryLabel = 'Deutsch';
+    }
 @endphp
 
 @extends('layouts.app')

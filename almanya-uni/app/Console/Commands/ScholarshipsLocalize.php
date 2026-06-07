@@ -39,8 +39,12 @@ class ScholarshipsLocalize extends Command
         $delay  = max(0, (int) $this->option('delay'));
         $force  = (bool) $this->option('force');
 
+        // --force yokken: name_tr VEYA q_tr_json eksik olanları seç (q_tr sonradan eklendi →
+        // adı çevrilmiş ama uygunluk bloğu hâlâ İngilizce olan bursları da yakalar).
         $q = Scholarship::query()->whereNull('removed_at')
-            ->when(! $force, fn ($x) => $x->where(fn ($w) => $w->whereNull('name_tr')->orWhere('name_tr', '')))
+            ->when(! $force, fn ($x) => $x->where(fn ($w) => $w
+                ->whereNull('name_tr')->orWhere('name_tr', '')
+                ->orWhereNull('q_tr_json')))
             ->orderBy('id');
         if ($limit > 0) $q->limit($limit);
         $rows = $q->get();
@@ -66,40 +70,52 @@ class ScholarshipsLocalize extends Command
             foreach ($rows as $s) {
                 $bar->setMessage('#' . $s->id . ' ' . mb_substr($s->name_en ?: $s->name_de ?: '', 0, 30));
                 try {
-                    $update = [];
+                    $dirty = false;
                     $introJson = is_array($s->introduction_json) ? $s->introduction_json : [];
+
+                    // Her alan AYRI idempotent: zaten doluysa yeniden çevirme (prod'da ad/intro
+                    // yapılmış olabilir, sadece q eksik → yalnız q çevrilir, maliyet/çağrı israfı yok).
 
                     // 1) Ad (orijinal korunur, TR karşılık üretilir)
                     $srcName = $s->name_en ?: $s->name_de;
-                    if ($srcName) {
+                    if (empty($s->name_tr) && $srcName) {
                         $r = $translator->translate($srcName, $namePrompt);
                         if ($r && ! empty($r['translation'])) {
-                            $update['name_tr'] = $r['translation'];
+                            $s->name_tr = $r['translation']; $dirty = true;
                             $stats['in'] += $r['input_tokens']; $stats['out'] += $r['output_tokens'];
                         }
                     }
                     // 2) Programmname (varsa)
                     $srcPg = $s->programmname_en ?: $s->programmname_de;
-                    if ($srcPg) {
+                    if (empty($s->programmname_tr) && $srcPg) {
                         $r = $translator->translate($srcPg, $namePrompt);
                         if ($r && ! empty($r['translation'])) {
-                            $update['programmname_tr'] = $r['translation'];
+                            $s->programmname_tr = $r['translation']; $dirty = true;
                             $stats['in'] += $r['input_tokens']; $stats['out'] += $r['output_tokens'];
                         }
                     }
                     // 3) Introduction prose → native TR
                     $srcIntro = $introJson['en'] ?? $introJson['de'] ?? null;
-                    if (! empty($srcIntro)) {
+                    if (empty($introJson['tr']) && ! empty($srcIntro)) {
                         $r = $translator->translate($srcIntro, $introPrompt);
                         if ($r && ! empty($r['translation'])) {
                             $introJson['tr'] = $r['translation'];
-                            $update['introduction_json'] = $introJson;
+                            $s->introduction_json = $introJson; $dirty = true;
+                            $stats['in'] += $r['input_tokens']; $stats['out'] += $r['output_tokens'];
+                        }
+                    }
+                    // 4) Uygunluk (q) bloğu → native TR — /tr İngilizce sızıntısının asıl kaynağı.
+                    $srcQ = $s->qText('en') ?: $s->qText('de');
+                    if (empty($s->q_tr_json) && ! empty($srcQ)) {
+                        $r = $translator->translate($srcQ, $introPrompt);
+                        if ($r && ! empty($r['translation'])) {
+                            $s->q_tr_json = $r['translation']; $dirty = true; // cast → json_encode
                             $stats['in'] += $r['input_tokens']; $stats['out'] += $r['output_tokens'];
                         }
                     }
 
-                    if ($update) {
-                        if (! $dry) Scholarship::where('id', $s->id)->update($update);
+                    if ($dirty) {
+                        if (! $dry) $s->save(); // model cast'leri uygula (q_tr_json string→json)
                         $stats['done']++;
                     } else {
                         $stats['skip']++;
