@@ -51,7 +51,9 @@ Route::middleware(['flatreklam.auth', 'throttle:60,1'])->group(function () use (
 
 Route::prefix('v1')->middleware('api.throttle')->group(function () {
     Route::prefix('auth')->group(function () {
-        Route::post('register', [AuthController::class, 'register'])->middleware('throttle:5,1');
+        // Self-registration KAPALI — açık API verilmiyor. API erişimi yalnızca
+        // yönetimce verilen token'larla (apiclient:create) olur. login mevcut
+        // hesaplar için açık kalır.
         Route::post('login', [AuthController::class, 'login'])->middleware('throttle:10,1');
 
         Route::middleware('auth:sanctum')->group(function () {

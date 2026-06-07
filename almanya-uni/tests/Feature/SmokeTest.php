@@ -78,6 +78,19 @@ class SmokeTest extends TestCase
         }
     }
 
+    /** Self-registration kapatıldı — API erişimi yalnızca verilen token'larla. */
+    public function test_api_self_registration_is_closed(): void
+    {
+        // Route kaldırıldı → POST artık kabul edilmiyor (405; GET'i bir locale
+        // redirect catch-all'ı yakaladığı için 404 değil 405 döner). Önemli olan:
+        // kayıt POST'u başarılı (201) DEĞİL.
+        $res = $this->postJson('/api/v1/auth/register', [
+            'name' => 'X', 'email' => 'x@example.com', 'password' => 'password123',
+        ]);
+        $res->assertStatus(405);
+        $this->assertDatabaseMissing('users', ['email' => 'x@example.com']);
+    }
+
     /** Geçerli token ile (kullanıcı '*' ability) uçlar fatal vermeden açılır. */
     public function test_data_api_responds_with_valid_token(): void
     {

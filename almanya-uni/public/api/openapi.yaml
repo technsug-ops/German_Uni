@@ -579,33 +579,6 @@ paths:
               schema: { type: object, properties: { data: { $ref: "#/components/schemas/BlogPost" } } }
         "404": { $ref: "#/components/responses/NotFound" }
 
-  /auth/register:
-    post:
-      tags: [Auth]
-      summary: Yeni hesap oluştur
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [name, email, password]
-              properties:
-                name: { type: string }
-                email: { type: string, format: email }
-                password: { type: string, minLength: 8 }
-                device_name: { type: string, default: api-client }
-      responses:
-        "201":
-          description: Hesap oluşturuldu + token döner
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  user: { $ref: "#/components/schemas/User" }
-                  token: { type: string }
-
   /auth/login:
     post:
       tags: [Auth]
