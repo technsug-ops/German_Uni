@@ -543,6 +543,30 @@ Route::get('/_system/translate-blocks', function (\Illuminate\Http\Request $requ
     return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
 })->middleware('throttle:30,1');
 
+// Token-gated DAAD burs TR lokalizasyonu (ad + programmname + introduction → native TR).
+// /tr'de İngilizce ad/açıklama sızıntısını giderir (kaynak-dili lokalizasyon kuralı).
+// İdempotent (name_tr doluysa atlar) → küçük limit'le tekrar çağır, "burs yok" diyene dek.
+//   ".../_system/scholarships-localize?token=XXX&limit=10"
+Route::get('/_system/scholarships-localize', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(600);
+    try {
+        \Illuminate\Support\Facades\Artisan::call('scholarships:localize', array_filter([
+            '--limit' => (int) $request->integer('limit', 10),
+            '--force' => $request->boolean('force'),
+            '--delay' => (int) $request->integer('delay', 250),
+        ], fn ($v) => $v !== false && $v !== null && $v !== ''));
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        $out = 'EXCEPTION: ' . $e->getMessage();
+    }
+    return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:30,1');
+
 // Token-gated single-image cache override — for cases where a uni has no
 // usable Wikipedia image and we want to point to a custom CDN URL instead.
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
