@@ -450,6 +450,43 @@ Route::get('/_system/fix-blog-links', function (\Illuminate\Http\Request $reques
     ]);
 })->middleware('throttle:5,1');
 
+// Token-gated content_html backfill — çeviri/legacy importtan boş content_html
+// kalan yayında yazıları content_md'den render eder (mutator ile aynı pipeline).
+// KAS'ta CLI yok → curl. Varsayılan dry-run; &apply=1 ile uygular + cache temizler.
+//   Dry-run:  curl "https://applytogerman.com/_system/render-blog-html?token=XXX"
+//   Uygula:   curl "https://applytogerman.com/_system/render-blog-html?token=XXX&apply=1"
+Route::get('/_system/render-blog-html', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(300);
+
+    $args = array_filter([
+        '--apply' => $request->boolean('apply') ?: null,
+        '--id'    => $request->integer('id') ?: null,
+    ]);
+    try {
+        \Illuminate\Support\Facades\Artisan::call('blog:render-html', $args);
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage(), 'output' => \Illuminate\Support\Facades\Artisan::output()], 500);
+    }
+
+    if ($request->boolean('apply')) {
+        foreach (['view:clear', 'cache:clear'] as $cmd) {
+            try { \Illuminate\Support\Facades\Artisan::call($cmd); } catch (\Throwable $e) {}
+        }
+        if (function_exists('opcache_reset')) { @opcache_reset(); }
+    }
+
+    return response()->json([
+        'mode' => $request->boolean('apply') ? 'applied' : 'dry-run',
+        'output' => $out,
+    ]);
+})->middleware('throttle:5,1');
+
 // Token-gated meslek (BERUFENET) çeviri backfill — KAS Cronjob bunu curl ile
 // oturumsuz çağırır (admin /admin/ops/... ise oturum ister). Zaman bütçesiyle
 // her çağrı ~max_seconds kadar çalışıp temiz çıkar; "KALAN: X" / "TAMAMLANDI" basar.
