@@ -125,9 +125,9 @@ class MentorController extends Controller
 
         // Email both parties — fail silently to not break booking flow
         try {
-            Mail::to($user->email)->queue(new MentorBookingConfirmation($session, 'user'));
+            Mail::to($user->email)->send(new MentorBookingConfirmation($session, 'user'));
             if ($mentor->contact_email) {
-                Mail::to($mentor->contact_email)->queue(new MentorBookingConfirmation($session, 'mentor'));
+                Mail::to($mentor->contact_email)->send(new MentorBookingConfirmation($session, 'mentor'));
             }
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::warning('Mentor booking email failed', [

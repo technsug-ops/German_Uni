@@ -62,7 +62,7 @@ class JourneyRemindInactive extends Command
 
         foreach ($trackers as $tracker) {
             try {
-                Mail::to($tracker->user->email)->queue(new JourneyReminder($tracker->user, $tracker));
+                Mail::to($tracker->user->email)->send(new JourneyReminder($tracker->user, $tracker));
                 $sent++;
             } catch (\Throwable $e) {
                 $this->newLine();

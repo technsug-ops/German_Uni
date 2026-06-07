@@ -135,7 +135,7 @@ class NewsletterDigest extends Command
         foreach ($subs as $sub) {
             try {
                 // queue() ile yolla: queue worker drain eder, sync block YOK
-                Mail::to($sub->email)->queue(new WeeklyDigest($sub, $items, $stats));
+                Mail::to($sub->email)->send(new WeeklyDigest($sub, $items, $stats));
                 $sub->update(['last_sent_at' => now()]);
                 $sent++;
             } catch (\Throwable $e) {

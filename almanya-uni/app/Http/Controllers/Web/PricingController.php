@@ -58,7 +58,7 @@ class PricingController extends Controller
 
         // Confirmation mail — fail silently so submission UX isn't broken
         try {
-            Mail::to($interest->email)->queue(new PremiumInterestConfirmation($interest));
+            Mail::to($interest->email)->send(new PremiumInterestConfirmation($interest));
             $interest->update(['confirmation_sent_at' => now()]);
         } catch (\Throwable $e) {
             Log::warning('Premium interest confirmation mail failed', [

@@ -49,7 +49,7 @@ class NewsletterController extends Controller
             // Mevcut pending kaydı — token resend. Mail hatası dış catch'e düşüp
             // "Bir sorun oluştu" göstermesin diye burada da try-catch + queue().
             try {
-                Mail::to($existing->email)->queue(new NewsletterConfirmation($existing));
+                Mail::to($existing->email)->send(new NewsletterConfirmation($existing));
             } catch (\Throwable $e) {
                 Log::error('Newsletter resend failed', ['email' => $existing->email, 'err' => $e->getMessage()]);
                 return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed');
@@ -79,8 +79,10 @@ class NewsletterController extends Controller
         $sub->save();
 
         try {
-            // queue() yerine send() değil: bounce-control + rate-limit için job queue'da yürür
-            Mail::to($sub->email)->queue(new NewsletterConfirmation($sub));
+            // SENKRON send() — KAS'ta queue worker YOK (cron yok). queue() ile atılan mail
+            // database queue'da birikip HİÇ gönderilmiyordu (UI "gönderildi" der, mail çıkmaz).
+            // send() istek anında yollar + gerçek mail hatasını fırlatır (catch yakalar).
+            Mail::to($sub->email)->send(new NewsletterConfirmation($sub));
             $sub->update(['last_sent_at' => now()]);
         } catch (\Throwable $e) {
             Log::error('Newsletter mail failed', ['email' => $sub->email, 'err' => $e->getMessage()]);
@@ -129,7 +131,7 @@ class NewsletterController extends Controller
         // Welcome email — locale-aware, en değerli 5 tool ile lead-nurture.
         // Queue ile yollar: confirm() response'unu bekletmez, rate-limit kuyruğunda yürür.
         try {
-            \Illuminate\Support\Facades\Mail::to($sub->email)->queue(new NewsletterWelcome($sub));
+            \Illuminate\Support\Facades\Mail::to($sub->email)->send(new NewsletterWelcome($sub));
             $sub->update(['last_sent_at' => now()]);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::warning('Newsletter welcome mail failed', [

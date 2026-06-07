@@ -193,7 +193,8 @@ class User extends Authenticatable implements FilamentUser
      */
     public function getProfileCompletionAttribute(): int
     {
-        $fields = ['high_school_type', 'status', 'german_level', 'target_field_id',
+        // 7 zorunlu alan + 1 "dil" slotu (Almanca VEYA İngilizce). Toplam 8 eşit ağırlık.
+        $fields = ['high_school_type', 'status', 'target_field_id',
                    'target_degree', 'target_semester', 'monthly_budget_eur', 'preferred_state_id'];
         $filled = 0;
         foreach ($fields as $f) {
@@ -202,7 +203,15 @@ class User extends Authenticatable implements FilamentUser
             $v = $this->$f;
             if ($v !== null && $v !== '' && $v !== []) $filled++;
         }
-        return (int) round(100 * $filled / count($fields));
+
+        // Dil slotu: İngilizce-track öğrenci Almanca bilmek ZORUNDA değil → Almanca VEYA
+        // İngilizce seviyesinden biri dolu olması yeterli. (Eskiden yalnız german_level
+        // sayılıyordu → İngilizce dolduran öğrenci %88'de takılıp tam profil puanını alamıyordu.)
+        if (! empty($this->german_level) || ! empty($this->english_level)) {
+            $filled++;
+        }
+
+        return (int) round(100 * $filled / (count($fields) + 1));
     }
 
     /**
