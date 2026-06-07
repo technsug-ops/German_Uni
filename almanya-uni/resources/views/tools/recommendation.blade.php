@@ -24,7 +24,7 @@
             {{ __('Find the Best University for You') }}
         </h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
-            {{ __('8 quick questions. Not AI — based on real data (18,306 programs + 603 unis + 130 cities), each university gets a % score + match reason.') }}
+            {{ __('8 quick questions. Not AI — based on real data (14,527 programs + 464 unis + 130 cities), each university gets a % score + match reason.') }}
         </p>
     </div>
 </section>

@@ -395,7 +395,9 @@ class Seo
 
         return [
             '@context' => 'https://schema.org',
-            '@type' => $university->type === 'applied_sciences' ? 'CollegeOrUniversity' : 'CollegeOrUniversity',
+            // schema.org'da FH (Hochschule für angewandte Wissenschaften) ile klasik
+            // Üniversite için ayrı tip yok — ikisi de CollegeOrUniversity.
+            '@type' => 'CollegeOrUniversity',
             'name' => $university->name_de,
             'alternateName' => $university->name_en !== $university->name_de ? $university->name_en : null,
             'url' => $url ?? url()->current(),

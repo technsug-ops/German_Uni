@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', __('German Universities — Guide for International Students') . '  — ' . brand('name'))
-@section('meta_description', __('603 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.'))
+@section('meta_description', __('464 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.'))
 
 {{-- $typeLabel and $typeBadgeColor closures are provided by UniversityWebController so they're also available when the _grid partial is rendered for XHR async-filter responses. --}}
 
@@ -19,7 +19,7 @@
             {{ __('German Universities') }}
         </h1>
         <p class="text-lg md:text-xl text-primary-100 max-w-3xl mb-6">
-            {{ __('Germany\'s 603 official higher education institutions (Hochschule) — public, private, applied sciences and art universities. Programs, cost of living and application guide.') }}
+            {{ __('Germany\'s 464 official higher education institutions (Hochschule) — public, private, applied sciences and art universities. Programs, cost of living and application guide.') }}
         </p>
         <div class="flex flex-wrap gap-4 text-sm">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">

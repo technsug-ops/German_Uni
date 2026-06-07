@@ -27,11 +27,8 @@
 
 @section('title', $title . ' — ' . __('DAAD Scholarship') . '  — ' . brand('name'))
 
-@push('head')
-    @if ($scholarship->detail_url)
-        <link rel="canonical" href="{{ $scholarship->detail_url }}">
-    @endif
-@endpush
+{{-- Self-canonical layout'ta (app.blade.php) zaten basılıyor. DAAD orijinaline
+     buradan canonical VERME — kendi burs sayfamızı indeksten düşürür. --}}
 
 <x-seo
     :title="$title . ' — ' . __('DAAD Scholarship Program')"

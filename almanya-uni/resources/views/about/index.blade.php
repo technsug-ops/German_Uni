@@ -157,10 +157,10 @@
                     </div>
                     <div>
                         <h3 class="font-bold text-gray-900 text-lg leading-tight">{{ $m['name'] }}</h3>
-                        <p class="text-sm text-{{ $color }}-700 font-semibold">{!! $m['role'] !!}</p>
+                        <p class="text-sm text-{{ $color }}-700 font-semibold">{{ $m['role'] }}</p>
                     </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed mb-3">{!! $m['bio'] !!}</p>
+                <p class="text-sm text-gray-700 leading-relaxed mb-3">{{ $m['bio'] }}</p>
                 @if (! empty($m['social']))
                     <div class="flex flex-wrap gap-2">
                         @foreach ($m['social'] as $s)

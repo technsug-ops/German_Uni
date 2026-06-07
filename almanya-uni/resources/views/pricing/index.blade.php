@@ -222,7 +222,7 @@
             @foreach ([
                 __('Is the core content really free?') => __('Yes. All universities, programs, rankings, tools, FAQs, blog — 100% free forever. We sustain the site through affiliate partnerships and (eventually) Premium.'),
                 __('When does Premium launch?') => __('Targeting Q2 2026. Sign up above to lock in 20% lifetime discount.'),
-                __('Who are the mentors?') => __('German university alumni + admission consultants. We partner with Mentorde.com — a focused mentorship platform.'),
+                __('Who are the mentors?') => __('German university alumni + admission consultants.'),
                 __('Can I cancel anytime?') => __('Yes, Premium is monthly. No long-term contract.'),
                 __('What about Pro?') => __('One-time payment for full application support (review + CV + visa prep + 2h mentor). Perfect for the season before your application deadline.'),
             ] as $q => $a)
