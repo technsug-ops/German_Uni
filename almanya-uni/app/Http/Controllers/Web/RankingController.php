@@ -23,13 +23,15 @@ class RankingController extends Controller
             $grouped[$r['category']][] = $r;
         }
 
-        // Hero stats — gerçek DB rakamları (locale-bağımsız) → 6 saat cache.
-        $stats = cache()->remember('rankings.hero_stats_v1', now()->addHours(6), fn () => [
+        // Hero stats — gerçek DB rakamları. CACHE'LEME: Eloquent model'i database/file
+        // cache'e serialize edip okumak "incomplete object" hatası verir (prod 500).
+        // 3 hafif first() sorgusu, ağır kısım RankingService::all() zaten cache'li.
+        $stats = [
+            'total_rankings' => count($all),
             'largest_uni'    => University::where('is_active', 1)->orderByDesc('student_count')->first(['name_de', 'student_count', 'slug']),
             'oldest_uni'     => University::where('is_active', 1)->whereNotNull('founded_year')->where('founded_year', '>', 1000)->orderBy('founded_year')->first(['name_de', 'founded_year', 'slug']),
             'newest_uni'     => University::where('is_active', 1)->whereNotNull('founded_year')->orderByDesc('founded_year')->first(['name_de', 'founded_year', 'slug']),
-        ]);
-        $stats['total_rankings'] = count($all);
+        ];
 
         return view('rankings.index', [
             'grouped' => $grouped,
