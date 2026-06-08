@@ -11,89 +11,170 @@ use App\Models\Subscriber;
 use App\Models\University;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class NewsletterDigest extends Command
 {
     protected $signature = 'newsletter:digest
         {--days=7 : Son N gün penceresi (blog/haber/enrichment)}
         {--send : Gerçekten gönder (yoksa dry-run)}
+        {--locale= : Sadece bu dil (tr/en/de); boşsa tüm aktif diller}
         {--limit=12 : Maksimum kart sayısı}
         {--only=* : Sadece bu email\'lere gönder}
         {--force : Bu hafta zaten gönderilenleri de gönder (test/yeniden)}
         {--throttle=100 : Aboneler arası bekleme (ms) — SMTP rate limit için}';
 
-    protected $description = 'Haftalık Almanya Rehberi — yeni blog + haber + öne çıkan burs + yaklaşan deadline + keşif, abonelere';
+    protected $description = 'Haftalık Almanya Rehberi — dil-başına (tr/en/de) ayrı bülten: blog + haber + burs + deadline + keşif';
 
     public function handle(): int
     {
-        // Digest tek seferde üretilip tüm abonelere gider; birincil kitle TR →
-        // ad/açıklama/route'lar TR. (EN/DE abone segmentasyonu sonraki faz.)
-        app()->setLocale('tr');
-
         $days = (int) $this->option('days');
         $limit = (int) $this->option('limit');
         $since = now()->subDays($days);
+        $send = (bool) $this->option('send');
+        $force = (bool) $this->option('force');
+        $throttleMs = max(0, (int) $this->option('throttle'));
+        $onlys = array_filter((array) $this->option('only'));
 
+        // Aktif diller (config/locale) — her biri AYRI bülten + AYRI abone segmenti
+        $active = collect(config('locale.locales', []))
+            ->filter(fn ($l) => ($l['active'] ?? false))->keys()->all();
+        $locales = $this->option('locale')
+            ? array_values(array_intersect([$this->option('locale')], $active))
+            : $active;
+
+        if (empty($locales)) {
+            $this->error('Geçerli aktif dil yok.');
+            return self::FAILURE;
+        }
+
+        $grandSent = 0;
+        $grandFailed = 0;
+
+        foreach ($locales as $loc) {
+            app()->setLocale($loc); // içerik + route + ad bu dilde
+            [$items, $deadlines, $stats] = $this->buildContent($loc, $since, $limit);
+
+            // İçerik yoksa o dili atla (boş mail gönderme)
+            if (empty($items) && empty($deadlines)) {
+                $this->warn("[{$loc}] içerik yok — atlandı.");
+                continue;
+            }
+
+            // O dilin aboneleri
+            $query = Subscriber::reachable()->where('language', $loc);
+            if (! $force) {
+                $query->where(fn ($q) => $q->whereNull('last_sent_at')->orWhere('last_sent_at', '<', now()->subDays(6)));
+            }
+            if ($onlys) {
+                $query->whereIn('email', $onlys);
+            }
+            $subs = $query->get();
+
+            $this->info("[{$loc}] {$stats['total']} kart + {$stats['deadlines']} deadline (blog {$stats['blog']}, haber {$stats['news']}, burs {$stats['scholarships']}) → {$subs->count()} abone");
+
+            if (! $send) {
+                foreach (array_slice($items, 0, 5) as $i) {
+                    $this->line("   {$i['category']}  " . Str::limit($i['title'], 55));
+                }
+                continue;
+            }
+
+            if ($subs->isEmpty()) {
+                $this->line("   [{$loc}] gönderilecek abone yok.");
+                continue;
+            }
+
+            $bar = $this->output->createProgressBar($subs->count());
+            $bar->start();
+            foreach ($subs as $sub) {
+                try {
+                    Mail::to($sub->email)->send(new WeeklyDigest($sub, $items, $stats, $deadlines));
+                    $sub->update(['last_sent_at' => now()]);
+                    $grandSent++;
+                } catch (\Throwable $e) {
+                    $this->newLine();
+                    $this->error("   {$sub->email}: " . substr($e->getMessage(), 0, 90));
+                    $grandFailed++;
+                }
+                if ($throttleMs > 0) {
+                    usleep($throttleMs * 1000);
+                }
+                $bar->advance();
+            }
+            $bar->finish();
+            $this->newLine();
+        }
+
+        if ($send) {
+            $this->newLine();
+            $this->info("✅ Toplam {$grandSent} gönderildi, ❌ {$grandFailed} başarısız (" . count($locales) . ' dil)');
+        } else {
+            $this->newLine();
+            $this->warn('⚠️ Dry-run — gerçek e-mail YOK. --send ile gönder.');
+        }
+
+        return $grandFailed > 0 ? self::FAILURE : self::SUCCESS;
+    }
+
+    /**
+     * Bir dil için içerik kartları + deadline'lar + istatistik üret.
+     * setLocale dışarıda yapıldı → ad/açıklama/route bu dilde.
+     *
+     * @return array{0: array, 1: array, 2: array}
+     */
+    private function buildContent(string $loc, \Carbon\Carbon $since, int $limit): array
+    {
         $items = collect();
 
-        // ── 📝 Yeni blog yazıları (son N gün) ──
-        Post::published()->where('type', '!=', 'news')->where('locale', 'tr')
+        // 📝 Yeni blog yazıları (o dilde)
+        Post::published()->where('type', '!=', 'news')->where('locale', $loc)
             ->where('published_at', '>=', $since)
             ->orderByDesc('published_at')->take(4)
             ->get(['slug', 'title', 'excerpt', 'featured_image', 'published_at'])
             ->each(fn ($p) => $items->push([
-                'title' => $p->title,
-                'category' => '📝 Blog',
-                'category_color' => '#2563eb',
-                'url' => route('blog.show', $p->slug),
-                'image' => $p->featured_image,
-                'description' => (string) $p->excerpt,
-                'sort' => 1,
+                'type' => 'blog', 'title' => $p->title,
+                'category' => '📝 ' . __('Blog'), 'category_color' => '#2563eb',
+                'url' => route('blog.show', $p->slug), 'image' => $p->featured_image,
+                'description' => (string) $p->excerpt, 'sort' => 1,
             ]));
 
-        // ── 📰 Almanya'dan haberler (son N gün) ──
-        Post::published()->where('type', 'news')->where('locale', 'tr')
+        // 📰 Almanya'dan haberler (o dilde)
+        Post::published()->where('type', 'news')->where('locale', $loc)
             ->where('published_at', '>=', $since)
             ->orderByDesc('published_at')->take(3)
             ->get(['slug', 'title', 'excerpt', 'featured_image', 'published_at'])
             ->each(fn ($p) => $items->push([
-                'title' => $p->title,
-                'category' => '📰 Haber',
-                'category_color' => '#dc2626',
-                'url' => route('news.show', $p->slug),
-                'image' => $p->featured_image,
-                'description' => (string) $p->excerpt,
-                'sort' => 2,
+                'type' => 'news', 'title' => $p->title,
+                'category' => '📰 ' . __('News'), 'category_color' => '#dc2626',
+                'url' => route('news.show', $p->slug), 'image' => $p->featured_image,
+                'description' => (string) $p->excerpt, 'sort' => 2,
             ]));
 
-        // ── 🎓 Öne çıkan burs (her hafta döner — weekOfYear offset) ──
+        // 🎓 Öne çıkan burs (her hafta döner)
         $scholarTotal = Scholarship::whereNull('removed_at')->where('is_daad', 1)->count();
         if ($scholarTotal > 0) {
             $offset = (now()->weekOfYear * 2) % $scholarTotal;
             Scholarship::whereNull('removed_at')->where('is_daad', 1)
                 ->orderBy('id')->skip($offset)->take(2)->get()
                 ->each(fn ($s) => $items->push([
-                    'title' => $s->name,
-                    'category' => '🎓 Burs',
-                    'category_color' => '#d97706',
-                    'url' => route('scholarships.show', $s->slug),
-                    'image' => null,
-                    'description' => (string) ($s->introductionText('tr') ?: $s->programmname_tr ?: $s->programmname_en ?: __('DAAD scholarship for international students.')),
+                    'type' => 'scholarship', 'title' => $s->name,
+                    'category' => '🎓 ' . __('Scholarship'), 'category_color' => '#d97706',
+                    'url' => route('scholarships.show', $s->slug), 'image' => null,
+                    'description' => (string) ($s->introductionText($loc) ?: $s->{'programmname_' . $loc} ?: $s->programmname_en ?: __('DAAD scholarship for international students.')),
                     'sort' => 3,
                 ]));
         }
 
-        // ── 🔎 Haftanın keşfi — son N günde enrich edilen şehir + üniversite ──
+        // 🔎 Haftanın keşfi — son N günde enrich edilen şehir + üniversite
         City::whereNotNull('content_blocks')->where('last_enriched_at', '>=', $since)
             ->orderByDesc('last_enriched_at')->take(3)
             ->get(['slug', 'name_de', 'image_url', 'content_blocks'])
             ->each(fn ($c) => $items->push([
-                'title' => $c->name_de . ' — Şehir Rehberi',
-                'category' => '🏙️ Şehir',
-                'category_color' => '#0891b2',
-                'url' => route('cities.show', $c->slug),
-                'image' => $c->image_url,
-                'description' => \App\Support\Seo::descriptionFromBlocks($c->content_blocks, "{$c->name_de} şehri rehberi."),
+                'type' => 'city', 'title' => $c->name_de . ' — ' . __('City Guide'),
+                'category' => '🏙️ ' . __('City'), 'category_color' => '#0891b2',
+                'url' => route('cities.show', $c->slug), 'image' => $c->image_url,
+                'description' => \App\Support\Seo::descriptionFromBlocks($c->content_blocks, $c->name_de),
                 'sort' => 4,
             ]));
 
@@ -102,19 +183,16 @@ class NewsletterDigest extends Command
             ->orderByDesc('last_enriched_at')->take(3)
             ->get(['slug', 'name_de', 'image_url', 'content_blocks'])
             ->each(fn ($u) => $items->push([
-                'title' => $u->name_de,
-                'category' => '🎓 Üniversite',
-                'category_color' => '#1e40af',
-                'url' => route('universities.show', $u->slug),
-                'image' => $u->image_url,
-                'description' => \App\Support\Seo::descriptionFromBlocks($u->content_blocks, "{$u->name_de} hakkında rehber."),
+                'type' => 'university', 'title' => $u->name_de,
+                'category' => '🎓 ' . __('University'), 'category_color' => '#1e40af',
+                'url' => route('universities.show', $u->slug), 'image' => $u->image_url,
+                'description' => \App\Support\Seo::descriptionFromBlocks($u->content_blocks, $u->name_de),
                 'sort' => 4,
             ]));
 
-        // Bölüm sırasına göre (blog→haber→burs→keşif), sonra kırp
         $items = $items->sortBy('sort')->take($limit)->values()->toArray();
 
-        // ── ⏰ Yaklaşan başvuru deadline'ları (önümüzdeki 21 gün) ──
+        // ⏰ Yaklaşan başvuru deadline'ları (önümüzdeki 21 gün) — route'lar o dilde
         $today = now()->toDateString();
         $until = now()->addDays(21)->toDateString();
         $deadlines = Program::where('is_active', 1)
@@ -141,72 +219,14 @@ class NewsletterDigest extends Command
             ->filter(fn ($d) => $d['date'] !== null)
             ->values()->toArray();
 
-        // İçerik yoksa (hiç kart + hiç deadline) gönderme
-        if (empty($items) && empty($deadlines)) {
-            $this->warn("Son {$days} gün için içerik yok — digest gönderilmedi.");
-            return self::SUCCESS;
-        }
-
         $stats = [
-            'total'      => count($items),
-            'blog'       => collect($items)->where('category', '📝 Blog')->count(),
-            'news'       => collect($items)->where('category', '📰 Haber')->count(),
-            'scholarships' => collect($items)->where('category', '🎓 Burs')->count(),
-            'deadlines'  => count($deadlines),
+            'total'        => count($items),
+            'blog'         => collect($items)->where('type', 'blog')->count(),
+            'news'         => collect($items)->where('type', 'news')->count(),
+            'scholarships' => collect($items)->where('type', 'scholarship')->count(),
+            'deadlines'    => count($deadlines),
         ];
 
-        $this->info("📦 {$stats['total']} kart + {$stats['deadlines']} deadline (blog {$stats['blog']}, haber {$stats['news']}, burs {$stats['scholarships']})");
-
-        // Aboneler — reachable: confirmed + not unsubscribed + not bounced/complained
-        $query = Subscriber::reachable();
-        // Bu hafta zaten gönderilenleri atla → endpoint timeout/retry'da çift gönderim YOK
-        // (idempotent). --force ile bypass (test).
-        if (! $this->option('force')) {
-            $query->where(fn ($q) => $q->whereNull('last_sent_at')->orWhere('last_sent_at', '<', now()->subDays(6)));
-        }
-        if ($onlys = array_filter((array) $this->option('only'))) {
-            $query->whereIn('email', $onlys);
-        }
-        $subs = $query->get();
-        $this->info("👥 {$subs->count()} reachable abone (hard-bounce + complaint hariç)");
-
-        if (! $this->option('send')) {
-            $this->warn('⚠️ Dry-run — gerçek e-mail YOK. --send ile gönder.');
-            $this->newLine();
-            foreach (array_slice($items, 0, 8) as $i) {
-                $this->line("  {$i['category']}  " . \Illuminate\Support\Str::limit($i['title'], 60));
-            }
-            foreach ($deadlines as $d) {
-                $this->line("  ⏰ {$d['date']}  " . \Illuminate\Support\Str::limit($d['program'], 50));
-            }
-            return self::SUCCESS;
-        }
-
-        $sent = 0;
-        $failed = 0;
-        $bar = $this->output->createProgressBar($subs->count());
-        $bar->start();
-        $throttleMs = max(0, (int) $this->option('throttle'));
-
-        foreach ($subs as $sub) {
-            try {
-                Mail::to($sub->email)->send(new WeeklyDigest($sub, $items, $stats, $deadlines));
-                $sub->update(['last_sent_at' => now()]);
-                $sent++;
-            } catch (\Throwable $e) {
-                $this->newLine();
-                $this->error("  {$sub->email}: " . substr($e->getMessage(), 0, 100));
-                $failed++;
-            }
-            if ($throttleMs > 0) {
-                usleep($throttleMs * 1000);
-            }
-            $bar->advance();
-        }
-        $bar->finish();
-        $this->newLine(2);
-        $this->info("✅ {$sent} gönderildi, ❌ {$failed} başarısız");
-
-        return $failed > 0 ? self::FAILURE : self::SUCCESS;
+        return [$items, $deadlines, $stats];
     }
 }

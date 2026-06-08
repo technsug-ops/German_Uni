@@ -621,6 +621,7 @@ Route::get('/_system/newsletter-digest', function (\Illuminate\Http\Request $req
             '--days'     => (int) $request->integer('days', 7),
             '--send'     => $request->boolean('send'),
             '--limit'    => (int) $request->integer('limit', 12),
+            '--locale'   => (string) $request->query('locale', ''),
             '--force'    => $request->boolean('force'),
             '--throttle' => (int) $request->integer('throttle', 100),
         ], fn ($v) => $v !== false && $v !== null && $v !== '');
