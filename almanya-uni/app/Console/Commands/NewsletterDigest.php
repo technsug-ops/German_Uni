@@ -56,7 +56,11 @@ class NewsletterDigest extends Command
         $grandFailed = 0;
 
         foreach ($locales as $loc) {
-            app()->setLocale($loc); // içerik + route + ad bu dilde
+            app()->setLocale($loc); // içerik + ad bu dilde
+            // ⚠️ route() doğru /{loc}/ prefix'i üretsin: setLocale() TEK BAŞINA URL::defaults'u
+            // güncellemez (oto-aware sadece web request middleware'inde). Bu olmadan TR/DE
+            // bülten linkleri /en/{tr-slug} olur → EN sayfası o slug'ı bulamaz → 404. (2026-06-09)
+            \Illuminate\Support\Facades\URL::defaults(['locale' => $loc]);
             [$items, $deadlines, $stats] = $this->buildContent($loc, $since, $limit, $deadlineBase);
 
             // İçerik yoksa o dili atla (boş mail gönderme)

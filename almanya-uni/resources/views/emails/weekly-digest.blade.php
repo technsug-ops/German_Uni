@@ -17,6 +17,15 @@
 
     // Kartlar: ilk N tanesini "fırsat" olarak numaralandır (klasik tasarım numaralı kart)
     $picks = array_slice($items, 0, 8);
+
+    // Kategori renk + etiket (site paleti) — kartları AYIRT EDİLİR + okunur + tıklanır yapar
+    $catMap = [
+        'blog'        => ['label' => __('Blog'),        'color' => '#1B69FF'],
+        'news'        => ['label' => __('News'),        'color' => '#D81E2C'],
+        'scholarship' => ['label' => __('Scholarship'), 'color' => '#FB7116'],
+        'city'        => ['label' => __('City'),        'color' => '#00A16B'],
+        'university'  => ['label' => __('University'),  'color' => '#A73BFF'],
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" xmlns="http://www.w3.org/1999/xhtml">
@@ -79,16 +88,18 @@
     <tr><td class="px" style="padding:22px 44px 14px;"><p style="margin:0;font-size:13px;font-weight:bold;letter-spacing:1.5px;color:{{ $navy }};text-transform:uppercase;"><span style="color:{{ $orange }};">&#9632;</span> {{ __('This Week’s Highlights') }}</p></td></tr>
 
     @foreach ($picks as $idx => $i)
-        <tr><td class="px" style="padding:0 44px 14px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{{ $cream }};border-radius:10px;border:1px solid #E8E8EC;">
+        @php $cat = $catMap[$i['type'] ?? ''] ?? ['label' => '', 'color' => $navy]; @endphp
+        <tr><td class="px" style="padding:0 44px 12px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border-radius:10px;border:1px solid #E8E8EC;border-left:4px solid {{ $cat['color'] }};">
                 <tr>
-                    <td width="46" style="vertical-align:top;padding:16px 0 16px 16px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0"><tr><td align="center" style="width:34px;height:34px;background:{{ $navy }};border-radius:8px;font-family:Georgia,serif;font-size:16px;font-weight:bold;color:{{ $orange }};line-height:34px;">{{ $idx + 1 }}</td></tr></table>
+                    <td width="52" style="vertical-align:top;padding:16px 0 16px 16px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0"><tr><td align="center" style="width:36px;height:36px;background:{{ $cat['color'] }};border-radius:9px;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;color:#FFFFFF;line-height:36px;">{{ $idx + 1 }}</td></tr></table>
                     </td>
-                    <td style="padding:15px 18px 15px 12px;">
-                        <a href="{{ $i['url'] }}" style="display:block;margin:0 0 4px;font-size:15px;font-weight:bold;color:{{ $ink }};">{{ $i['title'] }}</a>
-                        <p style="margin:0 0 6px;font-size:13px;line-height:1.55;color:{{ $muted }};">{{ \Illuminate\Support\Str::limit($i['description'], 120) }}</p>
-                        <a href="{{ $i['url'] }}" style="font-size:12px;font-weight:bold;color:{{ $orange }};">{{ __('See details →') }}</a>
+                    <td style="padding:15px 18px 15px 13px;">
+                        @if (!empty($cat['label']))<p style="margin:0 0 4px;font-size:10px;font-weight:bold;letter-spacing:0.08em;color:{{ $cat['color'] }};text-transform:uppercase;">{{ $cat['label'] }}</p>@endif
+                        <a href="{{ $i['url'] }}" style="display:block;margin:0 0 5px;font-size:15px;font-weight:bold;color:{{ $ink }};line-height:1.35;">{{ $i['title'] }}</a>
+                        <p style="margin:0 0 9px;font-size:13px;line-height:1.55;color:{{ $muted }};">{{ \Illuminate\Support\Str::limit($i['description'], 115) }}</p>
+                        <a href="{{ $i['url'] }}" style="display:inline-block;font-size:12px;font-weight:bold;color:{{ $cat['color'] }};">{{ __('See details →') }}</a>
                     </td>
                 </tr>
             </table>
@@ -97,16 +108,16 @@
 
     {{-- Yaklaşan deadline'lar — koyu lacivert kutu (ipucu yerine gerçek veri) --}}
     @if (!empty($deadlines))
-        <tr><td class="px" style="padding:10px 44px 0;">
-            <table role="presentation" width="100%" style="background:{{ $dark }};border-radius:12px;"><tr><td style="padding:22px 24px;">
-                <p style="margin:0 0 12px;font-size:12px;font-weight:bold;letter-spacing:2px;color:{{ $orange }};text-transform:uppercase;">{{ __('Upcoming Deadlines') }}</p>
+        <tr><td class="px" style="padding:16px 44px 0;">
+            <table role="presentation" width="100%" style="background:#FEF6F6;border:1px solid #F8C8C8;border-radius:12px;"><tr><td style="padding:20px 24px;">
+                <p style="margin:0 0 12px;font-size:12px;font-weight:bold;letter-spacing:1.5px;color:#D81E2C;text-transform:uppercase;">{{ __('Upcoming Deadlines') }}</p>
                 @foreach ($deadlines as $d)
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="padding:7px 0;{{ ! $loop->last ? 'border-bottom:1px solid rgba(255,255,255,0.08);' : '' }}font-size:13px;line-height:1.5;">
-                        <span style="display:inline-block;background:#D81E2C;color:#fff;font-weight:bold;border-radius:5px;padding:2px 8px;font-size:11px;white-space:nowrap;margin-right:8px;">{{ \Illuminate\Support\Carbon::parse($d['date'])->format('d.m.Y') }}</span>
-                        <a href="{{ $d['url'] }}" style="color:#E8EDF6;font-weight:600;">{{ \Illuminate\Support\Str::limit($d['program'], 46) }}</a>@if (!empty($d['university']))<span style="color:#9AA8C7;"> · {{ $d['university'] }}</span>@endif
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="padding:8px 0;{{ ! $loop->last ? 'border-bottom:1px solid #F6D9D9;' : '' }}font-size:13px;line-height:1.5;">
+                        <span style="display:inline-block;background:#D81E2C;color:#fff;font-weight:bold;border-radius:5px;padding:3px 9px;font-size:11px;white-space:nowrap;margin-right:8px;">{{ \Illuminate\Support\Carbon::parse($d['date'])->format('d.m.Y') }}</span>
+                        <a href="{{ $d['url'] }}" style="color:{{ $navy }};font-weight:bold;">{{ \Illuminate\Support\Str::limit($d['program'], 46) }}</a>@if (!empty($d['university']))<span style="color:{{ $muted }};"> · {{ $d['university'] }}</span>@endif
                     </td></tr></table>
                 @endforeach
-                <p style="margin:12px 0 0;"><a href="{{ route('tools.deadlines') }}" style="color:{{ $orange }};font-size:12px;font-weight:bold;">{{ __('See all deadlines →') }}</a></p>
+                <p style="margin:12px 0 0;"><a href="{{ route('tools.deadlines') }}" style="color:#D81E2C;font-size:12px;font-weight:bold;">{{ __('See all deadlines →') }}</a></p>
             </td></tr></table>
         </td></tr>
     @endif
