@@ -48,12 +48,16 @@ class NewsletterDigest extends Command
             return self::FAILURE;
         }
 
+        // Deadline sorgusu AĞIR (14K program, indekssiz LEAST sıralama) — dilden
+        // bağımsız olduğundan TEK kez çek, döngüde sadece locale URL'i üretilir.
+        $deadlineBase = $this->fetchDeadlineBase();
+
         $grandSent = 0;
         $grandFailed = 0;
 
         foreach ($locales as $loc) {
             app()->setLocale($loc); // içerik + route + ad bu dilde
-            [$items, $deadlines, $stats] = $this->buildContent($loc, $since, $limit);
+            [$items, $deadlines, $stats] = $this->buildContent($loc, $since, $limit, $deadlineBase);
 
             // İçerik yoksa o dili atla (boş mail gönderme)
             if (empty($items) && empty($deadlines)) {
@@ -123,7 +127,42 @@ class NewsletterDigest extends Command
      *
      * @return array{0: array, 1: array, 2: array}
      */
-    private function buildContent(string $loc, \Carbon\Carbon $since, int $limit): array
+    /**
+     * Yaklaşan deadline'lı programları TEK kez çek (dil-bağımsız ham veri).
+     * @return array<int, array{program:string, university:?string, date:string, slug:string}>
+     */
+    private function fetchDeadlineBase(): array
+    {
+        $today = now()->toDateString();
+        $until = now()->addDays(21)->toDateString();
+
+        return Program::where('is_active', 1)
+            ->with('university:id,name_de,slug')
+            ->where(function ($q) use ($today, $until) {
+                $q->whereBetween('application_deadline_winter', [$today, $until])
+                    ->orWhereBetween('application_deadline_summer', [$today, $until]);
+            })
+            ->orderByRaw('LEAST(COALESCE(application_deadline_winter, "9999-12-31"), COALESCE(application_deadline_summer, "9999-12-31"))')
+            ->take(5)
+            ->get(['id', 'slug', 'name_de', 'university_id', 'application_deadline_winter', 'application_deadline_summer'])
+            ->map(function ($p) use ($today) {
+                $cands = array_filter([
+                    (string) $p->application_deadline_winter,
+                    (string) $p->application_deadline_summer,
+                ], fn ($d) => $d !== '' && substr($d, 0, 10) >= $today);
+
+                return [
+                    'program' => $p->name_de,
+                    'university' => $p->university?->name_de,
+                    'date' => $cands ? substr(min($cands), 0, 10) : null,
+                    'slug' => $p->slug,
+                ];
+            })
+            ->filter(fn ($d) => $d['date'] !== null)
+            ->values()->all();
+    }
+
+    private function buildContent(string $loc, \Carbon\Carbon $since, int $limit, array $deadlineBase = []): array
     {
         $items = collect();
 
@@ -192,32 +231,13 @@ class NewsletterDigest extends Command
 
         $items = $items->sortBy('sort')->take($limit)->values()->toArray();
 
-        // ⏰ Yaklaşan başvuru deadline'ları (önümüzdeki 21 gün) — route'lar o dilde
-        $today = now()->toDateString();
-        $until = now()->addDays(21)->toDateString();
-        $deadlines = Program::where('is_active', 1)
-            ->with('university:id,name_de,slug')
-            ->where(function ($q) use ($today, $until) {
-                $q->whereBetween('application_deadline_winter', [$today, $until])
-                    ->orWhereBetween('application_deadline_summer', [$today, $until]);
-            })
-            ->orderByRaw('LEAST(COALESCE(application_deadline_winter, "9999-12-31"), COALESCE(application_deadline_summer, "9999-12-31"))')
-            ->take(5)
-            ->get(['id', 'slug', 'name_de', 'university_id', 'application_deadline_winter', 'application_deadline_summer'])
-            ->map(function ($p) use ($today) {
-                $cands = array_filter([
-                    (string) $p->application_deadline_winter,
-                    (string) $p->application_deadline_summer,
-                ], fn ($d) => $d !== '' && substr($d, 0, 10) >= $today);
-                return [
-                    'program' => $p->name_de,
-                    'university' => $p->university?->name_de,
-                    'date' => $cands ? substr(min($cands), 0, 10) : null,
-                    'url' => route('programs.show', $p->slug),
-                ];
-            })
-            ->filter(fn ($d) => $d['date'] !== null)
-            ->values()->toArray();
+        // ⏰ Yaklaşan deadline'lar — TEK-sefer çekilen base'den locale URL üret (ucuz, DB yok)
+        $deadlines = array_map(fn ($d) => [
+            'program' => $d['program'],
+            'university' => $d['university'],
+            'date' => $d['date'],
+            'url' => route('programs.show', $d['slug']),
+        ], $deadlineBase);
 
         $stats = [
             'total'        => count($items),
