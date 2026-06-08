@@ -209,10 +209,11 @@ jobs:
         working-directory: almanya-uni
         run: |
           # Bu dosyaları zip'e dahil etme (hariç tutulanlar)
-          # Vendor dışlandı — KAS'ta önceki deploy'dan zaten var
+          # ⚠️ vendor/ DAHİL EDİLDİ — autoloader prod'un TÜM vendor'ıyla tutarlı olmalı.
+          # Kısmi vendor (sadece composer+resend) upload'ı autoloader uyumsuzluğu → prod 500
+          # yaptı. Tam vendor tek güvenli yol (composer.lock pinli, tutarlı).
           zip -r -q ../deploy-bundle.zip . \
-            -x "vendor/*" \
-               "node_modules/*" \
+            -x "node_modules/*" \
                ".git/*" \
                "tests/*" \
                "storage/logs/*" \
@@ -238,11 +239,6 @@ jobs:
                "ADMISSION_MODE_NASIL_DOLDURULUR.md" \
                "DAAD_SCHOLARSHIPS_OZET.md" \
                "README.md"
-          # vendor/ genelde dışlanır (prod'da önceki full-deploy'dan var). AMA composer.json'a
-          # SONRADAN eklenen paketler (örn. resend/resend-laravel) prod vendor'ında olmaz
-          # → "Class Resend not found". Çözüm: yeni paket(ler) + GÜNCEL autoloader'ı ekle.
-          # vendor/composer = autoload_classmap/static (Resend sınıfını map eder).
-          zip -r -q ../deploy-bundle.zip vendor/resend vendor/composer
           ls -lh ../deploy-bundle.zip
           echo "Bundle hazır: $(du -h ../deploy-bundle.zip | cut -f1)"
 
