@@ -605,6 +605,36 @@ Route::get('/_system/scholarships-localize', function (\Illuminate\Http\Request 
     return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
 })->middleware('throttle:30,1');
 
+// Token-gated HAFTALIK DIGEST tetikleyici — KAS'ta schedule:run cron yok.
+// Dry-run (önizleme):  curl ".../_system/newsletter-digest?token=XXX"
+// Gerçekten gönder:    curl ".../_system/newsletter-digest?token=XXX&send=1"
+// Tek adrese test:     curl ".../_system/newsletter-digest?token=XXX&send=1&only=ben@x.com"
+Route::get('/_system/newsletter-digest', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(600);
+    try {
+        $params = array_filter([
+            '--days'     => (int) $request->integer('days', 7),
+            '--send'     => $request->boolean('send'),
+            '--limit'    => (int) $request->integer('limit', 12),
+            '--force'    => $request->boolean('force'),
+            '--throttle' => (int) $request->integer('throttle', 100),
+        ], fn ($v) => $v !== false && $v !== null && $v !== '');
+        if ($only = $request->query('only')) {
+            $params['--only'] = [$only];
+        }
+        \Illuminate\Support\Facades\Artisan::call('newsletter:digest', $params);
+        $out = \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Throwable $e) {
+        $out = 'EXCEPTION: ' . $e->getMessage();
+    }
+    return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:30,1');
+
 // Token-gated single-image cache override — for cases where a uni has no
 // usable Wikipedia image and we want to point to a custom CDN URL instead.
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"

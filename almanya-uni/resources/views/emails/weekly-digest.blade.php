@@ -29,12 +29,9 @@
             <tr><td style="padding:24px 24px 8px;">
                 <h2 style="margin:0 0 8px;font-size:18px;color:#111827;">{{ __('Hello :name,', ['name' => $subscriber->name ?: __('friend')]) }}</h2>
                 <p style="margin:0;color:#4b5563;font-size:15px;">
-                    {{ __('This week :count new content pieces were prepared on the site — :cities cities, :unis universities, :fields fields, :states states guides were updated.', [
-                        'count' => count($items),
-                        'cities' => $stats['cities'],
-                        'unis' => $stats['universities'],
-                        'fields' => $stats['fields'],
-                        'states' => $stats['states'],
+                    {{ __('This week: :count fresh picks and :deadlines upcoming application deadlines, hand-picked for your study-in-Germany journey.', [
+                        'count' => $stats['total'] ?? count($items),
+                        'deadlines' => $stats['deadlines'] ?? 0,
                     ]) }}
                 </p>
             </td></tr>
@@ -65,6 +62,22 @@
                     </table>
                 @endforeach
             </td></tr>
+
+            {{-- Yaklaşan başvuru deadline'ları --}}
+            @if (!empty($deadlines))
+                <tr><td style="padding:8px 24px 0;">
+                    <h3 style="margin:0 0 8px;font-size:15px;color:#111827;">⏰ {{ __('Upcoming Deadlines') }}</h3>
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #fee2e2;border-radius:8px;background:#fef2f2;">
+                        @foreach ($deadlines as $d)
+                            <tr><td style="padding:10px 14px;{{ ! $loop->last ? 'border-bottom:1px solid #fee2e2;' : '' }}font-size:13px;line-height:1.5;">
+                                <span style="display:inline-block;background:#dc2626;color:#ffffff;font-weight:700;border-radius:4px;padding:2px 8px;font-size:12px;white-space:nowrap;">{{ \Illuminate\Support\Carbon::parse($d['date'])->format('d.m.Y') }}</span>
+                                <a href="{{ $d['url'] }}" style="color:#111827;text-decoration:none;font-weight:600;">{{ \Illuminate\Support\Str::limit($d['program'], 48) }}</a>@if (!empty($d['university']))<span style="color:#6b7280;"> · {{ $d['university'] }}</span>@endif
+                            </td></tr>
+                        @endforeach
+                    </table>
+                    <p style="margin:8px 0 0;text-align:right;"><a href="{{ route('tools.deadlines') }}" style="color:#dc2626;font-size:13px;font-weight:600;text-decoration:none;">{{ __('See all deadlines →') }}</a></p>
+                </td></tr>
+            @endif
 
             {{-- CTA --}}
             <tr><td style="padding:16px 24px 24px;text-align:center;">

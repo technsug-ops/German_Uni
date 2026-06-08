@@ -18,6 +18,7 @@ class WeeklyDigest extends Mailable
         public Subscriber $subscriber,
         public array $items,
         public array $stats,
+        public array $deadlines = [],
     ) {}
 
     public function envelope(): Envelope
@@ -44,6 +45,7 @@ class WeeklyDigest extends Mailable
                 'subscriber' => $this->subscriber,
                 'items' => $this->items,
                 'stats' => $this->stats,
+                'deadlines' => $this->deadlines,
                 'unsubscribeUrl' => route('newsletter.unsubscribe', $this->subscriber->unsubscribe_token),
                 'brandKey' => $brandKey,
                 'brandName' => brand('name', $brandKey),
