@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', __('16 German States — Guide for International Students') . ' — ' . brand('name'))
-@section('meta_description', __('Discover Germany\'s 16 federal states: Bayern, NRW, Berlin, Baden-Württemberg... Cities, universities, and student life in each state.'))
+<x-seo :description="__('Discover Germany\'s 16 federal states: Bayern, NRW, Berlin, Baden-Württemberg... Cities, universities, and student life in each state.')" />
+<x-json-ld :data="\App\Support\Seo::breadcrumbs([
+    ['name' => __('Home'), 'url' => route('home')],
+    ['name' => __('States'), 'url' => route('states.index')],
+])" />
 
 @section('content')
 

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', __('German Universities — Guide for International Students') . '  — ' . brand('name'))
-@section('meta_description', __('464 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.'))
+<x-seo :description="__('464 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.')" />
+<x-json-ld :data="\App\Support\Seo::breadcrumbs([
+    ['name' => __('Home'), 'url' => route('home')],
+    ['name' => __('Universities'), 'url' => route('universities.index')],
+])" />
 
 {{-- $typeLabel and $typeBadgeColor closures are provided by UniversityWebController so they're also available when the _grid partial is rendered for XHR async-filter responses. --}}
 

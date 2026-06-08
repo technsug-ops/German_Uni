@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', __('Fields of Study — Which Subject to Study in Germany?') . ' — ' . brand('name'))
-@section('meta_description', __('Engineering, Medicine, Computer Science, Law, Art — explore programs in Germany by the field you want to study.'))
+<x-seo :description="__('Engineering, Medicine, Computer Science, Law, Art — explore programs in Germany by the field you want to study.')" />
+<x-json-ld :data="\App\Support\Seo::breadcrumbs([
+    ['name' => __('Home'), 'url' => route('home')],
+    ['name' => __('Fields of Study'), 'url' => route('fields.index')],
+])" />
 
 @section('content')
 

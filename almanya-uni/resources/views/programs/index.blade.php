@@ -6,6 +6,10 @@
     :title="__('All Programs — :n Programs in Germany', ['n' => number_format($total_all, 0, ',', '.')])"
     :description="__('Filter all Bachelor, Master, PhD programs in Germany by field, language, university. :n programs in our database.', ['n' => number_format($total_all, 0, ',', '.')])"
 />
+<x-json-ld :data="\App\Support\Seo::breadcrumbs([
+    ['name' => __('Home'), 'url' => route('home')],
+    ['name' => __('Programs'), 'url' => route('programs.index')],
+])" />
 
 @php
     $degreeLabels = [
