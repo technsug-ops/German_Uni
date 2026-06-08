@@ -636,6 +636,31 @@ Route::get('/_system/newsletter-digest', function (\Illuminate\Http\Request $req
     return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
 })->middleware('throttle:30,1');
 
+// Token-gated mailer testi — Resend/SMTP gerçekten çalışıyor mu? Abone şartı YOK.
+//   curl ".../_system/test-mail?token=XXX&to=ben@gmail.com"
+Route::get('/_system/test-mail', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    $to = (string) $request->query('to');
+    if (! filter_var($to, FILTER_VALIDATE_EMAIL)) {
+        return response('?to=gecerli@email gerekli', 400)->header('Content-Type', 'text/plain; charset=utf-8');
+    }
+    $mailer = config('mail.default');
+    try {
+        \Illuminate\Support\Facades\Mail::raw(
+            "ApplyToGerman test e-postasi — mailer calisiyor.\nMailer: {$mailer}\nZaman: " . now()->toDateTimeString(),
+            fn ($m) => $m->to($to)->subject('ApplyToGerman — mailer test')
+        );
+        $out = "OK · '{$to}' adresine test gonderildi (mailer: {$mailer}). Gelen kutusu + SPAM klasorunu kontrol et.";
+    } catch (\Throwable $e) {
+        $out = "HATA (mailer: {$mailer}): " . $e->getMessage();
+    }
+    return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:10,1');
+
 // Token-gated single-image cache override — for cases where a uni has no
 // usable Wikipedia image and we want to point to a custom CDN URL instead.
 //   curl ".../_system/cache-custom?token=XXX&type=uni&slug=fom-...&url=https://...&width=600"
