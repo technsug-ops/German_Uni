@@ -32,7 +32,7 @@ class WeeklyDigest extends Mailable
         return new Envelope(
             to: [new Address($this->subscriber->email, $this->subscriber->name ?: '')],
             from: new Address($fromAddr, $fromName),
-            subject: '📬 ' . $name . ' Haftalık — ' . count($this->items) . ' yeni içerik',
+            subject: $name . ' ' . __('Weekly') . ' — ' . count($this->items) . ' ' . __('new picks'),
         );
     }
 
