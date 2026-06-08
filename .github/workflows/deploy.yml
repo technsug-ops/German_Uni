@@ -163,9 +163,13 @@ jobs:
       # ─────────────────────────────────────────────────────
       - name: Write .env from secret
         working-directory: almanya-uni
+        env:
+          # Secret'ı ENV değişkeniyle geçir — shell İÇERİĞİ yeniden parse ETMEZ.
+          # Doğrudan ${{ }} gömmek, secret'taki " ( ) ` $ gibi karakterlerde
+          # "syntax error near unexpected token" verir (GitHub Actions tuzağı).
+          ENV_PROD_CONTENT: ${{ secrets.ENV_PRODUCTION }}
         run: |
-          # GitHub Secret içeriği aynen yazılır (multiline destekli)
-          printf '%s' "${{ secrets.ENV_PRODUCTION }}" > .env
+          printf '%s' "$ENV_PROD_CONTENT" > .env
           # Sanity check: .env'in MySQL kullandığını ve SQLite içermediğini doğrula
           if grep -q '^DB_CONNECTION=sqlite' .env; then
             echo "::error::SECRET ENV_PRODUCTION SQLite içeriyor — MySQL olmalı!"
