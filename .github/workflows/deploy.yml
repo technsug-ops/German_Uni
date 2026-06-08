@@ -238,6 +238,11 @@ jobs:
                "ADMISSION_MODE_NASIL_DOLDURULUR.md" \
                "DAAD_SCHOLARSHIPS_OZET.md" \
                "README.md"
+          # vendor/ genelde dışlanır (prod'da önceki full-deploy'dan var). AMA composer.json'a
+          # SONRADAN eklenen paketler (örn. resend/resend-laravel) prod vendor'ında olmaz
+          # → "Class Resend not found". Çözüm: yeni paket(ler) + GÜNCEL autoloader'ı ekle.
+          # vendor/composer = autoload_classmap/static (Resend sınıfını map eder).
+          zip -r -q ../deploy-bundle.zip vendor/resend vendor/composer
           ls -lh ../deploy-bundle.zip
           echo "Bundle hazır: $(du -h ../deploy-bundle.zip | cut -f1)"
 
