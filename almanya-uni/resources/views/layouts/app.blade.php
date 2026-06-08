@@ -58,9 +58,12 @@
 
     {{-- Favicon — KARE + beyaz kutu (koyu/açık sekmede görünür). Geniş wordmark logo
          favicon olarak okunaksız + koyu sekmede görünmüyordu (QA sayfa 2). --}}
-    <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon.svg') }}">
-    <link rel="alternate icon" type="image/x-icon" href="{{ asset(brand('favicon')) }}">
-    <link rel="shortcut icon" href="{{ asset(brand('favicon')) }}">
+    {{-- ?v=2 cache-bust: tarayıcılar favicon'u agresif cache'ler; yeni ApplyToGerman
+         onyx ikonu eski favicon yerine gelsin diye URL versiyonlandı. --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon.svg') }}?v=2">
+    <link rel="alternate icon" type="image/x-icon" href="{{ asset(brand('favicon')) }}?v=2">
+    <link rel="shortcut icon" href="{{ asset(brand('favicon')) }}?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32.png') }}?v=2">
 
     {{-- PWA + iOS native --}}
     <link rel="manifest" href="/manifest.json">
