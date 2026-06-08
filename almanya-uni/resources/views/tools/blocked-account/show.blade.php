@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $provider->name . ' ' . __('Blocked Account (Sperrkonto) — Review & Prices') . '  — ' . brand('name'))
+@section('title', $provider->name . ' ' . __('Blocked Account (Sperrkonto) — Review & Prices') . ' — ' . brand('name'))
 
 <x-seo
     :title="$provider->name . ' ' . __('Sperrkonto Review')"

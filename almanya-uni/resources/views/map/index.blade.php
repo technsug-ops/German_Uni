@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Germany Universities Map') . '  — ' . brand('name'))
+@section('title', __('Germany Universities Map') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Germany Universities Map') . ' - ' . $stats['total'] . ' ' . __('universities')"

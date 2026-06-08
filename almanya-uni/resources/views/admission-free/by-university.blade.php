@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $university->name . ' — ' . __('NC-Free (Zulassungsfrei) Programs') . '  — ' . brand('name'))
+@section('title', $university->name . ' — ' . __('NC-Free (Zulassungsfrei) Programs') . ' — ' . brand('name'))
 
 <x-seo
     :title="$university->name . ': ' . __('NC-Free Programs')"

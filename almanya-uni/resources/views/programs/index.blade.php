@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('All Programs') . ' — ' . number_format($total_all, 0, ',', '.') . ' ' . __('Programs') . '  — ' . brand('name'))
+@section('title', __('All Programs') . ' — ' . number_format($total_all, 0, ',', '.') . ' ' . __('Programs') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('All Programs — :n Programs in Germany', ['n' => number_format($total_all, 0, ',', '.')])"

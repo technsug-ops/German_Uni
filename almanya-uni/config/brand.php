@@ -15,7 +15,7 @@
 return [
     'brands' => [
         'almanyauni' => [
-            'name'           => 'ApplyToGerman (AlmanyaUni)',
+            'name'           => 'ApplyToGerman',
             'tagline'        => [
                 'tr' => 'Almanya\'da eğitim rehberin',
                 'en' => 'Your guide to studying in Germany',
@@ -37,7 +37,7 @@ return [
             'theme_color'    => '#1A1A1A', // Marka siyahı (ApplyToGerman logo sistemi)
         ],
         'applytogerman' => [
-            'name'           => 'ApplyToGerman (AlmanyaUni)',
+            'name'           => 'ApplyToGerman',
             'tagline'        => [
                 'tr' => 'Almanya başvuru rehberi',
                 'en' => 'Apply to study in Germany',

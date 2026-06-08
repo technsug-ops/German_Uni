@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Housing — Germany Student Accommodation Guide') . '  — ' . brand('name'))
+@section('title', __('Housing — Germany Student Accommodation Guide') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('How to Find Housing as a Student in Germany?')"

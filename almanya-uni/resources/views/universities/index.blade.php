@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('German Universities — Guide for International Students') . '  — ' . brand('name'))
+@section('title', __('German Universities — Guide for International Students') . ' — ' . brand('name'))
 <x-seo :description="__('464 official German universities (Hochschule): programs, applications, cost of living and a complete guide for international students.')" />
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
     ['name' => __('Home'), 'url' => route('home')],

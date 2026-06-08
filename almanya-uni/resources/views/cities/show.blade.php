@@ -36,7 +36,7 @@
     <x-json-ld :data="$faqSchema" />
 @endif
 
-@section('title', $title . '  — ' . brand('name'))
+@section('title', $title . ' — ' . brand('name'))
 @section('meta_description', $description)
 
 @section('content')

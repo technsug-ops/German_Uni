@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', brand('name') . ' — ' . __('Germany University, Cost & Scholarship Guide'))
+{{-- SEO: anahtar kelime ÖNCE, marka SONRA (Google ~60 krk'te kırpar) --}}
+@section('title', __('Germany University, Cost & Scholarship Guide') . ' — ' . brand('name'))
 
 <x-seo
     :description="__('Germany university, visa, and cost of living guide for international students. :unis universities, :faqs answered questions, interactive tools.', ['unis' => $totals['universities'], 'faqs' => $faq_stats['total']])"

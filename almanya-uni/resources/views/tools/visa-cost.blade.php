@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Visa Cost Calculator — Total Budget for the German Student Visa') . '  — ' . brand('name'))
+@section('title', __('Visa Cost Calculator — Total Budget for the German Student Visa') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Visa Cost Calculator')"

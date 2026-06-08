@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($q !== '' ? __('Search results for ":q"', ['q' => $q]) : __('Search')) . '  — ' . brand('name'))
+@section('title', ($q !== '' ? __('Search results for ":q"', ['q' => $q]) : __('Search')) . ' — ' . brand('name'))
 
 @php
     $typeLabel = fn ($t) => match ($t) {

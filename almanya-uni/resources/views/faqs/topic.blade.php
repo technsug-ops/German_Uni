@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $topic->name . ' ' . __('FAQ') . '  — ' . brand('name'))
+@section('title', $topic->name . ' ' . __('FAQ') . ' — ' . brand('name'))
 
 <x-seo
     :title="$topic->name . ' — ' . __('Frequently Asked Questions')"

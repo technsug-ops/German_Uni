@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Student Dorm Providers — Studierendenwerk + Private Companies') . '  — ' . brand('name'))
+@section('title', __('Student Dorm Providers — Studierendenwerk + Private Companies') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Germany Student Dorm Providers — Studierendenwerk + Private Companies')"

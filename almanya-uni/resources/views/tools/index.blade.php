@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Tools and Calculators') . '  — ' . brand('name'))
+@section('title', __('Tools and Calculators') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Germany Student Tools — Calculators')"

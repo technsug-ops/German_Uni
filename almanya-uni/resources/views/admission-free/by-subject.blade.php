@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $field->name_tr . ' — ' . __('NC Frei (Zulassungsfrei) Programs') . '  — ' . brand('name'))
+@section('title', $field->name_tr . ' — ' . __('NC Frei (Zulassungsfrei) Programs') . ' — ' . brand('name'))
 
 <x-seo
     :title="$field->name_tr . ': ' . $programs->total() . ' ' . __('NC Frei Programs')"

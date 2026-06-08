@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Housing Experiences') . '  — ' . brand('name'))
+@section('title', __('Housing Experiences') . ' — ' . brand('name'))
 
 @section('content')
 <section class="bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white">

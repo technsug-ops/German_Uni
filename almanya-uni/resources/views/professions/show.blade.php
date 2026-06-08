@@ -10,7 +10,7 @@
     ];
     [$typeLabel, $typeIcon] = $typeLabels[$profession->type ?? 'other'];
 
-    $title = ($profession->name_tr ?: $profession->name) . ' — ' . __('Profession Description') . '  — ' . brand('name');
+    $title = ($profession->name_tr ?: $profession->name) . ' — ' . __('Profession Description') . ' — ' . brand('name');
     $description = $profession->description
         ? \Illuminate\Support\Str::limit($profession->description, 160)
         : ($profession->clean_steckbrief

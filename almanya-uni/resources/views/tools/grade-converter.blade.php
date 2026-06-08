@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Turkish-German Grade Converter') . '  — ' . brand('name'))
+@section('title', __('Turkish-German Grade Converter') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Convert Turkish Grade to German Grade — Bavarian Formula')"

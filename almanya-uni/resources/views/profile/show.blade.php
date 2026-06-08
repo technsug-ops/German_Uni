@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('My Profile') . '  — ' . brand('name'))
+@section('title', __('My Profile') . ' — ' . brand('name'))
 
 @php
     $tabs = [

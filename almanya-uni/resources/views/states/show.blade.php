@@ -24,7 +24,7 @@
     <x-json-ld :data="$faqSchema" />
 @endif
 
-@section('title', $state->name . ' ' . __('State — For International Students') . '  — ' . brand('name'))
+@section('title', $state->name . ' ' . __('State — For International Students') . ' — ' . brand('name'))
 @section('meta_description', $description)
 
 @section('content')

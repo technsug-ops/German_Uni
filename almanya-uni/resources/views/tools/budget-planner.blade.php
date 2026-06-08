@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Budget Planner — Monthly Student Budget for Germany') . '  — ' . brand('name'))
+@section('title', __('Budget Planner — Monthly Student Budget for Germany') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Budget Planner — Monthly Student Budget for Germany')"

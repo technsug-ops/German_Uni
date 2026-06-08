@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('404 — Page not found') . '  — ' . brand('name'))
+@section('title', __('404 — Page not found') . ' — ' . brand('name'))
 
 @push('meta')
     <meta name="robots" content="noindex">

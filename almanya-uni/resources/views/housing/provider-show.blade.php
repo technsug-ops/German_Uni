@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $provider->name . ' — ' . $provider->type_label . '  — ' . brand('name'))
+@section('title', $provider->name . ' — ' . $provider->type_label . ' — ' . brand('name'))
 
 <x-seo
     :title="$provider->name . ' — ' . $provider->type_label"

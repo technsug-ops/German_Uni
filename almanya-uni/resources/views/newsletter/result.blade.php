@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $title . '  — ' . brand('name'))
+@section('title', $title . ' — ' . brand('name'))
 
 @push('meta')
     <meta name="robots" content="noindex, nofollow">

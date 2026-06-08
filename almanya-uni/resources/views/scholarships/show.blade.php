@@ -25,7 +25,7 @@
 
 @extends('layouts.app')
 
-@section('title', $title . ' — ' . __('DAAD Scholarship') . '  — ' . brand('name'))
+@section('title', $title . ' — ' . __('DAAD Scholarship') . ' — ' . brand('name'))
 
 {{-- Self-canonical layout'ta (app.blade.php) zaten basılıyor. DAAD orijinaline
      buradan canonical VERME — kendi burs sayfamızı indeksten düşürür. --}}

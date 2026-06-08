@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $page_title . '  — ' . brand('name'))
+@section('title', $page_title . ' — ' . brand('name'))
 
 <x-seo :title="$page_title" :description="$page_description" />
 

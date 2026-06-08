@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $event->title . ' — ' . __('Event') . '  — ' . brand('name'))
+@section('title', $event->title . ' — ' . __('Event') . ' — ' . brand('name'))
 
 <x-seo
     :title="$event->meta_title ?: $event->title"

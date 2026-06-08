@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('University Match Quiz — 8 Questions to Find the Best German Universities for You') . '  — ' . brand('name'))
+@section('title', __('University Match Quiz — 8 Questions to Find the Best German Universities for You') . ' — ' . brand('name'))
 
 <x-seo
     :title="__('Germany University Match — 8-Question Smart Quiz')"

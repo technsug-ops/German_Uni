@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $template->localized('title') . ' — ' . __('Email Template') . '  — ' . brand('name'))
+@section('title', $template->localized('title') . ' — ' . __('Email Template') . ' — ' . brand('name'))
 
 <x-seo
     :title="$template->localized('title') . ' (' . __('Email Template') . ')'"

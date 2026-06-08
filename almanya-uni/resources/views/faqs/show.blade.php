@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $faq->question . '  — ' . brand('name'))
+@section('title', $faq->question . ' — ' . brand('name'))
 
 @php
     $metaDescription = $faq->has_answer

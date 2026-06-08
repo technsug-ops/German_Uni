@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $config['title'] . '  — ' . brand('name'))
+@section('title', $config['title'] . ' — ' . brand('name'))
 
 <x-seo :title="$config['title']" :description="$config['description']" />
 

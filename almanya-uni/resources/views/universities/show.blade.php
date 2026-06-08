@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', (isset($university) ? $university['name_de'] : __('University')) . '  — ' . brand('name'))
+@section('title', (isset($university) ? $university['name_de'] : __('University')) . ' — ' . brand('name'))
 
 @if (isset($university))
     @php

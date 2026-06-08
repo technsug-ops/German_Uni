@@ -28,7 +28,7 @@
     <x-json-ld :data="$faqSchema" />
 @endif
 
-@section('title', $field->name . ' — ' . __('Studying in Germany') . '  — ' . brand('name'))
+@section('title', $field->name . ' — ' . __('Studying in Germany') . ' — ' . brand('name'))
 @section('meta_description', $description)
 
 @section('content')

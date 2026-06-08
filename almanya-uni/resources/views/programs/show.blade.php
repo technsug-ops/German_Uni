@@ -23,7 +23,7 @@
             ]));
 @endphp
 
-@section('title', $title . '  — ' . brand('name'))
+@section('title', $title . ' — ' . brand('name'))
 
 <x-seo :title="$title" :description="$description" :image="route('og.image', ['type' => 'program', 'slug' => $program->slug . '.png'])" />
 
