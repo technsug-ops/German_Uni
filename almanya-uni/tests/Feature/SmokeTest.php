@@ -166,6 +166,9 @@ class SmokeTest extends TestCase
         $this->actingAs($admin)->get('/admin/news-candidates')->assertStatus(200);
         $this->actingAs($admin)->get('/admin/news-candidates/create')->assertStatus(200);
 
+        // Aboneler — Onayla action + Dil kolonu (Filament 4 closure render kontrolü).
+        $this->actingAs($admin)->get('/admin/subscribers')->assertStatus(200);
+
         // Profil dashboard — journey-progress-card render (Application Tracker promosu).
         $this->actingAs($admin)->get('/profile')->assertStatus(200);
     }

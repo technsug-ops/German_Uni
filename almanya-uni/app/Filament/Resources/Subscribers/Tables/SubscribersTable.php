@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Subscribers\Tables;
 
 use App\Models\Subscriber;
+use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -37,7 +38,9 @@ class SubscribersTable
                 TextColumn::make('language')
                     ->label('Dil')
                     ->badge()
-                    ->formatStateUsing(fn ($s) => strtoupper((string) $s)),
+                    ->placeholder('—')
+                    // Filament 4: closure param $state OLMALI; $s gibi keyfi ad değeri enjekte etmez (boş görünür).
+                    ->formatStateUsing(fn ($state) => $state ? strtoupper((string) $state) : null),
 
                 TextColumn::make('source')
                     ->label('Kaynak')
@@ -89,10 +92,48 @@ class SubscribersTable
                     ->options(fn () => Subscriber::query()->distinct()->pluck('source', 'source')->toArray()),
             ])
             ->recordActions([
+                // ✅ Tek tıkla onay — onay maili gelmeyen aboneyi (double opt-in eksik) elle onaylar.
+                Action::make('confirm')
+                    ->label('Onayla')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->visible(fn ($record) => $record->confirmed_at === null || $record->unsubscribed_at !== null)
+                    ->requiresConfirmation()
+                    ->modalHeading('Aboneyi onayla')
+                    ->modalDescription(fn ($record) => $record->email . ' adresini onaylı (reachable) yapar — digest e-postaları gitmeye başlar.')
+                    ->action(function ($record) {
+                        $record->update([
+                            'confirmed_at' => $record->confirmed_at ?? now(),
+                            'unsubscribed_at' => null,
+                            'unsubscribe_reason' => null,
+                        ]);
+                        Notification::make()->title($record->email . ' onaylandı ✅')->success()->send();
+                    }),
+
                 EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
+                    // ✅ Toplu onay — seçilenleri reachable yapar
+                    BulkAction::make('confirmBulk')
+                        ->label('✅ Onayla')
+                        ->color('success')
+                        ->requiresConfirmation()
+                        ->action(function (Collection $records) {
+                            $count = 0;
+                            foreach ($records as $r) {
+                                if (! $r->confirmed_at || $r->unsubscribed_at) {
+                                    $r->update([
+                                        'confirmed_at' => $r->confirmed_at ?? now(),
+                                        'unsubscribed_at' => null,
+                                        'unsubscribe_reason' => null,
+                                    ]);
+                                    $count++;
+                                }
+                            }
+                            Notification::make()->title("{$count} abone onaylandı ✅")->success()->send();
+                        }),
+
                     BulkAction::make('exportCsv')
                         ->label('📤 CSV indir')
                         ->color('info')
