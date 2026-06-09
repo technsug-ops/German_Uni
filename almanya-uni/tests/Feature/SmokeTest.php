@@ -169,6 +169,9 @@ class SmokeTest extends TestCase
         // Aboneler — Onayla action + Dil kolonu (Filament 4 closure render kontrolü).
         $this->actingAs($admin)->get('/admin/subscribers')->assertStatus(200);
 
+        // Blog Yazıları — Kategori SelectColumn (inline edit; Filament 4 column render kontrolü).
+        $this->actingAs($admin)->get('/admin/posts')->assertStatus(200);
+
         // Profil dashboard — journey-progress-card render (Application Tracker promosu).
         $this->actingAs($admin)->get('/profile')->assertStatus(200);
     }

@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
@@ -35,6 +36,13 @@ class PostsTable
                     ->badge()
                     ->color('gray')
                     ->toggleable(),
+
+                // Kategori — içine girmeden gör + inline değiştir (kaydetme otomatik)
+                SelectColumn::make('category_id')
+                    ->label('Kategori')
+                    ->options(fn () => \App\Models\Category::query()->orderBy('name')->pluck('name', 'id')->toArray())
+                    ->selectablePlaceholder(false)
+                    ->rules(['required']),
 
                 // ── İSTATİSTİKLER ──
                 TextColumn::make('view_count')
