@@ -174,5 +174,8 @@ class SmokeTest extends TestCase
 
         // Profil dashboard — journey-progress-card render (Application Tracker promosu).
         $this->actingAs($admin)->get('/profile')->assertStatus(200);
+
+        // Brief Önerileri (AI) — boş öneri durumunda stats() çağrısı render'ı patlatıyordu.
+        $this->actingAs($admin)->get('/admin/brief-suggester')->assertStatus(200);
     }
 }

@@ -384,35 +384,39 @@ TXT;
             default => $topic,
         };
 
-        $existingFaqs = Faq::query()
-            ->where('is_published', true)
-            ->where('has_answer', true)
-            ->whereHas('topic', fn ($q) => $q->where('slug', $faqTopicSlug))
-            ->orderByDesc('view_count')
-            ->limit(20)
-            ->pluck('question')
-            ->all();
+        try {
+            $existingFaqs = Faq::query()
+                ->where('is_published', true)
+                ->where('has_answer', true)
+                ->whereHas('topic', fn ($q) => $q->where('slug', $faqTopicSlug))
+                ->orderByDesc('view_count')
+                ->limit(20)
+                ->pluck('question')
+                ->all();
 
-        $existingPosts = Post::query()
-            ->published()
-            ->orderByDesc('published_at')
-            ->limit(15)
-            ->pluck('title')
-            ->all();
+            $existingPosts = Post::query()
+                ->published()
+                ->orderByDesc('published_at')
+                ->limit(15)
+                ->pluck('title')
+                ->all();
 
-        $topCities = City::has('universities')
-            ->withCount('universities')
-            ->orderByDesc('universities_count')
-            ->take(5)
-            ->pluck('name_de')
-            ->implode(', ');
+            $topCities = City::has('universities')
+                ->withCount('universities')
+                ->orderByDesc('universities_count')
+                ->take(5)
+                ->pluck('name_de')
+                ->implode(', ');
 
-        $siteStats = [
-            'unis' => University::where('is_official', 1)->count(),
-            'programs' => Program::where('is_active', 1)->count(),
-            'cities' => City::count(),
-            'top_cities' => $topCities,
-        ];
+            $siteStats = [
+                'unis' => University::where('is_official', 1)->count(),
+                'programs' => Program::where('is_active', 1)->count(),
+                'cities' => City::count(),
+                'top_cities' => $topCities,
+            ];
+        } catch (\Throwable $e) {
+            return ['existing_faqs' => [], 'existing_posts' => [], 'site_stats' => []];
+        }
 
         return [
             'existing_faqs' => $existingFaqs,
@@ -641,16 +645,26 @@ TXT;
 
     private function loadCache(): array
     {
-        $path = storage_path('app/' . self::CACHE_PATH);
-        if (!is_file($path)) return ['topics' => []];
-        return json_decode(file_get_contents($path), true) ?? ['topics' => []];
+        try {
+            $path = storage_path('app/' . self::CACHE_PATH);
+            if (!is_file($path) || !is_readable($path)) return ['topics' => []];
+            $decoded = json_decode((string) @file_get_contents($path), true);
+            return is_array($decoded) ? $decoded + ['topics' => []] : ['topics' => []];
+        } catch (\Throwable $e) {
+            return ['topics' => []];
+        }
     }
 
     private function loadForumInsights(): array
     {
-        $path = storage_path('app/' . self::FORUM_CACHE);
-        if (!is_file($path)) return [];
-        return json_decode(file_get_contents($path), true) ?? [];
+        try {
+            $path = storage_path('app/' . self::FORUM_CACHE);
+            if (!is_file($path) || !is_readable($path)) return [];
+            $decoded = json_decode((string) @file_get_contents($path), true);
+            return is_array($decoded) ? $decoded : [];
+        } catch (\Throwable $e) {
+            return [];
+        }
     }
 
     /**
@@ -747,19 +761,34 @@ TXT;
         return array_keys($cache['topics'] ?? []);
     }
 
+    /**
+     * Kaynak veri özeti — ASLA exception fırlatmaz. Dosya yoksa/bozuksa veya DB
+     * erişilemezse her alan 0/güvenli fallback döner (sayfa render'ı patlamaz).
+     */
     public function stats(): array
     {
         $tg = $this->loadCache();
         $fm = $this->loadForumInsights();
+
+        $topics = (array) ($tg['topics'] ?? []);
+
+        $dbCount = function (callable $query): int {
+            try {
+                return (int) $query();
+            } catch (\Throwable $e) {
+                return 0;
+            }
+        };
+
         return [
-            'telegram_topics' => count($tg['topics'] ?? []),
-            'telegram_total_questions' => collect($tg['topics'] ?? [])->sum(fn ($v) => count($v)),
-            'forum_top_topics' => count($fm['top_topics'] ?? []),
-            'forum_trending_keywords' => count($fm['trending_keywords'] ?? []),
-            'forum_categories' => count($fm['category_distribution'] ?? []),
-            'almanyauni_faqs' => Faq::published()->answered()->count(),
-            'almanyauni_posts' => Post::published()->count(),
-            'almanyauni_unis' => University::where('is_official', 1)->count(),
+            'telegram_topics' => count($topics),
+            'telegram_total_questions' => collect($topics)->sum(fn ($v) => is_countable($v) ? count($v) : 0),
+            'forum_top_topics' => count((array) ($fm['top_topics'] ?? [])),
+            'forum_trending_keywords' => count((array) ($fm['trending_keywords'] ?? [])),
+            'forum_categories' => count((array) ($fm['category_distribution'] ?? [])),
+            'almanyauni_faqs' => $dbCount(fn () => Faq::published()->answered()->count()),
+            'almanyauni_posts' => $dbCount(fn () => Post::published()->count()),
+            'almanyauni_unis' => $dbCount(fn () => University::where('is_official', 1)->count()),
         ];
     }
 }

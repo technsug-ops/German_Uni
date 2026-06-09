@@ -20,7 +20,7 @@ use Livewire\Attributes\Url;
 class BriefSuggester extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedLightBulb;
-    protected static ?string $navigationLabel = '🪄 Brief Önerileri (AI)';
+    protected static ?string $navigationLabel = 'Brief Önerileri (AI)';
     protected static ?string $title = 'AI Brief Önerileri';
     protected static ?int $navigationSort = 31;
     protected static string|\UnitEnum|null $navigationGroup = 'İçerik';
@@ -46,6 +46,18 @@ class BriefSuggester extends Page
     public ?array $tokens = null;
 
     public ?string $modelUsed = null;
+
+    /** Kaynak veri özeti — mount'ta güvenli hesaplanır; hata olsa bile sayfa açılır. */
+    public array $sourceStats = [];
+
+    public function mount(): void
+    {
+        try {
+            $this->sourceStats = app(BriefSuggestionService::class)->stats();
+        } catch (\Throwable $e) {
+            $this->sourceStats = [];
+        }
+    }
 
     public function form(Schema $schema): Schema
     {
@@ -93,12 +105,12 @@ class BriefSuggester extends Page
                 ->collapsible()
                 ->components([
                     Textarea::make('extraInstructions')
-                        ->label('⚙️ Ek Talimat (AI\'a yön ver)')
+                        ->label('Ek Talimat (AI\'a yön ver)')
                         ->rows(3)
                         ->placeholder('Örn: "Sayısal data + somut ücret rakamı dahil et", "Gen-Z dili kullan", "Sadece master/PhD odaklı", "Veli için kaygı azaltıcı ton"')
                         ->helperText('Bu talimat AI\'ın tüm önerilerini şekillendirir. Format/ton/derinlik için kullan.'),
                     Toggle::make('liveSearch')
-                        ->label('🌐 Live Google Search (grounding)')
+                        ->label('Live Google Search (grounding)')
                         ->helperText('Aktif edilirse AI gerçek-zamanlı Google sonuçlarına bakarak güncel veri/regülasyon kullanır. Daha yavaş ama güncel.')
                         ->default(false),
                 ]),
@@ -109,7 +121,8 @@ class BriefSuggester extends Page
     {
         return [
             Action::make('generate')
-                ->label('🪄 AI ile Öner')
+                ->label('AI ile Öner')
+                ->icon(Heroicon::OutlinedSparkles)
                 ->color('success')
                 ->size('lg')
                 ->action(function () {
@@ -147,7 +160,8 @@ class BriefSuggester extends Page
                     }
                 }),
             Action::make('refineWithFeedback')
-                ->label('🔁 Önerileri Geliştir')
+                ->label('Önerileri Geliştir')
+                ->icon(Heroicon::OutlinedArrowPath)
                 ->color('warning')
                 ->visible(fn () => !empty($this->suggestions))
                 ->schema([
