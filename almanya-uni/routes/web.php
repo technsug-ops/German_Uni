@@ -171,6 +171,10 @@ $routes = function () {
         Route::get('/sperrkonto/country/{country}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'country'])->name('blocked-account.country');
         Route::get('/sperrkonto/{slug}', [\App\Http\Controllers\Web\BlockedAccountController::class, 'show'])->name('blocked-account.show');
 
+        // Sağlık Sigortası Karşılaştırma (GKV / PKV / Expat) — fintech bundle boşluğu
+        Route::get('/health-insurance', [\App\Http\Controllers\Web\HealthInsuranceController::class, 'index'])->name('health-insurance');
+        Route::get('/health-insurance/{slug}', [\App\Http\Controllers\Web\HealthInsuranceController::class, 'show'])->name('health-insurance.show');
+
         // Professional Recognition (Mesleki Denklik) — Euroversity insight
         Route::match(['get', 'post'], '/professional-recognition', [ToolsController::class, 'professionalRecognition'])
             ->name('professional-recognition');
@@ -188,6 +192,8 @@ $routes = function () {
     Route::redirect('/tools/vize-randevu', '/tools/visa-appointment', 301);
     Route::redirect('/araclar/vize-randevu', '/tools/visa-appointment', 301);
     Route::redirect('/tools/dil-sertifikalari', '/tools/language-certificates', 301);
+    Route::redirect('/tools/saglik-sigortasi', '/tools/health-insurance', 301);
+    Route::redirect('/araclar/saglik-sigortasi', '/tools/health-insurance', 301);
 
     // University Reviews — UGC + helpful votes (i18n)
     Route::post('/universities/{uniSlug}/reviews', [\App\Http\Controllers\Web\UniversityReviewController::class, 'store'])

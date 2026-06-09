@@ -37,6 +37,22 @@ class ToolsController extends Controller
                 'live'        => true,
             ],
             [
+                'slug'        => 'eligibility-checker',
+                'title'       => __('Eligibility Checker'),
+                'description' => __('Is your diploma recognized in Germany? Anabin-based check for 15 countries — direct entry, Studienkolleg, or APS.'),
+                'icon'        => '✅',
+                'route'       => route('tools.eligibility-checker'),
+                'live'        => true,
+            ],
+            [
+                'slug'        => 'studienkolleg',
+                'title'       => __('Studienkolleg Finder'),
+                'description' => __('Foundation-year programs for students whose diploma is not directly recognized. Filter by type and state.'),
+                'icon'        => '📚',
+                'route'       => route('tools.studienkolleg'),
+                'live'        => true,
+            ],
+            [
                 'slug'        => 'uni-onerisi',
                 'title'       => __('University Match Quiz'),
                 'description' => __('8 questions → the German universities that fit you best.'),
@@ -82,6 +98,14 @@ class ToolsController extends Controller
                 'description' => __('Compare blocked account providers for the Germany student visa. Price, speed, insurance combo.'),
                 'icon'        => '🏦',
                 'route'       => route('tools.blocked-account'),
+                'live'        => true,
+            ],
+            [
+                'slug'        => 'health-insurance',
+                'title'       => __('Health Insurance Comparison'),
+                'description' => __('Public (GKV) vs private vs expat insurance for students. Price, visa acceptance, enrolment validity side by side.'),
+                'icon'        => '🩺',
+                'route'       => route('tools.health-insurance'),
                 'live'        => true,
             ],
             [
