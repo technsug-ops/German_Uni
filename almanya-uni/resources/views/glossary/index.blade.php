@@ -34,7 +34,6 @@
                title="{{ $entry['title'] }} — {{ __('Glossary') }}"
                class="group block bg-white border border-gray-200 hover:border-indigo-400 hover:shadow-lg rounded-2xl p-6 transition">
                 <div class="flex items-start gap-4">
-                    <span class="text-4xl shrink-0">{{ $entry['icon'] }}</span>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-xl font-bold text-gray-900 group-hover:text-indigo-700 leading-tight mb-2">
                             {{ $entry['title'] }}
