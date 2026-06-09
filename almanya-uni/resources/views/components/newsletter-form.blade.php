@@ -63,6 +63,19 @@
             </button>
         </div>
 
+        {{-- Bülten dili — kullanıcı seçer (yoksa sayfa dili). Bülten BU dilde gönderilir. --}}
+        <div class="flex items-center gap-2 text-sm {{ $variant === 'dark' ? 'text-primary-100' : 'text-gray-700' }}">
+            <label for="{{ $formId }}-lang" class="shrink-0 font-medium">{{ __('Newsletter language') }}:</label>
+            <select id="{{ $formId }}-lang" name="language"
+                    class="px-3 py-2 rounded-lg border text-gray-900 bg-white {{ $variant === 'dark' ? 'border-white/30' : 'border-gray-300' }} focus:outline-none focus:ring-2 focus:ring-primary-500">
+                @foreach (config('locale.locales', []) as $code => $cfg)
+                    @if ($cfg['active'] ?? false)
+                        <option value="{{ $code }}" @selected(old('language', app()->getLocale()) === $code)>{{ $cfg['native_name'] ?? strtoupper($code) }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+
         <label class="flex items-start gap-2 text-xs cursor-pointer {{ $variant === 'dark' ? 'text-primary-100' : 'text-gray-600' }}">
             <input type="checkbox" name="gdpr_consent" value="1" required
                    class="mt-0.5 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">

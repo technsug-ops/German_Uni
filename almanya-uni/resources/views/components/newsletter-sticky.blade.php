@@ -91,6 +91,17 @@
                 </button>
             </div>
 
+            <div class="flex items-center gap-2 text-[11px] text-indigo-100">
+                <label for="nls-lang" class="shrink-0">{{ __('Newsletter language') }}:</label>
+                <select id="nls-lang" name="language" class="px-2 py-1.5 rounded-lg bg-white text-gray-900 text-sm ring-1 ring-white/25 focus:outline-none">
+                    @foreach (config('locale.locales', []) as $code => $cfg)
+                        @if ($cfg['active'] ?? false)
+                            <option value="{{ $code }}" @selected(app()->getLocale() === $code)>{{ $cfg['native_name'] ?? strtoupper($code) }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
             <label class="flex items-start gap-2 text-[11px] text-indigo-100 cursor-pointer">
                 <input type="checkbox" name="gdpr_consent" value="1" required class="mt-0.5 rounded">
                 <span>{{ __('I consent to receive newsletter emails.') }}</span>

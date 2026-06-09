@@ -21,12 +21,16 @@ class NewsletterController extends Controller
      */
     public function subscribe(Request $request): JsonResponse|RedirectResponse
     {
+        // Aktif diller — abone formundaki dil seçici yalnızca bunları kabul eder
+        $activeLocales = array_keys(array_filter(config('locale.locales', []), fn ($l) => $l['active'] ?? false));
+
         $data = $request->validate([
             // NOT: 'dns' doğrulaması shared hosting'de canlı DNS sorgusu yapar → yavaş/timeout
             // riskine girer (gateway 500 "Server Error"). RFC format kontrolü yeterli.
             'email'           => ['required', 'email:rfc', 'max:191'],
             'name'            => ['nullable', 'string', 'max:100'],
             'source'          => ['nullable', 'string', 'max:50'],
+            'language'        => ['nullable', 'string', \Illuminate\Validation\Rule::in($activeLocales)],
             'website'         => ['nullable', 'max:0'],  // 🍯 honeypot — bot doldurursa max=0 fail
             'gdpr_consent'    => ['accepted'],
             'captcha_answer'  => ['required', new \App\Rules\MathCaptchaRule()],
@@ -62,7 +66,8 @@ class NewsletterController extends Controller
             ['email' => $email],
             [
                 'name'             => $data['name'] ?? null,
-                'language'         => app()->getLocale(),
+                // Kullanıcının seçtiği dil (geçerliyse), yoksa sayfa dili — bülten BU dilde gider
+                'language'         => in_array($data['language'] ?? null, $activeLocales, true) ? $data['language'] : app()->getLocale(),
                 'source'           => $data['source'] ?? 'unknown',
                 'referrer_url'    => $request->headers->get('referer'),
                 'confirmed_at'    => null,
