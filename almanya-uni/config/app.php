@@ -65,7 +65,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // Tüm site Berlin saatiyle çalışır (now(), Carbon, zamanlama, popup/event tarihleri).
+    // Laravel 11 default'u 'UTC' hardcoded'dı → APP_TIMEZONE env'i okumuyordu.
+    'timezone' => env('APP_TIMEZONE', 'Europe/Berlin'),
 
     /*
     |--------------------------------------------------------------------------
