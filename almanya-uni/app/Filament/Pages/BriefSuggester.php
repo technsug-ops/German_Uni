@@ -81,6 +81,7 @@ class BriefSuggester extends Page
                             'studienkolleg' => 'Studienkolleg (433)',
                             'denklik' => 'Denklik (432)',
                             'is' => 'İş & Werkstudent (430)',
+                            'kariyer' => 'Almanya\'da Kariyer (31)',
                             'anmeldung' => 'Anmeldung (407)',
                             'burs' => 'Burs (264)',
                         ]),

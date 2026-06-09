@@ -61,6 +61,18 @@ class CommunityPrepareTelegram extends Command
                 ->reject(fn ($t) => str_starts_with($t, 'doktor_'))
                 ->all();
 
+            // 'kariyer' topic'i: kaynak JSON'da hazır etiket YOK → metin keyword'üyle
+            // sınıflandır (kullanıcı isteği "Almanya'da kariyer": mezuniyet-sonrası kariyer,
+            // sektörler, maaş, iş imkanı). Bir mesaj birden çok topic'e girebilir (mevcut
+            // davranış) → kariyer EK etiket olur, diğer topic'lerle aynı şekilde cache'lenir.
+            $lc = mb_strtolower($text);
+            foreach (['kariyer', 'karriere', 'sektör', 'maaş', 'gehalt', 'iş imkan', 'iş bulma', 'çalışma alanı', 'mezuniyet sonra', 'mezun olduktan', 'kariyer fırsat', 'hangi sektör', 'iş hayat', 'kariyer yap'] as $ck) {
+                if (mb_strpos($lc, $ck) !== false) {
+                    $topics[] = 'kariyer';
+                    break;
+                }
+            }
+
             if (empty($topics)) continue;
 
             foreach ($topics as $topic) {
