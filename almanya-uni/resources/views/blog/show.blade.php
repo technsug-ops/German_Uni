@@ -160,6 +160,15 @@
                 </div>
             </div>
 
+            {{-- Mobil scroll ipucu: yazının devamı aşağıda. Kullanıcılar excerpt'i okuyup
+                 tıklama eğilimindeydi, kaydırmayı atlıyordu (geri bildirim). Sadece mobil. --}}
+            <div class="md:hidden flex flex-col items-center gap-1 mb-6 text-gray-400" aria-hidden="true">
+                <span class="text-xs font-medium tracking-wide uppercase">{{ __('Continue reading') }}</span>
+                <svg class="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+
             @php
                 $featured = $post->featured_image
                     ? (str_starts_with($post->featured_image, 'http') ? $post->featured_image : asset('storage/' . ltrim($post->featured_image, '/')))
