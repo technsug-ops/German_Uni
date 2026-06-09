@@ -467,6 +467,7 @@ Route::get('/_system/render-blog-html', function (\Illuminate\Http\Request $requ
     $args = array_filter([
         '--apply' => $request->boolean('apply') ?: null,
         '--id'    => $request->integer('id') ?: null,
+        '--force' => $request->boolean('force') ?: null, // dolu content_html'leri de re-render (i18n temizliği)
     ]);
     try {
         \Illuminate\Support\Facades\Artisan::call('blog:render-html', $args);

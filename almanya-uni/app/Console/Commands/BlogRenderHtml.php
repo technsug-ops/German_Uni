@@ -23,13 +23,14 @@ use Illuminate\Support\Facades\DB;
  */
 class BlogRenderHtml extends Command
 {
-    protected $signature = 'blog:render-html {--apply : değişiklikleri uygula (yoksa dry-run)} {--id= : sadece tek bir post id}';
+    protected $signature = 'blog:render-html {--apply : değişiklikleri uygula (yoksa dry-run)} {--id= : sadece tek bir post id} {--force : content_html dolu olsa bile yeniden render et (re-autolink — i18n temizliği için)}';
 
     protected $description = 'content_html boş yazıları content_md\'den render edip backfill et (mutator ile aynı pipeline)';
 
     public function handle(MarkdownRenderer $renderer, BlogAutoLinker $linker): int
     {
         $apply = (bool) $this->option('apply');
+        $force = (bool) $this->option('force'); // dolu content_html'leri de yeniden render et (re-autolink)
 
         $query = Post::query()
             ->whereNotNull('content_md')->where('content_md', '!=', '');
@@ -45,14 +46,17 @@ class BlogRenderHtml extends Command
         $rows = [];
 
         foreach ($posts as $post) {
-            // Yalnızca content_html'i gerçekten boş olanları hedefle (kısa ama dolu olanlara dokunma).
-            if (trim(strip_tags((string) $post->content_html)) !== '') {
+            // Varsayılan: yalnızca content_html'i boş olanları backfill et. --force ile dolu
+            // olanlar da yeniden render edilir (i18n re-autolink: DE/EN'den Türkçe glossary söker).
+            if (! $force && trim(strip_tags((string) $post->content_html)) !== '') {
                 $skipped++;
                 continue;
             }
 
             $html = $renderer->render((string) $post->content_md);
-            $html = $linker->process($html, excludeUrl: null, resetCounters: true);
+            // ÖNEMLİ: post'un kendi locale'ini geçir → TR'de glossary eklenir, EN/DE'de eklenmez.
+            // (Bu olmadan endpoint context'inde app locale kullanılır = yanlış dil.)
+            $html = $linker->process($html, excludeUrl: null, resetCounters: true, locale: $post->locale);
 
             if (trim(strip_tags($html)) === '') {
                 // markdown render hâlâ boş → veri sorunlu, atla (sessizce gömme)
