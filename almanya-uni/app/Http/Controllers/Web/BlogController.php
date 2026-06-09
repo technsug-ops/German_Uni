@@ -17,7 +17,7 @@ class BlogController extends Controller
         $filters = $this->parseFilters($request);
 
         $query = Post::published()->blogType()
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category']);
+            ->with(['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'coAuthor:id,name,slug,avatar_url,role_label,role_label_en,role_label_de', 'category']);
 
         $this->applyFilters($query, $filters);
 
@@ -109,13 +109,13 @@ class BlogController extends Controller
             ->withCount(['posts' => fn ($q) => $q->where('is_published', true)->where('locale', app()->getLocale())])
             ->having('posts_count', '>', 0)
             ->orderByDesc('posts_count')
-            ->get(['id', 'name', 'slug', 'avatar_url', 'role_label']);
+            ->get(['id', 'name', 'slug', 'avatar_url', 'role_label', 'role_label_en', 'role_label_de']);
     }
 
     public function show(string $slug): View
     {
         $post = Post::published()
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'category', 'approvedComments'])
+            ->with(['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'category', 'approvedComments'])
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -203,7 +203,7 @@ class BlogController extends Controller
 
         $query = Post::published()->blogType()
             ->where('category_id', $category->id)
-            ->with(['author:id,name,slug,avatar_url,role_label,bio,social_links', 'coAuthor:id,name,slug,avatar_url,role_label', 'category']);
+            ->with(['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'coAuthor:id,name,slug,avatar_url,role_label,role_label_en,role_label_de', 'category']);
 
         $this->applyFilters($query, $filters);
 
@@ -220,7 +220,7 @@ class BlogController extends Controller
             'searchQ' => $filters['q'],
             'page_title' => $filters['q'] !== '' ? __('Search in :cat:', ['cat' => $category->name]) . ' ' . $filters['q'] : $category->name,
             'page_description' => $category->description
-                ?: ($category->name . ' kategorisindeki tüm yazılar.'),
+                ?: __('All articles in the :category category.', ['category' => $category->name]),
         ]);
     }
 

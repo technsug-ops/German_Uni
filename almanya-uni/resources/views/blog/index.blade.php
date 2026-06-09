@@ -6,8 +6,8 @@
 
 @if (!empty($active_category))
     <x-json-ld :data="\App\Support\Seo::breadcrumbs([
-        ['name' => 'Ana Sayfa', 'url' => route('home')],
-        ['name' => 'Blog', 'url' => route('blog.index')],
+        ['name' => __('Home'), 'url' => route('home')],
+        ['name' => __('Blog'), 'url' => route('blog.index')],
         ['name' => $active_category->name, 'url' => route('blog.category', $active_category->slug)],
     ])" />
 @endif
