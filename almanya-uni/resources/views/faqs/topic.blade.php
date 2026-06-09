@@ -42,9 +42,14 @@
 @endif
 
 @section('content')
-<div class="bg-gradient-to-r text-white py-10"
-     style="background: linear-gradient(to right, {{ $topic->color ?? '#1E40AF' }}, {{ $topic->color ?? '#1E40AF' }}DD);">
-    <div class="max-w-[1400px] mx-auto px-4">
+<div class="relative text-white py-12 overflow-hidden">
+    @if ($topic->image_url)
+        <img src="{{ $topic->image_url }}" alt="" loading="eager" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0" style="background: linear-gradient(to right, {{ $topic->color ?? '#1E40AF' }}E6, {{ $topic->color ?? '#1E40AF' }}B3);"></div>
+    @else
+        <div class="absolute inset-0" style="background: linear-gradient(to right, {{ $topic->color ?? '#1E40AF' }}, {{ $topic->color ?? '#1E40AF' }}DD);"></div>
+    @endif
+    <div class="relative max-w-[1400px] mx-auto px-4">
         <nav class="text-sm opacity-80 mb-3">
             <a href="{{ route('faqs.index') }}" class="hover:opacity-100">← {{ __('All FAQ') }}</a>
         </nav>

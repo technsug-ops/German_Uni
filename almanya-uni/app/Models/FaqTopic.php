@@ -21,6 +21,7 @@ class FaqTopic extends Model
         'icon',
         'description',
         'color',
+        'image_url',
         'pool_size',
         'sort_order',
         'is_active',
