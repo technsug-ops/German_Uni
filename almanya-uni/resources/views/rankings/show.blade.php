@@ -105,12 +105,12 @@
                             @endif
                             @if ($uni['founded_year'])
                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-50 text-gray-600 text-[11px] font-semibold ring-1 ring-gray-100">
-                                    🏛️ {{ $uni['founded_year'] }}
+                                    {{ $uni['founded_year'] }}
                                 </span>
                             @endif
                             @if (!empty($uni['student_count']) && !$showQsBreakdown)
                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-50 text-gray-600 text-[11px] font-semibold ring-1 ring-gray-100">
-                                    👥 {{ number_format($uni['student_count'], 0, ',', '.') }}
+                                    {{ number_format($uni['student_count'], 0, ',', '.') }}
                                 </span>
                             @endif
                         </div>
@@ -125,7 +125,7 @@
                                     <span class="text-[9px] text-gray-400 uppercase tracking-wide">{{ __('Overall') }}</span>
                                 </div>
                             </div>
-                            <p class="text-[10px] text-emerald-700 font-bold mt-1.5">🌐 QS #{{ $uni['qs_world_rank'] }}</p>
+                            <p class="text-[10px] text-emerald-700 font-bold mt-1.5">QS #{{ $uni['qs_world_rank'] }}</p>
                         </div>
                     @else
                         <div class="shrink-0 text-right">
@@ -204,7 +204,7 @@
             <div class="mt-4 text-center">
                 <a href="{{ route('rankings.methodology', $config['slug']) }}"
                    class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">
-                    📐 {{ __('Full methodology page') }} →
+                    {{ __('Full methodology page') }} →
                 </a>
             </div>
         @endif

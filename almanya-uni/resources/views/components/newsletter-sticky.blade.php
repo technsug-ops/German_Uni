@@ -34,7 +34,6 @@
     <div class="pointer-events-auto max-w-3xl mx-auto bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white rounded-2xl shadow-2xl ring-1 ring-white/10 overflow-hidden"
          x-show="!expanded">
         <div class="flex items-center gap-3 p-3 md:p-4">
-            <div class="hidden sm:flex w-10 h-10 rounded-xl bg-white/15 backdrop-blur items-center justify-center text-xl shrink-0">📬</div>
             <div class="flex-1 min-w-0">
                 <p class="font-bold text-sm md:text-base leading-tight">
                     {{ __('Weekly Germany guide — 1–2 emails/week, no spam.') }}
@@ -67,7 +66,7 @@
             aria-label="{{ __('Close') }}"
         >×</button>
 
-        <p class="font-extrabold text-base md:text-lg mb-1 flex items-center gap-2">📬 {{ __('Weekly Germany guide delivered to your inbox') }}</p>
+        <p class="font-extrabold text-base md:text-lg mb-1 flex items-center gap-2">{{ __('Weekly Germany guide delivered to your inbox') }}</p>
         <p class="text-xs text-indigo-100 mb-3">{{ __('No spam. Unsubscribe anytime.') }}</p>
 
         <form method="POST" action="{{ route('newsletter.subscribe') }}" class="space-y-2" @submit.prevent="submit($event)" x-ref="form">

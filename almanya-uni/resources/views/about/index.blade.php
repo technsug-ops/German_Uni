@@ -165,7 +165,7 @@
                     <div class="flex flex-wrap gap-2">
                         @foreach ($m['social'] as $s)
                             <a href="{{ $s['url'] }}" class="inline-flex items-center gap-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 px-2.5 py-1 rounded transition">
-                                <span>{{ $s['icon'] }}</span> <span>{{ $s['label'] }}</span>
+                                <span>{{ $s['label'] }}</span>
                             </a>
                         @endforeach
                     </div>

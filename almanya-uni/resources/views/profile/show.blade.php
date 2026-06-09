@@ -236,7 +236,7 @@
                 <div class="flex items-center gap-2 mb-2">
                     <span class="text-xs font-semibold uppercase tracking-wider text-{{ $levelColor }}-700">{{ __('AlmanyaUni Score') }}</span>
                     <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-{{ $levelColor }}-100 text-{{ $levelColor }}-700 text-xs font-bold">
-                        {{ $level['emoji'] }} {{ $level['name'] }}
+                        {{ $level['name'] }}
                     </span>
                 </div>
 
@@ -280,7 +280,7 @@
                         @foreach ($badges as $b)
                             <span title="{{ $b['desc'] }}"
                                   class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gray-50 ring-1 ring-gray-200 text-xs font-medium hover:bg-amber-50 hover:ring-amber-300 transition">
-                                {{ $b['emoji'] }} {{ $b['name'] }}
+                                {{ $b['name'] }}
                             </span>
                         @endforeach
                     </div>
@@ -491,7 +491,7 @@
 
         <section class="bg-white border border-gray-200 rounded-xl p-6">
             @if (app()->getLocale() === 'tr')
-                <h2 class="text-lg font-bold text-gray-900 mb-1">🇹🇷 {{ __('Turkish Student Information') }}</h2>
+                <h2 class="text-lg font-bold text-gray-900 mb-1">{{ __('Turkish Student Information') }}</h2>
             @else
                 <h2 class="text-lg font-bold text-gray-900 mb-1 inline-flex items-center gap-1.5">
                     <x-svg-icon name="academic-cap" class="w-5 h-5" />

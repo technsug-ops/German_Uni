@@ -116,7 +116,7 @@
                     </a>
                 @endif
                 @if ($item->phone)
-                    <a href="tel:{{ $item->phone }}" class="block text-center border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg px-4 py-2 mb-3 text-sm">📞 {{ $item->phone }}</a>
+                    <a href="tel:{{ $item->phone }}" class="block text-center border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg px-4 py-2 mb-3 text-sm">{{ $item->phone }}</a>
                 @endif
 
                 @include('partners._lead_form', ['kind' => $kind, 'item' => $item])

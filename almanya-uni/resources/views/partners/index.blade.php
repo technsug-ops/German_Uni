@@ -13,7 +13,7 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ $title }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-3">{{ $icon }} {{ $title }}</h1>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-3">{{ $title }}</h1>
         <p class="text-lg text-indigo-100 max-w-3xl">{{ $intro }}</p>
     </div>
 </section>
@@ -28,21 +28,20 @@
         @foreach ($types as $key => $meta)
             <a href="{{ route($indexRoute, ['type' => $key]) }}"
                class="px-3 py-1.5 rounded-lg text-sm font-medium border {{ $activeType === $key ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50' }}">
-                {{ $meta['emoji'] }} {{ $meta['label'] }}
+                {{ $meta['label'] }}
             </a>
         @endforeach
     </div>
 
     @if ($items->isEmpty())
         <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-10 text-center">
-            <div class="text-4xl mb-2">{{ $icon }}</div>
             <p class="text-gray-700 font-semibold">{{ __('Listings are coming soon.') }}</p>
             <p class="text-gray-500 text-sm mt-1">{{ __('We are curating trusted providers. Check back shortly.') }}</p>
         </div>
     @else
         @foreach ($grouped as $type => $group)
             <h2 class="text-lg font-bold text-gray-800 mt-8 mb-3 flex items-center gap-2">
-                <span>{{ $types[$type]['emoji'] ?? '' }}</span> {{ $types[$type]['label'] ?? $type }}
+                {{ $types[$type]['label'] ?? $type }}
                 <span class="text-sm font-normal text-gray-400">({{ $group->count() }})</span>
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

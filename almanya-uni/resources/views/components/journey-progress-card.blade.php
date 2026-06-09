@@ -15,9 +15,9 @@
             </div>
             <h2 class="text-xl md:text-2xl font-extrabold">{{ $jDone }}/{{ $jTotal }} {{ __('steps complete') }}</h2>
             @if ($jNext)
-                <p class="text-primary-100 text-sm mt-1">{{ __('Next') }}: {{ $jNext['emoji'] }} {{ __($jNext['title']) }}</p>
+                <p class="text-primary-100 text-sm mt-1">{{ __('Next') }}: {{ __($jNext['title']) }}</p>
             @else
-                <p class="text-primary-100 text-sm mt-1">🎉 {{ __('All steps complete!') }}</p>
+                <p class="text-primary-100 text-sm mt-1">{{ __('All steps complete!') }}</p>
             @endif
         </div>
         <a href="{{ route('journey.show') }}"

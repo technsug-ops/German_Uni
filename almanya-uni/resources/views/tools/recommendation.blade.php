@@ -357,7 +357,6 @@
 
     {{-- KİŞİLİK KARTI --}}
     <section class="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white rounded-2xl p-6 md:p-10 mb-6 shadow-xl text-center">
-        <div class="text-6xl md:text-8xl mb-3 animate-bounce">{{ $result['personality']['emoji'] }}</div>
         <p class="text-xs font-bold uppercase tracking-widest text-indigo-200 mb-1">{{ __('Your type') }}</p>
         <h2 class="text-3xl md:text-5xl font-extrabold mb-3">{{ $result['personality']['title'] }}</h2>
         <p class="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto">{{ $result['personality']['description'] }}</p>
@@ -460,7 +459,6 @@
                                     <ul class="space-y-1.5 text-sm text-gray-700">
                                         @foreach ($uni['reasons'] as $r)
                                             <li class="flex items-start gap-2">
-                                                <span class="flex-shrink-0">{{ $r['icon'] }}</span>
                                                 <span>{{ $r['text'] }}</span>
                                             </li>
                                         @endforeach

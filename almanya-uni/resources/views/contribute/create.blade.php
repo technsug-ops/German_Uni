@@ -13,7 +13,7 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ __('Share Experience') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-2">🌱 {{ __('Share Your Experience') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-2">{{ __('Share Your Experience') }}</h1>
         <p class="text-emerald-50 max-w-2xl">
             {!! __('What you learned on your Germany journey will guide another student. Once approved, you earn the <strong class="text-white">"Community Contributor"</strong> badge on your profile.') !!}
         </p>
@@ -77,7 +77,7 @@
         @endif
 
         <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-lg transition shadow-md">
-            🙌 {{ __('Submit My Contribution') }}
+            {{ __('Submit My Contribution') }}
         </button>
         <p class="text-xs text-gray-500">{{ __('Published after editor approval. Spam/ad content will not be approved.') }}</p>
     </form>

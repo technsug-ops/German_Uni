@@ -33,7 +33,7 @@
     <div class="max-w-4xl mx-auto px-4">
         <header class="mb-6">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
-                💬 {{ __('Student Reviews') }}
+                {{ __('Student Reviews') }}
             </h2>
             <p class="text-gray-600 mt-1">
                 {{ __('Verified reviews from current students, alumni and applicants.') }}
@@ -141,7 +141,7 @@
         @if ($uniSlug)
         <details class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm" {{ session('errors') && session('errors')->any() ? 'open' : '' }}>
             <summary class="cursor-pointer font-bold text-gray-900 flex items-center justify-between">
-                <span>✍️ {{ __('Write a review about :uni', ['uni' => $uniName]) }}</span>
+                <span>{{ __('Write a review about :uni', ['uni' => $uniName]) }}</span>
                 <span class="text-primary-600 text-sm font-semibold">{{ __('Open form') }} ↓</span>
             </summary>
 

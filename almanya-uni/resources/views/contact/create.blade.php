@@ -13,7 +13,7 @@
             <span class="mx-2 opacity-60">›</span>
             <span class="text-white">{{ __('Contact') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-2">✉️ {{ __('Contact Us') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow mb-2">{{ __('Contact Us') }}</h1>
         <p class="text-primary-50 max-w-2xl">
             {{ __('A question, a partnership idea, or want to help translate or develop? Write to us — we reply by email.') }}
         </p>

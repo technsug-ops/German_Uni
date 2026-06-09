@@ -222,7 +222,6 @@
                                                 @foreach ($u['top_fields'] as $f)
                                                     <a href="{{ route('fields.show', $f['slug']) }}"
                                                        class="inline-flex items-center gap-1.5 text-xs text-gray-700 hover:text-primary-600 transition">
-                                                        <span>{{ $f['icon'] ?: '' }}</span>
                                                         <span class="font-medium">{{ $f['name'] }}</span>
                                                         <span class="text-gray-400">({{ $f['count'] }})</span>
                                                     </a>

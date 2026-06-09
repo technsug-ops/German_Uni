@@ -18,7 +18,7 @@
             <span class="text-white">{{ __('Study in Germany') }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-4">
-            🇩🇪 {{ __('Why Study in Germany?') }}
+            {{ __('Why Study in Germany?') }}
         </h1>
         <p class="text-lg md:text-xl text-primary-50 max-w-3xl leading-relaxed">
             @if (app()->getLocale() === 'tr')
@@ -213,7 +213,7 @@
     {{-- TR: Türk öğrenci topluluğu --}}
     <section class="bg-gradient-to-r from-red-600 to-rose-500 text-white py-14">
         <div class="max-w-[1400px] mx-auto px-4">
-            <h2 class="text-2xl md:text-4xl font-bold mb-4">🇹🇷 Almanya'daki Türk Topluluğu</h2>
+            <h2 class="text-2xl md:text-4xl font-bold mb-4">Almanya'daki Türk Topluluğu</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div class="bg-white/15 backdrop-blur rounded-lg p-5">
                     <p class="text-3xl font-bold mb-1">3M+</p>
@@ -279,7 +279,6 @@
         @if (app()->getLocale() === 'tr')
             <a href="{{ route('rankings.show', 'turk-ogrenci-favorisi-universiteler') }}"
                class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-xl p-6 text-center">
-                <div class="text-4xl mb-3">🇹🇷</div>
                 <h3 class="font-bold text-gray-900 mb-1">{{ __('Turkish Student Favorites') }}</h3>
                 <p class="text-sm text-gray-600">{{ __('uni-assist + English programs + size weighted list') }}</p>
             </a>

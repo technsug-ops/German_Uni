@@ -83,7 +83,7 @@
                             <div class="flex items-center gap-3 mt-2 text-sm">
                                 <span class="font-mono text-emerald-700">€{{ number_format($p->first_year_cost_eur ?? 0, 0, ',', '.') }}</span>
                                 @if ($p->activation_days_max)
-                                    <span class="text-gray-500">⚡ {{ $p->activation_days_max }} {{ __('days') }}</span>
+                                    <span class="text-gray-500">{{ $p->activation_days_max }} {{ __('days') }}</span>
                                 @endif
                                 @if ($p->combo_insurance)
                                     <span class="bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded text-xs font-semibold">{{ __('+ Insurance') }}</span>
@@ -124,7 +124,7 @@
        class="block bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-2xl p-6 mb-12 hover:shadow-lg transition">
         <div class="flex items-center justify-between gap-4">
             <div>
-                <p class="text-2xl font-bold">🧮 {{ __('Calculate your total cost') }}</p>
+                <p class="text-2xl font-bold">{{ __('Calculate your total cost') }}</p>
                 <p class="text-emerald-100 text-sm mt-1">{{ __('Pick duration, provider, insurance — see total in seconds.') }}</p>
             </div>
             <span class="text-3xl">→</span>

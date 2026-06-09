@@ -68,7 +68,7 @@
 
         <div class="flex items-center gap-2 mb-3 flex-wrap">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 text-sm">
-                {{ $event->type_emoji }} {{ $event->type_label }}
+                {{ $event->type_label }}
             </span>
             @if ($event->is_live)
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500 text-white text-xs font-bold uppercase">

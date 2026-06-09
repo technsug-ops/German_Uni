@@ -345,7 +345,7 @@
                                 <div class="flex flex-wrap gap-2 text-xs">
                                     @if ($p->field)
                                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white" style="background-color: {{ $p->field->color }}">
-                                            {{ $p->field->icon }} {{ $p->field->name_tr }}
+                                            {{ $p->field->name_tr }}
                                         </span>
                                     @endif
                                     @if ($p->duration_semesters)

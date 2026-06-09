@@ -108,7 +108,7 @@
                         <div class="flex-1 min-w-0">
                             <p class="font-semibold">{{ $cand['name_de'] }}</p>
                             <p class="text-sm text-gray-600">
-                                📍 {{ $cand['city_name'] ?? '-' }}@if (!empty($cand['state_name'])), {{ $cand['state_name'] }}@endif
+                                {{ $cand['city_name'] ?? '-' }}@if (!empty($cand['state_name'])), {{ $cand['state_name'] }}@endif
                             </p>
                         </div>
                         @if ($can_add_more)

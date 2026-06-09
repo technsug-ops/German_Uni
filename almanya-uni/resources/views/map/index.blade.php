@@ -51,7 +51,7 @@
      data-locale-prefix="{{ app()->getLocale() === config('locale.default') ? '' : '/'.app()->getLocale() }}"
      id="mapI18n">
     <div class="max-w-[1400px] mx-auto px-4">
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">🗺️ {{ __('Universities Map') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">{{ __('Universities Map') }}</h1>
         <p class="text-primary-100 max-w-3xl">
             {!! __('Explore <strong>:n</strong> universities in Germany on the map. Click, jump to the detail page, compare.', ['n' => $stats['total']]) !!}
         </p>
@@ -63,7 +63,7 @@
     <div class="bg-white border border-gray-200 rounded-lg p-4 mb-5 space-y-3">
         <div class="flex flex-wrap items-end gap-3">
             <div class="flex-1 min-w-[200px]">
-                <label for="filter-q" class="block text-xs font-semibold text-gray-600 mb-1">🔍 {{ __('Search university name') }}</label>
+                <label for="filter-q" class="block text-xs font-semibold text-gray-600 mb-1">{{ __('Search university name') }}</label>
                 <input type="text" id="filter-q" placeholder="TUM, Heidelberg, RWTH..."
                        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary-500 focus:outline-none">
             </div>
@@ -106,15 +106,15 @@
 
             <button type="button" data-size="small"
                     class="size-chip text-xs px-3 py-1.5 rounded-full border bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 transition data-[active=true]:bg-amber-600 data-[active=true]:text-white">
-                🏘️ {{ __('Small (<5K)') }}
+                {{ __('Small (<5K)') }}
             </button>
             <button type="button" data-size="medium"
                     class="size-chip text-xs px-3 py-1.5 rounded-full border bg-orange-50 text-orange-700 border-orange-200 hover:bg-orange-100 transition data-[active=true]:bg-orange-600 data-[active=true]:text-white">
-                🏙️ {{ __('Medium (5K-20K)') }}
+                {{ __('Medium (5K-20K)') }}
             </button>
             <button type="button" data-size="large"
                     class="size-chip text-xs px-3 py-1.5 rounded-full border bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100 transition data-[active=true]:bg-rose-600 data-[active=true]:text-white">
-                🌆 {{ __('Large (>20K)') }}
+                {{ __('Large (>20K)') }}
             </button>
 
             <div class="ml-auto flex items-center gap-3 text-xs text-gray-500">

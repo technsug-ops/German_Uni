@@ -71,7 +71,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
             @if (! empty($popular) && $popular->isNotEmpty())
                 <section class="bg-white border border-gray-200 rounded-xl p-5">
-                    <h2 class="text-lg font-bold text-gray-900 mb-4">🔥 {{ __('Most popular questions') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">{{ __('Most popular questions') }}</h2>
                     <ol class="space-y-2.5">
                         @foreach ($popular as $i => $f)
                             <li>

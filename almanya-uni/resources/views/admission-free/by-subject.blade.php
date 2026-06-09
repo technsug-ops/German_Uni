@@ -18,10 +18,10 @@
             <span>NC Frei</span>
         </nav>
         <span class="inline-block bg-white/15 backdrop-blur border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-            🔓 Zulassungsfrei · Ohne NC
+            Zulassungsfrei · Ohne NC
         </span>
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
-            {{ $field->icon }} {{ $field->name }}: {{ __('NC Frei Programs') }}
+            {{ $field->name }}: {{ __('NC Frei Programs') }}
         </h1>
         <p class="text-lg text-emerald-100 max-w-3xl">
             {{ __('Programs in :field in Germany you can apply to without NC.', ['field' => $field->name]) }}
@@ -36,7 +36,6 @@
         {{-- Data yok — Hochschulkompass'a yönlendir --}}
         <div class="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-8">
             <div class="flex items-start gap-4">
-                <span class="text-4xl flex-shrink-0">🔓</span>
                 <div class="flex-1">
                     <h2 class="text-xl font-bold text-blue-900 mb-2">{{ __('NC Frei (Zulassungsfrei) Data Loading') }}</h2>
                     <p class="text-blue-800 mb-4">
@@ -49,7 +48,7 @@
                         <a href="{{ hochschulkompass_url($field->name, 'zulassungsfrei') }}"
                            target="_blank" rel="noopener"
                            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
-                            🔓 Hochschulkompass: {{ $field->name }} NC Frei →
+                            Hochschulkompass: {{ $field->name }} NC Frei →
                         </a>
                         <a href="{{ route('programs.index', ['field' => $field->slug]) }}"
                            class="inline-block bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold px-5 py-2.5 rounded-lg transition">
@@ -89,7 +88,7 @@
                                 @if ($p->university->city) · {{ $p->university->city->name }} @endif
                             </p>
                             <div class="flex flex-wrap gap-2 mt-2 text-xs">
-                                <span class="inline-block bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">🔓 NC Frei</span>
+                                <span class="inline-block bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">NC Frei</span>
                                 <span class="inline-block text-gray-600">{{ ucfirst($p->degree) }}</span>
                                 @if ($p->language)
                                     <span class="inline-block text-gray-600">{{ strtoupper($p->language) }}</span>

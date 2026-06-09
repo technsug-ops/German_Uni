@@ -121,13 +121,12 @@
         @if (! empty($tools))
             <section id="tools" class="mb-10">
                 <header class="mb-4">
-                    <h2 class="text-lg font-bold text-gray-900">🔧 {{ __('Tools & Calculators') }}</h2>
+                    <h2 class="text-lg font-bold text-gray-900">{{ __('Tools & Calculators') }}</h2>
                 </header>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     @foreach ($tools as $tool)
                         <a href="{{ $tool['url'] }}"
                            class="flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl p-4 transition">
-                            <span class="text-2xl flex-shrink-0">{{ $tool['icon'] }}</span>
                             <span class="font-semibold text-gray-900">{{ $tool['title'] }}</span>
                         </a>
                     @endforeach
@@ -302,7 +301,7 @@
                             @if ($p->field)
                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white text-xs w-fit"
                                       style="background-color: {{ $p->field->color }}">
-                                    {{ $p->field->icon }} {{ $p->field->name_tr }}
+                                    {{ $p->field->name_tr }}
                                 </span>
                             @endif
                         </a>
@@ -336,9 +335,6 @@
                         <a href="{{ route('professions.show', $prof->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 flex flex-col">
                             <div class="flex items-start gap-2 mb-1">
-                                @if ($prof->field?->icon)
-                                    <span class="text-lg shrink-0">{{ $prof->field->icon }}</span>
-                                @endif
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug flex-1">
                                     {{ $prof->name_tr ?: $prof->name }}
                                 </h3>
@@ -446,7 +442,6 @@
                     @foreach ($fields as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-3 flex items-center gap-3">
-                            <span class="text-2xl">{{ $field->icon ?: '' }}</span>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 truncate">{{ $field->name }}</h3>
                                 <p class="text-xs text-gray-500 truncate">{{ $field->name }}</p>

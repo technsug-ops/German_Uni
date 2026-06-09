@@ -47,7 +47,6 @@
     </div>
 
     <div class="bg-gradient-to-br from-primary-50 to-accent-50 border border-primary-200 rounded-lg p-5">
-        <div class="text-2xl mb-2">📬</div>
         <h3 class="font-bold text-lg mb-2 text-gray-900">{{ __('Join the Newsletter') }}</h3>
         <p class="text-sm text-gray-700 mb-4 leading-relaxed">{{ __('Weekly summary, new guides, and application deadlines delivered to your inbox.') }}</p>
         <a href="#newsletter-signup"

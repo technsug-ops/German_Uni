@@ -4,7 +4,7 @@
 
 @if ($methodology)
     <section class="mt-8 bg-white border border-gray-200 rounded-xl p-6">
-        <h3 class="text-lg font-bold text-gray-900 mb-3">📖 {{ $methodology['title'] }}</h3>
+        <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $methodology['title'] }}</h3>
 
         @if (! empty($methodology['intro']))
             <p class="text-sm text-gray-600 mb-4">{{ $methodology['intro'] }}</p>

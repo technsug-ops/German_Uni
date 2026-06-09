@@ -357,14 +357,14 @@
          (bundesweit verisi yoksa chip hiç çıkmaz → "tıkla, 0 sonuç" hayal kırıklığı yok.) --}}
     <div class="bg-blue-50 border-b border-blue-200">
         <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center gap-3 text-sm flex-wrap">
-            <span class="text-blue-900 font-semibold flex-shrink-0">🔓 {{ __('Admission mode') }}:</span>
+            <span class="text-blue-900 font-semibold flex-shrink-0">{{ __('Admission mode') }}:</span>
             @if (($admission_counts['zulassungsfrei'] ?? 0) > 0)
             <a href="{{ request()->fullUrlWithQuery(['admission' => 'zulassungsfrei', 'page' => null]) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'zulassungsfrei'
                             ? 'bg-blue-600 text-white'
                             : 'bg-white border border-blue-300 text-blue-700 hover:bg-blue-100' }}">
-                🔓 {{ __('NC Frei (Zulassungsfrei)') }} ({{ $admission_counts['zulassungsfrei'] }})
+                {{ __('NC Frei (Zulassungsfrei)') }} ({{ $admission_counts['zulassungsfrei'] }})
             </a>
             @endif
             @if (($admission_counts['oertlich'] ?? 0) > 0)
@@ -397,7 +397,6 @@
     {{-- DB'de NC verisi yok — Hochschulkompass'a yönlendir --}}
     <div class="bg-blue-50 border-b border-blue-200">
         <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-start gap-3 text-sm">
-            <span class="text-xl flex-shrink-0">🔓</span>
             <p class="text-blue-900 flex-1">
                 {!! __('<strong>NC status (Zulassungsmodus)</strong> data is not currently stored in our database. Hochschulkompass\'s official <em>Zulassungsmodus</em> filter offers the most up-to-date information:') !!}
             </p>
@@ -405,7 +404,7 @@
                 <a href="{{ hochschulkompass_url($filters['q'] ?: null, 'zulassungsfrei') }}"
                    target="_blank" rel="noopener"
                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap">
-                    🔓 {{ __('NC Frei programs') }} →
+                    {{ __('NC Frei programs') }} →
                 </a>
                 <a href="{{ hochschulkompass_url($filters['q'] ?: null) }}"
                    target="_blank" rel="noopener"

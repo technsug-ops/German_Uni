@@ -42,7 +42,7 @@
             <span class="text-white">{{ __('Methodology') }}</span>
         </nav>
         <h1 class="text-2xl md:text-4xl font-extrabold leading-tight drop-shadow mb-3">
-            📐 {{ $methodology['title'] }}
+            {{ $methodology['title'] }}
         </h1>
         <p class="text-base md:text-lg text-indigo-100 max-w-3xl">{{ $methodology['intro'] }}</p>
     </div>
@@ -54,7 +54,7 @@
         {{-- Indicators table --}}
         <section class="bg-white border border-gray-200 rounded-xl overflow-hidden">
             <div class="bg-gray-50 border-b border-gray-200 px-5 py-3 flex items-center justify-between">
-                <h2 class="text-base font-bold text-gray-900">📊 {{ __('Indicators & weights') }}</h2>
+                <h2 class="text-base font-bold text-gray-900">{{ __('Indicators & weights') }}</h2>
                 <span class="text-xs text-gray-500">{{ count($methodology['indicators']) }} {{ __('indicators') }}</span>
             </div>
 
@@ -93,7 +93,7 @@
 
     {{-- Source + note --}}
     <section class="bg-amber-50 border border-amber-200 rounded-xl p-5">
-        <h2 class="font-bold text-gray-900 mb-1 flex items-center gap-2">📚 {{ $methodology['source_label'] }}</h2>
+        <h2 class="font-bold text-gray-900 mb-1 flex items-center gap-2">{{ $methodology['source_label'] }}</h2>
         @if (str_starts_with($methodology['source_url'] ?? '', 'http'))
             <a href="{{ $methodology['source_url'] }}" target="_blank" rel="noopener noreferrer nofollow"
                class="text-sm text-amber-800 hover:text-amber-900 underline break-all">
@@ -112,7 +112,7 @@
 
     {{-- E-E-A-T explainer — why this matters --}}
     <section class="bg-white border border-gray-200 rounded-xl p-5">
-        <h2 class="font-bold text-gray-900 mb-2">💡 {{ __('Why we publish methodology') }}</h2>
+        <h2 class="font-bold text-gray-900 mb-2">{{ __('Why we publish methodology') }}</h2>
         <div class="text-sm text-gray-700 space-y-2 leading-relaxed">
             <p>{{ __('Every ranking on this site is computed from a public, transparent indicator set. We do not move universities up or down for commercial reasons.') }}</p>
             <p>{{ __('Where the ranking source is external (QS, THE, ARWU), we link to the original methodology document. Where the signal is computed in-house (community mention score, programme count), we explain the inputs end-to-end.') }}</p>

@@ -34,7 +34,7 @@
 @endphp
 
 <div class="{{ $v['wrap'] }}" data-newsletter-form>
-    <h3 class="{{ $v['title'] }}">📬 {{ $heading }}</h3>
+    <h3 class="{{ $v['title'] }}">{{ $heading }}</h3>
     <p class="{{ $v['desc'] }}">{{ $subheading }}</p>
 
     <form id="{{ $formId }}" action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-3" novalidate>

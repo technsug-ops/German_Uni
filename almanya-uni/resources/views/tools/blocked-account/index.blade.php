@@ -269,7 +269,7 @@
                             <h2 class="text-xl font-bold text-gray-900">{{ $p->name }}</h2>
                             <span class="inline-block mt-1 px-2 py-0.5 text-xs font-medium rounded
                                          {{ $p->type === 'fintech' ? 'bg-indigo-50 text-indigo-700' : 'bg-amber-50 text-amber-700' }}">
-                                {{ $p->type_emoji }} {{ $p->type_label }}
+                                {{ $p->type_label }}
                             </span>
                             @if ($p->backend_bank)
                                 <p class="text-xs text-gray-500 mt-1">{{ __('Bank:') }} {{ $p->backend_bank }}</p>
@@ -384,7 +384,7 @@
 
         @if (app()->getLocale() === 'tr')
         <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-            <h2 class="text-xl font-bold text-emerald-900 mb-3">🇹🇷 Türk öğrenciler için</h2>
+            <h2 class="text-xl font-bold text-emerald-900 mb-3">Türk öğrenciler için</h2>
             <ul class="text-emerald-800 text-sm space-y-2 leading-relaxed">
                 <li>• <strong>İstanbul/Ankara Konsolosluğu</strong> tüm büyük sağlayıcıları kabul eder (Expatrio, Fintiba, Coracle, Deutsche Bank).</li>
                 <li>• Online açılabilen FinTech'ler (Expatrio/Fintiba/Coracle) <strong>1-5 gün</strong> içinde aktif olur.</li>

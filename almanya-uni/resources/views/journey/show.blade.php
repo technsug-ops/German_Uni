@@ -50,7 +50,7 @@
             </div>
             @if ($current)
                 <p class="text-sm text-primary-100 mt-4 inline-flex items-center gap-1.5 flex-wrap">
-                    <x-svg-icon name="arrow-right" class="w-4 h-4" /> {{ __('Next up:') }} <strong class="text-white">{{ $current['emoji'] }} {{ __($current['title']) }}</strong>
+                    <x-svg-icon name="arrow-right" class="w-4 h-4" /> {{ __('Next up:') }} <strong class="text-white">{{ __($current['title']) }}</strong>
                     <span class="opacity-70">— ~{{ __($current['duration']) }}</span>
                 </p>
             @else
@@ -208,7 +208,7 @@
 
                                 <div class="flex items-baseline justify-between gap-3 flex-wrap mb-1">
                                     <h3 class="font-extrabold text-gray-900 text-base md:text-lg leading-snug">
-                                        <span class="mr-1">{{ $step['emoji'] }}</span>{{ __($step['title']) }}
+                                        {{ __($step['title']) }}
                                         @if ($isCurrent && ! $done)
                                             <span class="ml-1.5 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full text-white"
                                                   style="background: {{ $phase['hex'] }};">{{ __('Current') }}</span>

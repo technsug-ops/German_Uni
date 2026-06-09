@@ -18,7 +18,7 @@
             <span>{{ __('NC-Free') }}</span>
         </nav>
         <span class="inline-block bg-white/15 backdrop-blur border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-            🔓 Zulassungsfrei · Ohne NC
+            Zulassungsfrei · Ohne NC
         </span>
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
             {{ $university->display_name }}: {{ __('NC-Free Programs') }}
@@ -34,7 +34,6 @@
     @if (! $has_data)
         <div class="bg-blue-50 border border-blue-200 rounded-xl p-8 mb-8">
             <div class="flex items-start gap-4">
-                <span class="text-4xl flex-shrink-0">🔓</span>
                 <div class="flex-1">
                     <h2 class="text-xl font-bold text-blue-900 mb-2">{{ __('NC-Free Data Loading') }}</h2>
                     <p class="text-blue-800 mb-4">
@@ -47,7 +46,7 @@
                         <a href="{{ hochschulkompass_url($university->name, 'zulassungsfrei') }}"
                            target="_blank" rel="noopener"
                            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
-                            🔓 Hochschulkompass: {{ $university->short_name ?? $university->name }} {{ __('NC-Free') }} →
+                            Hochschulkompass: {{ $university->short_name ?? $university->name }} {{ __('NC-Free') }} →
                         </a>
                         <a href="{{ route('universities.show', $university->slug) }}"
                            class="inline-block bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold px-5 py-2.5 rounded-lg transition">
@@ -76,7 +75,7 @@
                    class="block bg-white border border-gray-200 hover:border-emerald-400 hover:shadow-md transition rounded-xl p-5">
                     <h3 class="font-bold text-gray-900 leading-snug mb-1">{{ $p->name }}</h3>
                     <div class="flex flex-wrap gap-2 mt-2 text-xs">
-                        <span class="inline-block bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">🔓 {{ __('NC-Free') }}</span>
+                        <span class="inline-block bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">{{ __('NC-Free') }}</span>
                         <span class="inline-block text-gray-600">{{ ucfirst($p->degree) }}</span>
                         @if ($p->language)
                             <span class="inline-block text-gray-600">{{ strtoupper($p->language) }}</span>
@@ -84,7 +83,7 @@
                         @if ($p->field)
                             <span class="inline-flex items-center gap-1 text-white text-xs px-2 py-0.5 rounded-full"
                                   style="background-color: {{ $p->field->color }};">
-                                {{ $p->field->icon }} {{ $p->field->name_tr }}
+                                {{ $p->field->name_tr }}
                             </span>
                         @endif
                     </div>

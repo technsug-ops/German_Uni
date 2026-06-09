@@ -201,7 +201,6 @@
 
     {{-- PROFİL KARTI --}}
     <section class="bg-gradient-to-br from-rose-600 via-orange-500 to-amber-500 text-white rounded-2xl p-6 md:p-10 mb-6 shadow-xl text-center">
-        <div class="text-6xl md:text-8xl mb-3">{{ $result['profile']['emoji'] }}</div>
         <p class="text-xs font-bold uppercase tracking-widest text-rose-100 mb-1">{{ __('Your Profile · Holland Code:') }} {{ $result['holland_code'] }}</p>
         <h2 class="text-3xl md:text-5xl font-extrabold mb-3">{{ $result['profile']['title'] }}</h2>
         <p class="text-lg text-rose-50 max-w-2xl mx-auto">{{ $result['profile']['desc'] }}</p>
@@ -259,7 +258,7 @@
                         {{-- Detay --}}
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-2 mb-1 flex-wrap">
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->icon ?: '' }} {{ $p['field']?->name_tr }}</span>
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->name_tr }}</span>
                                 <span class="text-xs px-2 py-0.5 rounded-full {{ $p['type'] === 'studienberuf' ? 'bg-indigo-100 text-indigo-700' : ($p['type'] === 'ausbildung' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700') }}">
                                     {{ ['studienberuf'=>__('University profession'),'ausbildung'=>'Ausbildung','weiterbildung'=>__('Advanced training'),'grundberuf'=>__('Basic profession')][$p['type']] ?? $p['type'] }}
                                 </span>

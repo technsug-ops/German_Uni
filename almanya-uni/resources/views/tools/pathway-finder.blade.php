@@ -119,7 +119,6 @@
             <div class="bg-gradient-to-br {{ $from }} {{ $to }} text-white rounded-2xl p-6 md:p-8 shadow-lg">
                 <p class="text-sm font-bold uppercase tracking-wider opacity-90 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="star" class="w-4 h-4" /> {{ __('Best match for you') }}</p>
                 <div class="flex items-start gap-4 flex-wrap mb-4">
-                    <div class="text-6xl">{{ $top['icon'] }}</div>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-2xl md:text-3xl font-extrabold">{{ $top['name'] }}</h2>
                         <p class="text-sm md:text-base opacity-95 mt-1">{{ $top['subtitle'] }}</p>
@@ -177,7 +176,6 @@
                                 {{ $i === 0 ? __('Second choice') : __('Also worth considering') }}
                             </p>
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="text-4xl">{{ $p['icon'] }}</div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-lg font-bold text-gray-900">{{ $p['name'] }}</h3>
                                     <p class="text-xs text-gray-600 mt-0.5">{{ $p['subtitle'] }}</p>
@@ -203,7 +201,7 @@
                         @php $p = $pathways[$key]; @endphp
                         <div>
                             <div class="flex items-center justify-between text-xs mb-1">
-                                <span class="font-semibold text-gray-700">{{ $p['icon'] }} {{ $p['name'] }}</span>
+                                <span class="font-semibold text-gray-700">{{ $p['name'] }}</span>
                                 <span class="font-mono text-gray-500">{{ $score }} pts</span>
                             </div>
                             <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
