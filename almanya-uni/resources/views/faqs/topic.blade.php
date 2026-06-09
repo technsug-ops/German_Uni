@@ -73,10 +73,10 @@
         @endif
     </p>
 
-    <div class="space-y-2">
+    <div class="grid sm:grid-cols-2 gap-3 items-start">
         @foreach ($faqs as $faq)
             <a href="{{ route('faqs.show', [$topic->slug, $faq->slug]) }}"
-               class="flex items-start justify-between gap-4 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-sm transition rounded-lg p-4">
+               class="flex items-start justify-between gap-4 bg-white border border-gray-200 hover:border-primary-500 hover:shadow-sm transition rounded-lg p-4 h-full">
                 <div class="flex-1 min-w-0">
                     <p class="font-semibold text-gray-900 leading-snug">{{ $faq->question }}</p>
                     <div class="flex gap-2 mt-1.5 text-xs">
