@@ -104,7 +104,7 @@
     // Yazar verisini modal için JS objesine çevir
     $authorData = fn($p, $color) => [
         'name'        => $p->name,
-        'role'        => $p->role_label,
+        'role'        => $p->role_label ? __($p->role_label) : $p->role_label,
         'bio'         => $p->bio,
         'avatar'      => $p->avatar_url,
         'initials'    => $initials($p->name),
@@ -150,7 +150,7 @@
 
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ $p->name }}</h3>
-                                <p class="text-sm font-bold text-indigo-700 mb-3 uppercase tracking-wider">{{ $p->role_label }}</p>
+                                <p class="text-sm font-bold text-indigo-700 mb-3 uppercase tracking-wider">{{ __($p->role_label) }}</p>
                                 @if ($p->bio)
                                     <blockquote class="relative pl-5 border-l-4 border-indigo-300 text-sm md:text-base text-gray-700 leading-relaxed italic">
                                         {{ $p->bio }}
@@ -239,7 +239,7 @@
                         </div>
 
                         <h3 class="font-extrabold text-gray-900 text-lg">{{ $p->name }}</h3>
-                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider mt-0.5 mb-2">{{ $p->role_label }}</p>
+                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider mt-0.5 mb-2">{{ __($p->role_label) }}</p>
                         @if ($p->bio)
                             <p class="text-xs text-gray-700 leading-relaxed line-clamp-3 mb-3">{{ $p->bio }}</p>
                         @endif
@@ -321,7 +321,7 @@
                         @endif
                         <div>
                             <p class="font-semibold text-sm text-gray-900">{{ $p->name }}</p>
-                            <p class="text-xs text-gray-500">{{ $p->role_label ?: __('Contributor') }}</p>
+                            <p class="text-xs text-gray-500">{{ $p->role_label ? __($p->role_label) : __('Contributor') }}</p>
                         </div>
                     </div>
                 @endforeach

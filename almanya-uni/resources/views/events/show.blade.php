@@ -106,7 +106,7 @@
                 @if ($event->hostUser?->slug)
                     <a href="{{ route('author.show', $event->hostUser->slug) }}" class="hover:underline">{{ $event->hostUser->name ?? $event->host }}</a>
                     @if ($event->hostUser->role_label)
-                        <span class="opacity-75 text-sm">· {{ $event->hostUser->role_label }}</span>
+                        <span class="opacity-75 text-sm">· {{ __($event->hostUser->role_label) }}</span>
                     @endif
                 @else
                     {{ $event->host }}

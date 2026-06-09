@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    $title = $author->name . ' — ' . ($author->role_label ?: __('Author')) . ' · ' . brand('name');
+    $title = $author->name . ' — ' . ($author->role_label ? __($author->role_label) : __('Author')) . ' · ' . brand('name');
     $description = $author->bio
         ? \Illuminate\Support\Str::limit($author->bio, 160)
         : __('Articles, expertise and contributions by :name on AlmanyaUni.', ['name' => $author->name]);
@@ -40,7 +40,7 @@
             '@id'         => url()->current() . '#person',
             'name'        => $author->name,
             'description' => $author->bio,
-            'jobTitle'    => $author->role_label,
+            'jobTitle'    => $author->role_label ? __($author->role_label) : null,
             'image'       => $author->avatar_url,
             'url'         => url()->current(),
             'sameAs'      => $sameAs,
@@ -88,7 +88,7 @@
             <div class="flex-1 min-w-0">
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-2">{{ $author->name }}</h1>
                 @if ($author->role_label)
-                    <p class="text-lg md:text-xl text-indigo-100 font-semibold mb-2">{{ $author->role_label }}</p>
+                    <p class="text-lg md:text-xl text-indigo-100 font-semibold mb-2">{{ __($author->role_label) }}</p>
                 @endif
                 @if ($author->bio)
                     <p class="text-base text-indigo-50 max-w-2xl leading-relaxed">{{ $author->bio }}</p>

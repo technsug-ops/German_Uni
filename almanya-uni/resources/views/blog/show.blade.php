@@ -103,7 +103,7 @@
                                 @endif
                             </p>
                             @if ($post->author->role_label)
-                                <p class="text-xs text-primary-700">{{ $post->author->role_label }}</p>
+                                <p class="text-xs text-primary-700">{{ __($post->author->role_label) }}</p>
                             @endif
                         </div>
                         @if ($post->author->slug)
@@ -128,7 +128,7 @@
                             <div class="leading-tight">
                                 <p class="font-semibold text-gray-800 text-sm">{{ $post->coAuthor->name }}</p>
                                 @if ($post->coAuthor->role_label)
-                                    <p class="text-[11px] text-gray-500">{{ \Illuminate\Support\Str::limit($post->coAuthor->role_label, 32) }}</p>
+                                    <p class="text-[11px] text-gray-500">{{ \Illuminate\Support\Str::limit(__($post->coAuthor->role_label), 32) }}</p>
                                 @endif
                             </div>
                             @if ($post->coAuthor->slug)
@@ -345,7 +345,7 @@
                         <div class="flex-1">
                             <p class="font-bold text-lg text-gray-900 leading-tight">{{ $post->author->name }}</p>
                             @if ($post->author->role_label)
-                                <p class="text-sm text-primary-700 font-semibold mb-2">{{ $post->author->role_label }}</p>
+                                <p class="text-sm text-primary-700 font-semibold mb-2">{{ __($post->author->role_label) }}</p>
                             @endif
                             @if ($post->author->bio)
                                 <p class="text-sm text-gray-700 leading-relaxed">{{ $post->author->bio }}</p>
