@@ -57,8 +57,9 @@
 
     <!-- Topic badge -->
     <a href="{{ route('faqs.topic', $topic->slug) }}"
-       class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide mb-3"
+       class="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide mb-3"
        style="color: {{ $topic->color ?? '#1E40AF' }}">
+        {!! e_icon($topic->icon, 'w-4 h-4') !!}
         {{ $topic->name }}
     </a>
 

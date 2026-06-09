@@ -337,6 +337,16 @@ if (! function_exists('e_icon')) {
             '🎬' => 'photo',
             '🎭' => 'photo',
             '🎵' => 'sparkles',
+            '🛂' => 'fingerprint',       // passport / visa control
+            '🗣️' => 'chat-bubble',       // speaking / language
+            '🏫' => 'building-library',   // school building
+            '🏢' => 'building-office',    // office / agency
+            '📜' => 'document-text',      // scroll / certificate
+            '📰' => 'newspaper',          // news feed
+            '📘' => 'book-open',          // glossary default icon
+            '📗' => 'book-open',
+            '📖' => 'book-open',
+            '🛡️' => 'shield-check',       // recognition / protection
         ];
 
         $name = $map[$emoji] ?? null;

@@ -15,8 +15,8 @@
         @if ($item->logo_url)
             <img src="{{ $item->logo_url }}" alt="{{ $item->name }}" loading="lazy" class="w-14 h-14 rounded object-contain bg-gray-50 p-1">
         @else
-            <div class="w-14 h-14 rounded bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center text-2xl">
-                {{ $item->type_emoji }}
+            <div class="w-14 h-14 rounded bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center">
+                {!! e_icon($item->type_emoji, 'w-7 h-7') !!}
             </div>
         @endif
         <div class="flex-1 min-w-0">

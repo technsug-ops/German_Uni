@@ -20,7 +20,10 @@
         <span class="inline-block bg-white/15 backdrop-blur border border-white/20 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
             Zulassungsfrei · Ohne NC
         </span>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 inline-flex items-center gap-3 flex-wrap">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0 bg-white/20 text-white">
+                {!! e_icon($field->icon, 'w-7 h-7') !!}
+            </span>
             {{ $field->name }}: {{ __('NC Frei Programs') }}
         </h1>
         <p class="text-lg text-emerald-100 max-w-3xl">

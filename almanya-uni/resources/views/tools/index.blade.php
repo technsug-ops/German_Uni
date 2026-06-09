@@ -60,12 +60,19 @@
             @if ($tool['live'])
                 <a href="{{ $tool['route'] }}"
                    class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-lg p-6">
+                    <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0 mb-3"
+                          style="background-color: #1E40AF14; color: #1E40AF;">
+                        {!! e_icon($tool['icon'] ?? '🛠️', 'w-6 h-6') !!}
+                    </span>
                     <h2 class="font-bold text-lg text-gray-900 mb-2">{{ $tool['title'] }}</h2>
                     <p class="text-sm text-gray-600">{{ $tool['description'] }}</p>
                     <span class="inline-block mt-3 text-sm font-semibold text-primary-600">{{ __('Use the tool') }} →</span>
                 </a>
             @else
                 <div class="block bg-gray-50 border border-gray-200 rounded-lg p-6 opacity-60 cursor-not-allowed">
+                    <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0 mb-3 bg-gray-200 text-gray-500">
+                        {!! e_icon($tool['icon'] ?? '🛠️', 'w-6 h-6') !!}
+                    </span>
                     <h2 class="font-bold text-lg text-gray-900 mb-2">{{ $tool['title'] }}</h2>
                     <p class="text-sm text-gray-600">{{ $tool['description'] }}</p>
                     <span class="inline-block mt-3 text-xs font-semibold uppercase tracking-wide text-gray-500">{{ __('Coming soon') }}</span>

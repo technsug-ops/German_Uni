@@ -49,6 +49,9 @@
             <a href="{{ route('faqs.index') }}" class="hover:opacity-100">← {{ __('All FAQ') }}</a>
         </nav>
         <div class="flex items-center gap-4 mb-3">
+            <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl shrink-0 bg-white/20 text-white">
+                {!! e_icon($topic->icon, 'w-7 h-7') !!}
+            </span>
             <h1 class="text-3xl md:text-4xl font-bold">{{ $topic->name }}</h1>
         </div>
         @if ($topic->description)

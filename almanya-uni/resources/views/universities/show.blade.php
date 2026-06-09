@@ -345,6 +345,7 @@
                                 <div class="flex flex-wrap gap-2 text-xs">
                                     @if ($p->field)
                                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white" style="background-color: {{ $p->field->color }}">
+                                            {!! e_icon($p->field->icon, 'w-3.5 h-3.5') !!}
                                             {{ $p->field->name_tr }}
                                         </span>
                                     @endif

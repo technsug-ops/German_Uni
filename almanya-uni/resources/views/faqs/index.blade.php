@@ -138,9 +138,14 @@
             <a href="{{ route('faqs.topic', $topic->slug) }}"
                class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-lg p-5">
                 <div class="flex items-start gap-3 mb-3">
+                    @php $tColor = $topic->color ?? '#1E40AF'; @endphp
+                    <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
+                          style="background-color: {{ $tColor }}14; color: {{ $tColor }};">
+                        {!! e_icon($topic->icon, 'w-6 h-6') !!}
+                    </span>
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-lg leading-tight"
-                            style="color: {{ $topic->color ?? '#1E40AF' }}">
+                            style="color: {{ $tColor }}">
                             {{ $topic->name }}
                         </h3>
                         <p class="text-xs text-gray-500 mt-0.5">

@@ -127,6 +127,10 @@
                     @foreach ($tools as $tool)
                         <a href="{{ $tool['url'] }}"
                            class="flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl p-4 transition">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg shrink-0"
+                                  style="background-color: #1E40AF14; color: #1E40AF;">
+                                {!! e_icon($tool['icon'] ?? '🔧', 'w-4 h-4') !!}
+                            </span>
                             <span class="font-semibold text-gray-900">{{ $tool['title'] }}</span>
                         </a>
                     @endforeach
@@ -442,6 +446,11 @@
                     @foreach ($fields as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-3 flex items-center gap-3">
+                            @php $fColor = $field->color ?? '#1E40AF'; @endphp
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg shrink-0"
+                                  style="background-color: {{ $fColor }}14; color: {{ $fColor }};">
+                                {!! e_icon($field->icon, 'w-4 h-4') !!}
+                            </span>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 truncate">{{ $field->name }}</h3>
                                 <p class="text-xs text-gray-500 truncate">{{ $field->name }}</p>

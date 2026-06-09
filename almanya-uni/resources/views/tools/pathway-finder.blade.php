@@ -119,6 +119,9 @@
             <div class="bg-gradient-to-br {{ $from }} {{ $to }} text-white rounded-2xl p-6 md:p-8 shadow-lg">
                 <p class="text-sm font-bold uppercase tracking-wider opacity-90 mb-2 inline-flex items-center gap-1.5"><x-svg-icon name="star" class="w-4 h-4" /> {{ __('Best match for you') }}</p>
                 <div class="flex items-start gap-4 flex-wrap mb-4">
+                    <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl shrink-0 bg-white/20 text-white">
+                        {!! e_icon($top['icon'], 'w-8 h-8') !!}
+                    </span>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-2xl md:text-3xl font-extrabold">{{ $top['name'] }}</h2>
                         <p class="text-sm md:text-base opacity-95 mt-1">{{ $top['subtitle'] }}</p>
@@ -176,6 +179,9 @@
                                 {{ $i === 0 ? __('Second choice') : __('Also worth considering') }}
                             </p>
                             <div class="flex items-start gap-3 mb-3">
+                                <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0 bg-gray-100 text-gray-600">
+                                    {!! e_icon($p['icon'], 'w-6 h-6') !!}
+                                </span>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-lg font-bold text-gray-900">{{ $p['name'] }}</h3>
                                     <p class="text-xs text-gray-600 mt-0.5">{{ $p['subtitle'] }}</p>

@@ -83,6 +83,7 @@
                         @if ($p->field)
                             <span class="inline-flex items-center gap-1 text-white text-xs px-2 py-0.5 rounded-full"
                                   style="background-color: {{ $p->field->color }};">
+                                {!! e_icon($p->field->icon, 'w-3.5 h-3.5') !!}
                                 {{ $p->field->name_tr }}
                             </span>
                         @endif

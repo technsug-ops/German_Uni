@@ -34,6 +34,11 @@
                title="{{ $entry['title'] }} — {{ __('Glossary') }}"
                class="group block bg-white border border-gray-200 hover:border-indigo-400 hover:shadow-lg rounded-2xl p-6 transition">
                 <div class="flex items-start gap-4">
+                    @php $gColor = $entry['color'] ?? '#1E40AF'; @endphp
+                    <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
+                          style="background-color: {{ $gColor }}14; color: {{ $gColor }};">
+                        {!! e_icon($entry['icon'] ?? '📘', 'w-6 h-6') !!}
+                    </span>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-xl font-bold text-gray-900 group-hover:text-indigo-700 leading-tight mb-2">
                             {{ $entry['title'] }}
