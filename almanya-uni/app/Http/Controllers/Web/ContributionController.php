@@ -44,6 +44,6 @@ class ContributionController extends Controller
             'status'       => 'pending', // editör onayına gider
         ]);
 
-        return back()->with('status', 'Katkın alındı! Editör onayından sonra yayınlanacak ve profilinde "Topluluk Katkıcısı" rozeti görünecek. Teşekkürler 🙌');
+        return back()->with('status', __('Katkın alındı! Editör onayından sonra yayınlanacak ve profilinde "Topluluk Katkıcısı" rozeti görünecek. Teşekkürler 🙌'));
     }
 }

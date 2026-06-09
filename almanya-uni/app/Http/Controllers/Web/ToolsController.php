@@ -997,7 +997,7 @@ class ToolsController extends Controller
         }
 
         if (! $valid) {
-            return ['valid' => false, 'message' => 'Geçerli bir not gir (TR 4\'lük: 0-4, TR 100\'lük: 0-100).'];
+            return ['valid' => false, 'message' => __('Geçerli bir not gir (TR 4\'lük: 0-4, TR 100\'lük: 0-100).')];
         }
 
         // Geçer notun altında mı?
@@ -1270,30 +1270,30 @@ class ToolsController extends Controller
     {
         // Tip belirleme: lifestyle + community + city_size
         if ($a['city_size'] === 'large' && $a['lifestyle'] === 'vibrant') {
-            return ['emoji' => '🌆', 'title' => 'Metropol Tipi', 'description' => 'Berlin/Hamburg/München tipi — büyük şehir, kalabalık, sürekli aksiyon.'];
+            return ['emoji' => '🌆', 'title' => __('Metropol Tipi'), 'description' => __('Berlin/Hamburg/München tipi — büyük şehir, kalabalık, sürekli aksiyon.')];
         }
         if ($a['city_size'] === 'small' && $a['lifestyle'] === 'quiet') {
-            return ['emoji' => '🌲', 'title' => __('Klasik Üni-Şehir Tipi'), 'description' => 'Tübingen/Göttingen/Heidelberg tipi — bisiklet + bira bahçesi + akademik odak.'];
+            return ['emoji' => '🌲', 'title' => __('Klasik Üni-Şehir Tipi'), 'description' => __('Tübingen/Göttingen/Heidelberg tipi — bisiklet + bira bahçesi + akademik odak.')];
         }
         if ($a['region'] === 'sued' && $a['lifestyle'] !== 'vibrant') {
-            return ['emoji' => '🏔️', 'title' => 'Bavyera Tipi', 'description' => __('Güney Almanya — dağ + brezel + güçlü teknik üniversite.')];
+            return ['emoji' => '🏔️', 'title' => __('Bavyera Tipi'), 'description' => __('Güney Almanya — dağ + brezel + güçlü teknik üniversite.')];
         }
         if ($a['region'] === 'nord') {
-            return ['emoji' => '⚓', 'title' => 'Kuzey Tipi', 'description' => 'Hamburg/Bremen/Kiel — liman + denizci + minimal estetik.'];
+            return ['emoji' => '⚓', 'title' => __('Kuzey Tipi'), 'description' => __('Hamburg/Bremen/Kiel — liman + denizci + minimal estetik.')];
         }
         if ($a['region'] === 'ost') {
-            return ['emoji' => '🎨', 'title' => __('Doğu Almanya Tipi'), 'description' => 'Leipzig/Dresden — ucuz + sanatçı + alternatif sahne.'];
+            return ['emoji' => '🎨', 'title' => __('Doğu Almanya Tipi'), 'description' => __('Leipzig/Dresden — ucuz + sanatçı + alternatif sahne.')];
         }
         if ($a['budget'] === 'low' && $a['lifestyle'] !== 'vibrant') {
-            return ['emoji' => '💪', 'title' => 'Pratik Bütçe Tipi', 'description' => 'Akıllı para — düşük kira + güçlü uni = en uygun yatırım.'];
+            return ['emoji' => '💪', 'title' => __('Pratik Bütçe Tipi'), 'description' => __('Akıllı para — düşük kira + güçlü uni = en uygun yatırım.')];
         }
         if ($a['field'] === 'muhendislik' && $a['region'] === 'sued') {
-            return ['emoji' => '⚙️', 'title' => 'Bavyera Mühendisi', 'description' => __('TU München/Stuttgart/Karlsruhe — Almanya\'nın endüstri kalbi.')];
+            return ['emoji' => '⚙️', 'title' => __('Bavyera Mühendisi'), 'description' => __('TU München/Stuttgart/Karlsruhe — Almanya\'nın endüstri kalbi.')];
         }
         if (in_array($a['field'], ['bilisim', 'matematik-doga'])) {
-            return ['emoji' => '💻', 'title' => 'Tech Tipi', 'description' => __('KIT/TU München/Aachen — Almanya\'nın tech merkezleri seni bekliyor.')];
+            return ['emoji' => '💻', 'title' => __('Tech Tipi'), 'description' => __('KIT/TU München/Aachen — Almanya\'nın tech merkezleri seni bekliyor.')];
         }
-        return ['emoji' => '🎯', 'title' => 'Dengeli Tipi', 'description' => 'Her şeyden biraz — bütçe + akademik + lifestyle dengesi.'];
+        return ['emoji' => '🎯', 'title' => __('Dengeli Tipi'), 'description' => __('Her şeyden biraz — bütçe + akademik + lifestyle dengesi.')];
     }
 
     private function regionLabel(string $r): string

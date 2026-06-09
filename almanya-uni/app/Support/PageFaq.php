@@ -48,8 +48,8 @@ class PageFaq
             ],
             [
                 'q' => __('How much does the :program programme cost?', ['program' => $programName]),
-                'a' => __(':tuition. International students should also budget around **800–1000 EUR/month** for living costs in Germany.', [
-                    'tuition' => $tuitionLabel,
+                'a' => __(':fee_info. International students should also budget around **800–1000 EUR/month** for living costs in Germany.', [
+                    'fee_info' => $tuitionLabel,
                 ]),
             ],
             [

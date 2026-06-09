@@ -46,7 +46,7 @@ class NewsletterController extends Controller
         $existing = Subscriber::where('email', $email)->first();
 
         if ($existing && $existing->is_confirmed) {
-            return $this->respond($request, false, 'Bu e-posta zaten abone listemizde.', 'already_subscribed');
+            return $this->respond($request, false, __('Bu e-posta zaten abone listemizde.'), 'already_subscribed');
         }
 
         if ($existing && $existing->is_pending) {
@@ -56,9 +56,9 @@ class NewsletterController extends Controller
                 Mail::to($existing->email)->send(new NewsletterConfirmation($existing));
             } catch (\Throwable $e) {
                 Log::error('Newsletter resend failed', ['email' => $existing->email, 'err' => $e->getMessage()]);
-                return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed');
+                return $this->respond($request, false, __('Mail gönderilemedi. Birazdan tekrar dene.'), 'mail_failed');
             }
-            return $this->respond($request, true, 'Doğrulama maili tekrar gönderildi. E-postanı kontrol et.', 'resent');
+            return $this->respond($request, true, __('Doğrulama maili tekrar gönderildi. E-postanı kontrol et.'), 'resent');
         }
 
         // Yeni kayıt (veya unsubscribed olanı yeniden kaydet)
@@ -92,15 +92,15 @@ class NewsletterController extends Controller
         } catch (\Throwable $e) {
             Log::error('Newsletter mail failed', ['email' => $sub->email, 'err' => $e->getMessage()]);
             // 200 (500 değil): AJAX'ta ham "Server Error" yerine dostça mesaj göster.
-            return $this->respond($request, false, 'Mail gönderilemedi. Birazdan tekrar dene.', 'mail_failed');
+            return $this->respond($request, false, __('Mail gönderilemedi. Birazdan tekrar dene.'), 'mail_failed');
         }
 
-        return $this->respond($request, true, 'Doğrulama maili gönderildi! Gelen kutunu kontrol et (spam klasörünü de).', 'pending');
+        return $this->respond($request, true, __('Doğrulama maili gönderildi! Gelen kutunu kontrol et (spam klasörünü de).'), 'pending');
 
         } catch (\Throwable $e) {
             // Beklenmedik hata (DB, vb.) → 500 "Server Error" yerine kontrollü JSON.
             Log::error('Newsletter subscribe failed', ['err' => $e->getMessage()]);
-            return $this->respond($request, false, 'Bir sorun oluştu. Birazdan tekrar dene.', 'error');
+            return $this->respond($request, false, __('Bir sorun oluştu. Birazdan tekrar dene.'), 'error');
         }
     }
 
@@ -111,7 +111,7 @@ class NewsletterController extends Controller
         if (! $sub) {
             return view('newsletter.result', [
                 'success' => false,
-                'title'   => 'Doğrulama linki geçersiz',
+                'title'   => __('Doğrulama linki geçersiz'),
                 'message' => 'Bu link daha önce kullanılmış, süresi geçmiş veya bozulmuş olabilir. Tekrar abone olmayı dene.',
             ]);
         }

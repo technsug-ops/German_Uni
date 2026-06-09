@@ -89,7 +89,7 @@
 @elseif ($placeholder['enabled'] && ! $isPremium)
     <div class="ad-slot-placeholder my-6 {{ $sizeCls }} bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-center p-6">
         <div class="text-3xl text-gray-400 mb-2">📢</div>
-        <p class="text-sm text-gray-500 font-semibold">{{ $placeholder['label'] }}</p>
+        <p class="text-sm text-gray-500 font-semibold">{{ __('Ad space — coming soon') }}</p>
         <p class="text-xs text-gray-400 mt-1">{{ ucfirst($type) }} · {{ $slot ?? 'default' }}</p>
     </div>
 @endif
