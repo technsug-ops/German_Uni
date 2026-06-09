@@ -349,34 +349,6 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
     ]);
 })->middleware('throttle:30,1'); // 30 req / minute (token already protects against abuse)
 
-// GEÇİCİ — popup teşhis: DB durumu + neden render edilmiyor. İş bitince KALDIR.
-Route::get('/_system/popup-debug', function (\Illuminate\Http\Request $request) {
-    $token = $request->query('token');
-    $expected = config('services.system_token');
-    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
-        abort(403, 'Invalid token');
-    }
-    try {
-        $all = \App\Models\Popup::all();
-        $path = '/tr/universities';
-        return response()->json([
-            'now' => now()->toDateTimeString(),
-            'app_tz' => config('app.timezone'),
-            'total' => $all->count(),
-            'live_count' => \App\Models\Popup::live()->count(),
-            'rendered_for_tr_uni' => \App\Models\Popup::allForCurrentRequest('universities.index', $path)->pluck('key')->all(),
-            'popups' => $all->map(fn ($p) => [
-                'id' => $p->id, 'key' => $p->key, 'is_active' => $p->is_active,
-                'starts_at' => (string) $p->starts_at, 'ends_at' => (string) $p->ends_at,
-                'target_pages' => $p->target_pages, 'exclude_pages' => $p->exclude_pages, 'locales' => $p->locales,
-                'applies_tr_uni' => $p->appliesToRoute('universities.index', $path),
-            ])->all(),
-        ], 200, [], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    } catch (\Throwable $e) {
-        return response()->json(['ERROR' => $e->getMessage(), 'at' => $e->getFile() . ':' . $e->getLine()], 500, [], JSON_PRETTY_PRINT);
-    }
-})->middleware('throttle:30,1');
-
 // Token-gated migration runner — KAS has no CLI access, run via curl after deploy
 Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
