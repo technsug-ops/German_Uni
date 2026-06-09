@@ -37,8 +37,10 @@ class BlogAutoLinker
      * @param bool $resetCounters Sayfa sayaçlarını sıfırla. Çok bloklu içerikte SADECE ilk blokta true ver
      *                            (tüm bloklar tek sayfa limitini paylaşsın).
      */
-    public function process(string $html, ?string $excludeUrl = null, bool $resetCounters = true): string
+    public function process(string $html, ?string $excludeUrl = null, bool $resetCounters = true, ?string $locale = null): string
     {
+        // Glossary tanımları Türkçe → SADECE TR içeriğe uygula (DE/EN sayfalarına sızmasın).
+        $locale = $locale ?? app()->getLocale();
         if ($resetCounters) {
             $this->gCount = 0;
             $this->lCount = 0;
@@ -52,7 +54,7 @@ class BlogAutoLinker
         }
 
         // Terim haritası: term(lower) => ['type'=>'glossary'|'link', 'tip'=>..., 'url'=>...]
-        $terms = $this->buildTermMap();
+        $terms = $this->buildTermMap($locale);
         if (empty($terms)) {
             return $html;
         }
@@ -209,14 +211,16 @@ class BlogAutoLinker
     }
 
     /** Glossary + entity terimlerini tek haritada birleştir (cache'li). */
-    private function buildTermMap(): array
+    private function buildTermMap(string $locale = 'tr'): array
     {
-        return Cache::remember('blog_autolinker_terms_v1', 3600, function () {
+        return Cache::remember("blog_autolinker_terms_v2_{$locale}", 3600, function () use ($locale) {
             $map = [];
 
-            // 1) Glossary (sabit, doğrulanmış tanımlar)
-            foreach ($this->glossary() as $term => $tip) {
-                $map[mb_strtolower($term)] = ['type' => 'glossary', 'tip' => $tip];
+            // 1) Glossary (TÜRKÇE tanımlar) — SADECE TR içeriğe. DE/EN'e Türkçe tooltip sızmasın.
+            if ($locale === 'tr') {
+                foreach ($this->glossary() as $term => $tip) {
+                    $map[mb_strtolower($term)] = ['type' => 'glossary', 'tip' => $tip];
+                }
             }
 
             // 2) Şehirler (link) — yaygın/tek-harfli risk yok, name_de spesifik

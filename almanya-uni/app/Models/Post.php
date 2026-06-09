@@ -88,7 +88,7 @@ class Post extends Model
             if ($post->isDirty('content_md')) {
                 $html = app(MarkdownRenderer::class)->render($post->content_md ?? '');
                 // Otomatik iç-linkleme: glossary tooltip + şehir/üni entity linkleri
-                $post->content_html = app(\App\Services\Content\BlogAutoLinker::class)->process($html);
+                $post->content_html = app(\App\Services\Content\BlogAutoLinker::class)->process($html, locale: $post->locale);
                 $post->reading_minutes = self::computeReadingMinutes($post->content_md ?? '');
             }
         });
