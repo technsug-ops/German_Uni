@@ -8,10 +8,13 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Aynı anda iki deploy çalışmasın (push üst üste gelirse en yeniyi bekler)
+# Aynı anda iki deploy çalışmasın. cancel-in-progress: true → art arda push'larda
+# ESKİ/bekleyen run iptal edilir, sadece EN YENİSİ deploy olur (kuyruk pileup'ı önler;
+# hızlı iterasyonda eski mailler/eski kod kalmasını engeller). Extract sunucu-tarafı
+# (pulse-gated) olduğu için action iptali extract'i bölmez.
 concurrency:
   group: deploy-production
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # ════════════════════════════════════════════════════════════
@@ -209,11 +212,13 @@ jobs:
         working-directory: almanya-uni
         run: |
           # Bu dosyaları zip'e dahil etme (hariç tutulanlar)
-          # ⚠️ vendor/ DAHİL EDİLDİ — autoloader prod'un TÜM vendor'ıyla tutarlı olmalı.
-          # Kısmi vendor (sadece composer+resend) upload'ı autoloader uyumsuzluğu → prod 500
-          # yaptı. Tam vendor tek güvenli yol (composer.lock pinli, tutarlı).
+          # vendor/ TEKRAR HARİÇ — resend tam-vendor deploy'uyla prod'a senkronlandı,
+          # composer.lock değişmedi → prod vendor güncel + tutarlı. Tam vendor bundle
+          # KAS FTPS'i kilitliyordu (büyük dosya → yükleme başarısız/yavaş → deploy inmiyor).
+          # Küçük bundle = hızlı + güvenilir. (Yeni paket eklenince TEK seferlik full-vendor gerek.)
           zip -r -q ../deploy-bundle.zip . \
-            -x "node_modules/*" \
+            -x "vendor/*" \
+               "node_modules/*" \
                ".git/*" \
                "tests/*" \
                "storage/logs/*" \

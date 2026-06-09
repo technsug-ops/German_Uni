@@ -36,13 +36,31 @@
     <title>{{ $brandName }} {{ __('Weekly') }}</title>
     <!--[if mso]><style>table,td,div,p,a{font-family:Arial,sans-serif!important}</style><![endif]-->
     <style>
-        @media only screen and (max-width:680px){
-            .container{width:100%!important}
-            .px{padding-left:24px!important;padding-right:24px!important}
-            .stack{display:block!important;width:100%!important}
-            .h1{font-size:26px!important}
-        }
         a{text-decoration:none}
+        /* === MOBİL (≤600px) — tam ekran, büyük dokunma hedefleri, okunur === */
+        @media only screen and (max-width:600px){
+            .wrap{padding:0!important;}
+            .container{width:100%!important;max-width:100%!important;border-radius:0!important;border-left:0!important;border-right:0!important;}
+            .hdr{padding:20px 20px!important;}
+            .hdr-name{font-size:18px!important;}
+            .hdr-date{font-size:9px!important;letter-spacing:0.3px!important;}
+            .px{padding-left:18px!important;padding-right:18px!important;}
+            .h1{font-size:23px!important;line-height:1.3!important;}
+            .lead{font-size:15px!important;}
+            /* ana buton + bölüm linkleri: full-width, büyük dokunma alanı */
+            .cta-btn{display:block!important;width:100%!important;box-sizing:border-box!important;padding:16px!important;font-size:16px!important;text-align:center!important;}
+            /* kartlar: numara + içerik daha ferah */
+            .num{width:34px!important;height:34px!important;line-height:34px!important;font-size:15px!important;}
+            .title{font-size:15.5px!important;line-height:1.35!important;}
+            .desc{font-size:13.5px!important;}
+            .det{display:inline-block!important;padding:8px 0!important;font-size:14px!important;}
+            /* 2 sütun CTA → alt alta, tam genişlik */
+            .stack{display:block!important;width:100%!important;padding:0 0 12px 0!important;}
+            .footnote{font-size:11px!important;}
+        }
+        @media only screen and (max-width:420px){
+            .hdr-date{display:none!important;}  /* çok dar ekranda tarihi gizle */
+        }
     </style>
 </head>
 <body style="margin:0;padding:0;background:{{ $cream }};font-family:Arial,Helvetica,sans-serif;">
@@ -50,16 +68,16 @@
 {{-- Preheader (gizli özet) --}}
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:{{ $cream }};font-size:1px;line-height:1px;">{{ __('This week’s German-study opportunities, deadlines and news.') }}</div>
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{{ $cream }};"><tr><td align="center" style="padding:28px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{{ $cream }};"><tr><td class="wrap" align="center" style="padding:28px 12px;">
 <table role="presentation" class="container" width="680" cellpadding="0" cellspacing="0" style="width:680px;max-width:680px;background:#FFFFFF;border-radius:16px;overflow:hidden;border:1px solid #E8E8EC;">
 
     {{-- HEADER (lacivert, navbar gibi) --}}
-    <tr><td style="background:{{ $navy }};padding:22px 44px;"><table role="presentation" width="100%"><tr>
+    <tr><td class="hdr" style="background:{{ $navy }};padding:22px 44px;"><table role="presentation" width="100%"><tr>
         <td align="left" style="vertical-align:middle;">
             <img src="{{ $logoIcon }}" width="30" height="30" alt="" style="display:inline-block;vertical-align:middle;border:0;width:30px;height:30px;">
-            <span style="display:inline-block;vertical-align:middle;margin-left:10px;font-size:19px;font-weight:bold;color:#ffffff;letter-spacing:-0.01em;">{{ $brandName }}</span>
+            <span class="hdr-name" style="display:inline-block;vertical-align:middle;margin-left:10px;font-size:19px;font-weight:bold;color:#ffffff;letter-spacing:-0.01em;">{{ $brandName }}</span>
         </td>
-        <td align="right" style="font-size:11px;color:#9AA8C7;letter-spacing:0.5px;text-align:right;line-height:1.5;">{{ strtoupper(__('Weekly')) }}<br><span style="color:#fff;font-weight:bold;">{{ now()->format('d F Y') }} · {{ __('Week :week', ['week' => now()->weekOfYear]) }}</span></td>
+        <td class="hdr-date" align="right" style="font-size:11px;color:#9AA8C7;letter-spacing:0.5px;text-align:right;line-height:1.5;">{{ strtoupper(__('Weekly')) }}<br><span style="color:#fff;font-weight:bold;">{{ now()->format('d F Y') }} · {{ __('Week :week', ['week' => now()->weekOfYear]) }}</span></td>
     </tr></table></td></tr>
 
     {{-- ince turuncu çizgi --}}
@@ -93,13 +111,13 @@
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border-radius:10px;border:1px solid #E8E8EC;border-left:4px solid {{ $cat['color'] }};">
                 <tr>
                     <td width="52" style="vertical-align:top;padding:16px 0 16px 16px;">
-                        <table role="presentation" cellpadding="0" cellspacing="0"><tr><td align="center" style="width:36px;height:36px;background:{{ $cat['color'] }};border-radius:9px;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;color:#FFFFFF;line-height:36px;">{{ $idx + 1 }}</td></tr></table>
+                        <table role="presentation" cellpadding="0" cellspacing="0"><tr><td class="num" align="center" style="width:36px;height:36px;background:{{ $cat['color'] }};border-radius:9px;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;color:#FFFFFF;line-height:36px;">{{ $idx + 1 }}</td></tr></table>
                     </td>
                     <td style="padding:15px 18px 15px 13px;">
                         @if (!empty($cat['label']))<p style="margin:0 0 4px;font-size:10px;font-weight:bold;letter-spacing:0.08em;color:{{ $cat['color'] }};text-transform:uppercase;">{{ $cat['label'] }}</p>@endif
-                        <a href="{{ $i['url'] }}" style="display:block;margin:0 0 5px;font-size:15px;font-weight:bold;color:{{ $ink }};line-height:1.35;">{{ $i['title'] }}</a>
-                        <p style="margin:0 0 9px;font-size:13px;line-height:1.55;color:{{ $muted }};">{{ \Illuminate\Support\Str::limit($i['description'], 115) }}</p>
-                        <a href="{{ $i['url'] }}" style="display:inline-block;font-size:12px;font-weight:bold;color:{{ $cat['color'] }};">{{ __('See details →') }}</a>
+                        <a href="{{ $i['url'] }}" class="title" style="display:block;margin:0 0 5px;font-size:15px;font-weight:bold;color:{{ $ink }};line-height:1.35;">{{ $i['title'] }}</a>
+                        <p class="desc" style="margin:0 0 9px;font-size:13px;line-height:1.55;color:{{ $muted }};">{{ \Illuminate\Support\Str::limit($i['description'], 115) }}</p>
+                        <a href="{{ $i['url'] }}" class="det" style="display:inline-block;font-size:12px;font-weight:bold;color:{{ $cat['color'] }};">{{ __('See details →') }}</a>
                     </td>
                 </tr>
             </table>
