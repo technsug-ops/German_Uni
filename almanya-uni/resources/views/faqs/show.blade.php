@@ -59,7 +59,6 @@
     <a href="{{ route('faqs.topic', $topic->slug) }}"
        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide mb-3"
        style="color: {{ $topic->color ?? '#1E40AF' }}">
-        @if ($topic->icon)<span>{{ $topic->icon }}</span>@endif
         {{ $topic->name }}
     </a>
 

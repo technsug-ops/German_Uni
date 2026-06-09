@@ -52,7 +52,7 @@
                             <div class="flex items-baseline justify-between mb-1.5">
                                 <span class="inline-block text-xs font-semibold uppercase tracking-wide"
                                       style="color: {{ $r->topic->color ?? '#1E40AF' }}">
-                                    {{ $r->topic->icon ?? '' }} {{ $r->topic->name }}
+                                    {{ $r->topic->name }}
                                 </span>
                                 @if (! $r->has_answer)
                                     <span class="text-xs text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">{{ __('No answer') }}</span>
@@ -138,9 +138,6 @@
             <a href="{{ route('faqs.topic', $topic->slug) }}"
                class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-lg p-5">
                 <div class="flex items-start gap-3 mb-3">
-                    @if ($topic->icon)
-                        <span class="text-3xl flex-shrink-0">{{ $topic->icon }}</span>
-                    @endif
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-lg leading-tight"
                             style="color: {{ $topic->color ?? '#1E40AF' }}">
