@@ -126,8 +126,11 @@ class PostForm
 
                         Textarea::make('meta_description')
                             ->label('Meta Description (155 char ideal)')
+                            ->helperText('Daha uzun girersen KAYDEDERKEN otomatik ~165 karaktere kısaltılır — kaydetmeyi engellemez.')
                             ->rows(2)
-                            ->maxLength(170),
+                            // Hard maxLength(170) mevcut uzun açıklamalarda kaydetmeyi BLOKE ediyordu
+                            // ("işlem yapılmıyor"). Auto-truncate: blokemez + SEO-temiz kalır.
+                            ->dehydrateStateUsing(fn (?string $state) => $state ? \Illuminate\Support\Str::limit(trim($state), 165, '…') : $state),
                     ]),
 
                 Section::make('Yayın')
