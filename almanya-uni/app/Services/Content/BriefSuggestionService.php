@@ -550,10 +550,18 @@ TXT;
                         'contents' => [['role' => 'user', 'parts' => [['text' => $prompt]]]],
                         'generationConfig' => [
                             'temperature' => 0.7,
-                            'maxOutputTokens' => 12288,
+                            'maxOutputTokens' => 16384,
                             'topP' => 0.95,
                         ],
                     ];
+
+                    // Gemini 2.5 thinking model'leri thinking-token'larıyla maxOutputTokens
+                    // bütçesini yiyip JSON çıktısını TRUNCATE ediyordu (→ "JSON parse edilemedi").
+                    // Structured öneri için derin düşünme gereksiz → thinking'i kapat, tüm bütçe
+                    // çıktıya gitsin. (2.0 modelleri bu alanı desteklemez → sadece 2.5'e uygula.)
+                    if (str_starts_with($model, 'gemini-2.5')) {
+                        $payload['generationConfig']['thinkingConfig'] = ['thinkingBudget' => 0];
+                    }
 
                     // liveSearch: Google Search grounding (tools ile JSON mode birlikte çalışmaz, manuel parse)
                     if ($liveSearch) {
