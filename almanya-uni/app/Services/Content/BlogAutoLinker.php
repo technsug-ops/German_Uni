@@ -27,6 +27,11 @@ class BlogAutoLinker
     private const MAX_LINKS = 3;      // entity (şehir/üni) linki
     private const MAX_GLOSSARY = 5;   // glossary tooltip
 
+    /** Yaygın Almanca/genel kelimelerle çakışan şehir adları — auto-link YANLIŞ olur
+     *  (leer=boş, essen=yemek, hof=avlu, lage=durum, born=kuyu, horn=boynuz). Bu
+     *  şehirlere otomatik link verilmez; case-insensitive eşleşme yanlış-link üretiyordu. */
+    private const CITY_STOPLIST = ['leer', 'essen', 'hof', 'lage', 'born', 'horn', 'rust', 'brake'];
+
     /** Sayfa-genel sayaç (çok bloklu içerikte tüm bloklar paylaşır). */
     private int $gCount = 0;
     private int $lCount = 0;
@@ -227,6 +232,7 @@ class BlogAutoLinker
             foreach (City::where('is_active', 1)->get(['name_de', 'slug']) as $c) {
                 $key = mb_strtolower($c->name_de);
                 if (mb_strlen($key) < 4) continue; // çok kısa şehir adı atla
+                if (in_array($key, self::CITY_STOPLIST, true)) continue; // genel kelime çakışması (leer=boş)
                 if (! isset($map[$key])) {
                     $map[$key] = ['type' => 'link', 'url' => '/cities/' . $c->slug];
                 }
