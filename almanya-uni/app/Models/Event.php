@@ -47,10 +47,10 @@ class Event extends Model
     public function getLanguageLabelAttribute(): ?string
     {
         return match ($this->presentation_language) {
-            'tr'    => 'Türkçe',
-            'en'    => 'English',
-            'de'    => 'Deutsch',
-            'multi' => 'Türkçe + Almanca',
+            'tr'    => __('Turkish'),
+            'en'    => __('English'),
+            'de'    => __('German'),
+            'multi' => __('Turkish + German'),
             default => null,
         };
     }

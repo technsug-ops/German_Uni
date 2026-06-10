@@ -45,7 +45,7 @@
                 <a href="{{ route('events.index', ['category' => $cat->slug]) }}"
                    class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $category === $cat->slug ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                    {!! e_icon($cat->icon, 'w-3.5 h-3.5') !!} {{ $cat->name_tr }}
+                    {!! e_icon($cat->icon, 'w-3.5 h-3.5') !!} {{ $cat->name }}
                 </a>
             @endforeach
         </div>

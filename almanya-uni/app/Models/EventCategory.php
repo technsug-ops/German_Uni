@@ -9,12 +9,27 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class EventCategory extends Model
 {
     protected $fillable = [
-        'slug', 'name_tr', 'name_en', 'icon', 'color', 'description', 'sort_order', 'is_active',
+        'slug', 'name_tr', 'name_en', 'name_de', 'icon', 'color', 'description', 'sort_order', 'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    /**
+     * Aktif dilde kategori adı: name_{locale} → name_en → name_tr (ilk dolu).
+     * View'ler $cat->name kullanmalı; $cat->name_tr ham TR sızdırır.
+     */
+    public function getNameAttribute(): string
+    {
+        $locale = app()->getLocale();
+        foreach (["name_{$locale}", 'name_en', 'name_tr'] as $col) {
+            if (! empty($this->attributes[$col] ?? null)) {
+                return $this->attributes[$col];
+            }
+        }
+        return '';
+    }
 
     public function events(): HasMany
     {

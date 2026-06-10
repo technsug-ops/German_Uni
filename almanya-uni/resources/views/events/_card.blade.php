@@ -51,7 +51,7 @@
                 </p>
             @else
                 <p class="flex items-center gap-1.5 text-emerald-600 font-semibold text-xs">
-                    <x-svg-icon name="tag" class="w-3.5 h-3.5" /> Ücretsiz
+                    <x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ __('Free') }}
                 </p>
             @endif
         </div>
