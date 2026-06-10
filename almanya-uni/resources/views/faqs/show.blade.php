@@ -97,6 +97,27 @@
         </div>
     @endif
 
+    {{-- Bu cevap işine yaradı mı? (localStorage çift-oy engeli, blog pattern'i) --}}
+    @if ($faq->has_answer)
+        <div x-data="faqFeedback({{ $faq->id }})" class="pt-6 border-t border-gray-200">
+            <div x-show="!voted" class="flex items-center gap-4 flex-wrap">
+                <p class="text-sm font-semibold text-gray-700">{{ __('Was this answer helpful?') }}</p>
+                <div class="flex gap-2">
+                    <button @click="vote('up')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 hover:border-green-400 hover:bg-green-50 text-gray-700 hover:text-green-700 text-sm font-medium transition">
+                        <x-svg-icon name="check-circle" class="w-4 h-4" /> {{ __('Yes') }}
+                    </button>
+                    <button @click="vote('down')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 hover:border-red-400 hover:bg-red-50 text-gray-700 hover:text-red-700 text-sm font-medium transition">
+                        <x-svg-icon name="x-circle" class="w-4 h-4" /> {{ __('No') }}
+                    </button>
+                </div>
+            </div>
+            <div x-show="voted" x-cloak class="bg-gradient-to-br from-primary-50 to-accent-50 border border-primary-100 rounded-lg p-4">
+                <p class="text-sm font-medium text-gray-800" x-text="thanks"></p>
+                <p x-show="voted === 'down'" x-cloak class="text-xs text-gray-600 mt-1">{!! __('Let us know what was missing via the <strong>feedback widget</strong> at the bottom right, and we will update quickly.') !!}</p>
+            </div>
+        </div>
+    @endif
+
     <!-- Related -->
     @if ($related->isNotEmpty())
         <section class="mt-12 pt-8 border-t border-gray-200">
@@ -131,4 +152,29 @@
         </a>
     </div>
 </article>
+
+@push('scripts')
+<script>
+document.addEventListener('alpine:init', () => {
+    window.Alpine && Alpine.data('faqFeedback', (faqId) => ({
+        voted: localStorage.getItem('faq-feedback-' + faqId) || null,
+        thanks: '',
+        vote(type) {
+            this.voted = type;
+            localStorage.setItem('faq-feedback-' + faqId, type);
+            this.thanks = type === 'up'
+                ? @js(__('Thanks for your feedback!'))
+                : @js(__('Sorry. We will review your feedback.'));
+            try {
+                fetch('/api/faq-feedback', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || ''},
+                    body: JSON.stringify({ faq_id: faqId, vote: type })
+                });
+            } catch (e) {}
+        }
+    }));
+});
+</script>
+@endpush
 @endsection

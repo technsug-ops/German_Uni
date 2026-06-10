@@ -943,6 +943,11 @@ Route::post('/api/blog-feedback', [\App\Http\Controllers\Web\BlogController::cla
     ->middleware('throttle:30,1')
     ->name('blog.feedback');
 
+// FAQ cevabı işine yaradı mı? oyu
+Route::post('/api/faq-feedback', [\App\Http\Controllers\Web\FaqController::class, 'feedback'])
+    ->middleware('throttle:30,1')
+    ->name('faqs.feedback');
+
 Route::post('/api/blog-engagement', [\App\Http\Controllers\Web\BlogController::class, 'engagement'])
     ->middleware('throttle:120,1')
     ->name('blog.engagement');

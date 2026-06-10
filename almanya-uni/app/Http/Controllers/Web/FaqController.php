@@ -96,6 +96,23 @@ class FaqController extends Controller
         ]);
     }
 
+    /**
+     * FAQ cevabı "işine yaradı mı?" oyu — Alpine widget'tan POST.
+     * localStorage çift-oyu engeller; sayaç atomik artırılır (blog pattern'i).
+     */
+    public function feedback(Request $request)
+    {
+        $data = $request->validate([
+            'faq_id' => ['required', 'integer', 'exists:faqs,id'],
+            'vote'   => ['required', 'in:up,down'],
+        ]);
+
+        $column = $data['vote'] === 'up' ? 'helpful_count' : 'unhelpful_count';
+        Faq::where('id', $data['faq_id'])->increment($column);
+
+        return response()->json(['ok' => true]);
+    }
+
     public function show(string $topicSlug, string $slug)
     {
         $topic = FaqTopic::active()->where('slug', $topicSlug)->firstOrFail();
