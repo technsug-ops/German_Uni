@@ -37,6 +37,24 @@ class FaqCategorizer
 
     public const OTHER = 'Other questions';
 
+    /**
+     * Kategori → ilgili araç eşlemesi (FAQ ↔ Tool çapraz bağlama / funnel).
+     * Anahtar = kategori (RULES anahtarıyla aynı), değer = [route, label(çevrilir), locales?].
+     * locales doluysa CTA yalnızca o dillerde gösterilir (ör. iData = tr).
+     */
+    private const TOOL_MAP = [
+        'Blocked account (Sperrkonto)'  => ['route' => 'tools.blocked-account', 'label' => 'Blocked Account (Sperrkonto) Finder'],
+        'Health insurance'              => ['route' => 'tools.health-insurance', 'label' => 'Health Insurance Comparison'],
+        'Language course & certificate' => ['route' => 'tools.language-certificates', 'label' => 'Language Certificates'],
+        'Appointment & processing time' => ['route' => 'tools.visa-appointment', 'label' => 'Visa Appointment (iData)', 'locales' => ['tr']],
+    ];
+
+    /** Bir kategori için ilgili aracı döndürür (varsa), yoksa null. */
+    public static function toolFor(string $categoryKey): ?array
+    {
+        return self::TOOL_MAP[$categoryKey] ?? null;
+    }
+
     /** Bir sorunun kategori anahtarını döndürür (çevrilmemiş; etiket için __() çağırın). */
     public static function keyFor(?string $question): string
     {

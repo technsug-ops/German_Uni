@@ -106,6 +106,15 @@
                     </svg>
                 </button>
                 <div x-show="isOpen(@js($key))" x-collapse x-cloak>
+                    @php $relTool = \App\Support\FaqCategorizer::toolFor($key); @endphp
+                    @if ($relTool && (empty($relTool['locales']) || in_array(app()->getLocale(), $relTool['locales'])))
+                        <a href="{{ route($relTool['route']) }}"
+                           class="flex items-center gap-2.5 mx-4 mt-4 px-3.5 py-2.5 rounded-lg bg-primary-50 border border-primary-100 text-primary-800 hover:bg-primary-100 transition text-sm font-medium">
+                            <x-svg-icon name="wrench-screwdriver" class="w-4 h-4 shrink-0 text-primary-600" />
+                            <span>{{ __('Related tool') }}: <strong>{{ __($relTool['label']) }}</strong></span>
+                            <span class="ml-auto text-primary-500">→</span>
+                        </a>
+                    @endif
                     <div class="grid grid-cols-1 gap-3 p-4">
                         @foreach ($group['faqs'] as $faq)
                             <a href="{{ route('faqs.show', [$topic->slug, $faq->slug]) }}"
