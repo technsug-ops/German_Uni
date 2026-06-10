@@ -141,41 +141,26 @@
     <h2 class="text-2xl font-bold mb-4">{{ __('Questions by Topic') }}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($topics as $topic)
-            @php $tColor = $topic->color ?? '#1E40AF'; @endphp
             <a href="{{ route('faqs.topic', $topic->slug) }}"
-               class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition duration-200">
-                {{-- üst renkli aksan --}}
-                <span class="block h-1" style="background-color: {{ $tColor }}"></span>
-                <div class="p-5">
-                    <div class="flex items-start gap-3 mb-3">
-                        <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
-                              style="background-color: {{ $tColor }}14; color: {{ $tColor }};">
-                            {!! e_icon($topic->icon, 'w-6 h-6') !!}
-                        </span>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-lg leading-tight" style="color: {{ $tColor }}">
-                                {{ $topic->name }}
-                            </h3>
-                            <div class="flex flex-wrap items-center gap-1.5 mt-1.5">
-                                <span class="inline-block text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
-                                    {{ __(':n questions', ['n' => $topic->faqs_count]) }}
-                                </span>
-                                @if ($topic->answered_count > 0)
-                                    <span class="inline-block text-xs font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
-                                        {{ __(':n answered', ['n' => $topic->answered_count]) }}
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    @if ($topic->description)
-                        <p class="text-sm text-gray-700 leading-relaxed">{{ $topic->description }}</p>
+               class="group block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-lg p-6">
+                <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0 mb-3"
+                      style="background-color: #1E40AF14; color: #1E40AF;">
+                    {!! e_icon($topic->icon, 'w-6 h-6') !!}
+                </span>
+                <h3 class="font-bold text-lg text-gray-900 mb-1 leading-tight">{{ $topic->name }}</h3>
+                <p class="text-xs text-gray-500 mb-2">
+                    {{ __(':n questions', ['n' => $topic->faqs_count]) }}
+                    @if ($topic->answered_count > 0)
+                        · <span class="text-green-600 font-medium">{{ __(':n answered', ['n' => $topic->answered_count]) }}</span>
                     @endif
-                    <p class="font-semibold text-sm mt-3 inline-flex items-center gap-1" style="color: {{ $tColor }}">
-                        {{ __('See questions') }}
-                        <span class="transition-transform group-hover:translate-x-0.5">→</span>
-                    </p>
-                </div>
+                </p>
+                @if ($topic->description)
+                    <p class="text-sm text-gray-600 leading-relaxed">{{ $topic->description }}</p>
+                @endif
+                <span class="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-primary-600">
+                    {{ __('See questions') }}
+                    <span class="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
             </a>
         @endforeach
     </div>
