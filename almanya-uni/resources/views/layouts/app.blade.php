@@ -810,7 +810,7 @@
     {{-- =================================================== --}}
     {{-- MAIN                                                  --}}
     {{-- =================================================== --}}
-    <main id="main-content" class="min-h-screen" tabindex="-1">
+    <main id="main-content" tabindex="-1">
         @yield('content')
         {{ $slot ?? '' }}
     </main>
