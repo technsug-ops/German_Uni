@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\FaqTopic;
+use App\Support\FaqCategorizer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -91,6 +92,7 @@ class FaqController extends Controller
         return view('faqs.topic', [
             'topic' => $topic,
             'faqs' => $faqs,
+            'groups' => FaqCategorizer::group($faqs),
         ]);
     }
 
