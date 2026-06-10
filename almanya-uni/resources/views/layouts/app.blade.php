@@ -231,7 +231,7 @@
                                         <a href="{{ $url }}" class="{{ $itemCls }}" title="{{ $item->label }}{{ $item->description ? ' — ' . $item->description : '' }}">
                                             <span class="w-9 h-9 rounded-lg bg-primary-50 group-hover/mi:bg-primary-100 flex items-center justify-center text-primary-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0 flex-1">
-                                                <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-rose-100 text-rose-700">{{ $item->badge }}</span>@endif</span>
+                                                <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-rose-100 text-rose-700">{{ __($item->badge) }}</span>@endif</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
                                             </span>
                                         </a>
@@ -272,7 +272,7 @@
                                         <a href="{{ $url }}" class="group/mi flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-emerald-50 transition">
                                             <span class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 shrink-0">{!! e_icon($item->icon, 'w-5 h-5') !!}</span>
                                             <span class="min-w-0 flex-1">
-                                                <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-amber-100 text-amber-700">{{ $item->badge }}</span>@endif</span>
+                                                <span class="font-semibold text-gray-900 leading-tight flex items-center gap-1.5">{{ $item->label }} @if($item->badge)<span class="text-[9px] font-bold uppercase px-1 py-0.5 rounded bg-amber-100 text-amber-700">{{ __($item->badge) }}</span>@endif</span>
                                                 <span class="block text-xs text-gray-400 leading-tight">{{ $item->description }}</span>
                                             </span>
                                         </a>
@@ -528,7 +528,7 @@
                                             <span class="shrink-0 inline-flex items-center justify-center w-4 h-4 text-primary-300">{!! e_icon($item->icon, 'w-4 h-4') !!}</span>
                                             <span class="flex-1 truncate">{{ $item->label }}</span>
                                             @if ($item->badge)
-                                                <span class="shrink-0 text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-400 text-amber-900">{{ $item->badge }}</span>
+                                                <span class="shrink-0 text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-400 text-amber-900">{{ __($item->badge) }}</span>
                                             @endif
                                         </a>
                                     @endif
