@@ -87,7 +87,7 @@
     </div>
 
     {{-- Alt-konu accordion'ları (varsayılan kapalı; arama eşleşeni otomatik açar) --}}
-    <div class="space-y-3">
+    <div class="grid sm:grid-cols-2 gap-3 items-start">
         @foreach ($groups as $group)
             @php $key = $group['key']; @endphp
             <div class="border border-gray-200 rounded-lg overflow-hidden"
@@ -106,7 +106,7 @@
                     </svg>
                 </button>
                 <div x-show="isOpen(@js($key))" x-collapse x-cloak>
-                    <div class="grid sm:grid-cols-2 gap-3 items-start p-4">
+                    <div class="grid grid-cols-1 gap-3 p-4">
                         @foreach ($group['faqs'] as $faq)
                             <a href="{{ route('faqs.show', [$topic->slug, $faq->slug]) }}"
                                data-q="{{ $faq->question }}" x-show="cardVisible($el)" x-cloak
