@@ -87,7 +87,7 @@ class FaqController extends Controller
             ->where('locale', app()->getLocale())
             ->orderByDesc('has_answer')
             ->orderBy('sort_order')
-            ->get(['id', 'slug', 'question', 'intent', 'has_answer', 'answer_minutes', 'answer_html', 'faq_topic_id']);
+            ->get(['id', 'slug', 'question', 'intent', 'category', 'has_answer', 'answer_minutes', 'answer_html', 'faq_topic_id']);
 
         return view('faqs.topic', [
             'topic' => $topic,

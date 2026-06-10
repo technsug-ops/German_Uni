@@ -70,12 +70,43 @@ class FaqCategorizer
     }
 
     /**
+     * Bir FAQ için kategori anahtarı: admin elle seçtiyse (geçerli bir anahtarsa)
+     * o kazanır; yoksa soru metninden heuristik. Override sınır sorularını düzeltir.
+     */
+    public static function resolveKey($faq): string
+    {
+        $override = is_object($faq) ? ($faq->category ?? null) : null;
+        if ($override && in_array($override, self::validKeys(), true)) {
+            return $override;
+        }
+
+        return self::keyFor(is_object($faq) ? ($faq->question ?? '') : (string) $faq);
+    }
+
+    /** Geçerli kategori anahtarları (RULES + Diğer). */
+    public static function validKeys(): array
+    {
+        return [...array_keys(self::RULES), self::OTHER];
+    }
+
+    /** Filament select için [anahtar => çevrili etiket]. */
+    public static function categoryOptions(): array
+    {
+        $opts = [];
+        foreach (self::validKeys() as $key) {
+            $opts[$key] = __($key);
+        }
+
+        return $opts;
+    }
+
+    /**
      * FAQ koleksiyonunu kategoriye göre gruplar. Sadece dolu gruplar, RULES
      * sırasıyla; "Diğer" daima sonda. Dönüş: [['key','label','faqs'], ...].
      */
     public static function group(Collection $faqs): array
     {
-        $buckets = $faqs->groupBy(fn ($faq) => self::keyFor($faq->question));
+        $buckets = $faqs->groupBy(fn ($faq) => self::resolveKey($faq));
 
         $order = array_keys(self::RULES);
         $order[] = self::OTHER;

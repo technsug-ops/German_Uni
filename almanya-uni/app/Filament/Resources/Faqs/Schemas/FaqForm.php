@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Faqs\Schemas;
 
+use App\Support\FaqCategorizer;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -25,6 +27,12 @@ class FaqForm
                 Textarea::make('answer_html')
                     ->columnSpanFull(),
                 TextInput::make('intent'),
+                Select::make('category')
+                    ->label('Alt-konu kategorisi (override)')
+                    ->options(FaqCategorizer::categoryOptions())
+                    ->placeholder('Otomatik (anahtar kelimeden)')
+                    ->helperText('Boş bırakılırsa soru metninden otomatik atanır. Yanlış kovaya düşen sınır soruları burada düzelt.')
+                    ->searchable(),
                 TextInput::make('answer_minutes')
                     ->required()
                     ->numeric()

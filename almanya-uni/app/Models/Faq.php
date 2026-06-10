@@ -19,6 +19,7 @@ class Faq extends Model
         'answer_md',
         'answer_html',
         'intent',
+        'category',
         'answer_minutes',
         'has_answer',
         'is_featured',
