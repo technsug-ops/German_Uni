@@ -28,6 +28,7 @@ class MenuPageSeeder extends Seeder
             ['key' => 'tools.budget-planner',  'label' => 'Bütçe Planlayıcı',    'icon' => '📈', 'description' => 'Gelir-gider dengesi', 'group' => 'araclar', 'sort_order' => 40],
             ['key' => 'tools.visa-cost',       'label' => 'Vize Maliyeti',       'icon' => '💸', 'description' => 'Tüm masraf kalemleri', 'group' => 'araclar', 'sort_order' => 50],
             ['key' => 'tools.blocked-account', 'label' => 'Bloke Hesap Bulucu',  'icon' => '🏦', 'description' => 'Sperrkonto karşılaştır', 'badge' => 'YENİ', 'group' => 'araclar', 'sort_order' => 60],
+            ['key' => 'tools.health-insurance', 'label' => 'Sağlık Sigortası', 'label_en' => 'Health Insurance', 'label_de' => 'Krankenversicherung', 'icon' => '🩺', 'description' => 'GKV / PKV / expat karşılaştır', 'badge' => 'YENİ', 'group' => 'araclar', 'sort_order' => 65],
             ['key' => 'tools.deadlines',       'label' => 'Başvuru Takvimi',     'icon' => '📅', 'description' => 'Deadline + takvim', 'group' => 'araclar', 'sort_order' => 70],
             ['key' => 'tools.grade-converter', 'label' => 'Not Dönüştürücü',     'icon' => '📊', 'description' => 'TR → Alman 1-5', 'group' => 'araclar', 'sort_order' => 80],
             ['key' => 'housing.index',         'label' => 'Ev / Yurt Rehberi',   'icon' => '🏠', 'description' => 'Konaklama bulma', 'group' => 'araclar', 'sort_order' => 90],

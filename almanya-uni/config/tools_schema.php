@@ -159,6 +159,25 @@ return [
         ],
     ],
 
+    'health-insurance' => [
+        'route' => 'tools.health-insurance',
+        'name' => [
+            'tr' => 'Sağlık Sigortası Karşılaştırma',
+            'en' => 'Health Insurance Comparison',
+            'de' => 'Krankenversicherung im Vergleich',
+        ],
+        'description' => [
+            'tr' => 'Almanya\'da öğrenci sağlık sigortası: GKV, PKV ve expat planlarını karşılaştır, sana uygun olanı bul.',
+            'en' => 'Student health insurance in Germany: compare GKV, PKV and expat plans and find the right one for you.',
+            'de' => 'Studentische Krankenversicherung in Deutschland: Vergleiche GKV, PKV und Expat-Tarife und finde den passenden.',
+        ],
+        'featureList' => [
+            'tr' => ['GKV / PKV / expat', '7 sağlayıcı', 'Karar yardımcısı'],
+            'en' => ['GKV / PKV / expat', '7 providers', 'Decision helper'],
+            'de' => ['GKV / PKV / Expat', '7 Anbieter', 'Entscheidungshilfe'],
+        ],
+    ],
+
     'studienkolleg' => [
         'route' => 'tools.studienkolleg',
         'name' => [
