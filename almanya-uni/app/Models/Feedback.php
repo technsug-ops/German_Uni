@@ -18,13 +18,15 @@ class Feedback extends Model
         'resolved_at' => 'datetime',
     ];
 
+    // Kanonik İngilizce etiketler (emojisiz). Gösterimde __() ile lokalize edilir
+    // (public contact + admin). Anahtarlar sabit; değerler lang/{tr,de}.json'da çevrili.
     public const TYPES = [
-        'general' => '💬 Genel',
-        'bug' => '🐛 Hata bildirimi',
-        'suggestion' => '💡 Öneri',
-        'content' => '📝 İçerik düzeltmesi',
-        'partnership' => '🤝 İşbirliği',
-        'other' => '❓ Diğer',
+        'general' => 'General',
+        'bug' => 'Bug report',
+        'suggestion' => 'Suggestion',
+        'content' => 'Content correction',
+        'partnership' => 'Partnership',
+        'other' => 'Other',
     ];
 
     public const STATUSES = [

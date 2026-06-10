@@ -2039,7 +2039,7 @@ class ToolsController extends Controller
 
         $profession = Profession::where('is_active', true)
             ->inRandomOrder()
-            ->first(['id', 'slug', 'name_tr', 'name_de', 'cluster_label', 'description_tr']);
+            ->first(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'cluster_label', 'description_tr', 'description_de', 'description_en']);
 
         $field = FieldOfStudy::active()
             ->withCount(['programs' => fn ($q) => $q->where('is_active', 1)])

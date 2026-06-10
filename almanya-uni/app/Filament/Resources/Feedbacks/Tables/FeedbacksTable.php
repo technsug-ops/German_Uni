@@ -21,7 +21,7 @@ class FeedbacksTable
                 TextColumn::make('type')
                     ->label('Tip')
                     ->badge()
-                    ->formatStateUsing(fn ($state) => Feedback::TYPES[$state] ?? $state)
+                    ->formatStateUsing(fn ($state) => __(Feedback::TYPES[$state] ?? $state))
                     ->color(fn ($state) => match ($state) {
                         'bug' => 'danger',
                         'suggestion' => 'success',

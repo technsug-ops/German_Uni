@@ -46,7 +46,7 @@
             <select name="type" id="type"
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400">
                 @foreach ($types as $key => $label)
-                    <option value="{{ $key }}" @selected(old('type', $presetType) === $key)>{{ $label }}</option>
+                    <option value="{{ $key }}" @selected(old('type', $presetType) === $key)>{{ __($label) }}</option>
                 @endforeach
             </select>
         </div>

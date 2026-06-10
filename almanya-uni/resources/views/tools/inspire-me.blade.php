@@ -161,7 +161,7 @@
                     <div class="p-5">
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="briefcase" class="w-3.5 h-3.5" /> {{ __('Profession') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-slate-800 transition">
-                            {{ $profession->name_tr ?: $profession->name_de }}
+                            {{ $profession->name }}
                         </h2>
                         @if ($profession->cluster_label)
                             <p class="text-xs text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ $profession->cluster_label }}</p>
@@ -184,7 +184,7 @@
                     <div class="p-5">
                         <p class="text-xs font-bold uppercase tracking-wider mb-1.5 inline-flex items-center gap-1" style="color: {{ $field->color ?: '#6366f1' }}"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Field of Study') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight">
-                            {{ $field->name_tr }}
+                            {{ $field->name }}
                         </h2>
                         <p class="text-xs text-gray-600 inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ $field->programs_count }} {{ __('programmes available') }}</p>
                     </div>

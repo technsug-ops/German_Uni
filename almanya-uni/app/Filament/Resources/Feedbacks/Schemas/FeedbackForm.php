@@ -18,7 +18,7 @@ class FeedbackForm
             Section::make('Mesaj')
                 ->columns(2)
                 ->components([
-                    Select::make('type')->label('Tip')->options(Feedback::TYPES)->required()->native(false),
+                    Select::make('type')->label('Tip')->options(array_map(fn ($v) => __($v), Feedback::TYPES))->required()->native(false),
                     Select::make('status')->label('Durum')->options(Feedback::STATUSES)->required()->native(false),
                     TextInput::make('name')->label('İsim'),
                     TextInput::make('email')->label('E-posta')->email(),
