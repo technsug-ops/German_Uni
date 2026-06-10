@@ -14,6 +14,10 @@
     $itemListElements = [];
     $position = 1;
     foreach ($toolsRegistry as $tKey => $tCfg) {
+        // Locale-özel araçları schema'dan da çıkar (ör. iData yalnızca /tr).
+        if (!empty($tCfg['locales']) && !in_array($locale, $tCfg['locales'], true)) {
+            continue;
+        }
         $tName = $tCfg['name'][$locale] ?? $tCfg['name'][$fallback] ?? null;
         $tDesc = $tCfg['description'][$locale] ?? $tCfg['description'][$fallback] ?? null;
         $tUrl  = isset($tCfg['route']) ? route($tCfg['route']) : null;

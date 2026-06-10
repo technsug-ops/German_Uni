@@ -141,14 +141,8 @@ class ToolsController extends Controller
                 'route'       => route('tools.inspire-me'),
                 'live'        => true,
             ],
-            [
-                'slug'        => 'professional-recognition',
-                'title'       => __('Professional Recognition'),
-                'description' => __('Is your profession recognised in Germany? 6 popular jobs — authority, timeline, cost.'),
-                'icon'        => '🛡️',
-                'route'       => route('tools.professional-recognition'),
-                'live'        => true,
-            ],
+            // NOT: Mesleki Denklik (professional-recognition) kasıtlı listelenmiyor —
+            // denklik kapsam dışı (ayrı site). Route + sayfa durur, sadece direkt URL.
         ];
 
         // Locale-özel araçları gizle (ör. iData yalnızca /tr'de).

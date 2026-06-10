@@ -202,7 +202,11 @@
                 @endif
 
                 {{-- 2) ARAÇLAR --}}
-                @php $araclarItems = \App\Models\MenuPage::forGroup('araclar')->where('key', '!=', 'tools.index'); @endphp
+                @php
+                    // iData vize randevusu yalnızca Türkiye'den başvuranlar için → menüde sadece /tr.
+                    $araclarItems = \App\Models\MenuPage::forGroup('araclar')->where('key', '!=', 'tools.index')
+                        ->when(app()->getLocale() !== 'tr', fn ($q) => $q->where('key', '!=', 'tools.visa-appointment'));
+                @endphp
                 @if ($araclarItems->isNotEmpty())
                 <div class="relative group" data-mega>
                     <button class="{{ $btnBase }} {{ $araclarActive ? $active : $inactive }}"
@@ -494,7 +498,11 @@
 
                 <div class="space-y-1.5">
                 @foreach ($mobileGroups as $gKey => $gMeta)
-                    @php $items = \App\Models\MenuPage::forGroup($gKey); @endphp
+                    @php
+                        // iData vize randevusu yalnızca /tr menüsünde (Türkiye'den başvuru).
+                        $items = \App\Models\MenuPage::forGroup($gKey)
+                            ->when(app()->getLocale() !== 'tr', fn ($q) => $q->where('key', '!=', 'tools.visa-appointment'));
+                    @endphp
                     @if ($items->isNotEmpty())
                         @php
                             $totalCount = $items->count() + ($gKey === 'icerik' ? $forumStandalone->count() : 0);

@@ -215,4 +215,81 @@ return [
             'de' => ['Abschlussvergleich', 'Studienkolleg-Routing', 'Anabin-konform'],
         ],
     ],
+
+    'visa-appointment' => [
+        'route' => 'tools.visa-appointment',
+        'locales' => ['tr'], // iData yalnızca Türkiye'den başvuranlar için → sayfa + schema sadece /tr
+        'name' => [
+            'tr' => 'Vize Randevusu (iData)',
+            'en' => 'Visa Appointment (iData)',
+            'de' => 'Visumtermin (iData)',
+        ],
+        'description' => [
+            'tr' => 'Almanya öğrenci vizesi için iData randevu süreci: nasıl alınır, ne zaman açılır, ipuçları.',
+            'en' => 'The iData appointment process for the Germany student visa: how to book, when slots open, tips.',
+            'de' => 'Der iData-Terminprozess für das deutsche Studentenvisum: Buchung, Slot-Öffnung und Tipps.',
+        ],
+        'featureList' => [
+            'tr' => ['iData adım adım', 'Randevu ipuçları', 'Şehir bazlı'],
+            'en' => ['iData step by step', 'Booking tips', 'By city'],
+            'de' => ['iData Schritt für Schritt', 'Termin-Tipps', 'Nach Stadt'],
+        ],
+    ],
+
+    'language-certificates' => [
+        'route' => 'tools.language-certificates',
+        'name' => [
+            'tr' => 'Almanca Dil Sertifikaları',
+            'en' => 'German Language Certificates',
+            'de' => 'Deutsche Sprachzertifikate',
+        ],
+        'description' => [
+            'tr' => 'Üniversite başvurusu için hangi Almanca sertifikası (TestDaF, DSH, telc, Goethe) gerekli — seviye karşılaştırması.',
+            'en' => 'Which German certificate (TestDaF, DSH, telc, Goethe) you need for university admission, with a level comparison.',
+            'de' => 'Welches Sprachzertifikat (TestDaF, DSH, telc, Goethe) du für die Zulassung brauchst — mit Niveauvergleich.',
+        ],
+        'featureList' => [
+            'tr' => ['TestDaF / DSH / telc / Goethe', 'Seviye karşılaştırma', 'Kabul eşikleri'],
+            'en' => ['TestDaF / DSH / telc / Goethe', 'Level comparison', 'Admission thresholds'],
+            'de' => ['TestDaF / DSH / telc / Goethe', 'Niveauvergleich', 'Zulassungsgrenzen'],
+        ],
+    ],
+
+    'pathway-finder' => [
+        'route' => 'tools.pathway-finder',
+        'name' => [
+            'tr' => 'Rota Bulucu',
+            'en' => 'Pathway Finder',
+            'de' => 'Weg-Finder',
+        ],
+        'description' => [
+            'tr' => 'Profiline göre Almanya\'ya en uygun yol: doğrudan üniversite, Studienkolleg, Ausbildung ya da dil yolu.',
+            'en' => 'The best route to Germany for your profile: direct university, Studienkolleg, Ausbildung or language path.',
+            'de' => 'Der beste Weg nach Deutschland für dein Profil: Direktstudium, Studienkolleg, Ausbildung oder Sprachweg.',
+        ],
+        'featureList' => [
+            'tr' => ['Profil bazlı quiz', '4 rota', 'Kişisel sonuç'],
+            'en' => ['Profile-based quiz', '4 routes', 'Personal result'],
+            'de' => ['Profilbasiertes Quiz', '4 Wege', 'Persönliches Ergebnis'],
+        ],
+    ],
+
+    'inspire-me' => [
+        'route' => 'tools.inspire-me',
+        'name' => [
+            'tr' => 'Bana İlham Ver',
+            'en' => 'Inspire Me',
+            'de' => 'Inspirier mich',
+        ],
+        'description' => [
+            'tr' => 'Ne okuyacağına karar veremedin mi? İlgi alanına göre Almanya\'dan program ve şehir keşfet.',
+            'en' => 'Not sure what to study? Discover programs and cities in Germany based on your interests.',
+            'de' => 'Noch unentschlossen? Entdecke Programme und Städte in Deutschland nach deinen Interessen.',
+        ],
+        'featureList' => [
+            'tr' => ['İlgi bazlı keşif', 'Program + şehir', 'Rastgele ilham'],
+            'en' => ['Interest-based discovery', 'Programs + cities', 'Random inspiration'],
+            'de' => ['Interessenbasiert', 'Programme + Städte', 'Zufalls-Inspiration'],
+        ],
+    ],
 ];
