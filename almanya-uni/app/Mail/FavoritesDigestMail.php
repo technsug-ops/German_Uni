@@ -32,10 +32,10 @@ class FavoritesDigestMail extends Mailable
         $newCount = $this->payload['new_count'] ?? 0;
 
         $subject = $dlCount > 0
-            ? "⏰ $name — $dlCount favori program deadline yaklaşıyor"
+            ? "⏰ $name — " . __(':count favorite programme deadlines approaching', ['count' => $dlCount])
             : ($newCount > 0
-                ? "✨ $name — Favorilerine $newCount yeni program eklendi"
-                : "⭐ $name — $favCount favori için haftalık özet");
+                ? "✨ $name — " . __(':count new programmes added to your favorites', ['count' => $newCount])
+                : "⭐ $name — " . __('Weekly digest for :count favorites', ['count' => $favCount]));
 
         return new Envelope(
             to: [new Address($this->user->email, $this->user->name ?: '')],

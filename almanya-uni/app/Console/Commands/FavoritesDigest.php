@@ -53,7 +53,10 @@ class FavoritesDigest extends Command
 
             if (! $this->option('dry')) {
                 try {
-                    Mail::to($user->email)->send(new FavoritesDigestMail($user, $payload));
+                    // E-posta dilini kullanıcının markasının varsayılan locale'ine göre ayarla
+                    // (User'da locale kolonu yok). almanyauni→tr, applytogerman→en.
+                    $locale = brand('default_locale', $user->brand_key ?: brand_key()) ?: config('app.fallback_locale', 'en');
+                    Mail::to($user->email)->send((new FavoritesDigestMail($user, $payload))->locale($locale));
                     $sent++;
                 } catch (\Throwable $e) {
                     $this->warn("FAIL {$user->email}: " . $e->getMessage());
