@@ -21,6 +21,8 @@ return new class extends Migration
     public function up(): void
     {
         $now = now();
+        // Taze/CI DB'sinde categories tablosu boş olabilir → FK güvenliği
+        $catId = DB::table('categories')->where('id', 8)->exists() ? 8 : null;
 
         $tr = <<<'MD'
 # Sıfırdan C1'e Almanca Öğrenme Yol Haritası (TestDaF/DSH)
@@ -231,7 +233,7 @@ MD;
                 'locale' => $r['locale'],
                 'translation_group_id' => $this->group,
                 'type' => 'blog',
-                'category_id' => 8,
+                'category_id' => $catId,
                 'title' => $r['title'],
                 'slug' => $r['slug'],
                 'excerpt' => $r['excerpt'],

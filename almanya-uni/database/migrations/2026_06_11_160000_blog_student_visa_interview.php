@@ -20,6 +20,7 @@ return new class extends Migration
     public function up(): void
     {
         $now = now();
+        $catId = DB::table('categories')->where('id', 8)->exists() ? 8 : null;
 
         $tr = <<<'MD'
 # Öğrenci Vizesi Görüşmesi: Sık Sorulan Sorular ve Hazırlık
@@ -212,7 +213,7 @@ MD;
                 'locale' => $r['locale'],
                 'translation_group_id' => $this->group,
                 'type' => 'blog',
-                'category_id' => 8,
+                'category_id' => $catId,
                 'title' => $r['title'],
                 'slug' => $r['slug'],
                 'excerpt' => $r['excerpt'],
