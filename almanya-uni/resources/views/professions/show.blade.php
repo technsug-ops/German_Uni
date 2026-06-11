@@ -10,7 +10,7 @@
     ];
     [$typeLabel, $typeIcon] = $typeLabels[$profession->type ?? 'other'];
 
-    $title = ($profession->name_tr ?: $profession->name) . ' — ' . __('Profession Description') . ' — ' . brand('name');
+    $title = $profession->name . ' — ' . __('Profession Description') . ' — ' . brand('name');
     $description = $profession->description
         ? \Illuminate\Support\Str::limit($profession->description, 160)
         : ($profession->clean_steckbrief
@@ -24,9 +24,7 @@
 <x-seo :title="$profession->name" :description="$description" :image="route('og.image', ['type' => 'profession', 'slug' => $profession->slug . '.png'])" />
 
 @php
-    $occupationName = $profession->name_tr
-        ? $profession->name_tr . ' (' . $profession->name . ')'
-        : $profession->name;
+    $occupationName = $profession->name;
 
     $occupationDesc = $profession->description
         ?: ($profession->clean_steckbrief
@@ -59,7 +57,7 @@
         ];
     }
 
-    if ($profession->field?->name_tr) {
+    if ($profession->field?->name) {
         $jsonLd['skills'] = $profession->field->name;
     }
 
@@ -146,7 +144,7 @@
     <main class="lg:col-span-2 space-y-6">
         @if ($profession->description)
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What is :name?', ['name' => $profession->name_tr ?: $profession->name]) }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What is :name?', ['name' => $profession->name]) }}</h2>
                 <div class="blog-content text-gray-800 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! app(\App\Services\Content\BlogAutoLinker::class)->process(nl2br(e($profession->description))) !!}</div>
             </section>
         @endif
@@ -291,7 +289,7 @@
 
 {{-- Auto-FAQ (AIO + Featured Snippet) — type-aware per profession --}}
 <x-faq-section
-    :title="__('Frequently Asked Questions about :name', ['name' => $profession->name_tr ?: $profession->name])"
+    :title="__('Frequently Asked Questions about :name', ['name' => $profession->name])"
     :subtitle="__('Education path, salary, recognition, and entry routes for foreigners')"
     :faqs="\App\Support\PageFaq::forProfession($profession)"
 />
