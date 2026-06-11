@@ -117,3 +117,17 @@ Schedule::command('unis:fix-images')
     ->runInBackground()
     ->onOneServer()
     ->appendOutputTo(storage_path('logs/unis-fix-images.log'));
+
+/*
+|--------------------------------------------------------------------------
+| OG görsel cache tazeleme (günlük)
+|--------------------------------------------------------------------------
+| Son 3 günde güncellenen içeriğin bayat OG cache'ini siler → sonraki sosyal
+| paylaşım crawl'ında taze başlıkla yeniden üretilir. Her iki brand için.
+| 05:00 — diğer cron'larla çakışmaz.
+*/
+Schedule::command('og:refresh', ['--days' => 3])
+    ->dailyAt('05:00')
+    ->withoutOverlapping(30)
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/og-refresh.log'));
