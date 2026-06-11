@@ -495,6 +495,23 @@ Route::get('/_system/render-blog-html', function (\Illuminate\Http\Request $requ
     ]);
 })->middleware('throttle:5,1');
 
+// GEÇİCİ teşhis: deploy webhook'unun migrate çıktısını/hatasını gör (READ-ONLY).
+// Düzeltme sonrası kaldırılacak.
+Route::get('/_system/deploy-log', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    $logFile = storage_path('logs/deploy-pulse.log');
+    if (! is_file($logFile)) {
+        return response()->json(['error' => 'no deploy-pulse.log']);
+    }
+    return response()->json([
+        'tail' => mb_substr((string) file_get_contents($logFile), -8000),
+    ]);
+})->middleware('throttle:10,1');
+
 // Token-gated meslek (BERUFENET) çeviri backfill — KAS Cronjob bunu curl ile
 // oturumsuz çağırır (admin /admin/ops/... ise oturum ister). Zaman bütçesiyle
 // her çağrı ~max_seconds kadar çalışıp temiz çıkar; "KALAN: X" / "TAMAMLANDI" basar.
