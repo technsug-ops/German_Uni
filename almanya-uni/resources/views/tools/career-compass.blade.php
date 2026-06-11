@@ -126,7 +126,11 @@
 
             @foreach ($allQuestions as $idx => $q)
                 @php [$name, $iconKey, $title, $opts] = $q; @endphp
-                <div x-show="currentStep === {{ $idx }}" x-transition.duration.300ms class="space-y-5">
+                <div x-show="currentStep === {{ $idx }}" x-cloak
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     class="space-y-5 md:min-h-[360px]">
                     <div class="text-center mb-6">
                         <div class="flex justify-center mb-3 text-rose-600"><x-svg-icon name="{{ $iconKey }}" class="w-12 h-12" /></div>
                         <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ $title }}</h2>
