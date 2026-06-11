@@ -137,7 +137,7 @@ class SearchSuggestController extends Controller
                         'type' => 'profession',
                         'type_label' => '💼 ' . __('Profession'),
                         'title' => $p->name,
-                        'subtitle' => $p->name !== $p->name_de ? $p->name_de : ($p->kldb_code ? "KldB {$p->kldb_code}" : null),
+                        'subtitle' => $p->kldb_code ? "KldB {$p->kldb_code}" : null,
                         'url' => "/professions/{$p->slug}",
                         'icon' => $p->field?->icon ?: '💼',
                         'image' => null,

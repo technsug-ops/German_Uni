@@ -12,9 +12,35 @@ class Profession extends Model
     use \App\Models\Concerns\FulltextSearch;
     use \App\Models\Concerns\LocalizableContent;
 
+    /**
+     * Locale-aware görünen ad — Üniversite kuralıyla AYNI (University::display_name).
+     * Meslek adı orijinal Almanca kalır; parantezde mevcut locale'in çevirisi
+     * gözükür (varsa ve Almanca'dan farklıysa). Almanca'ya dokunulmaz.
+     *   TR: "Altenpflegehelfer/Altenpflegehelferin (Yaşlı Bakım Yardımcısı)"
+     *   DE: "Altenpflegehelfer/Altenpflegehelferin"
+     *   EN: "Altenpflegehelfer/Altenpflegehelferin"  (name_en çoğunlukla = name_de)
+     */
     public function getNameAttribute(): ?string
     {
-        return $this->localized('name') ?: $this->attributes['name_de'] ?? '';
+        return $this->display_name;
+    }
+
+    public function getDisplayNameAttribute(): string
+    {
+        $de = (string) ($this->attributes['name_de'] ?? '');
+        if ($de === '') {
+            return (string) ($this->localized('name') ?? '');
+        }
+
+        $locale = app()->getLocale();
+        if ($locale === 'de') return $de;
+
+        $loc = (string) ($this->{'name_' . $locale} ?? '');
+        if ($loc === '' || trim($loc) === trim($de)) {
+            return $de;
+        }
+
+        return "{$de} ({$loc})";
     }
 
     protected $fillable = [
