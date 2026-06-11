@@ -26,7 +26,7 @@ class SearchSuggestController extends Controller
             return response()->json(['results' => [], 'q' => $q]);
         }
 
-        $key = 'search:suggest:v3:' . md5(mb_strtolower($q));
+        $key = 'search:suggest:v4:' . app()->getLocale() . ':' . md5(mb_strtolower($q));
         $results = Cache::remember($key, 300, function () use ($q) {
             $like = '%' . $q . '%';
             // Kavram/sinonim eşleşmeleri en üstte (sperrkonto = blocked account = bloke hesap)
@@ -42,7 +42,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($u) use (&$all) {
                     $all[] = [
                         'type' => 'university',
-                        'type_label' => '🎓 Üniversite',
+                        'type_label' => '🎓 ' . __('University'),
                         'title' => $u->name_de,
                         'subtitle' => $u->short_name,
                         'url' => "/universities/{$u->slug}",
@@ -61,9 +61,9 @@ class SearchSuggestController extends Controller
                 ->each(function ($c) use (&$all) {
                     $all[] = [
                         'type' => 'city',
-                        'type_label' => '🏙️ Şehir',
-                        'title' => $c->name_de,
-                        'subtitle' => "{$c->universities_count} üniversite",
+                        'type_label' => '🏙️ ' . __('City'),
+                        'title' => $c->name,
+                        'subtitle' => __(':count universities', ['count' => $c->universities_count]),
                         'url' => "/cities/{$c->slug}",
                         'image' => $c->image_url,
                     ];
@@ -80,7 +80,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'program',
-                        'type_label' => '📚 Program',
+                        'type_label' => '📚 ' . __('Program'),
                         'title' => $p->name_de,
                         'subtitle' => ucfirst($p->degree) . ($p->university ? " · {$p->university->name_de}" : ''),
                         'url' => "/programs/{$p->slug}",
@@ -98,9 +98,9 @@ class SearchSuggestController extends Controller
                 ->each(function ($f) use (&$all) {
                     $all[] = [
                         'type' => 'field',
-                        'type_label' => '🎯 Alan',
-                        'title' => $f->name_tr,
-                        'subtitle' => $f->name_de,
+                        'type_label' => '🎯 ' . __('Field'),
+                        'title' => $f->name,
+                        'subtitle' => $f->name_de !== $f->name ? $f->name_de : null,
                         'url' => "/fields/{$f->slug}",
                         'image' => $f->image_url,
                         'icon' => $f->icon,
@@ -116,9 +116,9 @@ class SearchSuggestController extends Controller
                 ->each(function ($s) use (&$all) {
                     $all[] = [
                         'type' => 'state',
-                        'type_label' => '🗺️ Eyalet',
+                        'type_label' => '🗺️ ' . __('State'),
                         'title' => $s->name_de,
-                        'subtitle' => $s->name_tr,
+                        'subtitle' => $s->name !== $s->name_de ? $s->name : null,
                         'url' => "/states/{$s->slug}",
                         'image' => $s->image_url,
                     ];
@@ -135,9 +135,9 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'profession',
-                        'type_label' => '💼 Meslek',
-                        'title' => $p->name_tr ?: $p->name_de,
-                        'subtitle' => $p->name_tr && $p->name_de !== $p->name_tr ? $p->name_de : ($p->kldb_code ? "KldB {$p->kldb_code}" : null),
+                        'type_label' => '💼 ' . __('Profession'),
+                        'title' => $p->name,
+                        'subtitle' => $p->name !== $p->name_de ? $p->name_de : ($p->kldb_code ? "KldB {$p->kldb_code}" : null),
                         'url' => "/professions/{$p->slug}",
                         'icon' => $p->field?->icon ?: '💼',
                         'image' => null,
@@ -156,7 +156,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($s) use (&$all) {
                     $all[] = [
                         'type' => 'scholarship',
-                        'type_label' => $s->is_daad ? '🎖️ DAAD Bursu' : '🎖️ Burs',
+                        'type_label' => $s->is_daad ? '🎖️ ' . __('DAAD Scholarship') : '🎖️ ' . __('Scholarship'),
                         'title' => $s->name_en ?: $s->name_de,
                         'subtitle' => null,
                         'url' => "/scholarships/{$s->slug}",
@@ -177,7 +177,7 @@ class SearchSuggestController extends Controller
                         'type' => 'studienkolleg',
                         'type_label' => '🎓 Studienkolleg',
                         'title' => $s->name,
-                        'subtitle' => $s->city_name_cache . ($s->type === 'privat' ? ' · Özel' : ' · Devlet'),
+                        'subtitle' => $s->city_name_cache . ' · ' . ($s->type === 'privat' ? __('Private') : __('Public')),
                         'url' => "/tools/studienkolleg#" . $s->slug,
                         'icon' => '🎓',
                         'image' => null,
@@ -192,7 +192,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($h) use (&$all) {
                     $all[] = [
                         'type' => 'housing',
-                        'type_label' => '🏠 Yurt sağlayıcı',
+                        'type_label' => '🏠 ' . __('Housing provider'),
                         'title' => $h->name,
                         'subtitle' => $h->type ?: null,
                         'url' => "/housing/providers/{$h->slug}",
@@ -212,7 +212,7 @@ class SearchSuggestController extends Controller
                         'type' => 'sperrkonto',
                         'type_label' => '🏦 Sperrkonto',
                         'title' => $b->name,
-                        'subtitle' => $b->type === 'fintech' ? 'FinTech' : 'Banka',
+                        'subtitle' => $b->type === 'fintech' ? 'FinTech' : __('Bank'),
                         'url' => "/tools/sperrkonto/{$b->slug}",
                         'icon' => '🏦',
                         'image' => null,
@@ -230,9 +230,9 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'post',
-                        'type_label' => '📝 Blog · ' . ($p->category?->name ?? 'Yazı'),
+                        'type_label' => '📝 Blog · ' . ($p->category?->name ?? __('Article')),
                         'title' => $p->title,
-                        'subtitle' => $p->reading_minutes . ' dk okuma',
+                        'subtitle' => __(':count min read', ['count' => $p->reading_minutes]),
                         'url' => "/blog/{$p->slug}",
                         'image' => $p->featured_image,
                         'icon' => '📝',
