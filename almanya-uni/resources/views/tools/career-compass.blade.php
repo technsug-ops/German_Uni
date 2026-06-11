@@ -258,12 +258,12 @@
                         {{-- Detay --}}
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-2 mb-1 flex-wrap">
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->name_tr }}</span>
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{{ $p['field']?->name }}</span>
                                 <span class="text-xs px-2 py-0.5 rounded-full {{ $p['type'] === 'studienberuf' ? 'bg-indigo-100 text-indigo-700' : ($p['type'] === 'ausbildung' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700') }}">
                                     {{ ['studienberuf'=>__('University profession'),'ausbildung'=>'Ausbildung','weiterbildung'=>__('Advanced training'),'grundberuf'=>__('Basic profession')][$p['type']] ?? $p['type'] }}
                                 </span>
                             </div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight mb-1">{{ $p['name_tr'] }}</h3>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight mb-1">{{ $p['name'] }}</h3>
                             <p class="text-sm text-gray-500 mb-3">{{ $p['description'] }}</p>
 
                             {{-- Technical reasoning --}}
@@ -323,7 +323,7 @@
                             @endif
                         </span>
                         <div class="flex-1 min-w-0">
-                            <p class="font-semibold text-sm text-gray-900 leading-tight">{{ $prog->name_tr ?: $prog->name_de }}</p>
+                            <p class="font-semibold text-sm text-gray-900 leading-tight">{{ $prog->name }}</p>
                             <p class="text-xs text-gray-500 mt-0.5">{{ $prog->university?->name_de }} · {{ ucfirst($prog->degree) }}</p>
                         </div>
                     </a>

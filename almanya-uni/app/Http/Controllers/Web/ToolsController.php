@@ -795,7 +795,7 @@ class ToolsController extends Controller
             ->whereIn('field_of_study_id', $topFieldIds)
             ->whereNotNull('description_tr')->where('description_tr', '!=', '')
             ->with('field:id,slug,name_tr,name_en,name_de,icon')
-            ->get(['id', 'slug', 'name_tr', 'name_de', 'description_tr', 'type', 'field_of_study_id', 'cluster_label','name_en','name_de']);
+            ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'description_tr', 'description_de', 'description_en', 'type', 'field_of_study_id', 'cluster_label']);
 
         // 6) Her mesleğe value ince-skoru + neden eşleşti
         $scored = $professions->map(function ($p) use ($values, $fieldScores, $riasec, $topTwo) {
@@ -810,19 +810,22 @@ class ToolsController extends Controller
 
             // Teknik gerekçe (RIASEC)
             $letterLabels = [
-                'R' => 'uygulamalı/pratik işler', 'I' => 'analiz ve araştırma',
-                'A' => 'yaratıcılık', 'S' => 'insanlarla çalışma',
-                'E' => 'liderlik/girişimcilik', 'C' => 'düzen ve sistematik iş',
+                'R' => __('hands-on/practical work'), 'I' => __('analysis and research'),
+                'A' => __('creativity'), 'S' => __('working with people'),
+                'E' => __('leadership/entrepreneurship'), 'C' => __('order and systematic work'),
             ];
-            $reasonsTech[] = $p->field?->name_tr . ' alanı senin baskın profilinle (' . implode('+', array_map(fn ($l) => $letterLabels[$l] ?? $l, $topTwo)) . ') örtüşüyor';
+            $reasonsTech[] = __(':field aligns with your dominant profile (:traits)', [
+                'field'  => $p->field?->name,
+                'traits' => implode('+', array_map(fn ($l) => $letterLabels[$l] ?? $l, $topTwo)),
+            ]);
 
             // Eğitim yolu (path) eşleşmesi
             if ($values['path'] === 'theory' && $p->type === 'studienberuf') {
                 $score += 12;
-                $reasonsEmo[] = 'Üniversite eğitimini tercih ediyorsun → bu bir Studienberuf (akademik meslek)';
+                $reasonsEmo[] = __('You prefer university education → this is a Studienberuf (academic profession)');
             } elseif ($values['path'] === 'practice' && $p->type === 'ausbildung') {
                 $score += 12;
-                $reasonsEmo[] = 'Pratik mesleki eğitim istiyorsun → bu bir Ausbildung mesleği (işbaşı eğitim)';
+                $reasonsEmo[] = __('You want practical vocational training → this is an Ausbildung profession (on-the-job)');
             } elseif ($p->type === 'weiterbildung') {
                 $score += 4;
             }
@@ -830,29 +833,29 @@ class ToolsController extends Controller
             // Güvenlik / özgürlük
             if ($values['security'] === 'security' && in_array($p->type, ['ausbildung', 'grundberuf', 'studienberuf'])) {
                 $score += 6;
-                $reasonsEmo[] = 'İş güvenliği önemli senin için → bu meslek net, tanımlı bir kariyer yolu sunar';
+                $reasonsEmo[] = __('Job security matters to you → this profession offers a clear, defined career path');
             } elseif ($values['security'] === 'freedom') {
                 $score += 4;
-                $reasonsEmo[] = 'Esneklik/özgürlük istiyorsun → bu alanda serbest çalışma (Freiberufler) imkânı araştırılabilir';
+                $reasonsEmo[] = __('You want flexibility/freedom → self-employment (Freiberufler) may be possible in this field');
             }
 
             // Ofis / saha
             $realisticFields = ['muhendislik', 'tarim-ormancilik', 'veteriner-spor', 'sanat-tasarim'];
             if ($values['place'] === 'field' && in_array($fieldSlug, $realisticFields)) {
                 $score += 5;
-                $reasonsEmo[] = 'Sahada/hareketli çalışmayı seviyorsun → bu meslek masabaşına bağlı değil';
+                $reasonsEmo[] = __('You like working in the field / on the move → this profession is not desk-bound');
             } elseif ($values['place'] === 'office' && in_array($fieldSlug, ['hukuk-ekonomi', 'bilisim'])) {
                 $score += 5;
-                $reasonsEmo[] = 'Düzenli ofis ortamı tercih ediyorsun → bu alan buna uygun';
+                $reasonsEmo[] = __('You prefer an orderly office environment → this field fits that');
             }
 
             // Anlam / gelir
             if ($values['income'] === 'meaning' && in_array($fieldSlug, ['tip-saglik', 'sosyal-bilimler', 'dil-kultur'])) {
                 $score += 5;
-                $reasonsEmo[] = 'Topluma faydalı, anlamlı iş arıyorsun → bu meslek doğrudan insanlara dokunuyor';
+                $reasonsEmo[] = __('You seek meaningful work that benefits society → this profession directly serves people');
             } elseif ($values['income'] === 'income' && in_array($fieldSlug, ['bilisim', 'muhendislik', 'hukuk-ekonomi'])) {
                 $score += 5;
-                $reasonsEmo[] = 'Gelir önceliğin → bu alan Almanya\'da yüksek kazanç potansiyeli taşır';
+                $reasonsEmo[] = __('Income is your priority → this field has high earning potential in Germany');
             }
 
             $score = min(100, max(0, $score));
@@ -860,9 +863,9 @@ class ToolsController extends Controller
             return [
                 'id'            => $p->id,
                 'slug'          => $p->slug,
-                'name_tr'       => $p->name_tr ?: $p->name_de,
+                'name'          => $p->name,
                 'name_de'       => $p->name_de,
-                'description'   => \Illuminate\Support\Str::limit(strip_tags($p->description_tr), 180),
+                'description'   => \Illuminate\Support\Str::limit(strip_tags((string) $p->description), 180),
                 'type'          => $p->type,
                 'field'         => $p->field,
                 'score'         => $score,
@@ -903,25 +906,25 @@ class ToolsController extends Controller
     {
         $code = implode('', $topTwo);
         $map = [
-            'RI' => ['emoji' => '🔧', 'title' => 'Analist-Yapıcı', 'desc' => 'Hem elini taşın altına koyan hem de mantıkla çözen tip. Mühendislik ve teknik alanlar senin doğal sahan.'],
-            'IR' => ['emoji' => '🔬', 'title' => 'Araştırmacı-Mühendis', 'desc' => 'Önce anlar, sonra üretir. Bilim, mühendislik ve teknoloji seni çeker.'],
-            'IA' => ['emoji' => '🧪', 'title' => 'Yaratıcı Düşünür', 'desc' => 'Analitik zekâ + yaratıcılık. Araştırma, tasarım ve inovasyon senin alanın.'],
-            'AI' => ['emoji' => '🎨', 'title' => 'Yaratıcı Analist', 'desc' => 'Sanatsal vizyon + mantık. Tasarım, mimari, dijital yaratıcılık sana uygun.'],
-            'AS' => ['emoji' => '🎭', 'title' => 'İfadeci-Sosyal', 'desc' => 'Yaratıcı ve insan odaklı. Dil, kültür, eğitim ve iletişim alanları seni besler.'],
-            'SA' => ['emoji' => '🤝', 'title' => 'Sosyal-Yaratıcı', 'desc' => __('İnsanlarla bağ kurmayı ve yaratıcı ifadeyi seversin. Sağlık, eğitim, sosyal hizmet.')],
-            'SI' => ['emoji' => '🩺', 'title' => 'Şefkatli Çözücü', 'desc' => 'İnsana yardım + analiz. Tıp, sağlık ve sosyal bilimler senin alanın.'],
-            'IS' => ['emoji' => '🧠', 'title' => 'Analitik Yardımcı', 'desc' => 'Araştırma + insan odağı. Psikoloji, tıp araştırması, sosyal bilim sana uygun.'],
-            'EC' => ['emoji' => '💼', 'title' => 'Lider-Organizatör', 'desc' => 'Girişimcilik + düzen. İşletme, hukuk, ekonomi ve yönetim senin sahan.'],
-            'CE' => ['emoji' => '📊', 'title' => 'Sistematik Yönetici', 'desc' => 'Düzen + liderlik. Finans, denetim, idari ve hukuki alanlar sana uygun.'],
-            'RE' => ['emoji' => '🏗️', 'title' => 'Pratik Girişimci', 'desc' => 'Uygulama + iş kurma. Teknik girişimcilik, üretim yönetimi senin alanın.'],
-            'IC' => ['emoji' => '💻', 'title' => 'Veri-Sistem Tipi', 'desc' => 'Analiz + düzen. Bilişim, veri bilimi, yazılım senin doğal sahan.'],
-            'CI' => ['emoji' => '🖥️', 'title' => 'Sistematik Analist', 'desc' => 'Düzen + araştırma. IT, sistem yönetimi, veri analizi sana uygun.'],
+            'RI' => ['emoji' => '🔧', 'title' => __('Analyst-Builder'), 'desc' => __('Both hands-on and logic-driven. Engineering and technical fields are your natural domain.')],
+            'IR' => ['emoji' => '🔬', 'title' => __('Researcher-Engineer'), 'desc' => __('Understands first, then builds. Science, engineering and technology attract you.')],
+            'IA' => ['emoji' => '🧪', 'title' => __('Creative Thinker'), 'desc' => __('Analytical intelligence + creativity. Research, design and innovation are your field.')],
+            'AI' => ['emoji' => '🎨', 'title' => __('Creative Analyst'), 'desc' => __('Artistic vision + logic. Design, architecture and digital creativity suit you.')],
+            'AS' => ['emoji' => '🎭', 'title' => __('Expressive-Social'), 'desc' => __('Creative and people-focused. Language, culture, education and communication energize you.')],
+            'SA' => ['emoji' => '🤝', 'title' => __('Social-Creative'), 'desc' => __('You enjoy connecting with people and creative expression. Health, education, social work.')],
+            'SI' => ['emoji' => '🩺', 'title' => __('Compassionate Solver'), 'desc' => __('Helping people + analysis. Medicine, health and social sciences are your field.')],
+            'IS' => ['emoji' => '🧠', 'title' => __('Analytical Helper'), 'desc' => __('Research + people focus. Psychology, medical research, social science suit you.')],
+            'EC' => ['emoji' => '💼', 'title' => __('Leader-Organizer'), 'desc' => __('Entrepreneurship + order. Business, law, economics and management are your domain.')],
+            'CE' => ['emoji' => '📊', 'title' => __('Systematic Manager'), 'desc' => __('Order + leadership. Finance, auditing, administrative and legal fields suit you.')],
+            'RE' => ['emoji' => '🏗️', 'title' => __('Practical Entrepreneur'), 'desc' => __('Application + business-building. Technical entrepreneurship and production management are your field.')],
+            'IC' => ['emoji' => '💻', 'title' => __('Data-System Type'), 'desc' => __('Analysis + order. IT, data science and software are your natural domain.')],
+            'CI' => ['emoji' => '🖥️', 'title' => __('Systematic Analyst'), 'desc' => __('Order + research. IT, systems administration and data analysis suit you.')],
         ];
 
         return $map[$code] ?? [
             'emoji' => '🧭',
-            'title' => 'Çok Yönlü Profil',
-            'desc' => 'Birden fazla güçlü yönün var — bu da geniş bir meslek yelpazesi demek. Aşağıdaki önerileri keşfet.',
+            'title' => __('Versatile Profile'),
+            'desc' => __('You have several strengths — that means a wide range of professions. Explore the suggestions below.'),
         ];
     }
 
