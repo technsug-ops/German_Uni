@@ -100,3 +100,20 @@ Schedule::command('daad:scholarships:sync')
     ->runInBackground()
     ->onOneServer()
     ->appendOutputTo(storage_path('logs/daad-scholarships.log'));
+
+/*
+|--------------------------------------------------------------------------
+| Üniversite kapak görseli self-heal (haftalık)
+|--------------------------------------------------------------------------
+| Şüpheli/yanlış (logo/arma) veya eksik üni görsellerini Wikidata P18
+| (ana bina) ile onarır → kartlarda default ikon kalmaz, kendini onarır.
+| SADECE yüksek-güven (P18) — yanlış otomatik seçim riski yok. Agresif
+| Commons fallback için manuel: php artisan unis:fix-images --low-confidence
+| Çarşamba 04:00 — diğer cron'larla (02:30/03:00/03:30) çakışmaz.
+*/
+Schedule::command('unis:fix-images')
+    ->weeklyOn(3, '04:00')
+    ->withoutOverlapping(120)
+    ->runInBackground()
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/unis-fix-images.log'));
