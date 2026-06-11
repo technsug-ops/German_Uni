@@ -104,32 +104,8 @@ if (file_exists($bundleFile)) {
     $log('ℹ️  No bundle (pulse-only trigger)');
 }
 
-// ─── 1.5. DB migrations + içerik render (IN-PROCESS Kernel — exec/CLI YOK) ───
-// KAS CLI PHP 7.4 olduğu için exec('php artisan') fail eder; ama web tarafı PHP 8.3,
-// Laravel'i bu istek içinde bootstrap edip Kernel::call ile migrate çalıştırabiliriz.
-// (Cron post-deploy.php yoksa migration'lar SADECE burada uygulanır.) Non-fatal:
-// migrate başarısız olsa bile extract + cache rebuild + site ayakta kalır.
-if ($allOk && file_exists($appRoot . '/vendor/autoload.php')) {
-    try {
-        require $appRoot . '/vendor/autoload.php';
-        $laravel = require $appRoot . '/bootstrap/app.php';
-        $kernel = $laravel->make(Illuminate\Contracts\Console\Kernel::class);
-        $kernel->bootstrap();
-
-        $code = $kernel->call('migrate', ['--force' => true, '--no-interaction' => true]);
-        $log('🛠️  migrate exit ' . $code . ' — ' . mb_substr(trim((string) $kernel->output()), 0, 600));
-
-        // Yeni blog yazılarının content_html'ini markdown'dan üret (idempotent)
-        try {
-            $kernel->call('blog:render-html', ['--apply' => true]);
-            $log('🖋️  blog:render-html — ' . mb_substr(trim((string) $kernel->output()), 0, 200));
-        } catch (\Throwable $e) {
-            $log('⚠️  blog:render-html FAIL — ' . mb_substr($e->getMessage(), 0, 300));
-        }
-    } catch (\Throwable $e) {
-        $log('⚠️  migrate bootstrap/run FAIL — ' . mb_substr($e->getMessage(), 0, 600));
-    }
-}
+// (Migrate adımı RESPONSE'tan SONRA çalışır — aşağıya taşındı. Böylece migrate
+//  crash etse bile extract + cache-clear tamamlanır, deploy yeşil kalır.)
 
 // ─── 2. Cache reset (manuel file deletion — KAS CLI PHP 7.4 olduğu için artisan kullanamıyoruz) ───
 if ($allOk) {
@@ -173,14 +149,46 @@ if (file_exists($logFile) && filesize($logFile) > 100 * 1024) {
     file_put_contents($logFile, substr($content, -5 * 1024));
 }
 
-// Lock release
-flock($lock, LOCK_UN);
-fclose($lock);
-@unlink($lockFile);
-
 ob_end_clean();
 
-// Minimal output (info leak'i önle)
+// Response'u workflow'a ÖNCE gönder (migrate'ten önce). Böylece migrate crash
+// etse bile workflow 200 alır → deploy yeşil + extract/cache zaten tamamlandı.
 http_response_code($allOk ? 200 : 500);
 header('Content-Type: text/plain');
 echo $allOk ? "OK\n" : "ERR\n";
+if (function_exists('fastcgi_finish_request')) {
+    @fastcgi_finish_request();
+} else {
+    @ob_flush();
+    @flush();
+}
+
+// ─── 4. DB migrations + içerik render (RESPONSE SONRASI, best-effort) ───
+// Sunucuda cron YOK → migration'lar SADECE burada uygulanır. Response gönderildiği
+// için migrate burada crash/timeout olsa bile deploy yeşil ve kod/route güncel.
+// in-process Kernel::call (exec/CLI yok → KAS PHP 7.4 CLI sorunu yaşanmaz).
+if ($allOk && is_file($appRoot . '/vendor/autoload.php')) {
+    @ini_set('memory_limit', '512M');
+    @set_time_limit(600);
+    try {
+        require $appRoot . '/vendor/autoload.php';
+        $laravel = require $appRoot . '/bootstrap/app.php';
+        $kernel = $laravel->make(Illuminate\Contracts\Console\Kernel::class);
+        $kernel->bootstrap();
+        $code = $kernel->call('migrate', ['--force' => true, '--no-interaction' => true]);
+        $log('🛠️  migrate exit ' . $code . ' — ' . mb_substr(trim((string) $kernel->output()), 0, 1500));
+        try {
+            $kernel->call('blog:render-html', ['--apply' => true]);
+            $log('🖋️  blog:render-html OK');
+        } catch (\Throwable $e) {
+            $log('⚠️  blog:render-html FAIL — ' . mb_substr($e->getMessage(), 0, 300));
+        }
+    } catch (\Throwable $e) {
+        $log('⚠️  migrate FAIL — ' . mb_substr($e->getMessage(), 0, 1500));
+    }
+}
+
+// Lock release (migrate sonrası)
+flock($lock, LOCK_UN);
+fclose($lock);
+@unlink($lockFile);
