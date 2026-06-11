@@ -104,6 +104,33 @@ if (file_exists($bundleFile)) {
     $log('ℹ️  No bundle (pulse-only trigger)');
 }
 
+// ─── 1.5. DB migrations + içerik render (IN-PROCESS Kernel — exec/CLI YOK) ───
+// KAS CLI PHP 7.4 olduğu için exec('php artisan') fail eder; ama web tarafı PHP 8.3,
+// Laravel'i bu istek içinde bootstrap edip Kernel::call ile migrate çalıştırabiliriz.
+// (Cron post-deploy.php yoksa migration'lar SADECE burada uygulanır.) Non-fatal:
+// migrate başarısız olsa bile extract + cache rebuild + site ayakta kalır.
+if ($allOk && file_exists($appRoot . '/vendor/autoload.php')) {
+    try {
+        require $appRoot . '/vendor/autoload.php';
+        $laravel = require $appRoot . '/bootstrap/app.php';
+        $kernel = $laravel->make(Illuminate\Contracts\Console\Kernel::class);
+        $kernel->bootstrap();
+
+        $code = $kernel->call('migrate', ['--force' => true, '--no-interaction' => true]);
+        $log('🛠️  migrate exit ' . $code . ' — ' . mb_substr(trim((string) $kernel->output()), 0, 600));
+
+        // Yeni blog yazılarının content_html'ini markdown'dan üret (idempotent)
+        try {
+            $kernel->call('blog:render-html', ['--apply' => true]);
+            $log('🖋️  blog:render-html — ' . mb_substr(trim((string) $kernel->output()), 0, 200));
+        } catch (\Throwable $e) {
+            $log('⚠️  blog:render-html FAIL — ' . mb_substr($e->getMessage(), 0, 300));
+        }
+    } catch (\Throwable $e) {
+        $log('⚠️  migrate bootstrap/run FAIL — ' . mb_substr($e->getMessage(), 0, 600));
+    }
+}
+
 // ─── 2. Cache reset (manuel file deletion — KAS CLI PHP 7.4 olduğu için artisan kullanamıyoruz) ───
 if ($allOk) {
     // Laravel her cache dosyasını runtime'da otomatik yeniden compile eder.
