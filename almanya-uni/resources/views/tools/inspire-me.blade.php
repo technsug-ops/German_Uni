@@ -110,7 +110,7 @@
                     <div class="p-5">
                         <p class="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1.5 inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Programme') }}</p>
                         <h2 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-blue-700 transition">
-                            {{ \Illuminate\Support\Str::limit($program->name_en ?: $program->name_de, 70) }}
+                            {{ \Illuminate\Support\Str::limit($program->name, 70) }}
                         </h2>
                         <div class="flex flex-wrap gap-1.5 text-xs text-gray-600">
                             @if ($program->university)
