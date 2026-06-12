@@ -807,7 +807,11 @@ Route::get('/_system/log-tail', function (\Illuminate\Http\Request $request) {
     }
 
     $lines = (int) min(2000, max(10, $request->query('lines', 200)));
-    $logPath = storage_path('logs/laravel.log');
+    // LOG_STACK=daily → dosya laravel-YYYY-MM-DD.log. En YENİ log dosyasını seç
+    // (laravel.log tek-dosya modundan kalma eski olabilir → güncel hatayı kaçırırız).
+    $candidates = glob(storage_path('logs/laravel*.log')) ?: [];
+    usort($candidates, fn ($a, $b) => filemtime($b) <=> filemtime($a));
+    $logPath = $candidates[0] ?? storage_path('logs/laravel.log');
     if (! is_file($logPath)) {
         return response()->json(['error' => 'log not found', 'path' => $logPath], 404);
     }
