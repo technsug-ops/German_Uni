@@ -104,7 +104,7 @@ class HomeController extends Controller
         }
 
         // Sayımlar günde bir değişir → 6 saat cache (locale-bağımsız).
-        $faq_stats = cache()->remember('home.faq_stats_v1', now()->addHours(6), fn () => [
+        $faq_stats = cache()->remember('home.faq_stats_v2', now()->addHours(6), fn () => [
             'total'    => Faq::published()->where('has_answer', true)->count(),
             'topics'   => FaqTopic::active()->count(),
         ]);
@@ -127,7 +127,7 @@ class HomeController extends Controller
         // YÜKSEK-DEĞER program/meslek DETAY sayfalarına link. Böylece Google'ın
         // crawl bütçesi önce değerli sayfalara akar (discovered-not-indexed azalır).
         // Deterministik + 6 saat cache → stabil link grafiği (SEO için önemli).
-        $featured_programs = cache()->remember('home.featured_programs_v1', now()->addHours(6), fn () =>
+        $featured_programs = cache()->remember('home.featured_programs_v2', now()->addHours(6), fn () =>
             Program::query()
                 ->where('programs.is_active', true)
                 ->whereIn('programs.language', ['en', 'both'])
@@ -142,7 +142,7 @@ class HomeController extends Controller
                 ->load('university:id,slug,name_de')
         );
 
-        $featured_professions = cache()->remember('home.featured_professions_v1', now()->addHours(6), fn () =>
+        $featured_professions = cache()->remember('home.featured_professions_v2', now()->addHours(6), fn () =>
             Profession::where('is_active', true)
                 ->where('type', 'studienberuf')
                 ->whereNotNull('description_tr')->where('description_tr', '!=', '')
@@ -154,7 +154,7 @@ class HomeController extends Controller
         );
 
         // 9 aggregate count — günde bir değişir → 6 saat cache (locale-bağımsız).
-        $totals = cache()->remember('home.totals_v1', now()->addHours(6), fn () => [
+        $totals = cache()->remember('home.totals_v2', now()->addHours(6), fn () => [
             'universities' => University::where('is_active', true)->count(),
             'universities_on_map' => University::where('is_active', true)->whereNotNull('latitude')->count(),
             'cities'       => City::where('is_active', true)->count(),

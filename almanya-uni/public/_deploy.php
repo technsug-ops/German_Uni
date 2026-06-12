@@ -131,7 +131,35 @@ if ($allOk) {
     foreach (glob($appRoot . '/bootstrap/cache/routes-*.php') as $f) {
         if (@unlink($f)) $cleaned['routes']++;
     }
-    $log("🧹 Cache cleared — views: {$cleaned['views']}, bootstrap: {$cleaned['bootstrap']}, routes: {$cleaned['routes']}");
+
+    // UYGULAMA CACHE'İ (cache()->remember) — file driver: storage/framework/cache/data.
+    // KRİTİK: bunu temizlemezsek cache()'lenmiş Eloquent collection'lar (örn. ana sayfa
+    // home.featured_*) deploy'lar arası HAYATTA KALIR; şema/kod değişince bozulup
+    // deterministik 500 verir. Recursive sil (nested hash dizinleri).
+    $cleaned['appcache'] = 0;
+    $dataDir = $appRoot . '/storage/framework/cache/data';
+    if (is_dir($dataDir)) {
+        $it = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($dataDir, FilesystemIterator::SKIP_DOTS),
+            RecursiveIteratorIterator::CHILD_FIRST
+        );
+        foreach ($it as $f) {
+            if ($f->isFile()) {
+                if (@unlink($f->getPathname())) $cleaned['appcache']++;
+            } elseif ($f->isDir()) {
+                @rmdir($f->getPathname());
+            }
+        }
+    }
+
+    $log("🧹 Cache cleared — views: {$cleaned['views']}, bootstrap: {$cleaned['bootstrap']}, routes: {$cleaned['routes']}, appcache: {$cleaned['appcache']}");
+
+    // OPcache reset — düzenlenen Model/Controller dosyaları PHP-FPM worker'larında
+    // eski bytecode'la çalışmaya devam edebilir (KAS'ta 5+ dk). Reset → yeni kod hemen.
+    if (function_exists('opcache_reset')) {
+        @opcache_reset();
+        $log('🧹 OPcache reset');
+    }
     $log('ℹ️  Laravel will auto-rebuild caches on next request (no artisan needed)');
 }
 
