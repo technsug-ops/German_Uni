@@ -962,12 +962,12 @@ class ToolsController extends Controller
 
         $items = [
             ['key' => 'rent',          'label' => $this->housingLabel($housing), 'value' => $rent,           'fixed' => true],
-            ['key' => 'food',          'label' => 'Yemek (market + dışarı)',     'value' => $food,           'fixed' => false],
-            ['key' => 'transport',     'label' => 'Ulaşım (Semester / Deutschlandticket)', 'value' => $cd->transport, 'fixed' => true],
-            ['key' => 'utilities',     'label' => 'İnternet + Elektrik + Telefon', 'value' => $cd->utilities, 'fixed' => true],
-            ['key' => 'insurance',     'label' => __('Sağlık sigortası (öğrenci)'),  'value' => $cd->health_insurance, 'fixed' => true],
-            ['key' => 'entertainment', 'label' => 'Eğlence + Spor',              'value' => $entertainment,  'fixed' => false],
-            ['key' => 'misc',          'label' => 'Diğer (kıyafet, kırtasiye)',  'value' => $misc,           'fixed' => false],
+            ['key' => 'food',          'label' => __('Food (groceries + dining out)'),     'value' => $food,           'fixed' => false],
+            ['key' => 'transport',     'label' => __('Transport (semester / Deutschlandticket)'), 'value' => $cd->transport, 'fixed' => true],
+            ['key' => 'utilities',     'label' => __('Internet + electricity + phone'), 'value' => $cd->utilities, 'fixed' => true],
+            ['key' => 'insurance',     'label' => __('Health insurance (student)'),  'value' => $cd->health_insurance, 'fixed' => true],
+            ['key' => 'entertainment', 'label' => __('Entertainment + sports'),              'value' => $entertainment,  'fixed' => false],
+            ['key' => 'misc',          'label' => __('Other (clothing, supplies)'),  'value' => $misc,           'fixed' => false],
         ];
 
         $total      = array_sum(array_column($items, 'value'));
@@ -991,18 +991,18 @@ class ToolsController extends Controller
     private function housingLabel(string $housing): string
     {
         return match ($housing) {
-            'studio'    => 'Stüdyo daire (1-Zimmer)',
-            'apartment' => 'Apartman (2-Zimmer)',
-            default     => 'WG / Paylaşımlı oda',
+            'studio'    => __('Studio apartment (1-Zimmer)'),
+            'apartment' => __('Apartment (2-Zimmer)'),
+            default     => __('WG / shared room'),
         };
     }
 
     private function lifestyleLabel(string $lifestyle): string
     {
         return match ($lifestyle) {
-            'frugal'      => 'Tutumlu',
-            'comfortable' => 'Konforlu',
-            default       => 'Normal',
+            'frugal'      => __('Frugal'),
+            'comfortable' => __('Comfortable'),
+            default       => __('Standard'),
         };
     }
 
