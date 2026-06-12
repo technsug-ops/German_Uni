@@ -175,6 +175,45 @@
             </div>
         </div>
 
-        <div class="az-note">Self-hosted, KVKK uyumlu (çerezsiz, IP saklanmaz). Botlar hariç. Veriler 5 dk önbelleklenir.</div>
+        {{-- Affiliate tıklamaları (gelir sinyali) --}}
+        <div class="az-grid2">
+            <div class="az-panel">
+                <div class="az-panel-h">💰 Affiliate tıklamaları <span class="muted">({{ $this->getRangeLabel() }} · toplam {{ number_format($affiliate['total'] ?? 0) }})</span></div>
+                <div class="az-scroll">
+                    <table class="az-table">
+                        <thead><tr><th>Sağlayıcı</th><th>Tür</th><th class="r">Tıklama</th></tr></thead>
+                        <tbody>
+                            @forelse (($affiliate['by_provider'] ?? []) as $row)
+                                <tr>
+                                    <td style="color:#374151; font-weight:600;">{{ $row['slug'] }}</td>
+                                    <td style="color:#6b7280;">{{ $row['type'] === 'sperrkonto' ? '🏦 Sperrkonto' : '🩺 Sigorta' }}</td>
+                                    <td class="r"><strong>{{ number_format($row['c']) }}</strong></td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="3" class="az-empty">Bu aralıkta affiliate tıklaması yok.</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="az-panel">
+                <div class="az-panel-h">Bağlam <span class="muted">(nereden tıklandı)</span></div>
+                <div class="az-pad">
+                    @php($ctxTotal = max(1, collect($affiliate['by_context'] ?? [])->sum('c')))
+                    @forelse (($affiliate['by_context'] ?? []) as $row)
+                        @php($pct = round(100 * $row['c'] / $ctxTotal))
+                        <div class="az-row">
+                            <div class="name">{{ $row['context'] }}</div>
+                            <div class="az-track"><div class="az-fill" style="width: {{ $pct }}%; background:#16a34a;"></div></div>
+                            <div class="pct">{{ number_format($row['c']) }} · %{{ $pct }}</div>
+                        </div>
+                    @empty
+                        <p class="az-empty">Veri yok.</p>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+
+        <div class="az-note">Self-hosted, KVKK uyumlu (çerezsiz, IP saklanmaz). Botlar hariç. Veriler 5 dk önbelleklenir. Affiliate tıklamaları gerçek zamanlı (önbelleksiz).</div>
     </div>
 </x-filament-panels::page>
