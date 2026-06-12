@@ -75,8 +75,8 @@
                     @foreach ($top_uni_en as $u)
                         <tr class="hover:bg-gray-50">
                             <td class="px-4 py-3 text-gray-400 font-semibold">{{ $loop->iteration }}</td>
-                            <td class="px-4 py-3"><a href="{{ route('universities.show', $u->slug) }}" class="font-semibold text-gray-900 hover:text-primary-600">{{ $u->name_de }}</a></td>
-                            <td class="px-4 py-3 text-right font-extrabold text-primary-700">{{ $u->c }}</td>
+                            <td class="px-4 py-3"><a href="{{ route('universities.show', $u['slug']) }}" class="font-semibold text-gray-900 hover:text-primary-600">{{ $u['name'] }}</a></td>
+                            <td class="px-4 py-3 text-right font-extrabold text-primary-700">{{ $u['c'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -85,7 +85,7 @@
     </section>
 
     {{-- En ucuz öğrenci şehirleri --}}
-    @if ($cheapest_cities->isNotEmpty())
+    @if (! empty($cheapest_cities))
     <section>
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1 inline-flex items-center gap-2">
             <x-svg-icon name="building-office" class="w-7 h-7 text-emerald-600" />
@@ -101,8 +101,8 @@
                     @foreach ($cheapest_cities as $c)
                         <tr class="hover:bg-gray-50">
                             <td class="px-4 py-3 text-gray-400 font-semibold">{{ $loop->iteration }}</td>
-                            <td class="px-4 py-3"><a href="{{ route('cities.show', $c->slug) }}" class="font-semibold text-gray-900 hover:text-emerald-600">{{ $c->name_de }}</a></td>
-                            <td class="px-4 py-3 text-right font-extrabold text-emerald-700">€{{ number_format($c->total) }}</td>
+                            <td class="px-4 py-3"><a href="{{ route('cities.show', $c['slug']) }}" class="font-semibold text-gray-900 hover:text-emerald-600">{{ $c['name'] }}</a></td>
+                            <td class="px-4 py-3 text-right font-extrabold text-emerald-700">€{{ number_format($c['total']) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -119,10 +119,10 @@
         </h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             @foreach ($top_fields as $f)
-                <a href="{{ route('fields.show', $f->slug) }}" class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4 text-center">
-                    <div class="mb-2 flex justify-center text-primary-600">{!! e_icon($f->icon, 'w-9 h-9') !!}</div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight mb-0.5">{{ $f->name }}</h3>
-                    <p class="text-xs text-gray-500">{{ number_format($f->programs_count) }} {{ __('programs') }}</p>
+                <a href="{{ route('fields.show', $f['slug']) }}" class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4 text-center">
+                    <div class="mb-2 flex justify-center text-primary-600">{!! e_icon($f['icon'], 'w-9 h-9') !!}</div>
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight mb-0.5">{{ $f['name'] }}</h3>
+                    <p class="text-xs text-gray-500">{{ number_format($f['count']) }} {{ __('programs') }}</p>
                 </a>
             @endforeach
         </div>
