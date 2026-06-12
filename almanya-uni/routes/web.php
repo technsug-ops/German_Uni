@@ -992,6 +992,25 @@ Route::get('/og/{type}/{slug}', [\App\Http\Controllers\Web\OgImageController::cl
 Route::get('/rss.xml', [\App\Http\Controllers\Web\FeedController::class, 'rss'])->name('feed.rss');
 Route::get('/feed', fn () => redirect('/rss.xml', 301));
 
+// GEÇİCİ teşhis: ana sayfa 500'ünün gerçek exception'ını yakala (token-gated).
+// Prod log okunamadığı için. Düzeltince SİL.
+Route::get('/_system/home-debug', function (\Illuminate\Http\Request $request) {
+    if (! hash_equals((string) config('services.system_token'), (string) $request->query('token'))) {
+        abort(403);
+    }
+    app()->setLocale('tr');
+    \Illuminate\Support\Facades\URL::defaults(['locale' => 'tr']);
+    try {
+        $view = app(\App\Http\Controllers\Web\HomeController::class)->index();
+        $html = $view->render();
+        return response('OK len=' . strlen($html), 200)->header('Content-Type', 'text/plain');
+    } catch (\Throwable $e) {
+        $out = get_class($e) . ': ' . $e->getMessage() . "\n@ " . $e->getFile() . ':' . $e->getLine()
+            . "\n\n" . $e->getTraceAsString();
+        return response(mb_substr($out, 0, 3000), 200)->header('Content-Type', 'text/plain');
+    }
+})->middleware('throttle:30,1');
+
 // Affiliate dış-link redirect + tıklama takibi (locale-agnostik). /go/sperrkonto/{slug}?ctx=index
 Route::get('/go/{type}/{slug}', [\App\Http\Controllers\Web\AffiliateController::class, 'go'])
     ->where('type', 'sperrkonto|insurance')
