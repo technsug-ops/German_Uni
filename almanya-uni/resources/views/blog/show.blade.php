@@ -420,15 +420,6 @@
                 </section>
             @endif
 
-            <!-- Newsletter (yazı sonu CTA) -->
-            <section id="newsletter-signup" class="mt-12 pt-6 border-t border-gray-200 scroll-mt-24">
-                <x-newsletter-form
-                    source="blog_post_{{ $post->id }}"
-                    variant="card"
-                    :heading="__('Do not miss this content')"
-                    :subheading="__('Weekly similar guides + current deadlines + scholarship announcements. Unsubscribe anytime.')" />
-            </section>
-
             <!-- Related -->
             @if ($related->isNotEmpty())
                 <section class="mt-12 pt-8 border-t border-gray-200">
@@ -648,7 +639,10 @@ document.addEventListener('alpine:init', () => {
      YORUMLAR — UGC + E-E-A-T sinyali
      ============================================================ --}}
 <section id="comments" class="bg-gray-50 border-t border-gray-200 mt-12">
-    <div class="max-w-3xl mx-auto px-4 py-12">
+    {{-- Makale içerik sütunuyla (col-span-3) hizalı — viewport-ortalı değil --}}
+    <div class="max-w-[1400px] mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div class="lg:col-span-3 max-w-3xl">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
             <x-svg-icon name="chat-bubble" class="w-7 h-7 text-indigo-600" /> {{ __('Comments') }}
             @if ($post->approvedComments->count() > 0)
@@ -769,6 +763,8 @@ document.addEventListener('alpine:init', () => {
                 {{ __('No comments yet. Be the first to share your experience!') }}
             </div>
         @endif
+            </div>
+        </div>
     </div>
 </section>
 
