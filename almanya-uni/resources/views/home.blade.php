@@ -523,7 +523,7 @@
 {{-- =================================================================== --}}
 {{-- POPÜLER PROGRAMLAR — crawl-konsantrasyon: ana sayfa → program detayları --}}
 {{-- =================================================================== --}}
-@if (! empty($featured_programs) && $featured_programs->count() > 0)
+@if (! empty($featured_programs) && count($featured_programs) > 0)
 <section class="max-w-[1400px] mx-auto px-4 py-14">
     <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
         <div>
@@ -537,14 +537,14 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach ($featured_programs as $program)
-            <a href="{{ route('programs.show', $program->slug) }}"
+            <a href="{{ route('programs.show', $program['slug']) }}"
                class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4">
                 <div class="flex items-center gap-2 mb-1.5 text-xs">
-                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">{{ ucfirst($program->degree) }}</span>
-                    <span>{{ $program->language === 'en' ? '🇬🇧' : '🌐' }}</span>
+                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">{{ ucfirst($program['degree']) }}</span>
+                    <span>{{ $program['language'] === 'en' ? '🇬🇧' : '🌐' }}</span>
                 </div>
-                <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2 mb-1">{{ $program->name }}</h3>
-                <p class="text-xs text-gray-500 line-clamp-1">{{ $program->university?->name_de }}</p>
+                <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2 mb-1">{{ $program['name'] }}</h3>
+                <p class="text-xs text-gray-500 line-clamp-1">{{ $program['uni_name'] }}</p>
             </a>
         @endforeach
     </div>
@@ -554,7 +554,7 @@
 {{-- =================================================================== --}}
 {{-- TALEP GÖREN MESLEKLER — crawl-konsantrasyon: ana sayfa → meslek detayları --}}
 {{-- =================================================================== --}}
-@if (! empty($featured_professions) && $featured_professions->count() > 0)
+@if (! empty($featured_professions) && count($featured_professions) > 0)
 <section class="bg-gray-50 py-14 border-y border-gray-200">
     <div class="max-w-[1400px] mx-auto px-4">
         <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
@@ -569,10 +569,10 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($featured_professions as $profession)
-                <a href="{{ route('professions.show', $profession->slug) }}"
+                <a href="{{ route('professions.show', $profession['slug']) }}"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4">
-                    <div class="text-xs text-gray-500 mb-1">{{ $profession->field?->name }}</div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2">{{ $profession->name }}</h3>
+                    <div class="text-xs text-gray-500 mb-1">{{ $profession['field_name'] }}</div>
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2">{{ $profession['name'] }}</h3>
                 </a>
             @endforeach
         </div>

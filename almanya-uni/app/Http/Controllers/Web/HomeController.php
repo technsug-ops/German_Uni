@@ -127,7 +127,10 @@ class HomeController extends Controller
         // YÜKSEK-DEĞER program/meslek DETAY sayfalarına link. Böylece Google'ın
         // crawl bütçesi önce değerli sayfalara akar (discovered-not-indexed azalır).
         // Deterministik + 6 saat cache → stabil link grafiği (SEO için önemli).
-        $featured_programs = cache()->remember('home.featured_programs_v2', now()->addHours(6), fn () =>
+        // DÜZ ARRAY cache'le (Eloquent Collection DEĞİL): file cache serialize/unserialize
+        // Eloquent Collection'ı bozabiliyor ("incomplete object" → 500). Düz array güvenli.
+        // Locale-spesifik key — name accessor cache anında locale'e göre çözülüyor.
+        $featured_programs = cache()->remember('home.featured_programs_v3:' . app()->getLocale(), now()->addHours(6), fn () =>
             Program::query()
                 ->where('programs.is_active', true)
                 ->whereIn('programs.language', ['en', 'both'])
@@ -140,9 +143,16 @@ class HomeController extends Controller
                 ->select('programs.id', 'programs.slug', 'programs.name_de', 'programs.name_en', 'programs.degree', 'programs.language', 'programs.university_id')
                 ->get()
                 ->load('university:id,slug,name_de')
+                ->map(fn ($p) => [
+                    'slug'     => $p->slug,
+                    'name'     => $p->name,
+                    'degree'   => $p->degree,
+                    'language' => $p->language,
+                    'uni_name' => $p->university?->name_de,
+                ])->all()
         );
 
-        $featured_professions = cache()->remember('home.featured_professions_v2', now()->addHours(6), fn () =>
+        $featured_professions = cache()->remember('home.featured_professions_v3:' . app()->getLocale(), now()->addHours(6), fn () =>
             Profession::where('is_active', true)
                 ->where('type', 'studienberuf')
                 ->whereNotNull('description_tr')->where('description_tr', '!=', '')
@@ -151,6 +161,11 @@ class HomeController extends Controller
                 ->orderBy('field_of_study_id')->orderBy('id')
                 ->limit(8)
                 ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'field_of_study_id', 'type'])
+                ->map(fn ($p) => [
+                    'slug'       => $p->slug,
+                    'name'       => $p->name,
+                    'field_name' => $p->field?->name,
+                ])->all()
         );
 
         // 9 aggregate count — günde bir değişir → 6 saat cache (locale-bağımsız).
