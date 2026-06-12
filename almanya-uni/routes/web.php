@@ -38,6 +38,9 @@ use Illuminate\Support\Facades\Route;
 $routes = function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
+    // Linkable-asset: alıntılanabilir Almanya eğitim istatistikleri (backlink mıknatısı)
+    Route::get('/germany-study-statistics', [\App\Http\Controllers\Web\StatisticsController::class, 'index'])->name('stats');
+
     Route::get('/search', [SearchController::class, 'index'])
         ->middleware('throttle:30,1')
         ->name('search.index');
