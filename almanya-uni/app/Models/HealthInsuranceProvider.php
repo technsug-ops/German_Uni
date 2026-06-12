@@ -111,6 +111,19 @@ class HealthInsuranceProvider extends Model
         return $this->affiliate_url ?: $this->website_url;
     }
 
+    /** affiliate_clicks.provider_type değeri + /go/{type}/ segmenti. */
+    public const AFFILIATE_TYPE = 'insurance';
+
+    /** Takipli dış-link: /go/insurance/{slug}?ctx=... → tıklama loglanır, sonra cta_url'e 302. */
+    public function trackedUrl(?string $ctx = null): string
+    {
+        return route('affiliate.go', array_filter([
+            'type' => self::AFFILIATE_TYPE,
+            'slug' => $this->slug,
+            'ctx'  => $ctx,
+        ]));
+    }
+
     /**
      * best_for kontrollü anahtar → locale-aware etiket (serbest-metin TR sızıntısını önler).
      */

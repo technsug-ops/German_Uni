@@ -239,6 +239,9 @@
         @endforeach
     </div>
 
+    {{-- BİR BAKIŞTA KARŞILAŞTIR — karar-hızlandıran tablo (kartların üstünde) --}}
+    <x-provider-comparison :providers="$providers" kind="sperrkonto" />
+
     {{-- SAĞLAYICI KARTLARI --}}
     @if ($providers->isEmpty())
         <div class="bg-amber-50 border border-amber-200 rounded-xl p-8 text-center">
@@ -345,12 +348,10 @@
 
                         {{-- SAĞ: CTA --}}
                         <div class="p-6 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-100 flex flex-col justify-center gap-3">
-                            @if ($p->cta_url)
-                                <a href="{{ $p->cta_url }}" target="_blank" rel="noopener sponsored"
-                                   class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-sm hover:shadow">
-                                    {{ __('Apply') }} →
-                                </a>
-                            @endif
+                            <x-affiliate-link :provider="$p" ctx="index"
+                                class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-sm hover:shadow">
+                                {{ __('Apply') }} →
+                            </x-affiliate-link>
                             <a href="{{ route('tools.blocked-account.show', $p->slug) }}"
                                class="block text-center bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold py-3 px-4 rounded-lg transition">
                                 {{ __('View details') }}

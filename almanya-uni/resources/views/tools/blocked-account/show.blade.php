@@ -205,14 +205,12 @@
     {{-- SIDEBAR --}}
     <aside class="space-y-4">
         <div class="bg-white border border-gray-200 rounded-xl p-5 sticky top-20">
-            @if ($provider->cta_url)
-                <a href="{{ $provider->cta_url }}" target="_blank" rel="noopener sponsored"
-                   class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-sm">
-                    {{ __('Apply to :name →', ['name' => $provider->name]) }}
-                </a>
-                @if ($provider->affiliate_url)
-                    <p class="text-[10px] text-gray-400 mt-1 text-center">{{ __('Affiliate link · commission possible') }}</p>
-                @endif
+            <x-affiliate-link :provider="$provider" ctx="show"
+                class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-sm">
+                {{ __('Apply to :name →', ['name' => $provider->name]) }}
+            </x-affiliate-link>
+            @if ($provider->cta_url && $provider->affiliate_url)
+                <p class="text-[10px] text-gray-400 mt-1 text-center">{{ __('Affiliate link · commission possible') }}</p>
             @endif
 
             <div class="mt-4 pt-4 border-t border-gray-100 space-y-2 text-sm">

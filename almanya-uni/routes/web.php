@@ -983,6 +983,13 @@ Route::get('/og/{type}/{slug}', [\App\Http\Controllers\Web\OgImageController::cl
     ->name('og.image');
 Route::get('/rss.xml', [\App\Http\Controllers\Web\FeedController::class, 'rss'])->name('feed.rss');
 Route::get('/feed', fn () => redirect('/rss.xml', 301));
+
+// Affiliate dış-link redirect + tıklama takibi (locale-agnostik). /go/sperrkonto/{slug}?ctx=index
+Route::get('/go/{type}/{slug}', [\App\Http\Controllers\Web\AffiliateController::class, 'go'])
+    ->where('type', 'sperrkonto|insurance')
+    ->where('slug', '[a-z0-9\-]+')
+    ->middleware('throttle:60,1')
+    ->name('affiliate.go');
 Route::get('/api/map/universities', [MapController::class, 'universitiesJson'])
     ->middleware('throttle:30,1')
     ->name('map.universities.json');

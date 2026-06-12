@@ -43,12 +43,10 @@
                     @endif
                 </div>
             </div>
-            @if ($provider->cta_url)
-                <a href="{{ $provider->cta_url }}" target="_blank" rel="noopener sponsored"
-                   class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-5 rounded-lg transition shadow-sm">
-                    {{ __('Visit site') }} →
-                </a>
-            @endif
+            <x-affiliate-link :provider="$provider" ctx="show"
+                class="block text-center bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-5 rounded-lg transition shadow-sm">
+                {{ __('Visit site') }} →
+            </x-affiliate-link>
         </div>
 
         {{-- Key facts --}}
