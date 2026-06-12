@@ -21,6 +21,14 @@ class ToolsController extends Controller
     {
         $tools = [
             [
+                'slug'        => 'sablonlar',
+                'title'       => __('Application Templates'),
+                'description' => __('Copy-ready German templates: CV (Lebenslauf), motivation & recommendation letters, application emails.'),
+                'icon'        => '📝',
+                'route'       => route('templates.index'),
+                'live'        => true,
+            ],
+            [
                 'slug'        => 'yasam-maliyeti',
                 'title'       => __('Cost of Living Calculator'),
                 'description' => __('Calculate your monthly expenses as a student in Germany, city by city.'),

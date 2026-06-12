@@ -198,6 +198,10 @@ class SitemapController extends Controller
         $urls[] = $this->entry(route('professions.index'), now(), 'daily', 0.9);
         $urls[] = $this->entry(route('housing.index'), now(), 'weekly', 0.8);
         $urls[] = $this->entry(route('tools.index'), now(), 'weekly', 0.8);
+        $urls[] = $this->entry(route('templates.index'), now(), 'weekly', 0.8);
+        foreach (\App\Models\DocumentTemplate::where('is_active', true)->get(['slug', 'updated_at']) as $tpl) {
+            $urls[] = $this->entry(route('templates.show', $tpl->slug), $tpl->updated_at, 'monthly', 0.7);
+        }
         $urls[] = $this->entry(route('tools.cost-of-living'), now(), 'monthly', 0.7);
         $urls[] = $this->entry(route('tools.grade-converter'), now(), 'monthly', 0.7);
         $urls[] = $this->entry(route('tools.recommendation'), now(), 'monthly', 0.6);

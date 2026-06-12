@@ -41,6 +41,10 @@ $routes = function () {
     // Linkable-asset: alıntılanabilir Almanya eğitim istatistikleri (backlink mıknatısı)
     Route::get('/germany-study-statistics', [\App\Http\Controllers\Web\StatisticsController::class, 'index'])->name('stats');
 
+    // Profesyonel başvuru belgesi şablonları (premium içerik — Lebenslauf, Motivationsschreiben…)
+    Route::get('/templates', [\App\Http\Controllers\Web\DocumentTemplateController::class, 'index'])->name('templates.index');
+    Route::get('/templates/{slug}', [\App\Http\Controllers\Web\DocumentTemplateController::class, 'show'])->name('templates.show');
+
     Route::get('/search', [SearchController::class, 'index'])
         ->middleware('throttle:30,1')
         ->name('search.index');
