@@ -302,15 +302,20 @@ class SitemapController extends Controller
             });
 
         Program::where('is_active', true)
-            ->select(['slug', 'updated_at', 'description_tr'])
+            ->select(['slug', 'updated_at', 'description_tr', 'language'])
             ->orderBy('id')
             ->chunk(1000, function ($chunk) use (&$urls) {
                 foreach ($chunk as $p) {
+                    // Değer sinyali (crawl bütçesi yoğunlaştırma): uluslararası
+                    // (İngilizce/both) programlar öncelikli; Almanca-only uzun-kuyruk
+                    // daha düşük → Google önce marka-hedefi sayfaları tarasın.
+                    $intl = in_array($p->language, ['en', 'both'], true);
+                    $priority = ! $p->description_tr ? 0.4 : ($intl ? 0.7 : 0.5);
                     $urls[] = $this->entry(
                         route('programs.show', $p->slug),
                         $p->updated_at,
                         'monthly',
-                        $p->description_tr ? 0.7 : 0.5
+                        $priority
                     );
                 }
             });
