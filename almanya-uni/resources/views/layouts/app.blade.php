@@ -65,8 +65,9 @@
     <link rel="shortcut icon" href="{{ asset(brand('favicon')) }}?v=2">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32.png') }}?v=2">
 
-    {{-- PWA + iOS native --}}
-    <link rel="manifest" href="/manifest.json">
+    {{-- PWA + iOS native — /site.webmanifest (brand-aware route; eski statik
+         /manifest.json'u baypas eder → 192+512 ikon garantili, yüklenebilir). --}}
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="{{ brand('theme_color') ?? '#1A1A1A' }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">

@@ -154,6 +154,13 @@ if ($allOk) {
 
     $log("🧹 Cache cleared — views: {$cleaned['views']}, bootstrap: {$cleaned['bootstrap']}, routes: {$cleaned['routes']}, appcache: {$cleaned['appcache']}");
 
+    // Eski statik dosyalar route'ları gölgeliyor (bundle silinen dosyaları kaldırmaz).
+    // public/manifest.json artık brand-aware route ( /site.webmanifest + /manifest.json ).
+    foreach (['manifest.json'] as $stale) {
+        $p = $appRoot . '/public/' . $stale;
+        if (is_file($p) && @unlink($p)) $log("🧹 Stale static removed: public/{$stale}");
+    }
+
     // OPcache reset — düzenlenen Model/Controller dosyaları PHP-FPM worker'larında
     // eski bytecode'la çalışmaya devam edebilir (KAS'ta 5+ dk). Reset → yeni kod hemen.
     if (function_exists('opcache_reset')) {

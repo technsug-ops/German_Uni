@@ -289,8 +289,11 @@ $routes = function () {
 
 // ─────────── Sitemap & API (locale'siz, tek versiyon) ───────────
 
-// Brand-aware PWA manifest — name/short_name/lang/icons change per domain & locale
-Route::get('/manifest.json', function (\Illuminate\Http\Request $request) {
+// Brand-aware PWA manifest — name/short_name/lang/icons change per domain & locale.
+// İKİ yola da kayıtlı: /site.webmanifest (head bunu kullanır) + /manifest.json.
+// Not: prod'da eski statik public/manifest.json route'u gölgeleyebildiği için head
+// /site.webmanifest'e bakar (statik dosya yok → route garantili çalışır).
+$pwaManifest = function (\Illuminate\Http\Request $request) {
     $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
     $domains = config('brand.domains', []);
     $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
@@ -329,7 +332,9 @@ Route::get('/manifest.json', function (\Illuminate\Http\Request $request) {
             ['name' => __('Scholarships'), 'url' => '/' . app()->getLocale() . '/scholarships'],
         ],
     ], 200, ['Content-Type' => 'application/manifest+json; charset=utf-8']);
-});
+};
+Route::get('/site.webmanifest', $pwaManifest)->name('pwa.manifest');
+Route::get('/manifest.json', $pwaManifest);
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/sitemap-content.xml', [SitemapController::class, 'content'])->name('sitemap.content');
