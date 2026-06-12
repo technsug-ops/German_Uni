@@ -175,7 +175,7 @@
                     : null;
                 $audio = $post->audio_url
                     ? (str_starts_with($post->audio_url, 'http') ? $post->audio_url : asset('storage/' . ltrim($post->audio_url, '/')))
-                    : null;
+                    : $post->podcastUrl(); // #12 Faz-2: audio_url yoksa üretilmiş "sesli makale" mp3'ü
                 // YouTube/Vimeo embed URL üret
                 $videoEmbed = null;
                 if ($post->video_url) {

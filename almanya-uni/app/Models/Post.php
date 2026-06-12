@@ -144,6 +144,20 @@ class Post extends Model
         return is_array($json) && ! empty($json['title']) ? $json : null;
     }
 
+    /**
+     * #12 Faz-2: bu yazının "sesli makale" (podcast) mp3'ü varsa public URL'i.
+     * Dosya public/audio/podcasts/{group}-{locale}.mp3 (deploy bundle ile gelir,
+     * prod DB bağımlılığı yok). storytelling:podcasts komutu üretir.
+     */
+    public function podcastUrl(): ?string
+    {
+        if (! $this->translation_group_id) {
+            return null;
+        }
+        $rel = 'audio/podcasts/' . $this->translation_group_id . '-' . $this->locale . '.mp3';
+        return is_file(public_path($rel)) ? asset($rel) : null;
+    }
+
     /** Ortalama okuma derinliği (% scroll) — okunmuşluk göstergesi. */
     public function getAvgScrollAttribute(): int
     {
