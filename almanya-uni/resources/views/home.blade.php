@@ -581,6 +581,37 @@
 @endif
 
 {{-- =================================================================== --}}
+{{-- HAZIR BAŞVURU ŞABLONLARI — huni: ana sayfa → /templates --}}
+{{-- =================================================================== --}}
+@if (! empty($featured_templates) && count($featured_templates) > 0)
+<section class="bg-gradient-to-br from-violet-50 to-indigo-50 py-14 border-y border-violet-100">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
+                    <x-svg-icon name="document-text" class="w-7 h-7 text-violet-600" />
+                    {{ __('Ready-to-use Application Templates') }}
+                </h2>
+                <p class="text-gray-600 text-sm">{{ __('Lebenslauf, Motivationsschreiben, recommendation letters — fill in & download. Free.') }}</p>
+            </div>
+            <a href="{{ route('templates.index') }}" class="text-violet-700 hover:text-violet-900 font-semibold text-sm">{{ __('All templates') }} →</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            @foreach ($featured_templates as $tpl)
+                <a href="{{ route('templates.show', $tpl['slug']) }}"
+                   class="group bg-white rounded-xl border border-violet-100 hover:border-violet-400 hover:shadow-lg transition p-4 flex flex-col items-center text-center gap-2">
+                    <span class="w-10 h-10 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center group-hover:bg-violet-100">
+                        <x-svg-icon :name="$tpl['icon']" class="w-5 h-5" />
+                    </span>
+                    <span class="text-xs font-semibold text-gray-800 group-hover:text-violet-700 leading-tight line-clamp-2">{{ $tpl['title'] }}</span>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- =================================================================== --}}
 {{-- DAAD BURSU HIGHLIGHT --}}
 {{-- =================================================================== --}}
 @if (! empty($featured_scholarships) && $featured_scholarships->count() > 0)

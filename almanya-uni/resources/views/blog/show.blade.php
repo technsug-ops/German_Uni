@@ -264,6 +264,18 @@
                 <x-content.infographic :data="$infographic" />
             @endif
 
+            {{-- Şablon hunisi: içerik → ürün. Başvuru şablonlarına yönlendir. --}}
+            <aside class="my-8 bg-gradient-to-br from-violet-50 to-indigo-50 border border-violet-100 rounded-2xl p-5 flex items-center gap-4 no-print">
+                <span class="hidden sm:flex shrink-0 w-12 h-12 rounded-xl bg-violet-100 text-violet-600 items-center justify-center">
+                    <x-svg-icon name="document-text" class="w-6 h-6" />
+                </span>
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold text-gray-900 leading-tight">{{ __('Need it in writing?') }}</p>
+                    <p class="text-sm text-gray-600">{{ __('Ready German templates — Lebenslauf, Motivationsschreiben, letters & emails. Fill in & download, free.') }}</p>
+                </div>
+                <a href="{{ route('templates.index') }}" class="shrink-0 bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm py-2.5 px-4 rounded-lg transition">{{ __('Templates') }} →</a>
+            </aside>
+
             {{-- İçerik-uyumlu affiliate kart — slug'a göre context seç --}}
             @php
                 $context = 'default';

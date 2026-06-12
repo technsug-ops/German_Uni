@@ -345,24 +345,24 @@ class ToolsController extends Controller
         // Öneriler
         $suggestions = [];
         if ($expenseTotal === 0) {
-            $suggestions[] = ['type' => 'info', 'msg' => __('Şehir seç → otomatik gider tahmini gelir.')];
+            $suggestions[] = ['type' => 'info', 'msg' => __('Pick a city → an automatic expense estimate appears.')];
         } elseif ($totalIncome < $expenseTotal) {
             $deficit = $expenseTotal - $totalIncome;
-            $suggestions[] = ['type' => 'warning', 'msg' => "❌ Aylık {$deficit}€ açık var. Çalışma geliri ekle (Werkstudent max 538€) ya da WG'ye geç."];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('❌ You have a :amount€ monthly shortfall. Add work income (Werkstudent max 538€) or move to a WG.', ['amount' => $deficit])];
         } elseif (! $coversGoal) {
             $shortage = $savingsGoal - $netBalance;
-            $suggestions[] = ['type' => 'warning', 'msg' => "⚠️ Tasarruf hedefin için {$shortage}€ daha gerek. Eğlence/yemek kalemini kıs ya da burs ara."];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('⚠️ You need :amount€ more for your savings goal. Cut entertainment/food or look for a scholarship.', ['amount' => $shortage])];
         } else {
             $extra = $netBalance - $savingsGoal;
-            $suggestions[] = ['type' => 'success', 'msg' => "✅ Tasarruf hedefin karşılanıyor. {$extra}€ ekstra var — biriktir ya da yatır."];
+            $suggestions[] = ['type' => 'success', 'msg' => __('✅ Your savings goal is covered. You have :amount€ extra — save or invest it.', ['amount' => $extra])];
         }
 
         if ($income['job'] > 538) {
-            $suggestions[] = ['type' => 'warning', 'msg' => "⚠️ Werkstudent statüsünde aylık max 538€ kazanılır (vergi+sigorta avantajı için). Üstüne çıkarsan tam çalışan sayılırsın."];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('⚠️ As a Werkstudent you can earn max 538€/month (for the tax & insurance benefit). Above that you count as a full employee.')];
         }
 
         if ($income['job'] === 0 && $netBalance < 0) {
-            $suggestions[] = ['type' => 'info', 'msg' => "💡 Almanya'da öğrenci olarak 140 tam gün/280 yarım gün çalışabilirsin (2024 değişikliği). Asgari ücret 12,82€/saat."];
+            $suggestions[] = ['type' => 'info', 'msg' => __('💡 As a student in Germany you can work 140 full / 280 half days per year (2024 change). Minimum wage is €12.82/hour.')];
         }
 
         return view('tools.budget-planner', [

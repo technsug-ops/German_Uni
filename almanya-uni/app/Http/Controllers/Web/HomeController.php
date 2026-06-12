@@ -168,6 +168,15 @@ class HomeController extends Controller
                 ])->all()
         );
 
+        // Premium başvuru şablonları — ana sayfa hunisi. DÜZ ARRAY (Collection değil!),
+        // locale'li key (title accessor cache anında çözülür).
+        $featured_templates = cache()->remember('home.featured_templates_v1:' . app()->getLocale(), now()->addHours(6), fn () =>
+            \App\Models\DocumentTemplate::active()
+                ->orderBy('sort_order')->orderBy('id')->limit(6)
+                ->get()
+                ->map(fn ($t) => ['slug' => $t->slug, 'title' => $t->title, 'icon' => $t->icon])->all()
+        );
+
         // 9 aggregate count — günde bir değişir → 6 saat cache (locale-bağımsız).
         $totals = cache()->remember('home.totals_v2', now()->addHours(6), fn () => [
             'universities' => University::where('is_active', true)->count(),
@@ -185,6 +194,7 @@ class HomeController extends Controller
             'featured_universities' => $featured_universities,
             'featured_programs'     => $featured_programs,
             'featured_professions'  => $featured_professions,
+            'featured_templates'    => $featured_templates,
             'featured_scholarships' => $featured_scholarships,
             'top_fields'            => $top_fields,
             'cities'                => $cities,
