@@ -228,6 +228,8 @@ class Seo
             'keywords' => ['Germany', 'universities', 'study programs', 'Hochschule', 'Studium', 'international students'],
             'inLanguage' => app()->getLocale(),
             'isAccessibleForFree' => true,
+            // GSC "license alanı eksik" (Dataset önerilen alanı) → kullanım şartları
+            'license' => $url . '/terms',
             'creator' => [
                 '@type' => 'Organization',
                 'name' => $brandName,
