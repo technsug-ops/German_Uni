@@ -27,6 +27,10 @@ class StorytellingInfographics extends Command
             return self::SUCCESS;
         }
 
+        // Hangi diller yayında — blog post'larının locale'lerinden çıkar
+        $languages = Post::whereNotNull('content_brief_id')->distinct()->pluck('locale')
+            ->filter()->values()->all() ?: ['tr'];
+
         $briefIds = Post::whereNotNull('content_brief_id')->distinct()->pluck('content_brief_id');
 
         foreach ($briefIds as $bid) {
@@ -35,36 +39,37 @@ class StorytellingInfographics extends Command
                 continue;
             }
 
-            $ready = ContentAsset::where('content_brief_id', $bid)
-                ->where('asset_type', 'infographic_data')
-                ->where('language', 'tr')
-                ->where('status', 'ready')
-                ->exists();
+            foreach ($languages as $lang) {
+                $ready = ContentAsset::where('content_brief_id', $bid)
+                    ->where('asset_type', 'infographic_data')
+                    ->where('language', $lang)
+                    ->where('status', 'ready')
+                    ->exists();
 
-            if ($ready && ! $this->option('force')) {
-                $this->line("atla (hazır): {$brief->slug}");
-                continue;
+                if ($ready && ! $this->option('force')) {
+                    $this->line("atla (hazır): {$brief->slug} [{$lang}]");
+                    continue;
+                }
+
+                $r = $svc->generateAsset($brief, 'infographic_data', $lang);
+                if (empty($r['success']) || empty($r['asset'])) {
+                    $this->warn("FAIL {$brief->slug} [{$lang}]: " . ($r['error'] ?? '?'));
+                    continue;
+                }
+
+                // Gemini bazen ```json ... ``` fence ekler — temizle, JSON geçerliyse ready
+                $raw = trim((string) $r['asset']->body_md);
+                $raw = preg_replace('/^```(?:json)?\s*|\s*```$/', '', $raw);
+                json_decode($raw);
+                $valid = json_last_error() === JSON_ERROR_NONE;
+
+                $r['asset']->update([
+                    'body_md' => $raw,
+                    'status'  => $valid ? 'ready' : 'draft',
+                ]);
+
+                $this->info(($valid ? '✅ OK' : '⚠️ GEÇERSİZ-JSON') . " {$brief->slug} [{$lang}]");
             }
-
-            $r = $svc->generateAsset($brief, 'infographic_data');
-            if (empty($r['success']) || empty($r['asset'])) {
-                $this->warn("FAIL {$brief->slug}: " . ($r['error'] ?? '?'));
-                continue;
-            }
-
-            // Gemini bazen ```json ... ``` fence ekler — temizle, JSON geçerliyse ready
-            $raw = trim((string) $r['asset']->body_md);
-            $raw = preg_replace('/^```(?:json)?\s*|\s*```$/', '', $raw);
-            json_decode($raw);
-            $valid = json_last_error() === JSON_ERROR_NONE;
-
-            $r['asset']->update([
-                'body_md'  => $raw,
-                'language' => 'tr',
-                'status'   => $valid ? 'ready' : 'draft',
-            ]);
-
-            $this->info(($valid ? '✅ OK' : '⚠️ GEÇERSİZ-JSON') . " {$brief->slug}");
         }
 
         return self::SUCCESS;

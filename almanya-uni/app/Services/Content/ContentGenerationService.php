@@ -25,13 +25,13 @@ class ContentGenerationService
      * Brief'ten istenen asset türünü üret. Mevcut asset varsa UPSERT.
      * @return array{success: bool, asset?: ContentAsset, error?: string, tokens?: array}
      */
-    public function generateAsset(ContentBrief $brief, string $assetType): array
+    public function generateAsset(ContentBrief $brief, string $assetType, string $language = 'tr'): array
     {
         if (!$this->isConfigured()) {
             return ['success' => false, 'error' => 'GEMINI_API_KEY .env\'de yok'];
         }
 
-        $prompt = $this->prompts->build($brief, $assetType);
+        $prompt = $this->prompts->build($brief, $assetType, $language);
 
         try {
             $result = $this->callGemini($prompt);
@@ -45,7 +45,7 @@ class ContentGenerationService
         }
 
         $asset = ContentAsset::updateOrCreate(
-            ['content_brief_id' => $brief->id, 'asset_type' => $assetType],
+            ['content_brief_id' => $brief->id, 'asset_type' => $assetType, 'language' => $language],
             [
                 'body_md' => $result['text'],
                 'generated_by' => 'ai_gemini',
