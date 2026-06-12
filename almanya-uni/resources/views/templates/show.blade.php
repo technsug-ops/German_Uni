@@ -84,6 +84,10 @@
                         class="inline-flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg transition">
                     <x-svg-icon name="document-text" class="w-4 h-4" /> {{ __('Download as PDF') }}
                 </button>
+                <button type="button" @click="downloadWord()"
+                        class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-2.5 px-4 rounded-lg transition">
+                    <x-svg-icon name="document-text" class="w-4 h-4" /> {{ __('Download as Word') }}
+                </button>
                 <button type="button" @click="copyText()"
                         class="inline-flex items-center gap-1.5 font-semibold text-sm py-2.5 px-4 rounded-lg transition"
                         :class="copied ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'">
@@ -148,6 +152,7 @@
         Alpine.data('templateFiller', () => ({
             body: @json($body),
             tokens: @json($tokens),
+            slug: @json($template->slug),
             fields: {},
             copied: false,
             init() {
@@ -171,6 +176,24 @@
                 });
             },
             print() { window.print(); },
+            // Word indir — client-side (doldurulmuş veri tarayıcıda kalır, server'a gitmez).
+            // Kütüphanesiz: HTML-tabanlı .doc → Word/Google Docs açar, düzenlenebilir.
+            downloadWord() {
+                const esc = (this.rendered || '')
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/\n/g, '<br>');
+                const html = '<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" '
+                    + 'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+                    + '<head><meta charset="utf-8"><title>' + this.slug + '</title></head>'
+                    + '<body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'
+                    + esc + '</body></html>';
+                const blob = new Blob(['﻿', html], { type: 'application/msword' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = this.slug + '.doc';
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(url), 1500);
+            },
             reset() { this.tokens.forEach(t => (this.fields[t.key] = '')); },
         }));
     });
