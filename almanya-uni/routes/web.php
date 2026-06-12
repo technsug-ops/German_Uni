@@ -998,12 +998,16 @@ Route::get('/_system/home-debug', function (\Illuminate\Http\Request $request) {
     if (! hash_equals((string) config('services.system_token'), (string) $request->query('token'))) {
         abort(403);
     }
-    app()->setLocale('tr');
-    \Illuminate\Support\Facades\URL::defaults(['locale' => 'tr']);
+    // GERÇEK /tr isteğini app.debug=true ile kernel'den geçir → hata sayfasından
+    // exception class/message/file/line'ı oku (izole render değil, tam pipeline).
+    config(['app.debug' => true]);
     try {
-        $view = app(\App\Http\Controllers\Web\HomeController::class)->index();
-        $html = $view->render();
-        return response('OK len=' . strlen($html), 200)->header('Content-Type', 'text/plain');
+        $sub = \Illuminate\Http\Request::create('https://' . $request->getHost() . '/tr', 'GET');
+        $resp = app(\Illuminate\Contracts\Http\Kernel::class)->handle($sub);
+        $body = html_entity_decode(strip_tags((string) $resp->getContent()));
+        $body = preg_replace('/\n{3,}/', "\n\n", $body);
+        return response('status=' . $resp->getStatusCode() . "\n\n" . mb_substr(trim($body), 0, 3000), 200)
+            ->header('Content-Type', 'text/plain; charset=utf-8');
     } catch (\Throwable $e) {
         $out = get_class($e) . ': ' . $e->getMessage() . "\n@ " . $e->getFile() . ':' . $e->getLine()
             . "\n\n" . $e->getTraceAsString();
