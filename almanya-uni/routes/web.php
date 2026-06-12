@@ -355,6 +355,27 @@ Route::get('/_system/cache-hot-images', function (\Illuminate\Http\Request $requ
     ]);
 })->middleware('throttle:30,1'); // 30 req / minute (token already protects against abuse)
 
+// Token-gated storytelling generation — KAS has no SSH/cron, fire via curl after deploy
+//   curl "https://applytogerman.com/_system/storytelling?token=XXX"
+Route::get('/_system/storytelling', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(600);
+    @ini_set('memory_limit', '512M');
+
+    $exit = \Illuminate\Support\Facades\Artisan::call('storytelling:infographics', array_filter([
+        '--force' => $request->boolean('force'),
+    ], fn ($v) => $v !== false));
+
+    return response()->json([
+        'exit' => $exit,
+        'output' => \Illuminate\Support\Facades\Artisan::output(),
+    ]);
+})->middleware('throttle:10,1');
+
 // Token-gated migration runner — KAS has no CLI access, run via curl after deploy
 Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
