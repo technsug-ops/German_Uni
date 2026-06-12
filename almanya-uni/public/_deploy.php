@@ -183,6 +183,13 @@ if ($allOk && is_file($appRoot . '/vendor/autoload.php')) {
         } catch (\Throwable $e) {
             $log('⚠️  blog:render-html FAIL — ' . mb_substr($e->getMessage(), 0, 300));
         }
+        // #12 storytelling: blog brief'leri için infografik üret (idempotent, Gemini)
+        try {
+            $kernel->call('storytelling:infographics');
+            $log('📊 storytelling:infographics OK');
+        } catch (\Throwable $e) {
+            $log('⚠️  storytelling:infographics FAIL — ' . mb_substr($e->getMessage(), 0, 300));
+        }
     } catch (\Throwable $e) {
         $log('⚠️  migrate FAIL — ' . mb_substr($e->getMessage(), 0, 1500));
     }

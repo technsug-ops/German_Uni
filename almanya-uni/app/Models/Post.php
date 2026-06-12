@@ -114,6 +114,36 @@ class Post extends Model
         return $this->hasMany(PostEngagement::class);
     }
 
+    /** #12 storytelling: yazının kaynak içerik brief'i (çok-formatlı asset'ler buradan). */
+    public function contentBrief(): BelongsTo
+    {
+        return $this->belongsTo(ContentBrief::class);
+    }
+
+    /**
+     * Bu yazının locale'ine uygun, ÜRETİLMİŞ infografik verisi (varsa). On-site
+     * storytelling — blog sayfasında görsel infografik olarak render edilir.
+     */
+    public function infographicData(): ?array
+    {
+        if (! $this->content_brief_id) {
+            return null;
+        }
+        $asset = ContentAsset::where('content_brief_id', $this->content_brief_id)
+            ->where('asset_type', 'infographic_data')
+            ->where('language', $this->locale)
+            ->whereIn('status', ['ready', 'published'])
+            ->latest('id')
+            ->first();
+        if (! $asset || empty($asset->body_md)) {
+            return null;
+        }
+        // Gemini ```json fence'i kalmışsa temizle (savunmacı)
+        $raw = preg_replace('/^```(?:json)?\s*|\s*```$/', '', trim((string) $asset->body_md));
+        $json = json_decode((string) $raw, true);
+        return is_array($json) && ! empty($json['title']) ? $json : null;
+    }
+
     /** Ortalama okuma derinliği (% scroll) — okunmuşluk göstergesi. */
     public function getAvgScrollAttribute(): int
     {

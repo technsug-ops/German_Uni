@@ -258,6 +258,12 @@
                 {!! $contentHtml !!}
             </div>
 
+            {{-- #12 storytelling: yazının brief'inden üretilmiş infografik (post locale'inde) --}}
+            @php $infographic = $post->infographicData(); @endphp
+            @if ($infographic)
+                <x-content.infographic :data="$infographic" />
+            @endif
+
             {{-- İçerik-uyumlu affiliate kart — slug'a göre context seç --}}
             @php
                 $context = 'default';
