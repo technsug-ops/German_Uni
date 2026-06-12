@@ -10,7 +10,7 @@ class HousingProvider extends Model
     use \App\Models\Concerns\LocalizableContent;
 
     protected $fillable = [
-        'slug', 'name', 'type', 'website', 'email', 'phone',
+        'slug', 'name', 'type', 'website', 'affiliate_url', 'email', 'phone',
         'logo_url', 'description_tr', 'description_en', 'description_de',
         'price_min', 'price_max',
         'cities', 'features',
@@ -61,5 +61,23 @@ class HousingProvider extends Model
         if (! $this->price_min && ! $this->price_max) return '—';
         if ($this->price_min === $this->price_max) return '€' . $this->price_min;
         return '€' . $this->price_min . '–€' . $this->price_max;
+    }
+
+    public function getCtaUrlAttribute(): ?string
+    {
+        return $this->affiliate_url ?: $this->website;
+    }
+
+    /** affiliate_clicks.provider_type + /go/{type}/ segmenti. */
+    public const AFFILIATE_TYPE = 'housing';
+
+    /** Takipli dış-link: /go/housing/{slug}?ctx=... → tıklama loglanır, sonra cta_url'e 302. */
+    public function trackedUrl(?string $ctx = null): string
+    {
+        return route('affiliate.go', array_filter([
+            'type' => self::AFFILIATE_TYPE,
+            'slug' => $this->slug,
+            'ctx'  => $ctx,
+        ]));
     }
 }

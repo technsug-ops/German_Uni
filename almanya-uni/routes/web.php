@@ -999,7 +999,7 @@ Route::get('/feed', fn () => redirect('/rss.xml', 301));
 
 // Affiliate dış-link redirect + tıklama takibi (locale-agnostik). /go/sperrkonto/{slug}?ctx=index
 Route::get('/go/{type}/{slug}', [\App\Http\Controllers\Web\AffiliateController::class, 'go'])
-    ->where('type', 'sperrkonto|insurance')
+    ->where('type', 'sperrkonto|insurance|housing')
     ->where('slug', '[a-z0-9\-]+')
     ->middleware('throttle:60,1')
     ->name('affiliate.go');

@@ -186,7 +186,7 @@
                             @forelse (($affiliate['by_provider'] ?? []) as $row)
                                 <tr>
                                     <td style="color:#374151; font-weight:600;">{{ $row['slug'] }}</td>
-                                    <td style="color:#6b7280;">{{ $row['type'] === 'sperrkonto' ? '🏦 Sperrkonto' : '🩺 Sigorta' }}</td>
+                                    <td style="color:#6b7280;">{{ ['sperrkonto'=>'🏦 Sperrkonto','insurance'=>'🩺 Sigorta','housing'=>'🏠 Yurt'][$row['type']] ?? $row['type'] }}</td>
                                     <td class="r"><strong>{{ number_format($row['c']) }}</strong></td>
                                 </tr>
                             @empty

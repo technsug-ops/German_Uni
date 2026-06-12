@@ -155,12 +155,11 @@
                 @endif
             </div>
 
-            @if ($provider->website)
-                <a href="{{ $provider->website }}"
-                   target="_blank" rel="noopener nofollow"
+            @if ($provider->cta_url)
+                <x-affiliate-link :provider="$provider" ctx="show"
                    class="flex items-center justify-center gap-2 mt-5 text-center py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md">
                     <x-svg-icon name="globe" class="w-5 h-5" /> {{ __('Go to Official Site') }}
-                </a>
+                </x-affiliate-link>
                 <p class="text-[11px] text-gray-500 text-center mt-2">{{ __('Application is always made on the official site') }}</p>
             @endif
         </div>

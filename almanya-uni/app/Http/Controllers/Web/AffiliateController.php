@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AffiliateClick;
 use App\Models\BlockedAccountProvider;
 use App\Models\HealthInsuranceProvider;
+use App\Models\HousingProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class AffiliateController extends Controller
     private const TYPES = [
         'sperrkonto' => BlockedAccountProvider::class,
         'insurance'  => HealthInsuranceProvider::class,
+        'housing'    => HousingProvider::class,
     ];
 
     public function go(Request $request, string $type, string $slug): RedirectResponse
