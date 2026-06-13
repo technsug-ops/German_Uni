@@ -517,8 +517,8 @@ class ToolsController extends Controller
         // Seçilebilir maliyet kalemleri (default değerler 2025 güncel)
         $items = [
             'sperrkonto' => [
-                'label' => 'Sperrkonto (Bloke hesap)',
-                'desc'  => '11.904€ (992€/ay × 12). Bu paranı GERİ ALIRSIN — her ay 992€ çekersin.',
+                'label' => __('Sperrkonto (blocked account)'),
+                'desc'  => __('€11,904 (€992/mo × 12). You GET THIS BACK — withdraw €992 each month.'),
                 'default' => 11904,
                 'min' => 0, 'max' => 15000,
                 'required' => true,
@@ -535,8 +535,8 @@ class ToolsController extends Controller
                 'icon' => '📋',
             ],
             'idata_appointment' => [
-                'label' => 'iDATA randevu + kargo',
-                'desc'  => 'iDATA üzerinden vize randevu ücreti + belgelerin kuryeyle gönderimi.',
+                'label' => __('iDATA appointment + courier'),
+                'desc'  => __('iDATA visa appointment fee + courier shipping of documents.'),
                 'default' => 30,
                 'min' => 0, 'max' => 100,
                 'required' => false,
@@ -544,8 +544,8 @@ class ToolsController extends Controller
                 'icon' => '📦',
             ],
             'uni_assist' => [
-                'label' => 'Uni-Assist başvurusu',
-                'desc'  => 'İlk uni-assist başvurusu 75€. Her ek üniversite +30€. 3 üni ortalama hesaplandı.',
+                'label' => __('Uni-Assist application'),
+                'desc'  => __('First uni-assist application €75. Each extra university +€30. Average of 3 unis.'),
                 'default' => 135,
                 'min' => 0, 'max' => 500,
                 'required' => false,
@@ -553,8 +553,8 @@ class ToolsController extends Controller
                 'icon' => '📨',
             ],
             'lang_test' => [
-                'label' => 'Almanca dil sınavı',
-                'desc'  => 'TestDaF 195€, DSH 100-180€, telc Hochschule 145-180€. Default: TestDaF.',
+                'label' => __('German language exam'),
+                'desc'  => __('TestDaF €195, DSH €100–180, telc Hochschule €145–180. Default: TestDaF.'),
                 'default' => 195,
                 'min' => 0, 'max' => 250,
                 'required' => false,
@@ -563,7 +563,7 @@ class ToolsController extends Controller
             ],
             'translation' => [
                 'label' => __('Belge çeviri + onaylama'),
-                'desc'  => 'Diploma, transkript, kimlik tercümesi + noter onayı. Yaklaşık 250€.',
+                'desc'  => __('Diploma, transcript, ID translation + notary certification. About €250.'),
                 'default' => 250,
                 'min' => 100, 'max' => 600,
                 'required' => true,
@@ -571,7 +571,7 @@ class ToolsController extends Controller
                 'icon' => '🖋️',
             ],
             'health_insurance_initial' => [
-                'label' => 'Seyahat sağlık sigortası (90 gün)',
+                'label' => __('Travel health insurance (90 days)'),
                 'desc'  => __('Vize başvurusu için zorunlu. Anmeldung sonrası öğrenci sigortasına geçersin.'),
                 'default' => 30,
                 'min' => 20, 'max' => 80,
@@ -580,7 +580,7 @@ class ToolsController extends Controller
                 'icon' => '🩺',
             ],
             'flight' => [
-                'label' => 'Uçak bileti (tek yön)',
+                'label' => __('Flight ticket (one-way)'),
                 'desc'  => __('İstanbul/Ankara → Almanya. Sezonluk 200-450€. Default: 300€.'),
                 'default' => 300,
                 'min' => 100, 'max' => 700,
@@ -590,7 +590,7 @@ class ToolsController extends Controller
             ],
             'first_month' => [
                 'label' => __('Almanya\'da ilk ay (Sperrkonto dışı tampon)'),
-                'desc'  => 'Anmeldung gecikirse Sperrkonto erişimi açılmaz. Cebinde ekstra bulundurmak iyi.',
+                'desc'  => __('If Anmeldung is delayed, Sperrkonto access won\'t open. Good to keep extra cash on hand.'),
                 'default' => 500,
                 'min' => 0, 'max' => 2000,
                 'required' => false,
@@ -598,8 +598,8 @@ class ToolsController extends Controller
                 'icon' => '💶',
             ],
             'aps' => [
-                'label' => 'APS (Türkiye için zorunlu DEĞİL, opsiyonel)',
-                'desc'  => 'Akademische Prüfstelle — Türkiye için gerekli değil. (Çin/Vietnam/Hindistan için zorunlu.)',
+                'label' => __('APS (NOT required for Turkey, optional)'),
+                'desc'  => __('Akademische Prüfstelle — not needed for Turkey. (Mandatory for China/Vietnam/India.)'),
                 'default' => 0,
                 'min' => 0, 'max' => 300,
                 'required' => false,
@@ -1056,11 +1056,11 @@ class ToolsController extends Controller
     private function germanGradeText(float $nd): string
     {
         return match (true) {
-            $nd <= 1.5 => 'sehr gut (çok iyi)',
-            $nd <= 2.5 => 'gut (iyi)',
-            $nd <= 3.5 => 'befriedigend (orta)',
-            $nd <= 4.0 => 'ausreichend (geçer)',
-            default    => 'nicht ausreichend (kalır)',
+            $nd <= 1.5 => __('sehr gut (very good)'),
+            $nd <= 2.5 => __('gut (good)'),
+            $nd <= 3.5 => __('befriedigend (satisfactory)'),
+            $nd <= 4.0 => __('ausreichend (sufficient)'),
+            default    => __('nicht ausreichend (fail)'),
         };
     }
 
