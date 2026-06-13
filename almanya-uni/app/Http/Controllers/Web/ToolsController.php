@@ -1453,8 +1453,15 @@ class ToolsController extends Controller
     // PROFESSIONAL RECOGNITION (Mesleki Denklik) — Almanya'da çalışabilmek
     // için Anerkennung gerekli mi? Hangi kurum, ne kadar sürer, maliyet?
     // ════════════════════════════════════════════════════════════════════
-    public function professionalRecognition(Request $request): View
+    public function professionalRecognition(Request $request): View|\Illuminate\Http\RedirectResponse
     {
+        // TR-odaklı araç (Türkiye-spesifik Anerkennung verisi: Türk diploması, Triple Win,
+        // APS-Türkiye notları). EN/DE'de menüden gizli + direkt erişim tools'a yönlendirilir
+        // (Türkçe içerik sızmasın). EN/DE çevirisi yapılınca bu guard kaldırılır.
+        if (app()->getLocale() !== 'tr') {
+            return redirect()->route('tools.index');
+        }
+
         $professions = self::recognitionProfessions();
         $result = null;
 

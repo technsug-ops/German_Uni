@@ -206,7 +206,7 @@
                 @php
                     // iData vize randevusu yalnızca Türkiye'den başvuranlar için → menüde sadece /tr.
                     $araclarItems = \App\Models\MenuPage::forGroup('araclar')->where('key', '!=', 'tools.index')
-                        ->when(app()->getLocale() !== 'tr', fn ($q) => $q->where('key', '!=', 'tools.visa-appointment'));
+                        ->when(app()->getLocale() !== 'tr', fn ($q) => $q->whereNotIn('key', ['tools.visa-appointment', 'tools.professional-recognition']));
                 @endphp
                 @if ($araclarItems->isNotEmpty())
                 <div class="relative group" data-mega>
@@ -502,7 +502,7 @@
                     @php
                         // iData vize randevusu yalnızca /tr menüsünde (Türkiye'den başvuru).
                         $items = \App\Models\MenuPage::forGroup($gKey)
-                            ->when(app()->getLocale() !== 'tr', fn ($q) => $q->where('key', '!=', 'tools.visa-appointment'));
+                            ->when(app()->getLocale() !== 'tr', fn ($q) => $q->whereNotIn('key', ['tools.visa-appointment', 'tools.professional-recognition']));
                     @endphp
                     @if ($items->isNotEmpty())
                         @php
