@@ -163,26 +163,26 @@
         <div class="grid lg:grid-cols-5 gap-4 mb-5 items-stretch">
             {{-- Stat: tek cam kart, 4 metrik — renkli ikon kareleri, ikon üstte (mockup) --}}
             <div class="lg:col-span-3 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl py-6 px-2 grid grid-cols-4 divide-x divide-white/10">
-                <div class="flex flex-col items-center text-center px-1">
-                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-blue-500/25 text-blue-200 items-center justify-center mb-2.5"><x-svg-icon name="academic-cap" class="w-6 h-6 md:w-7 md:h-7" /></span>
+                <a href="{{ route('programs.index') }}" class="flex flex-col items-center text-center px-1 group rounded-xl py-1 hover:bg-white/5 transition" title="{{ __('Programs') }}">
+                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-blue-500/25 text-blue-200 items-center justify-center mb-2.5 group-hover:bg-blue-500/40 transition"><x-svg-icon name="academic-cap" class="w-6 h-6 md:w-7 md:h-7" /></span>
                     <div class="text-xl md:text-3xl font-extrabold leading-none">{{ number_format($totals['programs'], 0, ',', '.') }}</div>
-                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5">{{ __('Programs') }}</div>
-                </div>
-                <div class="flex flex-col items-center text-center px-1">
-                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-purple-500/25 text-purple-200 items-center justify-center mb-2.5"><x-svg-icon name="building-library" class="w-6 h-6 md:w-7 md:h-7" /></span>
+                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5 group-hover:text-white transition">{{ __('Programs') }}</div>
+                </a>
+                <a href="{{ route('universities.index') }}" class="flex flex-col items-center text-center px-1 group rounded-xl py-1 hover:bg-white/5 transition" title="{{ __('Universities') }}">
+                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-purple-500/25 text-purple-200 items-center justify-center mb-2.5 group-hover:bg-purple-500/40 transition"><x-svg-icon name="building-library" class="w-6 h-6 md:w-7 md:h-7" /></span>
                     <div class="text-xl md:text-3xl font-extrabold leading-none">{{ $totals['universities'] }}</div>
-                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5">{{ __('Universities') }}</div>
-                </div>
-                <div class="flex flex-col items-center text-center px-1">
-                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-amber-500/25 text-amber-200 items-center justify-center mb-2.5"><x-svg-icon name="map-pin" class="w-6 h-6 md:w-7 md:h-7" /></span>
+                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5 group-hover:text-white transition">{{ __('Universities') }}</div>
+                </a>
+                <a href="{{ route('cities.index') }}" class="flex flex-col items-center text-center px-1 group rounded-xl py-1 hover:bg-white/5 transition" title="{{ __('Cities') }}">
+                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-amber-500/25 text-amber-200 items-center justify-center mb-2.5 group-hover:bg-amber-500/40 transition"><x-svg-icon name="map-pin" class="w-6 h-6 md:w-7 md:h-7" /></span>
                     <div class="text-xl md:text-3xl font-extrabold leading-none">{{ $totals['cities'] }}</div>
-                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5">{{ __('Cities') }}</div>
-                </div>
-                <div class="flex flex-col items-center text-center px-1">
-                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-teal-500/25 text-teal-200 items-center justify-center mb-2.5"><x-svg-icon name="globe" class="w-6 h-6 md:w-7 md:h-7" /></span>
+                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5 group-hover:text-white transition">{{ __('Cities') }}</div>
+                </a>
+                <a href="{{ route('programs.index', ['language' => 'en']) }}" class="flex flex-col items-center text-center px-1 group rounded-xl py-1 hover:bg-white/5 transition" title="{{ __('English Programs') }}">
+                    <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-teal-500/25 text-teal-200 items-center justify-center mb-2.5 group-hover:bg-teal-500/40 transition"><x-svg-icon name="globe" class="w-6 h-6 md:w-7 md:h-7" /></span>
                     <div class="text-xl md:text-3xl font-extrabold leading-none">{{ number_format($totals['programs_en'], 0, ',', '.') }}</div>
-                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5">{{ __('English Programs') }}</div>
-                </div>
+                    <div class="text-[11px] md:text-sm text-primary-100 mt-1.5 group-hover:text-white transition">{{ __('English Programs') }}</div>
+                </a>
             </div>
 
             {{-- Haritada Keşfet kartı --}}
