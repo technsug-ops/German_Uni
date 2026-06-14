@@ -95,6 +95,23 @@ class AboutController extends Controller
         return view('about.author', compact('author', 'posts', 'events', 'stats'));
     }
 
+    /**
+     * "Bizi linkleyin / Basın" — backlink mıknatısı. Hazır link/markdown/rozet
+     * kodları + alıntılanabilir istatistikler (program-merkezli). Her embed = backlink.
+     */
+    public function linkToUs(): View
+    {
+        $totals = cache()->remember('linktous.totals:' . app()->getLocale(), now()->addHours(12), fn () => [
+            'universities' => University::where('is_active', true)->count(),
+            'programs'     => Program::where('is_active', true)->count(),
+            'programs_en'  => Program::where('is_active', true)->whereIn('language', ['en', 'both'])->count(),
+            'cities'       => City::whereHas('universities', fn ($q) => $q->where('is_active', 1))->count(),
+            'scholarships' => Scholarship::whereNull('removed_at')->count(),
+        ]);
+
+        return view('pages.link-to-us', ['totals' => $totals]);
+    }
+
     public function index(): View
     {
         $stats = [

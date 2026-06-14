@@ -52,6 +52,7 @@ $routes = function () {
         ->middleware('throttle:60,1')
         ->name('search.suggest');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
     Route::get('/team', [AboutController::class, 'team'])->name('team');
     Route::redirect('/ekip', '/team', 301);
     Route::get('/author/{slug}', [AboutController::class, 'author'])->name('author.show');
