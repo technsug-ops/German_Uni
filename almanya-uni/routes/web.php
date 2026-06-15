@@ -508,6 +508,37 @@ Route::get('/_system/import-events', function (\Illuminate\Http\Request $request
     }
 })->middleware('throttle:5,1');
 
+// Token-gated etkinlik bildirim digest'i elle tetik (haftalık cron Perşembe var; bu anlık test).
+//   Kuru: curl "https://applytogerman.com/_system/notify-subscribers?token=XXX&dry=1"
+//   Gerçek: ...&token=XXX   (email + web push gönderir)
+//   Tek abone: ...&email=foo@bar.com
+Route::get('/_system/notify-subscribers', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(280);
+
+    $params = [];
+    if ($request->boolean('dry')) {
+        $params['--dry'] = true;
+    }
+    if ($email = $request->query('email')) {
+        $params['--email'] = $email;
+    }
+
+    try {
+        $exit = \Illuminate\Support\Facades\Artisan::call('events:notify-subscribers', $params);
+
+        return response()->json([
+            'exit'   => $exit,
+            'output' => \Illuminate\Support\Facades\Artisan::output(),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+})->middleware('throttle:5,1');
+
 // Token-gated blog iç-link/resim düzeltme — KAS'ta CLI yok, curl ile çalıştırılır.
 // Varsayılan dry-run (sadece tabela + rapor); &apply=1 ile uygular.
 //   Dry-run:  curl "https://applytogerman.com/_system/fix-blog-links?token=XXX"
