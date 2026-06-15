@@ -370,7 +370,8 @@
 
         {{-- ────────────────────────────── ALMANYAUNI FORUM TOPICS ────────────────────────────── --}}
         @elseif($type === 'almanyauni_forum_topics')
-            @if(!empty($block['items']))
+            {{-- Topluluk Türk öğrencilere özel → yalnızca TR sayfalarda göster --}}
+            @if(app()->getLocale() === 'tr' && !empty($block['items']))
                 <section class="bg-gradient-to-br from-primary-50 to-accent-50 ring-2 ring-primary-300 rounded-2xl p-6 shadow-md">
                     <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                         <div class="flex items-center gap-2">
@@ -415,7 +416,8 @@
 
         {{-- ────────────────────────────── RELATED FORUM TOPICS ────────────────────────────── --}}
         @elseif($type === 'related_forum_topics')
-            @if(!empty($block['items']))
+            {{-- Topluluk Türk öğrencilere özel → yalnızca TR sayfalarda göster --}}
+            @if(app()->getLocale() === 'tr' && !empty($block['items']))
                 <section class="bg-gradient-to-br from-violet-50 to-purple-50 ring-1 ring-violet-200 rounded-2xl p-6 shadow-sm">
                     <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24 inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-5 h-5 text-violet-600" /> {{ $block['h'] ?? __('Community Discussions') }}</h2>

@@ -304,7 +304,7 @@
                             <div class="{{ $megaHead }} flex items-center gap-2">
                                 <svg class="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
                                 <span>
-                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ __('Content & Community') }}</span>
+                                    <span class="block text-sm font-bold text-gray-900 leading-tight">{{ app()->getLocale() === 'tr' ? __('Content & Community') : __('Content') }}</span>
                                     <span class="block text-xs text-gray-500">{{ __('Guides · questions · team') }}</span>
                                 </span>
                             </div>
@@ -492,7 +492,7 @@
                         'kesfet'    => ['label' => __('Explore')],
                         'araclar'   => ['label' => __('Tools')],
                         'firsatlar' => ['label' => __('Opportunities')],
-                        'icerik'    => ['label' => __('Content & Community')],
+                        'icerik'    => ['label' => app()->getLocale() === 'tr' ? __('Content & Community') : __('Content')],
                     ];
                     // Forum sadece TR locale'de (phpBB sadece Türkçe konfigürasyonu var)
                     $forumStandalone = app()->getLocale() === 'tr'
