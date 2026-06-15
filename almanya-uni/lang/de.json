@@ -4355,5 +4355,6 @@
     "Enabling…": "Wird aktiviert…",
     "✅ Browser notifications on": "✅ Browser-Benachrichtigungen aktiv",
     "Notifications blocked in your browser": "Benachrichtigungen im Browser blockiert",
-    "Could not enable notifications": "Benachrichtigungen konnten nicht aktiviert werden"
+    "Could not enable notifications": "Benachrichtigungen konnten nicht aktiviert werden",
+    ":city in photos & video": ":city in Fotos & Video"
 }

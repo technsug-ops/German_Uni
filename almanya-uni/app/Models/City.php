@@ -17,7 +17,7 @@ class City extends Model
         'wikidata_id', 'state_id',
         'name_tr', 'name_de', 'name_en', 'slug',
         'latitude', 'longitude', 'population',
-        'is_active', 'image_url',
+        'is_active', 'image_url', 'gallery_images', 'video_url',
         'content_blocks', 'content_blocks_en', 'content_blocks_de', 'last_enriched_at',
     ];
 
@@ -25,12 +25,44 @@ class City extends Model
         'latitude' => 'decimal:7',
         'longitude' => 'decimal:7',
         'is_active' => 'boolean',
+        'gallery_images' => 'array',
         'content_blocks' => 'array',
         'content_blocks_en' => 'array',
         'content_blocks_de' => 'array',
         'private_chain_slugs' => 'array',
         'last_enriched_at' => 'datetime',
     ];
+
+    /** Yüklenen galeri görsellerinin public URL'leri (admin'den yönetilir). */
+    public function galleryUrls(): array
+    {
+        return collect($this->gallery_images ?? [])
+            ->filter()
+            ->map(fn ($p) => \Illuminate\Support\Str::startsWith($p, ['http://', 'https://'])
+                ? $p
+                : \Illuminate\Support\Facades\Storage::disk('public')->url($p))
+            ->values()
+            ->all();
+    }
+
+    /** Hero arka planı için ilk galeri görseli (güvenilir self-host); yoksa null → gradient. */
+    public function getHeroImageUrlAttribute(): ?string
+    {
+        return $this->galleryUrls()[0] ?? null;
+    }
+
+    /** YouTube video → embed URL (watch?v= / youtu.be → /embed/). */
+    public function getVideoEmbedUrlAttribute(): ?string
+    {
+        if (! $this->video_url) {
+            return null;
+        }
+        if (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/)([\w-]{11})~', $this->video_url, $m)) {
+            return 'https://www.youtube.com/embed/' . $m[1];
+        }
+
+        return null;
+    }
 
     /**
      * Locale-aware enrichment blocks. TR → source content_blocks; EN/DE →

@@ -43,21 +43,23 @@
 
 {{-- ─────────────── HERO ─────────────── --}}
 @php
-    // Gerçek şehir fotoğrafı (landmark havuzu, 13 büyük şehir) → cover hero.
-    // Yoksa armayı (image_url) soluk arkaplan + arma'yı küçük rozet olarak göster.
-    $cityPool  = \App\Support\CoverImage::cityPool($city->slug);
-    $heroPhoto = $cityPool ? $cityPool[abs(crc32((string) $city->id)) % count($cityPool)] : null;
+    // Hero arka planı: admin'den yüklenen ilk galeri fotosu (güvenilir self-host).
+    // Yoksa dekoratif gradient (bozuk dış görsele bağımlı DEĞİL).
+    $heroPhoto = $city->hero_image_url;
     $cityProgramCount = \App\Models\Program::whereIn('university_id', $city->universities->pluck('id'))
         ->where('is_active', 1)->count();
 @endphp
-<section class="relative bg-gradient-to-br from-primary-800 via-primary-700 to-accent-600 text-white overflow-hidden">
+<section class="relative bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 text-white overflow-hidden">
     @if($heroPhoto)
+        {{-- Yüklenen şehir fotoğrafı → cover hero --}}
         <img src="{{ $heroPhoto }}" alt="{{ __(':city — university and student life guide', ['city' => $city->name]) }}"
-             class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" onerror="this.remove()"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25"></div>
-    @elseif($city->image_url)
-        <img src="{{ $city->image_url }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" loading="eager" onerror="this.remove()"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/55 to-transparent"></div>
+             class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20"></div>
+    @else
+        {{-- Foto yoksa: dekoratif modern gradient — yumuşak ışık küreleri + nokta deseni --}}
+        <div class="absolute -top-24 -right-16 w-96 h-96 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-28 -left-12 w-80 h-80 rounded-full bg-accent-300/20 blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none" style="background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);background-size:22px 22px;"></div>
     @endif
 
     <div class="relative max-w-[1400px] mx-auto px-4 pt-8 pb-7 md:pt-12 md:pb-9">
@@ -70,8 +72,8 @@
         </nav>
 
         <div class="flex items-end gap-4 flex-wrap mb-6">
-            @if($city->image_url && $heroPhoto)
-                {{-- Arma → büyük beyaz kart yerine küçük rozet --}}
+            @if($city->image_url)
+                {{-- Arma → küçük rozet (404'te onerror ile kaybolur) --}}
                 <div class="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/95 ring-1 ring-white/40 shadow-lg p-2 flex items-center justify-center">
                     <img src="{{ $city->image_url }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.parentElement.remove()"/>
                 </div>
@@ -136,6 +138,36 @@
         @endif
 
         {{-- (Eski highlight-bar kaldırıldı — istatistikler artık hero'da entegre) --}}
+
+        {{-- ŞEHİR GALERİSİ & VİDEO (admin'den yönetilir) --}}
+        @php $galleryUrls = $city->galleryUrls(); @endphp
+        @if(count($galleryUrls) > 1 || $city->video_embed_url)
+            <section class="mt-8">
+                <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">
+                    <x-svg-icon name="photo" class="w-5 h-5 text-primary-600" /> {{ __(':city in photos & video', ['city' => $city->name]) }}
+                </h2>
+
+                @if($city->video_embed_url)
+                    <div class="relative w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-sm mb-4 bg-black" style="aspect-ratio:16/9;">
+                        <iframe src="{{ $city->video_embed_url }}" title="{{ $city->name }}" loading="lazy"
+                                class="absolute inset-0 w-full h-full" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                @endif
+
+                @if(count($galleryUrls) > 1)
+                    {{-- İlk foto hero'da; kalanlar galeri --}}
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                        @foreach(array_slice($galleryUrls, 1) as $img)
+                            <a href="{{ $img }}" target="_blank" rel="noopener" class="group block aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-gray-200 bg-gray-100">
+                                <img src="{{ $img }}" alt="{{ $city->name }}" loading="lazy"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.closest('a').remove()"/>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+            </section>
+        @endif
 
         {{-- YURT SEÇENEKLERİ --}}
         @if ($city->stw_name || (! empty($city->private_chain_slugs) && is_array($city->private_chain_slugs)))

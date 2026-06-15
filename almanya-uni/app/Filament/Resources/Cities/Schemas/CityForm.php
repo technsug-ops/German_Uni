@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Cities\Schemas;
 
 use App\Filament\Support\ContentBlocksBuilder;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -33,15 +34,39 @@ class CityForm
                         Toggle::make('is_active')->label('Aktif')->default(true),
                     ]),
 
-                Section::make('Görsel & Lokasyon')
-                    ->columns(3)
+                Section::make('Medya (foto & video)')
+                    ->description('Yüklediğin İLK foto detay sayfasının hero arka planı olur; tümü galeri olarak görünür. Boşsa hero temiz gradient gösterir.')
                     ->collapsible()
                     ->components([
-                        TextInput::make('image_url')
-                            ->label('Kapak görseli URL')
+                        FileUpload::make('gallery_images')
+                            ->label('Şehir fotoğrafları (yükle)')
+                            ->multiple()
+                            ->image()
+                            ->reorderable()
+                            ->disk('public')
+                            ->directory('cities')
+                            ->visibility('public')
+                            ->maxFiles(12)
+                            ->maxSize(4096)
+                            ->columnSpanFull()
+                            ->helperText('Birden çok görsel · sürükle-bırak sırala · İLK = hero · BOŞ → gradient hero'),
+                        TextInput::make('video_url')
+                            ->label('Tanıtım videosu (YouTube URL)')
                             ->url()
                             ->columnSpanFull()
-                            ->helperText('Şehir liste sayfasındaki kart görseli ve detay hero arka planı'),
+                            ->helperText('Opsiyonel · youtube.com/watch?v=… veya youtu.be/… · şehir sayfasında gömülü oynatılır'),
+                    ]),
+
+                Section::make('Görsel (eski) & Lokasyon')
+                    ->columns(3)
+                    ->collapsible()
+                    ->collapsed()
+                    ->components([
+                        TextInput::make('image_url')
+                            ->label('Arma / kapak URL (eski alan)')
+                            ->url()
+                            ->columnSpanFull()
+                            ->helperText('Galeri fotoğrafı yoksa kullanılan eski URL alanı (genelde şehir arması). Yeni: yukarıdan foto yükle.'),
                         TextInput::make('latitude')->label('Enlem')->numeric()->step(0.0000001),
                         TextInput::make('longitude')->label('Boylam')->numeric()->step(0.0000001),
                         DateTimePicker::make('last_enriched_at')->label('Son enrich')->disabled(),
