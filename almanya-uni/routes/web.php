@@ -508,6 +508,23 @@ Route::get('/_system/import-events', function (\Illuminate\Http\Request $request
     }
 })->middleware('throttle:5,1');
 
+// Token-gated içerik denetimi — prod veri hatalarını raporlar (read-only). KAS'ta CLI yok.
+//   curl "https://applytogerman.com/_system/content-audit?token=XXX&samples=5&only=deadlines"
+Route::get('/_system/content-audit', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(280);
+    $params = ['--samples' => (int) $request->query('samples', 5)];
+    if ($only = $request->query('only')) {
+        $params['--only'] = $only;
+    }
+    \Illuminate\Support\Facades\Artisan::call('content:audit', $params);
+    return response(\Illuminate\Support\Facades\Artisan::output(), 200, ['Content-Type' => 'text/plain; charset=utf-8']);
+})->middleware('throttle:10,1');
+
+
 // Token-gated log kuyruğu — prod hatalarını teşhis için son N satır (CLI yok, curl ile).
 //   curl "https://applytogerman.com/_system/log-tail?token=XXX&lines=80&grep=Aachen"
 Route::get('/_system/log-tail', function (\Illuminate\Http\Request $request) {
