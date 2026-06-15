@@ -1,10 +1,11 @@
-// ApplyToGerman Service Worker — v3 (2026-06-12) — PWA installability + safe caching.
+// ApplyToGerman Service Worker — v4 (2026-06-15) — PWA + safe caching + web push.
 //
 // v1 bayat CSS/JS sorununu YAPMAZ: HTML her zaman NETWORK-FIRST (asla bayat sayfa),
 // yalnızca hash'li (immutable) Vite asset'leri cache-first cache'lenir. Boş fetch
 // handler yüklenebilirliği bozuyordu (v2 kill-switch) → bu gerçek handler ile çözülür.
+// v4: şehir etkinlik bildirimleri için push + notificationclick handler eklendi.
 
-const VERSION = 'v3';
+const VERSION = 'v4';
 const CACHE = 'atg-pwa-' + VERSION;
 const OFFLINE_URL = '/offline.html';
 const PRECACHE = [OFFLINE_URL, '/img/icons/icon-192.png'];
@@ -81,4 +82,35 @@ self.addEventListener('fetch', (event) => {
     }
 
     // 4) Diğer (API, manifest, vb.) → doğrudan network.
+});
+
+// ─── Web Push — şehir etkinlik bildirimleri ───
+self.addEventListener('push', (event) => {
+    let data = {};
+    try {
+        data = event.data ? event.data.json() : {};
+    } catch (e) {
+        data = { body: event.data ? event.data.text() : '' };
+    }
+    const title = data.title || 'ApplyToGerman';
+    const options = {
+        body: data.body || '',
+        icon: data.icon || '/img/icons/icon-192.png',
+        badge: '/img/icons/icon-192.png',
+        tag: data.tag || 'event-alert',
+        data: { url: data.url || '/' },
+    };
+    event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    const target = (event.notification.data && event.notification.data.url) || '/';
+    event.waitUntil((async () => {
+        const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+        for (const c of all) {
+            if (c.url.includes(target) && 'focus' in c) return c.focus();
+        }
+        if (self.clients.openWindow) return self.clients.openWindow(target);
+    })());
 });

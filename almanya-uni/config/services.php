@@ -89,4 +89,13 @@ return [
         'key' => env('TICKETMASTER_API_KEY'),
     ],
 
+    // Web Push (VAPID) — şehir etkinlik bildirimleri için tarayıcı push'u.
+    // Anahtar üret: php -r "require 'vendor/autoload.php'; print_r(Minishlink\WebPush\VAPID::createVapidKeys());"
+    // public_key frontend'e açılır (gizli değil); private_key SECRET. Prod → ENV_PRODUCTION secret.
+    'webpush' => [
+        'public_key'  => env('VAPID_PUBLIC_KEY'),
+        'private_key' => env('VAPID_PRIVATE_KEY'),
+        'subject'     => env('VAPID_SUBJECT', 'https://applytogerman.com'),
+    ],
+
 ];

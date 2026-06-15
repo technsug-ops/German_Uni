@@ -4290,5 +4290,10 @@
     "Events in :city": ":city'deki etkinlikler",
     "New concerts, theatre and cultural events added for :city:": ":city için eklenen yeni konser, tiyatro ve kültürel etkinlikler:",
     "View event": "Etkinliği gör",
-    "See all events": "Tüm etkinlikleri gör"
+    "See all events": "Tüm etkinlikleri gör",
+    "Or: instant browser notifications": "Veya: anlık tarayıcı bildirimi",
+    "Enabling…": "Açılıyor…",
+    "✅ Browser notifications on": "✅ Tarayıcı bildirimleri açık",
+    "Notifications blocked in your browser": "Tarayıcında bildirimler engelli",
+    "Could not enable notifications": "Bildirimler açılamadı"
 }

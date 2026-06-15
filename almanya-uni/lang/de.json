@@ -4350,5 +4350,10 @@
     "Events in :city": "Events in :city",
     "New concerts, theatre and cultural events added for :city:": "Neue Konzerte, Theater und Kulturveranstaltungen für :city:",
     "View event": "Event ansehen",
-    "See all events": "Alle Events ansehen"
+    "See all events": "Alle Events ansehen",
+    "Or: instant browser notifications": "Oder: sofortige Browser-Benachrichtigungen",
+    "Enabling…": "Wird aktiviert…",
+    "✅ Browser notifications on": "✅ Browser-Benachrichtigungen aktiv",
+    "Notifications blocked in your browser": "Benachrichtigungen im Browser blockiert",
+    "Could not enable notifications": "Benachrichtigungen konnten nicht aktiviert werden"
 }

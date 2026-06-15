@@ -253,6 +253,13 @@ $routes = function () {
         ->name('events.alerts.confirm');
     Route::match(['get', 'post'], '/events/alerts/unsubscribe/{token}', [\App\Http\Controllers\Web\EventAlertController::class, 'unsubscribe'])
         ->name('events.alerts.unsubscribe');
+    // Web push aboneliği (tarayıcı) — şehir bazlı etkinlik bildirimi
+    Route::post('/events/alerts/push/subscribe', [\App\Http\Controllers\Web\PushSubscriptionController::class, 'subscribe'])
+        ->middleware('throttle:15,1')
+        ->name('events.alerts.push.subscribe');
+    Route::post('/events/alerts/push/unsubscribe', [\App\Http\Controllers\Web\PushSubscriptionController::class, 'unsubscribe'])
+        ->middleware('throttle:15,1')
+        ->name('events.alerts.push.unsubscribe');
     Route::get('/events/{slug}', [\App\Http\Controllers\Web\EventController::class, 'show'])->name('events.show');
     Route::post('/events/{slug}/rsvp', [\App\Http\Controllers\Web\EventController::class, 'rsvp'])
         ->middleware('throttle:10,10')

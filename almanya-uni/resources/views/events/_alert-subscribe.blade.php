@@ -62,4 +62,22 @@
             🔔 {{ __('Notify me') }}
         </button>
     </form>
+
+    @if ($city && config('services.webpush.public_key'))
+        {{-- Tarayıcı push aboneliği (anlık bildirim, email'e ek). VAPID yoksa/JS yoksa/izin yok → gizlenir --}}
+        <div class="mt-3 pt-3 border-t border-rose-200/60 text-center">
+            <button type="button"
+                    data-push-alert
+                    data-city-id="{{ $city->id }}"
+                    data-subscribe-url="{{ route('events.alerts.push.subscribe') }}"
+                    data-msg-loading="{{ __('Enabling…') }}"
+                    data-msg-done="{{ __('✅ Browser notifications on') }}"
+                    data-msg-denied="{{ __('Notifications blocked in your browser') }}"
+                    data-msg-error="{{ __('Could not enable notifications') }}"
+                    class="inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-rose-700 hover:text-rose-900 disabled:opacity-60">
+                <span data-push-label>🔔 {{ __('Or: instant browser notifications') }}</span>
+            </button>
+            <p data-push-note="{{ $city->id }}" class="text-xs text-gray-500 mt-1"></p>
+        </div>
+    @endif
 </div>
