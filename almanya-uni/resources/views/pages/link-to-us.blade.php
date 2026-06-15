@@ -19,6 +19,9 @@
         'unis'     => number_format($totals['universities']),
         'brand'    => $name,
     ]) . ' ' . __('Source:') . ' ' . $domain . '/germany-study-statistics';
+
+    $embedSrc  = $domain . '/embed/cost-of-living?lang=' . app()->getLocale();
+    $embedHtml = '<iframe src="' . $embedSrc . '" width="100%" height="560" loading="lazy" style="border:0;max-width:480px" title="' . e(__('Germany Cost of Living Calculator') . ' — ' . $name) . '"></iframe>';
 @endphp
 
 @section('content')
@@ -80,6 +83,29 @@
                     x-text="copied === 'badge' ? '{{ __('Copied!') }}' : '{{ __('Copy') }}'"></button>
         </div>
         <pre x-ref="badge" class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-xs text-gray-800 overflow-x-auto whitespace-pre-wrap">{{ $badgeHtml }}</pre>
+    </section>
+
+    {{-- Gömülebilir hesaplayıcı --}}
+    <section>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-1">{{ __('Embed our calculator') }}</h2>
+        <p class="text-sm text-gray-600 mb-4">{{ __('Add our interactive Germany cost-of-living calculator to your blog or forum — free, no signup. It links back to us.') }}</p>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+            <div>
+                <span class="text-xs text-gray-500 block mb-2">{{ __('Live preview:') }}</span>
+                <iframe src="{{ $embedSrc }}" width="100%" height="560" loading="lazy" style="border:0;max-width:480px" title="{{ __('Germany Cost of Living Calculator') }} — {{ $name }}"></iframe>
+            </div>
+            <div>
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">{{ __('Embed code') }}</span>
+                    <button type="button" @click="copy('embed', $refs.embed.textContent)"
+                            class="text-xs font-semibold px-2.5 py-1 rounded transition"
+                            :class="copied === 'embed' ? 'bg-emerald-100 text-emerald-700' : 'bg-primary-600 text-white hover:bg-primary-700'"
+                            x-text="copied === 'embed' ? '{{ __('Copied!') }}' : '{{ __('Copy') }}'"></button>
+                </div>
+                <pre x-ref="embed" class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-xs text-gray-800 overflow-x-auto whitespace-pre-wrap">{{ $embedHtml }}</pre>
+                <p class="text-xs text-gray-400 mt-2">{{ __('Paste this HTML where you want the calculator to appear.') }}</p>
+            </div>
+        </div>
     </section>
 
     {{-- Veriyi alıntıla --}}

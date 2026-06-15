@@ -1113,6 +1113,12 @@ Route::get('/api/map/universities', [MapController::class, 'universitiesJson'])
     ->middleware('throttle:30,1')
     ->name('map.universities.json');
 
+// Gömülebilir araç widget'ları (backlink mıknatısı) — locale'siz canonical URL,
+// ?lang=tr|en|de ile dil seçilir. frame-ancestors * controller'da set edilir.
+Route::get('/embed/cost-of-living', [\App\Http\Controllers\Web\EmbedController::class, 'costOfLiving'])
+    ->middleware('throttle:60,1')
+    ->name('embed.cost-of-living');
+
 // ─────────── Çok-dilli routing ───────────
 // Default dil (config('locale.default')) prefix'siz (root); diğer diller /tr, /de, /fr prefix'li.
 // Tek route name seti ("programs.index"); locale prefix'i SetLocale middleware'inde
