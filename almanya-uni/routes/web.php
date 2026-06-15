@@ -468,6 +468,39 @@ Route::get('/_system/migrate', function (\Illuminate\Http\Request $request) {
     ]);
 })->middleware('throttle:5,1');
 
+// Token-gated Ticketmaster etkinlik importu — günlük cron (04:30) var, bu elle/ilk-doldurma.
+// KAS'ta CLI yok → curl ile tetiklenir. Tek şehir hızlıdır (HTTP timeout riski yok).
+//   Tek şehir: curl "https://applytogerman.com/_system/import-events?token=XXX&city=Berlin"
+//   Tüm şehirler: ...&all=1  (yavaş — timeout olursa cron tamamlar)
+Route::get('/_system/import-events', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(280);
+
+    $params = [];
+    if ($request->boolean('all')) {
+        // tüm varsayılan şehirler
+    } else {
+        $params['--city'] = [$request->query('city', 'Berlin')];
+    }
+    if ($size = $request->query('size')) {
+        $params['--size'] = (int) $size;
+    }
+
+    try {
+        $exit = \Illuminate\Support\Facades\Artisan::call('events:import-ticketmaster', $params);
+
+        return response()->json([
+            'exit'   => $exit,
+            'output' => \Illuminate\Support\Facades\Artisan::output(),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+})->middleware('throttle:5,1');
+
 // Token-gated blog iç-link/resim düzeltme — KAS'ta CLI yok, curl ile çalıştırılır.
 // Varsayılan dry-run (sadece tabela + rapor); &apply=1 ile uygular.
 //   Dry-run:  curl "https://applytogerman.com/_system/fix-blog-links?token=XXX"
