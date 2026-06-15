@@ -33,6 +33,22 @@ match ($partnerFreq) {
 
 /*
 |--------------------------------------------------------------------------
+| İçerik Bakımı — sistematik veri self-heal (günlük)
+|--------------------------------------------------------------------------
+| 03:50 — partner:sync (03:30) importundan SONRA. Her import yeni stale deadline /
+| geçersiz süre getirebilir; bu bakım onları yıllık-döngü rollover + null ile onarır
+| ve denetim raporunu log'a basar. İdempotent, daima SUCCESS (kalan yargı-gerektiren
+| hatalar bakımı fail ettirmez — content-maintain.log'da görünür).
+*/
+Schedule::command('content:maintain --apply')
+    ->dailyAt('03:50')
+    ->withoutOverlapping(60)
+    ->runInBackground()
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/content-maintain.log'));
+
+/*
+|--------------------------------------------------------------------------
 | Gemini Translate Daily Batch
 |--------------------------------------------------------------------------
 | Her gün gece 1500 program çevir (free tier limit). 17.074 program 11 günde tamamlanır.
