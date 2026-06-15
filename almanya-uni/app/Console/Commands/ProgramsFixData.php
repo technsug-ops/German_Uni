@@ -12,6 +12,8 @@ use Illuminate\Console\Command;
  *
  * Şu an:
  *  - duration_semesters ≤0 → NULL  (0 yarıyıl imkânsız; NULL = "bilinmiyor")
+ *  - application_fee_eur >500 → NULL  (Almanya'da başvuru harcı ≤~€75; >€500 yanlış
+ *    partner verisi. Yanlış değer göstermek "bilinmiyor"dan kötü → temizle.)
  *
  *   php artisan programs:fix-data            → DRY-RUN
  *   php artisan programs:fix-data --apply    → uygula
@@ -29,15 +31,23 @@ class ProgramsFixData extends Command
         $this->newLine();
 
         // duration_semesters ≤ 0 → NULL
-        $q = Program::where('is_active', 1)->whereNotNull('duration_semesters')->where('duration_semesters', '<=', 0);
-        $count = $q->count();
-        $this->line(sprintf('  Geçersiz süre (≤0) → NULL: %d', $count));
-        if ($apply && $count) {
-            $q->update(['duration_semesters' => null]);
+        $durQ = Program::where('is_active', 1)->whereNotNull('duration_semesters')->where('duration_semesters', '<=', 0);
+        $durCount = $durQ->count();
+        $this->line(sprintf('  Geçersiz süre (≤0) → NULL:            %d', $durCount));
+        if ($apply && $durCount) {
+            $durQ->update(['duration_semesters' => null]);
+        }
+
+        // application_fee_eur > 500 → NULL (gerçekçi olmayan partner harcı)
+        $feeQ = Program::where('is_active', 1)->where('application_fee_eur', '>', 500);
+        $feeCount = $feeQ->count();
+        $this->line(sprintf('  Absürt başvuru harcı (>€500) → NULL:  %d', $feeCount));
+        if ($apply && $feeCount) {
+            $feeQ->update(['application_fee_eur' => null]);
         }
 
         $this->newLine();
-        if (! $apply && $count) {
+        if (! $apply && ($durCount || $feeCount)) {
             $this->warn('Uygulamak için --apply ile çalıştırın.');
         } elseif ($apply) {
             $this->info('✓ Tamamlandı.');
