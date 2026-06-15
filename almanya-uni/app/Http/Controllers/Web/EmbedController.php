@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
+use App\Models\Program;
+use App\Models\Scholarship;
+use App\Models\University;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
@@ -54,6 +57,35 @@ class EmbedController extends Controller
         // frame-ancestors * → her origin'de iframe ile gömülebilir (X-Frame-Options yok).
         return response()
             ->view('embed.cost-of-living', ['cities' => $cities])
+            ->header('Content-Security-Policy', 'frame-ancestors *');
+    }
+
+    /**
+     * Canlı istatistik sayacı widget'ı — gömülebilir veri rozeti (464 üni · 14k program …).
+     * Sayılar server-rendered (JS gerekmez); 12 saat cache. Veri-gazeteciliği için.
+     */
+    public function stats(Request $request): Response
+    {
+        $lang = $request->query('lang');
+        if (in_array($lang, self::LOCALES, true)) {
+            App::setLocale($lang);
+        }
+
+        $stats = cache()->remember('embed.stats.totals', now()->addHours(12), function () {
+            $programs   = Program::where('is_active', true)->count();
+            $programsEn = Program::where('is_active', true)->whereIn('language', ['en', 'both'])->count();
+
+            return [
+                'universities' => University::where('is_active', true)->count(),
+                'programs'     => $programs,
+                'en_pct'       => $programs ? (int) round($programsEn / $programs * 100) : 0,
+                'cities'       => City::whereHas('universities', fn ($q) => $q->where('is_active', 1))->count(),
+                'scholarships' => Scholarship::whereNull('removed_at')->count(),
+            ];
+        });
+
+        return response()
+            ->view('embed.stats', ['stats' => $stats])
             ->header('Content-Security-Policy', 'frame-ancestors *');
     }
 }

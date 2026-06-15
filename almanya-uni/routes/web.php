@@ -1118,6 +1118,9 @@ Route::get('/api/map/universities', [MapController::class, 'universitiesJson'])
 Route::get('/embed/cost-of-living', [\App\Http\Controllers\Web\EmbedController::class, 'costOfLiving'])
     ->middleware('throttle:60,1')
     ->name('embed.cost-of-living');
+Route::get('/embed/stats', [\App\Http\Controllers\Web\EmbedController::class, 'stats'])
+    ->middleware('throttle:60,1')
+    ->name('embed.stats');
 
 // ─────────── Çok-dilli routing ───────────
 // Default dil (config('locale.default')) prefix'siz (root); diğer diller /tr, /de, /fr prefix'li.
