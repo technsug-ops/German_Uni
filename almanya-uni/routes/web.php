@@ -508,6 +508,28 @@ Route::get('/_system/import-events', function (\Illuminate\Http\Request $request
     }
 })->middleware('throttle:5,1');
 
+// Token-gated log kuyruğu — prod hatalarını teşhis için son N satır (CLI yok, curl ile).
+//   curl "https://applytogerman.com/_system/log-tail?token=XXX&lines=80&grep=Aachen"
+Route::get('/_system/log-tail', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+    $file = storage_path('logs/laravel.log');
+    if (! is_file($file)) {
+        return response()->json(['error' => 'no log file']);
+    }
+    $lines = max(10, min(400, (int) $request->query('lines', 120)));
+    $content = @file($file, FILE_IGNORE_NEW_LINES) ?: [];
+    $tail = array_slice($content, -1500); // son ~1500 satırda ara
+    if ($g = $request->query('grep')) {
+        $tail = array_values(array_filter($tail, fn ($l) => stripos($l, $g) !== false));
+    }
+    $tail = array_slice($tail, -$lines);
+
+    return response(implode("\n", $tail), 200, ['Content-Type' => 'text/plain; charset=utf-8']);
+})->middleware('throttle:10,1');
+
 // Token-gated etkinlik bildirim digest'i elle tetik (haftalık cron Perşembe var; bu anlık test).
 //   Kuru: curl "https://applytogerman.com/_system/notify-subscribers?token=XXX&dry=1"
 //   Gerçek: ...&token=XXX   (email + web push gönderir)
