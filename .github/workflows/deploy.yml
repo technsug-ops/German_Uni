@@ -244,6 +244,12 @@ jobs:
                "ADMISSION_MODE_NASIL_DOLDURULUR.md" \
                "DAAD_SCHOLARSHIPS_OZET.md" \
                "README.md"
+          # Web push paketi (2026-06: sonradan eklendi) vendor'a DAHİL — bundle normalde
+          # vendor'ı hariç tutar (küçük bundle). composer.lock'a SADECE 4 yeni paket eklendi,
+          # mevcutlar değişmedi → bu dir'leri + güncel autoload'u (vendor/composer) eklemek güvenli.
+          # Yoksa prod cron'da "Class Minishlink\WebPush\WebPush not found".
+          zip -r -q ../deploy-bundle.zip \
+            vendor/minishlink vendor/web-token vendor/spomky-labs vendor/composer
           ls -lh ../deploy-bundle.zip
           echo "Bundle hazır: $(du -h ../deploy-bundle.zip | cut -f1)"
 
