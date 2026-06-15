@@ -218,6 +218,43 @@ SPARQL;
         return $result;
     }
 
+    /**
+     * Belirli Q-id'ler için RESMİ etiketi (rdfs:label) çeker — de ve en.
+     * Üni adı doğrulaması için: Wikidata etiketi otoritedir (resmi kurum adı).
+     * Dönüş: [qid => ['de' => ?string, 'en' => ?string]].
+     */
+    public function getEntityLabels(array $qids): array
+    {
+        $qids = array_filter(array_unique($qids));
+        if (empty($qids)) {
+            return [];
+        }
+
+        $result = [];
+        foreach (array_chunk($qids, 100) as $chunk) {
+            $values = implode(' ', array_map(fn ($q) => "wd:{$q}", $chunk));
+            $query = <<<SPARQL
+SELECT ?entity ?labelDe ?labelEn WHERE {
+    VALUES ?entity { {$values} }
+    OPTIONAL { ?entity rdfs:label ?labelDe FILTER(LANG(?labelDe) = "de") }
+    OPTIONAL { ?entity rdfs:label ?labelEn FILTER(LANG(?labelEn) = "en") }
+}
+SPARQL;
+            $rows = $this->runSparql($query, 'entity-labels', 90);
+            foreach ($rows as $row) {
+                $qid = $this->extractWikidataId($this->extractValue($row, 'entity'));
+                if (! $qid) continue;
+                $de = $this->extractValue($row, 'labelDe');
+                $en = $this->extractValue($row, 'labelEn');
+                if (! isset($result[$qid])) $result[$qid] = ['de' => null, 'en' => null];
+                if ($de && ! $result[$qid]['de']) $result[$qid]['de'] = $de;
+                if ($en && ! $result[$qid]['en']) $result[$qid]['en'] = $en;
+            }
+        }
+
+        return $result;
+    }
+
     public function getGermanStates(): array
     {
         $sparqlQuery = <<<SPARQL
