@@ -22,6 +22,16 @@ class TicketmasterImporter
 {
     private const API = 'https://app.ticketmaster.com/discovery/v2/events.json';
 
+    /**
+     * Ticketmaster bazı Alman şehirlerini İngilizce/tam adla indeksliyor — sorguda bunu
+     * kullanmazsak 0 sonuç döner (München→Munich: 0 vs 94). Dönen venue city.name de bu
+     * ada gelir → matchCity name_en'den (Munich/Cologne) bizim City'ye eşler.
+     */
+    private const TM_QUERY_NAME = [
+        'München' => 'Munich',
+        'Köln'    => 'Cologne',
+    ];
+
     public function __construct(private ?string $apiKey = null)
     {
         $this->apiKey = $apiKey ?: config('services.ticketmaster.key');
@@ -43,11 +53,13 @@ class TicketmasterImporter
 
         $stats = ['imported' => 0, 'updated' => 0, 'skipped' => 0];
 
+        $queryCity = self::TM_QUERY_NAME[$city] ?? $city;
+
         foreach ($segments as $segment) {
             $resp = Http::timeout(20)->retry(2, 600)->get(self::API, [
                 'apikey'        => $this->apiKey,
                 'countryCode'   => 'DE',
-                'city'          => $city,
+                'city'          => $queryCity,
                 'segmentName'   => $segment,
                 'size'          => min($size, 200),
                 'sort'          => 'date,asc',

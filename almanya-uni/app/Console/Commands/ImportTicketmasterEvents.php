@@ -15,7 +15,7 @@ class ImportTicketmasterEvents extends Command
 
     /** Varsayılan: uluslararası öğrenci yoğun büyük şehirler. */
     private const DEFAULT_CITIES = [
-        'Berlin', 'München', 'Hamburg', 'Köln', 'Frankfurt',
+        'Berlin', 'München', 'Hamburg', 'Köln', 'Frankfurt am Main',
         'Stuttgart', 'Düsseldorf', 'Leipzig', 'Dresden', 'Hannover',
     ];
 
