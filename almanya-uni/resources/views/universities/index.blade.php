@@ -126,6 +126,27 @@
     </div>
 </section>
 
+{{-- ─────────────── CURATED CATEGORIES ─────────────── --}}
+@if (!empty($collections))
+<section class="bg-white py-8 border-b border-gray-200">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">{{ __('Browse by category') }}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @foreach ($collections as $cSlug => $c)
+                <a href="{{ route('universities.collection', $cSlug) }}"
+                   class="group flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-primary-500 hover:bg-white hover:shadow-md transition">
+                    <span class="text-3xl shrink-0" aria-hidden="true">{{ $c['icon'] }}</span>
+                    <span class="min-w-0">
+                        <span class="block font-bold text-gray-900 group-hover:text-primary-600 leading-snug">{{ __($c['title']) }}</span>
+                        <span class="block text-xs text-gray-500 mt-1">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>
+                    </span>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
 {{-- ─────────────── RESULTS ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">

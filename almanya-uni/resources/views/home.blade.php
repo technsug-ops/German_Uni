@@ -419,6 +419,37 @@
 </section>
 
 {{-- =================================================================== --}}
+{{-- ÜNİVERSİTE KATEGORİLERİ (küratörlü koleksiyonlar) --}}
+{{-- =================================================================== --}}
+<section class="max-w-[1400px] mx-auto px-4 py-14">
+    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Universities by Category') }}</h2>
+            <p class="text-gray-600 text-sm">{{ __('Curated lists of Germany\'s most popular universities') }}</p>
+        </div>
+        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            {{ __('All universities') }} →
+        </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @php $homeAccents = ['primary' => 'from-primary-600 to-accent-500', 'accent' => 'from-emerald-600 to-teal-500', 'amber' => 'from-amber-600 to-orange-500']; @endphp
+        @foreach (\App\Support\UniversityCollections::all() as $cSlug => $c)
+            <a href="{{ route('universities.collection', $cSlug) }}"
+               class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
+                <div class="bg-gradient-to-br {{ $homeAccents[$c['accent']] ?? $homeAccents['primary'] }} p-5 text-white">
+                    <span class="text-4xl drop-shadow" aria-hidden="true">{{ $c['icon'] }}</span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col">
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-snug mb-1">{{ __($c['title']) }}</h3>
+                    <p class="text-sm text-gray-600 line-clamp-2 mb-3">{{ __($c['subtitle']) }}</p>
+                    <span class="mt-auto text-xs font-semibold text-primary-600">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</section>
+
+{{-- =================================================================== --}}
 {{-- ÖNE ÇIKAN ÜNİVERSİTELER --}}
 {{-- =================================================================== --}}
 @if (!empty($featured_universities))

@@ -101,21 +101,7 @@ class UniversityWebController extends Controller
             ->orderBy('name_de')
             ->paginate(48)
             ->withQueryString()
-            ->through(fn ($u) => [
-                'id' => $u->id,
-                'slug' => $u->slug,
-                'name_de' => $u->name_de,
-                'logo_url' => $u->logo_url,
-                // Raw own-image only. _grid resolves the 3-layer fallback
-                // (own → city landmark pool → gradient) via App\Support\CoverImage.
-                'image_url' => $u->image_url,
-                'city_slug' => $u->city?->slug,
-                'city_name' => $u->city?->name,
-                'state_name' => $u->city?->state?->name,
-                'founded_year' => $u->founded_year,
-                'type' => $u->type,
-                'student_count' => $u->student_count,
-            ]);
+            ->through(fn ($u) => $this->mapUniversityCard($u));
 
         // Dropdown'lar için gerçekten DB'de bulunan türler + tüm eyaletler
         $availableTypes = University::where('is_active', true)
@@ -127,31 +113,17 @@ class UniversityWebController extends Controller
 
         $states = State::orderBy('name_de')->get(['slug', 'name_de', 'name_tr','name_en','name_de']);
 
-        // Form-helper closures used by both index and _grid partials
-        $typeLabel = fn ($t) => match ($t) {
-            'public' => __('Public'),
-            'private' => __('Private'),
-            'applied_sciences' => __('Applied Sciences'),
-            'art' => __('Art'),
-            'religion' => __('Religion'),
-            default => $t ? ucfirst($t) : '-',
-        };
-        $typeBadgeColor = fn ($t) => match ($t) {
-            'public' => 'bg-emerald-50 text-emerald-700',
-            'private' => 'bg-amber-50 text-amber-700',
-            'applied_sciences' => 'bg-blue-50 text-blue-700',
-            'art' => 'bg-pink-50 text-pink-700',
-            'religion' => 'bg-purple-50 text-purple-700',
-            default => 'bg-gray-100 text-gray-700',
-        };
+        $closures = $this->typeClosures();
 
         $viewData = [
             'universities' => $universities,
             'total' => $total,
             'available_types' => $availableTypes,
             'states' => $states,
-            'typeLabel' => $typeLabel,
-            'typeBadgeColor' => $typeBadgeColor,
+            'typeLabel' => $closures['typeLabel'],
+            'typeBadgeColor' => $closures['typeBadgeColor'],
+            // Curated category landing pages (cards rendered above the grid).
+            'collections' => \App\Support\UniversityCollections::all(),
         ];
 
         // XHR — return only the grid partial (async filter UX)
@@ -161,6 +133,90 @@ class UniversityWebController extends Controller
         }
 
         return view('universities.index', $viewData);
+    }
+
+    /**
+     * Curated category landing page (e.g. "English-taught", "Most preferred public").
+     * Reuses the universities._grid partial verbatim by paginating the curated set
+     * (10 unis fit one page, so the paginator's links() render nothing).
+     */
+    public function collection(string $slug): View
+    {
+        $collection = \App\Support\UniversityCollections::find($slug);
+        abort_unless($collection, 404);
+
+        $query = University::query()
+            ->where('is_active', true)
+            ->whereIn('slug', $collection['uni_slugs'])
+            ->with('city.state');
+
+        $total = $query->count();
+        $universities = $query
+            ->orderByDesc('student_count')
+            ->orderBy('name_de')
+            ->paginate(48)
+            ->through(fn ($u) => $this->mapUniversityCard($u));
+
+        $closures = $this->typeClosures();
+
+        return view('universities.collection', [
+            'slug'           => $slug,
+            'collection'     => $collection,
+            'universities'   => $universities,
+            'total'          => $total,
+            'typeLabel'      => $closures['typeLabel'],
+            'typeBadgeColor' => $closures['typeBadgeColor'],
+        ]);
+    }
+
+    /**
+     * Shared card-shaped projection of a University for the _grid partial.
+     * Used by both index() and collection(). Raw own-image only — _grid resolves
+     * the 3-layer fallback (own → city landmark pool → gradient) via CoverImage.
+     */
+    private function mapUniversityCard(University $u): array
+    {
+        return [
+            'id' => $u->id,
+            'slug' => $u->slug,
+            'name_de' => $u->name_de,
+            'logo_url' => $u->logo_url,
+            'image_url' => $u->image_url,
+            'city_slug' => $u->city?->slug,
+            'city_name' => $u->city?->name,
+            'state_name' => $u->city?->state?->name,
+            'founded_year' => $u->founded_year,
+            'type' => $u->type,
+            'student_count' => $u->student_count,
+        ];
+    }
+
+    /**
+     * Type label + badge-color closures shared by index/collection views (and the
+     * _grid partial when returned standalone for XHR async-filter responses).
+     *
+     * @return array{typeLabel: \Closure, typeBadgeColor: \Closure}
+     */
+    private function typeClosures(): array
+    {
+        return [
+            'typeLabel' => fn ($t) => match ($t) {
+                'public' => __('Public'),
+                'private' => __('Private'),
+                'applied_sciences' => __('Applied Sciences'),
+                'art' => __('Art'),
+                'religion' => __('Religion'),
+                default => $t ? ucfirst($t) : '-',
+            },
+            'typeBadgeColor' => fn ($t) => match ($t) {
+                'public' => 'bg-emerald-50 text-emerald-700',
+                'private' => 'bg-amber-50 text-amber-700',
+                'applied_sciences' => 'bg-blue-50 text-blue-700',
+                'art' => 'bg-pink-50 text-pink-700',
+                'religion' => 'bg-purple-50 text-purple-700',
+                default => 'bg-gray-100 text-gray-700',
+            },
+        ];
     }
 
     public function show(string $slugOrId): View
