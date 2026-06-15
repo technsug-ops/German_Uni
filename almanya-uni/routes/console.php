@@ -54,6 +54,21 @@ Schedule::command('newsletter:digest', ['--days' => 7, '--send' => true])
 
 /*
 |--------------------------------------------------------------------------
+| Ticketmaster Cultural Events Import
+|--------------------------------------------------------------------------
+| Her gün 04:30 — büyük öğrenci şehirlerindeki konser/tiyatro etkinliklerini
+| /events'e aktarır (idempotent, dedup). TICKETMASTER_API_KEY yoksa command
+| FAIL döner (log'a yazar), zarar vermez.
+*/
+Schedule::command('events:import-ticketmaster')
+    ->dailyAt('04:30')
+    ->withoutOverlapping(60)
+    ->runInBackground()
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/ticketmaster-import.log'));
+
+/*
+|--------------------------------------------------------------------------
 | Favorites Weekly Digest
 |--------------------------------------------------------------------------
 | Pazar 18:00 — kullanıcı favorileri için kişisel digest:

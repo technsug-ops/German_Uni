@@ -83,4 +83,10 @@ return [
     // config('services.system_token') ise cache'li config'ten okur, çalışır.
     'system_token' => env('SYSTEM_TOKEN'),
 
+    // Ticketmaster Discovery API — kültürel etkinlik (konser/tiyatro) importu (/events).
+    // Ücretsiz key: https://developer.ticketmaster.com. Limit: 5 req/sn, 5000/gün.
+    'ticketmaster' => [
+        'key' => env('TICKETMASTER_API_KEY'),
+    ],
+
 ];

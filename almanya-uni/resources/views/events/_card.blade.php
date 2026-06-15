@@ -49,7 +49,7 @@
                 <p class="flex items-center gap-1.5 text-amber-700 font-semibold">
                     <x-svg-icon name="currency-euro" class="w-3.5 h-3.5" /> <span>{{ number_format($event->price_eur, 0, ',', '.') }} €</span>
                 </p>
-            @else
+            @elseif (! is_null($event->price_eur))
                 <p class="flex items-center gap-1.5 text-emerald-600 font-semibold text-xs">
                     <x-svg-icon name="tag" class="w-3.5 h-3.5" /> {{ __('Free') }}
                 </p>

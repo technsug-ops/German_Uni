@@ -49,7 +49,7 @@
         'validFrom'     => $event->created_at?->toIso8601String(),
         'url'           => $event->registration_url ?: url()->current(),
     ],
-    'isAccessibleForFree' => ($event->price_eur ?? 0) == 0,
+    'isAccessibleForFree' => ! is_null($event->price_eur) && $event->price_eur == 0,
 ]), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
 @endpush
 
@@ -420,6 +420,8 @@
                     <p class="text-xs text-gray-500">{{ __('Price') }}</p>
                     @if ($event->price_eur > 0)
                         <p class="font-bold text-amber-700">{{ number_format($event->price_eur, 0, ',', '.') }} €</p>
+                    @elseif (is_null($event->price_eur))
+                        <p class="font-bold text-gray-500 text-sm">{{ __('See ticket page') }}</p>
                     @else
                         <p class="font-bold text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="tag" class="w-4 h-4" /> {{ __('Free') }}</p>
                     @endif
@@ -436,12 +438,21 @@
             </div>
 
             @if ($event->registration_url || $event->online_url)
+                @php $isTicketmaster = $event->source === 'ticketmaster'; @endphp
                 <a href="{{ $event->is_live && $event->online_url ? $event->online_url : $event->registration_url }}"
-                   target="_blank" rel="noopener"
+                   target="_blank" rel="noopener nofollow{{ $isTicketmaster ? ' sponsored' : '' }}"
                    class="block mt-5 text-center py-3 rounded-lg text-white font-bold transition shadow-md hover:opacity-90"
                    style="background: {{ $event->type_color }};">
-                    {{ $event->is_live ? __('Join Now') : ($event->price_eur > 0 ? __('Register') : __('Register Free')) }}
+                    @if ($isTicketmaster)
+                        {{ __('Buy Tickets') }} ↗
+                    @else
+                        {{ $event->is_live ? __('Join Now') : ($event->price_eur > 0 ? __('Register') : __('Register Free')) }}
+                    @endif
                 </a>
+                @if ($isTicketmaster)
+                    {{-- Ticketmaster ToS: kaynak attribution zorunlu --}}
+                    <p class="text-[11px] text-center text-gray-400 mt-2">{{ __('Event data powered by Ticketmaster') }}</p>
+                @endif
             @endif
 
             @if (! $event->is_past && $event->starts_at->isFuture())

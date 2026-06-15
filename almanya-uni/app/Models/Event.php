@@ -12,12 +12,12 @@ class Event extends Model
     use \App\Models\Concerns\LocalizableContent;
 
     protected $fillable = [
-        'type', 'category_id', 'title_tr', 'title_en', 'title_de', 'slug',
+        'type', 'source', 'external_id', 'category_id', 'title_tr', 'title_en', 'title_de', 'slug',
         'description_md_tr', 'description_md_en', 'description_md_de', 'host', 'host_user_id',
         'sponsor', 'sponsor_logo_url', 'reward', 'target_audience', 'difficulty', 'duration_minutes', 'tags', 'presentation_language',
         'recurrence_rule', 'parent_event_id',
         'starts_at', 'ends_at', 'timezone',
-        'mode', 'online_url', 'location_name', 'location_city',
+        'mode', 'online_url', 'location_name', 'location_city', 'city_id',
         'registration_url', 'max_attendees', 'registered_count', 'registration_required', 'price_eur',
         'banner_url', 'banner_color',
         'is_featured', 'is_active',
@@ -37,6 +37,11 @@ class Event extends Model
     public function category()
     {
         return $this->belongsTo(EventCategory::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
     public function hostUser()
@@ -267,6 +272,14 @@ class Event extends Model
         'ama_session'          => ['emoji' => '💬', 'label' => 'AMA (Ask Me Anything)', 'color' => '#9333EA', 'category' => 'special-format'],
         'panel'                => ['emoji' => '🎤', 'label' => 'Panel',                'color' => '#9333EA', 'category' => 'special-format'],
         'conference'           => ['emoji' => '🎯', 'label' => 'Konferans',            'color' => '#9333EA', 'category' => 'special-format'],
+
+        // 🎵 Kültür & Konser (dış kaynak: Ticketmaster importu)
+        'concert'              => ['emoji' => '🎵', 'label' => 'Konser',              'color' => '#E11D48', 'category' => 'culture'],
+        'music_festival'       => ['emoji' => '🎪', 'label' => 'Müzik Festivali',     'color' => '#E11D48', 'category' => 'culture'],
+        'theater'              => ['emoji' => '🎭', 'label' => 'Tiyatro',             'color' => '#E11D48', 'category' => 'culture'],
+        'opera_classical'      => ['emoji' => '🎻', 'label' => 'Opera & Klasik',      'color' => '#E11D48', 'category' => 'culture'],
+        'exhibition'           => ['emoji' => '🖼️', 'label' => 'Sergi',               'color' => '#E11D48', 'category' => 'culture'],
+        'comedy'               => ['emoji' => '🎙️', 'label' => 'Komedi',              'color' => '#E11D48', 'category' => 'culture'],
     ];
 
     public function getTypeLabelAttribute(): string
