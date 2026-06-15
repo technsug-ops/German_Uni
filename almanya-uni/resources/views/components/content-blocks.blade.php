@@ -172,7 +172,7 @@
                                 <thead class="bg-gray-100">
                                     <tr>
                                         @foreach($block['headers'] ?? [] as $h)
-                                            <th class="px-4 py-3 text-left font-semibold text-gray-900">{{ $h }}</th>
+                                            <th class="px-4 py-3 text-left font-semibold text-gray-900">{{ is_array($h) ? implode(' ', $h) : $h }}</th>
                                         @endforeach
                                     </tr>
                                 </thead>
@@ -181,7 +181,7 @@
                                 @foreach($block['rows'] ?? [] as $row)
                                     <tr class="hover:bg-gray-50">
                                         @foreach((array) $row as $cell)
-                                            <td class="px-4 py-3 text-gray-800">{{ $cell }}</td>
+                                            <td class="px-4 py-3 text-gray-800">{{ is_array($cell) ? implode(' ', $cell) : $cell }}</td>
                                         @endforeach
                                     </tr>
                                 @endforeach
@@ -351,7 +351,7 @@
                 </div>
                 @if(!empty($block['top_unis']))
                     <ul class="list-disc list-inside text-sm space-y-1 text-gray-900 font-medium">
-                        @foreach($block['top_unis'] ?? [] as $u) <li>{{ $u }}</li> @endforeach
+                        @foreach($block['top_unis'] ?? [] as $u) <li>{{ is_array($u) ? ($u['name'] ?? ($u['title'] ?? reset($u))) : $u }}</li> @endforeach
                     </ul>
                 @endif
             </section>
