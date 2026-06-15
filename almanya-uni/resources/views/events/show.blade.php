@@ -82,7 +82,7 @@
             @else
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Online') }}</span>
             @endif
-            @if ($event->language_flag)
+            @if ($event->language_flag && $event->source !== 'ticketmaster')
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold ring-1 ring-white/30" title="{{ __('Event language') }}">
                     {{ $event->language_flag }} {{ $event->language_label }}
                 </span>

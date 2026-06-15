@@ -35,7 +35,7 @@
                     <x-svg-icon name="user" class="w-3.5 h-3.5 text-gray-400" /> <span class="truncate">{{ $event->host }}</span>
                 </p>
             @endif
-            @if ($event->language_flag)
+            @if ($event->language_flag && $event->source !== 'ticketmaster')
                 <p class="flex items-center gap-1.5 text-gray-500">
                     <x-svg-icon name="globe" class="w-3.5 h-3.5 text-gray-400" /> <span>{{ $event->language_flag }} {{ $event->language_label }}</span>
                 </p>

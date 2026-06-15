@@ -110,6 +110,8 @@ class TicketmasterImporter
             'starts_at'        => $startsAt,
             'timezone'         => data_get($tm, 'dates.timezone', 'Europe/Berlin'),
             'mode'             => 'offline',
+            // Konser/tiyatronun "sunum dili" yok → null (kolon default 'tr' yanlış rozet veriyordu).
+            'presentation_language' => null,
             'location_name'    => Str::limit((string) data_get($venue, 'name'), 250, '') ?: null,
             'location_city'    => $cityName,
             'city_id'          => $city?->id,
