@@ -51,10 +51,14 @@
 @endphp
 <section class="relative bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 text-white overflow-hidden">
     @if($heroPhoto)
-        {{-- Yüklenen şehir fotoğrafı → cover hero --}}
+        {{-- Yüklenen şehir fotoğrafı → cover hero. Hafif desatüre → daha sakin/tutarlı. --}}
         <img src="{{ $heroPhoto }}" alt="{{ __(':city — university and student life guide', ['city' => $city->name]) }}"
-             class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20"></div>
+             class="absolute inset-0 w-full h-full object-cover [filter:saturate(0.85)]" loading="eager" fetchpriority="high"/>
+        {{-- MARKA TINT: her fotoğrafı sitenin lacivert/accent karakterine çeker (multiply hue shift)
+             → uymayan (sıcak/farklı) fotolar otomatik markayla uyumlanır. --}}
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-accent-700 opacity-60 mix-blend-multiply"></div>
+        {{-- Okunabilirlik + derinlik (alt koyu, üst şeffaf) --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent"></div>
     @else
         {{-- Foto yoksa: dekoratif modern gradient — yumuşak ışık küreleri + nokta deseni --}}
         <div class="absolute -top-24 -right-16 w-96 h-96 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
