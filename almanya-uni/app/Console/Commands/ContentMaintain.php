@@ -35,6 +35,9 @@ class ContentMaintain extends Command
         $this->line('▶ universities:fix-cities');
         $this->call('universities:fix-cities', $fixOpts);
 
+        $this->line('▶ programs:dedupe');
+        $this->call('programs:dedupe', $fixOpts);
+
         $this->newLine();
         $this->line('▶ content:audit');
         $this->call('content:audit', ['--samples' => 0]);

@@ -168,6 +168,56 @@ SPARQL;
         return $result;
     }
 
+    /**
+     * Belirli üni Q-id'leri için bulunduğu şehri (P131) çöz — şehir Q-id, etiketi
+     * (de,en) ve koordinatı ile. Dönüş: [uniQid => ['city_qid','city_label','latitude','longitude']].
+     * Birden çok P131 varsa ilk kullanılabilir etiketli olanı alır.
+     */
+    public function getUniversityCities(array $uniQids): array
+    {
+        $uniQids = array_filter(array_unique($uniQids));
+        if (empty($uniQids)) {
+            return [];
+        }
+
+        $result = [];
+        foreach (array_chunk($uniQids, 80) as $chunk) {
+            $values = implode(' ', array_map(fn ($q) => "wd:{$q}", $chunk));
+            $query = <<<SPARQL
+SELECT ?university ?city ?cityLabel ?coord WHERE {
+    VALUES ?university { {$values} }
+    ?university wdt:P131 ?city .
+    # Eyalet (Bundesland) ve idari bölge/ilçe değil — gerçek yerleşim olsun
+    FILTER NOT EXISTS { ?city wdt:P31 wd:Q1221156 . }
+    FILTER NOT EXISTS { ?city wdt:P31 wd:Q1208505 . }
+    OPTIONAL { ?city wdt:P625 ?coord . }
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "de,en". }
+}
+SPARQL;
+            $rows = $this->runSparql($query, 'university-cities', 90);
+            foreach ($rows as $row) {
+                $uniQid = $this->extractWikidataId($this->extractValue($row, 'university'));
+                $cityQid = $this->extractWikidataId($this->extractValue($row, 'city'));
+                $label = $this->extractValue($row, 'cityLabel');
+                if (! $uniQid || ! $cityQid || ! $this->isUsableLabel($label)) {
+                    continue;
+                }
+                if (isset($result[$uniQid])) {
+                    continue; // ilk kullanılabilir P131
+                }
+                $coord = $this->parseCoordinate($this->extractValue($row, 'coord'));
+                $result[$uniQid] = [
+                    'city_qid'   => $cityQid,
+                    'city_label' => $label,
+                    'latitude'   => $coord['latitude'],
+                    'longitude'  => $coord['longitude'],
+                ];
+            }
+        }
+
+        return $result;
+    }
+
     public function getGermanStates(): array
     {
         $sparqlQuery = <<<SPARQL

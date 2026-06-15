@@ -537,10 +537,12 @@ Route::get('/_system/fix-content', function (\Illuminate\Http\Request $request) 
     $command = match ($request->query('job')) {
         'deadlines' => 'programs:fix-deadlines',
         'data'      => 'programs:fix-data',
+        'dedupe'    => 'programs:dedupe',
+        'cities'    => 'universities:create-missing-cities', // Wikidata P131 — tek seferlik backfill
         default     => null,
     };
     if (! $command) {
-        return response()->json(['error' => 'job must be deadlines|data'], 400);
+        return response()->json(['error' => 'job must be deadlines|data|dedupe|cities'], 400);
     }
     $params = $request->boolean('apply') ? ['--apply' => true] : [];
     try {
