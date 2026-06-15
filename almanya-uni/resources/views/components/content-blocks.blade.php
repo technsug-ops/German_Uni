@@ -171,14 +171,14 @@
                             @if(!empty($block['headers']))
                                 <thead class="bg-gray-100">
                                     <tr>
-                                        @foreach($block['headers'] as $h)
+                                        @foreach($block['headers'] ?? [] as $h)
                                             <th class="px-4 py-3 text-left font-semibold text-gray-900">{{ $h }}</th>
                                         @endforeach
                                     </tr>
                                 </thead>
                             @endif
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                @foreach($block['rows'] as $row)
+                                @foreach($block['rows'] ?? [] as $row)
                                     <tr class="hover:bg-gray-50">
                                         @foreach((array) $row as $cell)
                                             <td class="px-4 py-3 text-gray-800">{{ $cell }}</td>
@@ -200,7 +200,7 @@
                 <section>
                     <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] ?? __('Monthly Cost of Living (approx.)') }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        @foreach($block['items'] as $item)
+                        @foreach($block['items'] ?? [] as $item)
                             <div class="bg-white ring-1 ring-gray-200 rounded-lg p-4 shadow-sm">
                                 <div class="text-xs text-gray-600 uppercase tracking-wider font-medium">{{ $item['label'] ?? '' }}</div>
                                 <div class="text-xl font-bold mt-1 text-gray-900">
@@ -235,7 +235,7 @@
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        @foreach($block['items'] as $place)
+                        @foreach($block['items'] ?? [] as $place)
                             @php
                                 $iconNameMap = [
                                     'library' => 'book-open', 'museum' => 'building-office', 'square' => 'building-office',
@@ -298,7 +298,7 @@
                 @endif
                 @if(!empty($block['highlights']))
                     <ul class="mt-4 space-y-2 text-sm">
-                        @foreach($block['highlights'] as $h)
+                        @foreach($block['highlights'] ?? [] as $h)
                             <li class="flex items-start gap-2 text-gray-900">
                                 <x-svg-icon name="star" class="w-4 h-4 mt-0.5 text-amber-600 shrink-0" />
                                 <span class="font-medium">{{ $h }}</span>
@@ -351,7 +351,7 @@
                 </div>
                 @if(!empty($block['top_unis']))
                     <ul class="list-disc list-inside text-sm space-y-1 text-gray-900 font-medium">
-                        @foreach($block['top_unis'] as $u) <li>{{ $u }}</li> @endforeach
+                        @foreach($block['top_unis'] ?? [] as $u) <li>{{ $u }}</li> @endforeach
                     </ul>
                 @endif
             </section>
@@ -387,7 +387,7 @@
                         </a>
                     </div>
                     <ul class="space-y-2">
-                        @foreach($block['items'] as $t)
+                        @foreach($block['items'] ?? [] as $t)
                             <li>
                                 <a href="{{ $t['url'] }}"
                                    class="group flex items-start justify-between gap-3 bg-white ring-1 ring-primary-100 hover:ring-primary-400 hover:shadow-md rounded-lg p-3 transition">
@@ -426,7 +426,7 @@
                         @endif
                     </div>
                     <ul class="space-y-2">
-                        @foreach($block['items'] as $t)
+                        @foreach($block['items'] ?? [] as $t)
                             <li>
                                 <a href="{{ $t['url'] }}" target="_blank" rel="noopener nofollow"
                                    class="group flex items-start justify-between gap-3 bg-white ring-1 ring-violet-100 hover:ring-violet-300 hover:shadow-md rounded-lg p-3 transition">
@@ -462,7 +462,7 @@
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-lg font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
                     @endif
                     <div class="flex flex-wrap gap-2">
-                        @foreach($block['items'] as $link)
+                        @foreach($block['items'] ?? [] as $link)
                             <a href="{{ $link['url'] }}" target="_blank" rel="noopener"
                                class="inline-flex items-center gap-1 px-3 py-2 bg-white ring-1 ring-gray-200 hover:bg-gray-50 hover:ring-primary-400 rounded-lg text-sm transition text-gray-900">
                                 {{ $link['label'] ?? $link['url'] }} <span class="text-gray-500">↗</span>
