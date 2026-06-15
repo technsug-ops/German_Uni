@@ -69,6 +69,19 @@ Schedule::command('events:import-ticketmaster')
 
 /*
 |--------------------------------------------------------------------------
+| Event City Alerts — Weekly Digest
+|--------------------------------------------------------------------------
+| Perşembe 10:00 — şehir abonelerine yeni eklenen yaklaşan etkinlikler.
+| Import (04:30) sonrası → taze veri. Boş içerikte mail göndermez.
+*/
+Schedule::command('events:notify-subscribers')
+    ->weeklyOn(4, '10:00')
+    ->withoutOverlapping(60)
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/event-digest.log'));
+
+/*
+|--------------------------------------------------------------------------
 | Favorites Weekly Digest
 |--------------------------------------------------------------------------
 | Pazar 18:00 — kullanıcı favorileri için kişisel digest:

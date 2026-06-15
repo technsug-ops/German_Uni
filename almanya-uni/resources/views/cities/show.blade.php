@@ -388,6 +388,13 @@
         ->exists();
 @endphp
 
+{{-- Şehir etkinlik bildirimi aboneliği --}}
+<section class="bg-white border-t border-gray-200 py-10">
+    <div class="max-w-2xl mx-auto px-4">
+        @include('events._alert-subscribe', ['city' => $city])
+    </div>
+</section>
+
 @if ($cityTopFields->isNotEmpty() || $hasEnPrograms)
 <section class="bg-gradient-to-br from-gray-50 to-white border-t border-gray-200 py-10">
     <div class="max-w-[1400px] mx-auto px-4">

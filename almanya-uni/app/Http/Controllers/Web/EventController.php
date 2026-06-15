@@ -41,7 +41,13 @@ class EventController extends Controller
 
         $categories = EventCategory::orderBy('sort_order')->get();
 
-        return view('events.index', compact('live', 'upcoming', 'past', 'type', 'category', 'categories'));
+        // Etkinlik bildirimi aboneliği için: yaklaşan etkinliği olan şehirler.
+        $alertCityIds = Event::active()->upcoming()->whereNotNull('city_id')->distinct()->pluck('city_id');
+        $alertCities = \App\Models\City::whereIn('id', $alertCityIds)
+            ->orderBy('name_de')
+            ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
+
+        return view('events.index', compact('live', 'upcoming', 'past', 'type', 'category', 'categories', 'alertCities'));
     }
 
     public function show(string $slug): View

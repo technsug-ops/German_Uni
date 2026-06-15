@@ -245,6 +245,14 @@ $routes = function () {
 
     // Events / Etkinlikler
     Route::get('/events', [\App\Http\Controllers\Web\EventController::class, 'index'])->name('events.index');
+    // Şehir bazlı etkinlik bildirimi aboneliği (uni slug catch-all'dan ÖNCE — "alerts" literal).
+    Route::post('/events/alerts/subscribe', [\App\Http\Controllers\Web\EventAlertController::class, 'subscribe'])
+        ->middleware('throttle:8,10')
+        ->name('events.alerts.subscribe');
+    Route::get('/events/alerts/confirm/{token}', [\App\Http\Controllers\Web\EventAlertController::class, 'confirm'])
+        ->name('events.alerts.confirm');
+    Route::match(['get', 'post'], '/events/alerts/unsubscribe/{token}', [\App\Http\Controllers\Web\EventAlertController::class, 'unsubscribe'])
+        ->name('events.alerts.unsubscribe');
     Route::get('/events/{slug}', [\App\Http\Controllers\Web\EventController::class, 'show'])->name('events.show');
     Route::post('/events/{slug}/rsvp', [\App\Http\Controllers\Web\EventController::class, 'rsvp'])
         ->middleware('throttle:10,10')

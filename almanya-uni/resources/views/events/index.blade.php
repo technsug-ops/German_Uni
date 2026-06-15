@@ -120,6 +120,11 @@
         </section>
     @endif
 
+    {{-- Şehir etkinlik bildirimi aboneliği --}}
+    <section class="mt-12 mb-10 max-w-2xl mx-auto">
+        @include('events._alert-subscribe', ['alertCities' => $alertCities])
+    </section>
+
     {{-- Event types — tanıtım kartları --}}
     <section class="mt-14 mb-10">
         <div class="text-center mb-8">
