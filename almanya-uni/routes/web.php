@@ -524,6 +524,33 @@ Route::get('/_system/content-audit', function (\Illuminate\Http\Request $request
     return response(\Illuminate\Support\Facades\Artisan::output(), 200, ['Content-Type' => 'text/plain; charset=utf-8']);
 })->middleware('throttle:10,1');
 
+// Token-gated güvenli veri düzeltmeleri — DRY-RUN varsayılan; apply=1 ile yazar.
+// (Kullanıcı onaylı; mevcut _system/migrate ile aynı kalıp. Prod'da CLI yok → curl ile.)
+//   Rapor: curl "https://applytogerman.com/_system/fix-content?token=XXX&job=deadlines"
+//   Uygula: ...&job=deadlines&apply=1   (job=deadlines|data)
+Route::get('/_system/fix-content', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+    @set_time_limit(280);
+    $command = match ($request->query('job')) {
+        'deadlines' => 'programs:fix-deadlines',
+        'data'      => 'programs:fix-data',
+        default     => null,
+    };
+    if (! $command) {
+        return response()->json(['error' => 'job must be deadlines|data'], 400);
+    }
+    $params = $request->boolean('apply') ? ['--apply' => true] : [];
+    try {
+        $exit = \Illuminate\Support\Facades\Artisan::call($command, $params);
+        return response("exit={$exit}\n\n" . \Illuminate\Support\Facades\Artisan::output(), 200, ['Content-Type' => 'text/plain; charset=utf-8']);
+    } catch (\Throwable $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+})->middleware('throttle:5,1');
+
 
 // Token-gated log kuyruğu — prod hatalarını teşhis için son N satır (CLI yok, curl ile).
 //   curl "https://applytogerman.com/_system/log-tail?token=XXX&lines=80&grep=Aachen"
