@@ -42,38 +42,76 @@
 @section('content')
 
 {{-- ─────────────── HERO ─────────────── --}}
-<section class="relative bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 text-white overflow-hidden">
-    @if($city->image_url)
-        <img src="{{ $city->image_url }}" alt="{{ __(':city — university and student life guide', ['city' => $city->name]) }}"
-             class="absolute inset-0 w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/50 to-transparent"></div>
+@php
+    // Gerçek şehir fotoğrafı (landmark havuzu, 13 büyük şehir) → cover hero.
+    // Yoksa armayı (image_url) soluk arkaplan + arma'yı küçük rozet olarak göster.
+    $cityPool  = \App\Support\CoverImage::cityPool($city->slug);
+    $heroPhoto = $cityPool ? $cityPool[abs(crc32((string) $city->id)) % count($cityPool)] : null;
+    $cityProgramCount = \App\Models\Program::whereIn('university_id', $city->universities->pluck('id'))
+        ->where('is_active', 1)->count();
+@endphp
+<section class="relative bg-gradient-to-br from-primary-800 via-primary-700 to-accent-600 text-white overflow-hidden">
+    @if($heroPhoto)
+        <img src="{{ $heroPhoto }}" alt="{{ __(':city — university and student life guide', ['city' => $city->name]) }}"
+             class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" onerror="this.remove()"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25"></div>
+    @elseif($city->image_url)
+        <img src="{{ $city->image_url }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" loading="eager" onerror="this.remove()"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/55 to-transparent"></div>
     @endif
-    <div class="relative max-w-[1400px] mx-auto px-4 py-10 md:py-14">
-        <nav class="text-sm text-primary-100 mb-3">
+
+    <div class="relative max-w-[1400px] mx-auto px-4 pt-8 pb-7 md:pt-12 md:pb-9">
+        <nav class="text-sm text-white/80 mb-4">
             <a href="/" class="hover:text-white">{{ __('Home') }}</a>
-            <span class="mx-2 opacity-60">›</span>
+            <span class="mx-2 opacity-50">›</span>
             <a href="{{ route('cities.index') }}" class="hover:text-white">{{ __('Cities') }}</a>
-            <span class="mx-2 opacity-60">›</span>
+            <span class="mx-2 opacity-50">›</span>
             <span class="text-white">{{ $city->name }}</span>
         </nav>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight drop-shadow">{{ $city->name }}</h1>
-        <div class="flex flex-wrap gap-2 text-sm">
-            @if($city->state)
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    <x-svg-icon name="map" class="w-4 h-4" />
-                    {{ $city->state->name }}
-                </span>
+
+        <div class="flex items-end gap-4 flex-wrap mb-6">
+            @if($city->image_url && $heroPhoto)
+                {{-- Arma → büyük beyaz kart yerine küçük rozet --}}
+                <div class="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/95 ring-1 ring-white/40 shadow-lg p-2 flex items-center justify-center">
+                    <img src="{{ $city->image_url }}" alt="" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.parentElement.remove()"/>
+                </div>
+            @endif
+            <div>
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-none drop-shadow-lg">{{ $city->name }}</h1>
+                @if($city->state)
+                    <p class="text-white/90 mt-2.5 inline-flex items-center gap-1.5 text-sm md:text-base">
+                        <x-svg-icon name="map" class="w-4 h-4" /> {{ $city->state->name }}
+                        @if($citySize)
+                            <span class="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs font-semibold backdrop-blur">{{ $citySize[0] }} {{ $citySize[1] }}</span>
+                        @endif
+                    </p>
+                @endif
+            </div>
+        </div>
+
+        {{-- Entegre istatistikler (eski ayrı highlight-bar'ı kapsar) --}}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
+            <div class="bg-white/12 backdrop-blur rounded-xl px-4 py-3 ring-1 ring-white/20">
+                <p class="text-2xl md:text-3xl font-extrabold leading-none">{{ $city->universities->count() }}</p>
+                <p class="text-xs text-white/80 mt-1.5 inline-flex items-center gap-1"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('University') }}</p>
+            </div>
+            @if($cityProgramCount > 0)
+                <div class="bg-white/12 backdrop-blur rounded-xl px-4 py-3 ring-1 ring-white/20">
+                    <p class="text-2xl md:text-3xl font-extrabold leading-none">{{ number_format($cityProgramCount, 0, ',', '.') }}</p>
+                    <p class="text-xs text-white/80 mt-1.5 inline-flex items-center gap-1"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Program') }}</p>
+                </div>
             @endif
             @if($city->population)
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    <x-svg-icon name="users" class="w-4 h-4" />
-                    {{ number_format($city->population, 0, ',', '.') }}
-                </span>
+                <div class="bg-white/12 backdrop-blur rounded-xl px-4 py-3 ring-1 ring-white/20">
+                    <p class="text-2xl md:text-3xl font-extrabold leading-none">{{ number_format($city->population, 0, ',', '.') }}</p>
+                    <p class="text-xs text-white/80 mt-1.5 inline-flex items-center gap-1"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Population') }}</p>
+                </div>
             @endif
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                <x-svg-icon name="academic-cap" class="w-4 h-4" />
-                {{ __(':n universities', ['n' => $city->universities->count()]) }}
-            </span>
+            <a href="{{ route('tools.cost-of-living', ['city' => $city->id]) }}"
+               class="bg-accent-500/90 hover:bg-accent-500 transition rounded-xl px-4 py-3 ring-1 ring-white/25">
+                <p class="text-2xl md:text-3xl font-extrabold leading-none">€</p>
+                <p class="text-xs text-white/90 mt-1.5 inline-flex items-center gap-1"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Cost calculator') }} →</p>
+            </a>
         </div>
     </div>
 </section>
@@ -83,7 +121,8 @@
     <div class="max-w-[1400px] mx-auto px-4">
 
         {{-- Locale-aware enrichment: TR=content_blocks, EN/DE=content_blocks_{locale} (null → fallback paneli) --}}
-        @php $cityBlocks = $city->localizedBlocks(); @endphp
+        {{-- 'hero' bloğu (genelde şehir arması, beyaz üstte kocaman) gizlenir — yeni hero zaten kapsıyor --}}
+        @php $cityBlocks = collect($city->localizedBlocks() ?? [])->reject(fn ($b) => ($b['type'] ?? null) === 'hero')->values()->all(); @endphp
         @if(!empty($cityBlocks))
             <x-content-blocks :blocks="$cityBlocks" :exclude-url="'/cities/' . $city->slug" />
         @else
@@ -96,38 +135,7 @@
             </div>
         @endif
 
-        {{-- ŞEHİR HIGHLIGHT BAR --}}
-        <section class="mt-8 bg-gradient-to-br from-primary-50 to-accent-50 border border-primary-200 rounded-xl p-5">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div>
-                    <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ $city->universities->count() }}</p>
-                    <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('University') }}</p>
-                </div>
-                @if (! empty($topPrograms))
-                    <div>
-                        <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ \App\Models\Program::whereIn('university_id', $city->universities->pluck('id'))->where('is_active', 1)->count() }}</p>
-                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Program') }}</p>
-                    </div>
-                @endif
-                @if ($city->population)
-                    <div>
-                        <p class="text-2xl md:text-3xl font-extrabold text-primary-700">{{ number_format($city->population, 0, ',', '.') }}</p>
-                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center flex-wrap">
-                            <x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Population') }}
-                            @if ($citySize)
-                                <span class="ml-1 inline-block px-1.5 py-0.5 rounded text-[10px] bg-{{ $citySize[2] }}-100 text-{{ $citySize[2] }}-700">{{ $citySize[0] }} {{ $citySize[1] }}</span>
-                            @endif
-                        </p>
-                    </div>
-                @endif
-                <div>
-                    <a href="{{ route('tools.cost-of-living', ['city' => $city->id]) }}" class="block hover:opacity-80">
-                        <p class="text-2xl md:text-3xl font-extrabold text-accent-600">€</p>
-                        <p class="text-xs text-gray-600 mt-1 inline-flex items-center gap-1 justify-center"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Cost calculator') }} →</p>
-                    </a>
-                </div>
-            </div>
-        </section>
+        {{-- (Eski highlight-bar kaldırıldı — istatistikler artık hero'da entegre) --}}
 
         {{-- YURT SEÇENEKLERİ --}}
         @if ($city->stw_name || (! empty($city->private_chain_slugs) && is_array($city->private_chain_slugs)))
