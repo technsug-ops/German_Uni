@@ -161,7 +161,15 @@
 
         {{-- ────────────────────────────── TABLE ────────────────────────────── --}}
         @elseif($type === 'table')
-            @if(!empty($block['rows']))
+            @php
+                // Builder 'rows_json' (JSON string) saklar, AI içeriği 'rows' (array) üretir → ikisini de destekle.
+                $tableRows = $block['rows'] ?? null;
+                if (empty($tableRows) && ! empty($block['rows_json'])) {
+                    $tableRows = is_array($block['rows_json']) ? $block['rows_json'] : (json_decode($block['rows_json'], true) ?: []);
+                }
+                $tableRows = is_array($tableRows) ? $tableRows : [];
+            @endphp
+            @if(! empty($tableRows))
                 <section>
                     @if(!empty($block['h']))
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold mb-3 text-gray-900 scroll-mt-24">{{ $block['h'] }}</h2>
@@ -178,7 +186,7 @@
                                 </thead>
                             @endif
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                @foreach($block['rows'] ?? [] as $row)
+                                @foreach($tableRows as $row)
                                     <tr class="hover:bg-gray-50">
                                         @foreach((array) $row as $cell)
                                             <td class="px-4 py-3 text-gray-800">{{ is_array($cell) ? implode(' ', $cell) : $cell }}</td>
