@@ -17,7 +17,7 @@ class City extends Model
         'wikidata_id', 'state_id',
         'name_tr', 'name_de', 'name_en', 'slug',
         'latitude', 'longitude', 'population',
-        'is_active', 'image_url', 'gallery_images', 'video_url',
+        'is_active', 'image_url', 'gallery_images', 'gallery_image_urls', 'video_url',
         'content_blocks', 'content_blocks_en', 'content_blocks_de', 'last_enriched_at',
     ];
 
@@ -26,6 +26,7 @@ class City extends Model
         'longitude' => 'decimal:7',
         'is_active' => 'boolean',
         'gallery_images' => 'array',
+        'gallery_image_urls' => 'array',
         'content_blocks' => 'array',
         'content_blocks_en' => 'array',
         'content_blocks_de' => 'array',
@@ -33,10 +34,17 @@ class City extends Model
         'last_enriched_at' => 'datetime',
     ];
 
-    /** Yüklenen galeri görsellerinin public URL'leri (admin'den yönetilir). */
+    /**
+     * Galeri görsel URL'leri: önce yüklenen fotoğraflar, sonra elle girilen dış URL'ler.
+     * Yüklenenler storage path → public URL'e çevrilir; URL'ler olduğu gibi kalır.
+     */
     public function galleryUrls(): array
     {
-        return collect($this->gallery_images ?? [])
+        $uploads = collect($this->gallery_images ?? []);
+        $external = collect($this->gallery_image_urls ?? [])
+            ->map(fn ($i) => is_array($i) ? ($i['url'] ?? null) : $i);
+
+        return $uploads->merge($external)
             ->filter()
             ->map(fn ($p) => \Illuminate\Support\Str::startsWith($p, ['http://', 'https://'])
                 ? $p

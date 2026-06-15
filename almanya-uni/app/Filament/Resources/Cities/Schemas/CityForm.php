@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Cities\Schemas;
 use App\Filament\Support\ContentBlocksBuilder;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -50,6 +51,18 @@ class CityForm
                             ->maxSize(4096)
                             ->columnSpanFull()
                             ->helperText('Birden çok görsel · sürükle-bırak sırala · İLK = hero · BOŞ → gradient hero'),
+                        Repeater::make('gallery_image_urls')
+                            ->label('Resim linkleri (dış URL)')
+                            ->simple(
+                                TextInput::make('url')
+                                    ->label('Resim URL')
+                                    ->url()
+                                    ->placeholder('https://…/foto.jpg')
+                            )
+                            ->reorderable()
+                            ->addActionLabel('Resim linki ekle')
+                            ->columnSpanFull()
+                            ->helperText('Yüklemek yerine dış resim adresi yapıştır · yüklenenlerden SONRA galeriye eklenir'),
                         TextInput::make('video_url')
                             ->label('Tanıtım videosu (YouTube URL)')
                             ->url()
