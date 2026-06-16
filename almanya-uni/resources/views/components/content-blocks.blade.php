@@ -12,6 +12,9 @@
         $__firstBlock = false;
         return $html;
     };
+    // Array-safe metin: AI/import bazı alanları (forum başlığı, url…) yanlışlıkla dizi
+    // üretebiliyor; doğrudan {{ }} ile basınca e(Array) → 500. Diziyi güvenle string'e indir.
+    $txt = fn ($v) => is_array($v) ? implode(' ', array_filter($v, 'is_scalar')) : (string) ($v ?? '');
 @endphp
 
 @if(empty($blocks))
@@ -74,7 +77,7 @@
                     <img src="{{ $block['url'] }}" alt="{{ $block['alt'] ?? '' }}" loading="lazy"
                          class="max-w-full max-h-[520px] w-auto h-auto object-contain"/>
                     @if(!empty($block['caption']))
-                        <figcaption class="text-sm text-gray-700 p-3 italic w-full text-center">{{ $block['caption'] }}</figcaption>
+                        <figcaption class="text-sm text-gray-700 p-3 italic w-full text-center">{{ $txt($block['caption']) }}</figcaption>
                     @endif
                 </figure>
             @endif
@@ -144,7 +147,7 @@
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                     </div>
                     @if(!empty($block['caption']))
-                        <p class="text-sm text-gray-700 mt-2 text-center">{{ $block['caption'] }}</p>
+                        <p class="text-sm text-gray-700 mt-2 text-center">{{ $txt($block['caption']) }}</p>
                     @endif
                 </section>
             @elseif($videoUrl)
@@ -197,7 +200,7 @@
                         </table>
                     </div>
                     @if(!empty($block['caption']))
-                        <p class="text-xs text-gray-600 mt-2">{{ $block['caption'] }}</p>
+                        <p class="text-xs text-gray-600 mt-2">{{ $txt($block['caption']) }}</p>
                     @endif
                 </section>
             @endif
@@ -216,7 +219,7 @@
                                     <span class="text-sm text-gray-600 font-normal">{{ $item['currency'] ?? ($block['currency'] ?? '€') }}</span>
                                 </div>
                                 @if(!empty($item['note']))
-                                    <div class="text-xs text-gray-700 mt-1">{{ $item['note'] }}</div>
+                                    <div class="text-xs text-gray-700 mt-1">{{ $txt($item['note']) }}</div>
                                 @endif
                             </div>
                         @endforeach
@@ -230,7 +233,7 @@
                         </div>
                     @endif
                     @if(!empty($block['note']))
-                        <p class="text-xs text-gray-700 italic mt-2">{{ $block['note'] }}</p>
+                        <p class="text-xs text-gray-700 italic mt-2">{{ $txt($block['note']) }}</p>
                     @endif
                 </section>
             @endif
@@ -282,7 +285,7 @@
                                         <span class="text-xs text-primary-700 font-medium uppercase tracking-wide">{{ $placeTypeLabel }}</span>
                                     @endif
                                     @if(!empty($place['description']))
-                                        <p class="text-sm text-gray-700 mt-1">{{ $place['description'] }}</p>
+                                        <p class="text-sm text-gray-700 mt-1">{{ $txt($place['description']) }}</p>
                                     @endif
                                     @if(!empty($place['url']))
                                         <a href="{{ $place['url'] }}" target="_blank" rel="noopener"
@@ -397,14 +400,14 @@
                     <ul class="space-y-2">
                         @foreach($block['items'] ?? [] as $t)
                             <li>
-                                <a href="{{ $t['url'] }}"
+                                <a href="{{ $txt($t['url'] ?? '#') }}"
                                    class="group flex items-start justify-between gap-3 bg-white ring-1 ring-primary-100 hover:ring-primary-400 hover:shadow-md rounded-lg p-3 transition">
                                     <div class="flex-1 min-w-0">
                                         <h3 class="font-semibold text-gray-900 group-hover:text-primary-700 leading-snug">
-                                            {{ $t['title'] }}
+                                            {{ $txt($t['title'] ?? '') }}
                                         </h3>
                                         @if(!empty($t['last_post']))
-                                            <p class="text-xs text-gray-500 mt-0.5">{{ __('Last activity:') }} {{ $t['last_post'] }}</p>
+                                            <p class="text-xs text-gray-500 mt-0.5">{{ __('Last activity:') }} {{ $txt($t['last_post']) }}</p>
                                         @endif
                                     </div>
                                     <div class="text-right text-xs text-gray-600 shrink-0">
@@ -430,20 +433,20 @@
                     <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
                         <h2 @if($blockId) id="{{ $blockId }}" @endif class="text-xl font-bold text-gray-900 scroll-mt-24 inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-5 h-5 text-violet-600" /> {{ $block['h'] ?? __('Community Discussions') }}</h2>
                         @if(!empty($block['source']))
-                            <span class="text-xs text-violet-700 font-medium uppercase tracking-wide">{{ __('Source:') }} {{ $block['source'] }}</span>
+                            <span class="text-xs text-violet-700 font-medium uppercase tracking-wide">{{ __('Source:') }} {{ $txt($block['source']) }}</span>
                         @endif
                     </div>
                     <ul class="space-y-2">
                         @foreach($block['items'] ?? [] as $t)
                             <li>
-                                <a href="{{ $t['url'] }}" target="_blank" rel="noopener nofollow"
+                                <a href="{{ $txt($t['url'] ?? '#') }}" target="_blank" rel="noopener nofollow"
                                    class="group flex items-start justify-between gap-3 bg-white ring-1 ring-violet-100 hover:ring-violet-300 hover:shadow-md rounded-lg p-3 transition">
                                     <div class="flex-1 min-w-0">
                                         <h3 class="font-semibold text-gray-900 group-hover:text-violet-700 leading-snug">
-                                            {{ $t['title'] }}
+                                            {{ $txt($t['title'] ?? '') }}
                                         </h3>
                                         @if(!empty($t['category']))
-                                            <span class="inline-block text-xs text-violet-700 mt-1 uppercase tracking-wide">{{ str_replace('_', ' ', $t['category']) }}</span>
+                                            <span class="inline-block text-xs text-violet-700 mt-1 uppercase tracking-wide">{{ str_replace('_', ' ', $txt($t['category'])) }}</span>
                                         @endif
                                     </div>
                                     <div class="text-right text-xs text-gray-600 shrink-0">
