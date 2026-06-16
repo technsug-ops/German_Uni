@@ -170,6 +170,11 @@
             </section>
         @endif
 
+        {{-- Spesifik gereklilik verisi yoksa → degree+dile göre standart rehber (render-zamanı, dürüst) --}}
+        @if (empty($program->qualification_requirements_tr) && empty($program->language_requirements_tr) && empty($program->required_documents_tr))
+            <x-program-requirements-guide :degree="$program->degree" :language="$program->language" />
+        @endif
+
         {{-- İlgili Meslekler (BERUFENET) --}}
         @if (! empty($program->subjects) || $program->field)
             <section class="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-xl p-6">
