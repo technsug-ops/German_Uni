@@ -32,6 +32,9 @@ class ContentMaintain extends Command
         $this->line('▶ programs:fix-data');
         $this->call('programs:fix-data', $fixOpts);
 
+        $this->line('▶ programs:reparse-deadlines');
+        $this->call('programs:reparse-deadlines', $fixOpts);
+
         $this->line('▶ universities:fix-cities');
         $this->call('universities:fix-cities', $fixOpts);
 
