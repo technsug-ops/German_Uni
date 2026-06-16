@@ -33,6 +33,8 @@ return new class extends Migration
             [926, 'Heide',          16],
         ];
         foreach ($create as [$uniId, $name, $stateId]) {
+            // FK-güvenli: state yoksa (ör. boş test DB) null bırak — FK ihlali olmasın.
+            $stateId = DB::table('states')->where('id', $stateId)->exists() ? $stateId : null;
             // Zaten varsa (idempotent) tekrar oluşturma
             $existing = DB::table('cities')->where('name_de', $name)->value('id');
             $cityId = $existing ?: DB::table('cities')->insertGetId([
