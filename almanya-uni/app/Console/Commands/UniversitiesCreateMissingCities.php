@@ -31,6 +31,12 @@ class UniversitiesCreateMissingCities extends Command
         $apply = $this->option('apply');
         $this->info($apply ? '🔥 APPLY' : '🔍 DRY-RUN');
 
+        // University Scout (Searchable) — prod'da Meilisearch yoksa update'te 405 fırlatır.
+        // UniversitiesAudit vb. ile aynı koruma.
+        if ($apply && method_exists(University::class, 'disableSearchSyncing')) {
+            University::disableSearchSyncing();
+        }
+
         $unis = University::where('is_active', 1)->whereNull('city_id')->whereNotNull('wikidata_id')
             ->get(['id', 'slug', 'name_de', 'wikidata_id']);
         $this->line("Şehirsiz + wikidata'lı üni: {$unis->count()}");
@@ -64,7 +70,7 @@ class UniversitiesCreateMissingCities extends Command
 
             if ($city) {
                 $this->line("  ↪ bağla #{$u->id} {$u->name_de} → mevcut «{$city->name_de}» (#{$city->id})");
-                if ($apply) $u->update(['city_id' => $city->id]);
+                if ($apply) University::whereKey($u->id)->update(['city_id' => $city->id]);
                 $linked++;
                 continue;
             }
@@ -84,7 +90,7 @@ class UniversitiesCreateMissingCities extends Command
                     'longitude'   => $info['longitude'],
                     'is_active'   => true,
                 ]);
-                $u->update(['city_id' => $newCity->id]);
+                University::whereKey($u->id)->update(['city_id' => $newCity->id]);
             }
             $created++;
         }
