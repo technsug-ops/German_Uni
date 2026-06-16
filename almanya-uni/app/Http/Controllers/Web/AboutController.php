@@ -99,6 +99,13 @@ class AboutController extends Controller
      * "Bizi linkleyin / Basın" — backlink mıknatısı. Hazır link/markdown/rozet
      * kodları + alıntılanabilir istatistikler (program-merkezli). Her embed = backlink.
      */
+    public function advisoryBoard(): View
+    {
+        $advisors = \App\Models\Advisor::active()->orderBy('sort_order')->get();
+
+        return view('about.advisory-board', ['advisors' => $advisors]);
+    }
+
     public function linkToUs(): View
     {
         $totals = cache()->remember('linktous.totals:' . app()->getLocale(), now()->addHours(12), fn () => [

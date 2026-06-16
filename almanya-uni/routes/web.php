@@ -54,6 +54,8 @@ $routes = function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
     Route::get('/team', [AboutController::class, 'team'])->name('team');
+    Route::get('/advisory-board', [AboutController::class, 'advisoryBoard'])->name('advisory-board');
+    Route::redirect('/danisma-kurulu', '/advisory-board', 301);
     Route::redirect('/ekip', '/team', 301);
     Route::get('/author/{slug}', [AboutController::class, 'author'])->name('author.show');
     Route::redirect('/yazar/{slug}', '/author/{slug}', 301);

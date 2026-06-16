@@ -263,6 +263,9 @@
     </div>
 </section>
 
+{{-- ============ ADVISORY BOARD (aktif danışman varsa görünür) ============ --}}
+<x-advisory-board-section />
+
 {{-- ============ RECENT POSTS ============ --}}
 @if (! empty($recentPosts) && $recentPosts->count() > 0)
     <section class="bg-gradient-to-br from-gray-50 to-white border-t border-gray-200">
