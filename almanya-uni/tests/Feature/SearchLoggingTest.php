@@ -44,12 +44,14 @@ class SearchLoggingTest extends TestCase
 
     public function test_normal_sorgu_breakdown_ile_loglanir(): void
     {
-        $this->get('/tr/search?q=hamburg')->assertStatus(200);
+        // Eşleşmeyen sorgu kullan: migration'lar içerik (post/şehir/eyalet) seed eder,
+        // gerçek bir kelime (ör. "hamburg") fulltext'te eşleşip results_count'u bozar.
+        $this->get('/tr/search?q=zqxwvnomatch')->assertStatus(200);
 
         $logged = SearchQuery::first();
         $this->assertNotNull($logged);
-        $this->assertSame('hamburg', $logged->query);            // mb_strtolower
-        $this->assertSame(0, (int) $logged->results_count);       // boş DB → 0 sonuç
+        $this->assertSame('zqxwvnomatch', $logged->query);        // mb_strtolower
+        $this->assertSame(0, (int) $logged->results_count);       // eşleşmeyen sorgu → 0 sonuç
         $this->assertIsArray($logged->breakdown);                 // tür kırılımı JSON
         $this->assertArrayHasKey('universities', $logged->breakdown);
     }
