@@ -8,6 +8,8 @@ use App\Services\Content\CommunityInsightsService;
 
 class UniversityEnrichmentService
 {
+    use \App\Services\Enrichment\Concerns\FetchesSourceSnippet;
+
     public function __construct(
         private WikipediaExtract $wiki,
         private AiContentBlockGenerator $ai,
@@ -18,7 +20,10 @@ class UniversityEnrichmentService
     /**
      * Bir üniversite için tam içerik üret + content_blocks JSON'a kaydet.
      */
-    public function enrich(University $uni, bool $force = false): array
+    /**
+     * @param string[] $sourceUrls Küratörlü ek kaynak linkleri (resmi üni sitesi, iyi makale…).
+     */
+    public function enrich(University $uni, bool $force = false, array $sourceUrls = []): array
     {
         if (!$force && $uni->last_enriched_at && $uni->last_enriched_at->diffInDays(now()) < 30) {
             return ['success' => false, 'error' => 'Yakın zamanda enrich edildi'];
@@ -47,6 +52,9 @@ class UniversityEnrichmentService
                 }
             }
         }
+
+        // 1b. Küratörlü kaynaklar (resmi üni sitesi vb.) — otoriter ek grounding.
+        $sourceText = $this->appendSourceSnippets($sourceText, $sourceUrls);
 
         // 2. DB context
         $city = $uni->city;

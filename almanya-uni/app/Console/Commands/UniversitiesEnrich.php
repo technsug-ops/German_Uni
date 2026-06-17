@@ -14,6 +14,7 @@ class UniversitiesEnrich extends Command
         {--only-without : Sadece content_blocks NULL olanlar}
         {--top-by-students=0 : Sadece öğrenci sayısına göre en büyük N üni}
         {--slug= : Sadece tek bir üni (slug ile)}
+        {--source=* : Küratörlü kaynak URL\'i (resmi üni sitesi/iyi makale) — grounding, --slug ile}
         {--type= : Sadece belirli tipte (public, private, applied_sciences, art, religion)}
         {--sleep=2 : Her enrich arasında bekleme (saniye)}';
 
@@ -66,7 +67,7 @@ class UniversitiesEnrich extends Command
             $this->line($label . ' …');
 
             try {
-                $result = $svc->enrich($uni, (bool) $this->option('force'));
+                $result = $svc->enrich($uni, (bool) $this->option('force'), (array) $this->option('source'));
                 if ($result['success']) {
                     $this->info("  ✅ {$result['blocks_count']} blok · " . ($result['tokens']['output'] ?? 0) . ' token');
                     $success++;

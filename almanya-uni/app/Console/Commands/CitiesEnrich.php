@@ -14,6 +14,7 @@ class CitiesEnrich extends Command
         {--only-without : Sadece content_blocks NULL olan şehirler}
         {--min-unis=1 : En az N üniversitesi olan şehirler}
         {--slug= : Sadece tek bir şehir (slug ile)}
+        {--source=* : Küratörlü kaynak URL\'i (resmi site/iyi makale) — grounding için, --slug ile birlikte}
         {--sleep=2 : Gemini API\'yi yormamak için her enrich arasında bekleme (saniye)}';
 
     protected $description = 'Birden fazla şehir için Wikipedia + AI ile zengin content_blocks üret';
@@ -69,7 +70,7 @@ class CitiesEnrich extends Command
             $this->line($label . ' …');
 
             try {
-                $result = $svc->enrich($city, (bool) $this->option('force'));
+                $result = $svc->enrich($city, (bool) $this->option('force'), (array) $this->option('source'));
                 if ($result['success']) {
                     $this->info("  ✅ {$result['blocks_count']} blok · " . ($result['tokens']['output'] ?? 0) . ' token');
                     $success++;

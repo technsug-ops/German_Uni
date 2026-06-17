@@ -8,6 +8,8 @@ use App\Services\Content\CommunityInsightsService;
 
 class CityEnrichmentService
 {
+    use \App\Services\Enrichment\Concerns\FetchesSourceSnippet;
+
     public function __construct(
         private WikipediaExtract $wiki,
         private AiContentBlockGenerator $ai,
@@ -15,7 +17,11 @@ class CityEnrichmentService
         private AlmanyaUniForumSearch $auForum,
     ) {}
 
-    public function enrich(City $city, bool $force = false): array
+    /**
+     * @param string[] $sourceUrls Küratörlü ek kaynak linkleri (resmi site, iyi makaleler…).
+     *                             İçerik bu otoriter kaynaklara grounding'lenir (kullanıcı onaylı).
+     */
+    public function enrich(City $city, bool $force = false, array $sourceUrls = []): array
     {
         if (!$force && $city->last_enriched_at && $city->last_enriched_at->diffInDays(now()) < 30) {
             return ['success' => false, 'error' => 'Yakın zamanda enrich edildi'];
@@ -33,6 +39,9 @@ class CityEnrichmentService
                 $heroImage = $r['thumbnail_url'];
             }
         }
+
+        // 1b. Küratörlü kaynaklar (verilirse) — otoriter ek grounding (meta açıklama + ana metin).
+        $sourceText = $this->appendSourceSnippets($sourceText, $sourceUrls);
 
         // 2. DB context
         $state = $city->state;
