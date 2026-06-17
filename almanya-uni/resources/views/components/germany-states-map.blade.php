@@ -90,8 +90,12 @@
         'hamburg':                 { x: -58, y: 112 },
         'freie-hansestadt-bremen': { x: -58, y: 232 },
         'berlin':                  { x: 652, y: 205 },
-        'saarland':                { x: -55, y: 512 }
+        'saarland':                { x: -78, y: 615 }   // sol-alt çapraz
     };
+    // Büyük eyaletlerde arma daha büyük olsun
+    var BIG = { 'bayern': 64, 'baden-wurttemberg': 62 };
+    // Arma konum ince-ayarı (merkez kayması)
+    var OFFSET = { 'brandenburg': { dx: 4, dy: 34 } };
 
     function place(svg, a) {
         if (a.dataset.emblem) return;
@@ -101,7 +105,9 @@
         try { bb = path.getBBox(); } catch (e) { return; }
         if (!bb || !bb.width) return;
         var cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2;
-        var co = CALLOUT[slug], w, x, y;
+        var co = CALLOUT[slug], off = OFFSET[slug] || { dx: 0, dy: 0 };
+        var px = co ? co.x : cx + off.dx, py = co ? co.y : cy + off.dy;
+        var w, x, y;
 
         if (co) {
             // kesikli çizgi: eyalet merkezinden kenardaki armaya
@@ -114,11 +120,11 @@
             dot.setAttribute('cx', cx); dot.setAttribute('cy', cy); dot.setAttribute('r', 2.6);
             dot.setAttribute('class', 'gm-dot');
             svg.appendChild(dot);
-            w = 54; x = co.x - w / 2; y = co.y - (w * 1.2) / 2;
+            w = 54;
         } else {
-            w = Math.max(28, Math.min(bb.width * 0.5, 48));
-            x = cx - w / 2; y = cy - (w * 1.2) / 2;
+            w = BIG[slug] || Math.max(28, Math.min(bb.width * 0.5, 48));
         }
+        x = px - w / 2; y = py - (w * 1.2) / 2;
 
         var img = document.createElementNS(SVGNS, 'image');
         img.setAttribute('href', coa);
@@ -133,7 +139,7 @@
         // Armanın altına eyalet adı (beyaz haleli, renkli zeminde okunur)
         var label = document.createElementNS(SVGNS, 'text');
         label.textContent = a.getAttribute('data-name');
-        label.setAttribute('x', co ? co.x : cx);
+        label.setAttribute('x', px);
         label.setAttribute('y', y + w * 1.2 + 11);
         label.setAttribute('class', 'gm-label');
         svg.appendChild(label);
