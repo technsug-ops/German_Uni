@@ -112,12 +112,21 @@ class BlogController extends Controller
             ->get(['id', 'name', 'slug', 'avatar_url', 'role_label', 'role_label_en', 'role_label_de']);
     }
 
-    public function show(string $slug): View
+    public function show(string $slug)
     {
         $post = Post::published()
             ->with(['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'category', 'approvedComments'])
             ->where('slug', $slug)
-            ->firstOrFail();
+            ->first();
+
+        // İngilizce-slug geçişi: eski Türkçe slug → yeni slug 301 (404 yok, SEO/indeks korunur).
+        if (! $post) {
+            $redir = \Illuminate\Support\Facades\DB::table('blog_redirects')->where('from_slug', $slug)->first();
+            if ($redir) {
+                return redirect()->to(url($redir->locale . '/blog/' . $redir->to_slug), 301);
+            }
+            abort(404);
+        }
 
         Post::where('id', $post->id)->increment('view_count');
 
