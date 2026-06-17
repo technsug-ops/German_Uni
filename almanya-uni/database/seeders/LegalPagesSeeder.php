@@ -49,7 +49,7 @@ Deutschland
 ## İletişim
 
 - **Telefon:** +49 6171 277 51 37
-- **E-posta:** info@almanyauni.com
+- **E-posta:** admin@applytogerman.com
 - **Web:** https://almanyauni.com · https://applytogerman.com
 
 ## Ticaret Sicili
@@ -136,7 +136,7 @@ GDPR Madde 4(7) ve KVKK Madde 3 uyarınca veri sorumlusu:
 
 **TechNS UG (haftungsbeschränkt)**
 Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland
-E-posta: info@almanyauni.com — Tel: +49 6171 277 51 37
+E-posta: admin@applytogerman.com — Tel: +49 6171 277 51 37
 
 Veri koruma görevlimiz (Datenschutzbeauftragter) henüz atanmamıştır; sorularınızı doğrudan yukarıdaki adrese yöneltebilirsiniz.
 
@@ -195,7 +195,7 @@ Detaylar için [Çerez Politikası](/cookie-policy) sayfamızı inceleyin. Kısa
 - **İtiraz hakkı** — Meşru menfaate dayalı işlemeye itiraz
 - **Şikayet hakkı** — Hessischer Datenschutzbeauftragter (HBDI) veya KVKK Kurumu'na şikayet
 
-Talepleriniz için: **info@almanyauni.com**
+Talepleriniz için: **admin@applytogerman.com**
 
 ## 8. SSL/TLS Şifreleme
 
@@ -217,7 +217,7 @@ In the sense of Art. 4(7) GDPR and Turkey's KVKK Art. 3, the data controller is:
 
 **TechNS UG (haftungsbeschränkt)**
 Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Germany
-Email: info@applytogerman.com — Phone: +49 6171 277 51 37
+Email: admin@applytogerman.com — Phone: +49 6171 277 51 37
 
 We have not appointed a Data Protection Officer (Datenschutzbeauftragter); inquiries may be directed to the address above.
 
@@ -276,7 +276,7 @@ See our [Cookie Policy](/en/cookie-policy). Summary:
 - **Objection** — Object to processing based on legitimate interest
 - **Complaint** — File with the Hessian DPA (HBDI) or KVKK Authority
 
-Contact: **info@applytogerman.com**
+Contact: **admin@applytogerman.com**
 
 ## 8. SSL/TLS Encryption
 
@@ -298,7 +298,7 @@ Verantwortlich gemäß Art. 4(7) DSGVO:
 
 **TechNS UG (haftungsbeschränkt)**
 Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland
-E-Mail: info@applytogerman.com — Telefon: +49 6171 277 51 37
+E-Mail: admin@applytogerman.com — Telefon: +49 6171 277 51 37
 
 Ein Datenschutzbeauftragter wurde nicht bestellt; Anfragen richten Sie bitte direkt an die obige Adresse.
 
@@ -357,7 +357,7 @@ Details siehe unsere [Cookie-Richtlinie](/de/cookie-policy). Kurz:
 - **Widerspruch** — Gegen Verarbeitung auf Grundlage berechtigten Interesses
 - **Beschwerderecht** — Beim Hessischen Beauftragten für Datenschutz (HBDI)
 
-Kontakt: **info@applytogerman.com**
+Kontakt: **admin@applytogerman.com**
 
 ## 8. SSL/TLS-Verschlüsselung
 
@@ -433,7 +433,7 @@ Site içeriği (metinler, görseller, kod, tasarım) **Alman Telif Hakkı Yasas�
 - DAAD verisi — kamuya açık API
 - Üniversite logoları — Wikimedia Commons üzerinden, ilgili lisansla
 
-**İhlal şüphesi varsa:** info@almanyauni.com adresine yazın, hemen kaldıralım.
+**İhlal şüphesi varsa:** admin@applytogerman.com adresine yazın, hemen kaldıralım.
 
 ## Sorumluluk Sınırlandırması
 
@@ -445,7 +445,7 @@ Almanya yasaları geçerlidir. İhtilaf halinde yargı yeri Bad Homburg / Hessen
 
 ## Şikayet ve Düzeltme
 
-İçerikte yanlış, eksik veya güncel olmayan bilgi gördüğünüzde **info@almanyauni.com**'a yazın. İncelenip 7 iş günü içinde dönüş yaparız.
+İçerikte yanlış, eksik veya güncel olmayan bilgi gördüğünüzde **admin@applytogerman.com**'a yazın. İncelenip 7 iş günü içinde dönüş yaparız.
 MD;
 
         $en = <<<'MD'
@@ -495,7 +495,7 @@ Site content (text, images, code, design) is subject to **German Copyright Law (
 - DAAD data — public API
 - University logos — via Wikimedia Commons under respective licenses
 
-**Suspected infringement:** Email info@applytogerman.com and we will remove it promptly.
+**Suspected infringement:** Email admin@applytogerman.com and we will remove it promptly.
 
 ## Limitation of Liability
 
@@ -507,7 +507,7 @@ German law applies. Place of jurisdiction in case of dispute is Bad Homburg / He
 
 ## Complaints & Corrections
 
-If you spot inaccurate, incomplete, or outdated information, email **info@applytogerman.com**. We review and respond within 7 business days.
+If you spot inaccurate, incomplete, or outdated information, email **admin@applytogerman.com**. We review and respond within 7 business days.
 MD;
 
         $de = <<<'MD'
@@ -557,7 +557,7 @@ Inhalte (Texte, Bilder, Code, Design) unterliegen dem **Urheberrechtsgesetz (Urh
 - DAAD-Daten — öffentliche API
 - Hochschullogos — über Wikimedia Commons unter jeweiligen Lizenzen
 
-**Bei Verdacht auf Verletzung:** E-Mail an info@applytogerman.com — wir entfernen unverzüglich.
+**Bei Verdacht auf Verletzung:** E-Mail an admin@applytogerman.com — wir entfernen unverzüglich.
 
 ## Haftungsbeschränkung
 
@@ -569,7 +569,7 @@ Es gilt deutsches Recht. Gerichtsstand bei Streitigkeiten ist Bad Homburg / Hess
 
 ## Beschwerden & Korrekturen
 
-Wenn Sie ungenaue, unvollständige oder veraltete Informationen bemerken, schreiben Sie an **info@applytogerman.com**. Wir prüfen und antworten innerhalb von 7 Werktagen.
+Wenn Sie ungenaue, unvollständige oder veraltete Informationen bemerken, schreiben Sie an **admin@applytogerman.com**. Wir prüfen und antworten innerhalb von 7 Werktagen.
 MD;
 
         return [
@@ -659,7 +659,7 @@ Bu koşulların bir maddesi geçersiz sayılırsa, diğer maddeler geçerli kal�
 
 ## 12. İletişim
 
-Sorularınız için: **info@almanyauni.com**
+Sorularınız için: **admin@applytogerman.com**
 MD;
 
         $en = <<<'MD'
@@ -735,7 +735,7 @@ If a clause is held invalid, the remaining clauses remain in effect.
 
 ## 12. Contact
 
-Questions: **info@applytogerman.com**
+Questions: **admin@applytogerman.com**
 MD;
 
         $de = <<<'MD'
@@ -811,7 +811,7 @@ Unwirksame Bestimmungen berühren nicht die Wirksamkeit der übrigen Klauseln.
 
 ## 12. Kontakt
 
-Fragen: **info@applytogerman.com**
+Fragen: **admin@applytogerman.com**
 MD;
 
         return [
@@ -859,7 +859,7 @@ Sayfa açılışında çerez banner'ı görürsünüz. **Kabul Et** veya **Redde
 
 ## İletişim
 
-Sorularınız için: info@almanyauni.com
+Sorularınız için: admin@applytogerman.com
 MD;
 
         $en = str_replace([
@@ -869,7 +869,7 @@ MD;
             'Sayfa açılışında çerez banner\'ı görürsünüz. **Kabul Et** veya **Reddet** seçeneklerinden birini kullanabilirsiniz. Tercihinizi istediğinizde değiştirebilirsiniz (tarayıcı çerezlerini silerek banner yeniden çıkar).',
             'İsim', 'Amaç', 'Süre', 'Tip', 'Oturum', 'CSRF güvenliği', 'Oturum yönetimi', '2 saat', 'Zorunlu', 'Analitik (onay sonrası)', 'Onay durumu kaydı', 'Anonim ziyaretçi takip', '1 yıl',
             '**Yok.** Google Analytics, Facebook Pixel veya benzer kullanmıyoruz. Self-hosted analitik tercih ediyoruz.',
-            'Sorularınız için: info@almanyauni.com',
+            'Sorularınız için: admin@applytogerman.com',
         ], [
             'What is a cookie?', 'Which cookies do we use?', 'Your control', 'Detailed list', 'Third parties', 'Contact',
             'Essential cookies:', 'Analytics cookies:', 'Marketing cookies:',
@@ -877,7 +877,7 @@ MD;
             'On first visit you see a cookie banner. Use **Accept** or **Reject**. You can change your preference anytime by clearing cookies.',
             'Name', 'Purpose', 'Duration', 'Type', 'Session', 'CSRF protection', 'Session management', '2 hours', 'Essential', 'Analytics (after consent)', 'Consent record', 'Anonymous visitor tracking', '1 year',
             '**None.** We do not use Google Analytics, Facebook Pixel, or similar. We prefer self-hosted analytics.',
-            'Questions: info@applytogerman.com',
+            'Questions: admin@applytogerman.com',
         ], $tr);
 
         $de = str_replace([
@@ -887,7 +887,7 @@ MD;
             'Sayfa açılışında çerez banner\'ı görürsünüz. **Kabul Et** veya **Reddet** seçeneklerinden birini kullanabilirsiniz. Tercihinizi istediğinizde değiştirebilirsiniz (tarayıcı çerezlerini silerek banner yeniden çıkar).',
             'İsim', 'Amaç', 'Süre', 'Tip', 'Oturum', 'CSRF güvenliği', 'Oturum yönetimi', '2 saat', 'Zorunlu', 'Analitik (onay sonrası)', 'Onay durumu kaydı', 'Anonim ziyaretçi takip', '1 yıl',
             '**Yok.** Google Analytics, Facebook Pixel veya benzer kullanmıyoruz. Self-hosted analitik tercih ediyoruz.',
-            'Sorularınız için: info@almanyauni.com',
+            'Sorularınız için: admin@applytogerman.com',
         ], [
             'Was sind Cookies?', 'Welche Cookies nutzen wir?', 'Ihre Kontrolle', 'Detaillierte Liste', 'Drittanbieter', 'Kontakt',
             'Notwendige Cookies:', 'Statistik-Cookies:', 'Marketing-Cookies:',
@@ -895,7 +895,7 @@ MD;
             'Beim ersten Besuch sehen Sie ein Cookie-Banner. Nutzen Sie **Akzeptieren** oder **Ablehnen**. Sie können Ihre Auswahl jederzeit ändern, indem Sie Cookies löschen.',
             'Name', 'Zweck', 'Dauer', 'Typ', 'Session', 'CSRF-Schutz', 'Session-Verwaltung', '2 Stunden', 'Notwendig', 'Statistik (nach Einwilligung)', 'Einwilligungsstatus', 'Anonyme Besucher-Erkennung', '1 Jahr',
             '**Keine.** Wir nutzen kein Google Analytics, Facebook Pixel o. ä. Wir bevorzugen self-hosted Analytik.',
-            'Fragen: info@applytogerman.com',
+            'Fragen: admin@applytogerman.com',
         ], $tr);
 
         return [

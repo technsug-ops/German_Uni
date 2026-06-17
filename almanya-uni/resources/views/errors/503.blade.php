@@ -20,7 +20,7 @@
 
         <p class="text-sm text-gray-500">
             {{ __('For urgent matters:') }}
-            <a href="mailto:info@{{ str_replace('www.', '', request()->getHost()) }}" class="text-primary-600 hover:underline">info@{{ str_replace('www.', '', request()->getHost()) }}</a>
+            <a href="mailto:admin@applytogerman.com" class="text-primary-600 hover:underline">admin@applytogerman.com</a>
         </p>
     </div>
 </section>

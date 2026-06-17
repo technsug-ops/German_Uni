@@ -70,7 +70,7 @@
         <span>
             {{ __('Last updated:') }} {{ optional($page->updated_at)->format('d.m.Y H:i') }}
         </span>
-        <a href="mailto:info@{{ str_replace('www.', '', request()->getHost()) }}" class="text-primary-600 hover:underline">
+        <a href="mailto:admin@applytogerman.com" class="text-primary-600 hover:underline">
             {{ __('Questions about this page?') }}
         </a>
     </div>
