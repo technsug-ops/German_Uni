@@ -11,6 +11,9 @@ class DeadlineParser
         'april' => 4, 'apr' => 4, 'may' => 5, 'june' => 6, 'jun' => 6, 'july' => 7, 'jul' => 7,
         'august' => 8, 'aug' => 8, 'september' => 9, 'sep' => 9, 'sept' => 9, 'october' => 10, 'oct' => 10,
         'november' => 11, 'nov' => 11, 'december' => 12, 'dec' => 12,
+        // Almanca ay adları (admission_summary bazen Almanca)
+        'januar' => 1, 'februar' => 2, 'märz' => 3, 'maerz' => 3, 'mai' => 5, 'juni' => 6,
+        'juli' => 7, 'oktober' => 10, 'dezember' => 12,
     ];
 
     /**
@@ -49,33 +52,73 @@ class DeadlineParser
         return trim($s);
     }
 
+    // Dönem indikatörleri — "semester"a ek olarak "intake", Almanca terimler, intake-ayı.
+    // Wintersemester ~Ekim başlar → october/winter; Sommersemester ~Nisan → april/summer.
+    private const SEM_INDICATORS = [
+        'winter' => ['winter semester', 'winter-semester', 'wintersemester', 'winter intake', 'winter term', 'october intake', 'autumn intake', 'fall intake'],
+        'summer' => ['summer semester', 'summer-semester', 'sommersemester', 'summer intake', 'summer term', 'april intake', 'spring intake'],
+    ];
+
     /**
-     * Cümleyi semester kelimesine göre kesip o pencerede en uygun tarihi yakala.
+     * Metinde dönem indikatörünü bulup ona EN YAKIN tarihi yakala. "En yakın" kritik:
+     * "1 February (April intake) or 15 August (October intake)" gibi iki tarihli
+     * cümlede her dönem doğru tarihi alsın (latest değil — yanlış eşleşmeyi önler).
      */
     private function extractDateForSemester(string $text, string $semester): ?string
     {
-        if (!str_contains($text, $semester . ' semester') && !str_contains($text, $semester . '-semester')) {
-            return null;
-        }
+        $indicators = self::SEM_INDICATORS[$semester] ?? [];
+        // Cümlelere böl — ama "15. Juli" gibi tarihteki noktada BÖLME (rakam+nokta korunur).
+        $sentences = preg_split('/(?<=[.!?\n])(?<!\d\.)\s+/u', $text) ?: [$text];
 
-        $pattern = '/(?P<phrase>(?:[^.\n]{0,200}?))\b' . $semester . '[\s\-]semester/u';
-        if (!preg_match_all($pattern, $text, $matches)) {
-            return null;
-        }
-
-        $bestDate = null;
-        foreach ($matches['phrase'] as $phrase) {
-            $window = mb_substr($text, max(0, mb_strpos($text, $phrase) - 80), mb_strlen($phrase) + 80);
-            $date = $this->extractDate($window);
-            if ($date) {
-                // En geç tarihi al (en muhafazakar)
-                if (!$bestDate || strtotime($date) > strtotime($bestDate)) {
-                    $bestDate = $date;
+        $best = null;
+        $bestDist = PHP_INT_MAX;
+        foreach ($sentences as $sent) {
+            $low = mb_strtolower($sent);
+            foreach ($indicators as $ind) {
+                $ipos = mb_strpos($low, $ind);
+                if ($ipos === false) continue;
+                // İndikatörü içeren CÜMLEDE, ona EN YAKIN tarihi al (komşu cümleye taşma yok).
+                foreach ($this->extractDatesWithPos($sent) as [$date, $dpos]) {
+                    $dist = abs($dpos - $ipos);
+                    if ($dist < $bestDist) {
+                        $bestDist = $dist;
+                        $best = $date;
+                    }
                 }
             }
         }
+        return $best;
+    }
 
-        return $bestDate;
+    /**
+     * Penceredeki tüm tarihleri konumlarıyla döner: [[Y-m-d, pos], ...].
+     */
+    private function extractDatesWithPos(string $text): array
+    {
+        $monthsAlt = implode('|', array_keys(self::MONTHS_EN));
+        $patterns = [
+            "/\b(?P<day>\d{1,2})\s*\.?\s+(?P<month>$monthsAlt)\b/iu", // "15 July", "15. Juli"
+            "/\b(?P<month>$monthsAlt)\s+(?P<day>\d{1,2})\b/iu",        // "July 15"
+            "/\b(?P<day>\d{1,2})\.(?P<monthnum>\d{1,2})\.(?P<year>\d{4})?/u", // "15.07.2026"
+        ];
+
+        $out = [];
+        foreach ($patterns as $p) {
+            if (preg_match_all($p, $text, $ms, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+                foreach ($ms as $hit) {
+                    $day = (int) $hit['day'][0];
+                    $month = isset($hit['monthnum']) ? (int) $hit['monthnum'][0]
+                        : (self::MONTHS_EN[mb_strtolower($hit['month'][0])] ?? null);
+                    if (!$month || $day < 1 || $day > 31 || $month < 1 || $month > 12) continue;
+                    $year = isset($hit['year']) && $hit['year'][0] ? (int) $hit['year'][0] : $this->guessUpcomingYear($month, $day);
+                    try {
+                        $out[] = [\Carbon\Carbon::createFromDate($year, $month, $day)->toDateString(), (int) $hit[0][1]];
+                    } catch (\Throwable $e) {
+                    }
+                }
+            }
+        }
+        return $out;
     }
 
     private function extractDate(string $text): ?string

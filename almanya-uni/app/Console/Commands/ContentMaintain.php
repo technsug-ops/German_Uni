@@ -35,6 +35,10 @@ class ContentMaintain extends Command
         $this->line('▶ programs:reparse-deadlines');
         $this->call('programs:reparse-deadlines', $fixOpts);
 
+        // parse-deadlines flag'i ters (--dry-run); apply'da boş bırak (execute), değilse dry-run.
+        $this->line('▶ programs:parse-deadlines');
+        $this->call('programs:parse-deadlines', $apply ? [] : ['--dry-run' => true]);
+
         $this->line('▶ universities:fix-cities');
         $this->call('universities:fix-cities', $fixOpts);
 

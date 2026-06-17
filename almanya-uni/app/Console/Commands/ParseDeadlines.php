@@ -58,11 +58,12 @@ class ParseDeadlines extends Command
 
                 if (!$this->option('dry-run')) {
                     $updates = [];
-                    if ($r['winter']) {
+                    // overwrite YOKSA sadece BOŞ alanı doldur (mevcut doğru deadline'ı ezme).
+                    if ($r['winter'] && ($this->option('overwrite') || $p->application_deadline_winter === null)) {
                         $updates['application_deadline_winter'] = $r['winter'];
                         $stats['updated_winter']++;
                     }
-                    if ($r['summer']) {
+                    if ($r['summer'] && ($this->option('overwrite') || $p->application_deadline_summer === null)) {
                         $updates['application_deadline_summer'] = $r['summer'];
                         $stats['updated_summer']++;
                     }
