@@ -266,12 +266,15 @@ class SitemapController extends Controller
             ->orderBy('id')
             ->chunk(500, function ($chunk) use (&$urls) {
                 foreach ($chunk as $c) {
-                    $enriched = !empty($c->content_blocks);
+                    // İnce şehir (zengin content_blocks yok) → noindex'li, sitemap'e KOYMA.
+                    if (! is_array($c->content_blocks) || count($c->content_blocks) < 3) {
+                        continue;
+                    }
                     $urls[] = $this->entry(
                         route('cities.show', $c->slug),
                         $c->last_enriched_at ?: $c->updated_at,
-                        $enriched ? 'weekly' : 'monthly',
-                        $enriched ? 0.8 : 0.5
+                        'weekly',
+                        0.8
                     );
                 }
             });

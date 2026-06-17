@@ -20,6 +20,7 @@
     :description="$description"
     :image="$city->image_url ?: route('og.image', ['type' => 'city', 'slug' => $city->slug . '.png'])"
     type="website"
+    :noindex="$city->isThinForLocale()"
 />
 
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([

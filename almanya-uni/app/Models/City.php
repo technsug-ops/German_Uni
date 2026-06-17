@@ -35,6 +35,23 @@ class City extends Model
     ];
 
     /**
+     * Mevcut locale için içerik "ince" mi? (zenginleştirilmiş content_blocks yok/az)
+     * İnce şehir sayfaları noindex'lenir + sitemap'ten çıkarılır → Google crawl bütçesi
+     * ve kalite sinyali zengin sayfalara gider ("discovered-not-indexed" çözümü).
+     */
+    public function isThinForLocale(?string $locale = null): bool
+    {
+        $locale = $locale ?? app()->getLocale();
+        $col = match ($locale) {
+            'en' => 'content_blocks_en',
+            'de' => 'content_blocks_de',
+            default => 'content_blocks',
+        };
+        $blocks = $this->{$col};
+        return ! is_array($blocks) || count($blocks) < 3;
+    }
+
+    /**
      * Galeri görsel URL'leri: önce yüklenen fotoğraflar, sonra elle girilen dış URL'ler.
      * Yüklenenler storage path → public URL'e çevrilir; URL'ler olduğu gibi kalır.
      */
