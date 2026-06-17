@@ -162,14 +162,14 @@ class AboutController extends Controller
 
         $team = $founderUsers->map(fn ($u) => [
             'name'   => $u->name,
-            'role'   => __('Founder &amp; Developer'),
+            'role'   => __('Founder & Developer'),
             'bio'    => ($loc === 'tr' ? $u->bio : ($u->{'bio_' . $loc} ?? null))
                         ?: __('Built the platform to help international students navigate higher education in Germany. Manages product strategy and engineering.'),
             'image'  => $u->avatar_url,
             'avatar' => $initials($u->name),
             'color'  => 'accent',
             'social' => array_values(array_filter([
-                $u->id === 1 ? ['icon' => '✉️', 'label' => 'technsug@gmail.com', 'url' => 'mailto:technsug@gmail.com'] : null,
+                $u->id === 1 ? ['icon' => '✉️', 'label' => 'ceo@applytogerman.com', 'url' => 'mailto:ceo@applytogerman.com'] : null,
             ])),
         ])->values()->all();
 

@@ -72,51 +72,57 @@
 
 <script>
 (function () {
-    var fig = document.currentScript.closest('.gm-wrap');
-    if (!fig) return;
-    var svg = fig.querySelector('.gm-svg');
-    var tip = fig.querySelector('.gm-tip');
     var SVGNS = 'http://www.w3.org/2000/svg', XLINK = 'http://www.w3.org/1999/xlink';
 
-    // Armaları (Wappen) haritanın üstüne, her eyaletin merkezine yerleştir
-    function placeEmblems() {
-        fig.querySelectorAll('.gm-state').forEach(function (a) {
-            if (a.dataset.emblem) return;
-            var path = a.querySelector('path'), coa = a.getAttribute('data-coa');
-            if (!path || !coa) return;
-            var bb;
-            try { bb = path.getBBox(); } catch (e) { return; }
-            if (!bb || !bb.width) return;
-            var w = Math.max(20, Math.min(bb.width * 0.5, 34)), h = w * 1.2;
-            var img = document.createElementNS(SVGNS, 'image');
-            img.setAttribute('href', coa);
-            img.setAttributeNS(XLINK, 'xlink:href', coa);
-            img.setAttribute('width', w); img.setAttribute('height', h);
-            img.setAttribute('x', bb.x + bb.width / 2 - w / 2);
-            img.setAttribute('y', bb.y + bb.height / 2 - h / 2);
-            img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-            img.setAttribute('pointer-events', 'none');
-            img.setAttribute('class', 'gm-coa');
-            svg.appendChild(img);
-            a.dataset.emblem = '1';
+    function init() {
+        document.querySelectorAll('.gm-wrap').forEach(function (fig) {
+            var svg = fig.querySelector('.gm-svg');
+            var tip = fig.querySelector('.gm-tip');
+            if (!svg) return;
+
+            // Armaları (Wappen) haritanın üstüne, her eyaletin merkezine yerleştir
+            fig.querySelectorAll('.gm-state').forEach(function (a) {
+                if (a.dataset.emblem) return;
+                var path = a.querySelector('path'), coa = a.getAttribute('data-coa');
+                if (!path || !coa) return;
+                var bb;
+                try { bb = path.getBBox(); } catch (e) { return; }
+                if (!bb || !bb.width) return;
+                var w = Math.max(20, Math.min(bb.width * 0.5, 34)), h = w * 1.2;
+                var img = document.createElementNS(SVGNS, 'image');
+                img.setAttribute('href', coa);
+                img.setAttributeNS(XLINK, 'xlink:href', coa);
+                img.setAttribute('width', w); img.setAttribute('height', h);
+                img.setAttribute('x', bb.x + bb.width / 2 - w / 2);
+                img.setAttribute('y', bb.y + bb.height / 2 - h / 2);
+                img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                img.setAttribute('pointer-events', 'none');
+                img.setAttribute('class', 'gm-coa');
+                svg.appendChild(img);
+                a.dataset.emblem = '1';
+            });
+
+            if (tip && ! fig.dataset.tip) {
+                fig.dataset.tip = '1';
+                fig.querySelectorAll('.gm-state').forEach(function (el) {
+                    el.addEventListener('mousemove', function (e) {
+                        var r = fig.querySelector('.gm-figure').getBoundingClientRect();
+                        var coa = el.getAttribute('data-coa');
+                        tip.innerHTML = (coa ? '<img src="' + coa + '" alt="">' : '') +
+                                        '<span>' + el.getAttribute('data-name') + '</span>';
+                        tip.style.left = (e.clientX - r.left) + 'px';
+                        tip.style.top = (e.clientY - r.top) + 'px';
+                        tip.hidden = false;
+                    });
+                    el.addEventListener('mouseleave', function () { tip.hidden = true; });
+                });
+            }
         });
     }
 
-    fig.querySelectorAll('.gm-state').forEach(function (el) {
-        el.addEventListener('mousemove', function (e) {
-            var r = fig.querySelector('.gm-figure').getBoundingClientRect();
-            var coa = el.getAttribute('data-coa');
-            tip.innerHTML = (coa ? '<img src="' + coa + '" alt="">' : '') +
-                            '<span>' + el.getAttribute('data-name') + '</span>';
-            tip.style.left = (e.clientX - r.left) + 'px';
-            tip.style.top = (e.clientY - r.top) + 'px';
-            tip.hidden = false;
-        });
-        el.addEventListener('mouseleave', function () { tip.hidden = true; });
-    });
-
-    if (document.readyState !== 'loading') placeEmblems();
-    window.addEventListener('load', placeEmblems);
+    if (document.readyState !== 'loading') init();
+    document.addEventListener('DOMContentLoaded', init);
+    window.addEventListener('load', init);
 })();
 </script>
 @endif

@@ -146,11 +146,11 @@
             @php $color = $m['color'] ?? 'primary'; @endphp
             <div class="bg-white border border-gray-200 rounded-xl p-6">
                 <div class="flex items-start gap-4 mb-4">
-                    <div class="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center text-3xl font-extrabold flex-shrink-0
+                    <div class="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center text-3xl font-extrabold flex-shrink-0
                         @if ($color === 'accent') bg-accent-500 text-white
                         @else bg-primary-600 text-white @endif">
                         @if (! empty($m['image']))
-                            <img src="{{ $m['image'] }}" alt="{{ $m['name'] }}" class="w-full h-full object-cover">
+                            <img src="{{ $m['image'] }}" alt="{{ $m['name'] }}" class="w-full h-full object-cover object-center">
                         @else
                             {{ $m['avatar'] }}
                         @endif
