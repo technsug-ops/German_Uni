@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
@@ -168,10 +169,20 @@ MD;
 
         $html = Str::markdown($body, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
 
+        // FK-safe: CI fresh test DB seed'siz olabilir → user 6 / category 6 yoksa
+        // null'a (ya da uygun fallback'e) düş ki migrate --force FK ihlaliyle patlamasın
+        // (deploy'u gate'lemesin). Kolonlar nullable + nullOnDelete.
+        $userId = DB::table('users')->where('id', 6)->exists()
+            ? 6
+            : DB::table('users')->orderBy('id')->value('id');
+        $categoryId = DB::table('categories')->where('id', 6)->exists()
+            ? 6
+            : DB::table('categories')->where('slug', 'vize')->value('id');
+
         $payload = [
             'locale'           => 'tr',
-            'user_id'          => 6, // Hakan Kutlu — vize uzmanı persona
-            'category_id'      => 6, // Vize
+            'user_id'          => $userId,     // Hakan Kutlu (6) — vize uzmanı persona
+            'category_id'      => $categoryId, // Vize (6)
             'title'            => "Almanya'da Garantör Belgesi (Verpflichtungserklärung): 2026 Tam Rehber",
             'excerpt'          => $excerpt,
             'content_md'       => $body,
