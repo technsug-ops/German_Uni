@@ -736,14 +736,19 @@ Route::get('/_system/enrich-cities', function (\Illuminate\Http\Request $request
     }
     @set_time_limit(600);
     try {
-        \Illuminate\Support\Facades\Artisan::call('cities:enrich', array_filter([
+        $params = array_filter([
             '--limit'        => (int) $request->integer('limit', 3),
             '--only-without' => $request->boolean('only-without', ! $request->filled('slug') && ! $request->boolean('force')),
             '--min-unis'     => (int) $request->integer('min-unis', 1),
             '--slug'         => $request->query('slug'),
             '--force'        => $request->boolean('force'),
             '--sleep'        => (int) $request->integer('sleep', 1),
-        ], fn ($v) => $v !== false && $v !== null && $v !== ''));
+        ], fn ($v) => $v !== false && $v !== null && $v !== '');
+        // Küratörlü kaynaklar (?source[]=url) — slug ile birlikte grounding için.
+        if ($srcs = array_filter((array) $request->query('source'))) {
+            $params['--source'] = array_values($srcs);
+        }
+        \Illuminate\Support\Facades\Artisan::call('cities:enrich', $params);
         $out = \Illuminate\Support\Facades\Artisan::output();
     } catch (\Throwable $e) {
         $out = 'EXCEPTION: ' . $e->getMessage();
