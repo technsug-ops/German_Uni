@@ -69,6 +69,9 @@
     .gm-state:focus path { filter: brightness(.86); stroke-width: 1.8; outline: none; }
     .gm-disabled { fill: #e5e7eb; stroke: #ffffff; stroke-width: 1.2; }
     .gm-coa { filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+    .gm-label { font: 700 12px system-ui, sans-serif; fill: #1f2937; text-anchor: middle;
+                paint-order: stroke; stroke: #ffffff; stroke-width: 2.8px; stroke-linejoin: round;
+                pointer-events: none; }
     .gm-lead { stroke: #9ca3af; stroke-width: 1.1; stroke-dasharray: 4 3; }
     .gm-dot { fill: #6b7280; }
     .gm-tip { position: absolute; pointer-events: none; background: #111827; color: #fff;
@@ -126,6 +129,15 @@
         img.setAttribute('pointer-events', 'none');
         img.setAttribute('class', 'gm-coa');
         svg.appendChild(img);
+
+        // Armanın altına eyalet adı (beyaz haleli, renkli zeminde okunur)
+        var label = document.createElementNS(SVGNS, 'text');
+        label.textContent = a.getAttribute('data-name');
+        label.setAttribute('x', co ? co.x : cx);
+        label.setAttribute('y', y + w * 1.2 + 11);
+        label.setAttribute('class', 'gm-label');
+        svg.appendChild(label);
+
         a.dataset.emblem = '1';
     }
 
