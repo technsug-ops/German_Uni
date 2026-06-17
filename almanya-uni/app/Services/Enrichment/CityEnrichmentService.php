@@ -99,7 +99,7 @@ class CityEnrichmentService
         if (count($galleryImages) < 5) {
             $galleryImages = array_merge($galleryImages, $this->wiki->fetchImages($city->name_de, 'en', 50));
         }
-        $curated = $this->wiki->curateGallery($galleryImages, 10);
+        $curated = $this->wiki->curateGallery($galleryImages, 16);
         if (!empty($curated)) {
             $blocks[] = [
                 'type' => 'gallery',

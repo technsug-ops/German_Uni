@@ -39,7 +39,7 @@ class AiContentBlockGenerator
                     'contents' => [['parts' => [['text' => $prompt]]]],
                     'generationConfig' => [
                         'temperature' => 0.5,
-                        'maxOutputTokens' => 12288,
+                        'maxOutputTokens' => 24000,
                         'topP' => 0.95,
                         'responseMimeType' => 'application/json',
                     ],
@@ -129,7 +129,11 @@ GÖREV: Bu varlık için zengin, çok-blok bir sayfa üret. JSON yapısı:
   "blocks": [
     {"type": "intro", "h": null, "body_md": "150-200 kelimelik Türkçe açılış. SEO keyword'leri doğal şekilde."},
     {"type": "quick_facts", "h": "Hızlı Bakış", "items": [{"label": "Nüfus", "value": "..."}, ...]},
-    {"type": "section", "h": "H2 başlık", "body_md": "200-400 kelime markdown."},
+    {"type": "section", "h": "Şehre Genel Bakış ve Tarih", "body_md": "200-400 kelime markdown."},
+    {"type": "section", "h": "Üniversiteler ve Akademik Ortam", "body_md": "200-400 kelime."},
+    {"type": "section", "h": "Konaklama ve Semtler", "body_md": "200-400 kelime."},
+    {"type": "section", "h": "Ulaşım ve Şehirde Hayat", "body_md": "200-400 kelime."},
+    {"type": "section", "h": "İş İmkânları ve Türk Topluluğu", "body_md": "200-400 kelime."},
     {"type": "cost_of_living", "h": "Aylık Yaşam Maliyeti (Tahmini)", "currency": "EUR", "items": [{"label": "Kira (paylaşımlı)", "amount": "300-450", "note": "WG odası"}, {"label": "Yemek", "amount": "200-300"}, {"label": "Ulaşım (Semesterticket)", "amount": "0-50"}], "total": "750-1100"},
     {"type": "places", "h": "Gezilecek Yerler ve Öğrenci Mekânları", "items": [{"name": "...", "type": "library|museum|square|park|landmark", "description": "1-2 cümle", "url": null}, ...]},
     {"type": "student_culture", "h": "Öğrenci Yaşamı ve Kültür", "body_md": "Öğrenci hayatı anlatımı (markdown).", "highlights": ["Bisiklet kültürü güçlü", "Semesterticket ile tüm BW ücretsiz", ...]},
@@ -142,16 +146,18 @@ GÖREV: Bu varlık için zengin, çok-blok bir sayfa üret. JSON yapısı:
 
 $entitySpecific
 
-KURALLAR:
+KURALLAR (ZENGİN, DERİN İÇERİK HEDEFİ — sayfa kapsamlı ve doyurucu olsun):
 - Türkçe doğal dil (Almanca terimler parantez içinde açıklansın: Sperrkonto, Anmeldung, Semesterticket)
-- HALÜSİNASYON YOK — emin değilsen "resmi sayfadan doğrula" de
-- intro + quick_facts (5-8 öğe) + en az 3 section mutlaka
+- HALÜSİNASYON YOK — emin değilsen "resmi sayfadan doğrula" de. Kaynak metindeki (Wikipedia + resmi site) GERÇEK detayları (lakap, tarih, semt, ulaşım, meşhur yerler) bolca kullan.
+- intro 200-280 kelime + quick_facts 8-12 öğe.
+- ⚠️ MUTLAKA 5-7 AYRI "section" bloğu üret (her biri FARKLI konu, 200-400 kelime). Az section KABUL EDİLMEZ.
+  Section konuları (kaynakta varsa): şehir tanıtımı/tarih, üniversiteler ve akademik ortam, konaklama ve semtler, ulaşım (toplu taşıma/bisiklet/Semesterticket), yaşam maliyeti detayı, iş/Werkstudent imkânları, kültür/eğlence/yeme-içme, Türk topluluğu ve uyum. Bunlardan en az 5'ini ayrı section yap.
 - cost_of_living: belirsiz aralık ver, uydurma. Bilgi yoksa atla.
-- places: 4-8 yer öner. Sadece bilinen, gerçek yerler.
-- student_culture: 100-200 kelime + 3-5 highlight bullet
-- table: ancak gerçek karşılaştırılabilir veri varsa
+- places: 8-14 yer öner (kütüphane, müze, meydan, park, kafe, landmark karışık). Sadece bilinen, GERÇEK yerler.
+- student_culture: 180-280 kelime + 5-7 highlight bullet
+- table: ancak gerçek karşılaştırılabilir veri varsa (ör. semt kira karşılaştırması)
 - video: url null olabilir (placeholder), kullanıcı sonra ekler. AMA description ve başlık öneri ver.
-- faq 4-7 SORU. Yukarıda "TOPLULUK İÇGÖRÜLERİ" varsa: oradaki Telegram/Forum sorularını ÖNCELİKLE FAQ olarak kullan. Bu Türk öğrencilerin gerçekten merak ettiği şeyler — uydurma değil.
+- faq 6-10 SORU. Yukarıda "TOPLULUK İÇGÖRÜLERİ" varsa: oradaki Telegram/Forum sorularını ÖNCELİKLE FAQ olarak kullan. Bu Türk öğrencilerin gerçekten merak ettiği şeyler — uydurma değil.
 - intro/section'larda forum ısı haritası ve trending kalıpları doğal şekilde işle (örn. "Türk öğrenciler en çok şunu sorar: ...")
 - cta sona
 - ÇIKTI: SADECE JSON, markdown wrap YOK
