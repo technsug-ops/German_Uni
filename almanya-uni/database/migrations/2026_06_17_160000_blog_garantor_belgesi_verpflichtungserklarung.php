@@ -16,7 +16,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        $slug = 'almanya-garantor-belgesi-verpflichtungserklarung-rehberi';
+        $slug = 'germany-guarantor-declaration-verpflichtungserklarung-guide';
 
         $body = <<<'MD'
 Almanya öğrenci vizesinde en kritik adımlardan biri **finansmanın kanıtlanması** (Finanzierungsnachweis). Bunun iki resmi yolu var: ya bir **bloke hesap (Sperrkonto)** açarsın, ya da Almanya'da yaşayan bir yakının senin için **garantör belgesi (Verpflichtungserklärung)** verir. Bu rehber, garantör belgesini A'dan Z'ye — şartlar, gelir, belgeler, maliyet, hukuki sorumluluk ve topluluğumuzda en çok sorulan gerçek sorularla — anlatıyor.
@@ -197,6 +197,6 @@ MD;
 
     public function down(): void
     {
-        Post::where('slug', 'almanya-garantor-belgesi-verpflichtungserklarung-rehberi')->delete();
+        Post::where('slug', 'germany-guarantor-declaration-verpflichtungserklarung-guide')->delete();
     }
 };
