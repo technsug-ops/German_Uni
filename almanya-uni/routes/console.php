@@ -164,6 +164,21 @@ Schedule::command('unis:fix-images')
 
 /*
 |--------------------------------------------------------------------------
+| DAAD detay zenginleştirme (haftalık)
+|--------------------------------------------------------------------------
+| Salı 04:30 — DAAD International Programmes detay sayfalarından program-spesifik
+| gereklilik (EN) + boş deadline çeker. Incremental (sadece _en BOŞ olanlar).
+| İlk çalıştırma 678 programı doldurur; sonraki haftalar yeni daad import'ları.
+*/
+Schedule::command('daad:enrich-details --apply')
+    ->weeklyOn(2, '04:30')
+    ->withoutOverlapping(120)
+    ->runInBackground()
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/daad-enrich.log'));
+
+/*
+|--------------------------------------------------------------------------
 | OG görsel cache tazeleme (günlük)
 |--------------------------------------------------------------------------
 | Son 3 günde güncellenen içeriğin bayat OG cache'ini siler → sonraki sosyal

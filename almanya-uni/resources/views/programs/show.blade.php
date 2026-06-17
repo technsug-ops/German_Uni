@@ -140,38 +140,49 @@
             </section>
         @endif
 
+        @php
+            // Locale-aware gereklilik: TR sayfada _tr → yoksa _en (DAAD); EN/DE'de _en → yoksa _tr.
+            $pick = function ($tr, $en) {
+                $tr = trim((string) $tr); $en = trim((string) $en);
+                return app()->getLocale() === 'tr' ? ($tr !== '' ? $tr : $en) : ($en !== '' ? $en : $tr);
+            };
+            $qualReq = $pick($program->qualification_requirements_tr, $program->qualification_requirements_en);
+            $langReq = $pick($program->language_requirements_tr, $program->language_requirements_en);
+            $docsReq = $pick($program->required_documents_tr, $program->required_documents_en);
+        @endphp
+
         {{-- Başvuru şartları --}}
-        @if ($program->qualification_requirements_tr)
+        @if ($qualReq)
             <section class="bg-accent-50 border border-accent-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-accent-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="list-bullet" class="w-6 h-6" /> {{ __('Application Requirements') }}
                 </h2>
-                <div class="text-accent-900 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! nl2br(e($program->qualification_requirements_tr)) !!}</div>
+                <div class="text-accent-900 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! nl2br(e($qualReq)) !!}</div>
             </section>
         @endif
 
         {{-- Dil şartları --}}
-        @if ($program->language_requirements_tr)
+        @if ($langReq)
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-blue-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="language" class="w-6 h-6" /> {{ __('Language Requirements') }}
                 </h2>
-                <div class="text-blue-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($program->language_requirements_tr)) !!}</div>
+                <div class="text-blue-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($langReq)) !!}</div>
             </section>
         @endif
 
         {{-- Gerekli belgeler --}}
-        @if ($program->required_documents_tr)
+        @if ($docsReq)
             <section class="bg-purple-50 border border-purple-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-purple-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Required Documents') }}
                 </h2>
-                <div class="text-purple-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($program->required_documents_tr)) !!}</div>
+                <div class="text-purple-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($docsReq)) !!}</div>
             </section>
         @endif
 
         {{-- Spesifik gereklilik verisi yoksa → degree+dile göre standart rehber (render-zamanı, dürüst) --}}
-        @if (empty($program->qualification_requirements_tr) && empty($program->language_requirements_tr) && empty($program->required_documents_tr))
+        @if (! $qualReq && ! $langReq && ! $docsReq)
             <x-program-requirements-guide :degree="$program->degree" :language="$program->language" />
         @endif
 

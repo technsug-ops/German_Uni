@@ -537,16 +537,22 @@ Route::get('/_system/fix-content', function (\Illuminate\Http\Request $request) 
     }
     @set_time_limit(280);
     $command = match ($request->query('job')) {
-        'deadlines' => 'programs:fix-deadlines',
-        'data'      => 'programs:fix-data',
-        'dedupe'    => 'programs:dedupe',
-        'cities'    => 'universities:create-missing-cities', // Wikidata P131 — tek seferlik backfill
-        default     => null,
+        'deadlines'    => 'programs:fix-deadlines',
+        'data'         => 'programs:fix-data',
+        'dedupe'       => 'programs:dedupe',
+        'cities'       => 'universities:create-missing-cities', // Wikidata P131 — tek seferlik backfill
+        'daad-details' => 'daad:enrich-details',                // DAAD detay gereklilik — batch (limit ile)
+        default        => null,
     };
     if (! $command) {
-        return response()->json(['error' => 'job must be deadlines|data|dedupe|cities'], 400);
+        return response()->json(['error' => 'job must be deadlines|data|dedupe|cities|daad-details'], 400);
     }
     $params = $request->boolean('apply') ? ['--apply' => true] : [];
+    // daad-details yavaş (HTTP fetch) — endpoint timeout'una sığması için batch limitli çağrılır.
+    if ($request->query('job') === 'daad-details') {
+        $params['--limit'] = (int) ($request->query('limit') ?: 150);
+        $params['--sleep'] = 150;
+    }
     try {
         $exit = \Illuminate\Support\Facades\Artisan::call($command, $params);
         return response("exit={$exit}\n\n" . \Illuminate\Support\Facades\Artisan::output(), 200, ['Content-Type' => 'text/plain; charset=utf-8']);
