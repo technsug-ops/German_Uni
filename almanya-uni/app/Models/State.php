@@ -20,6 +20,7 @@ class State extends Model
         'capital',
         'population',
         'image_url',
+        'flag_url',
         'content_blocks',
         'content_blocks_en',
         'content_blocks_de',

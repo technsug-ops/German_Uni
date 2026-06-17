@@ -18,7 +18,7 @@
     ];
 
     $states = \App\Models\State::query()
-        ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en'])
+        ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'flag_url'])
         ->keyBy('slug');
 @endphp
 
@@ -36,7 +36,7 @@
                 @endphp
                 @if($st)
                     <a href="{{ route('states.show', $st->slug) }}" class="gm-state"
-                       data-name="{{ $st->name }}" aria-label="{{ $st->name }}">
+                       data-name="{{ $st->name }}" data-flag="{{ $st->flag_url }}" aria-label="{{ $st->name }}">
                         <path d="{{ $loc['path'] }}"><title>{{ $st->name }}</title></path>
                     </a>
                 @else
@@ -58,8 +58,10 @@
     .gm-state:focus path { fill: #4f46e5; outline: none; }
     .gm-disabled { fill: #e5e7eb; stroke: #ffffff; stroke-width: 1.2; }
     .gm-tip { position: absolute; pointer-events: none; background: #111827; color: #fff;
-              font-size: .8rem; font-weight: 600; padding: .25rem .55rem; border-radius: .375rem;
-              transform: translate(-50%, -130%); white-space: nowrap; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+              font-size: .8rem; font-weight: 600; padding: .3rem .55rem; border-radius: .375rem;
+              transform: translate(-50%, -130%); white-space: nowrap; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+              display: flex; align-items: center; gap: .4rem; }
+    .gm-tip img { width: 22px; height: 15px; object-fit: cover; border-radius: 2px; }
     .dark .gm-state path { fill: #1e3a8a; }
     .dark .gm-state:hover path { fill: #6366f1; }
 </style>
@@ -72,7 +74,10 @@
     fig.querySelectorAll('.gm-state').forEach(function (el) {
         el.addEventListener('mousemove', function (e) {
             var r = fig.querySelector('.gm-figure').getBoundingClientRect();
-            tip.textContent = el.getAttribute('data-name');
+            var flag = el.getAttribute('data-flag');
+            var name = el.getAttribute('data-name');
+            tip.innerHTML = (flag ? '<img src="' + flag + '" alt="">' : '') +
+                            '<span>' + name + '</span>';
             tip.style.left = (e.clientX - r.left) + 'px';
             tip.style.top = (e.clientY - r.top) + 'px';
             tip.hidden = false;
