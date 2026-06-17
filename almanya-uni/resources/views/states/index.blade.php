@@ -36,6 +36,13 @@
     </div>
 </section>
 
+{{-- INTERACTIVE MAP --}}
+<section class="bg-gray-50 border-b border-gray-200 py-10">
+    <div class="max-w-[1400px] mx-auto px-4">
+        <x-germany-states-map />
+    </div>
+</section>
+
 {{-- FILTER BAR --}}
 <section class="bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-[1400px] mx-auto px-4 py-4">
