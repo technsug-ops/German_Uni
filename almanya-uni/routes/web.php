@@ -1140,6 +1140,75 @@ MD;
     return response($content, 200)->header('Content-Type', 'text/markdown; charset=utf-8');
 });
 
+// llms-full.txt — llms.txt'in GENİŞ sürümü: tüm rehberler (kategoriye göre) + üni/şehir/alan
+// listeleri. LLM'lerin sitenin tam içerik haritasını tek dosyada ingest etmesi için.
+Route::get('/llms-full.txt', function (\Illuminate\Http\Request $request) {
+    $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
+    $domains = config('brand.domains', []);
+    $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
+    $brand = config('brand.brands', [])[$brandKey] ?? [];
+    $name = $brand['name'] ?? 'AlmanyaUni';
+    $domain = $brand['domain'] ?? $host;
+    $base = $request->getScheme() . '://' . $domain;
+
+    $content = cache()->remember("llms_full_txt_v2_{$brandKey}", now()->addHours(12), function () use ($name, $base) {
+        $out = "# {$name} — Full Content Map (llms-full.txt)\n\n";
+        $out .= "> Expanded version of /llms.txt: a full index of guides/articles, universities, student cities and fields of study for international students applying to Germany. See {$base}/llms.txt for the concise version.\n\n";
+
+        // Rehberler & makaleler (TR birincil), kategoriye göre
+        $out .= "## Guides & Articles\n\n";
+        $posts = \App\Models\Post::where('is_published', 1)->where('locale', 'tr')
+            ->with('category')->orderByDesc('published_at')
+            ->get(['id', 'slug', 'title', 'excerpt', 'category_id', 'locale']);
+        $grouped = $posts->groupBy(function ($p) {
+            $n = $p->category?->name;
+            if (is_array($n)) { $n = $n['tr'] ?? ($n['en'] ?? reset($n)); }
+            return $n ?: 'Genel';
+        });
+        foreach ($grouped as $cat => $items) {
+            $out .= "### {$cat}\n";
+            foreach ($items as $p) {
+                $ex = \Illuminate\Support\Str::limit(trim(strip_tags((string) $p->excerpt)), 150);
+                $out .= "- [{$p->title}]({$base}/{$p->locale}/blog/{$p->slug})" . ($ex ? ": {$ex}" : '') . "\n";
+            }
+            $out .= "\n";
+        }
+
+        // En büyük üniversiteler
+        $out .= "## Top Universities\n\n";
+        foreach (\App\Models\University::where('is_active', 1)->orderByDesc('student_count')->limit(50)->get(['slug', 'name_de']) as $u) {
+            $out .= "- [{$u->name_de}]({$base}/en/universities/{$u->slug})\n";
+        }
+        $out .= "\n";
+
+        // Öğrenci şehirleri
+        $out .= "## Student Cities\n\n";
+        foreach (\App\Models\City::where('is_active', 1)->orderBy('name_de')->get(['slug', 'name_de']) as $c) {
+            $out .= "- [{$c->name_de}]({$base}/en/cities/{$c->slug})\n";
+        }
+        $out .= "\n";
+
+        // Alanlar
+        $out .= "## Fields of Study\n\n";
+        foreach (\App\Models\FieldOfStudy::where('is_active', 1)->orderBy('name_en')->get(['slug', 'name_en', 'name_tr']) as $f) {
+            $nm = $f->name_en ?: $f->name_tr;
+            $out .= "- [{$nm}]({$base}/en/fields/{$f->slug})\n";
+        }
+        $out .= "\n";
+
+        $out .= "## Reference\n\n";
+        $out .= "- [Concise llms.txt]({$base}/llms.txt): short version with tools, scholarships, glossary\n";
+        $out .= "- [Sitemap]({$base}/sitemap.xml): full machine-readable index\n\n";
+        $out .= "## Editorial Notes\n\n";
+        $out .= "- Languages: Turkish (primary), English, German\n";
+        $out .= "- Sources: DAAD official data, Wikidata, university partner API, official Bundesländer education data\n";
+        $out .= "- Authority: 10+ years education consulting experience for students applying to Germany\n";
+        return $out;
+    });
+
+    return response($content, 200)->header('Content-Type', 'text/markdown; charset=utf-8');
+});
+
 // Blog yardımcı oldu mu? oyu (Alpine widget'tan POST)
 Route::post('/api/blog-feedback', [\App\Http\Controllers\Web\BlogController::class, 'feedback'])
     ->middleware('throttle:30,1')
