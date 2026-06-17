@@ -41,8 +41,11 @@ class DaadEnrichDetails extends Command
         $q = Program::where('is_active', 1)->where('source', 'daad')
             ->whereNotNull('source_url')->where('source_url', 'like', '%international-programmes%');
         if (! $this->option('all')) {
+            // Hem qual hem lang boş olanlar (biri doluysa "işlendi" say — boşuna yeniden çekme).
             $q->where(function ($x) {
                 $x->whereNull('qualification_requirements_en')->orWhere('qualification_requirements_en', '');
+            })->where(function ($x) {
+                $x->whereNull('language_requirements_en')->orWhere('language_requirements_en', '');
             });
         }
         if ($lim = $this->option('limit')) $q->limit((int) $lim);
