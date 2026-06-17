@@ -22,7 +22,7 @@
                 '#67e8f9','#7dd3fc','#93c5fd','#a5b4fc','#c4b5fd','#d8b4fe','#f0abfc','#f9a8d4'];
 
     $states = \App\Models\State::query()
-        ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'flag_url'])
+        ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'flag_url', 'coat_of_arms_url'])
         ->keyBy('slug');
 @endphp
 
@@ -41,7 +41,7 @@
                 @endphp
                 @if($st)
                     <a href="{{ route('states.show', $st->slug) }}" class="gm-state"
-                       data-name="{{ $st->name }}" data-flag="{{ $st->flag_url }}" aria-label="{{ $st->name }}">
+                       data-name="{{ $st->name }}" data-coa="{{ $st->coat_of_arms_url }}" aria-label="{{ $st->name }}">
                         <path d="{{ $loc['path'] }}" style="fill: {{ $color }}"><title>{{ $st->name }}</title></path>
                     </a>
                 @else
@@ -62,10 +62,12 @@
     .gm-state:hover path,
     .gm-state:focus path { filter: brightness(.86); stroke-width: 1.8; outline: none; }
     .gm-disabled { fill: #e5e7eb; stroke: #ffffff; stroke-width: 1.2; }
-    .gm-flag { filter: drop-shadow(0 0 .6px rgba(0,0,0,.55)); }
+    .gm-coa { filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.45)); }
     .gm-tip { position: absolute; pointer-events: none; background: #111827; color: #fff;
-              font-size: .8rem; font-weight: 600; padding: .25rem .55rem; border-radius: .375rem;
-              transform: translate(-50%, -135%); white-space: nowrap; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+              font-size: .8rem; font-weight: 600; padding: .3rem .55rem; border-radius: .375rem;
+              transform: translate(-50%, -135%); white-space: nowrap; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+              display: flex; align-items: center; gap: .4rem; }
+    .gm-tip img { width: 20px; height: 24px; object-fit: contain; }
 </style>
 
 <script>
@@ -76,34 +78,36 @@
     var tip = fig.querySelector('.gm-tip');
     var SVGNS = 'http://www.w3.org/2000/svg', XLINK = 'http://www.w3.org/1999/xlink';
 
-    // Bayrakları haritanın üstüne, her eyaletin merkezine yerleştir
-    function placeFlags() {
+    // Armaları (Wappen) haritanın üstüne, her eyaletin merkezine yerleştir
+    function placeEmblems() {
         fig.querySelectorAll('.gm-state').forEach(function (a) {
-            if (a.dataset.flagged) return;
-            var path = a.querySelector('path'), flag = a.getAttribute('data-flag');
-            if (!path || !flag) return;
+            if (a.dataset.emblem) return;
+            var path = a.querySelector('path'), coa = a.getAttribute('data-coa');
+            if (!path || !coa) return;
             var bb;
             try { bb = path.getBBox(); } catch (e) { return; }
             if (!bb || !bb.width) return;
-            var w = Math.max(13, Math.min(bb.width * 0.5, 24)), h = w * 0.66;
+            var w = Math.max(20, Math.min(bb.width * 0.5, 34)), h = w * 1.2;
             var img = document.createElementNS(SVGNS, 'image');
-            img.setAttribute('href', flag);
-            img.setAttributeNS(XLINK, 'xlink:href', flag);
+            img.setAttribute('href', coa);
+            img.setAttributeNS(XLINK, 'xlink:href', coa);
             img.setAttribute('width', w); img.setAttribute('height', h);
             img.setAttribute('x', bb.x + bb.width / 2 - w / 2);
             img.setAttribute('y', bb.y + bb.height / 2 - h / 2);
-            img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+            img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
             img.setAttribute('pointer-events', 'none');
-            img.setAttribute('class', 'gm-flag');
+            img.setAttribute('class', 'gm-coa');
             svg.appendChild(img);
-            a.dataset.flagged = '1';
+            a.dataset.emblem = '1';
         });
     }
 
     fig.querySelectorAll('.gm-state').forEach(function (el) {
         el.addEventListener('mousemove', function (e) {
             var r = fig.querySelector('.gm-figure').getBoundingClientRect();
-            tip.textContent = el.getAttribute('data-name');
+            var coa = el.getAttribute('data-coa');
+            tip.innerHTML = (coa ? '<img src="' + coa + '" alt="">' : '') +
+                            '<span>' + el.getAttribute('data-name') + '</span>';
             tip.style.left = (e.clientX - r.left) + 'px';
             tip.style.top = (e.clientY - r.top) + 'px';
             tip.hidden = false;
@@ -111,8 +115,8 @@
         el.addEventListener('mouseleave', function () { tip.hidden = true; });
     });
 
-    if (document.readyState !== 'loading') placeFlags();
-    window.addEventListener('load', placeFlags);
+    if (document.readyState !== 'loading') placeEmblems();
+    window.addEventListener('load', placeEmblems);
 })();
 </script>
 @endif

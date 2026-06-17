@@ -21,6 +21,7 @@ class State extends Model
         'population',
         'image_url',
         'flag_url',
+        'coat_of_arms_url',
         'content_blocks',
         'content_blocks_en',
         'content_blocks_de',

@@ -144,9 +144,9 @@
                     </div>
                     <div class="p-4">
                         <div class="flex items-center gap-2">
-                            @if($state->flag_url)
-                                <img src="{{ $state->flag_url }}" alt="" loading="lazy"
-                                     class="w-7 h-5 object-cover rounded-sm ring-1 ring-gray-200 shrink-0">
+                            @if($state->coat_of_arms_url)
+                                <img src="{{ $state->coat_of_arms_url }}" alt="" loading="lazy"
+                                     class="w-6 h-7 object-contain shrink-0">
                             @endif
                             <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight">{{ $state->name }}</h3>
                         </div>
