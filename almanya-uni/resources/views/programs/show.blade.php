@@ -384,6 +384,9 @@
                     @elseif ($program->admission_mode === 'bundesweit')
                         <p class="text-sm font-semibold text-red-700">Bundesweit zulassungsbeschränkt</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ __('Nationwide quota via Hochschulstart.') }}</p>
+                    @elseif ($program->admission_mode === 'auswahl')
+                        <p class="text-sm font-semibold text-indigo-700">{{ __('University selection process') }}</p>
+                        <p class="text-xs text-gray-500 mt-0.5">{{ __('Admission via the university\'s own selection (test, portfolio or interview).') }}</p>
                     @else
                         <p class="text-xs text-gray-400 italic mb-1">{{ __('Information not in our database') }}</p>
                     @endif

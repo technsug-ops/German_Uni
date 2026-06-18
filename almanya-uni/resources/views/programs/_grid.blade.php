@@ -137,6 +137,8 @@
                                 <span class="inline-flex items-center gap-1 text-orange-700"><x-svg-icon name="exclamation-triangle" class="w-3 h-3" /> {{ __('Local NC') }}</span>
                             @elseif ($p->admission_mode === 'bundesweit')
                                 <span class="inline-flex items-center gap-1 text-red-700"><x-svg-icon name="flag" class="w-3 h-3" /> {{ __('Nationwide NC') }}</span>
+                            @elseif ($p->admission_mode === 'auswahl')
+                                <span class="inline-flex items-center gap-1 text-indigo-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> {{ __('Selection process') }}</span>
                             @endif
                         </div>
 
