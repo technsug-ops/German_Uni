@@ -93,8 +93,9 @@ class EventController extends Controller
 
         $cities = \App\Models\City::whereIn('id', $cityCounts->keys())
             ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug', 'image_url'])
-            // Etkinlik sayısına göre çoktan aza
+            // Etkinlik sayısına göre çoktan aza — en çok etkinliği olan ilk 5 şehir
             ->sortByDesc(fn ($c) => $cityCounts[$c->id] ?? 0)
+            ->take(5)
             ->values();
 
         // Tip filtresi seçenekleri (sadece mevcut olan kültür tipleri).

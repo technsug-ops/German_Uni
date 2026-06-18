@@ -42,27 +42,13 @@
             @endif
         </div>
 
-        @php $badgePalette = ['bg-pink-500', 'bg-red-500', 'bg-cyan-600', 'bg-indigo-600', 'bg-rose-600', 'bg-emerald-600', 'bg-fuchsia-600']; @endphp
-        <div class="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
-            {{-- Tüm Almanya --}}
-            <a href="{{ route('events.concerts', array_filter(['type' => $type])) }}"
-               class="group shrink-0 snap-start w-44">
-                <div class="relative h-44 rounded-xl overflow-hidden ring-2 transition
-                            {{ ! $activeCity ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
-                    <div class="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600"></div>
-                    <div class="absolute top-3 left-3 text-2xl">🇩🇪</div>
-                    <div class="absolute inset-x-0 bottom-0 p-3">
-                        <div class="font-extrabold text-white text-lg uppercase tracking-wide leading-none mb-2 drop-shadow">{{ __('All Germany') }}</div>
-                        <span class="inline-block text-[11px] font-bold uppercase px-2 py-1 rounded bg-white text-rose-700">{{ __('Find events') }}</span>
-                    </div>
-                </div>
-                <div class="mt-1.5 text-xs text-gray-500">{{ __(':count events', ['count' => $events->total()]) }}</div>
-            </a>
+        @php $badgePalette = ['bg-pink-500', 'bg-red-500', 'bg-cyan-600', 'bg-indigo-600', 'bg-rose-600']; @endphp
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             @foreach ($cities as $city)
                 @php $badge = $badgePalette[$loop->index % count($badgePalette)]; @endphp
                 <a href="{{ route('events.concerts', array_filter(['city' => $city->slug, 'type' => $type])) }}"
-                   class="group shrink-0 snap-start w-44">
-                    <div class="relative h-44 rounded-xl overflow-hidden ring-2 transition
+                   class="group">
+                    <div class="relative h-48 rounded-2xl overflow-hidden ring-2 transition
                                 {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
                         @if ($city->image_url)
                             <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
@@ -71,12 +57,12 @@
                             <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
                         @endif
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-3">
-                            <div class="font-extrabold text-white text-lg uppercase tracking-wide leading-none mb-2 drop-shadow">{{ $city->name }}</div>
-                            <span class="inline-block text-[11px] font-bold uppercase px-2 py-1 rounded text-white {{ $badge }}">{{ __('Find events') }}</span>
+                        <div class="absolute inset-x-0 bottom-0 p-4">
+                            <div class="font-extrabold text-white text-2xl uppercase tracking-wide leading-none mb-2.5 drop-shadow">{{ $city->name }}</div>
+                            <span class="inline-block text-xs font-bold uppercase px-2.5 py-1 rounded text-white {{ $badge }}">{{ __('Find events') }}</span>
                         </div>
                     </div>
-                    <div class="mt-1.5 text-xs text-gray-500">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
+                    <div class="mt-2 text-sm text-gray-500">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
                 </a>
             @endforeach
         </div>
