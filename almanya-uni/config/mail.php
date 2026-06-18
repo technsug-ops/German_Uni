@@ -65,6 +65,20 @@ return [
             'transport' => 'resend',
         ],
 
+        // Outreach/partnerlik mailleri — partnerships@ kutusunun kendi SMTP'si.
+        // Yanıtlar aynı kutuya düşer → IMAP gelen kutusunda görünür.
+        // Kredansiyel SADECE env'den (OUTREACH_MAIL_*); koda asla yazma.
+        'outreach' => [
+            'transport' => 'smtp',
+            'scheme' => env('OUTREACH_MAIL_SCHEME'),
+            'host' => env('OUTREACH_MAIL_HOST', '127.0.0.1'),
+            'port' => env('OUTREACH_MAIL_PORT', 587),
+            'username' => env('OUTREACH_MAIL_USERNAME'),
+            'password' => env('OUTREACH_MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
         'sendmail' => [
             'transport' => 'sendmail',
             'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),

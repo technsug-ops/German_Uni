@@ -18,6 +18,19 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    // IMAP gelen kutusu (partnerlik yanıtları) — native ext-imap ile okunur.
+    // Kredansiyel SADECE env'den (IMAP_*); koda asla yazma. ext-imap yoksa
+    // gelen kutusu sayfası nazikçe uyarı verir.
+    'imap' => [
+        'host'       => env('IMAP_HOST'),
+        'port'       => env('IMAP_PORT', 993),
+        'encryption' => env('IMAP_ENCRYPTION', 'ssl'), // ssl | tls | ''
+        'validate_cert' => env('IMAP_VALIDATE_CERT', true),
+        'username'   => env('IMAP_USERNAME'),
+        'password'   => env('IMAP_PASSWORD'),
+        'folder'     => env('IMAP_FOLDER', 'INBOX'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
