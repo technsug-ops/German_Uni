@@ -182,6 +182,34 @@ class CityController extends Controller
             ->take(6)
             ->get();
 
+        // Bu şehirle ilgili barınma sağlayıcıları (özel zincir + platform) — cities
+        // dizisinde şehri listeleyen aktif providers. Statik private_chain_slugs yerine
+        // dinamik: yeni eklenen sağlayıcılar (Wunderflats, Staytoo, vb.) otomatik gelir.
+        $cityNameVariants = array_values(array_unique(array_filter([
+            $city->name_de,
+            $city->name_tr,
+            $city->name_en,
+            \Illuminate\Support\Str::before($city->name_de, ' '), // "Frankfurt am Main" → "Frankfurt"
+        ])));
+
+        $cityChains = \App\Models\HousingProvider::active()
+            ->whereIn('type', ['private_chain', 'platform'])
+            ->orderByDesc('is_featured')
+            ->orderBy('sort_order')
+            ->get()
+            ->filter(function ($p) use ($cityNameVariants) {
+                $pc = collect($p->cities ?? [])->map(fn ($c) => trim((string) $c));
+                if ($pc->contains('Tüm Almanya')) {
+                    return true; // ülke geneli platform
+                }
+
+                return $pc->contains(function ($c) use ($cityNameVariants) {
+                    return in_array($c, $cityNameVariants, true)
+                        || in_array(\Illuminate\Support\Str::before($c, ' '), $cityNameVariants, true);
+                });
+            })
+            ->values();
+
         return view('cities.show', [
             'city'           => $city,
             'similarCities'  => $similarCities,
@@ -190,6 +218,7 @@ class CityController extends Controller
             'relatedPosts'   => $relatedPosts,
             'citySize'       => $citySize,
             'experiences'    => $experiences,
+            'cityChains'     => $cityChains,
         ]);
     }
 }

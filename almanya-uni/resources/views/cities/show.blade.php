@@ -175,15 +175,7 @@
         @endif
 
         {{-- YURT SEÇENEKLERİ --}}
-        @if ($city->stw_name || (! empty($city->private_chain_slugs) && is_array($city->private_chain_slugs)))
-            @php
-                $cityChains = ! empty($city->private_chain_slugs)
-                    ? \App\Models\HousingProvider::active()
-                        ->whereIn('slug', $city->private_chain_slugs)
-                        ->orderBy('sort_order')
-                        ->get()
-                    : collect();
-            @endphp
+        @if ($city->stw_name || ($cityChains ?? collect())->isNotEmpty())
             <section class="mt-10">
                 <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
                     <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="home" class="w-6 h-6" /> {{ __('Housing options in :city', ['city' => $city->name]) }}</h2>
@@ -253,8 +245,8 @@
                             <div class="flex items-start gap-3 mb-3">
                                 <div class="w-12 h-12 rounded bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex items-center justify-center"><x-svg-icon name="building-office" class="w-7 h-7" /></div>
                                 <div class="flex-1 min-w-0">
-                                    <p class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">{{ __('Private operator') }} ({{ $cityChains->count() }})</p>
-                                    <h3 class="font-bold text-gray-900 leading-tight">{{ __('Fast + Furnished + Pricey') }}</h3>
+                                    <p class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">{{ __('Providers & platforms') }} ({{ $cityChains->count() }})</p>
+                                    <h3 class="font-bold text-gray-900 leading-tight">{{ __('Private dorms + booking platforms') }}</h3>
                                 </div>
                             </div>
                             <div class="space-y-1.5 text-sm">

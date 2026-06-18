@@ -67,6 +67,14 @@
                 <span>🔴</span><span>{{ __('Most expensive') }}: <strong>{{ $expensive->name }}</strong> {{ $expensive->student_rent_warm30 }} €</span>
             </div>
         </div>
+
+        <div class="mt-6">
+            <a href="{{ route('housing.providers') }}"
+               class="inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-primary-50 font-bold px-5 py-3 rounded-lg shadow-md transition">
+                <x-svg-icon name="home" class="w-5 h-5" /> {{ __('Browse housing providers') }} →
+            </a>
+            <p class="text-xs text-primary-100 mt-2">{{ __('Studierendenwerk dorms, private student apartments and booking platforms — all in one place.') }}</p>
+        </div>
     </div>
 </div>
 
