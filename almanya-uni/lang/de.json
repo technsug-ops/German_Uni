@@ -4468,5 +4468,6 @@
     "Event data is aggregated from public sources (e.g. Ticketmaster). Always confirm date, venue and tickets on the official organiser page.": "Die Eventdaten stammen aus öffentlichen Quellen (z. B. Ticketmaster). Prüfe Datum, Ort und Tickets immer auf der offiziellen Veranstalterseite.",
     "Concerts, theatre, comedy & festivals across Germany — browse by city. (:count events)": "Konzerte, Theater, Comedy & Festivals in ganz Deutschland — nach Stadt durchsuchen. (:count Events)",
     "Browse": "Durchsuchen",
-    ":count events": ":count Events"
+    ":count events": ":count Events",
+    "Find events": "Events finden"
 }

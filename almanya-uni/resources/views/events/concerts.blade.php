@@ -42,35 +42,41 @@
             @endif
         </div>
 
-        <div class="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
+        @php $badgePalette = ['bg-pink-500', 'bg-red-500', 'bg-cyan-600', 'bg-indigo-600', 'bg-rose-600', 'bg-emerald-600', 'bg-fuchsia-600']; @endphp
+        <div class="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
             {{-- Tüm Almanya --}}
             <a href="{{ route('events.concerts', array_filter(['type' => $type])) }}"
-               class="group relative shrink-0 snap-start w-40 h-24 rounded-xl overflow-hidden ring-2 transition
-                      {{ ! $activeCity ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
-                <div class="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600"></div>
-                <div class="absolute inset-0 p-3 flex flex-col justify-between text-white">
-                    <span class="text-lg">🇩🇪</span>
-                    <div>
-                        <div class="font-bold text-sm leading-tight">{{ __('All Germany') }}</div>
-                        <div class="text-[11px] text-white/80">{{ __(':count events', ['count' => $events->total()]) }}</div>
+               class="group shrink-0 snap-start w-44">
+                <div class="relative h-44 rounded-xl overflow-hidden ring-2 transition
+                            {{ ! $activeCity ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
+                    <div class="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600"></div>
+                    <div class="absolute top-3 left-3 text-2xl">🇩🇪</div>
+                    <div class="absolute inset-x-0 bottom-0 p-3">
+                        <div class="font-extrabold text-white text-lg uppercase tracking-wide leading-none mb-2 drop-shadow">{{ __('All Germany') }}</div>
+                        <span class="inline-block text-[11px] font-bold uppercase px-2 py-1 rounded bg-white text-rose-700">{{ __('Find events') }}</span>
                     </div>
                 </div>
+                <div class="mt-1.5 text-xs text-gray-500">{{ __(':count events', ['count' => $events->total()]) }}</div>
             </a>
             @foreach ($cities as $city)
+                @php $badge = $badgePalette[$loop->index % count($badgePalette)]; @endphp
                 <a href="{{ route('events.concerts', array_filter(['city' => $city->slug, 'type' => $type])) }}"
-                   class="group relative shrink-0 snap-start w-40 h-24 rounded-xl overflow-hidden ring-2 transition
-                          {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
-                    @if ($city->image_url)
-                        <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
-                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    @else
-                        <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
-                    @endif
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                    <div class="absolute inset-x-0 bottom-0 p-3 text-white">
-                        <div class="font-bold text-sm leading-tight drop-shadow">{{ $city->name }}</div>
-                        <div class="text-[11px] text-white/85">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
+                   class="group shrink-0 snap-start w-44">
+                    <div class="relative h-44 rounded-xl overflow-hidden ring-2 transition
+                                {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
+                        @if ($city->image_url)
+                            <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
+                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        @else
+                            <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
+                        @endif
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-3">
+                            <div class="font-extrabold text-white text-lg uppercase tracking-wide leading-none mb-2 drop-shadow">{{ $city->name }}</div>
+                            <span class="inline-block text-[11px] font-bold uppercase px-2 py-1 rounded text-white {{ $badge }}">{{ __('Find events') }}</span>
+                        </div>
                     </div>
+                    <div class="mt-1.5 text-xs text-gray-500">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
                 </a>
             @endforeach
         </div>
