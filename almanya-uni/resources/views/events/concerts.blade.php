@@ -120,14 +120,19 @@
                         </div>
                         <div class="min-w-0 flex-1">
                             <div class="font-semibold text-gray-900 group-hover:text-rose-700 truncate">{{ $e->title }}</div>
-                            <div class="text-xs text-gray-500 flex items-center gap-2 truncate">
-                                <span class="inline-flex items-center gap-1">{!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}</span>
-                                @if ($e->location_city)
-                                    <span class="text-gray-300">·</span>
-                                    <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3 h-3 text-gray-400" /> {{ $e->location_city }}</span>
-                                @endif
-                            </div>
+                            {{-- Tip = renkli highlight rozet (eski şehir yerinde) --}}
+                            <span class="inline-flex items-center gap-1 mt-1 text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white"
+                                  style="background: {{ $e->type_color }};">
+                                {!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}
+                            </span>
                         </div>
+                        {{-- Şehir — sağda --}}
+                        @if ($e->location_city)
+                            <div class="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-gray-700">
+                                <x-svg-icon name="map-pin" class="w-4 h-4 text-rose-500" />
+                                <span class="max-w-[120px] truncate">{{ $e->location_city }}</span>
+                            </div>
+                        @endif
                         <x-svg-icon name="arrow-right" class="w-4 h-4 text-gray-300 group-hover:text-rose-500 shrink-0" />
                     </a>
                 @endforeach
