@@ -88,13 +88,37 @@
             <p class="text-yellow-900">{{ __('No events found for this selection. Try another city or clear the filter.') }}</p>
         </div>
     @else
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach ($events as $e)
-                @include('events._card', ['event' => $e, 'isLive' => false])
+        {{-- Kompakt liste — güne göre gruplu (takvim görünümü) --}}
+        <div class="bg-white rounded-xl border border-gray-200 divide-y divide-gray-100 overflow-hidden">
+            @php $grouped = $events->getCollection()->groupBy(fn ($e) => $e->starts_at->format('Y-m-d')); @endphp
+            @foreach ($grouped as $day => $dayEvents)
+                <div class="bg-gray-50 px-4 py-2 text-xs font-bold text-gray-500 uppercase tracking-wide">
+                    {{ \Illuminate\Support\Carbon::parse($day)->translatedFormat('d F Y · l') }}
+                </div>
+                @foreach ($dayEvents as $e)
+                    <a href="{{ route('events.show', $e->slug) }}"
+                       class="group flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition">
+                        <span class="shrink-0 w-1.5 h-10 rounded-full" style="background: {{ $e->type_color }};"></span>
+                        <div class="shrink-0 w-12 text-center">
+                            <div class="text-sm font-semibold text-gray-700">{{ $e->starts_at->format('H:i') }}</div>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="font-semibold text-gray-900 group-hover:text-rose-700 truncate">{{ $e->title }}</div>
+                            <div class="text-xs text-gray-500 flex items-center gap-2 truncate">
+                                <span class="inline-flex items-center gap-1">{!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}</span>
+                                @if ($e->location_city)
+                                    <span class="text-gray-300">·</span>
+                                    <span class="inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3 h-3 text-gray-400" /> {{ $e->location_city }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <x-svg-icon name="arrow-right" class="w-4 h-4 text-gray-300 group-hover:text-rose-500 shrink-0" />
+                    </a>
+                @endforeach
             @endforeach
         </div>
 
-        <div class="mt-8">
+        <div class="mt-6">
             {{ $events->links() }}
         </div>
     @endif
