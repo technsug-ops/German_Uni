@@ -365,6 +365,23 @@ class Event extends Model
         });
     }
 
+    /** Dış kaynaklı etkinlikler (Ticketmaster konser/tiyatro/komedi). */
+    public const EXTERNAL_SOURCES = ['ticketmaster'];
+
+    /** Dış kaynaklı (konser & kültür) — ayrı /events/concerts sayfasında. */
+    public function scopeExternal(Builder $q): Builder
+    {
+        return $q->whereIn('source', self::EXTERNAL_SOURCES);
+    }
+
+    /** Kendi topluluk/kariyer etkinliklerimiz — dış kaynak hariç (null dahil). */
+    public function scopeOwn(Builder $q): Builder
+    {
+        return $q->where(function ($w) {
+            $w->whereNull('source')->orWhereNotIn('source', self::EXTERNAL_SOURCES);
+        });
+    }
+
     /**
      * Şu an gösterilecek tek bir öne çıkan etkinlik —
      * 1. Şu an canlı olan (live) is_featured

@@ -74,6 +74,23 @@
 
 <div class="max-w-[1400px] mx-auto px-4 py-10">
 
+    {{-- Dış konser & kültür takvimi — çapraz link --}}
+    @if (($concertCount ?? 0) > 0)
+        <a href="{{ route('events.concerts') }}"
+           class="group flex items-center justify-between gap-4 mb-8 rounded-xl border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-pink-50 px-5 py-4 hover:border-rose-400 transition">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-rose-600 text-white text-xl">🎵</span>
+                <div>
+                    <h2 class="font-bold text-gray-900 text-base md:text-lg">{{ __('Germany Concerts & Culture Calendar') }}</h2>
+                    <p class="text-xs md:text-sm text-gray-600">{{ __('Concerts, theatre, comedy & festivals across Germany — browse by city. (:count events)', ['count' => $concertCount]) }}</p>
+                </div>
+            </div>
+            <span class="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-700 group-hover:translate-x-0.5 transition">
+                {{ __('Browse') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+            </span>
+        </a>
+    @endif
+
     {{-- LIVE NOW --}}
     @if ($live->isNotEmpty())
         <section class="mb-10">

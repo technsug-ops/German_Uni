@@ -15,9 +15,10 @@ class EventController extends Controller
         $type     = $request->query('type');
         $category = $request->query('category');
 
-        $upcomingQ = Event::active()->upcoming();
-        $pastQ     = Event::active()->past();
-        $liveQ     = Event::active()->live();
+        // Sadece KENDİ etkinliklerimiz — dış konserler /events/concerts'te.
+        $upcomingQ = Event::active()->own()->upcoming();
+        $pastQ     = Event::active()->own()->past();
+        $liveQ     = Event::active()->own()->live();
 
         if ($type && array_key_exists($type, Event::TYPES)) {
             $upcomingQ->where('type', $type);
@@ -41,13 +42,63 @@ class EventController extends Controller
 
         $categories = EventCategory::orderBy('sort_order')->get();
 
-        // Etkinlik bildirimi aboneliği için: yaklaşan etkinliği olan şehirler.
-        $alertCityIds = Event::active()->upcoming()->whereNotNull('city_id')->distinct()->pluck('city_id');
+        // Etkinlik bildirimi aboneliği için: yaklaşan KENDİ etkinliği olan şehirler.
+        $alertCityIds = Event::active()->own()->upcoming()->whereNotNull('city_id')->distinct()->pluck('city_id');
         $alertCities = \App\Models\City::whereIn('id', $alertCityIds)
             ->orderBy('name_de')
             ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
 
-        return view('events.index', compact('live', 'upcoming', 'past', 'type', 'category', 'categories', 'alertCities'));
+        // Dış konser sayfasına çapraz-link için sayaç.
+        $concertCount = Event::active()->external()->upcoming()->count();
+
+        return view('events.index', compact('live', 'upcoming', 'past', 'type', 'category', 'categories', 'alertCities', 'concertCount'));
+    }
+
+    /**
+     * Dış konser & kültür etkinlikleri (Ticketmaster) — kendi etkinliklerimizden ayrı sayfa.
+     * Şehir + tip filtresi, tarihe göre sıralı, sayfalı.
+     */
+    public function concerts(Request $request): View
+    {
+        $type     = $request->query('type');
+        $citySlug = $request->query('city');
+
+        $q = Event::active()->external()->upcoming();
+
+        // Sadece kültür tipleri geçerli (güvenlik)
+        $cultureTypes = array_keys(array_filter(
+            Event::TYPES,
+            fn ($meta) => ($meta['category'] ?? null) === 'culture'
+        ));
+        if ($type && in_array($type, $cultureTypes, true)) {
+            $q->where('type', $type);
+        }
+
+        $activeCity = null;
+        if ($citySlug) {
+            $activeCity = \App\Models\City::where('slug', $citySlug)->first(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
+            if ($activeCity) {
+                $q->where('city_id', $activeCity->id);
+            }
+        }
+
+        $events = $q->orderBy('starts_at')->paginate(24)->withQueryString();
+
+        // Şehir sekmeleri: yaklaşan dış etkinliği olan şehirler.
+        $cityIds = Event::active()->external()->upcoming()->whereNotNull('city_id')->distinct()->pluck('city_id');
+        $cities  = \App\Models\City::whereIn('id', $cityIds)
+            ->orderBy('name_de')
+            ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
+
+        // Tip filtresi seçenekleri (sadece mevcut olan kültür tipleri).
+        $usedTypes = Event::active()->external()->upcoming()->distinct()->pluck('type')->all();
+        $typeOptions = array_filter(
+            Event::TYPES,
+            fn ($meta, $key) => in_array($key, $cultureTypes, true) && in_array($key, $usedTypes, true),
+            ARRAY_FILTER_USE_BOTH
+        );
+
+        return view('events.concerts', compact('events', 'cities', 'activeCity', 'type', 'typeOptions'));
     }
 
     public function show(string $slug): View

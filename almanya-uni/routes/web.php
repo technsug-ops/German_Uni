@@ -258,6 +258,8 @@ $routes = function () {
 
     // Events / Etkinlikler
     Route::get('/events', [\App\Http\Controllers\Web\EventController::class, 'index'])->name('events.index');
+    // Dış konser & kültür etkinlikleri — {slug} catch-all'dan ÖNCE ("concerts" literal).
+    Route::get('/events/concerts', [\App\Http\Controllers\Web\EventController::class, 'concerts'])->name('events.concerts');
     // Şehir bazlı etkinlik bildirimi aboneliği (uni slug catch-all'dan ÖNCE — "alerts" literal).
     Route::post('/events/alerts/subscribe', [\App\Http\Controllers\Web\EventAlertController::class, 'subscribe'])
         ->middleware('throttle:8,10')
