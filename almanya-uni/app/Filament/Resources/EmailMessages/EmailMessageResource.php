@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Filament\Resources\EmailMessages;
+
+use App\Filament\Resources\EmailMessages\Pages\ListEmailMessages;
+use App\Filament\Resources\EmailMessages\Tables\EmailMessagesTable;
+use App\Models\EmailMessage;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class EmailMessageResource extends Resource
+{
+    protected static ?string $model = EmailMessage::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPaperAirplane;
+    protected static ?string $navigationLabel = 'Gönderilen Mailler';
+    protected static ?string $modelLabel = 'Gönderilen Mail';
+    protected static ?string $recordTitleAttribute = 'subject';
+    protected static ?int $navigationSort = 3;
+    protected static string|\UnitEnum|null $navigationGroup = 'Mail';
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isFullAdmin() === true;
+    }
+
+    public static function table(Table $table): Table
+    {
+        return EmailMessagesTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListEmailMessages::route('/'),
+        ];
+    }
+}
