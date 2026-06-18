@@ -84,6 +84,12 @@
                     🟢 {{ __('NC-free programs') }} →
                 </a>
             @endif
+            @if ($field->programs()->where('is_active', 1)->whereIn('language', ['en', 'both'])->exists())
+                <a href="{{ route('programs.index', ['field' => $field->slug, 'language' => 'en']) }}"
+                   class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-blue-500 text-white font-semibold hover:bg-blue-600 transition">
+                    🇬🇧 {{ __('In English') }} →
+                </a>
+            @endif
         </div>
     </div>
 </section>

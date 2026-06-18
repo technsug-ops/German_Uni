@@ -4441,5 +4441,22 @@
     "Not automatically — you still need to meet the formal requirements (recognized degree, language certificate, sometimes a specific prerequisite). But there is no grade competition, so your GPA does not block you.": "Otomatik değil — yine de resmi şartları (tanınan diploma, dil sertifikası, bazen belirli bir ön koşul) sağlamalısın. Ama not rekabeti yoktur, yani notun seni engellemez.",
     "Can the NC status change?": "NC durumu değişir mi?",
     "Yes. Admission status is set per semester. Always confirm on the official university program page before applying.": "Evet. Kabul durumu döneme göre belirlenir. Başvurmadan önce her zaman resmi üniversite bölüm sayfasından teyit et.",
-    "NC-free (zulassungsfrei) programs": "NC'siz (zulassungsfrei) bölümler"
+    "NC-free (zulassungsfrei) programs": "NC'siz (zulassungsfrei) bölümler",
+    "English-taught study programs in Germany": "Almanya'da İngilizce verilen bölümler",
+    "Browse :count study programs taught in English in Germany — Bachelor's & Master's, no German required. Filter by subject and university.": "Almanya'da İngilizce verilen :count bölüme göz at — Lisans & Yüksek Lisans, Almanca gerekmez. Alana ve üniversiteye göre filtrele.",
+    "Study in Germany without German — these programs are taught fully in English. Tuition is free or low at most public universities.": "Almanca olmadan Almanya'da oku — bu bölümler tamamen İngilizce. Devlet üniversitelerinin çoğunda harç ücretsiz veya düşük.",
+    ":count English-taught programs": ":count İngilizce bölüm",
+    "Can I study in Germany in English?": "Almanya'da İngilizce okuyabilir miyim?",
+    "Yes. Hundreds of Bachelor's and Master's programs are taught entirely in English — you can be admitted with an English certificate (IELTS/TOEFL) and no German. Public universities charge little or no tuition. You will still need basic German for daily life and many jobs, but not for the degree itself.": "Evet. Yüzlerce Lisans ve Yüksek Lisans bölümü tamamen İngilizce veriliyor — İngilizce sertifikası (IELTS/TOEFL) ile, Almanca olmadan kabul alabilirsin. Devlet üniversiteleri çok az veya hiç harç almaz. Günlük hayat ve birçok iş için temel Almanca yine gerekir, ama diploma için değil.",
+    "English-taught programs by subject": "Alana göre İngilizce bölümler",
+    ":count English programs": ":count İngilizce bölüm",
+    "See all English-taught programs": "Tüm İngilizce bölümleri gör",
+    "Frequently Asked Questions — English-taught programs": "Sık Sorulan Sorular — İngilizce bölümler",
+    "Do I need German to study in English?": "İngilizce okumak için Almanca gerekir mi?",
+    "Not for the degree — English-taught programs require an English certificate (IELTS/TOEFL), not German. But A1–B1 German helps a lot for daily life, part-time jobs and staying after graduation.": "Diploma için gerekmez — İngilizce bölümler Almanca değil İngilizce sertifikası (IELTS/TOEFL) ister. Ama A1–B1 Almanca günlük hayat, yarı zamanlı iş ve mezuniyet sonrası kalmak için çok işe yarar.",
+    "Are English-taught programs free?": "İngilizce bölümler ücretsiz mi?",
+    "At most public universities tuition is free or a few hundred euros per semester, regardless of language. Some private universities and a few states charge more — always check the program page.": "Devlet üniversitelerinin çoğunda harç, dilden bağımsız olarak ücretsiz veya dönem başına birkaç yüz avrodur. Bazı özel üniversiteler ve birkaç eyalet daha fazla alır — her zaman bölüm sayfasını kontrol et.",
+    "Are there English Bachelor's programs or only Master's?": "İngilizce Lisans bölümü var mı yoksa sadece Yüksek Lisans mı?",
+    "Both exist, but English-taught Master's programs are far more common than Bachelor's. Many English Bachelor's are at private or international universities.": "İkisi de var ama İngilizce Yüksek Lisans, Lisanstan çok daha yaygın. İngilizce Lisansların çoğu özel veya uluslararası üniversitelerde.",
+    "In English": "İngilizce"
 }

@@ -46,10 +46,16 @@
             <strong>{{ number_format($total_all, 0, ',', '.') }}</strong> {{ __('programs') }} ·
             <strong>{{ number_format($total_en, 0, ',', '.') }}</strong> {{ __('English') }}
         </p>
-        <a href="{{ route('admission-free.index') }}"
-           class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold transition">
-            🟢 {{ __('NC-free (zulassungsfrei) programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
-        </a>
+        <div class="flex flex-wrap gap-2 mb-6">
+            <a href="{{ route('admission-free.index') }}"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold transition">
+                🟢 {{ __('NC-free (zulassungsfrei) programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="{{ route('discover.english') }}"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition">
+                🇬🇧 {{ __('English-taught programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+            </a>
+        </div>
 
         <form action="{{ route('programs.index') }}" method="GET" class="bg-white rounded-xl shadow-2xl p-4 text-gray-900"
               data-async-filter-form="#async-filter-results"
