@@ -42,13 +42,13 @@ return new class extends Migration
             ['Studentenwerk Karlsruhe',            'studentenwerk-karlsruhe',     'Karlsruhe',      'https://www.sw-ka.de',              null, null, 210, 330, 2200, '2-3 sem'],
             ['Studierendenwerk Mannheim',          'studierendenwerk-mannheim',   'Mannheim',       'https://www.stw-ma.de',             null, null, 220, 340, 1800, '2-3 sem'],
             ['Studentenwerk Augsburg',             'studentenwerk-augsburg',      'Augsburg',       'https://studierendenwerk-augsburg.de', null, null, 200, 310, 1600, '2-3 sem'],
-            ['Studierendenwerk Wiesbaden',         'studierendenwerk-wiesbaden',  'Wiesbaden',      'https://www.studentenwerk-wiesbaden.de', null, null, 230, 360, 1400, '2-3 sem'],
-            ['Studentenwerk Mönchengladbach',      'studentenwerk-moenchengladbach','Mönchengladbach','https://www.stw-niederrhein.de',  null, null, 180, 290, 1000, '1-2 sem'],
+            ['Studierendenwerk Wiesbaden',         'studierendenwerk-wiesbaden',  'Wiesbaden',      'https://www.swffm.de', null, null, 230, 360, 1400, '2-3 sem'],
+            ['Studentenwerk Mönchengladbach',      'studentenwerk-moenchengladbach','Mönchengladbach','https://www.stw-d.de',  null, null, 180, 290, 1000, '1-2 sem'],
             ['Studentenwerk Braunschweig',         'studentenwerk-braunschweig',  'Braunschweig',   'https://www.stw-on.de',             null, null, 210, 320, 1800, '2-3 sem'],
             ['Studentenwerk Chemnitz-Zwickau',     'studentenwerk-chemnitz',      'Chemnitz',       'https://www.swcz.de',               null, null, 150, 250, 2100, '1-2 sem'],
             ['Studentenwerk Schleswig-Holstein',   'studentenwerk-sh-kiel',       'Kiel',           'https://www.studentenwerk.sh',      null, null, 200, 300, 1600, '1-2 sem'],
             ['Studierendenwerk Aachen',            'studierendenwerk-aachen',     'Aachen',         'https://www.studierendenwerk-aachen.de', null, null, 240, 380, 2300, '2-4 sem'],
-            ['Studentenwerk Gelsenkirchen',        'studentenwerk-westfalen',     'Gelsenkirchen',  'https://www.stw-westfalen.de',      null, null, 170, 260, 1200, '1-2 sem'],
+            ['Studentenwerk Gelsenkirchen',        'studentenwerk-westfalen',     'Gelsenkirchen',  'https://www.akafoe.de',      null, null, 170, 260, 1200, '1-2 sem'],
         ];
 
         foreach (array_merge($stws, $additionalStws) as $i => $s) {
@@ -90,7 +90,7 @@ return new class extends Migration
             [
                 'name' => 'YouniQ',
                 'slug' => 'youniq',
-                'website' => 'https://www.youniq-students.com',
+                'website' => 'https://www.youniq-living.com',
                 'email' => 'info@youniq.de',
                 'desc' => 'UPARTMENTS Real Estate\'in modern öğrenci apartmanları. 2.500+ öğrenci kapasitesi. Komisyonsuz, Scout-on-site destek.',
                 'price_min' => 400, 'price_max' => 800,
@@ -126,6 +126,7 @@ return new class extends Migration
                 'price_min' => 250, 'price_max' => 500,
                 'cities' => ['Leipzig', 'Dresden', 'Chemnitz', 'Bochum'],
                 'features' => ['mobliyali','ekonomik','esnek_sozlesme'],
+                'is_active' => false, // oxxo.de doğrulanamadı — link açılmıyor
             ],
             [
                 'name' => 'Nido — The Alp Studios',
@@ -146,6 +147,7 @@ return new class extends Migration
                 'price_min' => 200, 'price_max' => 400,
                 'cities' => ['Hamburg', 'Hannover', 'Bremen', 'Kiel', 'Braunschweig', 'Dortmund'],
                 'features' => ['ekonomik','mobliyali'],
+                'is_active' => false, // home4students.de SSL süresi dolmuş, kurum eşleşmiyor — link açılmıyor
             ],
             [
                 'name' => 'Neon Wood',
@@ -174,7 +176,7 @@ return new class extends Migration
                 'cities'      => json_encode($p['cities']),
                 'features'    => json_encode($p['features']),
                 'is_featured' => in_array($p['slug'], ['the-fizz', 'youniq', 'uniapart']),
-                'is_active'   => true,
+                'is_active'   => $p['is_active'] ?? true,
                 'sort_order'  => $sortOffset + $i,
                 'created_at'  => $now,
                 'updated_at'  => $now,
