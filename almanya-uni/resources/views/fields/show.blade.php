@@ -78,6 +78,12 @@
                class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-white text-gray-900 font-semibold hover:bg-gray-100 transition">
                 {{ __('All programs') }} →
             </a>
+            @if ($field->programs()->where('is_active', 1)->where('admission_mode', 'zulassungsfrei')->exists())
+                <a href="{{ route('admission-free.by-subject', $field->slug) }}"
+                   class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition">
+                    🟢 {{ __('NC-free programs') }} →
+                </a>
+            @endif
         </div>
     </div>
 </section>

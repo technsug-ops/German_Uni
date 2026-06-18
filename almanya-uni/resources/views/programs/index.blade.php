@@ -42,10 +42,14 @@
 <section class="bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white">
     <div class="max-w-[1400px] mx-auto px-4 py-10">
         <h1 class="text-3xl md:text-4xl font-extrabold mb-2">{{ __('Programs & Subjects') }}</h1>
-        <p class="text-primary-100 mb-6">
+        <p class="text-primary-100 mb-4">
             <strong>{{ number_format($total_all, 0, ',', '.') }}</strong> {{ __('programs') }} ·
             <strong>{{ number_format($total_en, 0, ',', '.') }}</strong> {{ __('English') }}
         </p>
+        <a href="{{ route('admission-free.index') }}"
+           class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold transition">
+            🟢 {{ __('NC-free (zulassungsfrei) programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+        </a>
 
         <form action="{{ route('programs.index') }}" method="GET" class="bg-white rounded-xl shadow-2xl p-4 text-gray-900"
               data-async-filter-form="#async-filter-results"

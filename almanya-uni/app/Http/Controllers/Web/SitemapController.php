@@ -196,6 +196,7 @@ class SitemapController extends Controller
 
         $urls[] = $this->entry(route('map.index'), now(), 'weekly', 0.8);
         $urls[] = $this->entry(route('programs.index'), now(), 'daily', 0.9);
+        $urls[] = $this->entry(route('admission-free.index'), now(), 'weekly', 0.85);
         $urls[] = $this->entry(route('professions.index'), now(), 'daily', 0.9);
         $urls[] = $this->entry(route('housing.index'), now(), 'weekly', 0.8);
         $urls[] = $this->entry(route('tools.index'), now(), 'weekly', 0.8);

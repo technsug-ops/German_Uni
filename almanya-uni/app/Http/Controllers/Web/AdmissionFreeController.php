@@ -18,6 +18,32 @@ use Illuminate\Contracts\View\View;
  */
 class AdmissionFreeController extends Controller
 {
+    /**
+     * NC-frei üst-hub: /nc-free — "Almanya'da NC'siz (zulassungsfrei) bölümler".
+     * Alanları + en çok NC-frei programı olan üniversiteleri listeler, alt
+     * landing'lere (by-subject / by-university) iç-link verir.
+     */
+    public function index(): View
+    {
+        $fields = FieldOfStudy::active()
+            ->withCount(['programs as nc_free_count' => fn ($q) => $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei')])
+            ->get()
+            ->filter(fn ($f) => $f->nc_free_count > 0)
+            ->sortByDesc('nc_free_count')
+            ->values();
+
+        $totalNcFree = Program::where('is_active', true)->where('admission_mode', 'zulassungsfrei')->count();
+
+        $topUnis = University::where('is_active', true)
+            ->withCount(['programs as nc_free_count' => fn ($q) => $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei')])
+            ->having('nc_free_count', '>', 0)
+            ->orderByDesc('nc_free_count')
+            ->take(12)
+            ->get();
+
+        return view('admission-free.index', compact('fields', 'totalNcFree', 'topUnis'));
+    }
+
     public function bySubject(string $slug): View
     {
         $field = FieldOfStudy::where('slug', $slug)->active()->firstOrFail();
@@ -25,7 +51,7 @@ class AdmissionFreeController extends Controller
         $programs = Program::where('field_of_study_id', $field->id)
             ->where('is_active', true)
             ->where('admission_mode', 'zulassungsfrei')
-            ->with(['university:id,slug,name_de,short_name,logo_url,city_id', 'university.city:id,name_tr,name_en,name_de','name_en','name_de'])
+            ->with(['university:id,slug,name_de,short_name,logo_url,city_id', 'university.city:id,name_tr,name_en,name_de'])
             ->orderBy('name_de')
             ->paginate(30)
             ->withQueryString();

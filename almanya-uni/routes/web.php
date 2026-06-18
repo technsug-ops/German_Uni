@@ -231,6 +231,8 @@ $routes = function () {
     // Uni slug catch-all'dan ÖNCE — "collections" literal ilk segment, çakışma yok.
     Route::get('/universities/collections/{slug}', [UniversityWebController::class, 'collection'])
         ->name('universities.collection');
+    // NC Frei (zulassungsfrei) üst-hub
+    Route::get('/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'index'])->name('admission-free.index');
     // NC Frei programmatic SEO — uni 'nc-free' özel rota (uni slug'tan ÖNCE tanımlanmalı)
     Route::get('/universities/{slug}/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'byUniversity'])
         ->name('admission-free.by-university');
