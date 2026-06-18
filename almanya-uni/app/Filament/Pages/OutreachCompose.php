@@ -2,10 +2,9 @@
 
 namespace App\Filament\Pages;
 
-use App\Mail\OutreachMail;
-use App\Models\EmailMessage;
 use App\Models\EmailTemplate;
 use App\Models\HousingProvider;
+use App\Services\Mail\Outbox;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
@@ -15,7 +14,6 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Illuminate\Support\Facades\Mail;
 
 class OutreachCompose extends Page
 {
@@ -48,6 +46,12 @@ class OutreachCompose extends Page
         return $schema
             ->statePath('data')
             ->components([
+                Select::make('mailbox')
+                    ->label('Gönderen kutu')
+                    ->options(Outbox::options())
+                    ->default('partnerships')
+                    ->required()
+                    ->helperText('Hangi adresten gönderilsin? Yanıtlar o kutunun gelen kutusuna düşer.'),
                 Select::make('provider_id')
                     ->label('Sağlayıcı (opsiyonel)')
                     ->options(
@@ -129,43 +133,23 @@ class OutreachCompose extends Page
     {
         $state = $this->form->getState();
 
-        $message = new EmailMessage([
-            'direction' => 'outbound',
-            'provider_id' => $state['provider_id'] ?? null,
-            'to_email' => $state['to_email'],
-            'to_name' => $state['to_name'] ?? null,
-            'from_email' => 'partnerships@applytogerman.com',
-            'subject' => $state['subject'],
-            'body' => $state['body'],
-            'template_key' => $state['template_key'] ?? null,
-            'status' => 'queued',
-        ]);
+        $msg = Outbox::send(
+            $state['mailbox'] ?? 'partnerships',
+            $state['to_email'],
+            $state['to_name'] ?? null,
+            $state['subject'],
+            $state['body'],
+            [
+                'provider_id'  => $state['provider_id'] ?? null,
+                'template_key' => $state['template_key'] ?? null,
+            ],
+        );
 
-        try {
-            Mail::to($state['to_email'], $state['to_name'] ?? null)
-                ->send(new OutreachMail($state['subject'], $state['body'], 'partnerships@applytogerman.com'));
-
-            $message->status = 'sent';
-            $message->sent_at = now();
-            $message->save();
-
-            Notification::make()
-                ->title('Mail gönderildi')
-                ->success()
-                ->send();
-        } catch (\Throwable $e) {
-            $message->status = 'failed';
-            $message->error = $e->getMessage();
-            $message->save();
-
-            report($e);
-
-            Notification::make()
-                ->title('Mail gönderilemedi')
-                ->body($e->getMessage())
-                ->danger()
-                ->persistent()
-                ->send();
+        if ($msg->status === 'sent') {
+            Notification::make()->title('Mail gönderildi (' . $msg->from_email . ')')->success()->send();
+        } else {
+            Notification::make()->title('Mail gönderilemedi')
+                ->body($msg->error ?: 'Bilinmeyen hata')->danger()->persistent()->send();
         }
     }
 }

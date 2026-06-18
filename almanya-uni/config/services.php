@@ -18,17 +18,42 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
-    // IMAP gelen kutusu (partnerlik yanıtları) — native ext-imap ile okunur.
-    // Kredansiyel SADECE env'den (IMAP_*); koda asla yazma. ext-imap yoksa
-    // gelen kutusu sayfası nazikçe uyarı verir.
-    'imap' => [
-        'host'       => env('IMAP_HOST'),
-        'port'       => env('IMAP_PORT', 993),
-        'encryption' => env('IMAP_ENCRYPTION', 'ssl'), // ssl | tls | ''
-        'validate_cert' => env('IMAP_VALIDATE_CERT', true),
-        'username'   => env('IMAP_USERNAME'),
-        'password'   => env('IMAP_PASSWORD'),
-        'folder'     => env('IMAP_FOLDER', 'INBOX'),
+    // Çok-kutulu mail koordinasyonu. Her kutu: gönderim (SMTP mailer) + gelen (IMAP).
+    // Yeni kutu eklemek için buraya bir giriş + .env'e ilgili *_MAIL_* / *_IMAP_* anahtarları.
+    // Kredansiyel SADECE env'den; koda asla yazma. ext-imap yoksa gelen kutusu nazik uyarı verir.
+    'mailboxes' => [
+        // Genel/kurumsal — Lead yanıtları buradan gider.
+        'admin' => [
+            'label'  => 'Admin (admin@)',
+            'email'  => env('ADMIN_MAIL_FROM', 'admin@applytogerman.com'),
+            'name'   => env('MAIL_FROM_NAME', 'ApplyToGerman'),
+            'mailer' => 'mailbox_admin',
+            'imap'   => [
+                'host'          => env('ADMIN_IMAP_HOST', env('IMAP_HOST')),
+                'port'          => env('ADMIN_IMAP_PORT', 993),
+                'encryption'    => env('ADMIN_IMAP_ENCRYPTION', 'ssl'),
+                'validate_cert' => env('ADMIN_IMAP_VALIDATE_CERT', true),
+                'username'      => env('ADMIN_IMAP_USERNAME'),
+                'password'      => env('ADMIN_IMAP_PASSWORD'),
+                'folder'        => env('ADMIN_IMAP_FOLDER', 'INBOX'),
+            ],
+        ],
+        // Partnerlik / affiliate outreach.
+        'partnerships' => [
+            'label'  => 'Partnerlik (partnerships@)',
+            'email'  => env('OUTREACH_MAIL_FROM', 'partnerships@applytogerman.com'),
+            'name'   => env('MAIL_FROM_NAME', 'ApplyToGerman'),
+            'mailer' => 'outreach', // mevcut OUTREACH_MAIL_* mailer'ı
+            'imap'   => [
+                'host'          => env('IMAP_HOST'),
+                'port'          => env('IMAP_PORT', 993),
+                'encryption'    => env('IMAP_ENCRYPTION', 'ssl'),
+                'validate_cert' => env('IMAP_VALIDATE_CERT', true),
+                'username'      => env('IMAP_USERNAME'),
+                'password'      => env('IMAP_PASSWORD'),
+                'folder'        => env('IMAP_FOLDER', 'INBOX'),
+            ],
+        ],
     ],
 
     'resend' => [

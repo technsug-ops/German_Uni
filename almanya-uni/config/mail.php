@@ -79,6 +79,18 @@ return [
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
+        // Admin kutusu (admin@) — Lead yanıtları buradan gider. (ADMIN_MAIL_*)
+        'mailbox_admin' => [
+            'transport' => 'smtp',
+            'scheme' => env('ADMIN_MAIL_SCHEME'),
+            'host' => env('ADMIN_MAIL_HOST', '127.0.0.1'),
+            'port' => env('ADMIN_MAIL_PORT', 587),
+            'username' => env('ADMIN_MAIL_USERNAME'),
+            'password' => env('ADMIN_MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
         'sendmail' => [
             'transport' => 'sendmail',
             'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),

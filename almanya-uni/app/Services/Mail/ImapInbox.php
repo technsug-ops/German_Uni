@@ -6,75 +6,93 @@ use App\Models\EmailMessage;
 use Illuminate\Support\Carbon;
 
 /**
- * partnerships@ kutusunu native ext-imap ile okur ve gelen mailleri
- * email_messages tablosuna (direction=inbound) idempotent senkronlar.
- * Yeni composer paketi YOK. ext-imap kapalıysa nazikçe hata döndürür.
- *
- * Kredansiyel SADECE config('services.imap') (env IMAP_*) üzerinden gelir.
+ * Çok-kutulu IMAP gelen kutusu. config('services.mailboxes') içindeki her kutunun
+ * imap ayarı varsa native ext-imap ile okunur ve email_messages'a (direction=inbound,
+ * mailbox=<key>) idempotent senkronlanır. Yeni composer paketi YOK. ext-imap
+ * kapalıysa nazikçe hata döndürür.
  */
 class ImapInbox
 {
-    /** ext-imap yüklü mü + config dolu mu? */
+    /** ext-imap yüklü mü + en az bir kutuda imap host var mı? */
     public static function available(): bool
     {
-        return function_exists('imap_open') && filled(config('services.imap.host'));
+        if (! function_exists('imap_open')) {
+            return false;
+        }
+        foreach (config('services.mailboxes', []) as $box) {
+            if (filled($box['imap']['host'] ?? null) && filled($box['imap']['username'] ?? null)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    /** Neden kullanılamıyor? (UI mesajı için) */
     public static function unavailableReason(): ?string
     {
         if (! function_exists('imap_open')) {
             return 'Sunucuda PHP "imap" eklentisi (ext-imap) etkin değil. KAS panelinden açılmalı.';
         }
-        if (blank(config('services.imap.host'))) {
-            return 'IMAP ayarları eksik. Prod .env içine IMAP_HOST / IMAP_USERNAME / IMAP_PASSWORD eklenmeli.';
+        foreach (config('services.mailboxes', []) as $box) {
+            if (filled($box['imap']['host'] ?? null) && filled($box['imap']['username'] ?? null)) {
+                return null;
+            }
         }
 
-        return null;
+        return 'IMAP ayarları eksik. Prod .env içine ilgili IMAP_* anahtarları eklenmeli.';
     }
 
-    /**
-     * Son N maili çek, email_messages'a yaz. Senkronlanan (yeni) sayısını döndürür.
-     *
-     * @throws \RuntimeException bağlantı/okuma hatasında
-     */
+    /** Tüm kutuları çek. Toplam yeni mail sayısını döndürür. */
     public function sync(int $limit = 40): int
     {
-        if (! self::available()) {
+        if (! function_exists('imap_open')) {
             throw new \RuntimeException(self::unavailableReason() ?? 'IMAP kullanılamıyor.');
         }
 
-        $cfg = config('services.imap');
-        $flags = '/imap/' . ($cfg['encryption'] ? $cfg['encryption'] : '')
-            . (($cfg['validate_cert'] ?? true) ? '' : '/novalidate-cert');
-        $mailbox = '{' . $cfg['host'] . ':' . $cfg['port'] . $flags . '}' . ($cfg['folder'] ?? 'INBOX');
-
-        // imap_open uyarı yerine exception fırlatsın
-        $conn = @imap_open($mailbox, (string) $cfg['username'], (string) $cfg['password'], 0, 1);
-        if ($conn === false) {
-            throw new \RuntimeException('IMAP bağlantısı başarısız: ' . imap_last_error());
+        $total = 0;
+        foreach (config('services.mailboxes', []) as $key => $box) {
+            $cfg = $box['imap'] ?? [];
+            if (blank($cfg['host'] ?? null) || blank($cfg['username'] ?? null)) {
+                continue;
+            }
+            $total += $this->syncMailbox((string) $key, $box, $cfg, $limit);
         }
 
+        return $total;
+    }
+
+    /** Tek kutu çek. */
+    private function syncMailbox(string $key, array $box, array $cfg, int $limit): int
+    {
+        $flags = '/imap/' . ($cfg['encryption'] ? $cfg['encryption'] : '')
+            . (($cfg['validate_cert'] ?? true) ? '' : '/novalidate-cert');
+        $mailbox = '{' . $cfg['host'] . ':' . ($cfg['port'] ?? 993) . $flags . '}' . ($cfg['folder'] ?? 'INBOX');
+
+        $conn = @imap_open($mailbox, (string) $cfg['username'], (string) $cfg['password'], 0, 1);
+        if ($conn === false) {
+            throw new \RuntimeException("IMAP bağlantısı başarısız ({$key}): " . imap_last_error());
+        }
+
+        $toEmail = $box['email'] ?? $cfg['username'];
         $synced = 0;
 
         try {
-            $total = imap_num_msg($conn);
-            if ($total < 1) {
+            $count = imap_num_msg($conn);
+            if ($count < 1) {
                 return 0;
             }
 
-            $start = max(1, $total - $limit + 1);
-            // Yeniden eskiye
-            for ($i = $total; $i >= $start; $i--) {
+            $start = max(1, $count - $limit + 1);
+            for ($i = $count; $i >= $start; $i--) {
                 $overview = imap_fetch_overview($conn, (string) $i, 0)[0] ?? null;
                 if (! $overview) {
                     continue;
                 }
 
-                $messageId = trim($overview->message_id ?? '') ?: ('imap-' . ($overview->uid ?? $i));
+                $messageId = trim($overview->message_id ?? '') ?: ('imap-' . $key . '-' . ($overview->uid ?? $i));
 
-                // Idempotent: aynı message_id zaten varsa atla
                 $exists = EmailMessage::where('direction', 'inbound')
+                    ->where('mailbox', $key)
                     ->where('message_id', $messageId)->exists();
                 if ($exists) {
                     continue;
@@ -92,12 +110,13 @@ class ImapInbox
 
                 EmailMessage::create([
                     'direction'  => 'inbound',
-                    'to_email'   => (string) $cfg['username'],
+                    'mailbox'    => $key,
+                    'to_email'   => (string) $toEmail,
                     'from_email' => $fromEmail ?: 'unknown',
-                    'to_name'    => $fromName,                     // gönderen adı (görüntüleme kolaylığı)
+                    'to_name'    => $fromName,
                     'subject'    => $this->decode($overview->subject ?? '(konu yok)'),
                     'body'       => $this->extractBody($conn, $i),
-                    'status'     => ($overview->seen ?? false) ? 'sent' : 'queued', // okundu/okunmadı işareti
+                    'status'     => ($overview->seen ?? false) ? 'sent' : 'queued',
                     'message_id' => $messageId,
                     'sent_at'    => isset($overview->date) ? $this->parseDate($overview->date) : null,
                 ]);
@@ -130,7 +149,6 @@ class ImapInbox
     {
         $structure = imap_fetchstructure($conn, $msgNo);
 
-        // multipart ise text/plain parçasını bul
         if (! empty($structure->parts)) {
             foreach ($structure->parts as $idx => $part) {
                 if (strtoupper($part->subtype ?? '') === 'PLAIN') {
@@ -139,13 +157,11 @@ class ImapInbox
                     return $this->decodeBody($raw, $part->encoding ?? 0);
                 }
             }
-            // text/plain yoksa ilk parçayı al (genelde HTML)
             $raw = imap_fetchbody($conn, $msgNo, '1');
 
             return strip_tags($this->decodeBody($raw, $structure->parts[0]->encoding ?? 0));
         }
 
-        // tek parçalı
         $raw = imap_body($conn, $msgNo);
 
         return $this->decodeBody($raw, $structure->encoding ?? 0);

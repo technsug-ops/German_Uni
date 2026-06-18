@@ -9,6 +9,7 @@ class EmailMessage extends Model
 {
     protected $fillable = [
         'direction',
+        'mailbox',
         'provider_id',
         'to_email',
         'to_name',

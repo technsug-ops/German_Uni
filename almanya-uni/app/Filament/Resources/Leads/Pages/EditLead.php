@@ -3,9 +3,8 @@
 namespace App\Filament\Resources\Leads\Pages;
 
 use App\Filament\Resources\Leads\LeadResource;
-use App\Mail\OutreachMail;
-use App\Models\EmailMessage;
 use App\Models\Lead;
+use App\Services\Mail\Outbox;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\TextInput;
@@ -13,7 +12,6 @@ use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Support\Icons\Heroicon;
-use Illuminate\Support\Facades\Mail;
 
 class EditLead extends EditRecord
 {
@@ -39,34 +37,19 @@ class EditLead extends EditRecord
                     TextInput::make('to_email')->label('Alıcı')->email()->required(),
                     TextInput::make('subject')->label('Konu')->required(),
                     Textarea::make('body')->label('Mesaj')->rows(12)->required()
-                        ->helperText('partnerships@applytogerman.com adresinden gönderilir; yanıtlar aynı kutuya düşer.'),
+                        ->helperText('admin@applytogerman.com adresinden gönderilir; yanıtlar aynı kutuya düşer.'),
                 ])
                 ->action(function (array $data, Lead $record) {
-                    $msg = EmailMessage::create([
-                        'direction'  => 'outbound',
-                        'to_email'   => $data['to_email'],
-                        'to_name'    => $record->name,
-                        'from_email' => 'partnerships@applytogerman.com',
-                        'subject'    => $data['subject'],
-                        'body'       => $data['body'],
-                        'status'     => 'queued',
-                    ]);
+                    // Lead yanıtları admin@ kutusundan gider.
+                    $msg = Outbox::send('admin', $data['to_email'], $record->name, $data['subject'], $data['body']);
 
-                    try {
-                        Mail::to($data['to_email'], $record->name)
-                            ->send(new OutreachMail($data['subject'], $data['body'], 'partnerships@applytogerman.com'));
-
-                        $msg->update(['status' => 'sent', 'sent_at' => now()]);
+                    if ($msg->status === 'sent') {
                         $record->update(['status' => 'contacted']);
-
-                        Notification::make()->title('✅ Yanıt gönderildi')
+                        Notification::make()->title('✅ Yanıt gönderildi (admin@)')
                             ->body('Lead durumu "İletişime geçildi" olarak güncellendi.')->success()->send();
-                    } catch (\Throwable $e) {
-                        report($e);
-                        $msg->update(['status' => 'failed', 'error' => $e->getMessage()]);
-
+                    } else {
                         Notification::make()->title('❌ Gönderilemedi')
-                            ->body($e->getMessage())->danger()->persistent()->send();
+                            ->body($msg->error ?: 'Bilinmeyen hata')->danger()->persistent()->send();
                     }
                 }),
 

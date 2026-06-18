@@ -16,16 +16,19 @@ class OutreachMail extends Mailable
     public function __construct(
         public string $subjectLine,
         public string $bodyText,
+        public string $fromEmail = 'partnerships@applytogerman.com',
+        public string $fromName = 'ApplyToGerman',
+        public ?string $mailerName = null,
         public ?string $replyToAddress = null,
     ) {
-        // Use a dedicated outreach mailer if configured, else the default mailer.
-        $this->mailer(env('OUTREACH_MAILER') ?: config('mail.default'));
+        // Kutuya özel mailer; yoksa OUTREACH_MAILER; o da yoksa varsayılan.
+        $this->mailer($mailerName ?: (env('OUTREACH_MAILER') ?: config('mail.default')));
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('partnerships@applytogerman.com', 'ApplyToGerman'),
+            from: new Address($this->fromEmail, $this->fromName),
             subject: $this->subjectLine,
             replyTo: $this->replyToAddress
                 ? [new Address($this->replyToAddress)]
