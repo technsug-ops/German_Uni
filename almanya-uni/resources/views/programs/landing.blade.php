@@ -92,6 +92,8 @@
                 {{ __(':lang-taught programs at universities in :city.', ['lang' => $language === 'en' ? __('English-taught') : __('German-taught'), 'city' => $city->name]) }}
             @elseif (isset($field) && isset($degree))
                 {{ __(':degree :field programs across Germany.', ['degree' => $degree === 'master' ? __('Master') : ($degree === 'phd' ? __('PhD') : __('Bachelor')), 'field' => $field->name]) }}
+            @elseif (isset($context) && $context === 'city-nc-free')
+                {{ __('NC-free (zulassungsfrei) programs at universities in :city — open admission.', ['city' => $city->name]) }}
             @endif
         </p>
 

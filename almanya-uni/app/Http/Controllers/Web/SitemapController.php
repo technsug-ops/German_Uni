@@ -390,6 +390,14 @@ class SitemapController extends Controller
             );
         }
 
+        // Programmatic SEO: /cities/{slug}/nc-free — sadece NC-frei programı olan şehirler
+        \App\Models\City::where('is_active', true)
+            ->whereHas('universities.programs', fn ($q) => $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei'))
+            ->get(['slug', 'updated_at'])
+            ->each(function ($c) use (&$urls) {
+                $urls[] = $this->entry(route('programs.city-nc-free', $c->slug), $c->updated_at, 'weekly', 0.7);
+            });
+
         // Yeni: /fields/{slug} — alan sayfaları (content_blocks varsa yüksek priority)
         foreach (FieldOfStudy::active()->get(['slug', 'updated_at', 'last_enriched_at', 'content_blocks']) as $f) {
             $enriched = !empty($f->content_blocks);

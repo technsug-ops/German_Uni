@@ -41,7 +41,18 @@ class AdmissionFreeController extends Controller
             ->take(12)
             ->get();
 
-        return view('admission-free.index', compact('fields', 'totalNcFree', 'topUnis'));
+        $topCities = \App\Models\City::where('is_active', true)
+            ->withCount(['universities as nc_free_count' => function ($q) {
+                $q->join('programs', 'programs.university_id', '=', 'universities.id')
+                  ->where('programs.is_active', true)
+                  ->where('programs.admission_mode', 'zulassungsfrei');
+            }])
+            ->having('nc_free_count', '>', 0)
+            ->orderByDesc('nc_free_count')
+            ->take(12)
+            ->get(['id', 'slug', 'name_tr', 'name_en', 'name_de']);
+
+        return view('admission-free.index', compact('fields', 'totalNcFree', 'topUnis', 'topCities'));
     }
 
     public function bySubject(string $slug): View

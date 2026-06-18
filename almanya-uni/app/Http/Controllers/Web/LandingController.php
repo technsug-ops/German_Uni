@@ -137,6 +137,35 @@ class LandingController extends Controller
         ]);
     }
 
+    /**
+     * Şehir × NC-frei filtreli landing.
+     * URL: /{locale}/cities/{city}/nc-free
+     * Örnek: /tr/cities/berlin-q64/nc-free — "Berlin'de NC'siz bölümler"
+     */
+    public function cityNcFree(string $city): View
+    {
+        $cityModel = City::where('slug', $city)->where('is_active', true)->firstOrFail();
+
+        $query = $this->baseProgramQuery()
+            ->whereHas('university.city', fn ($q) => $q->where('cities.id', $cityModel->id))
+            ->where('admission_mode', 'zulassungsfrei');
+
+        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
+        $totalCount = $query->count();
+
+        $otherCities = $this->relatedCitiesByNcFree($cityModel->id);
+
+        return view('programs.landing', [
+            'context' => 'city-nc-free',
+            'city' => $cityModel,
+            'programs' => $programs,
+            'totalCount' => $totalCount,
+            'otherCities' => $otherCities,
+            'h1' => $this->h1ForCityNcFree($cityModel),
+            'metaDescription' => $this->metaDescForCityNcFree($cityModel, $totalCount),
+        ]);
+    }
+
     // ─────────────────────────────────────────────────────
     // Helpers
     // ─────────────────────────────────────────────────────
@@ -205,9 +234,35 @@ class LandingController extends Controller
             ->get(['id', 'slug', 'name_tr', 'name_en', 'name_de', 'image_url']);
     }
 
+    private function relatedCitiesByNcFree(int $excludeCityId): \Illuminate\Support\Collection
+    {
+        return City::query()
+            ->where('is_active', true)
+            ->where('id', '!=', $excludeCityId)
+            ->whereHas('universities.programs', function ($q) {
+                $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei');
+            })
+            ->orderBy('name_de')
+            ->limit(8)
+            ->get(['id', 'slug', 'name_tr', 'name_en', 'name_de', 'image_url']);
+    }
+
     // ─────────────────────────────────────────────────────
     // Locale-aware H1 & meta builders (TR/EN/DE)
     // ─────────────────────────────────────────────────────
+
+    private function h1ForCityNcFree(City $city): string
+    {
+        return __('NC-free (zulassungsfrei) programs in :city', ['city' => $city->name]);
+    }
+
+    private function metaDescForCityNcFree(City $city, int $count): string
+    {
+        return __(':count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.', [
+            'count' => $count,
+            'city' => $city->name,
+        ]);
+    }
 
     private function h1ForCityField(City $city, FieldOfStudy $field, ?string $degree): string
     {

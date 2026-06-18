@@ -4458,5 +4458,9 @@
     "At most public universities tuition is free or a few hundred euros per semester, regardless of language. Some private universities and a few states charge more — always check the program page.": "Devlet üniversitelerinin çoğunda harç, dilden bağımsız olarak ücretsiz veya dönem başına birkaç yüz avrodur. Bazı özel üniversiteler ve birkaç eyalet daha fazla alır — her zaman bölüm sayfasını kontrol et.",
     "Are there English Bachelor's programs or only Master's?": "İngilizce Lisans bölümü var mı yoksa sadece Yüksek Lisans mı?",
     "Both exist, but English-taught Master's programs are far more common than Bachelor's. Many English Bachelor's are at private or international universities.": "İkisi de var ama İngilizce Yüksek Lisans, Lisanstan çok daha yaygın. İngilizce Lisansların çoğu özel veya uluslararası üniversitelerde.",
-    "In English": "İngilizce"
+    "In English": "İngilizce",
+    "NC-free programs by city": "Şehre göre NC'siz bölümler",
+    "NC-free (zulassungsfrei) programs at universities in :city — open admission.": ":city üniversitelerinde NC'siz (zulassungsfrei) bölümler — açık kayıt.",
+    "NC-free (zulassungsfrei) programs in :city": ":city'de NC'siz (zulassungsfrei) bölümler",
+    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":city'de :count NC'siz (zulassungsfrei) bölüm — açık kayıt, not şartı (NC) yok. Alana ve dereceye göre filtrele."
 }

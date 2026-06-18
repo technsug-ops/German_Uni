@@ -4517,5 +4517,9 @@
     "At most public universities tuition is free or a few hundred euros per semester, regardless of language. Some private universities and a few states charge more — always check the program page.": "An den meisten staatlichen Hochschulen ist das Studium unabhängig von der Sprache gebührenfrei oder kostet nur ein paar Hundert Euro pro Semester. Einige private Hochschulen und wenige Bundesländer verlangen mehr — prüfe immer die Studiengangsseite.",
     "Are there English Bachelor's programs or only Master's?": "Gibt es englische Bachelorstudiengänge oder nur Master?",
     "Both exist, but English-taught Master's programs are far more common than Bachelor's. Many English Bachelor's are at private or international universities.": "Beides gibt es, aber englischsprachige Masterstudiengänge sind viel häufiger als Bachelor. Viele englische Bachelor sind an privaten oder internationalen Hochschulen.",
-    "In English": "Auf Englisch"
+    "In English": "Auf Englisch",
+    "NC-free programs by city": "NC-freie Studiengänge nach Stadt",
+    "NC-free (zulassungsfrei) programs at universities in :city — open admission.": "NC-freie (zulassungsfreie) Studiengänge an Hochschulen in :city — offene Zulassung.",
+    "NC-free (zulassungsfrei) programs in :city": "NC-freie (zulassungsfreie) Studiengänge in :city",
+    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":count NC-freie (zulassungsfreie) Studiengänge in :city — offene Zulassung, keine Notenbeschränkung (NC). Nach Fach und Abschluss filtern."
 }

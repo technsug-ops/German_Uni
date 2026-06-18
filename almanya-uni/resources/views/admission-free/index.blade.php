@@ -75,6 +75,22 @@
         </section>
     @endif
 
+    {{-- Şehre göre --}}
+    @if (! empty($topCities) && $topCities->isNotEmpty())
+        <section>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ __('NC-free programs by city') }}</h2>
+            <div class="flex flex-wrap gap-2">
+                @foreach ($topCities as $city)
+                    <a href="{{ route('programs.city-nc-free', $city->slug) }}"
+                       class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-emerald-400 transition rounded-full px-4 py-2 text-sm">
+                        <span class="font-semibold text-gray-900">{{ $city->name }}</span>
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full">{{ $city->nc_free_count }}</span>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
     {{-- CTA --}}
     <section class="text-center">
         <a href="{{ route('programs.index') }}"

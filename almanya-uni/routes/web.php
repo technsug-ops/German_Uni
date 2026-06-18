@@ -243,6 +243,9 @@ $routes = function () {
     // NC Frei programmatic SEO — alan grubu
     Route::get('/subjects/{slug}/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'bySubject'])
         ->name('admission-free.by-subject');
+    // NC Frei programmatic SEO — şehir bazlı ("Berlin'de NC'siz bölümler")
+    Route::get('/cities/{city}/nc-free', [\App\Http\Controllers\Web\LandingController::class, 'cityNcFree'])
+        ->name('programs.city-nc-free');
 
     // Housing — okuma herkese açık
     Route::get('/housing', [HousingController::class, 'index'])->name('housing.index');
