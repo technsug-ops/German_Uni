@@ -159,6 +159,16 @@ $routes = function () {
 
     Route::get('/map', [MapController::class, 'index'])->name('map.index');
 
+    Route::get('/student-rent-map', function () {
+        $cities = \App\Models\City::query()
+            ->whereNotNull('student_rent_warm30')
+            ->whereNotNull('latitude')->whereNotNull('longitude')
+            ->orderByDesc('student_rent_warm30')
+            ->get(['name_de', 'name_tr', 'slug', 'latitude', 'longitude',
+                'student_rent_warm30', 'student_rent_index', 'student_rent_source', 'student_rent_year']);
+        return view('map.rents', ['cities' => $cities]);
+    })->name('map.rents');
+
     Route::prefix('tools')->name('tools.')->group(function () {
         Route::get('/', [ToolsController::class, 'index'])->name('index');
         Route::get('/cost-of-living', [ToolsController::class, 'costOfLiving'])->name('cost-of-living');
