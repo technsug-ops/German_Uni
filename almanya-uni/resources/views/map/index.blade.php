@@ -125,6 +125,13 @@
         </div>
     </div>
 
+    {{-- CTA: kira haritası --}}
+    <a href="{{ route('map.rents') }}" class="flex items-center gap-2 mb-4 px-4 py-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100 transition text-sm font-medium">
+        <span>💶</span>
+        <span>{{ __('Looking for rents instead? See the Student Rent Map — rent by university city.') }}</span>
+        <span class="ml-auto font-bold">→</span>
+    </a>
+
     {{-- Map container --}}
     <div id="uniMap" class="bg-gray-100 border border-gray-200 shadow-md"></div>
 

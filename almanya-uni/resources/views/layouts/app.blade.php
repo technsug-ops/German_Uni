@@ -868,6 +868,7 @@
                     <h4 class="font-semibold mb-3 text-white">{{ __('Tools') }}</h4>
                     <ul class="space-y-2 text-primary-200 text-sm">
                         <li><a href="{{ route('tools.cost-of-living') }}" class="hover:text-white transition" title="{{ __('Cost of Living') }} — {{ __('Living costs by city') }}">{{ __('Cost of Living') }}</a></li>
+                        <li><a href="{{ route('map.rents') }}" class="hover:text-white transition" title="{{ __('Student Rent Map') }} — {{ __('Rent by university city') }}">{{ __('Student Rent Map') }}</a></li>
                         <li><a href="{{ route('tools.grade-converter') }}" class="hover:text-white transition" title="{{ __('Grade Converter') }} — {{ __('Convert your GPA to German system') }}">{{ __('Grade Converter') }}</a></li>
                         <li><a href="{{ route('tools.recommendation') }}" class="hover:text-white transition" title="{{ __('University Recommendation') }} — {{ __('Find the best fit for you') }}">{{ __('University Recommendation') }}</a></li>
                         <li><a href="{{ route('compare.index') }}" class="hover:text-white transition" title="{{ __('Compare') }} — {{ __('2-4 universities side by side') }}">{{ __('Compare') }}</a></li>
