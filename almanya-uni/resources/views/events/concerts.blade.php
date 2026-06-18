@@ -11,7 +11,7 @@
 
 {{-- HERO --}}
 <section class="bg-gradient-to-br from-rose-600 via-red-600 to-pink-600 text-white">
-    <div class="max-w-[1400px] mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-14">
         <nav class="text-sm text-rose-100 mb-3">
             <a href="/" class="hover:text-white">{{ __('Home') }}</a>
             <span class="mx-2 opacity-60">›</span>
@@ -22,130 +22,145 @@
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 flex items-center gap-3">
             <x-svg-icon name="calendar" class="w-9 h-9 md:w-11 md:h-11" /> {{ __('Germany Concerts & Culture Calendar') }}
         </h1>
-        <p class="text-lg md:text-xl text-rose-100 max-w-3xl mb-5">
+        <p class="text-lg text-rose-100 max-w-3xl">
             {{ __('Concerts, theatre, comedy and festivals across Germany. Pick your city below. Tickets are sold on the official organiser sites.') }}
         </p>
-        <a href="{{ route('events.index') }}"
-           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/15 backdrop-blur ring-1 ring-white/25 hover:bg-white/25 transition text-sm font-semibold">
-            <x-svg-icon name="users" class="w-4 h-4" /> {{ __('Looking for our own student events? See Community Events →') }}
-        </a>
     </div>
 </section>
 
-{{-- Şehrine göre keşfet — fotoğraflı şehir kartları (eventim tarzı) --}}
-<section class="bg-white border-b border-gray-200">
-    <div class="max-w-[1400px] mx-auto px-4 py-4">
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="text-sm font-bold text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="map-pin" class="w-4 h-4 text-rose-600" /> {{ __('Browse by city') }}</h2>
-            @if ($activeCity)
-                <a href="{{ route('events.concerts', array_filter(['type' => $type])) }}" class="text-xs text-rose-600 hover:underline">{{ __('All Germany') }} ✕</a>
-            @endif
-        </div>
+<div class="max-w-[1400px] mx-auto px-4 py-8 space-y-10">
 
-        @php $badgePalette = ['bg-pink-500', 'bg-red-500', 'bg-cyan-600', 'bg-indigo-600', 'bg-rose-600']; @endphp
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            @foreach ($cities as $city)
-                @php $badge = $badgePalette[$loop->index % count($badgePalette)]; @endphp
-                <a href="{{ route('events.concerts', array_filter(['city' => $city->slug, 'type' => $type])) }}"
-                   class="group">
-                    <div class="relative h-48 rounded-2xl overflow-hidden ring-2 transition
-                                {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
-                        @if ($city->image_url)
-                            <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
-                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        @else
-                            <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
-                        @endif
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-4">
-                            <div class="font-extrabold text-white text-2xl uppercase tracking-wide leading-none mb-2.5 drop-shadow">{{ $city->name }}</div>
-                            <span class="inline-block text-xs font-bold uppercase px-2.5 py-1 rounded text-white {{ $badge }}">{{ __('Find events') }}</span>
+    {{-- 🔥 ÖNE ÇIKANLAR --}}
+    @if ($highlights->isNotEmpty())
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">🔥 {{ __('Highlights') }}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($highlights as $e)
+                    <a href="{{ route('events.show', $e->slug) }}"
+                       class="group block rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
+                        <div class="relative p-5 h-28 flex flex-col justify-between text-white"
+                             style="background: linear-gradient(135deg, {{ $e->type_color }}, rgba(0,0,0,.5));">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-white/20 backdrop-blur px-2 py-0.5 rounded-full">
+                                    {!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}
+                                </span>
+                                <span class="text-[11px] font-semibold bg-black/25 px-2 py-0.5 rounded-full whitespace-nowrap">{{ $e->starts_at->translatedFormat('d M') }}</span>
+                            </div>
+                            <div class="font-extrabold text-lg leading-tight line-clamp-2 drop-shadow">{{ $e->title }}</div>
                         </div>
-                    </div>
-                    <div class="mt-2 text-sm text-gray-500">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
+                        <div class="bg-white px-4 py-3 flex items-center justify-between text-sm">
+                            <span class="inline-flex items-center gap-1 text-gray-600 truncate">
+                                <x-svg-icon name="map-pin" class="w-4 h-4 text-rose-500" /> {{ $e->location_city ?: '—' }}
+                            </span>
+                            <span class="font-semibold text-rose-600 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition">{{ __('Details') }} →</span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
+    {{-- 📍 ŞEHRE GÖRE GEZ — fotoğraflı şehir filtresi --}}
+    @if ($cities->isNotEmpty())
+        <section>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-xl font-bold text-gray-900 inline-flex items-center gap-2"><x-svg-icon name="map-pin" class="w-5 h-5 text-rose-600" /> {{ __('Browse by city') }}</h2>
+                @if ($activeCity)
+                    <a href="{{ route('events.concerts', array_filter(['type' => $type, 'when' => $when])) }}" class="text-sm text-rose-600 hover:underline">{{ __('All Germany') }} ✕</a>
+                @endif
+            </div>
+            @php $badgePalette = ['bg-pink-500', 'bg-red-500', 'bg-cyan-600', 'bg-indigo-600', 'bg-rose-600']; @endphp
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                @foreach ($cities as $city)
+                    @php $badge = $badgePalette[$loop->index % count($badgePalette)]; @endphp
+                    <a href="{{ route('events.concerts', array_filter(['city' => $city->slug, 'type' => $type, 'when' => $when])) }}"
+                       class="group">
+                        <div class="relative h-44 rounded-2xl overflow-hidden ring-2 transition
+                                    {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
+                            @if ($city->image_url)
+                                <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            @else
+                                <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
+                            @endif
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute inset-x-0 bottom-0 p-4">
+                                <div class="font-extrabold text-white text-xl uppercase tracking-wide leading-none mb-2 drop-shadow">{{ $city->name }}</div>
+                                <span class="inline-block text-[11px] font-bold uppercase px-2.5 py-1 rounded text-white {{ $badge }}">{{ __('Find events') }}</span>
+                            </div>
+                        </div>
+                        <div class="mt-1.5 text-sm text-gray-500">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
+    {{-- FİLTRELER: gün + tip --}}
+    <section class="bg-white border border-gray-200 rounded-xl p-4 space-y-3">
+        {{-- Gün filtresi --}}
+        @php $dayFilters = ['' => __('All'), 'today' => __('Today'), 'weekend' => __('This weekend'), 'week' => __('This week'), 'month' => __('This month')]; @endphp
+        <div class="flex items-center flex-wrap gap-2">
+            <span class="text-xs font-semibold text-gray-400 mr-1 w-10">{{ __('Day:') }}</span>
+            @foreach ($dayFilters as $key => $label)
+                <a href="{{ route('events.concerts', array_filter(['city' => $activeCity?->slug, 'type' => $type, 'when' => $key])) }}"
+                   class="text-xs px-3 py-1.5 rounded-full border transition
+                          {{ ($when ?? '') === $key ? 'bg-rose-600 text-white border-rose-600' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100' }}">
+                    {{ $label }}
                 </a>
             @endforeach
         </div>
 
-        {{-- Tip filtresi (Konser / Tiyatro / Komedi …) --}}
+        {{-- Tip filtresi --}}
         @if (! empty($typeOptions))
-            <div class="flex items-center flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
-                <span class="text-xs text-gray-400 mr-1">{{ __('Type:') }}</span>
-                <a href="{{ route('events.concerts', array_filter(['city' => $activeCity?->slug])) }}"
-                   class="text-[11px] px-2.5 py-1 rounded-full border transition
+            <div class="flex items-center flex-wrap gap-2 pt-3 border-t border-gray-100">
+                <span class="text-xs font-semibold text-gray-400 mr-1 w-10">{{ __('Type:') }}</span>
+                <a href="{{ route('events.concerts', array_filter(['city' => $activeCity?->slug, 'when' => $when])) }}"
+                   class="text-xs px-3 py-1.5 rounded-full border transition
                           {{ ! $type ? 'bg-rose-600 text-white border-rose-600' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
                     {{ __('All') }}
                 </a>
                 @foreach ($typeOptions as $key => $meta)
-                    <a href="{{ route('events.concerts', array_filter(['type' => $key, 'city' => $activeCity?->slug])) }}"
-                       class="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full border transition
+                    <a href="{{ route('events.concerts', array_filter(['type' => $key, 'city' => $activeCity?->slug, 'when' => $when])) }}"
+                       class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                               {{ $type === $key ? 'bg-rose-600 text-white border-rose-600' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
                         {!! e_icon($meta['emoji'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
                     </a>
                 @endforeach
             </div>
         @endif
-    </div>
-</section>
+    </section>
 
-<div class="max-w-[1400px] mx-auto px-4 py-10">
-
-    <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-bold text-gray-900 inline-flex items-center gap-2">
-            <x-svg-icon name="arrow-right" class="w-6 h-6 text-rose-600" />
+    {{-- KARTLAR --}}
+    <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">
+            <x-svg-icon name="arrow-right" class="w-5 h-5 text-rose-600" />
             {{ $activeCity
                 ? __(':city — concerts & events', ['city' => $activeCity->name])
                 : __('Upcoming concerts & events (:count)', ['count' => $events->total()]) }}
         </h2>
-    </div>
 
-    @if ($events->isEmpty())
-        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
-            <p class="text-yellow-900">{{ __('No events found for this selection. Try another city or clear the filter.') }}</p>
-        </div>
-    @else
-        {{-- Kompakt liste — güne göre gruplu (takvim görünümü) --}}
-        <div class="bg-white rounded-xl border border-gray-200 divide-y divide-gray-100 overflow-hidden">
-            @php $grouped = $events->getCollection()->groupBy(fn ($e) => $e->starts_at->format('Y-m-d')); @endphp
-            @foreach ($grouped as $day => $dayEvents)
-                <div class="bg-gray-50 px-4 py-2 text-xs font-bold text-gray-500 uppercase tracking-wide">
-                    {{ \Illuminate\Support\Carbon::parse($day)->translatedFormat('d F Y · l') }}
-                </div>
-                @foreach ($dayEvents as $e)
-                    <a href="{{ route('events.show', $e->slug) }}"
-                       class="group flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition">
-                        <span class="shrink-0 w-1.5 h-10 rounded-full" style="background: {{ $e->type_color }};"></span>
-                        <div class="shrink-0 w-12 text-center">
-                            <div class="text-sm font-semibold text-gray-700">{{ $e->starts_at->format('H:i') }}</div>
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <div class="font-semibold text-gray-900 group-hover:text-rose-700 truncate">{{ $e->title }}</div>
-                            {{-- Tip = renkli highlight rozet (eski şehir yerinde) --}}
-                            <span class="inline-flex items-center gap-1 mt-1 text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white"
-                                  style="background: {{ $e->type_color }};">
-                                {!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}
-                            </span>
-                        </div>
-                        {{-- Şehir — sağda --}}
-                        @if ($e->location_city)
-                            <div class="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-gray-700">
-                                <x-svg-icon name="map-pin" class="w-4 h-4 text-rose-500" />
-                                <span class="max-w-[120px] truncate">{{ $e->location_city }}</span>
-                            </div>
-                        @endif
-                        <x-svg-icon name="arrow-right" class="w-4 h-4 text-gray-300 group-hover:text-rose-500 shrink-0" />
-                    </a>
+        @if ($events->isEmpty())
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
+                <p class="text-yellow-900">{{ __('No events found for this selection. Try another city or clear the filter.') }}</p>
+            </div>
+        @else
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($events as $e)
+                    @include('events._card', ['event' => $e, 'isLive' => false])
                 @endforeach
-            @endforeach
-        </div>
+            </div>
+            <div class="mt-6">{{ $events->links() }}</div>
+        @endif
+    </section>
 
-        <div class="mt-6">
-            {{ $events->links() }}
-        </div>
-    @endif
+    {{-- 🔔 BANA HABER VER --}}
+    <section class="max-w-2xl mx-auto">
+        @include('events._alert-subscribe', ['alertCities' => $alertCities])
+    </section>
 
     {{-- Kaynak notu --}}
-    <p class="mt-8 text-xs text-gray-400 text-center max-w-2xl mx-auto">
+    <p class="text-xs text-gray-400 text-center max-w-2xl mx-auto">
         {{ __('Event data is aggregated from public sources (e.g. Ticketmaster). Always confirm date, venue and tickets on the official organiser page.') }}
     </p>
 </div>

@@ -62,26 +62,49 @@ class EventController extends Controller
     {
         $type     = $request->query('type');
         $citySlug = $request->query('city');
-
-        $q = Event::active()->external()->upcoming();
+        $when     = $request->query('when'); // today | weekend | week | month
 
         // Sadece kültür tipleri geçerli (güvenlik)
         $cultureTypes = array_keys(array_filter(
             Event::TYPES,
             fn ($meta) => ($meta['category'] ?? null) === 'culture'
         ));
-        if ($type && in_array($type, $cultureTypes, true)) {
-            $q->where('type', $type);
-        }
 
-        $activeCity = null;
-        if ($citySlug) {
-            $activeCity = \App\Models\City::where('slug', $citySlug)->first(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
-            if ($activeCity) {
-                $q->where('city_id', $activeCity->id);
+        $activeCity = $citySlug
+            ? \App\Models\City::where('slug', $citySlug)->first(['id', 'name_tr', 'name_en', 'name_de', 'slug'])
+            : null;
+
+        // Şehir + tip filtresi — highlight ve ana liste ortak kullanır.
+        $applyBase = function ($query) use ($type, $cultureTypes, $activeCity) {
+            if ($type && in_array($type, $cultureTypes, true)) {
+                $query->where('type', $type);
             }
-        }
+            if ($activeCity) {
+                $query->where('city_id', $activeCity->id);
+            }
 
+            return $query;
+        };
+
+        // 🔥 Öne çıkanlar — en yakın 6 (gün filtresinden bağımsız, şehir+tip uygulanır)
+        $highlights = $applyBase(Event::active()->external()->upcoming())
+            ->orderBy('starts_at')->take(6)->get();
+
+        // Ana liste — şehir + tip + gün filtresi, sayfalı
+        $q = $applyBase(Event::active()->external()->upcoming());
+        if ($when) {
+            $now = now();
+            match ($when) {
+                'today'   => $q->whereBetween('starts_at', [$now, $now->copy()->endOfDay()]),
+                'weekend' => $q->whereBetween('starts_at', [
+                    $now->isWeekend() ? $now->copy()->startOfDay() : $now->copy()->next(\Carbon\Carbon::SATURDAY)->startOfDay(),
+                    ($now->isWeekend() ? $now->copy() : $now->copy()->next(\Carbon\Carbon::SATURDAY))->endOfWeek(\Carbon\Carbon::SUNDAY),
+                ]),
+                'week'    => $q->whereBetween('starts_at', [$now, $now->copy()->addDays(7)]),
+                'month'   => $q->whereBetween('starts_at', [$now, $now->copy()->addMonth()]),
+                default   => null,
+            };
+        }
         $events = $q->orderBy('starts_at')->paginate(24)->withQueryString();
 
         // Şehir kartları: yaklaşan dış etkinlik sayısı + şehir görseli (eventim tarzı).
@@ -91,12 +114,17 @@ class EventController extends Controller
             ->groupBy('city_id')
             ->pluck('c', 'city_id');
 
+        // Filtre için en çok etkinliği olan ilk 5 şehir (fotoğraflı kart)
         $cities = \App\Models\City::whereIn('id', $cityCounts->keys())
             ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug', 'image_url'])
-            // Etkinlik sayısına göre çoktan aza — en çok etkinliği olan ilk 5 şehir
             ->sortByDesc(fn ($c) => $cityCounts[$c->id] ?? 0)
             ->take(5)
             ->values();
+
+        // "Bana haber ver" dropdown'u için: yaklaşan dış etkinliği olan TÜM şehirler
+        $alertCities = \App\Models\City::whereIn('id', $cityCounts->keys())
+            ->orderBy('name_de')
+            ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
 
         // Tip filtresi seçenekleri (sadece mevcut olan kültür tipleri).
         $usedTypes = Event::active()->external()->upcoming()->distinct()->pluck('type')->all();
@@ -106,7 +134,7 @@ class EventController extends Controller
             ARRAY_FILTER_USE_BOTH
         );
 
-        return view('events.concerts', compact('events', 'cities', 'cityCounts', 'activeCity', 'type', 'typeOptions'));
+        return view('events.concerts', compact('events', 'highlights', 'cities', 'cityCounts', 'alertCities', 'activeCity', 'type', 'typeOptions', 'when'));
     }
 
     public function show(string $slug): View
