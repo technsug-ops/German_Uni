@@ -36,25 +36,7 @@
             <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">🔥 {{ __('Highlights') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($highlights as $e)
-                    <a href="{{ route('events.show', $e->slug) }}"
-                       class="group block rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
-                        <div class="relative p-5 h-28 flex flex-col justify-between text-white"
-                             style="background: linear-gradient(135deg, {{ $e->type_color }}, rgba(0,0,0,.5));">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-white/20 backdrop-blur px-2 py-0.5 rounded-full">
-                                    {!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}
-                                </span>
-                                <span class="text-[11px] font-semibold bg-black/25 px-2 py-0.5 rounded-full whitespace-nowrap">{{ $e->starts_at->translatedFormat('d M') }}</span>
-                            </div>
-                            <div class="font-extrabold text-lg leading-tight line-clamp-2 drop-shadow">{{ $e->title }}</div>
-                        </div>
-                        <div class="bg-white px-4 py-3 flex items-center justify-between text-sm">
-                            <span class="inline-flex items-center gap-1 text-gray-600 truncate">
-                                <x-svg-icon name="map-pin" class="w-4 h-4 text-rose-500" /> {{ $e->location_city ?: '—' }}
-                            </span>
-                            <span class="font-semibold text-rose-600 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition">{{ __('Details') }} →</span>
-                        </div>
-                    </a>
+                    @include('events._concert-card', ['event' => $e, 'big' => true])
                 @endforeach
             </div>
         </section>
@@ -145,30 +127,10 @@
                 <p class="text-yellow-900">{{ __('No events found for this selection. Try another city or clear the filter.') }}</p>
             </div>
         @else
-            {{-- İki yan yana liste --}}
-            <div class="bg-white rounded-xl border border-gray-200 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 px-2 sm:px-4">
+            {{-- Görsel poster kartları (eventim/ticketmaster tarzı) --}}
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach ($events as $e)
-                    <a href="{{ route('events.show', $e->slug) }}"
-                       class="group flex items-center gap-3 py-3 border-b border-gray-100 hover:bg-rose-50/60 transition">
-                        <span class="shrink-0 w-1.5 h-12 rounded-full" style="background: {{ $e->type_color }};"></span>
-                        <div class="min-w-0 flex-1">
-                            <div class="font-semibold text-gray-900 group-hover:text-rose-700 truncate">{{ $e->title }}</div>
-                            <div class="mt-1 flex items-center gap-2 flex-wrap">
-                                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded text-white"
-                                      style="background: {{ $e->type_color }};">
-                                    {!! e_icon($e->type_emoji, 'w-2.5 h-2.5') !!} {{ $e->type_label }}
-                                </span>
-                                <span class="text-xs text-gray-500">{{ $e->starts_at->translatedFormat('d M · H:i') }}</span>
-                            </div>
-                        </div>
-                        @if ($e->location_city)
-                            <div class="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-gray-700 max-w-[110px]">
-                                <x-svg-icon name="map-pin" class="w-4 h-4 text-rose-500 shrink-0" />
-                                <span class="truncate">{{ $e->location_city }}</span>
-                            </div>
-                        @endif
-                        <x-svg-icon name="arrow-right" class="w-4 h-4 text-gray-300 group-hover:text-rose-500 shrink-0" />
-                    </a>
+                    @include('events._concert-card', ['event' => $e])
                 @endforeach
             </div>
             <div class="mt-6">{{ $events->links() }}</div>
