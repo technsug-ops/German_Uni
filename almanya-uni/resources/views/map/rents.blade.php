@@ -30,7 +30,7 @@
     use Illuminate\Support\Facades\Route as RouteFacade;
     $isEst = fn($c) => $c->student_rent_source && str_contains($c->student_rent_source, 'ahmin');
     $payload = $cities->map(function ($c) use ($isEst) {
-        $name = $c->name_tr ?: $c->name_de;
+        $name = $c->name;
         return [
             'name' => $name,
             'rent' => (int) $c->student_rent_warm30,
@@ -61,10 +61,10 @@
                 <span>🏙️</span><span><strong class="text-lg">{{ $cities->count() }}</strong> {{ __('cities') }}</span>
             </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span>🟢</span><span>{{ __('Cheapest') }}: <strong>{{ $cheapest->name_tr ?: $cheapest->name_de }}</strong> {{ $cheapest->student_rent_warm30 }} €</span>
+                <span>🟢</span><span>{{ __('Cheapest') }}: <strong>{{ $cheapest->name }}</strong> {{ $cheapest->student_rent_warm30 }} €</span>
             </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span>🔴</span><span>{{ __('Most expensive') }}: <strong>{{ $expensive->name_tr ?: $expensive->name_de }}</strong> {{ $expensive->student_rent_warm30 }} €</span>
+                <span>🔴</span><span>{{ __('Most expensive') }}: <strong>{{ $expensive->name }}</strong> {{ $expensive->student_rent_warm30 }} €</span>
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
                     <tr class="border-b border-gray-100 hover:bg-gray-50">
                         <td class="px-4 py-2">
                             <span class="rent-dot" data-rent="{{ $c->student_rent_warm30 }}"></span>
-                            <a href="{{ RouteFacade::has('cities.show') ? route('cities.show', $c->slug) : url('/cities/'.$c->slug) }}" class="font-medium text-primary-700 hover:underline">{{ $c->name_tr ?: $c->name_de }}</a>
+                            <a href="{{ RouteFacade::has('cities.show') ? route('cities.show', $c->slug) : url('/cities/'.$c->slug) }}" class="font-medium text-primary-700 hover:underline">{{ $c->name }}</a>
                             @if($est)<span class="ml-1 text-[10px] font-bold uppercase px-1 py-0.5 rounded bg-amber-100 text-amber-700" title="{{ __('Estimated') }}">{{ __('est.') }}</span>@endif
                         </td>
                         <td class="px-4 py-2"><strong>{{ $est ? '~' : '' }}{{ $c->student_rent_warm30 }} €</strong></td>
