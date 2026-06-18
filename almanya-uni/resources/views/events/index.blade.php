@@ -109,21 +109,58 @@
         </section>
     @endif
 
-    {{-- UPCOMING --}}
-    <section class="mb-10">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="arrow-right" class="w-6 h-6 text-indigo-600" /> {{ __('Upcoming events (:count)', ['count' => $upcoming->count()]) }}</h2>
-        @if ($upcoming->isEmpty())
+    @php $highlights = $upcoming->take(6); $restUpcoming = $upcoming->slice(6); @endphp
+
+    {{-- 🔥 ÖNE ÇIKANLAR --}}
+    @if ($highlights->isNotEmpty())
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">🔥 {{ __('Highlights') }}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($highlights as $e)
+                    <a href="{{ route('events.show', $e->slug) }}"
+                       class="group block rounded-2xl overflow-hidden border border-gray-200 bg-white hover:shadow-lg transition">
+                        <div class="relative p-5 h-32 flex flex-col justify-between text-white"
+                             style="background: linear-gradient(135deg, {{ $e->type_color }}, rgba(0,0,0,.5));">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-white/20 backdrop-blur px-2 py-0.5 rounded-full">{!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}</span>
+                                <span class="text-[11px] font-semibold bg-black/25 px-2 py-0.5 rounded-full whitespace-nowrap">{{ $e->starts_at->translatedFormat('d M · H:i') }}</span>
+                            </div>
+                            <div class="font-extrabold text-lg leading-tight line-clamp-2 drop-shadow">{{ $e->title }}</div>
+                        </div>
+                        <div class="px-4 py-3 flex items-center justify-between text-sm">
+                            <span class="inline-flex items-center gap-1 text-gray-600 truncate">
+                                @if ($e->mode === 'online')
+                                    <x-svg-icon name="play" class="w-4 h-4 text-indigo-500" /> {{ __('Online') }}
+                                @else
+                                    <x-svg-icon name="map-pin" class="w-4 h-4 text-indigo-500" /> {{ $e->location_city ?: __('In person') }}
+                                @endif
+                            </span>
+                            <span class="font-semibold text-indigo-600 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition">{{ __('Details') }} →</span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
+    {{-- UPCOMING (öne çıkanlar dışında kalanlar) --}}
+    @if ($upcoming->isEmpty())
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="arrow-right" class="w-6 h-6 text-indigo-600" /> {{ __('Upcoming events (:count)', ['count' => 0]) }}</h2>
             <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8 text-center">
                 <p class="text-yellow-900">{{ __('No upcoming events at the moment. Subscribe to our newsletter to get announcements first.') }}</p>
             </div>
-        @else
+        </section>
+    @elseif ($restUpcoming->isNotEmpty())
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="arrow-right" class="w-6 h-6 text-indigo-600" /> {{ __('Upcoming events (:count)', ['count' => $restUpcoming->count()]) }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                @foreach ($upcoming as $e)
+                @foreach ($restUpcoming as $e)
                     @include('events._card', ['event' => $e, 'isLive' => false])
                 @endforeach
             </div>
-        @endif
-    </section>
+        </section>
+    @endif
 
     {{-- PAST --}}
     @if ($past->isNotEmpty())
