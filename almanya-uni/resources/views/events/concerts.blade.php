@@ -32,28 +32,52 @@
     </div>
 </section>
 
-{{-- City tabs (vasistdas tarzı) --}}
-<section class="bg-white border-b border-gray-200 sticky top-0 z-10">
-    <div class="max-w-[1400px] mx-auto px-4 py-3 space-y-2">
-        <div class="flex items-center flex-wrap gap-2">
-            <span class="text-xs text-gray-500 mr-1">{{ __('City:') }}</span>
+{{-- Şehrine göre keşfet — fotoğraflı şehir kartları (eventim tarzı) --}}
+<section class="bg-white border-b border-gray-200">
+    <div class="max-w-[1400px] mx-auto px-4 py-4">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-bold text-gray-700 inline-flex items-center gap-1.5"><x-svg-icon name="map-pin" class="w-4 h-4 text-rose-600" /> {{ __('Browse by city') }}</h2>
+            @if ($activeCity)
+                <a href="{{ route('events.concerts', array_filter(['type' => $type])) }}" class="text-xs text-rose-600 hover:underline">{{ __('All Germany') }} ✕</a>
+            @endif
+        </div>
+
+        <div class="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
+            {{-- Tüm Almanya --}}
             <a href="{{ route('events.concerts', array_filter(['type' => $type])) }}"
-               class="text-xs px-3 py-1.5 rounded-full border transition
-                      {{ ! $activeCity ? 'bg-rose-600 text-white border-rose-600' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100' }}">
-                {{ __('All Germany') }}
+               class="group relative shrink-0 snap-start w-40 h-24 rounded-xl overflow-hidden ring-2 transition
+                      {{ ! $activeCity ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
+                <div class="absolute inset-0 bg-gradient-to-br from-rose-600 to-pink-600"></div>
+                <div class="absolute inset-0 p-3 flex flex-col justify-between text-white">
+                    <span class="text-lg">🇩🇪</span>
+                    <div>
+                        <div class="font-bold text-sm leading-tight">{{ __('All Germany') }}</div>
+                        <div class="text-[11px] text-white/80">{{ __(':count events', ['count' => $events->total()]) }}</div>
+                    </div>
+                </div>
             </a>
             @foreach ($cities as $city)
                 <a href="{{ route('events.concerts', array_filter(['city' => $city->slug, 'type' => $type])) }}"
-                   class="text-xs px-3 py-1.5 rounded-full border transition
-                          {{ $activeCity?->slug === $city->slug ? 'bg-rose-600 text-white border-rose-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                    {{ $city->name }}
+                   class="group relative shrink-0 snap-start w-40 h-24 rounded-xl overflow-hidden ring-2 transition
+                          {{ $activeCity?->slug === $city->slug ? 'ring-rose-500' : 'ring-transparent hover:ring-rose-300' }}">
+                    @if ($city->image_url)
+                        <img src="{{ $city->image_url }}" alt="{{ $city->name }}" loading="lazy"
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    @else
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800"></div>
+                    @endif
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-3 text-white">
+                        <div class="font-bold text-sm leading-tight drop-shadow">{{ $city->name }}</div>
+                        <div class="text-[11px] text-white/85">{{ __(':count events', ['count' => $cityCounts[$city->id] ?? 0]) }}</div>
+                    </div>
                 </a>
             @endforeach
         </div>
 
         {{-- Tip filtresi (Konser / Tiyatro / Komedi …) --}}
         @if (! empty($typeOptions))
-            <div class="flex items-center flex-wrap gap-2 pt-1 border-t border-gray-100">
+            <div class="flex items-center flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
                 <span class="text-xs text-gray-400 mr-1">{{ __('Type:') }}</span>
                 <a href="{{ route('events.concerts', array_filter(['city' => $activeCity?->slug])) }}"
                    class="text-[11px] px-2.5 py-1 rounded-full border transition

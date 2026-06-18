@@ -84,11 +84,18 @@ class EventController extends Controller
 
         $events = $q->orderBy('starts_at')->paginate(24)->withQueryString();
 
-        // Şehir sekmeleri: yaklaşan dış etkinliği olan şehirler.
-        $cityIds = Event::active()->external()->upcoming()->whereNotNull('city_id')->distinct()->pluck('city_id');
-        $cities  = \App\Models\City::whereIn('id', $cityIds)
-            ->orderBy('name_de')
-            ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug']);
+        // Şehir kartları: yaklaşan dış etkinlik sayısı + şehir görseli (eventim tarzı).
+        $cityCounts = Event::active()->external()->upcoming()
+            ->whereNotNull('city_id')
+            ->selectRaw('city_id, COUNT(*) AS c')
+            ->groupBy('city_id')
+            ->pluck('c', 'city_id');
+
+        $cities = \App\Models\City::whereIn('id', $cityCounts->keys())
+            ->get(['id', 'name_tr', 'name_en', 'name_de', 'slug', 'image_url'])
+            // Etkinlik sayısına göre çoktan aza
+            ->sortByDesc(fn ($c) => $cityCounts[$c->id] ?? 0)
+            ->values();
 
         // Tip filtresi seçenekleri (sadece mevcut olan kültür tipleri).
         $usedTypes = Event::active()->external()->upcoming()->distinct()->pluck('type')->all();
@@ -98,7 +105,7 @@ class EventController extends Controller
             ARRAY_FILTER_USE_BOTH
         );
 
-        return view('events.concerts', compact('events', 'cities', 'activeCity', 'type', 'typeOptions'));
+        return view('events.concerts', compact('events', 'cities', 'cityCounts', 'activeCity', 'type', 'typeOptions'));
     }
 
     public function show(string $slug): View

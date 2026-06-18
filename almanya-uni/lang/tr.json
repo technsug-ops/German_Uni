@@ -4408,5 +4408,6 @@
     "No events found for this selection. Try another city or clear the filter.": "Bu seçim için etkinlik bulunamadı. Başka bir şehir dene veya filtreyi temizle.",
     "Event data is aggregated from public sources (e.g. Ticketmaster). Always confirm date, venue and tickets on the official organiser page.": "Etkinlik verileri kamuya açık kaynaklardan (örn. Ticketmaster) derlenir. Tarih, mekan ve bileti her zaman resmi organizatör sayfasından doğrula.",
     "Concerts, theatre, comedy & festivals across Germany — browse by city. (:count events)": "Almanya genelinde konser, tiyatro, komedi & festivaller — şehre göre keşfet. (:count etkinlik)",
-    "Browse": "Keşfet"
+    "Browse": "Keşfet",
+    ":count events": ":count etkinlik"
 }
