@@ -136,9 +136,12 @@
     }
     function radius(r){ var t=(r-MIN)/Math.max(1,(MAX-MIN)); return 8+t*16; }
 
-    var map = L.map('rentMap', { scrollWheelZoom: false }).setView([51.1, 10.2], 6);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap, © CARTO', maxZoom: 18
+    var map = L.map('rentMap', { scrollWheelZoom: false, maxZoom: 18 }).setView([51.1, 10.2], 6);
+    map.on('click', function () { map.scrollWheelZoom.enable(); });
+    map.on('mouseout', function () { map.scrollWheelZoom.disable(); });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
     }).addTo(map);
 
     CITIES.forEach(function (c) {
