@@ -165,7 +165,8 @@ $routes = function () {
             ->whereNotNull('latitude')->whereNotNull('longitude')
             ->orderByDesc('student_rent_warm30')
             ->get(['name_de', 'name_tr', 'slug', 'latitude', 'longitude',
-                'student_rent_warm30', 'student_rent_index', 'student_rent_source', 'student_rent_year']);
+                'student_rent_warm30', 'student_rent_kalt30', 'student_rent_wg_warm', 'student_rent_wg_kalt',
+                'student_rent_index', 'student_rent_index_3yr', 'student_rent_source', 'student_rent_year']);
         return view('map.rents', ['cities' => $cities]);
     })->name('map.rents');
 

@@ -34,6 +34,8 @@
         return [
             'name' => $name,
             'rent' => (int) $c->student_rent_warm30,
+            'kalt' => $c->student_rent_kalt30 ? (int) $c->student_rent_kalt30 : null,
+            'wg' => $c->student_rent_wg_warm ? (int) $c->student_rent_wg_warm : null,
             'idx' => $c->student_rent_index !== null ? (float) $c->student_rent_index : null,
             'est' => $isEst($c),
             'lat' => (float) $c->latitude,
@@ -87,8 +89,10 @@
                 <thead class="bg-gray-50 text-gray-600">
                     <tr>
                         <th data-k="name" class="text-left px-4 py-2 font-semibold">{{ __('City') }}</th>
-                        <th data-k="rent" class="text-left px-4 py-2 font-semibold">{{ __('Rent (30 m², warm)') }}</th>
-                        <th data-k="idx" class="text-left px-4 py-2 font-semibold">{{ __('Yearly change') }}</th>
+                        <th data-k="rent" class="text-left px-4 py-2 font-semibold">{{ __('Flat 30 m² (warm)') }}</th>
+                        <th data-k="kalt" class="text-left px-4 py-2 font-semibold hidden sm:table-cell">{{ __('cold') }}</th>
+                        <th data-k="wg" class="text-left px-4 py-2 font-semibold">{{ __('Shared room (WG)') }}</th>
+                        <th data-k="idx" class="text-left px-4 py-2 font-semibold hidden md:table-cell">{{ __('Yearly change') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,7 +105,9 @@
                             @if($est)<span class="ml-1 text-[10px] font-bold uppercase px-1 py-0.5 rounded bg-amber-100 text-amber-700" title="{{ __('Estimated') }}">{{ __('est.') }}</span>@endif
                         </td>
                         <td class="px-4 py-2"><strong>{{ $est ? '~' : '' }}{{ $c->student_rent_warm30 }} €</strong></td>
-                        <td class="px-4 py-2" style="color:{{ $c->student_rent_index === null ? '#9ca3af' : ($c->student_rent_index < 0 ? '#047857' : '#b91c1c') }};">
+                        <td class="px-4 py-2 text-gray-500 hidden sm:table-cell">{{ $c->student_rent_kalt30 ? $c->student_rent_kalt30.' €' : '—' }}</td>
+                        <td class="px-4 py-2">{{ $c->student_rent_wg_warm ? $c->student_rent_wg_warm.' €' : '—' }}</td>
+                        <td class="px-4 py-2 hidden md:table-cell" style="color:{{ $c->student_rent_index === null ? '#9ca3af' : ($c->student_rent_index < 0 ? '#047857' : '#b91c1c') }};">
                             {{ $c->student_rent_index === null ? '—' : (($c->student_rent_index >= 0 ? '+' : '') . rtrim(rtrim(number_format($c->student_rent_index, 1), '0'), '.') . '%') }}
                         </td>
                     </tr>
@@ -138,10 +144,13 @@
     CITIES.forEach(function (c) {
         var idxTxt = c.idx === null ? '<span style="color:#9ca3af;font-size:.75rem;">{{ __('estimated') }}</span>' :
             '<span class="' + (c.idx<0?'idx-down':'idx-up') + '">' + (c.idx>=0?'+':'') + (Math.round(c.idx*10)/10) + '% {{ __('yearly') }}</span>';
+        var kaltTxt = c.kalt ? ' <span style="color:#9ca3af;font-size:.7rem;">({{ __('cold') }} ' + c.kalt + ' €)</span>' : '';
+        var wgTxt = c.wg ? '<div style="margin-top:.35rem;font-size:.85rem;"><strong>{{ __('Shared room (WG)') }}:</strong> ' + c.wg + ' €</div>' : '';
         var html = '<div class="rent-popup"><h3>' + c.name + (c.est?' <span style="font-size:.65rem;color:#b45309;">({{ __('est.') }})</span>':'') + '</h3>' +
             '<div class="big">' + (c.est?'~':'') + c.rent + ' €</div>' +
-            '<div class="sub">{{ __('30 m² student flat, warm rent') }}</div>' +
-            '<div>' + idxTxt + '</div>' +
+            '<div class="sub">{{ __('30 m² student flat, warm rent') }}' + kaltTxt + '</div>' +
+            wgTxt +
+            '<div style="margin-top:.35rem;">' + idxTxt + '</div>' +
             '<a class="btn" href="' + c.url + '">{{ __('Explore city') }}</a></div>';
         L.circleMarker([c.lat, c.lng], {
             radius: radius(c.rent), fillColor: rentColor(c.rent), color:'#fff',
@@ -165,15 +174,18 @@
         el.style.background = rentColor(parseInt(el.dataset.rent, 10));
     });
     var tbody = document.querySelector('.rent-table tbody');
+    var COL = { name: 0, rent: 1, kalt: 2, wg: 3, idx: 4 };
     document.querySelectorAll('.rent-table th').forEach(function (th) {
-        var dir = th.dataset.k === 'rent' ? 1 : -1;
+        var dir = th.dataset.k === 'name' ? -1 : 1;
         th.addEventListener('click', function () {
             dir *= -1;
-            var k = th.dataset.k;
+            var k = th.dataset.k, ci = COL[k];
             Array.from(tbody.querySelectorAll('tr')).sort(function (a,b) {
-                if (k==='name') return a.children[0].innerText.localeCompare(b.children[0].innerText)*dir;
-                if (k==='rent') return (parseInt(a.children[1].innerText.replace('~',''))-parseInt(b.children[1].innerText.replace('~','')))*dir;
-                return ((parseFloat(a.children[2].innerText)||0)-(parseFloat(b.children[2].innerText)||0))*dir;
+                var at = a.children[ci].innerText, bt = b.children[ci].innerText;
+                if (k === 'name') return at.localeCompare(bt) * dir;
+                var an = parseFloat(at.replace('~','').replace(',','.')) || -Infinity;
+                var bn = parseFloat(bt.replace('~','').replace(',','.')) || -Infinity;
+                return (an - bn) * dir;
             }).forEach(function (r){ tbody.appendChild(r); });
         });
     });
