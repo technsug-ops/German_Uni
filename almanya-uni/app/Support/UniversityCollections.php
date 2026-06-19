@@ -64,19 +64,23 @@ class UniversityCollections
                 'icon'     => '📝',
                 'accent'   => 'amber',
                 'title'    => 'Universities Offering Conditional Admission in Germany',
-                'subtitle' => 'Universities known for issuing conditional admission (bedingte Zulassung) to international applicants who still need to complete a requirement.',
-                'intro'    => 'Conditional admission (bedingte Zulassung) lets you receive an offer before you have fully met every requirement — for example a pending language certificate. These universities, many of them technical universities popular with international students, are frequently cited for this route. Always confirm the exact conditions with the university before you apply.',
+                'subtitle' => 'Universities verified from official sources as issuing conditional admission (bedingte Zulassung) to international applicants who still need to complete a requirement.',
+                'intro'    => 'Conditional admission (bedingte Zulassung) lets a university admit you before you have fully met a requirement — typically a pending German certificate — and enrol you in a preparatory language course meanwhile. The universities below are verified from official sources as offering this. Some others (Universität Hamburg, TU Braunschweig, Universität Paderborn, RWTH Aachen) offer it only for certain programs, while some frequently-cited universities (e.g. Justus-Liebig Gießen) officially state they do NOT offer conditional enrolment. Always confirm the exact conditions with the university before applying.',
+                // Resmî kaynaktan DOĞRULANMIŞ liste (Haziran 2026). Sadece "kesin veriyor" olanlar.
                 'uni_slugs' => [
-                    'universitat-kassel-q833822',
-                    'technische-universitat-darmstadt-q310695',
-                    'universitat-stuttgart-q122453',
+                    'universitat-bremen-q500692',
+                    'universitat-duisburg-essen-q696757',
+                    'philipps-universitat-marburg-q155354',
                     'technische-universitat-clausthal-q447354',
-                    'ruhr-universitat-bochum-q309948',
-                    'bergische-universitat-wuppertal-q447953',
-                    'technische-universitat-braunschweig-q734324',
-                    'rheinland-pfalzische-technische-universitat-kaiserslautern-landau-q111020102',
                     'technische-universitat-dortmund-q685557',
-                    'technische-universitat-chemnitz-q159630',
+                ],
+                // slug => doğrulanmış kısa not (view'da __() ile basılır)
+                'notes' => [
+                    'technische-universitat-clausthal-q447354' => 'Official "Conditional Admission" program — you enrol in the language course and receive conditional admission at the same time.',
+                    'technische-universitat-dortmund-q685557'  => 'Issues a Sprachkurs-Zulassung if your C1 is missing — you first enrol as a language-course student.',
+                    'universitat-duisburg-essen-q696757'       => 'Official page allows applying without sufficient German and obtaining a Sprachkurs-Zulassung.',
+                    'philipps-universitat-marburg-q155354'     => 'Explicitly defines "conditional admission" and offers enrolment as a language student for two semesters.',
+                    'universitat-bremen-q500692'               => 'Well known for conditional admission — issues it to almost every qualified applicant.',
                 ],
             ],
         ];

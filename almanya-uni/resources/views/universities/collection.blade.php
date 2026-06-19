@@ -61,6 +61,29 @@
     </div>
 </section>
 
+{{-- ─────────────── DOĞRULANMIŞ NOTLAR (varsa) ─────────────── --}}
+@if (! empty($collection['notes']))
+    <section class="bg-white border-b border-gray-200">
+        <div class="max-w-[1400px] mx-auto px-4 pb-6">
+            <div class="rounded-xl border border-emerald-200 bg-emerald-50/60 divide-y divide-emerald-100 max-w-3xl">
+                @foreach ($universities->items() as $u)
+                    @php $note = $collection['notes'][$u['slug']] ?? null; @endphp
+                    @if ($note)
+                        <div class="flex items-start gap-2.5 p-3 text-sm">
+                            <span class="text-emerald-600 shrink-0" aria-hidden="true">✅</span>
+                            <div class="min-w-0">
+                                <a href="{{ route('universities.show', $u['slug']) }}" class="font-semibold text-gray-900 hover:text-primary-700">{{ $u['name_de'] }}</a>
+                                <span class="text-gray-600"> — {{ __($note) }}</span>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <p class="text-xs text-gray-500 mt-3 max-w-3xl">{{ __('Verified from official university pages. Conditions change per semester — always confirm with the university before applying.') }}</p>
+        </div>
+    </section>
+@endif
+
 {{-- ─────────────── GRID (reuses universities._grid) ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
