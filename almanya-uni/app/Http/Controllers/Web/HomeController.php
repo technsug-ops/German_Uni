@@ -176,21 +176,39 @@ class HomeController extends Controller
                 ])->all()
         );
 
-        $featured_professions = cache()->remember('home.featured_professions_v4:' . app()->getLocale(), now()->addHours(6), fn () =>
-            Profession::where('is_active', true)
-                ->where('type', 'studienberuf')
-                ->whereNotNull('description_tr')->where('description_tr', '!=', '')
-                ->whereNotNull('field_of_study_id')
+        // Gerçekten TALEP GÖREN meslekler (Almanya Mangelberufe: IT + mühendislik +
+        // lojistik). Eski mantık field_id+id'ye göre sıralayıp alakasız ("Abfalltechnik")
+        // ilk kayıtları gösteriyordu. Slug whitelist ile curate — BERUFENET-id'li slug
+        // prod'da stabil; sıra korunur, eksik olan atlanır.
+        // Sıra: IT → mühendislik → sağlık → lojistik. İleride kullanıcı ilgi/arama
+        // analitiği tutulursa bu liste en çok araştırılan alanlara göre dinamikleşebilir.
+        $inDemandProfessions = [
+            'informatik-grundstandig-93944',                      // Informatik (IT)
+            'kunstliche-intelligenz-grundstandig-138318',         // Yapay Zekâ (KI)
+            'datenwissenschaft-data-science-grundstandig-129986', // Data Science
+            'wirtschaftsinformatik-grundstandig-93916',           // Wirtschaftsinformatik
+            'elektrotechnik-grundstandig-94126',                  // Elektrotechnik
+            'maschinenbau-grundstandig-93646',                    // Maschinenbau
+            'mechatronik-grundstandig-93707',                     // Mechatronik
+            'humanmedizin-grundstandig-94243',                    // Humanmedizin (Tıp)
+            'logistik-supply-chain-management-grundstandig-94359',// Lojistik / Supply-Chain
+        ];
+        $featured_professions = cache()->remember('home.featured_professions_v6:' . app()->getLocale(), now()->addHours(6), function () use ($inDemandProfessions) {
+            $bySlug = Profession::where('is_active', true)
+                ->whereIn('slug', $inDemandProfessions)
                 ->with('field:id,slug,name_tr,name_en,name_de,icon')
-                ->orderBy('field_of_study_id')->orderBy('id')
-                ->limit(4)
                 ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'field_of_study_id', 'type'])
+                ->keyBy('slug');
+
+            return collect($inDemandProfessions)
+                ->map(fn ($slug) => $bySlug->get($slug))
+                ->filter()
                 ->map(fn ($p) => [
                     'slug'       => $p->slug,
                     'name'       => $p->name,
                     'field_name' => $p->field?->name,
-                ])->all()
-        );
+                ])->values()->all();
+        });
 
         // Premium başvuru şablonları — ana sayfa hunisi. DÜZ ARRAY (Collection değil!),
         // locale'li key (title accessor cache anında çözülür).
