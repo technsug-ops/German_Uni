@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Schema;
  */
 class CheckExternalLinks extends Command
 {
-    protected $signature = 'links:check-external {--timeout=12} {--only=} {--max=800}';
+    protected $signature = 'links:check-external {--timeout=8} {--only=} {--max=800}';
 
     protected $description = 'Sağlayıcı/partner dış linklerini tarar, ölü/hatalı olanları raporlar.';
 
@@ -31,13 +31,17 @@ class CheckExternalLinks extends Command
     public function handle(): int
     {
         $only    = $this->option('only');
-        $timeout = (int) $this->option('timeout');
+        $timeout = max(3, (int) $this->option('timeout'));
         $max     = (int) $this->option('max');
 
-        // 1) URL'leri topla (dedupe by URL → hangi kayıtlarda kullanıldığını sakla)
+        // 1) URL'leri topla (dedupe by URL → hangi kayıtlarda kullanıldığını sakla).
+        // scholarships HARİÇ (166 DAAD linki, resmî; web isteğini şişirmesin) — sadece ?only=scholarships ile.
         $items = []; // url => [ref, ...]
         foreach ($this->sources as $s) {
             if ($only && $only !== $s['table']) {
+                continue;
+            }
+            if (! $only && $s['table'] === 'scholarships') {
                 continue;
             }
             if (! Schema::hasTable($s['table']) || ! Schema::hasColumn($s['table'], $s['url'])) {
@@ -61,29 +65,34 @@ class CheckExternalLinks extends Command
         $blocked = [];  // 401/403/405/429 (muhtemelen canlı)
         $ok = 0;
 
-        $bar = $this->output->createProgressBar(count($urls));
-        foreach ($urls as $url) {
-            try {
-                $code = Http::timeout($timeout)->connectTimeout($timeout)
+        // Eşzamanlı (concurrent) kontrol — 20'lik gruplar; web isteği timeout'a girmesin.
+        foreach (array_chunk($urls, 20) as $chunk) {
+            $responses = Http::pool(fn ($pool) => array_map(
+                fn ($u) => $pool->connectTimeout(min(5, $timeout))->timeout($timeout)
                     ->withHeaders(['User-Agent' => 'Mozilla/5.0 (compatible; ApplyToGermanLinkBot/1.0)'])
-                    ->get($url)->status();
+                    ->get($u),
+                $chunk
+            ));
 
-                if ($code >= 200 && $code < 400) {
-                    $ok++;
-                } elseif (in_array($code, [401, 403, 405, 429], true)) {
-                    $blocked[] = [$code, $url, $items[$url]];
-                } elseif (in_array($code, [404, 410], true)) {
-                    $dead[] = [$code, $url, $items[$url]];
+            foreach ($chunk as $i => $url) {
+                $r = $responses[$i] ?? null;
+                if ($r instanceof \Illuminate\Http\Client\Response) {
+                    $code = $r->status();
+                    if ($code >= 200 && $code < 400) {
+                        $ok++;
+                    } elseif (in_array($code, [401, 403, 405, 429], true)) {
+                        $blocked[] = [$code, $url, $items[$url]];
+                    } elseif (in_array($code, [404, 410], true)) {
+                        $dead[] = [$code, $url, $items[$url]];
+                    } else {
+                        $error[] = [$code, $url, $items[$url]];
+                    }
                 } else {
-                    $error[] = [$code, $url, $items[$url]];
+                    $unreach[] = ['ERR', $url, $items[$url]];
                 }
-            } catch (\Throwable $e) {
-                $unreach[] = ['ERR', $url, $items[$url], $e->getMessage()];
             }
-            $bar->advance();
         }
-        $bar->finish();
-        $this->newLine(2);
+        $this->newLine();
 
         $this->info("✅ Sağlam: {$ok}");
         $this->printGroup('🔴 ÖLÜ (404/410)', $dead);
