@@ -52,7 +52,7 @@
             // Rozet metnini "·" işaretinden 2 satıra böl: "...İÇİN" (1. satır) + "2026 GÜNCEL" (2. satır)
             $__badgeParts = array_map('trim', explode('·', __('For international students · 2026 updated'), 2));
         @endphp
-        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3.5 py-1.5 rounded-2xl text-[11px] font-semibold uppercase tracking-wide mb-5">
+        <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-2xl text-[11px] font-semibold uppercase tracking-wide mb-5">
             <span class="text-accent-400"><x-svg-icon name="academic-cap" class="w-4 h-4" /></span>
             <span class="flex flex-col leading-[1.2] text-left">
                 <span>{{ $__badgeParts[0] }}</span>
@@ -73,7 +73,7 @@
 
         {{-- Arama: mobilde buton altta tam genişlik, masaüstünde yan yana --}}
         <form action="{{ route('search.index') }}" method="GET" class="max-w-4xl mb-5 relative" id="heroSearchForm" autocomplete="off">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-white/95 backdrop-blur p-2 rounded-2xl shadow-2xl">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-white p-2 rounded-2xl shadow-2xl">
                 <div class="flex items-center flex-1 px-3 min-w-0">
                     <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"/>
@@ -162,7 +162,7 @@
         {{-- ===== Stat şeridi (sol) + Haritada Keşfet kartı (sağ) — yan yana ===== --}}
         <div class="grid lg:grid-cols-5 gap-4 mb-5 items-stretch">
             {{-- Stat: tek cam kart, 4 metrik — renkli ikon kareleri, ikon üstte (mockup) --}}
-            <div class="lg:col-span-3 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl py-6 px-2 grid grid-cols-4 divide-x divide-white/10">
+            <div class="lg:col-span-3 bg-white/10 border border-white/15 rounded-2xl py-6 px-2 grid grid-cols-4 divide-x divide-white/10">
                 <a href="{{ route('programs.index') }}" class="flex flex-col items-center text-center px-1 group rounded-xl py-1 hover:bg-white/5 transition" title="{{ __('Programs') }}">
                     <span class="inline-flex w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-blue-500/25 text-blue-200 items-center justify-center mb-2.5 group-hover:bg-blue-500/40 transition"><x-svg-icon name="academic-cap" class="w-6 h-6 md:w-7 md:h-7" /></span>
                     <div class="text-xl md:text-3xl font-extrabold leading-none">{{ number_format($totals['programs'], 0, ',', '.') }}</div>
@@ -187,7 +187,7 @@
 
             {{-- Haritada Keşfet kartı --}}
             <a href="{{ route('map.index') }}"
-               class="lg:col-span-2 group relative overflow-hidden flex items-center gap-4 bg-primary-800/60 hover:bg-primary-800/80 backdrop-blur-sm border border-white/15 rounded-2xl p-4 transition">
+               class="lg:col-span-2 group relative overflow-hidden flex items-center gap-4 bg-primary-800/70 hover:bg-primary-800/90 border border-white/15 rounded-2xl p-4 transition">
                 <span class="flex-shrink-0 inline-flex w-12 h-12 rounded-xl bg-white/15 items-center justify-center"><x-svg-icon name="map" class="w-6 h-6" /></span>
                 <div class="min-w-0 flex-1">
                     <div class="font-bold text-lg">{{ __('Explore on the map') }}</div>
