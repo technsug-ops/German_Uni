@@ -66,21 +66,43 @@ class UniversityCollections
                 'title'    => 'Universities Offering Conditional Admission in Germany',
                 'subtitle' => 'Universities verified from official sources as issuing conditional admission (bedingte Zulassung) to international applicants who still need to complete a requirement.',
                 'intro'    => 'Conditional admission (bedingte Zulassung) lets a university admit you before you have fully met a requirement — typically a pending German certificate — and enrol you in a preparatory language course meanwhile. The universities below are verified from official sources as offering this. Some others (Universität Hamburg, TU Braunschweig, Universität Paderborn, RWTH Aachen) offer it only for certain programs, while some frequently-cited universities (e.g. Justus-Liebig Gießen) officially state they do NOT offer conditional enrolment. Always confirm the exact conditions with the university before applying.',
-                // Resmî kaynaktan DOĞRULANMIŞ liste (Haziran 2026). Sadece "kesin veriyor" olanlar.
+                // Resmî kaynaktan DOĞRULANMIŞ (Haziran 2026). Tümü fetch edilir; 2 kolonda gösterilir.
                 'uni_slugs' => [
                     'universitat-bremen-q500692',
                     'universitat-duisburg-essen-q696757',
                     'philipps-universitat-marburg-q155354',
                     'technische-universitat-clausthal-q447354',
                     'technische-universitat-dortmund-q685557',
+                    'universitat-hamburg-q156725',
+                    'technische-universitat-braunschweig-q734324',
+                    'universitat-paderborn-q679134',
+                    'rwth-aachen-university-partner-019de9ee',
                 ],
-                // slug => doğrulanmış kısa not (view'da __() ile basılır)
-                'notes' => [
-                    'technische-universitat-clausthal-q447354' => 'Official "Conditional Admission" program — you enrol in the language course and receive conditional admission at the same time.',
-                    'technische-universitat-dortmund-q685557'  => 'Issues a Sprachkurs-Zulassung if your C1 is missing — you first enrol as a language-course student.',
-                    'universitat-duisburg-essen-q696757'       => 'Official page allows applying without sufficient German and obtaining a Sprachkurs-Zulassung.',
-                    'philipps-universitat-marburg-q155354'     => 'Explicitly defines "conditional admission" and offers enrolment as a language student for two semesters.',
-                    'universitat-bremen-q500692'               => 'Well known for conditional admission — issues it to almost every qualified applicant.',
+                // 2 kolon: kesin veren + programa bağlı. items: slug => [status, note] (view'da __()).
+                'groups' => [
+                    [
+                        'title'  => 'Definitely offers conditional admission',
+                        'icon'   => '✅',
+                        'accent' => 'emerald',
+                        'items'  => [
+                            'universitat-bremen-q500692'               => ['status' => 'Confirmed', 'note' => 'Well known for conditional admission — issues it to almost every qualified applicant.'],
+                            'universitat-duisburg-essen-q696757'       => ['status' => 'Confirmed', 'note' => 'Official page allows applying without sufficient German and obtaining a Sprachkurs-Zulassung.'],
+                            'philipps-universitat-marburg-q155354'     => ['status' => 'Confirmed', 'note' => 'Explicitly defines "conditional admission" and offers enrolment as a language student for two semesters.'],
+                            'technische-universitat-clausthal-q447354' => ['status' => 'Confirmed', 'note' => 'Official "Conditional Admission" program — you enrol in the language course and receive conditional admission at the same time.'],
+                            'technische-universitat-dortmund-q685557'  => ['status' => 'Confirmed', 'note' => 'Issues a Sprachkurs-Zulassung if your C1 is missing — you first enrol as a language-course student.'],
+                        ],
+                    ],
+                    [
+                        'title'  => 'Program-dependent / limited',
+                        'icon'   => '⚠️',
+                        'accent' => 'amber',
+                        'items'  => [
+                            'universitat-hamburg-q156725'                  => ['status' => 'Depends on program', 'note' => 'Varies by department.'],
+                            'technische-universitat-braunschweig-q734324'  => ['status' => 'Limited', 'note' => 'Possible in some programs.'],
+                            'universitat-paderborn-q679134'                => ['status' => 'Depends on program', 'note' => 'No general guarantee.'],
+                            'rwth-aachen-university-partner-019de9ee'      => ['status' => 'Limited', 'note' => 'Possible in certain cases, especially tied to a language course.'],
+                        ],
+                    ],
                 ],
             ],
         ];

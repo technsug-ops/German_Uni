@@ -61,25 +61,43 @@
     </div>
 </section>
 
-{{-- ─────────────── DOĞRULANMIŞ NOTLAR (varsa) ─────────────── --}}
-@if (! empty($collection['notes']))
-    <section class="bg-white border-b border-gray-200">
-        <div class="max-w-[1400px] mx-auto px-4 pb-6">
-            <div class="rounded-xl border border-emerald-200 bg-emerald-50/60 divide-y divide-emerald-100 max-w-3xl">
-                @foreach ($universities->items() as $u)
-                    @php $note = $collection['notes'][$u['slug']] ?? null; @endphp
-                    @if ($note)
-                        <div class="flex items-start gap-2.5 p-3 text-sm">
-                            <span class="text-emerald-600 shrink-0" aria-hidden="true">✅</span>
-                            <div class="min-w-0">
-                                <a href="{{ route('universities.show', $u['slug']) }}" class="font-semibold text-gray-900 hover:text-primary-700">{{ $u['name_de'] }}</a>
-                                <span class="text-gray-600"> — {{ __($note) }}</span>
-                            </div>
+{{-- ─────────────── 2-KOLON GRUPLU GÖRÜNÜM (varsa) ─────────────── --}}
+@if (! empty($collection['groups']))
+    @php
+        $bySlug = collect($universities->items())->keyBy('slug');
+        $accentMap = [
+            'emerald' => ['head' => 'text-emerald-700', 'badge' => 'bg-emerald-100 text-emerald-800', 'border' => 'hover:border-emerald-400'],
+            'amber'   => ['head' => 'text-amber-700',   'badge' => 'bg-amber-100 text-amber-800',     'border' => 'hover:border-amber-400'],
+        ];
+    @endphp
+    <section class="bg-gray-50 py-10">
+        <div class="max-w-[1400px] mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                @foreach ($collection['groups'] as $group)
+                    @php $a = $accentMap[$group['accent']] ?? $accentMap['emerald']; @endphp
+                    <div>
+                        <h2 class="text-lg font-bold mb-4 inline-flex items-center gap-2 {{ $a['head'] }}">
+                            <span aria-hidden="true">{{ $group['icon'] }}</span> {{ __($group['title']) }}
+                        </h2>
+                        <div class="space-y-3">
+                            @foreach ($group['items'] as $slug => $meta)
+                                @php $u = $bySlug[$slug] ?? null; @endphp
+                                @if ($u)
+                                    <a href="{{ route('universities.show', $slug) }}"
+                                       class="block bg-white border border-gray-200 {{ $a['border'] }} hover:shadow-md transition rounded-xl p-4">
+                                        <div class="flex items-center justify-between gap-2 mb-1">
+                                            <span class="font-bold text-gray-900 leading-snug">{{ $u['name_de'] }}</span>
+                                            <span class="shrink-0 text-[11px] font-bold uppercase px-2 py-0.5 rounded-full {{ $a['badge'] }}">{{ __($meta['status']) }}</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 leading-relaxed">{{ __($meta['note']) }}</p>
+                                    </a>
+                                @endif
+                            @endforeach
                         </div>
-                    @endif
+                    </div>
                 @endforeach
             </div>
-            <p class="text-xs text-gray-500 mt-3 max-w-3xl">{{ __('Verified from official university pages. Conditions change per semester — always confirm with the university before applying.') }}</p>
+            <p class="text-xs text-gray-500 mt-5 max-w-3xl">{{ __('Verified from official university pages. Conditions change per semester — always confirm with the university before applying.') }}</p>
         </div>
     </section>
 @endif
@@ -87,7 +105,9 @@
 {{-- ─────────────── GRID (reuses universities._grid) ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        @include('universities._grid')
+        @if (empty($collection['groups']))
+            @include('universities._grid')
+        @endif
 
         {{-- Cross-links to the other curated collections --}}
         <div class="mt-12 pt-8 border-t border-gray-200">
