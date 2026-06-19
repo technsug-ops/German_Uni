@@ -200,6 +200,7 @@
         {{-- Popüler aramalar --}}
         <div class="flex flex-wrap items-center gap-2 text-sm">
             <span class="font-semibold text-primary-100 mr-1">{{ __('Popular searches') }}</span>
+            <a href="{{ route('popular-universities') }}" class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 border border-white/20 px-3.5 py-1.5 rounded-full font-semibold transition">⭐ {{ __('Popular Universities') }}</a>
             <a href="{{ route('programs.index', ['language' => 'en']) }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
             <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('DAAD Scholarship') }}</a>
             <a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Deadline calendar') }}</a>
