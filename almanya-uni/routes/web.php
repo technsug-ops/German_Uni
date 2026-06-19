@@ -1362,6 +1362,20 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Dış-link denetimi — sağlayıcı/partner "siteye git" linklerini tarar (prod'da ağ gerçek).
+    // ?only=housing_providers ile tek tablo. Sadece is_admin.
+    Route::get('/admin/ops/check-links', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        \Illuminate\Support\Facades\Artisan::call('links:check-external', array_filter([
+            '--only'    => request()->query('only'),
+            '--timeout' => request()->query('timeout'),
+        ]));
+
+        return response(\Illuminate\Support\Facades\Artisan::output(), 200)
+            ->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // GEÇİCİ — çeviri import (content_blocks_en/de + FAQ EN/DE). Local'de
     // `i18n:export-content` ile üretilen gzip veri dosyalarını prod DB'ye uygular.
     // Re-runnable (idempotent). ?force=1 dolu blokların üzerine de yazar.
