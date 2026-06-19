@@ -19,17 +19,41 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $featured_universities = University::where('student_count', '>', 0)
+        // Öne çıkan üniler: şartlı kabul örnekleri (Dortmund, Bremen, Duisburg-Essen)
+        // + amiral gemileri (TUM, Darmstadt) ÖN PLANDA; gerisi öğrenci sayısıyla dolar.
+        // name_de ile stabil eşleştir (slug prod≠lokal); kanonik = en yüksek student_count.
+        $pinnedNames = [
+            'Technische Universität Dortmund',
+            'Universität Bremen',
+            'Universität Duisburg-Essen',
+            'Technische Universität München',
+            'Technische Universität Darmstadt',
+        ];
+        $pinned = collect($pinnedNames)
+            ->map(fn ($name) => University::where('is_active', 1)
+                ->where('name_de', 'like', $name . '%')
+                ->orderByDesc('student_count')
+                ->first())
+            ->filter()
+            ->values();
+
+        $fill = University::where('student_count', '>', 0)
             ->where('is_active', 1)
+            ->whereNotIn('id', $pinned->pluck('id')->all())
             ->orderBy('student_count', 'desc')
-            ->limit(8)
-            ->get()
+            ->limit(max(0, 6 - $pinned->count()))
+            ->get();
+
+        // TUM ana sayfa kartı için göz alıcı dış görsel (slug-bazlı cache accessor'ı bypass).
+        $tumHeroImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Technische_Universit%C3%A4t_M%C3%BCnchen%2C_Arcisstra%C3%9Fe_21_%E2%80%94_Eingangsbereich_mit_Fahnen.JPG/960px-Technische_Universit%C3%A4t_M%C3%BCnchen%2C_Arcisstra%C3%9Fe_21_%E2%80%94_Eingangsbereich_mit_Fahnen.JPG';
+
+        $featured_universities = $pinned->concat($fill)
             ->map(fn ($u) => [
                 'slug' => $u->slug,
                 'name_de' => $u->name_de,
                 'short_name' => $u->short_name,
                 'logo_url' => $u->logo_url,
-                'image_url' => $u->image_url,
+                'image_url' => str_starts_with((string) $u->name_de, 'Technische Universität München') ? $tumHeroImage : $u->image_url,
                 'city_name' => $u->city?->name,
                 'student_count' => $u->student_count,
                 'type' => $u->type,
@@ -130,7 +154,7 @@ class HomeController extends Controller
         // DÜZ ARRAY cache'le (Eloquent Collection DEĞİL): file cache serialize/unserialize
         // Eloquent Collection'ı bozabiliyor ("incomplete object" → 500). Düz array güvenli.
         // Locale-spesifik key — name accessor cache anında locale'e göre çözülüyor.
-        $featured_programs = cache()->remember('home.featured_programs_v3:' . app()->getLocale(), now()->addHours(6), fn () =>
+        $featured_programs = cache()->remember('home.featured_programs_v4:' . app()->getLocale(), now()->addHours(6), fn () =>
             Program::query()
                 ->where('programs.is_active', true)
                 ->whereIn('programs.language', ['en', 'both'])
@@ -139,7 +163,7 @@ class HomeController extends Controller
                 ->where('universities.is_active', 1)
                 ->orderByDesc('universities.student_count')
                 ->orderBy('programs.id')
-                ->limit(8)
+                ->limit(4)
                 ->select('programs.id', 'programs.slug', 'programs.name_de', 'programs.name_en', 'programs.degree', 'programs.language', 'programs.university_id')
                 ->get()
                 ->load('university:id,slug,name_de')
@@ -152,14 +176,14 @@ class HomeController extends Controller
                 ])->all()
         );
 
-        $featured_professions = cache()->remember('home.featured_professions_v3:' . app()->getLocale(), now()->addHours(6), fn () =>
+        $featured_professions = cache()->remember('home.featured_professions_v4:' . app()->getLocale(), now()->addHours(6), fn () =>
             Profession::where('is_active', true)
                 ->where('type', 'studienberuf')
                 ->whereNotNull('description_tr')->where('description_tr', '!=', '')
                 ->whereNotNull('field_of_study_id')
                 ->with('field:id,slug,name_tr,name_en,name_de,icon')
                 ->orderBy('field_of_study_id')->orderBy('id')
-                ->limit(8)
+                ->limit(4)
                 ->get(['id', 'slug', 'name_tr', 'name_de', 'name_en', 'field_of_study_id', 'type'])
                 ->map(fn ($p) => [
                     'slug'       => $p->slug,
