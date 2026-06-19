@@ -18,8 +18,13 @@ class TrackPageView
     private const COOKIE_NAME = 'almanyauni_uid';
     private const COOKIE_TTL = 60 * 24 * 365; // 1 yıl
 
-    /** terminate()'te yazılacak satır — handle()'da hazırlanır (TTFB'ye girmez). */
-    private ?array $pending = null;
+    /**
+     * terminate()'te yazılacak satır — handle()'da hazırlanır (TTFB'ye girmez).
+     * DİKKAT: Laravel terminate()'i container'dan TAZE bir middleware instance'ı ile
+     * çağırır (bu middleware singleton değil), yani instance property'leri taşınmaz.
+     * Bu yüzden satırı Request nesnesine (handle↔terminate arasında AYNI instance) yazıyoruz.
+     */
+    private const REQ_ATTR = '_pageview_pending';
 
     private const EXCLUDED_PATHS = [
         'admin', 'api', 'livewire', 'sanctum',
@@ -56,12 +61,13 @@ class TrackPageView
      */
     public function terminate(Request $request, Response $response): void
     {
-        if ($this->pending === null) {
+        $pending = $request->attributes->get(self::REQ_ATTR);
+        if (! is_array($pending)) {
             return;
         }
 
         try {
-            DB::table('page_views')->insert($this->pending);
+            DB::table('page_views')->insert($pending);
         } catch (\Throwable $e) {
             \Log::warning('TrackPageView insert error: ' . $e->getMessage());
         }
@@ -101,7 +107,8 @@ class TrackPageView
         }
 
         // INSERT'i terminate()'e bırak — response gönderildikten sonra yazılır.
-        $this->pending = [
+        // Satırı Request'e yaz: terminate() taze bir instance'ta çalışsa da Request aynıdır.
+        $request->attributes->set(self::REQ_ATTR, [
             'session_id' => $sid,
             'user_id' => auth()->id(),
             'path' => mb_substr($path, 0, 500),
@@ -112,7 +119,7 @@ class TrackPageView
             'ip_hash' => md5(($request->ip() ?? '') . config('app.key')),
             'response_ms' => (int) ($duration * 1000),
             'created_at' => now(),
-        ];
+        ]);
     }
 
     private function isBot(string $ua): bool
