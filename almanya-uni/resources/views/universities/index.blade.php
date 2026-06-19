@@ -37,6 +37,10 @@
                 </div>
             @endif
         </div>
+        <a href="{{ route('popular-universities') }}" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-primary-700 font-bold shadow hover:bg-primary-50 transition">
+            <span aria-hidden="true">⭐</span> {{ __('Most Preferred Fields & Universities in Germany') }}
+            <x-svg-icon name="arrow-right" class="w-4 h-4" />
+        </a>
     </div>
 </section>
 

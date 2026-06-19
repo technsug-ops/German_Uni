@@ -181,6 +181,7 @@ class SitemapController extends Controller
         $urls[] = $this->entry(route('home'), now(), 'daily', 1.0);
 
         $urls[] = $this->entry(route('universities.index'), now(), 'daily', 0.9);
+        $urls[] = $this->entry(route('popular-universities'), now(), 'weekly', 0.85);
         $urls[] = $this->entry(route('cities.index'), now(), 'daily', 0.9);
         $urls[] = $this->entry(route('fields.index'), now(), 'weekly', 0.9);
         $urls[] = $this->entry(route('states.index'), now(), 'weekly', 0.9);

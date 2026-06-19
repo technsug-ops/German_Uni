@@ -231,6 +231,9 @@ $routes = function () {
     // Uni slug catch-all'dan ÖNCE — "collections" literal ilk segment, çakışma yok.
     Route::get('/universities/collections/{slug}', [UniversityWebController::class, 'collection'])
         ->name('universities.collection');
+    // "En çok tercih edilen bölümler & üniversiteler" rehberi + etkileşimli üni gezgini
+    Route::get('/popular-universities', [\App\Http\Controllers\Web\PopularUniversitiesController::class, 'index'])
+        ->name('popular-universities');
     // NC Frei (zulassungsfrei) üst-hub
     Route::get('/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'index'])->name('admission-free.index');
     // İngilizce verilen bölümler hub
