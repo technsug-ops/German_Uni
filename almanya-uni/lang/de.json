@@ -4521,5 +4521,22 @@
     "NC-free programs by city": "NC-freie Studiengänge nach Stadt",
     "NC-free (zulassungsfrei) programs at universities in :city — open admission.": "NC-freie (zulassungsfreie) Studiengänge an Hochschulen in :city — offene Zulassung.",
     "NC-free (zulassungsfrei) programs in :city": "NC-freie (zulassungsfreie) Studiengänge in :city",
-    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":count NC-freie (zulassungsfreie) Studiengänge in :city — offene Zulassung, keine Notenbeschränkung (NC). Nach Fach und Abschluss filtern."
+    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":count NC-freie (zulassungsfreie) Studiengänge in :city — offene Zulassung, keine Notenbeschränkung (NC). Nach Fach und Abschluss filtern.",
+    "Tuition-free study programs in Germany": "Gebührenfreie Studiengänge in Deutschland",
+    "Browse :count tuition-free study programs at public universities in Germany. Study for free — only a small semester fee. Filter by subject and university.": "Durchsuche :count gebührenfreie Studiengänge an staatlichen Hochschulen in Deutschland. Kostenlos studieren — nur ein kleiner Semesterbeitrag. Nach Fach und Hochschule filtern.",
+    "Tuition-free programs": "Gebührenfreie Studiengänge",
+    "Public universities in Germany charge no tuition — you pay only a small semester contribution (≈ €100–350), which usually includes a public-transport ticket.": "Staatliche Hochschulen in Deutschland erheben keine Studiengebühren — du zahlst nur einen kleinen Semesterbeitrag (≈ 100–350 €), meist inklusive Semesterticket.",
+    ":count tuition-free programs": ":count gebührenfreie Studiengänge",
+    "Is studying in Germany really free?": "Ist das Studium in Deutschland wirklich kostenlos?",
+    "At state (public) universities, yes — there is no tuition fee for Bachelor's or Master's, regardless of nationality. You pay a per-semester contribution of roughly €100–350 (often including a semester transport ticket). Exceptions: private universities charge tuition, and a few states (e.g. Baden-Württemberg) charge non-EU students ~€1,500/semester. Always confirm on the official program page.": "An staatlichen Hochschulen ja — es gibt keine Studiengebühren für Bachelor oder Master, unabhängig von der Nationalität. Du zahlst einen Semesterbeitrag von etwa 100–350 € (oft inklusive Semesterticket). Ausnahmen: Private Hochschulen erheben Gebühren, und einige Bundesländer (z. B. Baden-Württemberg) verlangen von Nicht-EU-Studierenden ~1.500 €/Semester. Bestätige es immer auf der offiziellen Studiengangsseite.",
+    "Tuition-free programs by subject": "Gebührenfreie Studiengänge nach Fach",
+    "Public universities with the most tuition-free programs": "Staatliche Hochschulen mit den meisten gebührenfreien Studiengängen",
+    "See all tuition-free programs": "Alle gebührenfreien Studiengänge ansehen",
+    "Frequently Asked Questions — tuition-free study": "Häufige Fragen — gebührenfreies Studium",
+    "What is the semester contribution?": "Was ist der Semesterbeitrag?",
+    "A mandatory per-semester fee (≈ €100–350) covering student services and usually a public-transport ticket. It is not tuition — it is far smaller and the same for everyone.": "Ein verpflichtender Beitrag pro Semester (≈ 100–350 €) für Studierendenservices und meist ein Semesterticket. Es ist keine Studiengebühr — er ist viel kleiner und für alle gleich.",
+    "Do non-EU students pay tuition?": "Zahlen Nicht-EU-Studierende Studiengebühren?",
+    "At most public universities, no. The exception is a few states (e.g. Baden-Württemberg) that charge non-EU students about €1,500 per semester. Check the program page for your state.": "An den meisten staatlichen Hochschulen nicht. Ausnahme sind einige Bundesländer (z. B. Baden-Württemberg), die von Nicht-EU-Studierenden etwa 1.500 € pro Semester verlangen. Prüfe die Studiengangsseite für dein Bundesland.",
+    "Are private universities free too?": "Sind private Hochschulen auch kostenlos?",
+    "No. Private universities charge tuition (often several thousand euros per semester). The free option is the public (state) universities, which is the large majority in Germany.": "Nein. Private Hochschulen erheben Studiengebühren (oft mehrere Tausend Euro pro Semester). Die kostenlose Option sind die staatlichen Hochschulen — in Deutschland die große Mehrheit."
 }

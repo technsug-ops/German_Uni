@@ -235,6 +235,8 @@ $routes = function () {
     Route::get('/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'index'])->name('admission-free.index');
     // İngilizce verilen bölümler hub
     Route::get('/english-taught', [\App\Http\Controllers\Web\ProgramDiscoveryController::class, 'englishTaught'])->name('discover.english');
+    // Ücretsiz (devlet üniversitesi) bölümler hub
+    Route::get('/tuition-free', [\App\Http\Controllers\Web\ProgramDiscoveryController::class, 'tuitionFree'])->name('discover.tuition-free');
     // NC Frei programmatic SEO — uni 'nc-free' özel rota (uni slug'tan ÖNCE tanımlanmalı)
     Route::get('/universities/{slug}/nc-free', [\App\Http\Controllers\Web\AdmissionFreeController::class, 'byUniversity'])
         ->name('admission-free.by-university');

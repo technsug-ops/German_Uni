@@ -4462,5 +4462,22 @@
     "NC-free programs by city": "Şehre göre NC'siz bölümler",
     "NC-free (zulassungsfrei) programs at universities in :city — open admission.": ":city üniversitelerinde NC'siz (zulassungsfrei) bölümler — açık kayıt.",
     "NC-free (zulassungsfrei) programs in :city": ":city'de NC'siz (zulassungsfrei) bölümler",
-    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":city'de :count NC'siz (zulassungsfrei) bölüm — açık kayıt, not şartı (NC) yok. Alana ve dereceye göre filtrele."
+    ":count NC-free (zulassungsfrei) programs in :city — open admission, no grade restriction (NC). Filter by field and degree.": ":city'de :count NC'siz (zulassungsfrei) bölüm — açık kayıt, not şartı (NC) yok. Alana ve dereceye göre filtrele.",
+    "Tuition-free study programs in Germany": "Almanya'da ücretsiz bölümler",
+    "Browse :count tuition-free study programs at public universities in Germany. Study for free — only a small semester fee. Filter by subject and university.": "Almanya'da devlet üniversitelerinde :count ücretsiz bölüme göz at. Ücretsiz oku — sadece küçük bir dönem katkısı. Alana ve üniversiteye göre filtrele.",
+    "Tuition-free programs": "Ücretsiz bölümler",
+    "Public universities in Germany charge no tuition — you pay only a small semester contribution (≈ €100–350), which usually includes a public-transport ticket.": "Almanya'da devlet üniversiteleri öğrenim ücreti almaz — sadece küçük bir dönem katkısı (≈ €100–350) ödersin, genelde toplu taşıma bileti dahil.",
+    ":count tuition-free programs": ":count ücretsiz bölüm",
+    "Is studying in Germany really free?": "Almanya'da okumak gerçekten ücretsiz mi?",
+    "At state (public) universities, yes — there is no tuition fee for Bachelor's or Master's, regardless of nationality. You pay a per-semester contribution of roughly €100–350 (often including a semester transport ticket). Exceptions: private universities charge tuition, and a few states (e.g. Baden-Württemberg) charge non-EU students ~€1,500/semester. Always confirm on the official program page.": "Devlet üniversitelerinde evet — uyruğundan bağımsız olarak Lisans veya Yüksek Lisans için öğrenim ücreti yoktur. Dönem başına yaklaşık €100–350 katkı payı ödersin (genelde dönemlik ulaşım bileti dahil). İstisnalar: özel üniversiteler ücret alır ve birkaç eyalet (ör. Baden-Württemberg) AB-dışı öğrencilerden dönemde ~€1.500 alır. Her zaman resmi bölüm sayfasından teyit et.",
+    "Tuition-free programs by subject": "Alana göre ücretsiz bölümler",
+    "Public universities with the most tuition-free programs": "En çok ücretsiz bölümü olan devlet üniversiteleri",
+    "See all tuition-free programs": "Tüm ücretsiz bölümleri gör",
+    "Frequently Asked Questions — tuition-free study": "Sık Sorulan Sorular — ücretsiz eğitim",
+    "What is the semester contribution?": "Dönem katkı payı nedir?",
+    "A mandatory per-semester fee (≈ €100–350) covering student services and usually a public-transport ticket. It is not tuition — it is far smaller and the same for everyone.": "Zorunlu dönemlik ücret (≈ €100–350); öğrenci hizmetlerini ve genelde toplu taşıma biletini kapsar. Öğrenim ücreti değildir — çok daha küçüktür ve herkes için aynıdır.",
+    "Do non-EU students pay tuition?": "AB-dışı öğrenciler harç öder mi?",
+    "At most public universities, no. The exception is a few states (e.g. Baden-Württemberg) that charge non-EU students about €1,500 per semester. Check the program page for your state.": "Çoğu devlet üniversitesinde hayır. İstisna, AB-dışı öğrencilerden dönemde ~€1.500 alan birkaç eyalet (ör. Baden-Württemberg). Eyaletin için bölüm sayfasını kontrol et.",
+    "Are private universities free too?": "Özel üniversiteler de ücretsiz mi?",
+    "No. Private universities charge tuition (often several thousand euros per semester). The free option is the public (state) universities, which is the large majority in Germany.": "Hayır. Özel üniversiteler öğrenim ücreti alır (genelde dönemde birkaç bin avro). Ücretsiz seçenek devlet üniversiteleridir — Almanya'da büyük çoğunluk bunlardır."
 }

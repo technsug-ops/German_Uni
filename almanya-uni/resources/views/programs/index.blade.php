@@ -55,6 +55,10 @@
                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition">
                 🇬🇧 {{ __('English-taught programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
             </a>
+            <a href="{{ route('discover.tuition-free') }}"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white text-sm font-semibold transition">
+                💶 {{ __('Tuition-free programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+            </a>
         </div>
 
         <form action="{{ route('programs.index') }}" method="GET" class="bg-white rounded-xl shadow-2xl p-4 text-gray-900"
