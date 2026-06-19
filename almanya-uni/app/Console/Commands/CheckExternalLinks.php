@@ -47,7 +47,15 @@ class CheckExternalLinks extends Command
             if (! Schema::hasTable($s['table']) || ! Schema::hasColumn($s['table'], $s['url'])) {
                 continue;
             }
-            foreach (DB::table($s['table'])->whereNotNull($s['url'])->where($s['url'], '!=', '')->get([$s['key'], $s['url'], $s['label']]) as $row) {
+            $q = DB::table($s['table'])->whereNotNull($s['url'])->where($s['url'], '!=', '');
+            // Gizli/yayınlanmamış kayıtları atla — kullanıcıya görünmeyen linkler gürültü yapmasın.
+            if (Schema::hasColumn($s['table'], 'is_active')) {
+                $q->where('is_active', 1);
+            }
+            if (Schema::hasColumn($s['table'], 'is_published')) {
+                $q->where('is_published', 1);
+            }
+            foreach ($q->get([$s['key'], $s['url'], $s['label']]) as $row) {
                 $url = trim((string) $row->{$s['url']});
                 if (! preg_match('#^https?://#i', $url)) {
                     continue;

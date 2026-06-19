@@ -37,6 +37,7 @@ class OpsCenter extends Page
             ['seed-culture', '🎨', 'Kültür Brief Seed', '"Almanya\'da Yaşam & Kültür" taslak briefleri ekler (mevcut atlanır).', 'Kültür briefleri seed edilsin mi?'],
         ],
         'Bakım & Sistem' => [
+            ['check-links', '🔗', 'Link Denetçi', 'Sağlayıcı/partner "siteye git" linklerini tarar; ölü (404) / erişilemez olanları listeler.', 'Tüm dış linkler taransın mı? (birkaç saniye sürer)'],
             ['cache-clear', '🧹', 'Cache Temizle', 'config / route / view / uygulama cache\'ini temizler.', 'Tüm cache temizlensin mi?'],
             ['og-cache', '🖼️', 'OG Cache Temizle', 'Sosyal paylaşım görsellerini siler; sonraki istekte yeni fontla üretilir.', 'OG görsel cache\'i silinsin mi?'],
             ['migrate', '🗃️', 'Migration Çalıştır', 'Bekleyen DB migration\'larını uygular (deploy sonrası).', 'Bekleyen migration\'lar çalıştırılsın mı?'],
@@ -57,12 +58,16 @@ class OpsCenter extends Page
                 'migrate'           => $this->artisan('migrate', ['--force' => true, '--no-interaction' => true]),
                 'cache-clear'       => $this->clearCaches(),
                 'og-cache'          => $this->clearOg(),
+                'check-links'       => $this->artisan('links:check-external', []),
                 default             => throw new \InvalidArgumentException('Bilinmeyen işlem: ' . $key),
             };
 
+            // Link denetçisi raporu uzun olabilir (ölü + erişilemez listesi) → daha geniş göster.
+            $limit = $key === 'check-links' ? 2500 : 800;
+
             Notification::make()
                 ->title('✅ Çalıştı')
-                ->body(Str::limit(trim($out) !== '' ? trim($out) : 'Tamamlandı.', 800))
+                ->body(Str::limit(trim($out) !== '' ? trim($out) : 'Tamamlandı.', $limit))
                 ->success()->persistent()->send();
         } catch (\Throwable $e) {
             Notification::make()->title('❌ Hata')->body(Str::limit($e->getMessage(), 400))->danger()->persistent()->send();
