@@ -84,12 +84,23 @@
                                 @php $u = $bySlug[$slug] ?? null; @endphp
                                 @if ($u)
                                     <a href="{{ route('universities.show', $slug) }}"
-                                       class="block bg-white border border-gray-200 {{ $a['border'] }} hover:shadow-md transition rounded-xl p-4">
-                                        <div class="flex items-center justify-between gap-2 mb-1">
-                                            <span class="font-bold text-gray-900 leading-snug">{{ $u['name_de'] }}</span>
-                                            <span class="shrink-0 text-[11px] font-bold uppercase px-2 py-0.5 rounded-full {{ $a['badge'] }}">{{ __($meta['status']) }}</span>
+                                       class="group/card flex items-start gap-3 bg-white border border-gray-200 {{ $a['border'] }} hover:shadow-md transition rounded-xl p-4">
+                                        @if (! empty($u['logo_url']))
+                                            <img src="{{ $u['logo_url'] }}" alt="{{ $u['name_de'] }}"
+                                                 class="w-12 h-12 object-contain bg-gray-50 rounded p-1 shrink-0" loading="lazy" decoding="async">
+                                        @else
+                                            <span class="w-12 h-12 rounded bg-primary-100 text-primary-700 flex items-center justify-center font-bold shrink-0">{{ mb_substr($u['name_de'], 0, 2) }}</span>
+                                        @endif
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-start justify-between gap-2">
+                                                <span class="font-bold text-gray-900 leading-snug group-hover/card:text-primary-700 transition">{{ $u['name_de'] }}</span>
+                                                <span class="shrink-0 text-[11px] font-bold uppercase px-2 py-0.5 rounded-full {{ $a['badge'] }}">{{ __($meta['status']) }}</span>
+                                            </div>
+                                            @if (! empty($u['city_name']))
+                                                <div class="text-xs text-gray-500 mb-1 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3 h-3" /> {{ $u['city_name'] }}</div>
+                                            @endif
+                                            <p class="text-sm text-gray-600 leading-relaxed">{{ __($meta['note']) }}</p>
                                         </div>
-                                        <p class="text-sm text-gray-600 leading-relaxed">{{ __($meta['note']) }}</p>
                                     </a>
                                 @endif
                             @endforeach
