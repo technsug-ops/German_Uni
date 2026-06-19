@@ -85,7 +85,7 @@
             </span>
         </label>
 
-        <x-math-captcha compact />
+        <x-math-captcha compact :on-dark="$variant === 'dark'" />
 
         <div data-newsletter-msg class="hidden text-sm rounded-lg p-3"></div>
     </form>

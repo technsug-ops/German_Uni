@@ -39,7 +39,7 @@
         ]),
     'organizer'   => $event->host ? [
         '@type' => 'Person',
-        'name'  => $event->host,
+        'name'  => __($event->host),
     ] : null,
     'offers'      => [
         '@type'         => 'Offer',
@@ -104,12 +104,12 @@
             <p class="text-lg opacity-90 mb-2 inline-flex items-center gap-1.5">
                 <x-svg-icon name="user" class="w-4 h-4" />
                 @if ($event->hostUser?->slug)
-                    <a href="{{ route('author.show', $event->hostUser->slug) }}" class="hover:underline">{{ $event->hostUser->name ?? $event->host }}</a>
+                    <a href="{{ route('author.show', $event->hostUser->slug) }}" class="hover:underline">{{ $event->hostUser->name ?? __($event->host) }}</a>
                     @if ($event->hostUser->role_label)
                         <span class="opacity-75 text-sm">· {{ __($event->hostUser->role_label) }}</span>
                     @endif
                 @else
-                    {{ $event->host }}
+                    {{ __($event->host) }}
                 @endif
             </p>
         @endif

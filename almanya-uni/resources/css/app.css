@@ -130,6 +130,20 @@
     text-underline-offset: 2px;
 }
 .blog-content a:hover { color: #162c6b; }
+/* Uzun URL'ler masaüstünde de satır sonunda kırılsın (yatay taşmayı önle) */
+.blog-content a { overflow-wrap: anywhere; word-break: break-word; }
+/* Mobilde çok uzun linkleri tek satırda tut, taşan kısmı "…" ile gizle */
+@media (max-width: 640px) {
+    .blog-content a,
+    a.link-ellipsis {
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: bottom;
+    }
+}
 .blog-content strong { color: #111827; font-weight: 600; }
 .blog-content ul { list-style: disc; padding-left: 1.625em; }
 .blog-content ol { list-style: decimal; padding-left: 1.625em; }

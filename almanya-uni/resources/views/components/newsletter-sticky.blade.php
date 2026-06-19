@@ -101,12 +101,12 @@
                 </select>
             </div>
 
-            <label class="flex items-start gap-2 text-[11px] text-indigo-100 cursor-pointer">
+            <label class="flex items-start gap-2 text-[11px] text-white/90 cursor-pointer">
                 <input type="checkbox" name="gdpr_consent" value="1" required class="mt-0.5 rounded">
                 <span>{{ __('I consent to receive newsletter emails.') }}</span>
             </label>
 
-            <x-math-captcha compact />
+            <x-math-captcha compact on-dark />
 
             <p x-show="message" x-text="message" :class="success ? 'text-emerald-200' : 'text-rose-200'" class="text-xs mt-2"></p>
         </form>

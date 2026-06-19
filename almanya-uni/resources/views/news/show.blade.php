@@ -62,7 +62,7 @@
             <span class="font-semibold">{{ __('Source') }}:</span>
             @if ($post->source_url)
                 <a href="{{ $post->source_url }}" target="_blank" rel="nofollow noopener"
-                   class="text-primary-600 hover:underline">{{ $post->source_name ?: $post->source_url }}</a>
+                   class="link-ellipsis text-primary-600 hover:underline">{{ $post->source_name ?: $post->source_url }}</a>
             @else
                 {{ $post->source_name }}
             @endif

@@ -76,6 +76,9 @@ class MenuPageForm
                 Toggle::make('protect_route')->label('URL\'yi de kilitle')
                     ->helperText('Açık (önerilen): kapatınca URL\'ye direkt giriş 404. Kapalı: sadece menüden gizler, URL hâlâ açık.')
                     ->inline(false),
+                Toggle::make('hide_on_mobile')->label('📱 Mobil menüde gizle')
+                    ->helperText('Açık → mobil drawer\'da gizlenir (masaüstü menü, footer ve "Tümünü gör" listesinde kalır).')
+                    ->inline(false),
             ])->columns(2),
         ]);
     }

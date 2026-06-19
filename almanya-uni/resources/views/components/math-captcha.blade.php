@@ -1,9 +1,14 @@
-@props(['label' => null, 'compact' => false])
+@props(['label' => null, 'compact' => false, 'onDark' => false])
 
 @php
     $captcha = \App\Support\MathCaptcha::generate();
     $label = $label ?? __('Bot check: how much is :a + :b?', ['a' => $captcha['a'], 'b' => $captcha['b']]);
     $errorKey = 'captcha_answer';
+    // Koyu/gradyan zeminde (ör. sticky bülten) kontrast için açık metin + net beyaz input.
+    $labelTone = $onDark ? 'text-white' : 'text-gray-700';
+    $inputTone = $onDark
+        ? 'bg-white text-gray-900 border-white/50 focus:border-white focus:ring-white'
+        : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500';
 @endphp
 
 <div class="mt-3" data-math-captcha>
@@ -11,7 +16,7 @@
 
     @if ($compact)
         <div class="flex items-center gap-2">
-            <label for="captcha_answer" class="text-sm font-semibold text-gray-700 whitespace-nowrap">
+            <label for="captcha_answer" class="text-sm font-semibold {{ $labelTone }} whitespace-nowrap">
                 🤖 {{ $captcha['question'] }} =
             </label>
             <input
@@ -23,7 +28,7 @@
                 required
                 min="2" max="18"
                 aria-label="{{ $label }}"
-                class="w-20 px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
+                class="w-20 px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-1 {{ $inputTone }}"
             >
         </div>
     @else

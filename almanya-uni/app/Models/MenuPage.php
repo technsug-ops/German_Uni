@@ -17,14 +17,15 @@ class MenuPage extends Model
 
     protected $fillable = [
         'key', 'link_type', 'url', 'label', 'icon', 'description', 'badge',
-        'group', 'is_enabled', 'protect_route', 'sort_order',
+        'group', 'is_enabled', 'protect_route', 'sort_order', 'hide_on_mobile',
         'label_tr', 'label_en', 'label_de',
         'description_tr', 'description_en', 'description_de',
     ];
 
     protected $casts = [
-        'is_enabled'    => 'boolean',
-        'protect_route' => 'boolean',
+        'is_enabled'     => 'boolean',
+        'protect_route'  => 'boolean',
+        'hide_on_mobile' => 'boolean',
     ];
 
     public const GROUPS = [

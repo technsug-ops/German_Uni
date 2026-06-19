@@ -223,7 +223,7 @@ class RankingService
             [
                 'slug' => 'most-discussed-universities',
                 'title' => __('Most Discussed Universities in the Community'),
-                'description' => __('Universities most mentioned in the AlmanyaUni Forum (120K messages) + Telegram (142K messages) pools. The real interest map of the international student community.'),
+                'description' => __('Universities most mentioned across our community pools. The real interest map of the international student community.'),
                 'category' => 'oncelik',
                 'count_label' => 'topluluk_skoru',
                 'sort' => 'community_mentions',
@@ -417,7 +417,7 @@ class RankingService
 
             'topluluk_skoru' => [
                 'title' => __('AlmanyaUni Community Mention Score Methodology'),
-                'intro' => __('Our proprietary community signal — measures how actively an institution is discussed in our verified pools (Forum 120K messages + Telegram 142K messages + comment threads). Reflects real interest of the international student community in Turkey + abroad.'),
+                'intro' => __('Our proprietary community signal — measures how actively an institution is discussed across our verified community pools. Reflects real interest of the international student community in Turkey + abroad.'),
                 'indicators' => [
                     'mention_freq'   => ['weight' => 60, 'label' => __('Mention frequency'),       'tooltip' => __('How often the university name appears in community messages (deduplicated per user per week)')],
                     'sentiment'      => ['weight' => 25, 'label' => __('Sentiment polarity'),       'tooltip' => __('Positive vs negative discussion ratio — calculated from message context')],

@@ -2620,7 +2620,7 @@
     "Our database has :total programs in :field, but the NC status (zulassungsfrei / örtlich / bundesweit) for each has not yet arrived from our partner data provider.": "Unsere Datenbank enthält :total Studiengänge im Bereich :field, aber der NC-Status (zulassungsfrei / örtlich / bundesweit) für jeden Studiengang ist noch nicht von unserem Datenpartner eingetroffen.",
     "Our database holds a total of <strong>:total</strong> programs at <strong>:uni</strong>, but the NC status for each one has not yet arrived from our partner data provider.": "Unsere Datenbank enthält insgesamt <strong>:total</strong> Programme an der <strong>:uni</strong>, aber der NC-Status für jedes einzelne liegt uns von unserem Partner-Datenanbieter noch nicht vor.",
     "Our offer contains links to external websites of third parties on whose contents we have no influence. Therefore we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the contents of the linked pages.": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
-    "Our proprietary community signal — measures how actively an institution is discussed in our verified pools (Forum 120K messages + Telegram 142K messages + comment threads). Reflects real interest of the international student community in Turkey + abroad.": "Unser proprietäres Community-Signal — misst, wie aktiv eine Institution in unseren verifizierten Pools (Forum 120.000 Nachrichten + Telegram 142.000 Nachrichten + Kommentar-Threads) diskutiert wird. Spiegelt das reale Interesse der internationalen Studierendengemeinschaft in der Türkei + im Ausland wider.",
+    "Our proprietary community signal — measures how actively an institution is discussed across our verified community pools. Reflects real interest of the international student community in Turkey + abroad.": "Unser proprietäres Community-Signal — misst, wie aktiv eine Institution in unseren verifizierten Community-Pools diskutiert wird. Spiegelt das reale Interesse der internationalen Studierendengemeinschaft in der Türkei + im Ausland wider.",
     "Out of :total :field programs in total.": "Von insgesamt :total :field Programmen.",
     "Over 30 / PhD / scholar": "Über 30 / Promotion / Stipendium",
     "Overall": "Gesamt",
@@ -3721,7 +3721,7 @@
     "Universities known for issuing conditional admission (bedingte Zulassung) to international applicants who still need to complete a requirement.": "Universitäten, die dafür bekannt sind, internationalen Bewerbern eine bedingte Zulassung auszustellen, die noch eine Voraussetzung erfüllen müssen.",
     "Universities located in Germany's 16 federal states.": "Universitäten in den 16 Bundesländern Deutschlands.",
     "Universities matching you in 5 questions": "Universitäten, die in 5 Fragen zu dir passen",
-    "Universities most mentioned in the AlmanyaUni Forum (120K messages) + Telegram (142K messages) pools. The real interest map of the international student community.": "Universitäten, die im ApplyToGerman (AlmanyaUni) Forum (120.000 Nachrichten) + Telegram (142.000 Nachrichten) am häufigsten erwähnt werden. Die echte Interessenskarte der internationalen Studierendengemeinschaft.",
+    "Universities most mentioned across our community pools. The real interest map of the international student community.": "Universitäten, die in unseren Community-Pools am häufigsten erwähnt werden. Die echte Interessenskarte der internationalen Studierendengemeinschaft.",
     "Universities most suitable for international students and most discussed in the community.": "Universitäten, die am besten für internationale Studierende geeignet und in der Community am meisten diskutiert werden.",
     "Universities of Applied Sciences (FH/HAW)": "Hochschulen für angewandte Wissenschaften (FH/HAW)",
     "Universities of Applied Sciences (Fachhochschule)": "Hochschulen für angewandte Wissenschaften (Fachhochschule)",
@@ -4623,5 +4623,7 @@
     "Research-focused TU9 universities (TUM, RWTH Aachen, KIT and others) for prestige, and Universities of Applied Sciences (Fachhochschulen) for a fast route into the job market.": "Forschungsstarke TU9-Universitäten (TUM, RWTH Aachen, KIT u. a.) für Prestige und Fachhochschulen für einen schnellen Einstieg in den Arbeitsmarkt.",
     "How much does it cost to study in Germany per month?": "Wie viel kostet ein Studium in Deutschland pro Monat?",
     "Most public universities are tuition-free (only a small semester contribution). Living costs typically range €900–€1,300 per month depending on the city — rent is the biggest factor.": "Die meisten staatlichen Universitäten sind gebührenfrei (nur ein kleiner Semesterbeitrag). Die Lebenshaltungskosten liegen je nach Stadt typischerweise bei 900–1.300 € pro Monat – die Miete ist der größte Posten.",
-    "Popular Universities": "Beliebte Universitäten"
+    "Popular Universities": "Beliebte Universitäten",
+    "AlmanyaUni": "ApplyToGerman",
+    "AlmanyaUni Editör Ekibi": "ApplyToGerman Redaktionsteam"
 }

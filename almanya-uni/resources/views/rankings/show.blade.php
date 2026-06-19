@@ -67,10 +67,10 @@
                 @endphp
                 <div class="group relative bg-white border border-gray-200 hover:border-primary-400 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 rounded-2xl overflow-hidden">
                 <a href="{{ route('universities.show', $uni['slug']) }}"
-                   class="flex items-center gap-5 p-5">
+                   class="flex items-center gap-3 md:gap-5 p-4 md:p-5">
 
                     {{-- Rank ribbon --}}
-                    <div class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center shadow-md">
+                    <div class="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center shadow-md">
                         <div class="text-center leading-none">
                             <div class="text-[9px] uppercase tracking-wider opacity-80">{{ __('Rank') }}</div>
                             <div class="text-xl font-extrabold">{{ $uni['rank'] }}</div>
@@ -80,19 +80,19 @@
                     {{-- Logo (büyük) --}}
                     <div class="shrink-0">
                         @if ($uni['logo_url'])
-                            <div class="w-20 h-20 bg-white border-2 border-gray-100 rounded-xl p-2 flex items-center justify-center shadow-sm">
+                            <div class="w-14 h-14 md:w-20 md:h-20 bg-white border-2 border-gray-100 rounded-xl p-2 flex items-center justify-center shadow-sm">
                                 <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }}" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async">
                             </div>
                         @else
-                            <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-sm">
-                                <span class="text-2xl font-extrabold text-white">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
+                            <div class="w-14 h-14 md:w-20 md:h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-sm">
+                                <span class="text-xl md:text-2xl font-extrabold text-white">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
                             </div>
                         @endif
                     </div>
 
                     {{-- Info --}}
                     <div class="flex-1 min-w-0">
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight mb-1 group-hover:text-primary-700 transition">{{ $uni['name_de'] }}</h3>
+                        <h3 class="text-base md:text-xl font-bold text-gray-900 leading-tight mb-1 break-words group-hover:text-primary-700 transition">{{ $uni['name_de'] }}</h3>
                         <p class="text-sm text-gray-600 mb-2 flex items-center gap-1">
                             <svg class="w-3.5 h-3.5 shrink-0 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
                             {{ $uni['city_name'] ?? '-' }}@if (!empty($uni['state_name']))<span class="text-gray-400 mx-1">·</span>{{ $uni['state_name'] }}@endif
@@ -130,28 +130,28 @@
                     @else
                         <div class="shrink-0 text-right">
                             @if ($countLabel === 'öğrenci' && $uni['student_count'])
-                                <div class="text-3xl font-extrabold text-accent-600 tabular-nums">{{ number_format($uni['student_count']) }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-accent-600 tabular-nums">{{ number_format($uni['student_count']) }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('students') }}</div>
                             @elseif ($countLabel === 'kuruluş' && $uni['founded_year'])
-                                <div class="text-3xl font-extrabold text-accent-600 tabular-nums">{{ $uni['founded_year'] }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-accent-600 tabular-nums">{{ $uni['founded_year'] }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('founded') }}</div>
                             @elseif ($countLabel === 'qs_rank' && !empty($uni['qs_world_rank']))
-                                <div class="text-3xl font-extrabold text-emerald-600 tabular-nums">#{{ $uni['qs_world_rank'] }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-emerald-600 tabular-nums">#{{ $uni['qs_world_rank'] }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">QS World</div>
                             @elseif ($countLabel === 'the_rank' && !empty($uni['the_world_rank']))
-                                <div class="text-3xl font-extrabold text-indigo-600 tabular-nums">#{{ $uni['the_world_rank'] }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-indigo-600 tabular-nums">#{{ $uni['the_world_rank'] }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">THE World</div>
                             @elseif ($countLabel === 'arwu_rank' && !empty($uni['arwu_world_rank']))
-                                <div class="text-3xl font-extrabold text-red-600 tabular-nums">#{{ $uni['arwu_world_rank'] }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-red-600 tabular-nums">#{{ $uni['arwu_world_rank'] }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">ARWU</div>
                             @elseif ($countLabel === 'topluluk_skoru' && !empty($uni['community_mention_score']))
-                                <div class="text-3xl font-extrabold text-rose-600 tabular-nums">{{ number_format($uni['community_mention_score']) }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-rose-600 tabular-nums">{{ number_format($uni['community_mention_score']) }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('community') }}</div>
                             @elseif ($countLabel === 'program' && !empty($uni['program_count']))
-                                <div class="text-3xl font-extrabold text-primary-600 tabular-nums">{{ $uni['program_count'] }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-primary-600 tabular-nums">{{ $uni['program_count'] }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('programs') }}</div>
                             @elseif ($uni['student_count'])
-                                <div class="text-3xl font-extrabold text-accent-600 tabular-nums">{{ number_format($uni['student_count']) }}</div>
+                                <div class="text-2xl md:text-3xl font-extrabold text-accent-600 tabular-nums">{{ number_format($uni['student_count']) }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('students') }}</div>
                             @endif
                         </div>

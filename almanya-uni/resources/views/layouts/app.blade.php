@@ -505,6 +505,7 @@
                     @php
                         // iData vize randevusu yalnızca /tr menüsünde (Türkiye'den başvuru).
                         $items = \App\Models\MenuPage::forGroup($gKey)
+                            ->where('hide_on_mobile', false)
                             ->when(app()->getLocale() !== 'tr', fn ($q) => $q->whereNotIn('key', ['tools.visa-appointment', 'tools.professional-recognition']));
                     @endphp
                     @if ($items->isNotEmpty())
