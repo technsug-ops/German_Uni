@@ -381,8 +381,11 @@ class SitemapController extends Controller
                 }
             });
 
-        // Programmatic SEO: /subjects/{slug}/nc-free
-        foreach (FieldOfStudy::active()->get(['slug', 'updated_at']) as $f) {
+        // Programmatic SEO: /subjects/{slug}/nc-free — sadece NC-frei programı OLAN alanlar
+        // (boş sayfalar noindex'li → sitemap'e koyma, crawl bütçesini boşa harcama).
+        foreach (FieldOfStudy::active()
+            ->whereHas('programs', fn ($q) => $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei'))
+            ->get(['slug', 'updated_at']) as $f) {
             $urls[] = $this->entry(
                 route('admission-free.by-subject', $f->slug),
                 $f->updated_at,
@@ -421,8 +424,11 @@ class SitemapController extends Controller
             );
         }
 
-        // Programmatic SEO: /universities/{slug}/nc-free (~949 URL)
+        // Programmatic SEO: /universities/{slug}/nc-free — sadece NC-frei programı OLAN üniler.
+        // (463 aktif ünin 267'sinde hiç zulassungsfrei program yok → o sayfalar boş/ince,
+        // noindex'li; sitemap'e koyma. Az ama indexli > çok ama yok sayılan.)
         University::where('is_active', true)
+            ->whereHas('programs', fn ($q) => $q->where('is_active', true)->where('admission_mode', 'zulassungsfrei'))
             ->select(['slug', 'updated_at'])
             ->orderBy('id')
             ->chunk(500, function ($chunk) use (&$urls) {

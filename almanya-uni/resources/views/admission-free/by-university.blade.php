@@ -5,6 +5,7 @@
 <x-seo
     :title="$university->name . ': ' . __('NC-Free Programs')"
     :description="$university->name . ' — ' . __('Programs you can apply to without NC (zulassungsfrei). Open admission, no quota limit.')"
+    :noindex="! $has_data"
 />
 
 @section('content')

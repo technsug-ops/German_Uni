@@ -5,6 +5,7 @@
 <x-seo
     :title="$field->name_tr . ': ' . $programs->total() . ' ' . __('NC Frei Programs')"
     :description="__(':field German university programs you can apply to without NC (zulassungsfrei). Open admission, no quota.', ['field' => $field->name])"
+    :noindex="! $has_data"
 />
 
 @section('content')

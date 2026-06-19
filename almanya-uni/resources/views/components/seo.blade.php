@@ -46,7 +46,8 @@
     <meta name="description" content="{{ $finalDescription }}">
     {{-- canonical artık layout'ta (her sayfa için tek, çift olmasın) --}}
     @if ($noindex)
-        <meta name="robots" content="noindex, nofollow">
+        {{-- İnce/boş iç sayfa: index'e girme ama linkleri TAKİP ET (değer iyi sayfalara aksın). --}}
+        <meta name="robots" content="noindex, follow">
     @else
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     @endif
