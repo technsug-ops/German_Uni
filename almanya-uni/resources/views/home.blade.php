@@ -363,6 +363,108 @@
 <x-journey-promo />
 
 {{-- =================================================================== --}}
+{{-- POPÜLER PROGRAMLAR — kart sırası: 1) Programlar 2) Üniversiteler 3) Şehirler --}}
+{{-- =================================================================== --}}
+@if (! empty($featured_programs) && count($featured_programs) > 0)
+<section class="max-w-[1400px] mx-auto px-4 py-14">
+    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
+                <x-svg-icon name="book-open" class="w-7 h-7" />
+                {{ __('Popular English-taught Programs') }}
+            </h2>
+            <p class="text-gray-600 text-sm">{{ __('In-demand programs at leading German universities') }}</p>
+        </div>
+        <a href="{{ route('programs.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All programs') }} →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        @foreach ($featured_programs as $program)
+            <a href="{{ route('programs.show', $program['slug']) }}"
+               class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4">
+                <div class="flex items-center gap-2 mb-1.5 text-xs">
+                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">{{ ucfirst($program['degree']) }}</span>
+                    <span>{{ $program['language'] === 'en' ? '🇬🇧' : '🌐' }}</span>
+                </div>
+                <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2 mb-1">{{ $program['name'] }}</h3>
+                <p class="text-xs text-gray-500 line-clamp-1">{{ $program['uni_name'] }}</p>
+            </a>
+        @endforeach
+    </div>
+</section>
+@endif
+
+{{-- =================================================================== --}}
+{{-- ÖNE ÇIKAN ÜNİVERSİTELER --}}
+{{-- =================================================================== --}}
+@if (!empty($featured_universities))
+<section class="max-w-[1400px] mx-auto px-4 py-14">
+    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Featured Universities') }}</h2>
+            <p class="text-gray-600 text-sm">{{ __('Most applied and largest universities') }}</p>
+        </div>
+        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            {{ __('All universities') }} →
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        @foreach ($featured_universities as $uni)
+            @php
+                $seed = crc32($uni['name_de']);
+                $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
+                $palette = $palettes[$seed % count($palettes)];
+                $typeBadge = match($uni['type'] ?? null) {
+                    'public' => [__('Public'), 'bg-emerald-50 text-emerald-700'],
+                    'private' => [__('Private'), 'bg-amber-50 text-amber-700'],
+                    'applied_sciences' => ['HAW', 'bg-blue-50 text-blue-700'],
+                    'art' => [__('Art'), 'bg-pink-50 text-pink-700'],
+                    default => [null, null],
+                };
+            @endphp
+            <a href="{{ route('universities.show', $uni['slug']) }}"
+               class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
+                {{-- Gradient + initials always behind; image overlays if URL present, removed on error --}}
+                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
+                    <span class="absolute inset-0 flex items-center justify-center text-4xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
+                    @if(!empty($uni['image_url']))
+                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}"
+                             width="640" height="360" loading="lazy" decoding="async"
+                             onerror="this.remove()"
+                             class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    @endif
+                    @if($typeBadge[0])
+                        <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded {{ $typeBadge[1] }} text-xs font-semibold ring-1 ring-white/40 shadow-sm">
+                            {{ $typeBadge[0] }}
+                        </span>
+                    @endif
+                    @if($uni['logo_url'] && $uni['image_url'])
+                        <div class="absolute bottom-2 left-2 w-10 h-10 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
+                            <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }} logo" width="36" height="36" onerror="this.remove()" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
+                        </div>
+                    @endif
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight line-clamp-2 mb-1">{{ $uni['name_de'] }}</h3>
+                    @if($uni['city_name'])
+                        <p class="text-xs text-gray-500 mb-3 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni['city_name'] }}</p>
+                    @endif
+                    <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
+                        @if($uni['student_count'])
+                            <span class="text-accent-700 font-bold">{{ number_format($uni['student_count']) }} <span class="font-normal text-gray-500">{{ __('students') }}</span></span>
+                        @endif
+                        @if($uni['founded_year'])
+                            <span class="text-gray-500">est. {{ $uni['founded_year'] }}</span>
+                        @endif
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</section>
+@endif
+
+{{-- =================================================================== --}}
 {{-- POPULAR CITIES --}}
 {{-- =================================================================== --}}
 <section class="bg-gray-50 py-14 border-y border-gray-200">
@@ -451,77 +553,6 @@
 </section>
 
 {{-- =================================================================== --}}
-{{-- ÖNE ÇIKAN ÜNİVERSİTELER --}}
-{{-- =================================================================== --}}
-@if (!empty($featured_universities))
-<section class="max-w-[1400px] mx-auto px-4 py-14">
-    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
-        <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Featured Universities') }}</h2>
-            <p class="text-gray-600 text-sm">{{ __('Most applied and largest universities') }}</p>
-        </div>
-        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
-            {{ __('All universities') }} →
-        </a>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        @foreach ($featured_universities as $uni)
-            @php
-                $seed = crc32($uni['name_de']);
-                $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
-                $palette = $palettes[$seed % count($palettes)];
-                $typeBadge = match($uni['type'] ?? null) {
-                    'public' => [__('Public'), 'bg-emerald-50 text-emerald-700'],
-                    'private' => [__('Private'), 'bg-amber-50 text-amber-700'],
-                    'applied_sciences' => ['HAW', 'bg-blue-50 text-blue-700'],
-                    'art' => [__('Art'), 'bg-pink-50 text-pink-700'],
-                    default => [null, null],
-                };
-            @endphp
-            <a href="{{ route('universities.show', $uni['slug']) }}"
-               class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-                {{-- Gradient + initials always behind; image overlays if URL present, removed on error --}}
-                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
-                    <span class="absolute inset-0 flex items-center justify-center text-4xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
-                    @if(!empty($uni['image_url']))
-                        <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}"
-                             width="640" height="360" loading="lazy" decoding="async"
-                             onerror="this.remove()"
-                             class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    @endif
-                    @if($typeBadge[0])
-                        <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded {{ $typeBadge[1] }} text-xs font-semibold ring-1 ring-white/40 shadow-sm">
-                            {{ $typeBadge[0] }}
-                        </span>
-                    @endif
-                    @if($uni['logo_url'] && $uni['image_url'])
-                        <div class="absolute bottom-2 left-2 w-10 h-10 bg-white rounded-lg ring-1 ring-white/60 shadow-md p-1 flex items-center justify-center">
-                            <img src="{{ $uni['logo_url'] }}" alt="{{ $uni['name_de'] }} logo" width="36" height="36" onerror="this.remove()" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async"/>
-                        </div>
-                    @endif
-                </div>
-                <div class="p-4 flex-1 flex flex-col">
-                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-tight line-clamp-2 mb-1">{{ $uni['name_de'] }}</h3>
-                    @if($uni['city_name'])
-                        <p class="text-xs text-gray-500 mb-3 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $uni['city_name'] }}</p>
-                    @endif
-                    <div class="mt-auto flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
-                        @if($uni['student_count'])
-                            <span class="text-accent-700 font-bold">{{ number_format($uni['student_count']) }} <span class="font-normal text-gray-500">{{ __('students') }}</span></span>
-                        @endif
-                        @if($uni['founded_year'])
-                            <span class="text-gray-500">est. {{ $uni['founded_year'] }}</span>
-                        @endif
-                    </div>
-                </div>
-            </a>
-        @endforeach
-    </div>
-</section>
-@endif
-
-{{-- =================================================================== --}}
 {{-- TOP ALANLAR --}}
 {{-- =================================================================== --}}
 @if (! empty($top_fields) && $top_fields->count() > 0)
@@ -548,37 +579,6 @@
                 </a>
             @endforeach
         </div>
-    </div>
-</section>
-@endif
-
-{{-- =================================================================== --}}
-{{-- POPÜLER PROGRAMLAR — crawl-konsantrasyon: ana sayfa → program detayları --}}
-{{-- =================================================================== --}}
-@if (! empty($featured_programs) && count($featured_programs) > 0)
-<section class="max-w-[1400px] mx-auto px-4 py-14">
-    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
-        <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
-                <x-svg-icon name="book-open" class="w-7 h-7" />
-                {{ __('Popular English-taught Programs') }}
-            </h2>
-            <p class="text-gray-600 text-sm">{{ __('In-demand programs at leading German universities') }}</p>
-        </div>
-        <a href="{{ route('programs.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm">{{ __('All programs') }} →</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        @foreach ($featured_programs as $program)
-            <a href="{{ route('programs.show', $program['slug']) }}"
-               class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4">
-                <div class="flex items-center gap-2 mb-1.5 text-xs">
-                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">{{ ucfirst($program['degree']) }}</span>
-                    <span>{{ $program['language'] === 'en' ? '🇬🇧' : '🌐' }}</span>
-                </div>
-                <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2 mb-1">{{ $program['name'] }}</h3>
-                <p class="text-xs text-gray-500 line-clamp-1">{{ $program['uni_name'] }}</p>
-            </a>
-        @endforeach
     </div>
 </section>
 @endif
