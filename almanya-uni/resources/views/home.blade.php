@@ -371,7 +371,7 @@
         <div>
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 inline-flex items-center gap-2">
                 <x-svg-icon name="book-open" class="w-7 h-7" />
-                {{ __('Popular English-taught Programs') }}
+                {{ __('Popular Programs') }}
             </h2>
             <p class="text-gray-600 text-sm">{{ __('In-demand programs at leading German universities') }}</p>
         </div>
@@ -379,14 +379,33 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach ($featured_programs as $program)
+            @php
+                $seed = crc32($program['name']);
+                $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
+                $palette = $palettes[$seed % count($palettes)];
+                $langBadge = $program['language'] === 'en' ? '🇬🇧 EN' : ($program['language'] === 'both' ? '🌐 EN/DE' : '🇩🇪 DE');
+            @endphp
             <a href="{{ route('programs.show', $program['slug']) }}"
-               class="group bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-lg transition p-4">
-                <div class="flex items-center gap-2 mb-1.5 text-xs">
-                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">{{ ucfirst($program['degree']) }}</span>
-                    <span>{{ $program['language'] === 'en' ? '🇬🇧' : '🌐' }}</span>
+               class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
+                {{-- Bölüm (field) görseli — üni/şehir kartı stili. Gradient + ikon arkada; resim üste biner, hata olursa kalkar. --}}
+                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
+                    <span class="absolute inset-0 flex items-center justify-center text-4xl drop-shadow pointer-events-none" aria-hidden="true">{{ $program['icon'] ?? '🎓' }}</span>
+                    @if(!empty($program['image_url']))
+                        <img src="{{ $program['image_url'] }}" alt="{{ $program['field_name'] ?? '' }} — {{ $program['name'] }}"
+                             width="640" height="360" loading="lazy" decoding="async"
+                             onerror="this.remove()"
+                             class="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    @endif
+                    <span class="absolute top-2 left-2 inline-block px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-xs font-semibold ring-1 ring-white/40 shadow-sm">{{ ucfirst($program['degree']) }}</span>
+                    <span class="absolute bottom-2 right-2 inline-block px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">{{ $langBadge }}</span>
                 </div>
-                <h3 class="font-bold text-gray-900 group-hover:text-primary-600 text-sm leading-tight line-clamp-2 mb-1">{{ $program['name'] }}</h3>
-                <p class="text-xs text-gray-500 line-clamp-1">{{ $program['uni_name'] }}</p>
+                <div class="p-4 flex-1 flex flex-col">
+                    @if(!empty($program['field_name']))
+                        <div class="text-xs text-gray-500 mb-1">{{ $program['field_name'] }}</div>
+                    @endif
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition text-sm leading-tight line-clamp-2 mb-1">{{ $program['name'] }}</h3>
+                    <p class="text-xs text-gray-500 line-clamp-1 mt-auto pt-2">{{ $program['uni_name'] }}</p>
+                </div>
             </a>
         @endforeach
     </div>
@@ -465,6 +484,37 @@
 @endif
 
 {{-- =================================================================== --}}
+{{-- ÜNİVERSİTE KATEGORİLERİ (küratörlü koleksiyonlar) — Öne Çıkan Üniler ile Şehirler arası --}}
+{{-- =================================================================== --}}
+<section class="max-w-[1400px] mx-auto px-4 py-14">
+    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Universities by Category') }}</h2>
+            <p class="text-gray-600 text-sm">{{ __('Curated lists of Germany\'s most popular universities') }}</p>
+        </div>
+        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
+            {{ __('All universities') }} →
+        </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @php $homeAccents = ['primary' => 'from-primary-600 to-accent-500', 'accent' => 'from-emerald-600 to-teal-500', 'amber' => 'from-amber-600 to-orange-500']; @endphp
+        @foreach (\App\Support\UniversityCollections::all() as $cSlug => $c)
+            <a href="{{ route('universities.collection', $cSlug) }}"
+               class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
+                <div class="bg-gradient-to-br {{ $homeAccents[$c['accent']] ?? $homeAccents['primary'] }} p-5 text-white">
+                    <span class="text-4xl drop-shadow" aria-hidden="true">{{ $c['icon'] }}</span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col">
+                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-snug mb-1">{{ __($c['title']) }}</h3>
+                    <p class="text-sm text-gray-600 line-clamp-2 mb-3">{{ __($c['subtitle']) }}</p>
+                    <span class="mt-auto text-xs font-semibold text-primary-600">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</section>
+
+{{-- =================================================================== --}}
 {{-- POPULAR CITIES --}}
 {{-- =================================================================== --}}
 <section class="bg-gray-50 py-14 border-y border-gray-200">
@@ -518,37 +568,6 @@
                 @endforeach
             </div>
         @endif
-    </div>
-</section>
-
-{{-- =================================================================== --}}
-{{-- ÜNİVERSİTE KATEGORİLERİ (küratörlü koleksiyonlar) --}}
-{{-- =================================================================== --}}
-<section class="max-w-[1400px] mx-auto px-4 py-14">
-    <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
-        <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Universities by Category') }}</h2>
-            <p class="text-gray-600 text-sm">{{ __('Curated lists of Germany\'s most popular universities') }}</p>
-        </div>
-        <a href="{{ route('universities.index') }}" class="text-primary-600 hover:text-primary-800 font-semibold text-sm whitespace-nowrap">
-            {{ __('All universities') }} →
-        </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        @php $homeAccents = ['primary' => 'from-primary-600 to-accent-500', 'accent' => 'from-emerald-600 to-teal-500', 'amber' => 'from-amber-600 to-orange-500']; @endphp
-        @foreach (\App\Support\UniversityCollections::all() as $cSlug => $c)
-            <a href="{{ route('universities.collection', $cSlug) }}"
-               class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-                <div class="bg-gradient-to-br {{ $homeAccents[$c['accent']] ?? $homeAccents['primary'] }} p-5 text-white">
-                    <span class="text-4xl drop-shadow" aria-hidden="true">{{ $c['icon'] }}</span>
-                </div>
-                <div class="p-5 flex-1 flex flex-col">
-                    <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-snug mb-1">{{ __($c['title']) }}</h3>
-                    <p class="text-sm text-gray-600 line-clamp-2 mb-3">{{ __($c['subtitle']) }}</p>
-                    <span class="mt-auto text-xs font-semibold text-primary-600">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>
-                </div>
-            </a>
-        @endforeach
     </div>
 </section>
 

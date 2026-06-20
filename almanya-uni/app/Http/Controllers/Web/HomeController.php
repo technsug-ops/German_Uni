@@ -28,6 +28,8 @@ class HomeController extends Controller
             'Universität Duisburg-Essen',
             'Technische Universität München',
             'Technische Universität Darmstadt',
+            'RWTH Aachen',
+            'Universität Stuttgart',
         ];
         $pinned = collect($pinnedNames)
             ->map(fn ($name) => University::where('is_active', 1)
@@ -41,7 +43,7 @@ class HomeController extends Controller
             ->where('is_active', 1)
             ->whereNotIn('id', $pinned->pluck('id')->all())
             ->orderBy('student_count', 'desc')
-            ->limit(max(0, 6 - $pinned->count()))
+            ->limit(max(0, 8 - $pinned->count()))
             ->get();
 
         // TUM ana sayfa kartı için göz alıcı dış görsel (slug-bazlı cache accessor'ı bypass).
@@ -154,27 +156,48 @@ class HomeController extends Controller
         // DÜZ ARRAY cache'le (Eloquent Collection DEĞİL): file cache serialize/unserialize
         // Eloquent Collection'ı bozabiliyor ("incomplete object" → 500). Düz array güvenli.
         // Locale-spesifik key — name accessor cache anında locale'e göre çözülüyor.
-        $featured_programs = cache()->remember('home.featured_programs_v4:' . app()->getLocale(), now()->addHours(6), fn () =>
-            Program::query()
+        // Popüler programlar — DİL SINIRI YOK (İngilizce + Almanca). Kartlar üni/şehir
+        // gibi görselli: her program field'ının (bölüm) resmi kullanılır. Görsel tekrarı
+        // olmasın diye field başına 1 program (en popüler) seçilir → 4 farklı bölüm.
+        $featured_programs = cache()->remember('home.featured_programs_v5:' . app()->getLocale(), now()->addHours(6), function () {
+            $pool = Program::query()
                 ->where('programs.is_active', true)
-                ->whereIn('programs.language', ['en', 'both'])
                 ->whereNotNull('programs.description_tr')->where('programs.description_tr', '!=', '')
+                ->whereNotNull('programs.field_of_study_id')
                 ->join('universities', 'universities.id', '=', 'programs.university_id')
                 ->where('universities.is_active', 1)
                 ->orderByDesc('universities.student_count')
                 ->orderBy('programs.id')
-                ->limit(4)
-                ->select('programs.id', 'programs.slug', 'programs.name_de', 'programs.name_en', 'programs.degree', 'programs.language', 'programs.university_id')
-                ->get()
-                ->load('university:id,slug,name_de')
-                ->map(fn ($p) => [
-                    'slug'     => $p->slug,
-                    'name'     => $p->name,
-                    'degree'   => $p->degree,
-                    'language' => $p->language,
-                    'uni_name' => $p->university?->name_de,
-                ])->all()
-        );
+                ->limit(60)
+                ->select('programs.id', 'programs.slug', 'programs.name_de', 'programs.name_en', 'programs.degree', 'programs.language', 'programs.university_id', 'programs.field_of_study_id')
+                ->get();
+            $pool->load('university:id,slug,name_de', 'field:id,name_tr,name_en,name_de,image_url,icon,color');
+
+            $seenFields = [];
+            $out = [];
+            foreach ($pool as $p) {
+                $fid = $p->field_of_study_id;
+                if (isset($seenFields[$fid])) {
+                    continue; // aynı bölümden ikinci karta gerek yok (görsel çeşitliliği)
+                }
+                $seenFields[$fid] = true;
+                $out[] = [
+                    'slug'       => $p->slug,
+                    'name'       => $p->name,
+                    'degree'     => $p->degree,
+                    'language'   => $p->language,
+                    'uni_name'   => $p->university?->name_de,
+                    'field_name' => $p->field?->name,
+                    'image_url'  => $p->field?->image_url,
+                    'icon'       => $p->field?->icon,
+                ];
+                if (count($out) >= 4) {
+                    break;
+                }
+            }
+
+            return $out;
+        });
 
         // Gerçekten TALEP GÖREN meslekler (Almanya Mangelberufe: IT + mühendislik +
         // lojistik). Eski mantık field_id+id'ye göre sıralayıp alakasız ("Abfalltechnik")
