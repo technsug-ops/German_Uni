@@ -30,13 +30,25 @@ class TrackPageView
         'admin', 'api', 'livewire', 'sanctum',
         '_debugbar', 'telescope', 'horizon',
         'sitemap.xml', 'robots.txt', 'favicon.ico',
+        'site.webmanifest', 'manifest.json', 'sw.js',
         'forum', // phpBB ayrı tracking yapar
     ];
+
+    // Asset/feed uzantıları — bunlar SAYFA değil; sayılmamalı (webmanifest, ics takvim,
+    // json/xml feed, statik dosyalar). /site.webmanifest'in "en çok ziyaret edilen sayfa"
+    // çıkmasının sebebi buydu.
+    private const ASSET_EXT = '/\.(webmanifest|ics|json|xml|txt|rss|atom|csv|css|js|map|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|pdf|zip|gz|mp3|mp4|webm)$/i';
 
     private const BOT_PATTERNS = [
         'bot', 'crawler', 'spider', 'slurp', 'mediapartners',
         'facebookexternalhit', 'whatsapp', 'telegrambot',
-        'lighthouse', 'pagespeed', 'pingdom',
+        'lighthouse', 'pagespeed', 'pingdom', 'headlesschrome', 'phantomjs',
+        'python-requests', 'python-httpx', 'curl/', 'wget', 'go-http', 'okhttp',
+        'axios', 'node-fetch', 'scrapy', 'libwww', 'java/', 'apache-httpclient',
+        'http_request', 'dataforseo', 'semrush', 'ahrefs', 'mj12', 'dotbot',
+        'petalbot', 'bytespider', 'censys', 'zgrab', 'expanse', 'gptbot',
+        'preview', 'monitoring', 'uptimerobot', 'statuscake', 'site24x7',
+        'powershell', 'seoaudit', 'almanyauni-', // PowerShell scriptleri + sitenin kendi araçları
     ];
 
     public function handle(Request $request, Closure $next): Response
@@ -79,7 +91,15 @@ class TrackPageView
         if ($request->method() !== 'GET') return;
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) return;
 
+        // SADECE HTML sayfa görüntülemeleri sayılır — webmanifest/ics/json/xml/feed,
+        // resim, css/js gibi asset'ler "sayfa" DEĞİL. Content-Type ile en sağlam filtre.
+        $contentType = strtolower((string) $response->headers->get('Content-Type'));
+        if ($contentType !== '' && ! str_contains($contentType, 'text/html')) return;
+
         $path = '/' . ltrim($request->path(), '/');
+
+        // Asset uzantısı → atla (Content-Type boş kalsa bile yakalar)
+        if (preg_match(self::ASSET_EXT, $path)) return;
 
         // Dışlama
         foreach (self::EXCLUDED_PATHS as $excl) {
@@ -124,6 +144,9 @@ class TrackPageView
 
     private function isBot(string $ua): bool
     {
+        // UA yok / şüpheli kısa → neredeyse her zaman bot/script
+        if (trim($ua) === '' || mb_strlen($ua) < 15) return true;
+
         $lower = mb_strtolower($ua);
         foreach (self::BOT_PATTERNS as $p) {
             if (str_contains($lower, $p)) return true;
