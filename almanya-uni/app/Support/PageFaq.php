@@ -327,7 +327,7 @@ class PageFaq
             ['q' => __('Are there hidden semester fees on top of living costs?'),
              'a' => __('Yes: **Semesterbeitrag (semester contribution)** of **€100–430** depending on university. This typically includes the **Semesterticket** (free public transport across the federal state) and Studentenwerk services. Tuition itself is free at most public unis.')],
             ['q' => __('Can I work as a student to reduce costs?'),
-             'a' => __('International students can work **120 full days / 240 half days per year** without an additional permit. As a **Werkstudent** with a related field job, you can earn up to **€520/month tax-free** and gain experience aligned with your studies.')],
+             'a' => __('International students can work **140 full days / 280 half days per year** without an additional permit. As a **Werkstudent** with a related field job, you can earn up to **€603/month tax-free** and gain experience aligned with your studies.')],
         ];
     }
 
@@ -353,7 +353,7 @@ class PageFaq
     {
         return [
             ['q' => __('How much can I earn as a student in Germany?'),
-             'a' => __('International students: **120 full days or 240 half days per year**. As a **Werkstudent** (working student in your field) you can work **up to 20 hours/week during semester, full-time during semester break**. Maximum tax-free monthly income via mini-job: **€520**.')],
+             'a' => __('International students: **140 full days or 280 half days per year**. As a **Werkstudent** (working student in your field) you can work **up to 20 hours/week during semester, full-time during semester break**. Maximum tax-free monthly income via mini-job: **€603**.')],
             ['q' => __('What is Bafög and am I eligible?'),
              'a' => __('**Bafög** is German federal student aid (loan + grant, 50/50). International students CAN qualify if they have **permanent residency in Germany** or specific status (refugee, EU citizen residing in Germany 5+ years). New international students from outside EU are generally **not eligible**.')],
             ['q' => __('How much should I save before coming to Germany?'),
