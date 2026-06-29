@@ -51,6 +51,20 @@ $routes = function () {
     Route::get('/search/suggest', \App\Http\Controllers\Web\SearchSuggestController::class)
         ->middleware('throttle:60,1')
         ->name('search.suggest');
+
+    // RAG chatbot — semantik soru-cevap asistanı. (doc/CHATBOT-RAG-PLAYBOOK.md)
+    // Sadece getirilen bağlamdan grounded cevap + kaynak linkleri.
+    Route::post('/chat', function (\Illuminate\Http\Request $request, string $locale) {
+        $data = $request->validate([
+            'message'           => ['required', 'string', 'max:800'],
+            'history'           => ['sometimes', 'array', 'max:12'],
+            'history.*.role'    => ['required_with:history', 'in:user,assistant'],
+            'history.*.content' => ['required_with:history', 'string', 'max:2000'],
+        ]);
+        $result = app(\App\Services\Rag\ChatService::class)
+            ->ask($data['message'], $locale, $data['history'] ?? []);
+        return response()->json($result);
+    })->middleware('throttle:20,1')->name('chat.ask');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
     Route::get('/team', [AboutController::class, 'team'])->name('team');
@@ -1570,6 +1584,29 @@ Route::middleware('auth')->group(function () {
             if (request()->boolean('dry')) $args['--dry-run'] = true;
             if (request()->boolean('publish')) $args['--publish'] = true;
             \Illuminate\Support\Facades\Artisan::call('faq:generate-ai', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
+    // RAG bilgi tabanı embed — içeriği vektörle (kb_chunks). Artımlı (content_hash).
+    // KAS SSH yok → tarayıcıdan tetikle. Sadece is_admin. (doc/CHATBOT-RAG-PLAYBOOK.md)
+    //   ?source=faq,post  ?locale=tr  ?limit=50  ?fresh=1  ?dry=1
+    Route::get('/admin/ops/kb-embed', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(900);
+        @ini_set('max_execution_time', '900');
+        try {
+            $args = [
+                '--source' => (string) request()->query('source', 'faq,post'),
+                '--limit'  => max(0, (int) request()->query('limit', 0)),
+            ];
+            if ($loc = request()->query('locale')) $args['--locale'] = $loc;
+            if (request()->boolean('fresh')) $args['--fresh'] = true;
+            if (request()->boolean('dry')) $args['--dry-run'] = true;
+            \Illuminate\Support\Facades\Artisan::call('kb:embed', $args);
             $out = \Illuminate\Support\Facades\Artisan::output();
         } catch (\Throwable $e) {
             $out = 'EXCEPTION: ' . $e->getMessage();

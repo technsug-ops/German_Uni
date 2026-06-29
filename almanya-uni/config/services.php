@@ -76,6 +76,16 @@ return [
     'gemini' => [
         'key'   => env('GEMINI_API_KEY'),
         'model' => env('GEMINI_MODEL', 'gemini-2.5-flash'),
+        // RAG chatbot — çok dilli embedding (TR/DE/EN tek vektör uzayı).
+        // gemini-embedding-001: outputDimensionality ayarlanabilir; 768 = isabet/boyut dengesi.
+        // Vektörler L2-normalize saklanır → cosine = nokta çarpımı. (doc/CHATBOT-RAG-PLAYBOOK.md)
+        'embed_model' => env('GEMINI_EMBED_MODEL', 'gemini-embedding-001'),
+        'embed_dims'  => (int) env('GEMINI_EMBED_DIMS', 768),
+        // Sohbet üretim modeli (zor cevaplarda 2.5-pro'ya yükseltilebilir).
+        'chat_model'  => env('GEMINI_CHAT_MODEL', 'gemini-2.5-flash'),
+        // Chatbot widget herkese görünür mü? false = sadece admin (prod'da önce test).
+        // Doğrulandıktan sonra prod .env'de GEMINI_CHAT_PUBLIC=true ile herkese aç.
+        'chat_public' => (bool) env('GEMINI_CHAT_PUBLIC', false),
     ],
 
     'elevenlabs' => [

@@ -1106,6 +1106,12 @@
     {{-- ════════ PWA Install Prompt ════════ --}}
     <x-pwa-install-prompt />
 
+    {{-- ════════ RAG Chatbot Widget ════════ --}}
+    {{-- Önce sadece admin (prod test); doğrulanınca GEMINI_CHAT_PUBLIC=true ile herkese açılır. --}}
+    @if (auth()->user()?->is_admin || config('services.gemini.chat_public'))
+        <x-chat-widget />
+    @endif
+
     {{-- ════════ KVKK Cookie Consent ════════ --}}
     {{-- Mobile: top (feedback button alt sağda olduğu için üstten girer) --}}
     {{-- Desktop: bottom-left (max-w-md, feedback button sağ altta kalabilir) --}}
