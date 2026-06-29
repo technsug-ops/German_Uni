@@ -114,14 +114,18 @@ class FaqGenerateAi extends Command
     private function loadPool(): array
     {
         $out = [];
-        // Tüm topluluk havuzları: telegram_report_*.json + reddit_germany_qa.json
-        // (+ gelecekte eklenecekler). top500_soru[].Soru okunur; farklı yapıdaki
-        // dosyalar (forum_insights, telegram_by_topic) `?? []` ile sessizce atlanır.
-        foreach (glob(storage_path('app/community/*.json')) ?: [] as $path) {
-            $data = json_decode(file_get_contents($path), true) ?? [];
-            foreach ($data['top500_soru'] ?? [] as $row) {
-                $q = trim($row['Soru'] ?? '');
-                if (mb_strlen($q) > 25) $out[] = $q;
+        // Topluluk havuzları iki kaynaktan okunur:
+        //  - storage/app/community/   : prod'a ELLE yüklenen (telegram), git-ignored
+        //  - resources/data/community/: repo ile gelen (reddit_germany_qa), deploy'la OTOMATİK
+        // top500_soru[].Soru okunur; farklı yapıdaki dosyalar `?? []` ile atlanır.
+        $dirs = [storage_path('app/community'), base_path('resources/data/community')];
+        foreach ($dirs as $dir) {
+            foreach (glob($dir . '/*.json') ?: [] as $path) {
+                $data = json_decode(file_get_contents($path), true) ?? [];
+                foreach ($data['top500_soru'] ?? [] as $row) {
+                    $q = trim($row['Soru'] ?? '');
+                    if (mb_strlen($q) > 25) $out[] = $q;
+                }
             }
         }
         return $out;
