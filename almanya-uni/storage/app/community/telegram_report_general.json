@@ -1,0 +1,4104 @@
+{
+    "generated_at": "2026-05-18T21:34:54+00:00",
+    "name": "general",
+    "extracted_from": "C:\/Users\/Yapra\/AppData\/Local\/Temp\/tg_rapor",
+    "ozet": [
+        {
+            "Telegram Analyzer Raporu": "Üretildi"
+        },
+        {
+            "Telegram Analyzer Raporu": "Toplam mesaj"
+        },
+        {
+            "Telegram Analyzer Raporu": "Soru"
+        },
+        {
+            "Telegram Analyzer Raporu": "Anonim sender"
+        },
+        {
+            "Telegram Analyzer Raporu": "Grup sayısı"
+        },
+        {
+            "Telegram Analyzer Raporu": "Ort. uzunluk (char)"
+        },
+        {
+            "Telegram Analyzer Raporu": "Filtre uygulandı"
+        }
+    ],
+    "aylik": [
+        {
+            "Ay": "2021-07",
+            "Mesaj": "363"
+        },
+        {
+            "Ay": "2021-08",
+            "Mesaj": "252"
+        },
+        {
+            "Ay": "2021-09",
+            "Mesaj": "97"
+        },
+        {
+            "Ay": "2021-10",
+            "Mesaj": "960"
+        },
+        {
+            "Ay": "2021-11",
+            "Mesaj": "290"
+        },
+        {
+            "Ay": "2021-12",
+            "Mesaj": "2072"
+        },
+        {
+            "Ay": "2022-01",
+            "Mesaj": "2943"
+        },
+        {
+            "Ay": "2022-02",
+            "Mesaj": "1342"
+        },
+        {
+            "Ay": "2022-03",
+            "Mesaj": "1073"
+        },
+        {
+            "Ay": "2022-04",
+            "Mesaj": "615"
+        },
+        {
+            "Ay": "2022-05",
+            "Mesaj": "580"
+        },
+        {
+            "Ay": "2022-06",
+            "Mesaj": "351"
+        },
+        {
+            "Ay": "2022-07",
+            "Mesaj": "676"
+        },
+        {
+            "Ay": "2022-08",
+            "Mesaj": "2375"
+        },
+        {
+            "Ay": "2022-09",
+            "Mesaj": "3408"
+        },
+        {
+            "Ay": "2022-10",
+            "Mesaj": "2850"
+        },
+        {
+            "Ay": "2022-11",
+            "Mesaj": "3068"
+        },
+        {
+            "Ay": "2022-12",
+            "Mesaj": "3234"
+        },
+        {
+            "Ay": "2023-01",
+            "Mesaj": "3949"
+        },
+        {
+            "Ay": "2023-02",
+            "Mesaj": "2884"
+        },
+        {
+            "Ay": "2023-03",
+            "Mesaj": "3912"
+        },
+        {
+            "Ay": "2023-04",
+            "Mesaj": "3820"
+        },
+        {
+            "Ay": "2023-05",
+            "Mesaj": "3537"
+        },
+        {
+            "Ay": "2023-06",
+            "Mesaj": "2964"
+        },
+        {
+            "Ay": "2023-07",
+            "Mesaj": "4004"
+        },
+        {
+            "Ay": "2023-08",
+            "Mesaj": "3903"
+        },
+        {
+            "Ay": "2023-09",
+            "Mesaj": "2311"
+        },
+        {
+            "Ay": "2023-10",
+            "Mesaj": "2541"
+        },
+        {
+            "Ay": "2023-11",
+            "Mesaj": "3324"
+        },
+        {
+            "Ay": "2023-12",
+            "Mesaj": "14627"
+        },
+        {
+            "Ay": "2024-01",
+            "Mesaj": "12565"
+        },
+        {
+            "Ay": "2024-02",
+            "Mesaj": "6802"
+        },
+        {
+            "Ay": "2024-03",
+            "Mesaj": "4026"
+        },
+        {
+            "Ay": "2024-04",
+            "Mesaj": "3198"
+        },
+        {
+            "Ay": "2024-05",
+            "Mesaj": "2825"
+        },
+        {
+            "Ay": "2024-06",
+            "Mesaj": "3302"
+        },
+        {
+            "Ay": "2024-07",
+            "Mesaj": "4429"
+        },
+        {
+            "Ay": "2024-08",
+            "Mesaj": "3658"
+        },
+        {
+            "Ay": "2024-09",
+            "Mesaj": "3608"
+        },
+        {
+            "Ay": "2024-10",
+            "Mesaj": "2547"
+        },
+        {
+            "Ay": "2024-11",
+            "Mesaj": "2033"
+        },
+        {
+            "Ay": "2024-12",
+            "Mesaj": "1432"
+        },
+        {
+            "Ay": "2025-01",
+            "Mesaj": "1384"
+        },
+        {
+            "Ay": "2025-02",
+            "Mesaj": "914"
+        },
+        {
+            "Ay": "2025-03",
+            "Mesaj": "1186"
+        },
+        {
+            "Ay": "2025-04",
+            "Mesaj": "896"
+        },
+        {
+            "Ay": "2025-05",
+            "Mesaj": "754"
+        },
+        {
+            "Ay": "2025-06",
+            "Mesaj": "930"
+        },
+        {
+            "Ay": "2025-07",
+            "Mesaj": "1252"
+        },
+        {
+            "Ay": "2025-08",
+            "Mesaj": "1515"
+        },
+        {
+            "Ay": "2025-09",
+            "Mesaj": "722"
+        },
+        {
+            "Ay": "2025-10",
+            "Mesaj": "465"
+        },
+        {
+            "Ay": "2025-11",
+            "Mesaj": "627"
+        },
+        {
+            "Ay": "2025-12",
+            "Mesaj": "436"
+        },
+        {
+            "Ay": "2026-01",
+            "Mesaj": "492"
+        },
+        {
+            "Ay": "2026-02",
+            "Mesaj": "761"
+        },
+        {
+            "Ay": "2026-03",
+            "Mesaj": "358"
+        },
+        {
+            "Ay": "2026-04",
+            "Mesaj": "515"
+        },
+        {
+            "Ay": "2026-05",
+            "Mesaj": "82"
+        }
+    ],
+    "konular": [
+        {
+            "Konu": "vize",
+            "Etiket": "Visum & Sperrkonto",
+            "Mesaj sayısı": "8503"
+        },
+        {
+            "Konu": "dil",
+            "Etiket": "Deutsch-Zertifikate",
+            "Mesaj sayısı": "7712"
+        },
+        {
+            "Konu": "para",
+            "Etiket": "Kosten \/ Geld",
+            "Mesaj sayısı": "2851"
+        },
+        {
+            "Konu": "randevu",
+            "Etiket": "IDATA \/ Konsulat-Termin",
+            "Mesaj sayısı": "2413"
+        },
+        {
+            "Konu": "uni_assist",
+            "Etiket": "Uni-Assist \/ VPD",
+            "Mesaj sayısı": "1705"
+        },
+        {
+            "Konu": "yurt",
+            "Etiket": "Wohnen \/ Wohnheim",
+            "Mesaj sayısı": "1223"
+        },
+        {
+            "Konu": "sehir",
+            "Etiket": "Stadtauswahl",
+            "Mesaj sayısı": "1023"
+        },
+        {
+            "Konu": "master",
+            "Etiket": "Masterstudium",
+            "Mesaj sayısı": "960"
+        },
+        {
+            "Konu": "sigorta",
+            "Etiket": "Krankenversicherung",
+            "Mesaj sayısı": "734"
+        },
+        {
+            "Konu": "doktor_hospitation_be",
+            "Etiket": "Arzt: Hospitation \/ BE",
+            "Mesaj sayısı": "437"
+        },
+        {
+            "Konu": "studienkolleg",
+            "Etiket": "Studienkolleg \/ FSP",
+            "Mesaj sayısı": "433"
+        },
+        {
+            "Konu": "denklik",
+            "Etiket": "Diplomanerkennung",
+            "Mesaj sayısı": "432"
+        },
+        {
+            "Konu": "is",
+            "Etiket": "Arbeit \/ Jobs",
+            "Mesaj sayısı": "430"
+        },
+        {
+            "Konu": "anmeldung",
+            "Etiket": "Anmeldung",
+            "Mesaj sayısı": "407"
+        },
+        {
+            "Konu": "ausbildung",
+            "Etiket": "Ausbildung",
+            "Mesaj sayısı": "379"
+        },
+        {
+            "Konu": "burs",
+            "Etiket": "Stipendium",
+            "Mesaj sayısı": "264"
+        },
+        {
+            "Konu": "doktor_fachgebiet",
+            "Etiket": "Arzt: Fachgebiet",
+            "Mesaj sayısı": "31"
+        },
+        {
+            "Konu": "doktor_fsp",
+            "Etiket": "Arzt: FSP",
+            "Mesaj sayısı": "10"
+        },
+        {
+            "Konu": "aps",
+            "Etiket": "APS-Zertifikat",
+            "Mesaj sayısı": "3"
+        },
+        {
+            "Konu": "doktor_approbation",
+            "Etiket": "Arzt: Approbation",
+            "Mesaj sayısı": "1"
+        },
+        {
+            "Konu": "doktor_kp_gutachten",
+            "Etiket": "Arzt: KP \/ Gutachten",
+            "Mesaj sayısı": "1"
+        }
+    ],
+    "gruplar": [
+        {
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Mesaj": "75738"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Mesaj": "16283"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (1)",
+            "Mesaj": "12605"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (3)",
+            "Mesaj": "12605"
+        },
+        {
+            "Grup": "ChatExport_2026-05-05_Almanya’da Üniversite",
+            "Mesaj": "12605"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (4)",
+            "Mesaj": "10028"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Mesaj": "1060"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (2)",
+            "Mesaj": "1037"
+        },
+        {
+            "Grup": "ChatExport_2026-05-04 (5)",
+            "Mesaj": "78"
+        }
+    ],
+    "heatmap": [
+        {
+            "Gün": "Pzt",
+            "0:00": "420",
+            "1:00": "155",
+            "2:00": "51",
+            "3:00": "36",
+            "4:00": "24",
+            "5:00": "35",
+            "6:00": "104",
+            "7:00": "282",
+            "8:00": "498",
+            "9:00": "987",
+            "10:00": "1275",
+            "11:00": "1474",
+            "12:00": "1227",
+            "13:00": "1714",
+            "14:00": "1799",
+            "15:00": "1152",
+            "16:00": "1128",
+            "17:00": "1394",
+            "18:00": "1182",
+            "19:00": "1217",
+            "20:00": "1157",
+            "21:00": "1069",
+            "22:00": "1084",
+            "23:00": "613"
+        },
+        {
+            "Gün": "Sal",
+            "0:00": "433",
+            "1:00": "153",
+            "2:00": "204",
+            "3:00": "33",
+            "4:00": "36",
+            "5:00": "36",
+            "6:00": "149",
+            "7:00": "249",
+            "8:00": "479",
+            "9:00": "1004",
+            "10:00": "1249",
+            "11:00": "1257",
+            "12:00": "1657",
+            "13:00": "1433",
+            "14:00": "1422",
+            "15:00": "1446",
+            "16:00": "1497",
+            "17:00": "1179",
+            "18:00": "1014",
+            "19:00": "1230",
+            "20:00": "1377",
+            "21:00": "1419",
+            "22:00": "1374",
+            "23:00": "794"
+        },
+        {
+            "Gün": "Çar",
+            "0:00": "514",
+            "1:00": "144",
+            "2:00": "56",
+            "3:00": "37",
+            "4:00": "19",
+            "5:00": "61",
+            "6:00": "117",
+            "7:00": "267",
+            "8:00": "601",
+            "9:00": "878",
+            "10:00": "1289",
+            "11:00": "1210",
+            "12:00": "1585",
+            "13:00": "1855",
+            "14:00": "1765",
+            "15:00": "1387",
+            "16:00": "1594",
+            "17:00": "1690",
+            "18:00": "1398",
+            "19:00": "1508",
+            "20:00": "1448",
+            "21:00": "1865",
+            "22:00": "1491",
+            "23:00": "656"
+        },
+        {
+            "Gün": "Per",
+            "0:00": "569",
+            "1:00": "340",
+            "2:00": "117",
+            "3:00": "26",
+            "4:00": "51",
+            "5:00": "78",
+            "6:00": "139",
+            "7:00": "312",
+            "8:00": "528",
+            "9:00": "944",
+            "10:00": "1338",
+            "11:00": "1704",
+            "12:00": "1931",
+            "13:00": "1748",
+            "14:00": "1610",
+            "15:00": "1881",
+            "16:00": "1295",
+            "17:00": "1592",
+            "18:00": "1572",
+            "19:00": "1243",
+            "20:00": "1259",
+            "21:00": "1468",
+            "22:00": "998",
+            "23:00": "716"
+        },
+        {
+            "Gün": "Cum",
+            "0:00": "479",
+            "1:00": "261",
+            "2:00": "55",
+            "3:00": "31",
+            "4:00": "35",
+            "5:00": "70",
+            "6:00": "118",
+            "7:00": "319",
+            "8:00": "628",
+            "9:00": "933",
+            "10:00": "1275",
+            "11:00": "1574",
+            "12:00": "1690",
+            "13:00": "1433",
+            "14:00": "1508",
+            "15:00": "1373",
+            "16:00": "1624",
+            "17:00": "1185",
+            "18:00": "1012",
+            "19:00": "1197",
+            "20:00": "1373",
+            "21:00": "1233",
+            "22:00": "884",
+            "23:00": "599"
+        },
+        {
+            "Gün": "Cmt",
+            "0:00": "510",
+            "1:00": "199",
+            "2:00": "69",
+            "3:00": "50",
+            "4:00": "15",
+            "5:00": "42",
+            "6:00": "69",
+            "7:00": "229",
+            "8:00": "331",
+            "9:00": "518",
+            "10:00": "675",
+            "11:00": "1174",
+            "12:00": "1004",
+            "13:00": "845",
+            "14:00": "1236",
+            "15:00": "1064",
+            "16:00": "1038",
+            "17:00": "792",
+            "18:00": "864",
+            "19:00": "1104",
+            "20:00": "897",
+            "21:00": "1246",
+            "22:00": "1192",
+            "23:00": "1032"
+        },
+        {
+            "Gün": "Pzr",
+            "0:00": "954",
+            "1:00": "199",
+            "2:00": "119",
+            "3:00": "27",
+            "4:00": "20",
+            "5:00": "19",
+            "6:00": "67",
+            "7:00": "137",
+            "8:00": "342",
+            "9:00": "446",
+            "10:00": "755",
+            "11:00": "1106",
+            "12:00": "854",
+            "13:00": "1101",
+            "14:00": "918",
+            "15:00": "976",
+            "16:00": "1256",
+            "17:00": "988",
+            "18:00": "1029",
+            "19:00": "1189",
+            "20:00": "1630",
+            "21:00": "1162",
+            "22:00": "1054",
+            "23:00": "512"
+        }
+    ],
+    "top500_soru": [
+        {
+            "Tarih": "04.05.2026 16:59:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c0400d4d",
+            "Konular": "",
+            "Soru": "Arkadaslar selam,lise diplomam kayip oldugu icin liseden bu durumu anlatan ve diploma yerine gecen bir belge aldim,islak imzali.Vizeye basvururken diplomami sisteme yukledim.Sonrasinda mail geldi degistirmemi diploma yukleyin diye bir yazi aldim.Sonra e devlet uzerinden aldigim halihazirda cevirilmis olani yolladim.Yine yani sekilde diploma yukleyin diye bir mesaj aldim.Tavsiyesi ola var mi ? Ne yapabilirim bunun icin ? Portal uzerinden sanirim yazabiliyorum yoksa mail mi atmaliyim ?"
+        },
+        {
+            "Tarih": "04.05.2026 16:25:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5012db55",
+            "Konular": "randevu",
+            "Soru": "Arkadaşlar Ankarada ön incelemeden çıkıp atama bekleyen var mı ? Bayağı bir süre geçti hala atanmadım normal mi 9 Nisanda idata ödemesini yapmıştık hala atama yapılmadı?"
+        },
+        {
+            "Tarih": "04.05.2026 16:17:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_fb3c6e4d",
+            "Konular": "",
+            "Soru": "Almanyada hat olarak Lidl kullanan var mı hesabımı aktifleştirmek istiyorum ama Türk bankamla hesap bilgilerimi girince kabul etmedi neden acaba ?"
+        },
+        {
+            "Tarih": "04.05.2026 15:07:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_93f0a0d8",
+            "Konular": "",
+            "Soru": "Arkadaşlar belge çevirme ve apostil ile ilgili yapmam gerekenleri söyler misiniz? 2 sene önce türkiyeden çevirtilmiş belgem var. Geçerli midir?"
+        },
+        {
+            "Tarih": "04.05.2026 14:32:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_147847d7",
+            "Konular": "vize, para",
+            "Soru": "Merhabalar bloke hesabima para yatirmam gerekiyor expatrio kullanicam ama hangi bankadan daha az kesintili bir sekilde yükleme yapabilirim bilemedim daha önce yapan varsa hangi bankadan yaptigini veya hangi bankayi önerirsiniz?"
+        },
+        {
+            "Tarih": "04.05.2026 13:01:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e1d6b475",
+            "Konular": "para",
+            "Soru": "Dil kursu için kaç euro ödediniz ?"
+        },
+        {
+            "Tarih": "04.05.2026 09:06:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e1d6b475",
+            "Konular": "",
+            "Soru": "Hannover üniversitesinden şartlı kabul alan var mı ?"
+        },
+        {
+            "Tarih": "03.05.2026 21:13:38",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Tsg bremen grubu var mı? Ben tsgnin tüm gruplarına girdim fakat bremen ve aachen linklerine basınca hata veriyordu. Eğer varsa link atabilir misin?"
+        },
+        {
+            "Tarih": "29.04.2026 12:45:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_59a19da9",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar, istanbuldan öğrenci vizesi basvurusu yaptığımız zaman ortalama ne kadar sürede vize çıkıyor bilgisi ya da tecrübesi olan var mıdır?"
+        },
+        {
+            "Tarih": "27.04.2026 14:04:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f162a08f",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar expatrio üzerinden bloke hesap yapmayı planlıyorum. Türkiye bankasındaki euru en az kesintiyle nasıl bloke hesaba aktarabilirim? Siz hangi bankayla ne kadar kesinti yaşadınız? Revolut hesabım var onunla daha mı iyi olur?"
+        },
+        {
+            "Tarih": "25.04.2026 22:05:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a2b2e563",
+            "Konular": "",
+            "Soru": "arkadaslar herkese iyi aksamlar italyada turk ogrenci gruplari varmis galibaeger bir bilgisi olan varsa bana ozelden linklerini atabilir mi rica etsem ?"
+        },
+        {
+            "Tarih": "25.04.2026 22:00:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "sigorta",
+            "Soru": "merhaba arkadaşlar BARMER’dan posta geldi türkiye’deki adresime, aylık 150€ ödeme yapmam gerektiğine dair. Bunu yapmalı mıyım?"
+        },
+        {
+            "Tarih": "25.04.2026 18:02:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f162a08f",
+            "Konular": "dil",
+            "Soru": "Teşekkür ederim şartlı kabulde Almanca kursunu C1 e kadar mı almıştınız?"
+        },
+        {
+            "Tarih": "25.04.2026 15:20:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5e9aa2d",
+            "Konular": "vize, dil",
+            "Soru": "Selamlar başvurduğum bölüm ingilizce, C1 IELTS ile basvurdum. Vize için illa almanca belge de şart mı?"
+        },
+        {
+            "Tarih": "25.04.2026 14:50:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9a063005",
+            "Konular": "",
+            "Soru": "Merhabalar ben şimdi Bremen Üniversitesi İnformatik bölümünden onay aldım şartlı kabul ile gidicem merak ettiğim bir konu vardı şimdi bize verilen çalışma izni ile ne tarz işler yapabiliyoruz birde bremende aynı durumda insanlar varsa iş bulması kolay mı?"
+        },
+        {
+            "Tarih": "24.04.2026 09:28:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "",
+            "Soru": "Size kurstan belge alin getirin dediklerinin emaili duruyor mu?"
+        },
+        {
+            "Tarih": "23.04.2026 23:04:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f162a08f",
+            "Konular": "dil",
+            "Soru": "Duisburg-Essen Uni den şartlı kabulüm var, Telc Schriftlich zaten geçmiştim mündlich sonucu da son kayıt tarihinden önce yetişmiyordu üniversitenin international bölümü ile iletişime geçtim mündlichi geçtiğime dair sınava girdiğim kurumdan bir belge alırsam istisnai olarak kayıt yapılacağını söyledi, mündlich için de bu belgeyi aldım ve başvuru yaptım kayıt bölümü bu şekilde kayıt yapamayacağını söyledi daha önce böyle bir durumla karşılaşan oldu mu? Ya da bu konuyla ilgili yol gösterecek birleri var mı?"
+        },
+        {
+            "Tarih": "22.04.2026 17:30:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c8951c5b",
+            "Konular": "vize, sigorta",
+            "Soru": "Arkadaslar merhaba ben vize sürecindeyim ve sigorta yaptirmam gerekiyor duyduğum kadariylada 1 ay önce sisteme güncelleme gelmis artik AT 11 yerine vize için farklı bir sigorta yaptirmak gerekiyormus bu konuda bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "21.04.2026 20:36:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e3baf29f",
+            "Konular": "",
+            "Soru": "Merhaba arkadaslar , kelime öğrenimi için ve konusma pratigi yapmak , kendini gelistirmek icin neleri önerirsiniz ?"
+        },
+        {
+            "Tarih": "21.04.2026 17:46:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c9493641",
+            "Konular": "",
+            "Soru": "Jugendwohnheim Glockenhof (VIJ Nürnberg) Bu yurtta kalan oldu mu arkadaşlar ?"
+        },
+        {
+            "Tarih": "20.04.2026 13:20:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0e5756d1",
+            "Konular": "",
+            "Soru": "Hukuk fakültesi diplomam var (mavi diploma da var bir işe yarıyor mu bilmiyorum) Almanya’da alan dışı bir işte çalışabilir miyim? Çalışabiliyorsam eğer ne tür işlerde çalışabilirim?"
+        },
+        {
+            "Tarih": "20.04.2026 09:50:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a91f2eff",
+            "Konular": "vize",
+            "Soru": "Arkadaslar fiktionsbescheinigung&apos;u vize bittikten sonra da alabiliyoruz degil mi?"
+        },
+        {
+            "Tarih": "18.04.2026 20:31:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9a063005",
+            "Konular": "",
+            "Soru": "Merchant of Record böyle birşey var bundan dolayı vizeyi yakabilir miyiz ?"
+        },
+        {
+            "Tarih": "17.04.2026 02:41:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4842bd82",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar 15 Temmuzdan sonra C1 belgesini kabul eden üniversite biliyor musunuz Bremen ve Rwth dışında acaba ?"
+        },
+        {
+            "Tarih": "16.04.2026 15:51:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "randevu",
+            "Soru": "Bu kısma hangi belgeyi eklediniz ben ödemeyi yaptım ama idata bana makbuz felan göndermedi siz ne eklediniz ?"
+        },
+        {
+            "Tarih": "14.04.2026 18:23:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Türkiyede Yönetim Bilişim Sistemleri kazanan bir öğrenci, Almanya&apos;da endüstri mühendisliği (Wirtschaftsingenieurwesen) bölümüne başvurup kabul alabiliyor mu?"
+        },
+        {
+            "Tarih": "14.04.2026 18:06:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Portal sisteminde garantör belgesinden ayrı bir belge daha istiyor normal yaşam masraflarımı nasıl idare edeceğim diye. Buraya hangi belgeyi yüklemeliyim ? Siz ne yüklediniz ?"
+        },
+        {
+            "Tarih": "14.04.2026 00:55:38",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Şu an başvuru yapıyorum da kalış süremi soruyor 3 yıl mı yazmalıyım ?"
+        },
+        {
+            "Tarih": "13.04.2026 14:56:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_cc8bbeac",
+            "Konular": "vize",
+            "Soru": "Vize randevusuna hangi belgeler götürülmeli? Liste olarak bilen var mı acaba?"
+        },
+        {
+            "Tarih": "13.04.2026 11:53:26",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "",
+            "Soru": "Herkese merhabalar. Dortmund’da konaklamak için yer arıyorum, Studierendenwerk Dortmund a yurtlar için mail attığımda otomatik mail geri bildirimi yapıp en kısa sürede dönüş yapacağız diyorlar ama aylardır dönüş olmuyor. Acaba bu Studierendenwerk Dortmund’la nasıl iletişim kurabilirim bilen var mıdır?"
+        },
+        {
+            "Tarih": "13.04.2026 10:59:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "direk 1 yılmı uzatıyorlar başkaları 3 ay veya 6 ay şeklinde uzatıldığını görmüştüm ?"
+        },
+        {
+            "Tarih": "12.04.2026 21:14:54",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "men hal hazırda Almanca öyrenirem ve Bir müddət Erp sistemində SAP ABAP işlemişem sonradan Odoo entwicker işləyirəm almanayaya gelmek fikrim var bu yolda kim bana yardım ede biler?"
+        },
+        {
+            "Tarih": "12.04.2026 15:52:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a0f1490a",
+            "Konular": "para",
+            "Soru": "Hiç türkçe dersi verip para kazanan var mı acaba?"
+        },
+        {
+            "Tarih": "12.04.2026 15:13:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "peki acaba 6 aylık bir sürede oldukça düşük seviyeden (a1 çalışıyorum) TELC B1&apos;in mümkünatı hakkında ne düşünüyorsun ?"
+        },
+        {
+            "Tarih": "12.04.2026 13:31:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "Almanyadaki dil kurslarında kur programları nasıl oluyor ? Ekimde TELC B1 alsam Ocak ortası\/Şubat gibi dil kursuna almanyada başlayabilir miyim ? Eğer şubat gibi başlarsam sonraki eylüle kadar 8 aylık bir süreç içerisinde B2,C1 kurlarını tamamlayım Goethe C1 sertifikasını Wintersemester&apos;a yetiştirebilir miyim sizce ?"
+        },
+        {
+            "Tarih": "12.04.2026 13:29:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_cfaf31fa",
+            "Konular": "",
+            "Soru": "Vizeye başvurmadan önce dil sertifikasını almamız gerekiyor değil mi ?"
+        },
+        {
+            "Tarih": "12.04.2026 03:55:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize, dil",
+            "Soru": "Kasımda C1 sertifikası alıyorum planıma göre, Mart 2027&apos;de 1 yıllık vizem bitiyor. Üni&apos;ye Nisan 2027&apos;de başlıyacağım vize uzatmada sıkıntı yaşar mıyım? Eğitim vizesi ile geldiğim halde 5 6 aydır çalışıyor olacağım muhtemelen, kötüye kullanma vb gibi değerlendirilir mi yoksa sonraki semester&apos;a kadar sıkıntı yok mu?"
+        },
+        {
+            "Tarih": "11.04.2026 16:37:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e3baf29f",
+            "Konular": "vize, dil",
+            "Soru": "Benim dil okulum eylülde bitiyor ama b2 yi tamamlamıs oluyorum. Vizem ise 2027 ocakta bitiyor. Ben temmuzda vize uzatmayı düşünüyorum. Eğer 1 yıllık oturum kartı verirlerse c1 icin dil okuluna basvurmama gerek yok o zaman ?"
+        },
+        {
+            "Tarih": "11.04.2026 15:55:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "",
+            "Soru": "danismanlik ne icin türkiyeden mi?"
+        },
+        {
+            "Tarih": "10.04.2026 20:09:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar, vize başvuruna evrakları götürürken siyah beyaz olsa oluyor mu yoksa renkli mi çıktı almamiz lazım?"
+        },
+        {
+            "Tarih": "09.04.2026 22:09:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "randevu",
+            "Soru": "Bütün belgelerim tamam başvurumu yapacağım bugün. Tahminen ne kadar sürüyor randevu atamaları ?"
+        },
+        {
+            "Tarih": "09.04.2026 20:46:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "bu dediğin kamu sigortası üniversiteye kesin kayıt yaparken de gerekiyor diye biliyorum. İşte çalışırken işverenimiz bu sigortayı halihazırda bizim için yaptığında üniversiteye başvuruda da fırsattan isitfade kullanabilir miyiz?"
+        },
+        {
+            "Tarih": "09.04.2026 00:14:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9d71f5e",
+            "Konular": "",
+            "Soru": "İyi geceler, bremen üni. &apos;de hazırlık sınıfı için kabul aldım. Dil okulu illa ki Bremen eyaletinde mi olmak zorunda yoksa başka eyalet\/şehirlerde de kursa gidebilir miyim?"
+        },
+        {
+            "Tarih": "08.04.2026 11:05:34",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_e7f8808a",
+            "Konular": "",
+            "Soru": "Artik buradan destek alamiyor muyuz? Herhangi bir coracle calisani yok mu grupta?"
+        },
+        {
+            "Tarih": "07.04.2026 16:56:38",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Bilişim sistemleri ve teknolojilerinden informatik kabul alan var mı ?"
+        },
+        {
+            "Tarih": "06.04.2026 18:47:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "studienkolleg",
+            "Soru": "Son dönem aöl mezunu için farklı bir bölüm okumuş yarıda bırakmış olsan dahi Studienkolleg şart oluyor mu peki?"
+        },
+        {
+            "Tarih": "06.04.2026 18:26:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "",
+            "Soru": "İşletme, uluslararası ticaret vb gibi mi?"
+        },
+        {
+            "Tarih": "06.04.2026 18:06:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "",
+            "Soru": "Yks şartı aranmıyor kaç bin yaptığın önemli değil deniyor bu doğru mu?"
+        },
+        {
+            "Tarih": "06.04.2026 12:37:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bf1f5a21",
+            "Konular": "",
+            "Soru": "Yerleştirme belgesinde ıslak imza + mühür olayını nasıl hallediyoruz? Noterden halletmek yeterli mi?"
+        },
+        {
+            "Tarih": "06.04.2026 09:19:12",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "randevu",
+            "Soru": "arkadaşlar günaydın bu aşamada bir şey yapmam gerekmiyor degil mi sadece randevu tarihi bekleyecegim?"
+        },
+        {
+            "Tarih": "05.04.2026 13:48:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bf1f5a21",
+            "Konular": "",
+            "Soru": "Avusturyadaki okullara başvurmayı düşünen var mı?"
+        },
+        {
+            "Tarih": "02.04.2026 14:19:05",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "",
+            "Soru": "Merhaba, Yapıkredi Eur hesabımda bulunan parayı (eur) en az kesinti ile Almanya’da nasıl çekebilirim bilen var mı?"
+        },
+        {
+            "Tarih": "31.03.2026 15:57:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "13 Nisan’da başlayacak olan kursu satın almak istiyorum ama vize başvurumu daha yapmadım yetişemeyeceğim kursa bu herhangi bir sorun olur mu görüşmede ?"
+        },
+        {
+            "Tarih": "31.03.2026 15:28:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Bilgisi olan cevap verebilir mi ya da daha önce böyle bir şeyle karşılaşan ?"
+        },
+        {
+            "Tarih": "31.03.2026 15:23:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Dil okulu kaydımı yapacağım bana garantör olan kişinin adresini yazabilir miyim ? Almanya’dan adres istiyorlar her hangi bir sorun olur mu konsoloslukta ?"
+        },
+        {
+            "Tarih": "31.03.2026 01:11:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3482745d",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar şu anda lisans veya yüksek lisans düzeyinde eğitim almak isteyenler için vize randevusu atamaları genel olarak ne durumda? Bu konuda bilgisi olanlar varsa paylaşabilir mi?"
+        },
+        {
+            "Tarih": "29.03.2026 17:10:26",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "yurt",
+            "Soru": "arkadaşlar bremen uni yurt başvurusu yapmayı bilen var mı yardımcı olabilecek?"
+        },
+        {
+            "Tarih": "29.03.2026 09:13:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a9e3a68e",
+            "Konular": "dil",
+            "Soru": "Bremende Telc b2 digital sinavina giren daha önce oldu mu?"
+        },
+        {
+            "Tarih": "28.03.2026 15:15:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ae6e4d12",
+            "Konular": "",
+            "Soru": "Merhaba yeni katıldım çok bilgi sahibi değilim ama şuanda a2 dil seviyesi bir belgem bulunuyor ve sanırım studienkolleglere başvuracağım şimdiden kayıt aşamalarına başlamalı mıyım?"
+        },
+        {
+            "Tarih": "27.03.2026 15:56:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9d71f5e",
+            "Konular": "uni_assist, dil",
+            "Soru": "merhaba, bremen üni. informatik lisans prog. basvuracağım. VPD &apos;im geldi ama C1 sertifikam yok. Hazırlık sınıfı üzerinden mi başvuru yapmalıyım yoksa bachelor international kısmından mı başvuru yapmalıyım bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "26.03.2026 21:25:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "",
+            "Soru": "Universitede 1 sene okumus birisi oturum uzatmak isterse,Auslanderbehorde ondan daha onceki donem gectigi dersleri \/ kredileri vs.sorar mı? Yoksa sadece kayitli ogrenci gozukmek yeterli mi,uzatmak icin?"
+        },
+        {
+            "Tarih": "26.03.2026 15:38:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c2101fd6",
+            "Konular": "vize",
+            "Soru": "At11 belgesi vize randevusu için gerekli mi yoksa sonraki süreçte mi alınmalı?"
+        },
+        {
+            "Tarih": "26.03.2026 13:41:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c2101fd6",
+            "Konular": "vize, dil, randevu",
+            "Soru": "Bremenden şartlı kabulüm var bildiğiniz gibi almanca yeterliliği istemiyor ama portalda en az a1 istiyor vize randevusu alırken. Şuan a1 alabilirim diye düşünüyorum ama vizeden onay şansını arttırmak için a2 ile başvurmayı planlıyorum, tabi bu belgeyi alana kadar zaman geçecek dolayısıyla vize randevusuna daha geç girmiş olacağım. Şimdi diğer belgelerimin hazır olduğunu varsayarsak dil belgesi olmadan vizeye başvurmanın yolu var mıdır? Sonradan randevu gününe götürsem dil yeterliliğini olur mu, sizce nasıl bir yol izlemek mantıklı olur?"
+        },
+        {
+            "Tarih": "26.03.2026 12:55:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "",
+            "Soru": "Arkadaşlar selam, Almanya’ya gitmeden önce herkes TEB hesabı aç diyor ama bugün TEB’e gittim, artık anlaşmamız yok dediler. QNB veya DenizBank olabilir dediler. Bu işin aslı nedir, şu an hangi banka mantıklı bilen var mı?"
+        },
+        {
+            "Tarih": "26.03.2026 10:49:43",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "merhaba arkadaşlar bremen üniversitesi ZfN’yi maille mi gönderiyor?"
+        },
+        {
+            "Tarih": "25.03.2026 14:09:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Sağlık sigortası olarak AT11 zorunlu mu ? Yoksa privat olarak DR.walter yaptırabilir miyiz ?"
+        },
+        {
+            "Tarih": "24.03.2026 14:35:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar bremen uni’ye kayıt evraklarını gonderdim güncel okuduğum üniversitenin ingilizce transkriptiyle birlikte ancak hala transkript eksik diyor ne yapmalıyım?"
+        },
+        {
+            "Tarih": "23.03.2026 14:30:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar, studentenwohnheim&apos; e başvuru yapmıştım. Bugün mail gelmiş, başvurunuz onaylandı bekleme listesine alındınız diye. Mail atmam gerekir mi? Bu durumu yaşayanlar veya bilgi sahibi olanlar var mı? Tahmini olarak ne kadar sürer?"
+        },
+        {
+            "Tarih": "23.03.2026 09:01:06",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar merhaba AT11 belgesini dil kursu kayıt belgemle alabiliyor muyum yoksa üniversite kayıt belgesi mi lazim?"
+        },
+        {
+            "Tarih": "21.03.2026 10:46:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6c5f34ee",
+            "Konular": "master",
+            "Soru": "Arkadaşlar ben Almanya’da master için plan yaptım ama Avusturya’yı mı düşünsem acaba diye kafamı karıştırdı birileri. Avusturya’da computer science master sonrası iş olanakları vs merak ediyorum, düşük puanla kabul alıyorlar mı bir de … böyle sorularım var. Grupta var mı bilgisi olan biri ? Ya da başka bir telegram grubu var mı önerebileceğiniz?"
+        },
+        {
+            "Tarih": "19.03.2026 20:13:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "vize, yurt",
+            "Soru": "Mesela 1 senelik vize almaya ragmen ,1 senelik oturum almak isteniyorsa,bir evle 1 senelik bir kira sözlesmesi yapmak gerekiyor diye duydum 6 aylik kira sozlesmesine 6 aylik oturum veriliyormus Bu dogru mu?"
+        },
+        {
+            "Tarih": "19.03.2026 18:46:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "yurt",
+            "Soru": "Arkadaslar benim almanyaya gelmeden once kira sozlesmesi imzalam gerekiyor,evi bir arkadasim benim icin gezdi .Ama ev sahibi Steuer id istiyor benden.Ben almanyaya gelip Aufenthaltstitel almadan nasil Steuer ID alacagim?"
+        },
+        {
+            "Tarih": "19.03.2026 09:06:07",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar universitenin gönderdiği Studienplatzannahme veya ön kayıt belgesi ile AT11 alinabilir mi?"
+        },
+        {
+            "Tarih": "18.03.2026 08:15:15",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_4f0dd896",
+            "Konular": "",
+            "Soru": "Arkadaşlar yakında vizeye başvuracağım üniversitenin dil kursuna kabul edildim ama dil belgemi aldığımda başvurmak istediğim okul farklı bir şehir ve eyalette 26 gün sonra kurs başlıyor ve vizeye başvurmayı düşünüyorum. Sizce vizeye başvursam ve olası bi gecikme durumunda c1i alıp başka bir üniversiteye kaydımı yaptırsam vizede sorun çıkarırlar mı yoksa konsolosluğa bilgi verdiğimde kolayca halledilir mi sizce ne yapmalıyım kabul edildiğim için her halükarda vizeye başvurmalı mıyım?"
+        },
+        {
+            "Tarih": "17.03.2026 08:41:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "vize",
+            "Soru": "Vize gorusmesinden kac gun sonra ,vize basilip basilmayacagi karari geliyor mail olarak? Deneyimi olan yazabilir mi?"
+        },
+        {
+            "Tarih": "15.03.2026 14:37:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar almanya’da bir eğitim danışmanı ile anlaşmıştık ve belli bir süre sonra süreci güzel yönetmediği için ilk ödemeyi yapıp sonra iptal istedim, şimdi benden ek ücret istiyor yoksa mahkemede görüşürüz vs diyor bir şey çıkar mi sizce?"
+        },
+        {
+            "Tarih": "14.03.2026 11:32:07",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "okul postalayın dedi nasil yok hocam?"
+        },
+        {
+            "Tarih": "14.03.2026 06:53:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ae4f281d",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar günaydın, Bremen Üniversitesinden başvuru onayı geldi ancak dil okulu kaydıyla beraber kayıt tamamlanıyor galiba. Gönderdikleri mailin içinde vize ve konsoloslukta kullanılabilecek bi belge de var sanırım, onu kullanarak dil okuluna gidip okul kaydını yaptırmadan devam edebiliyor muyuz?"
+        },
+        {
+            "Tarih": "14.03.2026 02:32:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "vize",
+            "Soru": "Sınav sonucum geldi başarılı olarak. Şu an vize başvurumu yapabilir miyim ?"
+        },
+        {
+            "Tarih": "13.03.2026 10:10:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "",
+            "Soru": "arkadaslar merhaba almanyaya yeni geldim ilk 6 ay ehliyeti kullanabilmek için bir işlem yaptırmak gerekiyor mu?"
+        },
+        {
+            "Tarih": "12.03.2026 20:00:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b0cc78a2",
+            "Konular": "",
+            "Soru": "Bielefeld için kiralık ev arıyorum. Eğer bildiğiniz bir ev varsa paylaşabilir misiniz?"
+        },
+        {
+            "Tarih": "12.03.2026 14:45:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Bremen üniversitesine kayıt için evraklarimi göndereceğim fakat eksik evrak göndermemek için soruyorum hangi evrakları postalamam gerekiyor?"
+        },
+        {
+            "Tarih": "11.03.2026 22:48:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a0f1490a",
+            "Konular": "",
+            "Soru": "603 eurodan fazla kazananlar aşağı yukarı ne kadar vergi veriyorsunuz acaba?"
+        },
+        {
+            "Tarih": "11.03.2026 17:08:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "dil",
+            "Soru": "merhaba aranızda DRA dan almanca kursu alan var mı ve memnun mu?"
+        },
+        {
+            "Tarih": "09.03.2026 09:09:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Arkadaşımın babası Alman bir yeminli mütercim tercüman fakat Trükiyede yaşıyor ve çalışıyor. Belgelerimi ondan çevirtebilir miyim?"
+        },
+        {
+            "Tarih": "09.03.2026 09:08:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Bremen ünide başvururken belgelerin alman bir mütercim tercümandan çevirili olması gerekiyormuş. Burada olay kişinin alman olması mı yoksa almanyada bir mütercim tercüman olması mı?"
+        },
+        {
+            "Tarih": "08.03.2026 10:55:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Bölümlerin eğitim diline nerden bakıyoruz?"
+        },
+        {
+            "Tarih": "08.03.2026 10:50:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5e9aa2d",
+            "Konular": "",
+            "Soru": "Selamlar öğrenci vizesi için a2 belgesi şart mı? Gideceğim bölüm ingilizce ve 7 ilets im var zaten. A2 biliyorum ama belge almadim daha sorun olur mu?"
+        },
+        {
+            "Tarih": "06.03.2026 13:18:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9d71f5e",
+            "Konular": "",
+            "Soru": "Selamlar, Saarland&apos; da şartlı kabul veren üniversite veya bölümler var mı bildiğiniz?"
+        },
+        {
+            "Tarih": "06.03.2026 11:21:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Arkadaşlar çok acil, bir durumu anlayamadım. Portala tüm evrakları yükledim; verdiğim link üzerinden ödeme yapmamı istiyor ancak ödeme gerçekleşmiyor. Sürekli &apos;ödeme başarısız oldu&apos; veya &apos;teknik aksaklık oluştu&apos; uyarısı alıyorum. Sabahtan beri denememize rağmen ödemeyi sağlayamadık. Bu sorunla karşılaşan başka biri var mı?"
+        },
+        {
+            "Tarih": "05.03.2026 17:54:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "vize",
+            "Soru": "Selamlar arkadaşlar yakın zamanda izmirden vize alan oldu mu?"
+        },
+        {
+            "Tarih": "05.03.2026 08:39:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "randevu",
+            "Soru": "Merhaba, iki ay önce oturuma başvurdum fakat hala randevu gelmedi, oturumum şubat sonu bitti. Türkiyeye gitmek istiyorum ostern zamanı, bu durumda nasıl bir yol izlemem lazım bilen var mı?"
+        },
+        {
+            "Tarih": "04.03.2026 14:04:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_dec26c89",
+            "Konular": "dil",
+            "Soru": "Arkadadaslar merhaba telc c1 sinav grubu olanlar bana atabilirmi veya ekleyebilirmisiniz acaba?"
+        },
+        {
+            "Tarih": "04.03.2026 11:41:05",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Kabulüm geldi bu hafta vizeye başvuracağım nisanın 20 sine kadar vizeyi alabilirmiyim? En çabuk hangi şehirden alabilirim?"
+        },
+        {
+            "Tarih": "04.03.2026 11:00:12",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "vize",
+            "Soru": "Hayırlı olsun hangi konsolosluk?"
+        },
+        {
+            "Tarih": "03.03.2026 20:51:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_51cc047d",
+            "Konular": "",
+            "Soru": "benden istenmedi bir arkadaşımdan istendide diğer çevirisini yaptığımız belgeleride zaten yeminli istemiyorlarmı ?"
+        },
+        {
+            "Tarih": "03.03.2026 20:49:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "",
+            "Soru": "Senden yeminli tercume mi istendi ,normal mi?"
+        },
+        {
+            "Tarih": "03.03.2026 15:54:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Başka kursa kayıt yaptırdınız mı ?"
+        },
+        {
+            "Tarih": "03.03.2026 15:49:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Merhaba Kursa katılım sağladınız mı ?"
+        },
+        {
+            "Tarih": "03.03.2026 10:55:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_272d370a",
+            "Konular": "vize",
+            "Soru": "Birinden duymustum,vize gorusmesinden sonra ek belge olarak e devletten ikametgah belgesinin yeminli tercumesini istemisler Böyle durum yasayan var mi,bana mantikli gelmedi?"
+        },
+        {
+            "Tarih": "02.03.2026 23:44:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_93f0a0d8",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba, ösym üniversite kazandı belgesinin üzerinden 2,3 yıl zaman geçmesi gibi bir sınır var mı başvuru yaparken?"
+        },
+        {
+            "Tarih": "02.03.2026 20:54:52",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "vize, master",
+            "Soru": "Herkese iyi akşamlar bir sorum olacaktı. Dortmund üniversitesinden master kabulüm var ama öncelikle Almanyaya gidip dil okulu yapacağım, Expatrio dan bloke hesap açarken gidiş sebebine Master olarak mı dil okulu olarak mı seçmeliyim?"
+        },
+        {
+            "Tarih": "02.03.2026 09:19:12",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "almanyaya hangi dil seviyesiyle gittin?"
+        },
+        {
+            "Tarih": "27.02.2026 20:41:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar d tipi vize ile almanyaya ilk girişte harç ödeniyor mu?"
+        },
+        {
+            "Tarih": "26.02.2026 13:47:06",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3393a1ce",
+            "Konular": "",
+            "Soru": "konuştuk bize turistik olarak 3 ay vereceklerini söylediler 6 ayda oluyor mu?"
+        },
+        {
+            "Tarih": "26.02.2026 12:08:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3393a1ce",
+            "Konular": "",
+            "Soru": "Üniversiteden kabul mektubum geldi üniversiteye kayıt olmadan kabul mektubu ile AT11 alınabilir mi?"
+        },
+        {
+            "Tarih": "24.02.2026 19:27:05",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_a574c557",
+            "Konular": "vize",
+            "Soru": "2 ayrı bloke hesap yapılabiliyor mu peki?"
+        },
+        {
+            "Tarih": "24.02.2026 18:50:05",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_a574c557",
+            "Konular": "vize",
+            "Soru": "şuanda bloke hesap tamamlama işlemini nasıl gerçekleştirebilirim? Oturuma başvurucam ve bloke hesap istiyorlar bu problemi nasıl çözebilirim?"
+        },
+        {
+            "Tarih": "23.02.2026 19:09:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bbaf67e9",
+            "Konular": "",
+            "Soru": "burdaki başvuru formunu doldururken dil kursunu mu seçmem gerekli yoksa üniversite içinmi doldurmam gerekli acaba?"
+        },
+        {
+            "Tarih": "22.02.2026 20:08:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "",
+            "Soru": "bilmiyorum tekrar alabilir misiniz?"
+        },
+        {
+            "Tarih": "22.02.2026 19:55:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Bremen’de uygun fiyatlı güzel dil kursu önerir misiniz?"
+        },
+        {
+            "Tarih": "18.02.2026 17:47:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "randevu",
+            "Soru": "izmir konsoloslugu ne kadar sürede randevu atamakta bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "18.02.2026 13:15:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "randevu",
+            "Soru": "36f izmir için ortalama ne kadar süreye randevu veriyor ?"
+        },
+        {
+            "Tarih": "18.02.2026 09:11:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Hohschschule mi ,normal üniversität mi?"
+        },
+        {
+            "Tarih": "18.02.2026 08:52:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0aabd8fc",
+            "Konular": "",
+            "Soru": "Önlisans derslerini saydırabilmiş mi ?"
+        },
+        {
+            "Tarih": "17.02.2026 16:46:05",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b1a92648",
+            "Konular": "master",
+            "Soru": "arkadaşlar üni 4.sınıfta okul bitmeden master ya da lisans başvurusu yapabilir miyiz? yapabileceksek nasıl oluyor?"
+        },
+        {
+            "Tarih": "16.02.2026 12:31:55",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bc7819b3",
+            "Konular": "",
+            "Soru": "Swan schule essen eğitimi nasıl.Daha önce kayıt olan var mı?"
+        },
+        {
+            "Tarih": "16.02.2026 08:49:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9a063005",
+            "Konular": "",
+            "Soru": "merhaba dil okuluna kayıt yaptırıcaktım ama SPRACHSCHULE AKTIV bremen burası nasıl iyi midir ?"
+        },
+        {
+            "Tarih": "15.02.2026 13:39:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Benim okul kabulleri geldi. Bundan sonraki adım olarak ne yapmam gerekiyor ?"
+        },
+        {
+            "Tarih": "14.02.2026 20:24:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar şartlı kabul icin moin bremen’den başvuru yapacağım suan, doğru degil mi yaptığım seçimler?"
+        },
+        {
+            "Tarih": "14.02.2026 17:33:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f5124f4d",
+            "Konular": "dil",
+            "Soru": "Ben şuan 11.sınıfım 0.77 ile girdim ve bir fen lisesindeyim ve yurtdışında okuma gibi hedeflerim var 95+ obp ve 85 civarında tyt neti yapıyorum ve,b2 seviye ingilizcem var bana yaptığınız hatalardan veya pişman olduğunuz şeylerden öneride bulunacak olursanız ne yapsam faydalı olur gibisinden yönlendirebilirmisiniz beni?"
+        },
+        {
+            "Tarih": "13.02.2026 16:58:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_66719d6b",
+            "Konular": "",
+            "Soru": "Sartlı kabul veren hochschule var mı mühendisliklerde?"
+        },
+        {
+            "Tarih": "13.02.2026 13:02:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Yönetim bilişim sistemlerinden informatik kabul alan var mı ?"
+        },
+        {
+            "Tarih": "12.02.2026 17:37:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "arkadaşlar moinden böyle bir şey alan oldu mu?"
+        },
+        {
+            "Tarih": "12.02.2026 06:04:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9c91f4c3",
+            "Konular": "",
+            "Soru": "Merhaba, turkiyede bulunan yeminli tercumana yaptirilan ceviriler kabul edilmiyor mu?"
+        },
+        {
+            "Tarih": "11.02.2026 18:27:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bbaf67e9",
+            "Konular": "",
+            "Soru": "Arkadaşlar başvuru göster kısmını tıkladım bütün belgeleri yüklememe rağmen böyle bir hata karşıma çıktı sizde böyle bir hata aldınızmı?"
+        },
+        {
+            "Tarih": "11.02.2026 15:00:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar şimdik biz 310 bin sıralama yapıp matamatik yazıp yazılım mühendisliği okuyabilirmiyiz ?"
+        },
+        {
+            "Tarih": "11.02.2026 09:45:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f162a08f",
+            "Konular": "randevu",
+            "Soru": "Selam, Ausländerbehörde Oturum izni verilmesi\/ uzatılması ile ilgili 03.03’e randevu atmış ama benim Mayıs’ın sonuna kadar Fiktionsbescheinigung belgem var. Bu kadar erken randevu atması normal mi? Daha önce böyle bir şey yaşayan oldu mu?"
+        },
+        {
+            "Tarih": "10.02.2026 18:34:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bbaf67e9",
+            "Konular": "vize",
+            "Soru": "bloke hesap açarken adresi nereyi göstermem gerekli?"
+        },
+        {
+            "Tarih": "09.02.2026 14:15:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "artık çevirilerin almanyada alman yeminli tercüman isteniyormuş. O şekilde yaparsam daha sonradan ekstra notere onaylatmam ve apostil yapmam da gerekecek mi yoksa zaten almanyadan çevrilmiş bir belge olacağı için artık başka bir işlem yapmama gerke kalmıyor mu?"
+        },
+        {
+            "Tarih": "09.02.2026 11:17:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ed45bf69",
+            "Konular": "sigorta",
+            "Soru": "Barmer sağlık sigortası ile ilgili whatsap telefonu varmı yıllık fiyat bilgisi olan varmı?"
+        },
+        {
+            "Tarih": "08.02.2026 19:59:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3482745d",
+            "Konular": "",
+            "Soru": "Rhein-Sieg-Kreis ya da Bonn&apos;da olan var mı o çevrede?"
+        },
+        {
+            "Tarih": "08.02.2026 19:54:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3482745d",
+            "Konular": "",
+            "Soru": "Almanya&apos;da Türkiye&apos;deki diploma ile nasıl yüksek lisans yapılır?"
+        },
+        {
+            "Tarih": "06.02.2026 13:37:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_79ef7f87",
+            "Konular": "",
+            "Soru": "ya bir yaz dönemli birde kış dönemi başvurular var ya ünüversitelere studium için yaz başvuruları biti heralde kış sömestırı başvuruları ne zaman başlıyor ?"
+        },
+        {
+            "Tarih": "04.02.2026 18:41:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1f9a153f",
+            "Konular": "",
+            "Soru": "üniversiteden mi kabul almadı vizeden mi?"
+        },
+        {
+            "Tarih": "04.02.2026 18:08:22",
+            "Grup": "ChatExport_2026-05-04 (4)",
+            "Sender": "user_e3baf29f",
+            "Konular": "denklik",
+            "Soru": "Merhaba, hemşire yardımcısı olarak mı denklik aldınız ?"
+        },
+        {
+            "Tarih": "04.02.2026 14:12:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a9e3a68e",
+            "Konular": "",
+            "Soru": "Merhaba birsey soracagim.ogrenci vizesiyle gelip (resmi davet olmadan) normal davet yazisiyla Turkiyeden bir tanidigimiza Tourist vizesi basvurusu icin verebilir miyiz? Herhangi bir sakincasi var mi? Yapan var mi?"
+        },
+        {
+            "Tarih": "04.02.2026 11:22:02",
+            "Grup": "ChatExport_2026-05-04 (4)",
+            "Sender": "user_129bd2de",
+            "Konular": "denklik",
+            "Soru": "Merhaba, 2017 Sağlık meslek lisesi hemşirelik mezunu olup Almanya’ya danışmanlık firmasıyla giden var mı? Denklik süreci nasıl ilerledi?"
+        },
+        {
+            "Tarih": "03.02.2026 19:23:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_34318351",
+            "Konular": "",
+            "Soru": "Arkadaşlar postayla okula belge gönderen var mı? Hangi kargoyu kullandınız? Hangisi hızlı vs?"
+        },
+        {
+            "Tarih": "03.02.2026 13:02:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1e6117c4",
+            "Konular": "",
+            "Soru": "Arkadaşlar Duisburg Oberhausen taraflarında anneldung yapabileceğim bir ev aramaktayım yardımcı olabilecek birileri var mıdır ?"
+        },
+        {
+            "Tarih": "03.02.2026 08:28:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_51cc047d",
+            "Konular": "",
+            "Soru": "dil kursu mailden kontratı iletti bir iban numarasına parayı istiyorlar sıkıntı çıkma durumu varmı ?"
+        },
+        {
+            "Tarih": "02.02.2026 14:49:06",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "vizede istanbuldan hızlıca almak için ikametgahımı istanbula alıp vize sonucum geldikten sonra ikametgahımı yine antalyaya geçirsem olur mu?"
+        },
+        {
+            "Tarih": "02.02.2026 13:31:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_90c1933b",
+            "Konular": "randevu",
+            "Soru": "Antalya İzmir’e bağlı galiba İzmir ile İstanbul arası randevu süresi çok değişiyor mu acaba ?"
+        },
+        {
+            "Tarih": "02.02.2026 12:01:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "vize",
+            "Soru": "Okulun gönderdiği Studienplatzannahmeyi imzalayıp geri dönüş almayan var mı? Vize sonucunu aldıktan sonra imzalayıp gönderdim bu belgeyi ama 2 aydır dönüş olmadı sorun olur mu?"
+        },
+        {
+            "Tarih": "02.02.2026 11:47:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_59a19da9",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar merhaba, uni için egitim vizesine basvuru yapacağım gecen sene kabul almıştım, vize onay süreci ortalama ne kadar sürüyor acaba?"
+        },
+        {
+            "Tarih": "02.02.2026 11:40:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "vize, randevu",
+            "Soru": "idata ve konsolosluk farkı ne?"
+        },
+        {
+            "Tarih": "02.02.2026 11:08:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Hocam peki yukarıda hesapladığım masraflar hariç oraya gidene kadar başka bir masrafım var mı?"
+        },
+        {
+            "Tarih": "01.02.2026 14:28:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bbaf67e9",
+            "Konular": "vize",
+            "Soru": "At11 belgesi vize için gereklimi?"
+        },
+        {
+            "Tarih": "31.01.2026 14:24:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "peki konudan bağımsız başka bir sorum var. Türkiyede yönetim bilişim sistemlerine kaydolup almanyada informatik okuyabiliyor muyum?"
+        },
+        {
+            "Tarih": "30.01.2026 15:22:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar selamlar öncelikle. Vize işlemlerinde bloke hesap açma ve sağlık sigortası yapma kısmında önerilerinize ihtiyacım var. Hangi banka veya kurumlardan yaparsam daha uyguna gelir vs. tercih ettiğiniz kurum ve siteler hangileri acaba yardımcı olabilir misiniz rica etsem?"
+        },
+        {
+            "Tarih": "30.01.2026 13:09:43",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6b0d31c0",
+            "Konular": "vize, master",
+            "Soru": "Arkadaslar master için 4.5 aydır vize beklerken portaldan böyle bi mail geldi. Yeniden mi başvuru yapmak lazım bilen var mı?"
+        },
+        {
+            "Tarih": "30.01.2026 08:12:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d51338e4",
+            "Konular": "randevu",
+            "Soru": "Merhaba Şuan idata üzerinden 36f için randevu almaya çalışıyorum ama çıkmıyor randevular kapalı mı bi bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "29.01.2026 23:30:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar, 2 ay sonra kursum başlayacak Bremen’de ve ben bugün vize için belgeleri yükleyeceğim, kurstan önce vizenin çıkma ihtimali var mı?"
+        },
+        {
+            "Tarih": "29.01.2026 16:01:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "",
+            "Soru": "Halihazırda Konstanz&apos;da okuyan arkadaşlar var mı?"
+        },
+        {
+            "Tarih": "29.01.2026 14:58:51",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_ed0e4d12",
+            "Konular": "",
+            "Soru": "Daha önce lisans mezunu olanlar duales Studium yapabiliyor mu bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "27.01.2026 17:11:19",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_2ed7d493",
+            "Konular": "",
+            "Soru": "Merhaba Almaniyadan Duales Studium kabul süreci ne kadar bilen varmı?"
+        },
+        {
+            "Tarih": "26.01.2026 14:10:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1223abad",
+            "Konular": "",
+            "Soru": "Almanyada Bremen üniversitesi informatik şartlı kabulüm geldi Düsseldorf da Go akademy dil kursu istiyorum ayrıca kalma yeride ayarlıyormuş ama bu kısımda takılı kaldık irtibat kurmakta zorlandık mail attık ortalama cvp geldi Türkçe bilen biri olsa herşey kolay olacak ama maalesef yok bu işi nasıl çözdünüz destek olabilecek varsa yazabilirmi?"
+        },
+        {
+            "Tarih": "23.01.2026 19:02:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "ne farkı oluyor ki tam olarak?"
+        },
+        {
+            "Tarih": "23.01.2026 05:57:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_de30e5ef",
+            "Konular": "studienkolleg",
+            "Soru": "merhabalar. ben türkiyede 1. sınıfta makine mühendisliği okuyorum ve alman vatandaşıyım. ilk senem bittikten sonra almanyadaki bir üniye studienkolleg ile başvurmak istiyorum ama kaldığım dersler var ve notlarım zayıf. başvuru yaparken notlara bakıyorlar mı?"
+        },
+        {
+            "Tarih": "22.01.2026 21:17:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Bitirdikten sonra, lisans kaydı yapsak ve ardından Almanyada üniversiteye başvursak nasıl olur, lise notları mı yoksa bitirdiğimiz önlisans mı geçerli?"
+        },
+        {
+            "Tarih": "21.01.2026 21:25:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "",
+            "Soru": "Vizenizi alip almanyaya geldikten sonra mi?"
+        },
+        {
+            "Tarih": "20.01.2026 16:34:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5e9aa2d",
+            "Konular": "",
+            "Soru": "Selamlar a2 sınava girmek istiyorumda en kolay nereden tavsiye edersiniz?"
+        },
+        {
+            "Tarih": "19.01.2026 12:17:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "sigorta",
+            "Soru": "Peki sigorta için ne yaptınız?"
+        },
+        {
+            "Tarih": "19.01.2026 10:15:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "sigorta",
+            "Soru": "Merhaba. Almanyaya şartlı kabulle (üniversite lisans) yeni gelen biri için banka hesabı ve sigorta için ne önerirsiniz?"
+        },
+        {
+            "Tarih": "19.01.2026 08:43:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "vize, para",
+            "Soru": "Merhaba, vize başvurusunda göstermek için fake uçak rezervasyonu yapmak istiyorum, acentelar para istiyor, bunu kendim nasıl yapabilirim bilen var mı?"
+        },
+        {
+            "Tarih": "17.01.2026 11:07:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "vize, master",
+            "Soru": "Merhabalar herkese. FH Dortmund dan master programı için şartlı kabul aldım. A2 belgem ve üniversite kabul mektubum mevcut. Şimdi vize başvurusu yapmam lazım, ancak başvuru sitesinde biraz zorlandım acaba yakın zamanda yapan veya süreci bilen birisi varsa iletişime geçip yardımcı olabilir mi rica etsem?"
+        },
+        {
+            "Tarih": "16.01.2026 13:53:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "E devletten çıktı vs yetmez mi ?"
+        },
+        {
+            "Tarih": "16.01.2026 07:43:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_355c72d4",
+            "Konular": "",
+            "Soru": "Mainz de iyi bir dil kursu bilen var mı?"
+        },
+        {
+            "Tarih": "15.01.2026 22:33:05",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Bilgelerim yüklü olmasına rağmen neden hata veriyor lütfen yardımcı olur musunuz ?"
+        },
+        {
+            "Tarih": "15.01.2026 19:52:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Yakın zamanda şartlı kabul başvurusu yapan oldu mu ? Lütfen yardımcı olabilir misiniz ?"
+        },
+        {
+            "Tarih": "15.01.2026 19:45:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Hocam üniassiste girilmiyor. Başvuruyu tamamlayamadım teslim edemedim. Bunun için bir şey yapılıyor mu ya da telafı olarak ?"
+        },
+        {
+            "Tarih": "15.01.2026 19:13:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c3abd2e0",
+            "Konular": "dil",
+            "Soru": "Merhaba arkadaşlar; hem whatsapp olur hem telegram olur pdflerin paylaşıldığı, konuşma grupları veya b1,b2,c1 sınavlarına hazırlananların olduğu gruplar varsa paylaşabilir misiniz?"
+        },
+        {
+            "Tarih": "15.01.2026 18:48:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Selam arkadaşlar, Sadece dil kursu için vize kabul-red durumu nasıl?"
+        },
+        {
+            "Tarih": "15.01.2026 16:35:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Transkripti çevirmek zorunda mıyız ?"
+        },
+        {
+            "Tarih": "15.01.2026 13:11:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar bremen üniversitesinde Kommunikations und Medienwissenschaft bölümüne başvurmayı dusunuyorum bilgisi olan var mıdır?"
+        },
+        {
+            "Tarih": "14.01.2026 19:59:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Üniversite başvuruları 15 Ocak son deniyor. Yarın yapabiliyor muyuz yoksa bu gece 12 de son mu ?"
+        },
+        {
+            "Tarih": "14.01.2026 17:22:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "uni_assist",
+            "Soru": "arkadaşlar bremen üniversitesine yaptığım başvuru için vpd aldim ama gelen vpd’de tercümanlık ve benzer alanlara başvuru yapabilirsiniz diyor. business administration bölümüne başvuru yapmam mümkün müdür?"
+        },
+        {
+            "Tarih": "14.01.2026 16:47:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ce17a3ea",
+            "Konular": "vize",
+            "Soru": "Yakın zamanda istanbulda vize görüşmesine giden var mı, eskiden yapılan o quiz gibi birkaç soru hâlâ soruluyor mu yoksa sadece parmak izi falan verip ayrılıyor muyuz?"
+        },
+        {
+            "Tarih": "13.01.2026 20:14:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "uni_assist",
+            "Soru": "arkadaşlar bu vpd ile işletme bölümüne kayıt yapamaz mıyım?"
+        },
+        {
+            "Tarih": "13.01.2026 17:45:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Yakın zamanda yüksek lisans kabulü alan oldu mu ?"
+        },
+        {
+            "Tarih": "12.01.2026 21:55:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ed45bf69",
+            "Konular": "",
+            "Soru": "Moinde Bremen üniversitesinde Türkiyedem noter onaylı tercüme mi yükleyelim yoksa Almanyada tercüme edilmiş belgeli mi yükleyelim?"
+        },
+        {
+            "Tarih": "12.01.2026 02:50:55",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Psikoloji bitirmiş biri olarak almanyadan kabul nasıl alabilirim ?"
+        },
+        {
+            "Tarih": "12.01.2026 01:48:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9d71f5e",
+            "Konular": "",
+            "Soru": "Selamlar iyi akşamlar, bremen üni. başvuruları açtı mı bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "11.01.2026 02:04:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Üniversite mezunu birinin 36f mi ya da 44f vizesine başvurması mı mantıklı ?"
+        },
+        {
+            "Tarih": "11.01.2026 00:55:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_09324d87",
+            "Konular": "uni_assist",
+            "Soru": "arkadaslar bremen uni icin vpd lazım 15 ocaktan sonra vpd belgesi gelirse yine de moin uzerinden basvurabiliyorum degil mi?"
+        },
+        {
+            "Tarih": "09.01.2026 09:41:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Şu an dil belgesini daha almadım. Ama 15 Ocak üniversite başvurları son. Dil belgesi olmadan başvurabilir miyim üniversitelere ?"
+        },
+        {
+            "Tarih": "09.01.2026 09:40:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Önlisans bölüm bitirdim ama lisans başvurusu yapacağım sisteme önlisans belgelerimi yüklemeli miyim ?"
+        },
+        {
+            "Tarih": "08.01.2026 16:52:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a71e9a78",
+            "Konular": "sigorta",
+            "Soru": "Abmeldung yapıp 5 ay kadar Almanya dışında kalınca sağlık sigortası zorunlu mu? Yani geri dönüp tekrar sigorta başlattığımda sorun olur mu 5 ay sigorta olmaması?"
+        },
+        {
+            "Tarih": "07.01.2026 23:07:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_01538689",
+            "Konular": "",
+            "Soru": "üniveriste notları cok düşük full ff olduğu için vizeden veya okuldan red alan veya alan tanıdığı olan var mı?"
+        },
+        {
+            "Tarih": "07.01.2026 19:18:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9c91f4c3",
+            "Konular": "",
+            "Soru": "Bu konuda bilgi verebilecek kimse var midir?"
+        },
+        {
+            "Tarih": "07.01.2026 11:29:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a52ce78",
+            "Konular": "uni_assist",
+            "Soru": "Daha önce böyle vpd’si gecikip de uniassist’e mail atıldığında ya da arandığında çözüme ulaşan oldu mu acaba?"
+        },
+        {
+            "Tarih": "05.01.2026 17:55:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "",
+            "Soru": "Başvuru için gerekli belgeleri e devletten çıkartıp tercüme ettirirsem noter ve apostile gerek olur mu?"
+        },
+        {
+            "Tarih": "02.01.2026 12:21:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bf1f5a21",
+            "Konular": "",
+            "Soru": "Türkiyede inşaat mühendisliği kazanmış birisi Almanyada wirtschaftsingenieurwesen bölümüne geçiş yapabilir mi mümkün mü bu?"
+        },
+        {
+            "Tarih": "29.12.2025 16:20:38",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "yurt",
+            "Soru": "Merhaba arkadaşlar, bremende aktiv kursuna yakın şubat başından itibaren boş wg arıyorum çıkacak olanlar veya boş bildiğiniz wg var mı ?"
+        },
+        {
+            "Tarih": "27.12.2025 09:13:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "yurt",
+            "Soru": "Merhaba arkadaşlar, bremende aktiv kursuna yakın şubat başından itibaren boş wg arıyorum çıkacak olanlar veya boş bildiğiniz wg var mı ?"
+        },
+        {
+            "Tarih": "19.12.2025 22:09:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar bloke hesap açma nasıl yapılıyor ve hangisini öneriyorsunuz ?"
+        },
+        {
+            "Tarih": "18.12.2025 21:21:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f030606e",
+            "Konular": "uni_assist",
+            "Soru": "vpd belgesine başvururken çevirteceğimiz diploma orijinal diploma mı yoksa e devletten alınan milli eğitim lise mezuniyet belgesi mi?"
+        },
+        {
+            "Tarih": "18.12.2025 15:41:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_262cc7aa",
+            "Konular": "",
+            "Soru": "Tükiyede aktif öğrenci gözüküyorum 36 f vizesinde sıkıntı yaratır mı ?"
+        },
+        {
+            "Tarih": "18.12.2025 12:10:53",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_f9a8ec59",
+            "Konular": "",
+            "Soru": "Fintiba aynı işlemler için kullanılır mı?"
+        },
+        {
+            "Tarih": "18.12.2025 09:39:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "studienkolleg",
+            "Soru": "TU9 üniversiteleri, lise mezunlarına Studienkolleg şartı sunuyor mu?"
+        },
+        {
+            "Tarih": "17.12.2025 08:13:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ea39977d",
+            "Konular": "dil, ausbildung",
+            "Soru": "Arkadaşlar merhabalar gruba yeni katıldım. Coğrafya mezunuyum 10 yıldır özel sektörde öğretmenlik yapıyorum. Yaklaşık 3 aydır Almanca öğrenmeye başladım a1 videolarını bitirdim. Almanyaya yerleşmeyi düşünüyorum bu konuda nasıl bir yol ilerlemeliyim bilgisi olan yazabilir mi? Tekrar üniversite okumak için mi gitmek daha mantıklı yoksa ausbildung yaparak mı daha mantıklı?"
+        },
+        {
+            "Tarih": "16.12.2025 22:52:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "bu moin kısmı ne kadar sürüyor kabul almış olanlar cevaplayabilirse ?"
+        },
+        {
+            "Tarih": "16.12.2025 22:44:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1223abad",
+            "Konular": "",
+            "Soru": "Bir bildikleri vardır herhalde?"
+        },
+        {
+            "Tarih": "16.12.2025 22:39:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Danışman var arada bu hafta gelebileceğini söyledi (biz ayrıca mail atmadık ) sürenin bu kadar kısa da olabileceğini bilmediğimiz için ?"
+        },
+        {
+            "Tarih": "16.12.2025 22:36:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Biz ekimde başvurduk hala gelmedi ?"
+        },
+        {
+            "Tarih": "16.12.2025 22:22:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_51cc047d",
+            "Konular": "",
+            "Soru": "auslandsportaldan başvuru yapanlar ne kadar sürüyor ?"
+        },
+        {
+            "Tarih": "16.12.2025 22:00:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Türkiye’de hangi konsolosluk ?"
+        },
+        {
+            "Tarih": "16.12.2025 21:58:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1223abad",
+            "Konular": "",
+            "Soru": "Düsseldorf da go akademi dil kursu hakkında bilgisi olan varsa yazabilirmi?"
+        },
+        {
+            "Tarih": "16.12.2025 20:32:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "moinden yapılan başvuru ne kadar sürüyor ?"
+        },
+        {
+            "Tarih": "15.12.2025 21:23:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "dieburg kısmen bahsettiğiniz o küçük şehirlerdenmi ?"
+        },
+        {
+            "Tarih": "15.12.2025 10:28:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c17210f7",
+            "Konular": "",
+            "Soru": "Merhaba Almanya&apos;da yüksek lisans öğrencisi tez yazım aşamasında örneğin x üniversitesinde öğrenci iken başka bir eyalet ve başka bir şehirdeki ama bölümü aynı olan örneğin y üniversitesinde tez yazabilirmi?"
+        },
+        {
+            "Tarih": "14.12.2025 15:04:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "dil",
+            "Soru": "arkadaşlar merhaba, telc c1 hochschule sınavına istanbul ilm&apos;de girenler veya girmeyi düşünenler varsa ulaşabilirler mi?"
+        },
+        {
+            "Tarih": "14.12.2025 14:29:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1854fade",
+            "Konular": "",
+            "Soru": "Türkiyedeki üniversitenin 1.yılını bitirmeden almanyadaki üniversitelere şartlı kabul başvurusu yapabiliyomuyuz ??"
+        },
+        {
+            "Tarih": "14.12.2025 01:11:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b3228ea6",
+            "Konular": "",
+            "Soru": "Türkiyeden Açık öğretim kamu yönetimi ekonomi mezunuyum. Diplomamla: VERWALTUNG FACHEİNGSCHTELLE mesleği yapılabilirmi? O meslek için Türkiyeden alınan diplomam geçerli midir?"
+        },
+        {
+            "Tarih": "14.12.2025 00:23:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_15ecab28",
+            "Konular": "",
+            "Soru": "merha fintibadaki parayı wise hesabıma cekebiliyor muyum?"
+        },
+        {
+            "Tarih": "12.12.2025 18:01:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1854fade",
+            "Konular": "",
+            "Soru": "Almanyada üniversite okumak istiyorum şartlı kabul veren üniversitelere yılın her zamanı başvuru yapılabiliyomu?"
+        },
+        {
+            "Tarih": "12.12.2025 17:38:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_35e89a2b",
+            "Konular": "",
+            "Soru": "Merhaba,ben de aynı durumdayım nasıl studıkolleg ya da bir yıl türkiye de okumadan nasıl kabul aldınız?"
+        },
+        {
+            "Tarih": "12.12.2025 14:07:51",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b1a92648",
+            "Konular": "",
+            "Soru": "expatrio’dan böyle bir mail aldım ancak hala oturumum yok vizemle devam ediyorum daha önce böyle bir durum yaşayan var mı?"
+        },
+        {
+            "Tarih": "12.12.2025 10:41:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_fb10bb8a",
+            "Konular": "",
+            "Soru": "Eğer bilgi alırsanız bana da iletir misiniz ?"
+        },
+        {
+            "Tarih": "11.12.2025 22:25:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar ayin 1’inde başvuru yaptim bremen üniversitesine şartlı kabul için sizce ne zaman donus olur?"
+        },
+        {
+            "Tarih": "05.12.2025 21:11:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_51cc047d",
+            "Konular": "",
+            "Soru": "benim almanyadaki alman yeminli tercümanım sadece alman damgası basmış uni assistte türkce damga olması gerektiği yazıyor bu belgeyle başvuramazmıyım uni assiste bilgisi olan varmı ?"
+        },
+        {
+            "Tarih": "05.12.2025 06:19:28",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_3c559679",
+            "Konular": "vize, para",
+            "Soru": "Günaydın, bir sorum daha olacak. Bloke hesabımdan aylık 1.000 Euro olmak üzere 3 aylık ödeme eksildi dün ancak banka hesabıma düşmedi. Paramın gönderileceği hesap DE.... İle başlıyor n26 bankası. Bu geçen süre normal mi ?"
+        },
+        {
+            "Tarih": "04.12.2025 13:11:59",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_3c559679",
+            "Konular": "vize",
+            "Soru": "Merhaba, Bloke hesabı aktive etmek için belgeleri yükledim, yaklaşık ne kadar sürer onaylanma süreci?"
+        },
+        {
+            "Tarih": "04.12.2025 12:21:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Hocam göremedim yardımcı olabilir misiniz ?"
+        },
+        {
+            "Tarih": "02.12.2025 22:43:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a52ce78",
+            "Konular": "uni_assist",
+            "Soru": "Arkadaşlar merhaba uni würzburg için vpd kaç haftada geliyor bilen var mı acaba?"
+        },
+        {
+            "Tarih": "01.12.2025 11:46:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c63ae6dd",
+            "Konular": "",
+            "Soru": "Arkadaşlar dil kursuna ziraat ile swift yaptım kaç günde geçer karşı tarafa ve geçip geçmediğini anlamanın bir yolu var mı?"
+        },
+        {
+            "Tarih": "27.11.2025 11:54:01",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_3c559679",
+            "Konular": "para",
+            "Soru": "Geri kalan para ne zaman alınır peki ?"
+        },
+        {
+            "Tarih": "25.11.2025 09:04:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7fbf34ff",
+            "Konular": "vize",
+            "Soru": "Uniden sartli kabul aldiktan sonra üniye kayit olmadan dil kursu kaydi mi yapmak gerekiyor vize basvurusu icin?"
+        },
+        {
+            "Tarih": "24.11.2025 15:18:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c8951c5b",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba bir soru sorabilir misin bremen üniversitesinde okuyanlara ?"
+        },
+        {
+            "Tarih": "24.11.2025 14:48:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Aynı zamanda şartlı kabule de uni assisten başvuruyorum değil mi?"
+        },
+        {
+            "Tarih": "23.11.2025 20:53:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7fbf34ff",
+            "Konular": "",
+            "Soru": "Cok tesekkür esiyorum cevaplariniz icin. Ahmet beyin bircok videosunu izledim ama her türlü sorunun cevabi bulunmuyor maalesef. Özellikle de spesifik konularin. Ikinci cevabinizda belirttiginiz konuyu biraz acabilir misiniz rica etsem. Yani sartli kabullü birisinin dil okulu sürecinde üniye kayit yapmasi ile yapmamasi arasinda nasil bir fark var? Kayit olursa ne gibi ekstra haklari oluyor?"
+        },
+        {
+            "Tarih": "23.11.2025 19:41:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7fbf34ff",
+            "Konular": "vize",
+            "Soru": "Merhabalar, grupta yeniyim ve birkac konuda bilgiye ihtiyacim var. Yardimci olabilirseniz sevinirim. Tesekkürler simdiden. Önlisans Bilgisayar Programciligi mezunuyum. A2 sertifikam var. 1- önlisans diplomamla sartli kabul icin basvuru yapabilir miyim? Bu durumda üniversite tamamlama mi olacak yoksa sifirdan mi üniversiteye baslamis olacagim? 2- sartli kabul gerceklesirse vize sonrasi almanyada direkt üniversiteye kayit yaptiracak miyim yoksa dil kursu sonrasi mi kayit yaptiracagim? 3- dil kursuna devam ederken calisabilir miyim ve vize türümü degistirip isci vizesine gecebilir miyim? 4- üniversite vizesine mi dil okulu vizesine mi basvurmaliyim? 5- her iki vize türünde de calisma izni cikiyor mu yoksa sadece üniversite vizesinde mi?"
+        },
+        {
+            "Tarih": "23.11.2025 05:10:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "",
+            "Soru": "Merhaba, Aranızda “17 Suche eines Ausbildungs- oder Studienplatzes” oturumuna sahip olan var mı?"
+        },
+        {
+            "Tarih": "19.11.2025 18:52:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_fca32e17",
+            "Konular": "",
+            "Soru": "Arkadaşlar şöyle bir pdf bulmuştum a1 çeviri için linkimi kaybettim. Bu pdf elinde olan var mı acaba?"
+        },
+        {
+            "Tarih": "19.11.2025 18:47:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9d891e73",
+            "Konular": "vize, sehir",
+            "Soru": "Arkadaşlar Eylül&apos;de vize için başvuru yapmıştım, Berlin&apos;deyim bu arada hala bekliyorum 2 hafta önce Fictionbescheinigung için başvuru yapmıştım. Onu da hala bekliyorum bir dönüş olmadı. Yılbaşında tatilde Türkiye&apos;ye gitmek istiyorum. Ama Fictionbescheinigung olmadan gidemem. Ausländerbehörde bu ara aşırı yoğun acil randevularında kabul etmiyorlar sadece talep alıyorlar diye biliyorum. Bu konuda bir şifre olan var mı arayıp ulaşabileceğim onlara bir numara var mı?"
+        },
+        {
+            "Tarih": "18.11.2025 20:40:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9d891e73",
+            "Konular": "dil, master, ausbildung, sehir",
+            "Soru": "Merhabalar iyi akşamlar arkadaşlar, ben Berlin&apos;e sıfır Almanca ile master için şartlı kabul alarak geldim. Ve bir yıldır Almanca öğreniyorum. Şuanda B2 seviyesindeyim. Mart gibi Telc B2 ve Mayıs gibi telc C1 sınavına gireceğim. Türkiyede iktisat bölümünden 4\/3.51 Gano ile mezunum. Aklımda hep Management und economie yada Management und Business yada BWL Masterı yapmak vardı. Bu sıralar aklıma ausbuilding yapma fikri girdi. Daha hızlı iş öğrenerek çalışma imkanı ve iş bulma zorluğu çekmeme sebebiyle bana daha cazip geliyor şuan. Ama bir yandan da aklımda hala master var. Bu arada ingilizce hazırlık okudum. Ama almanca öğrenirken ingilizce bilgim körleşti, yani masterı sadece Almanca okuyacağım. İngilizceyi Master a başlayınca tekrar online Kurs ile halletmeyi düşünüyordum. Ne önerirsiniz, master mı Ausbildung mu daha kolay? Yada şöyle sorayım avantaj ve dezavantajları nelerdir? Ben okurken çalışmak zorundayım, kendi geçimimi sağlamak için ve sanırım Almanca olarak master bu yüzden bana korkutucu geliyor. Ben sizlerden bir görüş almak istiyorum. Gerçekten çok fazla araştırdım ama master haricinde ausbuilding ile ilgili bir fikrim yok, sizce avantaj ve dezavantajları ile hangisi tercih edilir? Endişe yapmam doğru mu master için?"
+        },
+        {
+            "Tarih": "17.11.2025 20:15:51",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_93f0a0d8",
+            "Konular": "",
+            "Soru": "Merhabalar Ben ve eşimde başvuru yapacağız ancak evraklar arasında lise 4 yıllık transkrip var onu yüklemezsek sorun olur mu ? Üniversite mezunuyuz eklememiz şart mı ?"
+        },
+        {
+            "Tarih": "17.11.2025 17:19:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Almanyada iktisat ve siyaset bilimi ve uluslararası ilişkiler eğitimi İngilizce olan devlet üniversiteleri var mı?"
+        },
+        {
+            "Tarih": "17.11.2025 16:39:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_bc7819b3",
+            "Konular": "uni_assist",
+            "Soru": "Arkadaşlar merhaba Vpd belgesi alacağım uni asistten.Her okul için ayrı Vpd mi almam gerek yoksa . Aldığım tek Vpd ile diğer üni asist okullarına başvuru yapabilir miyim?"
+        },
+        {
+            "Tarih": "17.11.2025 14:20:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_105e9a46",
+            "Konular": "",
+            "Soru": "Bilgisayar mühendisliği için hangi üniversiteleri önerirsiniz?"
+        },
+        {
+            "Tarih": "16.11.2025 18:37:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c63ae6dd",
+            "Konular": "yurt",
+            "Soru": "Merhaba güncel olarak eşli başvuru süreleri nasıl acaba kira sözleşmesi isteniyormu eskisi gibi?"
+        },
+        {
+            "Tarih": "15.11.2025 20:24:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a99d81bd",
+            "Konular": "randevu",
+            "Soru": "Merhabalar,son zamanlarda 36f dil kursu vizesine İstanbul’a başvuran var mı?var sa kaç gün de randevu tarihi belli oldu?"
+        },
+        {
+            "Tarih": "15.11.2025 12:01:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar selam, vize randevusu siteye belgelerimizi yükledikten kaç gün sonra geliyor ortalama, bilen var mı?"
+        },
+        {
+            "Tarih": "13.11.2025 18:24:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1f9a153f",
+            "Konular": "",
+            "Soru": "garantörlük için bana yardımcı olacak var mı bana süreç hakkında online başvuru için?"
+        },
+        {
+            "Tarih": "13.11.2025 17:19:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar business administration icin TU Dortmund ve Duisburg-Essen üniversitesi arasında kaldım ne önerirsiniz?"
+        },
+        {
+            "Tarih": "13.11.2025 14:53:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7cf184f4",
+            "Konular": "vize",
+            "Soru": "Konsolosluk randevusu alan varmı?"
+        },
+        {
+            "Tarih": "13.11.2025 12:15:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "vize",
+            "Soru": "Evrak degil ki bu, vize basvuru formundaki referans kismindan bahsediyorsunuz degil mi?"
+        },
+        {
+            "Tarih": "12.11.2025 22:26:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6b0d31c0",
+            "Konular": "",
+            "Soru": "Arkadaşlar bu mesajdan kaç gün sonra pasaportum ulaşır acaba bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "11.11.2025 11:46:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "",
+            "Soru": "Selamlar. Yakın zamanda şartlı kabulle almanyaya gidecek olan var mı?"
+        },
+        {
+            "Tarih": "10.11.2025 14:02:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7124c99",
+            "Konular": "dil",
+            "Soru": "Merhaba arkadaşlar, ben Bremen Üniversitesi için şartlı kabul aldım. Üniversite benden “intensive German language course (yoğun Almanca kursu)” katılım belgesi(3 aylık) istiyor. Bildiğim kadarıyla üniversite zaten kendi hazırlık kursunu veriyor ama yine de benden bu belgeyi istediler tam kayıt olmak için. Daha önce aynı durumla karşılaşan oldu mu? Eğer öyleyse, hangi kursu gösterdiniz ve kabul edildi mi?"
+        },
+        {
+            "Tarih": "10.11.2025 09:22:34",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Tam İngilizce olan bir bölüme yerleşebilir miyiz?"
+        },
+        {
+            "Tarih": "08.11.2025 11:37:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c9493641",
+            "Konular": "",
+            "Soru": "Arkadaşlar dün başvuru yaptık . Bundan sonra 1400 küsür liralık bir ödemesi yapılacak galiba. Ödeme maili tahmini kaç gün sonra geliyor ?"
+        },
+        {
+            "Tarih": "07.11.2025 19:19:26",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Merhabalar, Türkiye’de eşit ağırlık alanında herhangi bir bölümde okuyup Almanya’da sayısal bir bölüme başlamış olan biri var mıdır? ya da ara dönemde eşit ağırlık alanında bremen üni\/Hochschule ‚de eğitime başlayan birileri?"
+        },
+        {
+            "Tarih": "07.11.2025 15:04:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Neden vermediler,gerekçe nedir?"
+        },
+        {
+            "Tarih": "06.11.2025 20:42:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_996036ad",
+            "Konular": "",
+            "Soru": "arkadaşlar merhaba bugün Anmeldungumu aldım ne zaman konsolosluğa gidip bildirme yapmalıyım?"
+        },
+        {
+            "Tarih": "06.11.2025 09:05:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eb9a24da",
+            "Konular": "",
+            "Soru": "Maliyet çok tutuyor. İş arama vizesi ne kadar sürüyor bilginiz var mı?"
+        },
+        {
+            "Tarih": "05.11.2025 21:54:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_833d9d5c",
+            "Konular": "",
+            "Soru": "Teşekkürler. Seyahat sigortasını özelden yaptırınca vizede yetiyor mu? Ayrıca dil kursuna başlayınca özel öğrenci oluyor mu. Burada sistemde öğrenci olarak mı görünüyor?"
+        },
+        {
+            "Tarih": "05.11.2025 11:38:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f207a0a1",
+            "Konular": "dil",
+            "Soru": "Merhaba, Duısburg şartlı kabul için belgeleri Türkiye de almanca yeminli tercümana çevirtebilir miyiz, apostil gereklimi? Yoksa Almanya da bir yeminli tercüman mı olması gerekiyor?Rica etsem bilgi verebilir misiniz?"
+        },
+        {
+            "Tarih": "04.11.2025 20:21:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "sadece pasaport geldiği zaman mı öğrenebilirim?"
+        },
+        {
+            "Tarih": "04.11.2025 12:38:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_283daebb",
+            "Konular": "",
+            "Soru": "Selam arkadaşlar! Bremen’den şartlı kabulüm var ama danışmanım Essen’i önerdi. Dortmund - Giessen de aklımda. Konaklama ve bütçe açısından hangisi daha mantıklı sizce? Özellikle uygun fiyatlı konaklama bulunabilirliği, yaşam masrafları (market–ulaşım) ve öğrenci için part-time iş imkanı nasıldır? Tecrübesi olan varsa hangi şehri neden tavsiye eder?"
+        },
+        {
+            "Tarih": "03.11.2025 21:18:12",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_581cfe43",
+            "Konular": "ausbildung",
+            "Soru": "merhabalar, ben dil eğitimi vizesi ile Almanya’ya geldim. sevgilimi yanıma almaya çalışacağım. evlenmemiz gerekiyor. Ben Ausbildung eğitimi yaparken eşimi Almanya’ya getirebilir miyim?"
+        },
+        {
+            "Tarih": "03.11.2025 16:52:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7124c99",
+            "Konular": "",
+            "Soru": "arkadaşlar selam,Bremen ünide moin portalından chemistry bachelor degree&apos;ye başvuruyorum fakat tek seçenek bu şekilde gözüküyor.Ne anlama geliyor bilen var mı?Yanlış bir seçenek mi?"
+        },
+        {
+            "Tarih": "03.11.2025 16:39:34",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ea181381",
+            "Konular": "dil",
+            "Soru": "Merhaba arkadaslar, acaba aranizda online almanca kursuna kaydolup memnun kalan var mi? Onerebilir misiniz?"
+        },
+        {
+            "Tarih": "03.11.2025 16:29:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9d891e73",
+            "Konular": "sehir",
+            "Soru": "Berlin Ausländerbehörde &apos; de işlemim, randevuyu siteden mi alacağım, hangi başlıkta yada bişey mi yazmalıyım?"
+        },
+        {
+            "Tarih": "03.11.2025 16:21:43",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9d891e73",
+            "Konular": "vize, dil, master, randevu, sehir",
+            "Soru": "Merhabalar ben şuanda Berlin&apos;de yaşıyorum. Buraya geçen yıl 40f vize türüyle geldim. Master için Almanca öğreniyorum. Şuan da B2 seviyesine başladım. Teilzeit bir işte çalışıyorum. Vizemi uzatmak için Ausländerbehörde&apos;ye belgelerimi 8 hafta öncesinde yolladım. 22 Eylül&apos;de başvuru yaptım hala Termin bekliyorum. Bir sorunum var benim dil okulum sadece Weihnacht tatili yapıyor ve başka tatilim yok. Ailemin yanına gitmek istiyorum ama vizem yok şuan. Herhangi birşey yapamıyorum. Fiktionsbescheinigung belgesi diye bir belge duydum. Ausländerbehörde&apos;ye durumumu kısaca özetlersem vizem olmasa da bu belge ile ülkeye giriş çıkış yapabilmem için bana bu belgeye yollayabilirlermiş. Ama yine de güvenemiyorum çünkü ülkeden çıkış yaparsam bir daha vize almam gerekir ve tüm işlemlerim yanar. Böyle bir riske de girmek istemiyorum. Böyle bir durumda kalan hiç oldu mu aranızda? Ya da randevusu ne kadar sürede geldi noel&apos;den önce randevuyu almak istiyorum. Mailde sadece randevu tarihi mi yazıyor yoksa vizenin uzatılıp uzatıldığı yazıyor mu onu da bilmiyorum bu ilk uzatma işlemim çünkü bu konuda açıkçası bir fikrim yok. Yani direkt o mail geldiğinde de ülkeden çıkış yapabiliyor muyum bilmiyorum. Yardımcı olur musunuz bana lütfen?"
+        },
+        {
+            "Tarih": "03.11.2025 14:33:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_96a15644",
+            "Konular": "",
+            "Soru": "Ön lisans bitirmiş biri dil okulu ile ya da başka bir şekilde Almanya’ya gidebilir mi ?"
+        },
+        {
+            "Tarih": "03.11.2025 11:46:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "uni_assist",
+            "Soru": "Arkadaşlar vpd onayı başvuru yaptıktan ortalama kaç gün sonra geliyor bilen var mı?"
+        },
+        {
+            "Tarih": "02.11.2025 10:35:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "dil",
+            "Soru": "Bölüm değiştirmek dışında okul değiştirebiliyormuyuz c1 aldıktan sonra?"
+        },
+        {
+            "Tarih": "01.11.2025 10:26:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Ben bu belge ile Bremen üni sadece dil şartıni gerçekleştirmek için moin portala basvurabilir miyim yoksa sadece studenkolleg için mi başvuru yapabilirim?"
+        },
+        {
+            "Tarih": "01.11.2025 07:40:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "",
+            "Soru": "İstanbul Ümraniyedeki “Deutschmitspring Akademie “ bu merkezde A2 sınavına giren var mı nasıl iyi mi ?"
+        },
+        {
+            "Tarih": "31.10.2025 22:22:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1f9a153f",
+            "Konular": "vize",
+            "Soru": "Türkiye’de a2 şartı mı vize için diğer belgeler eksiksiz olsa öğrenci vizesi için zaten dil kursuna yazılıp öyle gideceğim a2 kesin şart mı?"
+        },
+        {
+            "Tarih": "31.10.2025 22:18:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a4b122f",
+            "Konular": "",
+            "Soru": "Arkadaşlar 43 f vizesi ile giden var mı? Acil bir şey sormam gerekiyor?"
+        },
+        {
+            "Tarih": "31.10.2025 20:48:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_283daebb",
+            "Konular": "vize, dil",
+            "Soru": "Yani tercüme islemi c1 ogrendikten sonrasi icin mi gecerli? Eger oyleyse suanlik vize icin almanyada tercume edilmesine gerek yokmu?"
+        },
+        {
+            "Tarih": "31.10.2025 19:55:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a4b122f",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar vize randevusunda İDATA ödeme makbuzu yanımızda götürmemiz gerekiyor mu? Bir de kalacak yer için bir belge göstermek gerekiyor mu?"
+        },
+        {
+            "Tarih": "31.10.2025 19:07:55",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "",
+            "Soru": "Yüksek lisans yaz dönemi başvuruları şu an açık olan okulları bilen var mı?"
+        },
+        {
+            "Tarih": "31.10.2025 16:57:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b1a92648",
+            "Konular": "para",
+            "Soru": "expatrioya almanya banka hesabımdan para transferi yaparken alıcı adıyla iban uyuşmuyor diyor ancak defalarca kontrol ettim doğru, böyle bir sorun yaşayan var mı?"
+        },
+        {
+            "Tarih": "30.10.2025 19:50:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "bloke hesabiniz hazir olmadan nasil vize basvurusunda bulundunuz?"
+        },
+        {
+            "Tarih": "30.10.2025 16:46:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ec06852c",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba Almanya’ya 44f dil kursu vizesi ile gelmiş olan var mı?"
+        },
+        {
+            "Tarih": "30.10.2025 14:31:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "",
+            "Soru": "selamlar, at11&apos;i olmayıp dil kursu sürecinde teilzeit çalışan arkadaşlar hangi sağlık sigortasını yaptırdı acaba? bilgisi olan yanıtlayabilir mi?"
+        },
+        {
+            "Tarih": "29.10.2025 16:23:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_02aa629c",
+            "Konular": "",
+            "Soru": "Merhaba oturum uzatma için 1 ay önce Wuppertal Ausländerbehörde‘nin sitesinden form doldurdum dünde mail gönderdim ancak bir dönüs alamıyorum vizem 1 ay sonra biticek bu süre icinde dönüş yaparlar mı bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "29.10.2025 13:31:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d9d0e8f1",
+            "Konular": "",
+            "Soru": "Merhabalar ben garantörlük belgesi ile dil kursuna gitmeyi düşünüyorum. Garantörlük belgesi ortalama ne kadar süre içerisinde veriliyordu ve küçük şehirde daha hızlı alma imkanı oluyor mu ?"
+        },
+        {
+            "Tarih": "28.10.2025 11:23:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_55f73274",
+            "Konular": "",
+            "Soru": "Tercümeleri nereye yaptırdınız ?"
+        },
+        {
+            "Tarih": "27.10.2025 07:54:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e0184ade",
+            "Konular": "dil",
+            "Soru": "Telc A2 gireceğim grammerleri hallediyorum ama kelime bilgisinden vb korkuyorum. Herhangi bir çalışma taktiği ya da doküman onerebilecek var mı acaba?"
+        },
+        {
+            "Tarih": "26.10.2025 19:17:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_55f73274",
+            "Konular": "",
+            "Soru": "İyi akşamlar Almanyada hangi şehirde dil kursunu önerir siniz hem ? Nedenleri ?"
+        },
+        {
+            "Tarih": "26.10.2025 12:05:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a4c76052",
+            "Konular": "",
+            "Soru": "Merhabalar Bremen üniversitesine hem yaz hemde kış döneminde başlanabiliyor mu? Yani bir tek ekimde mi başlanabiliyor?"
+        },
+        {
+            "Tarih": "26.10.2025 09:32:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f8c732b3",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar, zweistudium hakkında bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "25.10.2025 16:13:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "5 Kasım&apos;da vize randevum var gidiş tarihi olarak 24 Aralık istedim peki pasaport 24 aralıktan bir-iki gün önce mi gelir yoksa 5 Aralık gibi 24 Aralık girişli mi gelir?"
+        },
+        {
+            "Tarih": "24.10.2025 11:08:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0e5756d1",
+            "Konular": "",
+            "Soru": "Merhabalar, üniversite diplomamın denkliğini yaptırırsam Almanya’da iş bulabilir miyim?"
+        },
+        {
+            "Tarih": "24.10.2025 09:21:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "",
+            "Soru": "bu paket ile teilzeit çalışabiliyor muyuz?"
+        },
+        {
+            "Tarih": "23.10.2025 16:39:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "arkadaşlar motivasyon mektubu için yardımcı olabilecek var mı acaba?"
+        },
+        {
+            "Tarih": "23.10.2025 09:10:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4dab5c90",
+            "Konular": "",
+            "Soru": "online yeterli oluyor belgelerimizle kayıt oluyoruz sisteme okulun, neden gönderdiniz ki ? Okul mı talep etti mutlaka?"
+        },
+        {
+            "Tarih": "23.10.2025 02:46:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ae4f281d",
+            "Konular": "",
+            "Soru": "Bremen’de 4 aylık her kur için kullanılabilen kurs kuponum bulunmakta, kendi fiyatının oldukça altına vereceğim, ilgilenen olursa bana özelden ulaşabilir mi?"
+        },
+        {
+            "Tarih": "22.10.2025 18:26:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Technische Universität Chemnitz (TU)&apos;i seçip informatiği seçtim ve dönemleri gösterdi bana ve ben de 1. dönemden başlayacağım için 1&apos;i seçtim fakat ekran dondu ve sepete baktım, eklenmişti. Ne olur ne olmaz sepetten çıkartıp tekrar ekleyeyim dedim ve şimdi tekrar sepete ekleyemiyorum, böyle bir hata alıyorum. Böyle bir sorunu yaşayan var mı?"
+        },
+        {
+            "Tarih": "22.10.2025 18:19:54",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_105e9a46",
+            "Konular": "",
+            "Soru": "Üniversite başvurusu yapmak için 1 yıl üniversiteye gitmem mi gerekiyor?"
+        },
+        {
+            "Tarih": "22.10.2025 17:50:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_dfc054ab",
+            "Konular": "",
+            "Soru": "Merhaba Duisburg için önerebileceğiniz dil kursu var mı?"
+        },
+        {
+            "Tarih": "21.10.2025 13:28:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Ya da apostil ve noter yaptırmam gerekir mi?"
+        },
+        {
+            "Tarih": "21.10.2025 12:24:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Ben üni assiste başvuru yaptım ama onlarda transkripti halk egitimden değil daha önce gittiğin okuldan al dediler Şimdi benim yeni bir başvuru mu yapmam gerekiyor yoksa okuldan aldığim transkriptle mevcut başvuruma devam edebiliyor muyum?"
+        },
+        {
+            "Tarih": "20.10.2025 18:23:54",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "",
+            "Soru": "Almanyadaki tercümelerde apostile vs gerek yok. Zaten yerinde yaptirmis oluyorsunuz. Üstünde beglaubigte Kopie yaziyor mu?"
+        },
+        {
+            "Tarih": "20.10.2025 17:47:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_73519b31",
+            "Konular": "dil",
+            "Soru": "Telc a2 çıkmış soruları olan var mı. Nasıl çalışmamı önerirsiniz?"
+        },
+        {
+            "Tarih": "19.10.2025 16:06:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0164b101",
+            "Konular": "",
+            "Soru": "Almanya’ya giderken valimizdeki ilaçlar için bir sorun olur mu ? Reçete falan sorarlar mı insülin iğnesi vs için ?"
+        },
+        {
+            "Tarih": "18.10.2025 07:26:24",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_00b98c3e",
+            "Konular": "doktor_fachgebiet",
+            "Soru": "OTOMOTIV KONUSUNDA BILGILI ARKADASLAR morgen zusammen ich möchte eine frage stellen. beyler şimdi otomobillerin periyodik bakımını yapmak kolay, ya da devirdaim dagıldıgında bunu tespit edip parçayı değiştirmek zor değil. almanyada da mutlaka cok iyi ustalar vardır. bilen bilir fransız araçlarda 10yaşından sonra saçma sapan elektronik arızalar başlar mesela. almanyaya gittigimizde otomobilimizde ugrastırıcı elektronik arıza oldugunda cözecek usta bulunuyor mu? yani mesela gaz kelebeginin ve gaz pedalı potansiyometresinin voltaj degerlerini okuyup sonra arızanın ECUdan kaynaklandıgını anlayacak ECUyu söküp arızayı onaracak ustalar var mı?"
+        },
+        {
+            "Tarih": "18.10.2025 00:39:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "dil",
+            "Soru": "Merhaba arkadaşlar 1 ay sonra telc A2 sınavına girmek istiyorum hangi ilde girmemi önerirsiniz? Zorlukları farklı oluyor mu her ilde?"
+        },
+        {
+            "Tarih": "17.10.2025 13:47:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Başvuru yaparken Türkiye&apos;den de çeviri yapmaya gerek yok mu?"
+        },
+        {
+            "Tarih": "17.10.2025 13:34:10",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_deae3f86",
+            "Konular": "vize, para",
+            "Soru": "bloke hesabımdan ilk ay ödemesini çekmek için işlem yaptım. para hesaptan düştü ama benim hesabıma geçmedi henüz. bu durumda söyledikleri 1-3 iş günü hakkında söyledikleri doğru mu? daha uzun sürede parasını çeken oldu mu?"
+        },
+        {
+            "Tarih": "16.10.2025 19:32:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_cb4c98f7",
+            "Konular": "vize, randevu",
+            "Soru": "Ya ben turistik vize randevusu talebinde bulunalı 7 ay oldu normal mi var mı bu kadar süre bekleyen randevu atanıyor mu?"
+        },
+        {
+            "Tarih": "16.10.2025 15:24:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f8c732b3",
+            "Konular": "",
+            "Soru": "Merhabalar, Almanya&apos;dan üniversite kabulü alıp eşi ile giden yada gitmeye çalışan var mı?"
+        },
+        {
+            "Tarih": "16.10.2025 15:12:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3c363836",
+            "Konular": "",
+            "Soru": "Yüksek lisansta yılın her dönemi şartlı kabul veren üniversiteler var mı?"
+        },
+        {
+            "Tarih": "15.10.2025 21:57:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0aabd8fc",
+            "Konular": "",
+            "Soru": "Informatik makine mühendisliğinden zor mu?"
+        },
+        {
+            "Tarih": "15.10.2025 18:57:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_56a7e5af",
+            "Konular": "uni_assist",
+            "Soru": "Arkadaşlar merhaba, Bremen Üniversitesi’ne VPD belgesiyle başvuruda bulundum. 2 Ekim’de başvurdum, iki hafta olmasına rağmen hâlâ kabul gelmedi. Sizce ne zaman gelir?"
+        },
+        {
+            "Tarih": "15.10.2025 18:35:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_43a6e078",
+            "Konular": "sigorta",
+            "Soru": "gidince ozel sigorta yaptirip haftalik 20 saatlik ise girerken kamu sigortasina gecebiliyor muyum?"
+        },
+        {
+            "Tarih": "15.10.2025 16:41:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b1a92648",
+            "Konular": "",
+            "Soru": "nereden talep etmem gerekiyor peki mail adresi var mı?"
+        },
+        {
+            "Tarih": "15.10.2025 16:26:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Şartlı kabul için yüklediğiniz belgeleri tercüme ettirdiniz mi?"
+        },
+        {
+            "Tarih": "15.10.2025 08:42:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b1a92648",
+            "Konular": "",
+            "Soru": "arkadaşlar merhaba, duisburg essen’dan gelen şartlı kabul mektubu 1 sene geçerli ama bu 1 sene içinde okula kayıt yapmak zorunda mıyım? dil belgem olmasa da kayıt yaptırabilir miyim? deneyimi olan varsa paylaşabilir mi?"
+        },
+        {
+            "Tarih": "13.10.2025 18:03:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7124c99",
+            "Konular": "",
+            "Soru": "Arkadaşlar cv ve motivasyon mektubunu başvuru belgelerine eklemek zorunda mıyım,şartlı kabul için?"
+        },
+        {
+            "Tarih": "13.10.2025 16:34:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_15ecab28",
+            "Konular": "",
+            "Soru": "Merhaba bugün bewerbungsbestätigung geldi Bremenden. İzlemem gereken adım nedir dil kursu kaydı mı yapmalıyım?"
+        },
+        {
+            "Tarih": "13.10.2025 13:40:52",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Buradaki ehliyet yurtdışında geçerli mi?"
+        },
+        {
+            "Tarih": "13.10.2025 09:54:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_26a8c577",
+            "Konular": "yurt, randevu",
+            "Soru": "Yurt dışında türk konsolosluğuna en geç ne zaman gidebiliriz.Basvurular nasıl oluyor. Online yapılabiliyor mu ? Herhangi bir randevu almaya gerek var mı ?"
+        },
+        {
+            "Tarih": "12.10.2025 17:56:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_11f6ad8e",
+            "Konular": "dil",
+            "Soru": "C1 sınavı için dikkat edilmesi gereken unsurlar nedir sizce kesinlikle şuna dikkat et dediğiniz bir şey var mıdır?"
+        },
+        {
+            "Tarih": "12.10.2025 13:36:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9ab012d",
+            "Konular": "",
+            "Soru": "dil kursunun 3 ay sürmesi zorunlu mu? yoksa toplam kaç saat sürdüğü mü önemli?"
+        },
+        {
+            "Tarih": "12.10.2025 13:34:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_43a6e078",
+            "Konular": "anmeldung",
+            "Soru": "airbnbde anmeldung yapiliyor mu?"
+        },
+        {
+            "Tarih": "11.10.2025 20:03:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Okulun dil kursu var mı?illa özel dil kursuna mı gitmek gerekiyor?"
+        },
+        {
+            "Tarih": "11.10.2025 08:22:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "uni_assist",
+            "Soru": "Merhaba arkadaşlar, ufak bir sorum vardı da Uni assist üzerinden lisans için üniversitelere başvuracağım ama hangi belgelerimin tercüme edilmesi gerektiğini tam bilmiyorum. Ben her şeyi çevirmeniz gerektiğini duymuştum fakat sonra bazı yerlerde sadece lise transkripti, lise diploması ve yks yerleştirme belgesinin çevrilmesi gerektiğini okudum. Sadece bu 3 belge yeterli, değil mi?"
+        },
+        {
+            "Tarih": "09.10.2025 21:49:54",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_df005075",
+            "Konular": "",
+            "Soru": "üniversite kabulü için kabul almış bir mektup örnekleri var mı?"
+        },
+        {
+            "Tarih": "09.10.2025 04:30:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c780caa3",
+            "Konular": "",
+            "Soru": "Arkadaşlar üniassist sadece ekonomi ve yakın bölümler izni vermiş Endüstri müh kabulü alabilir miyim?"
+        },
+        {
+            "Tarih": "08.10.2025 22:19:05",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Açık liseden mezun olmam bir sıkıntı yaratır mı ?"
+        },
+        {
+            "Tarih": "08.10.2025 22:18:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_61518fb1",
+            "Konular": "",
+            "Soru": "Merhaba, Hacettepe 2 yıldan fazla okumaktayım. Lise döneminde de son senemde açık liseye geçmiştim. Bremen üniversitesine lisans programı için başvurmak istiyorum. Ne gibi durumlara dikkat etmem lazım ?"
+        },
+        {
+            "Tarih": "06.10.2025 18:16:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_fb10bb8a",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar Telc a2 belgesi vizede sorun oluyor mu? Bir yerde sıkıntı oluyor Goethe a2 sınavını öneririm demişti bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "06.10.2025 16:50:51",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Hayırlı olsun. belgeleri yazarmısınız?"
+        },
+        {
+            "Tarih": "06.10.2025 10:14:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7124c99",
+            "Konular": "uni_assist",
+            "Soru": "arkadaşlar vpd belgesi tahmini ne kadar sürede gelir bilginiz var mı?"
+        },
+        {
+            "Tarih": "06.10.2025 09:09:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "dil, master, randevu",
+            "Soru": "merhaba direkt master kabulü (almanca) için başvuru artık idata üzerinden mi yapılıyor? istanbulda bekleme süreleri hakkında bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "05.10.2025 15:17:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b55cdab7",
+            "Konular": "",
+            "Soru": "öğrenci vizesi için pasaportu verince kac gun icinde pasaportumu geri alabiliyorum?"
+        },
+        {
+            "Tarih": "05.10.2025 14:33:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_43a6e078",
+            "Konular": "",
+            "Soru": "kalacak yer buldum ancak parayi gonderip dolandirilmak istemiyorum. parayi almanyadaki bir tanidigima gondersem o gidip benim yerime evde sozlesme yapabilir mi? bilgisi olan var mi?"
+        },
+        {
+            "Tarih": "03.10.2025 15:32:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "vize",
+            "Soru": "Merhaba. Kurs kaydı yaparken bana Confirmatıon Letter diye bi belge gönderdiler pdf olarak. Bu belgenin orijinalini konsolosluk görmek ister mi acaba?"
+        },
+        {
+            "Tarih": "03.10.2025 00:27:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7e6d0def",
+            "Konular": "",
+            "Soru": "Arkadaşlar üniversitelerin kendi grupları var mı acaba ?"
+        },
+        {
+            "Tarih": "02.10.2025 11:50:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9ab012d",
+            "Konular": "",
+            "Soru": "bremen üni için dil okuluna başka bir şehirde gitmem mümkün mü?"
+        },
+        {
+            "Tarih": "02.10.2025 03:33:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "",
+            "Soru": "Belgelerimi yeminli tercüman ile tercüme ettirmem gerekiyor fakat pek bildiğim bir yer yok. İstanbul içinde tercüman olarak bildiği bir yer olan var mı?"
+        },
+        {
+            "Tarih": "01.10.2025 11:48:12",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_86af897f",
+            "Konular": "sigorta",
+            "Soru": "Merhaba, sigorta başlangıç tarihini erteleyebiliyor muyuz?"
+        },
+        {
+            "Tarih": "01.10.2025 09:44:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Tr deki üni yi dondurmak için mi?"
+        },
+        {
+            "Tarih": "30.09.2025 20:06:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c3abd2e0",
+            "Konular": "",
+            "Soru": "Sizce hangisini dil okuluyla götürmek mantıklı olur?"
+        },
+        {
+            "Tarih": "29.09.2025 08:52:52",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Bilen birisi cevaplayabilir mi?"
+        },
+        {
+            "Tarih": "28.09.2025 18:46:54",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_49c20d6e",
+            "Konular": "dil",
+            "Soru": "Şartli kabulum varken daha C1 olmadan okula kayıt yaptırabilirim miyim?"
+        },
+        {
+            "Tarih": "28.09.2025 14:08:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_833d9d5c",
+            "Konular": "sehir",
+            "Soru": "Günaydın arkadaşlar, Leipzig’de hangi kursu önerirsiniz, bilgisi olan varsa acil paylaşabilir mi?"
+        },
+        {
+            "Tarih": "28.09.2025 05:22:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_833d9d5c",
+            "Konular": "sehir",
+            "Soru": "Günaydın arkadaşlar, Leipzig’de hangi kursu önerirsiniz, bilgisi olan varsa acil paylaşabilir mi?"
+        },
+        {
+            "Tarih": "27.09.2025 09:12:38",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_00b98c3e",
+            "Konular": "",
+            "Soru": "halten sich türkische Unternehmen in Deutschland an die Regeln für Arbeitszeit und Bezahlung von Überstunden?"
+        },
+        {
+            "Tarih": "26.09.2025 21:38:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0e4365b7",
+            "Konular": "yurt",
+            "Soru": "Arkadaşlar selam duisburg da wg arıyorum. Ev ilanı olan ya da yakını wg den çıkan olursa benimle iletişime geçebilir misiniz?"
+        },
+        {
+            "Tarih": "26.09.2025 15:11:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_afc6c457",
+            "Konular": "vize",
+            "Soru": "Merhabalar, 18 yas alti bloke hesap ile ilgili bilgisi olan var mi?"
+        },
+        {
+            "Tarih": "26.09.2025 14:41:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_399653bb",
+            "Konular": "",
+            "Soru": "Merhabalar Ludwigshafen ve çevresinde önereceğiniz bir dil kursu var mı acaba ?"
+        },
+        {
+            "Tarih": "25.09.2025 19:24:53",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0e4365b7",
+            "Konular": "yurt",
+            "Soru": "Arkadaşlar merhaba duisburgda wg arıyorum. Evinden çıkacak olan ya da tanıdığı ilan veren varsa benimle iletişime geçebilir mi ?"
+        },
+        {
+            "Tarih": "24.09.2025 12:50:14",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_86af897f",
+            "Konular": "sigorta",
+            "Soru": "Merhaba. Almanya&apos;da sigortami aktif etmek için TK ofisine geldim. Sigortamı aktif edebilmek ve işlemleri yürütebilmek için üzerinde Turkiyede sigortalı olup olmadığımı yazan TA-11 belgesi talep ettiler. Su an Almanya&apos;dayım Turkiye&apos;ye dönmem mümkün değil.Coracle&apos;da saglik sigortami sectikten sonra, bu belgenizi yanınızda bulundurun tarzı bir uyarı da almadım. Süreci nasıl ilerleticem yardımcı olur musunuz?"
+        },
+        {
+            "Tarih": "24.09.2025 06:20:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5e9aa2d",
+            "Konular": "",
+            "Soru": "Yks ye gireli uzun zaman oldu. Müh mezunuyum tekrar lisans okumak için lisans diplomami sunsam oluyor mu?"
+        },
+        {
+            "Tarih": "23.09.2025 21:00:20",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_b2961892",
+            "Konular": "master",
+            "Soru": "İngilizce program üzerinden master yapan var mı?"
+        },
+        {
+            "Tarih": "23.09.2025 09:49:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "dil",
+            "Soru": "ankarada telc sınavına girebileceğim kurum öneriniz var mı?"
+        },
+        {
+            "Tarih": "22.09.2025 21:39:41",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_a891e645",
+            "Konular": "",
+            "Soru": "Merhabalar, Almanya’da üniversite başvuru yapmak için yks yerleştirme ve yks sonuç belgesi üzerinde ıslak imza gerekiyormu yoksa e devlet üzerinde çıkan belgelere apostil koyabiliyormuyuz ?"
+        },
+        {
+            "Tarih": "22.09.2025 21:39:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a891e645",
+            "Konular": "",
+            "Soru": "Merhabalar, Almanya’da üniversite başvuru yapmak için yks yerleştirme ve yks sonuç belgesi üzerinde ıslak imza gerekiyormu yoksa e devlet üzerinde çıkan belgelere apostil koyabiliyormuyuz ?"
+        },
+        {
+            "Tarih": "22.09.2025 12:43:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_aba8fceb",
+            "Konular": "anmeldung",
+            "Soru": "Arkadaşlar merhaba, 8 Ekim&apos;de Almanya&apos;ya gidiyorum fakat kalacak yer olarak yurtta sadece Kasım ayından itibaren musaitlik var. Kaşıma kadar kalacak yer bulabilirim ama anmeldung yapamayacağım bu durum sorun yaratır mı ?"
+        },
+        {
+            "Tarih": "21.09.2025 23:21:27",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_a891e645",
+            "Konular": "",
+            "Soru": "İyi geceler Almanya’da üniversite başvuru yapmak için yks yerleştirme ve yks sonuç belgesi üzerinde ıslak imza gerekiyormu yoksa e devlet üzerinde çıkan belgelere apostil koyabiliyormuyuz ?"
+        },
+        {
+            "Tarih": "19.09.2025 21:09:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7124c99",
+            "Konular": "",
+            "Soru": "Arkadaşlar solingen köln arası ulaşım kolay mı?"
+        },
+        {
+            "Tarih": "19.09.2025 18:45:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f8c732b3",
+            "Konular": "sehir",
+            "Soru": "Arkadaşlar, Freiburg Üniversitesi yada Stuttgart Üniversitesin&apos;de okuyan var mı?"
+        },
+        {
+            "Tarih": "19.09.2025 16:46:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Selamlar hangi belgeleri yeminli tercümana çevirtiyorız? 1.yks sonucu 2.transkript Bunların dışında olan var mı?"
+        },
+        {
+            "Tarih": "19.09.2025 12:57:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "",
+            "Soru": "Dil kursu kaydını üniversiteye atmamız gerekiyor mu?"
+        },
+        {
+            "Tarih": "18.09.2025 19:21:33",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_c21bfd3a",
+            "Konular": "",
+            "Soru": "Merhaba, ben banka iban hesabimi az once coracle sayfasinda onayladim. Pasaport giris sayfami da cektim ancak ben aracla geldim 30.10.2024 tarihinde ilk damgalarim ancak benim bu seneki damgalarimda var ayni sayfada sonucta giris çıkış yaptim ve hep araba ile oldu yani uçak değil, şuan almanyadayim, bir problem olur mu?"
+        },
+        {
+            "Tarih": "17.09.2025 16:44:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c19f1078",
+            "Konular": "",
+            "Soru": "merhaba herkese, pasaportu elden teslim almak için idataya mı gidiyoruz tekrar bilginiz var mı ?"
+        },
+        {
+            "Tarih": "16.09.2025 14:54:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_43a6e078",
+            "Konular": "para",
+            "Soru": "turkiyede ziraat bankasinda euro hesabimda euro var bunu yurtdisina ciktigimda cekebilir miyim? ve yurtdisina cikarken yanimda ne kadar euroya kadar nakit olarak tasima hakkim var?"
+        },
+        {
+            "Tarih": "16.09.2025 13:55:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f8c732b3",
+            "Konular": "vize",
+            "Soru": "Eşim Almanya&apos;da üniversite kabulü aldı, ben de eşimle gideceğim, ikimiz ne kadar bloke hesap açmaliyiz?"
+        },
+        {
+            "Tarih": "15.09.2025 14:01:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_26a8c577",
+            "Konular": "",
+            "Soru": "Arkadaşlar Almanyada hangi banka hesabını açmak daha iyi ?"
+        },
+        {
+            "Tarih": "14.09.2025 21:49:07",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_a0f1490a",
+            "Konular": "para",
+            "Soru": "Merhaba, garantör bulduğumuzda o kişinin bize para yatırması zorunlu mu? Sadece oturum iznini uzatırken belgeyi göstermek yeterli olur mu?"
+        },
+        {
+            "Tarih": "14.09.2025 11:09:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_26a8c577",
+            "Konular": "vize, sigorta",
+            "Soru": "Arkadaşlar bir kaç sorum olacak.Almanya&apos;ya gitmiş ve orda banka hesabı açan arkadaşlar hangi banka hesabı daha uygun kesinti ne kadar yapılıyor alışveriş yaparken Expatriodan bloke hesabı için hangisi daha iyi. 2. Sağlık sigortası açısından hangi sigorta daha iyi bütçe olarak uygun ve herhangi birşey olduğunda ne kadar karşılıyor yüzde kaçını. 3. Burda herhangi bir işte çalışıp çalıştığına dair belge alıp Almanya&apos;ya götüren varmı?"
+        },
+        {
+            "Tarih": "14.09.2025 01:43:31",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "vize, dil, master",
+            "Soru": "arkadaşlar selam, 20 ay kadar almanyada şartlı kabul oturumuyla dil kursu alan biri türkiyeye dönse, tekrar kış dönemi için direkt master kabulü ile vize alabilir mi? ocak ayında dönüp kış dönemi yine gelmeyi düşünüyorum seneye. c1 belgesi ve direkt 41F master direkt kabulü ile. yoksa işte belirli bir süre türkiyede de kalmak gerekiyor mu vize almak için falan böyle bir kural var mı?"
+        },
+        {
+            "Tarih": "13.09.2025 07:03:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_fc5d4b91",
+            "Konular": "vize, para",
+            "Soru": "Merhabalar herkese, 3000 Euro yu bloke yapabiliyor muyuz?"
+        },
+        {
+            "Tarih": "12.09.2025 23:21:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "bu bilgileri nereden öğrendiniz acaba açıklayan bir yer vs var mı?"
+        },
+        {
+            "Tarih": "12.09.2025 12:19:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7a4dcc79",
+            "Konular": "",
+            "Soru": "Merhabalar. Mutfak ve banyo ortak kullanımlı bir Wohnheime&apos;de Rundfunk nasıl paylaştırılıyor bilen var mı acaba?"
+        },
+        {
+            "Tarih": "12.09.2025 08:11:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9ab012d",
+            "Konular": "",
+            "Soru": "türkiyede iki sene üniversite okudum. bu bölümü doldurmam gerekiyor mu?? öyleyse nasıl doldurmam lazım?"
+        },
+        {
+            "Tarih": "10.09.2025 10:48:09",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_aba8fceb",
+            "Konular": "",
+            "Soru": "Arkadaşlar selam, Türkiye&apos;den işsizlik maaşı alırken, Almanya&apos;da yüksek lisansa başlayan oldu mu acaba. Işsizlik maaşı okula başlayınca kesildimi?"
+        },
+        {
+            "Tarih": "09.09.2025 22:18:56",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_9ddf3cc5",
+            "Konular": "vize",
+            "Soru": "Yeni vize sisteminde dil öğrenim vizesi ne kadar sürede çıkıyor?"
+        },
+        {
+            "Tarih": "09.09.2025 15:46:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e327c9fb",
+            "Konular": "dil",
+            "Soru": "Istanbulda telc sinavi ne zaman açıklanıyor genelde ,siz ne zaman öğrendiniz sonucunuzu?"
+        },
+        {
+            "Tarih": "08.09.2025 22:43:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_947608a1",
+            "Konular": "",
+            "Soru": "Ankarayı biliyor musunuz peki?"
+        },
+        {
+            "Tarih": "08.09.2025 12:57:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3da8d86f",
+            "Konular": "anmeldung, sehir",
+            "Soru": "Arkadaşlar merhaba, anmeldung yspmıştım. Hamburg türk konsoslosluğunda adres beyanı yapıcaktım. Kimlik veya pasaport fotokopisi dışında lazım olan başka bir belge var mıydı?"
+        },
+        {
+            "Tarih": "07.09.2025 15:41:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c3abd2e0",
+            "Konular": "",
+            "Soru": "Arkadaşlar bremen üniversitesi moin kısmı burası şimdi sayfada seçtiğim şeyleri değiştiremiyorum. Bunun için ne yapmam lazım yardımcı olabilecek birisi var mı?"
+        },
+        {
+            "Tarih": "07.09.2025 12:46:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "master",
+            "Soru": "arkadaşlar selam, şartlı kabul ile 1.5-2 sene almanyada kaldıktan sonra türkiyeye dönersek, direkt master\/lisans kabulü alarak tekrar başvuru yapma imkanımız var mı? yoksa belli bir süre türkiyede kalmamız gerekiyor mu acaba tekrar başvuru için?"
+        },
+        {
+            "Tarih": "06.09.2025 18:50:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_30f096b9",
+            "Konular": "",
+            "Soru": "Benim dil kursum bittiğinde başka bi kursa yazılmamı istediler Tekrar başka bi kursa kayıt yaptırdım Sertifikayı aldın mı?"
+        },
+        {
+            "Tarih": "06.09.2025 10:17:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5ff5c44",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba,lise transkript, diploma ve yerleştirme belgesini yeminli tercümandan cevirip,noterde onaylattirip apostilleyip yolluyorduk ama mesela Bremen üniversitesi gibi bazi üniversiteler almanyadan bir yeminli tercümandan ceviri istiyorlarmış sanırım.Bu konuda bilginiz var mi?"
+        },
+        {
+            "Tarih": "06.09.2025 07:06:16",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_00b98c3e",
+            "Konular": "",
+            "Soru": "gunaydın arkadaslar. 1)iş arama vizesi ne kadar sürede cıkıyor? 2)iş arama vizesiyle almanyaya gittigimizde meslegimiz dışında iş bulabilir miyiz?"
+        },
+        {
+            "Tarih": "04.09.2025 14:51:49",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Bölüm güzel, değiştirecek misin sonra, üniversite hangisi?"
+        },
+        {
+            "Tarih": "03.09.2025 10:26:55",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_ed45bf69",
+            "Konular": "",
+            "Soru": "KKTC üniversitelerinden Almanya Üniversitesine kabul oluyor mu?"
+        },
+        {
+            "Tarih": "03.09.2025 10:19:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_aba8fceb",
+            "Konular": "",
+            "Soru": "Arkadaşlar selam, Sömestr ücretini ödeyeceğim. Ödemeyi hangi yöntemle yapmamı tavsiye edersiniz?"
+        },
+        {
+            "Tarih": "01.09.2025 23:05:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Arkadaslar selamlar Türkiye‘deki okulumun kaydini 2. defa dondurmak istiyorum Geçen yil dondurdugum vakit Dil kursu belgesini yollamistim Bu sefer hangi gerekce ile kaydimi 1 yil süreyle daha dondurabilirim ? Tecrübesi olan var ise bu konuda benimle paylasabilir mi ?"
+        },
+        {
+            "Tarih": "01.09.2025 18:51:15",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_b2961892",
+            "Konular": "",
+            "Soru": "İngilizce öğretmenliği okuyup Almanya da çalışan veya orada yüksek lisans yapan var mı?"
+        },
+        {
+            "Tarih": "01.09.2025 17:07:29",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Hayırlı olsun süreci kendiniz mi yönettimiz uoksa danışmanla mı?"
+        },
+        {
+            "Tarih": "01.09.2025 12:00:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e3baf29f",
+            "Konular": "",
+            "Soru": "Türkiyede 1yıl üni okuduktan sonra almanyada nc olmayan üniye başvurmayı düşünüyorum. Arkadaşın dediği gibi benim de cv boş sizce gönüllülük projeleri veya spor lisanslarının kabul edilmede artısı çok var mı?"
+        },
+        {
+            "Tarih": "30.08.2025 16:48:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "para",
+            "Soru": "arkadaşlar selam benim qnb hesabımda (türkiye) 8500 euro var almanyadaki hesabıma göndermek istediğimde western union kullanamıyorum limit izin vermiyo, swiftle de 65 euro işlem ücreti veriyo, aracı banka kesintisi de dahil değil. yani acaba bu durumda daha masrafsız nasıl gönderebilirim?"
+        },
+        {
+            "Tarih": "30.08.2025 12:27:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_13211ef6",
+            "Konular": "",
+            "Soru": "türkiyede eczaclik kazandım almanyada endüstri muhendisligi okuyabilir miyim kabul alır mıyım ?"
+        },
+        {
+            "Tarih": "30.08.2025 08:32:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Bunların dışında çevirisi yağılacak belge var mı?"
+        },
+        {
+            "Tarih": "30.08.2025 06:14:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar AT11 seyehat sigortası sağlık sigortası yerine geçer mi?"
+        },
+        {
+            "Tarih": "29.08.2025 19:38:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0463ef55",
+            "Konular": "anmeldung",
+            "Soru": "Merhaba. Anmeldung’da vereceğim Wohnungsgeberbestatigung belgesini Hauptmieter imzalayabilir mi bilgis olan var mı?"
+        },
+        {
+            "Tarih": "29.08.2025 15:05:20",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_42a8405a",
+            "Konular": "",
+            "Soru": "Bana yeni bir transfer details belgesi ile yatırmam gereken tutar ve kesinti olacak tutar belirtilecek mi?"
+        },
+        {
+            "Tarih": "29.08.2025 14:59:40",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_42a8405a",
+            "Konular": "para",
+            "Soru": "Benim içeride 2 aylık blokem var üstüne 9 ay daha ekleyeceğim seçeneklerden sadece 9 ay ve aylık tutarı seçmem yeterli mi? Bu para hesabimdaki paranın üstüne mi eklenir direkt?"
+        },
+        {
+            "Tarih": "29.08.2025 13:57:24",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c63ae6dd",
+            "Konular": "",
+            "Soru": "uygun fiyatlı güvenilir danışman önerisi olan varsa bana yazabilirmi acaba?"
+        },
+        {
+            "Tarih": "29.08.2025 11:43:26",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_42a8405a",
+            "Konular": "para",
+            "Soru": "Cevabınız için çok teşekkür ederim. Ödeme detayları kısmından extend kısmından kac ay uzatmak istediğimi seçmeliyim. Sonraki aşamada ne olduğunu anlatır mısınız? Direkt ibana para mi atmalıyım yoksa bir onay süreci mi var?"
+        },
+        {
+            "Tarih": "29.08.2025 11:09:01",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Bu arada @user yok mu? izinde mi?"
+        },
+        {
+            "Tarih": "28.08.2025 19:30:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar. Ben şu an kayıt olacağım üniversiteyi dondurmak istiyorum ama daha önce donduran oldu mu? Ne tür bir mazeretle kabul ediyorlar?"
+        },
+        {
+            "Tarih": "28.08.2025 14:50:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_4ff1403f",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar selam bir sorum olacak, ben telc c1 sınavına giricem ama ya geçemezsem diye iki hafta sonra başka bir kurumda da sınava girmeyi düşünüyorum. bu durumda son girdiğim sınav sonucu mu esas alınır veya online telc sınavına giren var mı aranızda?"
+        },
+        {
+            "Tarih": "27.08.2025 18:58:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_773f50c6",
+            "Konular": "",
+            "Soru": "Arkadaşlar bochum merkezde trene ulaşımı eahat konumda ev arıyorum. Ev devreden veya çevresinde bilen var mı acaba?"
+        },
+        {
+            "Tarih": "27.08.2025 18:38:41",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Yks sonuçları açıklandı ya biz yerleşti belgemizi tam olarak nasıl göndermeliyiz okullara?"
+        },
+        {
+            "Tarih": "27.08.2025 17:57:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_02aa629c",
+            "Konular": "dil, para",
+            "Soru": "Merhaba arkadaşlar tu dortmund üni’de hazırlık öğrencisi olarak kayıtlıyım şuan 3.semesterdayım c1 mündlich’i geçtim yazılı sınava tekrar hazırlanıyorum ancak Aralık’ta vizem bitiyor oturumumu uzatmak için illa bu dönem c1i verip okula başlamam mı gerekiyor yoksa 4 semester hazırlık hakkım olduğu için seneye başlayabilir miyim?"
+        },
+        {
+            "Tarih": "27.08.2025 11:37:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c515a4e2",
+            "Konular": "",
+            "Soru": "Okul için dönem ücretini Türkiyeden ödeyeceğim komisyon ne kadar kesiliyor veya kesilmeden yatırmamın bir yolu var mı?"
+        },
+        {
+            "Tarih": "26.08.2025 20:04:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Merhabalar ekim ayında Darmstadt&apos;ta eğitime başlayacağım fakat kalacak yer ile ilgili problemler yaşıyorum. Darmstadt&apos;ta yaşayan bir tanıdığı olan veya orada yaşayan birileri var mı?"
+        },
+        {
+            "Tarih": "26.08.2025 18:39:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "sehir",
+            "Soru": "İyi günler arkadaşlar. Almanya başvuru için okul okul yardım alabileceğimiz ayrı telegram grupları veya forumlar var mı? Veya Heidelberg Üniversitesine şartlı kabul için naşvuru yapmış ve yardım edebilecek var mı?"
+        },
+        {
+            "Tarih": "26.08.2025 17:36:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5e9aa2d",
+            "Konular": "dil",
+            "Soru": "Selamlar, türkiyede teknik bir lisans bölümünden mezun oldum. 7.0 ielts akademik belgem var. Lisans diplomam ile almanyada bir mühendislik lisans bölümüne (ingilizce eğitim veren) başvuru yapabilir miyim?"
+        },
+        {
+            "Tarih": "26.08.2025 16:02:28",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b55cdab7",
+            "Konular": "",
+            "Soru": "sende bu kısım yok muydu Yusuf?"
+        },
+        {
+            "Tarih": "26.08.2025 12:04:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_581cfe43",
+            "Konular": "",
+            "Soru": "merhabalar. yakın zamanda almanyada dil eğitimine başlayacağım. şimdiden gideceğim yerde iş aramak istiyorum. en sık kullanılan siteler hangileri? bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "26.08.2025 01:54:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b55cdab7",
+            "Konular": "vize",
+            "Soru": "arkadaslar online vize basvurusunda REFERENZ kısmına okulu mu girmemiz gerekiyor?"
+        },
+        {
+            "Tarih": "26.08.2025 00:56:12",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "Sayısal 100k yapmış birisi Almanya’da informatik bitirirken zorlanır mı çok?"
+        },
+        {
+            "Tarih": "26.08.2025 00:39:26",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Evrak ne yüklediniz ilk etap da?"
+        },
+        {
+            "Tarih": "26.08.2025 00:03:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Pasaport çıkartıp mı donduracaksınız okulu?"
+        },
+        {
+            "Tarih": "26.08.2025 00:00:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f030606e",
+            "Konular": "dil",
+            "Soru": "Birinci dönem dersleri çok kolay ben okula başlasam bir yandan Almanca çalışsam mantıksız mıdır?"
+        },
+        {
+            "Tarih": "25.08.2025 18:08:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Vav çok iyi, tebrikler sıralama önemli mi?"
+        },
+        {
+            "Tarih": "25.08.2025 16:45:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "dil",
+            "Soru": "Bunun cevabını açıkçası ben de öğrenmek isterim. Özellikle A0 ile kabul eden üniversitelere başvurmak için A2 B1 vb beklenmeli mi?"
+        },
+        {
+            "Tarih": "25.08.2025 14:41:59",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "İyi günler arkafaşlar 4yıllık matematikle hangi bölğmlere girebilirim?"
+        },
+        {
+            "Tarih": "25.08.2025 11:26:01",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_cd3d5ec0",
+            "Konular": "master",
+            "Soru": "Master vizesi ne kadar sürüyor?"
+        },
+        {
+            "Tarih": "25.08.2025 10:49:50",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_977c14b2",
+            "Konular": "vize, dil",
+            "Soru": "Merhaba, Dusseldorfta önerebileceğiniz Almanca kurs var mi? Bir de kafamda net oluşmayan bir şey var. Almanyada oturma izni olan birisi ozel dil kursuna giderek c1 sertifika aldıktan sonra direk üniversiteye basvuru yapsa daha iyi değil mi? önden sartli kabule basvuru yapmanın vize işlemleri haricinde başka bir avantajı var mi ? Hangisi daha mantıklı?"
+        },
+        {
+            "Tarih": "25.08.2025 10:45:06",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_2dd1c971",
+            "Konular": "vize",
+            "Soru": "Parayı lemonway&apos;e gönderdim. 3 iş günü içinde bloke hesabım onaylanır ve onay kağdı alabilirim değil mi?"
+        },
+        {
+            "Tarih": "24.08.2025 22:12:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_5cb13828",
+            "Konular": "dil",
+            "Soru": "merhaba, başka bir üniversitenin dsh sonucunu kabul etmeme durumu oluyor mu okulların acaba? telc testdaf gibi dsh sonucu almanyanın tamamında geçiyor diye biliyorum ama istisnalar olabiliyor mu acaba?"
+        },
+        {
+            "Tarih": "24.08.2025 16:20:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "dil",
+            "Soru": "arkadaşlar selam, RWTH bachelor sadece kış sömestiri için var doğru mudur? Ben tercih sonuçları açıklanınca direkt vizeye başvuracağım ama okula başlamam için dil kursuna yerleşip c1 i almam gerekiyor. 2026 yaz ortalarında c1 almış olacağım tahmini. Yaz sömestırında başvuramıyorsam kışa kadar 2026 sonuna kadar beklemem mi gerekecek? Okula bir şekilde kayıt yaptırıp c1 i aldığımda direkt başlama şansım var mı?"
+        },
+        {
+            "Tarih": "23.08.2025 16:28:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "uni_assist",
+            "Soru": "Merhaba arkadaşlar Bremen üniversitesi için VPD belgem bugün geldi, moin üzerinden başvuru yapacağım , vpd dışında başka belge yüklemem gerekiyor mu?"
+        },
+        {
+            "Tarih": "23.08.2025 16:16:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e9ab012d",
+            "Konular": "",
+            "Soru": "uniassistten yaptığım üniversite başvuruları reddedildi. şimdi eksik evrakları yolladım ve bekliyorum. ne zaman geri dönüş olur? bir daha başvuru mu yapmam gerekiyor?"
+        },
+        {
+            "Tarih": "23.08.2025 14:20:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_db11e7eb",
+            "Konular": "yurt",
+            "Soru": "Arkadaşlar Düsseldorfta wg arıyorum, başka wg arayan var mı?"
+        },
+        {
+            "Tarih": "22.08.2025 17:52:53",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_f6f1daea",
+            "Konular": "sehir",
+            "Soru": "Merhaba, Berlin’deki dil okulu hangisi ?"
+        },
+        {
+            "Tarih": "22.08.2025 15:11:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "randevu",
+            "Soru": "Arkadaşlar merhabalar, auslandportala belgeleri yükledim şimdi idataya ödeme yapacağım fakat idata sitesinde ek hizmetler diyor, onları seçmeli miyim ?"
+        },
+        {
+            "Tarih": "22.08.2025 12:34:10",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_9ddf3cc5",
+            "Konular": "vize",
+            "Soru": "Yeni vize sisteminde şartlı kabulle gitmek için dil sertifikası şart mı?"
+        },
+        {
+            "Tarih": "22.08.2025 09:01:51",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "master",
+            "Soru": "Freie üniversitat&apos;tan master başvurusu yanıtlanan oldu mu?"
+        },
+        {
+            "Tarih": "21.08.2025 23:01:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e8467025",
+            "Konular": "sehir",
+            "Soru": "Arkadaşlar yaklaşık 10 aydır Berlin’de yaşıyorum iki ay sonra vizem bitecek. Vizeyi uzatabiliyor muyum?"
+        },
+        {
+            "Tarih": "21.08.2025 23:01:40",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "uni_assist",
+            "Soru": "Merhaba arkadaşlar Bremen üniversitesi için VPD belgem bugün geldi, moin üzerinden başvuru yapacağım , vpd dışında başka belge yüklemem gerekiyor mu?"
+        },
+        {
+            "Tarih": "21.08.2025 22:40:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0aabd8fc",
+            "Konular": "",
+            "Soru": "arkadaşlar fh da okuyan var mı?"
+        },
+        {
+            "Tarih": "21.08.2025 22:31:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c9493641",
+            "Konular": "yurt",
+            "Soru": "Merhaba arkadaşlar (: Ingolstadt veya Nürnberg de Wg de kalan var mı ?"
+        },
+        {
+            "Tarih": "21.08.2025 17:25:00",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_fb8dec1a",
+            "Konular": "",
+            "Soru": "USKHeidelberg merhaba sorumu yanitlayabilir misiniz?"
+        },
+        {
+            "Tarih": "21.08.2025 10:40:39",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "",
+            "Soru": "Bir de vizeye motivasyon mektubu yazarken tr ye geri dönmekle ilgili bir şeylerden bahsetmiş miydiniz ?"
+        },
+        {
+            "Tarih": "21.08.2025 01:27:57",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "",
+            "Soru": "Tebrik ederim. Yüksek lisans mıydı yoksa lisans olarak mı başvurdunuz?"
+        },
+        {
+            "Tarih": "21.08.2025 01:26:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_964a7518",
+            "Konular": "uni_assist",
+            "Soru": "Uni assist üzerinden başvurusu sonuçlanan var mı?"
+        },
+        {
+            "Tarih": "20.08.2025 21:43:46",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "",
+            "Soru": "Arkadaşlar bir sorum vardı da. Genel olarak telegram dolaylı olarak bu kanal ile alakalı çünkü Telegramda yukarı kısımda hep bağlanılıyor yazıyor ve sadece Vpn ile düzeliyor bunun çözümünü bilen var mı?"
+        },
+        {
+            "Tarih": "20.08.2025 19:00:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "yurt",
+            "Soru": "Merhabalar, Dortmund da kalacak yer arıyorum, wg ya da ofis tarzında olur yardım edebilecek birisi var mı ?"
+        },
+        {
+            "Tarih": "20.08.2025 18:26:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_6a60f79d",
+            "Konular": "",
+            "Soru": "Bremene ya da başka bir alman ünisine kayıt belgesi veren var mı?"
+        },
+        {
+            "Tarih": "20.08.2025 16:06:00",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_2ea3e127",
+            "Konular": "",
+            "Soru": "Arkadaşlar belgeleri herhangi bir yeminli tercüman dan yaptırabilir miyiz?"
+        },
+        {
+            "Tarih": "20.08.2025 15:12:10",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c63ae6dd",
+            "Konular": "",
+            "Soru": "arkadaşlar merhaba ikametgahımı İstanbula aldıracağım yanına ikametgah aldırdığımız kişi ile bir akrabağlık bağı bulunması gerekiyormu acaba?"
+        },
+        {
+            "Tarih": "20.08.2025 13:44:25",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "user_1bda30fe",
+            "Konular": "vize",
+            "Soru": "Merhaba bu iki dönem almanyada üniversite okudum, bir ekimde oturum görüşmesine gideceğim. Güncel bloke hesap belgesi de isteniyor. Ama ben bugüne kadar hesaptaki paraya hiç dokunmadım. Tüm ücret orada duruyor. Ancak tarihlerini güncellemem gerekecek. Bunu nasıl yapabilirim?"
+        },
+        {
+            "Tarih": "20.08.2025 12:28:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_dec26c89",
+            "Konular": "uni_assist",
+            "Soru": "Arkadaslar galiba bi kac kere grupta gormustum vpd basvurusu aticam bremenede bazilari yeminli tercumansiz kendim cevirmistim demisti sanki dogrulugu varmi?"
+        },
+        {
+            "Tarih": "19.08.2025 20:10:41",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "yurt",
+            "Soru": "Arkadaşalar Dortmundda kendime ev arıyorum vizeye başvuracağım, wg-gesuchtta birkaç yere mesaj attım fakat daha hızlı bir bulabileceğim bir yol var mı ?"
+        },
+        {
+            "Tarih": "19.08.2025 18:27:46",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "Yani kayıt olmak mı olmamak mı mantıklı?"
+        },
+        {
+            "Tarih": "19.08.2025 15:16:17",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_947608a1",
+            "Konular": "",
+            "Soru": "Arkadaşlar İzmir alman başkonsolosluğu mail adresi arıyorum fakat bulamadım bilen var mj acaba?"
+        },
+        {
+            "Tarih": "19.08.2025 10:35:07",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e3583d80",
+            "Konular": "",
+            "Soru": "Merhaba yasal velayet yükleyin demişler tam olarak ne yüklemek gerekiyor acaba?"
+        },
+        {
+            "Tarih": "18.08.2025 22:54:50",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Meslek lisesi diplomasıyla kabul gelir mi?"
+        },
+        {
+            "Tarih": "18.08.2025 22:49:22",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "",
+            "Soru": "Merhabalar bir sorum vardı da. Avrupa Göç Danışmanlık sitesine katalog için başvuru yaptım ancak elime ulaşmadı. Sizin fiyatlarla ilgili bilginiz var mı acaba?"
+        },
+        {
+            "Tarih": "18.08.2025 19:31:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "9. Sıradaki dil kursu çalışması nedir acaba?"
+        },
+        {
+            "Tarih": "18.08.2025 11:39:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "",
+            "Soru": "Bir de Bremen de şartlı kabul alınca dil okulu Bremende mi olmak zorunda ?"
+        },
+        {
+            "Tarih": "18.08.2025 11:38:13",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_921123c1",
+            "Konular": "dil",
+            "Soru": "Doğru, şey demek istedim vizeye başvurmak için hem B1 hem de B2 kaydı istiyorlar mı, yoksa sadece B1 e kayıt yaptırmakta vizeden onay almak için yeterli mi ?"
+        },
+        {
+            "Tarih": "17.08.2025 11:00:09",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "anon_deleted",
+            "Konular": "sehir",
+            "Soru": "Frankfurt ta gidebileceğim dil kursu önerisi olan var mı?"
+        },
+        {
+            "Tarih": "16.08.2025 22:53:25",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "",
+            "Soru": "Anladım. Teşekkürler. Buradan da destek alabiliyor muyum kendim yapmaya karar verirsem?"
+        },
+        {
+            "Tarih": "16.08.2025 17:57:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_034e4494",
+            "Konular": "",
+            "Soru": "Selamlar bir şey soracaktım da. Bu Almanyaya kabul alma sürecini kendim halledebilir miyim? Şu an 2 danışman şirketiyle görüşüyorum da daha sözleşme yapmadık. Ne düşünüyorsunuz?"
+        },
+        {
+            "Tarih": "15.08.2025 16:08:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_acdf4173",
+            "Konular": "",
+            "Soru": "Arkadaşlar bir sorum olacaktı Oturum kartımızı normal tarihinden geç alırsak bir sıkıntı olur mu?"
+        },
+        {
+            "Tarih": "15.08.2025 10:48:21",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_7cca25e9",
+            "Konular": "",
+            "Soru": "Bremende veya dortmund da kalacak yere ihtiyacim var yardimci olabilecek var mi ?"
+        },
+        {
+            "Tarih": "14.08.2025 21:44:45",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Tam olarak anlamadım daha önce karşılaşan varsa yardımcı olabilir mi?"
+        },
+        {
+            "Tarih": "14.08.2025 21:43:04",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e95f89a8",
+            "Konular": "",
+            "Soru": "Yardımcı olacak kimse yok mu arkadaşlar?"
+        },
+        {
+            "Tarih": "14.08.2025 19:05:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "",
+            "Soru": "selamlar aachen şartlı kabul veriyor mu?"
+        },
+        {
+            "Tarih": "13.08.2025 14:59:15",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_50c9e8d5",
+            "Konular": "",
+            "Soru": "Ben bremenden şartlı kabul aldım. Bu kısımda hayır dedim ama izmirde 2. Sınıf hukuk öğrencisiyim. Buraya eklemeli miyim?"
+        },
+        {
+            "Tarih": "13.08.2025 14:39:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_b109762f",
+            "Konular": "",
+            "Soru": "Merhabalar öğrenci oturumuna sahip biri Kleingewerbe açabiliyor mu bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "13.08.2025 14:09:58",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1f9a153f",
+            "Konular": "",
+            "Soru": "garantör olacak kişide benim pasaportum olması lazımmış doğru mu bu?"
+        },
+        {
+            "Tarih": "13.08.2025 09:31:36",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_db0a79ee",
+            "Konular": "",
+            "Soru": "Merhaba Bilgisayar Bilimleri okumak istiyorum. Tùrkiyede hangi bolumleri kazansam almanyada bilgisayar bilimleri okuyabilirim?"
+        },
+        {
+            "Tarih": "13.08.2025 00:20:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "şimdi şartlı başvuru için üniversiteye başvuru yapabiliyoruz ya almanca dil kursuna gittikten sonra c1 seviyesine geldiğimizde üniversite ve bölüm değiştirme şansımız varmı acaba?"
+        },
+        {
+            "Tarih": "12.08.2025 21:53:18",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "vize",
+            "Soru": "Vizesiz mi yoksa vize varken mi?"
+        },
+        {
+            "Tarih": "12.08.2025 07:18:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Son sistemden beri İzmir’den vize alan var mı?"
+        },
+        {
+            "Tarih": "11.08.2025 18:52:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1f9a153f",
+            "Konular": "",
+            "Soru": "türkiye’den özel üniversite yerleşip kayıt olmadan şartlı kabul alan var mı bide şey soracaktım vizede aktif öğrenci olmaya bakıyorlar mı?"
+        },
+        {
+            "Tarih": "11.08.2025 09:57:01",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Almanya’yı seçince bu ekran çıkıyor adress ve tax info kısımlarında ne yapılması gerekir?"
+        },
+        {
+            "Tarih": "11.08.2025 09:20:34",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_c63ae6dd",
+            "Konular": "",
+            "Soru": "Merhaba, almanya’ya daha gitmeden banka hesabı nasıl açabiliriz? Bunu yapan var mı?"
+        },
+        {
+            "Tarih": "10.08.2025 18:36:14",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "",
+            "Soru": "selam arkadaşlar yks tercihini bu üniversitelere göre mi yapmalıyım?"
+        },
+        {
+            "Tarih": "10.08.2025 18:33:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_0aabd8fc",
+            "Konular": "",
+            "Soru": "Almanya&apos;da çalışarak öğrenci olarak gecinmek zor mu ?"
+        },
+        {
+            "Tarih": "10.08.2025 17:26:41",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "Şartlı kabulde okula başlamadan da çalışma iznimiz oluyor değil mi?"
+        },
+        {
+            "Tarih": "10.08.2025 16:47:56",
+            "Grup": "ChatExport_2026-05-04 (7)",
+            "Sender": "user_71842704",
+            "Konular": "",
+            "Soru": "Merhabalar Deggendorf Hochschule de okuyan veya başlayacak var mı acaba?"
+        },
+        {
+            "Tarih": "10.08.2025 16:47:48",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_71842704",
+            "Konular": "",
+            "Soru": "Merhabalar Deggendorf Hochschule de okuyan veya başlayacak var mı acaba?"
+        },
+        {
+            "Tarih": "10.08.2025 16:21:42",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_db0a79ee",
+            "Konular": "",
+            "Soru": "Selam, burada siyaset bilimi kazansam, Almanya’da hangi bölümleri okuyabilirim acaba?"
+        },
+        {
+            "Tarih": "10.08.2025 16:18:27",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_e0184ade",
+            "Konular": "",
+            "Soru": "Okuldan lise diplomamın yanında aslı gibidir belgesi verdiler ve transkriptimi çıkartıp imzaladılar. Notere gitmeme gerek var mı ayrıca?"
+        },
+        {
+            "Tarih": "10.08.2025 12:12:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9cacade2",
+            "Konular": "",
+            "Soru": "matematik yazarsam ikisine de geçiş sağlayabiliyor muyum?"
+        },
+        {
+            "Tarih": "10.08.2025 11:06:30",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "İyi günler arkadaşlar bir sorum olacaktı. Eğer Kırgızistan-Bişkekteki manas üniversitesine yerleşirsek yine 4 yıllık o belgeyle de almanyadaki bir üniversiteye başvuru yapabiliyor muyuz yoksa illa türkiye sınırları içerisinde mi olmalı?"
+        },
+        {
+            "Tarih": "09.08.2025 22:24:32",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Haa anladım, yaş sorun olur mu?"
+        },
+        {
+            "Tarih": "09.08.2025 21:30:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Hayırlı olsun, YouTubeda baktım biraz informatik tercih yapan baya gördüm. Dil okuluna mı gideceksiniz?"
+        },
+        {
+            "Tarih": "09.08.2025 21:12:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_eba0b644",
+            "Konular": "vize",
+            "Soru": "Vize aldınız ya lisans için mi?"
+        },
+        {
+            "Tarih": "09.08.2025 14:48:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_88e288f3",
+            "Konular": "dil",
+            "Soru": "Tamam, o zaman sınava girdikten sonra başvuru yapacağım. Peki şuan için oradaki dil kursuna kayıt yapmam gerekir mi? C1 e kadar mı ön kayıt yapmam gerekiyor? Okula dil kursundan dolayı henüz kayıt yapmadım. Onları şu aşamada mi halletmem gerekir?"
+        },
+        {
+            "Tarih": "08.08.2025 15:49:08",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_174e58f3",
+            "Konular": "sigorta",
+            "Soru": "https:\/\/chat.whatsapp.com\/B6KIHdG4UtXLgKuiKV07e0 Bu grupta Canay hanım var. Barmer çalışanı. Bir sorun isterseniz, yardımcı olabilir belki?"
+        },
+        {
+            "Tarih": "08.08.2025 11:24:02",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_94b6931d",
+            "Konular": "sigorta",
+            "Soru": "Dil okulu öğrencisiyim Şimdiye kadar Genel sağlık sigortalarını araştırdım TK, AOK, Barmer gibi Önerebileceğiniz dil okulu öğrencileri için özel sağlık sigortası var mı acaba? Birde öğrenciyken çalışmaya başladığımda düzenli sabit gelirim olduğunda özelden devlete geçebilir miyim üniversitede okurken?"
+        },
+        {
+            "Tarih": "08.08.2025 10:12:54",
+            "Grup": "ChatExport_2026-05-04 (6)",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Ve ben gerekli ücreti Salı günü Swift olarak göndermiştim, bu durum bir sıkıntı çıkarır mı?"
+        },
+        {
+            "Tarih": "08.08.2025 01:12:16",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_f0095e1a",
+            "Konular": "",
+            "Soru": "Bremen den şartlı kabulum var dil kursu Hannover da.dil kursumu değiştirmek istiyorum.Almanya ya giriş yaptığımda anmeldungu istediğim bir yerde yapabiliyor muyum?Bir de Almanya ya girişten kaç gün sonra yaptırmalıyım en geç?"
+        },
+        {
+            "Tarih": "07.08.2025 23:06:33",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_25b6e8fe",
+            "Konular": "",
+            "Soru": "Fakülte olarak iyi ama bahsettiklerinden hangi mühendislige kabul almak istiyorsun?"
+        },
+        {
+            "Tarih": "07.08.2025 19:55:20",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d7a132e2",
+            "Konular": "",
+            "Soru": "@user hocam iyi akşamlar. Çalışmak için alınan sigortayı herkesr vermiyorlarmış, biraz şans işiymiş doğru mudur?"
+        },
+        {
+            "Tarih": "07.08.2025 14:10:03",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d5ff5c44",
+            "Konular": "",
+            "Soru": "Merhabalar,Sormak istediğim bir şey var,bremen universitesi bilgisayar mühendisliği yani informatik için basvurmak istiyorum ama yksde 330k siralama yaptım ve bilişim sistemleri ve teknolojileri, istatistik ve bilgisayar bilimleri,veri bilimi ve analitiği bölümleri geliyor informatige en yakın,bunlardan birine kayit olsam yeterli olur mu? Kabul alabilir miyim?Tercih listemi nasıl duzenlemeliyim?Bilgi sahibi olan var mı?"
+        },
+        {
+            "Tarih": "07.08.2025 12:11:11",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9780e6a7",
+            "Konular": "",
+            "Soru": "Makine alanında hali hazırda yüksek lisans yapan yada kabul alan arkadaşlar varmı dır?"
+        },
+        {
+            "Tarih": "07.08.2025 10:38:44",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9495ce40",
+            "Konular": "vize, master",
+            "Soru": "Arkadaslar herkese iyi gunler dilerim. Ben Tu Dortmund universitesinden yuksek lisans icin kabul aldim ve ogrenci vizesi icin basvuru yapacagim. Ancak daha oncesinde hic bir sekilde vize icin basvuruda bulunmamıştım. Bu sebeple genelde internetten bakarak nasil yapiliyor diye bakiyorum. Aklima takilan bir yer var, vize tarihini bazilari okul baslamadan 1 hafta once secilmeli vs demisler ancak benim oraya gidip kayit yaptirmam ve kalacak yeri ayarlamam gerekiyor. Bu sebepten okul baslangic tarihinden 1 ay oncesine bu vizeyi istemem gerekmez mi?"
+        },
+        {
+            "Tarih": "07.08.2025 00:36:23",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_087ac761",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar Türkiye’de eczacılık mezunuyum ve eczanem de var , Bremen üniversitesinden lisans kabulü aldım , almancam A2 ama yaşım 40, bu vizede büyük bir engel olur mu ?"
+        },
+        {
+            "Tarih": "07.08.2025 00:30:19",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_d2b3f80b",
+            "Konular": "vize, randevu",
+            "Soru": "Arkadaşlar Ankarada vize randevu atamaları ne durumda bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "06.08.2025 22:13:35",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_1eda695d",
+            "Konular": "",
+            "Soru": "Merhabalar, Yks tercihinde bilgisayar mühendisliği İngilizce olanına yerleşmem Almanya daki üniversitelere başvururken avantaj yada dezavantaj oluşturur mu bilgisi olan varmı ?"
+        },
+        {
+            "Tarih": "06.08.2025 18:40:56",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_9780e6a7",
+            "Konular": "vize, dil",
+            "Soru": "Bu yüksek lisans ta da okucağımız bölüm içeriği ingilizce okul Almanca şartı aramıyor ama vize alırken Almanca gerekiyor mu?"
+        },
+        {
+            "Tarih": "06.08.2025 17:44:37",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "anon_deleted",
+            "Konular": "vize, dil",
+            "Soru": "Merhaba lisans için şartlı kabule başvurcam ama kabul alırsam vize için a2 mi gerekiyor min yoksa b1 mi yani bazı kaynaklarda b1 diye gördüm bazı yerlerde a2 lisans vizesi için min hangi seviye gerekiyor? Bu yıl gidip bilen var mı acaba? Yıldan yıla şartlar değişiklik gösteriyor mu?"
+        },
+        {
+            "Tarih": "06.08.2025 04:49:47",
+            "Grup": "ChatExport_2026-05-04 (3)_ og",
+            "Sender": "user_947608a1",
+            "Konular": "",
+            "Soru": "Aynı soru bende de var, bilgisi olan var mı?"
+        }
+    ]
+}

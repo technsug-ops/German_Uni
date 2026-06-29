@@ -1,0 +1,4064 @@
+{
+    "generated_at": "2026-05-18T21:34:55+00:00",
+    "name": "visa_denklik",
+    "extracted_from": "C:\/Users\/Yapra\/AppData\/Local\/Temp\/tg_rapor_s",
+    "ozet": [
+        {
+            "Telegram Analyzer Raporu": "Üretildi"
+        },
+        {
+            "Telegram Analyzer Raporu": "Toplam mesaj"
+        },
+        {
+            "Telegram Analyzer Raporu": "Soru"
+        },
+        {
+            "Telegram Analyzer Raporu": "Anonim sender"
+        },
+        {
+            "Telegram Analyzer Raporu": "Grup sayısı"
+        },
+        {
+            "Telegram Analyzer Raporu": "Ort. uzunluk (char)"
+        },
+        {
+            "Telegram Analyzer Raporu": "Filtre uygulandı"
+        }
+    ],
+    "aylik": [
+        {
+            "Ay": "2021-12",
+            "Mesaj": "8177"
+        },
+        {
+            "Ay": "2022-01",
+            "Mesaj": "10853"
+        },
+        {
+            "Ay": "2022-02",
+            "Mesaj": "8736"
+        },
+        {
+            "Ay": "2022-03",
+            "Mesaj": "11290"
+        },
+        {
+            "Ay": "2022-04",
+            "Mesaj": "11367"
+        },
+        {
+            "Ay": "2022-05",
+            "Mesaj": "12931"
+        },
+        {
+            "Ay": "2022-06",
+            "Mesaj": "28437"
+        },
+        {
+            "Ay": "2022-07",
+            "Mesaj": "32308"
+        },
+        {
+            "Ay": "2022-08",
+            "Mesaj": "35364"
+        },
+        {
+            "Ay": "2022-09",
+            "Mesaj": "18373"
+        },
+        {
+            "Ay": "2022-10",
+            "Mesaj": "14997"
+        },
+        {
+            "Ay": "2022-11",
+            "Mesaj": "13561"
+        },
+        {
+            "Ay": "2022-12",
+            "Mesaj": "11669"
+        },
+        {
+            "Ay": "2023-01",
+            "Mesaj": "11430"
+        },
+        {
+            "Ay": "2023-02",
+            "Mesaj": "6323"
+        },
+        {
+            "Ay": "2023-03",
+            "Mesaj": "11691"
+        },
+        {
+            "Ay": "2023-04",
+            "Mesaj": "10837"
+        },
+        {
+            "Ay": "2023-05",
+            "Mesaj": "10134"
+        },
+        {
+            "Ay": "2023-06",
+            "Mesaj": "11410"
+        },
+        {
+            "Ay": "2023-07",
+            "Mesaj": "13964"
+        },
+        {
+            "Ay": "2023-08",
+            "Mesaj": "13967"
+        },
+        {
+            "Ay": "2023-09",
+            "Mesaj": "14150"
+        },
+        {
+            "Ay": "2023-10",
+            "Mesaj": "14472"
+        },
+        {
+            "Ay": "2023-11",
+            "Mesaj": "14986"
+        },
+        {
+            "Ay": "2023-12",
+            "Mesaj": "14042"
+        },
+        {
+            "Ay": "2024-01",
+            "Mesaj": "14144"
+        },
+        {
+            "Ay": "2024-02",
+            "Mesaj": "10913"
+        },
+        {
+            "Ay": "2024-03",
+            "Mesaj": "11423"
+        },
+        {
+            "Ay": "2024-04",
+            "Mesaj": "8817"
+        },
+        {
+            "Ay": "2024-05",
+            "Mesaj": "10542"
+        },
+        {
+            "Ay": "2024-06",
+            "Mesaj": "9901"
+        },
+        {
+            "Ay": "2024-07",
+            "Mesaj": "12454"
+        },
+        {
+            "Ay": "2024-08",
+            "Mesaj": "13312"
+        },
+        {
+            "Ay": "2024-09",
+            "Mesaj": "15438"
+        },
+        {
+            "Ay": "2024-10",
+            "Mesaj": "15780"
+        },
+        {
+            "Ay": "2024-11",
+            "Mesaj": "15463"
+        },
+        {
+            "Ay": "2024-12",
+            "Mesaj": "14977"
+        },
+        {
+            "Ay": "2025-01",
+            "Mesaj": "16815"
+        },
+        {
+            "Ay": "2025-02",
+            "Mesaj": "14390"
+        },
+        {
+            "Ay": "2025-03",
+            "Mesaj": "15708"
+        },
+        {
+            "Ay": "2025-04",
+            "Mesaj": "15507"
+        },
+        {
+            "Ay": "2025-05",
+            "Mesaj": "13862"
+        },
+        {
+            "Ay": "2025-06",
+            "Mesaj": "11357"
+        },
+        {
+            "Ay": "2025-07",
+            "Mesaj": "11778"
+        },
+        {
+            "Ay": "2025-08",
+            "Mesaj": "11992"
+        },
+        {
+            "Ay": "2025-09",
+            "Mesaj": "11597"
+        },
+        {
+            "Ay": "2025-10",
+            "Mesaj": "11495"
+        },
+        {
+            "Ay": "2025-11",
+            "Mesaj": "10530"
+        },
+        {
+            "Ay": "2025-12",
+            "Mesaj": "11036"
+        },
+        {
+            "Ay": "2026-01",
+            "Mesaj": "10745"
+        },
+        {
+            "Ay": "2026-02",
+            "Mesaj": "10531"
+        },
+        {
+            "Ay": "2026-03",
+            "Mesaj": "10698"
+        },
+        {
+            "Ay": "2026-04",
+            "Mesaj": "9112"
+        },
+        {
+            "Ay": "2026-05",
+            "Mesaj": "898"
+        }
+    ],
+    "konular": [
+        {
+            "Konu": "denklik",
+            "Etiket": "Diplomanerkennung",
+            "Mesaj sayısı": "65807"
+        },
+        {
+            "Konu": "vize",
+            "Etiket": "Visum & Sperrkonto",
+            "Mesaj sayısı": "50441"
+        },
+        {
+            "Konu": "dil",
+            "Etiket": "Deutsch-Zertifikate",
+            "Mesaj sayısı": "34620"
+        },
+        {
+            "Konu": "randevu",
+            "Etiket": "IDATA \/ Konsulat-Termin",
+            "Mesaj sayısı": "24149"
+        },
+        {
+            "Konu": "para",
+            "Etiket": "Kosten \/ Geld",
+            "Mesaj sayısı": "17100"
+        },
+        {
+            "Konu": "is",
+            "Etiket": "Arbeit \/ Jobs",
+            "Mesaj sayısı": "5721"
+        },
+        {
+            "Konu": "ausbildung",
+            "Etiket": "Ausbildung",
+            "Mesaj sayısı": "5590"
+        },
+        {
+            "Konu": "sehir",
+            "Etiket": "Stadtauswahl",
+            "Mesaj sayısı": "4765"
+        },
+        {
+            "Konu": "doktor_hospitation_be",
+            "Etiket": "Arzt: Hospitation \/ BE",
+            "Mesaj sayısı": "3681"
+        },
+        {
+            "Konu": "yurt",
+            "Etiket": "Wohnen \/ Wohnheim",
+            "Mesaj sayısı": "3473"
+        },
+        {
+            "Konu": "sigorta",
+            "Etiket": "Krankenversicherung",
+            "Mesaj sayısı": "3101"
+        },
+        {
+            "Konu": "doktor_fachgebiet",
+            "Etiket": "Arzt: Fachgebiet",
+            "Mesaj sayısı": "1437"
+        },
+        {
+            "Konu": "anmeldung",
+            "Etiket": "Anmeldung",
+            "Mesaj sayısı": "951"
+        },
+        {
+            "Konu": "master",
+            "Etiket": "Masterstudium",
+            "Mesaj sayısı": "821"
+        },
+        {
+            "Konu": "studienkolleg",
+            "Etiket": "Studienkolleg \/ FSP",
+            "Mesaj sayısı": "125"
+        },
+        {
+            "Konu": "doktor_fsp",
+            "Etiket": "Arzt: FSP",
+            "Mesaj sayısı": "125"
+        },
+        {
+            "Konu": "uni_assist",
+            "Etiket": "Uni-Assist \/ VPD",
+            "Mesaj sayısı": "122"
+        },
+        {
+            "Konu": "doktor_kp_gutachten",
+            "Etiket": "Arzt: KP \/ Gutachten",
+            "Mesaj sayısı": "106"
+        },
+        {
+            "Konu": "burs",
+            "Etiket": "Stipendium",
+            "Mesaj sayısı": "90"
+        },
+        {
+            "Konu": "doktor_approbation",
+            "Etiket": "Arzt: Approbation",
+            "Mesaj sayısı": "27"
+        },
+        {
+            "Konu": "aps",
+            "Etiket": "APS-Zertifikat",
+            "Mesaj sayısı": "10"
+        }
+    ],
+    "gruplar": [
+        {
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Mesaj": "491128"
+        },
+        {
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Mesaj": "180533"
+        },
+        {
+            "Grup": "ChatExport_2026-05-05_Almanya vize & Denklik ,Önonay",
+            "Mesaj": "22539"
+        },
+        {
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Mesaj": "22484"
+        }
+    ],
+    "heatmap": [
+        {
+            "Gün": "Pzt",
+            "0:00": "2916",
+            "1:00": "1007",
+            "2:00": "544",
+            "3:00": "234",
+            "4:00": "230",
+            "5:00": "363",
+            "6:00": "895",
+            "7:00": "2005",
+            "8:00": "3647",
+            "9:00": "5368",
+            "10:00": "5887",
+            "11:00": "7259",
+            "12:00": "7007",
+            "13:00": "7425",
+            "14:00": "7231",
+            "15:00": "6721",
+            "16:00": "6667",
+            "17:00": "6560",
+            "18:00": "6397",
+            "19:00": "6824",
+            "20:00": "7456",
+            "21:00": "7441",
+            "22:00": "7545",
+            "23:00": "4444"
+        },
+        {
+            "Gün": "Sal",
+            "0:00": "2350",
+            "1:00": "947",
+            "2:00": "515",
+            "3:00": "237",
+            "4:00": "193",
+            "5:00": "320",
+            "6:00": "890",
+            "7:00": "2577",
+            "8:00": "3703",
+            "9:00": "5656",
+            "10:00": "6553",
+            "11:00": "6976",
+            "12:00": "7100",
+            "13:00": "7391",
+            "14:00": "7284",
+            "15:00": "6702",
+            "16:00": "6421",
+            "17:00": "6379",
+            "18:00": "6527",
+            "19:00": "6697",
+            "20:00": "6789",
+            "21:00": "7684",
+            "22:00": "6933",
+            "23:00": "4744"
+        },
+        {
+            "Gün": "Çar",
+            "0:00": "2192",
+            "1:00": "1040",
+            "2:00": "440",
+            "3:00": "206",
+            "4:00": "197",
+            "5:00": "379",
+            "6:00": "1023",
+            "7:00": "2402",
+            "8:00": "4058",
+            "9:00": "5395",
+            "10:00": "6563",
+            "11:00": "7072",
+            "12:00": "7120",
+            "13:00": "6824",
+            "14:00": "6802",
+            "15:00": "6499",
+            "16:00": "6412",
+            "17:00": "6400",
+            "18:00": "5914",
+            "19:00": "6980",
+            "20:00": "7611",
+            "21:00": "7045",
+            "22:00": "6440",
+            "23:00": "4640"
+        },
+        {
+            "Gün": "Per",
+            "0:00": "2486",
+            "1:00": "1160",
+            "2:00": "412",
+            "3:00": "276",
+            "4:00": "235",
+            "5:00": "390",
+            "6:00": "1030",
+            "7:00": "2417",
+            "8:00": "3831",
+            "9:00": "5498",
+            "10:00": "6768",
+            "11:00": "7055",
+            "12:00": "7396",
+            "13:00": "7293",
+            "14:00": "6930",
+            "15:00": "7081",
+            "16:00": "6786",
+            "17:00": "6074",
+            "18:00": "6441",
+            "19:00": "7189",
+            "20:00": "7269",
+            "21:00": "7385",
+            "22:00": "6553",
+            "23:00": "4034"
+        },
+        {
+            "Gün": "Cum",
+            "0:00": "2267",
+            "1:00": "940",
+            "2:00": "491",
+            "3:00": "246",
+            "4:00": "244",
+            "5:00": "423",
+            "6:00": "885",
+            "7:00": "2386",
+            "8:00": "3842",
+            "9:00": "5671",
+            "10:00": "6624",
+            "11:00": "6614",
+            "12:00": "6769",
+            "13:00": "6951",
+            "14:00": "6504",
+            "15:00": "6340",
+            "16:00": "5950",
+            "17:00": "5433",
+            "18:00": "5429",
+            "19:00": "6289",
+            "20:00": "6113",
+            "21:00": "6378",
+            "22:00": "6339",
+            "23:00": "3456"
+        },
+        {
+            "Gün": "Cmt",
+            "0:00": "2238",
+            "1:00": "1172",
+            "2:00": "458",
+            "3:00": "251",
+            "4:00": "178",
+            "5:00": "283",
+            "6:00": "644",
+            "7:00": "1207",
+            "8:00": "2117",
+            "9:00": "3297",
+            "10:00": "4512",
+            "11:00": "4780",
+            "12:00": "5069",
+            "13:00": "4952",
+            "14:00": "4964",
+            "15:00": "4723",
+            "16:00": "4956",
+            "17:00": "4644",
+            "18:00": "4601",
+            "19:00": "5358",
+            "20:00": "5652",
+            "21:00": "5643",
+            "22:00": "5811",
+            "23:00": "3507"
+        },
+        {
+            "Gün": "Pzr",
+            "0:00": "2646",
+            "1:00": "1313",
+            "2:00": "587",
+            "3:00": "272",
+            "4:00": "178",
+            "5:00": "236",
+            "6:00": "377",
+            "7:00": "950",
+            "8:00": "1589",
+            "9:00": "2794",
+            "10:00": "4086",
+            "11:00": "5100",
+            "12:00": "5414",
+            "13:00": "5398",
+            "14:00": "5314",
+            "15:00": "5016",
+            "16:00": "4642",
+            "17:00": "4891",
+            "18:00": "5510",
+            "19:00": "5983",
+            "20:00": "6822",
+            "21:00": "7337",
+            "22:00": "6553",
+            "23:00": "4791"
+        }
+    ],
+    "top500_soru": [
+        {
+            "Tarih": "04.05.2026 21:42:54",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_9e7c0bf4",
+            "Konular": "denklik",
+            "Soru": "Merhaba denklik şartları zorlaşacak diyorlar doğru mu ? Bilgisi olan yazabilir mi?"
+        },
+        {
+            "Tarih": "04.05.2026 21:42:14",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9e7c0bf4",
+            "Konular": "denklik",
+            "Soru": "Merhaba denklik şartları zorlaşacak diyorlar doğru mu ? Bilgisi olan yazabilir mi?"
+        },
+        {
+            "Tarih": "04.05.2026 21:02:56",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_745a7a73",
+            "Konular": "",
+            "Soru": "Heildberg den ön onay alan var mı ?"
+        },
+        {
+            "Tarih": "04.05.2026 21:02:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2b967e05",
+            "Konular": "denklik",
+            "Soru": "Merhaba Denklik geldi çerçece eğitim müfredatım 2000 yılından, Digitalisierung der arbeit, datenschutz und informationssicherheit, bu detaydan kısmi geldi, bilgisayar eğitimi transkript de de mevcut aslında, benim gibi başına gelen ve nasıl aksiyon aldıkları konusunda fikri olan var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 21:02:03",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_2b967e05",
+            "Konular": "denklik",
+            "Soru": "Merhaba Denklik geldi çerçece eğitim müfredatım 2000 yılından, Digitalisierung der arbeit, datenschutz und informationssicherheit, bu detaydan kısmi geldi, bilgisayar eğitimi transkript de de mevcut aslında, benim gibi başına gelen ve nasıl aksiyon aldıkları konusunda fikri olan var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 20:03:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ed45bf69",
+            "Konular": "",
+            "Soru": "Kısmı denkliği tam denkliğe tamamlamak için işveren bulduğumuzda şartlar nasıl olmalı maaş program vb. bilgisi olan varmı acaba?"
+        },
+        {
+            "Tarih": "04.05.2026 19:20:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c0400d4d",
+            "Konular": "",
+            "Soru": "Let ise diplomam kayip oldugu icin liseden bu durumu anlatan ve diploma yerine gecen bir belge aldim,islak imzali.Vizeye basvururken diplomami sisteme yukledim.Sonrasinda mail geldi degistirmemi diploma yukleyin diye bir yazi aldim.Sonra e devlet uzerinden aldigim halihazirda cevirilmis olani yolladim.Yine yani sekilde diploma yukleyin diye bir mesaj aldim.Tavsiyesi ola var mi ? Ne yapabilirim bunun icin ? Portal uzerinden sanirim yazabiliyorum yoksa mail mi atmaliyim ? Eger konu hakkinda bilgisi olan varsa lutfen yardimci olabilir mi ?"
+        },
+        {
+            "Tarih": "04.05.2026 18:42:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9cb6f4d8",
+            "Konular": "vize",
+            "Soru": "1,5 ay oldu şu 81A ön onaydan ses seda yok !!! Yani dosyama baktılar mı onu bile bilmiyorum !!!! Daha bekleyecek miyim?? Bu vize türü hızlı vize değilmiydi ???"
+        },
+        {
+            "Tarih": "04.05.2026 18:32:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4ae35314",
+            "Konular": "",
+            "Soru": "AT11 belgesi sadece acil durumları mı kapsıyor?"
+        },
+        {
+            "Tarih": "04.05.2026 18:31:50",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_4ae35314",
+            "Konular": "",
+            "Soru": "AT11 belgesi sadece acil durumları mı kapsıyor?"
+        },
+        {
+            "Tarih": "04.05.2026 18:14:21",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_594abea7",
+            "Konular": "",
+            "Soru": "Merhabalar, Ben 16 Eylül tarihinde aile birleşimi randevusu için başvuru yaptım. Ancak Telegram üzerinden takip ettiğimde, Ekim ayından sonra başvuru yapan kişilerin işlemlerinin ilerlediğini görüyorum. Buna rağmen benim başvurumun henüz sonuçlanmadığını fark ettim. Bu konuda sürecimin durumu hakkında bilgi alabilir miyim?"
+        },
+        {
+            "Tarih": "04.05.2026 17:20:38",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a35b8578",
+            "Konular": "denklik",
+            "Soru": "Denklik başvurusu sürecinde olan var mı? KMK Denklik başvuru yapmama yardımcı olacak biri var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 17:14:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_02aa629c",
+            "Konular": "sigorta",
+            "Soru": "Merhaba arkadaşlar sigorta için önereceğiniz bir yer var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 16:55:46",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_de25eb5d",
+            "Konular": "anmeldung, para",
+            "Soru": "Merhaba anmeldung için akrabam evrak verebilir mi illa kiracı ilişkisi mi gözükecek, ev sahibine para ödetiyorlar mı, vergi çıkıyor mu ?"
+        },
+        {
+            "Tarih": "04.05.2026 16:55:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_de25eb5d",
+            "Konular": "anmeldung, para",
+            "Soru": "Merhaba anmeldung için akrabam evrak verebilir mi illa kiracı ilişkisi mi gözükecek, ev sahibine para ödetiyorlar mı, vergi çıkıyor mu ?"
+        },
+        {
+            "Tarih": "04.05.2026 16:53:22",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_bd945199",
+            "Konular": "",
+            "Soru": "Merhabalar. 18A vizesine başvurmaya çalışıyorum hemşireyim. İdata konsolosluğun sitesine yönlendiriyor direk. Gönderdiği linkten girip başvuru yaptım fakat başvurum açık görünüyor. Herhangi bir takip numarası filan da vermedi. Başvurum oldu mu olmadı mı nasıl anlarım?"
+        },
+        {
+            "Tarih": "04.05.2026 16:50:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_bd945199",
+            "Konular": "randevu",
+            "Soru": "Mail mi? Ne zaman geliyor peki? Yani randevudan bahsetmiyorum randevu sırasına alındığımı bildiriyorlar mı?"
+        },
+        {
+            "Tarih": "04.05.2026 16:37:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a35b8578",
+            "Konular": "denklik",
+            "Soru": "Denklik başvurusu sürecinde olan var mı? KMK Denklik başvuru yapmama yardımcı olacak biri var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 15:32:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_89f0634e",
+            "Konular": "",
+            "Soru": "Nasıl biraz yardımcı olurmusunuz?"
+        },
+        {
+            "Tarih": "04.05.2026 14:08:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a35b8578",
+            "Konular": "denklik",
+            "Soru": "Denklik başvurusu sürecinde olan var mı? KMK Denklik başvuru yapmama yardımcı olacak biri var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 13:55:41",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_cbd9e71d",
+            "Konular": "",
+            "Soru": "Teşekkür ederim 🙏 peki ödemeyi hemen yolluyorlar mı biliyor musunuz?"
+        },
+        {
+            "Tarih": "04.05.2026 13:43:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_cbd9e71d",
+            "Konular": "para",
+            "Soru": "Arkadaşlar merhaba bir şey sormak istiyorum ben Dr. Walter sigortasıyla Almanya&apos;ya geldim .Burada iş buldum İKK sigortasına geçtim Dr.Walter&apos;ı iptal etmek istiyorum para iadesi yapıyorlar mı bilginiz var mı?"
+        },
+        {
+            "Tarih": "04.05.2026 13:15:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_86af897f",
+            "Konular": "yurt",
+            "Soru": "Almanyada yetkili avukat varmı iş ve kira hukuku üzerine? Yazabilir mi?"
+        },
+        {
+            "Tarih": "04.05.2026 12:01:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d9e2531b",
+            "Konular": "",
+            "Soru": "Toplamda kaç iş başvurusu yaptınız ?"
+        },
+        {
+            "Tarih": "04.05.2026 09:47:35",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_37dbecd7",
+            "Konular": "dil, denklik",
+            "Soru": "Makina CNC üzerine denklik işlemlerimi bastatacagim yeni mezunum ve hic tecrübem yok kısmi çıkacağının farkındayım , 2 ay sona B1 sınavına gireceğim denkligimi şimdi baslatmasam sınavı aldıktan sonra denkligi basltip B1 belgesini dahil etsem tam denklik cikarmi ?"
+        },
+        {
+            "Tarih": "04.05.2026 08:49:23",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6d47e28d",
+            "Konular": "vize, randevu",
+            "Soru": "Merhaba, bursada vize sırası bekleyen var mı? Ne kadar sürede randevu geliyor?"
+        },
+        {
+            "Tarih": "04.05.2026 00:49:53",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6ee00233",
+            "Konular": "randevu",
+            "Soru": "Acil ‼️ Fiktionsbescheinigung belgesi için bilgi Arkadaşlar oturma iznim bitti başvuru yaptım otomatik gelen mail’de randevu tarihine kadar çalışabilirsin ve kalmaya devam edebilirsin diyor ama iş yerım Fiktionsbescheinigung belgesi lazım dıyor. maillerime cevap gelmiyor bunu nasıl nereden alabilirim bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "03.05.2026 22:42:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7c4d3378",
+            "Konular": "",
+            "Soru": "2 hafta oldu mail geleli Ödeme mektubu daha gelmedi Bu hafta içinde gelir o zaman ?"
+        },
+        {
+            "Tarih": "03.05.2026 21:57:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_4ae35314",
+            "Konular": "dil",
+            "Soru": "Merhaba, almanya öğrenci vizesinde mülakat almanca mı yapılıyor? Yeni sistem parmak izi gerektiriyor sadece diye duydum doğru mu?"
+        },
+        {
+            "Tarih": "03.05.2026 21:56:52",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4ae35314",
+            "Konular": "dil",
+            "Soru": "Merhaba, almanya öğrenci vizesinde mülakat almanca mı yapılıyor? Yeni sistem parmak izi gerektiriyor sadece diye duydum doğru mu?"
+        },
+        {
+            "Tarih": "03.05.2026 19:46:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_da9e8e15",
+            "Konular": "",
+            "Soru": "İşveren ilgisi derken ? Yarın danışman firmam mail atacak. Maile firma için aciliyet var iş başlama için desek uygun mudur ?"
+        },
+        {
+            "Tarih": "03.05.2026 19:26:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d5b6c20e",
+            "Konular": "ausbildung",
+            "Soru": "Erzieherin için bildiğiniz güvenilir bir Ausbildung danışmanlık firması varsa yazabilir misiniz?"
+        },
+        {
+            "Tarih": "03.05.2026 17:07:20",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_71302eb6",
+            "Konular": "",
+            "Soru": "Siz kuzeninizin yanına mı çalışmaya gideceksiniz?"
+        },
+        {
+            "Tarih": "03.05.2026 16:58:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize",
+            "Soru": "İyi günler Kuzenim vize başvurusu için bana davetiye gönderdi davetiyeden başka bir şey koymama gerek var mı ? Onun pasaport fotokopisini veya kuzen olduğumuzu gösteren soyağacı vs ?"
+        },
+        {
+            "Tarih": "03.05.2026 16:55:36",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize",
+            "Soru": "İyi günler Kuzenim vize başvurusu için bana davetiye gönderdi davetiyeden başka bir şey koymama gerek var mı ? Onun pasaport fotokopisini veya kuzen olduğumuzu gösteren soyağacı vs ?"
+        },
+        {
+            "Tarih": "03.05.2026 16:51:37",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f3ffd518",
+            "Konular": "vize, randevu",
+            "Soru": "Arda bey aile birleşimi için online hangi formu doldurmamız lazım ? İdata dan randevu yaptık ulusal vize başvuru formu mu eskisi gibi çünkü idata bilgilendirmedi ?"
+        },
+        {
+            "Tarih": "03.05.2026 15:04:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d9cef0a2",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar direkt B2 sınavına yönelik çalıştıran bildiğiniz bi kurum var mı ?"
+        },
+        {
+            "Tarih": "03.05.2026 15:03:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d9cef0a2",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar direkt B2 sınavına yönelik çalıştıran bildiğiniz bi kurum var mı ?"
+        },
+        {
+            "Tarih": "03.05.2026 14:00:01",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ff289172",
+            "Konular": "",
+            "Soru": "Merhaba. 81A - 9 ay süre geçtiği için Konsolosluktan ek olarak güncel iş sözleşmesi, güncel çalışma durumu \/ C formu ve sürücü kursu işbirliği istediler. 31 Martta Konsolosluğa maille gönderdim. 29 Nisanda mesaj geldi. Pasaport İstanbul İdataya gelmiş. Pazartesi günü almaya gideceğim. Bakalım sonuç ne olacak?"
+        },
+        {
+            "Tarih": "03.05.2026 13:43:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_71302eb6",
+            "Konular": "",
+            "Soru": "Merhabalar ön onayım geldi, İstanbul için digital diplo dan belgeleri yükledim, bundan sonra birşey yapamam gerekiyor mu?"
+        },
+        {
+            "Tarih": "03.05.2026 13:12:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71302eb6",
+            "Konular": "",
+            "Soru": "Merhabalar ön onayım geldi, İstanbul için digital diplo dan belgeleri yükledim, bundan sonra birşey yapamam gerekiyor mu?"
+        },
+        {
+            "Tarih": "02.05.2026 23:13:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_419e4009",
+            "Konular": "vize, randevu",
+            "Soru": "Merhabalar. Yaz ayı için Almanya&apos;dan yapacağımız work and travel programına Schengen ticari vize kategorisinden İstanbul&apos;a randevu talebinde bulunduk. Vize kategorisi hakkında çekincelerim var acaba yanlış mı başvurdum diye. Sizlerin bilgisi var mıdır acaba?"
+        },
+        {
+            "Tarih": "02.05.2026 22:41:03",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Başka yapmam gereken tavsiyeleriniz var mı ?"
+        },
+        {
+            "Tarih": "02.05.2026 22:27:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56596714",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhabalar öncelikle engin bilgileriniz için şimdiden teşekkür ederim. Çalışma vizesi ile Almanya&apos;ya geleceğim , geldiğimde oturum vs işlemleri için nasıl bir yol izleyeceğim bana yardımcı olur musunuz?"
+        },
+        {
+            "Tarih": "02.05.2026 21:20:51",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7dbde935",
+            "Konular": "",
+            "Soru": "evrak ve biyometrik tesliminden sonra mavi kart basımı ne kadar sürüyor?"
+        },
+        {
+            "Tarih": "02.05.2026 20:36:54",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Evraklarımı hazırladım fakat eksik var mı diye sormak istiyorum ismim Nur bilginiz varsa özelden yazabilir misiniz ?"
+        },
+        {
+            "Tarih": "02.05.2026 19:20:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56596714",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhabalar öncelikle engin bilgileriniz için şimdiden teşekkür ederim. Çalışma vizesi ile Almanya&apos;ya geleceğim , geldiğimde oturum vs işlemleri için nasıl bir yol izleyeceğim bana yardımcı olur musunuz?"
+        },
+        {
+            "Tarih": "02.05.2026 19:20:20",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_dce2983f",
+            "Konular": "vize, dil",
+            "Soru": "Konsolosluk görüşmesinde Almanca sorular mı sormuşlar ? Mülakat gibş birşey yapmışlar mı ?"
+        },
+        {
+            "Tarih": "02.05.2026 18:06:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Eksik evrak maili alıp evrakları tamamlayıp kargo bekleyen var mı ?"
+        },
+        {
+            "Tarih": "02.05.2026 18:06:35",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Eksik evrak maili alıp evrakları tamamlayıp kargo bekleyen var mı ?"
+        },
+        {
+            "Tarih": "02.05.2026 17:30:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_90c1933b",
+            "Konular": "",
+            "Soru": "Herkese merhaba Schleswig Holstein’dan erzieherin denkliği alan var mı?"
+        },
+        {
+            "Tarih": "02.05.2026 16:16:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5cb17cea",
+            "Konular": "denklik",
+            "Soru": "Denklik başvuru belgesini bilgisayar üzerindenmi doldurmalıyız yoksa çıkartıp kalemlemi doldurmamı gerek ?"
+        },
+        {
+            "Tarih": "02.05.2026 16:08:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a2b2e563",
+            "Konular": "",
+            "Soru": "Kit Akademiden danışmanlık alan var mı?"
+        },
+        {
+            "Tarih": "02.05.2026 15:22:31",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_98ddf043",
+            "Konular": "",
+            "Soru": "Merhaba. İyi günler dilerim her birinize. Lütfen bilenler cevaplasın. Almanyada bir işveren, fabrika sahibi Türkiyeden vasıfsız ve dil bilmeyen bir eleman için iş vizesi hallede bilir mi?"
+        },
+        {
+            "Tarih": "02.05.2026 14:39:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c1efea51",
+            "Konular": "denklik",
+            "Soru": "Arkadaşlar öncelikle herkese merhabalar.Bi konuda bilginize danışmak istiyorum.Bundan iki buçuk yıl önce 81-a kalifiyeli işçi vizesi ile Almanya’ya geldim.Çıraklık okulundan aldıgım kalfalık Belgem 16. Madde olduğu için geçerli sayıldı ve geldim, Almanya da yaşıyorum. Şimdi Türkiye’de ki 18 yaşında olan kardeşim de mezun oldu ve 16. Maddeden kalfalık belgesine sahip. Sorum şu ki kardeşim için nasıl bir yol izlesem daha iyi Olur? İhk için denkliğe başvuru yapsam denklik ona da çıkar mı ? Bildiğim kadarıyla daha Yeni 18 olduğu için ,okulun yaptığı sadece saglıktan yararlanabilecegi bir sigortası vardı .Bu denklik çıkmasında bir sorun olur mu ?"
+        },
+        {
+            "Tarih": "02.05.2026 10:40:51",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "randevu",
+            "Soru": "Ve En yakın termin ne zamana veriliyor ?"
+        },
+        {
+            "Tarih": "02.05.2026 10:11:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_abbf28cc",
+            "Konular": "",
+            "Soru": "Aşağı yukarı ne kadar sürer biliyor musunuz?"
+        },
+        {
+            "Tarih": "02.05.2026 09:42:09",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b39947d4",
+            "Konular": "sehir",
+            "Soru": "Freiburg da yaşayan kimse var mı ?"
+        },
+        {
+            "Tarih": "02.05.2026 09:01:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Berberim Almanya’ya nasıl gidebilirim ?"
+        },
+        {
+            "Tarih": "02.05.2026 08:39:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4cbacbbb",
+            "Konular": "",
+            "Soru": "Merhabalar dil belgesini hangi aşamada istiyorlar acaba?"
+        },
+        {
+            "Tarih": "02.05.2026 07:35:08",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_abbf28cc",
+            "Konular": "",
+            "Soru": "Merhaba Almanya çocuk üzerinden göç başvurusu yapılamıyor İzmir için belli bir başvuru tarihi var mı?"
+        },
+        {
+            "Tarih": "02.05.2026 07:31:46",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_abbf28cc",
+            "Konular": "",
+            "Soru": "Almanya çocuk üzerinden göç başvurusu yapılamıyor İzmir için belli bir başvuru tarihi var mı?"
+        },
+        {
+            "Tarih": "01.05.2026 23:24:16",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0b751f65",
+            "Konular": "dil, denklik, doktor_fachgebiet",
+            "Soru": "Merhbalar bi arkadaşımın B2 sertifikası var Radyoloji teknikeri (Mtra-Mtr) denklik başvurusu yapacağız da hangi eyalet de iş bulma olasılığı yüksektir Yada iş önerebileceğiniz bir Hastane mevcut mu??"
+        },
+        {
+            "Tarih": "01.05.2026 23:21:55",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_79878c28",
+            "Konular": "",
+            "Soru": "Mannheim kiralar çok mu yüksek bilgisi plan varmı nerden bakabiliriz ?"
+        },
+        {
+            "Tarih": "01.05.2026 23:02:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Mannheim çevresinde 2 tane şef arayan var mı ?"
+        },
+        {
+            "Tarih": "01.05.2026 22:49:12",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_bc3b0431",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar Magdeburgdan vize alan varmı?16.04.2026 konsolosluk randevumuz vardı eşim konsolosluğa ulaştı dediler evraklarınız Almanyaya ulaşmış ama hâla bir ses yok?"
+        },
+        {
+            "Tarih": "01.05.2026 20:02:38",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_fd089997",
+            "Konular": "",
+            "Soru": "Hakan bey kaç aydır bekliyordunuz vizenizi ?"
+        },
+        {
+            "Tarih": "01.05.2026 17:09:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_59699c0d",
+            "Konular": "",
+            "Soru": "Merhabalar denkliği Almanya&apos;dan mı yoksa Türkiye&apos;den mi almak daha rahat bilgisi olan varsa yardımcı olabilir mi ?"
+        },
+        {
+            "Tarih": "01.05.2026 15:42:50",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_de25eb5d",
+            "Konular": "",
+            "Soru": "Kendi memurumuz kim, ilk işyeri ön onayında yazılı olan mı ? Ludwigshafen a bağlıyım burdaki ausländerbehörde yi bilen bilir sıkıntılı yer daha hiç içeri giremedim burda. Ve adres kaydımı evsahibi silmiş, bu yüzden gecikiyor yada iptal olmuş olabilirmi iş değişikliği işlemi ?"
+        },
+        {
+            "Tarih": "01.05.2026 15:34:31",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a8770ce3",
+            "Konular": "",
+            "Soru": "A1 sertifikası alarak hangi yollarla Almanya&apos;ya gidebilirim. Bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "01.05.2026 14:28:40",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_de25eb5d",
+            "Konular": "",
+            "Soru": "İş değişikliği için işveren ausländerbehörde başvurdu 1 ayı geçti. Kendi eyaletindeki merkeze mi başvuruyorlar yoksa benim anmeldungun olduğu yere mi ? Ve bu süreç bu kadar uzun sürmesi normal mi ? Daha önce böyle bir olay yaşayan lütfen beni bilgilendirebilir mi ?"
+        },
+        {
+            "Tarih": "01.05.2026 14:28:33",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_de25eb5d",
+            "Konular": "",
+            "Soru": "İş değişikliği için işveren ausländerbehörde başvurdu 1 ayı geçti. Kendi eyaletindeki merkeze mi başvuruyorlar yoksa benim anmeldungun olduğu yere mi ? Ve bu süreç bu kadar uzun sürmesi normal mi ? Daha önce böyle bir olay yaşayan lütfen beni bilgilendirebilir mi ?"
+        },
+        {
+            "Tarih": "01.05.2026 14:26:05",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f508e67c",
+            "Konular": "",
+            "Soru": "merhaba vizeye 3 hafta once gittim idatadan basvuru takipte kayitli pasaport gozukmuyor sorun olurmu?"
+        },
+        {
+            "Tarih": "01.05.2026 13:58:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7ad96803",
+            "Konular": "dil",
+            "Soru": "Suanki almanca seviyeniz ne peki?"
+        },
+        {
+            "Tarih": "01.05.2026 13:06:15",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Eksik evrak maili alıp kargo bekleyen var mı ?"
+        },
+        {
+            "Tarih": "01.05.2026 13:06:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Eksik evrak maili alıp kargo bekleyen var mı ?"
+        },
+        {
+            "Tarih": "01.05.2026 12:25:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ed4dfe65",
+            "Konular": "",
+            "Soru": "Arkadaşlar aramızda aşçı olup tam denkliği olan veya aşçı olup 5-6 yıl sgk sı tam yatan var mı ?"
+        },
+        {
+            "Tarih": "01.05.2026 12:23:26",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_edf3a935",
+            "Konular": "",
+            "Soru": "Tıbbi sekreterliğin denkliği var mı peki?"
+        },
+        {
+            "Tarih": "01.05.2026 09:37:37",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7a979b6b",
+            "Konular": "",
+            "Soru": "Vandaki ayşe hoca hala gruptamısın ?"
+        },
+        {
+            "Tarih": "01.05.2026 09:36:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ad4c29e2",
+            "Konular": "",
+            "Soru": "Yakın zaman polonya ehliyeti ile oturuma başvuru yapan varmı rheinland-pflaz eyaletinde?"
+        },
+        {
+            "Tarih": "01.05.2026 09:32:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Hemşire olarak dil olmadan nasıl çalışabilirsiniz? Kişiler ile iletişimi nasıl kuracaksınız?"
+        },
+        {
+            "Tarih": "01.05.2026 08:20:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_479012cb",
+            "Konular": "",
+            "Soru": "Bana mail bfaa’dan gelmişti ona istinaden cvp yazdım ama otomatik bir cevap gelmesi gerektiğini hiç düşünmemiştim Acaba mail atıp sorsam mı?"
+        },
+        {
+            "Tarih": "01.05.2026 08:05:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_479012cb",
+            "Konular": "",
+            "Soru": "Altay Bey, mail atınca size otomatik cevap geldi mi?"
+        },
+        {
+            "Tarih": "01.05.2026 00:43:34",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c1a75cb1",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba yardımcı olursanız sevinirim. Şimdi benim seyehat sağlık sigortam bitmişti ama bugün kargodan mesaj geldi. Konsoloslukta hiç beni önceden aramadı eksik evrak diye buna benzer bir durum yaşıyan var mı?"
+        },
+        {
+            "Tarih": "01.05.2026 00:43:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c1a75cb1",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba yardımcı olursanız sevinirim. Şimdi benim seyehat sağlık sigortam bitmişti ama bugün kargodan mesaj geldi. Konsoloslukta hiç beni önceden aramadı eksik evrak diye buna benzer bir durum yaşıyan var mı?"
+        },
+        {
+            "Tarih": "30.04.2026 21:36:33",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_63dacede",
+            "Konular": "",
+            "Soru": "Münih’te yüksek lisans yapan varsa bana ulaşabilir mi?"
+        },
+        {
+            "Tarih": "30.04.2026 21:36:21",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_63dacede",
+            "Konular": "",
+            "Soru": "Münih’te yüksek lisans yapan varsa bana ulaşabilir mi?"
+        },
+        {
+            "Tarih": "30.04.2026 21:10:39",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d962058c",
+            "Konular": "",
+            "Soru": "Merhaba, 7 yıl Türkiye deneyimli bir mimar Almanya&apos;da ne kadar maaşla başlayabilir ofis pozisyonlarında?"
+        },
+        {
+            "Tarih": "30.04.2026 19:29:20",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_2f6f33dd",
+            "Konular": "",
+            "Soru": "Merhaba , tam denklikte evrak tesliminde , iş sözleşmesi yanında iş beyanını da isteniyor mu ?"
+        },
+        {
+            "Tarih": "30.04.2026 18:11:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5a008c4f",
+            "Konular": "ausbildung",
+            "Soru": "Arkadaşlar aramızda aktif olarak ausbildung yapan yada yapmış olan var mı?"
+        },
+        {
+            "Tarih": "30.04.2026 17:38:19",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c1a75cb1",
+            "Konular": "yurt",
+            "Soru": "Arkadaşlar bana yurt içi kargodan mesaj geldi normalde ups den gelmiyor mu?"
+        },
+        {
+            "Tarih": "30.04.2026 17:36:54",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c1a75cb1",
+            "Konular": "yurt",
+            "Soru": "Arkadaşlar bana yurt içi kargodan mesaj geldi normalde ups den gelmiyor mu?"
+        },
+        {
+            "Tarih": "30.04.2026 17:17:03",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_11e44442",
+            "Konular": "sehir",
+            "Soru": "Merhaba arkadaşlar Aşçı olarak Hamburg tarafında çalışan var mı grupta ?"
+        },
+        {
+            "Tarih": "30.04.2026 17:05:01",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_80be55ec",
+            "Konular": "",
+            "Soru": "Diplo.de üzerindenmi başvuru yaptınız ? Ön incleme nekadar sürdü sizde? Ön incelemeden onay aldıysanız sonrasında ne oldu size herhangibir dosya numarası vs verildimi ?"
+        },
+        {
+            "Tarih": "30.04.2026 16:57:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Şuanda aile birleşimi yapan varmı ?"
+        },
+        {
+            "Tarih": "30.04.2026 16:32:48",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c44e9ae7",
+            "Konular": "",
+            "Soru": "1 Mayıs&apos;ta UPS kargo çalışıyor mu?"
+        },
+        {
+            "Tarih": "30.04.2026 14:59:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Hayır kısmıydı ama başvurduğum türde denklikle alakası yoktu . İtiraz Ankara’ya yapılmıyor mu ?"
+        },
+        {
+            "Tarih": "30.04.2026 14:15:16",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_cce24489",
+            "Konular": "vize",
+            "Soru": "Herkese merhaba şartlı kabul ile ilgili bir soru soracağım. Bremen’den şartlı kabul aldık. Freiburgda bir kursa kaydolsak vize ve oturum işlemlerinde sorun yaşar mıyız?"
+        },
+        {
+            "Tarih": "30.04.2026 13:38:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_12663d43",
+            "Konular": "randevu",
+            "Soru": "Merhaba mart 10 de shengen başvurusu yaptım(idata üzerinden), ortalama ne zaman geri dönüs olur alman konsolosluğundan? İstanbul&apos;dan başvuran arkadaşlar ortalama ne kadar sürede geri donüş oluyor?"
+        },
+        {
+            "Tarih": "30.04.2026 13:18:00",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Merhaba alman çocuk üzeri vize başvurusu yaptım eşimden pasaport mitvetrag istediler normal mi karşılasan oldu mu ?"
+        },
+        {
+            "Tarih": "30.04.2026 12:51:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f7c2885f",
+            "Konular": "",
+            "Soru": "Gökhan Çakır, DNC danışmanlıktan danışmanlık alan var mı?"
+        },
+        {
+            "Tarih": "30.04.2026 12:49:41",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_50c2b165",
+            "Konular": "denklik",
+            "Soru": "Sağlıkçılara denklik belgelerini elden teslim almıyoruz dediler. Tam olarak nereye teslim ettiniz acaba?"
+        },
+        {
+            "Tarih": "30.04.2026 12:46:57",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d55b1c0f",
+            "Konular": "",
+            "Soru": "Aile birleşimi yapcam a1 sınavımı bekliyorum dijitaldan bilgisi olan dönüş yapabilir mi?"
+        },
+        {
+            "Tarih": "30.04.2026 12:05:24",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "randevu",
+            "Soru": "Ayrıca memurum bana randevu gününde eksim evrağını sana attığımız randevu mailine yanıt olarak at dedi acaba sistem onu yeni bir mail olarak algılamadığı için mi atmadı otomatik mail?"
+        },
+        {
+            "Tarih": "30.04.2026 12:04:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "para",
+            "Soru": "Randevudan sonra atılan mailden sonra otomatik mail gelmemesi mailin gitmediğini mi gösterir yoksa sisteme kayıtlı olduğum için randevudan önce böyle oluyor da sonra olmuyor mu?"
+        },
+        {
+            "Tarih": "30.04.2026 12:04:08",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_62dd0146",
+            "Konular": "",
+            "Soru": "arkadaşlar bugün eksik evrak olayım için ankara konsolosluğunu aradım kadın bana mail attınız mı dedi attım dedim otomatik mail geldi mi dedi gelmedi dedim doğru yere mi attınız dedi evet dedim acaba randevuya gittiğim ve sistemde dosyam olduğu parmak izi verdiğim için mi otomatik mail atmıyorlar?"
+        },
+        {
+            "Tarih": "30.04.2026 11:23:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f968aa22",
+            "Konular": "",
+            "Soru": "Merhaba danışmanım ön onayımın çıktığını söyledi ön onay evime gelecekmiş ne kadar zamana gelir acaba?"
+        },
+        {
+            "Tarih": "30.04.2026 11:04:32",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_b3d2d703",
+            "Konular": "sehir",
+            "Soru": "German Studio Frankfurt kursuna giden var mı?"
+        },
+        {
+            "Tarih": "30.04.2026 10:13:43",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_759ddd05",
+            "Konular": "",
+            "Soru": "Merhaba. Ben 4 yıllık üniversite mezunuyum. Eşimle birlikte Almanyaya gitmek istiyoruz. Güvenilir bir danışmanlık firması arayışındayız, Ankarada bildiğiniz varsa uygun fiyatlı ve güvenilir bir danışmanlık firması önerebilir misiniz?"
+        },
+        {
+            "Tarih": "30.04.2026 09:19:24",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_fa7d6664",
+            "Konular": "",
+            "Soru": "Başvuru tarihinden teslimata kadar geçen süre kaç gündü lütfen?"
+        },
+        {
+            "Tarih": "30.04.2026 08:39:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5cb17cea",
+            "Konular": "denklik",
+            "Soru": "Arkadaşlar merhaba denklik başvurusunda Almancaya çevirdiğimiz belgeleri göndermek yeterlimi yoksa yanına türkçe kopyalarınıda eklemelimiyiz ?"
+        },
+        {
+            "Tarih": "30.04.2026 06:04:31",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_29fe4486",
+            "Konular": "vize, randevu",
+            "Soru": "Merhaba ulusal vizeye basvurucagim skilled worker with university degree olan categoriye. Randevu kac gunde veriliyor, benim kontrakt 1 temmuzda basliyor. Su an haziran ayinin sonuna randevu almam mumkun mu? Kac gunde vize cikiyor?"
+        },
+        {
+            "Tarih": "30.04.2026 04:47:04",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1778f9e9",
+            "Konular": "",
+            "Soru": "20 MAYIS ADANA KÖKDİL de sınava gireceğim o gün girecek olan varmı ?"
+        },
+        {
+            "Tarih": "30.04.2026 00:12:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_fa7d6664",
+            "Konular": "vize",
+            "Soru": "Gönüllülük için ulusal vize başvurusu yaptıktan sonra, İstanbul’daki Alman Konsolosluğu’ndan pasaportu geri almak kaç gün sürer?"
+        },
+        {
+            "Tarih": "29.04.2026 23:28:27",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ec6e2485",
+            "Konular": "dil",
+            "Soru": "Almanca öğreneceğim bir uygulama önerebilir misiniz ?"
+        },
+        {
+            "Tarih": "29.04.2026 23:16:49",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "Almanca öğreneceğim bir uygulama önerebilir misiniz ?"
+        },
+        {
+            "Tarih": "29.04.2026 23:13:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "yurt",
+            "Soru": "Peki başka sorum var ev kayınpederin kira sözleşmesinde kira ücreti yok yazma imkanımız var yazmam ekstra bir avantaj mı yoksa?"
+        },
+        {
+            "Tarih": "29.04.2026 22:34:22",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_1ae62a25",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba Aurichte yaşıyorum Ausbildung yeri arıyorum yardımcı olacak var mı ?"
+        },
+        {
+            "Tarih": "29.04.2026 22:34:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1ae62a25",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba Aurichte yaşıyorum Ausbildung yeri arıyorum yardımcı olacak var mı ?"
+        },
+        {
+            "Tarih": "29.04.2026 22:22:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "vize, randevu",
+            "Soru": "İyi akşamlar, vize başvurusuna giderken randevu tarihimi pdf halinde çıkarmam gerekiyor mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 22:18:41",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize, randevu",
+            "Soru": "İyi akşamlar, vize başvurusuna giderken randevu tarihimi pdf halinde çıkarmam gerekiyor mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 22:10:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Merhaba aile birleşimi vizesinde yabancı polis eşimi çağırdı ev sözleşmesi ve pasaportu getirmesini istemiş bu durumla karşılaşan var mı ?"
+        },
+        {
+            "Tarih": "29.04.2026 22:02:12",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_02aa629c",
+            "Konular": "",
+            "Soru": "Merhabalar bende bugün 81A ön onayımı gönderdim mail gelmeden evrakları toplamak istiyorum evrak listesini bilen varsa yardımcı olabilir mi?"
+        },
+        {
+            "Tarih": "29.04.2026 21:41:53",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_a0f1490a",
+            "Konular": "yurt",
+            "Soru": "almanyada ev sahibiyle kira sözleşmesi yapıyorum da doğruluğunu kontrol edecek yardımcı olacak birileri var mıdır?"
+        },
+        {
+            "Tarih": "29.04.2026 21:41:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a0f1490a",
+            "Konular": "yurt",
+            "Soru": "almanyada ev sahibiyle kira sözleşmesi yapıyorum da doğruluğunu kontrol edecek yardımcı olacak birileri var mıdır?"
+        },
+        {
+            "Tarih": "29.04.2026 21:20:11",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "ilk ve acil yardım mezunlarından denklikte mezuniyet sonrası 152 saatlik bir staj yada bitirme sınavı istenen oldu mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 21:19:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "ilk ve acil yardım mezunlarından denklikte mezuniyet sonrası 152 saatlik bir staj yada bitirme sınavı istenen oldu mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 20:39:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_37dbecd7",
+            "Konular": "para",
+            "Soru": "Türkiye den Almanya ya nasıl hızlı para gönderirim?"
+        },
+        {
+            "Tarih": "29.04.2026 20:30:37",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_74f8d6fb",
+            "Konular": "vize",
+            "Soru": "Vize görüşmesine girdim, bekliyorum nereye mail atmalıyım durumumu sorgulamak için?"
+        },
+        {
+            "Tarih": "29.04.2026 20:29:46",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_74f8d6fb",
+            "Konular": "vize",
+            "Soru": "Vize görüşmesine girdim, bekliyorum nereye mail atmalıyım durumumu sorgulamak için?"
+        },
+        {
+            "Tarih": "29.04.2026 20:03:49",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_583e8edc",
+            "Konular": "",
+            "Soru": "Bilgisi olan yada ön onay alan var mı burdan?"
+        },
+        {
+            "Tarih": "29.04.2026 19:03:37",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_979573a7",
+            "Konular": "vize, dil",
+            "Soru": "Goethe A2 60 aldım arkadaşlar ve sınavı geçtim fakat çok düşük bi puan. Vize başvurusunda etkiler mi acaba?"
+        },
+        {
+            "Tarih": "29.04.2026 18:59:52",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_979573a7",
+            "Konular": "vize, dil",
+            "Soru": "Goethe A2 60 aldım arkadaşlar ve sınavı geçtim fakat çok düşük bi puan. Vize başvurusunda etkiler mi acaba?"
+        },
+        {
+            "Tarih": "29.04.2026 17:54:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Tecrübesi olan veya yakından bu konularda tecrübeli birini tanıyan varsa bana cevap verebilir mi?"
+        },
+        {
+            "Tarih": "29.04.2026 17:53:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Birde banka borcum vardır, O teşkil eder mi ?"
+        },
+        {
+            "Tarih": "29.04.2026 17:52:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_06c16c2f",
+            "Konular": "para",
+            "Soru": "Arkadaşlar selam, kart vizesine başvururken banka hesabime sadece 6 ay için masrafımı kapsayacak kadat para yatırabilir miyiz yoksa 12 ayı kapsayacak kadar mı olması lazım?"
+        },
+        {
+            "Tarih": "29.04.2026 17:50:20",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Meslek lisesi çerçeve eğitim programını milli eğitim bakanlığı Ankara hemen aynı gün verıyor mu acaba bilen varmı ?"
+        },
+        {
+            "Tarih": "29.04.2026 17:49:53",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Ankara ups kargo İstanbul’a kaç günde teslim yapıyor ?"
+        },
+        {
+            "Tarih": "29.04.2026 17:49:43",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Ankara ups kargo İstanbul’a kaç günde teslim yapıyor ?"
+        },
+        {
+            "Tarih": "29.04.2026 17:48:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Meslek lisesi çerçeve eğitim programını milli eğitim bakanlığı Ankara hemen aynı gün verıyor mu acaba bilen varmı ?"
+        },
+        {
+            "Tarih": "29.04.2026 17:33:59",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Merhaba, Alman hükümeti tarafından denetlenmiyor mu bu durumlar? Nasıl bu kadar rahatlar?"
+        },
+        {
+            "Tarih": "29.04.2026 17:04:12",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_076fd81c",
+            "Konular": "vize",
+            "Soru": "23 mart fırsat kartı için vize randevusuna gittim ankaraya, 1 ayı geçti henüz dönüş olmadı sizce normal midir?"
+        },
+        {
+            "Tarih": "29.04.2026 15:23:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_11d1bf27",
+            "Konular": "vize",
+            "Soru": "iltica sonrasi gönüllü dönüs yapan birine ulusal Vize verirler mi?"
+        },
+        {
+            "Tarih": "29.04.2026 14:48:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Merhaba dortmundda yaşayan var mı? Buluşmalar oluyor mu hiç?"
+        },
+        {
+            "Tarih": "29.04.2026 14:41:59",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f69c1276",
+            "Konular": "",
+            "Soru": "Merhaba Benim Adim Sinan. Almanya’da hemşire ve fizyoterpist ve ergoterpist arıyoruz. İş arayan varmıdır?"
+        },
+        {
+            "Tarih": "29.04.2026 13:32:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Ankara’dan ups mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "29.04.2026 13:32:47",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Ankara’dan ups mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "29.04.2026 13:31:28",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a7ab4f2",
+            "Konular": "",
+            "Soru": "Merhaba, hic AT 11 ile MR cekimine giden biri oldu mu? AT 11 MR cekimini karsiliyor mu bilgisi olan birileri var mi?"
+        },
+        {
+            "Tarih": "29.04.2026 13:04:12",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9ddf3cc5",
+            "Konular": "denklik",
+            "Soru": "ön lisans yaşlı bakım için giden ve denklik yaptıran biri varmı??"
+        },
+        {
+            "Tarih": "29.04.2026 12:58:03",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_23c643c2",
+            "Konular": "",
+            "Soru": "Son zamanlar da nrw ön onay alan oldu mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 12:57:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_23c643c2",
+            "Konular": "",
+            "Soru": "Son zamanlar da nrw ön onay alan oldu mu ?"
+        },
+        {
+            "Tarih": "29.04.2026 12:27:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f030606e",
+            "Konular": "",
+            "Soru": "Merhaba, Almanya&apos;da anmeldungu olmayan birisi Almanya&apos;daki bir kuruma sunulmak üzere Almanya&apos;dan nasıl adli sicil kaydı alabilir, bu konuda bilgisi olan varsa bana ulaşabilir mi?"
+        },
+        {
+            "Tarih": "29.04.2026 11:11:03",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f3524b77",
+            "Konular": "dil",
+            "Soru": "Arkadaşlar konsoloslukta randevusunda dil okulu için Telc sınavına giripte biz TELCe güvenmiyoruz diyerek müdürümüzü çağırıyoruz deyip sizinle Almanca mülakat yapan oldu mu?"
+        },
+        {
+            "Tarih": "29.04.2026 10:32:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6e979f42",
+            "Konular": "",
+            "Soru": "Niedersachsen eyaletinde son zamanda ön onayı gelen var mı?"
+        },
+        {
+            "Tarih": "29.04.2026 09:35:47",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5922e3ed",
+            "Konular": "",
+            "Soru": "merhaba, aranızda hiç fırsat kart (Chancenkarte\/Opportunity Card) ile Almanya&apos;ya gideniniz var mı?"
+        },
+        {
+            "Tarih": "29.04.2026 06:33:53",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7cd76d92",
+            "Konular": "sigorta",
+            "Soru": "Bluecard’a aileyle birlikte başvuru yapan oldu mu? TK’dan sigorta yaptırdım ancak henüz işe giriş olmadığından başlamadı. Aile sigortasına dair yazı alınabiliyor mu?"
+        },
+        {
+            "Tarih": "28.04.2026 23:24:48",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_49c20d6e",
+            "Konular": "",
+            "Soru": "Eksik evrak maili alıp pasaportu gelen veya bekleyen var mı??"
+        },
+        {
+            "Tarih": "28.04.2026 21:16:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_622a602e",
+            "Konular": "randevu",
+            "Soru": "Ankara idata kargo mesajı alan var mı bugün?"
+        },
+        {
+            "Tarih": "28.04.2026 21:13:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4cbacbbb",
+            "Konular": "",
+            "Soru": "İyi akşamlar. Şubat ayında denkliğe başvurduk fakat bir cevap yok hala. Ne zaman haber gelir?"
+        },
+        {
+            "Tarih": "28.04.2026 21:04:26",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_de25eb5d",
+            "Konular": "",
+            "Soru": "1 aydır bekliyorum ön onay gibi mi uzun sürüyor ?"
+        },
+        {
+            "Tarih": "28.04.2026 20:56:39",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6aa9ce81",
+            "Konular": "",
+            "Soru": "eksik evrak vardı gönderdim sonra ups istediler normal mi ?"
+        },
+        {
+            "Tarih": "28.04.2026 20:55:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6aa9ce81",
+            "Konular": "",
+            "Soru": "ben antrag olustururken benden istedi ups neden ?"
+        },
+        {
+            "Tarih": "28.04.2026 19:27:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f4fae5f9",
+            "Konular": "vize",
+            "Soru": "Merhabalar Almanya için hızlıca vize randevusu alabileceğim güvenilir bir site var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 18:40:44",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d11a6d8c",
+            "Konular": "",
+            "Soru": "Tamam onu da hallederim. Parayı yanımda götürsem beyan etsem bi problem olur mu?"
+        },
+        {
+            "Tarih": "28.04.2026 18:36:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d11a6d8c",
+            "Konular": "",
+            "Soru": "Sadece satış belgem var çevirttim almancaya da. Sonra beyan mı vercem?"
+        },
+        {
+            "Tarih": "28.04.2026 18:17:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d11a6d8c",
+            "Konular": "",
+            "Soru": "Türkiyeden almanyaya araba ev satıp parasını getiren var mı? Getirirken ne yaptınız?"
+        },
+        {
+            "Tarih": "28.04.2026 18:17:54",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d11a6d8c",
+            "Konular": "",
+            "Soru": "Türkiyeden almanyaya araba ev satıp parasını getiren var mı? Getirirken ne yaptınız?"
+        },
+        {
+            "Tarih": "28.04.2026 17:31:06",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_06c16c2f",
+            "Konular": "vize",
+            "Soru": "Merhaba, banka borcu vize alımını engller mi ?"
+        },
+        {
+            "Tarih": "28.04.2026 16:53:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Ben İstanbuldan deport oldum şu anda Baküdeyim ve KKTC ye gideceğim ve bütün biletler Türkiye aktarmalı eğer o bileti alırsam türkiyede bir sorun olur mu?"
+        },
+        {
+            "Tarih": "28.04.2026 16:49:39",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d7be1174",
+            "Konular": "yurt",
+            "Soru": "BS Group Yurt Dışı Danışmanlık güvenli mi bilen var mı acaba?"
+        },
+        {
+            "Tarih": "28.04.2026 16:49:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d7be1174",
+            "Konular": "yurt",
+            "Soru": "BS Group Yurt Dışı Danışmanlık güvenli mi bilen var mı acaba?"
+        },
+        {
+            "Tarih": "28.04.2026 16:18:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f7c2885f",
+            "Konular": "dil",
+            "Soru": "Merhaba arkadaşlar Türkiye’de telc sınavına girenler varsa bilgi verebilir mi?"
+        },
+        {
+            "Tarih": "28.04.2026 15:34:30",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "28.04.2026 15:34:15",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "28.04.2026 15:13:26",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_964a7518",
+            "Konular": "denklik",
+            "Soru": "Merhaba, ingilizce öğretmenliği denklik için en iyi yer neresi?"
+        },
+        {
+            "Tarih": "28.04.2026 14:54:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ff289172",
+            "Konular": "",
+            "Soru": "Merhaba. 81A Konsolosluktan ek olarak yeni iş sözleşmesi güncel çalışma durumu \/ C formu sürücü kursu işbirliği istediler. 31 Mart tarihinde gönderdim. Sonuç yaklaşık ne kadar sürede gelir?"
+        },
+        {
+            "Tarih": "28.04.2026 14:43:47",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4543346d",
+            "Konular": "",
+            "Soru": "Merhabalar , ile birleşimi süreci ile ilgilenen yada tanıdığınız güvenilir bir kurum veya yönlendirebileceğiniz bir varmıdır ?"
+        },
+        {
+            "Tarih": "28.04.2026 14:43:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_68fb8d78",
+            "Konular": "",
+            "Soru": "Merhaba, yakın zamanda Antalyadan kültür için atama alan oldu mu?"
+        },
+        {
+            "Tarih": "28.04.2026 14:41:52",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_68fb8d78",
+            "Konular": "",
+            "Soru": "Merhaba, yakın zamanda Antalyadan kültür için atama alan oldu mu?"
+        },
+        {
+            "Tarih": "28.04.2026 14:41:26",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_a37ae68b",
+            "Konular": "",
+            "Soru": "Merhaba, eşimin kâğıtlarını alman konsolosa verdik. Ausländerbehörde den bana mektub geldi kendi iş kâğıtımı falan vermem gerekiyor diye. Onları da hallettim. Onlar da hepsini konsolosa yolladılar. Bundan sonra ki işlemler ne kadar sürer bi bilginiz var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 14:30:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a31dacad",
+            "Konular": "",
+            "Soru": "Merhabalar Almanya konsolosluğuna D türü iş vizesine başvuru yaptım. sağlık sigortası verdik ama bu seyhat sigortası dediler eksik evrak diye mail geldi. hangi tür sağlık sigortası olması lazım acaba yardımcı olabilir misiniz?"
+        },
+        {
+            "Tarih": "28.04.2026 14:22:42",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_1148535e",
+            "Konular": "",
+            "Soru": "Gayrettepe ziyaret almanya pasaport bekleyen var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 14:22:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1148535e",
+            "Konular": "",
+            "Soru": "Gayrettepe ziyaret almanya pasaport bekleyen var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 13:18:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1778f9e9",
+            "Konular": "",
+            "Soru": "20 MAYIS ADANA KÖKDİL de sınava gireceğim o gün girecek olan varmı ?"
+        },
+        {
+            "Tarih": "28.04.2026 12:15:03",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e0184ade",
+            "Konular": "randevu",
+            "Soru": "Başvurular halen idata dan oluyor değil mi? Bir güncelleme yok sanırım?"
+        },
+        {
+            "Tarih": "28.04.2026 10:13:03",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4ae35314",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba Bonn’da ya da Köln’de uygun fiyatlı yeminli tercüman bilen var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 09:56:31",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d97b4f8f",
+            "Konular": "",
+            "Soru": "Selamlar, vizeye başvururken 39 çalışma saati üzerinden başvurmuştum. Vizem geldi süreç biraz uzayınca iş verenim çalışma saatimi 30saat olarak güncelledi. Bu sorun olur mu? Durumu bildirmem gereken bir kurum var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 09:56:06",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d97b4f8f",
+            "Konular": "",
+            "Soru": "Selamlar, vizeye başvururken 39 çalışma saati üzerinden başvurmuştum. Vizem geldi süreç biraz uzayınca iş verenim çalışma saatimi 30saat olarak güncelledi. Bu sorun olur mu? Durumu bildirmem gereken bir kurum var mı?"
+        },
+        {
+            "Tarih": "28.04.2026 08:23:04",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize",
+            "Soru": "Merhabalar bende vize başvurusunda bulunucam fakat uçak biletini almak zorunda mıyım, sağlık sigortası yaparken tarih belirterek mi yapılıyor ?"
+        },
+        {
+            "Tarih": "28.04.2026 01:28:22",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_f69079df",
+            "Konular": "",
+            "Soru": "İhk fosadan ödeme maili geldikten ne zaman sonra sonuç çıkar ?"
+        },
+        {
+            "Tarih": "28.04.2026 01:09:33",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_2e0c1877",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar merhaba. Bana 20 nisan da Almanya ulusal vize başvurum. Almanyaya giriş yasağından dolayı reddedilmisti. Bağlı olduğum yabancılar şubesine mail attım. Gelen cevapta ise Almanyaya giriş yasağınız kaldırılacaktır denildi. Dava açmadan itiraz edebiliyor muyuz varmı bu durumu daha yaşayan ya da bilgisi olan ?"
+        },
+        {
+            "Tarih": "28.04.2026 00:53:23",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f69079df",
+            "Konular": "",
+            "Soru": "İhk fosadan ödeme maili geldikten ne zaman sonra sonuç çıkar ?"
+        },
+        {
+            "Tarih": "28.04.2026 00:52:50",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f69079df",
+            "Konular": "",
+            "Soru": "İhk fosadan ödeme maili geldikten ne zaman sonra sonuç çıkar ?"
+        },
+        {
+            "Tarih": "27.04.2026 22:37:33",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_51de5835",
+            "Konular": "",
+            "Soru": "Merhaba geri dönüş yaptınız mı?"
+        },
+        {
+            "Tarih": "27.04.2026 22:21:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e2fd4c11",
+            "Konular": "ausbildung",
+            "Soru": "Ankara konsolosluğundan Ausbildung randevusu gelen veya bekleyen varmı?"
+        },
+        {
+            "Tarih": "27.04.2026 21:38:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Ben yükselden mi bahsediyoruz ?"
+        },
+        {
+            "Tarih": "27.04.2026 21:35:17",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Merhaba Almanya gelmek isteyen bir arkadaşım için önerebileceğiniz bir danışman var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 21:35:12",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Merhaba Almanya gelmek isteyen bir arkadaşım için önerebileceğiniz bir danışman var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 21:31:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_683dc4de",
+            "Konular": "vize",
+            "Soru": "Merhaba birşey sormak istiyorum. 52 yaşındaki biri Almanya&apos;daki bir firmayla iş sözleşmesi imzalarsa vize alabilir mi?"
+        },
+        {
+            "Tarih": "27.04.2026 21:05:12",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_254efb67",
+            "Konular": "vize",
+            "Soru": "Merhabalar, 30 günlük staj yapacağım Almanya’da. Staj için şirket davet mektubu gönderecek. Vize türü olarak ticari mi seçmeliyiz?"
+        },
+        {
+            "Tarih": "27.04.2026 20:19:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "hayırlı akşamlar. Almanya’ya eşya taşıyıcak şirket önerisi olan var mı istanbul civarı ?"
+        },
+        {
+            "Tarih": "27.04.2026 20:18:56",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "hayırlı akşamlar. Almanya’ya eşya taşıyıcak şirket önerisi olan var mı istanbul civarı ?"
+        },
+        {
+            "Tarih": "27.04.2026 19:29:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9d50dcaf",
+            "Konular": "",
+            "Soru": "Merhabalar Çarşamba günü İzmir İdataya randevum var 81a şoför olarak başvuru yaptım. Belgeleri hazırlıyorum, sabıka kaydı istiyorlar mı?"
+        },
+        {
+            "Tarih": "27.04.2026 19:25:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_77bcf45b",
+            "Konular": "sehir",
+            "Soru": "Frankfurt için ön onay ne zaman gelir bilginiz var mı?"
+        },
+        {
+            "Tarih": "27.04.2026 19:25:04",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_77bcf45b",
+            "Konular": "sehir",
+            "Soru": "Frankfurt için ön onay ne zaman gelir bilginiz var mı?"
+        },
+        {
+            "Tarih": "27.04.2026 17:24:55",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_b2a9d3c2",
+            "Konular": "",
+            "Soru": "Merhaba Fintiba destek için ayrı bir grup var mı Expatrionun olduğu gibi varsa linkini atabilir misiniz?"
+        },
+        {
+            "Tarih": "27.04.2026 17:04:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Merhaba Almanya gelmek isteyen bir arkadaşım için önerebileceğiniz bir danışman var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 17:04:16",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Merhaba Almanya gelmek isteyen bir arkadaşım için önerebileceğiniz bir danışman var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 16:34:27",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2584c58c",
+            "Konular": "denklik",
+            "Soru": "Herkese merhaba meslek lisesi elektrik elektronik bölümü mezunuyum ev ve ofis elektrik tesisatı işleriyle uğraşıyorum diplomam ile kısmı denklik alıp almanya nasıl yol alabilirim yardımcı olabilecek biri varmı yada bu yolla giden biri varmı?"
+        },
+        {
+            "Tarih": "27.04.2026 16:29:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_bd945199",
+            "Konular": "",
+            "Soru": "18 a vizesi ne kadar zamanda çıkıyor bilgis olan var mı?"
+        },
+        {
+            "Tarih": "27.04.2026 16:22:51",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7ad96803",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba , Ausbildung vizesi 52F Ankara Konsolosluğu&apos; ndan başvuran var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 16:18:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7ad96803",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba , Ausbildung vizesi 52F Ankara Konsolosluğu&apos; ndan başvuran var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 16:14:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5e7cfeb8",
+            "Konular": "vize",
+            "Soru": "Merhaba sorumluluk sigortası yaptırmak istiyorum öğrenciyim bloke hesabım var nerden önerirsiniz?"
+        },
+        {
+            "Tarih": "27.04.2026 15:02:48",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_02aa629c",
+            "Konular": "",
+            "Soru": "Yakin zamanda Ankarada 81A ön onayla başvuru yapan var mi?"
+        },
+        {
+            "Tarih": "27.04.2026 14:11:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar , bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 14:11:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar , bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "27.04.2026 14:07:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_57c18807",
+            "Konular": "",
+            "Soru": "İlk kez duydum ismini teşekkür ederim araştirayim. Siz önerir misiniz peki?"
+        },
+        {
+            "Tarih": "27.04.2026 13:53:05",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_57c18807",
+            "Konular": "",
+            "Soru": "Hangi firmayla çaliştiniz peki siz?"
+        },
+        {
+            "Tarih": "27.04.2026 13:27:19",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d3c5e7b3",
+            "Konular": "randevu",
+            "Soru": "antepte genel olarak randevu surelerini cok mu uzak tarihlere atiyolar bilginiz var mi?"
+        },
+        {
+            "Tarih": "27.04.2026 13:24:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71d010d6",
+            "Konular": "randevu",
+            "Soru": "Antep Almanya için randevu verdi ama davetiyem yetişmeyecek galiba 8 gün vermişler davetiye olmadan başvuru yapabiliyormuyuz? daha önce gidip geldim ?"
+        },
+        {
+            "Tarih": "27.04.2026 13:12:47",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "randevu",
+            "Soru": "idata Almanya için verilen tarihi ileri alabiliyor muyuz?"
+        },
+        {
+            "Tarih": "27.04.2026 13:03:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_71d010d6",
+            "Konular": "randevu",
+            "Soru": "Antep Almanya için randevu verdi ama davetiyem yetişmeyecek galiba 8 gün vermişler davetiye olmadan başvuru yapabiliyormuyuz? daha önce gidip geldim ?"
+        },
+        {
+            "Tarih": "27.04.2026 12:24:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f3ffd518",
+            "Konular": "",
+            "Soru": "Arkadaşlar HWK ya iş sözleşmesi olmadan nasıl başvuruyu kabul ettiririm, iş veren 1 haftadır dönmüyor güya iş sözleşmesi yollayacaktı?"
+        },
+        {
+            "Tarih": "27.04.2026 11:32:52",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_05999d2b",
+            "Konular": "",
+            "Soru": "Çok hızlı olmuş. İlk başvuru 14 Nisan değil mi? Mesleğiniz nedir?"
+        },
+        {
+            "Tarih": "27.04.2026 11:28:18",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ec6e2485",
+            "Konular": "dil",
+            "Soru": "Merhaba Almanca öğrenebileceğim bir uygulama önerir misiniz ?"
+        },
+        {
+            "Tarih": "27.04.2026 10:57:14",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e033807a",
+            "Konular": "",
+            "Soru": "Köln e ulaşabileceğim bir iletişim numarası var mı?"
+        },
+        {
+            "Tarih": "27.04.2026 09:54:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5a2c492e",
+            "Konular": "vize, randevu",
+            "Soru": "Tesekkurler Hande Hanim, Hangi adres üzerinden acaba; idata mi cevrimici randevu sistemi üzerinden mi Yoksa konsolosluk hizmeti portali üzerinden mi Bir de yuklenecek olan evrakların hangileri olduğunu nasıl öğrenebilirim?"
+        },
+        {
+            "Tarih": "27.04.2026 09:45:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5a2c492e",
+            "Konular": "randevu",
+            "Soru": "Herkese merhaba Eşim başvuru sahibi ve ön onayi geldi Sistem dijital olduğu için randevu talebini hangi adresten olusturacagiz acaba? Link paylasabilir misiniz lütfen Basvuru sırasında sisteme evrak yükleniyor mu? Yüklenecekse hangileri acaba?"
+        },
+        {
+            "Tarih": "27.04.2026 09:40:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_27815675",
+            "Konular": "",
+            "Soru": "Arkadaşlar ben İstanbul konsolosluğuna evrakları verirken bana sordular nasıl alacaksın vizeni bende o zaman istanbulda olmadım için dedim posta yoluyla ama şimdi İstanbula geldim nasıl onlara söyleyim ki kendim gidip alacam?"
+        },
+        {
+            "Tarih": "27.04.2026 09:16:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1522a33c",
+            "Konular": "",
+            "Soru": "Merhabalar arkadaşlar konsolosluğa götüreceğimiz belgelerin çevirisi de yeminli tercüman tarafından mı yapılmalı ?"
+        },
+        {
+            "Tarih": "27.04.2026 08:57:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6eae3a5b",
+            "Konular": "",
+            "Soru": "Danışman İlayda Bozkurt Visadealmanya kanalını tanıyan varmıdır ?"
+        },
+        {
+            "Tarih": "27.04.2026 08:57:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6eae3a5b",
+            "Konular": "",
+            "Soru": "Danışman İlayda Bozkurt Visadealmanya kanalını tanıyan varmıdır ?"
+        },
+        {
+            "Tarih": "27.04.2026 06:52:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Allah aşkına günde 100 defa yazıyorsun bu soruyu.yarin çıkacak desem okey miyiz?"
+        },
+        {
+            "Tarih": "27.04.2026 06:16:27",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_02aa629c",
+            "Konular": "vize",
+            "Soru": "Merhaba arkadaşlar 81A ön onayı verdikten sonra vize görüşmeşi için hangi evraklar gerekli ? ön onay gelmeden hazırlamaya başlamak istiyorum bilenler yazabilir mi?"
+        },
+        {
+            "Tarih": "27.04.2026 04:07:37",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a51d3dd4",
+            "Konular": "vize, randevu",
+            "Soru": "İlk başvuru 21 Şubat Randevu alma 4 Mart Konsolosluk Randevu 1 Nisan Eksik evrak talebi 23 Nisan Eksik evrak gönderimi 27 Nisan sizce vize ne zaman çıkar arkadaşlar ?"
+        },
+        {
+            "Tarih": "27.04.2026 04:07:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_a51d3dd4",
+            "Konular": "vize, randevu",
+            "Soru": "İlk başvuru 21 Şubat Randevu alma 4 Mart Konsolosluk Randevu 1 Nisan Eksik evrak talebi 23 Nisan Eksik evrak gönderimi 27 Nisan sizce vize ne zaman çıkar arkadaşlar ?"
+        },
+        {
+            "Tarih": "27.04.2026 03:11:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_70cf4018",
+            "Konular": "",
+            "Soru": "Selamlar, almanya ziyaretci vizesi başvurusunda dönüş zamani, bileti 10 Eylül olarak alındı fakat gidenlerden biri öğrenci. Liseler sanırım 7 Eylül gibi açılıyor sizce sorun olur mu?"
+        },
+        {
+            "Tarih": "26.04.2026 20:25:17",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Fırsat kartı dediğiniz nedir tam olarak ?"
+        },
+        {
+            "Tarih": "26.04.2026 19:34:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e3ff9874",
+            "Konular": "yurt, sehir",
+            "Soru": "Stuttgart da wg arıyorum. Yardımcı olabilecek var mıdır.?"
+        },
+        {
+            "Tarih": "26.04.2026 19:22:19",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e55cb5df",
+            "Konular": "randevu",
+            "Soru": "Arkadaşlar merhaba iyi akşamlar size bir sorum olacaktı rica etsem bilgisi olan bilgilendirebilir mi ? Ben 11.08.2025 te idata üzerinden başvuru yaptım. Hala bekliyorum… Bu süreçte idata kaldırılmış olup sanırsam artık diplo üzerinden başvuru yapılıyor. Randevu daha hızlı geliyormuş. İdata randevum olmasına rağmen şu an diplo üzerinden de randevu yapabilir miyim bu doğru veya mantıklı olur mu ? Bu durumda önerebileceğiniz nedir ?"
+        },
+        {
+            "Tarih": "26.04.2026 18:13:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_318d7a91",
+            "Konular": "",
+            "Soru": "81-a başvurusu yapıldıktan sonra 411 euroluk bir ödeme var onu ne kadar süre içerisinde yapıyorsunuz? Bilen var mı?"
+        },
+        {
+            "Tarih": "26.04.2026 18:06:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_bc3b0431",
+            "Konular": "",
+            "Soru": "İyi akşamlar size bir sorum olacaktı eksik evrak ve eşten evrak nasıl istiyorlar sms lemi yoksa maillemi?"
+        },
+        {
+            "Tarih": "26.04.2026 18:04:19",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_27815675",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba ben yabancıyım 6 ay önce evraklarımı İstanbul konsolosluğuna teslim ettim 6 hafta önce de eksik evrakları maille gönderdik hala bir haber yok ve benim babam bugün vefat etmiş 😭😭😭ülkeme gitmem lazım ne yapmalıyım yardımcı olur musunuz?"
+        },
+        {
+            "Tarih": "26.04.2026 17:59:58",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2c2c6a30",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar, Zav onayı nereye geliyor?"
+        },
+        {
+            "Tarih": "26.04.2026 17:59:41",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_97d27d45",
+            "Konular": "randevu",
+            "Soru": "Arkadaşlar, Chancenkarte için önce sponsorluk belgesini mi hazırlıyorsunuz، yoksa randevu aldıktan sonra mı yapıyorsunuz?"
+        },
+        {
+            "Tarih": "26.04.2026 17:23:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_68fb8d78",
+            "Konular": "",
+            "Soru": "Yakın zamanda İzmir ya da Antalyadan kültür vizesine başvuran oldu mu?"
+        },
+        {
+            "Tarih": "26.04.2026 17:17:14",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_68fb8d78",
+            "Konular": "",
+            "Soru": "Yakın zamanda İzmir ya da Antalyadan kültür vizesine başvuran oldu mu?"
+        },
+        {
+            "Tarih": "26.04.2026 17:09:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0c3db526",
+            "Konular": "",
+            "Soru": "nasıl yanı ? hangi app kullanmak lazım biliyor musunuz?"
+        },
+        {
+            "Tarih": "26.04.2026 16:50:27",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0c3db526",
+            "Konular": "para",
+            "Soru": "Selamlar Arkdaslar ,Tr den Almanya a para gönderirken hangi App le gönderdiniz? Western union falan mi? var mi bildiğiniz bir yol bir de vergisinnde ödemek gerkiyor mu?"
+        },
+        {
+            "Tarih": "26.04.2026 16:25:15",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_0c3db526",
+            "Konular": "para",
+            "Soru": "Selamlar Arkdaslar ,Tr den Almanya a para gönderirken hangi App le gönderdiniz? Western union falan mi? var mi bildiğiniz bir yol bir de vergisinnde ödemek gerkiyor mu?"
+        },
+        {
+            "Tarih": "26.04.2026 16:24:13",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_0c3db526",
+            "Konular": "para",
+            "Soru": "Selamlar Arkdaslar ,Tr den Almanya a para gönderirken hangi App le gönderdiniz? Western union falan mi? var mi bildiğiniz bir yol bir de vergisinnde ödemek gerkiyor mu?"
+        },
+        {
+            "Tarih": "26.04.2026 14:46:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_70cf4018",
+            "Konular": "",
+            "Soru": "Selamlar, Almanya ziyaretçi vizesi basvuru evrakları için sitesinde ikametgah belgesi istediğine dair bir şey yazmıyor ama YouTubeta başvuran insanları dinlediğimde olmasi gerekiyor diyorlar bu doğru mu?"
+        },
+        {
+            "Tarih": "26.04.2026 14:27:13",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6c195398",
+            "Konular": "vize, sigorta, para",
+            "Soru": "Herkese merhaba biz yaklasik 9 ay once almanyaya geldik gelirken seyahat sigortasi istediler ve baya ucuz 20-30 euroluk bi sigorta yaptirdik koru sigortaydi sanirim hic bi problem olmadi ve vizemiz cikti. Simdi bi arkadasimiz vize asamasinda belgelerini hazirliyor ama onun danismani adac tan yapilmasi gerektigini soylemis 6 aylik oda ciddi bi para yani. Simdi benim sorum su sistem falanmi degisti artik sadece adac mi kabul ediyorlar? Ve yakin zamanda yaptiranlar ne kadar ucret odedi?"
+        },
+        {
+            "Tarih": "26.04.2026 14:07:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b63eee5d",
+            "Konular": "",
+            "Soru": "Merhabalar Almanya’da dil kursu ile ilgili bilgi deneyim paylaşacak birileri var mıdır?"
+        },
+        {
+            "Tarih": "26.04.2026 14:00:41",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_90356b1e",
+            "Konular": "vize",
+            "Soru": "İstanbul konsolosluğa ulusal vize için giden var mı?"
+        },
+        {
+            "Tarih": "26.04.2026 11:42:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_59a19da9",
+            "Konular": "vize",
+            "Soru": "Merhaba herkese kolay gelsin, Almanya ulusal vize başvurusu yapacağım, expatrio mu yoksa fintiba mı önerirsiniz?"
+        },
+        {
+            "Tarih": "26.04.2026 08:41:39",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_395438d1",
+            "Konular": "",
+            "Soru": "Günaydın . Kamyon şoförü olarak gidecekler için src5 zorunlu mu?"
+        },
+        {
+            "Tarih": "26.04.2026 07:54:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_85b93214",
+            "Konular": "randevu",
+            "Soru": "Bu arada biz 23 Nisan İzmir İdataya 81a randevu için başvuru yaptık, 24 Nisan sabahı 29 Nisan&apos;a randevu atandı paylaşmak istedim. Ama ekte hazırlanacak belgeler kısmı boş geldi bu sabitlenen mesajlarda ki belgeleri hazırlayacağız sanırım yine değil mi?"
+        },
+        {
+            "Tarih": "26.04.2026 07:14:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_85b93214",
+            "Konular": "",
+            "Soru": "Merhabalar İşveren Ezb belgesini ön onaya siyah beyaz göndermiş bizim de ön onay da bu şekilde, İdata siyah beyaz kabul ediyor mu? İlla renkli mi olmalı?"
+        },
+        {
+            "Tarih": "26.04.2026 00:06:28",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5088c815",
+            "Konular": "dil",
+            "Soru": "Tavsiye ettiğiniz B2 online kurs var mı?"
+        },
+        {
+            "Tarih": "25.04.2026 23:39:28",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71302eb6",
+            "Konular": "",
+            "Soru": "Elektrik alanından mı başvuru yaptınız?"
+        },
+        {
+            "Tarih": "25.04.2026 23:06:35",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_c76ef084",
+            "Konular": "",
+            "Soru": "Herkese merhaba Umschreibung sonrası Türk ehliyetimiz ne oluyor tam olarak bilen var mı? Bazıları Umschreibung yapanlar için arkadaş Türkiye&apos;ye gitti ve ehliyetimi kaybettim dedi sonra Türk ehliyetini de aldı diyor böyle bir şey mümkün müdür?"
+        },
+        {
+            "Tarih": "25.04.2026 22:33:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9f52532b",
+            "Konular": "anmeldung, sehir",
+            "Soru": "Selamın aleyküm Hamburg çevresi kiralık ev arıyorum Anmeldung için var mı bilen ?"
+        },
+        {
+            "Tarih": "25.04.2026 22:10:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_68effb53",
+            "Konular": "denklik",
+            "Soru": "Merhabalar duisburg nord da denklik için önerebileceğiniz bir tercüman var mı ücretler ne kadar ortalama ?"
+        },
+        {
+            "Tarih": "25.04.2026 22:09:45",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_94829f0e",
+            "Konular": "",
+            "Soru": "Selam, bu işle ilgili bir konuda sana danışmak istiyorum. Uygunsan birkaç şey sorabilir miyim?"
+        },
+        {
+            "Tarih": "25.04.2026 21:35:57",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0048bdb2",
+            "Konular": "",
+            "Soru": "Neden direkt Ausländerbehördeye sormuyorsunuz ?"
+        },
+        {
+            "Tarih": "25.04.2026 21:02:51",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Arkadaşlar hastaneler iş mulakatinda ( on elemenden sonraki ) neler soruyorlar tecrübesi olanalr yazabilir mi ?"
+        },
+        {
+            "Tarih": "25.04.2026 20:57:41",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d4e611e1",
+            "Konular": "vize, dil",
+            "Soru": "A1 Almanca’m var bilgisayar teknisyenligi ustalık belgesi ve elektrik kalfalik belgem var bunlarla iş arama vizesi hariç başvurabileceğim bir vize türü var mı ?"
+        },
+        {
+            "Tarih": "25.04.2026 20:57:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d4e611e1",
+            "Konular": "vize, dil",
+            "Soru": "A1 Almanca’m var bilgisayar teknisyenligi ustalık belgesi ve elektrik kalfalik belgem var bunlarla iş arama vizesi hariç başvurabileceğim bir vize türü var mı ?"
+        },
+        {
+            "Tarih": "25.04.2026 19:02:21",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_511a24f9",
+            "Konular": "",
+            "Soru": "gideceğiniz ülke aynı ülkemi neden sıkıntı olsun onu anlamadım iki pasaportlada almanyadan mı çalışma vizesi alıcaksınız ?"
+        },
+        {
+            "Tarih": "25.04.2026 18:04:52",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6eae3a5b",
+            "Konular": "",
+            "Soru": "Bluecard iş arama visesi gibi birşey mi?"
+        },
+        {
+            "Tarih": "25.04.2026 18:02:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1778f9e9",
+            "Konular": "vize, ausbildung",
+            "Soru": "3 ay sonrası gibi bi süreden sonra 81a vize başvurusu yapacağım Ausbildung için olucak vize başvurumun sonucu ne zaman gelir sizce bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "25.04.2026 17:41:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1778f9e9",
+            "Konular": "",
+            "Soru": "Remscheid da sağlık sisteminde görev yapan varmı ?"
+        },
+        {
+            "Tarih": "25.04.2026 15:27:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_906e2973",
+            "Konular": "randevu",
+            "Soru": "Yakin zamanda randevu basvurusu yapan varmi ne kadar surede mail geldi ?"
+        },
+        {
+            "Tarih": "25.04.2026 15:18:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_71b278db",
+            "Konular": "dil",
+            "Soru": "Atlantis almanca danışmanlık ile ilgili bilginiz var mı acaba ? Guvenilir mi ?"
+        },
+        {
+            "Tarih": "25.04.2026 15:17:30",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71b278db",
+            "Konular": "dil",
+            "Soru": "Atlantis almanca danışmanlık ile ilgili bilginiz var mı acaba ? Guvenilir mi ?"
+        },
+        {
+            "Tarih": "25.04.2026 14:56:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d7be1174",
+            "Konular": "",
+            "Soru": "On Onay için 4ay 5ay beklemek normal mi?"
+        },
+        {
+            "Tarih": "25.04.2026 14:55:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d7be1174",
+            "Konular": "",
+            "Soru": "On Onay için 4ay 5ay beklemek normal mi?"
+        },
+        {
+            "Tarih": "25.04.2026 13:09:16",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d3c5e7b3",
+            "Konular": "",
+            "Soru": "merhabalar, iyi gunler. duisburgta okuyan\/yasayan varsa yazabilir mi rica etsem?"
+        },
+        {
+            "Tarih": "25.04.2026 13:02:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_9784a625",
+            "Konular": "",
+            "Soru": "çok güzel hızlı gelmiş. Hangi seviye dille başvurdunuz?"
+        },
+        {
+            "Tarih": "25.04.2026 12:41:19",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_23eb4d3f",
+            "Konular": "",
+            "Soru": "Ironi yapmaya falan mi calisiyorsun?"
+        },
+        {
+            "Tarih": "25.04.2026 12:32:22",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_23eb4d3f",
+            "Konular": "",
+            "Soru": "Abi tamam da sen dil bilmiyorum demissin, dil bilmeden nasil almanlarla calisacaksin?"
+        },
+        {
+            "Tarih": "25.04.2026 12:15:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_23eb4d3f",
+            "Konular": "",
+            "Soru": "Oncelikle.nasil.geleceksin? Dil ogrendin mi gecerli bir meslegin var mi?"
+        },
+        {
+            "Tarih": "25.04.2026 09:33:26",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_9495ce40",
+            "Konular": "",
+            "Soru": "Merhaba bir sorum olacaktı İdata başvurum ne durumda diye sorgulama yapmaya calisiyorum barkod numarası istiyor ama. Bende pnr kodu var nasıl yapacağım?"
+        },
+        {
+            "Tarih": "25.04.2026 08:27:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_20828640",
+            "Konular": "",
+            "Soru": "Bu tüm ab ülkeleri icin geçerli mi?"
+        },
+        {
+            "Tarih": "25.04.2026 02:58:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_cc64aa4d",
+            "Konular": "vize, denklik",
+            "Soru": "Selamlar Zab diploma denkliğim var 81a Ön onayım var dil kutucugu işaretlenmemiş şart koşulmamış Global zincir otel referans mehtuplarım var Diğer tüm evraklarımıda sundum ankarada vize randevumda benden extra olarak ıhk fosadan mesleki denklik belgesi istediler randevumdan sonra başvurum yapıldı muhtemelen kısmi denklik çıkacak belgeyi konsolosluğa ilettikten sonra benden dil sertifkası istenirmi acaba meslegim aşcıyım bilgisi olan varsa yardımcı olabilir mi ?"
+        },
+        {
+            "Tarih": "25.04.2026 00:00:06",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_fddca89b",
+            "Konular": "",
+            "Soru": "Neden öyle dediniz, ne açıdan ?"
+        },
+        {
+            "Tarih": "24.04.2026 23:23:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_63dacede",
+            "Konular": "randevu",
+            "Soru": "Almanya’da çalışmaya gidenlere bir şey danışmak istiyorum. Benim 2 diş için kanal tedavisi yaptırmam gerekiyor. Sizce gitmeden Türkiye’de halletmem şart mı, yoksa Almanya’da (özellikle Münih’te) bu işlemleri yaptırmak kolay ve mantıklı mı ? Süreç, fiyat ve randevu açısından deneyimi olan varsa yazabilir mi?"
+        },
+        {
+            "Tarih": "24.04.2026 23:22:47",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_63dacede",
+            "Konular": "randevu",
+            "Soru": "Almanya’da çalışmaya gidenlere bir şey danışmak istiyorum. Benim 2 diş için kanal tedavisi yaptırmam gerekiyor. Sizce gitmeden Türkiye’de halletmem şart mı, yoksa Almanya’da (özellikle Münih’te) bu işlemleri yaptırmak kolay ve mantıklı mı ? Süreç, fiyat ve randevu açısından deneyimi olan varsa yazabilir mi?"
+        },
+        {
+            "Tarih": "24.04.2026 22:47:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_0cd4217b",
+            "Konular": "",
+            "Soru": "ups cumartesi gunleri dagitim yapiyor mu acaba?"
+        },
+        {
+            "Tarih": "24.04.2026 22:31:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0f890873",
+            "Konular": "vize",
+            "Soru": "arkadaşlar merhaba iş sözleşmemde işe başlama tarihim 02.03.2026 idi yani iki ay gecikti,ön onayımı yeni aldım haftaya konsolosluk randevum var sizce sözleşmeyi ve işe başlama tarihimi yenilemeye gerek var mı ?"
+        },
+        {
+            "Tarih": "24.04.2026 20:07:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_27815675",
+            "Konular": "",
+            "Soru": "Siz eksik evrakları maille mi gönderdiniz ve bu kadar bekliyorsunuz ?"
+        },
+        {
+            "Tarih": "24.04.2026 17:31:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0e4365b7",
+            "Konular": "",
+            "Soru": "Mesleğin ve diploman vs var mı ?"
+        },
+        {
+            "Tarih": "24.04.2026 17:03:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_928c33c9",
+            "Konular": "",
+            "Soru": "Almanyadaki kalış amacını soruyor formda 18b ile gideceğimde gelir getirici işi mi seçiyorum yoksa diğer’i seçip 18b vizesine diye mi açıklıyorum?"
+        },
+        {
+            "Tarih": "24.04.2026 16:43:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1778f9e9",
+            "Konular": "",
+            "Soru": "20 Mayıs&apos;ta Adana kökdilde sınava girecek olan varmı?"
+        },
+        {
+            "Tarih": "24.04.2026 16:23:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d1a4d62b",
+            "Konular": "",
+            "Soru": "Aachenda Sprachakademie de daha önce sınava giren oldu mu?"
+        },
+        {
+            "Tarih": "24.04.2026 16:22:07",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7ee46482",
+            "Konular": "vize",
+            "Soru": "Merhabalar, vize görüşmesine giderken kalacak ev\/otel veya uçak bileti almamız gerekir mi?"
+        },
+        {
+            "Tarih": "24.04.2026 16:13:46",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6bddb631",
+            "Konular": "",
+            "Soru": "Merhaba ön ödeme istemeyen danışmanlık firması var mı?"
+        },
+        {
+            "Tarih": "24.04.2026 15:58:05",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_34166419",
+            "Konular": "",
+            "Soru": "Şayet kabul ederse pasaport ve formül B gönderiyorum değilmi veya başka evrak gerekiyormu ?"
+        },
+        {
+            "Tarih": "24.04.2026 15:17:16",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7e1ea5d2",
+            "Konular": "yurt",
+            "Soru": "Merhaba yurt dışına Elektrikçi Usta götüren kurumsal firma var mı?"
+        },
+        {
+            "Tarih": "24.04.2026 15:02:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar Ankara’dan ups mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "24.04.2026 15:02:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar Ankara’dan ups mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "24.04.2026 14:52:44",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1c8a7766",
+            "Konular": "",
+            "Soru": "Merhabalar Ankara için öğrenci vizesi başvurularında bekleme listesi ne kadar sürüyor? Henüz başvuramadım, bilgisi veya tecrübesi olan var mı?"
+        },
+        {
+            "Tarih": "24.04.2026 12:47:49",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_32a14c52",
+            "Konular": "anmeldung, sigorta, is",
+            "Soru": "arkadaslar ben 18b ile personal koordinator olarak hlgeldim 1 haftadir anmeldung ile ugrasiyorum. metal sektorunde 15 yil tornacilik sigorta gecmisim ve ustalik belgem var. bu alanda is degistirebilir miyim?"
+        },
+        {
+            "Tarih": "24.04.2026 11:33:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_26a8c577",
+            "Konular": "",
+            "Soru": "Yari yariya bi yapilir bi yapilmaz deniyor yapan var mi?"
+        },
+        {
+            "Tarih": "24.04.2026 09:28:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_38743512",
+            "Konular": "",
+            "Soru": "Hangi eyaleteydi başvurunuz acaba?"
+        },
+        {
+            "Tarih": "23.04.2026 23:00:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_dcced827",
+            "Konular": "",
+            "Soru": "Vizede 81a ön onay alırken aile bireylerinide belirtmesi gerekiyor mı işveren bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "23.04.2026 23:00:24",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_dcced827",
+            "Konular": "",
+            "Soru": "Vizede 81a ön onay alırken aile bireylerinide belirtmesi gerekiyor mı işveren bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "23.04.2026 22:59:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_dcced827",
+            "Konular": "",
+            "Soru": "Vizede 81a ön onay alırken aile bireylerinide belirtmesi gerekiyor mı işveren bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "23.04.2026 20:12:07",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_df59735e",
+            "Konular": "",
+            "Soru": "İyi akşamlar Almanya’da staj kategorisinde işe alınan personele maaş ödeniyor mu ? Zorunlu staj değil işveren o kategori de başlatıyor .Bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "23.04.2026 20:09:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_df59735e",
+            "Konular": "",
+            "Soru": "İyi akşamlar Almanya’da staj kategorisinde işe alınan personele maaş ödeniyor mu ? Zorunlu staj değil işveren o kategori de başlatıyor .Bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "23.04.2026 19:14:12",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_00101046",
+            "Konular": "",
+            "Soru": "Münih Nürnberg ön onay bekleyen varmı ?"
+        },
+        {
+            "Tarih": "23.04.2026 18:44:53",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_1a46f7b5",
+            "Konular": "denklik",
+            "Soru": "Merhaba arkadaşlar harita teknikerliği için denklik yaptırmam gerekiyor bilgisi olan var mı ? Önerebileceğiniz firma vs var mı ?"
+        },
+        {
+            "Tarih": "23.04.2026 18:33:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_77bcf45b",
+            "Konular": "",
+            "Soru": "Size ne sordular temel olarak?"
+        },
+        {
+            "Tarih": "23.04.2026 17:05:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_eb88d726",
+            "Konular": "randevu",
+            "Soru": "12\/02\/2026 Yabancılar Dairesi Ön Onay Başvurusu 25\/02\/2026 Yabancılar Dairesi Ödemesi 13\/03\/2026 Ön Onay Sonucu ( Auslandportal ) 17\/03\/2026 İdata Randevu Talebi 26\/03\/2026 Eksik Evrak Talebi ( Auslandportal ) 30\/03\/2026 Randevu Ataması 09\/04\/2026 İdata Randevu Arkadaşlar sonuç ne zaman gelir, istanbul gayrettepe birde pasaport gelmeden sistemden sonuç gözüküyor mu auslandportal dan?"
+        },
+        {
+            "Tarih": "23.04.2026 17:04:39",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_eb88d726",
+            "Konular": "randevu",
+            "Soru": "12\/02\/2026 Yabancılar Dairesi Ön Onay Başvurusu 25\/02\/2026 Yabancılar Dairesi Ödemesi 13\/03\/2026 Ön Onay Sonucu ( Auslandportal ) 17\/03\/2026 İdata Randevu Talebi 26\/03\/2026 Eksik Evrak Talebi ( Auslandportal ) 30\/03\/2026 Randevu Ataması 09\/04\/2026 İdata Randevu Arkadaşlar sonuç ne zaman gelir, istanbul gayrettepe birde pasaport gelmeden sistemden sonuç gözüküyor mu auslandportal dan?"
+        },
+        {
+            "Tarih": "23.04.2026 16:14:28",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9cb6f4d8",
+            "Konular": "",
+            "Soru": "Arkadaşlar Köln den ortalama ne kadar sürede ön onay geliyor ?"
+        },
+        {
+            "Tarih": "23.04.2026 14:11:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_1148535e",
+            "Konular": "",
+            "Soru": "Bana sordular sımdı arkadaşıma da ne diyim sormadılar mı diyim?"
+        },
+        {
+            "Tarih": "23.04.2026 14:03:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c9ffd2d9",
+            "Konular": "",
+            "Soru": "81 A ön onay için o zaman yabancılar polisine göndermemiz gerekmiyor mu?"
+        },
+        {
+            "Tarih": "23.04.2026 13:59:15",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_a2d53469",
+            "Konular": "",
+            "Soru": "Istanbul başkonsolosluktan Schengen için başvuru yapılıyor mu ?"
+        },
+        {
+            "Tarih": "23.04.2026 13:48:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2c8a418f",
+            "Konular": "vize, dil",
+            "Soru": "Herkese merhaba. Benim kısmi denkliğim var. Eşimle Telcden bana a2 ona a1 için sınava gireceğiz yakın zamanda. Beraber vize başvurusu yapacağız. Telc den almamızda bir problem olur mu?"
+        },
+        {
+            "Tarih": "23.04.2026 13:25:02",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_85b93214",
+            "Konular": "randevu",
+            "Soru": "İzmir 81a için İdata Ulusal vizeden randevu alıyoruz değil mi? Ödeme ekranı sonrası Teknik hatadan dolayı işlem gerçekleştiriliyor hatası veriyor, normal mi? Sistem yerine mail ile randevu talebi oluşturabiliyor muyuz?"
+        },
+        {
+            "Tarih": "23.04.2026 11:45:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e2fd4c11",
+            "Konular": "vize, ausbildung",
+            "Soru": "Ausbildung vize randevusu bekleyen veya randevusu gelen varmı?"
+        },
+        {
+            "Tarih": "23.04.2026 11:44:45",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d9e2531b",
+            "Konular": "",
+            "Soru": "Ön onaya iş verenler baş vurabilir siz nasıl baş vuracaksınız ?"
+        },
+        {
+            "Tarih": "23.04.2026 11:12:04",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f679dec2",
+            "Konular": "",
+            "Soru": "Merhabalar. Bir şirketten biri aracılığıyla iş buldum. Yardımcı olan kişi sözleşmenin hazırlandı fakat yabancılar şubesine önce sunulup uygunluğunu kontrol ettirecek şirket dedi. Aradan bir süre geçti sonra yabancılar şubesinden sözleşmeye onay geldiğini söylemiş işe alım tarafı kendisine ve o da sözleşme size gönderilecek dedi. Ama bir ay oldu hala bana bişey gelmedi hatta bu kişi de her hafta yabancılar şubesine gidip sözleşmeyi onlar gönderecek zannedip onlarla görüşüyor ortada doğru bir yönlendirme de yok bence. En son geçen hafta yabancılar şubesi benim mail atmamı sadece bana bilgi verebileceklerini söylemişler. Bir mail adresi verildi ben de o adrese mail attım. Bu nasıl ilerler? Böyle bir durum yaşayan var mı?"
+        },
+        {
+            "Tarih": "23.04.2026 10:40:03",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_85b93214",
+            "Konular": "",
+            "Soru": "Karlshure ön onayı 14.04 tarihinde iş verene gönderildiğini yazan bir mail cevabı aldık, işverene mail ile ulaşan bir ön onay yok, posta ile yollayıp henüz gelmeme ihtimali var mıdır?"
+        },
+        {
+            "Tarih": "23.04.2026 09:24:16",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a70cd4d",
+            "Konular": "para, denklik, sehir",
+            "Soru": "Merhaba arkadaşlar sonunda Hamburg lpa dan denkliğim geldi ama 600 Euro ödememi istediler 1) evrak inceleme için 100 2) dogruluk teyidi için 200 3) denklik sonucu ve belgesi için 300 Euro toplamda 600 Euro ödememi istediler ayrıca pasaportumu ve good standing belgesini de ek olarak istediler good belgesi hemen çıkmayacağını belirttim ve diler tüm her şeyi hemen aynı dakika ilettim acaba ücret fazka mı herkesin 150 Euro civarında ve saatlerini belirterek göndermişler benimki neden. Böyle ?"
+        },
+        {
+            "Tarih": "23.04.2026 02:12:38",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_561c1469",
+            "Konular": "vize, dil, denklik",
+            "Soru": "Arkadaşlar merhaba bir sorum olucak ön lisans mezunuyum yarım denklik ile almanca bilmeden göç edebilir miyim iş veren türk ve almanca bilgisine ihtiyaç yok çalışırken kabul eder mi konsolosluk?"
+        },
+        {
+            "Tarih": "22.04.2026 23:55:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_32a14c52",
+            "Konular": "anmeldung, is, randevu",
+            "Soru": "merhaba arkadaslar anmeldung icin essen belediyesinden randevu aldim gocmenlik burosuna yonlendirdiler ilk defa geldigim icin, fakat randevuyu 16 hazirana verdiler. bu sure benim icin cok fazla. hemen anmeldungu yapip is basi yapmam lazim. isyeri anmeldungunu yapmadan isbasi yapamazsin dedi. simdi ne yapacagim?"
+        },
+        {
+            "Tarih": "22.04.2026 23:16:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5a1c65da",
+            "Konular": "",
+            "Soru": "Dil kursu vizeleri cok hizli cikiyor diyorlar dogru mu?"
+        },
+        {
+            "Tarih": "22.04.2026 23:12:38",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0751f833",
+            "Konular": "",
+            "Soru": "Anladım memura bağlı evet, sizin gördüğünüz örneklerde Jobcenter üzerinden ev tutup eşini getirenler oldu mu? Özellikle Gelsenkirchen’de yapan varsa süreç ne kadar sürüyor? Bilginiz varsa paylaşabilir misiniz?"
+        },
+        {
+            "Tarih": "22.04.2026 22:54:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4e3830ce",
+            "Konular": "",
+            "Soru": "Evet ikamet duruyor fakat Türkiyede öğrenciliğinin devamına dair belgeler almanya devletinde mevcut yani görülebilir , yine de tavsiye ediyor musunuz?"
+        },
+        {
+            "Tarih": "22.04.2026 22:54:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0751f833",
+            "Konular": "",
+            "Soru": "Teşekkürler peki bekleme süresi tahminen ne kadar olur acaba randevudan sonra ben alman vatandaşıyım eşim Türk Vatandaşı ama henüz almanyada bir gelirim işim vs yok ve Jobcenter ile ev tutarken eşimin geleceğini söylediğimde ona göre ev tutmama izin verilir mi?"
+        },
+        {
+            "Tarih": "22.04.2026 22:38:43",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Merhabala, ilk ve acil yardım mezunlarından denklikte mezuniyet sonrası 152 saatlik bir staj yada bitirme sınavı istenen oldu mu ?"
+        },
+        {
+            "Tarih": "22.04.2026 22:37:33",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6dcd4ce2",
+            "Konular": "",
+            "Soru": "Merhabalar , ilk ve acil yardım mezunlarından denklikte mezuniyet sonrası 152 saatlik bir staj yada bitirme sınavı istenen oldu mu ?"
+        },
+        {
+            "Tarih": "22.04.2026 22:35:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_8dcc1587",
+            "Konular": "vize, randevu",
+            "Soru": "merhaba, benim şu an dil kursu vizem var ve vize 1 temmuzda bitiyor, ben de 8 haziranda Türkiye&apos;ye gidicem ve eylülde dönmek istiyorum. 4 hafta öncesinde yabancılar polisine uçak biletimi atsam ve acil termin istesem seyahatimden önce Fiktionsbescheinigung verirler mi? ve Fiktionsbescheinigung ile ülkeye girişte herhangi bi sorun çıkar mı?"
+        },
+        {
+            "Tarih": "22.04.2026 22:35:05",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_8dcc1587",
+            "Konular": "vize, randevu",
+            "Soru": "merhaba, benim şu an dil kursu vizem var ve vize 1 temmuzda bitiyor, ben de 8 haziranda Türkiye&apos;ye gidicem ve eylülde dönmek istiyorum. 4 hafta öncesinde yabancılar polisine uçak biletimi atsam ve acil termin istesem seyahatimden önce Fiktionsbescheinigung verirler mi? ve Fiktionsbescheinigung ile ülkeye girişte herhangi bi sorun çıkar mı?"
+        },
+        {
+            "Tarih": "22.04.2026 20:15:13",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_428a50a6",
+            "Konular": "",
+            "Soru": "Istanbul idataya evrak teslimi yaptim 81a üzerinden. 3hafta oldu haber yok. Sizce nekadar sürer?"
+        },
+        {
+            "Tarih": "22.04.2026 20:06:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b4925d29",
+            "Konular": "vize",
+            "Soru": "Merhaba, bloke hesap için expatrio da swift değil de flywire kullanan var mı? Swift ücretiyle arasında çok fark var mı acaba?"
+        },
+        {
+            "Tarih": "22.04.2026 19:50:21",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_4e3830ce",
+            "Konular": "vize",
+            "Soru": "Merhaba, türk vatandaşı lisans mezunuyum ve aöf&apos;de önlisans okuyorum, eşim alman vatandaşı fakat eğitim için Türkiyede (öğrenci), 3 aylık almanyaya aile ziyareti (kök ailesi orada) için vize başvurusunda bulunacaktık fakat alman konsolosluğundaki danıştığım kişi çıkma ihtimalinin düşük olduğunu söyledi(eşimin resmi düzenli bir gelir kaynağı döküm olarak gözükmediği için) , yakın zamanda öğrendiğimiz Verpflichtungserklärung belgesi hakkında bilgisi olmadığını söyledi, bu belgeyi eşimin babasından talep etme ve bu şekilde vize başvurusunda bulunamamız durumunda çıkma olasılığı hakkında bilginiz var mı acaba?"
+        },
+        {
+            "Tarih": "22.04.2026 18:38:48",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9288536c",
+            "Konular": "",
+            "Soru": "Arkadaşlar okul öncesi öğretmeni almanya da özel eğitim alanında çalışır mı?"
+        },
+        {
+            "Tarih": "22.04.2026 17:08:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba 1 nisanda Ankara’dan § 19c Abs. 2 Auf enthG i.V.m. § 6 BeschV için randevuya gittim hala ses yok . Başvuru yapan arkadaşlardan pasaportu gelen var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 17:08:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba 1 nisanda Ankara’dan § 19c Abs. 2 Auf enthG i.V.m. § 6 BeschV için randevuya gittim hala ses yok . Başvuru yapan arkadaşlardan pasaportu gelen var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 16:03:05",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "vize",
+            "Soru": "ulusal vize başvurusunda sağlık sigortasını nasıl yapıyoruz? normal turist gibi seyahat sağlık sigortası mı yoksa başka bir şey mi?"
+        },
+        {
+            "Tarih": "22.04.2026 16:02:44",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "vize",
+            "Soru": "ulusal vize başvurusunda sağlık sigortasını nasıl yapıyoruz? normal turist gibi seyahat sağlık sigortası mı yoksa başka bir şey mi?"
+        },
+        {
+            "Tarih": "22.04.2026 15:56:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_71302eb6",
+            "Konular": "denklik",
+            "Soru": "Aöf Kamu Yönetimi bitirip denklik alan, denklik yapan var mı acaba?"
+        },
+        {
+            "Tarih": "22.04.2026 14:35:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 14:35:08",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Bugün Ankara’dan ups mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 14:07:01",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3362e8e2",
+            "Konular": "ausbildung",
+            "Soru": "Arkadaşlar fizyoterapi Ausbildung programı yapmak istiyorum ,yardımcı olabilecek danışman tanıdık var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 13:57:37",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_47d59bf5",
+            "Konular": "",
+            "Soru": "Pasaportlarınız ne kadar sürede geldi?"
+        },
+        {
+            "Tarih": "22.04.2026 13:31:38",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_47d59bf5",
+            "Konular": "",
+            "Soru": "Yakın zamanda konsolosluğa 81a vizesi için pasaport teslim eden var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 12:49:31",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_70cf4018",
+            "Konular": "",
+            "Soru": "Selam, Almanya ziyaretçi vizesinde çocuk anne ve babası ile gidiyorsa ve basvuruyorsa muvafakatname gerekli mi yine de?"
+        },
+        {
+            "Tarih": "22.04.2026 12:01:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b52e7fb4",
+            "Konular": "ausbildung",
+            "Soru": "Arkadaşlar Ausbildung için benden Steuer-ID sowie, die Steuerklasse , Sozialversicherungsnummer bilgileri istediler ben daha önce gönüllü programla çalışmıştım Almanyada bu yüzden bu numaraların olması gerekiyor fakat ben eski çalıştışım kuruma yazmam rağmen onlarda bu bilgilerin olmadığını söylediler nasıl bulabilirim bu bilgileri acaba?"
+        },
+        {
+            "Tarih": "22.04.2026 10:13:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ed4dfe65",
+            "Konular": "",
+            "Soru": "Arkadaşlar şuan Almanya da olup B sınıfı ehliyeti olan veya alman ehliyeti olan, iş arayan var mı?"
+        },
+        {
+            "Tarih": "22.04.2026 09:33:58",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_68b0ab6a",
+            "Konular": "vize",
+            "Soru": "@user bey. Konsolosluk 81a başvurularında, her seferinde göç dairesi veya federal iş ajansından teyit alıyormu? Anlamak istediğim, konsolosluktaki işlemlerin almanyadaki mercilerle yazışması oluyormu?"
+        },
+        {
+            "Tarih": "22.04.2026 09:31:13",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_bda92582",
+            "Konular": "vize, randevu",
+            "Soru": "Merhaba grupta yeniyim, Almanya&apos;dan davetiyem var. Turistlik Vize işlemlerini yapmak istiyorum şu an randevu durumlar nedir?"
+        },
+        {
+            "Tarih": "22.04.2026 09:27:40",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Bugünlerde stuttgarttan izmire gidecek olan var mı acaba ?"
+        },
+        {
+            "Tarih": "22.04.2026 09:27:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_37dbecd7",
+            "Konular": "",
+            "Soru": "Bugünlerde stuttgarttan izmire gidecek olan var mı acaba ?"
+        },
+        {
+            "Tarih": "22.04.2026 09:01:07",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_93f0a0d8",
+            "Konular": "",
+            "Soru": "Gönüllü çalışmayı bir yardım kuruluşunda mı yapacaksınız ?"
+        },
+        {
+            "Tarih": "22.04.2026 08:19:24",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c9fdc30",
+            "Konular": "",
+            "Soru": "Merhabalar memurum felix ocakta eksik evrak maili geldi evrağı gönderdikten sonra tekrardan bir mail gelmedi denklikte gelmedi 3 ay oldu ne yapmam lazım ? Bilgisi olan var mı ?"
+        },
+        {
+            "Tarih": "22.04.2026 08:18:17",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c9fdc30",
+            "Konular": "",
+            "Soru": "Merhabalar memurum felix ocakta eksik evrak maili geldi evrağı gönderdikten sonra tekrardan bir mail gelmedi denklikte gelmedi 3 ay oldu ne yapmam lazım ?"
+        },
+        {
+            "Tarih": "21.04.2026 22:24:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_fad7fe78",
+            "Konular": "",
+            "Soru": "Dortmund’da yaşayan var mı aranızda?"
+        },
+        {
+            "Tarih": "21.04.2026 21:58:17",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "18a ile gelen biri iş değişikliği yaparsa maaş ne kadar düşük olabilir?"
+        },
+        {
+            "Tarih": "21.04.2026 21:44:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_52d3c4f3",
+            "Konular": "",
+            "Soru": "kısmi denkliğe başvurmak için dil belgesi gerekiyor mu bilgisi olan var mı? direkt dil öğrenme süreci devam ederken basvurabiliyor muyuz?"
+        },
+        {
+            "Tarih": "21.04.2026 20:54:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d6f1b66d",
+            "Konular": "vize",
+            "Soru": "Kaç ayda vize sonucu geliyo acaba?"
+        },
+        {
+            "Tarih": "21.04.2026 19:40:15",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_55f73274",
+            "Konular": "",
+            "Soru": "Almanya&apos;ya yerleşmeyi düşünüyorum bu süreçte yardımcı kolaylık sağlayacak güvenilir acente var mı?"
+        },
+        {
+            "Tarih": "21.04.2026 19:33:35",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_29f5cd48",
+            "Konular": "vize",
+            "Soru": "aile birleşimi için a1 dil sertifikası isteniyor ancak ben Alman Dili Edebiyatı mezunuyum diplomam var (H+) yine de A1 dil sertifikasına ihtiyacım var mı konsolosluk için? bilen yardımcı olabilir mi?"
+        },
+        {
+            "Tarih": "21.04.2026 19:08:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_05ac12b3",
+            "Konular": "",
+            "Soru": "Ön onay geçerliliği 3 ay olduğunu biliyorsunuz demi?"
+        },
+        {
+            "Tarih": "21.04.2026 17:22:42",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_11e9d7fe",
+            "Konular": "",
+            "Soru": "huseyin bey, benim uzerinden 18 b ile geldik,ben hic duymadim bana cok garip geldi 14 yasinda okula giden birakin almancayi fransizca dahi ogrenen cocuga bile 1 yil vermisler ama bana 3 yil,hadi esimi anladim ama ogluma neden 1 yil buyuk oglum da 18 yasina yeni girdi,onun karti gelecek hafta gelecekmis,ona vermeme durumu olur mu, bikginiz var mi?"
+        },
+        {
+            "Tarih": "21.04.2026 17:14:57",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_53b1bd36",
+            "Konular": "",
+            "Soru": "Hüseyin bey merhaba,uçak rezervasyonunun nasıl yapıldığı konusunda bilginiz var mı?"
+        },
+        {
+            "Tarih": "21.04.2026 16:52:17",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2e99b4e7",
+            "Konular": "",
+            "Soru": "Merhabalar Almanyada bir Cruise gemisinde çalışıyorum. Aşçıyım burdan ayrılmak istiyorum. Karada çalışmak istiyorum. Aşçıya ihtiyacı olan var mı ?"
+        },
+        {
+            "Tarih": "21.04.2026 14:59:36",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_bc3b0431",
+            "Konular": "vize",
+            "Soru": "Merhabalar 16 nisanda konsolosluk randevum vardı evraklarımın almanyaya gittiğini nasıl öğrenebilirim eşim magdeburgda yaşıyor?"
+        },
+        {
+            "Tarih": "21.04.2026 14:11:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "Güvenilir bildiğiniz danışman var mı ?"
+        },
+        {
+            "Tarih": "21.04.2026 14:11:16",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "Güvenilir bildiğiniz danışman var mı ?"
+        },
+        {
+            "Tarih": "21.04.2026 12:51:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar , Ankara’dan kargo mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "21.04.2026 12:51:15",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar , Ankara’dan kargo mesajı alan var mı bugün ?"
+        },
+        {
+            "Tarih": "21.04.2026 11:11:08",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_68fb8d78",
+            "Konular": "vize",
+            "Soru": "Almanya için İzmir ve Antalyada külterel vize için bekleme süresi ne kadar aşağı yukarı turistlikle aynı mı?"
+        },
+        {
+            "Tarih": "21.04.2026 11:10:58",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_68fb8d78",
+            "Konular": "vize",
+            "Soru": "Almanya için İzmir ve Antalyada külterel vize için bekleme süresi ne kadar aşağı yukarı turistlikle aynı mı?"
+        },
+        {
+            "Tarih": "21.04.2026 02:58:39",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3a52ce78",
+            "Konular": "",
+            "Soru": "Tıbbi sekreterlikten gelmek çok zormu?"
+        },
+        {
+            "Tarih": "21.04.2026 01:04:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6bddb631",
+            "Konular": "",
+            "Soru": "Selamünaleyküm. Ben 4 yıllık üniversite mezunuyum. 81A üzerine yaptığım başvurular sonuçlanmadı. Güvenilir bir danışmanlık firması arayışındayım. Süreci şeffaf yönetecek, uygun fiyatlı ve güvenilir bir danışmanlık firması önerebilir misiniz?"
+        },
+        {
+            "Tarih": "20.04.2026 22:32:13",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7ff42fe4",
+            "Konular": "",
+            "Soru": "Mustafa Bey merhaba @user Ben elektrik elektronik mühendisiyim anabinde okulumda H+ ve bölümümde Enspricht denktir yazısı var ama Almanya&apos;da mühendis işi bulmak zor gibi görünüyor yüksek seviye dil beklentisi ve deneyim farklılığı sebebiyle . Almanya&apos;ya başka bir yolla gitme şansım var mı ? Şuan en kısa zamanda alabileceğim dil seviyesi A2 olabilecek bana bu konuda bir fikir verebilir misiniz. Ayrıca grupta alan dışı meslek bulup gitmekten bahsediliyo bununla ilgili bilgi alabilir miyim?"
+        },
+        {
+            "Tarih": "20.04.2026 22:11:39",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c97b1141",
+            "Konular": "",
+            "Soru": "Almanyada güneş paneli işi varmıdır?"
+        },
+        {
+            "Tarih": "20.04.2026 21:52:07",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d365fbc7",
+            "Konular": "",
+            "Soru": "Almanya’da iş arayan diyetisyen var mı arkadaşlar?Herhangi bir grup bulamıyorum bildiğiniz var mı acaba?"
+        },
+        {
+            "Tarih": "20.04.2026 21:27:22",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_cb6e5f1d",
+            "Konular": "",
+            "Soru": "Muhasebeci ne anlar Ausländerrecht den ?"
+        },
+        {
+            "Tarih": "20.04.2026 20:58:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_aeb0ce44",
+            "Konular": "",
+            "Soru": "81 a ile Almanya’ya gelen ve iş değişikliği yapan oldu mu ? Süreç nasıl işliyor ? Adım adım ne yapmak gerekli ?"
+        },
+        {
+            "Tarih": "20.04.2026 20:52:47",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_54e9becc",
+            "Konular": "anmeldung",
+            "Soru": "Arkadaşlar bi sorum var bilgisi olan cevaplarsa sevinirim geldiğim zaman anmeldung yaptım 22 gün oldu konsolosluğa adres beyanı yapılması gerekiyormuş galiba yeni öğrendim bide anmeldung yapinc abi kagit verdiler o kağıt aracılığıyla mi banka hesabı açılıyor ayriyettrn bi posts geliyormuş galiba steuer id vergi kimlik numarası fwlan yazıyormuş o kağıtta doğru mi süreç nasıl bilgi verirmisiniz?"
+        },
+        {
+            "Tarih": "20.04.2026 20:42:38",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_38743512",
+            "Konular": "vize",
+            "Soru": "Hayırlı olsun, hangi eyalet başvurunuz? Bir de hangi vize türüydü?"
+        },
+        {
+            "Tarih": "20.04.2026 20:42:37",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_aeb0ce44",
+            "Konular": "",
+            "Soru": "81 a ile Almanya’ya gelen ve iş değişikliği yapan oldu mu ? Süreç nasıl işliyor ? Adım adım ne yapmak gerekli ?"
+        },
+        {
+            "Tarih": "20.04.2026 20:38:28",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_da9e8e15",
+            "Konular": "",
+            "Soru": "Arkadaşlar yabancılar dairesini arayacam dosyamın durumunu soracam ingilizce biliyorlar mıdır?"
+        },
+        {
+            "Tarih": "20.04.2026 20:37:15",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_da9e8e15",
+            "Konular": "",
+            "Soru": "Arkadaşlar yabancılar dairesini arayacam dosyamın durumunu soracam ingilizce biliyorlar mıdır?"
+        },
+        {
+            "Tarih": "20.04.2026 20:05:09",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_50c2b165",
+            "Konular": "denklik",
+            "Soru": "Denklik peki ne kadar sürede açıklandı hocam?"
+        },
+        {
+            "Tarih": "20.04.2026 18:48:52",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize",
+            "Soru": "Merhaba dil vizesi ile nasıl gidiliyor bloke hesap tutarı ne kadar bilgisi olan yazabilir mi?"
+        },
+        {
+            "Tarih": "20.04.2026 18:05:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "randevu",
+            "Soru": "Idata nin sayfasinda kapidan evrak teslim etme bilgisi var ama daha once yapan oldu mu acaba?"
+        },
+        {
+            "Tarih": "20.04.2026 18:02:03",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Daha önce boyle basvuruda bulunan var mi ?"
+        },
+        {
+            "Tarih": "20.04.2026 18:01:40",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "vize",
+            "Soru": "Vize icin evraklar evden teslim ediliyor mu?"
+        },
+        {
+            "Tarih": "20.04.2026 17:32:35",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3a52ce78",
+            "Konular": "vize",
+            "Soru": "Iyi günler annemin aile ziyareti vize randevusu bu çarşambaya verildi ama davetiye almanyada suan elimize bu Cuma günü geçecek. Randevuya davetiyenin fotokopisi ile başvuruya gitsek sorun olur mu?"
+        },
+        {
+            "Tarih": "20.04.2026 15:29:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_34ed5742",
+            "Konular": "",
+            "Soru": "İyi akşamlar arkadaşlar benim ( C D ehliyetim var ve pizza pide ustalık belgem var) İsviçre’ye nasıl gide bilirim bilgi verebilir misiniz lütfen???"
+        },
+        {
+            "Tarih": "20.04.2026 15:08:59",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_0f1e7b80",
+            "Konular": "",
+            "Soru": "Eksik evrağı mail ile niye yollamadın?"
+        },
+        {
+            "Tarih": "20.04.2026 14:15:43",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar ,Ankara dan kargo mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 14:15:33",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Selamlar ,Ankara dan kargo mesajı alan var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 14:12:49",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b0fe6abf",
+            "Konular": "",
+            "Soru": "Arkadaşlar ön onay kaç ayda geliyor ve neye göre geliyor bilgisi olan varmı ?"
+        },
+        {
+            "Tarih": "20.04.2026 13:34:39",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_52d3c4f3",
+            "Konular": "dil, denklik",
+            "Soru": "arkadaşlar merhaba ben tıbbi laboratuvar teknikleri mezunuyum. kısmi denklik almak istiyorum ancak almanca öğrenmeye yeni başladım nasıl bir yol izlemeliyim bilgisi olan yazabilir mi?"
+        },
+        {
+            "Tarih": "20.04.2026 13:30:42",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "ausbildung, denklik",
+            "Soru": "Ausbildung için diploma kayıp belgesi (lise tarafından imzalı ve damgalı + apostilletilmiş) şekilde denklik sürecinde geçerli olur mu?"
+        },
+        {
+            "Tarih": "20.04.2026 13:29:36",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_93f0a0d8",
+            "Konular": "vize",
+            "Soru": "Siz vize görüşmesine mi gideceksiniz ondan sebep mi sigortayı soruyorsunuz ?"
+        },
+        {
+            "Tarih": "20.04.2026 12:35:27",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_a2d53469",
+            "Konular": "",
+            "Soru": "Arkadaşlar son günler de İstanbul başkonsolosluktan passportu gelen var mı ??"
+        },
+        {
+            "Tarih": "20.04.2026 12:07:04",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Duisburgta memnun kaldığınız dil kursu var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 12:06:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_eba0b644",
+            "Konular": "",
+            "Soru": "Duisburgta memnun kaldığınız dil kursu var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 10:45:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "3 martan sonra 81a işlemleri değişmiş sanırım son zamanlarda işlem yapan var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 10:44:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "3 martan sonra 81a işlemleri değişmiş sanırım son zamanlarda işlem yapan var mı ?"
+        },
+        {
+            "Tarih": "20.04.2026 10:34:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "bende aynı durumdayım işlemleri nasıl yaptınız özelden yazsam sorun olur mu ?"
+        },
+        {
+            "Tarih": "20.04.2026 08:58:22",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7ff42fe4",
+            "Konular": "",
+            "Soru": "Teşekkürler kendisine özelden mi yazmalıyım ?"
+        },
+        {
+            "Tarih": "20.04.2026 07:49:16",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_18c17cba",
+            "Konular": "vize, dil",
+            "Soru": "Yüksek lisans, A1 Almanca ile vize çıkar mı?"
+        },
+        {
+            "Tarih": "20.04.2026 01:44:43",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "vize, randevu",
+            "Soru": "81a da randevu için konsolosluk mu ulaşıyor bize ?"
+        },
+        {
+            "Tarih": "19.04.2026 23:08:32",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_8a5fed2b",
+            "Konular": "",
+            "Soru": "Ne kadar oldu evrak teslim edeli ?"
+        },
+        {
+            "Tarih": "19.04.2026 23:06:18",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "dil, denklik",
+            "Soru": "Belli olmuyor denklik Almanca?"
+        },
+        {
+            "Tarih": "19.04.2026 21:51:58",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7dbde935",
+            "Konular": "",
+            "Soru": "teşekkürler cevabınız için iki ay oldu online başvuruyu tamamlayalı, biyometrik ve foto bile istemediler henüz düsseldorftayız sizce normal midir?"
+        },
+        {
+            "Tarih": "19.04.2026 21:10:11",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_df1d5fe9",
+            "Konular": "",
+            "Soru": "Herkese Selam . Mindelheim ve çevresinde ev arıyorum. Bu grupta orada kalan başka biri var mı?"
+        },
+        {
+            "Tarih": "19.04.2026 21:01:48",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_6a6c247a",
+            "Konular": "dil",
+            "Soru": "Merhabalar . Ben Türkiye’de aktif olarak psikologluk yapıyorum. Almanya ya yerleşmek istiyprum . Kendi alanım veya alan dışı bir iş arıyorum . Hali hazırda b2 dil sınavına hazırlanıyorum . Bu konuda yardımcı olabilecek biri var mı ?"
+        },
+        {
+            "Tarih": "19.04.2026 20:58:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6a6c247a",
+            "Konular": "dil",
+            "Soru": "Merhabalar . Ben Türkiye’de aktif olarak psikologluk yapıyorum. Almanya ya yerleşmek istiyprum . Kendi alanım veya alan dışı bir iş arıyorum . Hali hazırda b2 dil sınavına hazırlanıyorum . Bu konuda yardımcı olabilecek biri var mı ?"
+        },
+        {
+            "Tarih": "19.04.2026 20:29:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d654bbf4",
+            "Konular": "",
+            "Soru": "Almanya ziyaretçi randevuları ne kadar zamanda atama geliyor biliyor musunuz?"
+        },
+        {
+            "Tarih": "19.04.2026 18:26:19",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_27815675",
+            "Konular": "vize",
+            "Soru": "Bremenden vize bekliyen var mı?"
+        },
+        {
+            "Tarih": "19.04.2026 18:09:49",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_27815675",
+            "Konular": "vize",
+            "Soru": "Bremenden vize bekliyen var mı?"
+        },
+        {
+            "Tarih": "19.04.2026 16:59:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5a008c4f",
+            "Konular": "ausbildung",
+            "Soru": "Arkadaşlar aramızda ausbildung yapan yada yapmış olan var mı?"
+        },
+        {
+            "Tarih": "19.04.2026 16:36:35",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_abc8444c",
+            "Konular": "",
+            "Soru": "Merhaba ajet ile uçan var mı tavsiye eder misiniz?"
+        },
+        {
+            "Tarih": "19.04.2026 16:06:46",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d43e856e",
+            "Konular": "sehir",
+            "Soru": "Merhaba Dresden şehrinde olanınız varmı?"
+        },
+        {
+            "Tarih": "19.04.2026 15:41:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c3325aba",
+            "Konular": "",
+            "Soru": "6 ayda çıktı hocam . Ön onayın geçerlilik süresi ne kadar bilginiz var mı. ?"
+        },
+        {
+            "Tarih": "19.04.2026 15:31:56",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7d9b9555",
+            "Konular": "",
+            "Soru": "Son zamanlarda fırsat kartına başvuran var mııııı ?"
+        },
+        {
+            "Tarih": "19.04.2026 15:31:01",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c3325aba",
+            "Konular": "vize",
+            "Soru": "Merhabalar, 81a ön onayım geldi. Vize başvurusu için ne kadar sürem oluyor acaba ?"
+        },
+        {
+            "Tarih": "19.04.2026 15:00:53",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7d9b9555",
+            "Konular": "randevu",
+            "Soru": "Merhaba, şans kartına başvurmak istiyorum randevu atama süreleri ne kadar bilgi verebilir misiniz ?"
+        },
+        {
+            "Tarih": "19.04.2026 13:41:00",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_a0f1490a",
+            "Konular": "",
+            "Soru": "arkadaşlar selamlar, eğitim danışmanı arıyorum. tavsiye edeceğiniz kurum veya kişi var mı?"
+        },
+        {
+            "Tarih": "19.04.2026 13:11:47",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_ff96ca23",
+            "Konular": "",
+            "Soru": "Merhaba aile birleşimi vizesi işe alınan eşle beraber çıkıyor mu?"
+        },
+        {
+            "Tarih": "19.04.2026 11:57:48",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e0ae469b",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar. Bilgisi olan arkadaşlar yardımcı olursa sevinirim Yeşil pasaportum ile Almanya’ya geldim kamyon şöförü olarak iş başvurusunda bulundum fakat Türkiye’den konsolosluktan yapman gerek dediler. Sonuç olarak tamam dedik bari ön onay alalım öyle gidelim dedik. Ön onay almak için yabancılar dairesi şefine mail attık, o da bize 01.01.2026 tarihinden itibaren ön onay alman konsolosluğundan veriliyor dendi. Burdan biz vermiyoruz dediler bilgisi olan yardımcı olabilir mi ne yapmam gerekiyor??"
+        },
+        {
+            "Tarih": "19.04.2026 11:56:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_e0ae469b",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar. Bilgisi olan arkadaşlar yardımcı olursa sevinirim Yeşil pasaportum ile Almanya’ya geldim kamyon şöförü olarak iş başvurusunda bulundum fakat Türkiye’den konsolosluktan yapman gerek dediler. Sonuç olarak tamam dedik bari ön onay alalım öyle gidelim dedik. Ön onay almak için yabancılar dairesi şefine mail attık, o da bize 01.01.2026 tarihinden itibaren ön onay alman konsolosluğundan veriliyor dendi. Burdan biz vermiyoruz dediler bilgisi olan yardımcı olabilir mi ne yapmam gerekiyor??"
+        },
+        {
+            "Tarih": "19.04.2026 11:47:06",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2dccce05",
+            "Konular": "anmeldung",
+            "Soru": "Anmeldung u kendiniz yapıyorsunuz işveren değil, vizeniz multi girişli değil mi?"
+        },
+        {
+            "Tarih": "19.04.2026 10:10:28",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_56a7e5af",
+            "Konular": "",
+            "Soru": "Herkese merhaba, Almanya’ya fırsat kartı ile gidip, süreci olumlu olan birisi varsa Sürecini anlatabilir mi?"
+        },
+        {
+            "Tarih": "18.04.2026 23:22:12",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_26a8c577",
+            "Konular": "",
+            "Soru": "Arkadaslar selam 18b oturumum ile 28 ay calistim, mini job yapcam tekrar behördeden izinmi alinmali?"
+        },
+        {
+            "Tarih": "18.04.2026 22:48:51",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Yani A1 sertifikası sonrasında felan?"
+        },
+        {
+            "Tarih": "18.04.2026 22:48:30",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_58668e76",
+            "Konular": "",
+            "Soru": "Evraklar tam olup digital yoldan yükledikten sonra? Bu yeni sistemden bahsediyorsunuz değil mi?"
+        },
+        {
+            "Tarih": "18.04.2026 22:47:01",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_082ea93b",
+            "Konular": "",
+            "Soru": "Nasıl yani? Sadece 3 günde ön onay incelemeye mi girdi?"
+        },
+        {
+            "Tarih": "18.04.2026 22:45:52",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_58668e76",
+            "Konular": "",
+            "Soru": "Herkese iyi geceler. İstanbul aile birleşimi süreci ne kadar sürüyor aşağı yukarı?"
+        },
+        {
+            "Tarih": "18.04.2026 21:31:27",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d102c686",
+            "Konular": "",
+            "Soru": "Yüksek lisansla giden arkadaşlar var mı acaba ?"
+        },
+        {
+            "Tarih": "18.04.2026 20:10:17",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9cb6f4d8",
+            "Konular": "",
+            "Soru": "NRW Köln şehrini kapsıyor mu??"
+        },
+        {
+            "Tarih": "18.04.2026 18:46:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_d3035957",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba 25-F şoför vizesi ile gittiğimizde ailemizde aynı anda bizimle birlikte gelebiliyor mu?"
+        },
+        {
+            "Tarih": "18.04.2026 18:46:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_d3035957",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba 25-F şoför vizesi ile gittiğimizde ailemizde aynı anda bizimle birlikte gelebiliyor mu?"
+        },
+        {
+            "Tarih": "18.04.2026 17:57:01",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "16. Madde dimi bahsettiğiniz calfalik belgesi?"
+        },
+        {
+            "Tarih": "18.04.2026 17:49:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_e3baf29f",
+            "Konular": "",
+            "Soru": "Bu şehirlerde okurken iş bulup çalışma şansım az mı , birde hangi şehirleri önerebilirsiniz ?"
+        },
+        {
+            "Tarih": "18.04.2026 17:28:39",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_48523acb",
+            "Konular": "",
+            "Soru": "Almanya aile birleşimi yapan var mı?"
+        },
+        {
+            "Tarih": "18.04.2026 14:11:43",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_9cb6f4d8",
+            "Konular": "",
+            "Soru": "Tam 1 ay oldu şu 81A ön onay hala gelmedi Sorun ne acaba ? Fikri olan var mı??"
+        },
+        {
+            "Tarih": "18.04.2026 12:42:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3e3c94a4",
+            "Konular": "",
+            "Soru": "Merhaba ankara konsolosluğunda en son atama tarihi nedir?"
+        },
+        {
+            "Tarih": "18.04.2026 12:32:37",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "merhabalar 81 A ön onayım var bu konuda işlemler için bilgi ve yardımcı olabilecek birleri var mı ?"
+        },
+        {
+            "Tarih": "18.04.2026 10:59:23",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_73f65a57",
+            "Konular": "",
+            "Soru": "Merhabalar bir aracı kurum bize iş ayarladı firmayla görüştük 81a 19c denkliği olucak dedi çok yüksek rakamlar istedi bizde emin olamadık iptal ettik . Bu süreci kendimiz halletsek kaça maliyet çıkar?"
+        },
+        {
+            "Tarih": "18.04.2026 10:38:42",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_37dbecd7",
+            "Konular": "dil",
+            "Soru": "Merhaba goethe aile birleşimi için a1 sınavı satın alırken sınav sebebini aile birleşimi olarak belirtmezsek sorun okuyor mu ? Kesin aile birleşimi diye sebebini belirtmemiz mi gerekiyor??"
+        },
+        {
+            "Tarih": "18.04.2026 10:38:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_37dbecd7",
+            "Konular": "dil",
+            "Soru": "Merhaba goethe aile birleşimi için a1 sınavı satın alırken sınav sebebini aile birleşimi olarak belirtmezsek sorun okuyor mu ? Kesin aile birleşimi diye sebebini belirtmemiz mi gerekiyor??"
+        },
+        {
+            "Tarih": "18.04.2026 10:17:13",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "81a ön onayı konsolosluğa nasıl başvuru yapıyoruz ?"
+        },
+        {
+            "Tarih": "18.04.2026 08:32:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_6a3fb35b",
+            "Konular": "",
+            "Soru": "Arkadaşlar dün gece saat 21:00 UPS mesajı alan oldu mu? Bugün pasaport elimize ulaşır mı acaba?"
+        },
+        {
+            "Tarih": "18.04.2026 08:24:03",
+            "Grup": "ChatExport_2026-05-05_ALMANYA ULUSAL VİZE",
+            "Sender": "user_29f5cd48",
+            "Konular": "randevu",
+            "Soru": "81a ön onayım var istanbuldan randevu alamıyorum, yardımcı olan var mı?"
+        },
+        {
+            "Tarih": "18.04.2026 07:12:41",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2601c57e",
+            "Konular": "",
+            "Soru": "Alandisi ya da şoför olarak mi?"
+        },
+        {
+            "Tarih": "18.04.2026 06:49:01",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_39d298e2",
+            "Konular": "",
+            "Soru": "Hessen eyaletinde çalışan Pflegefachkraft olarak var mı ??"
+        },
+        {
+            "Tarih": "18.04.2026 06:22:21",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_0ad0bb2e",
+            "Konular": "",
+            "Soru": "Merhabalar bu seyahat sağlık sigortası için herhangi bir değişiklik oldumu önceden istediğimiz yerden yapıyoduk şuan nasıl yapmamız lazım sorun çıkmaması için bilgi verebilecek varmı?"
+        },
+        {
+            "Tarih": "18.04.2026 00:44:22",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "dil",
+            "Soru": "Ayrica ulm , augsburg cicarinda b1 sinav merkezi varmi buralarda olan var mi?"
+        },
+        {
+            "Tarih": "18.04.2026 00:42:40",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_26a8c577",
+            "Konular": "",
+            "Soru": "Arkadaslar selam 18b oturumum ile 28 ay calistim, mini job yapcam tekrar behördeden izinmi alinmali?"
+        },
+        {
+            "Tarih": "17.04.2026 22:59:23",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_681e23e7",
+            "Konular": "",
+            "Soru": "fiziki belge gönderilmiyor yani?"
+        },
+        {
+            "Tarih": "17.04.2026 22:24:06",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_fc0a5a60",
+            "Konular": "",
+            "Soru": "Merhaba herkese berlinde kiralık ev arıyoruz eşimle bir fikir öneriniz veya tavsiye ettiğiniz durum var mıdır acaba ?"
+        },
+        {
+            "Tarih": "17.04.2026 22:18:08",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_05ac12b3",
+            "Konular": "",
+            "Soru": "Ankara&apos;da 81a vizesi için 25 Mart&apos;ta Parmak izi verdim... 3 ile 6 Nisan paskalya bayramı araya girdi için mi? Bu kadar uzadı yoksa başka birşey mi? Bilemedim bu durumda olan başka bir kişi var mı?"
+        },
+        {
+            "Tarih": "17.04.2026 21:50:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "",
+            "Soru": "Evrak mı teslim ettiniz atamamı bekliyorsunuz red mi yediniz?"
+        },
+        {
+            "Tarih": "17.04.2026 21:18:57",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_9ddf3cc5",
+            "Konular": "",
+            "Soru": "Arkadaşlar merhaba kısmi denkliği tam denkliğe çevirmek için ne yapmak gerekiyor bilgisi olan var mı?"
+        },
+        {
+            "Tarih": "17.04.2026 20:24:03",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2e0c1877",
+            "Konular": "",
+            "Soru": "Ankara idatadan sabah pasaportunuz DHL kargoya teslim edilmiştir diye mail geldi. Ama kargo tarafından takip sms&apos;i iletilmedi tarafıma bu sorunu yaşayan varmı ?"
+        },
+        {
+            "Tarih": "17.04.2026 20:16:24",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71b278db",
+            "Konular": "randevu",
+            "Soru": "Ön onayı elçiliğe mail mi attınız ondan sonra size randevu mu verdiler ?"
+        },
+        {
+            "Tarih": "17.04.2026 20:12:20",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71b278db",
+            "Konular": "",
+            "Soru": "Portaldan mı yükleme yaptınız ?"
+        },
+        {
+            "Tarih": "17.04.2026 20:10:54",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_71b278db",
+            "Konular": "vize",
+            "Soru": "Hangi vize türü için başvurmuştunuz ?"
+        },
+        {
+            "Tarih": "17.04.2026 20:10:45",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_2253beed",
+            "Konular": "vize",
+            "Soru": "Izmir den ziyaretci vize alan arkadaşlar pasaportunuz Idataya verdikten kac gun sonra geldi? Bugun teslim ettim sizce kac gunde gelir? Bilgisi olan varsa yardimci olabilirmii?"
+        },
+        {
+            "Tarih": "17.04.2026 19:55:16",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_3c14f501",
+            "Konular": "",
+            "Soru": "Merhabalar 81a ön onayla işlem yapan var mı acaba ?"
+        },
+        {
+            "Tarih": "17.04.2026 19:00:19",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f3ffd518",
+            "Konular": "",
+            "Soru": "Sebeb ? NRW de nereye yolladınız belgeleri alan ne ?"
+        },
+        {
+            "Tarih": "17.04.2026 16:24:26",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5cb17cea",
+            "Konular": "",
+            "Soru": "E devlet belgelerini kaymakamlık apostillermi ?"
+        },
+        {
+            "Tarih": "17.04.2026 13:31:35",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_62dd0146",
+            "Konular": "vize, ausbildung",
+            "Soru": "Arkadaşlar hepinize merhaba bu ayın 27sinde konsolosluk randevum var ausbildung ancak noterlettiğim yer belgeleri ayrı zımbalamış, apostil yaptırdığım yer de belgeleri ayrı zımbalamış alman ankara konsolosluğu sıkıntı eder mi?"
+        },
+        {
+            "Tarih": "17.04.2026 13:26:29",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar bugün Ankara’dan kargo mesajı alan oldu mu ?"
+        },
+        {
+            "Tarih": "17.04.2026 13:26:11",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar bugün Ankara’dan kargo mesajı alan oldu mu ?"
+        },
+        {
+            "Tarih": "17.04.2026 12:58:10",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_34ecc6e4",
+            "Konular": "",
+            "Soru": "Arkadaşlar birseyi öğrenebilirmiyiz Şuan 5 ay sürelik fiktionsbescheinugung var Türkiye&apos;den zurihe ucabilirmiyiz ?"
+        },
+        {
+            "Tarih": "17.04.2026 12:27:25",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_511a24f9",
+            "Konular": "vize",
+            "Soru": "hangi vize türü ? turist mi ziyaretçimi ulusal mi ?"
+        },
+        {
+            "Tarih": "17.04.2026 12:23:10",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e0ae469b",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar herkesin cuması mübarek olsun. Bilgisi olan arkadaşlar yardımcı olursa sevinirim Yeşil pasaportum ile Almanya’ya geldim kamyon şöförü olarak iş başvurusunda bulundum fakat Türkiye’den konsolosluktan yapman gerek dediler. Sonuç olarak tamam dedik bari ön onay alalım öyle gidelim dedik. Ön onay almak için yabancılar dairesi şefine mail attık, o da bize 01.01.2026 tarihinden itibaren ön onay alman konsolosluğundan veriliyor dendi. Burdan biz vermiyoruz dediler bilgisi olan yardımcı olabilir mi ne yapmam gerekiyor??"
+        },
+        {
+            "Tarih": "17.04.2026 12:22:29",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_e0ae469b",
+            "Konular": "",
+            "Soru": "Merhaba arkadaşlar herkesin cuması mübarek olsun. Bilgisi olan arkadaşlar yardımcı olursa sevinirim Yeşil pasaportum ile Almanya’ya geldim kamyon şöförü olarak iş başvurusunda bulundum fakat Türkiye’den konsolosluktan yapman gerek dediler. Sonuç olarak tamam dedik bari ön onay alalım öyle gidelim dedik. Ön onay almak için yabancılar dairesi şefine mail attık, o da bize 01.01.2026 tarihinden itibaren ön onay alman konsolosluğundan veriliyor dendi. Burdan biz vermiyoruz dediler bilgisi olan yardımcı olabilir mi ne yapmam gerekiyor??"
+        },
+        {
+            "Tarih": "17.04.2026 11:56:20",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "anon_deleted",
+            "Konular": "denklik",
+            "Soru": "18b ile Almanya&apos;da farklı bir meslekte çalışıyordum ve Erzieherin olarak yarı denklik aldım. 16d denklik tamamlamak için Almanya&apos;dan Türkiye&apos;ye gidip yeniden mi başvuru yapmam gerekiyor?"
+        },
+        {
+            "Tarih": "17.04.2026 11:55:14",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "anon_deleted",
+            "Konular": "denklik",
+            "Soru": "18b ile Almanya&apos;da farklı bir meslekte çalışıyordum ve Erzieherin olarak yarı denklik aldım. 16d denklik tamamlamak için Almanya&apos;dan Türkiye&apos;ye gidip yeniden mi başvuru yapmam gerekiyor?"
+        },
+        {
+            "Tarih": "17.04.2026 10:55:33",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_e8a364a1",
+            "Konular": "sigorta",
+            "Soru": "Merhaba arkadaşlar, İstanbul Konsolosluğu’nun yeni sistemiyle başvuru yaptığımda sigorta talep edildiğini duydum. Hem çocuklar hem de benim için bu sigortayı yaptırmak zorunlu mu, yoksa gerekmiyor mu? Bu süreci yaşayan veya bilgisi olan varsa paylaşabilir mi?"
+        },
+        {
+            "Tarih": "17.04.2026 10:55:18",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_8677065a",
+            "Konular": "",
+            "Soru": "Ups kargo cumartesi calisiyor mu ?"
+        },
+        {
+            "Tarih": "17.04.2026 09:52:12",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7ad96803",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba, Ankara Konsolosluğa Ausbildung vizesi için mail atmak istiyorum ama hangi mail kabinine atmalıyım ?"
+        },
+        {
+            "Tarih": "17.04.2026 09:49:19",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_7ad96803",
+            "Konular": "ausbildung",
+            "Soru": "Merhaba, Ankara Konsolosluğa Ausbildung vizesi için mail atmak istiyorum ama hangi mail kabinine atmalıyım ?"
+        },
+        {
+            "Tarih": "17.04.2026 03:24:46",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_5cb17cea",
+            "Konular": "denklik",
+            "Soru": "Arkadaşlar merhaba Denklik için belgelerimi Almanyadaki çevirmenlerden çevirtirsem türkiyedeki noter onayına gerek varmı ?"
+        },
+        {
+            "Tarih": "17.04.2026 02:12:55",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_681e23e7",
+            "Konular": "",
+            "Soru": "bremen unv informatik şartli kabul sonrasi kayit olmak icin neler gerekli? evraklari elektronik ortamda mi göndermemiz gerekiyor? yoksa posta\/elden mi?"
+        },
+        {
+            "Tarih": "17.04.2026 01:09:40",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar 1 Nisan da Ankara’dan başburu yapmıştım, o gün eksik evrak istendi aynı gün mail attım , 2 nisanda da faks çektim .ardından bir kaç mail attım evrağın ulaşıp ulaşmadığı ile ilgili cevap alamamıştım en son konsolosluğun sayfasından kontakt bölümünden bilgilerimi girip gönderdim bugün maile cevap geldi. Evrağım alınmış işlemim devam ediyormuş . Sizce kaç gün sonra kargo mesajı gelir bu şekilde olup pasaportunu alan arkadaşlar var mı ?"
+        },
+        {
+            "Tarih": "17.04.2026 01:09:32",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_f5aa1fd7",
+            "Konular": "",
+            "Soru": "Arkadaşlar 1 Nisan da Ankara’dan başburu yapmıştım, o gün eksik evrak istendi aynı gün mail attım , 2 nisanda da faks çektim .ardından bir kaç mail attım evrağın ulaşıp ulaşmadığı ile ilgili cevap alamamıştım en son konsolosluğun sayfasından kontakt bölümünden bilgilerimi girip gönderdim bugün maile cevap geldi. Evrağım alınmış işlemim devam ediyormuş . Sizce kaç gün sonra kargo mesajı gelir bu şekilde olup pasaportunu alan arkadaşlar var mı ?"
+        },
+        {
+            "Tarih": "16.04.2026 23:42:34",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_b07699da",
+            "Konular": "vize",
+            "Soru": "Arkadaşlar turistik vize 6 aylık verdiler. Bidahaki başvuruda 1 yıl mı olur 3 mü?"
+        },
+        {
+            "Tarih": "16.04.2026 23:27:56",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_7c035b08",
+            "Konular": "",
+            "Soru": "İyi akşamlar ben yeni sistemden digital diplodan başvuru yaptım bütün evraklarımı teslim ettim konsolosluğa pasaportuda bıraktım sistemde karar bekleniyor diyor aile birleşimi için bekliyorum ne kadar sürede sonuçlanır bilgisi olan varmı?"
+        },
+        {
+            "Tarih": "16.04.2026 22:14:55",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_c032adc1",
+            "Konular": "",
+            "Soru": "Arkadaşlar eksik evrak maili almanya &apos; dan mı geliyor ? Eksik evrak maili alan var mı?"
+        },
+        {
+            "Tarih": "16.04.2026 21:23:14",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_b2275d13",
+            "Konular": "",
+            "Soru": "Türkiyede aktif olarak futbol alt liglerde Almanyada bir amatör takımda oynama şansım var mı?"
+        },
+        {
+            "Tarih": "16.04.2026 21:12:32",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_48333a43",
+            "Konular": "ausbildung",
+            "Soru": "Ausbildung icin hangi diploma önemli veya gecerli universite mi veya lise diploması mi?"
+        },
+        {
+            "Tarih": "16.04.2026 21:04:26",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_928c33c9",
+            "Konular": "sigorta",
+            "Soru": "İstanbul benimki, o zaman Alman menşeili sigorta şirketinden yapıyorum, Care Concept’i bilen var mı?"
+        },
+        {
+            "Tarih": "16.04.2026 19:49:44",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_68b0ab6a",
+            "Konular": "",
+            "Soru": "Ne zamandan beri istemiyorlar. Ben 2 nisanda ankaraya teslim ettim. Kabul olmayacakmı?"
+        },
+        {
+            "Tarih": "16.04.2026 19:40:52",
+            "Grup": "ChatExport_2026-05-05Vize & Denklik",
+            "Sender": "user_928c33c9",
+            "Konular": "",
+            "Soru": "teşekkürler, Care Concept’ten yapan var mı direkt Alman şirketi?"
+        },
+        {
+            "Tarih": "16.04.2026 19:40:21",
+            "Grup": "ChatExport_2026-05-05 _vizr Danismanlk",
+            "Sender": "user_928c33c9",
+            "Konular": "vize",
+            "Soru": "teşekkürler iş için 81a 92 gün yapacağım, peki hangi vize şirketinden yaptınız acaba? Care concepti bilen var mı?"
+        }
+    ]
+}
