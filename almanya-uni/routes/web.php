@@ -1552,6 +1552,31 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Topluluk havuzundan (telegram + reddit_germany_qa) AI ile FAQ üret.
+    // Lokalde DB yok → prod'da tarayıcıdan tetiklenir (SSH yok). Gemini ile üretir.
+    // Varsayılan TASLAK (is_published=false, /admin/faqs'tan onayla). Idempotent (dedupe).
+    //   ?dry=1            → önizleme (DB'ye yazmaz)
+    //   ?batch=20&batches=1 → AI çağrısı başına soru / çağrı sayısı
+    //   ?publish=1        → direkt yayınla (DİKKAT: moderasyonu atlar)
+    Route::get('/admin/ops/faq-generate', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        @ini_set('max_execution_time', '600');
+        try {
+            $args = [
+                '--batch' => max(1, (int) request()->query('batch', 20)),
+                '--batches' => max(1, (int) request()->query('batches', 1)),
+            ];
+            if (request()->boolean('dry')) $args['--dry-run'] = true;
+            if (request()->boolean('publish')) $args['--publish'] = true;
+            \Illuminate\Support\Facades\Artisan::call('faq:generate-ai', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Analytics SIFIRLA — dummy/demo page_views verisini sil (gerçek trafikle başla).
     // KAS SSH yok → tarayıcıdan ?run=1 ile tetikle. Sadece is_admin.
     Route::get('/admin/ops/analytics-reset', function () {
