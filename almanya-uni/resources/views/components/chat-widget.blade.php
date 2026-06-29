@@ -40,8 +40,9 @@
 
 <div x-data="chatWidget({ locale: '{{ $__locale }}', greet: @js($t['greet']), suggest: @js($t['suggest']) })" x-cloak>
     {{-- Açma butonu --}}
+    {{-- Geri bildirim butonu (bottom-4 right-4) ile çakışmasın → onun üstüne yerleş. --}}
     <button type="button" x-show="!open" @click="toggle()"
-        class="fixed bottom-5 right-5 z-[55] flex items-center gap-2 rounded-full bg-primary-600 px-4 py-3 text-white shadow-lg transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
+        class="fixed bottom-20 right-4 z-[55] flex items-center gap-2 rounded-full bg-primary-600 px-4 py-3 text-white shadow-lg transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
         aria-label="{{ $t['open'] }}">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12a8 8 0 01-11.6 7.1L3 21l1.9-6.4A8 8 0 1121 12z"/></svg>
         <span class="hidden sm:inline text-sm font-semibold">{{ $t['open'] }}</span>
@@ -49,7 +50,7 @@
 
     {{-- Panel --}}
     <div x-show="open" x-transition.opacity
-        class="fixed bottom-5 right-5 z-[60] flex h-[min(580px,calc(100vh-2rem))] w-[min(390px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900">
+        class="fixed bottom-4 right-4 z-[60] flex h-[min(580px,calc(100vh-2rem))] w-[min(390px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900">
         {{-- Başlık --}}
         <div class="flex items-center justify-between bg-primary-600 px-4 py-3 text-white">
             <div class="flex items-center gap-2">
