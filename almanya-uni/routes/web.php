@@ -55,15 +55,28 @@ $routes = function () {
     // RAG chatbot — semantik soru-cevap asistanı. (doc/CHATBOT-RAG-PLAYBOOK.md)
     // Sadece getirilen bağlamdan grounded cevap + kaynak linkleri.
     Route::post('/chat', function (\Illuminate\Http\Request $request, string $locale) {
+        @set_time_limit(120);
         $data = $request->validate([
             'message'           => ['required', 'string', 'max:800'],
             'history'           => ['sometimes', 'array', 'max:12'],
             'history.*.role'    => ['required_with:history', 'in:user,assistant'],
             'history.*.content' => ['required_with:history', 'string', 'max:2000'],
         ]);
-        $result = app(\App\Services\Rag\ChatService::class)
-            ->ask($data['message'], $locale, $data['history'] ?? []);
-        return response()->json($result);
+        try {
+            $result = app(\App\Services\Rag\ChatService::class)
+                ->ask($data['message'], $locale, $data['history'] ?? []);
+            return response()->json($result);
+        } catch (\Throwable $e) {
+            // GEÇİCİ teşhis: hatayı sohbet balonunda göster (iş bitince sadeleştir).
+            $msg = get_class($e) . ': ' . $e->getMessage() . ' @ ' . basename($e->getFile()) . ':' . $e->getLine();
+            return response()->json([
+                'answer'      => $msg,
+                'answer_html' => '<pre style="white-space:pre-wrap;font-size:11px">' . e($msg) . '</pre>',
+                'sources'     => [],
+                'confidence'  => 'low',
+                'top'         => 0,
+            ]);
+        }
     })->middleware('throttle:20,1')->name('chat.ask');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
