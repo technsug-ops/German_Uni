@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 /**
- * Türk öğrenci pain-point'lerinden 10 başlangıç blog yazısı üret.
- * Her biri community-aware (Forum + Telegram) + 1500-2000 kelime Türkçe.
- * is_published=false (draft) — admin onayından sonra yayınlanır.
+ * Türk öğrenci + r/germany pain-point'lerinden blog yazısı üret (28 konuluk havuz).
+ * Her çağrı HENÜZ ÜRETİLMEMİŞ konulardan --limit kadarını alır → butona her basışta yeni.
+ * community-aware (Forum + Telegram) + 1500-2000 kelime Türkçe, is_published=false (draft).
  */
 class BlogGenerateStarter extends Command
 {
@@ -45,6 +45,44 @@ class BlogGenerateStarter extends Command
          'kw' => 'almanya öğrenci işi 20 saat', 'category' => 'yasam', 'pain' => 'Çalışma izni sınırı, vergi dilimleri, sigorta etkisi'],
         ['title' => 'Aile Birleşimi: Eş ve Çocuk Almanya\'ya Nasıl Gelir?', 'topic' => 'vize',
          'kw' => 'aile birleşimi vizesi almanya', 'category' => 'vize', 'pain' => 'Evli öğrenciler için süreç + A1 dil + finansal güvence'],
+
+        // --- Reddit r/germany pain-point genişletmesi ---
+        ['title' => 'SCHUFA Olmadan Almanya\'da Ev Kiralamak Mümkün mü?', 'topic' => 'yurt',
+         'kw' => 'schufa olmadan ev kiralamak', 'category' => 'yasam', 'pain' => 'Yeni gelende SCHUFA yok, ev sahipleri istiyor — alternatifler'],
+        ['title' => 'Krankenkasse Seçimi: TK mı AOK mı Barmer mı?', 'topic' => 'sigorta',
+         'kw' => 'krankenkasse tk aok barmer karşılaştırma', 'category' => 'saglik', 'pain' => 'Hangi kamu sağlık sigortası, fark ne, nasıl seçilir'],
+        ['title' => 'Gesetzlich vs Privat Sağlık Sigortası: Kim Hangisini Seçmeli?', 'topic' => 'sigorta',
+         'kw' => 'gesetzlich privat sigorta farkı', 'category' => 'saglik', 'pain' => 'Öğrenci/çalışan için zorunlu vs özel sigorta kararı'],
+        ['title' => 'Almanya Blue Card 2025: Kimler İçin, Maaş Eşiği, Başvuru', 'topic' => 'vize',
+         'kw' => 'almanya blue card mavi kart', 'category' => 'vize', 'pain' => 'MINT/yeni mezun eşiği, başvuru, aileyi getirme'],
+        ['title' => 'Brutto-Netto: Almanya\'da Maaş ve Vergi Sınıfları (Steuerklasse)', 'topic' => 'is',
+         'kw' => 'brutto netto maaş vergi sınıfı', 'category' => 'finans', 'pain' => 'Brüt maaştan elime ne geçer, hangi Steuerklasse'],
+        ['title' => 'Steuererklärung: Almanya\'da Vergi İadesi Nasıl Alınır?', 'topic' => 'is',
+         'kw' => 'steuererklärung vergi iadesi', 'category' => 'finans', 'pain' => 'Öğrenci/çalışan vergi iadesi hakkı, nasıl beyan edilir'],
+        ['title' => 'Niederlassungserlaubnis: Almanya\'da Kalıcı Oturum Nasıl Alınır?', 'topic' => 'vize',
+         'kw' => 'niederlassungserlaubnis kalıcı oturum', 'category' => 'vize', 'pain' => 'Kaç yıl, hangi şartlar, Blue Card avantajı'],
+        ['title' => 'Fiktionsbescheinigung: Oturum Kartını Beklerken Haklar', 'topic' => 'vize',
+         'kw' => 'fiktionsbescheinigung nedir', 'category' => 'vize', 'pain' => 'Oturum yenilenirken seyahat/çalışma hakkı belirsizliği'],
+        ['title' => 'N26 vs Sparkasse: Öğrenci İçin Günlük Banka Hesabı', 'topic' => 'para',
+         'kw' => 'n26 sparkasse banka hesabı', 'category' => 'finans', 'pain' => 'Online banka mı klasik mi, IBAN, SCHUFA, ücretler'],
+        ['title' => 'Rundfunkbeitrag: Yayın Katkısını Ödemek Zorunda mıyım?', 'topic' => 'anmeldung',
+         'kw' => 'rundfunkbeitrag yayın katkısı', 'category' => 'yasam', 'pain' => 'Her haneye zorunlu 18,36€, muafiyet, WG durumu'],
+        ['title' => 'ELSTER: Almanya\'da Online Vergi Beyannamesi A-Z', 'topic' => 'is',
+         'kw' => 'elster online vergi beyanname', 'category' => 'finans', 'pain' => 'ELSTER kaydı, sertifika, beyanname adımları'],
+        ['title' => 'Mietvertrag ve Kira Hukuku: Sözleşmeden Önce Bilmen Gerekenler', 'topic' => 'yurt',
+         'kw' => 'mietvertrag kira sözleşmesi hukuk', 'category' => 'yasam', 'pain' => 'Kaltmiete/Warmmiete, Kündigung, Nebenkosten tuzakları'],
+        ['title' => 'NC Nedir? Almanya\'da Bölüm Seçimini Nasıl Etkiler?', 'topic' => 'uni_assist',
+         'kw' => 'numerus clausus nc bölüm', 'category' => 'basvuru', 'pain' => 'NC nasıl hesaplanır, NC-siz bölümler, şansını artırma'],
+        ['title' => 'Almanya\'da Doktora (PhD): Pozisyon Bulma + Maaş + Finansman', 'topic' => 'master',
+         'kw' => 'almanya doktora phd pozisyon', 'category' => 'basvuru', 'pain' => 'Strukturiert vs individuell, maaşlı pozisyon, DAAD'],
+        ['title' => 'Almanya\'da İş Arama Stratejisi: Arbeitsagentur + LinkedIn DE', 'topic' => 'is',
+         'kw' => 'almanya iş arama stratejisi', 'category' => 'kariyer', 'pain' => 'Nereye başvurulur, Almanca şart mı, Mittelstand'],
+        ['title' => 'Diploma Denkliği (Anabin): Türk Diploması Almanya\'da Geçerli mi?', 'topic' => 'denklik',
+         'kw' => 'diploma denkliği anabin', 'category' => 'basvuru', 'pain' => 'Anabin H+/H+/-, denklik süreci, başvuruya etkisi'],
+        ['title' => 'Almanya\'da Freelance/Serbest Meslek: Freiberufler vs Gewerbe', 'topic' => 'is',
+         'kw' => 'almanya freelance freiberufler gewerbe', 'category' => 'kariyer', 'pain' => 'Vergi, vize, kayıt — serbest çalışma hakkı'],
+        ['title' => 'Kindergeld ve Elterngeld: Almanya\'da Aile Yardımları', 'topic' => 'para',
+         'kw' => 'kindergeld elterngeld aile yardımı', 'category' => 'finans', 'pain' => 'Kimler hak kazanır, başvuru, öğrenci/çalışan durumu'],
     ];
 
     public function handle(CommunityInsightsService $community): int
@@ -55,7 +93,19 @@ class BlogGenerateStarter extends Command
             return self::FAILURE;
         }
 
-        $topics = array_slice(self::TOPICS, 0, (int) $this->option('limit'));
+        // Sadece HENÜZ ÜRETİLMEMİŞ konuları al → butona her basışta YENİ yazı üretir
+        // (array_slice(0, limit) baştan alıp hep aynılarını üretmesin diye).
+        $pending = array_values(array_filter(self::TOPICS, function ($t) {
+            $kw = mb_substr($t['kw'], 0, 30);
+            return ! Post::where('title', 'like', '%' . $kw . '%')->exists();
+        }));
+        $topics = array_slice($pending, 0, (int) $this->option('limit'));
+
+        if (empty($topics)) {
+            $this->info('✅ Tüm konular zaten üretilmiş — yeni konu kalmadı (' . count(self::TOPICS) . ' konu). Yeni konu eklemek için TOPICS listesini genişlet.');
+            return self::SUCCESS;
+        }
+
         $author = User::where('is_admin', true)->orderBy('id')->first();
 
         $this->info("📝 " . count($topics) . " blog yazısı üretilecek (community-aware AI)");

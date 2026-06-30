@@ -124,7 +124,10 @@ class FaqGenerateAi extends Command
                 $data = json_decode(file_get_contents($path), true) ?? [];
                 foreach ($data['top500_soru'] ?? [] as $row) {
                     $q = trim($row['Soru'] ?? '');
-                    if (mb_strlen($q) > 25) $out[] = $q;
+                    if (mb_strlen($q) > 25) {
+                        // Reddit havuzunda gerçek topluluk cevabı var (grounding); telegram'da yok.
+                        $out[] = ['q' => $q, 'a' => trim($row['Cevap'] ?? '')];
+                    }
                 }
             }
         }
@@ -134,12 +137,17 @@ class FaqGenerateAi extends Command
     private function generateBatch(array $rawQuestions, string $topicList, string $key): ?array
     {
         $list = '';
-        foreach ($rawQuestions as $i => $q) {
-            $list .= ($i + 1) . '. ' . mb_substr($q, 0, 400) . "\n";
+        foreach ($rawQuestions as $i => $item) {
+            $q = is_array($item) ? ($item['q'] ?? '') : $item;
+            $a = is_array($item) ? ($item['a'] ?? '') : '';
+            $list .= ($i + 1) . '. SORU: ' . mb_substr($q, 0, 400) . "\n";
+            if ($a !== '') {
+                $list .= '   TOPLULUK CEVABI (grounding): ' . mb_substr($a, 0, 600) . "\n";
+            }
         }
 
         $prompt = <<<TXT
-AlmanyaUni (Türk öğrencilere Almanya rehberi) için SSS editörüsün. Aşağıda Türk öğrenci topluluğundan (Telegram) gelen HAM, kişisel sorular var.
+AlmanyaUni (Türk öğrencilere Almanya rehberi) için SSS editörüsün. Aşağıda Almanya'daki öğrenci/göçmen topluluğundan (Telegram + Reddit r/germany) gelen HAM sorular var. BAZILARINDA gerçek bir TOPLULUK CEVABI da verilmiş (grounding olarak kullan).
 
 GÖREV: Bu ham sorulardan, GENEL ve tekrar sorulabilir SSS'ler üret. Kişisel/tek seferlik durumları (örn "ben 9 Nisanda ödedim hala atanmadım") GENEL bir soruya soyutla (örn "Vize randevusu atama süreci ne kadar sürer?").
 
@@ -163,6 +171,7 @@ KURALLAR:
 - Sadece GENEL, birden fazla kişinin sorabileceği soruları üret. Çok spesifik/kişisel olanları ATLA.
 - Benzer ham soruları TEK bir SSS'te birleştir.
 - HALÜSİNASYON YOK: spesifik güncel rakam/tarih/ücret verme; "güncel tutarı resmi kaynaktan/konsolosluktan doğrulayın" de.
+- GROUNDING: TOPLULUK CEVABI verilen sorularda o gerçek cevabı temel al — gerçek deneyimi/yönü yansıt (örn "topluluk deneyimine göre..."), ama yine spesifik güncel rakamı "doğrulayın" notuyla ver. Cevap verilmemişse kendi genel bilginle yaz.
 - Cevaplar nötr, faktüel, kısa. Promosyon dili yok.
 - Bu batch'ten en fazla 8 kaliteli SSS çıkar (kalite > kantite).
 - ÇIKTI: SADECE JSON.
