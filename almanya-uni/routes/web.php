@@ -1618,38 +1618,6 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
-    // RAG chat TEŞHİS — /chat 500'ünün gerçek sebebini gösterir (CSRF yok, GET).
-    // ChatService->ask'i try/catch ile çalıştırır; hata olursa class+mesaj+yer+bellek basar.
-    //   ?q=...  ?locale=tr   (İŞ BİTİNCE KALDIR)
-    Route::get('/admin/ops/chat-test', function () {
-        abort_unless(auth()->user()?->is_admin, 403);
-        @set_time_limit(120);
-        $q = (string) request()->query('q', 'Bloke hesaba ne kadar para gerekli?');
-        $loc = (string) request()->query('locale', 'tr');
-        try {
-            $r = app(\App\Services\Rag\ChatService::class)->ask($q, $loc);
-            return response()->json([
-                'ok' => true,
-                'confidence' => $r['confidence'] ?? null,
-                'top' => $r['top'] ?? null,
-                'sources' => $r['sources'] ?? [],
-                'answer' => $r['answer'] ?? null,
-                'peak_mb' => round(memory_get_peak_usage(true) / 1048576, 1),
-                'memory_limit' => ini_get('memory_limit'),
-            ], 200, [], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'ok' => false,
-                'error' => get_class($e),
-                'message' => $e->getMessage(),
-                'where' => $e->getFile() . ':' . $e->getLine(),
-                'trace' => array_slice(explode("\n", $e->getTraceAsString()), 0, 10),
-                'peak_mb' => round(memory_get_peak_usage(true) / 1048576, 1),
-                'memory_limit' => ini_get('memory_limit'),
-            ], 200, [], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        }
-    });
-
     // Analytics SIFIRLA — dummy/demo page_views verisini sil (gerçek trafikle başla).
     // KAS SSH yok → tarayıcıdan ?run=1 ile tetikle. Sadece is_admin.
     Route::get('/admin/ops/analytics-reset', function () {
