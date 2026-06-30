@@ -1596,8 +1596,9 @@ Route::middleware('auth')->group(function () {
     });
 
     // RAG bilgi tabanı embed — içeriği vektörle (kb_chunks). Artımlı (content_hash).
-    // KAS SSH yok → tarayıcıdan tetikle. Sadece is_admin. (doc/CHATBOT-RAG-PLAYBOOK.md)
-    //   ?source=faq,post  ?locale=tr  ?limit=50  ?fresh=1  ?dry=1
+    // KAS SSH yok → tarayıcıdan tetikle. Sadece is_admin. (doc/CHATBOT-RAG-PLAYBOOK.md §9)
+    //   ?source=faq,post,university,city,program  ?locale=tr  ?limit=50  ?fresh=1  ?dry=1
+    //   program ~14.5k → tek istekte bitmezse aynı URL'i tekrar çağır (hash-skip kaldığı yerden devam).
     Route::get('/admin/ops/kb-embed', function () {
         abort_unless(auth()->user()?->is_admin, 403);
         @set_time_limit(900);

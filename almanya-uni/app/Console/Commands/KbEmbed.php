@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\City;
 use App\Models\Faq;
 use App\Models\KbChunk;
 use App\Models\Post;
+use App\Models\Program;
+use App\Models\University;
 use App\Services\Rag\GeminiEmbedder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -15,15 +18,22 @@ use Illuminate\Support\Facades\DB;
  * Artımlı: bir satırın chunk hash kümesi değişmediyse yeniden embed ETMEZ (API tasarrufu).
  * Lokalde DB + GEMINI_API_KEY ile çalışır; prod'da /admin/ops/kb-embed ile tetiklenir.
  *
- *   php artisan kb:embed --source=faq,post [--locale=tr] [--limit=50] [--fresh] [--dry-run]
+ *   php artisan kb:embed --source=faq,post,university,city,program [--locale=tr] [--limit=50] [--fresh] [--dry-run]
  *
- * (doc/CHATBOT-RAG-PLAYBOOK.md — Faz 1: faq+post. program/university/city: Faz 3.)
+ * (doc/CHATBOT-RAG-PLAYBOOK.md — Faz 1: faq+post. Faz 3: university/city + program.)
+ *
+ * Şeritler:
+ *  - TAVSİYE (saf semantik): faq, post, university, city → her locale ayrı chunk.
+ *  - PROGRAM (yapısal+semantik): program → 1 çok-dilli chunk/program (locale='mul'),
+ *    URL'i locale-bağımsız (`/programs/{slug}`); retrieval'da aktif locale eklenir.
  */
 class KbEmbed extends Command
 {
+    private const SOURCES = ['faq', 'post', 'university', 'city', 'program'];
+
     protected $signature = 'kb:embed
-        {--source=faq,post : Kaynak türleri (faq,post)}
-        {--locale= : Sadece bu locale (boş=hepsi)}
+        {--source=faq,post : Kaynak türleri (faq,post,university,city,program)}
+        {--locale= : Sadece bu locale (boş=hepsi; program çok-dilli, etkilenmez)}
         {--limit=0 : Kaynak türü başına işlenecek satır sınırı (0=sınırsız)}
         {--fresh : Bu kaynakların mevcut chunk\'larını önce sil}
         {--dry-run : Embed/yazma YOK; sadece chunk planını raporla}';
@@ -55,19 +65,25 @@ class KbEmbed extends Command
         }
 
         foreach ($sources as $src) {
-            if (! in_array($src, ['faq', 'post'], true)) {
-                $this->warn("Atlanıyor (Faz 1 dışı): $src");
+            if (! in_array($src, self::SOURCES, true)) {
+                $this->warn("Atlanıyor (bilinmeyen kaynak): $src");
                 continue;
             }
+            // Program çok-dilli (locale='mul') → locale filtresi onu kapsamaz.
+            $localeForSrc = $src === 'program' ? null : $localeFilter;
             if ($this->option('fresh') && ! $this->dry) {
                 $n = KbChunk::where('source_type', $src)
-                    ->when($localeFilter, fn ($q) => $q->where('locale', $localeFilter))
+                    ->when($localeForSrc, fn ($q) => $q->where('locale', $localeForSrc))
                     ->delete();
                 $this->line("  [$src] --fresh: $n eski chunk silindi");
             }
-            $src === 'faq'
-                ? $this->processFaqs($localeFilter, $limit)
-                : $this->processPosts($localeFilter, $limit);
+            match ($src) {
+                'faq'        => $this->processFaqs($localeFilter, $limit),
+                'post'       => $this->processPosts($localeFilter, $limit),
+                'university' => $this->processUniversities($localeFilter, $limit),
+                'city'       => $this->processCities($localeFilter, $limit),
+                'program'    => $this->processPrograms($limit),
+            };
         }
 
         $this->flush(); // kalan buffer
@@ -130,6 +146,145 @@ class KbEmbed extends Command
                 if ($metas) $this->stage('post', $p->id, $p->locale, $metas);
             }
         });
+    }
+
+    // ───────────────────────── University ─────────────────────────
+
+    private function processUniversities(?string $locale, int $limit): void
+    {
+        $locales = $locale ? [$locale] : ['tr', 'en', 'de'];
+        $q = University::query()->where('is_active', true)->with('city')->orderBy('id');
+        if ($limit > 0) $q->limit($limit);
+
+        $this->withProgress('university', $q->count());
+        $q->chunkById(100, function ($unis) use ($locales) {
+            foreach ($unis as $u) {
+                $this->rows++;
+                foreach ($locales as $loc) {
+                    $name = (string) ($u->{'name_' . $loc} ?: $u->name_de);
+                    $desc = $this->stripMd((string) ($u->{'description_' . $loc} ?? ''));
+                    $blocks = $this->blocksToText($u->{$loc === 'tr' ? 'content_blocks' : 'content_blocks_' . $loc});
+                    $cityName = (string) ($u->city?->{'name_' . $loc} ?: $u->city?->name_de);
+                    $body = trim($desc . "\n\n" . $blocks);
+                    if ($body === '') continue; // bu locale için içerik yok → atla
+                    $head = trim($name . ($cityName ? " — {$cityName}" : ''));
+                    $url = '/' . $loc . '/universities/' . $u->slug;
+                    $chunks = $this->chunkProse($head, $body);
+                    $metas = array_map(fn ($c) => ['title' => $name, 'url' => $url, 'content' => $c], $chunks);
+                    if ($metas) $this->stage('university', $u->id, $loc, $metas);
+                }
+            }
+        });
+    }
+
+    // ───────────────────────── City ─────────────────────────
+
+    private function processCities(?string $locale, int $limit): void
+    {
+        $locales = $locale ? [$locale] : ['tr', 'en', 'de'];
+        $q = City::query()->where('is_active', true)->with('state')->orderBy('id');
+        if ($limit > 0) $q->limit($limit);
+
+        $this->withProgress('city', $q->count());
+        $q->chunkById(100, function ($cities) use ($locales) {
+            foreach ($cities as $c) {
+                $this->rows++;
+                foreach ($locales as $loc) {
+                    $name = (string) ($c->{'name_' . $loc} ?: $c->name_de);
+                    $blocks = $this->blocksToText($c->{$loc === 'tr' ? 'content_blocks' : 'content_blocks_' . $loc});
+                    if (trim($blocks) === '') continue;
+                    $url = '/' . $loc . '/cities/' . $c->slug;
+                    $chunks = $this->chunkProse($name, $blocks);
+                    $metas = array_map(fn ($ch) => ['title' => $name, 'url' => $url, 'content' => $ch], $chunks);
+                    if ($metas) $this->stage('city', $c->id, $loc, $metas);
+                }
+            }
+        });
+    }
+
+    // ───────────────────────── Program (çok-dilli tek chunk) ─────────────────────────
+
+    /** Yapısal alan etiketleri (çok-dilli embedding'e bağlam katmak için). */
+    private const DEGREE_LABEL = [
+        'bachelor' => 'Bachelor / Lisans', 'master' => 'Master / Yüksek Lisans',
+        'phd' => 'PhD / Doktora / Promotion', 'studienkolleg' => 'Studienkolleg',
+        'sprachkurs' => 'Sprachkurs / Dil Kursu',
+    ];
+    private const LANG_LABEL = [
+        'en' => 'İngilizce / English / Englisch', 'de' => 'Almanca / German / Deutsch',
+        'both' => 'İngilizce+Almanca / English & German', 'other' => 'Diğer dil',
+    ];
+    private const ADMISSION_LABEL = [
+        'zulassungsfrei' => 'NC yok — zulassungsfrei (kontenjansız, serbest başvuru)',
+        'oertlich' => 'Yerel NC — örtlich zulassungsbeschränkt', 'bundesweit' => 'Ülke geneli NC — bundesweit',
+        'auswahl' => 'Seçme sınavı / Auswahlverfahren',
+    ];
+
+    private function processPrograms(int $limit): void
+    {
+        $q = Program::query()->where('is_active', true)
+            ->with(['university:id,name_de,name_en,name_tr,city_id', 'university.city:id,name_de,name_en,name_tr', 'field:id,name_tr,name_en,name_de'])
+            ->orderBy('id');
+        if ($limit > 0) $q->limit($limit);
+
+        $this->withProgress('program', $q->count());
+        $q->chunkById(300, function ($programs) {
+            foreach ($programs as $p) {
+                $this->rows++;
+                $content = $this->programText($p);
+                if (trim($content) === '') continue;
+                $title = (string) ($p->name_de ?: $p->name_en ?: $p->name_tr);
+                // URL locale-bağımsız saklanır; retrieval aktif locale'i ekler.
+                $url = '/programs/' . $p->slug;
+                $this->stage('program', $p->id, 'mul', [
+                    ['title' => $title, 'url' => $url, 'content' => $content],
+                ]);
+            }
+        });
+    }
+
+    /** Bir programın çok-dilli embed metnini kur (ad + yapısal alanlar + açıklamalar + üni/şehir/alan). */
+    private function programText(Program $p): string
+    {
+        $names = array_values(array_unique(array_filter([$p->name_de, $p->name_en, $p->name_tr])));
+        $lines = [];
+        if ($names) $lines[] = implode(' · ', $names);
+
+        $field = $p->field;
+        if ($field) {
+            $fn = array_values(array_unique(array_filter([$field->name_tr, $field->name_en, $field->name_de])));
+            if ($fn) $lines[] = 'Alan / Field: ' . implode(' · ', $fn);
+        }
+        if ($p->degree && isset(self::DEGREE_LABEL[$p->degree])) $lines[] = 'Derece: ' . self::DEGREE_LABEL[$p->degree];
+        if ($p->language && isset(self::LANG_LABEL[$p->language])) $lines[] = 'Dil: ' . self::LANG_LABEL[$p->language];
+        if ($p->admission_mode && isset(self::ADMISSION_LABEL[$p->admission_mode])) $lines[] = 'Kabul: ' . self::ADMISSION_LABEL[$p->admission_mode];
+
+        $uni = $p->university;
+        if ($uni) {
+            $un = (string) ($uni->name_de ?: $uni->name_en);
+            $city = (string) ($uni->city?->name_de ?: $uni->city?->name_en);
+            $lines[] = 'Üniversite: ' . trim($un . ($city ? " ({$city})" : ''));
+        }
+
+        $desc = $this->stripMd((string) ($p->description_tr ?? '')) . "\n\n" . $this->stripMd((string) ($p->description_en ?? ''));
+        $desc = trim($desc);
+        if ($desc !== '') $lines[] = $desc;
+
+        return trim(implode("\n", $lines));
+    }
+
+    /** content_blocks dizisini düz metne indir (intro/body_md/h alanları). */
+    private function blocksToText($blocks): string
+    {
+        if (! is_array($blocks)) return '';
+        $parts = [];
+        foreach ($blocks as $b) {
+            if (! is_array($b)) continue;
+            foreach (['h', 'title', 'body_md', 'body', 'text'] as $f) {
+                if (! empty($b[$f]) && is_string($b[$f])) $parts[] = $b[$f];
+            }
+        }
+        return $this->stripMd(implode("\n\n", $parts));
     }
 
     // ───────────────────────── Staging & incremental ─────────────────────────

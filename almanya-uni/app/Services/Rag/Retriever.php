@@ -34,14 +34,16 @@ class Retriever
     }
 
     /**
+     * @param array|null $queryVector  Önceden hesaplanmış sorgu vektörü (iki şerit
+     *                                  aynı embed'i paylaşsın diye); null ise burada üretilir.
      * @return array{results: array<int,array>, top: float}
      */
-    public function retrieve(string $query, string $locale, int $k = 6): array
+    public function retrieve(string $query, string $locale, int $k = 6, ?array $queryVector = null): array
     {
         $query = trim($query);
         if ($query === '') return ['results' => [], 'top' => 0.0];
 
-        $qv = $this->embedder->embedOne($query, GeminiEmbedder::TASK_QUERY);
+        $qv = $queryVector ?? $this->embedder->embedOne($query, GeminiEmbedder::TASK_QUERY);
 
         // Akışlı tarama: her vektörü aç, skorla, SADECE top havuzunu tut (vektörü at).
         $pool = [];

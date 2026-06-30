@@ -126,13 +126,42 @@ Kullanıcı sorusu (TR/DE/EN)
 
 ## 6. Fazlar
 
-1. **Embedding altyapısı** — `GeminiEmbedder` + `kb_chunks` + `kb:embed` + `/admin/ops/kb-embed`.
+1. **Embedding altyapısı** ✅ — `GeminiEmbedder` + `kb_chunks` + `kb:embed` + `/admin/ops/kb-embed`.
    İlk kapsam: FAQ + blog. Lokalde gerçek embed + vektör doğrulama.
-2. **Chat çekirdeği** — `Retriever` (tavsiye şeridi) + `ChatService` + `POST /chat` + grounding/citation.
+2. **Chat çekirdeği** ✅ — `Retriever` (tavsiye şeridi) + `ChatService` + `POST /chat` + grounding/citation.
    SSS+blog botu uçtan uca canlı (widget öncesi JSON API olarak test edilir).
-3. **Program şeridi** — yapısal+semantik program-bulucu (#1 öncelik) + üni/şehir embed.
-4. **Widget + UX** — Alpine.js yüzen sohbet, kaynak çipleri, önerilen sorular, mobil, (streaming).
+3. **Program şeridi** ✅ — yapısal+semantik program-bulucu (#1 öncelik) + üni/şehir embed. Detay §9.
+4. **Widget + UX** ✅ — Alpine.js yüzen sohbet, kaynak çipleri, önerilen sorular, mobil, (streaming).
 5. **Kalite + lead** — `chat:eval` altın set, 👍/👎 toplama, lead yakalama, TR/DE/EN cila.
+
+---
+
+## 9. Faz 3 — Program şeridi + üni/şehir embed (uygulanan)
+
+**Embed (`kb:embed`):** kaynak whitelist `faq,post,university,city,program`'a genişledi.
+- **university/city** → TAVSİYE şeridi: her locale (tr/en/de) ayrı chunk; içerik = ad +
+  `description_{loc}` + `content_blocks_{loc}` düz metin (`blocksToText`). İçerik boş locale atlanır.
+- **program** → 1 ÇOK-DİLLİ chunk/program (`locale='mul'`): adlar (de/en/tr) + alan + derece/dil/
+  kabul etiketleri + `description_tr/en` + üni/şehir. URL locale-bağımsız (`/programs/{slug}`).
+
+**Program şeridi (`App\Services\Rag\ProgramRetriever`):**
+1. Sorgudan yapısal kriter çıkar (sezgisel, TR/DE/EN): derece, dil (`en`/`de` + `both`),
+   kabul (`zulassungsfrei`), şehir (ad eşleme, Türkçe kesme-ekli biçim dahil "Berlin'de").
+2. Aday daraltma: yapısal filtre + **DOĞAL DİL FULLTEXT** (OR + alaka; boolean +AND DEĞİL —
+   sohbet dolgu kelimeleri sonucu kısıtlamasın). Dolgu/durak kelimeler `topicTerm`'de atılır.
+   FULLTEXT boş ama yapısal kısıt varsa: yalnız kısıtla devam. Aday tavanı 400.
+3. Yalnız adayların vektörlerini yükle → cosine → top-K. URL'e aktif locale eklenir.
+
+**Birleştirme (`ChatService::selectSources`):** iki şerit cosine skoruyla birleşir; programlar
+#1 öncelik olduğundan **göreli kapı** ile slot ayrılır — program skoru genel tepeden en fazla
+`PROGRAM_MARGIN` (0.15) altındaysa en çok `PROGRAM_SLOTS` (3) program eklenir, kalan tavsiye.
+Konu-dışı sorguda (ör. Sperrkonto — programlar çok geride) zayıf program ZORLA eklenmez.
+Tek sorgu embed'i iki şerit arası paylaşılır (çift API yok).
+
+**⚠️ Prod embed ops:** `/admin/ops/kb-embed?source=university,city,program` (set_time_limit 900).
+program ~14.5k satır tek istekte bitmeyebilir → artımlı hash-skip sayesinde aynı URL'i
+TEKRAR çağırmak kaldığı yerden devam eder ("değişmeyen (atlandı)" = toplam olana dek tekrarla).
+İçerik değişince ilgili kaynağı yeniden embed et (üni/şehir zenginleştikçe, yeni program geldikçe).
 
 ---
 

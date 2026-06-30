@@ -24,10 +24,16 @@ class ChatService
 
     private string $key;
     private string $model;
+    private GeminiEmbedder $embedder;
 
-    public function __construct(private ?Retriever $retriever = null)
-    {
-        $this->retriever ??= new Retriever();
+    public function __construct(
+        private ?Retriever $retriever = null,
+        private ?ProgramRetriever $programRetriever = null,
+        ?GeminiEmbedder $embedder = null,
+    ) {
+        $this->embedder = $embedder ?? new GeminiEmbedder();
+        $this->retriever ??= new Retriever($this->embedder);
+        $this->programRetriever ??= new ProgramRetriever($this->embedder);
         $this->key   = (string) config('services.gemini.key');
         $this->model = (string) config('services.gemini.chat_model', 'gemini-2.5-flash');
     }
@@ -43,15 +49,24 @@ class ChatService
             return $this->result($this->noQuestion($locale), [], 'low', 0.0);
         }
 
-        $r = $this->retriever->retrieve($message, $locale, k: 8);
-        $top = $r['top'];
+        // Sorguyu BİR KEZ embed et → her iki şerit paylaşır (gereksiz çift API çağrısı yok).
+        try {
+            $qv = $this->embedder->embedOne($message, GeminiEmbedder::TASK_QUERY);
+        } catch (\Throwable $e) {
+            return $this->result($this->error($locale), [], 'low', 0.0);
+        }
+
+        // İki retrieval şeridi: tavsiye (FAQ+blog+üni+şehir) + program (yapısal+semantik).
+        $advice  = $this->retriever->retrieve($message, $locale, k: 8, queryVector: $qv);
+        $program = $this->programRetriever->retrieve($message, $locale, k: 6, queryVector: $qv);
+        $top = max($advice['top'], $program['top']);
 
         // Hiç ilgili içerik yok → uydurma YOK, yönlendir.
-        if ($top < self::HARD_FLOOR || empty($r['results'])) {
+        if ($top < self::HARD_FLOOR || (empty($advice['results']) && empty($program['results']))) {
             return $this->result($this->noContext($locale), [], 'low', $top);
         }
 
-        $sources = $this->dedupeSources($r['results']);
+        $sources = $this->selectSources($advice['results'], $program['results']);
         $answer = $this->generate($message, $locale, $sources, $history);
         $srcOut = array_map(fn ($s) => ['title' => $s['title'], 'url' => $s['url']], $sources);
 
@@ -70,8 +85,44 @@ class ChatService
         ];
     }
 
-    /** Aynı URL'li chunk'ları tek kaynağa indir (atıf temizliği), en fazla 6 kaynak. */
-    private function dedupeSources(array $results): array
+    /** Program kaynaklarına ayrılan azami slot (programlar = #1 öncelik unsuru). */
+    private const PROGRAM_SLOTS = 3;
+    /** Toplam kaynak (bağlam) tavanı. */
+    private const MAX_SOURCES = 6;
+    /**
+     * Programlara slot ayırmak için: program skoru, genel en iyi skorun en fazla
+     * bu kadar ALTINDA olabilir. Böylece program-arayan sorguda (programlar tepeye
+     * yakın) slot ayrılır; konu-dışı sorguda (ör. Sperrkonto — programlar çok geride)
+     * zayıf programlar zorla eklenmez.
+     */
+    private const PROGRAM_MARGIN = 0.15;
+
+    /**
+     * İki şeridin sonuçlarını dengeli birleştir: program-arayan sorgularda somut
+     * programlar kaybolmasın diye programlara slot ayır (genel tepeye yakınsa),
+     * kalanı tavsiye içeriğiyle doldur. Atıf sırası için skora göre sıralanır.
+     */
+    private function selectSources(array $advice, array $program): array
+    {
+        $adv  = $this->dedupeByUrl($advice);
+        $prog = $this->dedupeByUrl($program);
+
+        $top  = max($adv[0]['score'] ?? 0.0, $prog[0]['score'] ?? 0.0);
+        $gate = max(self::HARD_FLOOR, $top - self::PROGRAM_MARGIN);
+        $prog = array_values(array_filter($prog, fn ($s) => $s['score'] >= $gate));
+
+        $nProg = min(self::PROGRAM_SLOTS, count($prog));
+        $picked = array_merge(
+            array_slice($prog, 0, $nProg),
+            array_slice($adv, 0, self::MAX_SOURCES - $nProg),
+        );
+
+        usort($picked, fn ($a, $b) => $b['score'] <=> $a['score']);
+        return array_slice($picked, 0, self::MAX_SOURCES);
+    }
+
+    /** Aynı URL'li chunk'ları tek kaynağa indir (atıf temizliği), skora göre sıralı. */
+    private function dedupeByUrl(array $results): array
     {
         $byUrl = [];
         foreach ($results as $row) {
@@ -84,7 +135,7 @@ class ChatService
         }
         $list = array_values($byUrl);
         usort($list, fn ($a, $b) => $b['score'] <=> $a['score']);
-        return array_slice($list, 0, 6);
+        return $list;
     }
 
     private function generate(string $message, string $locale, array $sources, array $history): string
