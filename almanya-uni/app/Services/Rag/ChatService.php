@@ -42,7 +42,7 @@ class ChatService
      * @param array $history  [['role'=>'user'|'assistant','content'=>'...'], ...]
      * @return array{answer:string, sources:array, confidence:string, top:float}
      */
-    public function ask(string $message, string $locale = 'tr', array $history = []): array
+    public function ask(string $message, string $locale = 'tr', array $history = [], bool $debug = false): array
     {
         $message = trim(mb_substr($message, 0, 800));
         if ($message === '') {
@@ -70,11 +70,22 @@ class ChatService
         $answer = $this->generate($message, $locale, $sources, $history);
         $srcOut = array_map(fn ($s) => ['title' => $s['title'], 'url' => $s['url']], $sources);
 
-        return $this->result($answer, $srcOut, $top >= self::LOW_CONF ? 'high' : 'low', $top);
+        // Yüksek güvenli + program/başvuru odaklı cevap → nazik lead teklifi (Faz 5).
+        $leadOffer = $top >= self::LOW_CONF && $this->isLeadWorthy($message, $sources);
+
+        $out = $this->result($answer, $srcOut, $top >= self::LOW_CONF ? 'high' : 'low', $top, $leadOffer);
+        if ($debug) {
+            $out['context'] = array_map(fn ($s) => [
+                'title'   => $s['title'],
+                'url'     => $s['url'],
+                'content' => mb_substr((string) $s['content'], 0, 1200),
+            ], $sources);
+        }
+        return $out;
     }
 
     /** Sonuç paketi — markdown'ı güvenli HTML'e de render eder (widget için). */
-    private function result(string $answer, array $sources, string $confidence, float $top): array
+    private function result(string $answer, array $sources, string $confidence, float $top, bool $leadOffer = false): array
     {
         return [
             'answer'      => $answer,
@@ -82,7 +93,20 @@ class ChatService
             'sources'     => $sources,
             'confidence'  => $confidence,
             'top'         => round($top, 3),
+            'lead_offer'  => $leadOffer,
         ];
+    }
+
+    /** Lead teklifine değer mi? Program kaynağı VAR ya da soru başvuru/program odaklı. */
+    private function isLeadWorthy(string $message, array $sources): bool
+    {
+        foreach ($sources as $s) {
+            if (str_contains($s['url'] ?? '', '/programs/')) return true;
+        }
+        return (bool) preg_match(
+            '/\b(başvur|basvur|program|bölüm|bolum|master|bachelor|lisans|doktora|apply|application|bewerb|studiengang|studium|nc.?frei|zulassung)/iu',
+            $message,
+        );
     }
 
     /** Program kaynaklarına ayrılan azami slot (programlar = #1 öncelik unsuru). */

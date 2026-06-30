@@ -23,6 +23,7 @@ class Lead extends Model
     public const SOURCES = [
         'language_course'    => 'Dil Kursu',
         'translation_office' => 'Tercüme Bürosu',
+        'chatbot'            => 'Chatbot (Asistan)',
     ];
 
     public const STATUSES = [

@@ -1,0 +1,35 @@
+{
+  "_note": "Chatbot ölçüm-kapısı altın seti (RAG Faz 5). expect=answer → grounded cevap beklenir; expect=abstain → 'emin değilim'/yönlendirme beklenir. needs_program=true → program kaynağı beklenir. doc/CHATBOT-RAG-PLAYBOOK.md §10",
+  "items": [
+    { "q": "Sperrkonto için ne kadar para gerekiyor?", "lang": "tr", "expect": "answer" },
+    { "q": "Almanca bilmeden Almanya'da okuyabilir miyim?", "lang": "tr", "expect": "answer" },
+    { "q": "uni-assist üzerinden nasıl başvuru yapılır?", "lang": "tr", "expect": "answer" },
+    { "q": "Almanya öğrenci vizesi için hangi belgeler gerekli?", "lang": "tr", "expect": "answer" },
+    { "q": "APS nedir ve kimler için zorunlu?", "lang": "tr", "expect": "answer" },
+    { "q": "Studienkolleg nedir, kimler gitmeli?", "lang": "tr", "expect": "answer" },
+    { "q": "Almanya'da öğrenci olarak ne kadar para kazanabilirim?", "lang": "tr", "expect": "answer" },
+    { "q": "DAAD bursu nedir?", "lang": "tr", "expect": "answer" },
+    { "q": "Almanya'da yüksek lisans başvuru tarihleri ne zaman?", "lang": "tr", "expect": "answer" },
+    { "q": "Almanya'da öğrenci sağlık sigortası zorunlu mu?", "lang": "tr", "expect": "answer" },
+    { "q": "How much money do I need for the blocked account?", "lang": "en", "expect": "answer" },
+    { "q": "Can I study in Germany without knowing German?", "lang": "en", "expect": "answer" },
+    { "q": "How do I apply via uni-assist?", "lang": "en", "expect": "answer" },
+    { "q": "Was ist ein Sperrkonto und wie viel Geld brauche ich?", "lang": "de", "expect": "answer" },
+    { "q": "Brauche ich einen APS-Nachweis für das Studium in Deutschland?", "lang": "de", "expect": "answer" },
+
+    { "q": "Berlin'de İngilizce bilgisayar mühendisliği yüksek lisansı var mı?", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "NC olmadan okunabilecek makine mühendisliği bölümleri neler?", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "Almanca işletme yüksek lisansı hangi üniversitelerde var?", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "Münih'te psikoloji lisansı okuyabilir miyim?", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "İngilizce öğretilen elektrik mühendisliği master programları öner", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "Hamburg'da hangi mühendislik bölümleri var?", "lang": "tr", "expect": "answer", "needs_program": true },
+    { "q": "Which English-taught data science master programs are available?", "lang": "en", "expect": "answer", "needs_program": true },
+    { "q": "Welche zulassungsfreien Maschinenbau-Bachelor gibt es?", "lang": "de", "expect": "answer", "needs_program": true },
+
+    { "q": "Bugün hava nasıl olacak?", "lang": "tr", "expect": "abstain" },
+    { "q": "Bana iyi bir pizza tarifi verir misin?", "lang": "tr", "expect": "abstain" },
+    { "q": "2026'da hangi hisse senedini almalıyım?", "lang": "tr", "expect": "abstain" },
+    { "q": "What is the best smartphone to buy right now?", "lang": "en", "expect": "abstain" },
+    { "q": "Almanya milli takımı bu akşam kaçta oynuyor?", "lang": "tr", "expect": "abstain" }
+  ]
+}

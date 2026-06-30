@@ -132,7 +132,7 @@ Kullanıcı sorusu (TR/DE/EN)
    SSS+blog botu uçtan uca canlı (widget öncesi JSON API olarak test edilir).
 3. **Program şeridi** ✅ — yapısal+semantik program-bulucu (#1 öncelik) + üni/şehir embed. Detay §9.
 4. **Widget + UX** ✅ — Alpine.js yüzen sohbet, kaynak çipleri, önerilen sorular, mobil, (streaming).
-5. **Kalite + lead** — `chat:eval` altın set, 👍/👎 toplama, lead yakalama, TR/DE/EN cila.
+5. **Kalite + lead** ✅ — `chat:eval` ölçüm kapısı, 👍/👎 toplama, lead yakalama. Detay §10.
 
 ---
 
@@ -183,6 +183,34 @@ TEKRAR çağırmak kaldığı yerden devam eder ("değişmeyen (atlandı)" = top
 | Abuse/maliyet | throttle:20,1 + günlük token tavanı (Faz 5) |
 | Çok dilli sızıntı (TR prose EN cevaba) | Cevap dili = kullanıcı locale; mevcut `looksTurkish` disiplini |
 | KAS streaming buffering | v1 non-stream; streaming opsiyonel + fallback |
+
+---
+
+## 10. Faz 5 — Kalite + lead (uygulanan)
+
+**Ölçüm kapısı (`chat:eval`):** altın set `resources/data/chat_eval.json` (TR/DE/EN; expect=answer /
+abstain, needs_program). Her soru `ChatService::ask(..., debug:true)` ile çalışır (debug = retrieval
+bağlamını da döndürür); **LLM-judge** (gemini-2.5-flash, `thinkingBudget=0`) üç şey döndürür:
+`answered` (esaslı yanıt mı, çekinme mi), `grounded` (kaynaklarca destekleniyor mu), `relevant`.
+- **Çekinme METİNDE olur**, kaynak boşluğunda değil: yoğun çok-dilli embedding'de konu-dışı sorgu
+  bile ~0.6-0.7 cosine alır (kaynak hep dolu), ama grounding promptu cevapta "bilgi yok" der.
+  Bu yüzden abstain ölçümü judge'ın `answered=0`'ına bakar (boş-kaynak DEĞİL). ⚠️ Bu ayrımı bozma.
+- KAPI: ort. groundedness ≥ 0.80 VE abstain doğruluğu ≥ 0.80. (İlk ölçüm: g=0.83, abstain 5/5,
+  program isabeti 8/8, kapsama 23/23 → GEÇTİ.) Kapsama = içerik boşluğu sinyali (chatbot hatası değil).
+- ⚠️ gemini-2.5-flash DÜŞÜNEN model: judge'da `maxOutputTokens` küçük + thinkingBudget>0 olursa
+  metin BOŞ döner (düşünme token'ları yer) → judge 0/0. `thinkingBudget=0` + ~600 token şart.
+
+**👍/👎 (`chat_feedbacks` + `ChatFeedback`):** her oylanan tur saklanır (soru/cevap/vote/conf/top/
+kaynaklar/ip_hash). `POST /{locale}/chat/feedback` (throttle:30,1). Widget'ta asistan mesajı altında
+👍/👎; 👎 listesi = retrieval/prompt iyileştirme kuyruğu.
+
+**Lead yakalama:** mevcut `Lead` modeli yeniden kullanılır (`source_type='chatbot'`). `ChatService`
+yüksek-güven + program/başvuru odaklı cevapta `lead_offer=true` döndürür (`isLeadWorthy`); widget
+oturumda BİR KEZ nazik e-posta kartı gösterir (kapatılabilir, Sperrkonto gibi konularda çıkmaz).
+`POST /{locale}/chat/lead` (throttle:6,1). Admin lead panelinde görünür.
+
+**Ops:** `php artisan chat:eval [--lang=tr] [--limit=N] [--json]`. İçerik/retrieval değişince tekrar
+çalıştır — eşik altına düşerse yayın yok. Prod'da gerekmez (lokalde GEMINI_API_KEY ile koşulur).
 
 ---
 

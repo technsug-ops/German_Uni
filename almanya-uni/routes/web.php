@@ -69,6 +69,50 @@ $routes = function () {
             ->ask($data['message'], $locale, $data['history'] ?? []);
         return response()->json($result);
     })->middleware('throttle:20,1')->name('chat.ask');
+
+    // Chat 👍/👎 geri bildirimi — tur-bazlı kalite günlüğü (Faz 5). (doc §10)
+    Route::post('/chat/feedback', function (\Illuminate\Http\Request $request) {
+        $data = $request->validate([
+            'vote'       => ['required', 'integer', 'in:1,-1'],
+            'question'   => ['required', 'string', 'max:800'],
+            'answer'     => ['required', 'string', 'max:8000'],
+            'confidence' => ['nullable', 'string', 'in:high,low'],
+            'top'        => ['nullable', 'numeric'],
+            'sources'    => ['nullable', 'array', 'max:8'],
+        ]);
+        \App\Models\ChatFeedback::create([
+            'vote'       => $data['vote'],
+            'question'   => $data['question'],
+            'answer'     => $data['answer'],
+            'confidence' => $data['confidence'] ?? null,
+            'top_score'  => $data['top'] ?? null,
+            'sources'    => $data['sources'] ?? [],
+            'locale'     => app()->getLocale(),
+            'ip_hash'    => hash('sha256', $request->ip() . config('app.key')),
+            'user_agent' => mb_substr((string) $request->userAgent(), 0, 255),
+        ]);
+        return response()->json(['ok' => true]);
+    })->middleware('throttle:30,1')->name('chat.feedback');
+
+    // Chat lead yakalama — yüksek niyetli kullanıcıdan e-posta (Faz 5). Lead modeli yeniden kullanılır.
+    Route::post('/chat/lead', function (\Illuminate\Http\Request $request) {
+        $data = $request->validate([
+            'email'    => ['required', 'email', 'max:190'],
+            'name'     => ['nullable', 'string', 'max:120'],
+            'question' => ['nullable', 'string', 'max:800'],
+        ]);
+        \App\Models\Lead::create([
+            'source_type' => 'chatbot',
+            'source_name' => 'Chatbot Asistanı',
+            'name'        => $data['name'] ?? null,
+            'email'       => $data['email'],
+            'message'     => $data['question'] ?? null,
+            'locale'      => app()->getLocale(),
+            'status'      => 'new',
+            'meta'        => ['ip_hash' => hash('sha256', $request->ip() . config('app.key'))],
+        ]);
+        return response()->json(['ok' => true]);
+    })->middleware('throttle:6,1')->name('chat.lead');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
     Route::get('/team', [AboutController::class, 'team'])->name('team');
@@ -1615,6 +1659,23 @@ Route::middleware('auth')->group(function () {
             $out = \Illuminate\Support\Facades\Artisan::output();
         } catch (\Throwable $e) {
             $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
+    // Chat 👎 geri bildirim kuyruğu — retrieval/prompt iyileştirme listesi (Faz 5).
+    // Son olumsuz oyları (soru + cevap özeti) gösterir. Sadece is_admin.
+    Route::get('/admin/ops/chat-feedback', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $down = \App\Models\ChatFeedback::where('vote', -1)->latest()->limit(50)->get();
+        $up = \App\Models\ChatFeedback::where('vote', 1)->count();
+        $out = "👍 {$up}  ·  👎 " . \App\Models\ChatFeedback::where('vote', -1)->count() . "  (son 50 👎)\n";
+        $out .= str_repeat('─', 60) . "\n";
+        foreach ($down as $f) {
+            $out .= "[{$f->created_at->format('Y-m-d H:i')}] ({$f->locale}, conf={$f->confidence}, top={$f->top_score})\n";
+            $out .= "S: {$f->question}\n";
+            $out .= 'C: ' . mb_substr((string) $f->answer, 0, 220) . "\n";
+            $out .= str_repeat('·', 60) . "\n";
         }
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
