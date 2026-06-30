@@ -83,9 +83,9 @@ return [
         'embed_dims'  => (int) env('GEMINI_EMBED_DIMS', 768),
         // Sohbet üretim modeli (zor cevaplarda 2.5-pro'ya yükseltilebilir).
         'chat_model'  => env('GEMINI_CHAT_MODEL', 'gemini-2.5-flash'),
-        // Chatbot widget herkese görünür mü? false = sadece admin (prod'da önce test).
-        // Doğrulandıktan sonra prod .env'de GEMINI_CHAT_PUBLIC=true ile herkese aç.
-        'chat_public' => (bool) env('GEMINI_CHAT_PUBLIC', false),
+        // Chatbot widget herkese görünür mü? Doğrulandı → varsayılan AÇIK (herkese).
+        // Kill-switch: prod .env'de GEMINI_CHAT_PUBLIC=false ile gizlenebilir.
+        'chat_public' => (bool) env('GEMINI_CHAT_PUBLIC', true),
     ],
 
     'elevenlabs' => [
