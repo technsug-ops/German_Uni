@@ -68,7 +68,10 @@ class BlogController extends Controller
             $query->where(function ($w) use ($q) {
                 $w->where('title', 'like', '%' . $q . '%')
                   ->orWhere('excerpt', 'like', '%' . $q . '%')
-                  ->orWhere('content_md', 'like', '%' . $q . '%');
+                  ->orWhere('content_md', 'like', '%' . $q . '%')
+                  // Yazar adıyla arama da çalışsın (ör. "Filiz" → yazarın yazıları)
+                  ->orWhereHas('author', fn ($a) => $a->where('name', 'like', '%' . $q . '%'))
+                  ->orWhereHas('coAuthor', fn ($a) => $a->where('name', 'like', '%' . $q . '%'));
             });
         }
 
