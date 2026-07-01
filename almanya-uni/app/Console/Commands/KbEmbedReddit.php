@@ -45,7 +45,6 @@ class KbEmbedReddit extends Command
 
         $dry = (bool) $this->option('dry-run');
         $limit = (int) $this->option('limit');
-        if ($limit > 0) $chunks = array_slice($chunks, 0, $limit);
 
         if ($this->option('fresh') && ! $dry) {
             $n = KbChunk::where('source_type', self::SOURCE)->delete();
@@ -72,7 +71,12 @@ class KbEmbedReddit extends Command
             ];
         }
 
-        $this->info(count($pending) . ' yeni chunk embed edilecek, ' . $skipped . ' atlandı (zaten var).');
+        // Limit'i DEDUP'tan SONRA uygula → ?limit=N her çağrıda SIRADAKİ N embed-edilmemişi alır
+        // (timeout'suz parça parça: 8.6k'yı ?limit=1000 ile ~9 kez çağır).
+        $totalPending = count($pending);
+        if ($limit > 0) $pending = array_slice($pending, 0, $limit);
+
+        $this->info(count($pending) . ' chunk embed edilecek (kalan toplam: ' . $totalPending . '), ' . $skipped . ' atlandı (zaten var).');
         if ($dry || empty($pending)) {
             $this->info('Toplam community chunk: ' . ($dry ? '(dry)' : KbChunk::where('source_type', self::SOURCE)->count()));
             return self::SUCCESS;
