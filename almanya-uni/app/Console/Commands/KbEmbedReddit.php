@@ -26,6 +26,7 @@ class KbEmbedReddit extends Command
         {--limit=0 : İşlenecek chunk sınırı (0=hepsi)}
         {--fresh : Mevcut community chunk\'larını önce sil}
         {--dedup : Aynı content_hash duplicate community chunk\'larını sil (eşzamanlı koşu şişkinliğini temizler)}
+        {--reurl : Sadece URL\'leri güncelle (site-içi /tr/faq, re-embed ETMEDEN — content_hash eşleşir)}
         {--dry-run : Embed/yazma YOK; sadece plan}';
 
     protected $description = 'Reddit topluluk Q&A bilgisini RAG kb_chunks\'a embed eder (source_type=community)';
@@ -33,6 +34,19 @@ class KbEmbedReddit extends Command
     private const SOURCE = 'community';
     private const LOCALE = 'tr';   // TR kitle (içerik EN; çok-dilli embedding TR sorguyla eşleşir)
     private const BATCH = 100;
+
+    /** qa_bank tema → FAQ konu slug'u. Kaynak URL'i SİTE-İÇİ olsun (kullanıcı Reddit'e gitmesin). */
+    private const THEME_FAQ = [
+        'vize-oturum' => 'vize', 'is-kariyer' => 'is', 'universite' => 'master',
+        'konut-yasam' => 'yurt', 'burokrasi' => 'anmeldung', 'saglik-sigorta' => 'sigorta',
+        'almanca-dil' => 'dil', 'banka-para' => 'para',
+    ];
+
+    private function faqUrl(string $theme): string
+    {
+        $slug = self::THEME_FAQ[$theme] ?? null;
+        return $slug ? "/tr/faq/$slug" : '/tr/faq';
+    }
 
     public function handle(): int
     {
@@ -57,6 +71,24 @@ class KbEmbedReddit extends Command
         $chunks = json_decode(file_get_contents($path), true)['chunks'] ?? [];
         if (! $chunks) { $this->error('reddit_kb.json boş.'); return self::FAILURE; }
 
+        // Sadece URL güncelle (Reddit → site-içi), re-embed etmeden. content_hash ile eşle.
+        if ($this->option('reurl')) {
+            $updated = 0;
+            foreach (array_chunk($chunks, 500) as $batch) {
+                DB::transaction(function () use ($batch, &$updated) {
+                    foreach ($batch as $c) {
+                        $content = trim($c['content'] ?? '');
+                        if ($content === '') continue;
+                        $updated += KbChunk::where('source_type', self::SOURCE)
+                            ->where('content_hash', hash('sha256', $content))
+                            ->update(['url' => $this->faqUrl($c['theme'] ?? '')]);
+                    }
+                });
+            }
+            $this->info("$updated community chunk URL'i güncellendi (site-içi /tr/faq).");
+            return self::SUCCESS;
+        }
+
         $dry = (bool) $this->option('dry-run');
         $limit = (int) $this->option('limit');
 
@@ -79,7 +111,7 @@ class KbEmbedReddit extends Command
             $existing[$hash] = true;
             $pending[] = [
                 'title'   => mb_substr($c['title'] ?? '', 0, 255),
-                'url'     => mb_substr($c['url'] ?? '', 0, 512),
+                'url'     => $this->faqUrl($c['theme'] ?? ''),   // site-içi, Reddit'e değil
                 'content' => $content,
                 'hash'    => $hash,
             ];
