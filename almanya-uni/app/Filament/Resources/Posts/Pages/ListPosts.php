@@ -56,6 +56,34 @@ class ListPosts extends ListRecords
                         ->send();
                 }),
 
+            Action::make('translatePosts')
+                ->label('🌍 Eksik DE/EN çevir')
+                ->color('info')
+                ->icon('heroicon-o-language')
+                ->requiresConfirmation()
+                ->modalHeading('Yayındaki TR blog\'ları DE/EN\'e çevir')
+                ->modalDescription('YAYINDAKİ (taslak DEĞİL) her TR blog için eksik EN + DE kardeşi Gemini ile üretilir; aynı translation_group altında, kaynağın yayın durumunu miras alarak kaydedilir. Idempotent: mevcut çeviri atlanır. Çok yazı varsa tek seferde bitmezse tekrar bas. Önce TR\'yi yayınla, sonra bu butona bas.')
+                ->modalSubmitActionLabel('Çevir')
+                ->action(function () {
+                    @set_time_limit(900);
+                    @ini_set('max_execution_time', '900');
+                    Artisan::call('content:translate-posts', [
+                        '--all-untranslated' => true,
+                        '--published-only' => true,
+                        '--sleep' => 3,
+                    ]);
+                    $output = Artisan::output();
+                    preg_match_all('/✅\s+(EN|DE) saved/u', $output, $m);
+                    $saved = count($m[0]);
+
+                    Notification::make()
+                        ->title($saved > 0 ? "🌍 {$saved} çeviri kaydedildi (DE/EN)" : '🌍 Çevrilecek yayındaki yazı kalmadı')
+                        ->body($saved > 0 ? 'EN + DE kardeşleri oluşturuldu. Zaman aşımı olduysa butona tekrar bas (kaldığı yerden devam eder).' : 'Tüm yayındaki TR yazıların EN + DE kardeşi zaten var.')
+                        ->success()
+                        ->duration(12000)
+                        ->send();
+                }),
+
             CreateAction::make(),
         ];
     }

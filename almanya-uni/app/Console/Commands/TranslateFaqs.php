@@ -6,6 +6,7 @@ use App\Models\Faq;
 use App\Services\Content\ContentVoice;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 /**
  * FAQ EN/DE satırlarını TR kardeşinden (translation_group_id) DOĞRU çevirir:
@@ -21,6 +22,7 @@ class TranslateFaqs extends Command
 {
     protected $signature = 'faq:translate
         {--locale=en,de : Hedef diller (virgülle)}
+        {--create-missing : TR FAQ\'ların EKSİK EN/DE kardeşlerini YARAT (onarma değil)}
         {--only-broken : Sadece bozuk satırlar (soru>200 veya TR sızıntısı)}
         {--force : Tüm satırları yeniden çevir}
         {--limit=0 : Dil başına maksimum satır (0=hepsi)}
@@ -45,6 +47,10 @@ class TranslateFaqs extends Command
         $dry = (bool) $this->option('dry-run');
         $force = (bool) $this->option('force');
         $onlyBroken = (bool) $this->option('only-broken');
+
+        if ($this->option('create-missing')) {
+            return $this->createMissing($locales, $key, $batch, $sleep, $limit, $dry);
+        }
 
         $totalFixed = 0;
 
@@ -106,6 +112,99 @@ class TranslateFaqs extends Command
         $this->newLine();
         $this->info("━━━━━━━━━━━━━━━━━━━━━━━");
         $this->info("✅ {$totalFixed} FAQ satırı düzeltildi" . ($dry ? ' (DRY)' : ''));
+        return self::SUCCESS;
+    }
+
+    /**
+     * TR FAQ'ların EKSİK EN/DE kardeşlerini yaratır (onarma değil).
+     * Idempotent: grup zaten $loc satırına sahipse atlar. is_published TR'den miras alınır
+     * (moderasyon: taslak TR → taslak kardeş).
+     */
+    private function createMissing(array $locales, string $key, int $batch, int $sleep, int $limit, bool $dry): int
+    {
+        $totalCreated = 0;
+
+        // Grupsuz TR FAQ'lara (eski generate-ai çıktıları) grup ata ki çevrilebilsinler.
+        $orphans = Faq::where('locale', 'tr')->whereNull('translation_group_id')->get();
+        if ($orphans->isNotEmpty()) {
+            if ($dry) {
+                $this->line('   [dry] ' . $orphans->count() . ' grupsuz TR FAQ\'a grup atanacak');
+            } else {
+                foreach ($orphans as $o) {
+                    $o->translation_group_id = (string) Str::uuid();
+                    $o->save();
+                }
+                $this->info('🔗 ' . $orphans->count() . ' grupsuz TR FAQ\'a grup atandı');
+            }
+        }
+
+        foreach ($locales as $loc) {
+            if ($loc === 'tr') continue;
+
+            // Bu locale'e ZATEN kardeşi olan gruplar
+            $haveSibling = Faq::where('locale', $loc)
+                ->whereNotNull('translation_group_id')
+                ->pluck('translation_group_id')->unique()->flip();
+
+            // Grup'u olan + bu locale kardeşi OLMAYAN TR FAQ'lar
+            $targets = Faq::where('locale', 'tr')
+                ->whereNotNull('translation_group_id')
+                ->get()
+                ->filter(fn (Faq $r) => ! isset($haveSibling[$r->translation_group_id]))
+                ->values();
+
+            if ($limit > 0) $targets = $targets->take($limit);
+
+            $this->info("🌍 {$loc}: " . $targets->count() . ' eksik kardeş yaratılacak');
+
+            foreach ($targets->chunk($batch) as $chunk) {
+                $pairs = [];
+                foreach ($chunk as $i => $r) {
+                    $pairs[$i] = ['q' => $r->question, 'a' => (string) $r->answer_md];
+                }
+
+                if ($dry) {
+                    foreach ($chunk as $i => $r) {
+                        $this->line("   [dry] TR#{$r->id} → {$loc}: " . mb_substr($pairs[$i]['q'], 0, 55));
+                    }
+                    continue;
+                }
+
+                $out = $this->translateBatch($pairs, $loc, $key);
+                if (! $out) { $this->warn('   batch başarısız, atlanıyor'); continue; }
+
+                foreach ($chunk as $i => $r) {
+                    if (empty($out[$i]['question'])) continue;
+
+                    $slug = Str::limit(Str::slug($out[$i]['question']), 175, '');
+                    if ($slug === '' || Faq::where('slug', $slug)->exists()) {
+                        $slug = ($slug ?: $r->slug) . '-' . $loc;
+                    }
+                    if (Faq::where('slug', $slug)->exists()) $slug .= '-' . Str::random(4);
+
+                    $faq = new Faq();
+                    $faq->faq_topic_id = $r->faq_topic_id;
+                    $faq->translation_group_id = $r->translation_group_id;
+                    $faq->locale = $loc;
+                    $faq->slug = $slug;
+                    $faq->question = trim($out[$i]['question']);
+                    $faq->answer_md = trim($out[$i]['answer'] ?? '');
+                    $faq->intent = $r->intent;
+                    $faq->has_answer = true;
+                    $faq->is_published = (bool) $r->is_published;
+                    $faq->sort_order = $r->sort_order;
+                    $faq->save(); // answer_html + answer_minutes saving hook ile
+                    $totalCreated++;
+                    $this->info("   ✅ {$loc} #{$faq->id} " . mb_substr($faq->question, 0, 50));
+                }
+
+                if ($sleep > 0) sleep($sleep);
+            }
+        }
+
+        $this->newLine();
+        $this->info("━━━━━━━━━━━━━━━━━━━━━━━");
+        $this->info("✅ {$totalCreated} eksik FAQ kardeşi yaratıldı" . ($dry ? ' (DRY)' : ''));
         return self::SUCCESS;
     }
 

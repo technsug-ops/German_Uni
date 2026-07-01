@@ -1675,6 +1675,56 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // DE/EN oto-wiring: yayındaki TR blog'ların eksik EN+DE kardeşlerini Gemini ile üret
+    // (moderasyon-güvenli: sadece --published-only). KAS SSH yok → tarayıcıdan tetikle.
+    //   ?published=1 (varsayılan; taslakları çevirme)  ?all=1 (taslaklar dahil)  ?sleep=3  ?dry=1
+    //   Çok yazı varsa tek istekte bitmezse aynı URL'i tekrar çağır (idempotent: mevcut kardeşi atlar).
+    Route::get('/admin/ops/translate-posts', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(900);
+        @ini_set('max_execution_time', '900');
+        try {
+            $args = [
+                '--all-untranslated' => true,
+                '--sleep' => max(0, (int) request()->query('sleep', 3)),
+            ];
+            if (! request()->boolean('all')) $args['--published-only'] = true;
+            if (request()->boolean('dry')) $args['--dry-run'] = true;
+            \Illuminate\Support\Facades\Artisan::call('content:translate-posts', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
+    // DE/EN oto-wiring: TR FAQ'ların EKSİK EN/DE kardeşlerini YARAT (varsayılan: --create-missing).
+    // ?repair=1 → yaratmak yerine mevcut bozuk EN/DE satırlarını onar (--only-broken / ?force=1 ile tümü).
+    //   ?locale=en,de  ?limit=0  ?dry=1  (çok satır varsa tek istekte bitmezse tekrar bas — idempotent)
+    Route::get('/admin/ops/translate-faqs', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(900);
+        @ini_set('max_execution_time', '900');
+        try {
+            $args = [
+                '--locale' => (string) request()->query('locale', 'en,de'),
+                '--limit' => max(0, (int) request()->query('limit', 0)),
+            ];
+            if (request()->boolean('repair')) {
+                if (request()->boolean('force')) $args['--force'] = true;
+                else $args['--only-broken'] = true;
+            } else {
+                $args['--create-missing'] = true;
+            }
+            if (request()->boolean('dry')) $args['--dry-run'] = true;
+            \Illuminate\Support\Facades\Artisan::call('faq:translate', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // RAG bilgi tabanı embed — içeriği vektörle (kb_chunks). Artımlı (content_hash).
     // KAS SSH yok → tarayıcıdan tetikle. Sadece is_admin. (doc/CHATBOT-RAG-PLAYBOOK.md §9)
     //   ?source=faq,post,university,city,program  ?locale=tr  ?limit=50  ?fresh=1  ?dry=1

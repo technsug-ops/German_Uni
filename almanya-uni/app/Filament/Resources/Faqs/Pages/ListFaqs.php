@@ -61,6 +61,33 @@ class ListFaqs extends ListRecords
                         ->send();
                 }),
 
+            Action::make('translateFaqs')
+                ->label('🌍 Eksik DE/EN çevir')
+                ->color('info')
+                ->icon('heroicon-o-language')
+                ->requiresConfirmation()
+                ->modalHeading('TR SSS\'lerin eksik EN + DE kardeşlerini yarat')
+                ->modalDescription('Grubu olan her TR SSS için eksik EN + DE kardeşi Gemini ile üretilir (aynı translation_group, kaynağın yayın durumunu miras alır). Idempotent: mevcut kardeş atlanır. Çok satır varsa tek seferde bitmezse tekrar bas.')
+                ->modalSubmitActionLabel('Çevir')
+                ->action(function () {
+                    @set_time_limit(900);
+                    @ini_set('max_execution_time', '900');
+                    Artisan::call('faq:translate', [
+                        '--locale' => 'en,de',
+                        '--create-missing' => true,
+                    ]);
+                    $output = Artisan::output();
+                    preg_match('/✅\s+(\d+)\s+eksik FAQ kardeşi/u', $output, $m);
+                    $created = $m[1] ?? '0';
+
+                    Notification::make()
+                        ->title((int) $created > 0 ? "🌍 {$created} EN/DE SSS kardeşi yaratıldı" : '🌍 Eksik kardeş kalmadı')
+                        ->body((int) $created > 0 ? 'Zaman aşımı olduysa butona tekrar bas (kaldığı yerden devam eder).' : 'Tüm grubu olan TR SSS\'lerin EN + DE kardeşi zaten var.')
+                        ->success()
+                        ->duration(12000)
+                        ->send();
+                }),
+
             CreateAction::make(),
         ];
     }

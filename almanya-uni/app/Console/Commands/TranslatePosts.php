@@ -19,6 +19,7 @@ class TranslatePosts extends Command
         {--post= : Tek bir post id}
         {--posts= : Virgülle ayrılmış id listesi (örn. 75,76,77)}
         {--all-untranslated : Translation_group\'unda EN+DE eksik olan TR post\'ların hepsi}
+        {--published-only : Sadece yayındaki TR post\'lar (moderasyon: taslakları çevirme)}
         {--force : Mevcut çeviri varsa üzerine yaz}
         {--sleep=3 : Gemini istekleri arası bekleme}
         {--dry-run : Önizleme}';
@@ -50,6 +51,11 @@ class TranslatePosts extends Command
         } else {
             $this->error('Bir hedef seç: --post=N, --posts=A,B,C veya --all-untranslated');
             return self::INVALID;
+        }
+
+        // Moderasyon: sadece yayındaki TR'leri çevir (taslak DE/EN sızmasın).
+        if ($this->option('published-only')) {
+            $q->where('is_published', true);
         }
 
         $posts = $q->get();
@@ -133,8 +139,9 @@ class TranslatePosts extends Command
                             'meta_title' => Str::limit($data['title'], 250, ''),
                             'meta_description' => Str::limit($data['excerpt'], 250, '...'),
                             'reading_minutes' => $p->reading_minutes,
-                            'is_published' => true,
-                            'published_at' => now(),
+                            // Kaynağın (TR) durumunu miras al: TR taslaksa DE/EN de taslak kalır.
+                            'is_published' => (bool) $p->is_published,
+                            'published_at' => $p->published_at ?? ($p->is_published ? now() : null),
                         ]
                     );
                     $this->info('   ✅ ' . strtoupper($loc) . ' saved');

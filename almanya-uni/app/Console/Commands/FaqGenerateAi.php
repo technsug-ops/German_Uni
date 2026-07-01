@@ -92,6 +92,10 @@ class FaqGenerateAi extends Command
                     'has_answer'   => true,
                     'is_published' => $publish,
                     'sort_order'   => ++$maxSort,
+                    // DE/EN oto-wiring: TR olarak işaretle + grup ver ki faq:translate --create-missing
+                    // sonradan EN/DE kardeşlerini üretebilsin.
+                    'locale'               => 'tr',
+                    'translation_group_id' => (string) Str::uuid(),
                 ]);
                 $existing[] = $qLower;
                 $created++;
