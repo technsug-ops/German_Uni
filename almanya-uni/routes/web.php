@@ -1673,6 +1673,7 @@ Route::middleware('auth')->group(function () {
         try {
             $args = ['--limit' => max(0, (int) request()->query('limit', 0))];
             if (request()->boolean('fresh')) $args['--fresh'] = true;
+            if (request()->boolean('dedup')) $args['--dedup'] = true;
             if (request()->boolean('dry')) $args['--dry-run'] = true;
             \Illuminate\Support\Facades\Artisan::call('kb:embed-reddit', $args);
             $out = \Illuminate\Support\Facades\Artisan::output();

@@ -25,6 +25,7 @@ class KbEmbedReddit extends Command
     protected $signature = 'kb:embed-reddit
         {--limit=0 : İşlenecek chunk sınırı (0=hepsi)}
         {--fresh : Mevcut community chunk\'larını önce sil}
+        {--dedup : Aynı content_hash duplicate community chunk\'larını sil (eşzamanlı koşu şişkinliğini temizler)}
         {--dry-run : Embed/yazma YOK; sadece plan}';
 
     protected $description = 'Reddit topluluk Q&A bilgisini RAG kb_chunks\'a embed eder (source_type=community)';
@@ -35,6 +36,19 @@ class KbEmbedReddit extends Command
 
     public function handle(): int
     {
+        if ($this->option('dedup')) {
+            $before = KbChunk::where('source_type', self::SOURCE)->count();
+            DB::statement(
+                'DELETE t1 FROM kb_chunks t1 JOIN kb_chunks t2 '
+                . 'ON t1.content_hash = t2.content_hash AND t1.id > t2.id '
+                . 'WHERE t1.source_type = ? AND t2.source_type = ?',
+                [self::SOURCE, self::SOURCE]
+            );
+            $after = KbChunk::where('source_type', self::SOURCE)->count();
+            $this->info(($before - $after) . " duplicate silindi. Toplam community: $after");
+            return self::SUCCESS;
+        }
+
         $path = base_path('resources/data/community/reddit_kb.json');
         if (! is_file($path)) {
             $this->error("Dosya yok: $path (build_kb_reddit.py ile üret + kopyala)");
