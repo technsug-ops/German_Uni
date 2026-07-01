@@ -1657,6 +1657,24 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Blog (TR) faktlerini Gemini + Google arama ile doğrula (rapor). Blog butonuyla
+    // üretilen taslakların yanlış bilgisi yayınlanmasın. ⚠️ işaretlileri /admin/posts'ta düzelt.
+    //   ?limit=10  ?all=1 (yayındakiler dahil)
+    Route::get('/admin/ops/blog-verify', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(600);
+        @ini_set('max_execution_time', '600');
+        try {
+            $args = ['--limit' => max(1, (int) request()->query('limit', 10))];
+            if (request()->boolean('all')) $args['--all'] = true;
+            \Illuminate\Support\Facades\Artisan::call('blog:verify', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // RAG bilgi tabanı embed — içeriği vektörle (kb_chunks). Artımlı (content_hash).
     // KAS SSH yok → tarayıcıdan tetikle. Sadece is_admin. (doc/CHATBOT-RAG-PLAYBOOK.md §9)
     //   ?source=faq,post,university,city,program  ?locale=tr  ?limit=50  ?fresh=1  ?dry=1
