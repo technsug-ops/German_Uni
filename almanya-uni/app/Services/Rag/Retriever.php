@@ -22,6 +22,14 @@ class Retriever
     /** Aktif locale eşleşmesine eklenen küçük benzerlik artısı. */
     private const LOCALE_BOOST = 0.03;
 
+    /**
+     * Community (r/germany) YUMUŞAK kaynak — anekdot/görüş, otoriter değil. Skoruna ceza
+     * verilir ki FAQ/blog/program/üni gibi otoriter içerik faktüel sorularda community'yi
+     * HEP geçsin; community yalnız hiçbir otoriter kaynağın güçlü eşleşmediği deneyimsel
+     * sorularda öne çıksın. (chat:eval: cezasız groundedness 0.83→0.78 düşüyordu.)
+     */
+    private const COMMUNITY_PENALTY = 0.08;
+
     /** Tarama sırasında bellekte tutulan aday havuzu (top-K'dan geniş). */
     private const POOL = 40;
 
@@ -56,6 +64,7 @@ class Retriever
                     $vec = GeminiEmbedder::unpack($r->embedding);
                     $score = GeminiEmbedder::dot($qv, $vec);
                     if ($r->locale === $locale) $score += self::LOCALE_BOOST;
+                    if ($r->source_type === 'community') $score -= self::COMMUNITY_PENALTY;
                     $pool[] = [
                         'score'       => $score,
                         'id'          => $r->id,
