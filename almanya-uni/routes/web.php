@@ -1663,6 +1663,25 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // RAG: Reddit (r/germany) topluluk Q&A bilgisini kb_chunks'a embed et (source_type=community).
+    // ~8.6k chunk → tek istekte bitmezse aynı URL'i TEKRAR çağır (content_hash-skip kaldığı yerden devam).
+    //   ?limit=N (test)  ?fresh=1 (önce sil)  ?dry=1 (plan)
+    Route::get('/admin/ops/kb-embed-reddit', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(900);
+        @ini_set('max_execution_time', '900');
+        try {
+            $args = ['--limit' => max(0, (int) request()->query('limit', 0))];
+            if (request()->boolean('fresh')) $args['--fresh'] = true;
+            if (request()->boolean('dry')) $args['--dry-run'] = true;
+            \Illuminate\Support\Facades\Artisan::call('kb:embed-reddit', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Chat 👎 geri bildirim kuyruğu — retrieval/prompt iyileştirme listesi (Faz 5).
     // Son olumsuz oyları (soru + cevap özeti) gösterir. Sadece is_admin.
     Route::get('/admin/ops/chat-feedback', function () {

@@ -16,8 +16,8 @@ use App\Models\KbChunk;
  */
 class Retriever
 {
-    /** Tavsiye şeridi kaynak türleri. */
-    private const ADVICE_TYPES = ['faq', 'post', 'university', 'city'];
+    /** Tavsiye şeridi kaynak türleri. ('community' = r/germany topluluk Q&A, kb:embed-reddit) */
+    private const ADVICE_TYPES = ['faq', 'post', 'university', 'city', 'community'];
 
     /** Aktif locale eşleşmesine eklenen küçük benzerlik artısı. */
     private const LOCALE_BOOST = 0.03;
