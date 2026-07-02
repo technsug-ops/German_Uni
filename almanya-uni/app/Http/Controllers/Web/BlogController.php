@@ -103,13 +103,21 @@ class BlogController extends Controller
         };
     }
 
-    private function authorsForFilter()
+    /**
+     * Yazar-filtre chip'leri. Kategori sayfasındaysak ($categoryId) sayım O KATEGORİYE
+     * daraltılır → kategoride yazısı olmayan yazar chip'te çıkmaz (tıklayınca "yazı yok"
+     * boşluğu olmasın). Genel liste sayfasında ise global sayı.
+     */
+    private function authorsForFilter(?int $categoryId = null)
     {
         return \App\Models\User::where(function ($q) {
                 $q->where('is_author', true)->orWhere('is_editor', true)->orWhere('is_admin', true);
             })
             ->whereNotNull('slug')
-            ->withCount(['posts' => fn ($q) => $q->where('is_published', true)->where('locale', app()->getLocale())])
+            ->withCount(['posts' => function ($q) use ($categoryId) {
+                $q->where('is_published', true)->where('locale', app()->getLocale());
+                if ($categoryId) $q->where('category_id', $categoryId);
+            }])
             ->having('posts_count', '>', 0)
             ->orderByDesc('posts_count')
             ->get(['id', 'name', 'slug', 'avatar_url', 'role_label', 'role_label_en', 'role_label_de']);
@@ -227,7 +235,7 @@ class BlogController extends Controller
             'posts' => $paginator,
             'categories' => $this->sidebarCategories(),
             'active_category' => $category,
-            'authorsList' => $this->authorsForFilter(),
+            'authorsList' => $this->authorsForFilter($category->id),
             'filters' => $filters,
             'searchQ' => $filters['q'],
             'page_title' => $filters['q'] !== '' ? __('Search in :cat:', ['cat' => $category->name]) . ' ' . $filters['q'] : $category->name,
