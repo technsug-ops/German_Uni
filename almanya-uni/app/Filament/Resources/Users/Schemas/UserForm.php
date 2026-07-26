@@ -37,6 +37,10 @@ class UserForm
                             ->disk('public')
                             ->directory('avatars')
                             ->visibility('public')
+                            // Accessor '/storage/avatars/x.jpg' dondururken uploader disk-goreli yol bekler:
+                            ->formatStateUsing(fn (?string $state) => filled($state) && str_contains($state, '/storage/')
+                                ? \Illuminate\Support\Str::after($state, '/storage/')
+                                : $state)
                             ->imageEditor()
                             ->imageEditorAspectRatios(['1:1'])
                             ->maxSize(2048)

@@ -52,8 +52,21 @@ class User extends Authenticatable implements FilamentUser
     }
 
     /**
-     * Avatar URL veya null. Eğer avatar_url boşsa, isim initialleri için fallback üret.
+     * Avatar URL. Filament'in kaydettiği disk-göreli yolu (avatars/xxx.jpg) public
+     * storage URL'ine (/storage/avatars/xxx.jpg) çevirir. Tam URL veya kök-göreli
+     * yollar (http, //, /) olduğu gibi kalır. Boşsa null (view initials fallback yapar).
      */
+    public function getAvatarUrlAttribute(?string $value): ?string
+    {
+        if (empty($value)) {
+            return null;
+        }
+        if (\Illuminate\Support\Str::startsWith($value, ['http://', 'https://', '//', '/'])) {
+            return $value;
+        }
+        return \Illuminate\Support\Facades\Storage::disk('public')->url($value);
+    }
+
     /**
      * Locale-aware role label.
      * For 'en' / 'de' prefer the dedicated column; fall back to the TR primary column.
