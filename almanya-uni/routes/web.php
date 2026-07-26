@@ -1667,6 +1667,8 @@ Route::middleware('auth')->group(function () {
         try {
             $args = ['--limit' => max(1, (int) request()->query('limit', 10))];
             if (request()->boolean('all')) $args['--all'] = true;
+            if (request()->boolean('newest')) $args['--newest'] = true;
+            if ((int) request()->query('since', 0) > 0) $args['--since'] = (int) request()->query('since');
             \Illuminate\Support\Facades\Artisan::call('blog:verify', $args);
             $out = \Illuminate\Support\Facades\Artisan::output();
         } catch (\Throwable $e) {

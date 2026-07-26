@@ -20,6 +20,8 @@ class BlogVerify extends Command
     protected $signature = 'blog:verify
         {--limit=10 : Kontrol edilecek yazı sayısı}
         {--all : Yayındakiler dahil (varsayılan: sadece taslaklar)}
+        {--newest : En yeni yazıdan başla (id DESC) — son kümeleri denetlemek için}
+        {--since= : Yalnız bu id ve sonrası (örn. --since=500)}
         {--sleep=1 : Çağrılar arası bekleme (sn)}';
 
     protected $description = 'Blog (TR) faktlerini Gemini + Google arama ile doğrular (rapor)';
@@ -35,7 +37,9 @@ class BlogVerify extends Command
         $posts = Post::query()->where('locale', 'tr')
             ->whereNotNull('content_md')->where('content_md', '!=', '')
             ->when(! $this->option('all'), fn ($x) => $x->where('is_published', false))
-            ->orderBy('id')->limit((int) $this->option('limit'))->get();
+            ->when($this->option('since'), fn ($x) => $x->where('id', '>=', (int) $this->option('since')))
+            ->orderBy('id', $this->option('newest') ? 'desc' : 'asc')
+            ->limit((int) $this->option('limit'))->get();
 
         if ($posts->isEmpty()) {
             $this->info('Kontrol edilecek blog yok' . ($this->option('all') ? '.' : ' (taslak). --all ile yayındakileri de tara.'));
