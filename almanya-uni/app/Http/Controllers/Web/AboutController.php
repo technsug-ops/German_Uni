@@ -34,8 +34,12 @@ class AboutController extends Controller
 
         // Statüye göre grupla
         $founders = $people->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
-        $editors  = $people->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'editör')
-            && ! str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
+        // Editörler: 'editör' veya 'direktör' (kurucu haric). Direktör editörlerin BASINDA gorunur.
+        $editors  = $people->filter(fn ($u) => (str_contains(mb_strtolower($u->role_label ?? ''), 'editör')
+                || str_contains(mb_strtolower($u->role_label ?? ''), 'direktör'))
+            && ! str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'))
+            ->sortByDesc(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'direktör') ? 1 : 0)
+            ->values();
         $others   = $people->reject(fn ($u) => $founders->contains('id', $u->id) || $editors->contains('id', $u->id));
 
         // Mentorlar (varsa)
