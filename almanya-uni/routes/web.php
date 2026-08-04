@@ -1427,6 +1427,29 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Alt-birim (enstitü/fakülte) üni kayıtlarını raporlar — programları ana kurum yerine
+    // alt-birimine bağlı kayıtlar. Kalite bazlı alan sıralamasını bozuyorlar (asıl TU Berlin
+    // listede yok, "Institut für Technische Akustik" 9. sırada). Prod'da CLI olmadığı için web'den.
+    // Varsayılan: SALT RAPOR. Merge için ?merge=ID,ID (rapordaki ID'ler) — geri alınamaz.
+    Route::get('/admin/ops/universities-subunits', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+        $args = [];
+        if ($ids = trim((string) request()->query('merge'))) {
+            $args['--merge'] = $ids;
+        }
+        try {
+            \Illuminate\Support\Facades\Artisan::call('universities:subunits', $args);
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        if (!isset($args['--merge'])) {
+            $out .= "\n[ Merge için: bu URL'ye ?merge=ID,ID ekle — SADECE listelenen ID'ler birleşir ]\n";
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dış-link denetimi — sağlayıcı/partner "siteye git" linklerini tarar (prod'da ağ gerçek).
     // ?only=housing_providers ile tek tablo. Sadece is_admin.
     Route::get('/admin/ops/check-links', function () {
