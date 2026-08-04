@@ -39,7 +39,11 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('university_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('field_of_study_id')->constrained()->cascadeOnDelete();
+
+            // DİKKAT: tablo adı `fields_of_study`, ama constrained() Laravel'in çoğullama
+            // kuralıyla `field_of_studies` arar → boş DB'de FK kurulamaz, migration patlar
+            // (CI safety-net testleri bunu yakaladı). Tablo adı AÇIKÇA verilmeli.
+            $table->foreignId('field_of_study_id')->constrained('fields_of_study')->cascadeOnDelete();
 
             $table->string('source', 16)->comment('che | gras | qs | the');
             $table->string('source_subject', 120)->comment('Kaynağın kendi konu etiketi');
