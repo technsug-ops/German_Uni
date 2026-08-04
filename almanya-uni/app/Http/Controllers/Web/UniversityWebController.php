@@ -5,12 +5,27 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\State;
 use App\Models\University;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UniversityWebController extends Controller
 {
     private const ALLOWED_TYPES = ['public', 'private', 'applied_sciences', 'art', 'religion'];
+
+    /**
+     * Ana kuruma birleştirilip silinen alt-birim kayıtlarının slug'ları → kanonik slug (301).
+     * [[duplicate-university-records]] · universities:subunits ile merge edildi (2026-08-04).
+     *
+     * NEDEN CONTROLLER'DA: routes/web.php'ye Route::redirect olarak eklenmişti ama HİÇ
+     * çalışmadı — üni sayfaları Route::prefix('{locale}') grubunda ve /universities/{slugOrId}
+     * route'u daha ÖNCE tanımlı olduğundan ilk eşleşen o oluyor, sonuç 404. Burada çözülünce
+     * route sırasından bağımsız ve dört dilde birden çalışıyor.
+     */
+    private const MERGED_SLUGS = [
+        'institut-fur-kunst-und-bildgeschichte-ikb-der-humboldt-universitat-zu-berlin-q75251125' => 'humboldt-universitat-zu-berlin',
+        'technische-universitat-berlin-institut-fur-technische-akustik-q101385266' => 'technische-universitat-berlin',
+    ];
 
     public function index(Request $request): View|\Illuminate\Http\Response
     {
@@ -219,12 +234,21 @@ class UniversityWebController extends Controller
         ];
     }
 
-    public function show(string $slugOrId): View
+    public function show(string $slugOrId): View|RedirectResponse
     {
         $university = University::where('slug', $slugOrId)
             ->orWhere('id', $slugOrId)
             ->with(['city.state'])
-            ->firstOrFail();
+            ->first();
+
+        if (!$university) {
+            // Merge edilmiş alt-birim slug'ı ise kanonik sayfaya kalıcı yönlendir (404 bırakma).
+            if ($canonical = self::MERGED_SLUGS[$slugOrId] ?? null) {
+                return redirect()->route('universities.show', ['slugOrId' => $canonical], 301);
+            }
+
+            abort(404);
+        }
 
         \App\Support\ActivityLogger::log($university, $university->name_de);
 

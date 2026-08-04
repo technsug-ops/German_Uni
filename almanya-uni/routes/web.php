@@ -1976,17 +1976,10 @@ Route::redirect('/araclar/yasam-maliyeti', '/tools/cost-of-living', 301);
 Route::redirect('/araclar/not-donusturucu', '/tools/grade-converter', 301);
 Route::redirect('/araclar/uni-onerisi', '/tools/recommendation', 301);
 
-// Birleştirilen alt-birim üni kayıtları → ana kurum (301). [[duplicate-university-records]]
-// Bu kayıtlar universities:subunits ile ana kuruma merge edilip silindi (2026-08-04);
-// slug'ları sitemap'te yer aldığı için 404 bırakmak yerine kanonik sayfaya yönlendiriliyor.
-foreach ([
-    'institut-fur-kunst-und-bildgeschichte-ikb-der-humboldt-universitat-zu-berlin-q75251125' => 'humboldt-universitat-zu-berlin',
-    'technische-universitat-berlin-institut-fur-technische-akustik-q101385266' => 'technische-universitat-berlin',
-] as $mergedSlug => $canonicalSlug) {
-    foreach (['', '/tr', '/en', '/de'] as $prefix) {
-        Route::redirect("{$prefix}/universities/{$mergedSlug}", "{$prefix}/universities/{$canonicalSlug}", 301);
-    }
-}
+// NOT: Merge edilen alt-birim slug'larının 301'i burada Route::redirect ile denendi ama
+// hiç çalışmadı — üni sayfaları Route::prefix('{locale}') grubunda ve /universities/{slugOrId}
+// daha önce tanımlı olduğu için ilk eşleşen o oluyordu (sonuç 404). Yönlendirme artık
+// UniversityWebController::MERGED_SLUGS içinde.
 
 // Public API dokümantasyonu (Scalar UI). YAML spec'i public/api/openapi.yaml.
 Route::view('/api/docs', 'api.docs')->name('api.docs');
