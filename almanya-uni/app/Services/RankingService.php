@@ -360,24 +360,37 @@ class RankingService
 
     private function buildForField(int $fieldId): Builder
     {
-        // Alan sıralaması KALİTE önceliklidir. Program sayısı tek başına kalite göstergesi
-        // değildir — çok sayıda program açan bir Fachhochschule, TU München'in önüne geçerdi.
-        // Sıra: (1) dünya sıralamalarında yer alanlar, mevcut QS/THE/ARWU konumlarının
-        // en iyi konumuna göre; (2) hiçbirinde yer almayanlar (sentinel 999999 ile sona düşer),
-        // alan derinliği (o alandaki aktif program sayısı) ve öğrenci kapasitesine göre.
+        // Alan sıralaması AĞIRLIKLI PUAN'a dayanır (methodologyFor('program') ile aynı ağırlıklar
+        // — sayfada gösterilen yöntem ile çalışan yöntem birbirinden ayrılmamalıdır):
+        //   %60 dünya sıralaması konumu · %30 alan derinliği · %10 öğrenci kapasitesi
+        //
+        // Neden tek başına hiçbiri yetmiyor:
+        //   - yalnız program sayısı → çok program açan bir FH, TU München'in önüne geçiyor
+        //   - yalnız dünya sırası  → alanda TEK programı olan genel üniversiteler (hatta bir
+        //                            tıp yüksekokulu) gerçek mühendislik kurumlarını geçiyor
+        //
+        // Ölçekleme: dünya sırası logaritmiktir (28 ile 154 arasındaki fark, 1200 ile 1400
+        // arasındakinden çok daha anlamlıdır). Derinlik 30 programda, kapasite 50.000
+        // öğrencide tavanlanır ki tek bir dev kurum puanı domine etmesin.
+        // Hiçbir sıralamada yer almamak = kalite bileşeninden 0 almak (eleme değil).
         // NOT: LEAST tek bir NULL argümanda NULL döner → her alan COALESCE ile sentinel'lenir.
-        // Sıralama ölçütü, kartta gösterilen sayıyla AYNIDIR (bkz. rankings/show.blade.php).
         $bestWorldRank = 'LEAST(COALESCE(qs_world_rank, 999999), COALESCE(the_world_rank, 999999),'
             . ' COALESCE(arwu_world_rank, 999999))';
+
+        // MySQL, ORDER BY içindeki ifadelerde SELECT alias'larına izin verir → alt sorgu tekrarı yok.
+        $score = '0.60 * (CASE WHEN best_world_rank < 999999'
+            . ' THEN GREATEST(0, 1 - LOG(best_world_rank) / LOG(1500)) ELSE 0 END)'
+            . ' + 0.30 * (LEAST(field_programs_count, 30) / 30)'
+            . ' + 0.10 * (LEAST(COALESCE(student_count, 0), 50000) / 50000)';
 
         return $this->baseQuery()
             ->select('universities.*')
             ->selectRaw("{$bestWorldRank} AS best_world_rank")
             ->whereHas('programs', fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1))
             ->withCount(['programs as field_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1)])
+            ->orderByRaw("({$score}) DESC")
             ->orderBy('best_world_rank')
-            ->orderByDesc('field_programs_count')
-            ->orderByDesc('student_count');
+            ->orderByDesc('field_programs_count');
     }
 
     /**
@@ -462,11 +475,11 @@ class RankingService
 
             'program' => [
                 'title' => __('Methodology — Field Ranking'),
-                'intro' => __('Universities offering programmes in the selected field, ranked by academic quality first. Institutions listed in the global rankings come first, ordered by their best position across QS, THE and ARWU; institutions not listed follow, ordered by field depth and student capacity.'),
+                'intro' => __('Universities offering programmes in the selected field, ranked by a weighted score. Neither signal works alone: ranking position by itself pushes general universities with a single programme above genuine engineering institutions, while programme count by itself rewards volume over quality. The three components are weighted as follows:'),
                 'indicators' => [
-                    'world_rank'  => ['weight' => 70, 'label' => __('Best world ranking position'), 'tooltip' => __('The strongest position the university holds across QS, THE and ARWU — absence from one ranking is not treated as a penalty')],
-                    'field_depth' => ['weight' => 20, 'label' => __('Field depth'),                    'tooltip' => __('Number of active programmes in the selected field (Bachelor, Master, PhD combined) — indicates breadth of specialisation, not quality')],
-                    'capacity'    => ['weight' => 10, 'label' => __('Student capacity'),               'tooltip' => __('Total enrolled students — used to separate institutions that are otherwise tied')],
+                    'world_rank'  => ['weight' => 60, 'label' => __('World ranking position'), 'tooltip' => __('Best position across QS, THE and ARWU, scaled logarithmically — the gap between 28th and 154th counts for far more than the gap between 1200th and 1400th. Absence from all three scores zero here rather than removing the institution from the list')],
+                    'field_depth' => ['weight' => 30, 'label' => __('Field depth'),            'tooltip' => __('Number of active programmes in the selected field (Bachelor, Master, PhD combined), capped at 30 so a single very large institution cannot dominate the score')],
+                    'capacity'    => ['weight' => 10, 'label' => __('Student capacity'),       'tooltip' => __('Total enrolled students, capped at 50,000 — a light signal for institutional scale')],
                 ],
                 'source_label' => __('Sources:'),
                 'source_url' => 'https://www.topuniversities.com/qs-world-university-rankings/methodology',
