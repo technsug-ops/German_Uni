@@ -293,9 +293,35 @@ class RankingService
 
     private function baseQuery(): Builder
     {
-        return University::query()
+        $q = University::query()
             ->where('is_active', true)
             ->with('city.state');
+
+        // Araştırma kurumları (Max Planck, Helmholtz, Leibniz…) üniversite değildir;
+        // kayıtları ve doktora programları kalır ama sıralamalarda gösterilmezler.
+        // Kolon kontrolü GEÇİCİ: prod'da migrate deploy ile DEĞİL, elle çalıştırılıyor
+        // (/admin/ops/migrate) → kolon gelmeden filtre uygulanırsa tüm sıralama sayfaları
+        // 500 verirdi. Migration prod'da çalıştıktan sonra bu koruma kaldırılabilir.
+        if ($this->hasExcludeColumn()) {
+            $q->where('exclude_from_rankings', false);
+        }
+
+        return $q;
+    }
+
+    private function hasExcludeColumn(): bool
+    {
+        static $has = null;
+
+        if ($has === null) {
+            $has = cache()->remember(
+                'schema.universities.exclude_from_rankings',
+                now()->addMinutes(10),
+                fn () => \Illuminate\Support\Facades\Schema::hasColumn('universities', 'exclude_from_rankings')
+            );
+        }
+
+        return (bool) $has;
     }
 
     private function buildGlobal(array $cfg): Builder

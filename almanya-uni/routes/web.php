@@ -1454,6 +1454,47 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // Webhook abonelikleri — durum + hata sayacı. Abonelikler API üzerinden oluşturuluyor,
+    // admin arayüzü yok. Bozuk bir abonelik (2026-08-04'te HTTP 405 dönen bir uç nokta)
+    // University kaydı her güncellendiğinde istisna fırlatıp çağıran işlemi düşürebiliyor.
+    // ?disable=ID ile tek abonelik pasifleştirilir.
+    Route::get('/admin/ops/webhooks', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+
+        if ($id = (int) request()->query('disable')) {
+            $sub = \App\Models\WebhookSubscription::find($id);
+            if (!$sub) {
+                return response("Abonelik bulunamadı: #{$id}\n", 404)
+                    ->header('Content-Type', 'text/plain; charset=utf-8');
+            }
+            $sub->update(['is_active' => false]);
+            $out = "✓ #{$id} pasifleştirildi ({$sub->url})\n\n";
+        } else {
+            $out = '';
+        }
+
+        $subs = \App\Models\WebhookSubscription::orderByDesc('failure_count')->get();
+        $out .= sprintf("Toplam abonelik: %d · aktif: %d\n\n", $subs->count(), $subs->where('is_active', true)->count());
+
+        foreach ($subs as $s) {
+            $out .= sprintf(
+                "#%-4d %s\n  url: %s\n  hata: %d · son hata: %s · son başarı: %s\n  sebep: %s\n  olaylar: %s\n\n",
+                $s->id,
+                $s->is_active ? '● AKTİF' : '○ pasif',
+                $s->url,
+                $s->failure_count,
+                $s->last_failure_at ?? '—',
+                $s->last_success_at ?? '—',
+                $s->last_failure_reason ?: '—',
+                implode(', ', (array) $s->events)
+            );
+        }
+
+        $out .= "[ Pasifleştirmek için: ?disable=ID ]\n";
+
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Dış-link denetimi — sağlayıcı/partner "siteye git" linklerini tarar (prod'da ağ gerçek).
     // ?only=housing_providers ile tek tablo. Sadece is_admin.
     Route::get('/admin/ops/check-links', function () {
