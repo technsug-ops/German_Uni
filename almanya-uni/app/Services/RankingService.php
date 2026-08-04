@@ -299,29 +299,8 @@ class RankingService
 
         // Araştırma kurumları (Max Planck, Helmholtz, Leibniz…) üniversite değildir;
         // kayıtları ve doktora programları kalır ama sıralamalarda gösterilmezler.
-        // Kolon kontrolü GEÇİCİ: prod'da migrate deploy ile DEĞİL, elle çalıştırılıyor
-        // (/admin/ops/migrate) → kolon gelmeden filtre uygulanırsa tüm sıralama sayfaları
-        // 500 verirdi. Migration prod'da çalıştıktan sonra bu koruma kaldırılabilir.
-        if ($this->hasExcludeColumn()) {
-            $q->where('exclude_from_rankings', false);
-        }
-
-        return $q;
-    }
-
-    private function hasExcludeColumn(): bool
-    {
-        static $has = null;
-
-        if ($has === null) {
-            $has = cache()->remember(
-                'schema.universities.exclude_from_rankings',
-                now()->addMinutes(10),
-                fn () => \Illuminate\Support\Facades\Schema::hasColumn('universities', 'exclude_from_rankings')
-            );
-        }
-
-        return (bool) $has;
+        // (Kolon 2026-08-04'te prod'da migrate edildi; geçici Schema::hasColumn koruması kaldırıldı.)
+        return $q->where('exclude_from_rankings', false);
     }
 
     private function buildGlobal(array $cfg): Builder
