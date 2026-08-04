@@ -147,9 +147,28 @@
                             @elseif ($countLabel === 'topluluk_skoru' && !empty($uni['community_mention_score']))
                                 <div class="text-2xl md:text-3xl font-extrabold text-rose-600 tabular-nums">{{ number_format($uni['community_mention_score']) }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('community') }}</div>
-                            @elseif ($countLabel === 'program' && !empty($uni['program_count']))
-                                <div class="text-2xl md:text-3xl font-extrabold text-primary-600 tabular-nums">{{ $uni['program_count'] }}</div>
-                                <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('programs') }}</div>
+                            @elseif ($countLabel === 'program')
+                                @php
+                                    // Alan sıralaması kalite önceliklidir: kartta gösterilen sayı,
+                                    // sıralamayı belirleyen ölçütle aynıdır (RankingService::buildForField).
+                                    $worldRanks = array_filter([
+                                        'QS'   => $uni['qs_world_rank'] ?? null,
+                                        'THE'  => $uni['the_world_rank'] ?? null,
+                                        'ARWU' => $uni['arwu_world_rank'] ?? null,
+                                    ]);
+                                    $bestRank   = $worldRanks ? min($worldRanks) : null;
+                                    $bestSource = $bestRank ? array_search($bestRank, $worldRanks, true) : null;
+                                @endphp
+                                @if ($bestRank)
+                                    <div class="text-2xl md:text-3xl font-extrabold text-emerald-600 tabular-nums">#{{ $bestRank }}</div>
+                                    <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ $bestSource }} {{ __('world') }}</div>
+                                    @if (!empty($uni['program_count']))
+                                        <div class="text-[10px] text-gray-400 mt-1 tabular-nums">{{ $uni['program_count'] }} {{ __('programs') }}</div>
+                                    @endif
+                                @elseif (!empty($uni['program_count']))
+                                    <div class="text-2xl md:text-3xl font-extrabold text-primary-600 tabular-nums">{{ $uni['program_count'] }}</div>
+                                    <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('programs') }}</div>
+                                @endif
                             @elseif ($uni['student_count'])
                                 <div class="text-2xl md:text-3xl font-extrabold text-accent-600 tabular-nums">{{ number_format($uni['student_count']) }}</div>
                                 <div class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">{{ __('students') }}</div>

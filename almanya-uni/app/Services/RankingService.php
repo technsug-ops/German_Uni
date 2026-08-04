@@ -47,7 +47,7 @@ class RankingService
             $rankings[] = [
                 'slug' => 'best-' . $field->slug . '-universities',
                 'title' => __('Best :field Universities', ['field' => $label]),
-                'description' => __('German universities offering the most :field programs and student capacity.', ['field' => $label]),
+                'description' => __('Best German universities for :field — ranked by academic quality using the QS, THE and ARWU world rankings, then by depth of programme offering in the field.', ['field' => $label]),
                 'category' => 'alan',
                 'count_label' => 'program',
             ];
@@ -74,7 +74,7 @@ class RankingService
                 return [
                     'slug' => $slug,
                     'title' => __('Best :field Universities', ['field' => $label]),
-                    'description' => __('German universities offering the most :field programs and student capacity. Ranked by program count, student capacity, and other metrics.', ['field' => $label]),
+                    'description' => __('Best German universities for :field — ranked by academic quality using the QS, THE and ARWU world rankings, then by depth of programme offering in the field.', ['field' => $label]),
                     'category' => 'alan',
                     'count_label' => 'program',
                     'field_name' => $label,
@@ -360,9 +360,22 @@ class RankingService
 
     private function buildForField(int $fieldId): Builder
     {
+        // Alan sıralaması KALİTE önceliklidir. Program sayısı tek başına kalite göstergesi
+        // değildir — çok sayıda program açan bir Fachhochschule, TU München'in önüne geçerdi.
+        // Sıra: (1) dünya sıralamalarında yer alanlar, mevcut QS/THE/ARWU konumlarının
+        // en iyi konumuna göre; (2) hiçbirinde yer almayanlar (sentinel 999999 ile sona düşer),
+        // alan derinliği (o alandaki aktif program sayısı) ve öğrenci kapasitesine göre.
+        // NOT: LEAST tek bir NULL argümanda NULL döner → her alan COALESCE ile sentinel'lenir.
+        // Sıralama ölçütü, kartta gösterilen sayıyla AYNIDIR (bkz. rankings/show.blade.php).
+        $bestWorldRank = 'LEAST(COALESCE(qs_world_rank, 999999), COALESCE(the_world_rank, 999999),'
+            . ' COALESCE(arwu_world_rank, 999999))';
+
         return $this->baseQuery()
+            ->select('universities.*')
+            ->selectRaw("{$bestWorldRank} AS best_world_rank")
             ->whereHas('programs', fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1))
             ->withCount(['programs as field_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1)])
+            ->orderBy('best_world_rank')
             ->orderByDesc('field_programs_count')
             ->orderByDesc('student_count');
     }
@@ -448,13 +461,17 @@ class RankingService
             ],
 
             'program' => [
-                'title' => __('Methodology — Field Programme Count'),
-                'intro' => __('Universities ranked by number of active programmes in the selected field (Bachelor, Master, PhD combined). Higher count = broader specialisation in the field.'),
-                'indicators' => [],
-                'source_label' => __('Source:'),
-                'source_url' => 'https://www.hochschulkompass.de',
-                'source_text' => 'Hochschulkompass + DAAD programme database',
-                'note' => __('Programme counts updated quarterly via automated sync.'),
+                'title' => __('Methodology — Field Ranking'),
+                'intro' => __('Universities offering programmes in the selected field, ranked by academic quality first. Institutions listed in the global rankings come first, ordered by their best position across QS, THE and ARWU; institutions not listed follow, ordered by field depth and student capacity.'),
+                'indicators' => [
+                    'world_rank'  => ['weight' => 70, 'label' => __('Best world ranking position'), 'tooltip' => __('The strongest position the university holds across QS, THE and ARWU — absence from one ranking is not treated as a penalty')],
+                    'field_depth' => ['weight' => 20, 'label' => __('Field depth'),                    'tooltip' => __('Number of active programmes in the selected field (Bachelor, Master, PhD combined) — indicates breadth of specialisation, not quality')],
+                    'capacity'    => ['weight' => 10, 'label' => __('Student capacity'),               'tooltip' => __('Total enrolled students — used to separate institutions that are otherwise tied')],
+                ],
+                'source_label' => __('Sources:'),
+                'source_url' => 'https://www.topuniversities.com/qs-world-university-rankings/methodology',
+                'source_text' => 'QS + THE + ARWU + Hochschulkompass',
+                'note' => __('Applied sciences universities (Fachhochschulen) are rarely included in global rankings; their absence reflects ranking coverage, not teaching quality. Programme counts are synced quarterly.'),
             ],
 
             default => null,
