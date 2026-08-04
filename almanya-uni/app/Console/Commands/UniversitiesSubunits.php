@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Program;
 use App\Models\University;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -196,6 +197,17 @@ class UniversitiesSubunits extends Command
         if (method_exists(University::class, 'disableSearchSyncing')) {
             University::disableSearchSyncing();
         }
+
+        // KRİTİK: University'de WebhookEventObserver kayıtlı (updated/deleted → DeliverWebhook).
+        // Abone uç noktası hata dönerse job RuntimeException fırlatıyor ve bu, merge'ün
+        // DB::transaction'ı içinde patlayıp TÜM merge'i geri alıyor (prod'da birebir yaşandı:
+        // abone HTTP 405 döndü, hiçbir kayıt birleşmedi). Kayıt konsolidasyonu zaten dışarıya
+        // "üniversite silindi" diye duyurulmamalı — bu bir veri temizliği, iş olayı değil.
+        return Model::withoutEvents(fn () => $this->runMerges($selected));
+    }
+
+    private function runMerges($selected): int
+    {
 
         // Ana kuruma taşınacak alanlar: SADECE ana kurumda boşsa doldurulur.
         // Ad ve slug ASLA taşınmaz — doğru olanlar ana kurumda.

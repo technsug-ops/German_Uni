@@ -1442,7 +1442,11 @@ Route::middleware('auth')->group(function () {
             \Illuminate\Support\Facades\Artisan::call('universities:subunits', $args);
             $out = \Illuminate\Support\Facades\Artisan::output();
         } catch (\Throwable $e) {
-            $out = 'EXCEPTION: ' . $e->getMessage();
+            // Yalın mesaj teşhis için yetersiz kaldı (prod'da "HTTP 405" görüldü, kaynağı
+            // belirsizdi — meğer webhook observer'ıymış). Sınıf + konum + ilk kareler şart.
+            $out = 'EXCEPTION: ' . get_class($e) . ': ' . $e->getMessage()
+                . "\n  at " . $e->getFile() . ':' . $e->getLine() . "\n\n"
+                . implode("\n", array_slice(explode("\n", $e->getTraceAsString()), 0, 12));
         }
         if (!isset($args['--merge'])) {
             $out .= "\n[ Merge için: bu URL'ye ?merge=ID,ID ekle — SADECE listelenen ID'ler birleşir ]\n";
