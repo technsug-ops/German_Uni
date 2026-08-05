@@ -394,10 +394,18 @@ class RankingService
             . ' AND usr.field_of_study_id = ' . (int) $fieldId
             . ' AND usr.rank_low IS NOT NULL)';
 
-        // Konu listeleri dünya listelerinden kısa (~800 kurum) → kendi tavanıyla ölçeklenir,
-        // yoksa konu sırası genel sıraya göre haksız biçimde düşük puan alırdı.
+        // Konu listeleri dünya listelerinden kısa (~800 kurum) → kendi tavanıyla ölçeklenir.
+        //
+        // +0.15 ALAKA PRİMİ: iki ölçek aynı eksende doğrudan karşılaştırılamaz. Prim olmadan
+        // dünya #50 olmak (0.465), mekanikte 51-75 olmaktan (0.380) yüksek puan alıyordu —
+        // yani MÜHENDİSLİK listesinde, hiçbir mühendislik konusunda sıralanmamış bir kurum
+        // öne geçiyordu. Oysa GRAS'ın 7 mühendislik konusunun hiçbirinde görünmeyen bir dünya
+        // top-50 üniversitesi (LMU, Heidelberg…) büyük olasılıkla mühendislik okulu değildir.
+        // Alandaki DOĞRUDAN kanıt, genel vekil göstergeden ağır basmalı. Regresyon testi:
+        // FieldRankingScoreTest::test_konu_sirasi_genel_dunya_sirasinin_yerine_gecer
         $score = '0.60 * (CASE'
-            . ' WHEN subject_rank IS NOT NULL THEN GREATEST(0, 1 - LOG(subject_rank) / LOG(800))'
+            . ' WHEN subject_rank IS NOT NULL'
+            . ' THEN LEAST(1, 0.15 + GREATEST(0, 1 - LOG(subject_rank) / LOG(800)))'
             . ' WHEN best_world_rank < 999999 THEN GREATEST(0, 1 - LOG(best_world_rank) / LOG(1500))'
             . ' ELSE 0 END)'
             . ' + 0.30 * (LEAST(field_programs_count, 30) / 30)'
@@ -498,7 +506,7 @@ class RankingService
                 'title' => __('Methodology — Field Ranking'),
                 'intro' => __('Universities offering programmes in the selected field, ranked by a weighted score. Neither signal works alone: ranking position by itself pushes general universities with a single programme above genuine engineering institutions, while programme count by itself rewards volume over quality. The three components are weighted as follows:'),
                 'indicators' => [
-                    'world_rank'  => ['weight' => 60, 'label' => __('World ranking position'), 'tooltip' => __('Best position across QS, THE and ARWU, scaled logarithmically — the gap between 28th and 154th counts for far more than the gap between 1200th and 1400th. Absence from all three scores zero here rather than removing the institution from the list')],
+                    'world_rank'  => ['weight' => 60, 'label' => __('Ranking position'), 'tooltip' => __('Where a subject-level ranking exists for this field (ShanghaiRanking GRAS), that position is used and takes precedence — it is direct evidence in the field, whereas an overall position is only a proxy. Otherwise the best position across QS, THE and ARWU is used. Both are scaled logarithmically, so the gap between 28th and 154th counts for far more than the gap between 1200th and 1400th. Absence from every ranking scores zero here rather than removing the institution from the list')],
                     'field_depth' => ['weight' => 30, 'label' => __('Field depth'),            'tooltip' => __('Number of active programmes in the selected field (Bachelor, Master, PhD combined), capped at 30 so a single very large institution cannot dominate the score')],
                     'capacity'    => ['weight' => 10, 'label' => __('Student capacity'),       'tooltip' => __('Total enrolled students, capped at 50,000 — a light signal for institutional scale')],
                 ],
