@@ -382,15 +382,31 @@ class RankingService
         $bestWorldRank = 'LEAST(COALESCE(qs_world_rank, 999999), COALESCE(the_world_rank, 999999),'
             . ' COALESCE(arwu_world_rank, 999999))';
 
-        // MySQL, ORDER BY içindeki ifadelerde SELECT alias'larına izin verir → alt sorgu tekrarı yok.
-        $score = '0.60 * (CASE WHEN best_world_rank < 999999'
-            . ' THEN GREATEST(0, 1 - LOG(best_world_rank) / LOG(1500)) ELSE 0 END)'
+        // KONU BAZLI SIRA (varsa) genel dünya sırasının YERİNE geçer — çok daha isabetli:
+        // TU Darmstadt genel sırada #246, ama GRAS Mechanical Engineering'de 76-100 bandında.
+        // Bantlı sıralarda orta nokta alınır; bir alana birden çok kaynak-konusu düşebildiği
+        // için (7 GRAS konusu → "mühendislik") kurumun O ALANDAKİ EN İYİ sırası kullanılır.
+        // CHE gibi yalnızca grup veren kaynaklar rank_low taşımaz → NULL kalır ve aşağıdaki
+        // CASE genel dünya sırasına düşer (veri geldiğinde tier ayrı ele alınacak).
+        $subjectRank = '(SELECT MIN((usr.rank_low + COALESCE(usr.rank_high, usr.rank_low)) / 2)'
+            . ' FROM university_subject_ranks usr'
+            . ' WHERE usr.university_id = universities.id'
+            . ' AND usr.field_of_study_id = ' . (int) $fieldId
+            . ' AND usr.rank_low IS NOT NULL)';
+
+        // Konu listeleri dünya listelerinden kısa (~800 kurum) → kendi tavanıyla ölçeklenir,
+        // yoksa konu sırası genel sıraya göre haksız biçimde düşük puan alırdı.
+        $score = '0.60 * (CASE'
+            . ' WHEN subject_rank IS NOT NULL THEN GREATEST(0, 1 - LOG(subject_rank) / LOG(800))'
+            . ' WHEN best_world_rank < 999999 THEN GREATEST(0, 1 - LOG(best_world_rank) / LOG(1500))'
+            . ' ELSE 0 END)'
             . ' + 0.30 * (LEAST(field_programs_count, 30) / 30)'
             . ' + 0.10 * (LEAST(COALESCE(student_count, 0), 50000) / 50000)';
 
         return $this->baseQuery()
             ->select('universities.*')
             ->selectRaw("{$bestWorldRank} AS best_world_rank")
+            ->selectRaw("{$subjectRank} AS subject_rank")
             ->whereHas('programs', fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1))
             ->withCount(['programs as field_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1)])
             ->orderByRaw("({$score}) DESC")
