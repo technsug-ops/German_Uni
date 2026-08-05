@@ -1454,6 +1454,28 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // GRAS konu sıralamalarını içe aktar (Almanya, 8 mühendislik konusu).
+    // Varsayılan dry-run; ?run=1 ile uygulanır. Yeniden çalıştırmak güvenli (updateOrCreate).
+    Route::get('/admin/ops/import-gras', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+        try {
+            \Illuminate\Support\Facades\Artisan::call(
+                'rankings:import-gras',
+                request()->boolean('run') ? ['--execute' => true] : []
+            );
+            $out = \Illuminate\Support\Facades\Artisan::output();
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . get_class($e) . ': ' . $e->getMessage()
+                . "\n  at " . $e->getFile() . ':' . $e->getLine();
+        }
+        if (!request()->boolean('run')) {
+            $out .= "\n[ Uygulamak için: bu URL'ye ?run=1 ekle ]\n";
+        }
+
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Webhook abonelikleri — durum + hata sayacı. Abonelikler API üzerinden oluşturuluyor,
     // admin arayüzü yok. Bozuk bir abonelik (2026-08-04'te HTTP 405 dönen bir uç nokta)
     // University kaydı her güncellendiğinde istisna fırlatıp çağıran işlemi düşürebiliyor.
