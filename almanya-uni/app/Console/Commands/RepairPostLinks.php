@@ -57,6 +57,12 @@ class RepairPostLinks extends Command
     /** tip => [slug => true] */
     private array $entitySlugs = [];
 
+    /** faq konu slug'ları */
+    private array $faqTopics = [];
+
+    /** faq slug => ['topic' => konu slug, 'locale' => locale, 'q' => soru] */
+    private array $faqItems = [];
+
     /**
      * Eski/Türkçe araç yolları → bugünkü gerçek route. Yalnızca ANLAMI AYNI olanlar;
      * benzer ama farklı araçlar (ör. /tools/language-courses ↔ language-certificates)
@@ -68,6 +74,15 @@ class RepairPostLinks extends Command
         'araclar/oneri'                      => 'tools/recommendation',
         'tools/blocked-account'              => 'tools/sperrkonto',
         'tools/blocked-account-providers'    => 'tools/sperrkonto',
+    ];
+
+    /**
+     * Ölü SSS yolu → gerçek SSS kaydının TEMEL slug'ı (locale son eki çalışma anında eklenir).
+     * Sadece konusu açıkça aynı olanlar; bulanık eşleşen ("uni-assist-belge-yukleme" gibi
+     * karşılığı olmayanlar) düz metne iner.
+     */
+    private const FAQ_ALIASES = [
+        'apostil-nasil-alinir' => 'almanya-icin-belge-cevirileri-ve-apostil-islemleri-nasil-yapilir-gecerlilik-suresi-var-mi',
     ];
 
     /** tam eşleşen statik GET route URI'leri (locale öneki atılmış) */
@@ -153,6 +168,22 @@ class RepairPostLinks extends Command
             ];
             if ($p->translation_group_id) {
                 $this->groupSiblings[$p->translation_group_id][$loc] = $p->slug;
+            }
+        }
+
+        if (Schema::hasTable('faq_topics') && Schema::hasTable('faqs')) {
+            $topics = DB::table('faq_topics')->pluck('slug', 'id');
+            foreach ($topics as $slug) {
+                $this->faqTopics[$slug] = true;
+            }
+            $rows = DB::table('faqs')->when(Schema::hasColumn('faqs', 'is_published'), fn ($q) => $q->where('is_published', 1))
+                ->get(['slug', 'locale', 'question', 'faq_topic_id']);
+            foreach ($rows as $f) {
+                $this->faqItems[$f->slug] = [
+                    'topic'  => $topics[$f->faq_topic_id] ?? null,
+                    'locale' => $f->locale ?: 'tr',
+                    'q'      => (string) $f->question,
+                ];
             }
         }
 
@@ -273,6 +304,51 @@ class RepairPostLinks extends Command
 
                     $this->stats['cozulemeyen']++;
                     $this->log[] = "  ❓ [{$sourceSlug}] {$type}/{$slug} → eşleşme yok (dokunulmadı)";
+
+                    return $m[0];
+                }
+
+                if ($type === 'faq') {
+                    $rest = array_slice($segs, 1);
+                    $isTopicOnly = count($rest) === 1;
+
+                    if ($isTopicOnly && isset($this->faqTopics[$rest[0]])) {
+                        return $m[0];
+                    }
+                    if (! $isTopicOnly && isset($this->faqItems[$slug])) {
+                        return $m[0];
+                    }
+
+                    $this->stats['olu']++;
+
+                    if (isset(self::FAQ_ALIASES[$slug])) {
+                        $suffix = match ($linkLocale) { 'de' => '-de', 'en' => '-en', default => '' };
+                        $cand = self::FAQ_ALIASES[$slug] . $suffix;
+                        if (isset($this->faqItems[$cand]) && $this->faqItems[$cand]['topic']) {
+                            $this->stats['onarilan']++;
+                            $this->log[] = "  ✅ [{$sourceSlug}] faq/{$slug} → {$this->faqItems[$cand]['topic']}/{$cand}";
+
+                            return '[' . $text . '](/' . $linkLocale . '/faq/' . $this->faqItems[$cand]['topic'] . '/' . $cand . ')';
+                        }
+                    }
+
+                    $hit = $this->bestFaqMatch($slug, $text, $linkLocale);
+                    if ($hit) {
+                        $this->stats['onarilan']++;
+                        $this->log[] = "  ✅ [{$sourceSlug}] faq/{$slug} → {$hit['topic']}/{$hit['slug']}";
+
+                        return '[' . $text . '](/' . $linkLocale . '/faq/' . $hit['topic'] . '/' . $hit['slug'] . ')';
+                    }
+
+                    if ($demote) {
+                        $this->stats['duz_metin']++;
+                        $this->log[] = "  ✂️  [{$sourceSlug}] faq/{$slug} → düz metin";
+
+                        return $text;
+                    }
+
+                    $this->stats['cozulemeyen']++;
+                    $this->log[] = "  ❓ [{$sourceSlug}] faq/{$slug} → eşleşme yok (dokunulmadı)";
 
                     return $m[0];
                 }
@@ -423,6 +499,36 @@ class RepairPostLinks extends Command
         }
 
         return $top;
+    }
+
+    /** Ölü faq yolu için aynı dildeki en yakın SSS kaydı (slug + soru metni sinyaliyle). */
+    private function bestFaqMatch(string $deadSlug, string $text, string $locale): ?array
+    {
+        $want = $this->tokens($deadSlug);
+        $textTokens = $this->tokens(Str::slug($text));
+
+        $best = null;
+        $bestScore = 0.0;
+        $second = 0.0;
+        foreach ($this->faqItems as $slug => $item) {
+            if ($item['locale'] !== $locale || ! $item['topic']) {
+                continue;
+            }
+            $score = max(
+                $this->score($want, $this->tokens(preg_replace('/-(de|en)$/', '', $slug))),
+                $this->score($want, $this->tokens(Str::slug($item['q']))),
+                $this->score($textTokens, $this->tokens(Str::slug($item['q']))),
+            );
+            if ($score > $bestScore) {
+                $second = $bestScore;
+                $bestScore = $score;
+                $best = ['slug' => $slug, 'topic' => $item['topic']];
+            } elseif ($score > $second) {
+                $second = $score;
+            }
+        }
+
+        return ($bestScore >= 0.55 && ($bestScore - $second) >= 0.08) ? $best : null;
     }
 
     /** Jaccard ile kapsama (containment) karışımı; en az 2 ayırt edici ortak token şart. */
