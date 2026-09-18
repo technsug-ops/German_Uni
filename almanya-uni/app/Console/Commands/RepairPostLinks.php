@@ -178,9 +178,15 @@ class RepairPostLinks extends Command
     /** Hedef kataloglarını tek seferde belleğe al (link başına sorgu atmamak için). */
     private function loadIndex(): void
     {
-        foreach (DB::table('posts')->select('slug', 'locale', 'title', 'translation_group_id', 'is_published')->get() as $p) {
+        // GÖRÜNÜRLÜK ÖLÇÜTÜ SİTEYLE AYNI OLMALI: Post::scopePublished() is_published + published_at
+        // (dolu ve geçmiş) ister. Komut yalnızca is_published'a bakınca, yayına girmemiş
+        // (published_at NULL / gelecek) yazılara giden linkler "sağlam" sayılıyor, oysa
+        // ziyaretçi 404 görüyordu — canlıda kalan son ölü linklerin sebebi tam olarak buydu.
+        $now = now();
+        foreach (DB::table('posts')->select('slug', 'locale', 'title', 'translation_group_id', 'is_published', 'published_at')->get() as $p) {
             $this->groupOf[$p->slug] = (string) $p->translation_group_id;
-            if (! $p->is_published) {
+            $visible = $p->is_published && $p->published_at !== null && $p->published_at <= $now;
+            if (! $visible) {
                 continue;
             }
             $loc = $p->locale ?: 'tr';
