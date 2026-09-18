@@ -106,7 +106,9 @@ class RepairPostLinks extends Command
 
         $this->loadIndex();
 
-        $q = Post::query()->whereNotNull('content_md')->where('content_md', '!=', '');
+        $q = Post::query()->where(function ($w) {
+            $w->where('content_md', '!=', '')->orWhere('content_html', '!=', '');
+        });
         if (($limit = (int) $this->option('limit')) > 0) {
             $q->limit($limit);
         }
@@ -116,14 +118,28 @@ class RepairPostLinks extends Command
             $locale = $post->locale ?: 'tr';
             $md = (string) $post->content_md;
 
-            $new = $this->rewrite($md, $locale, $demote, $post->slug);
-            if ($new === $md) {
+            if ($md !== '') {
+                $new = $this->rewrite($md, $locale, $demote, $post->slug);
+                if ($new === $md) {
+                    continue;
+                }
+                if (! $dry) {
+                    $post->content_md = $new;
+                    $post->content_html = Str::markdown($new, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
+                    $post->save();
+                }
+
                 continue;
             }
 
-            if (! $dry) {
-                $post->content_md = $new;
-                $post->content_html = Str::markdown($new, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
+            // content_md boş (doğrudan HTML olarak üretilmiş yazı) → HTML'i onar.
+            $html = (string) $post->content_html;
+            if ($html === '') {
+                continue;
+            }
+            $newHtml = $this->rewriteAnchors($html, $locale, $demote, $post->slug);
+            if ($newHtml !== $html && ! $dry) {
+                $post->content_html = $newHtml;
                 $post->save();
             }
         }
@@ -217,7 +233,49 @@ class RepairPostLinks extends Command
         }
     }
 
+    /** Gövdeyi hem markdown hem de ham <a> linkleri için onarır. */
     private function rewrite(string $md, string $locale, bool $demote, string $sourceSlug): string
+    {
+        $out = $this->rewriteMarkdown($md, $locale, $demote, $sourceSlug);
+
+        return $this->rewriteAnchors($out, $locale, $demote, $sourceSlug);
+    }
+
+    /**
+     * Bazı yazılar markdown link yerine HAM <a href> içeriyor (AI/import çıktısı).
+     * Bunlar markdown desenine uymadığı için ilk geçişte görünmüyordu → aynı çözümleyiciyi
+     * anchor'ı geçici markdown forma çevirerek uygular.
+     */
+    private function rewriteAnchors(string $html, string $locale, bool $demote, string $sourceSlug): string
+    {
+        $out = preg_replace_callback(
+            '/<a\s+([^>]*?)href="([^"]+)"([^>]*)>(.*?)<\/a>/is',
+            function ($m) use ($locale, $demote, $sourceSlug) {
+                $inner = $m[4];
+                $plain = trim(strip_tags($inner));
+                if ($plain === '' || str_contains($plain, '[') || str_contains($plain, ']')) {
+                    return $m[0];
+                }
+
+                $probe = '[' . $plain . '](' . $m[2] . ')';
+                $res = $this->rewriteMarkdown($probe, $locale, $demote, $sourceSlug);
+
+                if ($res === $probe) {
+                    return $m[0]; // değişmedi
+                }
+                if (preg_match('/^\[.*\]\((.+)\)$/s', $res, $mm)) {
+                    return '<a ' . $m[1] . 'href="' . $mm[1] . '"' . $m[3] . '>' . $inner . '</a>';
+                }
+
+                return $inner; // hedefi yok → düz metne indi
+            },
+            $html
+        );
+
+        return $out ?? $html;
+    }
+
+    private function rewriteMarkdown(string $md, string $locale, bool $demote, string $sourceSlug): string
     {
         $out = preg_replace_callback(
             '/(?<!\!)\[([^\]]+)\]\(\s*([^)\s]+)(?:\s+"[^"]*")?\s*\)/u',
