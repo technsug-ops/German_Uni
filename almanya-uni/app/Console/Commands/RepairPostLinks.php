@@ -57,6 +57,25 @@ class RepairPostLinks extends Command
     /** tip => [slug => true] */
     private array $entitySlugs = [];
 
+    /**
+     * Eski/Türkçe araç yolları → bugünkü gerçek route. Yalnızca ANLAMI AYNI olanlar;
+     * benzer ama farklı araçlar (ör. /tools/language-courses ↔ language-certificates)
+     * bilinçli olarak eşlenmedi, onlar düz metne iner.
+     */
+    private const ROUTE_ALIASES = [
+        'araclar/yasam-maliyeti-hesaplayici' => 'tools/cost-of-living',
+        'araclar/grade-converter'            => 'tools/grade-converter',
+        'araclar/oneri'                      => 'tools/recommendation',
+        'tools/blocked-account'              => 'tools/sperrkonto',
+        'tools/blocked-account-providers'    => 'tools/sperrkonto',
+    ];
+
+    /** tam eşleşen statik GET route URI'leri (locale öneki atılmış) */
+    private array $routeExact = [];
+
+    /** parametreli route'ların statik önekleri ("tools/sperrkonto" gibi) */
+    private array $routePrefix = [];
+
     /** "<ölü-slug>|<locale>" => çözülen slug | false — aynı ölü slug her yerde AYNI hedefe gitsin */
     private array $resolveCache = [];
 
@@ -134,6 +153,24 @@ class RepairPostLinks extends Command
             ];
             if ($p->translation_group_id) {
                 $this->groupSiblings[$p->translation_group_id][$loc] = $p->slug;
+            }
+        }
+
+        foreach (app('router')->getRoutes() as $route) {
+            if (! in_array('GET', $route->methods(), true)) {
+                continue;
+            }
+            $uri = preg_replace('#^\{locale\??\}/?#', '', $route->uri());
+            if ($uri === '' || str_starts_with($uri, 'admin') || str_starts_with($uri, 'api') || str_starts_with($uri, '_')) {
+                continue;
+            }
+            if (! str_contains($uri, '{')) {
+                $this->routeExact[trim($uri, '/')] = true;
+                continue;
+            }
+            $prefix = trim(preg_replace('#/?\{.*$#', '', $uri), '/');
+            if ($prefix !== '') {
+                $this->routePrefix[$prefix] = true;
             }
         }
 
@@ -240,7 +277,37 @@ class RepairPostLinks extends Command
                     return $m[0];
                 }
 
-                return $m[0]; // tools/faq/guides vb. statik route → dokunma
+                // Kalan iç yollar (tools/, faq/, scholarships/ …): gerçek bir route'a denk
+                // geliyor mu? Parametreli route'un alt yolu ise doğrulanamaz → dokunma.
+                $normalized = implode('/', $segs);
+                if (isset($this->routeExact[$normalized])) {
+                    return $m[0];
+                }
+                if (isset(self::ROUTE_ALIASES[$normalized])) {
+                    $this->stats['olu']++;
+                    $this->stats['onarilan']++;
+                    $this->log[] = "  ✅ [{$sourceSlug}] /{$normalized} → " . self::ROUTE_ALIASES[$normalized];
+
+                    return '[' . $text . '](/' . $linkLocale . '/' . self::ROUTE_ALIASES[$normalized] . ')';
+                }
+                foreach (array_keys($this->routePrefix) as $prefix) {
+                    if (str_starts_with($normalized, $prefix . '/')) {
+                        return $m[0]; // ör. tools/sperrkonto/{slug}
+                    }
+                }
+
+                $this->stats['olu']++;
+                if ($demote) {
+                    $this->stats['duz_metin']++;
+                    $this->log[] = "  ✂️  [{$sourceSlug}] /{$normalized} → düz metin (route yok)";
+
+                    return $text;
+                }
+
+                $this->stats['cozulemeyen']++;
+                $this->log[] = "  ❓ [{$sourceSlug}] /{$normalized} → route yok (dokunulmadı)";
+
+                return $m[0];
             },
             $md
         );
