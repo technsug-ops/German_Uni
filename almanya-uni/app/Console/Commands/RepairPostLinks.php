@@ -327,7 +327,17 @@ class RepairPostLinks extends Command
 
                 if ($type === 'blog') {
                     if (isset($this->postSlugs[$slug])) {
-                        return '[' . $text . '](/' . $this->postSlugs[$slug] . '/blog/' . $slug . ')';
+                        $realLocale = $this->postSlugs[$slug];
+                        // Slug var ama YANLIŞ dil önekiyle verilmiş (çeviri sırasında önek
+                        // mekanik değiştirilip slug aynı bırakılmış) → canlıda 404. Sessizce
+                        // düzeltmek yerine sayıp raporluyoruz, yoksa denetim "0 sorun" diyor.
+                        if ($realLocale !== $linkLocale) {
+                            $this->stats['olu']++;
+                            $this->stats['onarilan']++;
+                            $this->log[] = "  ✅ [{$sourceSlug}] /{$linkLocale}/blog/{$slug} → /{$realLocale}/blog/{$slug} (dil öneki)";
+                        }
+
+                        return '[' . $text . '](/' . $realLocale . '/blog/' . $slug . ')';
                     }
 
                     $this->stats['olu']++;
