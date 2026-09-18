@@ -99,9 +99,9 @@ Bütçesi sınırlı ve "kesin yerleşmek" isteyen bir aday için en rahat rota 
 
 Bu bölümü atlama — NC'siz program, otomatik kabul anlamına **gelmez**. Kapıda hâlâ dört şart var:
 
-1. **Almanca C1 belgesi.** Bu programlar tamamen Almanca. Standart kabul: **DSH-2** veya **TestDaF 4x4**. Sıfırdan C1'e gerçekçi süre **12–24 aydır** — [Almanca yol haritası](/tr/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh) ve [TestDaF mi DSH mi](/tr/blog/testdaf-or-dsh-2026-german-language-exam-comparison) yazılarına bak.
-2. **Diploma denkliği.** Türk lise diploman tek başına yetmeyebilir; anabin değerlendirmesi ve çoğu durumda [Studienkolleg](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) gerekir. Detay: [Anabin H+, H+-, H- nedir](/tr/blog/what-are-anabin-h-h-h-how-is-your-turkish-diploma).
-3. **uni-assist ve süre.** NC'siz program bile **başvuru tarihine** tabidir (kış dönemi için genelde 15 Temmuz, yaz dönemi için 15 Ocak). Uluslararası başvurular çoğunlukla uni-assist üzerinden gider — [adım adım rehber](/tr/blog/uni-assist-application-guide-a-z-your-step-by-step-path).
+1. **Almanca C1 belgesi.** Bu programlar tamamen Almanca. Standart kabul: **DSH-2** veya **TestDaF 4x4**. Sıfırdan C1'e gerçekçi süre **12–24 aydır** — [Almanca yol haritası](/tr/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh) ve [TestDaF mi DSH mi](/tr/blog/testdaf-or-dsh-your-guide-and-tips-to-choosing-the-right) yazılarına bak.
+2. **Diploma denkliği.** Türk lise diploman tek başına yetmeyebilir; anabin değerlendirmesi ve çoğu durumda [Studienkolleg](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) gerekir. Detay: [Anabin H+, H+-, H- nedir](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma).
+3. **uni-assist ve süre.** NC'siz program bile **başvuru tarihine** tabidir (kış dönemi için genelde 15 Temmuz, yaz dönemi için 15 Ocak). Uluslararası başvurular çoğunlukla uni-assist üzerinden gider — [adım adım rehber](/tr/blog/uni-assist-application-guide-a-z-reach-your-germany-university-dream).
 4. **Gerçek eleme ilk yılda.** Almanya'da kapı geniş, koridor dardır: *Mathematik I/II*, *Statistik* ve *Mikroökonomie* sınavları ilk yılda ciddi bir eleme yapar. Bonn ve Mannheim gibi kantitatif bölümlerde bu his daha da serttir.
 
 ## Para: Baden-Württemberg tuzağı
@@ -195,9 +195,9 @@ Wer knapp kalkuliert und sicher einen Platz will, fährt mit **Bayern und Ostdeu
 
 Überspringe diesen Abschnitt nicht: Zulassungsfrei heißt **nicht** automatisch aufgenommen. Vier Hürden bleiben:
 
-1. **Deutsch auf C1-Niveau.** Diese Studiengänge laufen vollständig auf Deutsch. Standard sind **DSH-2** oder **TestDaF 4x4**. Von null bis C1 dauert es realistisch **12–24 Monate** — siehe [Deutsch-Fahrplan](/de/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh-de) und [TestDaF oder DSH](/de/blog/testdaf-or-dsh-2026-german-language-exam-comparison-de).
-2. **Anerkennung des Zeugnisses.** Ein ausländisches Schulzeugnis reicht oft nicht allein; es zählt die anabin-Bewertung, häufig ist ein [Studienkolleg](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) nötig. Details: [anabin H+, H+-, H-](/de/blog/what-are-anabin-h-h-h-how-is-your-turkish-diploma-de).
-3. **uni-assist und Fristen.** Auch zulassungsfreie Programme haben **Bewerbungsfristen** (meist 15. Juli fürs Wintersemester, 15. Januar fürs Sommersemester). Internationale Bewerbungen laufen meist über uni-assist — [Schritt für Schritt](/de/blog/uni-assist-application-guide-a-z-your-step-by-step-path-de).
+1. **Deutsch auf C1-Niveau.** Diese Studiengänge laufen vollständig auf Deutsch. Standard sind **DSH-2** oder **TestDaF 4x4**. Von null bis C1 dauert es realistisch **12–24 Monate** — siehe [Deutsch-Fahrplan](/de/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh-de) und [TestDaF oder DSH](/de/blog/testdaf-or-dsh-your-guide-and-tips-to-choosing-the-right-de).
+2. **Anerkennung des Zeugnisses.** Ein ausländisches Schulzeugnis reicht oft nicht allein; es zählt die anabin-Bewertung, häufig ist ein [Studienkolleg](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) nötig. Details: [anabin H+, H+-, H-](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de).
+3. **uni-assist und Fristen.** Auch zulassungsfreie Programme haben **Bewerbungsfristen** (meist 15. Juli fürs Wintersemester, 15. Januar fürs Sommersemester). Internationale Bewerbungen laufen meist über uni-assist — [Schritt für Schritt](/de/blog/uni-assist-application-guide-a-z-reach-your-germany-university-dream-de).
 4. **Die echte Auslese kommt im ersten Jahr.** Die Tür ist weit, der Flur ist eng: *Mathematik I/II*, *Statistik* und *Mikroökonomie* sieben im ersten Jahr kräftig aus — in quantitativen Fakultäten wie Bonn und Mannheim besonders spürbar.
 
 ## Geld: die Baden-Württemberg-Falle
@@ -291,9 +291,9 @@ If your budget is tight and certainty matters most, **Bavaria and the eastern st
 
 Do not skip this section: open admission does **not** mean automatic acceptance. Four requirements remain at the door:
 
-1. **German at C1 level.** These programmes are taught entirely in German. The standard proof is **DSH-2** or **TestDaF 4x4**. Going from zero to C1 realistically takes **12–24 months** — see the [German roadmap](/en/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh-en) and [TestDaF or DSH](/en/blog/testdaf-or-dsh-2026-german-language-exam-comparison-en).
-2. **Recognition of your diploma.** A foreign school-leaving certificate is often not enough on its own; the anabin assessment decides, and in many cases a [Studienkolleg](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) year is required. Details: [anabin H+, H+-, H-](/en/blog/what-are-anabin-h-h-h-how-is-your-turkish-diploma-en).
-3. **uni-assist and deadlines.** Even an open-admission programme has **application deadlines** (usually 15 July for the winter semester, 15 January for the summer semester). International applications mostly go through uni-assist — [step-by-step guide](/en/blog/uni-assist-application-guide-a-z-your-step-by-step-path-en).
+1. **German at C1 level.** These programmes are taught entirely in German. The standard proof is **DSH-2** or **TestDaF 4x4**. Going from zero to C1 realistically takes **12–24 months** — see the [German roadmap](/en/blog/learning-german-from-zero-to-c1-a-roadmap-testdafdsh-en) and [TestDaF or DSH](/en/blog/testdaf-or-dsh-your-guide-and-tips-to-choosing-the-right-en).
+2. **Recognition of your diploma.** A foreign school-leaving certificate is often not enough on its own; the anabin assessment decides, and in many cases a [Studienkolleg](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) year is required. Details: [anabin H+, H+-, H-](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en).
+3. **uni-assist and deadlines.** Even an open-admission programme has **application deadlines** (usually 15 July for the winter semester, 15 January for the summer semester). International applications mostly go through uni-assist — [step-by-step guide](/en/blog/uni-assist-application-guide-a-z-reach-your-germany-university-dream-en).
 4. **The real selection happens in year one.** The door is wide, the corridor is narrow: *Mathematik I/II*, *Statistik* and *Mikroökonomie* thin the cohort out in the first year — and that bites hardest in quantitative faculties like Bonn and Mannheim.
 
 ## Money: the Baden-Württemberg trap
