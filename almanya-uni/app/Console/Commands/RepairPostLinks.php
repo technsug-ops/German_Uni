@@ -116,38 +116,42 @@ class RepairPostLinks extends Command
             $q->limit($limit);
         }
 
-        foreach ($q->get() as $post) {
-            $this->stats['taranan']++;
-            $locale = $post->locale ?: 'tr';
-            $md = (string) $post->content_md;
+        // chunkById: tüm yazıları (content_md + content_html) tek seferde belleğe almak
+        // prod'da bellek limitini aşıp migrate adımını sessizce öldürüyordu.
+        $q->orderBy('id')->chunkById(100, function ($posts) use ($dry, $demote) {
+            foreach ($posts as $post) {
+                $this->stats['taranan']++;
+                $locale = $post->locale ?: 'tr';
+                $md = (string) $post->content_md;
 
-            $dirty = false;
+                $dirty = false;
 
-            if ($md !== '') {
-                $new = $this->rewrite($md, $locale, $demote, $post->slug);
-                if ($new !== $md) {
-                    $post->content_md = $new;
-                    $post->content_html = Str::markdown($new, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
-                    $dirty = true;
+                if ($md !== '') {
+                    $new = $this->rewrite($md, $locale, $demote, $post->slug);
+                    if ($new !== $md) {
+                        $post->content_md = $new;
+                        $post->content_html = Str::markdown($new, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
+                        $dirty = true;
+                    }
+                }
+
+                // content_html'i AYRICA kontrol et: bazı yazılarda md ile html birebir aynı değil
+                // (html ayrı üretilmiş/elle düzenlenmiş) → md'de olmayan ölü linkler html'de kalıyordu.
+                // Burada html'i md'den yeniden TÜRETMİYORUZ; yalnızca ölü <a href>'leri onarıyoruz.
+                $html = (string) $post->content_html;
+                if ($html !== '') {
+                    $newHtml = $this->rewriteAnchors($html, $locale, $demote, $post->slug);
+                    if ($newHtml !== $html) {
+                        $post->content_html = $newHtml;
+                        $dirty = true;
+                    }
+                }
+
+                if ($dirty && ! $dry) {
+                    $post->save();
                 }
             }
-
-            // content_html'i AYRICA kontrol et: bazı yazılarda md ile html birebir aynı değil
-            // (html ayrı üretilmiş/elle düzenlenmiş) → md'de olmayan ölü linkler html'de kalıyordu.
-            // Burada html'i md'den yeniden TÜRETMİYORUZ; yalnızca ölü <a href>'leri onarıyoruz.
-            $html = (string) $post->content_html;
-            if ($html !== '') {
-                $newHtml = $this->rewriteAnchors($html, $locale, $demote, $post->slug);
-                if ($newHtml !== $html) {
-                    $post->content_html = $newHtml;
-                    $dirty = true;
-                }
-            }
-
-            if ($dirty && ! $dry) {
-                $post->save();
-            }
-        }
+        });
 
         foreach (array_slice($this->log, 0, 60) as $line) {
             $this->line($line);
