@@ -1402,6 +1402,24 @@ Route::fallback(function (\Illuminate\Http\Request $request) use ($__brandDefaul
 // ─────────── Auth-protected, locale-bağımsız ───────────
 
 Route::middleware('auth')->group(function () {
+    // İç link denetimi (SSH yok → prod'daki gerçek durumu tarayıcıdan gör).
+    //   /admin/ops/link-audit        → ölü iç linkleri RAPORLA (hiçbir şey yazmaz)
+    //   /admin/ops/link-audit?fix=1  → onar (eşleşme yoksa düz metne indir)
+    Route::get('/admin/ops/link-audit', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(300);
+
+        $fix = request()->boolean('fix');
+        \Illuminate\Support\Facades\Artisan::call('content:repair-post-links', $fix
+            ? ['--demote' => true]
+            : ['--dry-run' => true, '--demote' => true]);
+
+        $head = $fix ? 'MOD: ONARIM (yazıldı)' : 'MOD: RAPOR (dry-run — hiçbir şey yazılmadı)';
+        $out = $head . PHP_EOL . PHP_EOL . \Illuminate\Support\Facades\Artisan::output();
+
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // GEÇİCİ — admin migrate teşhis/fix (SSH yok; tarayıcıdan migrate çalıştırır + çıktı gösterir).
     // İş bitince KALDIR. Sadece is_admin.
     Route::get('/admin/ops/migrate', function () {
@@ -1451,6 +1469,97 @@ Route::middleware('auth')->group(function () {
         if (!isset($args['--merge'])) {
             $out .= "\n[ Merge için: bu URL'ye ?merge=ID,ID ekle — SADECE listelenen ID'ler birleşir ]\n";
         }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
+    // Alan sıralaması puanlaması: mevcut (v1) ile önerilen (v2) sıralamayı GERÇEK VERİYLE
+    // yan yana gösterir. Bu puanlama iki kez canlıda regresyon ürettiği ve yerelde proje
+    // veritabanı olmadığı için değişiklik önce burada gözle görülür, sonra açılır.
+    //   /admin/ops/ranking-preview                  → alan listesi
+    //   /admin/ops/ranking-preview?field=muhendislik → v1 vs v2 ilk 20
+    //   ...&apply=v2                                 → canlı puanlamayı v2'ye çevir (v1 ile geri alınır)
+    Route::get('/admin/ops/ranking-preview', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        @set_time_limit(180);
+
+        $service = app(\App\Services\RankingService::class);
+        $active  = \App\Services\RankingService::fieldScoreVersion();
+        $out     = "Aktif puanlama sürümü: {$active}\n\n";
+
+        $apply = request()->query('apply');
+        if (in_array($apply, \App\Services\RankingService::FIELD_SCORE_VERSIONS, true)) {
+            \App\Models\Setting::set(\App\Services\RankingService::FIELD_SCORE_SETTING, $apply, 'rankings');
+            foreach (['tr', 'en', 'de'] as $loc) {
+                cache()->forget('rankings.all.' . $loc);
+            }
+            $active = $apply;
+            $out = "✓ Puanlama sürümü '{$apply}' olarak ayarlandı (cache temizlendi).\n\n";
+        }
+
+        $fields = \App\Models\FieldOfStudy::query()->where('is_active', 1)
+            ->withCount(['programs' => fn ($q) => $q->where('is_active', 1)])
+            ->having('programs_count', '>=', 50)->orderBy('sort_order')->get();
+
+        $slug = request()->query('field');
+        if (! $slug) {
+            $out .= "Alanlar (?field=<slug> ekle):\n";
+            foreach ($fields as $f) {
+                $out .= '  - ' . str_pad($f->slug, 22) . $f->programs_count . " program\n";
+            }
+            $out .= "\n[ Uygulamak için: ?apply=v2 · geri almak için ?apply=v1 ]\n";
+
+            return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+
+        $field = $fields->firstWhere('slug', $slug) ?? \App\Models\FieldOfStudy::where('slug', $slug)->first();
+        if (! $field) {
+            return response("Alan bulunamadı: {$slug}", 404)->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+
+        $take = static fn (string $v) => collect(
+            $service->builderForField($field->id, $v)->limit(20)->get()
+        )->map(fn ($u) => [
+            'name'    => $u->short_name ?: $u->name_de,
+            'type'    => $u->type,
+            'field'   => $u->field_programs_count,
+            'total'   => $u->total_programs_count ?? 0,
+            'en'      => $u->field_en_programs_count ?? 0,
+            'world'   => $u->best_world_rank < 999999 ? $u->best_world_rank : null,
+            'subject' => $u->subject_rank ? (int) $u->subject_rank : null,
+        ])->values()->all();
+
+        $v1 = $take('v1');
+        $v2 = $take('v2');
+
+        $out .= "ALAN: {$field->slug} — ilk 20\n";
+        $out .= str_repeat('─', 118) . "\n";
+        $out .= sprintf("%-3s %-46s │ %-46s %s\n", '#', 'v1 (MEVCUT: %60 kalite/%30 derinlik/%10 boyut)', 'v2 (ÖNERİ: 40/22/18/12/8)', 'v2 detay');
+        $out .= str_repeat('─', 118) . "\n";
+
+        for ($i = 0; $i < 20; $i++) {
+            $a = $v1[$i] ?? null;
+            $b = $v2[$i] ?? null;
+            $detail = $b ? sprintf('alan %d/%d · EN %d · dünya %s · konu %s',
+                $b['field'], $b['total'], $b['en'],
+                $b['world'] ?? '—', $b['subject'] ?? '—') : '';
+            $out .= sprintf("%-3d %-46s │ %-46s %s\n",
+                $i + 1,
+                $a ? mb_substr(($a['type'] === 'applied_sciences' ? '[FH] ' : '') . $a['name'], 0, 46) : '',
+                $b ? mb_substr(($b['type'] === 'applied_sciences' ? '[FH] ' : '') . $b['name'], 0, 46) : '',
+                $detail);
+        }
+
+        $fh1 = count(array_filter($v1, fn ($r) => $r['type'] === 'applied_sciences'));
+        $fh2 = count(array_filter($v2, fn ($r) => $r['type'] === 'applied_sciences'));
+        $out .= str_repeat('─', 118) . "\n";
+        $out .= "İlk 20'deki FH sayısı:  v1={$fh1}  v2={$fh2}\n";
+
+        $names1 = array_column($v1, 'name');
+        $names2 = array_column($v2, 'name');
+        $out .= 'v2 ile ilk 20\'ye GİREN:  ' . (implode(', ', array_diff($names2, $names1)) ?: '—') . "\n";
+        $out .= 'v2 ile ilk 20\'den ÇIKAN: ' . (implode(', ', array_diff($names1, $names2)) ?: '—') . "\n";
+        $out .= "\n[ Uygulamak için: ?apply=v2 · geri almak için ?apply=v1 ]\n";
+
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
