@@ -216,9 +216,10 @@ class BlogController extends Controller
 
     public function category(string $slug, Request $request): View
     {
-        $category = Category::active()->where('slug', $slug)
-            ->where(fn ($w) => $w->where('kind', 'blog')->orWhereNull('kind'))
-            ->firstOrFail();
+        // kind filtresi YOK: bazı blog yazıları haber kategorilerinde (universities,
+        // visa-residence, practical…) duruyor ve yazı sayfası bu kategoriye /blog/category/…
+        // linki basıyordu → sayfa 404 veriyordu. Site kendi bastığı linki açabilmeli.
+        $category = Category::active()->where('slug', $slug)->firstOrFail();
         $filters = $this->parseFilters($request);
 
         $query = Post::published()->blogType()

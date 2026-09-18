@@ -124,8 +124,20 @@ if (! function_exists('localized_url')) {
         // (posts.slug global unique). Controller, dil-kardeşlerin GERÇEK URL'lerini
         // 'localeUrls' ile paylaşır → naif prefix-swap'ın 404'ünü önler.
         $override = view()->shared('localeUrls');
-        if (is_array($override) && ! empty($override[$targetLocale])) {
-            return $override[$targetLocale];
+        if (is_array($override) && $override !== []) {
+            if (! empty($override[$targetLocale])) {
+                return $override[$targetLocale];
+            }
+
+            // Sayfa dil-kardeşlerini BİLDİRİYOR ama bu dilde kardeşi YOK (ör. çevrilmemiş yazı).
+            // Naif prefix-swap burada 404 üretir (hreflang'ler ve dil değiştirici 404'e gidiyordu)
+            // → o dilin bölüm indeksine düş: /de/blog gibi, kullanıcı boşluğa düşmesin.
+            $section = explode('/', trim(request()->path(), '/'));
+            if (isset($section[0]) && in_array($section[0], array_keys(config('locale.locales', [])), true)) {
+                array_shift($section);
+            }
+
+            return url('/' . $targetLocale . (isset($section[0]) && $section[0] !== '' ? '/' . $section[0] : ''));
         }
 
         $path = trim(request()->path(), '/');

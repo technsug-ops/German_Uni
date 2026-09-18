@@ -54,10 +54,20 @@
             'fields'       => \App\Models\FieldOfStudy::count(),
         ]);
     @endphp
+    @php
+        // Sayfa gerçek dil-kardeşlerini paylaşıyorsa (blog/haber), SADECE var olan diller için
+        // hreflang üret. Aksi halde çevrilmemiş yazılar için 404'e giden alternate'ler çıkıyordu.
+        $__localeUrls = view()->shared('localeUrls');
+        $__hasSiblings = is_array($__localeUrls) && $__localeUrls !== [];
+    @endphp
     @foreach ($activeLocales as $loc)
-        <link rel="alternate" hreflang="{{ $loc }}" href="{{ localized_url($loc) }}">
+        @if (! $__hasSiblings || ! empty($__localeUrls[$loc]))
+            <link rel="alternate" hreflang="{{ $loc }}" href="{{ localized_url($loc) }}">
+        @endif
     @endforeach
-    <link rel="alternate" hreflang="x-default" href="{{ localized_url($xDefaultLocale) }}">
+    @if (! $__hasSiblings || ! empty($__localeUrls[$xDefaultLocale]))
+        <link rel="alternate" hreflang="x-default" href="{{ localized_url($xDefaultLocale) }}">
+    @endif
 
     {{-- Favicon — KARE + beyaz kutu (koyu/açık sekmede görünür). Geniş wordmark logo
          favicon olarak okunaksız + koyu sekmede görünmüyordu (QA sayfa 2). --}}
