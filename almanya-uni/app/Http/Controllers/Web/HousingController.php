@@ -50,7 +50,14 @@ class HousingController extends Controller
             ->take(8)
             ->values();
 
-        return view('housing.index', compact('dorms', 'templates', 'tips', 'stats', 'rentRanges'));
+        // Sperrkonto rehberi linki SLUG SABİT YAZILMIŞTI → yazı İngilizce slug'a taşınınca
+        // her dilde 404 verdi. Artık aktif dilde gerçekten var olan yazıya çözülür.
+        $sperrkontoSlug = \App\Models\Post::published()
+            ->where('slug', 'like', '%sperrkonto%')
+            ->orderByDesc('published_at')
+            ->value('slug');
+
+        return view('housing.index', compact('dorms', 'templates', 'tips', 'stats', 'rentRanges', 'sperrkontoSlug'));
     }
 
     public function providers(Request $request): View
