@@ -32,7 +32,8 @@ class RepairPostLinks extends Command
     protected $signature = 'content:repair-post-links
         {--dry-run : sadece raporla, yazma}
         {--demote : eşleşme bulunamayan ölü linkleri düz metne indir}
-        {--limit=0 : 0 = tüm yazılar}';
+        {--limit=0 : 0 = tüm yazılar}
+        {--probe= : tek bir yazının iç linklerini ve hedeflerinin DB durumunu dök (teşhis)}';
 
     protected $description = 'Yazılardaki ölü iç linkleri (blog/şehir/üni/program) gerçek hedeflere yeniden bağlar';
 
@@ -109,6 +110,12 @@ class RepairPostLinks extends Command
 
         $this->loadIndex();
 
+        if ($probe = (string) $this->option('probe')) {
+            $this->probe($probe);
+
+            return self::SUCCESS;
+        }
+
         $q = Post::query()->where(function ($w) {
             $w->where('content_md', '!=', '')->orWhere('content_html', '!=', '');
         });
@@ -173,6 +180,77 @@ class RepairPostLinks extends Command
         ));
 
         return self::SUCCESS;
+    }
+
+
+    /**
+     * TEŞHİS: bir yazının gövdesindeki iç linkleri ve her hedefin veritabanındaki GERÇEK
+     * durumunu döker. Prod'da SSH olmadığı için "link neden hâlâ ölü" sorusunu tek çıktıda
+     * yanıtlayan tek yol bu.
+     */
+    private function probe(string $slug): void
+    {
+        $post = Post::where('slug', $slug)->first();
+        if (! $post) {
+            $this->error("Yazı bulunamadı: {$slug}");
+
+            return;
+        }
+
+        $this->line(sprintf(
+            'YAZI: id=%d locale=%s is_published=%s published_at=%s type=%s',
+            $post->id,
+            $post->locale,
+            var_export((bool) $post->is_published, true),
+            (string) $post->published_at,
+            (string) ($post->type ?? '-')
+        ));
+        $this->line('  content_md uzunluk: ' . mb_strlen((string) $post->content_md)
+            . ' | content_html uzunluk: ' . mb_strlen((string) $post->content_html));
+        $this->newLine();
+
+        foreach (['content_md', 'content_html'] as $field) {
+            $text = (string) $post->{$field};
+            if ($text === '') {
+                $this->line("[{$field}] boş");
+                continue;
+            }
+
+            preg_match_all('#(?:href="([^"]+)")|(?:\]\(([^)\s]+)\))#', $text, $mm, PREG_SET_ORDER);
+            $urls = [];
+            foreach ($mm as $m) {
+                $u = $m[1] ?: ($m[2] ?? '');
+                if ($u !== '' && ! isset($urls[$u])) {
+                    $urls[$u] = true;
+                }
+            }
+
+            $this->line("[{$field}] " . count($urls) . ' link');
+            foreach (array_keys($urls) as $u) {
+                if (! preg_match('#^/(tr|de|en)/blog/([a-z0-9-]+)#i', $u, $b)) {
+                    continue;
+                }
+                $target = DB::table('posts')->where('slug', $b[2])
+                    ->get(['id', 'locale', 'is_published', 'published_at']);
+
+                if ($target->isEmpty()) {
+                    $this->line("   {$u}  → HEDEF KAYIT YOK");
+                    continue;
+                }
+                foreach ($target as $t) {
+                    $this->line(sprintf(
+                        '   %s  → id=%d locale=%s pub=%s at=%s %s',
+                        $u,
+                        $t->id,
+                        $t->locale,
+                        var_export((bool) $t->is_published, true),
+                        (string) $t->published_at,
+                        isset($this->postSlugs[$b[2]]) ? '(indekste GÖRÜNÜR)' : '(indekste YOK)'
+                    ));
+                }
+            }
+            $this->newLine();
+        }
     }
 
     /** Hedef kataloglarını tek seferde belleğe al (link başına sorgu atmamak için). */

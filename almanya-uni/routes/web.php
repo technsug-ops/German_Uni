@@ -1409,6 +1409,14 @@ Route::middleware('auth')->group(function () {
         abort_unless(auth()->user()?->is_admin, 403);
         @set_time_limit(300);
 
+        // Teşhis: ?probe=<yazi-slug> → o yazının iç linkleri + hedeflerin DB durumu
+        if ($probe = (string) request()->query('probe')) {
+            \Illuminate\Support\Facades\Artisan::call('content:repair-post-links', ['--probe' => $probe]);
+
+            return response(\Illuminate\Support\Facades\Artisan::output(), 200)
+                ->header('Content-Type', 'text/plain; charset=utf-8');
+        }
+
         $fix = request()->boolean('fix');
         \Illuminate\Support\Facades\Artisan::call('content:repair-post-links', $fix
             ? ['--demote' => true]
