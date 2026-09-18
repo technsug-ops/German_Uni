@@ -57,6 +57,9 @@ class RepairPostLinks extends Command
     /** tip => [slug => true] */
     private array $entitySlugs = [];
 
+    /** slug => hangi tipe ait (cities/universities/programs/states) */
+    private array $entityOwner = [];
+
     /** faq konu slug'ları */
     private array $faqTopics = [];
 
@@ -118,28 +121,30 @@ class RepairPostLinks extends Command
             $locale = $post->locale ?: 'tr';
             $md = (string) $post->content_md;
 
+            $dirty = false;
+
             if ($md !== '') {
                 $new = $this->rewrite($md, $locale, $demote, $post->slug);
-                if ($new === $md) {
-                    continue;
-                }
-                if (! $dry) {
+                if ($new !== $md) {
                     $post->content_md = $new;
                     $post->content_html = Str::markdown($new, ['html_input' => 'allow', 'allow_unsafe_links' => false]);
-                    $post->save();
+                    $dirty = true;
                 }
-
-                continue;
             }
 
-            // content_md boş (doğrudan HTML olarak üretilmiş yazı) → HTML'i onar.
+            // content_html'i AYRICA kontrol et: bazı yazılarda md ile html birebir aynı değil
+            // (html ayrı üretilmiş/elle düzenlenmiş) → md'de olmayan ölü linkler html'de kalıyordu.
+            // Burada html'i md'den yeniden TÜRETMİYORUZ; yalnızca ölü <a href>'leri onarıyoruz.
             $html = (string) $post->content_html;
-            if ($html === '') {
-                continue;
+            if ($html !== '') {
+                $newHtml = $this->rewriteAnchors($html, $locale, $demote, $post->slug);
+                if ($newHtml !== $html) {
+                    $post->content_html = $newHtml;
+                    $dirty = true;
+                }
             }
-            $newHtml = $this->rewriteAnchors($html, $locale, $demote, $post->slug);
-            if ($newHtml !== $html && ! $dry) {
-                $post->content_html = $newHtml;
+
+            if ($dirty && ! $dry) {
                 $post->save();
             }
         }
@@ -221,7 +226,7 @@ class RepairPostLinks extends Command
             }
         }
 
-        foreach (['cities' => 'cities', 'universities' => 'universities', 'programs' => 'programs'] as $seg => $table) {
+        foreach (['cities' => 'cities', 'universities' => 'universities', 'programs' => 'programs', 'states' => 'states'] as $seg => $table) {
             if (! Schema::hasTable($table) || ! Schema::hasColumn($table, 'slug')) {
                 continue;
             }
@@ -229,6 +234,13 @@ class RepairPostLinks extends Command
                 ->pluck('slug');
             foreach ($rows as $s) {
                 $this->entitySlugs[$seg][$s] = true;
+                $this->entityOwner[$s] = $seg;
+                // Wikidata son eki atılmış biçim: /cities/bayern-q980 gibi yanlış tipli
+                // linkler doğru tipe (states/bayern) çevrilebilsin.
+                $bare = preg_replace('/-q\d+$/', '', $s);
+                if ($bare !== $s && ! isset($this->entityOwner[$bare])) {
+                    $this->entityOwner[$bare] = $seg;
+                }
             }
         }
     }
@@ -346,6 +358,24 @@ class RepairPostLinks extends Command
                     }
 
                     $this->stats['olu']++;
+
+                    // Yanlış tip altında verilmiş doğru slug (ör. /cities/bayern-q980 → eyalet)
+                    $bare = preg_replace('/-q\d+$/', '', $slug);
+                    foreach ([$slug, $bare] as $cand) {
+                        $owner = $this->entityOwner[$cand] ?? null;
+                        if ($owner && $owner !== $type) {
+                            $real = isset($this->entitySlugs[$owner][$cand])
+                                ? $cand
+                                : ($this->bestSlugMatch($cand, array_keys($this->entitySlugs[$owner])) ?: null);
+                            if ($real) {
+                                $this->stats['onarilan']++;
+                                $this->log[] = "  ✅ [{$sourceSlug}] {$type}/{$slug} → {$owner}/{$real}";
+
+                                return '[' . $text . '](/' . $linkLocale . '/' . $owner . '/' . $real . ')';
+                            }
+                        }
+                    }
+
                     $hit = $this->bestSlugMatch($slug, array_keys($this->entitySlugs[$type]));
                     if ($hit) {
                         $this->stats['onarilan']++;
@@ -356,6 +386,7 @@ class RepairPostLinks extends Command
 
                     if ($demote) {
                         $this->stats['duz_metin']++;
+                        $this->log[] = "  ✂️  [{$sourceSlug}] {$type}/{$slug} → düz metin";
 
                         return $text;
                     }
