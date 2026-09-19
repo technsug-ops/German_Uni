@@ -41,6 +41,11 @@ class Outbox
     ): EmailMessage {
         $box = self::get($mailboxKey);
 
+        // Kolon henüz migrate edilmediyse (deploy > migrate sırası) gönderim patlamasın.
+        if (isset($extra['contact_id']) && ! \Illuminate\Support\Facades\Schema::hasColumn('email_messages', 'contact_id')) {
+            unset($extra['contact_id']);
+        }
+
         $msg = EmailMessage::create(array_merge([
             'direction'  => 'outbound',
             'mailbox'    => $mailboxKey,
@@ -69,6 +74,11 @@ class Outbox
             ));
 
             $msg->update(['status' => 'sent', 'sent_at' => now()]);
+
+            // Kurumsal kontak defteri: "mail atıldı" + son temas tarihi.
+            if ($msg->contact_id ?? null) {
+                \App\Models\OutreachContact::find($msg->contact_id)?->markContacted();
+            }
         } catch (\Throwable $e) {
             report($e);
             $msg->update(['status' => 'failed', 'error' => $e->getMessage()]);

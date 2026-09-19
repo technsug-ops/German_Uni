@@ -11,6 +11,7 @@ class EmailMessage extends Model
         'direction',
         'mailbox',
         'provider_id',
+        'contact_id',
         'to_email',
         'to_name',
         'from_email',
@@ -30,5 +31,11 @@ class EmailMessage extends Model
     public function provider(): BelongsTo
     {
         return $this->belongsTo(HousingProvider::class, 'provider_id');
+    }
+
+    /** Kurumsal iletişim defterindeki muhatap (varsa). */
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(OutreachContact::class, 'contact_id');
     }
 }

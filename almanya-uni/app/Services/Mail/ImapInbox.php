@@ -108,9 +108,13 @@ class ImapInbox
                     }
                 }
 
-                EmailMessage::create([
+                // Gelen yanıtı kurumsal kontak defterindeki muhataba bağla.
+                $contact = $this->matchContact($fromEmail);
+
+                EmailMessage::create(array_filter([
                     'direction'  => 'inbound',
                     'mailbox'    => $key,
+                    'contact_id' => $contact?->id,
                     'to_email'   => (string) $toEmail,
                     'from_email' => $fromEmail ?: 'unknown',
                     'to_name'    => $fromName,
@@ -119,7 +123,9 @@ class ImapInbox
                     'status'     => ($overview->seen ?? false) ? 'sent' : 'queued',
                     'message_id' => $messageId,
                     'sent_at'    => isset($overview->date) ? $this->parseDate($overview->date) : null,
-                ]);
+                ], fn ($v) => $v !== null));
+
+                $contact?->markReplied();
 
                 $synced++;
             }
@@ -128,6 +134,27 @@ class ImapInbox
         }
 
         return $synced;
+    }
+
+    /**
+     * Gönderen adresini kurumsal kontak defteriyle eşleştir. Tablo/kolon henüz
+     * migrate edilmediyse (deploy > migrate sırası) sessizce atlar.
+     */
+    private function matchContact(string $fromEmail): ?\App\Models\OutreachContact
+    {
+        if (blank($fromEmail)) {
+            return null;
+        }
+
+        try {
+            if (! \Illuminate\Support\Facades\Schema::hasColumn('email_messages', 'contact_id')) {
+                return null;
+            }
+
+            return \App\Models\OutreachContact::findByEmail($fromEmail);
+        } catch (\Throwable) {
+            return null;
+        }
     }
 
     /** MIME-encoded header (=?UTF-8?...) çöz. */

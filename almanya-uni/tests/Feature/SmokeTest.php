@@ -177,5 +177,19 @@ class SmokeTest extends TestCase
 
         // Brief Önerileri (AI) — boş öneri durumunda stats() çağrısı render'ı patlatıyordu.
         $this->actingAs($admin)->get('/admin/brief-suggester')->assertStatus(200);
+
+        // Firma Kontakları (outreach defteri) — tablo closure'ları, yazışma
+        // relation manager'ı ve "Mail Gönder" ön-doldurması render edilmeli.
+        $contact = \App\Models\OutreachContact::create([
+            'organization' => 'Test GmbH',
+            'email' => 'kontakt@test-gmbh.example',
+            'category' => 'data_provider',
+            'status' => 'contacted',
+            'next_followup_at' => now()->subDay(),
+        ]);
+        $this->actingAs($admin)->get('/admin/outreach-contacts')->assertStatus(200);
+        $this->actingAs($admin)->get('/admin/outreach-contacts/create')->assertStatus(200);
+        $this->actingAs($admin)->get("/admin/outreach-contacts/{$contact->id}/edit")->assertStatus(200);
+        $this->actingAs($admin)->get("/admin/outreach-compose?contact={$contact->id}")->assertStatus(200);
     }
 }

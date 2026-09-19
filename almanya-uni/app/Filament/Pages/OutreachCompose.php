@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\EmailTemplate;
 use App\Models\HousingProvider;
+use App\Models\OutreachContact;
 use App\Services\Mail\Outbox;
 use BackedEnum;
 use Filament\Actions\Action;
@@ -36,9 +37,24 @@ class OutreachCompose extends Page
         return auth()->user()?->isFullAdmin() === true;
     }
 
+    /** Kontak defteri migrate edildi mi? (deploy > migrate sırasında panel 500 olmasın) */
+    protected static function contactsReady(): bool
+    {
+        return \Illuminate\Support\Facades\Schema::hasTable('outreach_contacts');
+    }
+
     public function mount(): void
     {
-        $this->form->fill();
+        // Firma Kontakları tablosundan "Mail Gönder" ile gelindiyse alıcıyı doldur.
+        $contact = ($id = request()->query('contact')) && self::contactsReady()
+            ? OutreachContact::find($id)
+            : null;
+
+        $this->form->fill($contact ? [
+            'contact_id' => $contact->id,
+            'to_email'   => $contact->email,
+            'to_name'    => $contact->contact_name ?: $contact->organization,
+        ] : []);
     }
 
     public function form(Schema $schema): Schema
@@ -52,6 +68,27 @@ class OutreachCompose extends Page
                     ->default('partnerships')
                     ->required()
                     ->helperText('Hangi adresten gönderilsin? Yanıtlar o kutunun gelen kutusuna düşer.'),
+                Select::make('contact_id')
+                    ->label('Firma kontağı (opsiyonel)')
+                    ->visible(fn () => self::contactsReady())
+                    ->options(fn () => OutreachContact::whereNotNull('email')
+                        ->orderBy('organization')
+                        ->get()
+                        ->mapWithKeys(fn ($c) => [$c->id => $c->organization . ' — ' . $c->email])
+                        ->all())
+                    ->searchable()
+                    ->live()
+                    ->helperText('Seçilirse mail, kontağın yazışma geçmişine düşer ve durumu "mail atıldı" olur.')
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if (! $state) {
+                            return;
+                        }
+                        $contact = OutreachContact::find($state);
+                        if ($contact) {
+                            $set('to_email', $contact->email);
+                            $set('to_name', $contact->contact_name ?: $contact->organization);
+                        }
+                    }),
                 Select::make('provider_id')
                     ->label('Sağlayıcı (opsiyonel)')
                     ->options(
@@ -99,10 +136,12 @@ class OutreachCompose extends Page
                             return;
                         }
                         $provider = ($pid = $get('provider_id')) ? HousingProvider::find($pid) : null;
+                        $contact = ($cid = $get('contact_id')) && self::contactsReady() ? OutreachContact::find($cid) : null;
                         $vars = [
-                            'provider_name' => $provider?->name ?? '',
+                            // Şablon "{{provider_name}}" yer tutucusunu firma kontağı da doldurabilir.
+                            'provider_name' => $provider?->name ?? $contact?->organization ?? '',
                             'city' => $provider?->cities[0] ?? '',
-                            'sender_name' => '',
+                            'sender_name' => auth()->user()?->name ?? '',
                         ];
                         $rendered = $template->rendered($vars);
                         $set('subject', $rendered['subject']);
@@ -141,6 +180,7 @@ class OutreachCompose extends Page
             $state['body'],
             [
                 'provider_id'  => $state['provider_id'] ?? null,
+                'contact_id'   => $state['contact_id'] ?? null,
                 'template_key' => $state['template_key'] ?? null,
             ],
         );

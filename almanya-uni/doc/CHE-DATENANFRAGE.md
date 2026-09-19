@@ -1,9 +1,15 @@
 # CHE Hochschulranking — Datenanfrage
 
-**Durum:** gönderilmeyi bekliyor
+**Durum:** panelde hazır, gönderilmeyi bekliyor
 **Kime:** CHE Centrum für Hochschulentwicklung gGmbH — `info@che.de` (ayrıca `ranking@che.de`
 ve methodik.che-ranking.de üzerindeki iletişim formu denenebilir)
-**Kimden:** partnerships@applytogerman.com (admin → Mail panelinden gönderilebilir)
+**Kimden:** partnerships@applytogerman.com
+
+**Nasıl gönderilir:** Admin → Mail → **Firma Kontakları** → "CHE Centrum für
+Hochschulentwicklung gGmbH" satırında **Mail Gönder** → Şablon: *Veri Talebi — CHE
+Hochschulranking (DE)*. Gönderim kontağın yazışma geçmişine düşer, durum otomatik
+"mail atıldı" olur; gelen yanıt da `info@che.de` adresinden aynı kontağa bağlanır.
+Aşağıdaki metin bu şablonun kaynağıdır — burada değişirse şablonu da güncelle.
 
 **Neden bu mektup:** Alan bazlı üniversite sıralamalarımız şu an üniversitenin *genel* dünya
 sırasını (QS/THE/ARWU) kullanıyor. Bu, Fachhochschule'leri cezalandırıyor — dünya
