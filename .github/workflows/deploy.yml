@@ -388,7 +388,7 @@ jobs:
           for i in $(seq 1 $MAX_TRIES); do
             echo "Attempt $i/$MAX_TRIES — calling deploy webhook..."
             HTTP_CODE=$(curl -sS -o /tmp/deploy-response.txt -w "%{http_code}" \
-              --max-time 120 \
+              --max-time 300 \
               "https://applytogerman.com/_deploy.php")
             RESPONSE=$(cat /tmp/deploy-response.txt)
             echo "Response: HTTP $HTTP_CODE — $RESPONSE"
