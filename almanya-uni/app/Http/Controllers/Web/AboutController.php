@@ -123,6 +123,33 @@ class AboutController extends Controller
         return view('pages.link-to-us', ['totals' => $totals]);
     }
 
+    /**
+     * Reklam Ver / medya kiti — satılmamış slot'lardaki davet kartı buraya gelir.
+     *
+     * Envanter rakamları içerik hacminden türetilir (dil başına yayınlanmış yazı,
+     * program ve üniversite sayısı). Trafik rakamı BİLEREK yazılmıyor: reklamverene
+     * verilecek gösterim sayısı panelden güncel okunmalı, koda gömülmemeli.
+     */
+    public function advertise(): View
+    {
+        // cache()->remember içine Eloquent Collection KOYMA (prod'da incomplete object
+        // hatası veriyor) — düz dizi saklanıyor.
+        $stats = cache()->remember('advertise.stats', now()->addHours(12), fn () => [
+            'universities' => University::where('is_active', true)->count(),
+            'programs'     => Program::where('is_active', true)->count(),
+            'cities'       => City::whereHas('universities', fn ($q) => $q->where('is_active', 1))->count(),
+            'posts_tr'     => Post::where('is_published', 1)->where('locale', 'tr')->count(),
+            'posts_de'     => Post::where('is_published', 1)->where('locale', 'de')->count(),
+            'posts_en'     => Post::where('is_published', 1)->where('locale', 'en')->count(),
+        ]);
+
+        return view('pages.advertise', [
+            'stats'      => $stats,
+            'placements' => config('ads.inventory.placements', []),
+            'contact'    => config('ads.inventory.contact_email'),
+        ]);
+    }
+
     public function index(): View
     {
         $stats = [

@@ -115,6 +115,9 @@ $routes = function () {
     })->middleware('throttle:6,1')->name('chat.lead');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
+    // Reklam Ver / medya kiti — satılmamış ad slot'larındaki davet kartı buraya gider
+    Route::get('/advertise', [AboutController::class, 'advertise'])->name('advertise');
+    Route::redirect('/reklam', '/advertise', 301);
     Route::get('/team', [AboutController::class, 'team'])->name('team');
     Route::get('/advisory-board', [AboutController::class, 'advisoryBoard'])->name('advisory-board');
     Route::redirect('/danisma-kurulu', '/advisory-board', 301);
@@ -1137,6 +1140,25 @@ Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
         '',
         'User-agent: Google-Extended',
         'Allow: /',
+    ];
+
+    return response(implode("\n", $lines) . "\n", 200)
+        ->header('Content-Type', 'text/plain; charset=utf-8');
+});
+
+// ads.txt — AdSense/programatik reklam için yetkili satıcı beyanı (IAB ads.txt).
+// ADSENSE_CLIENT_ID boşken 404 döner: boş/yanlış ads.txt, dolu olmamasından daha zararlı.
+// Client ID env'e girildiği an dosya kendiliğinden doğru içerikle yayına girer.
+Route::get('/ads.txt', function () {
+    $clientId = (string) config('ads.adsense.client_id'); // ca-pub-XXXXXXXXXXXXXXXX
+    if ($clientId === '') {
+        abort(404);
+    }
+
+    $pub = preg_replace('/^ca-/', '', $clientId); // ads.txt satırında "pub-..." kullanılır
+    $lines = [
+        '# ' . config('app.name') . ' — authorized digital sellers',
+        'google.com, ' . $pub . ', DIRECT, f08c47fec0942fa0',
     ];
 
     return response(implode("\n", $lines) . "\n", 200)

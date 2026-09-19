@@ -10,12 +10,12 @@
 
 @php
     $adsense = config('ads.adsense');
-    $placeholder = config('ads.placeholder');
-    // Premium üyeler için AdSense + placeholder reklamları gizlenir
+    $house   = config('ads.house');
+    // Premium üyeler için AdSense + davet kartı gizlenir
     // (Affiliate kart içerik-uyumlu sponsor mantığı — premium'da da kalır)
     $isPremium = optional(auth()->user())->isPremium() ?? false;
 
-    // Affiliate render mantığı (öncelikli)
+    // ── Affiliate render mantığı (öncelikli) ──
     $affiliateConfig = null;
     if ($affiliate) {
         $affiliateConfig = config("ads.affiliates.$affiliate");
@@ -31,12 +31,24 @@
         }
     }
 
-    // AdSense slot mantığı
-    $adsenseSlotId = $slot && $adsense['enabled']
+    // Affiliate metni ziyaretçinin dilinde: locale → en → tr
+    $adText = null;
+    if ($affiliateConfig) {
+        $texts   = $affiliateConfig['text'] ?? [];
+        $adText  = $texts[app()->getLocale()] ?? $texts['en'] ?? $texts['tr'] ?? null;
+    }
+
+    // ── AdSense slot mantığı ──
+    // Çerez onayı: banner "Kabul Et" derse almanyauni_consent=accepted yazıyor
+    // (bkz. layouts/app.blade.php). Onay şartı açıkken onaysız script basılmaz.
+    $consentGranted = ! ($adsense['require_consent'] ?? true)
+        || request()->cookie('almanyauni_consent') === 'accepted';
+
+    $adsenseSlotId = $slot && ($adsense['enabled'] ?? false)
         ? ($adsense['slots'][$slot] ?? null)
         : null;
 
-    // Boyut ipuçları (AdSense responsive ama placeholder için hint)
+    // Boyut ipuçları (AdSense responsive ama davet kartı için hint)
     $sizes = [
         'banner'  => 'min-h-[90px] md:min-h-[120px]',
         'square'  => 'min-h-[250px] aspect-square max-w-[300px] mx-auto',
@@ -47,7 +59,7 @@
 @endphp
 
 {{-- AFFILIATE KARTI --}}
-@if ($affiliateConfig && ! empty($affiliateConfig['active']))
+@if ($affiliateConfig && ! empty($affiliateConfig['active']) && $adText)
     <div class="ad-slot-affiliate bg-gradient-to-br from-accent-50 to-primary-50 border border-accent-200 rounded-xl p-5 md:p-6 my-6 shadow-sm">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0 w-12 h-12 bg-accent-500 text-white rounded-lg flex items-center justify-center text-xl">
@@ -58,19 +70,19 @@
                     <span class="inline-block text-[10px] uppercase tracking-wide bg-white text-gray-600 px-2 py-0.5 rounded font-semibold">{{ __('Sponsor') }}</span>
                     <span class="text-xs text-gray-500">{{ $affiliateConfig['partner'] }}</span>
                 </div>
-                <h3 class="font-bold text-gray-900 mb-1.5 leading-tight">{{ $affiliateConfig['label'] }}</h3>
-                <p class="text-sm text-gray-700 leading-relaxed mb-3">{{ $affiliateConfig['desc'] }}</p>
+                <h3 class="font-bold text-gray-900 mb-1.5 leading-tight">{{ $adText['label'] }}</h3>
+                <p class="text-sm text-gray-700 leading-relaxed mb-3">{{ $adText['desc'] }}</p>
                 <a href="{{ $affiliateConfig['url'] }}" target="_blank" rel="sponsored noopener nofollow"
                    class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white px-5 py-2.5 rounded-lg font-bold text-sm transition shadow-sm">
-                    {{ $affiliateConfig['cta'] }}
+                    👉 {{ $adText['cta'] }}
                 </a>
-                <p class="text-[11px] text-gray-500 mt-2">{{ $affiliateConfig['disclaimer'] }}</p>
+                <p class="text-[11px] text-gray-500 mt-2">{{ $adText['disclaimer'] }}</p>
             </div>
         </div>
     </div>
 
-{{-- ADSENSE SLOT (aktif + slot ID dolu + premium değil) --}}
-@elseif ($adsenseSlotId && ! $isPremium)
+{{-- ADSENSE SLOT (aktif + slot ID dolu + çerez onayı + premium değil) --}}
+@elseif ($adsenseSlotId && $consentGranted && ! $isPremium)
     <div class="ad-slot ad-slot--{{ $type }} my-6 text-center {{ $sizeCls }}">
         <p class="text-[10px] uppercase tracking-wide text-gray-400 mb-1">{{ $label }}</p>
         <ins class="adsbygoogle"
@@ -85,11 +97,17 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-{{-- PLACEHOLDER (dev / staging — AdSense onayı bekleniyorsa, premium değil) --}}
-@elseif ($placeholder['enabled'] && ! $isPremium)
-    <div class="ad-slot-placeholder my-6 {{ $sizeCls }} bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-center p-6">
-        <div class="text-3xl text-gray-400 mb-2">📢</div>
-        <p class="text-sm text-gray-500 font-semibold">{{ __('Ad space — coming soon') }}</p>
-        <p class="text-xs text-gray-400 mt-1">{{ ucfirst($type) }} · {{ $slot ?? 'default' }}</p>
-    </div>
+{{-- SATILMAMIŞ ENVANTER → "REKLAM VER" DAVETİ (premium değil) --}}
+@elseif (($house['enabled'] ?? false) && ! $isPremium)
+    {{-- locale açıkça veriliyor: bileşen locale grubunun dışında render edilse de kırılmasın --}}
+    <a href="{{ route('advertise', ['locale' => app()->getLocale()]) }}"
+       class="ad-slot-house group block my-6 {{ $sizeCls }} rounded-xl border border-dashed border-gray-300 hover:border-primary-400
+              bg-gray-50/70 hover:bg-primary-50/60 transition flex flex-col items-center justify-center text-center p-6 no-underline">
+        <p class="text-[10px] uppercase tracking-wide text-gray-400 mb-1">{{ __('Advertising space') }}</p>
+        <p class="text-sm font-semibold text-gray-700 group-hover:text-primary-700">{{ __('Reach students planning their studies in Germany') }}</p>
+        <p class="text-xs text-gray-500 mt-1">{{ __('Book this placement — Turkish, German and English audiences') }}</p>
+        <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 group-hover:text-primary-700">
+            {{ __('Advertise with us') }} <span aria-hidden="true">→</span>
+        </span>
+    </a>
 @endif
