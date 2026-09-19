@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\FieldOfStudy;
+use App\Models\Setting;
 use App\Models\State;
 use App\Models\University;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,6 +11,18 @@ use Illuminate\Database\Eloquent\Builder;
 class RankingService
 {
     private const DEFAULT_LIMIT = 50;
+
+    /** Alan sıralaması puanlama sürümü — admin'den çevrilir (deploy gerekmez). */
+    public const FIELD_SCORE_SETTING = 'ranking_field_score_version';
+
+    public const FIELD_SCORE_VERSIONS = ['v1', 'v2'];
+
+    public static function fieldScoreVersion(): string
+    {
+        $v = (string) Setting::get(self::FIELD_SCORE_SETTING, 'v1');
+
+        return in_array($v, self::FIELD_SCORE_VERSIONS, true) ? $v : 'v1';
+    }
 
     public function all(): array
     {
@@ -363,7 +376,13 @@ class RankingService
             ->orderBy('name_de');
     }
 
-    private function buildForField(int $fieldId): Builder
+    /** Ops önizlemesi için: aynı alanı istenen puanlama sürümüyle kur. */
+    public function builderForField(int $fieldId, ?string $version = null): Builder
+    {
+        return $this->buildForField($fieldId, $version);
+    }
+
+    private function buildForField(int $fieldId, ?string $version = null): Builder
     {
         // Alan sıralaması AĞIRLIKLI PUAN'a dayanır (methodologyFor('program') ile aynı ağırlıklar
         // — sayfada gösterilen yöntem ile çalışan yöntem birbirinden ayrılmamalıdır):
@@ -403,20 +422,61 @@ class RankingService
         // top-50 üniversitesi (LMU, Heidelberg…) büyük olasılıkla mühendislik okulu değildir.
         // Alandaki DOĞRUDAN kanıt, genel vekil göstergeden ağır basmalı. Regresyon testi:
         // FieldRankingScoreTest::test_konu_sirasi_genel_dunya_sirasinin_yerine_gecer
-        $score = '0.60 * (CASE'
+        $quality = '(CASE'
             . ' WHEN subject_rank IS NOT NULL'
             . ' THEN LEAST(1, 0.15 + GREATEST(0, 1 - LOG(subject_rank) / LOG(800)))'
             . ' WHEN best_world_rank < 999999 THEN GREATEST(0, 1 - LOG(best_world_rank) / LOG(1500))'
-            . ' ELSE 0 END)'
-            . ' + 0.30 * (LEAST(field_programs_count, 30) / 30)'
-            . ' + 0.10 * (LEAST(COALESCE(student_count, 0), 50000) / 50000)';
+            . ' ELSE 0 END)';
+
+        $version ??= self::fieldScoreVersion();
+
+        // v1 (eski): kalite %60 · derinlik %30 · büyüklük %10.
+        // Yapısal kusuru: kalite bileşeni yalnızca dünya sıralamalarından besleniyor,
+        // Fachhochschule'ler oralarda hiç yok → puanın %60'ından SIFIR alıyorlar, yani
+        // alanındaki en iyi FH bile vasat bir genel üniversiteyi geçemiyor. Kalan %10'luk
+        // büyüklük bileşeni de kaliteyi değil kurum boyutunu ödüllendirip aynı yöne itiyor.
+        //
+        // v2: aynı sorunu YENİ VERİ İSTEMEDEN, elimizdeki alanlarla düzeltir —
+        //   %45 kalite         — dünya/konu sırası (hâlâ en ağır bileşen, ama tek başına belirleyici değil)
+        //   %22 alan derinliği — alandaki aktif program sayısı (30'da tavan)
+        //   %18 alan odağı     — alandaki programların kurumun TÜM programlarına oranı.
+        //                        Mühendislik listesinde, programlarının yarısı mühendislik olan
+        //                        bir teknik okul ile mühendisliği %3 olan bir genel üniversiteyi
+        //                        ayıran şey budur; dünya sıralamasından bağımsız çalıştığı için
+        //                        FH'ler ilk kez kendi güçlü yanlarıyla puan alır.
+        //                        (+10 yumuşatma: 3 programlı butik okul oranı 1.0'a çıkaramasın.)
+        //   %9  uluslararası erişim — alandaki İngilizce program sayısı + uni-assist üyeliği.
+        //                        Hedef kitlemiz için "başvurabildiğim program" kalitenin parçası.
+        //   %6  topluluk ilgisi — kendi topluluk verimizden gelen anılma skoru (log ölçekli).
+        // Büyüklük bileşeni tamamen kaldırıldı: öğrenci sayısı kalite değil, üstelik derinlik
+        // bileşeniyle zaten büyük ölçüde örtüşüyor.
+        //
+        // Kalite dışı bileşenlerin TOPLAMI bilinçli olarak %55'te tutuldu: hiçbir sıralamada
+        // yer almayan, tek alana odaklı bir kurum listede yükselebilmeli (amaç bu) ama güçlü
+        // bir teknik üniversiteyi geçememeli — TU'lar derinlik + kaliteyi birlikte topluyor.
+        $score = $version === 'v2'
+            ? '0.45 * ' . $quality
+                . ' + 0.22 * (LEAST(field_programs_count, 30) / 30)'
+                . ' + 0.18 * LEAST(1, (field_programs_count / (total_programs_count + 10)) / 0.5)'
+                . ' + 0.09 * (0.7 * LEAST(1, field_en_programs_count / 5)'
+                . '           + 0.3 * (CASE WHEN is_uni_assist_member = 1 THEN 1 ELSE 0 END))'
+                . ' + 0.06 * LEAST(1, LOG(1 + COALESCE(community_mention_score, 0)) / LOG(101))'
+            : '0.60 * ' . $quality
+                . ' + 0.30 * (LEAST(field_programs_count, 30) / 30)'
+                . ' + 0.10 * (LEAST(COALESCE(student_count, 0), 50000) / 50000)';
 
         return $this->baseQuery()
             ->select('universities.*')
             ->selectRaw("{$bestWorldRank} AS best_world_rank")
             ->selectRaw("{$subjectRank} AS subject_rank")
             ->whereHas('programs', fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1))
-            ->withCount(['programs as field_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1)])
+            ->withCount([
+                'programs as field_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)->where('is_active', 1),
+                'programs as total_programs_count' => fn ($q) => $q->where('is_active', 1),
+                // Dil alanı CSV olabildiği için ProgramController'daki ölçütle aynı: en | both.
+                'programs as field_en_programs_count' => fn ($q) => $q->where('field_of_study_id', $fieldId)
+                    ->where('is_active', 1)->whereIn('language', ['en', 'both']),
+            ])
             ->orderByRaw("({$score}) DESC")
             ->orderBy('best_world_rank')
             ->orderByDesc('field_programs_count');
@@ -502,7 +562,22 @@ class RankingService
                 'source_text' => 'Hochschulkompass + university self-reported history',
             ],
 
-            'program' => [
+            // Gösterilen yöntem ÇALIŞAN yöntemle aynı olmalı → aktif puanlama sürümüne bakar.
+            'program' => self::fieldScoreVersion() === 'v2' ? [
+                'title' => __('Methodology — Field Ranking'),
+                'intro' => __('Universities offering programmes in the selected field, ranked by a weighted score. No single signal works alone: ranking position by itself pushes general universities with one programme above genuine specialist institutions, programme count by itself rewards volume, and a global position says nothing about applied sciences universities, which barely appear in world rankings. The five components are weighted as follows:'),
+                'indicators' => [
+                    'world_rank'   => ['weight' => 45, 'label' => __('Ranking position'),      'tooltip' => __('Where a subject-level ranking exists for this field (ShanghaiRanking GRAS), that position is used and takes precedence — it is direct evidence in the field, whereas an overall position is only a proxy. Otherwise the best position across QS, THE and ARWU is used. Both are scaled logarithmically, so the gap between 28th and 154th counts for far more than the gap between 1200th and 1400th. Absence from every ranking scores zero here rather than removing the institution from the list')],
+                    'field_depth'  => ['weight' => 22, 'label' => __('Field depth'),           'tooltip' => __('Number of active programmes in the selected field (Bachelor, Master, PhD combined), capped at 30 so a single very large institution cannot dominate the score')],
+                    'field_focus'  => ['weight' => 18, 'label' => __('Field focus'),           'tooltip' => __('Share of the institution\'s total programmes that fall in this field. An institution where half the offering is engineering is an engineering school; one where engineering is three per cent of a broad catalogue is not. This component is independent of world rankings, so specialist institutions and applied sciences universities can earn it on their own merits')],
+                    'intl_access'  => ['weight' => 9,  'label' => __('International access'),  'tooltip' => __('Number of English-taught programmes in this field plus uni-assist membership. For an international applicant a programme that cannot be applied to is not an option, so accessibility is part of the assessment')],
+                    'community'    => ['weight' => 6,  'label' => __('Community interest'),    'tooltip' => __('How often the institution is mentioned across our community pools, on a logarithmic scale — a demand signal drawn from our own data rather than from a ranking provider')],
+                ],
+                'source_label' => __('Sources:'),
+                'source_url' => 'https://www.topuniversities.com/qs-world-university-rankings/methodology',
+                'source_text' => 'QS + THE + ARWU + ShanghaiRanking GRAS + Hochschulkompass',
+                'note' => __('Applied sciences universities (Fachhochschulen) are rarely included in global rankings; their absence reflects ranking coverage, not teaching quality — which is why field focus, international access and community interest carry weight alongside ranking position. Programme counts are synced quarterly.'),
+            ] : [
                 'title' => __('Methodology — Field Ranking'),
                 'intro' => __('Universities offering programmes in the selected field, ranked by a weighted score. Neither signal works alone: ranking position by itself pushes general universities with a single programme above genuine engineering institutions, while programme count by itself rewards volume over quality. The three components are weighted as follows:'),
                 'indicators' => [
