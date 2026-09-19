@@ -195,6 +195,8 @@ $routes = function () {
     Route::get('/programs/city/{city}/field/{field}', [\App\Http\Controllers\Web\LandingController::class, 'cityField'])->name('programs.city-field');
     Route::get('/programs/city/{city}/language/{lang}', [\App\Http\Controllers\Web\LandingController::class, 'cityLanguage'])->name('programs.city-language');
     Route::get('/programs/field/{field}/degree/{degree}', [\App\Http\Controllers\Web\LandingController::class, 'fieldDegree'])->name('programs.field-degree');
+    // Alan × öğretim dili — "Almanca ekonomi nerede okunur" tipi sorunun karşılığı
+    Route::get('/programs/field/{field}/language/{lang}', [\App\Http\Controllers\Web\LandingController::class, 'fieldLanguage'])->name('programs.field-language');
 
     Route::get('/programs/{slug}', [ProgramController::class, 'show'])->name('programs.show');
 

@@ -385,6 +385,25 @@ class SitemapController extends Controller
                 }
             });
 
+        // Programmatic SEO: /programs/field/{field}/language/{de|en}
+        // Sadece o dilde GERÇEKTEN programı olan alanlar; boş sayfa sitemap'e girmez.
+        foreach (FieldOfStudy::active()->get(['id', 'slug', 'updated_at']) as $f) {
+            foreach (['de', 'en'] as $lang) {
+                $has = Program::where('is_active', true)
+                    ->where('field_of_study_id', $f->id)
+                    ->where(fn ($q) => $q->where('language', $lang)->orWhere('language', 'both'))
+                    ->exists();
+                if ($has) {
+                    $urls[] = $this->entry(
+                        route('programs.field-language', [$f->slug, $lang]),
+                        $f->updated_at,
+                        'weekly',
+                        0.7
+                    );
+                }
+            }
+        }
+
         // Programmatic SEO: /subjects/{slug}/nc-free — sadece NC-frei programı OLAN alanlar
         // (boş sayfalar noindex'li → sitemap'e koyma, crawl bütçesini boşa harcama).
         foreach (FieldOfStudy::active()

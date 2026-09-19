@@ -138,6 +138,55 @@ class LandingController extends Controller
     }
 
     /**
+     * Alan × ÖĞRETİM DİLİ landing.
+     * URL: /{locale}/programs/field/{field}/language/{lang}   (lang: de|en)
+     * Örnek: /tr/programs/field/hukuk-ekonomi/language/de — "Almanca ekonomi/hukuk programları"
+     *
+     * NEDEN VAR: dil boyutu şimdiye kadar yalnızca ŞEHİR kırılımında vardı (city-language).
+     * Oysa kullanıcı "Almanya'da Almanca ekonomi nerede okunur" diye ALAN + DİL soruyor;
+     * bu sorunun karşılığı olan bir sayfa yoktu. Hochschulkompass importundan sonra Almanca
+     * programlar katalogda gerçekten temsil edildiği için bu sayfa artık dolu.
+     */
+    public function fieldLanguage(string $field, string $lang, Request $request): View
+    {
+        abort_unless(in_array($lang, ['en', 'de'], true), 404);
+
+        $fieldModel = FieldOfStudy::where('slug', $field)->firstOrFail();
+        $degree = $this->validDegree($request->query('degree'));
+
+        $query = $this->baseProgramQuery()
+            ->where('field_of_study_id', $fieldModel->id)
+            ->where(function ($q) use ($lang) {
+                $q->where('language', $lang)->orWhere('language', 'both');
+            });
+
+        if ($degree) {
+            $query->where('degree', $degree);
+        }
+
+        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
+        $totalCount = $query->count();
+
+        // Aynı alanda NC'siz kaç program var? Sayfadaki en değerli çapraz link bu.
+        $ncFreeCount = Program::where('is_active', true)
+            ->where('field_of_study_id', $fieldModel->id)
+            ->where('admission_mode', 'zulassungsfrei')
+            ->count();
+
+        return view('programs.landing', [
+            'context' => 'field-language',
+            'field' => $fieldModel,
+            'language' => $lang,
+            'degree' => $degree,
+            'programs' => $programs,
+            'totalCount' => $totalCount,
+            'ncFreeCount' => $ncFreeCount,
+            'h1' => $this->h1ForFieldLanguage($fieldModel, $lang, $degree),
+            'metaDescription' => $this->metaDescForFieldLanguage($fieldModel, $lang, $totalCount),
+        ]);
+    }
+
+    /**
      * Şehir × NC-frei filtreli landing.
      * URL: /{locale}/cities/{city}/nc-free
      * Örnek: /tr/cities/berlin-q64/nc-free — "Berlin'de NC'siz bölümler"
@@ -250,6 +299,26 @@ class LandingController extends Controller
     // ─────────────────────────────────────────────────────
     // Locale-aware H1 & meta builders (TR/EN/DE)
     // ─────────────────────────────────────────────────────
+
+    private function h1ForFieldLanguage(FieldOfStudy $field, string $lang, ?string $degree): string
+    {
+        $degreeLabel = $degree ? ' ' . $this->degreeLabel($degree) : '';
+
+        return __(':lang-taught:degree :field Programs in Germany', [
+            'lang' => $this->languageName($lang),
+            'degree' => $degreeLabel,
+            'field' => $field->name,
+        ]);
+    }
+
+    private function metaDescForFieldLanguage(FieldOfStudy $field, string $lang, int $count): string
+    {
+        return __(':count :lang-taught :field programs in Germany — filter by degree and admission mode (NC), see the university, city and application details.', [
+            'count' => $count,
+            'lang' => $this->languageName($lang),
+            'field' => $field->name,
+        ]);
+    }
 
     private function h1ForCityNcFree(City $city): string
     {

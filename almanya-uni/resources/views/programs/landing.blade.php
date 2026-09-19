@@ -92,12 +92,34 @@
                 {{ __(':lang-taught programs at universities in :city.', ['lang' => $language === 'en' ? __('English-taught') : __('German-taught'), 'city' => $city->name]) }}
             @elseif (isset($field) && isset($degree))
                 {{ __(':degree :field programs across Germany.', ['degree' => $degree === 'master' ? __('Master') : ($degree === 'phd' ? __('PhD') : __('Bachelor')), 'field' => $field->name]) }}
+            @elseif (isset($context) && $context === 'field-language')
+                {{ __(':lang-taught :field programs across Germany.', ['lang' => $language === 'en' ? __('English-taught') : __('German-taught'), 'field' => $field->name]) }}
             @elseif (isset($context) && $context === 'city-nc-free')
                 {{ __('NC-free (zulassungsfrei) programs at universities in :city — open admission.', ['city' => $city->name]) }}
             @endif
         </p>
 
         {{-- Quick filters / cross-links --}}
+        @if (isset($context) && $context === 'field-language')
+            <div class="flex flex-wrap gap-2 mt-5 text-sm">
+                <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
+                @foreach (['bachelor' => __('Bachelor'), 'master' => __('Master'), 'phd' => __('PhD')] as $d => $dLabel)
+                    <a href="{{ route('programs.field-language', [$field->slug, $language]) }}?degree={{ $d }}"
+                       class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition"
+                       title="{{ $dLabel }} — {{ $field->name }}">{{ $dLabel }}</a>
+                @endforeach
+                <span class="text-primary-300 mx-2">·</span>
+                <a href="{{ route('programs.field-language', [$field->slug, $language === 'de' ? 'en' : 'de']) }}"
+                   class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">
+                    {{ $language === 'de' ? '🇬🇧 ' . __('English programs') : '🇩🇪 ' . __('German programs') }}
+                </a>
+                @if (($ncFreeCount ?? 0) > 0)
+                    <a href="{{ route('admission-free.by-subject', $field->slug) }}"
+                       class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
+                       title="{{ __('NC-free programs') }}">✅ {{ __('NC-free') }} ({{ number_format($ncFreeCount, 0, ',', '.') }})</a>
+                @endif
+            </div>
+        @endif
         @if (isset($context) && $context === 'city-field')
             <div class="flex flex-wrap gap-2 mt-5 text-sm">
                 <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
