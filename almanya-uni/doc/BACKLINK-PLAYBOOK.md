@@ -2,6 +2,10 @@
 
 > Amaç: Site otoritesini artırıp **20.000+ "keşfedildi-indexlenmedi" sayfayı** indexlettirmek ve organik büyümeyi açmak. Teknik temel hazır (sitemap/hreflang/iç linkleme ✓); eksik olan **dış sinyal (backlink)**. Bu, kodla değil **outreach/içerik** ile olur — #1 kaldıraç.
 
+> **Takip:** bu dokümandaki işler panele görev olarak aktarıldı — **/admin/tasks** (Pazarlama → Görevler).
+> İşaretleme, öncelik ve hedef tarih orada; bu doküman taktikleri, outreach script'lerini ve
+> "ne YAPMA" listesini tutmaya devam ediyor. Yeni iş eklersen panele ekle, buraya değil.
+
 ---
 
 ## 0. Zihniyet
