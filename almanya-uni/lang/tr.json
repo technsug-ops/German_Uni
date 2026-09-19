@@ -4577,5 +4577,10 @@
     "How much does it cost to study in Germany per month?": "Almanya'da okumak aylık ne kadar tutar?",
     "Most public universities are tuition-free (only a small semester contribution). Living costs typically range €900–€1,300 per month depending on the city — rent is the biggest factor.": "Devlet üniversitelerinin çoğu harçsızdır (yalnızca küçük bir dönem katkı payı). Yaşam giderleri şehre göre genellikle aylık 900–1.300 € arasında değişir; en büyük kalem kiradır.",
     "Popular Universities": "Popüler Üniversiteler",
-    "Popular Programs": "Popüler Programlar"
+    "Popular Programs": "Popüler Programlar",
+    ":lang-taught :field programs across Germany.": ":lang :field programları — Almanya genelinde.",
+    "German programs": "Almanca programlar",
+    "NC-free": "NC'siz",
+    ":lang-taught:degree :field Programs in Germany": "Almanya'da :lang :field:degree Programları",
+    ":count :lang-taught :field programs in Germany — filter by degree and admission mode (NC), see the university, city and application details.": "Almanya'da :count :lang :field programı — dereceye ve kabul biçimine (NC) göre filtrele; üniversite, şehir ve başvuru bilgilerini gör."
 }

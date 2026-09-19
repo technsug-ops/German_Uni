@@ -4638,5 +4638,10 @@
     "Popular Universities": "Beliebte Universitäten",
     "AlmanyaUni": "ApplyToGerman",
     "AlmanyaUni Editör Ekibi": "ApplyToGerman Redaktionsteam",
-    "Popular Programs": "Beliebte Studiengänge"
+    "Popular Programs": "Beliebte Studiengänge",
+    ":lang-taught :field programs across Germany.": ":lang :field-Studiengänge in ganz Deutschland.",
+    "German programs": "Deutschsprachige Studiengänge",
+    "NC-free": "NC-frei",
+    ":lang-taught:degree :field Programs in Germany": ":lang :field-Studiengänge:degree in Deutschland",
+    ":count :lang-taught :field programs in Germany — filter by degree and admission mode (NC), see the university, city and application details.": ":count :lang :field-Studiengänge in Deutschland — nach Abschluss und Zulassungsmodus (NC) filtern; Hochschule, Stadt und Bewerbungsdetails ansehen."
 }
