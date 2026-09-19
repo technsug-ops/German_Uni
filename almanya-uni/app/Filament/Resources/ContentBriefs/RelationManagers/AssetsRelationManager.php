@@ -140,13 +140,17 @@ class AssetsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
+                // Etiket ve açıklama config/locale.php'deki AKTİF dillerden üretilir:
+                // yeni bir dil yayına alındığında burada elle güncelleme gerekmez.
                 Action::make('translate10')
-                    ->label('🌍 10 dile çevir')
+                    ->label(fn () => '🌍 ' . count(\App\Services\Content\ContentVoice::contentLocales()) . ' dile çevir')
                     ->color('info')
                     ->visible(fn (ContentAsset $record) => empty($record->source_asset_id))
                     ->requiresConfirmation()
-                    ->modalHeading('10 dile çevir')
-                    ->modalDescription('Bu asset TR/EN/DE/FR/ES/IT/PL/RU/AR/FA dillerine Gemini ile çevirilir. Mevcut çeviriler atlanır. ~3-5 dk sürer.')
+                    ->modalHeading(fn () => 'Yayındaki dillere çevir')
+                    ->modalDescription(fn () => 'Bu asset şu dillere Gemini ile çevrilir: '
+                        . strtoupper(implode(' / ', \App\Services\Content\ContentVoice::contentLocales()))
+                        . '. Mevcut çeviriler atlanır. Yayında olmayan diller (yakında listesi) bilinçli olarak dışarıda — token ve süre harcamasın diye.')
                     ->action(function (ContentAsset $record) {
                         try {
                             $translator = app(ContentTranslator::class);

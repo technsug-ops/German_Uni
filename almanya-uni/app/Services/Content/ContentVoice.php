@@ -66,17 +66,27 @@ TXT;
 
     /**
      * Locales eligible for AI content generation/translation — driven entirely
-     * by the registry (config/locale.php). A locale counts as content-enabled
-     * when it is active OR explicitly flagged coming_soon (content prepared
-     * ahead of UI launch). This is the single list the generators should use.
+     * by the registry (config/locale.php).
+     *
+     * KARAR (2026-09-20): yalnızca AKTİF diller (tr/en/de). Daha önce buraya
+     * coming_soon işaretli diller de dahildi; sonuç olarak "10 dile çevir"
+     * aslında 11 hedefe gidiyor ve yayınlanmayan 9 dil için AI token'ı + süre
+     * harcanıyordu. Yeni dil yayına alınırken config'te active=true yapılması
+     * yeterli — burada kod değişikliği gerekmez.
+     *
+     * Hazırlığı UI'dan önce yapılacak diller gerektiğinde
+     * contentLocales(includeComingSoon: true) ile alınır.
      *
      * @return array<int, string>
      */
-    public static function contentLocales(): array
+    public static function contentLocales(bool $includeComingSoon = false): array
     {
         $locales = config('locale.locales', []);
 
-        return array_keys(array_filter($locales, fn ($cfg) => ($cfg['active'] ?? false) || ($cfg['coming_soon'] ?? false)));
+        return array_keys(array_filter(
+            $locales,
+            fn ($cfg) => ($cfg['active'] ?? false) || ($includeComingSoon && ($cfg['coming_soon'] ?? false))
+        ));
     }
 
     /** English display name for a locale, from the registry. */
