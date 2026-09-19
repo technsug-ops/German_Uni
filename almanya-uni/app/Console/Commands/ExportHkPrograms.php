@@ -54,6 +54,14 @@ class ExportHkPrograms extends Command
         //   Wirtschaftsingenieur → hukuk-ekonomi (61 kayıt) · Mechatronik → mühendislik (22)
         //   Medizintechnik → tıp-sağlık (6, mühendislik DEĞİL) · Data Science → bilişim (64)
         // Yeni kayıtlar aynı alışkanlığa uysun diye include/exclude buna göre kuruldu.
+        // Site Wirtschaftsingenieur'u hukuk-ekonomi'de tutuyor (61 mevcut kayit). Ilk turda
+        // "muhendisligin icine karismasin" diye HER IKI alandan da dislanmisti; bu kural
+        // bosluku kapatir ve kayitlari sitenin kendi yerine gonderir.
+        'wirtschaftsingenieurwesen' => [
+            'field_slug' => 'hukuk-ekonomi',
+            'include'    => ['wirtschaftsingenieur', 'industrial engineering', 'engineering management'],
+            'exclude'    => [],
+        ],
         'muhendislik' => [
             'include' => [
                 'ingenieur', 'maschinenbau', 'elektrotechnik', 'bauingenieur', 'verfahrenstechnik',
@@ -254,7 +262,9 @@ class ExportHkPrograms extends Command
         $path = base_path((string) $this->option('out'));
         @mkdir(dirname($path), 0775, true);
         file_put_contents($path, json_encode([
-            'field'        => $fieldSlug,
+            // Kural anahtari alan slug'indan FARKLI olabilir (wirtschaftsingenieurwesen kurali
+            // hukuk-ekonomi alanina yazar) -> dosyaya GERCEK alan slug'i gider.
+            'field'        => $rules['field_slug'] ?? $fieldSlug,
             'source'       => 'hochschulkompass (hk_catalog)',
             'generated_at' => now()->toIso8601String(),
             'note'         => 'Bizde karşılığı olmayan HK programları. Migration slug bazlı ve idempotent uygular.',
