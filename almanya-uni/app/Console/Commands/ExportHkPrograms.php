@@ -82,6 +82,75 @@ class ExportHkPrograms extends Command
                 'biomedizinische',
             ],
         ],
+
+        // Kalan alanlar. Kural yazarken iki ilke: (1) sitenin mevcut alışkanlığı ölçüldü,
+        // (2) ölçüm açıkça HATALI olduğunda semantik tercih edildi ve bu not düşüldü.
+        //   - Psycholog → sosyal-bilimler (mevcut 244 kayıt böyle; tıp-sağlık değil)
+        //   - Agrar/Ernährung/Forst mevcut veride hukuk-ekonomi'ye düşmüş (Agrarmanagement gibi
+        //     adlar yüzünden) — doğru yeri tarım-ormancılık; yeni kayıtlar oraya gidiyor.
+        //   - Veterinär mevcut veride tıp-sağlık'ta (6 kayıt) ama alanın ADI "Veterinerlik &
+        //     Spor" — yeni kayıtlar alan adına uyuyor.
+        // Dosya SIRASI önemlidir: migration ilk eşleşeni yazar, sonrakiler atlanır →
+        // spesifik alanlar (tıp, veteriner, tarım) genel alandan (sosyal bilimler) ÖNCE gelir.
+        'tip-saglik' => [
+            'include' => [
+                'medizin', 'zahnmedizin', 'pharmaz', 'pflege', 'hebamme', 'physiotherap',
+                'ergotherap', 'logopäd', 'gesundheit', 'public health', 'rettungs', 'therapie',
+                'humanmedizin', 'arzneimittel', 'klinische',
+            ],
+            'exclude' => [
+                'informatik', 'management', 'ökonomie', 'okonomie', 'wirtschaft',
+                'tiermedizin', 'veterinär', 'ingenieur', 'technik',
+                'psycholog',   // site psikolojiyi sosyal-bilimler'de tutuyor (244 kayıt)
+            ],
+        ],
+        'veteriner-spor' => [
+            'include' => ['veterinär', 'tiermedizin', 'tierärztlich', 'tierwissenschaft', 'sport', 'bewegung'],
+            'exclude' => ['sportmanagement', 'sportökonomie', 'wirtschaft', 'informatik', 'ingenieur',
+                'transport',   // 'sport' alt-dizesi Transportlogistik'i yakaliyordu
+            ],
+        ],
+        'tarim-ormancilik' => [
+            'include' => [
+                'agrar', 'landwirtschaft', 'forst', 'ernährung', 'gartenbau', 'weinbau',
+                'lebensmittel', 'holztechnik', 'nutzpflanzen', 'tierhaltung', 'fischerei',
+            ],
+            'exclude' => ['management', 'wirtschaft', 'informatik', 'ökonomie'],
+        ],
+        'dil-kultur' => [
+            'include' => [
+                'sprach', 'germanistik', 'anglistik', 'romanistik', 'slavistik', 'linguistik',
+                'literatur', 'philologie', 'translation', 'übersetz', 'dolmetsch', 'orientalistik',
+                'sinologie', 'japanologie', 'klassische archäologie', 'kulturwissenschaft',
+            ],
+            'exclude' => ['management', 'wirtschaft', 'informatik', 'lehramt'],
+        ],
+        'matematik-doga' => [
+            'include' => [
+                'mathematik', 'physik', 'chemie', 'biolog', 'biochemie', 'geowissenschaft',
+                'geologie', 'astronom', 'statistik', 'meteorolog', 'mineralog', 'nanoscience',
+                'naturwissenschaft', 'molekular',
+            ],
+            'exclude' => [
+                'ingenieur', 'verfahrenstechnik', 'informatik', 'medizin', 'technik',
+                'wirtschaftsmathematik', 'management',
+            ],
+        ],
+        'sanat-tasarim' => [
+            'include' => [
+                'kunst', 'design', 'musik', 'architekt', 'gestaltung', 'theater', 'tanz',
+                'film', 'fotografie', 'modedesign', 'schauspiel', 'bildende', 'komposition',
+            ],
+            'exclude' => ['informatik', 'management', 'ingenieur', 'kunststoff', 'wirtschaft'],
+        ],
+        'sosyal-bilimler' => [
+            'include' => [
+                'sozial', 'psycholog', 'soziologie', 'politik', 'pädagog', 'erziehung',
+                'lehramt', 'geschichte', 'philosophie', 'theolog', 'ethnolog', 'anthropolog',
+                'kommunikationswissenschaft', 'medienwissenschaft', 'europastudien', 'bildungswissenschaft',
+            ],
+            'exclude' => ['informatik', 'management', 'wirtschaft', 'ingenieur', 'design'],
+        ],
     ];
 
     public function handle(): int
