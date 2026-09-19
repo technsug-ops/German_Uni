@@ -119,17 +119,31 @@ class PartnerController extends Controller
             return back()->withErrors(['email' => __('Please provide an email or phone.')])->withInput();
         }
 
-        // Aynı kişi + aynı kurum + aynı mesaj 24 saat içinde tekrar gelirse yeni kayıt
-        // AÇMA. Panelde aynı talebin üç kopyası birikiyordu: kullanıcı onay maili
-        // almadığı için "gitti mi?" diye tekrar gönderiyordu. Kullanıcıya yine başarı
-        // gösterilir — onun açısından işlem zaten tamamlanmıştır.
+        // Aynı kişi + aynı kurum 24 saat içinde tekrar gönderirse yeni kayıt AÇMA.
+        //
+        // Anahtar bilinçli olarak MESAJI İÇERMİYOR: ilk sürümde mesaj da anahtardaydı
+        // ve tekrar gönderimde form boş geldiği için (kullanıcı mesajı yeniden yazmıyor)
+        // kopya yakalanmadı. Farklı kuruma başvuru meşru olduğu için source_id anahtarda
+        // kalıyor.
+        //
+        // Yeni mesaj geldiyse kaybetmiyoruz: mevcut kayda ekleniyor (aşağıda).
         $duplicate = null;
         if (! empty($data['email'])) {
             $duplicate = Lead::where('email', $data['email'])
                 ->where('source_id', $data['source_id'] ?? null)
-                ->where('message', $data['message'] ?? null)
                 ->where('created_at', '>=', now()->subDay())
+                ->latest('id')
                 ->first();
+        }
+
+        // Tekrar gönderimde yeni bir şey yazdıysa, o metni mevcut kayda iliştir.
+        if ($duplicate && filled($data['message'] ?? null)
+            && ! str_contains((string) $duplicate->message, trim($data['message']))) {
+            $duplicate->update([
+                'message' => trim((string) $duplicate->message)
+                    . "\n\n--- " . now()->format('d.m.Y H:i') . ' tekrar gönderim ---' . "\n"
+                    . trim($data['message']),
+            ]);
         }
 
         $lead = $duplicate ?: Lead::create($data + [
