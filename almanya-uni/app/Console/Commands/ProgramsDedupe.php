@@ -60,6 +60,35 @@ class ProgramsDedupe extends Command
             })->first();
 
             $losers = $rows->where('id', '!=', $keep->id);
+
+            // BIRLESTIR, sadece secme: kaybeden kayitlarda DOLU olup kazanan kayitta BOS olan
+            // alanlari kazanana tasi. Ozellikle `language`: DAAD kaydi "en" derken partner
+            // kaydi "both" diyebiliyor (83 grupta olculdu) — sadece kazanani birakmak
+            // iki dilli bir programi Ingilizce-only yapardi ve Almanca listelerden duserdi.
+            $merge = [];
+            foreach (self::RICH_FIELDS as $f) {
+                $cur = $keep->getAttribute($f);
+                if ($cur !== null && $cur !== '') {
+                    continue;
+                }
+                foreach ($losers as $l) {
+                    $v = $l->getAttribute($f);
+                    if ($v !== null && $v !== '') {
+                        $merge[$f] = $v;
+                        break;
+                    }
+                }
+            }
+            // Dil GENISLIGI kazanir: 'both' her zaman tek dile ustundur.
+            if ($losers->contains(fn ($l) => $l->language === 'both') && $keep->language !== 'both') {
+                $merge['language'] = 'both';
+            }
+            if ($merge !== []) {
+                $this->line('      birleştir → ' . implode(', ', array_keys($merge)));
+                if ($apply) {
+                    $keep->update($merge);
+                }
+            }
             $this->line("  «{$g->name_de}» [{$g->degree}] → KORU #{$keep->id} ({$keep->source}, skor {$this->score($keep)})");
             foreach ($losers as $l) {
                 $this->line("      pasifleştir #{$l->id} ({$l->source}, skor {$this->score($l)})");
