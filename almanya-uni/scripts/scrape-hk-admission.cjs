@@ -1,0 +1,125 @@
+/**
+ * Hochschulkompass — TÜM NC modları için program kazıyıcı (genel).
+ *
+ * Modlar (tx_szhrksearch_pi1[zubesch][0]=...):
+ *   O = zulassungsfrei            (NC yok / açık kabul)
+ *   X = örtlich zulassungsbeschr. (yerel NC)
+ *   A = bundesweit zulassungsbeschr. (Hochschulstart: Tıp/Eczacılık/Diş/Vet)
+ *   E = Auswahlverfahren/Eignungsprüfung
+ *
+ * Enodia anti-bot duvarını stealth + buton ile bir kez aşar, cookie tutar,
+ * section.result-box satırlarını sayfa sayfa çıkarır.
+ *
+ * Çıktı: storage/app/hk-{mode}.json
+ * Kullanım:
+ *   node scripts/scrape-hk-admission.cjs --mode=X            # örtlich tam
+ *   node scripts/scrape-hk-admission.cjs --mode=A --max=5    # bundesweit ilk 5 sayfa test
+ */
+const { chromium } = require('playwright-extra');
+const stealth = require('puppeteer-extra-plugin-stealth')();
+const fs = require('fs');
+const path = require('path');
+chromium.use(stealth);
+
+const arg = (name, def) => {
+  const a = process.argv.find((x) => x.startsWith(`--${name}=`));
+  return a ? a.split('=')[1] : def;
+};
+const MODE = (arg('mode', 'O') || 'O').toUpperCase();
+const MAX = parseInt(arg('max', '0'), 10);
+
+const MODE_MAP = {
+  O: { label: 'zulassungsfrei', admission: 'zulassungsfrei' },
+  X: { label: 'oertlich', admission: 'oertlich' },
+  A: { label: 'bundesweit', admission: 'bundesweit' },
+  E: { label: 'auswahl', admission: 'auswahl' },
+};
+if (!MODE_MAP[MODE]) { console.error('Geçersiz --mode (O/X/A/E)'); process.exit(1); }
+const { label, admission } = MODE_MAP[MODE];
+
+const OUT = path.resolve(__dirname, `../storage/app/hk-${label}.json`);
+const ROOT = 'https://www.hochschulkompass.de/studium/studiengangsuche/erweiterte-studiengangsuche';
+const ZUBESCH = `tx_szhrksearch_pi1%5Bzubesch%5D%5B0%5D=${MODE}`;
+const STUDTYPEN = [{ id: 1, label: 'grundständig' }, { id: 3, label: 'weiterführend' }];
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const urlFor = (st, page) =>
+  `${ROOT}/search/1/studtyp/${st}${page > 1 ? `/pn/${page - 1}` : ''}.html?${ZUBESCH}`;
+
+async function passEnodia(page) {
+  for (let i = 0; i < 30; i++) {
+    if (!/enodia/i.test(await page.title().catch(() => ''))) return true;
+    const b = page.locator('button', { hasText: /continue|fortfahren/i });
+    if (await b.count().catch(() => 0)) await b.first().click().catch(() => {});
+    await sleep(1200);
+  }
+  return false;
+}
+
+async function extractPage(page) {
+  return page.evaluate(() => {
+    const LABELS = ['Hochschule', 'Studienort', 'Abschluss', 'Studientyp', 'Studienform', 'SIT-Passung'];
+    const rows = [];
+    document.querySelectorAll('section.result-box').forEach((b) => {
+      const toks = b.innerText.split('\n').map((s) => s.trim()).filter(Boolean);
+      if (!toks.length) return;
+      const fach = toks[0];
+      const get = (label) => { const i = toks.findIndex((t) => t.replace(':', '') === label); return i >= 0 && i + 1 < toks.length ? toks[i + 1] : ''; };
+      const val = (label) => { const v = get(label); return LABELS.includes(v) ? '' : v; };
+      const hoch = val('Hochschule');
+      if (!fach || !hoch || LABELS.includes(fach)) return;
+      rows.push({ fach, hochschule: hoch, ort: val('Studienort'), abschluss: val('Abschluss'), typ: val('Studientyp'), form: val('Studienform') });
+    });
+    const m = (document.body.innerText || '').match(/([0-9.]+)\s*Treffer/i);
+    return { rows, treffer: m ? parseInt(m[1].replace(/\./g, ''), 10) : null };
+  });
+}
+
+(async () => {
+  console.log(`MOD: ${MODE} (${label}) → ${OUT}`);
+  const browser = await chromium.launch({ headless: false, args: ['--no-sandbox'] });
+  const ctx = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+    locale: 'de-DE', timezoneId: 'Europe/Berlin', viewport: { width: 1440, height: 900 },
+  });
+  const page = await ctx.newPage();
+  const all = [];
+  const seen = new Set();
+
+  for (const st of STUDTYPEN) {
+    console.log(`\n=== studtyp ${st.id} (${st.label}) ===`);
+    await page.goto(urlFor(st.id, 1), { waitUntil: 'domcontentloaded', timeout: 60000 });
+    if (!(await passEnodia(page))) { console.error('  Enodia geçilemedi'); continue; }
+    await sleep(700);
+    let { rows, treffer } = await extractPage(page);
+    const perPage = rows.length || 10;
+    const totalPages = treffer ? Math.ceil(treffer / perPage) : 1;
+    const maxPages = MAX > 0 ? Math.min(MAX, totalPages) : totalPages;
+    console.log(`  Treffer=${treffer} | /sayfa=${perPage} | toplam=${totalPages} | çekilecek=${maxPages}`);
+    let emptyStreak = 0;
+    for (let p = 1; p <= maxPages; p++) {
+      if (p > 1) {
+        await page.goto(urlFor(st.id, p), { waitUntil: 'domcontentloaded', timeout: 60000 });
+        if (!(await passEnodia(page))) { console.error(`  sayfa ${p} enodia takıldı`); break; }
+        await sleep(120);
+        ({ rows } = await extractPage(page));
+      }
+      if (!rows.length) { if (++emptyStreak >= 3) { console.log(`  3 boş sayfa → ${st.label} bitti @ ${p}`); break; } }
+      else emptyStreak = 0;
+      for (const r of rows) {
+        const key = `${r.fach}|${r.hochschule}|${r.abschluss}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        all.push({ ...r, studtyp: st.label, zulassung: label, admission_mode: admission });
+      }
+      if (p % 25 === 0 || p === maxPages) {
+        console.log(`  sayfa ${p}/${maxPages} → toplam ${all.length}`);
+        fs.writeFileSync(OUT, JSON.stringify(all, null, 1));
+      }
+      await sleep(300 + (p % 4) * 120);
+    }
+  }
+  fs.writeFileSync(OUT, JSON.stringify(all, null, 1));
+  console.log(`\n✅ ${label}: ${all.length} program → ${OUT}`);
+  await browser.close();
+})().catch((e) => { console.error('HATA:', e.message); process.exit(1); });
