@@ -1,21 +1,29 @@
-# Reklam Kurulumu (AdSense + affiliate + doğrudan satış)
+# Reklam Kurulumu (affiliate + doğrudan satış; AdSense ertelendi)
 
-Bu doküman sitedeki reklam katmanının nasıl çalıştığını ve **AdSense'i açmak için elle
-yapılması gereken adımları** anlatır. Kod tarafı hazır; eksik olan tek şey hesap bilgileri.
+Bu doküman sitedeki reklam katmanının nasıl çalıştığını anlatır.
+
+> **Karar (2026-09-19): AdSense bilinçli olarak ertelendi.** Gerekçe: mevcut trafikte getiri aylık
+> birkaç euro seviyesinde kalırken maliyeti yüksek — sayfa hızı, AEA trafiği için sertifikalı CMP
+> zorunluluğu ve en önemlisi **kontrol kaybı**: AdSense'te hangi reklamverenin çıkacağını sen
+> seçemezsin, "garantili vize" vaat eden bir firmanın reklamı tam da o iddiayı çürüten yazının
+> yanında görünebilir. Gelir odağı **affiliate + doğrudan satış**.
+>
+> Kod tarafı silinmedi: AdSense katmanı `ADSENSE_CLIENT_ID` boşken tamamen uykuda (script basılmaz,
+> istek atılmaz, `/ads.txt` 404 döner). Fikir değişirse bölüm 4'teki adımlar yeterli.
 
 ---
 
 ## 1. Slot önceliği
 
-`resources/views/components/ad-slot.blade.php` tek bir bileşen üzerinden üç katmanı yönetir:
+`resources/views/components/ad-slot.blade.php` tek bileşen üzerinden üç katmanı yönetir:
 
 | Sıra | Katman | Koşul |
 |---|---|---|
-| 1 | **Affiliate kartı** | `AFFILIATE_*_URL` env'i dolu (ortak aktif). Premium üyelerde de gösterilir — içerik-uyumlu sponsor sayılır. |
-| 2 | **AdSense** | `ADSENSE_CLIENT_ID` + ilgili slot ID dolu **ve** ziyaretçi çerez onayı vermiş **ve** kullanıcı premium değil. |
-| 3 | **"Reklam Ver" daveti** | Yukarıdakiler yoksa: boş kutu yerine `/{locale}/advertise` sayfasına götüren davet kartı. `ADS_HOUSE_ENABLED=false` ile kapatılır. |
+| 1 | **Affiliate kartı** | `AFFILIATE_*_URL` env'i dolu. Premium üyelerde de gösterilir — içerik-uyumlu sponsor sayılır. |
+| 2 | **AdSense** | *(şu an kapalı)* client ID + slot ID dolu **ve** çerez onayı verilmiş **ve** kullanıcı premium değil. |
+| 3 | **"Reklam Ver" daveti** | Yukarıdakiler yoksa: `/{locale}/advertise` sayfasına götüren davet kartı. `ADS_HOUSE_ENABLED=false` ile kapatılır. |
 
-Hiçbiri yoksa (ör. premium kullanıcı + davet kapalı) **hiçbir şey basılmaz** — boş kutu görünmez.
+Hiçbiri yoksa **hiçbir şey basılmaz** — boş kutu görünmez.
 
 Kullanım:
 
@@ -26,101 +34,80 @@ Kullanım:
 
 ---
 
-## 2. AdSense'i açmak için gerekenler
+## 2. Affiliate — asıl gelir hattı (yapılacak iş burada)
 
-### a) env değişkenleri (prod `.env`)
-
-```
-ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXXXXXXXX
-ADSENSE_SLOT_BANNER_TOP=1234567890
-ADSENSE_SLOT_IN_CONTENT=1234567890
-ADSENSE_SLOT_SIDEBAR=1234567890
-ADSENSE_SLOT_BANNER_BOTTOM=1234567890
-```
-
-Sadece `ADSENSE_CLIENT_ID` girilirse hiçbir slot görünmez; **her yerleşim için ayrı slot ID** gerekir.
-Slot ID'leri AdSense panelinde "Reklamlar → Reklam birimine göre" bölümünden üretilir.
-
-### b) `ads.txt`
-
-`/ads.txt` **otomatik** üretilir (rota: `routes/web.php`). `ADSENSE_CLIENT_ID` boşken bilinçli olarak
-404 döner — boş/yanlış bir ads.txt, hiç olmamasından daha zararlıdır. Client ID girildiği an dosya
-şu içerikle yayına girer:
+Ortaklık programına başvur, takip linkini al, prod `.env`'e gir. Link girildiği an kart yayına
+girer; onay süreci, hesap açma veya ek kod gerekmez.
 
 ```
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+AFFILIATE_EXPATRIO_URL=
+AFFILIATE_FINTIBA_URL=
+AFFILIATE_MAWISTA_URL=
+AFFILIATE_CARECONCEPT_URL=
 ```
 
-Kontrol: `curl https://applytogerman.com/ads.txt`
+- Kart, ziyaretçinin dilinde gösterilir; metinler `config/ads.php → affiliates.*.text[tr|de|en]`.
+- **Yeni ortak eklerken üç dili de doldur.** Eksik dil `en` → `tr` sırasıyla düşer; boş bırakırsan
+  Almanca sayfada Türkçe reklam çıkar.
+- Hangi bağlamda hangi ortağın çıkacağı `context_rules` ile belirlenir
+  (`visa`, `sperrkonto`, `insurance`, `default`).
+- Linkler `rel="sponsored noopener nofollow"` ile basılır ve kartta "Sponsor" etiketi + affiliate
+  açıklaması görünür — SEO ve dürüstlük açısından ikisi de şart, kaldırma.
 
-### c) AEA/İngiltere trafiği için onay mekanizması (ZORUNLU)
-
-Google, Avrupa Ekonomik Alanı ve İngiltere'deki kullanıcılara reklam gösterirken **Google
-sertifikalı bir onay mekanizması (CMP)** şart koşar. Sitenin kendi çerez banner'ı Consent Mode v2
-sinyallerini gönderiyor ama **sertifikalı CMP değildir**. Bu yüzden:
-
-1. AdSense panelinde **Gizlilik ve mesajlaşma → Avrupa düzenlemeleri** mesajını aç (Google'ın kendi
-   ücretsiz CMP'si).
-2. Kod tarafında ek bir şey gerekmiyor: `ADSENSE_REQUIRE_CONSENT` varsayılan olarak `true` ve
-   ziyaretçi "Kabul Et" demeden AdSense script'i sayfaya basılmaz (`almanyauni_consent` çerezi).
-
-Onay şartını kapatmak istersen (yalnızca AEA dışı bir senaryoda anlamlı):
-
-```
-ADSENSE_REQUIRE_CONSENT=false
-```
-
-### d) Onay süreci notu
-
-AdSense başvurusu içerik ve trafik ister. Başvurudan önce:
-- `/ads.txt` erişilebilir olmalı (yani client ID girilmiş olmalı),
-- gizlilik politikası ve çerez politikası sayfaları yayında (var: `/{locale}/cookie-policy`),
-- reklam yerleşimleri içeriği boğmamalı.
+En yüksek dönüşüm beklenen konular: Sperrkonto ve sağlık sigortası (sitenin en çok okunan başlıkları).
 
 ---
 
-## 3. Üç dilde reklam
+## 3. Doğrudan satış
 
-Reklam katmanı dil-farkındadır:
+- `/{locale}/advertise` — üç dilde medya kiti sayfası: kitle tanımı, yerleşim listesi, kabul edilen
+  ve edilmeyen reklam türleri, iletişim.
+- Satılmamış her slot bu sayfaya davet kartı basar, yani envanter kendi kendini pazarlar.
+- **Trafik rakamı sayfaya yazılmaz** — talep üzerine güncel veri paylaşılır ki sayfada donmuş bir
+  sayı kalmasın.
+- Yerleşim listesi `config/ads.php → inventory.placements`, iletişim adresi `inventory.contact_email`.
 
-- **Affiliate metinleri** `config/ads.php` içinde `text[tr|de|en]` olarak tutulur. Bileşen
-  ziyaretçinin diline göre seçer; dil yoksa sırayla `en` → `tr`'ye düşer.
-  **Yeni ortak eklerken üç dili de doldur** — yoksa Almanca sayfada Türkçe reklam çıkar.
-- **"Reklam Ver" daveti** ve `/advertise` sayfası `__()` anahtarlarıyla çalışır; çeviriler
-  `lang/tr.json` ve `lang/de.json` içinde.
-- **AdSense** zaten sayfa diline göre reklam seçer; ek ayar gerekmez.
+Satılan bir banner bugün iki yoldan verilebilir:
 
-`/advertise` sayfası dil başına kitle tanımını ve yerleşim listesini gösterir; **trafik rakamı
-bilinçli olarak sayfaya yazılmaz**, talep üzerine güncel veri paylaşılır (sayfada donmuş sayı
-tutmamak için).
-
----
-
-## 4. Doğrudan reklam satışı (şu an manuel)
-
-Bugün doğrudan satılan bir banner için ayrı bir tablo yok. İki seçenek var:
-
-1. **Affiliate gibi tanımla:** `config/ads.php → affiliates` altına yeni bir ortak ekle
-   (üç dilde metin + URL). En hızlısı, kod deploy'u gerektirir.
-2. **Kampanya motoru:** `popups` tablosu zaten çok dilli bir kampanya altyapısı içeriyor
+1. **Affiliate gibi tanımla** — `config/ads.php → affiliates` altına üç dilde metin + URL ekle.
+   En hızlısı; kod deploy'u gerektirir.
+2. **Kampanya motoru** — `popups` tablosu zaten çok dilli kampanya altyapısı içeriyor
    (`title_tr/de/en`, `locales`, `target_pages`, `starts_at/ends_at`, `priority`, gösterim/tıklama
-   sayaçları) ama kullanılmıyor. Düzenli banner satışı başlarsa doğru yatırım, aynı deseni
+   sayaçları) ama kullanılmıyor. Düzenli banner satışı başlarsa doğru yatırım, aynı deseni bir
    `ad_banners` tablosuna taşımaktır.
 
-Tıklama takibi için mevcut `/go/{type}/{slug}` altyapısı ve `affiliate_clicks` tablosu (içinde
-`locale` kolonu var) kullanılabilir — dil bazında raporlama böyle çıkar.
+Tıklama takibi için `/go/{type}/{slug}` altyapısı ve `affiliate_clicks` tablosu var; içindeki
+`locale` kolonu dil bazında raporlamayı mümkün kılıyor.
 
 ---
 
-## 5. Kontrol listesi
+## 4. AdSense — ertelendi, ileride açılmak istenirse
 
-- [ ] AdSense hesabı onaylandı
-- [ ] `ADSENSE_CLIENT_ID` prod env'e girildi
-- [ ] En az `banner_top` ve `in_content` slot ID'leri girildi
-- [ ] `curl https://applytogerman.com/ads.txt` doğru pub ID'yi dönüyor
-- [ ] AdSense panelinde Avrupa onay mesajı (CMP) açıldı
-- [ ] Bir blog yazısında reklam göründü (çerez onayı verilmiş bir tarayıcıda)
-- [ ] Premium kullanıcıda reklam **görünmüyor**
+Kod hazır ve uykuda. Açmak için sırayla:
 
-İlgili: `config/ads.php` · `resources/views/components/ad-slot.blade.php` ·
+1. AdSense hesabı aç ve onayı tamamla (alan adı, gizlilik + çerez politikası sayfaları ve özgün
+   içerik gerekiyor — üçü de mevcut).
+2. Panelde reklam birimi oluştur, prod `.env`'e gir:
+   ```
+   ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXXXXXXXX
+   ADSENSE_SLOT_BANNER_TOP=...
+   ADSENSE_SLOT_IN_CONTENT=...
+   ```
+   Yalnızca client ID girilirse hiçbir slot görünmez; her yerleşim için ayrı slot ID gerekir.
+3. `/ads.txt` **otomatik** üretilir (rota `routes/web.php`). Client ID boşken bilinçli olarak 404
+   döner — boş/yanlış ads.txt hiç olmamasından zararlıdır. Girildiği an içerik:
+   ```
+   google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+   ```
+4. **AEA/İngiltere için zorunlu:** AdSense panelinde *Gizlilik ve mesajlaşma → Avrupa düzenlemeleri*
+   mesajını aç. Google sertifikalı CMP şartıdır; sitenin kendi çerez banner'ı Consent Mode v2
+   sinyali gönderir ama sertifikalı CMP değildir. Kod tarafında `ADSENSE_REQUIRE_CONSENT` varsayılan
+   `true`: onay verilmeden script basılmaz.
+
+Kontrol listesi: `/ads.txt` doğru pub ID'yi dönüyor · onay verilmiş tarayıcıda reklam görünüyor ·
+premium kullanıcıda **görünmüyor**.
+
+---
+
+İlgili dosyalar: `config/ads.php` · `resources/views/components/ad-slot.blade.php` ·
 `resources/views/pages/advertise.blade.php` · `routes/web.php` (`/ads.txt`, `/{locale}/advertise`)
