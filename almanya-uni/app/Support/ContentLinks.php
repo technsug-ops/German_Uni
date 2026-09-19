@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Facades\DB;
+
 /**
  * İçerik (blog/sayfa) HTML'indeki İÇ linkleri RENDER ANINDA mevcut locale'e çevirir.
  *
@@ -59,13 +61,84 @@ class ContentLinks
             return $path;
         }
 
-        // Zaten locale önekli → sadece locale'i değiştir
+        // Zaten locale önekli
         if (in_array($first, self::LOCALES, true)) {
+            $rest = array_slice($segments, 1);
+
+            // BLOG/HABER: slug dile GÖRE değişir (tr=temel, en=-en, de=-de). Öneki körlemesine
+            // değiştirmek /en/blog/<tr-slug> gibi 404 üretiyordu — yazının o dildeki GERÇEK
+            // kardeşini bul; yoksa linki olduğu dilde bırak (var olan sayfa, 404'ten iyidir).
+            if (($rest[0] ?? null) !== null && in_array($rest[0], ['blog', 'news'], true) && isset($rest[1])) {
+                $resolved = self::resolvePostSlug((string) $rest[1], $locale);
+                if ($resolved === null) {
+                    return $path; // hedef bilinmiyor → dokunma
+                }
+                [$slug, $slugLocale] = $resolved;
+
+                return '/' . $slugLocale . '/' . $rest[0] . '/' . $slug;
+            }
+
             $segments[0] = $locale;
+
             return '/' . implode('/', $segments);
         }
 
-        // Önek yok → mevcut locale'i başa ekle
+        // Önek yok → mevcut locale'i başa ekle (blog/haber ise yine kardeş çözümlemesi)
+        if ($first !== '' && in_array($first, ['blog', 'news'], true) && isset($segments[1])) {
+            $resolved = self::resolvePostSlug((string) $segments[1], $locale);
+            if ($resolved !== null) {
+                [$slug, $slugLocale] = $resolved;
+
+                return '/' . $slugLocale . '/' . $first . '/' . $slug;
+            }
+        }
+
         return '/' . $locale . '/' . implode('/', $segments);
+    }
+
+    /**
+     * Bir yazı slug'ını hedef dile çevir: [yeniSlug, kullanılacakLocale] | null.
+     * Kardeşi varsa hedef dile geçer; yoksa yazının KENDİ dilinde bırakır (404 üretme).
+     */
+    private static function resolvePostSlug(string $slug, string $locale): ?array
+    {
+        $idx = self::postIndex();
+        $ownLocale = $idx['locale'][$slug] ?? null;
+        if ($ownLocale === null) {
+            return null; // yayında böyle bir yazı yok → path'e dokunma
+        }
+        if ($ownLocale === $locale) {
+            return [$slug, $locale];
+        }
+
+        $group = $idx['group'][$slug] ?? null;
+        $sibling = $group ? ($idx['byGroup'][$group][$locale] ?? null) : null;
+
+        return $sibling ? [$sibling, $locale] : [$slug, $ownLocale];
+    }
+
+    /** Yayındaki yazıların slug/locale/çeviri-grubu haritası (düz dizi olarak cache'lenir). */
+    private static function postIndex(): array
+    {
+        return cache()->remember('content_links_post_index_v1', now()->addMinutes(30), function () {
+            $index = ['locale' => [], 'group' => [], 'byGroup' => []];
+
+            $rows = DB::table('posts')
+                ->where('is_published', 1)
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->get(['slug', 'locale', 'translation_group_id']);
+
+            foreach ($rows as $r) {
+                $loc = $r->locale ?: 'tr';
+                $index['locale'][$r->slug] = $loc;
+                if ($r->translation_group_id) {
+                    $index['group'][$r->slug] = $r->translation_group_id;
+                    $index['byGroup'][$r->translation_group_id][$loc] = $r->slug;
+                }
+            }
+
+            return $index;
+        });
     }
 }
