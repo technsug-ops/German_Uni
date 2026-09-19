@@ -234,8 +234,12 @@ class BriefSuggester extends Page
             ->title('✅ Brief #' . $brief->id . ' oluşturuldu')
             ->body($brief->title)
             ->success()
+            // Filament v4: bildirim aksiyonu Filament\Actions\Action'dır.
+            // (v3'teki Filament\Notifications\Actions\Action kaldırıldı — çağrılırsa
+            // brief oluştuktan SONRA 500 veriyordu, kullanıcı hatayı görüp işin
+            // başarısız olduğunu sanıyordu.)
             ->actions([
-                \Filament\Notifications\Actions\Action::make('edit')
+                \Filament\Actions\Action::make('edit')
                     ->label('Brief\'i düzenle')
                     ->url(route('filament.admin.resources.content-briefs.edit', $brief->id)),
             ])

@@ -15,7 +15,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action; // v4: aksiyonlar Filament\Actions altında (v3'teki Tables\Actions kaldırıldı)
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
