@@ -124,6 +124,41 @@ class AboutController extends Controller
     }
 
     /**
+     * Tüm sayfalar — site dizini.
+     *
+     * Neden var: mobil menüde 45 menü öğesinin 17'si gizli (özellikle araçlar).
+     * Kısıtlama bilinçli — küçük ekranda menü şişmesin diye. Ama isteyen kullanıcının
+     * her şeyi tek yerde görebilmesi gerekiyor; bu sayfa o kapı. Ayrıca footer'da
+     * kaybolan sayfaları (Bize link verin, Reklam Ver, yasal metinler) da toplar.
+     *
+     * Mobilde gizli öğeler burada ROZETLE işaretlenir — "menüde neden yok" sorusunu
+     * kullanıcı kendi görebilsin.
+     */
+    public function allPages(): View
+    {
+        $groups = [
+            'kesfet'    => __('Explore'),
+            'araclar'   => __('Tools'),
+            'firsatlar' => __('Opportunities'),
+            'icerik'    => __('Content'),
+            'standalone' => __('Community'),
+        ];
+
+        $menu = [];
+        foreach ($groups as $key => $label) {
+            $items = \App\Models\MenuPage::forGroup($key)
+                ->filter(fn ($i) => filled($i->resolved_url))
+                ->values();
+
+            if ($items->isNotEmpty()) {
+                $menu[] = ['label' => $label, 'items' => $items];
+            }
+        }
+
+        return view('pages.all-pages', ['menu' => $menu]);
+    }
+
+    /**
      * Reklam Ver / medya kiti — satılmamış slot'lardaki davet kartı buraya gelir.
      *
      * Envanter rakamları içerik hacminden türetilir (dil başına yayınlanmış yazı,

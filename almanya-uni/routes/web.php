@@ -118,6 +118,9 @@ $routes = function () {
     // Reklam Ver / medya kiti — satılmamış ad slot'larındaki davet kartı buraya gider
     Route::get('/advertise', [AboutController::class, 'advertise'])->name('advertise');
     Route::redirect('/reklam', '/advertise', 301);
+    // Tüm sayfalar — mobil menüde gizlenen araçlar dâhil site dizini
+    Route::get('/all-pages', [AboutController::class, 'allPages'])->name('all-pages');
+    Route::redirect('/tum-sayfalar', '/all-pages', 301);
     Route::get('/team', [AboutController::class, 'team'])->name('team');
     Route::get('/advisory-board', [AboutController::class, 'advisoryBoard'])->name('advisory-board');
     Route::redirect('/danisma-kurulu', '/advisory-board', 301);
