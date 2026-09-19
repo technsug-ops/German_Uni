@@ -1149,6 +1149,69 @@ Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
         ->header('Content-Type', 'text/plain; charset=utf-8');
 });
 
+// Mail teşhis — "hangi ayar gerçekten kullanılıyor?" sorusunu sunucunun kendisine sorar.
+// Deneme-yanılma yerine tek ekranda: her kutunun etkin host/port/kullanıcı adı, parolanın
+// DOLU olup olmadığı (değeri ASLA yazılmaz, yalnızca uzunluk) ve .env'de aynı anahtarın
+// birden çok kez tanımlanıp tanımlanmadığı (son tanım kazanır — sessiz hata kaynağı).
+Route::get('/_system/mail-check', function (\Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $token)) {
+        abort(403, 'Invalid token');
+    }
+
+    $mask = fn (?string $v) => filled($v) ? 'DOLU (' . strlen($v) . ' karakter)' : '*** BOŞ ***';
+    $out = [];
+
+    foreach (config('services.mailboxes', []) as $key => $box) {
+        $mailerName = $box['mailer'] ?? '(yok)';
+        $m = config("mail.mailers.$mailerName", []);
+        $out[] = "KUTU: {$key}  (mailer: {$mailerName})";
+        $out[] = '  from     : ' . ($box['email'] ?? '—');
+        $out[] = '  host     : ' . ($m['host'] ?? '—');
+        $out[] = '  port     : ' . ($m['port'] ?? '—');
+        $out[] = '  username : ' . ($m['username'] ?? '—');
+        $out[] = '  password : ' . $mask($m['password'] ?? null);
+        $out[] = '';
+    }
+
+    $out[] = 'VARSAYILAN mailer: ' . config('mail.default');
+    $out[] = '  host     : ' . config('mail.mailers.' . config('mail.default') . '.host');
+    $out[] = '  username : ' . config('mail.mailers.' . config('mail.default') . '.username');
+    $out[] = '  password : ' . $mask(config('mail.mailers.' . config('mail.default') . '.password'));
+    $out[] = '';
+
+    // .env'de tekrar eden anahtarlar — bu dosyada iki kez tanımlanan anahtarın SON değeri geçerlidir.
+    $envPath = base_path('.env');
+    if (is_readable($envPath)) {
+        $counts = [];
+        foreach (file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+            $line = ltrim($line);
+            if ($line === '' || str_starts_with($line, '#') || ! str_contains($line, '=')) {
+                continue;
+            }
+            $k = trim(strstr($line, '=', true));
+            if ($k !== '') {
+                $counts[$k] = ($counts[$k] ?? 0) + 1;
+            }
+        }
+        $dupes = array_filter($counts, fn ($c) => $c > 1);
+        $out[] = '.env DOSYASINDA BİRDEN ÇOK KEZ TANIMLI ANAHTARLAR (son tanım kazanır):';
+        if ($dupes) {
+            foreach ($dupes as $k => $c) {
+                $out[] = "  {$k} — {$c} kez";
+            }
+        } else {
+            $out[] = '  (yok)';
+        }
+    } else {
+        $out[] = '.env okunamadı (izin?) — tekrar eden anahtar kontrolü atlandı.';
+    }
+
+    return response(implode("\n", $out) . "\n", 200)
+        ->header('Content-Type', 'text/plain; charset=utf-8');
+})->middleware('throttle:10,1');
+
 // ads.txt — AdSense/programatik reklam için yetkili satıcı beyanı (IAB ads.txt).
 // ADSENSE_CLIENT_ID boşken 404 döner: boş/yanlış ads.txt, dolu olmamasından daha zararlı.
 // Client ID env'e girildiği an dosya kendiliğinden doğru içerikle yayına girer.
