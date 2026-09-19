@@ -24,7 +24,7 @@ wir betreiben ApplyToGerman (applytogerman.com), eine mehrsprachige
 Studienorientierungsplattform, die internationale Studieninteressierte — mit einem
 Schwerpunkt auf Bewerberinnen und Bewerbern aus der Türkei — bei der Auswahl eines
 Studienstandorts in Deutschland unterstützt. Unsere Datenbank umfasst derzeit rund
-480 Hochschulen und etwa 7.000 Studiengänge; die Inhalte werden auf Türkisch, Englisch
+460 Hochschulen und über 14.000 Studiengänge; die Inhalte werden auf Türkisch, Englisch
 und Deutsch bereitgestellt.
 
 Wir stellen unseren Nutzerinnen und Nutzern fachbezogene Hochschulübersichten zur
