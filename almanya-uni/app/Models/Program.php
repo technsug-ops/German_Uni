@@ -130,4 +130,41 @@ class Program extends Model
         $val = $this->attributes['name_' . app()->getLocale()] ?? null;
         return ($val && $val !== $this->name) ? $val : null;
     }
+    /**
+     * Sayfası ARAMA MOTORUNA sunulacak kadar veri taşıyor mu?
+     *
+     * Hochschulkompass importu bir programın yalnızca adını, derecesini ve NC durumunu getirir;
+     * açıklama/gereklilik/tarih/ücret yoktur. Bu sayfalar kullanıcı için listelerde ve
+     * filtrelerde değerli (programın VARLIĞI bilginin kendisi), ama tek başına indekslenirse
+     * "ince içerik" yığını olur. Bu yüzden: sitede görünür, index'e girmez — veri dolunca
+     * kendiliğinden indekslenir hale gelir.
+     */
+    public function isThin(): bool
+    {
+        $empty = fn ($v) => $v === null || $v === '';
+
+        return $empty($this->description_tr)
+            && $empty($this->description_en)
+            && $empty($this->qualification_requirements_tr)
+            && $empty($this->language_requirements_tr)
+            && $empty($this->application_deadline_winter)
+            && $empty($this->application_deadline_summer)
+            && $this->tuition_fee_eur === null
+            && $this->duration_semesters === null;
+    }
+
+    /** isThin() ile AYNI ölçüt — sitemap/sorgu tarafı için. */
+    public function scopeIndexable($q)
+    {
+        return $q->where(function ($w) {
+            $w->whereNotNull('description_tr')->where('description_tr', '!=', '')
+                ->orWhere(fn ($x) => $x->whereNotNull('description_en')->where('description_en', '!=', ''))
+                ->orWhere(fn ($x) => $x->whereNotNull('qualification_requirements_tr')->where('qualification_requirements_tr', '!=', ''))
+                ->orWhere(fn ($x) => $x->whereNotNull('language_requirements_tr')->where('language_requirements_tr', '!=', ''))
+                ->orWhereNotNull('application_deadline_winter')
+                ->orWhereNotNull('application_deadline_summer')
+                ->orWhereNotNull('tuition_fee_eur')
+                ->orWhereNotNull('duration_semesters');
+        });
+    }
 }

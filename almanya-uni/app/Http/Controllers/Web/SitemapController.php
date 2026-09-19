@@ -313,7 +313,10 @@ class SitemapController extends Controller
                 }
             });
 
+        // indexable(): yalnız ad+derece taşıyan (HK importu) programlar noindex olduğu için
+        // sitemap'e de girmez — noindex URL'i sitemap'te sunmak çelişkili sinyaldir.
         Program::where('is_active', true)
+            ->indexable()
             ->select(['slug', 'updated_at', 'description_tr', 'language'])
             ->orderBy('id')
             ->chunk(1000, function ($chunk) use (&$urls) {

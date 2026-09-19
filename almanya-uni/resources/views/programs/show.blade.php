@@ -25,7 +25,9 @@
 
 @section('title', $title . ' — ' . brand('name'))
 
-<x-seo :title="$title" :description="$description" :image="route('og.image', ['type' => 'program', 'slug' => $program->slug . '.png'])" />
+{{-- Veri yoksa (yalnız ad + derece + NC) sayfa GÖRÜNÜR ama indekslenmez; ince içerik yığını
+     oluşmasın. Veri dolunca kendiliğinden indekslenir. --}}
+<x-seo :title="$title" :description="$description" :noindex="$program->isThin()" :image="route('og.image', ['type' => 'program', 'slug' => $program->slug . '.png'])" />
 
 <x-json-ld :data="\App\Support\Seo::courseSchema($program)" />
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
