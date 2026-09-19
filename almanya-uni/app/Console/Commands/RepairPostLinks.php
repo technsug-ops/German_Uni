@@ -168,6 +168,10 @@ class RepairPostLinks extends Command
         }
 
         $this->newLine();
+        // Hangi KOD SÜRÜMÜ yanıtladı? (prod'da eski bir dosyanın koştuğunu ayırt etmek için)
+        $file = __FILE__;
+        $this->line('Kod sürümü: ' . substr(md5_file($file) ?: '?', 0, 8)
+            . ' · ' . date('Y-m-d H:i', (int) @filemtime($file)));
         $this->info(sprintf(
             '%s yazı tarandı · %d iç link · %d ölü → %d onarıldı, %d düz metne indirildi, %d çözülemedi%s',
             $this->stats['taranan'],
@@ -190,6 +194,11 @@ class RepairPostLinks extends Command
      */
     private function probe(string $slug): void
     {
+        $file = __FILE__;
+        $this->line('Kod sürümü: ' . substr(md5_file($file) ?: '?', 0, 8)
+            . ' · ' . date('Y-m-d H:i', (int) @filemtime($file)));
+        $this->newLine();
+
         $post = Post::where('slug', $slug)->first();
         if (! $post) {
             $this->error("Yazı bulunamadı: {$slug}");
