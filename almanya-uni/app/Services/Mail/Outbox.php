@@ -81,9 +81,46 @@ class Outbox
             }
         } catch (\Throwable $e) {
             report($e);
-            $msg->update(['status' => 'failed', 'error' => $e->getMessage()]);
+            $msg->update(['status' => 'failed', 'error' => self::humanizeError($e, $box)]);
         }
 
         return $msg;
+    }
+
+    /**
+     * SMTP hatalarını panelde okunabilir hâle getirir.
+     *
+     * Neden: ham Symfony Mailer mesajı ("php_network_getaddresses: getaddrinfo for
+     * ... failed") panelde görünce ne yapılacağı belli olmuyordu. En sık iki sebep
+     * yanlış sunucu adı ve yanlış kimlik bilgisi; ikisi de tek bir env satırıyla
+     * çözülüyor, o yüzden hangi değişkene bakılacağı mesaja yazılıyor.
+     */
+    private static function humanizeError(\Throwable $e, ?array $box): string
+    {
+        $raw = $e->getMessage();
+
+        // Hangi env değişkeni bu kutunun SMTP host'unu belirliyor?
+        $hostVar = match ($box['mailer'] ?? null) {
+            'mailbox_admin' => 'ADMIN_MAIL_HOST',
+            'outreach'      => 'OUTREACH_MAIL_HOST',
+            default         => 'MAIL_HOST',
+        };
+        $host = config('mail.mailers.' . ($box['mailer'] ?? 'smtp') . '.host');
+
+        if (str_contains($raw, 'getaddrinfo') || str_contains($raw, 'Name or service not known')) {
+            return "SMTP sunucu adı çözümlenemedi: \"{$host}\". Bu ad DNS'te yok — {$hostVar} değerini düzelt "
+                . "(barındırma panelindeki giden sunucu adı ya da mail.<alan-adın>). Ham hata: {$raw}";
+        }
+
+        if (str_contains($raw, 'Connection refused') || str_contains($raw, 'Connection timed out')) {
+            return "SMTP sunucusuna bağlanılamadı: \"{$host}\". Ad doğru ama port/bağlantı engelli olabilir — "
+                . "{$hostVar} ve port ayarını kontrol et. Ham hata: {$raw}";
+        }
+
+        if (str_contains($raw, 'Authentication') || str_contains($raw, '535')) {
+            return "SMTP kimlik doğrulaması reddedildi ({$host}). Kullanıcı adı/parola hatalı olabilir. Ham hata: {$raw}";
+        }
+
+        return $raw;
     }
 }
