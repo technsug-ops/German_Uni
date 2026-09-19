@@ -118,6 +118,15 @@ class Outbox
         };
         $host = config('mail.mailers.' . ($box['mailer'] ?? 'smtp') . '.host');
 
+        // Host hiç tanımlı değilse "çözümlenemedi" demek yanıltıcı olur: aranacak yer
+        // DNS değil, .env. (Aynı anahtar .env'de iki kez geçiyorsa SON tanım kazanır —
+        // dolu satırdan sonra boş bir tekrar varsa değer boşalır.)
+        if (blank($host)) {
+            return "SMTP sunucu adı BOŞ: .env'de {$hostVar} tanımlı değil ya da sonradan boş olarak "
+                . "tekrar tanımlanmış (aynı anahtar iki kez geçiyorsa son tanım geçerlidir). "
+                . "Dosyada {$hostVar} satırlarının tamamını ara. Ham hata: {$raw}";
+        }
+
         if (str_contains($raw, 'getaddrinfo') || str_contains($raw, 'Name or service not known')) {
             return "SMTP sunucu adı çözümlenemedi: \"{$host}\". Bu ad DNS'te yok — {$hostVar} değerini düzelt "
                 . "(barındırma panelindeki giden sunucu adı ya da mail.<alan-adın>). Ham hata: {$raw}";
