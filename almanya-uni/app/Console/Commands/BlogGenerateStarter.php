@@ -83,6 +83,40 @@ class BlogGenerateStarter extends Command
          'kw' => 'almanya freelance freiberufler gewerbe', 'category' => 'kariyer', 'pain' => 'Vergi, vize, kayıt — serbest çalışma hakkı'],
         ['title' => 'Kindergeld ve Elterngeld: Almanya\'da Aile Yardımları', 'topic' => 'para',
          'kw' => 'kindergeld elterngeld aile yardımı', 'category' => 'finans', 'pain' => 'Kimler hak kazanır, başvuru, öğrenci/çalışan durumu'],
+
+        // ── Topluluk havuzundan (r/germany, 1.515 soru) doğrulanmış ve blogda KARŞILIĞI OLMAYAN
+        //    acılar. Ölçüt: soru gerçekten sorulmuş + mevcut 231 TR yazıda karşılığı yok.
+        //    Kaynak sorunun puanı yorumda duruyor ki konunun neden burada olduğu sorgulanabilsin.
+        ['title' => 'Ailenin Ziyaret Vizesi Reddedildi: Sebepleri ve İtiraz Yolu', 'topic' => 'vize',
+         'kw' => 'almanya ziyaret vizesi reddi itiraz', 'category' => 'vize',
+         'pain' => 'Mezuniyet/ziyaret için gelen aileye ret; Remonstration süreci ve ret gerekçeleri'],
+        ['title' => 'Ausländerbehörde Gecikirse: Fiktionsbescheinigung ve Untätigkeitsklage', 'topic' => 'burokrasi',
+         'kw' => 'ausländerbehörde gecikme fiktionsbescheinigung', 'category' => 'vize',
+         'pain' => 'Oturum uzatma aylarca bekliyor; ara belge nasıl alınır, dava ne zaman mantıklı'],
+        ['title' => 'HiWi mi Werkstudent mi? Üniversite İçinde Çalışmanın İki Yolu', 'topic' => 'is',
+         'kw' => 'hiwi werkstudent farkı', 'category' => 'yasam',
+         'pain' => '20 saat kuralına etkisi, ücret farkı, akademik kariyere katkısı'],
+        ['title' => 'Urlaubssemester: Üniversiteye Bir Dönem Ara Vermek', 'topic' => 'master',
+         'kw' => 'urlaubssemester izin dönemi', 'category' => 'basvuru',
+         'pain' => 'Tükenmişlik/hastalık/staj; vize ve sigorta ne oluyor, hak kaybı var mı'],
+        ['title' => 'Exmatrikulation: Kaydın Silinmesi — Sebepleri ve Geri Dönüş', 'topic' => 'master',
+         'kw' => 'exmatrikulation kayıt silinmesi', 'category' => 'basvuru',
+         'pain' => 'Sınav hakkının bitmesi/harç ödememe; oturum iznine etkisi ve yeniden kayıt'],
+        ['title' => 'Schufasız Ev Bulmak: Yeni Gelen İçin Kiralama Taktikleri', 'topic' => 'konut',
+         'kw' => 'schufasız ev kiralamak almanya', 'category' => 'yasam',
+         'pain' => 'Schufa geçmişi olmayan yeni gelen; Bürgschaft, depozito, Zwischenmiete alternatifleri'],
+        ['title' => 'B1/B2 Almanca ile Staj Bulmak: Gerçekçi Beklenti', 'topic' => 'is',
+         'kw' => 'b1 b2 almanca staj bulmak', 'category' => 'kariyer',
+         'pain' => 'İlan C1 istiyor; hangi sektörler B2 ile alıyor, başvuru dili ne olmalı'],
+        ['title' => 'Bachelorarbeit/Masterarbeit: Tez Süreci ve Çalışırken Tez Yazmak', 'topic' => 'master',
+         'kw' => 'almanya tez süreci bachelorarbeit', 'category' => 'basvuru',
+         'pain' => 'Danışman bulma, süre, not bekleme; tam zamanlı çalışırken tez mümkün mü'],
+        ['title' => 'Almanya’da Not Sistemi (1,0–5,0) ve Sınav Tekrar Hakkı', 'topic' => 'master',
+         'kw' => 'almanya not sistemi sınav tekrarı', 'category' => 'basvuru',
+         'pain' => '1,0 en iyi mi; kaç hakkın var, 3. deneme kuralı ve sonuçları'],
+        ['title' => 'Studienkredit ve Öğrenci Kredisi: KfW ve Alternatifleri', 'topic' => 'para',
+         'kw' => 'almanya öğrenci kredisi kfw studienkredit', 'category' => 'finans',
+         'pain' => 'Uluslararası öğrenci başvurabilir mi, faiz ve geri ödeme, BAföG farkı'],
     ];
 
     public function handle(CommunityInsightsService $community): int
