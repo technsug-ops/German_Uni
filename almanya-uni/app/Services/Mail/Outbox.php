@@ -64,7 +64,18 @@ class Outbox
         }
 
         try {
-            Mail::to($toEmail, $toName)->send(new OutreachMail(
+            // Kutuya özel mailer AÇIKÇA seçiliyor.
+            // Neden: Mail::to(...)->send($mailable) kullanıldığında Laravel,
+            // mailable'ın kendi $mailer adını YOK SAYAR (PendingMail zaten çözülmüş
+            // bir Mailer örneğiyle çalışır). Bu yüzden admin@/partnerships@ kutuları
+            // için tanımlı SMTP ayarları devreye girmiyor, her şey varsayılan
+            // mailer'dan gidiyordu. Mail::mailer($ad) ile gönderince doğru kutu kullanılır.
+            $mailerName = $box['mailer'] ?? null;
+            $sender = $mailerName && config("mail.mailers.$mailerName")
+                ? Mail::mailer($mailerName)
+                : Mail::mailer();
+
+            $sender->to($toEmail, $toName)->send(new OutreachMail(
                 subjectLine: $subject,
                 bodyText: $body,
                 fromEmail: $box['email'],

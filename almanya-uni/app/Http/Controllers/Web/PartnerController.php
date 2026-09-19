@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lead;
 use App\Models\LanguageCourse;
 use App\Models\TranslationOffice;
+use App\Services\Mail\Outbox;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -118,13 +119,85 @@ class PartnerController extends Controller
             return back()->withErrors(['email' => __('Please provide an email or phone.')])->withInput();
         }
 
-        Lead::create($data + [
+        // Aynı kişi + aynı kurum + aynı mesaj 24 saat içinde tekrar gelirse yeni kayıt
+        // AÇMA. Panelde aynı talebin üç kopyası birikiyordu: kullanıcı onay maili
+        // almadığı için "gitti mi?" diye tekrar gönderiyordu. Kullanıcıya yine başarı
+        // gösterilir — onun açısından işlem zaten tamamlanmıştır.
+        $duplicate = null;
+        if (! empty($data['email'])) {
+            $duplicate = Lead::where('email', $data['email'])
+                ->where('source_id', $data['source_id'] ?? null)
+                ->where('message', $data['message'] ?? null)
+                ->where('created_at', '>=', now()->subDay())
+                ->first();
+        }
+
+        $lead = $duplicate ?: Lead::create($data + [
             'locale' => app()->getLocale(),
             'status' => 'new',
             'meta'   => ['ip_hash' => substr(hash('sha256', (string) $request->ip()), 0, 16)],
         ]);
 
+        // Bildirimler: (1) kişiye "aldık" onayı, (2) panele düşmesini beklemeden bize
+        // haber. Mail gönderimi formu ASLA kırmaz — Outbox hata fırlatmaz, yine de
+        // tamamı try/catch içinde.
+        if (! $duplicate) {
+            try {
+                $this->sendLeadNotifications($lead);
+            } catch (\Throwable $e) {
+                report($e);
+            }
+        }
+
         return back()->with('lead_success', true);
+    }
+
+    /**
+     * Talep sonrası iki mail: gönderene onay (kendi dilinde), yöneticiye bildirim.
+     *
+     * Onay metni bilinçli olarak "talebini ilgili kuruma ilettik" DEMEZ — talep
+     * panelde bizde duruyor, yanıtı biz yazıyoruz. Yanlış beklenti kurmak, hiç mail
+     * göndermemekten daha zararlı olurdu.
+     */
+    private function sendLeadNotifications(Lead $lead): void
+    {
+        $locale = in_array($lead->locale, ['tr', 'de', 'en'], true) ? $lead->locale : 'en';
+        $brand  = config('app.name');
+
+        // (1) Gönderene onay — yalnızca e-posta bırakmışsa
+        if (filled($lead->email)) {
+            $subject = __('We received your request', [], $locale) . ' — ' . $brand;
+
+            $body = __('Hello :name,', ['name' => $lead->name ?: ''], $locale) . "\n\n"
+                . __('Your request has reached us and we will get back to you as soon as possible.', [], $locale) . "\n\n"
+                . __('Your message:', [], $locale) . "\n"
+                . '"' . trim((string) $lead->message) . '"'
+                . ($lead->source_name ? "\n\n" . __('Provider you asked about: :provider', ['provider' => $lead->source_name], $locale) : '')
+                . "\n\n" . __('No need to send it again — this e-mail is your confirmation.', [], $locale)
+                . "\n\n" . $brand;
+
+            Outbox::send('admin', $lead->email, $lead->name, $subject, $body);
+        }
+
+        // (2) Yöneticiye bildirim — panele bakmayı beklemeden
+        $adminEmail = config('services.mailboxes.admin.email');
+        if (filled($adminEmail)) {
+            $lines = array_filter([
+                'Yeni lead #' . $lead->id,
+                'Kaynak  : ' . ($lead->source_name ?: $lead->source_type),
+                'Ad      : ' . ($lead->name ?: '—'),
+                'E-posta : ' . ($lead->email ?: '—'),
+                'Telefon : ' . ($lead->phone ?: '—'),
+                'Dil     : ' . $lead->locale,
+                '',
+                'Mesaj:',
+                (string) $lead->message,
+                '',
+                url('/admin/leads/' . $lead->id . '/edit'),
+            ], fn ($l) => $l !== null);
+
+            Outbox::send('admin', $adminEmail, null, 'Yeni lead: ' . ($lead->source_name ?: $lead->source_type), implode("\n", $lines));
+        }
     }
 
     /** Tık takibi: click_count++ → affiliate/website'e yönlendir. */
