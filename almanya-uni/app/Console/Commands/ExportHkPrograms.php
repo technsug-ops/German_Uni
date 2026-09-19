@@ -49,6 +49,39 @@ class ExportHkPrograms extends Command
                 'pflege', 'medizin', 'soziale arbeit', 'bauingenieur', 'maschinenbau',
             ],
         ],
+
+        // Kural yazarken SİTENİN KENDİ alışkanlığı ölçüldü (mevcut programların alan dağılımı):
+        //   Wirtschaftsingenieur → hukuk-ekonomi (61 kayıt) · Mechatronik → mühendislik (22)
+        //   Medizintechnik → tıp-sağlık (6, mühendislik DEĞİL) · Data Science → bilişim (64)
+        // Yeni kayıtlar aynı alışkanlığa uysun diye include/exclude buna göre kuruldu.
+        'muhendislik' => [
+            'include' => [
+                'ingenieur', 'maschinenbau', 'elektrotechnik', 'bauingenieur', 'verfahrenstechnik',
+                'mechatronik', 'fahrzeugtechnik', 'luftfahrt', 'raumfahrt', 'energietechnik',
+                'werkstoff', 'produktionstechnik', 'automatisierung', 'robotik', 'nachrichtentechnik',
+                'umwelttechnik', 'schiffbau', 'kybernetik', 'engineering', 'technische logistik',
+                'elektromobilität', 'antriebstechnik', 'metalltechnik',
+            ],
+            'exclude' => [
+                'wirtschaftsingenieur',       // site bunu hukuk-ekonomi sayıyor
+                'informatik',                 // bilişim
+                'medizintechnik', 'medizinische technik', 'biomedizin',   // tıp-sağlık
+                'financial engineering', 'business engineering',          // ekonomi
+                'wirtschaftsingenieurwesen',
+            ],
+        ],
+        'bilisim' => [
+            'include' => [
+                'informatik', 'computer', 'computing', 'software', 'data science',
+                'künstliche intelligenz', 'artificial intelligence', 'machine learning',
+                'cyber', 'it-sicherheit', 'it sicherheit', 'informationssystem', 'computational',
+                'digital media', 'games',
+            ],
+            'exclude' => [
+                'informationstechnik',        // "Elektrotechnik und Informationstechnik" → mühendislik
+                'biomedizinische',
+            ],
+        ],
     ];
 
     public function handle(): int
