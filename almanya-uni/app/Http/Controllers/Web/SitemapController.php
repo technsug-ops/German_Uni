@@ -294,6 +294,7 @@ class SitemapController extends Controller
             ->orderBy('id')
             ->chunk(500, function ($chunk) use (&$urls, $postAlts, $activeLocales) {
                 foreach ($chunk as $p) {
+                    $self = route('blog.show', $p->slug);
                     $alts = [];
                     foreach ($activeLocales as $loc) {
                         $slug = $postAlts[$p->translation_group_id][$loc] ?? null;
@@ -301,13 +302,15 @@ class SitemapController extends Controller
                             $alts[$loc] = route('blog.show', ['locale' => $loc, 'slug' => $slug]);
                         }
                     }
-                    $urls[] = $this->entry(
-                        route('blog.show', $p->slug),
-                        $p->updated_at,
-                        'monthly',
-                        0.7,
-                        $alts
-                    );
+
+                    // translation_group_id boşsa kardeş doğrulanamaz. Bu durumda alternatif
+                    // listesi BOŞ kalırsa buildXml prefix-swap yedeğine düşer ve blog/SSS için
+                    // var olmayan adres üretir. Kendini bildirerek o yedeği devre dışı bırak.
+                    if ($alts === []) {
+                        $alts[app()->getLocale()] = $self;
+                    }
+
+                    $urls[] = $this->entry($self, $p->updated_at, 'monthly', 0.7, $alts);
                 }
             });
 
@@ -318,6 +321,7 @@ class SitemapController extends Controller
             ->chunk(500, function ($chunk) use (&$urls, $faqAlts, $activeLocales) {
                 foreach ($chunk as $f) {
                     if (!$f->topic) continue;
+                    $self = route('faqs.show', [$f->topic->slug, $f->slug]);
                     $alts = [];
                     foreach ($activeLocales as $loc) {
                         $sibling = $faqAlts[$f->translation_group_id][$loc] ?? null;
@@ -325,8 +329,14 @@ class SitemapController extends Controller
                             $alts[$loc] = route('faqs.show', ['locale' => $loc, 'topic' => $sibling[0], 'slug' => $sibling[1]]);
                         }
                     }
+
+                    // Kardeş doğrulanamıyorsa prefix-swap yedeğine düşmesin (bkz. blog).
+                    if ($alts === []) {
+                        $alts[app()->getLocale()] = $self;
+                    }
+
                     $urls[] = $this->entry(
-                        route('faqs.show', [$f->topic->slug, $f->slug]),
+                        $self,
                         $f->updated_at,
                         $f->has_answer ? 'monthly' : 'yearly',
                         $f->has_answer ? 0.7 : 0.4,

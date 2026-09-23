@@ -142,6 +142,28 @@ class FaqController extends Controller
 
         Faq::where('id', $faq->id)->increment('view_count');
 
+        // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL.
+        //
+        // SSS slug'ları dile göre değişir ("...-en" / "...-de"), bu yüzden layout'un
+        // naif prefix-swap yedeği burada 404 üretir. Kardeşler translation_group_id
+        // üzerinden bulunur; kardeşin KENDİ konu slug'ı kullanılır (konu farklı olabilir).
+        // Kardeş doğrulanamıyorsa yalnızca kendisi bildirilir — tahmin üretilmez.
+        $localeUrls = $faq->translation_group_id
+            ? Faq::where('is_published', true)
+                ->where('translation_group_id', $faq->translation_group_id)
+                ->with('topic:id,slug')
+                ->get(['id', 'locale', 'slug', 'faq_topic_id'])
+                ->filter(fn ($s) => (bool) $s->topic)
+                ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/faq/' . $s->topic->slug . '/' . $s->slug)])
+                ->all()
+            : [];
+
+        if (! isset($localeUrls[$faq->locale])) {
+            $localeUrls[$faq->locale] = url($faq->locale . '/faq/' . $topic->slug . '/' . $faq->slug);
+        }
+
+        view()->share('localeUrls', $localeUrls);
+
         $related = Faq::published()
             ->where('faq_topic_id', $topic->id)
             ->where('id', '!=', $faq->id)

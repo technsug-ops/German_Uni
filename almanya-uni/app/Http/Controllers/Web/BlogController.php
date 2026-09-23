@@ -143,15 +143,24 @@ class BlogController extends Controller
 
         // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (slug locale'e göre
         // farklı: tr=base, en=base-en, de=base-de → naif prefix-swap 404 verirdi).
-        if ($post->translation_group_id) {
-            $localeUrls = Post::blogType()
+        // localeUrls HER ZAMAN paylaşılır. Eskiden yalnızca translation_group_id
+        // doluysa paylaşılıyordu; boş olduğunda layout naif prefix-swap'a düşüp
+        // /en/blog/<tr-slug> gibi var olmayan adresleri hreflang olarak yazıyordu.
+        // Kardeş doğrulanamıyorsa tek doğru davranış SADECE kendini bildirmektir.
+        $localeUrls = $post->translation_group_id
+            ? Post::blogType()
                 ->where('translation_group_id', $post->translation_group_id)
                 ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
                 ->get(['locale', 'slug'])
                 ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/blog/' . $s->slug)])
-                ->all();
-            view()->share('localeUrls', $localeUrls);
+                ->all()
+            : [];
+
+        if (! isset($localeUrls[$post->locale])) {
+            $localeUrls[$post->locale] = url($post->locale . '/blog/' . $post->slug);
         }
+
+        view()->share('localeUrls', $localeUrls);
 
         $related = $post->category_id
             ? Post::published()
