@@ -28,8 +28,27 @@ class Outbox
     }
 
     /**
+     * Gönderene basılacak imza bloğu. config/services.php > mail_signature
+     * temel alınır; $name verilirse (panelde gönderen admin) onu ezer.
+     */
+    public static function signature(?string $name = null): array
+    {
+        $sig = (array) config('services.mail_signature', []);
+
+        if (filled($name)) {
+            $sig['name'] = $name;
+        }
+
+        return $sig;
+    }
+
+    /**
      * Bir kutudan mail gönder + logla. Hata fırlatmaz; sonucu EmailMessage->status
      * (sent|failed) üzerinden döndürür. Çağıran bildirimini buna göre verir.
+     *
+     * @param  array  $extra    email_messages kolonları (provider_id, contact_id, template_key…)
+     * @param  array  $options  sunum ayarları: layout, preheader, hero_url, cta_label,
+     *                          cta_url, signature_name, show_signature, attachments[], lang
      */
     public static function send(
         string $mailboxKey,
@@ -38,12 +57,23 @@ class Outbox
         string $subject,
         string $body,
         array $extra = [],
+        array $options = [],
     ): EmailMessage {
         $box = self::get($mailboxKey);
 
         // Kolon henüz migrate edilmediyse (deploy > migrate sırası) gönderim patlamasın.
-        if (isset($extra['contact_id']) && ! \Illuminate\Support\Facades\Schema::hasColumn('email_messages', 'contact_id')) {
-            unset($extra['contact_id']);
+        foreach (['contact_id', 'layout'] as $column) {
+            if (isset($extra[$column]) && ! \Illuminate\Support\Facades\Schema::hasColumn('email_messages', $column)) {
+                unset($extra[$column]);
+            }
+        }
+
+        $layout = in_array($options['layout'] ?? null, ['personal', 'rich'], true)
+            ? $options['layout']
+            : 'personal';
+
+        if (\Illuminate\Support\Facades\Schema::hasColumn('email_messages', 'layout')) {
+            $extra['layout'] = $layout;
         }
 
         $msg = EmailMessage::create(array_merge([
@@ -82,6 +112,15 @@ class Outbox
                 fromName: $box['name'] ?? 'ApplyToGerman',
                 mailerName: $box['mailer'] ?? null,
                 replyToAddress: $box['email'], // yanıtlar aynı kutuya
+                layout: $layout,
+                preheader: $options['preheader'] ?? null,
+                heroUrl: $options['hero_url'] ?? null,
+                ctaLabel: $options['cta_label'] ?? null,
+                ctaUrl: $options['cta_url'] ?? null,
+                signature: self::signature($options['signature_name'] ?? null),
+                showSignature: (bool) ($options['show_signature'] ?? true),
+                filePaths: (array) ($options['attachments'] ?? []),
+                lang: $options['lang'] ?? 'tr',
             ));
 
             $msg->update(['status' => 'sent', 'sent_at' => now()]);

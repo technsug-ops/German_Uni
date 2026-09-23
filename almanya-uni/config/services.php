@@ -18,6 +18,19 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    // Panelden giden maillerin altına basılan imza + künye. Boş bırakılan satır
+    // maile hiç yazılmaz, yani hiçbiri zorunlu değil. Gönderen adı panelde
+    // oturum açan adminden gelir; buradaki 'name' yalnızca yedektir.
+    // Künye (imprint) Almanya'daki kurumlara giden mailde ciddiyet katar:
+    // örn. "ApplyToGerman · Sahibi: Ad Soyad · İstanbul, Türkiye".
+    'mail_signature' => [
+        'name'    => env('MAIL_SIGN_NAME', ''),
+        'role'    => env('MAIL_SIGN_ROLE', ''),
+        'phone'   => env('MAIL_SIGN_PHONE', ''),
+        'site'    => env('MAIL_SIGN_SITE', 'applytogerman.com'),
+        'imprint' => env('MAIL_IMPRINT', ''),
+    ],
+
     // Çok-kutulu mail koordinasyonu. Her kutu: gönderim (SMTP mailer) + gelen (IMAP).
     // Yeni kutu eklemek için buraya bir giriş + .env'e ilgili *_MAIL_* / *_IMAP_* anahtarları.
     // Kredansiyel SADECE env'den; koda asla yazma. ext-imap yoksa gelen kutusu nazik uyarı verir.

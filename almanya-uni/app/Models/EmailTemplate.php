@@ -13,6 +13,7 @@ class EmailTemplate extends Model
         'locale',
         'subject',
         'body',
+        'layout',
         'is_active',
         'sort_order',
     ];
@@ -34,6 +35,11 @@ class EmailTemplate extends Model
 
     public function rendered(array $vars): array
     {
-        return ['subject' => self::apply($this->subject, $vars), 'body' => self::apply($this->body, $vars)];
+        return [
+            'subject' => self::apply($this->subject, $vars),
+            'body'    => self::apply($this->body, $vars),
+            // Kolon henüz migrate edilmediyse sade düzen varsayılır.
+            'layout'  => $this->layout ?: 'personal',
+        ];
     }
 }

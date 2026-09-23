@@ -17,6 +17,7 @@ class EmailMessage extends Model
         'from_email',
         'subject',
         'body',
+        'layout',
         'template_key',
         'status',
         'error',
