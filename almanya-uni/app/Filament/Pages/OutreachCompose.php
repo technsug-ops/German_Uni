@@ -264,12 +264,14 @@ class OutreachCompose extends Page
                 ])),
 
             Action::make('sendTest')
-                ->label('Kendime test gönder')
+                ->label('Test gönder')
                 ->icon(Heroicon::OutlinedBeaker)
                 ->color('warning')
                 ->requiresConfirmation()
                 ->modalHeading('Test maili')
-                ->modalDescription(fn () => (auth()->user()?->email ?: 'hesabındaki adrese') . ' adresine bir kopya gönderilecek. Kontak geçmişine işlenmez.')
+                ->modalDescription(fn () => $this->testRecipient()
+                    . ' adresine bir kopya gönderilecek — yani gönderen kutunun kendisine, '
+                    . 'böylece Gelen Kutusu tarafı da sınanmış olur. Kontak geçmişine işlenmez.')
                 ->action('sendTest'),
 
             Action::make('send')
@@ -350,13 +352,30 @@ class OutreachCompose extends Page
         ];
     }
 
+    /**
+     * Test maili gönderen kutunun KENDİ adresine gider.
+     *
+     * Neden oturum açan admin'in adresine değil: o adres kullanıcı kaydından
+     * gelir ve eski bir alan adında kalmış olabilir (admin@almanyauni.com
+     * gibi) — mail "gönderildi" der ama teslim edilmez. Kutunun kendi adresi
+     * her zaman var olan, okunan bir kutudur; üstelik mail panelin Gelen
+     * Kutusu'na düştüğü için IMAP tarafı da aynı testte sınanmış olur.
+     */
+    protected function testRecipient(): string
+    {
+        $box = Outbox::get($this->data['mailbox'] ?? 'partnerships');
+
+        return $box['email'] ?? (auth()->user()?->email ?: '');
+    }
+
     public function sendTest(): void
     {
         $state = $this->form->getState();
-        $to    = auth()->user()?->email;
+        $box   = Outbox::get($state['mailbox'] ?? 'partnerships');
+        $to    = $box['email'] ?? (auth()->user()?->email ?: null);
 
         if (blank($to)) {
-            Notification::make()->title('Hesabında kayıtlı e-posta adresi yok')->danger()->send();
+            Notification::make()->title('Gönderen kutunun adresi tanımlı değil')->danger()->send();
 
             return;
         }
@@ -366,7 +385,7 @@ class OutreachCompose extends Page
         $msg = Outbox::send(
             $state['mailbox'] ?? 'partnerships',
             $to,
-            auth()->user()?->name,
+            $box['name'] ?? null,
             '[TEST] ' . $state['subject'],
             $state['body'],
             [],

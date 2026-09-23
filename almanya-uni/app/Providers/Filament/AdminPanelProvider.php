@@ -27,7 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->brandName('AlmanyaUni · Admin')
+            // Kanonik marka ApplyToGerman; AlmanyaUni arşivde (bkz. config/brand.php).
+            ->brandName('ApplyToGerman · Admin')
             ->login()
             ->colors([
                 'primary' => Color::Blue,
