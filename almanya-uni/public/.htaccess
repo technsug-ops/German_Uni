@@ -5,11 +5,36 @@
 
     RewriteEngine On
 
-    # Dual-brand: almanyauni.com ve applytogerman.com AYRI markalar, AYNI uygulama.
-    # 301 yönlendirme YOK — domain → brand otomatik (SetLocale middleware + brand() helper).
-    # Sadece www. → root canonicalize (SEO için tek host).
+    # ──────────────────────────────────────────────────────────────────────
+    # Kanonikleştirme: her istek TEK bir adrese, TEK sıçramada.
+    #   hedef = https://applytogerman.com/<yol>
+    #
+    # Neden gerekli oldu: http:// sürümü 200 dönüyordu ve canonical etiketi
+    # isteğin şemasından üretildiği için kendini http:// olarak işaretliyordu.
+    # Sonuç: 23.858 URL'lik sitenin iki tam kopyası ve bölünmüş sıralama sinyali.
+    #
+    # %{HTTPS} neden güvenli: TLS doğrudan Apache'de sonlanıyor — 2026-09-23'te
+    # /_system/proxy-check ile doğrulandı (HTTPS='on', REQUEST_SCHEME='https',
+    # hiç X-Forwarded-* başlığı yok). Önde reverse proxy olsaydı Apache HTTPS'i
+    # "off" görür ve bu kural sonsuz döngü yaratırdı; o yüzden kural yazılmadan
+    # önce ölçüldü. Proxy sonradan araya girerse bu kural X-Forwarded-Proto
+    # kontrolüyle güncellenmeli.
+    #
+    # Sıra önemli: eski alan adı ve www kuralları hedefi zaten https verdiği
+    # için önce onlar çalışır — böylece hiçbir durumda zincir oluşmaz.
+    # ──────────────────────────────────────────────────────────────────────
+
+    # 1) Eski marka alan adı → kanonik alan adı (şema ve www fark etmeksizin tek 301)
+    RewriteCond %{HTTP_HOST} ^(www\.)?almanyauni\.com$ [NC]
+    RewriteRule ^ https://applytogerman.com%{REQUEST_URI} [L,R=301]
+
+    # 2) www. → çıplak alan adı, hedef her zaman https
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+    # 3) Kalan düz HTTP istekleri → https (aynı host)
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
