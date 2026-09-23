@@ -1154,7 +1154,10 @@
                 @endphp
                 <p class="text-sm text-gray-600 leading-relaxed">
                     @if ($__hasExternalTrackers)
-                        {{ __('We use cookies for anonymous visitor statistics and, with your consent, analytics & marketing tools (e.g. Google, Meta, TikTok) to improve the site and measure our campaigns.') }}
+                        {{-- Banner fiilî durumu anlatmalı: Meta/TikTok pikselleri kurulu ama KAPALI,
+                             etkin olanlar Google Analytics 4 ve Microsoft Clarity. Clarity oturum
+                             kaydı aldığı için rızanın bilgilendirilmiş olması adına ayrıca belirtilir. --}}
+                        {{ __('We use cookies for anonymous visitor statistics and, with your consent, analytics tools (Google Analytics and Microsoft Clarity, which records page interactions) to improve the site.') }}
                     @else
                         {{ __('We keep') }} <strong>{{ __('anonymous visitor statistics') }}</strong> {{ __('to improve the site (no Google Analytics, hosted on our own server). Your IP is hashed, no personal info is stored.') }}
                     @endif
