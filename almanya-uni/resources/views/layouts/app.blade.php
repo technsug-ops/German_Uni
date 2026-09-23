@@ -1148,15 +1148,16 @@
             <div>
                 <h3 id="cookieConsentTitle" class="font-bold text-gray-900 mb-1">{{ __('Cookie Preferences') }}</h3>
                 @php
-                    // Harici pazarlama/analitik izleyici yapılandırılmış mı? (GA4/Ads/GTM/Meta/TikTok)
-                    $__hasExternalTrackers = setting('google_analytics_id') || setting('google_ads_id')
-                        || setting('google_tag_manager_id') || setting('meta_pixel_id') || setting('tiktok_pixel_id');
+                    // Sağlayıcılar TEK TEK kontrol edilir. Eski kod yalnızca Google/Meta/TikTok'a
+                    // bakıyordu; GA kimliği silinip Clarity açık bırakılsaydı banner "harici
+                    // izleyici yok" metnine düşer, oysa Clarity oturum kaydı almaya devam ederdi.
+                    $__trackerAnalytics = setting('google_analytics_id') || setting('microsoft_clarity_id');
+                    $__trackerMarketing = setting('google_ads_id') || setting('google_tag_manager_id')
+                        || setting('meta_pixel_id') || setting('tiktok_pixel_id');
+                    $__hasExternalTrackers = $__trackerAnalytics || $__trackerMarketing;
                 @endphp
                 <p class="text-sm text-gray-600 leading-relaxed">
                     @if ($__hasExternalTrackers)
-                        {{-- Banner fiilî durumu anlatmalı: Meta/TikTok pikselleri kurulu ama KAPALI,
-                             etkin olanlar Google Analytics 4 ve Microsoft Clarity. Clarity oturum
-                             kaydı aldığı için rızanın bilgilendirilmiş olması adına ayrıca belirtilir. --}}
                         {{ __('We use cookies for anonymous visitor statistics and, with your consent, analytics tools (Google Analytics and Microsoft Clarity, which records page interactions) to improve the site.') }}
                     @else
                         {{ __('We keep') }} <strong>{{ __('anonymous visitor statistics') }}</strong> {{ __('to improve the site (no Google Analytics, hosted on our own server). Your IP is hashed, no personal info is stored.') }}
@@ -1165,58 +1166,131 @@
                 </p>
             </div>
         </div>
+
+        {{-- Ayarlar paneli — "Ayarlar"a basılmadan gizli. Analitik ve pazarlama
+             varsayılan olarak KAPALI. Karanlık kalıp yok: Kabul ve Reddet aynı görsel ağırlıkta. --}}
+        <div id="cookiePrefs" class="hidden border-t border-gray-200 pt-3 mb-3 space-y-3 text-sm">
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <span class="font-semibold text-gray-900">{{ __('Necessary') }}</span>
+                    <p class="text-gray-500 text-xs">{{ __('Session, security and language preference. Always on.') }}</p>
+                </div>
+                <input type="checkbox" checked disabled class="mt-1 h-4 w-4 accent-primary-600 opacity-60">
+            </div>
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <label for="prefAnalytics" class="font-semibold text-gray-900">{{ __('Analytics') }}</label>
+                    <p class="text-gray-500 text-xs">{{ __('Google Analytics, Microsoft Clarity (heatmaps and session recording) and our own page-view counter.') }}</p>
+                </div>
+                <input type="checkbox" id="prefAnalytics" class="mt-1 h-4 w-4 accent-primary-600">
+            </div>
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <label for="prefMarketing" class="font-semibold text-gray-900">{{ __('Marketing') }}</label>
+                    <p class="text-gray-500 text-xs">{{ __('Meta and TikTok pixels. Currently not configured, so nothing loads.') }}</p>
+                </div>
+                <input type="checkbox" id="prefMarketing" class="mt-1 h-4 w-4 accent-primary-600">
+            </div>
+            <button type="button" id="cookieSavePrefs"
+                    class="w-full bg-gray-900 hover:bg-black text-white font-semibold px-4 py-2 rounded-lg text-sm transition">
+                {{ __('Save choices') }}
+            </button>
+        </div>
+
         <div class="flex gap-2 flex-wrap">
             <button type="button" id="cookieAccept"
                     class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-4 py-2 rounded-lg text-sm transition">
-                {{ __('Accept') }}
+                {{ __('Accept all') }}
             </button>
             <button type="button" id="cookieReject"
+                    class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-4 py-2 rounded-lg text-sm transition">
+                {{ __('Reject all') }}
+            </button>
+            <button type="button" id="cookieSettings"
                     class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg text-sm transition">
-                {{ __('Reject') }}
+                {{ __('Settings') }}
             </button>
         </div>
     </div>
 
     <script>
     (function () {
-        const KEY = 'almanyauni_cookie_consent';
-        const banner = document.getElementById('cookieConsent');
-        const accept = document.getElementById('cookieAccept');
-        const reject = document.getElementById('cookieReject');
+        var banner   = document.getElementById('cookieConsent');
+        var accept   = document.getElementById('cookieAccept');
+        var reject   = document.getElementById('cookieReject');
+        var settings = document.getElementById('cookieSettings');
+        var prefs    = document.getElementById('cookiePrefs');
+        var save     = document.getElementById('cookieSavePrefs');
         if (!banner) return;
 
-        const choice = localStorage.getItem(KEY);
-        if (!choice) {
-            // İlk ziyaret — banner göster
-            setTimeout(() => banner.classList.remove('hidden'), 1500);
-        }
+        var A_COOKIE = 'almanyauni_consent';
+        var M_COOKIE = 'almanyauni_consent_mkt';
 
-        function hide() {
-            banner.classList.add('hidden');
+        function get(name) {
+            var m = document.cookie.match(new RegExp('(^|; *)' + name + ' *= *([^;]+)'));
+            return m ? m[2] : null;
         }
-
-        function setCookie(name, value, days) {
-            const d = new Date();
+        function set(name, value, days) {
+            var d = new Date();
             d.setTime(d.getTime() + days * 86400000);
             document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
         }
 
-        accept?.addEventListener('click', function () {
-            localStorage.setItem(KEY, 'accepted');
-            setCookie('almanyauni_consent', 'accepted', 365);
-            // Pazarlama/analitik izleyicileri etkinleştir (GA4, Ads, Meta, TikTok)
-            if (typeof window.grantTrackingConsent === 'function') window.grantTrackingConsent();
-            hide();
+        // Karar verilmemişse banner çıkar. Eski biçim (accepted/rejected) da karar sayılır.
+        var current = get(A_COOKIE);
+        var decided = ['granted', 'denied', 'accepted', 'rejected'].indexOf(current) !== -1;
+        if (!decided) setTimeout(function () { banner.classList.remove('hidden'); }, 1500);
+
+        function apply(analytics, marketing) {
+            var wasGranted = (current === 'granted' || current === 'accepted');
+
+            set(A_COOKIE, analytics ? 'granted' : 'denied', 365);
+            set(M_COOKIE, marketing ? 'granted' : 'denied', 365);
+
+            if (analytics && typeof window.__startAnalytics === 'function') window.__startAnalytics();
+            if (marketing && typeof window.__startMarketing === 'function') window.__startMarketing();
+
+            // Rıza geri çekildiyse: sağlayıcılara red bildir, çerezleri temizle ve
+            // sayfayı yenile. Yüklenmiş bir script'i durdurmanın güvenilir yolu yok;
+            // yenilemeden sonra sunucu hiçbir izleyici basmaz.
+            if (!analytics && wasGranted) {
+                if (typeof window.__withdrawConsent === 'function') window.__withdrawConsent();
+                banner.classList.add('hidden');
+                location.reload();
+                return;
+            }
+            if (!analytics && typeof window.__clearAnalyticsCookies === 'function') {
+                window.__clearAnalyticsCookies();
+            }
+            banner.classList.add('hidden');
+        }
+
+        accept   && accept.addEventListener('click',   function () { apply(true, true); });
+        reject   && reject.addEventListener('click',   function () { apply(false, false); });
+        settings && settings.addEventListener('click', function () { prefs.classList.toggle('hidden'); });
+        save     && save.addEventListener('click',     function () {
+            apply(
+                document.getElementById('prefAnalytics').checked,
+                document.getElementById('prefMarketing').checked
+            );
         });
 
-        reject?.addEventListener('click', function () {
-            localStorage.setItem(KEY, 'rejected');
-            setCookie('almanyauni_consent', 'rejected', 365);
-            // İzleyicileri reddet (Google Consent Mode → denied)
-            if (typeof window.denyTrackingConsent === 'function') window.denyTrackingConsent();
-            // Analytics tracker cookie sil
-            document.cookie = 'almanyauni_uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-            hide();
+        // Ziyaretçi kararını sonradan değiştirebilmeli — herhangi bir yerdeki
+        // [data-cookie-settings] öğesi paneli açar (footer, gizlilik sayfası…).
+        window.openCookieSettings = function () {
+            var a = document.getElementById('prefAnalytics');
+            var m = document.getElementById('prefMarketing');
+            var cur = get(A_COOKIE);
+            if (a) a.checked = (cur === 'granted' || cur === 'accepted');
+            if (m) m.checked = (get(M_COOKIE) === 'granted');
+            prefs.classList.remove('hidden');
+            banner.classList.remove('hidden');
+        };
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('[data-cookie-settings]')) {
+                e.preventDefault();
+                window.openCookieSettings();
+            }
         });
     })();
     </script>

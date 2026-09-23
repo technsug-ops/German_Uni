@@ -4636,5 +4636,15 @@
     "💡 Almanya'da öğrenci olarak 140 tam gün/280 yarım gün çalışabilirsin (2024 değişikliği). Asgari ücret 12,82€/saat.": "💡 Almanya'da öğrenci olarak 140 tam gün/280 yarım gün çalışabilirsin (2024 değişikliği). Asgari ücret 12,82€/saat.",
     "💡 As a student in Germany you can work 140 full / 280 half days per year (2024 change). Minimum wage is €12.82/hour.": "💡 Almanya'da öğrenci olarak yılda 140 tam / 280 yarım gün çalışabilirsin (2024 değişikliği). Asgari ücret 12,82€/saat.",
     "📞 Phone / Internet / TV license": "📞 Telefon / İnternet / TV lisansı",
-    "We use cookies for anonymous visitor statistics and, with your consent, analytics tools (Google Analytics and Microsoft Clarity, which records page interactions) to improve the site.": "Siteyi geliştirmek için anonim ziyaretçi istatistikleri ve onayınızla analitik araçlar (Google Analytics ve sayfa etkileşimlerini kaydeden Microsoft Clarity) kullanıyoruz."
+    "We use cookies for anonymous visitor statistics and, with your consent, analytics tools (Google Analytics and Microsoft Clarity, which records page interactions) to improve the site.": "Siteyi geliştirmek için anonim ziyaretçi istatistikleri ve onayınızla analitik araçlar (Google Analytics ve sayfa etkileşimlerini kaydeden Microsoft Clarity) kullanıyoruz.",
+    "Accept all": "Tümünü kabul et",
+    "Reject all": "Tümünü reddet",
+    "Settings": "Ayarlar",
+    "Save choices": "Seçimleri kaydet",
+    "Necessary": "Zorunlu",
+    "Analytics": "Analitik",
+    "Marketing": "Pazarlama",
+    "Session, security and language preference. Always on.": "Oturum, güvenlik ve dil tercihi. Her zaman açık.",
+    "Google Analytics, Microsoft Clarity (heatmaps and session recording) and our own page-view counter.": "Google Analytics, Microsoft Clarity (ısı haritası ve oturum kaydı) ve kendi sayfa görüntüleme sayacımız.",
+    "Meta and TikTok pixels. Currently not configured, so nothing loads.": "Meta ve TikTok pikselleri. Şu anda tanımlı değil, hiçbir şey yüklenmiyor."
 }

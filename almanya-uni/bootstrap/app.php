@@ -21,8 +21,11 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         // KVKK consent + analytics session cookie'leri şifreleme dışı (JS okuyabilsin)
+        // Bu ucu de tarayicida JS ile duz metin yaziliyor (cerez banner'i ve
+        // izleme middleware'i). Sifrelenirse sunucu okuyamaz ve riza kaybolur.
         $middleware->encryptCookies(except: [
             'almanyauni_consent',
+            'almanyauni_consent_mkt',
             'almanyauni_uid',
         ]);
 

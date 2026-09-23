@@ -156,16 +156,27 @@ return new class extends Migration
             1
         );
 
-        // ABD cümlesi bulunamadıysa (EN/DE'de farklı yazılmış olabilir) aktarım
-        // listesinin hemen ardına ekle — beyanın hiç olmaması kabul edilemez.
-        if (! in_array('ABD aktarımı cümlesi', $hits, true)
-            && str_contains($html, $t['privacy_analytics_line'])) {
-            $html = str_replace(
-                $t['privacy_analytics_line'] . '</ul>',
-                $t['privacy_analytics_line'] . '</ul>' . $t['privacy_us_transfer'],
-                $html
-            );
-            $hits[] = 'ABD aktarımı cümlesi (eklendi)';
+        // ABD cümlesi bulunamadıysa (EN/DE'de farklı yazılmış) aktarım listesinin
+        // ardına eklenir. Beyanın hiç olmaması kabul edilemez.
+        //
+        // Ekleme noktası hesaplanarak bulunur: analitik satırından SONRAKİ ilk </ul>.
+        // Önceki sürüm "analitik satırı + </ul>" bitişikliğini varsayıyordu; EN/DE'de
+        // araya başka satırlar girdiği için hiçbir şey eklenmiyor, üstelik başarılı
+        // raporlanıyordu. Artık ekleme gerçekten olduysa rapor ediliyor.
+        if (! in_array('ABD aktarımı cümlesi', $hits, true)) {
+            $at = strpos($html, $t['privacy_analytics_line']);
+
+            if ($at !== false) {
+                $end = strpos($html, '</ul>', $at);
+                $insertAt = $end !== false
+                    ? $end + strlen('</ul>')
+                    : $at + strlen($t['privacy_analytics_line']);
+
+                $html = substr($html, 0, $insertAt) . $t['privacy_us_transfer'] . substr($html, $insertAt);
+                $hits[] = 'ABD aktarımı cümlesi (eklendi)';
+            } else {
+                $hits[] = 'ABD AKTARIMI CÜMLESİ EKLENEMEDİ — elle kontrol et';
+            }
         }
 
         // 3) Hukuki dayanak: meşru menfaat → açık rıza
@@ -192,9 +203,14 @@ return new class extends Migration
                     . '<p>Aşağıdaki üçüncü taraf araçları <strong>yalnızca açık rızanızla</strong> çalışır. '
                     . 'Çerez banner\'ında "Reddet" derseniz hiçbiri yüklenmez:</p><ul>'
                     . '<li><strong>Google Analytics 4</strong> (Google Ireland Ltd.) — ziyaret istatistikleri. Ölçüm kimliği: <code>G-D0VB1M1RKF</code></li>'
-                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — ısı haritası ve <strong>oturum kaydı</strong> (fare hareketi, tıklama, kaydırma)</li>'
-                    . '</ul><p>Her iki sağlayıcı da verileri ABD\'ye aktarabilir; aktarım AB–ABD Veri Gizliliği Çerçevesi ve standart sözleşme maddelerine dayanır. '
-                    . 'Google Consent Mode v2 kullanıyoruz: siz onay verene kadar tüm ölçüm izinleri <code>denied</code> durumundadır.</p>'
+                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — <strong>ısı haritaları</strong>, tıklama ve kaydırma analizi ve <strong>oturum kayıtları</strong> (sayfadaki hareketlerinizin sonradan yeniden izlenebildiği kayıtlar)</li>'
+                    . '</ul><p><strong>Bu araçlar siz izin verene kadar sayfaya hiç eklenmez.</strong> Reddederseniz ya da hiçbir seçim yapmazsanız '
+                    . 'script dosyaları yüklenmez, çerez yazmazlar ve sağlayıcılara istek gitmez.</p>'
+                    . '<p>Sözleşme tarafımız AB\'deki kuruluşlardır (Google Ireland Ltd., Microsoft Ireland Operations Ltd.). Hizmetin işleyişinde veriler '
+                    . 'ABD\'deki ana şirketlere (Google LLC, Microsoft Corporation) ulaşabilir. ABD aktarımı için başvurulan mekanizma alıcının '
+                    . 'geçerli bir <strong>EU-U.S. Data Privacy Framework</strong> sertifikasyonu bulunması hâlinde ilgili yeterlilik kararına '
+                    . 'dayanılabilir. DPF\'nin uygulanmadığı aktarımlarda, uygulanabilir olduğu ölçüde <strong>AB Standart Sözleşme Maddeleri</strong> '
+                    . 'gibi uygun güvenceler kullanılabilir.</p>'
                     . '<p>Meta (Facebook) ve TikTok piksel altyapısı sitede mevcuttur ancak <strong>şu anda etkin değildir</strong>. Etkinleştirilirse bu sayfa güncellenecektir.</p>',
                 'cookies_marketing_line' => '<li><strong>Pazarlama çerezleri:</strong> Şu anda kullanılmıyor. Reklam ve yeniden pazarlama pikselleri etkin değildir.</li>',
                 'cookies_table_rows' => '<tr><td><code>_ga</code></td><td>Google Analytics — ziyaretçi ayrımı</td><td>2 yıl</td><td>Analitik (onay sonrası)</td></tr>'
@@ -202,8 +218,11 @@ return new class extends Migration
                     . '<tr><td><code>_clck</code></td><td>Microsoft Clarity — ziyaretçi kimliği</td><td>1 yıl</td><td>Analitik (onay sonrası)</td></tr>'
                     . '<tr><td><code>_clsk</code></td><td>Microsoft Clarity — oturum kaydı</td><td>1 gün</td><td>Analitik (onay sonrası)</td></tr>',
                 'privacy_analytics_line' => '<li><strong>Analitik:</strong> Google Analytics 4 (Google Ireland Ltd.) ve Microsoft Clarity (Microsoft Ireland Operations Ltd.) — yalnızca açık rızanızla</li>',
-                'privacy_us_transfer' => '<p>Analitik sağlayıcılar verileri <strong>ABD\'ye aktarabilir</strong>. Aktarım, AB–ABD Veri Gizliliği Çerçevesi ve standart sözleşme maddelerine dayanır. '
-                    . 'Rıza vermezseniz bu araçlar hiç yüklenmez ve aktarım gerçekleşmez.</p>',
+                'privacy_us_transfer' => '<p>Analitik araçlar yalnızca izin verdiğinizde sayfaya eklenir. Sözleşme tarafımız AB\'deki kuruluşlardır '
+                    . '(Google Ireland Ltd., Microsoft Ireland Operations Ltd.); hizmetin işleyişinde veriler ABD\'deki ana şirketlere ulaşabilir. '
+                    . 'ABD\'ye veri aktarımı söz konusu olduğunda, alıcının EU-U.S. Data Privacy Framework kapsamında geçerli bir sertifikasyonu '
+                    . 'bulunması hâlinde ilgili yeterlilik kararına dayanılabilir. DPF\'nin uygulanmadığı veri aktarımlarında, uygulanabilir olduğu '
+                    . 'ölçüde AB Standart Sözleşme Maddeleri gibi uygun güvenceler kullanılabilir. Ayrıntı için Çerez Politikası sayfamıza bakın.</p>',
                 'privacy_legal_basis' => '<li><strong>İstatistik (analitik)</strong> — GDPR 6(1)(a) açık rıza (Google Analytics 4, Microsoft Clarity; rıza verilmezse çalışmazlar)</li>',
             ],
             'en' => [
@@ -211,9 +230,14 @@ return new class extends Migration
                     . '<p>The following third-party tools run <strong>only with your explicit consent</strong>. '
                     . 'If you choose "Reject" in the cookie banner, none of them load:</p><ul>'
                     . '<li><strong>Google Analytics 4</strong> (Google Ireland Ltd.) — visit statistics. Measurement ID: <code>G-D0VB1M1RKF</code></li>'
-                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — heatmaps and <strong>session recording</strong> (mouse movement, clicks, scrolling)</li>'
-                    . '</ul><p>Both providers may transfer data to the United States, on the basis of the EU–US Data Privacy Framework and standard contractual clauses. '
-                    . 'We use Google Consent Mode v2: every measurement permission stays <code>denied</code> until you consent.</p>'
+                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — <strong>heatmaps</strong>, click and scroll analytics, and <strong>session recordings</strong> (replayable recordings of how you move through the page)</li>'
+                    . '</ul><p><strong>These tools are not added to the page until you consent.</strong> If you reject, or make no choice at all, '
+                    . 'their script files are never loaded, they set no cookies and no request reaches the providers.</p>'
+                    . '<p>Our contracting parties are the EU entities (Google Ireland Ltd., Microsoft Ireland Operations Ltd.). In operating these '
+                    . 'services, data may reach the US parent companies (Google LLC, Microsoft Corporation). The mechanism relied on for transfers to '
+                    . 'the US, reliance may be placed on the relevant adequacy decision where the recipient holds a valid certification under the '
+                    . '<strong>EU-U.S. Data Privacy Framework</strong>. For transfers not covered by the DPF, appropriate safeguards such as the '
+                    . '<strong>EU Standard Contractual Clauses</strong> may be used to the extent applicable.</p>'
                     . '<p>Meta (Facebook) and TikTok pixel infrastructure exists on the site but is <strong>currently inactive</strong>. This page will be updated if that changes.</p>',
                 'cookies_marketing_line' => '<li><strong>Marketing cookies:</strong> Not currently used. Advertising and remarketing pixels are inactive.</li>',
                 'cookies_table_rows' => '<tr><td><code>_ga</code></td><td>Google Analytics — visitor distinction</td><td>2 years</td><td>Analytics (after consent)</td></tr>'
@@ -221,8 +245,11 @@ return new class extends Migration
                     . '<tr><td><code>_clck</code></td><td>Microsoft Clarity — visitor ID</td><td>1 year</td><td>Analytics (after consent)</td></tr>'
                     . '<tr><td><code>_clsk</code></td><td>Microsoft Clarity — session recording</td><td>1 day</td><td>Analytics (after consent)</td></tr>',
                 'privacy_analytics_line' => '<li><strong>Analytics:</strong> Google Analytics 4 (Google Ireland Ltd.) and Microsoft Clarity (Microsoft Ireland Operations Ltd.) — only with your explicit consent</li>',
-                'privacy_us_transfer' => '<p>Our analytics providers <strong>may transfer data to the United States</strong>, on the basis of the EU–US Data Privacy Framework and standard contractual clauses. '
-                    . 'If you do not consent, these tools are never loaded and no transfer takes place.</p>',
+                'privacy_us_transfer' => '<p>Analytics tools are added to the page only once you consent. Our contracting parties are the EU entities '
+                    . '(Google Ireland Ltd., Microsoft Ireland Operations Ltd.); in operating the services data may reach the US parent companies. '
+                    . 'Where data is transferred to the United States, reliance may be placed on the relevant adequacy decision if the recipient holds '
+                    . 'a valid certification under the EU-U.S. Data Privacy Framework. For transfers not covered by the DPF, appropriate safeguards '
+                    . 'such as the EU Standard Contractual Clauses may be used to the extent applicable. See our Cookie Policy for detail.</p>',
                 'privacy_legal_basis' => '<li><strong>Analytics</strong> — Art. 6(1)(a) GDPR, explicit consent (Google Analytics 4, Microsoft Clarity; they do not run without it)</li>',
             ],
             'de' => [
@@ -230,9 +257,15 @@ return new class extends Migration
                     . '<p>Die folgenden Drittanbieter-Dienste laufen <strong>ausschließlich mit Ihrer ausdrücklichen Einwilligung</strong>. '
                     . 'Wählen Sie im Cookie-Banner „Ablehnen", wird keiner davon geladen:</p><ul>'
                     . '<li><strong>Google Analytics 4</strong> (Google Ireland Ltd.) — Besuchsstatistik. Mess-ID: <code>G-D0VB1M1RKF</code></li>'
-                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — Heatmaps und <strong>Sitzungsaufzeichnung</strong> (Mausbewegung, Klicks, Scrollen)</li>'
-                    . '</ul><p>Beide Anbieter können Daten in die USA übermitteln; Grundlage sind das EU-US Data Privacy Framework und Standardvertragsklauseln. '
-                    . 'Wir setzen Google Consent Mode v2 ein: Bis zur Einwilligung stehen alle Messberechtigungen auf <code>denied</code>.</p>'
+                    . '<li><strong>Microsoft Clarity</strong> (Microsoft Ireland Operations Ltd.) — <strong>Heatmaps</strong>, Klick- und Scroll-Analyse sowie <strong>Sitzungsaufzeichnungen</strong> (abspielbare Aufzeichnungen Ihrer Bewegung auf der Seite)</li>'
+                    . '</ul><p><strong>Diese Dienste werden erst nach Ihrer Einwilligung in die Seite eingebunden.</strong> Bei Ablehnung oder ohne '
+                    . 'Auswahl werden ihre Skriptdateien nicht geladen, es werden keine Cookies gesetzt und es geht keine Anfrage an die Anbieter.</p>'
+                    . '<p>Unsere Vertragspartner sind die EU-Gesellschaften (Google Ireland Ltd., Microsoft Ireland Operations Ltd.). Im Betrieb dieser '
+                    . 'Dienste können Daten die US-Muttergesellschaften (Google LLC, Microsoft Corporation) erreichen. Als Mechanismus für die '
+                    . 'Übermittlung in die USA kann auf den entsprechenden Angemessenheitsbeschluss gestützt werden, sofern der Empfänger über eine '
+                    . 'gültige Zertifizierung nach dem <strong>EU-U.S. Data Privacy Framework</strong> verfügt. Für nicht vom DPF erfasste '
+                    . 'Übermittlungen können geeignete Garantien wie die <strong>EU-Standardvertragsklauseln</strong> herangezogen werden, '
+                    . 'soweit anwendbar.</p>'
                     . '<p>Die Pixel-Infrastruktur von Meta (Facebook) und TikTok ist vorhanden, aber <strong>derzeit nicht aktiv</strong>. Bei Aktivierung wird diese Seite aktualisiert.</p>',
                 'cookies_marketing_line' => '<li><strong>Marketing-Cookies:</strong> Derzeit nicht im Einsatz. Werbe- und Remarketing-Pixel sind inaktiv.</li>',
                 'cookies_table_rows' => '<tr><td><code>_ga</code></td><td>Google Analytics — Unterscheidung der Besucher</td><td>2 Jahre</td><td>Analytik (nach Einwilligung)</td></tr>'
@@ -240,8 +273,12 @@ return new class extends Migration
                     . '<tr><td><code>_clck</code></td><td>Microsoft Clarity — Besucher-ID</td><td>1 Jahr</td><td>Analytik (nach Einwilligung)</td></tr>'
                     . '<tr><td><code>_clsk</code></td><td>Microsoft Clarity — Sitzungsaufzeichnung</td><td>1 Tag</td><td>Analytik (nach Einwilligung)</td></tr>',
                 'privacy_analytics_line' => '<li><strong>Analytik:</strong> Google Analytics 4 (Google Ireland Ltd.) und Microsoft Clarity (Microsoft Ireland Operations Ltd.) — nur mit Ihrer ausdrücklichen Einwilligung</li>',
-                'privacy_us_transfer' => '<p>Unsere Analyse-Anbieter können <strong>Daten in die USA übermitteln</strong>; Grundlage sind das EU-US Data Privacy Framework und Standardvertragsklauseln. '
-                    . 'Ohne Ihre Einwilligung werden diese Dienste nicht geladen und es findet keine Übermittlung statt.</p>',
+                'privacy_us_transfer' => '<p>Analyse-Dienste werden erst nach Ihrer Einwilligung eingebunden. Vertragspartner sind die '
+                    . 'EU-Gesellschaften (Google Ireland Ltd., Microsoft Ireland Operations Ltd.); im Betrieb können Daten die '
+                    . 'US-Muttergesellschaften erreichen. Soweit Daten in die USA übermittelt werden, kann auf den entsprechenden '
+                    . 'Angemessenheitsbeschluss gestützt werden, sofern der Empfänger über eine gültige Zertifizierung nach dem '
+                    . 'EU-U.S. Data Privacy Framework verfügt. Für nicht vom DPF erfasste Übermittlungen können geeignete Garantien wie die '
+                    . 'EU-Standardvertragsklauseln herangezogen werden, soweit anwendbar. Einzelheiten in unserer Cookie-Richtlinie.</p>',
                 'privacy_legal_basis' => '<li><strong>Statistik (Analytik)</strong> — Art. 6(1)(a) DSGVO, ausdrückliche Einwilligung (Google Analytics 4, Microsoft Clarity; ohne Einwilligung laufen sie nicht)</li>',
             ],
         ];

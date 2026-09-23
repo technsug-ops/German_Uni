@@ -106,10 +106,14 @@ class TrackPageView
             if ($path === '/' . $excl || str_starts_with($path, '/' . $excl . '/')) return;
         }
 
-        // KVKK — kullanıcı cookie consent'i reddettiyse hiç kayıt yapma
-        // (almanyauni_uid yoksa ve daha önce reddedilmişse banner LocalStorage'da takip ediyor;
-        // burada server-side koruma yok ama uid set edilmemiş olur — yine de tutup is_bot=1 ile filtreleriz)
-        if ($request->cookie('almanyauni_consent') === 'rejected') return;
+        // Analitik YALNIZCA açık rızayla çalışır.
+        //
+        // Eskiden burada yalnızca 'rejected' engelleniyordu; yani KARAR VERMEMİŞ
+        // ziyaretçi için de almanyauni_uid (1 yıl) yazılıp sayfa görüntülemesi
+        // kaydediliyordu. Bu, çerez politikasının o çerezi "onay sonrası" diye
+        // sınıflandırmasıyla çelişiyordu ve rıza öncesi izleme anlamına geliyordu.
+        // Artık varsayılan REDDİR: karar verilmemiş = reddedilmiş.
+        if (! \App\Support\Consent::analytics($request)) return;
 
         $ua = (string) $request->userAgent();
         $isBot = $this->isBot($ua);
