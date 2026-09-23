@@ -1149,6 +1149,95 @@ Route::get('/robots.txt', function (\Illuminate\Http\Request $request) {
         ->header('Content-Type', 'text/plain; charset=utf-8');
 });
 
+/*
+ * Şema/proxy teşhisi — http→https yönlendirmesini YAZMADAN ÖNCE koşulması şart.
+ *
+ * Neden: sitenin tamamı hem http:// hem https:// üzerinden 200 dönüyor ve her sürüm
+ * kendini kanonik ilan ediyor (canonical url() ile üretiliyor, o da isteğin şemasını
+ * kullanıyor). Düzeltmesi .htaccess'e bir http→https kuralı eklemek; ama TLS bir
+ * reverse proxy'de sonlanıyorsa Apache HTTPS'i "off" görür ve
+ *   RewriteCond %{HTTPS} !=on
+ * gibi naif bir kural SONSUZ DÖNGÜ yaratır — yani tüm siteyi indirir.
+ *
+ * Bu uç nokta, kuralın hangi koşula bakması gerektiğini sunucunun kendisine sorar.
+ * Yalnızca şema/proxy bilgisi döner; gizli değer basmaz. HTTPS üzerinden çağır —
+ * ihtiyaç duyulan tüm bilgi tek bir güvenli istekte toplanıyor, token'ı düz HTTP
+ * üzerinden göndermek gerekmiyor.
+ */
+Route::get('/_system/proxy-check', function (\Illuminate\Http\Request $request) {
+    $expected = config('services.system_token');
+    if (! $expected || ! hash_equals((string) $expected, (string) $request->query('token'))) {
+        abort(403, 'Invalid token');
+    }
+
+    $server = fn (string $k) => array_key_exists($k, $_SERVER) ? var_export($_SERVER[$k], true) : '(tanımsız)';
+
+    // Apache'nin RewriteCond ile görebildiği değişkenler
+    $apache = [
+        'HTTPS'           => $server('HTTPS'),
+        'SERVER_PORT'     => $server('SERVER_PORT'),
+        'REQUEST_SCHEME'  => $server('REQUEST_SCHEME'),
+        'SERVER_SOFTWARE' => $server('SERVER_SOFTWARE'),
+        'HTTP_HOST'       => $server('HTTP_HOST'),
+    ];
+
+    // Proxy başlıkları (RewriteCond %{HTTP:X-Forwarded-Proto} ile okunabilir)
+    $forwarded = [];
+    foreach ($_SERVER as $k => $v) {
+        if (str_starts_with($k, 'HTTP_X_FORWARDED') || $k === 'HTTP_FORWARDED' || $k === 'HTTP_X_ARR_SSL') {
+            $forwarded[$k] = is_string($v) ? $v : var_export($v, true);
+        }
+    }
+
+    $laravel = [
+        'request()->secure()'      => $request->secure() ? 'true' : 'false',
+        'request()->getScheme()'   => $request->getScheme(),
+        'url()->current()'         => url()->current(),
+        'config(app.url)'          => (string) config('app.url'),
+        'asset("x")'               => asset('x'),
+        'TRUSTED_PROXIES(env)'     => env('TRUSTED_PROXIES') === null ? '(tanımsız)' : (string) env('TRUSTED_PROXIES'),
+        'isFromTrustedProxy()'     => method_exists($request, 'isFromTrustedProxy')
+            ? ($request->isFromTrustedProxy() ? 'true' : 'false') : '(yok)',
+        'getTrustedProxies()'      => implode(', ', \Symfony\Component\HttpFoundation\Request::getTrustedProxies()) ?: '(boş)',
+        'REMOTE_ADDR'              => $server('REMOTE_ADDR'),
+    ];
+
+    // Karar: hangi RewriteCond güvenli?
+    $apacheSeesHttps = (($_SERVER['HTTPS'] ?? '') === 'on') || (($_SERVER['REQUEST_SCHEME'] ?? '') === 'https');
+    $xfp = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? null;
+
+    if ($request->secure() && $apacheSeesHttps) {
+        $verdict = 'TLS Apache üzerinde sonlanıyor. "RewriteCond %{HTTPS} !=on" GÜVENLİ.';
+    } elseif ($request->secure() && $xfp === 'https') {
+        $verdict = 'TLS proxy üzerinde sonlanıyor; Apache HTTPS=off görüyor ama X-Forwarded-Proto=https geliyor. '
+            . 'Kural X-Forwarded-Proto başlığını da kontrol ETMELİ, yoksa SONSUZ DÖNGÜ olur.';
+    } elseif ($request->secure()) {
+        $verdict = 'İstek güvenli ama ne Apache HTTPS=on görüyor ne de X-Forwarded-Proto geliyor. '
+            . 'Yönlendirme kuralı yazma — hangi değişkenin güvenilir olduğu belirsiz.';
+    } else {
+        $verdict = 'Bu istek HTTPS üzerinden gelmedi. Uç noktayı https:// ile tekrar çağır.';
+    }
+
+    $out = "ŞEMA / PROXY TEŞHİSİ\n" . str_repeat('=', 58) . "\n\n";
+    $out .= "İstek şeması: " . $request->getScheme() . "\n\n";
+    $out .= "APACHE DEĞİŞKENLERİ (RewriteCond bunları görür)\n";
+    foreach ($apache as $k => $v) {
+        $out .= sprintf("  %-18s %s\n", $k, $v);
+    }
+    $out .= "\nPROXY BAŞLIKLARI\n";
+    $out .= $forwarded ? '' : "  (hiç X-Forwarded-* başlığı yok → proxy yok)\n";
+    foreach ($forwarded as $k => $v) {
+        $out .= sprintf("  %-26s %s\n", $k, $v);
+    }
+    $out .= "\nLARAVEL\n";
+    foreach ($laravel as $k => $v) {
+        $out .= sprintf("  %-24s %s\n", $k, $v);
+    }
+    $out .= "\n" . str_repeat('=', 58) . "\nKARAR\n  " . wordwrap($verdict, 70, "\n  ") . "\n";
+
+    return response($out, 200, ['Content-Type' => 'text/plain; charset=utf-8']);
+})->middleware('throttle:20,1');
+
 // Mail teşhis — "hangi ayar gerçekten kullanılıyor?" sorusunu sunucunun kendisine sorar.
 // Deneme-yanılma yerine tek ekranda: her kutunun etkin host/port/kullanıcı adı, parolanın
 // DOLU olup olmadığı (değeri ASLA yazılmaz, yalnızca uzunluk) ve .env'de aynı anahtarın
