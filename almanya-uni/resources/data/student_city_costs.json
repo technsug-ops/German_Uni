@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "kira_kaynak": "MLP Studentenwohnreport 2025 — sıcak kira, 30 m²",
+    "semesterbeitrag_donem": "Wintersemester 2026/27",
+    "deutschlandticket_aylik": 63,
+    "deutschlandsemesterticket_donemlik": 226.80,
+    "not": "Aachen Semesterbeitrag tahmindir (WS24/25 = 304,47 € + D-Ticket artışı); 2026/27 rakamı yayınlanmadı"
+  },
+  "sehirler": [
+    {"ad":"Chemnitz","kira":296,"kira_artis":1.2,"semesterbeitrag":341.40,"ticket_dahil":true,"dogrulama":"birincil"},
+    {"ad":"Bochum","kira":368,"kira_artis":2.3,"semesterbeitrag":380.00,"ticket_dahil":true,"dogrulama":"birincil"},
+    {"ad":"Magdeburg","kira":374,"kira_artis":2.5,"semesterbeitrag":329.30,"ticket_dahil":true,"dogrulama":"birincil"},
+    {"ad":"Greifswald","kira":402,"kira_artis":1.7,"semesterbeitrag":127.00,"ticket_dahil":false,"dogrulama":"birincil"},
+    {"ad":"Leipzig","kira":442,"kira_artis":5.5,"semesterbeitrag":332.30,"ticket_dahil":true,"dogrulama":"birincil"},
+    {"ad":"Bielefeld","kira":443,"kira_artis":4.6,"semesterbeitrag":351.65,"ticket_dahil":true,"dogrulama":"birincil"},
+    {"ad":"Kiel","kira":460,"kira_artis":7.1,"semesterbeitrag":403.00,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Jena","kira":466,"kira_artis":6.1,"semesterbeitrag":333.05,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Hannover","kira":477,"kira_artis":2.3,"semesterbeitrag":453.16,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Saarbrücken","kira":496,"kira_artis":7.7,"semesterbeitrag":412.30,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Rostock","kira":496,"kira_artis":9.1,"semesterbeitrag":352.00,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Dresden","kira":499,"kira_artis":4.0,"semesterbeitrag":361.00,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Mannheim","kira":502,"kira_artis":4.0,"semesterbeitrag":194.00,"ticket_dahil":false,"dogrulama":"arama"},
+    {"ad":"Bremen","kira":504,"kira_artis":3.0,"semesterbeitrag":443.25,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Göttingen","kira":508,"kira_artis":5.2,"semesterbeitrag":484.18,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Trier","kira":510,"kira_artis":0.1,"semesterbeitrag":355.80,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Aachen","kira":521,"kira_artis":1.6,"semesterbeitrag":355.00,"ticket_dahil":true,"dogrulama":"TAHMIN"},
+    {"ad":"Oldenburg","kira":526,"kira_artis":6.9,"semesterbeitrag":457.90,"ticket_dahil":true,"dogrulama":"arama"},
+    {"ad":"Tübingen","kira":526,"kira_artis":1.7,"semesterbeitrag":194.80,"ticket_dahil":false,"dogrulama":"arama"},
+    {"ad":"Ulm","kira":530,"kira_artis":-3.0,"semesterbeitrag":192.00,"ticket_dahil":false,"dogrulama":"birincil"}
+  ]
+}
