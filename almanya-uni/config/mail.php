@@ -45,7 +45,10 @@ return [
             'port' => env('MAIL_PORT', 2525),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            // Acik zaman asimi: cozulemeyen/yanlis bir host'ta Symfony varsayilani
+            // istegi PHP'nin max_execution_time sinirina kadar bekletir ve panel
+            // 500 doner. Kisa sinir, hatanin okunabilir bir bildirime donmesini saglar.
+            'timeout' => (int) env('MAIL_TIMEOUT', 15),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
@@ -75,7 +78,10 @@ return [
             'port' => env('OUTREACH_MAIL_PORT', 587),
             'username' => env('OUTREACH_MAIL_USERNAME'),
             'password' => env('OUTREACH_MAIL_PASSWORD'),
-            'timeout' => null,
+            // Acik zaman asimi: cozulemeyen/yanlis bir host'ta Symfony varsayilani
+            // istegi PHP'nin max_execution_time sinirina kadar bekletir ve panel
+            // 500 doner. Kisa sinir, hatanin okunabilir bir bildirime donmesini saglar.
+            'timeout' => (int) env('MAIL_TIMEOUT', 15),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
@@ -87,7 +93,10 @@ return [
             'port' => env('ADMIN_MAIL_PORT', 587),
             'username' => env('ADMIN_MAIL_USERNAME'),
             'password' => env('ADMIN_MAIL_PASSWORD'),
-            'timeout' => null,
+            // Acik zaman asimi: cozulemeyen/yanlis bir host'ta Symfony varsayilani
+            // istegi PHP'nin max_execution_time sinirina kadar bekletir ve panel
+            // 500 doner. Kisa sinir, hatanin okunabilir bir bildirime donmesini saglar.
+            'timeout' => (int) env('MAIL_TIMEOUT', 15),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 

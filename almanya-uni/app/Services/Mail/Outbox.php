@@ -161,14 +161,23 @@ class Outbox
         // DNS değil, .env. (Aynı anahtar .env'de iki kez geçiyorsa SON tanım kazanır —
         // dolu satırdan sonra boş bir tekrar varsa değer boşalır.)
         if (blank($host)) {
-            return "SMTP sunucu adı BOŞ: .env'de {$hostVar} tanımlı değil ya da sonradan boş olarak "
+            return "SMTP sunucu adı BOŞ: {$hostVar} tanımlı değil ya da sonradan boş olarak "
                 . "tekrar tanımlanmış (aynı anahtar iki kez geçiyorsa son tanım geçerlidir). "
-                . "Dosyada {$hostVar} satırlarının tamamını ara. Ham hata: {$raw}";
+                . self::whereToEdit() . " Ham hata: {$raw}";
+        }
+
+        // Doldurulmamış yer tutucu (<kasserver-host> gibi). Ayrı mesaj gerekiyor çünkü
+        // "DNS'te yok" demek burada yanlış iz sürdürür: ortada gerçek bir ad yok ki.
+        if (preg_match('/[<>]/', (string) $host)) {
+            return "SMTP sunucu adı DOLDURULMAMIŞ: {$hostVar} hâlâ yer tutucu değerini taşıyor ("
+                . self::forDisplay($host) . "). Gerçek sunucu adıyla değiştir — barındırma "
+                . 'panelindeki "giden sunucu (SMTP)" değeri. ' . self::whereToEdit();
         }
 
         if (str_contains($raw, 'getaddrinfo') || str_contains($raw, 'Name or service not known')) {
-            return "SMTP sunucu adı çözümlenemedi: \"{$host}\". Bu ad DNS'te yok — {$hostVar} değerini düzelt "
-                . "(barındırma panelindeki giden sunucu adı ya da mail.<alan-adın>). Ham hata: {$raw}";
+            return 'SMTP sunucu adı çözümlenemedi: ' . self::forDisplay($host) . ". Bu ad DNS'te yok — "
+                . "{$hostVar} değerini düzelt (barındırma panelindeki giden sunucu adı). "
+                . self::whereToEdit() . " Ham hata: {$raw}";
         }
 
         if (str_contains($raw, 'Connection refused') || str_contains($raw, 'Connection timed out')) {
@@ -177,9 +186,32 @@ class Outbox
         }
 
         if (str_contains($raw, 'Authentication') || str_contains($raw, '535')) {
-            return "SMTP kimlik doğrulaması reddedildi ({$host}). Kullanıcı adı/parola hatalı olabilir. Ham hata: {$raw}";
+            return 'SMTP kimlik doğrulaması reddedildi (' . self::forDisplay($host) . '). Kullanıcı adı/parola '
+                . 'hatalı olabilir; bazı sağlayıcılarda (All-Inkl) kullanıcı adı e-posta adresi DEĞİL, '
+                . "posta kutusu kimliğidir. Ham hata: {$raw}";
         }
 
         return $raw;
+    }
+
+    /**
+     * Hata metnindeki değeri panelde görünür kılar.
+     *
+     * Neden: bildirim gövdesi ham HTML olarak basılıyor. "<kasserver-host>" gibi bir
+     * değer tarayıcıda bilinmeyen bir etiket sayılıp YUTULUYOR; ekranda sadece
+     * tırnak kalıyor ve asıl bilgi kayboluyor (2026-09-23'te bir saat kaybettirdi).
+     */
+    private static function forDisplay(?string $value): string
+    {
+        return '"' . e((string) $value) . '"';
+    }
+
+    /** Prod .env'i elle düzenlemek kalıcı değil — deploy secret'tan yeniden yazıyor. */
+    private static function whereToEdit(): string
+    {
+        return app()->environment('production')
+            ? 'Not: prod .env her deploy\'da GitHub secret ENV_PRODUCTION\'dan yeniden yazılır; '
+                . 'düzeltmeyi sunucudaki dosyaya değil o secret\'a yap, sonra deploy tetikle.'
+            : 'Düzeltmeyi .env dosyasında yap.';
     }
 }
