@@ -283,32 +283,54 @@ class SitemapController extends Controller
                 }
             });
 
+        // Blog ve SSS slug'ları dile göre DEĞİŞİR ("...-en" / "...-de"). Bu yüzden
+        // hreflang alternatifleri prefix değiştirerek değil, translation_group_id
+        // üzerinden gerçek kardeş kayıttan üretilir.
+        $postAlts = $this->postSlugsByGroup();
+        $faqAlts = $this->faqSlugsByGroup();
+
         Post::published()
-            ->select(['slug', 'updated_at'])
+            ->select(['slug', 'updated_at', 'translation_group_id'])
             ->orderBy('id')
-            ->chunk(500, function ($chunk) use (&$urls) {
+            ->chunk(500, function ($chunk) use (&$urls, $postAlts, $activeLocales) {
                 foreach ($chunk as $p) {
+                    $alts = [];
+                    foreach ($activeLocales as $loc) {
+                        $slug = $postAlts[$p->translation_group_id][$loc] ?? null;
+                        if ($slug) {
+                            $alts[$loc] = route('blog.show', ['locale' => $loc, 'slug' => $slug]);
+                        }
+                    }
                     $urls[] = $this->entry(
                         route('blog.show', $p->slug),
                         $p->updated_at,
                         'monthly',
-                        0.7
+                        0.7,
+                        $alts
                     );
                 }
             });
 
         Faq::published()
             ->with('topic:id,slug')
-            ->select(['id', 'slug', 'updated_at', 'has_answer', 'faq_topic_id'])
+            ->select(['id', 'slug', 'updated_at', 'has_answer', 'faq_topic_id', 'translation_group_id'])
             ->orderBy('id')
-            ->chunk(500, function ($chunk) use (&$urls) {
+            ->chunk(500, function ($chunk) use (&$urls, $faqAlts, $activeLocales) {
                 foreach ($chunk as $f) {
                     if (!$f->topic) continue;
+                    $alts = [];
+                    foreach ($activeLocales as $loc) {
+                        $sibling = $faqAlts[$f->translation_group_id][$loc] ?? null;
+                        if ($sibling) {
+                            $alts[$loc] = route('faqs.show', ['locale' => $loc, 'topic' => $sibling[0], 'slug' => $sibling[1]]);
+                        }
+                    }
                     $urls[] = $this->entry(
                         route('faqs.show', [$f->topic->slug, $f->slug]),
                         $f->updated_at,
                         $f->has_answer ? 'monthly' : 'yearly',
-                        $f->has_answer ? 0.7 : 0.4
+                        $f->has_answer ? 0.7 : 0.4,
+                        $alts
                     );
                 }
             });
@@ -471,7 +493,11 @@ class SitemapController extends Controller
             ->header('Content-Type', 'application/xml; charset=utf-8');
     }
 
-    private function entry(string $url, $lastmod, string $changefreq, float $priority): array
+    /**
+     * @param  array<string,string>  $alternates  locale => GERÇEK URL. Boş bırakılırsa
+     *   hreflang alternatifleri dil prefix'i değiştirilerek üretilir (bkz. buildXml).
+     */
+    private function entry(string $url, $lastmod, string $changefreq, float $priority, array $alternates = []): array
     {
         return [
             'loc' => $url,
@@ -480,7 +506,61 @@ class SitemapController extends Controller
                 : (string) $lastmod,
             'changefreq' => $changefreq,
             'priority' => number_format($priority, 1),
+            'alternates' => $alternates,
         ];
+    }
+
+    /**
+     * translation_group_id → [locale => slug] haritası.
+     *
+     * published() scope'u locale filtreler (app locale), bu yüzden burada KULLANILMAZ:
+     * amaç tam olarak diğer dillerdeki kardeş kayıtları bulmak.
+     *
+     * @return array<string,array<string,string>>
+     */
+    private function postSlugsByGroup(): array
+    {
+        $map = [];
+
+        Post::query()
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->whereNotNull('translation_group_id')
+            ->select(['translation_group_id', 'locale', 'slug'])
+            ->chunk(1000, function ($chunk) use (&$map) {
+                foreach ($chunk as $p) {
+                    $map[$p->translation_group_id][$p->locale] = $p->slug;
+                }
+            });
+
+        return $map;
+    }
+
+    /**
+     * translation_group_id → [locale => [topic_slug, slug]] haritası (SSS).
+     *
+     * @return array<string,array<string,array{0:string,1:string}>>
+     */
+    private function faqSlugsByGroup(): array
+    {
+        $map = [];
+
+        Faq::query()
+            ->where('is_published', true)
+            ->whereNotNull('translation_group_id')
+            ->with('topic:id,slug')
+            ->select(['id', 'translation_group_id', 'locale', 'slug', 'faq_topic_id'])
+            ->chunk(1000, function ($chunk) use (&$map) {
+                foreach ($chunk as $f) {
+                    if (! $f->topic) {
+                        continue;
+                    }
+                    $map[$f->translation_group_id][$f->locale] = [$f->topic->slug, $f->slug];
+                }
+            });
+
+        return $map;
     }
 
     /**
@@ -513,13 +593,37 @@ class SitemapController extends Controller
             $xml .= "    <changefreq>{$u['changefreq']}</changefreq>\n";
             $xml .= "    <priority>{$u['priority']}</priority>\n";
 
-            // hreflang alternates — multilang SEO
-            foreach ($activeLocales as $loc) {
-                $altUrl = $this->swapLocale($u['loc'], $loc, $activeLocales);
+            /*
+             * hreflang alternatifleri.
+             *
+             * İki kaynak var, sırayla:
+             *  1. Girdi GERÇEK alternatif taşıyorsa (blog, SSS) onlar kullanılır.
+             *     Bu içeriklerin slug'ı dile göre değişir ("...-en" / "...-de"), bu
+             *     yüzden prefix değiştirmek olmayan URL üretir → 404.
+             *  2. Taşımıyorsa (program, üniversite, şehir…) slug dilden bağımsızdır;
+             *     prefix değiştirmek doğru sonucu verir.
+             *
+             * Çevirisi olmayan dil için alternatif YAZILMAZ — sahte URL üretmek,
+             * hiç hreflang vermemekten daha zararlıdır (Google kümeyi tümden atar).
+             */
+            $alts = $u['alternates'] ?? [];
+
+            if ($alts === []) {
+                foreach ($activeLocales as $loc) {
+                    $alts[$loc] = $this->swapLocale($u['loc'], $loc, $activeLocales);
+                }
+            }
+
+            foreach ($alts as $loc => $altUrl) {
                 $xml .= '    <xhtml:link rel="alternate" hreflang="' . $loc . '" href="' . htmlspecialchars($altUrl, ENT_XML1 | ENT_QUOTES, 'UTF-8') . '"/>' . "\n";
             }
-            $xDefault = $this->swapLocale($u['loc'], $activeLocales[0] ?? 'tr', $activeLocales);
-            $xml .= '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($xDefault, ENT_XML1 | ENT_QUOTES, 'UTF-8') . '"/>' . "\n";
+
+            // x-default: tercih edilen dil (activeLocales[0]) varsa o, yoksa mevcut
+            // alternatiflerden ilki. Var olmayan bir dile işaret edilmez.
+            $xDefault = $alts[$activeLocales[0] ?? 'tr'] ?? (reset($alts) ?: null);
+            if ($xDefault) {
+                $xml .= '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($xDefault, ENT_XML1 | ENT_QUOTES, 'UTF-8') . '"/>' . "\n";
+            }
 
             $xml .= "  </url>\n";
         }
