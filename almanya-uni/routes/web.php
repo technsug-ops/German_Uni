@@ -152,7 +152,7 @@ $routes = function () {
     Route::match(['get', 'post'], '/newsletter/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])
         ->name('newsletter.unsubscribe');
 
-    // Legal pages — KVKK + GDPR + TMG (DB-driven, admin-editable via Filament)
+    // Legal pages — KVKK + GDPR + DDG (DB-driven, admin-editable via Filament)
     Route::get('/privacy',       [LegalController::class, 'privacy'])->name('legal.privacy');
     Route::get('/terms',         [LegalController::class, 'terms'])->name('legal.terms');
     Route::get('/cookie-policy', [LegalController::class, 'cookies'])->name('legal.cookies');
@@ -1629,6 +1629,40 @@ Route::middleware('auth')->group(function () {
         } else {
             $out .= "\n[ Uygulamak için: bu URL'ye ?run=1 ekle ]\n";
         }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
+    // Hukuki sayfa rollout doğrulaması (SSH yok → legal:audit + legal:parity tarayıcıdan).
+    // SALT OKUMA: hiçbir şey yazmaz. Legacy JSON kolonları düşürülünce (Faz B) kaldırılabilir.
+    Route::get('/admin/ops/legal-check', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $db = \Illuminate\Support\Facades\DB::class;
+
+        $out = "=== legal migrations (id sırası = çalışma sırası) ===\n";
+        foreach ($db::table('migrations')->where('migration', 'like', '2026_09_24_%legal%')->orderBy('id')->get() as $m) {
+            $out .= "#{$m->id}  batch {$m->batch}  {$m->migration}\n";
+        }
+
+        $out .= "\n=== legal_page_translations ===\n";
+        if (\Illuminate\Support\Facades\Schema::hasTable('legal_page_translations')) {
+            $out .= 'toplam: ' . $db::table('legal_page_translations')->count() . "\n";
+            foreach ($db::table('legal_page_translations')->selectRaw('locale, count(*) c')->groupBy('locale')->orderBy('locale')->get() as $r) {
+                $out .= "{$r->locale}: {$r->c}\n";
+            }
+        } else {
+            $out .= "TABLO YOK\n";
+        }
+
+        foreach (['legal:audit', 'legal:parity'] as $cmd) {
+            $out .= "\n=== {$cmd} ===\n";
+            try {
+                $exit = \Illuminate\Support\Facades\Artisan::call($cmd);
+                $out .= \Illuminate\Support\Facades\Artisan::output() . "exit: {$exit}\n";
+            } catch (\Throwable $e) {
+                $out .= 'EXCEPTION: ' . $e->getMessage() . "\n";
+            }
+        }
+
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 

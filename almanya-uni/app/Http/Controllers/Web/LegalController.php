@@ -14,6 +14,13 @@ class LegalController extends Controller
 
         abort_if(! $page, 404);
 
+        // İstenen dilde çeviri yoksa 404. Bilinçli olarak BAŞKA DİLE DÜŞMÜYORUZ:
+        // /en/privacy isteyene Türkçe gizlilik metni göstermek, kişinin okuduğunu
+        // sandığı şeyle fiilen bağlandığı şeyi ayırmak demek. Uygulamanın genel
+        // fallback_locale'i (tr) burada bilerek devre dışı; arayüz metinleri
+        // (__() ile gelen kısa stringler) elbette etkilenmiyor.
+        abort_if(! $page->hasContentFor(), 404);
+
         return view('legal.show', compact('page'));
     }
 

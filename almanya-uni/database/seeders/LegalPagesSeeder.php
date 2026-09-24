@@ -9,7 +9,7 @@ class LegalPagesSeeder extends Seeder
 {
     /**
      * Seed legal pages with initial content adapted from German legal templates
-     * (DSGVO/GDPR + TMG + MStV) + TechNS UG operator info. All content should be
+     * (DSGVO/GDPR + DDG + MStV) + TechNS UG operator info. All content should be
      * reviewed by a lawyer before relying on it for compliance.
      *
      * Idempotent: uses updateOrCreate so re-running won't duplicate.
@@ -35,7 +35,7 @@ class LegalPagesSeeder extends Seeder
     private function impressum(): array
     {
         $body = <<<'MD'
-## Operatör (§ 5 TMG)
+## Operatör (§ 5 DDG)
 
 **TechNS UG (haftungsbeschränkt)**
 Ludwig-Erhard-Str. 16A
@@ -80,14 +80,14 @@ Site operatörleri tarafından oluşturulan içerikler Alman telif hakkı yasas�
 MD;
 
         $bodyEn = str_replace([
-            'Operatör (§ 5 TMG)', 'Yönetim', 'İletişim', 'Ticaret Sicili', 'Vergi Bilgileri',
+            'Operatör (§ 5 DDG)', 'Yönetim', 'İletişim', 'Ticaret Sicili', 'Vergi Bilgileri',
             'İçerikten Sorumlu', 'AB Çevrimiçi Uyuşmazlık Çözümü', 'İçerik Sorumluluğu', 'Telif Hakkı',
             'Telefon:', 'E-posta:', 'Web:', 'Sicil mahkemesi:', 'Sicil numarası:',
             'Geschäftsführer:', 'Hizmet sağlayıcı olarak, § 7 Abs. 1 TMG uyarınca bu sayfalardaki kendi içeriğimizden genel yasalara göre sorumluyuz. §§ 8-10 TMG uyarınca, iletilen veya saklanan üçüncü taraf bilgilerini izleme veya yasadışı faaliyete işaret eden koşulları araştırma yükümlülüğümüz yoktur.',
             'Avrupa Komisyonu çevrimiçi uyuşmazlık çözümü platformu sağlar:', 'Tüketici hakem heyeti önünde uyuşmazlık çözümüne katılma zorunluluğumuz veya isteğimiz bulunmamaktadır.',
             'Site operatörleri tarafından oluşturulan içerikler Alman telif hakkı yasasına tabidir. Çoğaltma, işleme, dağıtma ve telif hakkı sınırları dışındaki her türlü kullanım, ilgili yazar veya yaratıcının yazılı izniyle gerçekleştirilir.',
         ], [
-            'Operator (§ 5 TMG)', 'Management', 'Contact', 'Commercial Register', 'Tax Information',
+            'Operator (§ 5 DDG)', 'Management', 'Contact', 'Commercial Register', 'Tax Information',
             'Responsible for content', 'EU Online Dispute Resolution', 'Liability for content', 'Copyright',
             'Phone:', 'Email:', 'Web:', 'Registry court:', 'Registration number:',
             'Managing Director:',
@@ -97,7 +97,7 @@ MD;
         ], $body);
 
         $bodyDe = str_replace([
-            'Operatör (§ 5 TMG)', 'Yönetim', 'İletişim', 'Ticaret Sicili', 'Vergi Bilgileri',
+            'Operatör (§ 5 DDG)', 'Yönetim', 'İletişim', 'Ticaret Sicili', 'Vergi Bilgileri',
             'İçerikten Sorumlu', 'AB Çevrimiçi Uyuşmazlık Çözümü', 'İçerik Sorumluluğu', 'Telif Hakkı',
             'Telefon:', 'E-posta:', 'Web:', 'Sicil mahkemesi:', 'Sicil numarası:',
             'Geschäftsführer:',
@@ -105,7 +105,7 @@ MD;
             'Avrupa Komisyonu çevrimiçi uyuşmazlık çözümü platformu sağlar:', 'Tüketici hakem heyeti önünde uyuşmazlık çözümüne katılma zorunluluğumuz veya isteğimiz bulunmamaktadır.',
             'Site operatörleri tarafından oluşturulan içerikler Alman telif hakkı yasasına tabidir. Çoğaltma, işleme, dağıtma ve telif hakkı sınırları dışındaki her türlü kullanım, ilgili yazar veya yaratıcının yazılı izniyle gerçekleştirilir.',
         ], [
-            'Betreiber (§ 5 TMG)', 'Geschäftsführung', 'Kontakt', 'Handelsregister', 'Steuerinformationen',
+            'Betreiber (§ 5 DDG)', 'Geschäftsführung', 'Kontakt', 'Handelsregister', 'Steuerinformationen',
             'Verantwortlich für den Inhalt', 'EU-Streitbeilegung', 'Haftung für Inhalte', 'Urheberrecht',
             'Telefon:', 'E-Mail:', 'Web:', 'Registergericht:', 'Registernummer:',
             'Geschäftsführer:',
@@ -118,9 +118,9 @@ MD;
             'key' => 'impressum',
             'titles' => ['tr' => 'Künye', 'en' => 'Imprint', 'de' => 'Impressum'],
             'descriptions' => [
-                'tr' => '§ 5 TMG ve § 18 MStV uyarınca yasal bildirim — TechNS UG operatör, adres, iletişim, ticaret sicili ve vergi bilgileri.',
-                'en' => 'Legal disclosure under § 5 TMG and § 18 MStV — TechNS UG operator info, address, contact, register, tax data.',
-                'de' => 'Rechtliche Angaben gemäß § 5 TMG und § 18 MStV — Betreiber, Anschrift, Kontakt, Handelsregister, Steuerinformationen der TechNS UG.',
+                'tr' => '§ 5 DDG ve § 18 MStV uyarınca yasal bildirim — TechNS UG operatör, adres, iletişim, ticaret sicili ve vergi bilgileri.',
+                'en' => 'Legal disclosure under § 5 DDG and § 18 MStV — TechNS UG operator info, address, contact, register, tax data.',
+                'de' => 'Rechtliche Angaben gemäß § 5 DDG und § 18 MStV — Betreiber, Anschrift, Kontakt, Handelsregister, Steuerinformationen der TechNS UG.',
             ],
             'bodies' => ['tr' => $body, 'en' => $bodyEn, 'de' => $bodyDe],
         ];
