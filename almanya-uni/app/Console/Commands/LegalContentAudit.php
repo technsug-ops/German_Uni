@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\LegalPage;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Hukuki sayfaların İÇERİĞİNİ denetler.
@@ -84,6 +86,21 @@ class LegalContentAudit extends Command
         ],
     ];
 
+    /** Önem dereceleri: CRITICAL gerçek hata, REVIEW hukuki karar bekleyen atıf. */
+    private const CRITICAL = 'CRITICAL';
+
+    private const REVIEW = 'REVIEW REQUIRED';
+
+    private const GROUP_TRACKING = 'Tracking disclosure';
+
+    private const GROUP_LOCALE = 'Locale isolation';
+
+    private const GROUP_DDG = '§5 DDG';
+
+    private const GROUP_PARITY = 'Data parity';
+
+    private const GROUP_LIABILITY = 'Legacy liability references';
+
     public function handle(): int
     {
         $findings = [];
@@ -112,7 +129,10 @@ class LegalContentAudit extends Command
                 }
 
                 foreach ($this->staleLawCitations($haystack) as $citation) {
-                    $findings[] = [$page->key, $locale, 'eski kanun atfı', $citation];
+                    // § 5 TMG'nin karşılığı doğrulandı (→ § 5 DDG): kalmışsa gerçek hata.
+                    // Diğer TMG atıfları (sorumluluk) hukuki karar bekliyor → inceleme.
+                    $group = preg_match('~^§\s*5\s+TMG$~u', $citation) ? self::GROUP_DDG : self::GROUP_LIABILITY;
+                    $findings[] = [$page->key, $locale, 'eski kanun atfı', $citation, $group];
                 }
 
                 foreach (self::FALSE_CLAIMS as $claim) {
@@ -126,20 +146,43 @@ class LegalContentAudit extends Command
                         $findings[] = [$page->key, $locale, 'eksik beyan', $needle];
                     }
                 }
+
+                if ($page->key === 'impressum' && ! preg_match('~§\s*5\s+DDG~u', $haystack)) {
+                    $findings[] = [$page->key, $locale, 'eksik beyan', '§ 5 DDG', self::GROUP_DDG];
+                }
             }
         }
+
+        foreach ($this->parityFindings() as $f) {
+            $findings[] = $f;
+        }
+
+        $findings = array_map(fn ($f) => $this->classify($f), $findings);
+        $summary = $this->summary($findings);
 
         if ($this->option('json')) {
             $this->line(json_encode([
                 'checked'  => $checked,
+                'summary'  => $summary,
                 'findings' => array_map(
-                    fn ($f) => ['key' => $f[0], 'locale' => $f[1], 'issue' => $f[2], 'detail' => $f[3]],
+                    fn ($f) => ['key' => $f[0], 'locale' => $f[1], 'issue' => $f[2], 'detail' => $f[3], 'group' => $f[4], 'severity' => $f[5]],
                     $findings
                 ),
             ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
+            // Çıkış kodu bilinçli olarak DEĞİŞMEDİ: herhangi bir bulgu (inceleme dahil) → 1.
             return $findings === [] ? self::SUCCESS : self::FAILURE;
         }
+
+        foreach ($summary as $label => $status) {
+            $line = str_pad($label . ':', 32) . $status;
+            match (true) {
+                $status === 'PASS'                     => $this->info($line),
+                str_starts_with($status, self::REVIEW) => $this->warn($line),
+                default                                => $this->error($line),
+            };
+        }
+        $this->newLine();
 
         if ($findings === []) {
             $this->info("PASS — {$checked} sayfa/dil denetlendi, bulgu yok.");
@@ -147,10 +190,82 @@ class LegalContentAudit extends Command
             return self::SUCCESS;
         }
 
-        $this->table(['legal_page', 'locale', 'sorun', 'ayrıntı'], $findings);
-        $this->error('FAIL — ' . count($findings) . " bulgu ({$checked} sayfa/dil denetlendi).");
+        $critical = array_values(array_filter($findings, fn ($f) => $f[5] === self::CRITICAL));
+        $review = array_values(array_filter($findings, fn ($f) => $f[5] === self::REVIEW));
+
+        if ($critical !== []) {
+            $this->error('CRITICAL FAIL (' . count($critical) . ')');
+            $this->table(['legal_page', 'locale', 'sorun', 'ayrıntı'], array_map(fn ($f) => array_slice($f, 0, 4), $critical));
+        }
+
+        if ($review !== []) {
+            $this->warn('REVIEW REQUIRED — LEGAL_REFERENCE_REVIEW_REQUIRED (' . count($review) . ')');
+            $this->table(['legal_page', 'locale', 'sorun', 'ayrıntı'], array_map(fn ($f) => array_slice($f, 0, 4), $review));
+        }
+
+        $this->error('FAIL — ' . count($critical) . ' kritik, ' . count($review) . " inceleme bekleyen bulgu ({$checked} sayfa/dil denetlendi).");
 
         return self::FAILURE;
+    }
+
+    /**
+     * Bulguya grup + önem derecesi ekler: [key, locale, issue, detail, group, severity].
+     *
+     * @param  array<int, string>  $f
+     * @return array<int, string>
+     */
+    private function classify(array $f): array
+    {
+        $group = $f[4] ?? match ($f[2]) {
+            'dil sızıntısı', 'eksik gövde' => self::GROUP_LOCALE,
+            'parity'                       => self::GROUP_PARITY,
+            default                        => self::GROUP_TRACKING, // yanlış / eksik beyan
+        };
+
+        return [$f[0], $f[1], $f[2], $f[3], $group, $group === self::GROUP_LIABILITY ? self::REVIEW : self::CRITICAL];
+    }
+
+    /** @return array<string, string> grup → PASS / FAIL / REVIEW REQUIRED */
+    private function summary(array $findings): array
+    {
+        $out = [];
+
+        foreach ([self::GROUP_TRACKING, self::GROUP_LOCALE, self::GROUP_DDG, self::GROUP_PARITY, self::GROUP_LIABILITY] as $group) {
+            $hit = array_filter($findings, fn ($f) => $f[4] === $group);
+            $out[$group] = $hit === [] ? 'PASS' : ($group === self::GROUP_LIABILITY ? self::REVIEW : 'FAIL') . ' (' . count($hit) . ')';
+        }
+
+        return $out;
+    }
+
+    /**
+     * legal:parity ile aynı kural: legacy JSON gövdesi ↔ çeviri satırı birebir.
+     *
+     * @return array<int, array<int, string>>
+     */
+    private function parityFindings(): array
+    {
+        if (! Schema::hasTable('legal_page_translations')) {
+            return [['*', '*', 'parity', 'legal_page_translations tablosu yok']];
+        }
+
+        $findings = [];
+
+        foreach (DB::table('legal_pages')->orderBy('id')->get(['id', 'key', 'bodies']) as $page) {
+            $bodies = json_decode($page->bodies ?? '', true);
+            $bodies = is_array($bodies) ? array_filter($bodies, fn ($b) => is_string($b) && trim($b) !== '') : [];
+
+            $rows = DB::table('legal_page_translations')
+                ->where('legal_page_id', $page->id)->pluck('body', 'locale')->all();
+
+            foreach (array_unique(array_merge(array_keys($bodies), array_keys($rows))) as $locale) {
+                if (($bodies[$locale] ?? null) !== ($rows[$locale] ?? null)) {
+                    $findings[] = [$page->key, $locale, 'parity', 'legacy JSON ile çeviri satırı farklı'];
+                }
+            }
+        }
+
+        return $findings;
     }
 
     /**

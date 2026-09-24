@@ -58,29 +58,29 @@ class LegalPageTranslationsTest extends TestCase
 
     public function test_en_and_de_cookie_policies_contain_no_turkish_fragments(): void
     {
-        // Fixture'lar canlıdan indirilen gerçek gövdeler; 000150 migration'ı bu
-        // sızıntıları temizliyor.
-        $bodies = [];
-        foreach (['tr', 'en', 'de'] as $locale) {
-            $bodies[$locale] = file_get_contents(base_path("tests/Fixtures/legal/cookies.{$locale}.html"));
-        }
+        // Prod DB'deki HAM Markdown gövdeler (canlı sayfadan kazınmış HTML değil —
+        // HTML'e karşı yazılan 000150 testte yeşil geçip prod'da hiçbir şey
+        // yapmamıştı). Sızıntıyı fiilen temizleyen 000400; zincir prod sırasıyla.
+        $snapshot = json_decode(file_get_contents(base_path('tests/Fixtures/legal/prod-raw-snapshot.json')), true);
 
         DB::table('legal_pages')->updateOrInsert(['key' => 'cookies'], [
-            'titles'       => json_encode(['tr' => 'Ç', 'en' => 'C', 'de' => 'C']),
-            'descriptions' => json_encode([]),
-            'bodies'       => json_encode($bodies, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            'titles'       => json_encode($snapshot['cookies']['titles'], JSON_UNESCAPED_UNICODE),
+            'descriptions' => json_encode($snapshot['cookies']['descriptions'], JSON_UNESCAPED_UNICODE),
+            'bodies'       => json_encode($snapshot['cookies']['bodies'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
             'is_published' => true,
             'sort_order'   => 0,
             'created_at'   => now(),
             'updated_at'   => now(),
         ]);
 
-        $leakFix = require database_path('migrations/2026_09_24_000150_fix_legal_cookie_locale_leaks.php');
-        $trackingFix = require database_path('migrations/2026_09_24_000100_fix_legal_tracking_disclosure_v2.php');
-
         ob_start();
-        $trackingFix->up();
-        $leakFix->up();
+        foreach ([
+            '2026_09_24_000100_fix_legal_tracking_disclosure_v2.php',
+            '2026_09_24_000150_fix_legal_cookie_locale_leaks.php',
+            '2026_09_24_000400_fix_legal_disclosure_raw_markdown.php',
+        ] as $file) {
+            (require database_path("migrations/{$file}"))->up();
+        }
         ob_end_clean();
 
         $fixed = json_decode(DB::table('legal_pages')->where('key', 'cookies')->value('bodies'), true);
@@ -108,10 +108,10 @@ class LegalPageTranslationsTest extends TestCase
         // Doğal çeviriler yerine geçmiş olmalı.
         $this->assertStringContainsString('language preference', $fixed['en']);
         $this->assertStringContainsString('Session management', $fixed['en']);
-        $this->assertStringContainsString('Spracheinstellung', $fixed['de']);
-        $this->assertStringContainsString('Sitzungsverwaltung', $fixed['de']);
+        $this->assertStringContainsString('Sprachwahl', $fixed['de']);
+        $this->assertStringContainsString('Session-Verwaltung', $fixed['de']);
 
-        // TR gövdesine dokunulmamış olmalı.
+        // TR gövdesindeki doğru Türkçe satıra dokunulmamış olmalı.
         $this->assertStringContainsString('dil tercihi', $fixed['tr']);
     }
 

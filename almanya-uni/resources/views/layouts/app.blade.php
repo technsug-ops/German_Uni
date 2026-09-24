@@ -914,6 +914,9 @@
                         <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition" title="{{ __('Privacy Policy') }}">{{ __('Privacy Policy') }}</a></li>
                         <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition" title="{{ __('Terms of Use') }}">{{ __('Terms of Use') }}</a></li>
                         <li><a href="{{ route('legal.cookies') }}" class="hover:text-white transition" title="{{ __('Cookie Policy') }}">{{ __('Cookie Policy') }}</a></li>
+                        {{-- Rızayı sonradan değiştirme/geri çekme için kalıcı erişim (GDPR 7(3)). Sayfa açmaz;
+                             aşağıdaki [data-cookie-settings] handler'ı çerez panelini açar. --}}
+                        <li><button type="button" data-cookie-settings class="hover:text-white transition text-left">{{ __('Cookie Settings') }}</button></li>
                         <li><a href="{{ route('legal.disclaimer') }}" class="hover:text-white transition" title="{{ __('Disclaimer') }}">{{ __('Disclaimer') }}</a></li>
                     </ul>
                 </div>

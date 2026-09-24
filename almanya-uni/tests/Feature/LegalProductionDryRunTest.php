@@ -9,15 +9,19 @@ use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 /**
- * Prod deploy provası.
+ * Prod deploy provası — HAM MARKDOWN üzerinde.
  *
- * tests/Fixtures/legal/prod-snapshot.json, canlı siteden (applytogerman.com,
- * 2026-09-24) indirilen 5 hukuki sayfanın 3 dildeki GERÇEK başlık/açıklama/gövde
- * içeriğidir. Burada o anlık görüntü DB'ye yüklenip migration zinciri prod'daki
- * sırayla koşturulur ve sonuç `legal:audit` + `legal:parity` ile denetlenir.
+ * tests/Fixtures/legal/prod-raw-snapshot.json, prod DB'deki 5 hukuki sayfanın
+ * 3 dildeki GERÇEK başlık/açıklama/ham gövdesidir (seeder Markdown'u + prod'daki
+ * eski TR slug'lı iç linkler + zincir öncesi § 5 TMG; render edildiğinde canlı
+ * HTML ile birebir aynı olduğu 2026-09-24'te doğrulandı). Burada o görüntü DB'ye
+ * yüklenip migration zinciri prod'daki sırayla koşturulur ve sonuç `legal:audit`
+ * + `legal:parity` ile denetlenir.
  *
- * Amaç: "lokalde geçti" ile "canlıda geçer" arasındaki farkı kapatmak. Önceki
- * iki başarısız migration tam bu boşlukta kayboldu.
+ * NEDEN HAM: Bu test önceden canlı sayfadan kazınmış HTML ile besleniyordu.
+ * DB'deki gövde ise Markdown; HTML kalıbı arayan 000100/000150 testte yeşil
+ * geçip prod'da hiçbir şey değiştirmedi. Migration'ın eşleştirdiği katman DB
+ * olduğu için fixture da DB'deki hâl olmak zorunda.
  */
 class LegalProductionDryRunTest extends TestCase
 {
@@ -29,12 +33,13 @@ class LegalProductionDryRunTest extends TestCase
         '2026_09_24_000150_fix_legal_cookie_locale_leaks.php',
         '2026_09_24_000160_replace_tmg_with_ddg_in_legal_pages.php',
         '2026_09_24_000300_backfill_legal_page_translations.php',
+        '2026_09_24_000400_fix_legal_disclosure_raw_markdown.php',
     ];
 
     /** @return array<string, array{titles: array, descriptions: array, bodies: array}> */
     private function snapshot(): array
     {
-        return json_decode(file_get_contents(base_path('tests/Fixtures/legal/prod-snapshot.json')), true);
+        return json_decode(file_get_contents(base_path('tests/Fixtures/legal/prod-raw-snapshot.json')), true);
     }
 
     private function loadProductionSnapshot(): void

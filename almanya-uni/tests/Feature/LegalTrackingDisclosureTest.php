@@ -7,18 +7,31 @@ use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 /**
- * 2026_09_24_000100_fix_legal_tracking_disclosure_v2 migration'ının sözleşmesi.
+ * İzleme beyanı sözleşmesi — prod'daki migration zincirinin SONUCU.
  *
- * Fixture'lar canlı siteden (applytogerman.com, 2026-09-24) indirilen GERÇEK
- * gövdelerdir — tests/Fixtures/legal/. Bir önceki migration tam da burada
- * patlamıştı: uydurma bir gövdeye karşı çalışıyordu. Bu testler prod'un birebir
- * HTML'ine karşı koşar.
+ * Gövdeler tests/Fixtures/legal/prod-raw-snapshot.json'dan: prod DB'deki HAM
+ * Markdown. Beyanı fiilen düzelten 000400'dür; 000100/000150 HTML kalıpları
+ * aradığı için ham gövdede hiçbir şey yapmaz (bkz. LegalRawMarkdownFixTest).
+ * Zincir yine de prod'daki sırasıyla koşulur ki aralarındaki etkileşim de
+ * sınansın.
+ *
+ * Bu dosya önceden canlı sayfadan kazınmış HTML ile besleniyordu ve 000100'ü
+ * o HTML'e karşı test ediyordu — prod'da hiçbir şey değişmezken yeşil geçti.
  */
 class LegalTrackingDisclosureTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** Canlı metindeki, fiilî davranışla çelişen ifadeler. */
+    /** Prod sırası. */
+    private const CHAIN = [
+        '2026_09_24_000100_fix_legal_tracking_disclosure_v2.php',
+        '2026_09_24_000150_fix_legal_cookie_locale_leaks.php',
+        '2026_09_24_000160_replace_tmg_with_ddg_in_legal_pages.php',
+        '2026_09_24_000300_backfill_legal_page_translations.php',
+        '2026_09_24_000400_fix_legal_disclosure_raw_markdown.php',
+    ];
+
+    /** Prod metnindeki, fiilî davranışla çelişen ifadeler (ham Markdown biçimiyle). */
     private const FALSE_CLAIMS = [
         'cookies' => [
             'tr' => ['Google Analytics, Facebook Pixel veya benzer kullanmıyoruz', 'Yok. Üçüncü taraf takip kullanmıyoruz'],
@@ -26,7 +39,7 @@ class LegalTrackingDisclosureTest extends TestCase
             'de' => ['Wir nutzen kein Google Analytics, Facebook Pixel', 'Yok. Üçüncü taraf takip kullanmıyoruz'],
         ],
         'privacy' => [
-            'tr' => ['Self-hosted (Google Analytics yok)', 'ABD\'ye veri aktarımı <strong>yapılmaz</strong>', 'GDPR 6(1)(f) meşru menfaat (self-hosted'],
+            'tr' => ['Self-hosted (Google Analytics yok)', "ABD'ye veri aktarımı **yapılmaz**", 'GDPR 6(1)(f) meşru menfaat (self-hosted'],
             'en' => ['Self-hosted (no Google Analytics)', 'No transfers to the USA.', 'Art. 6(1)(f) GDPR (self-hosted'],
             'de' => ['Self-hosted (kein Google Analytics)', 'Keine Übermittlung in die USA.', 'Art. 6(1)(f) DSGVO (self-hosted'],
         ],
@@ -35,37 +48,31 @@ class LegalTrackingDisclosureTest extends TestCase
     /** Düzeltmeden sonra bulunması gereken beyanlar. */
     private const REQUIRED = [
         'cookies' => [
-            'tr' => ['Google Analytics 4', 'Microsoft Clarity', 'oturum kayıtları', 'G-D0VB1M1RKF', '<code>_clck</code>', 'GDPR 6(1)(a) açık rıza', 'EU-U.S. Data Privacy Framework', 'AB Standart Sözleşme Maddeleri'],
-            'en' => ['Google Analytics 4', 'Microsoft Clarity', 'session recordings', 'G-D0VB1M1RKF', '<code>_clck</code>', 'Art. 6(1)(a) GDPR', 'EU-U.S. Data Privacy Framework', 'EU Standard Contractual Clauses'],
-            'de' => ['Google Analytics 4', 'Microsoft Clarity', 'Sitzungsaufzeichnungen', 'G-D0VB1M1RKF', '<code>_clck</code>', 'Art. 6(1)(a) DSGVO', 'EU-U.S. Data Privacy Framework', 'EU-Standardvertragsklauseln'],
+            'tr' => ['Google Analytics 4', 'Microsoft Clarity', 'oturum kayıtları', 'G-D0VB1M1RKF', '`_clck`', 'GDPR 6(1)(a) açık rıza', 'EU-U.S. Data Privacy Framework', 'AB Standart Sözleşme Maddeleri'],
+            'en' => ['Google Analytics 4', 'Microsoft Clarity', 'session recordings', 'G-D0VB1M1RKF', '`_clck`', 'Art. 6(1)(a) GDPR', 'EU-U.S. Data Privacy Framework', 'EU Standard Contractual Clauses'],
+            'de' => ['Google Analytics 4', 'Microsoft Clarity', 'Sitzungsaufzeichnungen', 'G-D0VB1M1RKF', '`_clck`', 'Art. 6(1)(a) DSGVO', 'EU-U.S. Data Privacy Framework', 'EU-Standardvertragsklauseln'],
         ],
         'privacy' => [
-            'tr' => ['Google Analytics 4', 'Microsoft Clarity', 'GDPR 6(1)(a) açık rıza', 'EU-U.S. Data Privacy Framework', 'Analitik verileri', 'oturum kaydı'],
-            'en' => ['Google Analytics 4', 'Microsoft Clarity', 'Art. 6(1)(a) GDPR', 'EU-U.S. Data Privacy Framework', 'Analytics data', 'session recording'],
-            'de' => ['Google Analytics 4', 'Microsoft Clarity', 'Art. 6(1)(a) DSGVO', 'EU-U.S. Data Privacy Framework', 'Analysedaten', 'Sitzungsaufzeichnung'],
+            'tr' => ['Google Analytics 4', 'Microsoft Clarity', 'GDPR 6(1)(a) açık rıza', 'EU-U.S. Data Privacy Framework', 'Analitik verileri', 'oturum kayıtları'],
+            'en' => ['Google Analytics 4', 'Microsoft Clarity', 'Art. 6(1)(a) GDPR', 'EU-U.S. Data Privacy Framework', 'Analytics data', 'session recordings'],
+            'de' => ['Google Analytics 4', 'Microsoft Clarity', 'Art. 6(1)(a) DSGVO', 'EU-U.S. Data Privacy Framework', 'Analysedaten', 'Sitzungsaufzeichnungen'],
         ],
     ];
 
-    /** Fixture'ları prod hâline geri sarar (RefreshDatabase seeder'ı farklı olabilir). */
+    /** Prod'un ham gövdelerini legacy JSON'a yazar; çeviri satırlarını zincir doldurur. */
     private function seedProductionBodies(): void
     {
-        // Bu migration legacy `bodies` JSON'ı üzerinde çalışır (prod'da çeviri
-        // tablosu ondan SONRA doluyor), o yüzden fixture'lar JSON'a yazılıyor ve
-        // çeviri satırları sıfırlanıyor; runFix() sonda backfill'i koşturuyor.
         DB::table('legal_page_translations')->delete();
 
-        foreach (['cookies', 'privacy'] as $key) {
-            $bodies = [];
-            foreach (['tr', 'en', 'de'] as $locale) {
-                $bodies[$locale] = file_get_contents(base_path("tests/Fixtures/legal/{$key}.{$locale}.html"));
-            }
+        $snapshot = json_decode(file_get_contents(base_path('tests/Fixtures/legal/prod-raw-snapshot.json')), true);
 
+        foreach (['cookies', 'privacy'] as $key) {
             DB::table('legal_pages')->updateOrInsert(
                 ['key' => $key],
                 [
-                    'titles'       => json_encode(['tr' => $key, 'en' => $key, 'de' => $key]),
-                    'descriptions' => json_encode(['tr' => '', 'en' => '', 'de' => '']),
-                    'bodies'       => json_encode($bodies, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                    'titles'       => json_encode($snapshot[$key]['titles'], JSON_UNESCAPED_UNICODE),
+                    'descriptions' => json_encode($snapshot[$key]['descriptions'], JSON_UNESCAPED_UNICODE),
+                    'bodies'       => json_encode($snapshot[$key]['bodies'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
                     'is_published' => true,
                     'sort_order'   => 0,
                     'created_at'   => now(),
@@ -77,14 +84,14 @@ class LegalTrackingDisclosureTest extends TestCase
 
     private function runFix(): void
     {
-        $migration = require database_path('migrations/2026_09_24_000100_fix_legal_tracking_disclosure_v2.php');
-        $backfill = require database_path('migrations/2026_09_24_000300_backfill_legal_page_translations.php');
-
         ob_start();
-        $migration->up();
-        // Prod'daki gerçek sıra: önce JSON düzeltilir, sonra çeviri kayıtlarına taşınır.
-        $backfill->up();
-        ob_end_clean();
+        try {
+            foreach (self::CHAIN as $file) {
+                (require database_path("migrations/{$file}"))->up();
+            }
+        } finally {
+            ob_end_clean();
+        }
     }
 
     /** @return array<string, string> */
@@ -95,7 +102,7 @@ class LegalTrackingDisclosureTest extends TestCase
 
     public function test_fixtures_still_contain_the_false_claims_we_are_fixing(): void
     {
-        // Koruma testi: fixture'lar prod'un HATALI hâlini tutmalı. Biri gelip
+        // Koruma testi: fixture prod'un HATALI hâlini tutmalı. Biri gelip
         // fixture'ı düzeltirse asıl testler boşuna yeşile döner.
         $this->seedProductionBodies();
 
@@ -119,12 +126,10 @@ class LegalTrackingDisclosureTest extends TestCase
 
         foreach (self::FALSE_CLAIMS as $key => $perLocale) {
             foreach ($perLocale as $locale => $claims) {
-                $body = $this->bodies($key)[$locale];
-
                 foreach ($claims as $claim) {
                     $this->assertStringNotContainsString(
                         $claim,
-                        $body,
+                        $this->bodies($key)[$locale],
                         "{$key}/{$locale} hâlâ yanlış beyan içeriyor: {$claim}"
                     );
                 }
@@ -139,12 +144,10 @@ class LegalTrackingDisclosureTest extends TestCase
 
         foreach (self::REQUIRED as $key => $perLocale) {
             foreach ($perLocale as $locale => $needles) {
-                $body = $this->bodies($key)[$locale];
-
                 foreach ($needles as $needle) {
                     $this->assertStringContainsString(
                         $needle,
-                        $body,
+                        $this->bodies($key)[$locale],
                         "{$key}/{$locale} beklenen beyanı içermiyor: {$needle}"
                     );
                 }
@@ -157,10 +160,10 @@ class LegalTrackingDisclosureTest extends TestCase
         $this->seedProductionBodies();
         $this->runFix();
 
-        // Analitik satırı 6(1)(a)'ya geçmeli...
-        $this->assertStringContainsString('GDPR 6(1)(a) açık rıza (Google Analytics 4', $this->bodies('privacy')['tr']);
-        $this->assertStringContainsString('Art. 6(1)(a) GDPR, explicit consent (Google Analytics 4', $this->bodies('privacy')['en']);
-        $this->assertStringContainsString('Art. 6(1)(a) DSGVO, ausdrückliche Einwilligung (Google Analytics 4', $this->bodies('privacy')['de']);
+        // Analitik satırı 6(1)(a) + § 25 TDDDG'ye geçmeli...
+        $this->assertStringContainsString('GDPR 6(1)(a) açık rıza ve § 25 (1) TDDDG (Google Analytics 4', $this->bodies('privacy')['tr']);
+        $this->assertStringContainsString('Art. 6(1)(a) GDPR, explicit consent, and § 25(1) TDDDG (Google Analytics 4', $this->bodies('privacy')['en']);
+        $this->assertStringContainsString('Art. 6(1)(a) DSGVO, ausdrückliche Einwilligung, und § 25 Abs. 1 TDDDG (Google Analytics 4', $this->bodies('privacy')['de']);
 
         // ...ama güvenlik/log için 6(1)(f) meşru menfaat DOĞRU dayanak, kalmalı.
         $this->assertStringContainsString('GDPR 6(1)(f) meşru menfaat (botların engellenmesi', $this->bodies('privacy')['tr']);
@@ -177,12 +180,12 @@ class LegalTrackingDisclosureTest extends TestCase
             $body = $this->bodies('cookies')[$locale];
 
             foreach (['_ga', '_ga_*', '_clck', '_clsk', 'almanyauni_consent_mkt'] as $cookie) {
-                $this->assertStringContainsString("<code>{$cookie}</code>", $body, "cookies/{$locale}: {$cookie} tabloda yok");
+                $this->assertStringContainsString("| `{$cookie}` |", $body, "cookies/{$locale}: {$cookie} tabloda yok");
             }
 
             // Eski satırlar yerinde kalmalı — tablo değiştirilmedi, eklendi.
-            $this->assertStringContainsString('<code>XSRF-TOKEN</code>', $body);
-            $this->assertStringContainsString('<code>almanyauni_consent</code>', $body);
+            $this->assertStringContainsString('| `XSRF-TOKEN` |', $body);
+            $this->assertStringContainsString('| `almanyauni_consent` |', $body);
         }
     }
 
@@ -198,12 +201,12 @@ class LegalTrackingDisclosureTest extends TestCase
         $this->assertSame($after, $this->bodies('cookies'), 'ikinci koşu çerez gövdesini değiştirdi');
         $this->assertSame($afterPrivacy, $this->bodies('privacy'), 'ikinci koşu gizlilik gövdesini değiştirdi');
 
-        // Çift ekleme olmamalı. (_clck iki yerde geçer: çerez tablosu satırı ve
-        // üçüncü taraf listesi — bu mükerrerlik değil, o yüzden tablo hücresini sayıyoruz.)
+        // Çift ekleme olmamalı. (_clck tabloda ve üçüncü taraf listesinde geçer —
+        // o mükerrerlik değil, o yüzden tablo satırını sayıyoruz.)
         $analyticsRow = ['tr' => 'Analitik verileri', 'en' => 'Analytics data', 'de' => 'Analysedaten'];
 
         foreach (['tr', 'en', 'de'] as $locale) {
-            $this->assertSame(1, substr_count($this->bodies('cookies')[$locale], '<td><code>_clck</code></td>'), "cookies/{$locale}: tablo satırı mükerrer");
+            $this->assertSame(1, substr_count($this->bodies('cookies')[$locale], '| `_clck` |'), "cookies/{$locale}: tablo satırı mükerrer");
             $this->assertSame(1, substr_count($this->bodies('privacy')[$locale], $analyticsRow[$locale]), "privacy/{$locale}: veri satırı mükerrer");
         }
     }
@@ -218,7 +221,7 @@ class LegalTrackingDisclosureTest extends TestCase
             [
                 'titles'       => json_encode(['tr' => 'Impressum']),
                 'descriptions' => json_encode(['tr' => '']),
-                'bodies'       => json_encode(['tr' => '<p>ELLE DÜZENLENDİ</p>']),
+                'bodies'       => json_encode(['tr' => 'ELLE DÜZENLENDİ']),
                 'is_published' => true,
                 'sort_order'   => 0,
                 'created_at'   => now(),
@@ -229,13 +232,13 @@ class LegalTrackingDisclosureTest extends TestCase
         $this->runFix();
 
         $this->assertSame(
-            '<p>ELLE DÜZENLENDİ</p>',
+            'ELLE DÜZENLENDİ',
             json_decode(DB::table('legal_pages')->where('key', 'impressum')->value('bodies'), true)['tr']
         );
 
         // Hedeflenmeyen bölümler yerinde kalmalı.
         $tr = $this->bodies('privacy')['tr'];
-        $this->assertStringContainsString('TechNS UG (haftungsbeschränkt)', $tr);
+        $this->assertStringContainsString('**TechNS UG (haftungsbeschränkt)**', $tr);
         $this->assertStringContainsString('10 yıl (HGB § 257, AO § 147)', $tr);
         $this->assertStringContainsString('GDPR Madde 22 anlamında otomatik karar verme veya profilleme yapılmaz.', $tr);
         $this->assertStringContainsString('All-Inkl (KASSERVER.COM)', $tr);
@@ -245,16 +248,16 @@ class LegalTrackingDisclosureTest extends TestCase
         $this->assertStringContainsString('admin@applytogerman.com', $cookiesTr);
     }
 
-    public function test_does_not_write_when_expected_blocks_are_absent(): void
+    public function test_unrecognised_body_fails_loudly_and_is_not_overwritten(): void
     {
-        // Gövde tanınmıyorsa migration YAZMAMALI (yanlış yere içerik basmaktansa
-        // hiç dokunmamalı). Önceki migration'ın sessiz başarısızlığı buradan geldi.
+        // Gövde tanınmıyorsa yanlış yere içerik basılmaz — ama 2026_09_23_170000
+        // gibi SESSİZCE de geçilmez: 000400 exception atar, hiçbir şey yazmaz.
         DB::table('legal_pages')->updateOrInsert(
             ['key' => 'cookies'],
             [
                 'titles'       => json_encode(['tr' => 'c']),
                 'descriptions' => json_encode(['tr' => '']),
-                'bodies'       => json_encode(['tr' => '<p>Tamamen farklı, elle yazılmış bir çerez metni.</p>']),
+                'bodies'       => json_encode(['tr' => 'Tamamen farklı, elle yazılmış bir çerez metni.']),
                 'is_published' => true,
                 'sort_order'   => 0,
                 'created_at'   => now(),
@@ -262,12 +265,14 @@ class LegalTrackingDisclosureTest extends TestCase
             ]
         );
 
-        $this->runFix();
+        try {
+            $this->runFix();
+            $this->fail('tanınmayan gövdede migration sessizce geçti');
+        } catch (\RuntimeException $e) {
+            $this->assertStringContainsString('cookies/tr', $e->getMessage());
+        }
 
-        $this->assertSame(
-            '<p>Tamamen farklı, elle yazılmış bir çerez metni.</p>',
-            $this->bodies('cookies')['tr']
-        );
+        $this->assertSame('Tamamen farklı, elle yazılmış bir çerez metni.', $this->bodies('cookies')['tr']);
     }
 
     public function test_down_does_not_restore_the_false_legal_text(): void
@@ -275,8 +280,8 @@ class LegalTrackingDisclosureTest extends TestCase
         $this->seedProductionBodies();
         $this->runFix();
 
-        $migration = require database_path('migrations/2026_09_24_000100_fix_legal_tracking_disclosure_v2.php');
-        $migration->down();
+        (require database_path('migrations/2026_09_24_000400_fix_legal_disclosure_raw_markdown.php'))->down();
+        (require database_path('migrations/2026_09_24_000100_fix_legal_tracking_disclosure_v2.php'))->down();
 
         foreach (['tr', 'en', 'de'] as $locale) {
             $this->assertStringContainsString('Microsoft Clarity', $this->bodies('cookies')[$locale]);
@@ -294,6 +299,7 @@ class LegalTrackingDisclosureTest extends TestCase
                 ->assertOk()
                 ->assertSee('Microsoft Clarity', false)
                 ->assertSee('G-D0VB1M1RKF', false)
+                ->assertSee('<code>_clck</code>', false)
                 ->assertDontSee('kullanmıyoruz', false);
 
             $this->get("/{$locale}/privacy")
