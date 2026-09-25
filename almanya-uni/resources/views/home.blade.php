@@ -834,7 +834,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             @foreach ($latest_posts as $post)
-                <a href="{{ route('blog.show', $post['slug']) }}"
+                <a href="{{ $post['url'] }}"
                    title="{{ $post['title'] }}{{ $post['category_name'] ? ' — ' . $post['category_name'] : '' }}"
                    class="group block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md transition rounded-xl p-5">
                     @if ($post['category_name'])

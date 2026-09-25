@@ -205,6 +205,35 @@ class Post extends Model
     }
 
     /**
+     * Yazının TEK public URL kaynağı: haber → /{locale}/news/{slug}, diğerleri → /{locale}/blog/{slug}.
+     *
+     * Haberler /blog/ altında da açılabiliyordu (BlogController türe bakmıyordu) ve pek çok
+     * link üreticisi haberi blog.show route'uyla yazıyordu → 42 mükerrer URL. Link üreten her
+     * yer bunu kullanmalı. Haber modülü kapalıysa /news/ 404 olacağı için blog URL'i döner.
+     *
+     * Sorgu select() ile kısıtlıysa `type` (ve mümkünse `locale`) seçilmiş olmalı; yoksa tür
+     * bilinemez — test/yerel ortamda bu hata olarak yakalanır.
+     */
+    public function publicUrl(?string $locale = null): string
+    {
+        $attributes = $this->getAttributes();
+
+        if (! array_key_exists('type', $attributes) && ! app()->isProduction()) {
+            throw new \LogicException("Post::publicUrl(): `type` sütunu seçilmemiş (slug: {$this->slug}).");
+        }
+
+        return self::urlFor($attributes['type'] ?? null, (string) $this->slug, $locale ?? ($attributes['locale'] ?? null));
+    }
+
+    /** publicUrl()'in modelsiz hâli — önbelleğe düz dizi yazan yerler için. */
+    public static function urlFor(?string $type, string $slug, ?string $locale = null): string
+    {
+        $route = $type === 'news' && \App\Models\MenuPage::isKeyEnabled('news.index') ? 'news.show' : 'blog.show';
+
+        return route($route, ['locale' => $locale ?? app()->getLocale(), 'slug' => $slug]);
+    }
+
+    /**
      * Haber sıralaması: admin önceliği (yüksek önde) → en yeni → id.
      * Öncelik verilmezse (priority=0, varsayılan) saf "en yeni en önde".
      */

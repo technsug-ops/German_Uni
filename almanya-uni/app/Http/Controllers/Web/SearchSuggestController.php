@@ -226,14 +226,14 @@ class SearchSuggestController extends Controller
                 ->with('category:id,name,color')
                 ->orderByDesc('published_at')
                 ->limit(2)
-                ->get(['id', 'slug', 'title', 'category_id', 'featured_image', 'reading_minutes'])
+                ->get(['id', 'slug', 'type', 'locale', 'title', 'category_id', 'featured_image', 'reading_minutes'])
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'post',
                         'type_label' => '📝 Blog · ' . ($p->category?->name ?? __('Article')),
                         'title' => $p->title,
                         'subtitle' => __(':count min read', ['count' => $p->reading_minutes]),
-                        'url' => "/blog/{$p->slug}",
+                        'url' => $p->publicUrl(),
                         'image' => $p->featured_image,
                         'icon' => '📝',
                     ];

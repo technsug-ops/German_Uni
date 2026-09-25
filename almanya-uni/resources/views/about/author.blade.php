@@ -263,7 +263,7 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-2"><x-svg-icon name="pencil" class="w-6 h-6 text-indigo-600" /> {{ __('Articles by :name', ['name' => $author->name]) }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($posts as $p)
-                <a href="{{ route('blog.show', $p->slug) }}"
+                <a href="{{ $p->publicUrl() }}"
                    class="block bg-white border border-gray-200 rounded-xl p-5 hover:border-indigo-300 hover:shadow-md transition">
                     @if ($p->category)
                         <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"

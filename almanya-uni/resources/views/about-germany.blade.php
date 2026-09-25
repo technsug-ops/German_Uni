@@ -303,7 +303,7 @@
             <h3 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="newspaper" class="w-6 h-6 text-primary-600" /> {{ __('Related Guides') }}</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach ($latestPosts as $p)
-                    <a href="{{ route('blog.show', $p->slug) }}"
+                    <a href="{{ $p->publicUrl() }}"
                        class="block bg-white border border-gray-200 hover:border-primary-400 hover:shadow-sm transition rounded-lg p-4">
                         <h4 class="font-bold text-gray-900 mb-1 leading-snug line-clamp-2">{{ $p->title }}</h4>
                         @if ($p->excerpt)

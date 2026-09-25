@@ -112,7 +112,7 @@
         'posts_count' => $p->posts_count,
         'posts'       => $p->posts->map(fn($post) => [
             'title' => $post->title,
-            'url'   => route('blog.show', $post->slug),
+            'url'   => $post->publicUrl(),
             'date'  => optional($post->published_at)->format('d.m.Y'),
             'min'   => $post->reading_minutes,
         ])->all(),

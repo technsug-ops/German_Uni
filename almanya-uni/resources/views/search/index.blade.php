@@ -412,7 +412,7 @@
                 </header>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     @foreach ($posts as $post)
-                        <a href="{{ route('blog.show', $post->slug) }}"
+                        <a href="{{ $post->publicUrl() }}"
                            class="group bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 flex flex-col">
                             <div class="flex items-baseline justify-between gap-2 mb-1">
                                 @if ($post->category)

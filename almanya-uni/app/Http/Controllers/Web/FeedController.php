@@ -19,7 +19,7 @@ class FeedController extends Controller
 {
     public function rss(): Response
     {
-        $xml = Cache::remember('feed:rss', now()->addMinutes(30), function () {
+        $xml = Cache::remember('feed:rss:v2', now()->addMinutes(30), function () {
             return $this->buildRss();
         });
 
@@ -35,11 +35,11 @@ class FeedController extends Controller
         Post::published()
             ->orderByDesc('published_at')
             ->limit(20)
-            ->get(['slug', 'title', 'excerpt', 'published_at', 'updated_at'])
+            ->get(['slug', 'type', 'locale', 'title', 'excerpt', 'published_at', 'updated_at'])
             ->each(function ($p) use ($items) {
                 $items->push([
                     'title' => $p->title,
-                    'link' => route('blog.show', $p->slug),
+                    'link' => $p->publicUrl(),
                     'description' => $p->excerpt ?: '',
                     'category' => 'Blog',
                     'pub_date' => $p->published_at ?: $p->updated_at,

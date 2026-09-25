@@ -350,7 +350,11 @@ class SitemapController extends Controller
         // Blog ve SSS slug'ları dile göre DEĞİŞİR ("...-en" / "...-de"). Bu yüzden
         // hreflang alternatifleri prefix değiştirerek değil, translation_group_id
         // üzerinden gerçek kardeş kayıttan üretilir.
-        $postAlts = $this->postSlugsByGroup();
+        // Blog ve haber AYRI kümeler: haberin kanonik adresi /news/ ve kardeşleri yalnız haber
+        // kayıtları (NewsController ile aynı). Eskiden haberler /blog/ altında, bütün türlerden
+        // kurulan kümeyle listeleniyordu → sayfa <head>'iyle çelişen 42 kayıt.
+        $postAlts = $this->postSlugsByGroup('blog');
+        $newsAlts = $this->postSlugsByGroup('news');
         $faqAlts = $this->faqSlugsByGroup();
 
         // Yayın koşulları published() ile AYNI; ama dil request/host'tan değil kaydın kendi
@@ -367,6 +371,7 @@ class SitemapController extends Controller
             : [];
 
         Post::query()
+            ->blogType()
             ->where('locale', $lang)
             ->where('is_published', true)
             ->whereNotNull('published_at')
@@ -393,6 +398,33 @@ class SitemapController extends Controller
                     $urls[] = $this->entry($self, $p->updated_at, 'monthly', 0.7, $alts);
                 }
             });
+
+        // Haberler — yalnız modül açıksa (kapalıysa /news/ 404 verir).
+        if (\App\Models\MenuPage::isKeyEnabled('news.index')) {
+            Post::query()
+                ->news()
+                ->where('locale', $lang)
+                ->where('is_published', true)
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->select(['id', 'slug', 'updated_at', 'translation_group_id'])
+                ->orderBy('id')
+                ->chunk(500, function ($chunk) use (&$urls, $newsAlts, $activeLocales, $lang) {
+                    foreach ($chunk as $p) {
+                        $self = route('news.show', $p->slug);
+                        $alts = [];
+                        foreach ($activeLocales as $loc) {
+                            $slug = $newsAlts[$p->translation_group_id][$loc] ?? null;
+                            if ($slug) {
+                                $alts[$loc] = route('news.show', ['locale' => $loc, 'slug' => $slug]);
+                            }
+                        }
+                        $alts[$lang] ??= $self;
+
+                        $urls[] = $this->entry($self, $p->updated_at, 'weekly', 0.6, $alts);
+                    }
+                });
+        }
 
         Faq::query()
             ->where('locale', $lang)
@@ -603,13 +635,15 @@ class SitemapController extends Controller
      * published() scope'u locale filtreler (app locale), bu yüzden burada KULLANILMAZ:
      * amaç tam olarak diğer dillerdeki kardeş kayıtları bulmak.
      *
+     * @param  'blog'|'news'  $kind  kümeler türe göre ayrılır (sayfa <head>'i ile aynı)
      * @return array<string,array<string,string>>
      */
-    private function postSlugsByGroup(): array
+    private function postSlugsByGroup(string $kind): array
     {
         $map = [];
 
         Post::query()
+            ->when($kind === 'news', fn ($q) => $q->news(), fn ($q) => $q->blogType())
             ->where('is_published', true)
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())

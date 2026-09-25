@@ -426,7 +426,7 @@
                     <h2 class="text-2xl font-bold mb-6">{{ __('Related Articles') }}</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @foreach ($related as $r)
-                            <a href="{{ route('blog.show', $r->slug) }}"
+                            <a href="{{ $r->publicUrl() }}"
                                class="block bg-white border border-gray-200 hover:border-primary-500 hover:shadow-md transition rounded-lg p-5">
                                 <h3 class="font-bold leading-tight mb-2 text-gray-900">{{ $r->title }}</h3>
                                 @if ($r->excerpt)

@@ -143,7 +143,7 @@ class StateController extends Controller
             ->with('category')
             ->orderByDesc('published_at')
             ->take(3)
-            ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
+            ->get(['id', 'slug', 'type', 'locale', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
 
         // Bölge etiketi (locale-aware)
         $regionLabel = match ($state->region) {

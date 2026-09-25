@@ -1422,7 +1422,7 @@ Route::get('/llms-full.txt', function (\Illuminate\Http\Request $request) {
     $domain = $brand['domain'] ?? $host;
     $base = $request->getScheme() . '://' . $domain;
 
-    $content = cache()->remember("llms_full_txt_v2_{$brandKey}", now()->addHours(12), function () use ($name, $base) {
+    $content = cache()->remember("llms_full_txt_v3_{$brandKey}", now()->addHours(12), function () use ($name, $base) {
         $out = "# {$name} — Full Content Map (llms-full.txt)\n\n";
         $out .= "> Expanded version of /llms.txt: a full index of guides/articles, universities, student cities and fields of study for international students applying to Germany. See {$base}/llms.txt for the concise version.\n\n";
 
@@ -1430,7 +1430,7 @@ Route::get('/llms-full.txt', function (\Illuminate\Http\Request $request) {
         $out .= "## Guides & Articles\n\n";
         $posts = \App\Models\Post::where('is_published', 1)->where('locale', 'tr')
             ->with('category')->orderByDesc('published_at')
-            ->get(['id', 'slug', 'title', 'excerpt', 'category_id', 'locale']);
+            ->get(['id', 'slug', 'type', 'title', 'excerpt', 'category_id', 'locale']);
         $grouped = $posts->groupBy(function ($p) {
             $n = $p->category?->name;
             if (is_array($n)) { $n = $n['tr'] ?? ($n['en'] ?? reset($n)); }
@@ -1440,7 +1440,8 @@ Route::get('/llms-full.txt', function (\Illuminate\Http\Request $request) {
             $out .= "### {$cat}\n";
             foreach ($items as $p) {
                 $ex = \Illuminate\Support\Str::limit(trim(strip_tags((string) $p->excerpt)), 150);
-                $out .= "- [{$p->title}]({$base}/{$p->locale}/blog/{$p->slug})" . ($ex ? ": {$ex}" : '') . "\n";
+                // Haber → /news/, diğerleri → /blog/ (Post::publicUrl — tek URL kaynağı).
+                $out .= "- [{$p->title}](" . $p->publicUrl() . ')' . ($ex ? ": {$ex}" : '') . "\n";
             }
             $out .= "\n";
         }
@@ -1639,6 +1640,80 @@ Route::middleware('auth')->group(function () {
 
     // Hukuki sayfa rollout doğrulaması (SSH yok → legal:audit + legal:parity tarayıcıdan).
     // SALT OKUMA: hiçbir şey yazmaz. Legacy JSON kolonları düşürülünce (Faz B) kaldırılabilir.
+    // Mükerrer temizliği + dile duyarlı blog yönlendirmesi raporu (2026-09-25). SALT OKUMA.
+    // Önce/sonra karşılaştırması 000400'ün aldığı blog_redirects_backup_20260925 yedeğinden.
+    Route::get('/admin/ops/redirect-check', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $db = \Illuminate\Support\Facades\DB::class;
+        $schema = \Illuminate\Support\Facades\Schema::class;
+        $backup = 'blog_redirects_backup_20260925';
+        $idx = fn (string $t) => collect($db::select("SHOW INDEX FROM `{$t}`"))
+            ->groupBy('Key_name')
+            ->map(fn ($cols, $name) => ($cols->first()->Non_unique ? 'INDEX' : 'UNIQUE') . " {$name}(" . $cols->sortBy('Seq_in_index')->pluck('Column_name')->implode(', ') . ')')
+            ->values()->implode("\n  ");
+        $byLocale = fn (string $t) => $db::table($t)->selectRaw('locale, count(*) c')->groupBy('locale')->orderBy('locale')->pluck('c', 'locale')->toJson();
+        $live = fn (string $slug, string $locale) => $db::table('posts')->where('slug', $slug)->where('locale', $locale)
+            ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())->exists();
+
+        $out = "=== migrations ===\n";
+        foreach ($db::table('migrations')->where('migration', 'like', '2026_09_25_%')->orderBy('id')->get() as $m) {
+            $out .= "#{$m->id}  batch {$m->batch}  {$m->migration}\n";
+        }
+
+        $out .= "\n=== BLOG_REDIRECTS BEFORE (yedek) ===\n";
+        if ($schema::hasTable($backup)) {
+            $out .= 'rows: ' . $db::table($backup)->count() . '  by locale: ' . $byLocale($backup) . "\nindexes:\n  " . $idx($backup) . "\n";
+        } else {
+            $out .= "YEDEK YOK\n";
+        }
+
+        $out .= "\n=== BLOG_REDIRECTS AFTER ===\n";
+        $out .= 'rows: ' . $db::table('blog_redirects')->count() . '  by locale: ' . $byLocale('blog_redirects') . "\nindexes:\n  " . $idx('blog_redirects') . "\n";
+        $dupes = $db::table('blog_redirects')->selectRaw('from_slug, locale, count(*) c')->groupBy('from_slug', 'locale')->having('c', '>', 1)->count();
+        $out .= "duplicate (from_slug, locale) pairs: {$dupes}\n";
+        if ($schema::hasTable($backup)) {
+            $added = $db::table('blog_redirects')->whereNotIn('id', $db::table($backup)->pluck('id'))->get(['from_slug', 'locale', 'to_slug']);
+            $out .= "added locale rows: {$added->count()}\n";
+            $changed = $db::table('blog_redirects as n')->join("{$backup} as o", 'o.id', '=', 'n.id')->whereColumn('o.to_slug', '!=', 'n.to_slug')->count();
+            $out .= "chains collapsed (to_slug changed): {$changed}\n";
+        }
+        $dead = 0;
+        foreach ($db::table('blog_redirects')->get() as $r) {
+            if (! $live($r->to_slug, $r->locale)) {
+                $dead++;
+            }
+        }
+        $out .= "rows whose target is not a live post in the same locale: {$dead}\n";
+
+        // Eskiden: /{dil}/blog/{from_slug} → (dil fark etmeksizin) ilk satırın hedefi. Şimdi: yalnız aynı dil.
+        $out .= "\n=== NO_SAME_LOCALE_TARGET (artık 404; başka dile yönlendirilmez) ===\n";
+        $locales = \App\Support\Hreflang::activeLocales();
+        $rows = collect();
+        foreach ($db::table('blog_redirects')->select('from_slug')->distinct()->orderBy('from_slug')->pluck('from_slug') as $from) {
+            $have = $db::table('blog_redirects')->where('from_slug', $from)->pluck('locale')->all();
+            $old = $schema::hasTable($backup) ? $db::table($backup)->where('from_slug', $from)->first() : null;
+            foreach ($locales as $l) {
+                if (in_array($l, $have, true) || $live($from, $l)) {
+                    continue;
+                }
+                $rows->push("/{$l}/blog/{$from}  | önce: " . ($old ? "301 → /{$old->locale}/blog/{$old->to_slug}" . ($old->locale !== $l ? ' (DİL DEĞİŞTİRİYORDU)' : '') : 'kayıt yok') . '  | şimdi: 404');
+            }
+        }
+        $out .= "count: {$rows->count()}\n" . $rows->implode("\n") . "\n";
+
+        $out .= "\n=== DUPLICATE CLEANUP POSTS ===\n";
+        foreach (['uniassist-vpd-reddedilme-cozumler', 'uni-assist-application-vpd-common-rejection-reasons-solutions',
+            'studienkolleg-rehberi-t-kurs-m-kurs-2026', 'studienkolleg-guide-who-needs-it-which-course-school', 'studienkolleg-guide-pflicht-kurs-schule',
+            'studienkolleg-guide-2026-who-needs-it-which-course-which-school', 'studienkolleg-guide-2026-who-needs-it-which-course-which-school-en',
+            'studienkolleg-guide-2026-who-needs-it-which-course-which-school-de'] as $slug) {
+            $p = $db::table('posts')->where('slug', $slug)->first(['id', 'locale', 'is_published', 'updated_at']);
+            $out .= $p ? "#{$p->id} {$p->locale} published=" . (int) $p->is_published . " updated_at={$p->updated_at}  {$slug}\n" : "(yok)  {$slug}\n";
+        }
+        $out .= 'news posts published by locale: ' . $db::table('posts')->where('type', 'news')->where('is_published', true)->selectRaw('locale, count(*) c')->groupBy('locale')->pluck('c', 'locale')->toJson() . "\n";
+
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     Route::get('/admin/ops/legal-check', function () {
         abort_unless(auth()->user()?->is_admin, 403);
         $db = \Illuminate\Support\Facades\DB::class;

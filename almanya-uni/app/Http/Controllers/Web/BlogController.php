@@ -130,13 +130,25 @@ class BlogController extends Controller
             ->where('slug', $slug)
             ->first();
 
-        // İngilizce-slug geçişi: eski Türkçe slug → yeni slug 301 (404 yok, SEO/indeks korunur).
+        // İngilizce-slug geçişi: eski slug → yeni slug 301 (404 yok, SEO/indeks korunur).
+        // YALNIZCA bu dilin kaydı kullanılır: eskiden dil filtresi yoktu ve /en/blog/<tr-slug>
+        // TR sayfasına gidiyordu (dil değiştiren yönlendirme). Bu dilde kayıt yoksa 404.
         if (! $post) {
-            $redir = \Illuminate\Support\Facades\DB::table('blog_redirects')->where('from_slug', $slug)->first();
+            $redir = \Illuminate\Support\Facades\DB::table('blog_redirects')
+                ->where('from_slug', $slug)
+                ->where('locale', app()->getLocale())
+                ->first();
             if ($redir) {
                 return redirect()->to(url($redir->locale . '/blog/' . $redir->to_slug), 301);
             }
             abort(404);
+        }
+
+        // Haberin kanonik adresi /news/ (mükerrer temizliği, 2026-09-25). Aynı dil, aynı slug,
+        // tek adım; blog_redirects'e hiç inilmez. Haber modülü kapalıysa /news/ 404 olacağından
+        // yönlendirilmez (eski davranış sürer).
+        if ($post->type === 'news' && \App\Models\MenuPage::isKeyEnabled('news.index')) {
+            return redirect()->to($post->publicUrl(), 301);
         }
 
         Post::where('id', $post->id)->increment('view_count');
@@ -168,7 +180,7 @@ class BlogController extends Controller
                 ->where('id', '!=', $post->id)
                 ->orderByDesc('published_at')
                 ->limit(3)
-                ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at'])
+                ->get(['id', 'slug', 'type', 'locale', 'title', 'excerpt', 'reading_minutes', 'published_at'])
             : collect();
 
         return view('blog.show', [

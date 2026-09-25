@@ -88,7 +88,7 @@ class FieldController extends Controller
             ->with('category')
             ->orderByDesc('published_at')
             ->take(3)
-            ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
+            ->get(['id', 'slug', 'type', 'locale', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
 
         // Diğer alanlar (program sayısına göre)
         $otherFields = FieldOfStudy::active()

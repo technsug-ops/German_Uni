@@ -42,7 +42,7 @@ class PostCommentsTable
                     ->label('Yazı')
                     ->limit(40)
                     ->searchable()
-                    ->url(fn ($record) => $record->post ? route('blog.show', $record->post->slug) : null, true),
+                    ->url(fn ($record) => $record->post?->publicUrl(), true),
                 IconColumn::make('is_pinned')
                     ->label('📌')
                     ->boolean(),

@@ -456,8 +456,8 @@ if (! function_exists('published_post_url')) {
     {
         static $cache = [];
         if (! array_key_exists($slug, $cache)) {
-            $exists = \App\Models\Post::published()->where('slug', $slug)->exists();
-            $cache[$slug] = $exists ? route('blog.show', $slug) : null;
+            $post = \App\Models\Post::published()->where('slug', $slug)->first(['slug', 'type', 'locale']);
+            $cache[$slug] = $post?->publicUrl();
         }
 
         return $cache[$slug];

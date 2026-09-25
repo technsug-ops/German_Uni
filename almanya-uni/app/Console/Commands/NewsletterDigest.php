@@ -174,11 +174,11 @@ class NewsletterDigest extends Command
         Post::published()->where('type', '!=', 'news')->where('locale', $loc)
             ->where('published_at', '>=', $since)
             ->orderByDesc('published_at')->take(4)
-            ->get(['slug', 'title', 'excerpt', 'featured_image', 'published_at'])
+            ->get(['slug', 'type', 'locale', 'title', 'excerpt', 'featured_image', 'published_at'])
             ->each(fn ($p) => $items->push([
                 'type' => 'blog', 'title' => $p->title,
                 'category' => '📝 ' . __('Blog'), 'category_color' => '#2563eb',
-                'url' => route('blog.show', $p->slug), 'image' => $p->featured_image,
+                'url' => $p->publicUrl($loc), 'image' => $p->featured_image,
                 'description' => (string) $p->excerpt, 'sort' => 1,
             ]));
 

@@ -107,7 +107,7 @@ class SearchController extends Controller
             ->orderByRaw("CASE WHEN title LIKE ? THEN 0 ELSE 1 END", [$like])
             ->orderByDesc('published_at')
             ->limit(self::PER_TYPE)
-            ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'featured_image', 'category_id', 'published_at']);
+            ->get(['id', 'title', 'slug', 'type', 'locale', 'excerpt', 'reading_minutes', 'featured_image', 'category_id', 'published_at']);
 
         // ─────────── PROFESSIONS ───────────
         $profBase = Profession::query()

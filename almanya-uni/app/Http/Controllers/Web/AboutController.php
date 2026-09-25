@@ -28,7 +28,7 @@ class AboutController extends Controller
                 ->whereNotNull('published_at')
                 ->orderByDesc('published_at')
                 ->take(20)
-                ->select('id', 'user_id', 'title', 'slug', 'published_at', 'reading_minutes')])
+                ->select('id', 'user_id', 'title', 'slug', 'type', 'locale', 'published_at', 'reading_minutes')])
             ->orderByDesc('posts_count')
             ->get(['id', 'name', 'slug', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url', 'is_admin']);
 
@@ -80,7 +80,7 @@ class AboutController extends Controller
             ->whereNotNull('published_at')
             ->with('category')
             ->orderByDesc('published_at')
-            ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id', 'view_count', 'helpful_count']);
+            ->get(['id', 'title', 'slug', 'type', 'locale', 'excerpt', 'reading_minutes', 'published_at', 'category_id', 'view_count', 'helpful_count']);
 
         $events = \App\Models\Event::where('host_user_id', $author->id)
             ->where('is_active', true)
@@ -204,7 +204,7 @@ class AboutController extends Controller
             ->with('category')
             ->orderByDesc('published_at')
             ->take(3)
-            ->get(['id', 'title', 'slug', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
+            ->get(['id', 'title', 'slug', 'type', 'locale', 'excerpt', 'reading_minutes', 'published_at', 'category_id']);
 
         // Team — TEK KAYNAK: kurucu(lar) DB'den (/ekip ile aynı User kayıtları,
         // role_label='Kurucu'). Hardcoded array kaldırıldı → bir daha bayatlamaz.

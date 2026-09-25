@@ -175,7 +175,7 @@
                 <p class="font-semibold text-gray-900 text-sm">{{ __('Budget planner') }}</p>
                 <p class="text-xs text-gray-500 mt-1">{{ __('Income vs expense + savings target') }}</p>
             </a>
-            <a href="{{ ($sperrkontoSlug ?? null) ? route('blog.show', $sperrkontoSlug) : route('tools.blocked-account') }}"
+            <a href="{{ ($sperrkontoUrl ?? null) ?: route('tools.blocked-account') }}"
                class="block bg-white border border-gray-200 hover:border-primary-400 hover:shadow transition rounded-xl p-4 text-center">
                 <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></div>
                 <p class="font-semibold text-gray-900 text-sm">{{ __('Sperrkonto guide') }}</p>

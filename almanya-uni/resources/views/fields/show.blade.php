@@ -286,7 +286,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     @foreach ($relatedPosts as $post)
-                        <a href="{{ route('blog.show', $post->slug) }}"
+                        <a href="{{ $post->publicUrl() }}"
                            class="group block bg-white rounded-xl border border-gray-200 hover:border-primary-400 hover:shadow-md transition p-5">
                             @if ($post->category)
                                 <p class="text-xs font-semibold uppercase tracking-wide mb-2"

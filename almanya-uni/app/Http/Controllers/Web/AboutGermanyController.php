@@ -98,7 +98,7 @@ class AboutGermanyController extends Controller
         $latestPosts = Post::published()
             ->orderByDesc('published_at')
             ->limit(3)
-            ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at']);
+            ->get(['id', 'slug', 'type', 'locale', 'title', 'excerpt', 'reading_minutes', 'published_at']);
 
         return view('about-germany', [
             'reasons' => $reasons,

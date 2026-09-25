@@ -99,9 +99,10 @@ class HomeController extends Controller
             ->with('category')
             ->orderByDesc('published_at')
             ->limit(3)
-            ->get(['id', 'slug', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id'])
+            ->get(['id', 'slug', 'type', 'locale', 'title', 'excerpt', 'reading_minutes', 'published_at', 'category_id'])
             ->map(fn ($p) => [
                 'slug' => $p->slug,
+                'url' => $p->publicUrl(), // haber → /news/, diğerleri → /blog/
                 'title' => $p->title,
                 'excerpt' => $p->excerpt,
                 'reading_minutes' => $p->reading_minutes,
