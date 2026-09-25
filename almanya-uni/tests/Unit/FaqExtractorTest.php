@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Support\FaqExtractor;
+use App\Support\MarkdownRenderer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -141,5 +142,66 @@ class FaqExtractorTest extends TestCase
         $faqs = FaqExtractor::fromHtml($html);
 
         $this->assertStringNotContainsString('<script', $faqs[0]['a']);
+    }
+
+    // ─────────────── HEADING PERMALINK ("#" sızıntısı) ───────────────
+
+    /**
+     * Gerçek render zinciri: MarkdownRenderer her h2–h4'e <a class="heading-anchor">#</a>
+     * ekler. Canlıda FAQPage soru adları "#Hangi banka tipi?" diye çıkıyordu.
+     *
+     * @return array<string,array{0:string,1:string}>
+     */
+    public static function localizedPermalinkQuestions(): array
+    {
+        return [
+            'tr' => ['### Hangi belgeleri hazırlamalıyım?', 'Hangi belgeleri hazırlamalıyım?'],
+            'en' => ['### Which documents should I prepare?', 'Which documents should I prepare?'],
+            'de' => ['### Welche Unterlagen sollte ich vorbereiten?', 'Welche Unterlagen sollte ich vorbereiten?'],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('localizedPermalinkQuestions')]
+    public function test_permalink_isareti_soru_adina_sizmaz(string $markdown, string $expected): void
+    {
+        $html = (new MarkdownRenderer)->render($markdown."\n\nBu cevap yeterince uzun bir metin içerir, FAQ için uygundur.");
+
+        $this->assertStringContainsString('heading-anchor', $html, 'fixture gerçek permalink çıktısı olmalı');
+
+        $faqs = FaqExtractor::fromHtml($html);
+
+        $this->assertCount(1, $faqs);
+        $this->assertSame($expected, $faqs[0]['q']);
+        $this->assertStringStartsNotWith('#', $faqs[0]['q']);
+        $this->assertStringEndsWith('?', $faqs[0]['q']);
+    }
+
+    public function test_permalinksiz_normal_baslik_degismez(): void
+    {
+        $html = '<h3>Welche Unterlagen sollte ich vorbereiten?</h3><p>Arbeitsvertrag, Kontoauszüge und eine Bürgschaft können helfen.</p>';
+
+        $faqs = FaqExtractor::fromHtml($html);
+
+        $this->assertSame('Welche Unterlagen sollte ich vorbereiten?', $faqs[0]['q']);
+    }
+
+    public function test_soru_metnindeki_anlamli_diyez_korunur(): void
+    {
+        $html = (new MarkdownRenderer)->render("## C# ile #1 iş bulunur mu?\n\nBu cevap yeterince uzun bir metin içerir, FAQ için uygundur.");
+
+        $faqs = FaqExtractor::fromHtml($html);
+
+        $this->assertSame('C# ile #1 iş bulunur mu?', $faqs[0]['q']);
+    }
+
+    public function test_permalink_cevap_metnine_de_sizmaz(): void
+    {
+        $html = (new MarkdownRenderer)->render("## Birinci soru nedir?\n\nİlk cevap yeterince uzun bir metin içerir, FAQ için uygundur.\n\n## İkinci soru nedir?\n\nİkinci cevap da yeterince uzun bir metin içerir.");
+
+        $faqs = FaqExtractor::fromHtml($html);
+
+        $this->assertCount(2, $faqs);
+        $this->assertSame('İkinci soru nedir?', $faqs[1]['q']);
+        $this->assertStringNotContainsString('#', $faqs[0]['a']);
     }
 }

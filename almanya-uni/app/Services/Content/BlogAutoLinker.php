@@ -32,6 +32,10 @@ class BlogAutoLinker
      *  şehirlere otomatik link verilmez; case-insensitive eşleşme yanlış-link üretiyordu. */
     private const CITY_STOPLIST = ['leer', 'essen', 'hof', 'lage', 'born', 'horn', 'rust', 'brake'];
 
+    /** Başka bir kurumun yerleşik kısaltmasıyla çakışan üniversite kısa adları — auto-link YANLIŞ olur
+     *  (DSK = Datenschutzkonferenz, Deutsche Sporthochschule Köln değil). */
+    private const SHORT_NAME_STOPLIST = ['dsk'];
+
     /** Sayfa-genel sayaç (çok bloklu içerikte tüm bloklar paylaşır). */
     private int $gCount = 0;
     private int $lCount = 0;
@@ -162,7 +166,10 @@ class BlogAutoLinker
             if ($meta['type'] === 'link' && $this->lCount >= self::MAX_LINKS) {
                 continue;
             }
-            $pattern = '/(?<![\p{L}\p{N}])(' . preg_quote($term, '/') . ')(?![\p{L}\p{N}])/iu';
+            // Kısaltmalar (RWTH, TUN…) birebir büyük/küçük harfle eşleşir: aksi halde "zu tun" → TUN linki.
+            $pattern = isset($meta['exact'])
+                ? '/(?<![\p{L}\p{N}])(' . preg_quote($meta['exact'], '/') . ')(?![\p{L}\p{N}])/u'
+                : '/(?<![\p{L}\p{N}])(' . preg_quote($term, '/') . ')(?![\p{L}\p{N}])/iu';
             if (! preg_match($pattern, $text, $m, PREG_OFFSET_CAPTURE)) {
                 continue;
             }
@@ -218,7 +225,7 @@ class BlogAutoLinker
     /** Glossary + entity terimlerini tek haritada birleştir (cache'li). */
     private function buildTermMap(string $locale = 'tr'): array
     {
-        return Cache::remember("blog_autolinker_terms_v2_{$locale}", 3600, function () use ($locale) {
+        return Cache::remember("blog_autolinker_terms_v3_{$locale}", 3600, function () use ($locale) {
             $map = [];
 
             // 1) Glossary (TÜRKÇE tanımlar) — SADECE TR içeriğe. DE/EN'e Türkçe tooltip sızmasın.
@@ -242,8 +249,9 @@ class BlogAutoLinker
             foreach (University::where('is_active', 1)->get(['name_de', 'short_name', 'slug']) as $u) {
                 if ($u->short_name && mb_strlen($u->short_name) >= 3) {
                     $key = mb_strtolower($u->short_name);
+                    if (in_array($key, self::SHORT_NAME_STOPLIST, true)) continue;
                     if (! isset($map[$key])) {
-                        $map[$key] = ['type' => 'link', 'url' => '/universities/' . $u->slug];
+                        $map[$key] = ['type' => 'link', 'url' => '/universities/' . $u->slug, 'exact' => $u->short_name];
                     }
                 }
             }

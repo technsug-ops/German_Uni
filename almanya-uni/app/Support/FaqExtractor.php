@@ -36,7 +36,7 @@ class FaqExtractor
         $total = count($headings);
 
         for ($i = 0; $i < $total; $i++) {
-            $question = self::toText($headings[$i][2][0]);
+            $question = self::toText(self::stripPermalinkAnchors($headings[$i][2][0]));
 
             // Question headings only: must end with a question mark (ASCII or full-width).
             if ($question === '' || ! preg_match('/[?？]$/u', $question)) {
@@ -60,6 +60,16 @@ class FaqExtractor
         }
 
         return $faqs;
+    }
+
+    /**
+     * MarkdownRenderer's HeadingPermalink injects <a class="heading-anchor">#</a>
+     * into every h2–h4; without this the "#" leaked into FAQPage question names.
+     * Only that decoration is removed — a "#" in the question text itself stays.
+     */
+    private static function stripPermalinkAnchors(string $html): string
+    {
+        return (string) preg_replace('/<a\b[^>]*\bclass="[^"]*\bheading-anchor\b[^"]*"[^>]*>.*?<\/a>/is', '', $html);
     }
 
     /** Strip tags, decode entities, collapse whitespace → plain text. */
