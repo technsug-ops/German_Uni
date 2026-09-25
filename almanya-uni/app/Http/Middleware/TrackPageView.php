@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Self-hosted page view tracker — Google Analytics yerine kullanılabilir.
- * Anonim ziyaretçiler için "almanyauni_uid" cookie kullanır (1 yıl).
+ * YALNIZCA analitik rızasıyla çalışır; takma adlı "almanyauni_uid" cookie kullanır (1 yıl).
+ * Rıza yoksa kayıt yapılmaz ve istekte gelen eski uid sunucu tarafında silinir.
  * Bot trafiğini user_agent ile filtreler, admin/api/static dosyaları atlar.
  */
 class TrackPageView
@@ -57,9 +58,13 @@ class TrackPageView
         $response = $next($request);
 
         try {
-            // Sadece satırı HAZIRLA + (gerekiyorsa) uid cookie'sini response'a yaz.
-            // Asıl DB INSERT terminate()'te — yani response gönderildikten SONRA.
-            $this->record($request, $response, microtime(true) - $started);
+            if (\App\Support\Consent::analytics($request)) {
+                // Sadece satırı HAZIRLA + (gerekiyorsa) uid cookie'sini response'a yaz.
+                // Asıl DB INSERT terminate()'te — yani response gönderildikten SONRA.
+                $this->record($request, $response, microtime(true) - $started);
+            } else {
+                $this->forgetUid($request, $response);
+            }
         } catch (\Throwable $e) {
             \Log::warning('TrackPageView error: ' . $e->getMessage());
         }
@@ -166,12 +171,37 @@ class TrackPageView
         }
 
         $sid = bin2hex(random_bytes(16));
-        $response->headers->setCookie(cookie(
-            self::COOKIE_NAME,
-            $sid,
-            self::COOKIE_TTL,
-            null, null, false, true, false, 'lax'
-        ));
+        $response->headers->setCookie($this->uidCookie($request, $sid, self::COOKIE_TTL));
         return $sid;
+    }
+
+    /**
+     * Rıza yokken (karar verilmemiş ya da geri çekilmiş) eski kimliği sunucu tarafında siler.
+     *
+     * Çerez HttpOnly olduğu için banner'ın JS temizliği (__clearAnalyticsCookies) ona
+     * ulaşamıyordu: geri çekmeden sonra 1 yıl yerinde kalıyor, yeniden rıza verilince
+     * AYNI kimlik kullanılıyor, yani geri çekme öncesi ve sonrası ziyaretler bağlanıyordu.
+     * Silme, oluşturmayla aynı yardımcıdan geçer ki path/domain birebir tutsun — farklı
+     * kapsamla gönderilen bir expire çerezi gerçek çerezi silmez.
+     */
+    private function forgetUid(Request $request, Response $response): void
+    {
+        if (! $request->cookies->has(self::COOKIE_NAME)) {
+            return;
+        }
+
+        $response->headers->setCookie($this->uidCookie($request, '', -2628000));
+    }
+
+    /**
+     * Oluşturma ve silme için TEK kapsam: path/domain session varsayılanı (/ , host-only),
+     * HttpOnly, SameSite=Lax. Secure: prod yalnızca HTTPS (kanonik yönlendirme .htaccess'te);
+     * yerel/test HTTP'de ancak istek gerçekten HTTPS ise.
+     */
+    private function uidCookie(Request $request, string $value, int $minutes): \Symfony\Component\HttpFoundation\Cookie
+    {
+        $secure = app()->environment('production') || $request->isSecure();
+
+        return cookie(self::COOKIE_NAME, $value, $minutes, null, null, $secure, true, false, 'lax');
     }
 }

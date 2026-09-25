@@ -1160,10 +1160,12 @@
                     $__hasExternalTrackers = $__trackerAnalytics || $__trackerMarketing;
                 @endphp
                 <p class="text-sm text-gray-600 leading-relaxed">
+                    {{-- Rıza yokken hiçbir istatistik tutulmuyor ve almanyauni_uid anonim değil,
+                         takma adlı — metin bunu söylemeli. --}}
                     @if ($__hasExternalTrackers)
-                        {{ __('We use cookies for anonymous visitor statistics and, with your consent, analytics tools (Google Analytics and Microsoft Clarity, which records page interactions) to improve the site.') }}
+                        {{ __('We use necessary cookies for essential site functions. With your consent, we also use analytics tools and pseudonymous visitor statistics.') }}
                     @else
-                        {{ __('We keep') }} <strong>{{ __('anonymous visitor statistics') }}</strong> {{ __('to improve the site (no Google Analytics, hosted on our own server). Your IP is hashed, no personal info is stored.') }}
+                        {{ __('We use necessary cookies for essential site functions. With your consent, we also use pseudonymous visitor statistics.') }}
                     @endif
                     <a href="{{ route('legal.cookies') }}" class="text-primary-600 hover:underline">{{ __('Details') }}</a>
                 </p>
