@@ -34,6 +34,7 @@ class LegalProductionDryRunTest extends TestCase
         '2026_09_24_000160_replace_tmg_with_ddg_in_legal_pages.php',
         '2026_09_24_000300_backfill_legal_page_translations.php',
         '2026_09_24_000400_fix_legal_disclosure_raw_markdown.php',
+        '2026_09_24_000500_modernize_legacy_liability_disclosures.php',
     ];
 
     /** @return array<string, array{titles: array, descriptions: array, bodies: array}> */
@@ -81,38 +82,15 @@ class LegalProductionDryRunTest extends TestCase
         $this->artisan('legal:audit')->assertExitCode(1);
     }
 
-    public function test_after_the_chain_the_only_remaining_findings_are_the_pending_liability_citations(): void
+    public function test_after_the_full_chain_the_audit_is_clean(): void
     {
         $this->loadProductionSnapshot();
         $this->runChain();
 
-        // Sorumluluk (Haftung) metinlerinin akıbeti ayrı bir karara bağlı:
-        // eski §§ 8-10 TMG rejimi aynı numaralı DDG maddelerine denk DEĞİL
-        // (DDG § 9/§ 10 farklı konu), aracı sorumluluğu bugün esas olarak DSA
-        // m. 4-6 altında. Numara eşleştirmesi tahminle yapılamayacağı için o
-        // cümlelere dokunulmadı. Bu test, GERİ KALAN her şeyin temiz olduğunu
-        // ve bekleyen borcun tam olarak bu 9 atıf olduğunu sabitler.
-        $findings = $this->auditFindings();
-
-        $this->assertSame(
-            array_fill(0, count($findings), 'eski kanun atfı'),
-            array_column($findings, 'issue'),
-            'sorumluluk atıfları dışında bulgu var — dil sızıntısı/yanlış beyan/eksik beyan sıfır olmalı'
-        );
-
-        $this->assertSame([
-            ['impressum', 'tr', '§ 7 Abs. 1 TMG'],
-            ['impressum', 'tr', '§§ 8-10 TMG'],
-            ['impressum', 'en', '§ 7 (1) TMG'],
-            ['impressum', 'en', '§§ 8-10 TMG'],
-            ['impressum', 'de', '§ 7 Abs. 1 TMG'],
-            ['impressum', 'de', '§§ 8-10 TMG'],
-            ['disclaimer', 'tr', '§§ 7-10 TMG'],
-            ['disclaimer', 'en', '§§ 7-10 TMG'],
-            ['disclaimer', 'de', '§§ 7-10 TMG'],
-        ], array_map(fn ($f) => [$f['key'], $f['locale'], $f['detail']], $findings));
-
-        // Parity etkilenmez: taşıma bütünlüğü ayrı bir konu.
+        // 000400 izleme beyanını, 000500 eski TMG sorumluluk kalıbını düzeltti:
+        // prod'un ham içeriği zincirden geçince hiçbir bulgu kalmamalı.
+        $this->assertSame([], $this->auditFindings());
+        $this->artisan('legal:audit')->assertExitCode(0);
         $this->artisan('legal:parity')->assertExitCode(0);
     }
 
@@ -130,8 +108,10 @@ class LegalProductionDryRunTest extends TestCase
         $this->runChain();
 
         foreach ($this->auditFindings() as $f) {
-            $this->assertSame('eski kanun atfı', $f['issue'], "beklenmeyen bulgu: {$f['key']}/{$f['locale']} — {$f['detail']}");
+            $this->fail("beklenmeyen bulgu: {$f['key']}/{$f['locale']} — {$f['issue']}: {$f['detail']}");
         }
+
+        $this->addToAssertionCount(1);
     }
 
     public function test_audit_does_not_flag_tmg_when_it_is_cited_historically(): void
@@ -163,7 +143,7 @@ class LegalProductionDryRunTest extends TestCase
         }
     }
 
-    public function test_only_the_verified_paragraph_5_citation_is_converted(): void
+    public function test_paragraph_5_is_converted_and_liability_text_is_rewritten_not_renumbered(): void
     {
         $this->loadProductionSnapshot();
         $this->runChain();
@@ -179,22 +159,18 @@ class LegalProductionDryRunTest extends TestCase
             $this->assertStringNotContainsString('§ 5 TMG', (string) $impressum->getDescription($locale));
         }
 
-        // DOKUNULMADI: sorumluluk maddeleri aynı numaralı DDG maddelerine denk
-        // değil (DDG § 9/§ 10 farklı konu; aracı sorumluluğu bugün DSA m. 4-6).
-        // Karar verilene kadar metin olduğu gibi kalmalı — uydurma eşleştirme yok.
-        $this->assertStringContainsString('§ 7 Abs. 1 TMG', $impressum->getBody('tr'));
-        $this->assertStringContainsString('§§ 8-10 TMG', $impressum->getBody('tr'));
-        $this->assertStringContainsString('§ 7 (1) TMG', $impressum->getBody('en'));
-        $this->assertStringContainsString('§ 7 Abs. 1 TMG', $impressum->getBody('de'));
-
+        // Sorumluluk atıfları DDG'ye MEKANİK çevrilmedi: 000500 metni DSA m. 6/8'e
+        // (kullanıcı içeriği) göre yeniden yazdı, harici linklerden atfı kaldırdı.
         foreach (['tr', 'en', 'de'] as $locale) {
-            $this->assertStringContainsString('§§ 7-10 TMG', $disclaimer->getBody($locale));
-            // Hiçbir yerde uydurma DDG eşleştirmesi oluşmamış olmalı.
+            $this->assertDoesNotMatchRegularExpression('~\bTMG\b~u', $impressum->getBody($locale));
+            $this->assertDoesNotMatchRegularExpression('~\bTMG\b~u', $disclaimer->getBody($locale));
             $this->assertStringNotContainsString('DDG', $disclaimer->getBody($locale));
             $this->assertStringNotContainsString('§ 7 Abs. 1 DDG', $impressum->getBody($locale));
             $this->assertStringNotContainsString('§§ 8-10 DDG', $impressum->getBody($locale));
             $this->assertStringNotContainsString('§§ 7-10 DDG', $disclaimer->getBody($locale));
         }
+        $this->assertStringContainsString('Art. 6 DSA', $impressum->getBody('de'));
+        $this->assertStringContainsString('Art. 8 DSA', $impressum->getBody('de'));
 
         // MStV atfı geçerliliğini koruyor, dokunulmamalı.
         $this->assertStringContainsString('§ 18 MStV', (string) $impressum->getDescription('de'));
@@ -227,9 +203,8 @@ class LegalProductionDryRunTest extends TestCase
         $this->assertSame(15, DB::table('legal_page_translations')->count(), 'zincir kayıt çoğalttı');
         $this->assertSame($bodies, DB::table('legal_page_translations')->orderBy('id')->pluck('body', 'id')->all());
 
-        // Bulgu sayısı da sabit kalmalı: tekrar koşmak ne yeni sorun yaratmalı
-        // ne de bekleyen sorumluluk atıflarını sessizce yutmalı.
-        $this->assertCount(9, $this->auditFindings());
+        // Tekrar koşmak yeni bulgu da yaratmamalı.
+        $this->assertSame([], $this->auditFindings());
     }
 
     /* ------------------------------------------------ rollout guard (tablo yok) */
