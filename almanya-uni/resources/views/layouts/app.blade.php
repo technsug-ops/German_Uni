@@ -39,11 +39,6 @@
     {{-- hreflang alternates (SEO) --}}
     @php
         $activeLocales = collect(config('locale.locales', []))->filter(fn ($c) => ! empty($c['active']))->keys();
-        // x-default: default dil hazırsa o, değilse ilk aktif dil (şu an tr → /tr)
-        $__defCfg = config('locale.locales.' . config('locale.default') . '');
-        $xDefaultLocale = (! empty($__defCfg['active']) && empty($__defCfg['coming_soon']))
-            ? config('locale.default')
-            : ($activeLocales->first() ?? config('locale.default'));
         // Menü sayıları — dinamik + 6 saat cache (her sayfada DB sorgusu olmasın)
         $navCounts = cache()->remember('nav_counts_v1', now()->addHours(6), fn () => [
             'universities' => \App\Models\University::where('is_active', 1)->count(),
@@ -59,14 +54,20 @@
         // hreflang üret. Aksi halde çevrilmemiş yazılar için 404'e giden alternate'ler çıkıyordu.
         $__localeUrls = view()->shared('localeUrls');
         $__hasSiblings = is_array($__localeUrls) && $__localeUrls !== [];
+        $__hreflangs = [];
+        foreach (\App\Support\Hreflang::activeLocales() as $loc) {
+            if (! $__hasSiblings || ! empty($__localeUrls[$loc])) {
+                $__hreflangs[$loc] = localized_url($loc);
+            }
+        }
+        // x-default sitemap ile AYNI kaynaktan ve yalnızca yukarıdaki gerçek alternatiflerden.
+        $__xDefault = \App\Support\Hreflang::xDefault($__hreflangs);
     @endphp
-    @foreach ($activeLocales as $loc)
-        @if (! $__hasSiblings || ! empty($__localeUrls[$loc]))
-            <link rel="alternate" hreflang="{{ $loc }}" href="{{ localized_url($loc) }}">
-        @endif
+    @foreach ($__hreflangs as $loc => $href)
+        <link rel="alternate" hreflang="{{ $loc }}" href="{{ $href }}">
     @endforeach
-    @if (! $__hasSiblings || ! empty($__localeUrls[$xDefaultLocale]))
-        <link rel="alternate" hreflang="x-default" href="{{ localized_url($xDefaultLocale) }}">
+    @if ($__xDefault)
+        <link rel="alternate" hreflang="x-default" href="{{ $__xDefault }}">
     @endif
 
     {{-- Favicon — KARE + beyaz kutu (koyu/açık sekmede görünür). Geniş wordmark logo

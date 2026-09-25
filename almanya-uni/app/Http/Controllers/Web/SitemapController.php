@@ -161,10 +161,7 @@ class SitemapController extends Controller
      */
     private function activeLocales(): array
     {
-        return collect(config('locale.locales', []))
-            ->filter(fn ($c) => ! empty($c['active']) && empty($c['coming_soon']))
-            ->keys()
-            ->all();
+        return \App\Support\Hreflang::activeLocales();
     }
 
     /**
@@ -628,9 +625,9 @@ class SitemapController extends Controller
                 $xml .= '    <xhtml:link rel="alternate" hreflang="' . $loc . '" href="' . htmlspecialchars($altUrl, ENT_XML1 | ENT_QUOTES, 'UTF-8') . '"/>' . "\n";
             }
 
-            // x-default: tercih edilen dil (activeLocales[0]) varsa o, yoksa mevcut
-            // alternatiflerden ilki. Var olmayan bir dile işaret edilmez.
-            $xDefault = $alts[$activeLocales[0] ?? 'tr'] ?? (reset($alts) ?: null);
+            // x-default sayfa <head>'iyle AYNI kaynaktan (Hreflang::xDefault): varsayılan
+            // dil kümedeyse o, değilse kümede bulunan ilk aktif dil. Var olmayan dile işaret edilmez.
+            $xDefault = \App\Support\Hreflang::xDefault($alts);
             if ($xDefault) {
                 $xml .= '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($xDefault, ENT_XML1 | ENT_QUOTES, 'UTF-8') . '"/>' . "\n";
             }
