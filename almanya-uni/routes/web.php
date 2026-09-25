@@ -453,10 +453,15 @@ $pwaManifest = function (\Illuminate\Http\Request $request) {
 Route::get('/site.webmanifest', $pwaManifest)->name('pwa.manifest');
 Route::get('/manifest.json', $pwaManifest);
 
+// Sitemap: index → her aktif dil için kendi dosyası (/sitemap-tr.xml, …). Bir dil 45.000
+// URL'yi aşarsa parçalanır (/sitemap-tr-2.xml). Eski alt adresler 404 vermesin diye index'i sunar.
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
-Route::get('/sitemap-content.xml', [SitemapController::class, 'content'])->name('sitemap.content');
-Route::get('/sitemap-landings.xml', [SitemapController::class, 'landings'])->name('sitemap.landings');
-Route::get('/sitemap-glossary.xml', [SitemapController::class, 'glossary'])->name('sitemap.glossary');
+Route::get('/sitemap-{lang}.xml', [SitemapController::class, 'locale'])->where('lang', '[a-z]{2}')->name('sitemap.locale');
+Route::get('/sitemap-{lang}-{page}.xml', [SitemapController::class, 'locale'])
+    ->where(['lang' => '[a-z]{2}', 'page' => '[2-9]|[1-9][0-9]+'])->name('sitemap.locale.page');
+Route::get('/sitemap-content.xml', [SitemapController::class, 'legacy'])->name('sitemap.content');
+Route::get('/sitemap-landings.xml', [SitemapController::class, 'legacy'])->name('sitemap.landings');
+Route::get('/sitemap-glossary.xml', [SitemapController::class, 'legacy'])->name('sitemap.glossary');
 
 // Token-gated image cache trigger (KAS has no SSH/cron — fire via curl after deploy)
 //   curl "https://applytogerman.com/_system/cache-hot-images?token=XXX&limit=20"
@@ -1392,7 +1397,7 @@ Route::get('/llms.txt', function (\Illuminate\Http\Request $request) {
 
 ## Reference
 
-- [Sitemap]({$base}/sitemap.xml): Full site index (split: content, landings, glossary)
+- [Sitemap]({$base}/sitemap.xml): Full site index (one sitemap per language: tr, en, de)
 - [Robots]({$base}/robots.txt): Crawl rules
 
 ## Editorial Notes

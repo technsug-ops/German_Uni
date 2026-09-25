@@ -22,28 +22,41 @@ use Illuminate\Support\Facades\URL;
 class SitemapController extends Controller
 {
     /**
-     * Master sitemap index (sitemap.xml).
-     * Referans alt sitemap'lere — Google'ın crawl efficiency'sini artırır,
-     * 50K URL/50MB limit'lerine takılma riski sıfırlanır.
+     * Bir dosyadaki en fazla URL. Protokol sınırı 50.000; pay bırakılır. Bir dil bunu
+     * aşarsa dosyası otomatik parçalanır (/sitemap-{lang}-2.xml …).
      */
-    public function index(Request $request): Response
-    {
-        $this->setLocaleFromHost($request);
+    private const MAX_URLS_PER_FILE = 45000;
 
+    /** Test için config'den küçültülebilir (sitemap.max_urls_per_file); 45.000'i geçemez. */
+    private function maxUrls(): int
+    {
+        return max(1, min(self::MAX_URLS_PER_FILE, (int) config('sitemap.max_urls_per_file', self::MAX_URLS_PER_FILE)));
+    }
+
+    /**
+     * Sitemap index (sitemap.xml) — her aktif dil için KENDİ dosyası.
+     *
+     * NEDEN DİL BAZLI (2026-09-25 kapsam denetimi): eski yapı host'un diline göre tek
+     * bir dil üretiyordu (applytogerman.com → en). 23.858 kaydın tamamının <loc>'u EN'di;
+     * TR/DE URL'leri yalnızca hreflang alternatifiydi (Search Console'da "gönderilmemiş")
+     * ve EN'i olmayan TR yazı/SSS'ler sitemap'e hiç girmiyordu. Artık her dil sürümü
+     * kendi <url>/<loc> kaydını alır; hreflang kümesi değişmez.
+     */
+    public function index(Request $request, RankingService $rankings): Response
+    {
         $base = $request->getScheme() . '://' . $request->getHost();
-        $sitemaps = [
-            ['loc' => $base . '/sitemap-content.xml',   'lastmod' => now()->format('Y-m-d')],
-            ['loc' => $base . '/sitemap-landings.xml',  'lastmod' => now()->format('Y-m-d')],
-            ['loc' => $base . '/sitemap-glossary.xml',  'lastmod' => now()->format('Y-m-d')],
-        ];
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($sitemaps as $s) {
-            $xml .= "  <sitemap>\n";
-            $xml .= '    <loc>' . htmlspecialchars($s['loc'], ENT_XML1 | ENT_QUOTES, 'UTF-8') . "</loc>\n";
-            $xml .= "    <lastmod>{$s['lastmod']}</lastmod>\n";
-            $xml .= "  </sitemap>\n";
+        foreach ($this->activeLocales() as $lang) {
+            $files = max(1, (int) ceil($this->localeCount($lang, $rankings) / $this->maxUrls()));
+            for ($page = 1; $page <= $files; $page++) {
+                $loc = $base . '/sitemap-' . $lang . ($page > 1 ? '-' . $page : '') . '.xml';
+                $xml .= "  <sitemap>\n";
+                $xml .= '    <loc>' . htmlspecialchars($loc, ENT_XML1 | ENT_QUOTES, 'UTF-8') . "</loc>\n";
+                $xml .= '    <lastmod>' . now()->format('Y-m-d') . "</lastmod>\n";
+                $xml .= "  </sitemap>\n";
+            }
         }
         $xml .= '</sitemapindex>';
 
@@ -51,44 +64,99 @@ class SitemapController extends Controller
     }
 
     /**
-     * Domain-aware locale (private helper, multiple sitemap methods kullanır).
+     * Tek dilin sitemap'i: <loc>'ların HEPSİ bu dilde. Hreflang alternatifleri kümenin
+     * gerçek kardeşleri (Hreflang::xDefault ile aynı x-default) — sayfa <head>'iyle aynı.
      */
-    private function setLocaleFromHost(Request $request): void
+    public function locale(Request $request, RankingService $rankings, string $lang, ?string $page = null): Response
     {
-        $host = strtolower(preg_replace('/^www\./', '', $request->getHost()));
-        $domains = config('brand.domains', []);
-        $brandKey = $domains[$host] ?? config('brand.fallback', 'almanyauni');
-        $defaultLocale = config('brand.brands')[$brandKey]['default_locale'] ?? 'tr';
-        App::setLocale($defaultLocale);
-        URL::defaults(['locale' => $defaultLocale]);
+        abort_unless(in_array($lang, $this->activeLocales(), true), 404);
+
+        $page = (int) ($page ?? 1);
+        $entries = $this->entriesFor($lang, $rankings);
+        // Index kendi envanterini KURMAZ (üç dil ≈ 20 sn); dosya sayısını buradan okur.
+        cache()->put($this->countKey($lang), count($entries), now()->addDays(2));
+
+        $urls = array_slice($entries, ($page - 1) * $this->maxUrls(), $this->maxUrls());
+        abort_if($page > 1 && $urls === [], 404);
+
+        return response($this->buildXml($urls, $this->activeLocales()), 200)
+            ->header('Content-Type', 'application/xml; charset=utf-8');
     }
 
     /**
-     * Glossary sitemap — semantic SEO entity sayfaları.
+     * Eski alt sitemap adresleri (content / landings / glossary). Search Console'da ayrıca
+     * gönderilmiş olabilirler; 404 vermesinler diye yeni index'i sunarlar.
      */
-    public function glossary(Request $request): Response
+    public function legacy(Request $request, RankingService $rankings): Response
     {
-        $this->setLocaleFromHost($request);
-        $activeLocales = $this->activeLocales();
+        return $this->index($request, $rankings);
+    }
 
+    /**
+     * Bir dilin tüm sitemap kayıtları: içerik + programatik landing'ler + sözlük.
+     *
+     * route() bu dilin URL'ini üretsin diye uygulama dili ve URL varsayılanı geçici olarak
+     * o dile ayarlanır (request/host dili DEĞİL — eski yapının tek-dil sebebi buydu).
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function entriesFor(string $lang, RankingService $rankings): array
+    {
+        $prevLocale = App::getLocale();
+        App::setLocale($lang);
+        URL::defaults(['locale' => $lang]);
+
+        try {
+            return array_merge(
+                $this->contentEntries($lang, $rankings),
+                $this->landingEntries(),
+                $this->glossaryEntries(),
+            );
+        } finally {
+            App::setLocale($prevLocale);
+            URL::defaults(['locale' => $prevLocale]);
+        }
+    }
+
+    /**
+     * Index'in dosya sayısı için dilin kayıt sayısı: dil dosyası her üretildiğinde önbelleğe
+     * yazılır. Index envanteri KENDİSİ kurmaz — üç dil soğuk önbellekte ~20 sn sürer ve
+     * paylaşımlı sunucuda zaman aşımı riski taşır. Sayı henüz yoksa tek dosya varsayılır; bir
+     * dil 45.000'i ilk kez aşarsa ek dosya, o dilin sitemap'i bir kez üretildikten sonra görünür.
+     */
+    private function localeCount(string $lang, RankingService $rankings): int
+    {
+        return (int) cache()->get($this->countKey($lang), 0);
+    }
+
+    private function countKey(string $lang): string
+    {
+        return "sitemap_locale_count_v1_{$lang}";
+    }
+
+    /**
+     * Sözlük (glossary) — semantic SEO entity sayfaları.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function glossaryEntries(): array
+    {
         $urls = [];
         $urls[] = $this->entry(route('glossary.index'), now(), 'monthly', 0.7);
         foreach (array_keys(config('glossary', [])) as $slug) {
             $urls[] = $this->entry(route('glossary.show', $slug), now(), 'monthly', 0.7);
         }
 
-        return response($this->buildXml($urls, $activeLocales), 200)
-            ->header('Content-Type', 'application/xml; charset=utf-8');
+        return $urls;
     }
 
     /**
      * Programmatic SEO landing pages — city × field, city × language, field × degree.
+     *
+     * @return array<int, array<string, mixed>>
      */
-    public function landings(Request $request): Response
+    private function landingEntries(): array
     {
-        $this->setLocaleFromHost($request);
-        $activeLocales = $this->activeLocales();
-
         $urls = [];
 
         // City × Field
@@ -152,8 +220,7 @@ class SitemapController extends Controller
             }
         }
 
-        return response($this->buildXml($urls, $activeLocales), 200)
-            ->header('Content-Type', 'application/xml; charset=utf-8');
+        return $urls;
     }
 
     /**
@@ -165,12 +232,12 @@ class SitemapController extends Controller
     }
 
     /**
-     * Content sitemap — static pages + cities/unis/programs/blog/faq/scholarships.
-     * (Eski tek sitemap.xml içeriği — programmatic landings ve glossary hariç tutuldu.)
+     * İçerik — static pages + cities/unis/programs/blog/faq/scholarships (tek dil).
+     *
+     * @return array<int, array<string, mixed>>
      */
-    public function content(Request $request, RankingService $rankings): Response
+    private function contentEntries(string $lang, RankingService $rankings): array
     {
-        $this->setLocaleFromHost($request);
         $activeLocales = $this->activeLocales();
 
         $urls = [];
@@ -286,10 +353,28 @@ class SitemapController extends Controller
         $postAlts = $this->postSlugsByGroup();
         $faqAlts = $this->faqSlugsByGroup();
 
-        Post::published()
-            ->select(['slug', 'updated_at', 'translation_group_id'])
+        // Yayın koşulları published() ile AYNI; ama dil request/host'tan değil kaydın kendi
+        // locale alanından gelir. Eskiden published() host dilini (en) uyguluyordu → EN'i
+        // olmayan TR yazılar sitemap'e hiç girmiyordu.
+        //
+        // blog_redirects'te AYNI DİLDE from_slug olan bir slug, sitenin kendi kaydına göre başka
+        // bir yazıya devredilmiştir (ör. tr: uniassist-vpd-reddedilme-cozumler → yeni İngilizce
+        // slug); <loc> olarak sunulmaz. Dil şart: "en" satırı yalnızca /en/<eski-slug> adresinin
+        // taşındığını söyler, aynı slug'ı taşıyan TR kardeşini devre dışı bırakmaz.
+        // Yönlendirme/canonical davranışı DEĞİŞMEZ.
+        $superseded = \Illuminate\Support\Facades\Schema::hasTable('blog_redirects')
+            ? \Illuminate\Support\Facades\DB::table('blog_redirects')->where('locale', $lang)->pluck('from_slug')->all()
+            : [];
+
+        Post::query()
+            ->where('locale', $lang)
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->when($superseded !== [], fn ($q) => $q->whereNotIn('slug', $superseded))
+            ->select(['id', 'slug', 'updated_at', 'translation_group_id'])
             ->orderBy('id')
-            ->chunk(500, function ($chunk) use (&$urls, $postAlts, $activeLocales) {
+            ->chunk(500, function ($chunk) use (&$urls, $postAlts, $activeLocales, $lang) {
                 foreach ($chunk as $p) {
                     $self = route('blog.show', $p->slug);
                     $alts = [];
@@ -300,22 +385,22 @@ class SitemapController extends Controller
                         }
                     }
 
-                    // translation_group_id boşsa kardeş doğrulanamaz. Bu durumda alternatif
-                    // listesi BOŞ kalırsa buildXml prefix-swap yedeğine düşer ve blog/SSS için
-                    // var olmayan adres üretir. Kendini bildirerek o yedeği devre dışı bırak.
-                    if ($alts === []) {
-                        $alts[app()->getLocale()] = $self;
-                    }
+                    // translation_group_id boşsa kardeş doğrulanamaz; buildXml'in prefix-swap
+                    // yedeği blog/SSS için var olmayan adres üretir. Sayfa (BlogController) gibi
+                    // kaydın kendisi her zaman kümede.
+                    $alts[$lang] ??= $self;
 
                     $urls[] = $this->entry($self, $p->updated_at, 'monthly', 0.7, $alts);
                 }
             });
 
-        Faq::published()
+        Faq::query()
+            ->where('locale', $lang)
+            ->where('is_published', true)
             ->with('topic:id,slug')
             ->select(['id', 'slug', 'updated_at', 'has_answer', 'faq_topic_id', 'translation_group_id'])
             ->orderBy('id')
-            ->chunk(500, function ($chunk) use (&$urls, $faqAlts, $activeLocales) {
+            ->chunk(500, function ($chunk) use (&$urls, $faqAlts, $activeLocales, $lang) {
                 foreach ($chunk as $f) {
                     if (!$f->topic) continue;
                     $self = route('faqs.show', [$f->topic->slug, $f->slug]);
@@ -328,9 +413,7 @@ class SitemapController extends Controller
                     }
 
                     // Kardeş doğrulanamıyorsa prefix-swap yedeğine düşmesin (bkz. blog).
-                    if ($alts === []) {
-                        $alts[app()->getLocale()] = $self;
-                    }
+                    $alts[$lang] ??= $self;
 
                     $urls[] = $this->entry(
                         $self,
@@ -494,10 +577,7 @@ class SitemapController extends Controller
                 }
             });
 
-        $xml = $this->buildXml($urls, $activeLocales);
-
-        return response($xml, 200)
-            ->header('Content-Type', 'application/xml; charset=utf-8');
+        return $urls;
     }
 
     /**

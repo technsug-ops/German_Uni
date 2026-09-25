@@ -110,10 +110,13 @@ class HreflangConsistencyTest extends TestCase
         return ['alts' => $alts, 'canonical' => $c[1]];
     }
 
-    /** Sitemap'teki <url> kaydının hreflang haritası. */
+    /** Sitemap'teki <url> kaydının hreflang haritası (dil dosyalarının hepsinde aranır). */
     private function sitemapAlts(string $loc): ?array
     {
-        $xml = $this->get('/sitemap-content.xml')->assertOk()->getContent();
+        $xml = '';
+        foreach (Hreflang::activeLocales() as $lang) {
+            $xml .= $this->get("/sitemap-{$lang}.xml")->assertOk()->getContent();
+        }
         foreach (explode('<url>', $xml) as $block) {
             if (! str_contains($block, '<loc>' . htmlspecialchars($loc, ENT_XML1 | ENT_QUOTES) . '</loc>')) {
                 continue;
