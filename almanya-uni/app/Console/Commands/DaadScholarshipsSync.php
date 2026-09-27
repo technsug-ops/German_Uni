@@ -11,6 +11,7 @@ use App\Models\ScholarshipSubject;
 use App\Services\DaadScholarshipsClient;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class DaadScholarshipsSync extends Command
@@ -20,6 +21,19 @@ class DaadScholarshipsSync extends Command
         {--no-scout : Scout/Meilisearch reindex adımını atla}';
 
     protected $description = 'DAAD scholarship database (166 burs) tek koşulu sync. Programlar (daad:import) için DEĞİL — burslar.';
+
+    /**
+     * Uygunluğu editoryal olarak düzeltilmiş kayıtlar — sap_objid (DAAD'ın kalıcı dış kimliği) => adında
+     * bulunması gereken ifade. Bu kayıtlarda DAAD'ın ülke listesi (origin) bağlanmaz ve qDe/qEn anahtar-kelime
+     * yığını, düzeltilmiş uygunluk metninin üzerine yazılmaz; diğer tüm alanlar normal güncellenir.
+     * Gelen ad beklenen ifadeyi İÇERMİYORSA normal senkrona DÖNÜLMEZ: origins ve q alanlarına hiç dokunulmaz
+     * (mevcut düzeltilmiş durum korunur) ve uyarı loglanır; diğer kayıtların senkronu devam eder.
+     *  - 20000162 BAföG: uygunluk § 8 BAföG'deki oturum/statü koşullarına bağlı, vatandaşlık listesine değil
+     *    (DAAD verisi 211 ülkeyi "eligible countries" olarak işaretliyordu). Content Truth Batch 1B, 2026-09-27.
+     */
+    public const CURATED_ELIGIBILITY = [
+        20000162 => 'BAföG',
+    ];
 
     private int $created = 0;
     private int $updated = 0;
@@ -231,6 +245,13 @@ class DaadScholarshipsSync extends Command
                 'detail_url'         => $detailUrl,
             ];
 
+            // null = normal kayıt; 'curated' = ad doğrulandı (origins boş tutulur); 'frozen' = ad beklenmiyor
+            // (origins'e hiç dokunulmaz). Her iki korumalı modda da qDe/qEn yazılmaz.
+            $curated = $this->curatedEligibilityMode($sapObjid, $r);
+            if ($curated !== null) {
+                unset($payload['q_de_json'], $payload['q_en_json']);
+            }
+
             $existing = Scholarship::where('sap_objid', $sapObjid)->first();
             if ($existing) {
                 // Slug çakışmasını engellemek için mevcut slug'ı koru
@@ -244,7 +265,11 @@ class DaadScholarshipsSync extends Command
             }
 
             // M:M sync — pivot ID'lerini lookup whitelist'iyle filtrele (DAAD -1 vs.)
-            $sch->origins()->sync(array_values(array_intersect($this->toIntList($r['origin'] ?? []), $this->validOriginIds ?? [])));
+            if ($curated === null) {
+                $sch->origins()->sync(array_values(array_intersect($this->toIntList($r['origin'] ?? []), $this->validOriginIds ?? [])));
+            } elseif ($curated === 'curated') {
+                $sch->origins()->sync([]);
+            } // 'frozen': mevcut origins durumu olduğu gibi korunur
             $sch->statuses()->sync(array_values(array_intersect($this->toIntList($r['status'] ?? []), $this->validStatusIds ?? [])));
             $sch->subjects()->sync(array_values(array_intersect($this->toStringList($r['subjectGrps'] ?? []), $this->validSubjectCodes ?? [])));
             $sch->intentions()->sync(array_values(array_intersect($this->toIntList($r['intentions'] ?? []), $this->validIntentionIds ?? [])));
@@ -257,6 +282,31 @@ class DaadScholarshipsSync extends Command
         $this->newLine();
 
         return $seen;
+    }
+
+    /**
+     * null: sap_objid CURATED_ELIGIBILITY'de değil (normal senkron).
+     * 'curated': listede ve DAAD adı beklenen ifadeyi içeriyor → origins boş tutulur, qDe/qEn yazılmaz.
+     * 'frozen': listede ama ad beklenen ifadeyi İÇERMİYOR → origins ve qDe/qEn'e hiç dokunulmaz, uyarı loglanır.
+     * Böylece upstream ad değişikliği tek başına yanlış ülke listesini geri getiremez.
+     */
+    private function curatedEligibilityMode(int $sapObjid, array $r): ?string
+    {
+        $needle = self::CURATED_ELIGIBILITY[$sapObjid] ?? null;
+        if ($needle === null) {
+            return null;
+        }
+        $name = ($r['nameDe'] ?? '') . ' ' . ($r['nameEn'] ?? '');
+        if (! str_contains($name, $needle)) {
+            $msg = "DAAD scholarships sync: sap_objid {$sapObjid} (curated eligibility) arrived without expected name '{$needle}'"
+                . " — origins and qDe/qEn left untouched; review manually. Incoming name: " . trim($name);
+            $this->warn('   ' . $msg);
+            Log::warning($msg, ['sap_objid' => $sapObjid, 'expected' => $needle, 'incoming_name' => trim($name)]);
+
+            return 'frozen';
+        }
+
+        return 'curated';
     }
 
     private function markRemoved(array $seenSapObjids): void
