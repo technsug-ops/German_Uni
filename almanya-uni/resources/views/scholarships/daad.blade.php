@@ -17,7 +17,7 @@
     '@context' => 'https://schema.org',
     '@type' => 'Article',
     'headline' => __('DAAD Scholarships — Complete Guide for International Students'),
-    'description' => __('DAAD\'s 166+ scholarship programs: bachelor, master, PhD, postdoc, summer school, arts. Monthly 934-2,670 € support.'),
+    'description' => __('DAAD\'s 166+ scholarship programs: bachelor, master, PhD, postdoc, summer school, arts. Monthly 992-2,670 € support.'),
     'inLanguage' => app()->getLocale(),
     'datePublished' => '2026-05-19',
     'author' => ['@type' => 'Organization', 'name' => brand('name')],
@@ -156,7 +156,7 @@
                 {{ __('Master Scholarships') }}
             </h2>
             <p class="text-gray-700 mb-5">
-                {!! __('DAAD\'s <strong>most active</strong> scholarship category. The most realistic application route for international students. Monthly <strong>934 €</strong> + health insurance + travel + 460 € research allowance.') !!}
+                {!! __('DAAD\'s <strong>most active</strong> scholarship category. The most realistic application route for international students. Monthly <strong>992 €</strong> + health insurance + travel + 460 € research allowance.') !!}
             </p>
 
             <div class="space-y-4">
@@ -167,7 +167,7 @@
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
                         <li>{!! __('<strong>Duration:</strong> 12-24 months (until master is completed)') !!}</li>
-                        <li>{!! __('<strong>Amount:</strong> 934 €/month + 460 €/year research allowance') !!}</li>
+                        <li>{!! __('<strong>Amount:</strong> 992 €/month + 460 €/year research allowance') !!}</li>
                         <li>{!! __('<strong>Plus:</strong> Health insurance, travel allowance, language course (free)') !!}</li>
                         <li>{!! __('<strong>Deadline:</strong> October/November (for autumn intake)') !!}</li>
                         <li>{!! __('<strong>Requirement:</strong> Final-year bachelor or graduate (max 6 years ago), B1+ German or B2+ English') !!}</li>
@@ -181,7 +181,7 @@
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
                         <li>{!! __('<strong>Duration:</strong> 24 months (full master)') !!}</li>
-                        <li>{!! __('<strong>Amount:</strong> 934 €/month + extra grant') !!}</li>
+                        <li>{!! __('<strong>Amount:</strong> 992 €/month + extra grant') !!}</li>
                         <li>{!! __('<strong>Target:</strong> Citizens of developing/transition countries') !!}</li>
                         <li>{!! __('<strong>Deadline:</strong> July') !!}</li>
                     </ul>
@@ -194,7 +194,7 @@
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
                         <li>{!! __('<strong>Duration:</strong> 12-24 months') !!}</li>
-                        <li>{!! __('<strong>Amount:</strong> 934 €/month + travel + research + family allowance') !!}</li>
+                        <li>{!! __('<strong>Amount:</strong> 992 €/month + travel + research + family allowance') !!}</li>
                         <li>{!! __('<strong>Programs:</strong> Renewable Energy, Public Health, Tropical Agriculture, etc.') !!}</li>
                         <li>{!! __('<strong>Deadline:</strong> Program-specific — usually September-October') !!}</li>
                     </ul>
@@ -206,7 +206,7 @@
                         {{ __('For a master in public health in cooperation with WHO. Priority for health professionals.') }}
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
-                        <li>{!! __('<strong>Duration:</strong> 12-24 months · <strong>Amount:</strong> 934 €/month + tuition') !!}</li>
+                        <li>{!! __('<strong>Duration:</strong> 12-24 months · <strong>Amount:</strong> 992 €/month + tuition') !!}</li>
                     </ul>
                 </div>
 
@@ -216,7 +216,7 @@
                         {{ __('Master/diploma programs for music, composition, opera, dance.') }}
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
-                        <li>{!! __('<strong>Duration:</strong> 12-24 months · <strong>Amount:</strong> 934 €/month + artist materials allowance') !!}</li>
+                        <li>{!! __('<strong>Duration:</strong> 12-24 months · <strong>Amount:</strong> 992 €/month + artist materials allowance') !!}</li>
                         <li>{!! __('<strong>Requirement:</strong> Audition / portfolio mandatory') !!}</li>
                     </ul>
                 </div>
@@ -230,7 +230,7 @@
                 {{ __('PhD (Doctoral) Scholarships') }}
             </h2>
             <p class="text-gray-700 mb-5">
-                {!! __('Doctoral level is DAAD\'s <strong>flagship category</strong>. Monthly <strong>1,300 €</strong> and above, for 3-4 years. Comprehensive options for those who want to pursue a doctorate from abroad.') !!}
+                {!! __('Doctoral level is DAAD\'s <strong>flagship category</strong>. Monthly <strong>1,400 €</strong> and above, for 3-4 years. Comprehensive options for those who want to pursue a doctorate from abroad.') !!}
             </p>
 
             <div class="space-y-4">
@@ -241,7 +241,7 @@
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
                         <li>{!! __('<strong>Duration:</strong> 3-4 years') !!}</li>
-                        <li>{!! __('<strong>Amount:</strong> 1,300 €/month + 460 €/year printing + health + travel + 1,000 € family allowance (if applicable)') !!}</li>
+                        <li>{!! __('<strong>Amount:</strong> 1,400 €/month + 460 €/year printing + health + travel + 1,000 € family allowance (if applicable)') !!}</li>
                         <li>{!! __('<strong>Deadline:</strong> Usually November') !!}</li>
                         <li>{!! __('<strong>Requirement:</strong> Master graduate, acceptance letter from target professor, research proposal') !!}</li>
                     </ul>
@@ -254,7 +254,7 @@
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
                         <li>{!! __('<strong>Duration:</strong> Total 36 months (at least 18 months in Germany)') !!}</li>
-                        <li>{!! __('<strong>Amount:</strong> 1,300 €/month (in Germany)') !!}</li>
+                        <li>{!! __('<strong>Amount:</strong> 1,400 €/month (in Germany)') !!}</li>
                         <li>{!! __('<strong>Advantage:</strong> Joint supervisor + diploma in two countries') !!}</li>
                     </ul>
                 </div>
@@ -265,7 +265,7 @@
                         {{ __('If you are doing a PhD at home, one year of research in Germany. Archive/laboratory access for your thesis.') }}
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
-                        <li>{!! __('<strong>Duration:</strong> 7-10 months · <strong>Amount:</strong> 1,300 €/month') !!}</li>
+                        <li>{!! __('<strong>Duration:</strong> 7-10 months · <strong>Amount:</strong> 1,400 €/month') !!}</li>
                     </ul>
                 </div>
 
@@ -275,7 +275,7 @@
                         {{ __('Short-term research stay — fieldwork, archive research, conference.') }}
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
-                        <li>{!! __('<strong>Duration:</strong> 1-6 months · <strong>Amount:</strong> 1,300 €/month') !!}</li>
+                        <li>{!! __('<strong>Duration:</strong> 1-6 months · <strong>Amount:</strong> 1,400 €/month') !!}</li>
                     </ul>
                 </div>
             </div>
@@ -394,7 +394,7 @@
                         {{ __('For master/postgraduate in fine arts, architecture, music, performing arts.') }}
                     </p>
                     <ul class="text-xs text-gray-600 space-y-0.5">
-                        <li>{!! __('<strong>Duration:</strong> 10-24 months · <strong>Amount:</strong> 934 €/month + artist materials allowance + travel') !!}</li>
+                        <li>{!! __('<strong>Duration:</strong> 10-24 months · <strong>Amount:</strong> 992 €/month + artist materials allowance + travel') !!}</li>
                         <li>{!! __('<strong>Requirement:</strong> Portfolio + audition + acceptance from arts universities') !!}</li>
                     </ul>
                 </div>

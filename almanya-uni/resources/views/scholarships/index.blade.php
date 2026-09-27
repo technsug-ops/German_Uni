@@ -52,8 +52,8 @@
                         {{ __('Germany\'s official academic exchange service — the broadest scholarship program for international students. 8 categories from bachelor to postdoc, from summer school to artist grants.') }}
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs">
-                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-50 text-blue-700"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Master 934 €/month') }}</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-50 text-purple-700"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> {{ __('PhD 1,300 €/month') }}</span>
+                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-50 text-blue-700"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Master 992 €/month') }}</span>
+                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-50 text-purple-700"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> {{ __('PhD 1,400 €/month') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-50 text-emerald-700"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Postdoc 2,150 €/month') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 text-amber-700"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Summer school') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-rose-50 text-rose-700"><x-svg-icon name="paint-brush" class="w-3.5 h-3.5" /> {{ __('Artists') }}</span>
@@ -95,7 +95,7 @@
                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-lg bg-rose-50 text-rose-600"><x-svg-icon name="heart" class="w-7 h-7" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Friedrich-Ebert-Stiftung</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Foundation close to SPD. For students aligned with social-democratic values — bachelor + master + PhD.') }}</p>
-                    <p class="text-xs text-gray-500">{{ __('934 €/month (master) - 1,300 € (PhD)') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('Master: up to 992 €/month + 300 € · PhD: 1,650 € + 100 €') }}</p>
                 </a>
 
                 {{-- Heinrich-Böll --}}
@@ -104,7 +104,7 @@
                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-lg bg-emerald-50 text-emerald-600"><x-svg-icon name="leaf" class="w-7 h-7" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Heinrich-Böll-Stiftung</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Foundation linked to the Greens. Focus on environment, democracy and diversity. Bachelor + master + PhD.') }}</p>
-                    <p class="text-xs text-gray-500">{{ __('934-1,300 €/month') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('Master: up to 992 €/month + 300 € · PhD: 1,650 € + 100 €') }}</p>
                 </a>
 
                 {{-- Konrad-Adenauer --}}
@@ -113,7 +113,7 @@
                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-lg bg-blue-50 text-blue-600"><x-svg-icon name="building-office" class="w-7 h-7" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Konrad-Adenauer-Stiftung</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Close to CDU. Liberal democracy, economics, social responsibility values. Bachelor + master + PhD.') }}</p>
-                    <p class="text-xs text-gray-500">{{ __('934-1,300 €/month') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('Master: up to 992 €/month + 300 € · PhD: 1,650 € + 100 €') }}</p>
                 </a>
 
                 {{-- Hanns-Seidel --}}
@@ -122,7 +122,7 @@
                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-lg bg-indigo-50 text-indigo-600"><x-svg-icon name="flag" class="w-7 h-7" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Hanns-Seidel-Stiftung</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Linked to CSU, focused on Bavaria. Bachelor/master/PhD for international students.') }}</p>
-                    <p class="text-xs text-gray-500">{{ __('934-1,300 €/month') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('Master: up to 992 €/month + 300 € · PhD: 1,650 € + 100 €') }}</p>
                 </a>
 
                 {{-- Rosa-Luxemburg --}}
@@ -131,7 +131,7 @@
                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-lg bg-rose-50 text-rose-600"><x-svg-icon name="scale" class="w-7 h-7" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Rosa-Luxemburg-Stiftung</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Close to Die Linke. Focus on equality and global justice. Master + PhD heavy.') }}</p>
-                    <p class="text-xs text-gray-500">{{ __('934-1,300 €/month') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('Master: up to 992 €/month + 300 € · PhD: 1,650 € + 100 €') }}</p>
                 </a>
 
                 {{-- Studienstiftung --}}
@@ -172,7 +172,7 @@
 <div class="max-w-4xl mx-auto px-4">
     <x-featured-snippet
         :question="__('How can I get a scholarship to study in Germany?')"
-        :answer="__('Main pathways: DAAD (academic merit + need, ~934 EUR/month + tuition + travel), Deutschlandstipendium (300 EUR/month, merit-based), and political foundations (Heinrich-Böll, Konrad-Adenauer, Friedrich-Ebert, Rosa-Luxemburg) that value social engagement alongside grades. Apply 9–15 months before your programme start.')"
+        :answer="__('Main pathways: DAAD (academic merit + need, ~992 EUR/month + tuition + travel), Deutschlandstipendium (300 EUR/month, merit-based), and political foundations (Heinrich-Böll, Konrad-Adenauer, Friedrich-Ebert, Rosa-Luxemburg) that value social engagement alongside grades. Apply 9–15 months before your programme start.')"
         :steps="[
             ['title' => __('Identify matching scholarships'), 'description' => __('Filter by your field, degree level, and country eligibility.')],
             ['title' => __('Prepare a strong motivation letter'), 'description' => __('Highlight academic plan + social engagement + return contribution.')],

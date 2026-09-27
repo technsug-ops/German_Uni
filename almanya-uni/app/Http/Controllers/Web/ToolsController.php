@@ -348,7 +348,7 @@ class ToolsController extends Controller
             $suggestions[] = ['type' => 'info', 'msg' => __('Pick a city → an automatic expense estimate appears.')];
         } elseif ($totalIncome < $expenseTotal) {
             $deficit = $expenseTotal - $totalIncome;
-            $suggestions[] = ['type' => 'warning', 'msg' => __('❌ You have a :amount€ monthly shortfall. Add work income (Werkstudent max 538€) or move to a WG.', ['amount' => $deficit])];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('❌ You have a :amount€ monthly shortfall. Add work income (e.g. a Minijob up to €603/month or a Werkstudent job) or move to a WG.', ['amount' => $deficit])];
         } elseif (! $coversGoal) {
             $shortage = $savingsGoal - $netBalance;
             $suggestions[] = ['type' => 'warning', 'msg' => __('⚠️ You need :amount€ more for your savings goal. Cut entertainment/food or look for a scholarship.', ['amount' => $shortage])];
@@ -357,12 +357,12 @@ class ToolsController extends Controller
             $suggestions[] = ['type' => 'success', 'msg' => __('✅ Your savings goal is covered. You have :amount€ extra — save or invest it.', ['amount' => $extra])];
         }
 
-        if ($income['job'] > 538) {
-            $suggestions[] = ['type' => 'warning', 'msg' => __('⚠️ As a Werkstudent you can earn max 538€/month (for the tax & insurance benefit). Above that you count as a full employee.')];
+        if ($income['job'] > 603) {
+            $suggestions[] = ['type' => 'info', 'msg' => __('ℹ️ Above €603/month a job is no longer a Minijob (2026). A Werkstudent job has no fixed earnings cap; what matters for student social-insurance status is working up to 20 hours a week during the lecture period.')];
         }
 
         if ($income['job'] === 0 && $netBalance < 0) {
-            $suggestions[] = ['type' => 'info', 'msg' => __('💡 As a student in Germany you can work 140 full / 280 half days per year (2024 change). Minimum wage is €12.82/hour.')];
+            $suggestions[] = ['type' => 'info', 'msg' => __('💡 With a student residence permit you can work up to 140 working days a year (Arbeitstagekonto). The statutory minimum wage in 2026 is €13.90/hour.')];
         }
 
         return view('tools.budget-planner', [

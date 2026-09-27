@@ -66,7 +66,7 @@ class PageFaq
             ],
             [
                 'q' => __('Can I work in Germany while studying :program?', ['program' => $programName]),
-                'a' => __('Yes. International students may work up to **140 full days / 280 half days per year** without additional permission. After graduation you can apply for an 18-month job-seeker permit.'),
+                'a' => __('Yes. International students may work up to **140 working days a year** without additional permission (a day of up to 4 hours counts as half a day). After graduation you can apply for an 18-month job-seeker permit.'),
             ],
             [
                 'q' => __('How do I apply to :uni — directly or via uni-assist?', ['uni' => $uniName]),
@@ -175,7 +175,7 @@ class PageFaq
             ],
             [
                 'q' => __('Where can I find part-time student jobs in :city?', ['city' => $cityName]),
-                'a' => __('Check the university\'s **Studentenwerk job board**, **Jobmensa**, **Studentjob.de**, and city-specific Facebook groups. Most international students may work **140 full days / 280 half days per year** without extra permission.'),
+                'a' => __('Check the university\'s **Studentenwerk job board**, **Jobmensa**, **Studentjob.de**, and city-specific Facebook groups. Most international students may work up to **140 working days a year** (Arbeitstagekonto) without extra permission.'),
             ],
         ];
     }
@@ -239,7 +239,7 @@ class PageFaq
             ],
             [
                 'q' => __('Are DAAD scholarships available for Master programmes?'),
-                'a' => __('Yes — DAAD offers Master scholarships (~ 934 EUR/month + tuition + travel + insurance) for development-related fields, EPOS programmes, and specific country quotas. Application deadlines are usually 6–12 months before programme start.'),
+                'a' => __('Yes — DAAD offers Master scholarships (~ 992 EUR/month + tuition + travel + insurance) for development-related fields, EPOS programmes, and specific country quotas. Application deadlines are usually 6–12 months before programme start.'),
             ],
             [
                 'q' => __('Can I get a scholarship without high grades?'),
@@ -247,7 +247,7 @@ class PageFaq
             ],
             [
                 'q' => __('Do German scholarships cover living costs entirely?'),
-                'a' => __('DAAD covers ~934 EUR/month + tuition + travel + insurance — fully sufficient for living costs in most German cities. Deutschlandstipendium adds 300 EUR/month on top of other income. Smaller scholarships (~150–500 EUR) usually need to be combined.'),
+                'a' => __('DAAD covers ~992 EUR/month + tuition + travel + insurance — fully sufficient for living costs in most German cities. Deutschlandstipendium adds 300 EUR/month on top of other income. Smaller scholarships (~150–500 EUR) usually need to be combined.'),
             ],
             [
                 'q' => __('When should I apply for German scholarships?'),
@@ -327,7 +327,7 @@ class PageFaq
             ['q' => __('Are there hidden semester fees on top of living costs?'),
              'a' => __('Yes: **Semesterbeitrag (semester contribution)** of **€100–430** depending on university. This typically includes the **Semesterticket** (free public transport across the federal state) and Studentenwerk services. Tuition itself is free at most public unis.')],
             ['q' => __('Can I work as a student to reduce costs?'),
-             'a' => __('International students can work **140 full days / 280 half days per year** without an additional permit. As a **Werkstudent** with a related field job, you can earn up to **€603/month tax-free** and gain experience aligned with your studies.')],
+             'a' => __('International students can work up to **140 working days a year** without an additional permit (a day of up to 4 hours counts as half a day; during the lecture period a week of up to 20 hours can count as 2.5 days). A **Werkstudent** job in your field has no fixed earnings cap and builds experience aligned with your studies; **€603/month** is the Minijob limit (2026).')],
         ];
     }
 
@@ -353,7 +353,7 @@ class PageFaq
     {
         return [
             ['q' => __('How much can I earn as a student in Germany?'),
-             'a' => __('International students: **140 full days or 280 half days per year**. As a **Werkstudent** (working student in your field) you can work **up to 20 hours/week during semester, full-time during semester break**. Maximum tax-free monthly income via mini-job: **€603**.')],
+             'a' => __('International students: up to **140 working days a year** (Arbeitstagekonto; a day of up to 4 hours counts as half a day). As a **Werkstudent** (working student in your field), working **up to 20 hours/week during the lecture period** keeps your student social-insurance status; more hours are possible during semester breaks. Minijob earnings limit: **€603/month** (2026).')],
             ['q' => __('What is Bafög and am I eligible?'),
              'a' => __('**Bafög** is German federal student aid (loan + grant, 50/50). International students CAN qualify if they have **permanent residency in Germany** or specific status (refugee, EU citizen residing in Germany 5+ years). New international students from outside EU are generally **not eligible**.')],
             ['q' => __('How much should I save before coming to Germany?'),

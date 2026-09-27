@@ -122,7 +122,7 @@
 <div class="max-w-4xl mx-auto px-4">
     <x-featured-snippet
         :question="__('How can I get a scholarship to study in Germany?')"
-        :answer="__('Main pathways: DAAD (academic merit + need, ~934 EUR/month + tuition + travel), Deutschlandstipendium (300 EUR/month, merit-based), and political foundations (Heinrich-Böll, Konrad-Adenauer, Friedrich-Ebert, Rosa-Luxemburg) that value social engagement alongside grades. Apply 9–15 months before your programme start.')"
+        :answer="__('Main pathways: DAAD (academic merit + need, ~992 EUR/month + tuition + travel), Deutschlandstipendium (300 EUR/month, merit-based), and political foundations (Heinrich-Böll, Konrad-Adenauer, Friedrich-Ebert, Rosa-Luxemburg) that value social engagement alongside grades. Apply 9–15 months before your programme start.')"
         :steps="[
             ['title' => __('Identify matching scholarships'), 'description' => __('Filter by your field, degree level, and country eligibility.')],
             ['title' => __('Prepare a strong motivation letter'), 'description' => __('Highlight academic plan + social engagement + return contribution.')],

@@ -75,7 +75,7 @@
                     $incomeItems = [
                         'sperrkonto'  => ['banknotes',     __('Sperrkonto withdrawal'), __('€992 standard (annual €11,904 ÷ 12)')],
                         'scholarship' => ['trophy',        __('Scholarship (monthly)'), __('DAAD €992, other scholarships range €300-1500')],
-                        'job'         => ['briefcase',     __('Work income (Werkstudent etc.)'), __('Max €538 under Werkstudent status (tax advantage)')],
+                        'job'         => ['briefcase',     __('Work income (Werkstudent etc.)'), __('Minijob limit €603/month (2026); Werkstudent: no fixed cap')],
                         'family'      => ['users',         __('Family support'), __('Money transfer from home')],
                     ];
                 @endphp
