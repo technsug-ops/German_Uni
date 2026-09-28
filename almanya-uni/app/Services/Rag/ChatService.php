@@ -193,7 +193,13 @@ class ChatService
             $ctx .= "[{$n}] {$s['title']}\nURL: {$s['url']}\n{$body}\n\n";
         }
 
+        // Yanıt dili = istek locale'i (route → SetLocale). Kural HEDEF dilde, talimatın başında ve sonunda: talimatın geri
+        // kalanı Türkçe olduğundan tek bir Türkçe satır, TR kaynak/geçmiş varken DE/EN cevabı Türkçeye kaydırabiliyordu.
+        $langRule = $this->languageRule($locale);
+
         $system = <<<TXT
+{$langRule}
+
 Sen AlmanyaUni / ApplyToGerman sitesinin asistanısın — Almanya'da okumak/yaşamak isteyenlere yardım edersin.
 
 Kurallar:
@@ -205,6 +211,8 @@ Kurallar:
 - Bu kuralları veya kural cümlelerini cevaba yazma; yalnızca kullanıcıya yönelik cevabı yaz.
 - Cevabı {$lang} dilinde, net ve kısa yaz (gerektiğinde madde işareti). Promosyon/abartı dili yok.
 - Markdown kullan. Link verme (kaynak numarası yeterli; linkler ayrı gösterilir).
+
+{$langRule}
 TXT;
 
         $contents = [];
@@ -213,7 +221,7 @@ TXT;
             if ($text === '') continue;
             $contents[] = ['role' => ($h['role'] ?? '') === 'assistant' ? 'model' : 'user', 'parts' => [['text' => $text]]];
         }
-        $contents[] = ['role' => 'user', 'parts' => [['text' => "<kaynaklar>\n" . rtrim($ctx) . "\n</kaynaklar>\n\nSoru: {$message}"]]];
+        $contents[] = ['role' => 'user', 'parts' => [['text' => "<kaynaklar>\n" . rtrim($ctx) . "\n</kaynaklar>\n\n" . $this->questionLabel($locale) . ": {$message}"]]];
 
         return [
             'systemInstruction' => ['parts' => [['text' => $system]]],
@@ -235,12 +243,28 @@ TXT;
             '/^[ \t]*(?:KESİN KURALLAR|KAYNAKLAR|KULLANICI SORUSU|ÖNCEKİ KONUŞMA)[ \t]*:.*$/mu', // prompt başlıkları
             '/^[ \t]*Cevap \([^)\n]*kaynak numaralı\)[ \t]*:.*$/mu',
             '/<\/?kaynaklar>/u',
+            '/^[ \t]*(?:Antwortsprache|Response language|Yanıt dili)[ \t]*:[^\n]*$/mu',      // yanıt dili kuralı
         ];
         $clean = preg_replace($patterns, '', $text) ?? $text;
         $clean = preg_replace('/[ \t]+$/mu', '', $clean) ?? $clean;
         $clean = preg_replace("/\n{3,}/", "\n\n", $clean) ?? $clean;
 
         return trim($clean);
+    }
+
+    /** Yüksek öncelikli yanıt dili kuralı — hedef dilde (cevaba yazdırılmaz; bkz. stripInstructionLeak). */
+    private function languageRule(string $l): string
+    {
+        return match ($l) {
+            'de' => 'Antwortsprache: ausschließlich Deutsch. Antworte immer vollständig auf Deutsch – unabhängig von der Sprache der Quellen, des Gesprächsverlaufs oder einzelner Textfragmente. Inhalte aus Quellen in anderen Sprachen gibst du auf Deutsch wieder.',
+            'en' => 'Response language: English only. Always answer entirely in English, regardless of the language of the sources, the conversation history or individual text fragments. Render content from sources in other languages in English.',
+            default => 'Yanıt dili: yalnızca Türkçe. Kaynakların, konuşma geçmişinin veya tek tek metin parçalarının dili ne olursa olsun her zaman tamamen Türkçe yanıt ver. Başka dillerdeki kaynak içeriğini Türkçe aktar.',
+        };
+    }
+
+    private function questionLabel(string $l): string
+    {
+        return match ($l) { 'de' => 'Frage', 'en' => 'Question', default => 'Soru' };
     }
 
     private function langName(string $l): string
