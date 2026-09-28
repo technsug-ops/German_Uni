@@ -38,6 +38,7 @@ class ViewFaqQualityAtlas extends ViewRecord
         /** @var FaqQualityAtlas $r */
         $r = $this->getRecord();
         $out = [];
+        $baseline = LiveStatus::baseline($r->audited_at, $r->created_at);
         foreach (FaqQualityAtlas::LOCALES as $l) {
             /** @var Faq|null $faq */
             $faq = $r->{$l};
@@ -52,7 +53,7 @@ class ViewFaqQualityAtlas extends ViewRecord
                 'atlas_status' => $r->{"{$l}_status"},
                 'live_status' => $live,
                 'differs' => LiveStatus::materiallyDiffers($r->{"{$l}_status"}, $live),
-                'updated_after_audit' => $faq && $faq->updated_at && $r->audited_at && $faq->updated_at->gt($r->audited_at),
+                'updated_after_audit' => $faq && $faq->updated_at && $baseline && $faq->updated_at->gt($baseline),
                 'published' => $faq?->is_published,
                 'chars' => LiveStatus::visibleLength($faq?->answer_html),
                 'preview' => mb_substr($clean, 0, 600).(mb_strlen($clean) > 600 ? '…' : ''),

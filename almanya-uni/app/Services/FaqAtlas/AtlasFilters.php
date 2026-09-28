@@ -121,7 +121,7 @@ class AtlasFilters
                 ->orWhere("{$t}.de_slug", 'like', $slugLike)
                 ->orWhere("{$t}.tr_question_at_audit", 'like', $like)
                 ->orWhereExists(fn ($e) => $e->selectRaw('1')->from('faqs as sf')
-                    ->whereColumn('sf.translation_group_id', "{$t}.translation_group_id")
+                    ->whereRaw('sf.translation_group_id = '.LiveStatus::groupSql($t))
                     ->where(fn ($w) => $w->where('sf.question', 'like', $like)->orWhere('sf.slug', 'like', $slugLike)));
         });
     }

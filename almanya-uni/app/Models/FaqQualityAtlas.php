@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Services\FaqAtlas\LiveStatus;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * SSS Kalite Atlası — küme başına denetim anlık görüntüsü (değişmez sınıflandırma).
- * Canlı SSS'ler translation_group_id + locale ile çözülür; saklanan *_faq_id'ler yalnız teşhis içindir.
+ * Canlı SSS'ler ETKİN çeviri grubu (live_group) + locale ile çözülür: atlas grubu, yoksa denetimdeki TR SSS'nin (tr_faq_id)
+ * şimdiki grubu — bkz. LiveStatus::groupSql(). Atlas satırı hiçbir zaman güncellenmez.
  */
 class FaqQualityAtlas extends Model
 {
@@ -39,9 +41,22 @@ class FaqQualityAtlas extends Model
         'audited_at' => 'datetime',
     ];
 
+    /** Etkin çeviri grubu: withLive() SQL'de seçer; seçilmemişse aynı kural PHP'de (LiveStatus::groupSql ile aynı). */
+    protected function liveGroup(): Attribute
+    {
+        return Attribute::get(function ($value, array $attributes) {
+            if (array_key_exists('live_group', $attributes)) {
+                return $value;
+            }
+
+            return ($attributes['translation_group_id'] ?? null)
+                ?? (isset($attributes['tr_faq_id']) ? Faq::whereKey($attributes['tr_faq_id'])->where('locale', 'tr')->value('translation_group_id') : null);
+        });
+    }
+
     private function localeFaq(string $locale): HasOne
     {
-        return $this->hasOne(Faq::class, 'translation_group_id', 'translation_group_id')
+        return $this->hasOne(Faq::class, 'translation_group_id', 'live_group')
             ->where('faqs.locale', $locale)
             ->orderBy('faqs.id');
     }
@@ -68,6 +83,7 @@ class FaqQualityAtlas extends Model
         if (empty($query->getQuery()->columns)) {
             $query->select("{$t}.*");
         }
+        $query->selectRaw(LiveStatus::groupSql($t).' AS live_group');
         foreach (self::LOCALES as $l) {
             $query->selectRaw(LiveStatus::sql($l, $t)." AS {$l}_live");
         }

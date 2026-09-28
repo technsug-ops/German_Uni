@@ -42,7 +42,7 @@ class FaqQualityAtlasDashboardTest extends TestCase
     }
 
     /** Ham insert (model hook'ları devre dışı) — updated_at kontrollü. */
-    private function faq(string $locale, string $group, string $slug, ?string $html, array $extra = []): int
+    private function faq(string $locale, ?string $group, string $slug, ?string $html, array $extra = []): int
     {
         return DB::table('faqs')->insertGetId(array_merge([
             'locale' => $locale, 'translation_group_id' => $group, 'faq_topic_id' => $this->topicId,
@@ -362,6 +362,100 @@ class FaqQualityAtlasDashboardTest extends TestCase
         $this->list()->filterTable('review', true)->assertCanSeeTableRecords([$emptyNowContent, $updated])->assertCanNotSeeTableRecords([$clean]);
         // denetim kararları değişmez
         $this->assertSame('EMPTY', $emptyNowContent->fresh()->en_status);
+    }
+
+    /** Import anı (created_at) — audited_at etiketinden ÖNCE (Batch A üretimdeki durum). */
+    private function importedAt(FaqQualityAtlas $row, string $at = '2026-09-28 15:30:00'): FaqQualityAtlas
+    {
+        DB::table('faq_quality_atlas')->where('id', $row->id)->update(['created_at' => $at, 'updated_at' => $at]);
+
+        return $row->fresh();
+    }
+
+    public function test_null_atlas_group_resolves_live_group_via_tr_record_and_detects_new_siblings(): void
+    {
+        $trId = $this->faq('tr', null, 'no-group', $this->long());                                 // denetimde gruba bağlı değil
+        $row = $this->cluster('dummy-x')->replicate()->fill([
+            'tr_slug' => 'no-group', 'translation_group_id' => null, 'tr_faq_id' => $trId,
+            'en_status' => 'MISSING', 'de_status' => 'MISSING',
+        ]);
+        $row->save();
+        $row = $this->importedAt($row);
+        $this->assertFalse((bool) FaqQualityAtlas::query()->withLive()->findOrFail($row->id)->review_needed);
+
+        // Sonradan: TR gruba bağlanır (yalnız grup — updated_at aynı), EN/DE kardeşleri açılır
+        $g = (string) Str::uuid();
+        DB::table('faqs')->where('id', $trId)->update(['translation_group_id' => $g]);
+        $this->faq('en', $g, 'no-group-en', $this->long(), ['created_at' => '2026-09-28 18:20:00', 'updated_at' => '2026-09-28 18:20:00']);
+        $this->faq('de', $g, 'no-group-de', $this->long(), ['created_at' => '2026-09-28 18:20:00', 'updated_at' => '2026-09-28 18:20:00']);
+
+        $live = FaqQualityAtlas::query()->withLive()->with(['tr', 'en', 'de'])->findOrFail($row->id);
+        $this->assertSame(['CONTENT', 'CONTENT', 'CONTENT'], [$live->tr_live, $live->en_live, $live->de_live]);
+        $this->assertTrue((bool) $live->review_needed);
+        $this->assertSame(['no-group', 'no-group-en', 'no-group-de'], [$live->tr?->slug, $live->en?->slug, $live->de?->slug]);
+        // withLive olmadan (tembel yükleme) aynı kural
+        $plain = FaqQualityAtlas::findOrFail($row->id);
+        $this->assertSame('no-group-en', $plain->en?->slug);
+        // atlas satırı değişmedi
+        $this->assertNull($plain->translation_group_id);
+        $this->assertSame(['MISSING', 'MISSING'], [$plain->en_status, $plain->de_status]);
+        // detay sayfası kardeşleri gösterir
+        $this->actingAs($this->admin())->get('/admin/ops/faq-atlas/cluster/'.$row->id)->assertOk()->assertSee('no-group-en')->assertSee('no-group-de');
+    }
+
+    public function test_update_between_import_and_audit_label_counts_as_drift(): void
+    {
+        $clean = $this->importedAt($this->cluster('base-clean'));
+        $broken = $this->importedAt($this->cluster('base-broken', ['en_status' => 'BROKEN', 'de_status' => 'BROKEN']));
+        $this->assertSame([], FaqQualityAtlas::query()->reviewNeeded()->pluck('tr_slug')->all());
+
+        // BROKEN dil, import'tan (15:30) sonra ama audited_at etiketinden (20:00) önce düzeltildi; yapısal durum CONTENT→CONTENT
+        DB::table('faqs')->where('slug', 'base-broken-en')->update(['updated_at' => '2026-09-28 18:20:00']);
+        $this->assertSame(['base-broken'], FaqQualityAtlas::query()->reviewNeeded()->pluck('tr_slug')->all());
+        $this->assertSame('CONTENT', FaqQualityAtlas::query()->withLive()->findOrFail($broken->id)->en_live);
+
+        // import'tan önceki güncelleme drift değildir
+        DB::table('faqs')->where('slug', 'base-clean-en')->update(['updated_at' => '2026-09-28 15:00:00']);
+        $this->assertFalse((bool) FaqQualityAtlas::query()->withLive()->findOrFail($clean->id)->review_needed);
+
+        // PHP (detay) ile SQL aynı baz zamanı kullanır
+        $this->assertSame('2026-09-28 15:30:00', LiveStatus::baseline($broken->audited_at, $broken->created_at)->format('Y-m-d H:i:s'));
+        $this->assertSame('2026-09-28 20:00:00', LiveStatus::baseline($broken->audited_at, \Illuminate\Support\Carbon::parse('2026-09-30 10:00:00'))->format('Y-m-d H:i:s'));
+        $this->actingAs($this->admin())->get('/admin/ops/faq-atlas/cluster/'.$broken->id)->assertOk();
+
+        // KPI, filtre ve CSV aynı düzeltilmiş kuralı kullanır; denetim durumu değişmez
+        $this->assertSame(1, $this->overview()->kpis()['review']);
+        $this->list()->filterTable('review', true)->assertCanSeeTableRecords([$broken])->assertCanNotSeeTableRecords([$clean]);
+        $csv = $this->get('/admin/ops/faq-atlas/export')->streamedContent();
+        $this->assertMatchesRegularExpression('/,CONTENT,CONTENT,CONTENT,1,[^\n]*base-broken,/', $csv);
+        $this->assertMatchesRegularExpression('/,CONTENT,CONTENT,CONTENT,0,[^\n]*base-clean,/', $csv);
+        $this->assertSame(['BROKEN', 'BROKEN'], [$broken->fresh()->en_status, $broken->fresh()->de_status]);
+    }
+
+    public function test_content_to_missing_empty_thin_still_flagged_after_fix(): void
+    {
+        foreach (['to-missing', 'to-empty', 'to-thin'] as $s) {
+            $this->importedAt($this->cluster($s));
+        }
+        DB::table('faqs')->where('slug', 'to-missing-de')->delete();
+        DB::table('faqs')->where('slug', 'to-empty-en')->update(['answer_html' => '<p> </p>']);
+        DB::table('faqs')->where('slug', 'to-thin-en')->update(['answer_html' => '<p>Kısa.</p>']);
+        $this->assertSame(['to-empty', 'to-missing', 'to-thin'], FaqQualityAtlas::query()->reviewNeeded()->pluck('tr_slug')->sort()->values()->all());
+    }
+
+    public function test_list_has_no_n_plus_one_with_null_groups(): void
+    {
+        for ($i = 0; $i < 10; $i++) {
+            $trId = $this->faq('tr', null, "ng-{$i}", $this->long());
+            $this->cluster("ng-src-{$i}")->replicate()->fill(['tr_slug' => "ng-{$i}", 'translation_group_id' => null, 'tr_faq_id' => $trId])->save();
+            DB::table('faqs')->where('id', $trId)->update(['translation_group_id' => (string) Str::uuid()]);
+        }
+        DB::enableQueryLog();
+        $rows = FaqQualityAtlas::query()->withLive()->with(['tr' => fn ($q) => $q->select(['faqs.id', 'faqs.translation_group_id', 'faqs.locale', 'faqs.question'])])->get();
+        $rows->each(fn ($r) => [$r->tr?->question, $r->en_live, $r->review_needed]);
+        $this->assertCount(20, $rows);
+        $this->assertCount(20, $rows->filter(fn ($r) => $r->tr !== null));
+        $this->assertLessThanOrEqual(2, count(DB::getQueryLog()));
     }
 
     // ───────────── DETAIL ─────────────
