@@ -1587,6 +1587,33 @@ Route::fallback(function (\Illuminate\Http\Request $request) use ($__brandDefaul
 // ─────────── Auth-protected, locale-bağımsız ───────────
 
 Route::middleware('auth')->group(function () {
+    // SSS Kalite Atlası CSV — panodaki filtre/anlık görüntü/arama durumuyla aynı (AtlasFilters). Yalnız admin; cevap gövdesi yok.
+    Route::get('/admin/ops/faq-atlas/export', function (\Illuminate\Http\Request $request) {
+        abort_unless(auth()->user()?->is_admin === true, 403);
+        $filters = is_array($request->query('filters')) ? $request->query('filters') : [];
+        $search = is_string($request->query('search')) ? $request->query('search') : null;
+        $query = \App\Services\FaqAtlas\AtlasFilters::apply(\App\Models\FaqQualityAtlas::query()->withLive(), $filters, $search)
+            ->with(['tr' => fn ($q) => $q->select(['faqs.id', 'faqs.translation_group_id', 'faqs.locale', 'faqs.question'])])
+            ->orderByDesc('priority_score')->orderBy('id');
+        $audit = \App\Services\FaqAtlas\AtlasFilters::audit($filters) ?? 'none';
+
+        return response()->streamDownload(function () use ($query) {
+            $out = fopen('php://output', 'w');
+            fwrite($out, "\xEF\xBB\xBF");
+            fputcsv($out, ['audit_label', 'priority', 'risk', 'topic', 'tr_question', 'tr_quality', 'tr_status', 'en_status', 'de_status',
+                'tr_live', 'en_live', 'de_live', 'review_needed', 'parity', 'strategy', 'batch', 'authoritative_guide', 'external_research',
+                'chatbot_risk', 'recommended_action', 'tr_issues', 'duplicate_of', 'tr_slug', 'en_slug', 'de_slug', 'resolved', 'unresolved_reason']);
+            foreach ($query->get() as $r) {
+                    fputcsv($out, [$r->audit_label, $r->priority_score, $r->risk_level, $r->topic, $r->tr?->question ?? $r->tr_question_at_audit,
+                        $r->tr_quality, $r->tr_status, $r->en_status, $r->de_status, $r->tr_live, $r->en_live, $r->de_live, $r->review_needed ? 1 : 0,
+                        $r->parity_score, $r->translation_strategy, $r->proposed_batch, $r->authoritative_internal_source, $r->external_source_needed ? 1 : 0,
+                        $r->chatbot_risk ? 1 : 0, $r->recommended_action, implode(' | ', $r->tr_issues ?? []), implode(', ', $r->duplicate_of ?? []),
+                        $r->tr_slug, $r->en_slug, $r->de_slug, $r->resolved ? 1 : 0, $r->unresolved_reason]);
+            }
+            fclose($out);
+        }, "faq-atlas-{$audit}.csv", ['Content-Type' => 'text/csv; charset=UTF-8']);
+    })->name('admin.faq-atlas.export');
+
     // İç link denetimi (SSH yok → prod'daki gerçek durumu tarayıcıdan gör).
     //   /admin/ops/link-audit        → ölü iç linkleri RAPORLA (hiçbir şey yazmaz)
     //   /admin/ops/link-audit?fix=1  → onar (eşleşme yoksa düz metne indir)
