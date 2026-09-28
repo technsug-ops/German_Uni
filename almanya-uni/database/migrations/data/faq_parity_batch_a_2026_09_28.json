@@ -1,0 +1,1535 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "A",
+ "clusters": [
+  {
+   "tr_slug": "almanyada-diploma-denkligi-surecinde-ek-staj-sinav-veya-yeniden-basvuru-gerekebilir-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-diploma-denkligi-surecinde-ek-staj-sinav-veya-yeniden-basvuru-gerekebilir-mi",
+     "old": {
+      "question": "Almanya'da diploma denkliği sürecinde ek staj, sınav veya yeniden başvuru gerekebilir mi?",
+      "visible": "text",
+      "head": "Almanya'da diploma denkliği sürecinde, Türkiye'deki eğitimin Almanya standartlarına tam olarak uymad"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "can-recognition-in-germany-require-extra-internship-or-exam",
+     "new": {
+      "question": "Can recognition of my qualification in Germany require an extra internship, an exam or additional modules?",
+      "answer_md": "Yes, that can happen. If your education in Turkey does not fully match the German standard for the profession or qualification, the recognition authority may ask you to complete additional practical training (an internship), take a compensation or aptitude exam, or complete specific modules before full recognition is granted.\n\n**What this usually means in practice**\n\n- **Full equivalence:** no further steps are needed.\n- **Partial equivalence:** the authority lists the gaps it has found. In many cases you can close these gaps in Germany, without having to leave the country.\n- **Which measure applies** (internship, exam or modules) depends on your profession and on the authority responsible for your case.\n\n**Caveat:** there is no single rule that applies to every profession. Read your recognition decision (Bescheid) carefully. It states what is missing and which options you have.\n\nFor detailed, profession-specific information, check the official portal [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de) or contact the recognition authority responsible for you.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "can-recognition-in-germany-require-extra-internship-or-exam-de",
+     "new": {
+      "question": "Kann bei der Anerkennung meines Abschlusses in Deutschland ein zusätzliches Praktikum, eine Prüfung oder ein Zusatzmodul verlangt werden?",
+      "answer_md": "Ja, das ist möglich. Wenn deine Ausbildung aus der Türkei nicht vollständig dem deutschen Referenzberuf bzw. Referenzabschluss entspricht, kann die zuständige Anerkennungsstelle Ausgleichsmaßnahmen verlangen: zum Beispiel ein zusätzliches Praktikum, eine Eignungs- oder Kenntnisprüfung oder das Nachholen bestimmter Module.\n\n**Was das in der Praxis meist bedeutet**\n\n- **Volle Gleichwertigkeit:** Es sind keine weiteren Schritte nötig.\n- **Teilweise Gleichwertigkeit:** Die Behörde nennt im Bescheid die festgestellten Unterschiede. Diese kannst du in vielen Fällen in Deutschland ausgleichen, ohne das Land verlassen zu müssen.\n- **Welche Maßnahme gilt** (Praktikum, Prüfung oder Module), hängt von deinem Beruf und der zuständigen Stelle ab.\n\n**Wichtig:** Es gibt keine einheitliche Regel für alle Berufe. Lies deinen Anerkennungsbescheid genau. Dort steht, was fehlt und welche Möglichkeiten du hast.\n\nAusführliche, berufsspezifische Informationen findest du auf dem offiziellen Portal [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de). Du kannst dich auch direkt an die für dich zuständige Anerkennungsstelle wenden.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "60a612ca-28ba-5d05-b86c-cc3e4bf7986a"
+  },
+  {
+   "tr_slug": "almanyada-ingilizce-dilinde-master-programlari-mevcut-mu",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-ingilizce-dilinde-master-programlari-mevcut-mu",
+     "old": {
+      "question": "Almanya'da İngilizce dilinde master programları mevcut mu?",
+      "visible": "text",
+      "head": "Evet, Almanya'da birçok üniversite çeşitli alanlarda İngilizce eğitim veren master programları sunma"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "are-there-english-taught-masters-programmes-in-germany",
+     "new": {
+      "question": "Are there English-taught Master's programmes in Germany?",
+      "answer_md": "Yes. Many German universities offer Master's programmes taught entirely in English, across a wide range of subjects.\n\n**What you usually need**\n\n- Proof of English proficiency, typically a recognised test such as **TOEFL** or **IELTS**.\n- The subject-specific admission requirements of the programme (for example, a relevant Bachelor's degree).\n\n**Caveat:** the required English level, the accepted certificates and any exemptions differ from programme to programme. A score that is enough for one university may not be enough for another.\n\nThe most reliable information is on the website of each university and programme. Check the admission requirements, the language requirements and the application deadline there before you apply.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "are-there-english-taught-masters-programmes-in-germany-de",
+     "new": {
+      "question": "Gibt es in Deutschland englischsprachige Masterstudiengänge?",
+      "answer_md": "Ja. Viele deutsche Hochschulen bieten Masterstudiengänge an, die vollständig auf Englisch unterrichtet werden, und zwar in ganz unterschiedlichen Fachbereichen.\n\n**Was du in der Regel brauchst**\n\n- Einen Nachweis deiner Englischkenntnisse, meist über einen anerkannten Test wie **TOEFL** oder **IELTS**.\n- Die fachlichen Zulassungsvoraussetzungen des Studiengangs (zum Beispiel einen passenden Bachelorabschluss).\n\n**Wichtig:** Das geforderte Englischniveau, die akzeptierten Zertifikate und mögliche Ausnahmen unterscheiden sich je nach Studiengang. Ein Ergebnis, das an einer Hochschule reicht, kann an einer anderen zu niedrig sein.\n\nDie verlässlichsten Informationen findest du auf der Website der jeweiligen Hochschule bzw. des Studiengangs. Prüfe dort vor der Bewerbung die Zulassungsvoraussetzungen, die Sprachanforderungen und die Bewerbungsfrist.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "0bcaade1-5fa4-5b99-961f-2f655d539940"
+  },
+  {
+   "tr_slug": "universite-basvurularinda-belgelerin-tercumesi-turkiyede-mi-almanyada-mi-yapilmali",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "universite-basvurularinda-belgelerin-tercumesi-turkiyede-mi-almanyada-mi-yapilmali",
+     "old": {
+      "question": "Üniversite başvurularında belgelerin tercümesi Türkiye'de mi, Almanya'da mı yapılmalı?",
+      "visible": "text",
+      "head": "Almanya'daki üniversiteler genellikle yeminli tercüman tarafından yapılmış ve noter onaylı tercümele"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "document-translation-for-university-application-turkey-or-germany",
+     "new": {
+      "question": "Should I get my documents translated in Turkey or in Germany for my university application?",
+      "answer_md": "In many cases it does not matter where the translation is made. German universities generally accept translations made by a **sworn translator** and **officially certified**, whether they were produced in Turkey or in Germany. What counts is that the translation is sworn and certified, not the country it comes from.\n\n**Before you order translations**\n\n- Check the document and translation requirements of **each university** you apply to, or of **uni-assist** if your application goes through it.\n- Look at the form of certification they accept (for example, a sworn translation with an official certification stamp).\n- Find out whether they want originals, certified copies or uploads.\n\n**Caveat:** requirements are not identical everywhere. A translation that one university accepts may not be enough for another, so confirm this before you pay for translations.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "document-translation-for-university-application-turkey-or-germany-de",
+     "new": {
+      "question": "Sollte ich meine Bewerbungsunterlagen für die Uni in der Türkei oder in Deutschland übersetzen lassen?",
+      "answer_md": "In vielen Fällen spielt der Ort keine Rolle. Deutsche Hochschulen akzeptieren in der Regel Übersetzungen, die von einem **vereidigten (beeidigten) Übersetzer** angefertigt und **amtlich beglaubigt** wurden, egal ob in der Türkei oder in Deutschland. Entscheidend ist die beglaubigte Übersetzung, nicht das Land, in dem sie entstanden ist.\n\n**Bevor du Übersetzungen in Auftrag gibst**\n\n- Prüfe die Vorgaben zu Unterlagen und Übersetzungen bei **jeder Hochschule**, bei der du dich bewirbst, bzw. bei **uni-assist**, wenn deine Bewerbung darüber läuft.\n- Achte darauf, welche Form der Beglaubigung akzeptiert wird.\n- Kläre, ob Originale, beglaubigte Kopien oder Uploads verlangt werden.\n\n**Wichtig:** Die Anforderungen sind nicht überall gleich. Eine Übersetzung, die eine Hochschule akzeptiert, reicht bei einer anderen vielleicht nicht aus. Kläre das deshalb, bevor du für Übersetzungen bezahlst.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "c25eec24-a7d2-5525-ac5e-8397c9043b67"
+  },
+  {
+   "tr_slug": "vize-randevusuna-giderken-hangi-belgeler-yanimda-olmali",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-randevusuna-giderken-hangi-belgeler-yanimda-olmali",
+     "old": {
+      "question": "Vize randevusuna giderken hangi belgeler yanımda olmalı?",
+      "visible": "text",
+      "head": "Vize randevusuna giderken genellikle randevu onay belgesi (PDF çıktısı veya dijital), pasaport, başv"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "which-documents-to-bring-to-german-visa-appointment",
+     "new": {
+      "question": "Which documents should I bring to my German visa appointment?",
+      "answer_md": "As a rule, bring your **appointment confirmation**, your **passport**, the completed **application form** and **all other required documents**, each as an original and a copy.\n\n**Basic checklist**\n\n- Appointment confirmation (printed PDF or digital version)\n- Valid passport\n- Completed and signed visa application form\n- All documents required for your visa type, as **originals plus copies**\n\n**Caveat:** the exact list depends on your visa type (for example, a student visa) and on the mission handling your application. The most reliable source is the **current document checklist** on the website of the German consulate or the visa application centre you are applying through. Check it shortly before your appointment, as lists can be updated.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "which-documents-to-bring-to-german-visa-appointment-de",
+     "new": {
+      "question": "Welche Unterlagen muss ich zum Visumtermin mitbringen?",
+      "answer_md": "In der Regel solltest du deine **Terminbestätigung**, deinen **Reisepass**, den ausgefüllten **Antrag** und **alle weiteren erforderlichen Unterlagen** mitbringen, jeweils im Original und in Kopie.\n\n**Grundcheckliste**\n\n- Terminbestätigung (als ausgedrucktes PDF oder digital)\n- Gültiger Reisepass\n- Ausgefülltes und unterschriebenes Antragsformular\n- Alle für deine Visumart geforderten Unterlagen, **im Original und in Kopie**\n\n**Wichtig:** Die genaue Liste hängt von deiner Visumart (zum Beispiel Studienvisum) und von der zuständigen Auslandsvertretung ab. Am verlässlichsten ist die **aktuelle Checkliste** auf der Website des deutschen Konsulats bzw. des Visumzentrums, über das du den Antrag stellst. Sieh kurz vor deinem Termin noch einmal nach, da die Listen aktualisiert werden können.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "6af4493d-7977-5ea4-bcdb-8519fb6efb94"
+  },
+  {
+   "tr_slug": "sartli-kabul-alindiginda-dil-okulunun-universite-ile-ayni-sehirde-olmasi-zorunlu-mudur",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "sartli-kabul-alindiginda-dil-okulunun-universite-ile-ayni-sehirde-olmasi-zorunlu-mudur",
+     "old": {
+      "question": "Şartlı kabul alındığında dil okulunun üniversite ile aynı şehirde olması zorunlu mudur?",
+      "visible": "text",
+      "head": "Şartlı kabul alındığında dil okulunun üniversite ile aynı şehirde olması genellikle zorunlu değildir"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "conditional-admission-language-school-same-city-as-university",
+     "new": {
+      "question": "With a conditional admission, does my language school have to be in the same city as the university?",
+      "answer_md": "Usually not. With a conditional admission, what matters is that you **reach the language level the university requires**. Where you attend the language course is generally less important.\n\n**Points to check**\n\n- **Your conditional admission letter:** it states the required level and any conditions. Read it carefully, because what it says applies to your case.\n- **Recommended schools or courses:** some universities recommend specific language schools or courses. A recommendation is not automatically a requirement, but check whether the letter makes it one.\n- **Proof of the level:** make sure the certificate you will earn is accepted by your university.\n\n**Caveat:** individual universities can set their own conditions. If the letter is unclear, ask the university's international office before you book a course.\n\nFor the visa side of conditional admission, see our guide on [conditional admission visas and the required language level](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en).\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "conditional-admission-language-school-same-city-as-university-de",
+     "new": {
+      "question": "Muss die Sprachschule bei einer bedingten Zulassung in derselben Stadt wie die Hochschule sein?",
+      "answer_md": "In der Regel nicht. Bei einer bedingten Zulassung zählt vor allem, dass du **das von der Hochschule geforderte Sprachniveau erreichst**. Wo du den Sprachkurs besuchst, ist meist zweitrangig.\n\n**Worauf du achten solltest**\n\n- **Dein Zulassungsbescheid (bedingte Zulassung):** Dort stehen das geforderte Niveau und mögliche Auflagen. Lies ihn genau, denn für deinen Fall gilt, was dort steht.\n- **Empfohlene Sprachschulen oder Kurse:** Manche Hochschulen empfehlen bestimmte Sprachschulen oder Kurse. Eine Empfehlung ist nicht automatisch eine Pflicht. Prüfe aber, ob der Bescheid sie vorschreibt.\n- **Nachweis des Niveaus:** Stelle sicher, dass das Zertifikat, das du am Ende bekommst, von deiner Hochschule anerkannt wird.\n\n**Wichtig:** Einzelne Hochschulen können eigene Bedingungen festlegen. Wenn der Bescheid unklar ist, frag vor der Kursbuchung beim International Office nach.\n\nZur Visumseite der bedingten Zulassung findest du mehr in unserem Ratgeber zu [Visum bei bedingter Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de).\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "d632e3de-755b-5510-a008-1bed377d1934"
+  },
+  {
+   "tr_slug": "almanyada-bilgisayar-bilimleri-disi-bir-lisans-derecesiyle-bilgisayar-bilimleri-yuksek-lisansina-basvurabilir-miyim",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-bilgisayar-bilimleri-disi-bir-lisans-derecesiyle-bilgisayar-bilimleri-yuksek-lisansina-basvurabilir-miyim",
+     "old": {
+      "question": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle bilgisayar bilimleri yüksek lisansına başvurabilir miyim?",
+      "visible": "text",
+      "head": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle ilgili yüksek lisans programlarına başvu"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-bilgisayar-bilimleri-disi-bir-lisans-derecesiyle-bilgisayar-bilimleri-yuksek-lisansina-basvurabilir-miyim-en",
+     "new": {
+      "question": "Can I apply for a Computer Science Master's in Germany with a Bachelor's in a different field?",
+      "answer_md": "It is possible in some cases, but it is generally difficult. German universities expect Master's applicants in Computer Science to already have **solid foundational knowledge in the subject**, which is usually shown through the courses of your Bachelor's degree.\n\n**What can help**\n\n- Some programmes accept applicants who can prove a **certain number of additional credits** in relevant subjects.\n- Some programmes also take **relevant work experience** into account.\n\n**Caveat:** there is no uniform rule. Which subjects count, how many credits are needed and whether work experience is considered all **differ from university to university** and from programme to programme.\n\n**What to do**\n\n1. Read the admission requirements of each programme you are interested in carefully.\n2. Compare them with the courses in your transcript.\n3. If you are unsure whether your background is sufficient, ask the programme or the university's admissions office before applying.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle bilgisayar bilimleri yüksek lisansına başvurabilir miyim?",
+      "visible": "text",
+      "head": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle ilgili yüksek lisans programlarına başvu"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-bilgisayar-bilimleri-disi-bir-lisans-derecesiyle-bilgisayar-bilimleri-yuksek-lisansina-basvurabilir-miyim-de",
+     "new": {
+      "question": "Kann ich mich mit einem fachfremden Bachelor für einen Informatik-Master in Deutschland bewerben?",
+      "answer_md": "In manchen Fällen ja, aber es ist in der Regel schwierig. Deutsche Hochschulen erwarten von Bewerberinnen und Bewerbern für einen Informatik-Master **fundierte fachliche Grundlagen**, die meist über die Module des Bachelorstudiums nachgewiesen werden.\n\n**Was helfen kann**\n\n- Manche Studiengänge lassen Bewerber zu, die eine **bestimmte Anzahl zusätzlicher Leistungspunkte (ECTS)** in einschlägigen Fächern nachweisen.\n- Manche berücksichtigen auch **einschlägige Berufserfahrung**.\n\n**Wichtig:** Es gibt keine einheitliche Regel. Welche Fächer zählen, wie viele Credits nötig sind und ob Berufserfahrung angerechnet wird, **unterscheidet sich von Hochschule zu Hochschule** und von Studiengang zu Studiengang.\n\n**So gehst du vor**\n\n1. Lies die Zulassungsvoraussetzungen jedes Studiengangs, der dich interessiert, genau.\n2. Vergleiche sie mit den Modulen in deinem Transcript of Records.\n3. Wenn du unsicher bist, ob deine Vorbildung reicht, frag vor der Bewerbung beim Studiengang oder bei der Zulassungsstelle der Hochschule nach.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle bilgisayar bilimleri yüksek lisansına başvurabilir miyim?",
+      "visible": "text",
+      "head": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle ilgili yüksek lisans programlarına başvu"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyada-mesleki-diploma-denkligi-sureci-eyaletlere-gore-farklilik-gosterir-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-mesleki-diploma-denkligi-sureci-eyaletlere-gore-farklilik-gosterir-mi",
+     "old": {
+      "question": "Almanya'da mesleki diploma denkliği süreci eyaletlere göre farklılık gösterir mi?",
+      "visible": "text",
+      "head": "Evet, Almanya'da mesleki diploma denklik işlemleri eyaletlere göre farklılık gösterebilir. Her eyale"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "does-professional-recognition-in-germany-differ-by-federal-state",
+     "new": {
+      "question": "Does the recognition of professional qualifications in Germany differ between federal states?",
+      "answer_md": "Yes, it can. The recognition of professional qualifications is not handled identically everywhere in Germany. Depending on the profession, the **rules and the competent authority can differ from one federal state (Bundesland) to another**.\n\n**What this means for you**\n\n- The authority responsible for your case depends on your profession and on the federal state concerned.\n- Required documents, procedures and details can vary, so information from another state may not apply to you.\n\n**Caveat:** do not rely on experiences from friends in a different state or profession. Before you apply, get up-to-date information from the **official recognition office of the relevant state**.\n\nThe official portal [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de) helps you identify the right authority for your profession and location.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "does-professional-recognition-in-germany-differ-by-federal-state-de",
+     "new": {
+      "question": "Unterscheidet sich die Anerkennung von Berufsabschlüssen in Deutschland je nach Bundesland?",
+      "answer_md": "Ja, das kann sein. Die Anerkennung ausländischer Berufsabschlüsse läuft nicht überall in Deutschland gleich ab. Je nach Beruf können sich **Regeln und zuständige Stelle von Bundesland zu Bundesland unterscheiden**.\n\n**Was das für dich bedeutet**\n\n- Welche Stelle für dich zuständig ist, hängt von deinem Beruf und vom jeweiligen Bundesland ab.\n- Unterlagen, Verfahren und Details können variieren. Informationen aus einem anderen Bundesland gelten für dich also nicht unbedingt.\n\n**Wichtig:** Verlass dich nicht auf Erfahrungen von Bekannten aus einem anderen Bundesland oder Beruf. Hol dir vor dem Antrag aktuelle Informationen bei der **offiziellen Anerkennungsstelle des zuständigen Bundeslandes**.\n\nÜber das offizielle Portal [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de) findest du die passende Stelle für deinen Beruf und deinen Ort.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "fb90b52e-50a1-5692-af49-a7d674b8c766"
+  },
+  {
+   "tr_slug": "almanyadan-ayrilirken-rundfunkbeitrag-radyotv-vergisi-iptali-unutulursa-ne-olur",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyadan-ayrilirken-rundfunkbeitrag-radyotv-vergisi-iptali-unutulursa-ne-olur",
+     "old": {
+      "question": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) iptali unutulursa ne olur?",
+      "visible": "text",
+      "head": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) aboneliğini iptal etmeyi unutmak, borç bir"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "almanyadan-ayrilirken-rundfunkbeitrag-radyotv-vergisi-iptali-unutulursa-ne-olur-en",
+     "new": {
+      "question": "What happens if I forget to deregister from the Rundfunkbeitrag (broadcasting fee) when leaving Germany?",
+      "answer_md": "If you leave Germany without deregistering from the **Rundfunkbeitrag** (the broadcasting fee for radio and TV), the contributions can keep being charged and **debt can build up** in your name.\n\n**What this can lead to**\n\n- Such debts generally **do not appear directly** in your Führungszeugnis (German certificate of good conduct).\n- However, unpaid amounts can become the subject of **legal collection and enforcement proceedings**.\n\n**What to do before you leave**\n\n- Deregister from the Rundfunkbeitrag and keep the confirmation.\n- Check your other contracts and obligations too (for example rent, phone, internet, insurance) and make sure they are properly cancelled.\n\n**Caveat:** if you have already left and notice that you forgot to deregister, contact the Beitragsservice as soon as possible to clarify your situation. Official information is available at [rundfunkbeitrag.de](https://www.rundfunkbeitrag.de).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) iptali unutulursa ne olur?",
+      "visible": "text",
+      "head": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) aboneliğini iptal etmeyi unutmak, borç bir"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyadan-ayrilirken-rundfunkbeitrag-radyotv-vergisi-iptali-unutulursa-ne-olur-de",
+     "new": {
+      "question": "Was passiert, wenn ich vergesse, mich beim Wegzug aus Deutschland vom Rundfunkbeitrag abzumelden?",
+      "answer_md": "Wenn du Deutschland verlässt, ohne dich vom **Rundfunkbeitrag** abzumelden, können weiter Beiträge anfallen und **Schulden auflaufen**.\n\n**Was daraus folgen kann**\n\n- Solche Schulden erscheinen in der Regel **nicht direkt** im Führungszeugnis.\n- Unbezahlte Beträge können aber **rechtlich eingefordert und vollstreckt** werden.\n\n**Was du vor dem Wegzug erledigen solltest**\n\n- Melde dich vom Rundfunkbeitrag ab und bewahre die Bestätigung auf.\n- Prüfe auch deine anderen Verträge und Verpflichtungen (zum Beispiel Miete, Handy, Internet, Versicherungen) und kündige sie rechtzeitig.\n\n**Wichtig:** Wenn du schon ausgereist bist und merkst, dass du die Abmeldung vergessen hast, wende dich möglichst schnell an den Beitragsservice, um die Situation zu klären. Offizielle Informationen findest du auf [rundfunkbeitrag.de](https://www.rundfunkbeitrag.de).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) iptali unutulursa ne olur?",
+      "visible": "text",
+      "head": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) aboneliğini iptal etmeyi unutmak, borç bir"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyaya-belirli-kopek-irklarini-getirmek-mumkun-mudur",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyaya-belirli-kopek-irklarini-getirmek-mumkun-mudur",
+     "old": {
+      "question": "Almanya'ya belirli köpek ırklarını getirmek mümkün müdür?",
+      "visible": "text",
+      "head": "Almanya'ya belirli köpek ırklarının (örneğin Staffordshire Terrier gibi) girişi yasalarla kısıtlanmı"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "almanyaya-belirli-kopek-irklarini-getirmek-mumkun-mudur-en",
+     "new": {
+      "question": "Can I bring certain dog breeds to Germany?",
+      "answer_md": "Not always. Germany **restricts or completely prohibits** bringing in certain dog breeds, for example **Staffordshire terrier types**. Breaking these rules can have serious consequences.\n\n**Before you plan to bring your dog**\n\n- Find out whether your dog's breed (or a cross with it) is on an official list of prohibited or restricted breeds.\n- Check the current legal rules for bringing pets into Germany, not only for your breed.\n- Use **official sources** for this, not forums or social media, because rules can change.\n\n**Caveat:** this answer does not give a complete list of affected breeds. Always check the current official list and rules before you travel. If in doubt, contact the competent German authority before your trip rather than finding out at the border.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'ya belirli köpek ırklarını getirmek mümkün müdür?",
+      "visible": "text",
+      "head": "Almanya'ya belirli köpek ırklarının (örneğin Staffordshire Terrier gibi) girişi yasalarla kısıtlanmı"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyaya-belirli-kopek-irklarini-getirmek-mumkun-mudur-de",
+     "new": {
+      "question": "Darf ich bestimmte Hunderassen nach Deutschland mitbringen?",
+      "answer_md": "Nicht in jedem Fall. Für bestimmte Hunderassen, zum Beispiel **Staffordshire-Terrier-Typen**, ist die Einfuhr nach Deutschland **eingeschränkt oder ganz verboten**. Verstöße können ernste Folgen haben.\n\n**Bevor du deinen Hund mitbringst**\n\n- Prüfe, ob die Rasse deines Hundes (oder eine Kreuzung damit) auf einer offiziellen Liste verbotener oder eingeschränkter Rassen steht.\n- Informiere dich über die aktuellen Regeln für die Einreise mit Haustieren, nicht nur zu deiner Rasse.\n- Nutze dafür **offizielle Quellen** statt Foren oder Social Media, denn Regeln können sich ändern.\n\n**Wichtig:** Diese Antwort enthält keine vollständige Liste der betroffenen Rassen. Prüf vor der Reise immer die aktuelle offizielle Liste und die geltenden Regeln. Im Zweifel wende dich vorher an die zuständige deutsche Behörde, statt es erst an der Grenze herauszufinden.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'ya belirli köpek ırklarını getirmek mümkün müdür?",
+      "visible": "text",
+      "head": "Almanya'ya belirli köpek ırklarının (örneğin Staffordshire Terrier gibi) girişi yasalarla kısıtlanmı"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienplatzannahme-belgesini-gonderdikten-sonra-geri-donus-suresi-nedir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienplatzannahme-belgesini-gonderdikten-sonra-geri-donus-suresi-nedir",
+     "old": {
+      "question": "Studienplatzannahme belgesini gönderdikten sonra geri dönüş süresi nedir?",
+      "visible": "text",
+      "head": "Studienplatzannahme belgesini üniversiteye gönderdikten sonra geri dönüş süresi üniversiteden üniver"
+     },
+     "mode": "remove",
+     "remove": [
+      "Genellikle birkaç hafta içinde bir onay veya sonraki adımlarla ilgili bilgi almanız beklenir."
+     ],
+     "anchor": "geri dönüş süresi üniversiteden üniversiteye değişir."
+    },
+    {
+     "locale": "en",
+     "slug": "response-time-after-sending-study-place-acceptance",
+     "new": {
+      "question": "How long does it take to hear back after sending the Studienplatzannahme (acceptance of the study place)?",
+      "answer_md": "There is no fixed timeframe. How quickly you hear back after sending your **Studienplatzannahme** (your formal acceptance of the study place) **varies from university to university**. Usually you will receive a confirmation or information about the next steps, such as enrolment (Immatrikulation).\n\n**What you can do meanwhile**\n\n- Keep proof that you sent the acceptance (upload confirmation, e-mail or postal receipt).\n- Check your applicant portal and your inbox, including the spam folder, regularly.\n- Look at the admission letter for any deadlines that apply to you.\n\n**If you hear nothing for a long time**\n\nContact the university's **Studierendensekretariat** (student registry / admissions office) directly and ask about the status of your acceptance.\n\n**Caveat:** if your visa application depends on a confirmation from the university, contact them early rather than waiting.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "response-time-after-sending-study-place-acceptance-de",
+     "new": {
+      "question": "Wie lange dauert es, bis ich nach der Studienplatzannahme eine Rückmeldung bekomme?",
+      "answer_md": "Eine feste Frist gibt es nicht. Wie schnell du nach deiner **Studienplatzannahme** eine Rückmeldung bekommst, **ist von Hochschule zu Hochschule unterschiedlich**. In der Regel erhältst du eine Bestätigung oder Informationen zu den nächsten Schritten, etwa zur Immatrikulation.\n\n**Was du in der Zwischenzeit tun kannst**\n\n- Bewahre einen Nachweis auf, dass du die Annahme verschickt hast (Upload-Bestätigung, E-Mail oder Einlieferungsbeleg).\n- Schau regelmäßig in dein Bewerbungsportal und dein Postfach, auch in den Spam-Ordner.\n- Prüfe im Zulassungsbescheid, ob für dich Fristen gelten.\n\n**Wenn du lange nichts hörst**\n\nWende dich direkt an das **Studierendensekretariat** deiner Hochschule und frag nach dem Stand deiner Annahme.\n\n**Wichtig:** Wenn dein Visumantrag von einer Bestätigung der Hochschule abhängt, melde dich lieber früh, statt abzuwarten.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "df409ec7-1338-5356-961d-60f823604e4f"
+  },
+  {
+   "tr_slug": "turkiyede-4-yillik-matematik-bolumu-mezunlari-almanyada-hangi-alanlarda-universiteye-basvurabilir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turkiyede-4-yillik-matematik-bolumu-mezunlari-almanyada-hangi-alanlarda-universiteye-basvurabilir",
+     "old": {
+      "question": "Türkiye'de 4 yıllık matematik bölümü mezunları Almanya'da hangi alanlarda üniversiteye başvurabilir?",
+      "visible": "text",
+      "head": "Türkiye'deki 4 yıllık matematik bölümü mezunları, Almanya'da genellikle ilgili mühendislik, bilgisay"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "which-programmes-can-mathematics-graduates-from-turkey-apply-to-in-germany",
+     "new": {
+      "question": "Which study programmes in Germany can I apply to with a 4-year mathematics degree from Turkey?",
+      "answer_md": "With a 4-year mathematics degree from Turkey you can generally apply not only to mathematics, but also to **related, mathematics-based programmes** in Germany, for example in:\n\n- engineering,\n- computer science,\n- economics,\n- other fields with a strong mathematical foundation.\n\nThis applies to both Bachelor's and Master's programmes.\n\n**What decides admission**\n\n- The **subject-specific prerequisites** of the programme: the admissions committee checks whether your courses match what the programme expects.\n- The **language requirements** of the programme (German or English, depending on the language of instruction).\n\n**Caveat:** a mathematics degree does not open every related programme automatically. Each programme decides on the basis of its own requirements.\n\nFor exact information on how your degree is assessed and what the admission requirements are, contact **uni-assist** or the **international office** of the universities you are interested in.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "which-programmes-can-mathematics-graduates-from-turkey-apply-to-in-germany-de",
+     "new": {
+      "question": "Für welche Studiengänge in Deutschland kann ich mich mit einem vierjährigen Mathematikstudium aus der Türkei bewerben?",
+      "answer_md": "Mit einem vierjährigen Mathematikabschluss aus der Türkei kannst du dich in Deutschland in der Regel nicht nur für Mathematik bewerben, sondern auch für **verwandte, mathematisch geprägte Studiengänge**, zum Beispiel in:\n\n- Ingenieurwissenschaften,\n- Informatik,\n- Wirtschaftswissenschaften,\n- anderen Fächern mit starkem mathematischem Fundament.\n\nDas gilt sowohl für Bachelor- als auch für Masterstudiengänge.\n\n**Was über die Zulassung entscheidet**\n\n- Die **fachlichen Zulassungsvoraussetzungen** des Studiengangs: Die Hochschule prüft, ob deine Module zu den Anforderungen passen.\n- Die **Sprachanforderungen** des Studiengangs (Deutsch oder Englisch, je nach Unterrichtssprache).\n\n**Wichtig:** Ein Mathematikabschluss öffnet nicht automatisch jeden verwandten Studiengang. Jeder Studiengang entscheidet nach seinen eigenen Voraussetzungen.\n\nGenaue Informationen zur Bewertung deines Abschlusses und zu den Zulassungsvoraussetzungen bekommst du bei **uni-assist** oder beim **International Office** der Hochschulen, die dich interessieren.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "33517659-ac5d-5cfc-a1b0-f83094e73926"
+  },
+  {
+   "tr_slug": "vize-basvurusuna-giderken-randevu-onay-belgesini-cikti-almak-gerekli-midir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-basvurusuna-giderken-randevu-onay-belgesini-cikti-almak-gerekli-midir",
+     "old": {
+      "question": "Vize başvurusuna giderken randevu onay belgesini çıktı almak gerekli midir?",
+      "visible": "text",
+      "head": "Vize başvurusuna giderken randevu onay belgesinin çıktısını almanız genellikle tavsiye edilir. Bazı"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "do-i-need-to-print-my-visa-appointment-confirmation",
+     "new": {
+      "question": "Do I need to print my visa appointment confirmation?",
+      "answer_md": "It is generally recommended. Bringing a **printout of your appointment confirmation** is the safe option, because some consulates or visa application centres may check this document at the entrance or at the counter.\n\n**Our recommendation**\n\n- Bring a **printed copy** and keep the **digital version** on your phone as well.\n- Having both helps you avoid problems if, for example, your phone battery is empty or there is no mobile connection.\n\n**Caveat:** practices differ between missions and visa centres. Follow the instructions in your appointment confirmation and on the website of the consulate or visa centre you are applying through.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "do-i-need-to-print-my-visa-appointment-confirmation-de",
+     "new": {
+      "question": "Muss ich die Terminbestätigung für den Visumantrag ausdrucken?",
+      "answer_md": "Es wird in der Regel empfohlen. Eine **ausgedruckte Terminbestätigung** mitzunehmen ist die sichere Variante, denn manche Konsulate oder Visumzentren können dieses Dokument am Eingang oder am Schalter kontrollieren.\n\n**Unsere Empfehlung**\n\n- Nimm einen **Ausdruck** mit und hab zusätzlich die **digitale Version** auf dem Handy.\n- So bist du auf der sicheren Seite, falls zum Beispiel dein Akku leer ist oder du keinen Empfang hast.\n\n**Wichtig:** Die Praxis ist nicht bei allen Auslandsvertretungen und Visumzentren gleich. Richte dich nach den Hinweisen in deiner Terminbestätigung und auf der Website des Konsulats bzw. Visumzentrums, über das du den Antrag stellst.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "bd6efb9b-690d-5788-a1ae-d4832ad451ce"
+  },
+  {
+   "tr_slug": "diploma-denkligi-icin-yeminli-tercuman-nasil-bulunur-ve-ucretleri-nedir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "diploma-denkligi-icin-yeminli-tercuman-nasil-bulunur-ve-ucretleri-nedir",
+     "old": {
+      "question": "Diploma denkliği için yeminli tercüman nasıl bulunur ve ücretleri nedir?",
+      "visible": "text",
+      "head": "Diploma denkliği başvuruları için belgelerin yeminli tercümanlar tarafından Almancaya çevrilmesi ger"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "how-to-find-a-sworn-translator-for-degree-recognition-in-germany",
+     "new": {
+      "question": "How do I find a sworn translator for recognition of my degree in Germany, and what does it cost?",
+      "answer_md": "For a recognition application, your documents usually have to be translated into German by a **sworn translator**. In Germany you can find sworn translators through the **official lists kept by the justice administrations** of the federal states or by the **local courts**.\n\n**How to proceed**\n\n1. Check which documents the recognition authority wants translated and in what form.\n2. Search the official lists for a sworn translator for Turkish–German.\n3. Ask **several translators for a quote** before you decide.\n\n**What does it cost?**\n\nThere is no fixed price. Fees **depend on the translator and on the length** of your documents. Comparing a few quotes is the best way to get a realistic idea of the cost.\n\n**Caveat:** make sure the translation meets the requirements of the authority handling your recognition before you order it, so you do not have to pay twice.\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "how-to-find-a-sworn-translator-for-degree-recognition-in-germany-de",
+     "new": {
+      "question": "Wie finde ich einen vereidigten Übersetzer für die Anerkennung meines Abschlusses, und was kostet das?",
+      "answer_md": "Für einen Anerkennungsantrag müssen deine Unterlagen in der Regel von einem **vereidigten (beeidigten bzw. ermächtigten) Übersetzer** ins Deutsche übersetzt werden. In Deutschland findest du solche Übersetzer über die **offiziellen Verzeichnisse der Landesjustizverwaltungen** bzw. der **Gerichte**.\n\n**So gehst du vor**\n\n1. Kläre, welche Unterlagen die Anerkennungsstelle übersetzt haben möchte und in welcher Form.\n2. Such in den offiziellen Verzeichnissen nach einem vereidigten Übersetzer für Türkisch–Deutsch.\n3. Hol dir **Angebote von mehreren Übersetzern** ein, bevor du dich entscheidest.\n\n**Was kostet das?**\n\nEinen festen Preis gibt es nicht. Die Kosten **hängen vom Übersetzer und vom Umfang** deiner Unterlagen ab. Mehrere Angebote zu vergleichen ist der beste Weg, um die Kosten realistisch einzuschätzen.\n\n**Wichtig:** Stelle vor der Beauftragung sicher, dass die Übersetzung den Anforderungen der Stelle entspricht, die deine Anerkennung bearbeitet. So musst du nicht doppelt zahlen.\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "4e55ea52-aee3-5085-a1fe-33e997cf43e8"
+  },
+  {
+   "tr_slug": "almanyada-daire-kiralama-surecinde-almanca-bilmek-ne-kadar-onemli",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-daire-kiralama-surecinde-almanca-bilmek-ne-kadar-onemli",
+     "old": {
+      "question": "Almanya'da daire kiralama sürecinde Almanca bilmek ne kadar önemli?",
+      "visible": "text",
+      "head": "Almanya'da daire kiralama gibi idari süreçlerin çoğu Almanca yürütülür. Bu nedenle, ülkeye gelmeden"
+     },
+     "mode": "keep"
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-daire-kiralama-surecinde-almanca-bilmek-ne-kadar-onemli-en",
+     "new": {
+      "question": "How important is German when renting a flat in Germany?",
+      "answer_md": "Quite important. Most of the steps involved in renting a flat in Germany, such as listings, communication with landlords, viewings, the rental contract and related paperwork, usually take place **in German**.\n\n**Why it matters**\n\n- You understand listings and the rental contract better and can spot important terms.\n- Communicating with landlords and property managers is easier, which can help your application.\n- Handling the process **only in English can be quite difficult**, although it is not always impossible.\n\n**Our recommendation**\n\nIf you can, reach a good level of German **before you arrive**. It makes searching for and renting a flat considerably easier. If your German is still limited, ask a German-speaking friend to help you read the contract before you sign it.\n\n**Caveat:** a rental contract is legally binding. Do not sign anything you do not fully understand.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da daire kiralama sürecinde Almanca bilmek ne kadar önemli?",
+      "visible": "text",
+      "head": "Almanya'da daire kiralama gibi idari süreçlerin çoğu Almanca yürütülür. Bu nedenle, ülkeye gelmeden"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-daire-kiralama-surecinde-almanca-bilmek-ne-kadar-onemli-de",
+     "new": {
+      "question": "Wie wichtig sind Deutschkenntnisse bei der Wohnungssuche in Deutschland?",
+      "answer_md": "Ziemlich wichtig. Die meisten Schritte bei der Wohnungssuche in Deutschland, also Inserate, Kontakt mit Vermietern, Besichtigungen, Mietvertrag und der Papierkram drumherum, laufen in der Regel **auf Deutsch**.\n\n**Warum das zählt**\n\n- Du verstehst Inserate und Mietvertrag besser und erkennst wichtige Klauseln.\n- Die Kommunikation mit Vermietern und Hausverwaltungen fällt leichter, was deiner Bewerbung helfen kann.\n- Den Prozess **nur auf Englisch** zu bewältigen, **kann ziemlich schwierig sein**, auch wenn es nicht immer unmöglich ist.\n\n**Unsere Empfehlung**\n\nWenn möglich, lern schon **vor der Einreise** gut Deutsch. Das erleichtert die Wohnungssuche und das Anmieten deutlich. Wenn dein Deutsch noch nicht reicht, bitte eine deutschsprachige Person, den Vertrag vor der Unterschrift mit dir durchzugehen.\n\n**Wichtig:** Ein Mietvertrag ist rechtlich bindend. Unterschreib nichts, was du nicht vollständig verstehst.\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da daire kiralama sürecinde Almanca bilmek ne kadar önemli?",
+      "visible": "text",
+      "head": "Almanya'da daire kiralama gibi idari süreçlerin çoğu Almanca yürütülür. Bu nedenle, ülkeye gelmeden"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "bloke-hesapta-ne-kadar-para-olmasi-gerekiyor",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "bloke-hesapta-ne-kadar-para-olmasi-gerekiyor",
+     "old": {
+      "question": "Bloke hesapta ne kadar para olması gerekiyor?",
+      "visible": "text",
+      "head": "2026 yılı için yıllık tutar: 11,904 € (aylık 992 €). Bu miktar her yıl Alman federal hükümetinin bel"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Bloke hesapta ne kadar para olması gerekiyor?",
+      "answer_md": "Almanya öğrenci vizesi için 2026'da kanıtlaman gereken tutar **aylık 992 €, yıllık 11.904 €**. Bu tutar 01.09.2024'ten beri geçerli.\n\n- Tutar BAföG azami tutarına bağlıdır; her yıl kendiliğinden değişmez, BAföG tutarı değişirse vize için istenen miktar da değişebilir.\n- Sperrkonto tek yol değil: Türkiye'deki Alman temsilcilikleri, Almanya'da yaşayan birinin vereceği **Verpflichtungserklärung**'u da finansman kanıtı olarak kabul ediyor.\n- **Dil kursu vizesi (§ 16f)** için farklı bir tutar geçerli: temsilciliklerin dil kursu bilgi notuna göre ayda en az 1.091 €. Sayfada güncelleme tarihi olmadığı için başvurmadan önce [güncel bilgi notunu](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588) kontrol et.\n- Eş ve çocuklar için ek tutar bu yanıtın kapsamında değil; aile birleşimi için temsilciliğe danış.\n\nVize türlerine göre ayrıntılar ve Sperrkonto'nun işleyişi: [2026 Sperrkonto rehberi](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you).\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "bloke-hesapta-ne-kadar-para-olmasi-gerekiyor-en",
+     "new": {
+      "question": "How much money do I need in a blocked account (Sperrkonto)?",
+      "answer_md": "For a German student visa in 2026 you need to show **992 € per month, i.e. 11,904 € per year**. This amount has applied since 1 September 2024.\n\n- The figure is tied to the maximum BAföG rate. It is not adjusted every year as a matter of course; it changes only if the BAföG rate changes.\n- A Sperrkonto is not the only option: German missions in Türkiye also accept a **Verpflichtungserklärung** (formal obligation letter from someone living in Germany) as proof of funds.\n- **Language-course visas (§ 16f)** use a different amount: according to the missions' language-course leaflet you need at least 1,091 € per month. The page shows no update date, so check the [current leaflet](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588) before you apply.\n- Extra funds for a spouse or children are not covered here; ask the mission about family reunification.\n\nMore detail on visa types and how the blocked account works: [2026 Sperrkonto update](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How much money is required in the Sperrkonto?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "bloke-hesapta-ne-kadar-para-olmasi-gerekiyor-de",
+     "new": {
+      "question": "Wie viel Geld muss auf dem Sperrkonto sein?",
+      "answer_md": "Für ein Studienvisum musst du 2026 **992 € pro Monat, also 11.904 € pro Jahr** nachweisen. Dieser Betrag gilt seit dem 01.09.2024.\n\n- Der Betrag ist an den BAföG-Höchstsatz gekoppelt. Er steigt nicht routinemäßig jedes Jahr, sondern nur, wenn sich der BAföG-Satz ändert.\n- Das Sperrkonto ist nicht der einzige Weg: Die deutschen Auslandsvertretungen in der Türkei akzeptieren auch eine **Verpflichtungserklärung** einer Person, die in Deutschland lebt.\n- Für ein **Sprachkursvisum (§ 16f)** gilt ein anderer Betrag: Laut Merkblatt der Vertretungen müssen mindestens 1.091 € pro Monat zur Verfügung stehen. Die Seite nennt kein Stand-Datum – prüfe vor dem Antrag das [aktuelle Merkblatt](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588).\n- Zusätzliche Mittel für Ehepartner oder Kinder sind hier nicht abgedeckt; frag für den Familiennachzug bei der Auslandsvertretung nach.\n\nMehr zu Visumarten und zur Funktionsweise des Sperrkontos: [Sperrkonto-Update 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie viel Geld benötigst du auf dem Sperrkonto?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "sperrkonto-bloke-hesap-icin-ne-kadar-para-gerekli",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "sperrkonto-bloke-hesap-icin-ne-kadar-para-gerekli",
+     "old": {
+      "question": "Sperrkonto (bloke hesap) için ne kadar para gerekli?",
+      "visible": "text",
+      "head": "2026 için Almanya öğrenci vizesi gerekli Sperrkonto (bloke hesap) tutarı: yıllık 11,904 € (aylık 992"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Sperrkonto (bloke hesap) için ne kadar para gerekli?",
+      "answer_md": "2026'da Almanya öğrenci vizesi için kanıtlaman gereken geçim parası **aylık 992 €, yıllık 11.904 €**. Bu tutar 01.09.2024'ten beri geçerli; öncesinde daha düşük bir tutar isteniyordu.\n\n### Tutar neye bağlı?\nRakam BAföG azami tutarına bağlıdır. Her yıl kendiliğinden artmaz; BAföG tutarı değişirse vize için istenen miktar da değişebilir. Bu yüzden başvurmadan önce temsilciliğin güncel bilgisine bak.\n\n### Vize türüne göre\n- **Öğrenci vizesi (Studienkolleg dahil):** aylık 992 € esas alınır; bilgi notunda yıllık 11.904 € yer alıyor. Daha kısa bir kalış planlıyorsan kaç aylık tutar gerektiğini temsilciliğe sor.\n- **Dil kursu vizesi (§ 16f):** Türkiye'deki Alman temsilciliklerinin [dil kursu bilgi notuna](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588) göre ayda en az 1.091 €. Sayfada güncelleme tarihi yok; başvurudan önce kontrol et.\n\n### Sperrkonto şart mı?\nTek yol değil. Temsilcilikler finansman kanıtı olarak Sperrkonto'nun yanında Almanya'da yaşayan birinin vereceği **Verpflichtungserklärung**'u da kabul ediyor. Sponsorun ödeme gücünü yetkili makam kontrol eder; resmî kaynaklarda sabit bir gelir eşiği yayımlanmış değil. Burs gibi başka kanıtların kabul edilip edilmediği için [temsilciliğin öğrenim sayfasına](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740) bak.\n\n### Pratikte\n- Tutar vize başvurusundan önce hesaba yatırılır; bankanın onay belgesi başvuruya eklenir.\n- Almanya'ya geldikten sonra para sana aylık bölümler hâlinde serbest bırakılır. İşleyiş ve ücretler hesap sağlayıcısına göre değişir; belirli bir sağlayıcı zorunlu değildir.\n\nAyrıntılı rehber: [2026 Sperrkonto güncellemesi](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "sperrkonto-bloke-hesap-icin-ne-kadar-para-gerekli-en",
+     "new": {
+      "question": "How much money do I need for a blocked account (Sperrkonto)?",
+      "answer_md": "For a German student visa in 2026 you must prove **992 € per month, i.e. 11,904 € per year**. This amount has applied since 1 September 2024; before that, a lower amount was required.\n\n### What the amount depends on\nThe figure is tied to the maximum BAföG rate. It is not adjusted every year as a matter of course – it changes only if the BAföG rate changes. Check the mission's current information before you apply.\n\n### By visa type\n- **Student visa (including Studienkolleg):** based on 992 € per month; the missions' leaflet lists 11,904 € per year. If you plan a shorter stay, ask the mission how many months you need to cover.\n- **Language-course visa (§ 16f):** according to the [language-course leaflet](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588) of the German missions in Türkiye, at least 1,091 € per month. The page has no update date, so double-check it before applying.\n\n### Is a Sperrkonto mandatory?\nNo, it is one option. The missions also accept a **Verpflichtungserklärung** – a formal declaration by someone living in Germany that they will cover your living costs. The authorities check whether your sponsor can actually pay; no fixed income threshold is published in official sources. Whether other proof such as a scholarship is accepted is explained on the [missions' study page](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740).\n\n### In practice\n- You deposit the amount before the visa application and attach the bank's confirmation.\n- Once you are in Germany, the money is released to you in monthly instalments. Procedures and fees depend on the account provider; no specific provider is required.\n\nFull guide: [2026 Sperrkonto update](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How much money do I need for a blocked account (Sperrkonto)?",
+      "visible": "text",
+      "head": "For 2026, the required amount for a Sperrkonto (blocked account) for a German student visa is: 11,90"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "sperrkonto-bloke-hesap-icin-ne-kadar-para-gerekli-de",
+     "new": {
+      "question": "Wie viel Geld brauchst du für ein Sperrkonto?",
+      "answer_md": "Für ein Studienvisum musst du 2026 **992 € pro Monat, also 11.904 € pro Jahr** nachweisen. Dieser Betrag gilt seit dem 01.09.2024; davor galt ein niedrigerer Betrag.\n\n### Woran hängt der Betrag?\nEr ist an den BAföG-Höchstsatz gekoppelt. Er steigt nicht routinemäßig jedes Jahr, sondern nur, wenn sich der BAföG-Satz ändert. Prüfe deshalb vor dem Antrag die aktuellen Angaben der Auslandsvertretung.\n\n### Nach Visumart\n- **Studienvisum (auch Studienkolleg):** Grundlage sind 992 € pro Monat; im Merkblatt stehen 11.904 € pro Jahr. Bei einem kürzeren Aufenthalt frag die Vertretung, wie viele Monate du abdecken musst.\n- **Sprachkursvisum (§ 16f):** Laut [Merkblatt Sprachkurs](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588) der deutschen Vertretungen in der Türkei mindestens 1.091 € pro Monat. Die Seite nennt kein Stand-Datum – prüfe sie vor dem Antrag.\n\n### Ist ein Sperrkonto Pflicht?\nNein, es ist eine Möglichkeit. Die Vertretungen akzeptieren auch eine **Verpflichtungserklärung** einer Person, die in Deutschland lebt. Ob der Verpflichtungsgeber leistungsfähig ist, prüft die Behörde; eine feste Einkommensgrenze ist in den offiziellen Quellen nicht veröffentlicht. Ob andere Nachweise wie ein Stipendium reichen, steht auf der [Studienseite der Vertretungen](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740).\n\n### In der Praxis\n- Du zahlst den Betrag vor dem Visumantrag ein und legst die Bestätigung der Bank bei.\n- Nach der Einreise wird das Geld in monatlichen Raten freigegeben. Ablauf und Gebühren hängen vom Anbieter ab; ein bestimmter Anbieter ist nicht vorgeschrieben.\n\nAusführlich: [Sperrkonto-Update 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie viel Geld brauchst du für ein Sperrkonto?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-icin-sperrkonto-gerekli-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-icin-sperrkonto-gerekli-mi",
+     "old": {
+      "question": "Studienkolleg için Sperrkonto gerekli mi?",
+      "visible": "text",
+      "head": "Evet — Studienkolleg vizesi için Sperrkonto zorunlu , tıpkı diğer öğrenci vizeleri gibi. # Sperrkont"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Studienkolleg için Sperrkonto gerekli mi?",
+      "answer_md": "Studienkolleg için vizeye başvuruyorsan **geçimini kanıtlaman gerekir. Sperrkonto bunun en yaygın yolu ama tek yolu değil**: Türkiye'deki Alman temsilcilikleri finansman kanıtı olarak Sperrkonto veya Almanya'da yaşayan birinin vereceği Verpflichtungserklärung'u kabul ediyor.\n\n### Neden üniversite öğrencileriyle aynı kural?\nKabulün belgelenmesi şartıyla Studienkolleg, [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html)'ye göre öğrenim amacının parçası olan bir hazırlık önlemidir (studienvorbereitende Maßnahme). Bu yüzden öğrenci vizesiyle aynı geçim şartı uygulanır. Temsilciliğin bilgi notuna göre Studienkolleg'den aldığın kabul belgesi başvurunun incelenmesini kolaylaştırır.\n\n### Ne kadar?\n2026'da **aylık 992 €, yıllık 11.904 €** (01.09.2024'ten beri, BAföG azami tutarına bağlı). Vizenin süresine göre kaç aylık tutar göstermen gerektiğini temsilciliğin güncel bilgisinden kontrol et.\n\n### Sperrkonto yerine Verpflichtungserklärung\nAlmanya'da yaşayan biri geçimini üstlendiğini resmî bir beyanla taahhüt edebilir. Sponsorun ödeme gücünü yetkili makam kontrol eder; resmî kaynaklarda sabit bir gelir eşiği yayımlanmış değil. Ayrıntılar için sponsorun bağlı olduğu Ausländerbehörde'ye danışın.\n\n### Studienkolleg'den sonra\n- Studienkolleg ve ardından gelen lisans aynı § 16b amacı kapsamındadır; oturum izni, amaç henüz tamamlanmadıysa ve makul sürede tamamlanabilecekse uzatılır.\n- Studienkolleg süresince de yılda 140 iş günü çalışma kuralı (Arbeitstagekonto) geçerlidir; hazırlık dönemi için yasada ayrı bir yasak yok.\n\nTutarlar ve Sperrkonto'nun işleyişi: [2026 Sperrkonto rehberi](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-icin-sperrkonto-gerekli-mi-en",
+     "new": {
+      "question": "Do I need a blocked account (Sperrkonto) for a Studienkolleg?",
+      "answer_md": "If you apply for a visa to attend a Studienkolleg, **you must prove that your living costs are covered. A Sperrkonto is the most common way, but not the only one**: German missions in Türkiye accept either a blocked account or a Verpflichtungserklärung (formal declaration of support) from someone living in Germany.\n\n### Why the same rule as for university students?\nOnce your acceptance is proven, attending a Studienkolleg counts as a preparatory measure (studienvorbereitende Maßnahme) within the study purpose under [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html). The same proof of funds therefore applies as for a student visa. According to the missions' leaflet, an admission letter from the Studienkolleg makes the examination of your application easier.\n\n### How much?\nIn 2026: **992 € per month, 11,904 € per year** (since 1 September 2024, tied to the maximum BAföG rate). How many months you need to cover depends on the visa duration – check the mission's current information.\n\n### Verpflichtungserklärung instead of a Sperrkonto\nA person living in Germany can formally commit to covering your living costs. The authorities check whether that sponsor can actually pay; no fixed income threshold is published in official sources. Your sponsor should ask their local Ausländerbehörde for details.\n\n### After the Studienkolleg\n- The Studienkolleg and the degree that follows belong to the same § 16b study purpose; the residence permit is extended as long as the purpose has not yet been achieved but can be achieved within a reasonable time.\n- The 140-working-day rule (Arbeitstagekonto) also applies during the Studienkolleg; the current law has no separate work ban for the preparatory phase.\n\nAmounts and how the blocked account works: [2026 Sperrkonto update](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Is a Sperrkonto required for Studienkolleg?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-icin-sperrkonto-gerekli-mi-de",
+     "new": {
+      "question": "Brauchst du für das Studienkolleg ein Sperrkonto?",
+      "answer_md": "Wenn du ein Visum für das Studienkolleg beantragst, **musst du deinen Lebensunterhalt nachweisen. Das Sperrkonto ist dafür der häufigste, aber nicht der einzige Weg**: Die deutschen Auslandsvertretungen in der Türkei akzeptieren ein Sperrkonto oder eine Verpflichtungserklärung einer Person, die in Deutschland lebt.\n\n### Warum gilt dasselbe wie für Studierende?\nIst die Annahme nachgewiesen, gehört der Besuch eines Studienkollegs nach [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) als studienvorbereitende Maßnahme zum Aufenthaltszweck Studium. Deshalb gilt derselbe Finanzierungsnachweis wie beim Studienvisum. Laut Merkblatt der Vertretungen erleichtert der Zulassungsbescheid des Studienkollegs die Prüfung deines Antrags.\n\n### Wie viel?\n2026: **992 € pro Monat, 11.904 € pro Jahr** (seit 01.09.2024, gekoppelt an den BAföG-Höchstsatz). Wie viele Monate du abdecken musst, hängt von der Visumsdauer ab – prüfe die aktuellen Angaben der Vertretung.\n\n### Verpflichtungserklärung statt Sperrkonto\nEine Person in Deutschland kann sich verpflichten, deinen Lebensunterhalt zu tragen. Ob sie leistungsfähig ist, prüft die Behörde; eine feste Einkommensgrenze ist in den offiziellen Quellen nicht veröffentlicht. Details erfährt dein Verpflichtungsgeber bei seiner Ausländerbehörde.\n\n### Nach dem Studienkolleg\n- Studienkolleg und anschließendes Studium gehören zum selben Aufenthaltszweck nach § 16b; der Aufenthaltstitel wird verlängert, solange der Zweck noch nicht erreicht ist, aber in angemessener Zeit erreicht werden kann.\n- Auch während des Studienkollegs gilt das Arbeitstagekonto mit 140 Arbeitstagen im Jahr; ein gesondertes Arbeitsverbot für die Vorbereitungsphase kennt das aktuelle Gesetz nicht.\n\nBeträge und Funktionsweise des Sperrkontos: [Sperrkonto-Update 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ist ein Sperrkonto für das Studienkolleg erforderlich?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "master-sirasinda-part-time-calismak-mumkun-mu",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "master-sirasinda-part-time-calismak-mumkun-mu",
+     "old": {
+      "question": "Master sırasında part-time çalışmak mümkün mü?",
+      "visible": "text",
+      "head": "Evet, master sırasında part-time çalışmak çok yaygın ve avantajlı. Hatta master öğrencilerinin %70-8"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Master sırasında part-time çalışmak mümkün mü?",
+      "answer_md": "Evet. Öğrenci oturum izniyle (§ 16b AufenthG) master sırasında çalışabilirsin. AB dışı öğrenciler için yasal sınır haftalık saat değil, **yılda 140 iş günüdür (Arbeitstagekonto)**.\n\n### 140 gün nasıl sayılır? (01.03.2024'ten beri)\n- 4 saate kadar çalıştığın gün yarım gün sayılır.\n- Ders döneminde en fazla 20 saat çalıştığın bir hafta 2,5 iş günü sayılabilir; ders dışı dönemde her hafta 2,5 iş günü sayılabilir. Her hafta için senin lehine olan hesap uygulanır.\n- Üniversitedeki öğrenci asistanlığı (HiWi, studentische Nebentätigkeit) ve zorunlu staj (Pflichtpraktikum) sayılmaz; gönüllü staj genellikle sayılır.\n- Birden fazla işin varsa hepsi aynı hesaba birlikte sayılır.\n\n### Yaygın seçenekler\n- **Werkstudent:** Ders döneminde düzenli olarak haftada en fazla 20 saat çalışırsan (tüm işverenlerde toplam) işte sağlık, bakım ve işsizlik sigortasından muaf olursun; yalnızca emeklilik sigortası payın (2026: yüzde 9,3) kesilir. Bu 20 saat bir sosyal sigorta kuralıdır, oturum izni sınırı değildir.\n- **HiWi:** Üniversitede veya enstitüde öğrenci asistanlığı; 140 güne sayılmaz. Ücret eyalete ve üniversiteye göre değişir.\n- **Minijob:** 2026'da aylık 603 €'ya kadar. Yasal haftalık saat sınırı yoktur; 13,90 € asgari ücretle bu yaklaşık haftada 10 saate denk gelir (yalnızca hesap).\n\n### Tez ve mezuniyet\n- Master tezini bir şirkette yazmak mümkün olabilir; bu, programının Prüfungsordnung'una bağlıdır.\n- Almanya'da öğrenimini başarıyla bitirince, geçimin güvence altındaysa iş aramak için 18 aya kadar oturum izni alabilirsin ([§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)).\n\nAyrıntılar: [HiWi mi Werkstudent mi?](/tr/blog/hiwi-vs-werkstudent-student-jobs-in-germany) · [Öğrenci çalışma kuralları ve 140 gün](/tr/blog/internship-in-germany-with-b1-b2-german)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "master-sirasinda-part-time-calismak-mumkun-mu-en",
+     "new": {
+      "question": "Can I work part-time during my Master's in Germany?",
+      "answer_md": "Yes. With a student residence permit (§ 16b AufenthG) you can work during your Master's. For non-EU students the legal limit is not a weekly number of hours but **140 working days per year (Arbeitstagekonto)**.\n\n### How the 140 days are counted (since 1 March 2024)\n- A day with up to 4 hours of work counts as half a day.\n- During the lecture period, a week with up to 20 hours can count as 2.5 working days; outside the lecture period, each week can count as 2.5 working days. Whichever calculation is more favourable applies, week by week.\n- Student assistant jobs at the university (HiWi, studentische Nebentätigkeit) and mandatory internships (Pflichtpraktikum) do not count; voluntary internships usually do.\n- If you have several jobs, they all count towards the same account.\n\n### Common options\n- **Werkstudent:** if you regularly work no more than 20 hours a week during the lecture period (across all employers), you are exempt from health, long-term care and unemployment insurance in that job and only pay the employee share of pension insurance (9.3 percent in 2026). The 20 hours are a social-insurance rule, not a residence-law limit.\n- **HiWi:** student assistant job at a university or institute; does not count towards the 140 days. Pay depends on the federal state and university.\n- **Minijob:** up to 603 € per month in 2026. There is no statutory weekly-hours cap; at the 13.90 € minimum wage this equals roughly 10 hours a week (calculation only).\n\n### Thesis and graduation\n- Writing your Master's thesis with a company may be possible; it depends on your programme's Prüfungsordnung.\n- After successfully completing your studies in Germany, you can get a residence permit for up to 18 months to look for a job, provided your livelihood is secured ([§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)).\n\nMore: [HiWi vs Werkstudent](/en/blog/hiwi-vs-werkstudent-student-jobs-in-germany-en) · [Student work rules and the 140 days](/en/blog/internship-in-germany-with-b1-b2-german-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Is it possible to work part-time during your Master's?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "master-sirasinda-part-time-calismak-mumkun-mu-de",
+     "new": {
+      "question": "Darfst du während des Masterstudiums in Teilzeit arbeiten?",
+      "answer_md": "Ja. Mit einer Aufenthaltserlaubnis zum Studium (§ 16b AufenthG) darfst du während des Masters arbeiten. Für Studierende aus Nicht-EU-Staaten ist die Grenze keine Wochenstundenzahl, sondern **140 Arbeitstage im Jahr (Arbeitstagekonto)**.\n\n### So wird gezählt (seit 01.03.2024)\n- Ein Tag mit bis zu 4 Stunden Arbeit zählt als halber Tag.\n- In der Vorlesungszeit kann eine Woche mit bis zu 20 Stunden als 2,5 Arbeitstage angerechnet werden; außerhalb der Vorlesungszeit kann jede Woche als 2,5 Arbeitstage zählen. Pro Woche gilt die für dich günstigere Berechnung.\n- Studentische Nebentätigkeiten an der Hochschule (HiWi) und Pflichtpraktika werden nicht angerechnet; freiwillige Praktika in der Regel schon.\n- Mehrere Jobs laufen alle über dasselbe Arbeitstagekonto.\n\n### Typische Möglichkeiten\n- **Werkstudent:** Arbeitest du in der Vorlesungszeit regelmäßig höchstens 20 Stunden pro Woche (bei allen Arbeitgebern zusammen), bist du im Job kranken-, pflege- und arbeitslosenversicherungsfrei und zahlst nur den Arbeitnehmeranteil zur Rentenversicherung (2026: 9,3 Prozent). Die 20 Stunden sind eine Regel der Sozialversicherung, keine aufenthaltsrechtliche Grenze.\n- **HiWi:** Hilfskraft an Hochschule oder Institut; zählt nicht zu den 140 Tagen. Die Bezahlung hängt von Bundesland und Hochschule ab.\n- **Minijob:** 2026 bis 603 € im Monat. Eine gesetzliche Wochenstundengrenze gibt es nicht; beim Mindestlohn von 13,90 € entspricht das rund 10 Stunden pro Woche (nur Rechenwert).\n\n### Abschlussarbeit und danach\n- Die Masterarbeit in einem Unternehmen zu schreiben, kann möglich sein – das regelt die Prüfungsordnung deines Studiengangs.\n- Nach erfolgreichem Studienabschluss in Deutschland kannst du bei gesichertem Lebensunterhalt eine Aufenthaltserlaubnis zur Arbeitsplatzsuche für bis zu 18 Monate bekommen ([§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)).\n\nMehr dazu: [HiWi oder Werkstudent?](/de/blog/hiwi-vs-werkstudent-student-jobs-in-germany-de) · [Arbeitsregeln für Studierende und 140 Tage](/de/blog/internship-in-germany-with-b1-b2-german-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ist es möglich, während des Masters Teilzeit zu arbeiten?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ogrenci-olarak-haftada-kac-saat-calisabilirim",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ogrenci-olarak-haftada-kac-saat-calisabilirim",
+     "old": {
+      "question": "Öğrenci olarak haftada kaç saat çalışabilirim?",
+      "visible": "text",
+      "head": "Öğrenci olarak Almanya'da çalışma saatleri vize statüsü ve iş türü ne göre değişir. # AB Vatandaşı ("
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Öğrenci olarak haftada kaç saat çalışabilirim?",
+      "answer_md": "Kısa cevap: Öğrenci oturum izninde (§ 16b AufenthG) **oturum hukuku açısından haftalık saat sınırı yok; sınır yılda 140 iş günü (Arbeitstagekonto)**. Sık duyduğun \"haftada 20 saat\" ise oturum izninden değil, Werkstudent'ın sosyal sigorta kuralından gelir.\n\n### 140 iş günü nasıl sayılır? (01.03.2024'ten beri)\n- 4 saate kadar çalıştığın gün yarım gün, daha uzun gün tam gün sayılır.\n- Ders döneminde en fazla 20 saat çalıştığın bir hafta 2,5 iş günü sayılabilir.\n- Ders dışı dönemde her hafta, saatler nasıl dağılırsa dağılsın 2,5 iş günü sayılabilir.\n- Her hafta için senin lehine olan hesap uygulanır. Eski 120/240 günlük kural 29.02.2024'te sona erdi.\n- HiWi (studentische Nebentätigkeit) ve zorunlu staj sayılmaz; gönüllü staj genellikle sayılır.\n\n### Haftada 20 saat nereden geliyor?\nWerkstudent olarak ders döneminde düzenli olarak haftada en fazla 20 saat çalışırsan (tüm işverenlerde toplam) sağlık, bakım ve işsizlik sigortasından muaf kalırsın. Akşam, gece, hafta sonu veya dönem tatilinde yılda en fazla 26 hafta 20 saati aşabilirsin. Bu kuralı aşarsan sigorta avantajı kaybolur; 140 gün hesabı ayrıca işlemeye devam eder.\n\n### Minijob\n2026'da aylık 603 €'ya kadar. Yasal haftalık saat sınırı yok; 13,90 € asgari ücretle bu yaklaşık haftada 10 saate denk gelir (yalnızca hesap). Minijob da 140 güne sayılır.\n\n### Diğer oturum izinleri\n- **Dil kursu (§ 16f, öğrenime hazırlık amaçlı olmayan):** haftada 20 saate kadar çalışma ([§ 16f AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16f.html)).\n- **Şartlı kabule bağlı hazırlık dil kursu veya Studienkolleg:** § 16b kapsamında, yani 140 gün kuralı.\n- Başka bir izin türündeysen oturum kartındaki ek hükme bak veya Ausländerbehörde'ye sor.\n\nÇalıştığın günleri kendin takip et, iş sözleşmelerini ve bordrolarını sakla. Ayrıntılar: [Öğrenci çalışma kuralları ve 140 gün](/tr/blog/internship-in-germany-with-b1-b2-german)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ogrenci-olarak-haftada-kac-saat-calisabilirim-en",
+     "new": {
+      "question": "How many hours a week can I work as a student in Germany?",
+      "answer_md": "Short answer: with a student residence permit (§ 16b AufenthG) there is **no weekly hours cap under residence law – the limit is 140 working days per year (Arbeitstagekonto)**. The often-quoted \"20 hours a week\" comes from the Werkstudent social-insurance rule, not from your permit.\n\n### How the 140 days are counted (since 1 March 2024)\n- A day with up to 4 hours counts as half a day; a longer day counts as a full day.\n- During the lecture period, a week with up to 20 hours can count as 2.5 working days.\n- Outside the lecture period, each week can count as 2.5 working days, however the hours are distributed.\n- Whichever calculation is more favourable applies, week by week. The old 120/240-day rule ended on 29 February 2024.\n- HiWi jobs (studentische Nebentätigkeit) and mandatory internships do not count; voluntary internships usually do.\n\n### Where do the 20 hours come from?\nAs a Werkstudent, if you regularly work no more than 20 hours a week during the lecture period (across all employers), you stay exempt from health, long-term care and unemployment insurance. You may exceed 20 hours for up to 26 weeks a year if the work is in the evening, at night, at weekends or during semester breaks. Break this rule and you lose the insurance advantage – the 140-day count runs separately either way.\n\n### Minijob\nUp to 603 € per month in 2026. There is no statutory weekly-hours cap; at the 13.90 € minimum wage this is roughly 10 hours a week (calculation only). Minijobs also count towards the 140 days.\n\n### Other residence permits\n- **Language course (§ 16f, not preparing for studies):** up to 20 hours of work per week ([§ 16f AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16f.html)).\n- **Preparatory language course linked to a conditional admission, or Studienkolleg:** covered by § 16b, so the 140-day rule applies.\n- On any other permit, check the conditions noted on your residence card or ask the Ausländerbehörde.\n\nKeep track of your working days yourself and keep your contracts and payslips. More: [Student work rules and the 140 days](/en/blog/internship-in-germany-with-b1-b2-german-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "As a student, how many hours can I work per week?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ogrenci-olarak-haftada-kac-saat-calisabilirim-de",
+     "new": {
+      "question": "Wie viele Stunden pro Woche darfst du als Student arbeiten?",
+      "answer_md": "Kurz gesagt: Mit einer Aufenthaltserlaubnis zum Studium (§ 16b AufenthG) gibt es **aufenthaltsrechtlich keine Wochenstundengrenze – die Grenze sind 140 Arbeitstage im Jahr (Arbeitstagekonto)**. Die oft genannten „20 Stunden pro Woche\" stammen aus der Werkstudentenregel der Sozialversicherung, nicht aus deinem Aufenthaltstitel.\n\n### So werden die 140 Tage gezählt (seit 01.03.2024)\n- Ein Tag mit bis zu 4 Stunden zählt als halber Tag, ein längerer Tag als ganzer Tag.\n- In der Vorlesungszeit kann eine Woche mit bis zu 20 Stunden als 2,5 Arbeitstage angerechnet werden.\n- Außerhalb der Vorlesungszeit kann jede Woche unabhängig von der Verteilung der Stunden als 2,5 Arbeitstage zählen.\n- Pro Woche gilt die für dich günstigere Berechnung. Die alte 120/240-Tage-Regel endete am 29.02.2024.\n- Studentische Nebentätigkeiten (HiWi) und Pflichtpraktika zählen nicht; freiwillige Praktika in der Regel schon.\n\n### Woher kommen die 20 Stunden?\nAls Werkstudent bleibst du kranken-, pflege- und arbeitslosenversicherungsfrei, wenn du in der Vorlesungszeit regelmäßig höchstens 20 Stunden pro Woche arbeitest (bei allen Arbeitgebern zusammen). Mehr als 20 Stunden sind bis zu 26 Wochen im Jahr möglich, wenn die Arbeit abends, nachts, am Wochenende oder in den Semesterferien liegt. Hältst du das nicht ein, fällt der Versicherungsvorteil weg – das Arbeitstagekonto läuft davon unabhängig weiter.\n\n### Minijob\n2026 bis 603 € im Monat. Eine gesetzliche Wochenstundengrenze gibt es nicht; beim Mindestlohn von 13,90 € sind das rund 10 Stunden pro Woche (nur Rechenwert). Auch Minijobs zählen zu den 140 Tagen.\n\n### Andere Aufenthaltstitel\n- **Sprachkurs (§ 16f, nicht studienvorbereitend):** Beschäftigung bis zu 20 Stunden pro Woche ([§ 16f AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16f.html)).\n- **Studienvorbereitender Sprachkurs bei bedingter Zulassung oder Studienkolleg:** fällt unter § 16b, also Arbeitstagekonto.\n- Bei anderen Titeln prüf die Nebenbestimmung auf deinem Aufenthaltstitel oder frag die Ausländerbehörde.\n\nFühr selbst Buch über deine Arbeitstage und heb Verträge und Lohnabrechnungen auf. Mehr: [Arbeitsregeln für Studierende und 140 Tage](/de/blog/internship-in-germany-with-b1-b2-german-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie viele Stunden pro Woche darfst du als Student arbeiten?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "werkstudent-icin-sigorta-zorunlu-mu",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "werkstudent-icin-sigorta-zorunlu-mu",
+     "old": {
+      "question": "Werkstudent için sigorta zorunlu mu?",
+      "visible": "text",
+      "head": "Evet, her halükarda Almanya'da sigorta zorunlu — Werkstudent statüsünde olsan da, olmasan da. Ama We"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Werkstudent için sigorta zorunlu mu?",
+      "answer_md": "Evet. Almanya'da üniversiteye kayıtlı bir öğrenci olarak **sağlık sigortası zaten zorunlu**; Werkstudent olman bunu değiştirmez. Werkstudent statüsü yalnızca **işten kesilen primleri** değiştirir: kurallar sağlanıyorsa işte sağlık, bakım ve işsizlik sigortasından muafsın, sadece emeklilik sigortası payın kesilir.\n\n### 1. Kendi öğrenci sigortan (KVdS)\n- Devlet veya devletçe tanınmış üniversiteye kayıtlı öğrenciler kanunen sigortalıdır; en geç 30 yaşını dolduruncaya kadar, sonrasında yalnızca eğitim türü veya ailevi/kişisel nedenler bunu haklı gösterirse ([§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html)).\n- 2026'da öğrenci primi her kasada aynı tabandan hesaplanır: sağlık için 855 € üzerinden yüzde 10,22 = 87,38 € + kasanın ek primi (Zusatzbeitrag). Buna bakım sigortası eklenir: 23 yaş ve üstü çocuksuzsan 35,91 €, 23 yaş altı veya çocukluysan 30,78 €. Toplam, kasaya göre biraz değişir.\n- Zorunlu öğrenci sigortası bittiğinde üyeliğin gönüllü üyelik olarak devam eder; kasanın bildiriminden sonra iki hafta içinde çıkış beyan edip başka bir sigortayı kanıtlarsan bu devam etmez.\n- 30 yaş sonrasında Werkstudent işinde neyin değiştiğini kendi Krankenkasse'ne sor.\n\n### 2. Werkstudent işinde kesilenler\n- Emeklilik sigortası 2026: toplam yüzde 18,6, senin payın yüzde 9,3.\n- Sağlık, bakım ve işsizlik sigortası: işte muafsın; öğrenci primini ayrıca ödersin.\n- Şart: ders döneminde düzenli olarak haftada en fazla 20 saat (tüm işverenlerde toplam). Akşam, gece, hafta sonu veya dönem tatilinde yılda en fazla 26 hafta aşılabilir.\n\n### Minijob farklı işler\n2026'da aylık 603 €'ya (yıllık 7.236 €) kadar. Minijob'da emeklilik sigortası zorunlu: işveren yüzde 15, sen yüzde 3,6 ödersin. İşverene yazılı başvuruyla muafiyet isteyebilirsin; o zaman senin payın düşer. Minijob seni sağlık açısından sigortalamaz: öğrenci primini yine kendin ödersin.\n\nAyrıntılar: [HiWi mi Werkstudent mi?](/tr/blog/hiwi-vs-werkstudent-student-jobs-in-germany)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "werkstudent-icin-sigorta-zorunlu-mu-en",
+     "new": {
+      "question": "Is insurance mandatory for a Werkstudent?",
+      "answer_md": "Yes. As a student enrolled at a German university you **already have to be health-insured**, and being a Werkstudent does not change that. What Werkstudent status changes are the **contributions deducted from your job**: if the rules are met, you are exempt from health, long-term care and unemployment insurance in that job and only pay your pension-insurance share.\n\n### 1. Your own student insurance (KVdS)\n- Students enrolled at state or state-recognised universities are compulsorily insured, at most until their 30th birthday; after that only if the type of education or family/personal reasons justify it ([§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html)).\n- In 2026 the student rate is calculated from the same basis at every statutory insurer: health = 10.22 percent of 855 € = 87.38 €, plus your insurer's additional contribution (Zusatzbeitrag). Long-term care comes on top: 35.91 € if you are 23 or older without children, 30.78 € if you are under 23 or have a child. The total varies slightly between insurers.\n- When compulsory student insurance ends, your membership continues as a voluntary membership – unless you declare your exit within two weeks of your insurer's notice and prove other coverage.\n- If you are over 30, ask your Krankenkasse what changes for your Werkstudent job.\n\n### 2. Deductions in a Werkstudent job\n- Pension insurance 2026: 18.6 percent in total, your share 9.3 percent.\n- Health, long-term care and unemployment insurance: exempt in the job; you pay your student premium separately.\n- Condition: regularly no more than 20 hours a week during the lecture period (all employers combined). Exceeding this is allowed for up to 26 weeks a year in the evening, at night, at weekends or during semester breaks.\n\n### Minijobs work differently\nUp to 603 € a month (7,236 € a year) in 2026. Minijobs are pension-insurance liable: the employer pays 15 percent, you pay 3.6 percent. You can ask your employer in writing to be exempted, which removes your share. A Minijob does not insure you for health – you still pay your student premium yourself.\n\nMore: [HiWi vs Werkstudent](/en/blog/hiwi-vs-werkstudent-student-jobs-in-germany-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Is insurance mandatory for a Werkstudent?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "werkstudent-icin-sigorta-zorunlu-mu-de",
+     "new": {
+      "question": "Musst du als Werkstudent versichert sein?",
+      "answer_md": "Ja. Als eingeschriebene Studentin oder eingeschriebener Student bist du **ohnehin krankenversicherungspflichtig** – daran ändert der Werkstudentenstatus nichts. Er ändert nur die **Beiträge aus deinem Job**: Sind die Voraussetzungen erfüllt, bist du im Job kranken-, pflege- und arbeitslosenversicherungsfrei und zahlst nur deinen Anteil zur Rentenversicherung.\n\n### 1. Deine eigene studentische Versicherung (KVdS)\n- Studierende an staatlichen oder staatlich anerkannten Hochschulen sind versicherungspflichtig, längstens bis zum 30. Geburtstag; danach nur, wenn Art der Ausbildung oder familiäre bzw. persönliche Gründe das rechtfertigen ([§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html)).\n- 2026 berechnet sich der Studierendentarif bei allen gesetzlichen Kassen aus derselben Grundlage: Krankenversicherung 10,22 Prozent von 855 € = 87,38 € plus Zusatzbeitrag deiner Kasse. Dazu kommt die Pflegeversicherung: 35,91 € ab 23 ohne Kinder, 30,78 € unter 23 oder mit Kind. Die Summe unterscheidet sich je nach Kasse leicht.\n- Endet die studentische Pflichtversicherung, läuft deine Mitgliedschaft als freiwillige Mitgliedschaft weiter – es sei denn, du erklärst innerhalb von zwei Wochen nach dem Hinweis der Kasse deinen Austritt und weist eine andere Absicherung nach.\n- Ab 30: Frag deine Krankenkasse, was sich für deinen Werkstudentenjob ändert.\n\n### 2. Abzüge im Werkstudentenjob\n- Rentenversicherung 2026: insgesamt 18,6 Prozent, dein Anteil 9,3 Prozent.\n- Kranken-, Pflege- und Arbeitslosenversicherung: im Job versicherungsfrei; deinen Studierendenbeitrag zahlst du separat.\n- Voraussetzung: in der Vorlesungszeit regelmäßig höchstens 20 Stunden pro Woche (alle Arbeitgeber zusammen). Überschreiten ist bis zu 26 Wochen im Jahr möglich, wenn es abends, nachts, am Wochenende oder in den Semesterferien liegt.\n\n### Minijobs funktionieren anders\n2026 bis 603 € im Monat (7.236 € im Jahr). Minijobs sind rentenversicherungspflichtig: Arbeitgeber 15 Prozent, du 3,6 Prozent. Mit einem schriftlichen Antrag beim Arbeitgeber kannst du dich befreien lassen, dann entfällt dein Anteil. Ein Minijob versichert dich nicht in der Krankenversicherung – deinen Studierendenbeitrag zahlst du weiter selbst.\n\nMehr dazu: [HiWi oder Werkstudent?](/de/blog/hiwi-vs-werkstudent-student-jobs-in-germany-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ist eine Versicherung für Werkstudenten Pflicht?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "werkstudent-nedir-kim-basvurabilir",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "werkstudent-nedir-kim-basvurabilir",
+     "old": {
+      "question": "Werkstudent nedir, kim başvurabilir?",
+      "visible": "text",
+      "head": "Werkstudent , Almanya'da öğrencilere özel avantajlı iş statüsü — sigorta kesintilerinden büyük orand"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Werkstudent nedir, kim başvurabilir?",
+      "answer_md": "**Werkstudent**, üniversiteye kayıtlı (immatrikuliert) bir öğrencinin öğrenimi yanında çalıştığı işe uygulanan bir **sosyal sigorta statüsüdür**; ayrı bir vize ya da iş izni değildir. Şartlar sağlanıyorsa işte sağlık, bakım ve işsizlik sigortasından muaf olursun; yalnızca emeklilik sigortası payını (2026: yüzde 9,3) ödersin. Kendi öğrenci sağlık sigortanı ise ayrıca ödemeye devam edersin.\n\n### Kim Werkstudent olabilir?\n- Almanya'da bir üniversiteye kayıtlı öğrenciler (ör. lisans veya master).\n- Ders döneminde düzenli olarak haftada en fazla 20 saat çalışanlar; birden fazla işverende çalışıyorsan saatler toplanır.\n- Akşam, gece, hafta sonu veya dönem tatilinde yılda en fazla 26 hafta 20 saati aşabilirsin. Ders ve tatil dönemlerinin tarihleri üniversiteye göre değişir; kendi akademik takvimine bak.\n- Studienkolleg veya dil kursundaysan Werkstudent statüsünün uygulanıp uygulanmadığını işvereninle ve Krankenkasse'nle netleştir.\n\n### Vize tarafı ayrı işler\nAB dışı öğrenci oturum izninde (§ 16b AufenthG) çalışma **yılda 140 iş günüyle** sınırlıdır (Arbeitstagekonto, 01.03.2024'ten beri). Werkstudent işin bu hesaba sayılır; ders döneminde en fazla 20 saatlik bir hafta 2,5 iş günü sayılabilir. Yani 20 saat kuralı sosyal sigortadan, 140 gün oturum hukukundan gelir; ikisine ayrı ayrı uyman gerekir. Üniversitedeki HiWi işleri 140 güne sayılmaz.\n\n### Başvuru\nWerkstudent ilanlarına doğrudan şirketlere başvurursun; işveren genellikle öğrenci belgeni (Immatrikulationsbescheinigung) ister. Maaş sektöre ve şirkete göre değişir; 2026'da yasal asgari ücret saatte 13,90 €.\n\nAyrıntılar: [HiWi mi Werkstudent mi?](/tr/blog/hiwi-vs-werkstudent-student-jobs-in-germany) · [Öğrenci çalışma kuralları ve 140 gün](/tr/blog/internship-in-germany-with-b1-b2-german)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "werkstudent-nedir-kim-basvurabilir-en",
+     "new": {
+      "question": "What is a Werkstudent, and who can become one?",
+      "answer_md": "A **Werkstudent** (working student) is a **social-insurance status** for a job done by someone enrolled at a university alongside their studies – it is not a visa or a work permit. If the conditions are met, you are exempt from health, long-term care and unemployment insurance in that job and only pay your share of pension insurance (9.3 percent in 2026). You keep paying your own student health insurance separately.\n\n### Who can be a Werkstudent?\n- Students enrolled (immatrikuliert) at a German university, e.g. in a Bachelor's or Master's programme.\n- You regularly work no more than 20 hours a week during the lecture period; hours at several employers are added together.\n- You may exceed 20 hours for up to 26 weeks a year in the evening, at night, at weekends or during semester breaks. Lecture and break dates differ between universities – check your own academic calendar.\n- If you are at a Studienkolleg or on a language course, clarify with your employer and your Krankenkasse whether Werkstudent status applies.\n\n### The visa side is separate\nWith a non-EU student residence permit (§ 16b AufenthG), work is limited to **140 working days per year** (Arbeitstagekonto, since 1 March 2024). Your Werkstudent job counts towards it; during the lecture period a week with up to 20 hours can count as 2.5 working days. So the 20-hour rule comes from social insurance and the 140 days from residence law – you need to respect both. HiWi jobs at the university do not count towards the 140 days.\n\n### Applying\nYou apply directly to companies advertising Werkstudent positions; employers usually ask for your certificate of enrolment (Immatrikulationsbescheinigung). Pay depends on sector and company; the statutory minimum wage in 2026 is 13.90 € per hour.\n\nMore: [HiWi vs Werkstudent](/en/blog/hiwi-vs-werkstudent-student-jobs-in-germany-en) · [Student work rules and the 140 days](/en/blog/internship-in-germany-with-b1-b2-german-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What is a Werkstudent, and who can apply?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "werkstudent-nedir-kim-basvurabilir-de",
+     "new": {
+      "question": "Was ist ein Werkstudent und wer kann einer werden?",
+      "answer_md": "**Werkstudent** ist ein **sozialversicherungsrechtlicher Status** für einen Job, den du neben einem Studium an einer Hochschule ausübst – kein Visum und keine Arbeitserlaubnis. Sind die Voraussetzungen erfüllt, bist du im Job kranken-, pflege- und arbeitslosenversicherungsfrei und zahlst nur deinen Anteil zur Rentenversicherung (2026: 9,3 Prozent). Deine studentische Krankenversicherung zahlst du weiterhin separat.\n\n### Wer kann Werkstudent sein?\n- Wer an einer deutschen Hochschule immatrikuliert ist, z. B. im Bachelor oder Master.\n- Du arbeitest in der Vorlesungszeit regelmäßig höchstens 20 Stunden pro Woche; Stunden bei mehreren Arbeitgebern werden zusammengerechnet.\n- Mehr als 20 Stunden sind bis zu 26 Wochen im Jahr möglich, wenn die Arbeit abends, nachts, am Wochenende oder in den Semesterferien liegt. Vorlesungszeiten und Semesterferien unterscheiden sich je nach Hochschule – schau in deinen akademischen Kalender.\n- Bist du im Studienkolleg oder in einem Sprachkurs, kläre mit Arbeitgeber und Krankenkasse, ob der Werkstudentenstatus greift.\n\n### Das Aufenthaltsrecht ist eine eigene Sache\nMit einer Aufenthaltserlaubnis zum Studium (§ 16b AufenthG) ist Arbeit für Nicht-EU-Studierende auf **140 Arbeitstage im Jahr** begrenzt (Arbeitstagekonto, seit 01.03.2024). Dein Werkstudentenjob zählt dazu; in der Vorlesungszeit kann eine Woche mit bis zu 20 Stunden als 2,5 Arbeitstage angerechnet werden. Die 20-Stunden-Regel stammt also aus der Sozialversicherung, die 140 Tage aus dem Aufenthaltsrecht – beides musst du einhalten. HiWi-Jobs an der Hochschule zählen nicht zu den 140 Tagen.\n\n### Bewerbung\nDu bewirbst dich direkt bei Unternehmen, die Werkstudentenstellen ausschreiben; meist wird deine Immatrikulationsbescheinigung verlangt. Die Bezahlung hängt von Branche und Unternehmen ab; der gesetzliche Mindestlohn liegt 2026 bei 13,90 € pro Stunde.\n\nMehr dazu: [HiWi oder Werkstudent?](/de/blog/hiwi-vs-werkstudent-student-jobs-in-germany-de) · [Arbeitsregeln für Studierende und 140 Tage](/de/blog/internship-in-germany-with-b1-b2-german-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Was ist ein Werkstudent und wer kann sich bewerben?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ogrenci-olarak-calisirken-sosyal-guvenlik-kesintisi-var-mi",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ogrenci-olarak-calisirken-sosyal-guvenlik-kesintisi-var-mi",
+     "old": {
+      "question": "Öğrenci olarak çalışırken sosyal güvenlik kesintisi var mı?",
+      "visible": "text",
+      "head": "Werkstudent statüsünde minimal kesinti, Mini-Job'da sıfır kesinti. Normal çalışan statüsünde ~%22 ke"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Öğrenci olarak çalışırken sosyal güvenlik kesintisi var mı?",
+      "answer_md": "Evet, ama ne kadar kesinti olacağı **iş türüne** bağlı. Öğrenci olman tek başına seni primlerden muaf tutmaz; Werkstudent ve Minijob için özel kurallar var.\n\n### Werkstudent\nDers döneminde düzenli olarak haftada en fazla 20 saat çalışıyorsan (tüm işverenlerde toplam), işte yalnızca **emeklilik sigortası** kesilir: 2026'da toplam yüzde 18,6, senin payın yüzde 9,3. Sağlık, bakım ve işsizlik sigortasından işte muafsın. Kendi öğrenci sağlık ve bakım sigortanı (KVdS) ayrıca ödersin.\n\n### Minijob (2026: aylık 603 €'ya kadar)\nMinijob emeklilik sigortasına tabidir: işveren yüzde 15, sen yüzde 3,6 ödersin. İşverene yazılı başvuruyla muafiyet isteyebilirsin; o zaman senin payın düşer ([Minijob-Zentrale](https://www.minijob-zentrale.de/DE/die-minijobs/rentenversicherungspflicht)). Öğrenci sağlık sigortanı yine kendin ödersin.\n\n### Normal iş (Werkstudent ya da Minijob değilse)\nSağlık, bakım, emeklilik ve işsizlik sigortasının işçi paylarını ödersin. Kesin tutarlar kasana ve kişisel durumuna göre değişir; her ay bordronda (Lohnabrechnung) görürsün.\n\n### Vergi ayrı konu\nSosyal sigorta primleri vergiden ayrıdır. 2026'da temel muafiyet (Grundfreibetrag) yıllık 12.348 €; vergiye tabi yıllık gelirin bunun altındaysa gelir vergisi doğmaz. Yıl içinde maaştan Lohnsteuer kesildiyse vergi beyannamesiyle (Steuererklärung) geri isteyebilirsin.\n\n### Almanya'dan ayrılırken\nÖdediğin emeklilik primlerine ne olacağı (iade vb.) kişisel durumuna bağlıdır; Deutsche Rentenversicherung'a danış.\n\nAyrıntılar: [HiWi mi Werkstudent mi?](/tr/blog/hiwi-vs-werkstudent-student-jobs-in-germany)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ogrenci-olarak-calisirken-sosyal-guvenlik-kesintisi-var-mi-en",
+     "new": {
+      "question": "Do I pay social security contributions when working as a student?",
+      "answer_md": "Yes, but how much depends on the **type of job**. Being a student does not exempt you from contributions by itself; there are special rules for Werkstudent jobs and Minijobs.\n\n### Werkstudent\nIf you regularly work no more than 20 hours a week during the lecture period (all employers combined), only **pension insurance** is deducted: 18.6 percent in total in 2026, of which your share is 9.3 percent. You are exempt from health, long-term care and unemployment insurance in the job. You pay your own student health and long-term care insurance (KVdS) separately.\n\n### Minijob (up to 603 € a month in 2026)\nMinijobs are pension-insurance liable: the employer pays 15 percent, you pay 3.6 percent. You can ask your employer in writing to exempt you, which removes your share ([Minijob-Zentrale](https://www.minijob-zentrale.de/DE/die-minijobs/rentenversicherungspflicht)). You still pay your student health insurance yourself.\n\n### Regular job (neither Werkstudent nor Minijob)\nYou pay the employee shares of health, long-term care, pension and unemployment insurance. The exact amounts depend on your insurer and personal situation; you will see them on your monthly payslip (Lohnabrechnung).\n\n### Tax is a separate matter\nSocial contributions are not the same as tax. The basic tax-free allowance (Grundfreibetrag) for 2026 is 12,348 € a year; if your taxable annual income stays below it, no income tax is due. If wage tax (Lohnsteuer) was withheld during the year, you can reclaim it with a tax return (Steuererklärung).\n\n### When you leave Germany\nWhat happens to the pension contributions you paid (for example a refund) depends on your individual case – ask the Deutsche Rentenversicherung.\n\nMore: [HiWi vs Werkstudent](/en/blog/hiwi-vs-werkstudent-student-jobs-in-germany-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Are there social security deductions while working as a student?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ogrenci-olarak-calisirken-sosyal-guvenlik-kesintisi-var-mi-de",
+     "new": {
+      "question": "Fallen Sozialversicherungsbeiträge an, wenn du als Student arbeitest?",
+      "answer_md": "Ja, aber wie viel, hängt von der **Art des Jobs** ab. Der Studierendenstatus allein befreit dich nicht von Beiträgen; für Werkstudentenjobs und Minijobs gelten eigene Regeln.\n\n### Werkstudent\nArbeitest du in der Vorlesungszeit regelmäßig höchstens 20 Stunden pro Woche (alle Arbeitgeber zusammen), wird nur die **Rentenversicherung** abgezogen: 2026 insgesamt 18,6 Prozent, dein Anteil 9,3 Prozent. In Kranken-, Pflege- und Arbeitslosenversicherung bist du im Job versicherungsfrei. Deine studentische Kranken- und Pflegeversicherung (KVdS) zahlst du separat.\n\n### Minijob (2026 bis 603 € im Monat)\nMinijobs sind rentenversicherungspflichtig: Der Arbeitgeber zahlt 15 Prozent, du 3,6 Prozent. Mit einem schriftlichen Antrag beim Arbeitgeber kannst du dich befreien lassen, dann entfällt dein Anteil ([Minijob-Zentrale](https://www.minijob-zentrale.de/DE/die-minijobs/rentenversicherungspflicht)). Deine studentische Krankenversicherung zahlst du weiter selbst.\n\n### Normaler Job (weder Werkstudent noch Minijob)\nDu zahlst die Arbeitnehmeranteile zur Kranken-, Pflege-, Renten- und Arbeitslosenversicherung. Die genauen Beträge hängen von deiner Kasse und deiner persönlichen Situation ab; du siehst sie jeden Monat auf deiner Lohnabrechnung.\n\n### Steuern sind ein eigenes Thema\nSozialversicherungsbeiträge sind keine Steuern. Der Grundfreibetrag liegt 2026 bei 12.348 € im Jahr; bleibt dein zu versteuerndes Jahreseinkommen darunter, fällt keine Einkommensteuer an. Wurde unterjährig Lohnsteuer einbehalten, kannst du sie mit der Steuererklärung zurückholen.\n\n### Wenn du Deutschland verlässt\nWas mit deinen gezahlten Rentenbeiträgen passiert (z. B. eine Erstattung), hängt vom Einzelfall ab – frag bei der Deutschen Rentenversicherung nach.\n\nMehr dazu: [HiWi oder Werkstudent?](/de/blog/hiwi-vs-werkstudent-student-jobs-in-germany-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Fallen Sozialversicherungsbeiträge an, wenn du als Student arbeitest?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanya-ogrenci-vizesi-nasil-alinir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanya-ogrenci-vizesi-nasil-alinir",
+     "old": {
+      "question": "Almanya öğrenci vizesi nasıl alınır?",
+      "visible": "text",
+      "head": "Almanya öğrenci vizesi (ulusal vize, kategori D — §16b) almak istiyorsan süreç aşağıdaki sırayla işl"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Almanya öğrenci vizesi nasıl alınır?",
+      "answer_md": "Almanya'da lisans, yüksek lisans, doktora ya da Studienkolleg için **ulusal vize (D kategorisi, § 16b AufenthG)** gerekir. Süreç kısaca: kabul → finansman kanıtı → sağlık sigortası → temsilciliğin güncel listesine göre başvuru → Almanya'da oturum izni.\n\n### Adım adım\n1. **Kabul veya başvuru kanıtı al.** Üniversite kabulü (doğrudan ya da uni-assist üzerinden) veya Studienkolleg kabulü. Studienkolleg ve kabulün şartı olan hazırlık dil kursu da § 16b'deki öğrenim amacına dahildir.\n2. **Finansmanını kanıtla.** Genellikle bloke hesap (Sperrkonto) veya Verpflichtungserklärung ile. 01.09.2024'ten beri esas alınan tutar **ayda 992 €, yıllık 11.904 €**. Ayrıntı: [Sperrkonto 2026 güncellemesi](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you).\n3. **Sağlık sigortasını ayarla.** Ulusal vizede hangi sigortanın, hangi süre için istendiğini temsilciliğin kategori Merkblatt'ı veya Auslandsportal belirtir.\n4. **Başvur.** Türkiye'deki Alman temsilcilikleri öğrenim ve üniversite yeri arama vizelerini (Eylül 2026 itibarıyla) yalnızca online **Auslandsportal** üzerinden yürütüyor. Belge listesini portaldaki güncel checklist'ten al; ayrıntılar için \"Vize başvurusunda istenen evraklar nelerdir?\" sorusuna bak.\n5. **Almanya'ya varınca.** Bir daireye taşındıktan sonra 2 hafta içinde adres kaydını (Anmeldung) yap ve vizenin süresi dolmadan yerel Ausländerbehörde'den **oturum izni (Aufenthaltserlaubnis)** iste. Bu izin kural olarak 2 yıllığına (en az 1 yıl) verilir ve öğrenim makul sürede tamamlanabildiği sürece uzatılır.\n\n### Hangi vize türü?\n- **Öğrenim (lisans/master/doktora, Studienkolleg):** § 16b\n- **Öğrenime hazırlık amacı taşımayan dil kursu:** § 16f (haftada en fazla 20 saat çalışma)\n- **Henüz kabulün yoksa:** üniversite yeri arama (Studienplatzsuche) vizesi; şartlarını temsilcilikten kontrol et.\n\n### Süreler hakkında\nRandevu ve karar süreleri temsilciliğe ve döneme göre değişir; sabit bir süre veremiyoruz. Kabul belgeni alır almaz başvuru hazırlığına başla.\n\nResmî bilgi: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanya-ogrenci-vizesi-nasil-alinir-en",
+     "new": {
+      "question": "How do I get a German student visa?",
+      "answer_md": "To study in Germany (Bachelor's, Master's, PhD or Studienkolleg) you need a **national visa (category D) under § 16b of the Residence Act (AufenthG)**. In short: admission → proof of funds → health insurance → application following your German mission's current checklist → residence permit in Germany.\n\n### Step by step\n1. **Get admission or proof of application.** A university admission (direct or via uni-assist) or a Studienkolleg admission. Studienkolleg and a preparatory language course required by your admission both count as part of the study purpose under § 16b.\n2. **Prove your funds.** Usually with a blocked account (Sperrkonto) or a formal obligation letter (Verpflichtungserklärung). Since 01.09.2024 the reference amount is **€992 per month, €11,904 per year**. Details: [Blocked account update 2026](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en).\n3. **Sort out health insurance.** For national visas, the required type and duration of cover are set out in the mission's category leaflet (Merkblatt) or in the Auslandsportal.\n4. **Apply.** German missions in Türkiye currently (September 2026) handle study and study-applicant visas exclusively via the online **Auslandsportal**. Take your document list from the current checklist there; see our FAQ \"What documents are required for a visa application?\" for details.\n5. **After arrival.** Register your address (Anmeldung) within two weeks of moving into a flat and apply to the local Ausländerbehörde for a **residence permit (Aufenthaltserlaubnis)** before your visa expires. It is usually issued for two years (at least one) and extended as long as you can still complete your studies within a reasonable time.\n\n### Which visa type?\n- **Degree studies and Studienkolleg:** § 16b\n- **Language course not preparing for studies:** § 16f (work up to 20 hours per week)\n- **No admission yet:** study-applicant visa (Studienplatzsuche) – check the conditions with your mission.\n\n### Processing times\nAppointment and decision times vary by mission and season, so we don't quote fixed figures. Start preparing as soon as you have your admission letter.\n\nOfficial information: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How to get a German student visa?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanya-ogrenci-vizesi-nasil-alinir-de",
+     "new": {
+      "question": "Wie bekommst du ein Visum zum Studium in Deutschland?",
+      "answer_md": "Für ein Studium in Deutschland (Bachelor, Master, Promotion oder Studienkolleg) brauchst du ein **nationales Visum (Kategorie D) nach § 16b AufenthG**. Kurz gesagt: Zulassung → Finanzierungsnachweis → Krankenversicherung → Antrag nach der aktuellen Checkliste deiner Auslandsvertretung → Aufenthaltserlaubnis in Deutschland.\n\n### Schritt für Schritt\n1. **Zulassung oder Bewerbungsnachweis.** Zulassungsbescheid einer Hochschule (direkt oder über uni-assist) oder eines Studienkollegs. Studienkolleg und ein studienvorbereitender Sprachkurs, an den deine Zulassung gebunden ist, gehören nach § 16b zum Studienzweck.\n2. **Finanzierung nachweisen.** Meist über ein Sperrkonto oder eine Verpflichtungserklärung. Seit dem 01.09.2024 gilt als Richtwert **992 € im Monat bzw. 11.904 € im Jahr**. Mehr dazu: [Sperrkonto-Update 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de).\n3. **Krankenversicherung klären.** Welche Versicherung für welchen Zeitraum beim nationalen Visum verlangt wird, steht im Merkblatt der Visumkategorie bzw. im Auslandsportal.\n4. **Antrag stellen.** Die deutschen Auslandsvertretungen in der Türkei wickeln Visa für Studium und Studienplatzsuche derzeit (Stand September 2026) ausschließlich über das **Auslandsportal** ab. Die Unterlagenliste nimmst du aus der aktuellen Checkliste dort; Details findest du in unserer FAQ „Welche Unterlagen brauchst du für den Visumantrag?“.\n5. **Nach der Einreise.** Melde dich innerhalb von zwei Wochen nach dem Einzug beim Bürgeramt an (Anmeldung) und beantrage vor Ablauf des Visums bei der Ausländerbehörde deine **Aufenthaltserlaubnis**. Sie wird in der Regel für zwei Jahre (mindestens ein Jahr) erteilt und verlängert, solange du das Studium in angemessener Zeit abschließen kannst.\n\n### Welche Visumart?\n- **Studium und Studienkolleg:** § 16b\n- **Sprachkurs ohne Studienvorbereitung:** § 16f (Beschäftigung bis zu 20 Stunden pro Woche)\n- **Noch keine Zulassung:** Visum zur Studienplatzsuche – die Voraussetzungen erfährst du bei deiner Auslandsvertretung.\n\n### Bearbeitungszeiten\nTermin- und Entscheidungszeiten hängen von Vertretung und Saison ab; feste Zahlen nennen wir deshalb nicht. Fang mit der Vorbereitung an, sobald du deine Zulassung hast.\n\nOffizielle Infos: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie beantragst du ein Studentenvisum für Deutschland?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vize-basvurusunda-istenen-evraklar-nelerdir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-basvurusunda-istenen-evraklar-nelerdir",
+     "old": {
+      "question": "Vize başvurusunda istenen evraklar nelerdir?",
+      "visible": "text",
+      "head": "Vize başvurusunda her belgenin 2 kopya (1 orijinal + 1 fotokopi) olması gerekli. Eksik evrak randevu"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Vize başvurusunda istenen evraklar nelerdir?",
+      "answer_md": "Geçerli olan liste, başvurduğun Alman temsilciliğinin **güncel checklist'idir**. Türkiye'de öğrenim vizesi (Eylül 2026 itibarıyla) yalnızca **Auslandsportal** üzerinden yürütüldüğü için kategoriye özel liste portalda gösterilir. Aşağıdakiler tipik çekirdek belgelerdir; mutlak ve eksiksiz bir liste değildir.\n\n### Temsilciliğin Merkblatt'ında sayılan temel şartlar\n- **Pasaport** ve Auslandsportal üzerinden doldurulan başvuru\n- **Yükseköğrenime giriş yeterliliği (HZB) kanıtı:** lise diploması; yüksek lisans için lisans diploması ve transkript\n- **Finansman kanıtı:** Sperrkonto veya Verpflichtungserklärung. 01.09.2024'ten beri ayda 992 €, yıllık 11.904 € ([Sperrkonto 2026](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you))\n- **Kabul belgesi:** üniversite veya Studienkolleg kabulü ya da usulüne uygun başvuru teyidi. Merkblatt'a göre bu belge incelemeyi kolaylaştırır.\n\n### Checklist'te ayrıca istenebilecekler\n- **Sağlık sigortası kanıtı:** ulusal vizede türü ve süresi kategori Merkblatt'ında yazar (30.000 € asgari teminat Schengen vizesi kuralıdır).\n- Programın istediği **dil belgesi**, özgeçmiş veya motivasyon mektubu, biyometrik fotoğraf, vize ücreti.\n\nKaç kopya, hangi formatta ve hangi dilde belge yükleyeceğini ya da getireceğini checklist belirler; eski listelerdeki \"her belgeden 2 kopya\" gibi kuralları genelleme.\n\n### Apostil ve tercüme\nTürk belgeleri için apostil ve yeminli tercüme gerekip gerekmediği, tercümenin kim tarafından yapılabileceği temsilciliğin listesinde yazar. Apostili hangi makamdan alacağın belgenin türüne bağlıdır; belgeyi düzenleyen kurumdan teyit et.\n\n### İpucu\nBaşvurudan hemen önce checklist'i yeniden kontrol et; maddeler yıl içinde değişebilir. Sürecin adımları için \"Almanya öğrenci vizesi nasıl alınır?\" sorusuna bak.\n\nResmî bilgi: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vize-basvurusunda-istenen-evraklar-nelerdir-en",
+     "new": {
+      "question": "What documents are required for a German student visa application?",
+      "answer_md": "The list that counts is the **current checklist of the German mission** you apply to. In Türkiye the student visa is currently (September 2026) handled only via the **Auslandsportal**, where the category-specific checklist is shown. The items below are typical core documents, not an absolute or complete list.\n\n### Core requirements named in the mission's leaflet\n- **Passport** and the application filed through the Auslandsportal\n- **Proof of university entrance qualification (HZB):** school-leaving certificate; for a Master's, your Bachelor's degree and transcript\n- **Proof of funds:** blocked account (Sperrkonto) or formal obligation letter (Verpflichtungserklärung) – €992 per month, €11,904 per year since 01.09.2024 ([Blocked account 2026](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en))\n- **Admission letter:** from a university or Studienkolleg, or confirmation of a proper application. According to the leaflet, this makes the examination easier.\n\n### What the checklist may also ask for\n- **Proof of health insurance:** for national visas the type and duration are set in the category leaflet (the €30,000 minimum is a Schengen-visa rule).\n- A **language certificate** required by your programme, CV or motivation letter, biometric photos, the visa fee.\n\nThe checklist decides how many copies, which format and which language; don't rely on old rules such as \"two copies of everything\".\n\n### Apostille and translation\nWhether Turkish documents need an apostille and a certified translation, and who may translate them, is stated in the mission's checklist. Which Turkish authority issues the apostille depends on the type of document – check with the issuing institution.\n\n### Tip\nRe-check the checklist right before you apply; items can change during the year. For the steps of the process, see our FAQ \"How do I get a German student visa?\".\n\nOfficial information: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What documents are required for a visa application?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vize-basvurusunda-istenen-evraklar-nelerdir-de",
+     "new": {
+      "question": "Welche Unterlagen brauchst du für den Visumantrag zum Studium?",
+      "answer_md": "Maßgeblich ist die **aktuelle Checkliste der deutschen Auslandsvertretung**, bei der du den Antrag stellst. In der Türkei läuft das Studienvisum derzeit (Stand September 2026) ausschließlich über das **Auslandsportal**, dort siehst du die Checkliste für deine Kategorie. Die folgenden Punkte sind typische Kernunterlagen, keine abschließende Liste.\n\n### Grundvoraussetzungen laut Merkblatt der Vertretung\n- **Reisepass** und der über das Auslandsportal gestellte Antrag\n- **Nachweis der Hochschulzugangsberechtigung (HZB):** Schulabschlusszeugnis; für den Master Bachelorzeugnis und Transcript\n- **Finanzierungsnachweis:** Sperrkonto oder Verpflichtungserklärung – seit dem 01.09.2024 992 € im Monat bzw. 11.904 € im Jahr ([Sperrkonto 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de))\n- **Zulassungsbescheid:** einer Hochschule oder eines Studienkollegs bzw. eine Bewerberbestätigung. Laut Merkblatt erleichtert das die Prüfung.\n\n### Was die Checkliste zusätzlich verlangen kann\n- **Nachweis der Krankenversicherung:** Art und Dauer stehen beim nationalen Visum im Merkblatt der Kategorie (die 30.000 € Mindestdeckung gelten für Schengen-Visa).\n- Ein vom Studiengang gefordertes **Sprachzertifikat**, Lebenslauf oder Motivationsschreiben, biometrische Fotos, die Visumgebühr.\n\nWie viele Kopien, welches Format und welche Sprache verlangt werden, legt die Checkliste fest; verlass dich nicht auf alte Faustregeln wie „alles in zweifacher Ausfertigung“.\n\n### Apostille und Übersetzung\nOb türkische Dokumente eine Apostille und eine beglaubigte Übersetzung brauchen und wer übersetzen darf, steht in der Checkliste der Vertretung. Welche türkische Behörde die Apostille ausstellt, hängt von der Art des Dokuments ab – frag bei der ausstellenden Stelle nach.\n\n### Tipp\nPrüf die Checkliste direkt vor dem Antrag noch einmal; einzelne Punkte können sich im Laufe des Jahres ändern. Den Ablauf findest du in unserer FAQ „Wie bekommst du ein Visum zum Studium in Deutschland?“.\n\nOffizielle Infos: [tuerkei.diplo.de – Studium](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720740-2720740)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Welche Unterlagen benötigst du für den Visumsantrag?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vize-icin-istenen-saglik-sigortasinin-kapsami-ne-olmali",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-icin-istenen-saglik-sigortasinin-kapsami-ne-olmali",
+     "old": {
+      "question": "Vize için istenen sağlık sigortasının kapsamı ne olmalı?",
+      "visible": "text",
+      "head": "Vize için sağlık sigortası iki tipte olabilir — duruma göre seçim önemli. # Tip 1: Seyahat Sigortası"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Vize için istenen sağlık sigortasının kapsamı ne olmalı?",
+      "answer_md": "Ulusal (D) öğrenci vizesinde sağlık sigortasının **kapsamını ve süresini, başvurduğun Alman temsilciliğinin vize kategorisi Merkblatt'ı veya Auslandsportal belirler.** Sık duyulan **30.000 € asgari teminat, resmî olarak Schengen (kısa süreli) vizeleri için** belirtilen kuraldır; ulusal öğrenim vizesi için tek ölçü olarak alma.\n\n### İki dönemi ayrı düşün\n- **Giriş ile üniversite kaydı arasındaki dönem:** Temsilciliğin bu dönem için hangi sigortayı (ve kaç gün için) kabul ettiğini checklist'ten kontrol et. Örnek olarak: Türkiye'deki temsilciliklerin **dil kursu** vizesi Merkblatt'ı, vize süresinin tamamı (365 gün) için ayakta ve yatarak tedaviyi kapsayan özel sağlık sigortası istiyor ve seyahat sigortasını genellikle yeterli saymıyor. Bu kural öğrenim vizesi için ayrıca teyit edilmedi.\n- **Kayıttan sonra:** Devlet veya devletçe tanınan bir yükseköğretim kurumuna kayıtlı öğrenciler, kural olarak **30. yaşlarını doldurana kadar yasal sağlık sigortasına (GKV) tabidir** (SGB V § 5 Abs. 1 Nr. 9).\n\n### 30 yaşından sonra özel sigorta zorunlu mu?\nHayır. 30. yaşını doldurunca öğrenci zorunlu sigortası kural olarak biter (eğitim türü veya ailevi/kişisel gerekçeler bu sınırı aşmayı haklı kılıyorsa istisna var). Bu durumda üyeliğin **kendiliğinden gönüllü GKV üyeliği olarak devam eder**; sigortanın bilgilendirmesinden sonraki iki hafta içinde başka bir sigortanı kanıtlayarak çıkış beyan edersen sona erer (SGB V § 188 Abs. 4). Gönüllü üyelikte prim, öğrenci tarifesinden farklı hesaplanır; tutarı kendi sigortandan öğren.\n\n### Pratik öneri\nSigorta almadan önce temsilciliğin güncel checklist'ini oku ve poliçenin başlangıç tarihi, süresi ve kapsamının (ayakta/yatarak tedavi) orada yazanla örtüştüğünden emin ol.\n\nResmî bilgi: [tuerkei.diplo.de – Krankenversicherung](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2620848-2620848)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vize-icin-istenen-saglik-sigortasinin-kapsami-ne-olmali-en",
+     "new": {
+      "question": "What health insurance cover do I need for a German student visa?",
+      "answer_md": "For a national (D) student visa, **the required cover and its duration are set by your German mission's leaflet (Merkblatt) for that visa category or by the Auslandsportal.** The often-quoted **€30,000 minimum cover is officially stated for Schengen (short-stay) visas**, so don't treat it as the rule for a national study visa.\n\n### Think in two periods\n- **From entry until enrolment:** Check the checklist for which insurance (and for how many days) the mission accepts for this period. As an example, the leaflet of German missions in Türkiye for the **language-course** visa requires private health insurance valid for the entire visa period (365 days), covering outpatient and inpatient treatment, and says travel insurance is usually not sufficient. This has not been confirmed for the study visa.\n- **After enrolment:** Students enrolled at a state or state-recognised university are, as a rule, **compulsorily insured in statutory health insurance (GKV) until they complete their 30th year of life** (§ 5(1) no. 9 SGB V).\n\n### Do I have to switch to private insurance after 30?\nNo. Once you complete your 30th year, compulsory student insurance generally ends (exceptions apply if the type of education or family/personal reasons justify it). Your membership then **automatically continues as voluntary GKV membership**, unless you declare your exit within two weeks of your insurer's notice and prove other cover (§ 188(4) SGB V). Contributions for voluntary membership are calculated differently from the student rate – ask your insurer.\n\n### Practical tip\nBefore buying a policy, read the mission's current checklist and make sure the start date, duration and scope (outpatient/inpatient) match what it requires.\n\nOfficial information: [tuerkei.diplo.de – health insurance](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2620848-2620848)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What coverage should the required health insurance for the visa have?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vize-icin-istenen-saglik-sigortasinin-kapsami-ne-olmali-de",
+     "new": {
+      "question": "Welche Krankenversicherung brauchst du für das Visum zum Studium?",
+      "answer_md": "Beim nationalen Visum (D) zum Studium **legt das Merkblatt der jeweiligen Visumkategorie bzw. das Auslandsportal deiner Auslandsvertretung fest, welcher Versicherungsschutz für welchen Zeitraum nötig ist.** Die oft genannte **Mindestdeckung von 30.000 € ist offiziell für Schengen-Visa (Kurzaufenthalte)** angegeben – nimm sie nicht als Maßstab für das nationale Studienvisum.\n\n### Zwei Phasen unterscheiden\n- **Von der Einreise bis zur Immatrikulation:** Prüf in der Checkliste, welche Versicherung (und für wie viele Tage) die Vertretung für diese Zeit akzeptiert. Zum Vergleich: Das Merkblatt der deutschen Vertretungen in der Türkei zum **Sprachkursvisum** verlangt eine private Krankenversicherung für die gesamte Visumdauer (365 Tage) mit ambulanter und stationärer Behandlung; eine Reisekrankenversicherung reicht dort in der Regel nicht. Für das Studienvisum ist das nicht bestätigt.\n- **Nach der Immatrikulation:** Studierende an staatlichen oder staatlich anerkannten Hochschulen sind in der Regel **bis zur Vollendung des 30. Lebensjahres in der gesetzlichen Krankenversicherung (GKV) versicherungspflichtig** (§ 5 Abs. 1 Nr. 9 SGB V).\n\n### Musst du ab 30 in die PKV?\nNein. Mit Vollendung des 30. Lebensjahres endet die studentische Versicherungspflicht grundsätzlich (Ausnahmen, wenn Art der Ausbildung oder familiäre bzw. persönliche Gründe das rechtfertigen). Deine Mitgliedschaft **läuft dann automatisch als freiwillige GKV-Mitgliedschaft weiter**, es sei denn, du erklärst innerhalb von zwei Wochen nach dem Hinweis deiner Krankenkasse den Austritt und weist eine andere Absicherung nach (§ 188 Abs. 4 SGB V). Der Beitrag für die freiwillige Mitgliedschaft wird anders berechnet als der Studierendentarif – frag deine Krankenkasse.\n\n### Praxistipp\nLies vor dem Abschluss einer Police die aktuelle Checkliste und prüf, ob Beginn, Laufzeit und Umfang (ambulant/stationär) genau dazu passen.\n\nOffizielle Infos: [tuerkei.diplo.de – Krankenversicherung](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2620848-2620848)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Welchen Umfang muss die Krankenversicherung für das Visum haben?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vize-basvurum-reddedilirse-ne-yapabilirim",
+   "chatbot_risk": true,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-basvurum-reddedilirse-ne-yapabilirim",
+     "old": {
+      "question": "Vize başvurum reddedilirse ne yapabilirim?",
+      "visible": "text",
+      "head": "Vize reddi yaşadıysan 3 seçeneğin var : itiraz, yeni başvuru, dava. # Adım 1: Red Sebebini Anla Red"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Vize başvurum reddedilirse ne yapabilirim?",
+      "answer_md": "Bugün **iki yolun** var: ret gerekçesini giderip **yeni başvuru** yapmak ya da ret kararına karşı **Verwaltungsgericht Berlin'de dava** açmak. Konsolosluğa yapılan Remonstration usulü 01.07.2025 itibarıyla kaldırıldı; eski rehberlerdeki \"1 ay içinde konsolosluğa dilekçe yaz\" tavsiyesi artık geçerli değil.\n\n### 1. Ret yazısını dikkatle oku\nRet kararındaki gerekçe ve yasal yol bilgisi (Rechtsbehelfsbelehrung) neler yapabileceğini ve süreyi gösterir. Önce gerekçeyi netleştir: eksik ya da yetersiz belge, yetersiz finansman kanıtı veya öğrenim planındaki tutarsızlıklar gibi giderilebilir bir nokta mı?\n\n### 2. Yeni başvuru\n- İstediğin zaman yapılabilir; kural olarak **yeniden ücretlidir**.\n- Ret gerekçesini doğrudan gideren belgeleri ekle (ör. eksik belge, güncel finansman kanıtı, daha açık bir öğrenim planı).\n- Başvuruyu temsilciliğin güncel kanalı (Türkiye'de öğrenim vizesi için Auslandsportal) ve güncel checklist'i üzerinden yap.\n\nGerekçe giderilebilir bir eksiklikse, bu çoğu durumda en pratik yoldur.\n\n### 3. Dava (Verwaltungsgericht Berlin)\n- Dava, ret kararının **tebliğinden itibaren 1 ay** içinde açılır; kesin süre ret yazındaki Rechtsbehelfsbelehrung'da yazar.\n- Dava **ücretlidir**. İlk derecede avukat tutmak zorunlu değil, ama hukuki destek almak isteyebilirsin.\n- Davanın ne kadar süreceği için sabit bir süre verilemez; özellikle kararın hukuken hatalı olduğunu düşünüyorsan anlamlıdır.\n\n### Kısaca\nÖnce gerekçeyi anla, sonra ya eksikleri gidererek yeniden başvur ya da süre içinde dava aç. Ret yazında süre veya mahkeme konusunda farklı bir bilgi varsa, o esas alınır.\n\nResmî bilgi: [tuerkei.diplo.de – Ablehnung](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725832-2725832)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vize-basvurum-reddedilirse-ne-yapabilirim-en",
+     "new": {
+      "question": "What can I do if my German visa application is refused?",
+      "answer_md": "Today you have **two routes**: fix the reasons and file a **new application**, or bring a **lawsuit at the Verwaltungsgericht Berlin** (Administrative Court of Berlin) against the refusal. The Remonstration procedure at the mission was abolished on 01.07.2025, so older advice to \"send the consulate a letter within one month\" no longer applies.\n\n### 1. Read the refusal notice carefully\nThe reasons and the information on legal remedies (Rechtsbehelfsbelehrung) in the notice tell you what you can do and by when. First pin down the reason: is it something you can fix, such as missing or insufficient documents, insufficient proof of funds or an unclear study plan?\n\n### 2. New application\n- Possible at any time; as a rule it **costs a fee again**.\n- Add documents that directly address the reason for refusal (e.g. the missing document, updated proof of funds, a clearer study plan).\n- Apply through the mission's current channel (in Türkiye, the Auslandsportal for study visas) and its current checklist.\n\nIf the reason is a fixable gap, this is usually the most practical route.\n\n### 3. Lawsuit (Verwaltungsgericht Berlin)\n- Must be filed **within one month of notification** of the refusal; the exact deadline is stated in the Rechtsbehelfsbelehrung.\n- The lawsuit **involves court fees**. A lawyer is not mandatory at first instance, although you may want legal advice.\n- There is no fixed duration; this route mainly makes sense if you believe the decision is legally wrong.\n\n### In short\nUnderstand the reason, then either reapply with the gaps fixed or sue within the deadline. If your refusal notice states a different deadline or court, that information prevails.\n\nOfficial information: [tuerkei.diplo.de – refusal](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725832-2725832)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What can I do if my visa application is rejected?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vize-basvurum-reddedilirse-ne-yapabilirim-de",
+     "new": {
+      "question": "Was kannst du tun, wenn dein Visumantrag abgelehnt wird?",
+      "answer_md": "Heute hast du **zwei Wege**: die Ablehnungsgründe beheben und einen **neuen Antrag** stellen oder gegen den Bescheid **Klage beim Verwaltungsgericht Berlin** erheben. Das Remonstrationsverfahren bei der Auslandsvertretung wurde zum 01.07.2025 abgeschafft; ältere Tipps wie „innerhalb eines Monats ans Konsulat schreiben“ gelten also nicht mehr.\n\n### 1. Lies den Ablehnungsbescheid genau\nDie Begründung und die Rechtsbehelfsbelehrung im Bescheid zeigen dir, was du tun kannst und bis wann. Kläre zuerst den Grund: Lässt er sich beheben, etwa fehlende oder unzureichende Unterlagen, ein unzureichender Finanzierungsnachweis oder ein unklarer Studienplan?\n\n### 2. Neuer Antrag\n- Jederzeit möglich; in der Regel **wieder gebührenpflichtig**.\n- Leg Unterlagen bei, die den Ablehnungsgrund direkt ausräumen (z. B. das fehlende Dokument, einen aktuellen Finanzierungsnachweis, einen klareren Studienplan).\n- Stell den Antrag über den aktuellen Kanal der Vertretung (in der Türkei für das Studienvisum das Auslandsportal) und nach der aktuellen Checkliste.\n\nIst der Grund eine behebbare Lücke, ist das meist der praktischste Weg.\n\n### 3. Klage (Verwaltungsgericht Berlin)\n- Die Klage ist **innerhalb eines Monats nach Bekanntgabe** des Bescheids zu erheben; die genaue Frist steht in der Rechtsbehelfsbelehrung.\n- Die Klage ist **kostenpflichtig**. In der ersten Instanz besteht kein Anwaltszwang, rechtliche Beratung kann aber sinnvoll sein.\n- Eine feste Verfahrensdauer gibt es nicht; der Weg lohnt sich vor allem, wenn du die Entscheidung für rechtswidrig hältst.\n\n### Kurz gesagt\nGrund verstehen, dann entweder mit behobenen Lücken neu beantragen oder fristgerecht klagen. Nennt dein Bescheid eine andere Frist oder ein anderes Gericht, gilt diese Angabe.\n\nOffizielle Infos: [tuerkei.diplo.de – Ablehnung](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725832-2725832)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Was kannst du tun, wenn dein Visumantrag abgelehnt wird?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-kabul-belgesi-vize-icin-yeterli-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-kabul-belgesi-vize-icin-yeterli-mi",
+     "old": {
+      "question": "Studienkolleg kabul belgesi vize için yeterli mi?",
+      "visible": "text",
+      "head": "Hayır — Studienkolleg kabul belgesi vize için temel belge ama tek başına yetmez. Yanına başka evrakl"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Studienkolleg kabul belgesi vize için yeterli mi?",
+      "answer_md": "**Tek başına yetmez, ama öğrenim vizesi için doğru türde bir kabul belgesidir.** Studienkolleg'e kabulün kanıtlanmışsa, Studienkolleg § 16b Abs. 1 AufenthG'deki öğrenim amacına dahil bir hazırlık önlemi (studienvorbereitende Maßnahme) sayılır; başvurun normal öğrenim vizesi olarak değerlendirilir. Kabul kanıtlanamıyorsa yalnızca takdire bağlı § 16b Abs. 5 devreye girer.\n\n### Kabulün yanında neler gerekir?\nTürkiye'deki temsilciliklerin Merkblatt'ı Studienkolleg veya üniversite kabulünü incelemeyi **kolaylaştıran** belge olarak sayar; temel şartlar yine geçerlidir:\n- Yükseköğrenime giriş yeterliliği (HZB) kanıtı, ör. lise diploması\n- Finansman kanıtı: Sperrkonto veya Verpflichtungserklärung (01.09.2024'ten beri ayda 992 €, yıllık 11.904 €)\n- Pasaport, Auslandsportal üzerinden başvuru, sağlık sigortası kanıtı\n- **Dil belgesi:** Studienkolleg'in kabul için istediği seviye; herkes için geçerli bir \"B2 zorunlu\" kuralı yok.\n\nKesin liste temsilciliğin Auslandsportal'daki güncel checklist'idir.\n\n### Kabul = vize garantisi mi?\nHayır. Kararı temsilcilik verir; belgelerin eksiksizliği, finansman ve öğrenim planının tutarlılığı değerlendirilir.\n\n### Şartlı kabulle başvuru\nKabulün bir dil kursuna veya başka bir şarta bağlıysa hangi Merkblatt'ın ve dil seviyesinin geçerli olduğunu [şartlı kabulle vize rehberimizde](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level) anlattık.\n\n### Studienkolleg'den sonra uzatma otomatik mi?\nHayır. Studienkolleg ve ardından gelen lisans aynı öğrenim amacına dayanır; oturum izni kural olarak 2 yıllığına (en az 1 yıl) verilir ve amaç makul sürede tamamlanabildiği sürece uzatılır. Ama uzatma için Feststellungsprüfung'dan ve üniversiteye kabul/kayıttan sonra **Ausländerbehörde'ye başvurman** gerekir. İznin bitmeden başvurursan, karar verilene kadar mevcut iznin geçerli sayılır (§ 81 Abs. 4 AufenthG).\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-kabul-belgesi-vize-icin-yeterli-mi-en",
+     "new": {
+      "question": "Is a Studienkolleg admission letter enough for a German student visa?",
+      "answer_md": "**Not on its own – but it is the right kind of admission for a study visa.** If your acceptance to a Studienkolleg is proven, attending it counts as a preparatory measure (studienvorbereitende Maßnahme) within the study purpose of § 16b(1) of the Residence Act, so your application is assessed as a regular study visa. If acceptance can't be proven, only the discretionary § 16b(5) applies.\n\n### What else do you need?\nThe leaflet of the German missions in Türkiye says an admission from a Studienkolleg or university **makes the examination easier** – the basic requirements still apply:\n- Proof of university entrance qualification (HZB), e.g. your school-leaving certificate\n- Proof of funds: blocked account (Sperrkonto) or formal obligation letter (Verpflichtungserklärung) – €992 per month, €11,904 per year since 01.09.2024\n- Passport, application via the Auslandsportal, proof of health insurance\n- **Language certificate:** the level your Studienkolleg requires for admission; there is no universal \"B2 required\" rule.\n\nThe binding list is the mission's current checklist in the Auslandsportal.\n\n### Does admission guarantee the visa?\nNo. The mission decides, looking at whether your documents are complete, your funding is sufficient and your study plan is consistent.\n\n### Applying with conditional admission\nIf your admission depends on a language course or another condition, our [guide to visas with conditional admission](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en) explains which leaflet and language level apply.\n\n### Is the extension after Studienkolleg automatic?\nNo. Studienkolleg and the degree that follows belong to the same study purpose; the residence permit is usually issued for two years (at least one) and extended as long as you can still reach the goal within a reasonable time. But after the Feststellungsprüfung and your university admission/enrolment you have to **apply to the Ausländerbehörde** for the extension. If you apply before your permit expires, it remains valid until the decision (§ 81(4) Residence Act).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Is the Studienkolleg admission letter sufficient for the visa?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-kabul-belgesi-vize-icin-yeterli-mi-de",
+     "new": {
+      "question": "Reicht die Zulassung zum Studienkolleg für das Visum?",
+      "answer_md": "**Allein nicht – aber sie ist die richtige Art von Zulassung für ein Studienvisum.** Ist deine Annahme an einem Studienkolleg nachgewiesen, gilt der Besuch als studienvorbereitende Maßnahme und gehört zum Studienzweck nach § 16b Abs. 1 AufenthG; dein Antrag wird also als normales Visum zum Studium geprüft. Ohne Nachweis der Annahme bleibt nur die Ermessensregel des § 16b Abs. 5.\n\n### Was brauchst du zusätzlich?\nLaut Merkblatt der deutschen Vertretungen in der Türkei **erleichtert** der Zulassungsbescheid eines Studienkollegs oder einer Hochschule die Prüfung – die Grundvoraussetzungen gelten trotzdem:\n- Nachweis der Hochschulzugangsberechtigung (HZB), z. B. dein Schulabschlusszeugnis\n- Finanzierungsnachweis: Sperrkonto oder Verpflichtungserklärung (seit dem 01.09.2024 992 € im Monat bzw. 11.904 € im Jahr)\n- Reisepass, Antrag über das Auslandsportal, Nachweis der Krankenversicherung\n- **Sprachnachweis:** das Niveau, das dein Studienkolleg für die Aufnahme verlangt; eine allgemeine „B2-Pflicht“ gibt es nicht.\n\nVerbindlich ist die aktuelle Checkliste der Vertretung im Auslandsportal.\n\n### Ist die Zulassung eine Visumgarantie?\nNein. Die Auslandsvertretung entscheidet und prüft, ob die Unterlagen vollständig sind, die Finanzierung reicht und dein Studienplan schlüssig ist.\n\n### Antrag mit bedingter Zulassung\nHängt deine Zulassung an einem Sprachkurs oder einer anderen Bedingung, erklärt unser [Ratgeber zum Visum mit bedingter Zulassung](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de), welches Merkblatt und welches Sprachniveau gelten.\n\n### Wird nach dem Studienkolleg automatisch verlängert?\nNein. Studienkolleg und anschließendes Studium gehören zum selben Aufenthaltszweck; die Aufenthaltserlaubnis wird in der Regel für zwei Jahre (mindestens ein Jahr) erteilt und verlängert, solange du das Ziel in angemessener Zeit erreichen kannst. Nach der Feststellungsprüfung und deiner Zulassung bzw. Immatrikulation musst du die Verlängerung aber **bei der Ausländerbehörde beantragen**. Stellst du den Antrag vor Ablauf, gilt deine Erlaubnis bis zur Entscheidung fort (§ 81 Abs. 4 AufenthG).\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ist der Zulassungsbescheid des Studienkollegs für das Visum ausreichend?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanya-firsat-karti-chancenkarte-basvuru-sureci-nasildir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanya-firsat-karti-chancenkarte-basvuru-sureci-nasildir",
+     "old": {
+      "question": "Almanya Fırsat Kartı (Chancenkarte) başvuru süreci nasıldır?",
+      "visible": "text",
+      "head": "Almanya Fırsat Kartı, Almanya'da iş aramak için belirli kriterleri karşılayan kişilere verilen bir v"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Almanya Fırsat Kartı (Chancenkarte) başvuru süreci nasıldır?",
+      "answer_md": "**Fırsat Kartı (Chancenkarte), 01.06.2024'ten beri var olan ve Almanya'da iş aramak için verilen bir oturum iznidir (§ 20a AufenthG).** İlk olarak **en fazla 1 yıllığına** verilir. Nitelikli bir iş sözleşmen veya somut iş teklifin varsa ve Federal İş Ajansı (Bundesagentur für Arbeit) onay verirse, \"Folge-Chancenkarte\" olarak **en fazla 2 yıl** uzatılabilir.\n\n### Yol 1: Tam denkliği olan nitelikli çalışan\nYurt dışı diploman veya mesleki eğitimin Almanya'da **tam denk** olarak tanınmışsa (Fachkraft), puan gerekmez.\n\n### Yol 2: Puan sistemi\nTam denkliğin yoksa şunların hepsi gerekir:\n- **Nitelik:** alındığı ülkede devletçe tanınan, **en az 2 yıllık** mesleki eğitim ya da yükseköğretim diploması (temsilciliğe göre Alman dış ticaret odası AHK yeterliliği de sayılır)\n- **Dil:** en az **basit düzey Almanca** (uygulamada A1) veya en az **B2 İngilizce**\n- **En az 6 puan:** kısmi denklik, dil bilgisi, iş deneyimi, yaş, daha önce Almanya'da bulunma ve birlikte gelen eşin potansiyeli gibi kriterlerden toplanır.\n\n### Her iki yolda\n- **Geçimin güvence altında olmalı.** Gereken aylık tutarı ve kabul edilen kanıtları temsilcilikten kontrol et; burada rakam vermiyoruz.\n- **Çalışma:** haftada ortalama toplam **en fazla 20 saat** çalışabilir, ayrıca her biri **en fazla 2 hafta** süren deneme çalışmaları (Probebeschäftigung) yapabilirsin.\n\n### Başvuru\nTürkiye'den başvuru, Alman temsilciliği için **Auslandsportal** üzerinden online yapılır; belgeleri portaldaki checklist'e göre yükle. Zaten Almanya'daysan kartı ancak AufenthG'nin 3. veya 4. bölümüne göre bir oturum iznin varken alabilirsin; § 16b öğrenci izni bu kapsamdadır.\n\nPuan tablosu ve ayrıntılar değişebilir; başvurmadan önce resmî kaynakları kontrol et.\n\nResmî bilgi: [§ 20a AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20a.html) · [tuerkei.diplo.de – Erwerbstätigkeit](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720718-2720718)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "germany-opportunity-card-chancenkarte-application-process",
+     "new": {
+      "question": "How do I apply for Germany's Opportunity Card (Chancenkarte)?",
+      "answer_md": "**The Opportunity Card (Chancenkarte) has existed since 01.06.2024. It is a residence permit for looking for a job in Germany (§ 20a of the Residence Act).** It is first issued for **up to one year**. If you have a qualified employment contract or a concrete job offer and the Federal Employment Agency (Bundesagentur für Arbeit) approves, it can be extended as a \"Folge-Chancenkarte\" for **up to two years**.\n\n### Route 1: Fully recognised skilled worker\nIf your foreign degree or vocational qualification is **fully recognised** in Germany (Fachkraft), you don't need points.\n\n### Route 2: Points system\nWithout full recognition, you need all of the following:\n- **Qualification:** a vocational qualification of **at least two years** or a university degree, recognised by the state where you obtained it (according to the mission, a German Chamber of Commerce Abroad (AHK) qualification also counts)\n- **Language:** at least **basic German** (A1 in practice) or at least **English B2**\n- **At least 6 points:** from criteria such as partial recognition, language skills, work experience, age, previous stays in Germany and the potential of a spouse who comes with you.\n\n### On both routes\n- **Your livelihood must be secured.** Check the required monthly amount and accepted proof with the mission – we don't quote a figure here.\n- **Work:** you may work **up to 20 hours per week on average** in total, plus trial employment of **up to two weeks** each time (Probebeschäftigung).\n\n### Applying\nFrom Türkiye you apply online via the **Auslandsportal** for the German mission and upload the documents on its checklist. If you are already in Germany, you can only get the card while holding a residence permit under Part 3 or 4 of the Residence Act – the § 16b student permit is one of them.\n\nThe points table and details can change; check official sources before you apply.\n\nOfficial information: [§ 20a AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20a.html) · [tuerkei.diplo.de – employment](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720718-2720718)\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "germany-opportunity-card-chancenkarte-application-process-de",
+     "new": {
+      "question": "Wie beantragst du die Chancenkarte für Deutschland?",
+      "answer_md": "**Die Chancenkarte gibt es seit dem 01.06.2024. Sie ist ein Aufenthaltstitel zur Arbeitsplatzsuche in Deutschland (§ 20a AufenthG).** Sie wird zunächst für **bis zu ein Jahr** erteilt (Such-Chancenkarte). Mit einem qualifizierten Arbeitsvertrag oder konkreten Arbeitsplatzangebot und Zustimmung der Bundesagentur für Arbeit kann sie als Folge-Chancenkarte für **bis zu zwei Jahre** verlängert werden.\n\n### Weg 1: Anerkannte Fachkraft\nIst dein ausländischer Hochschul- oder Berufsabschluss in Deutschland **voll anerkannt** (Fachkraft), brauchst du keine Punkte.\n\n### Weg 2: Punktesystem\nOhne volle Anerkennung brauchst du alles Folgende:\n- **Qualifikation:** eine im Ausbildungsstaat staatlich anerkannte Berufsausbildung von **mindestens zwei Jahren** oder einen Hochschulabschluss (laut Auslandsvertretung zählt auch ein Abschluss einer deutschen Auslandshandelskammer, AHK)\n- **Sprache:** mindestens **einfache Deutschkenntnisse** (in der Praxis A1) oder mindestens **Englisch B2**\n- **Mindestens 6 Punkte:** u. a. für teilweise Anerkennung, Sprachkenntnisse, Berufserfahrung, Alter, frühere Aufenthalte in Deutschland und das Potenzial eines mitkommenden Ehepartners.\n\n### Für beide Wege\n- **Dein Lebensunterhalt muss gesichert sein.** Den nötigen Monatsbetrag und die akzeptierten Nachweise erfährst du bei der Auslandsvertretung – eine Zahl nennen wir hier nicht.\n- **Arbeiten:** Du darfst durchschnittlich insgesamt **höchstens 20 Stunden pro Woche** arbeiten und zusätzlich Probebeschäftigungen von jeweils **höchstens zwei Wochen** ausüben.\n\n### Antrag\nAus der Türkei stellst du den Antrag online über das **Auslandsportal** der deutschen Vertretung und lädst die Unterlagen laut Checkliste hoch. Bist du schon in Deutschland, bekommst du die Karte nur, wenn du einen Aufenthaltstitel nach Abschnitt 3 oder 4 AufenthG hast – die Aufenthaltserlaubnis zum Studium nach § 16b gehört dazu.\n\nPunktetabelle und Details können sich ändern; prüf vor dem Antrag die offiziellen Quellen.\n\nOffizielle Infos: [§ 20a AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20a.html) · [tuerkei.diplo.de – Erwerbstätigkeit](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2720718-2720718)\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "99dc969b-c2d4-51b5-8368-304ebbcb3068"
+  },
+  {
+   "tr_slug": "almanyada-ogrenci-veya-ausbildung-vizesiyle-bulunan-biri-esini-yanina-getirebilir-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-ogrenci-veya-ausbildung-vizesiyle-bulunan-biri-esini-yanina-getirebilir-mi",
+     "old": {
+      "question": "Almanya'da öğrenci veya Ausbildung vizesiyle bulunan biri eşini yanına getirebilir mi?",
+      "visible": "text",
+      "head": "Almanya'da öğrenci veya Ausbildung vizesiyle bulunan kişilerin eşlerini yanlarına getirme koşulları"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Almanya'da öğrenci veya Ausbildung vizesiyle bulunan biri eşini yanına getirebilir mi?",
+      "answer_md": "**Evet, yasal olarak mümkün.** Öğrenim (§ 16b) gibi eğitim amaçlı oturum izinleri AufenthG'nin 3. bölümünde yer alır ve § 30 AufenthG bu izin sahiplerinin eşlerine aile birleşimi hakkı tanır. Şartlar karşılanırsa eşe oturum izni **verilmesi gerekir**.\n\n### Temel şartlar (§ 30 AufenthG)\n- **Evlilik, senin oturum iznin verildiğinde zaten var olmalı**, ve\n- Almanya'daki kalışının **bir yıldan uzun sürmesi** bekleniyor olmalı.\n- **İki eş de en az 18 yaşında** olmalı.\n- Eşin **basit düzeyde Almanca** ile anlaşabilmeli; uygulamada bu A1 seviyesi olarak kabul edilir.\n\n### Evliliğin izinden sonraysa ya da kalış kısa ise\nOturum iznin veya ulusal vizen varsa, makam evliliğin önceden var olması ve bir yıldan uzun kalış şartlarından **takdiren vazgeçebilir** (§ 30 Abs. 2 S. 2). Bu bir hak değil, makamın kararıdır.\n\n### Almanca şartının istisnaları\nÖğrenci eşleri için özellikle şunlar önemlidir: eşin hastalık veya engel nedeniyle Almanca kanıtlayamaması, belirgin şekilde düşük entegrasyon ihtiyacı, ana başvuru sahibinin vatandaşlığı nedeniyle uzun süreli kalışlar için vizesiz girebilmesi ya da somut durumda girişten önce Almanca öğrenmeye çalışmanın imkânsız veya makul olmaması. Mavi Kart gibi nitelikli çalışan izinlerine tanınan dil istisnası öğrencileri kapsamaz.\n\n### Ausbildung için\nMesleki eğitim (Ausbildung) izni de AufenthG'nin aynı eğitim bölümünde yer alır; aynı kuralların senin durumunda uygulanıp uygulanmadığını temsilcilikten veya Ausländerbehörde'den teyit et.\n\n### Başvuru\nEş, Türkiye'deki Alman temsilciliğine aile birleşimi vizesi için başvurur. Evlilik belgesinin yanında geçimin ve konutun nasıl kanıtlanacağını, hangi tutarın ve belgelerin istendiğini temsilciliğin güncel checklist'inden kontrol et; burada rakam vermiyoruz.\n\nYasal dayanak: [§ 30 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__30.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "can-a-student-or-ausbildung-visa-holder-bring-their-spouse-to-germany",
+     "new": {
+      "question": "Can I bring my spouse to Germany if I'm there on a student or Ausbildung visa?",
+      "answer_md": "**Yes, it is legally possible.** Residence permits for education purposes, such as the study permit (§ 16b), sit in Chapter 2, Part 3 of the Residence Act (AufenthG), and § 30 AufenthG gives spouses of these permit holders a right to family reunification. If the conditions are met, the spouse **must be granted** a residence permit.\n\n### Main conditions (§ 30 AufenthG)\n- **The marriage already existed when your residence permit was issued**, and\n- your stay in Germany is **expected to last more than one year**.\n- **Both spouses are at least 18.**\n- Your spouse can communicate in **German at a simple level**; in practice this is taken as level A1.\n\n### Married after your permit, or a shorter stay?\nIf you hold a residence permit or a national visa, the authority **may, at its discretion**, waive the conditions about the marriage already existing and the stay exceeding one year (§ 30(2) sentence 2). This is a decision of the authority, not an entitlement.\n\n### Exemptions from the German requirement\nRelevant for students' spouses: your spouse cannot prove German because of illness or disability; there is a recognisably low need for integration; your nationality lets you enter Germany visa-free for long stays; or, in the specific case, it is impossible or unreasonable for your spouse to learn German before entry. The language exemption for Blue Card and other skilled-worker permits does not cover students.\n\n### Ausbildung\nThe vocational training (Ausbildung) permit is in the same education part of the Residence Act; confirm with the German mission or your Ausländerbehörde that the same rules apply in your case.\n\n### Applying\nYour spouse applies for a family reunification visa at the German mission in Türkiye. Besides the marriage certificate, check the mission's current checklist for how livelihood and housing must be proven and which amounts and documents are required – we don't quote figures here.\n\nLegal basis: [§ 30 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__30.html)\n"
+     },
+     "mode": "create"
+    },
+    {
+     "locale": "de",
+     "slug": "can-a-student-or-ausbildung-visa-holder-bring-their-spouse-to-germany-de",
+     "new": {
+      "question": "Kannst du mit einem Visum zum Studium oder zur Ausbildung deinen Ehepartner nach Deutschland holen?",
+      "answer_md": "**Ja, das ist rechtlich möglich.** Aufenthaltstitel zu Ausbildungszwecken wie die Aufenthaltserlaubnis zum Studium (§ 16b) stehen in Kapitel 2 Abschnitt 3 AufenthG, und § 30 AufenthG gibt Ehegatten dieser Titelinhaber einen Anspruch auf Familiennachzug. Sind die Voraussetzungen erfüllt, **ist** dem Ehegatten eine Aufenthaltserlaubnis **zu erteilen**.\n\n### Die wichtigsten Voraussetzungen (§ 30 AufenthG)\n- **Die Ehe bestand bereits, als deine Aufenthaltserlaubnis erteilt wurde**, und\n- dein Aufenthalt in Deutschland dauert **voraussichtlich länger als ein Jahr**.\n- **Beide Ehegatten sind mindestens 18 Jahre alt.**\n- Dein Ehepartner kann sich **zumindest auf einfache Art auf Deutsch verständigen**; in der Praxis entspricht das dem Niveau A1.\n\n### Heirat nach der Erteilung oder kürzerer Aufenthalt?\nBesitzt du eine Aufenthaltserlaubnis oder ein nationales Visum, **kann** die Behörde nach Ermessen von den Voraussetzungen „Ehe bestand bereits“ und „Aufenthalt über ein Jahr“ absehen (§ 30 Abs. 2 S. 2). Das ist eine Ermessensentscheidung, kein Anspruch.\n\n### Ausnahmen vom Sprachnachweis\nFür Ehepartner von Studierenden kommen vor allem in Frage: Krankheit oder Behinderung, ein erkennbar geringer Integrationsbedarf, eine Staatsangehörigkeit, die dir auch für längere Aufenthalte die visumfreie Einreise erlaubt, oder ein Einzelfall, in dem Deutschlernen vor der Einreise nicht möglich oder nicht zumutbar ist. Die Sprachausnahme für Blaue Karte EU und andere Fachkräftetitel gilt für Studierende nicht.\n\n### Ausbildung\nDie Aufenthaltserlaubnis zur Berufsausbildung steht im selben Abschnitt des AufenthG; lass dir von der Auslandsvertretung oder deiner Ausländerbehörde bestätigen, dass dieselben Regeln in deinem Fall gelten.\n\n### Antrag\nDein Ehepartner beantragt das Visum zum Familiennachzug bei der deutschen Auslandsvertretung in der Türkei. Neben der Heiratsurkunde prüfst du in der aktuellen Checkliste, wie Lebensunterhalt und Wohnraum nachzuweisen sind und welche Beträge und Unterlagen verlangt werden – Zahlen nennen wir hier nicht.\n\nRechtsgrundlage: [§ 30 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__30.html)\n"
+     },
+     "mode": "create"
+    }
+   ],
+   "group_if_missing": "8b9e0453-6cf3-5f3d-b59a-29ec8779cfcc"
+  },
+  {
+   "tr_slug": "bachelor-baslarken-30-yas-ustuysem-sigortam-degisir-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "bachelor-baslarken-30-yas-ustuysem-sigortam-degisir-mi",
+     "old": {
+      "question": "Bachelor başlarken 30 yaş üstüysem sigortam değişir mi?",
+      "visible": "text",
+      "head": "Evet, 30 yaş ve üstü olarak Bachelor'a başlıyorsan sigorta sistemi değişiyor. 30 yaş GKV öğrenci tar"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Bachelor başlarken 30 yaş üstüysem sigortam değişir mi?",
+      "answer_md": "Evet, değişebilir. Devlet ya da devletçe tanınan bir yükseköğretim kurumuna kayıtlı öğrenciler, yasal öğrenci sigortasına (KVdS) **en fazla 30. yaşlarını doldurana kadar** zorunlu olarak tabidir (§ 5 Abs. 1 Nr. 9 SGB V). Bachelor'a 30 yaşını doldurduktan sonra başlıyorsan bu öğrenci statüsü kural olarak artık sana açık değildir.\n\n### İstisna\nYaş sınırı, eğitimin türü ya da ailevi veya kişisel sebepler bunu haklı kılıyorsa aşılabilir. Yasa özellikle yükseköğretime giriş hakkını ikinci eğitim yoluyla (Zweiter Bildungsweg) kazanmayı örnek verir. Buna Krankenkasse karar verir; gerekçeni belgeleriyle sun.\n\n### 30 yaşını geçince ne olur?\n- **Zaten yasal öğrenci sigortasındaysan:** Zorunlu sigorta bittiğinde üyeliğin ertesi günden itibaren kendiliğinden **gönüllü üyelik** (freiwillige Mitgliedschaft) olarak devam eder (§ 188 Abs. 4 SGB V). Krankenkasse seni çıkış imkânları hakkında bilgilendirdikten sonra iki hafta içinde çıkış beyan edebilirsin; çıkış ancak başka bir sağlık sigortanı kanıtlarsan geçerli olur. Öğrenci tarifesinin hangi tarihte bittiğini Krankenkasse'ne sor.\n- **Almanya'ya 30 yaşından sonra ilk kez geliyorsan:** Yasal bir kasaya gönüllü üye olarak girebilir misin, yoksa özel sigorta (PKV) mı gerekir, bu sigorta geçmişine bağlıdır. Üniversiteye kaydolmadan önce bir Krankenkasse'ye durumunu yazılı olarak sor.\n\n### Dikkat\n- Gönüllü yasal sigorta ve özel sigorta primleri öğrenci tarifesinden farklı hesaplanır; kesin tutarı yalnızca sigortacı söyleyebilir.\n- Özel sigortaya geçmek uzun vadeli bir karardır; sonradan yasal sisteme dönmek serbestçe mümkün olmayabilir. Karar vermeden önce bilgi al.\n- Master'a 30 yaşından sonra başlayanlar için de aynı yaş kuralı geçerlidir.\n\nKaynak: [§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [§ 188 SGB V](https://www.gesetze-im-internet.de/sgb_5/__188.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "bachelor-baslarken-30-yas-ustuysem-sigortam-degisir-mi-en",
+     "new": {
+      "question": "Does my health insurance change if I start my Bachelor's after turning 30?",
+      "answer_md": "Yes, it can. Students enrolled at a state or state-recognised university are compulsorily covered by statutory student health insurance (KVdS) **at most until they complete their 30th year of life** (§ 5 (1) no. 9 SGB V). If you start your Bachelor's after that point, this student status is generally no longer open to you.\n\n### Exception\nThe age limit can be exceeded if the type of education or family or personal reasons justify it. The law specifically mentions having obtained university entrance qualification through a second-chance route (Zweiter Bildungsweg). Your Krankenkasse decides — explain your reasons and bring evidence.\n\n### What happens after 30?\n- **If you are already in statutory student insurance:** when compulsory insurance ends, your membership automatically continues as a **voluntary membership** (freiwillige Mitgliedschaft) from the next day (§ 188 (4) SGB V). You can declare an exit within two weeks after your Krankenkasse informs you of this option, but the exit only takes effect if you prove other health coverage. Ask your Krankenkasse when exactly your student rate ends.\n- **If you arrive in Germany for the first time after 30:** whether a statutory Krankenkasse can take you as a voluntary member or you need private insurance (PKV) depends on your insurance history. Ask a Krankenkasse in writing before you enrol.\n\n### Keep in mind\n- Voluntary statutory and private premiums are calculated differently from the student rate; only the insurer can give you the exact amount.\n- Switching to private insurance is a long-term decision, and returning to the statutory system later may not be freely possible. Get advice before you decide.\n- The same age rule applies if you start a Master's after 30.\n\nSource: [§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [§ 188 SGB V](https://www.gesetze-im-internet.de/sgb_5/__188.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "If you are over 30 when starting your Bachelor's degree, will your insurance change?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "bachelor-baslarken-30-yas-ustuysem-sigortam-degisir-mi-de",
+     "new": {
+      "question": "Ändert sich meine Krankenversicherung, wenn ich das Bachelorstudium nach meinem 30. Geburtstag beginne?",
+      "answer_md": "Ja, das kann sich ändern. Studierende an staatlichen oder staatlich anerkannten Hochschulen sind in der Krankenversicherung der Studenten (KVdS) **längstens bis zur Vollendung des 30. Lebensjahres** pflichtversichert (§ 5 Abs. 1 Nr. 9 SGB V). Beginnst du dein Bachelorstudium danach, steht dir diese studentische Pflichtversicherung in der Regel nicht mehr offen.\n\n### Ausnahme\nDie Altersgrenze darf überschritten werden, wenn die Art der Ausbildung oder familiäre bzw. persönliche Gründe das rechtfertigen – das Gesetz nennt insbesondere den Erwerb der Hochschulzugangsberechtigung über den Zweiten Bildungsweg. Darüber entscheidet deine Krankenkasse; leg deine Gründe mit Nachweisen dar.\n\n### Was passiert nach dem 30.?\n- **Du bist schon studentisch pflichtversichert:** Endet die Versicherungspflicht, setzt sich deine Mitgliedschaft ab dem nächsten Tag automatisch als **freiwillige Mitgliedschaft** fort (§ 188 Abs. 4 SGB V). Du kannst innerhalb von zwei Wochen nach dem Hinweis deiner Krankenkasse den Austritt erklären – wirksam wird er aber nur, wenn du eine anderweitige Absicherung im Krankheitsfall nachweist. Frag deine Krankenkasse, wann genau dein Studententarif endet.\n- **Du kommst erst nach dem 30. zum ersten Mal nach Deutschland:** Ob dich eine gesetzliche Krankenkasse freiwillig aufnehmen kann oder du eine private Krankenversicherung (PKV) brauchst, hängt von deiner Versicherungsvorgeschichte ab. Kläre das vor der Immatrikulation schriftlich mit einer Krankenkasse.\n\n### Wichtig\n- Beiträge in der freiwilligen GKV und in der PKV werden anders berechnet als der Studententarif; die genaue Höhe kann dir nur die Versicherung nennen.\n- Der Wechsel in die PKV ist eine langfristige Entscheidung; eine spätere Rückkehr in die GKV ist nicht ohne Weiteres möglich. Lass dich vorher beraten.\n- Für ein Masterstudium, das du nach dem 30. beginnst, gilt dieselbe Altersgrenze.\n\nQuelle: [§ 5 SGB V](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [§ 188 SGB V](https://www.gesetze-im-internet.de/sgb_5/__188.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ändert sich deine Krankenversicherung, wenn du über 30 bist und ein Bachelorstudium beginnst?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ogrenci-saglik-sigortasi-krankenversicherung-aylik-ne-kadar",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ogrenci-saglik-sigortasi-krankenversicherung-aylik-ne-kadar",
+     "old": {
+      "question": "Öğrenci sağlık sigortası (Krankenversicherung) aylık ne kadar?",
+      "visible": "text",
+      "head": "2026 Almanya öğrenci sağlık sigortası aylık primi: # Yasal Öğrenci Sigortası (GKV — 30 yaş altı) Sig"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Öğrenci sağlık sigortası (Krankenversicherung) aylık ne kadar?",
+      "answer_md": "Yasal öğrenci sigortasında (KVdS) 2026'da aylık prim, bakım sigortası dahil **yaklaşık 118 € + kasanın ek primi** kadardır. Örneğin ek primi %2,69 olan bir kasada toplam **141,16 €** (23 yaş altı) veya **146,29 €** (23 yaş ve üstü, çocuksuz) eder.\n\n### Hesaplama (2026, tüm yasal kasalarda aynı temel)\n- **Temel:** Yasal BAföG ihtiyaç tutarı, 01.01.2026'dan itibaren aylık 855 €. BAföG alıp almaman fark etmez.\n- **Sağlık sigortası:** Genel oranın 10'da 7'si = %10,22 → **87,38 €** + kasanın kendi ek primi (Zusatzbeitrag).\n- **Bakım sigortası (Pflegeversicherung):** 23 yaş ve üstü, çocuksuz: %4,2 = **35,91 €**; 23 yaş altı ya da çocuklu: %3,6 = **30,78 €**.\n\nKasalar arasındaki fark yalnızca ek primden gelir; güncel ek primi seçtiğin Krankenkasse'den öğren.\n\n### 30 yaş sonrası\nÖğrenci sigortası en fazla 30. yaşını doldurana kadar geçerlidir (istisnalar: eğitimin türü, ailevi/kişisel sebepler). Zaten yasal öğrenci sigortasındaysan üyeliğin sonrasında kendiliğinden gönüllü yasal sigorta olarak devam eder; başka bir sigortanı kanıtlarsan çıkabilirsin. Yani 30 yaş sonrası özel sigorta otomatik olarak zorunlu değildir; primler farklı hesaplanır, tutarı kasana sor.\n\n### Çalışıyorsan\n- **Werkstudent:** İşte sağlık, bakım ve işsizlik sigortasından muafsın; yalnızca emeklilik sigortası payı kesilir. Kendi öğrenci sigorta primini ödemeye devam edersin.\n- **Minijob:** İşverenin ödediği paylar senin öğrenci sigorta primin yerine geçmez.\n\n### Aile sigortası\nEbeveynin Almanya'da yasal sigortalıysa belirli yaş ve gelir sınırları içinde aile sigortası (Familienversicherung) mümkün olabilir; güncel sınırı kasana sor.\n\n⚠️ Temel tutar BAföG ihtiyaç tutarına bağlıdır; bu tutar değişirse prim de ilgili dönemden itibaren değişir.\n\nWerkstudent kuralları: [HiWi mi Werkstudent mı?](/tr/blog/hiwi-vs-werkstudent-student-jobs-in-germany)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ogrenci-saglik-sigortasi-krankenversicherung-aylik-ne-kadar-en",
+     "new": {
+      "question": "How much does student health insurance (Krankenversicherung) cost per month?",
+      "answer_md": "In 2026, statutory student health insurance (KVdS) including long-term care costs **about 118 € plus your Krankenkasse's additional contribution** per month. For example, with an additional contribution of 2.69 % the total is **141.16 €** (under 23) or **146.29 €** (23 or older, no children).\n\n### How it is calculated (2026, same basis for every statutory insurer)\n- **Basis:** the statutory BAföG need rate of 855 €/month (since 01.01.2026) — whether or not you actually receive BAföG.\n- **Health insurance:** 7/10 of the general rate = 10.22 % → **87.38 €** + the insurer's own additional contribution (Zusatzbeitrag).\n- **Long-term care (Pflegeversicherung):** 23+ without children: 4.2 % = **35.91 €**; under 23 or with a child: 3.6 % = **30.78 €**.\n\nStatutory insurers differ only in the additional contribution — check the current rate with the Krankenkasse you choose.\n\n### After 30\nStudent insurance applies at most until you complete your 30th year of life (exceptions: type of education, family or personal reasons). If you are already in statutory student insurance, your membership then automatically continues as voluntary statutory insurance; you can leave only if you prove other cover. So private insurance is not automatically compulsory after 30 — premiums are calculated differently, ask your insurer for the amount.\n\n### If you work\n- **Werkstudent:** you are exempt from health, long-term care and unemployment insurance in the job; only pension insurance is deducted. You keep paying your own student contribution.\n- **Minijob:** the employer's contributions do not replace your own student health insurance contribution.\n\n### Family insurance\nIf a parent is covered by statutory insurance in Germany, family insurance (Familienversicherung) may be possible within certain age and income limits — ask the Krankenkasse for the current limit.\n\n⚠️ The basis is linked to the BAföG need rate; if that rate changes, the contribution changes from the relevant semester.\n\nWerkstudent rules: [HiWi vs Werkstudent](/en/blog/hiwi-vs-werkstudent-student-jobs-in-germany-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How much is student health insurance (Krankenversicherung) per month?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ogrenci-saglik-sigortasi-krankenversicherung-aylik-ne-kadar-de",
+     "new": {
+      "question": "Was kostet die studentische Krankenversicherung pro Monat?",
+      "answer_md": "In der Krankenversicherung der Studenten (KVdS) zahlst du 2026 inklusive Pflegeversicherung **rund 118 € plus den Zusatzbeitrag deiner Krankenkasse** pro Monat. Bei einem Zusatzbeitrag von 2,69 % sind das zum Beispiel **141,16 €** (unter 23) bzw. **146,29 €** (ab 23, kinderlos).\n\n### So wird gerechnet (2026, bei allen gesetzlichen Kassen gleiche Basis)\n- **Bemessungsgrundlage:** der gesetzliche BAföG-Bedarfssatz von 855 € im Monat (seit 01.01.2026) – egal, ob du selbst BAföG bekommst.\n- **Krankenversicherung:** 7/10 des allgemeinen Beitragssatzes = 10,22 % → **87,38 €** + Zusatzbeitrag deiner Krankenkasse.\n- **Pflegeversicherung:** ab 23 ohne Kinder 4,2 % = **35,91 €**; unter 23 oder mit Kind 3,6 % = **30,78 €**.\n\nDie Kassen unterscheiden sich nur beim Zusatzbeitrag – den aktuellen Satz erfährst du bei deiner Krankenkasse.\n\n### Ab 30\nDie studentische Pflichtversicherung gilt längstens bis zur Vollendung des 30. Lebensjahres (Ausnahmen: Art der Ausbildung, familiäre oder persönliche Gründe). Bist du bereits studentisch versichert, setzt sich die Mitgliedschaft danach automatisch als freiwillige GKV fort; austreten kannst du nur mit Nachweis einer anderen Absicherung. Eine PKV ist ab 30 also nicht automatisch Pflicht – die Beiträge werden aber anders berechnet, frag deine Kasse nach der Höhe.\n\n### Wenn du jobbst\n- **Werkstudent:** In der Beschäftigung bist du kranken-, pflege- und arbeitslosenversicherungsfrei; nur Rentenversicherungsbeiträge fallen an. Deinen studentischen Beitrag zahlst du weiter.\n- **Minijob:** Die Pauschalbeiträge des Arbeitgebers ersetzen deinen eigenen studentischen Krankenversicherungsbeitrag nicht.\n\n### Familienversicherung\nIst ein Elternteil in Deutschland gesetzlich versichert, kann eine Familienversicherung innerhalb bestimmter Alters- und Einkommensgrenzen möglich sein – die aktuelle Grenze nennt dir die Krankenkasse.\n\n⚠️ Die Basis hängt am BAföG-Bedarfssatz; ändert er sich, ändert sich der Beitrag ab dem betreffenden Semester.\n\nWerkstudent-Regeln: [HiWi oder Werkstudent](/de/blog/hiwi-vs-werkstudent-student-jobs-in-germany-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Was kostet die studentische Krankenversicherung pro Monat?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "master-icin-daad-bursu-aylik-ne-kadar",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "master-icin-daad-bursu-aylik-ne-kadar",
+     "old": {
+      "question": "Master için DAAD bursu aylık ne kadar?",
+      "visible": "text",
+      "head": "DAAD Master Studies in Germany bursu (2026 sonbahar dönemi itibarıyla): # Aylık Tutar # Standart Mas"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Master için DAAD bursu aylık ne kadar?",
+      "answer_md": "DAAD'ın genel Master bursu 2026 itibarıyla **aylık 992 €**'dur. Bu tutar, BAföG azami tutarıyla ve öğrenci vizesinde istenen finansman kanıtıyla (01.09.2024'ten beri 992 €/ay = 11.904 €/yıl) aynı seviyededir.\n\n### Ek ödemeler programa göre değişir\nBazı DAAD programları aylık tutara ek olarak başka yardımlar da sağlar; bunların olup olmadığı ve tutarları **programdan programa değişir**. Sabit bir \"burs paketi\" değeri yoktur. Hangi ek kalemlerin sana ödeneceğini başvurduğun programın DAAD ilanından ve burs sözleşmesinden kontrol et.\n\nKarşılaştırma için: DAAD doktora bursu Şubat 2026'dan beri aylık 1.400 €'dur.\n\n### Burs alırken çalışabilir miyim?\nÖğrenci oturum izninde çalışma sınırı saat değil **gün** bazlıdır: 01.03.2024'ten beri yılda 140 iş günü (Arbeitstagekonto, § 16b Abs. 3 AufenthG). Üniversitedeki öğrenci asistanlığı (HiWi) bu sayıya dahil değildir. Sık duyulan \"haftada 20 saat\" ise oturum hukukundan değil, sosyal sigortadan (Werkstudent statüsü) gelen bir kuraldır. Ayrıca bursun kendi koşullarında ek iş için bir kısıt olup olmadığını burs sözleşmende kontrol et.\n\n### Dikkat\n- Diğer vakıfların burs tutarları farklıdır ve değişebilir; güncel rakamı her vakfın kendi resmi sayfasından kontrol et.\n\nÇalışma kuralları: [140 gün kuralı ve staj](/tr/blog/internship-in-germany-with-b1-b2-german) · Finansman kanıtı: [Sperrkonto 2026](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "master-icin-daad-bursu-aylik-ne-kadar-en",
+     "new": {
+      "question": "How much is the DAAD scholarship for a Master's degree per month?",
+      "answer_md": "The general DAAD Master's scholarship is **992 € per month** (2026). That is the same as the BAföG maximum and the proof of funds required for a student visa (992 €/month = 11,904 €/year since 01.09.2024).\n\n### Extra benefits vary by programme\nSome DAAD programmes pay additional benefits on top of the monthly rate, but whether you get them and how much they are **varies from programme to programme**. There is no fixed \"package value\". Check the DAAD call for your specific programme and your award letter to see which extras apply to you.\n\nFor comparison: the DAAD doctoral scholarship has been 1,400 € per month since February 2026.\n\n### Can I work while on the scholarship?\nOn a student residence permit the limit is counted in **days**, not hours: since 01.03.2024 you may work 140 working days per year (Arbeitstagekonto, § 16b (3) AufenthG). Student assistant jobs at the university (HiWi) do not count. The often-quoted \"20 hours per week\" is a social-insurance rule for Werkstudent status, not a residence-law limit. Also check whether your scholarship terms themselves restrict side jobs.\n\n### Keep in mind\n- Other foundations pay different rates, which can change — check each foundation's official page for the current amount.\n\nWork rules: [140-day rule and internships](/en/blog/internship-in-germany-with-b1-b2-german-en) · Proof of funds: [Sperrkonto 2026](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How much is the monthly DAAD scholarship for a Master's degree?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "master-icin-daad-bursu-aylik-ne-kadar-de",
+     "new": {
+      "question": "Wie hoch ist das DAAD-Stipendium für ein Masterstudium pro Monat?",
+      "answer_md": "Das allgemeine DAAD-Masterstipendium beträgt **992 € im Monat** (Stand 2026). Das entspricht dem BAföG-Höchstsatz und dem Finanzierungsnachweis für das Studentenvisum (992 €/Monat = 11.904 €/Jahr seit 01.09.2024).\n\n### Zusatzleistungen hängen vom Programm ab\nManche DAAD-Programme zahlen zusätzlich zur Monatsrate weitere Leistungen – ob und in welcher Höhe, **ist von Programm zu Programm verschieden**. Einen festen „Paketwert“ gibt es nicht. Welche Zusatzleistungen für dich gelten, steht in der Ausschreibung deines Programms und in deinem Stipendienbescheid.\n\nZum Vergleich: Das DAAD-Promotionsstipendium liegt seit Februar 2026 bei 1.400 € im Monat.\n\n### Darf ich neben dem Stipendium jobben?\nMit einer Aufenthaltserlaubnis zum Studium zählt das Aufenthaltsrecht **Tage**, nicht Stunden: Seit 01.03.2024 sind 140 Arbeitstage im Jahr erlaubt (Arbeitstagekonto, § 16b Abs. 3 AufenthG). Studentische Nebentätigkeiten an der Hochschule (HiWi) werden nicht angerechnet. Die bekannten „20 Stunden pro Woche“ sind eine sozialversicherungsrechtliche Regel für den Werkstudentenstatus, keine aufenthaltsrechtliche Grenze. Prüf außerdem, ob deine Stipendienbedingungen Nebenjobs einschränken.\n\n### Wichtig\n- Andere Stiftungen zahlen andere Sätze, die sich ändern können – den aktuellen Betrag findest du auf der offiziellen Seite der jeweiligen Stiftung.\n\nJobregeln: [140-Tage-Regel und Praktikum](/de/blog/internship-in-germany-with-b1-b2-german-de) · Finanzierungsnachweis: [Sperrkonto 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie hoch ist das DAAD-Stipendium für ein Masterstudium monatlich?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "master-sonrasi-is-arama-vizesi-jobsuche-kac-ay-gecerli",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "master-sonrasi-is-arama-vizesi-jobsuche-kac-ay-gecerli",
+     "old": {
+      "question": "Master sonrası iş arama vizesi (Jobsuche) kaç ay geçerli?",
+      "visible": "text",
+      "head": "Master mezuniyetinden sonra 18 ay (1.5 yıl) geçerli iş arama vizesi (§ 20 AufenthG) alma hakkın var."
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Master sonrası iş arama vizesi (Jobsuche) kaç ay geçerli?",
+      "answer_md": "**En fazla 18 ay.** Almanya'da Master'ını (ya da başka bir yükseköğretim derecesini) başarıyla bitirdiysen iş aramak için 18 aya kadar geçerli bir oturum izni alırsın (§ 20 Abs. 1 Nr. 1 AufenthG). Bu izin 18 ayın ötesine **uzatılamaz**; şartı, geçiminin güvence altında olmasıdır.\n\nBaşvuruyu öğrenci oturum iznin **bitmeden** Ausländerbehörde'ye yap: süresi dolmadan başvurursan karar verilene kadar mevcut iznin geçerli sayılır (§ 81 Abs. 4 AufenthG). Bu sürede uygun bir iş bulursan çalışma amaçlı bir oturum iznine geçiş için başvurursun. 18 ay içinde iş bulamazsan başka bir iznin (ör. yeni bir öğrenim) şartlarını karşılayıp karşılamadığını erkenden kontrol et; yurt dışından iş aramak için Fırsat Kartı (Chancenkarte, 01.06.2024'ten beri) gibi ayrı yollar da vardır.\n\nKaynak: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "master-sonrasi-is-arama-vizesi-jobsuche-kac-ay-gecerli-en",
+     "new": {
+      "question": "How long is the job-search permit valid after a Master's in Germany?",
+      "answer_md": "**Up to 18 months.** If you have successfully completed your Master's (or another degree) in Germany, you can get a residence permit to look for work for up to 18 months (§ 20 (1) no. 1 AufenthG). It **cannot be extended** beyond 18 months, and you need a secured livelihood.\n\nApply at the Ausländerbehörde **before your student permit expires**: if you do, your current permit is deemed to continue until the decision (§ 81 (4) AufenthG). If you find a suitable job during this time, you apply to switch to a work-based residence permit. If you have not found a job within 18 months, check early whether you meet the requirements for another permit (e.g. further studies); for a job search from abroad, separate routes exist, such as the Opportunity Card (Chancenkarte, since 01.06.2024).\n\nSource: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "How many months is the Job Search Visa (Jobsuche) valid for after your Master's?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "master-sonrasi-is-arama-vizesi-jobsuche-kac-ay-gecerli-de",
+     "new": {
+      "question": "Wie lange gilt die Aufenthaltserlaubnis zur Jobsuche nach dem Master?",
+      "answer_md": "**Bis zu 18 Monate.** Hast du deinen Master (oder einen anderen Studienabschluss) in Deutschland erfolgreich abgeschlossen, bekommst du eine Aufenthaltserlaubnis zur Arbeitsplatzsuche für bis zu 18 Monate (§ 20 Abs. 1 Nr. 1 AufenthG). Eine Verlängerung darüber hinaus ist **ausgeschlossen**; Voraussetzung ist ein gesicherter Lebensunterhalt.\n\nStell den Antrag bei der Ausländerbehörde **vor Ablauf deiner Aufenthaltserlaubnis zum Studium** – dann gilt dein bisheriger Titel bis zur Entscheidung fort (§ 81 Abs. 4 AufenthG). Findest du in dieser Zeit eine passende Stelle, beantragst du den Wechsel in einen Aufenthaltstitel zur Beschäftigung. Klappt es in 18 Monaten nicht, prüf rechtzeitig, ob du die Voraussetzungen für einen anderen Titel erfüllst (z. B. ein weiteres Studium); für die Jobsuche aus dem Ausland gibt es eigene Wege wie die Chancenkarte (seit 01.06.2024).\n\nQuelle: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie lange ist das Visum zur Arbeitsplatzsuche (Jobsuche) nach dem Master gültig?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "mezuniyet-sonrasi-is-arama-vizesi-jobsuche-suresi-nedir",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "mezuniyet-sonrasi-is-arama-vizesi-jobsuche-suresi-nedir",
+     "old": {
+      "question": "Mezuniyet sonrası iş arama vizesi (Jobsuche) süresi nedir?",
+      "visible": "text",
+      "head": "Mezuniyet sonrası iş arama vizesi (Jobsuchende-Visum / §20 AufenthG) Türk öğrencilerine 18 ay süre v"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Mezuniyet sonrası iş arama vizesi (Jobsuche) süresi nedir?",
+      "answer_md": "Almanya'da bir yükseköğretim eğitimini başarıyla tamamladıysan iş aramak için **en fazla 18 ay** geçerli bir oturum izni alabilirsin (§ 20 Abs. 1 Nr. 1 AufenthG). Bu izin 18 ayın ötesine **uzatılamaz**. Halk arasında \"iş arama vizesi\" denir ama aslında Almanya içinde Ausländerbehörde'den alınan bir oturum iznidir (Aufenthaltserlaubnis).\n\n### Kimler alabilir?\n- Almanya'da öğrenci oturum izniyle (§ 16b) ya da öğrenci mobilitesi kapsamında (§ 16c) okuyup mezun olanlar. Bachelor, Master veya doktora ayrımı yoktur.\n- Şartlar sağlanırsa izin verilir; bu bir takdir değil, yasal haktır.\n- Diplomasını Türkiye'de ya da başka bir ülkede alanlar için bu yol geçerli değildir. Onlar için örneğin Fırsat Kartı (Chancenkarte, 01.06.2024'ten beri, puan yolunda en az 6 puan) gibi ayrı yollar vardır.\n\n### Şartlar\n- Eğitimin başarıyla tamamlandığının kanıtı\n- Geçiminin güvence altında olması (Lebensunterhalt)\n- Yerel Ausländerbehörde'nin istediği diğer belgeler (pasaport, sigorta kanıtı vb.; listeyi yerel makamdan kontrol et)\n\n### Ne zaman başvurmalı?\nÖğrenci oturum iznin **bitmeden önce** başvur. Süresi dolmadan başvurursan karar verilene kadar mevcut iznin devam etmiş sayılır ve sana Fiktionsbescheinigung verilir (§ 81 Abs. 4 AufenthG). Geç başvuruda bu etki kendiliğinden doğmaz.\n\n### Arama sürecinde çalışma\n§ 20 kendi içinde bir çalışma kısıtı içermez; bu sürede genel olarak çalışabilirsin. Kartındaki ek notu (Nebenbestimmung) Ausländerbehörde ile teyit et.\n\n### İş bulunca ya da süre dolunca\nNitelikli bir iş bulduğunda çalışma amaçlı bir oturum iznine (ör. nitelikli çalışan izni veya AB Mavi Kartı) geçiş için başvurursun; maaş eşikleri her yıl değiştiği için güncel rakamı resmi kaynaktan kontrol et. 18 ay dolduğunda başka bir iznin şartlarını karşılamıyorsan izin sona erer. Uzun süre yurt dışında kalmayı planlıyorsan önce Ausländerbehörde'ye danış.\n\nKaynak: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "mezuniyet-sonrasi-is-arama-vizesi-jobsuche-suresi-nedir-en",
+     "new": {
+      "question": "How long is the post-graduation job-search permit (§ 20) valid in Germany?",
+      "answer_md": "If you have successfully completed a degree in Germany, you can get a residence permit to look for a job for **up to 18 months** (§ 20 (1) no. 1 AufenthG). It **cannot be extended** beyond 18 months. It is often called a \"job-seeker visa\", but it is actually a residence permit (Aufenthaltserlaubnis) issued by the Ausländerbehörde in Germany.\n\n### Who is eligible?\n- Graduates who studied in Germany on a student residence permit (§ 16b) or under student mobility (§ 16c) — Bachelor's, Master's or doctorate alike.\n- If you meet the requirements, the permit is granted — it is an entitlement, not a discretionary decision.\n- It does not apply to degrees earned in Türkiye or elsewhere abroad. For those, other routes exist, e.g. the Opportunity Card (Chancenkarte, since 01.06.2024, at least 6 points on the points path).\n\n### Requirements\n- Proof that you have successfully completed your studies\n- Secured livelihood (Lebensunterhalt)\n- Other documents your local Ausländerbehörde asks for (passport, proof of health insurance, etc. — check the local list)\n\n### When to apply\nApply **before your student permit expires**. If you do, your current permit is deemed to continue until the authority decides, and you receive a Fiktionsbescheinigung (§ 81 (4) AufenthG). A late application does not trigger this automatically.\n\n### Working during the search\n§ 20 itself contains no employment restriction, so you can generally work during this period. Confirm the note (Nebenbestimmung) on your card with the Ausländerbehörde.\n\n### When you find a job — or time runs out\nOnce you find a qualified job, you apply to switch to a work-based residence permit (e.g. skilled-worker permit or EU Blue Card); salary thresholds change every year, so check the current figure with an official source. When the 18 months end and you do not meet the requirements for another permit, the permit expires. If you plan a longer stay abroad, ask the Ausländerbehörde first.\n\nSource: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What is the duration of the post-graduation job-seeking visa (Jobsuche)?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "mezuniyet-sonrasi-is-arama-vizesi-jobsuche-suresi-nedir-de",
+     "new": {
+      "question": "Wie lange gilt die Aufenthaltserlaubnis zur Arbeitsplatzsuche nach dem Studium (§ 20)?",
+      "answer_md": "Hast du ein Studium in Deutschland erfolgreich abgeschlossen, bekommst du eine Aufenthaltserlaubnis zur Arbeitsplatzsuche für **bis zu 18 Monate** (§ 20 Abs. 1 Nr. 1 AufenthG). Eine Verlängerung über die 18 Monate hinaus ist **ausgeschlossen**. Oft ist vom „Jobsuche-Visum“ die Rede – tatsächlich ist es eine Aufenthaltserlaubnis, die die Ausländerbehörde in Deutschland erteilt.\n\n### Wer kann sie bekommen?\n- Absolventinnen und Absolventen, die in Deutschland mit einer Aufenthaltserlaubnis zum Studium (§ 16b) oder im Rahmen der Mobilität (§ 16c) studiert haben – egal ob Bachelor, Master oder Promotion.\n- Sind die Voraussetzungen erfüllt, wird die Erlaubnis erteilt – es handelt sich um einen Anspruch, keine Ermessensentscheidung.\n- Für Abschlüsse aus der Türkei oder einem anderen Land gilt dieser Weg nicht; dafür gibt es andere Wege, etwa die Chancenkarte (seit 01.06.2024, im Punkteweg mindestens 6 Punkte).\n\n### Voraussetzungen\n- Nachweis des erfolgreichen Studienabschlusses\n- Gesicherter Lebensunterhalt\n- Weitere Unterlagen, die deine Ausländerbehörde verlangt (Pass, Krankenversicherungsnachweis usw. – lokale Liste prüfen)\n\n### Wann beantragen?\nStell den Antrag **vor Ablauf deiner Aufenthaltserlaubnis zum Studium**. Dann gilt dein bisheriger Titel bis zur Entscheidung als fortbestehend, und du erhältst eine Fiktionsbescheinigung (§ 81 Abs. 4 AufenthG). Bei einem verspäteten Antrag tritt diese Wirkung nicht automatisch ein.\n\n### Arbeiten während der Suche\n§ 20 selbst enthält keine Beschäftigungsbeschränkung; du darfst in dieser Zeit grundsätzlich arbeiten. Lass dir die Nebenbestimmung auf deinem Aufenthaltstitel von der Ausländerbehörde bestätigen.\n\n### Job gefunden – oder Zeit abgelaufen\nFindest du eine qualifizierte Stelle, beantragst du den Wechsel in einen Aufenthaltstitel zur Beschäftigung (z. B. als Fachkraft oder Blaue Karte EU); die Gehaltsgrenzen ändern sich jährlich, prüf den aktuellen Wert bei einer offiziellen Stelle. Erfüllst du nach 18 Monaten keine Voraussetzungen für einen anderen Titel, endet die Erlaubnis. Planst du einen längeren Auslandsaufenthalt, sprich vorher mit der Ausländerbehörde.\n\nQuelle: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Wie lange ist das Visum zur Arbeitsplatzsuche (Jobsuche) nach dem Studium gültig?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "master-sonrasi-is-bulamazsam-vizem-ne-olur",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "master-sonrasi-is-bulamazsam-vizem-ne-olur",
+     "old": {
+      "question": "Master sonrası iş bulamazsam vizem ne olur?",
+      "visible": "text",
+      "head": "Master sonrası iş bulamazsan Job Search Visa (18 ay) seçeneği var. Bu süre sonunda hala iş yoksa Tür"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Master sonrası iş bulamazsam vizem ne olur?",
+      "answer_md": "Master'ı bitirdiğinde hemen iş bulman gerekmez: Almanya'da başarıyla mezun olduysan iş aramak için **18 aya kadar** geçerli bir oturum izni alabilirsin (§ 20 AufenthG). Bu izin 18 ayın ötesine uzatılamaz. Süre sonunda hâlâ iş yoksa, başka bir oturum izninin şartlarını karşılamıyorsan Almanya'dan ayrılman gerekir. Ama bu, bir daha gelemeyeceğin anlamına gelmez.\n\n### Seçeneklerin\n1. **İş arama izni (§ 20):** Şartı, geçiminin güvence altında olması. Öğrenci oturum iznin **bitmeden** Ausländerbehörde'ye başvur. Süresi dolmadan başvurursan karar verilene kadar mevcut iznin devam etmiş sayılır (§ 81 Abs. 4 AufenthG). Bu sürede uygun bir iş bulursan çalışma amaçlı bir oturum iznine geçiş için başvurursun.\n2. **Doktora ya da yeni bir öğrenim:** Master'la öğrenim amacın tamamlandığı için yeni bir eğitim (ör. doktora) için yeni kabul ve finansman kanıtıyla öğrenim izni (§ 16b) gerekir. Örnek finansman: DAAD doktora bursu Şubat 2026'dan beri aylık 1.400 €.\n3. **Başka oturum amaçları:** Örneğin eşin Almanya'da oturum iznine sahipse aile birleşimi şartlarını incele. Şartlar eşinin iznine göre değişir.\n4. **Almanya dışından yeniden başlamak:** Ayrıldıktan sonra iş bulursan çalışma vizesiyle dönebilirsin. Nitelikli iş araması için ayrıca puan sistemli Fırsat Kartı (Chancenkarte, 01.06.2024'ten beri, puan yolunda en az 6 puan) gibi yollar da var.\n\n### Dikkat\n- Çalışma izinlerindeki maaş eşikleri her yıl değişir; güncel rakamı resmi kaynaktan kontrol et.\n- 18 ayın sonunu bekleme: bir sonraki izne geçiş başvurusunu, mevcut iznin bitmeden yap.\n- Kendi durumun için Ausländerbehörde'ye danış; hangi belgeleri istediğini yerel makam belirler.\n\nKaynak: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "master-sonrasi-is-bulamazsam-vizem-ne-olur-en",
+     "new": {
+      "question": "What happens to my residence permit if I can't find a job after my Master's?",
+      "answer_md": "You do not need a job the day you graduate: after successfully completing a degree in Germany you can get a residence permit to look for work for **up to 18 months** (§ 20 AufenthG). It cannot be extended beyond 18 months. If you still have no job at the end and do not meet the requirements for another residence permit, you have to leave Germany — but that does not mean you cannot come back.\n\n### Your options\n1. **Job-search permit (§ 20):** requires a secured livelihood. Apply at the Ausländerbehörde **before your student permit expires** — then your current permit is deemed to continue until the decision (§ 81 (4) AufenthG). If you find a suitable job in this period, you apply to switch to a work-based permit.\n2. **Doctorate or further studies:** your Master's completes the study purpose, so new studies (e.g. a doctorate) need a new study permit (§ 16b) with admission and proof of funds. One funding example: the DAAD doctoral scholarship, 1,400 € per month since February 2026.\n3. **Other residence purposes:** for example, if your spouse holds a German residence permit, look into the family reunification requirements — they depend on your spouse's permit.\n4. **Starting again from abroad:** if you find a job after leaving, you can return on a work visa. For a skilled job search there are also routes like the points-based Opportunity Card (Chancenkarte, since 01.06.2024, at least 6 points on the points path).\n\n### Keep in mind\n- Salary thresholds for work permits change every year — check the current figure with an official source.\n- Don't wait until the last day: apply for your next permit before the current one expires.\n- Talk to your Ausländerbehörde about your case; the local office decides which documents it needs.\n\nSource: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "What happens to my visa if I can't find a job after my Master's?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "master-sonrasi-is-bulamazsam-vizem-ne-olur-de",
+     "new": {
+      "question": "Was passiert mit meinem Aufenthaltstitel, wenn ich nach dem Master keinen Job finde?",
+      "answer_md": "Du musst nicht am Tag des Abschlusses einen Job haben: Nach einem erfolgreich abgeschlossenen Studium in Deutschland bekommst du eine Aufenthaltserlaubnis zur Arbeitsplatzsuche für **bis zu 18 Monate** (§ 20 AufenthG). Eine Verlängerung darüber hinaus ist ausgeschlossen. Hast du danach keinen Job und erfüllst keine Voraussetzungen für einen anderen Aufenthaltstitel, musst du Deutschland verlassen – eine spätere Rückkehr ist damit aber nicht ausgeschlossen.\n\n### Deine Optionen\n1. **Aufenthaltserlaubnis zur Arbeitsplatzsuche (§ 20):** Voraussetzung ist ein gesicherter Lebensunterhalt. Beantrage sie **vor Ablauf deiner Aufenthaltserlaubnis zum Studium** – dann gilt dein bisheriger Titel bis zur Entscheidung fort (§ 81 Abs. 4 AufenthG). Findest du in dieser Zeit eine passende Stelle, beantragst du den Wechsel in einen Titel zur Beschäftigung.\n2. **Promotion oder weiteres Studium:** Mit dem Master ist der Studienzweck erreicht; für ein neues Studium (z. B. Promotion) brauchst du eine neue Aufenthaltserlaubnis nach § 16b mit Zulassung und Finanzierungsnachweis. Ein Finanzierungsbeispiel: das DAAD-Promotionsstipendium mit 1.400 € im Monat seit Februar 2026.\n3. **Andere Aufenthaltszwecke:** Hat zum Beispiel dein Ehepartner einen Aufenthaltstitel in Deutschland, prüf die Voraussetzungen für den Familiennachzug – sie hängen von seinem Titel ab.\n4. **Neustart aus dem Ausland:** Findest du nach der Ausreise einen Job, kannst du mit einem Visum zur Beschäftigung zurückkommen. Für die Suche nach qualifizierter Arbeit gibt es außerdem die Chancenkarte mit Punktesystem (seit 01.06.2024, im Punkteweg mindestens 6 Punkte).\n\n### Wichtig\n- Die Gehaltsgrenzen für Arbeitstitel ändern sich jährlich – prüf den aktuellen Wert bei einer offiziellen Stelle.\n- Warte nicht bis zum letzten Tag: Beantrage den nächsten Titel vor Ablauf des aktuellen.\n- Sprich mit deiner Ausländerbehörde über deinen Fall; welche Unterlagen nötig sind, legt die Behörde vor Ort fest.\n\nQuelle: [§ 20 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__20.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Was passiert mit deinem Visum, wenn du nach dem Master keine Arbeit findest?",
+      "visible": "empty"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vize-uzatmasi-icin-anmeldung-sart-mi",
+   "chatbot_risk": false,
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vize-uzatmasi-icin-anmeldung-sart-mi",
+     "old": {
+      "question": "Vize uzatması için Anmeldung şart mı?",
+      "visible": "text",
+      "head": "Evet, vize uzatma için Anmeldung şart. Ausländerbehörde Aufenthaltstitel başvurusunda Anmeldebeschei"
+     },
+     "mode": "rewrite",
+     "new": {
+      "question": "Vize uzatması için Anmeldung şart mı?",
+      "answer_md": "Pratikte evet: Ausländerbehörde'ler oturum izni uzatma başvurusunda genellikle güncel bir **Meldebescheinigung** ister. Oturum Kanunu'nun (AufenthG) başvuru maddesi (§ 81) Anmeldung'u açıkça şart olarak saymaz. Ama Anmeldung zaten ayrı bir yasal yükümlülüktür: bir daireye taşındıktan sonra **iki hafta içinde** Meldebehörde'ye (Bürgeramt) kaydolman gerekir (§ 17 Abs. 1 BMG).\n\n### Neden önemli?\n- Hangi Ausländerbehörde'nin yetkili olduğu, oturduğun yere göre belirlenir.\n- Adresini kanıtlamanın olağan yolu Meldebescheinigung'dur.\n- Taşındığında yeni adresine de aynı iki haftalık süre içinde kaydolman gerekir.\n\n### Süreyi kaçırma\nUzatma başvurusunu mevcut iznin **bitmeden** yap. Zamanında başvurursan karar verilene kadar iznin devam etmiş sayılır ve sana **Fiktionsbescheinigung** verilir (§ 81 Abs. 4–5 AufenthG). Geç başvuruda bu etki kendiliğinden doğmaz; Ausländerbehörde ancak ağır mağduriyeti önlemek için takdiren tanıyabilir. Bu kural Schengen vizeleri için geçerli değildir.\n\n### Anmeldung randevusu bulamıyorsan\nUzatma başvurusunu bu yüzden erteleme. Süresi içinde başvur, Anmeldung için yaptığın girişimleri (randevu onayı vb.) belgele ve Ausländerbehörde'ye bildir. Neyi kabul edeceğine yerel makam karar verir.\n\n### Genelde istenen belgeler (yerel listeyi kontrol et)\n- Pasaport ve biyometrik fotoğraf\n- Meldebescheinigung\n- Öğrenci belgesi (Immatrikulationsbescheinigung)\n- Finansman kanıtı (öğrenciler için referans: 01.09.2024'ten beri aylık 992 €)\n- Sağlık sigortası kanıtı\n- Ücret: Ausländerbehörde'nin ücret tarifesine göre; güncel tutarı yetkili makama sor.\n\nFinansman: [Sperrkonto 2026](/tr/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you) · Kaynak: [§ 17 BMG](https://www.gesetze-im-internet.de/bmg/__17.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vize-uzatmasi-icin-anmeldung-sart-mi-en",
+     "new": {
+      "question": "Do I need an Anmeldung to extend my residence permit?",
+      "answer_md": "In practice, yes: the Ausländerbehörde typically asks for a current **Meldebescheinigung** when you apply to extend your residence permit. The application rule in the Residence Act (§ 81 AufenthG) does not list the Anmeldung as a condition, but registering is a separate legal duty anyway: you must register with the Meldebehörde (Bürgeramt) **within two weeks** of moving into a flat (§ 17 (1) BMG).\n\n### Why it matters\n- Which Ausländerbehörde is responsible for you depends on where you live.\n- The Meldebescheinigung is the usual proof of your address.\n- When you move, the same two-week deadline applies to registering at your new address.\n\n### Don't miss the deadline\nApply for the extension **before your current permit expires**. If you do, your permit is deemed to continue until the decision and you receive a **Fiktionsbescheinigung** (§ 81 (4)–(5) AufenthG). A late application does not have this effect automatically — the authority may grant it only at its discretion to avoid undue hardship. This rule does not apply to Schengen visas.\n\n### Can't get an Anmeldung appointment?\nDon't delay the extension because of it. Apply in time, document your attempts to register (e.g. appointment confirmation) and tell the Ausländerbehörde. The local office decides what it accepts.\n\n### Documents usually required (check your local list)\n- Passport and biometric photo\n- Meldebescheinigung\n- Proof of enrolment (Immatrikulationsbescheinigung)\n- Proof of funds (reference for students: 992 € per month since 01.09.2024)\n- Proof of health insurance\n- Fee: according to the authority's fee schedule — ask your Ausländerbehörde for the current amount.\n\nFunding: [Sperrkonto 2026](/en/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en) · Source: [§ 17 BMG](https://www.gesetze-im-internet.de/bmg/__17.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Is Anmeldung required for a visa extension?",
+      "visible": "empty"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vize-uzatmasi-icin-anmeldung-sart-mi-de",
+     "new": {
+      "question": "Brauche ich eine Anmeldung, um meinen Aufenthaltstitel zu verlängern?",
+      "answer_md": "In der Praxis ja: Die Ausländerbehörde verlangt bei der Verlängerung deines Aufenthaltstitels in der Regel eine aktuelle **Meldebescheinigung**. Die Antragsvorschrift im Aufenthaltsgesetz (§ 81 AufenthG) nennt die Anmeldung zwar nicht ausdrücklich als Voraussetzung – anmelden musst du dich aber ohnehin: **innerhalb von zwei Wochen** nach dem Einzug in eine Wohnung bei der Meldebehörde (Bürgeramt) (§ 17 Abs. 1 BMG).\n\n### Warum das wichtig ist\n- Welche Ausländerbehörde für dich zuständig ist, richtet sich nach deinem Wohnort.\n- Die Meldebescheinigung ist der übliche Nachweis deiner Adresse.\n- Ziehst du um, gilt für die Anmeldung an der neuen Adresse wieder die Zwei-Wochen-Frist.\n\n### Frist nicht verpassen\nStell den Verlängerungsantrag **vor Ablauf deines Aufenthaltstitels**. Dann gilt dein Titel bis zur Entscheidung als fortbestehend, und du bekommst eine **Fiktionsbescheinigung** (§ 81 Abs. 4–5 AufenthG). Bei einem verspäteten Antrag tritt diese Wirkung nicht automatisch ein – die Behörde kann sie nur nach Ermessen zur Vermeidung einer unbilligen Härte anordnen. Für Schengen-Visa gilt diese Regel nicht.\n\n### Kein Termin beim Bürgeramt?\nSchieb die Verlängerung deshalb nicht auf. Stell den Antrag fristgerecht, dokumentiere deine Bemühungen um die Anmeldung (z. B. Terminbestätigung) und informiere die Ausländerbehörde. Was akzeptiert wird, entscheidet die Behörde vor Ort.\n\n### Übliche Unterlagen (lokale Liste prüfen)\n- Reisepass und biometrisches Foto\n- Meldebescheinigung\n- Immatrikulationsbescheinigung\n- Finanzierungsnachweis (Richtwert für Studierende: 992 € im Monat seit 01.09.2024)\n- Krankenversicherungsnachweis\n- Gebühr: nach der Gebührenordnung – den aktuellen Betrag nennt dir deine Ausländerbehörde.\n\nFinanzierung: [Sperrkonto 2026](/de/news/2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de) · Quelle: [§ 17 BMG](https://www.gesetze-im-internet.de/bmg/__17.html) · [§ 81 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__81.html)\n"
+     },
+     "mode": "update",
+     "old": {
+      "question": "Ist eine Anmeldung für die Visumsverlängerung erforderlich?",
+      "visible": "empty"
+     }
+    }
+   ]
+  }
+ ]
+}
