@@ -1,0 +1,275 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "B",
+ "clusters": [
+  {
+   "tr_slug": "studienkollegde-tatil-sureleri-ve-calisma-izinleri-nasil-duzenlenir",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkollegde-tatil-sureleri-ve-calisma-izinleri-nasil-duzenlenir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg'de tatil süreleri ve çalışma izinleri nasıl düzenlenir?",
+      "visible": "text",
+      "head": "Studienkolleg'de genellikle kış ve yaz aylarında toplamda 2-4 ay civarı tatil dönemi bulunur. Çalışm"
+     },
+     "new": {
+      "question": "Studienkolleg'de tatil süreleri ve çalışma izinleri nasıl düzenlenir?",
+      "answer_md": "Studienkolleg öğrencisi olarak, öğrenim amaçlı oturum izniyle (§ 16b AufenthG) çalışabilirsin; bugünkü yasada **\"ilk yıl çalışamazsın\" diye bir kısıtlama yok**. Studienkolleg, kabulün belgelendiğinde öğrenime hazırlık tedbiri olarak § 16b kapsamındadır.\n\n### Çalışma kuralı (§ 16b Abs. 3)\n- Yılda en fazla **140 iş günü** çalışabilirsin (Arbeitstagekonto).\n- 4 saate kadar çalıştığın gün **yarım gün** sayılabilir.\n- Ders döneminde en fazla 20 saat çalıştığın bir hafta, ders dönemi dışında ise her hafta **2,5 iş günü** sayılabilir.\n- Her hafta için senin lehine olan hesap uygulanır.\n\n### Tatiller\nTatil dönemlerini her Studienkolleg kendi dönem takvimiyle belirler; Almanya genelinde tek bir süre yok. Studienkolleg'inin takvimindeki ders ve tatil haftalarının haftalık hesapta nasıl sayılacağını kendi Ausländerbehörde'nle netleştir.\n\n### Dikkat\nBu kurallar § 16b oturum izni içindir. Farklı bir izinle (örneğin öğrenimle bağlantısı olmayan dil kursu izni) geldiysen kurallar farklıdır. Sayım örnekleri: [140 günlük çalışma hesabı](/tr/blog/internship-in-germany-with-b1-b2-german).\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkollegde-tatil-sureleri-ve-calisma-izinleri-nasil-duzenlenir-en",
+     "mode": "update",
+     "old": {
+      "question": "What are the holiday periods and work permit rules for Studienkolleg students?",
+      "visible": "text",
+      "head": "At a Studienkolleg, you typically get around 2-4 months of holidays in total, usually split between"
+     },
+     "new": {
+      "question": "What are the holiday periods and work rules for Studienkolleg students?",
+      "answer_md": "As a Studienkolleg student with a residence permit for study purposes (§ 16b AufenthG), you are allowed to work — the current law has **no \"no work in the first year\" restriction**. Once your acceptance is documented, attending a Studienkolleg counts as a study-preparatory measure under § 16b.\n\n### Work rule (§ 16b (3))\n- You may work up to **140 working days per year** (Arbeitstagekonto).\n- A day with up to 4 hours of work can count as **half a day**.\n- A lecture-period week with no more than 20 hours, and every week outside the lecture period, can count as **2.5 working days**.\n- For each week, the calculation that is more favourable to you applies.\n\n### Holidays\nEach Studienkolleg sets its own semester calendar, so there is no Germany-wide holiday length. Check with your Ausländerbehörde how your Studienkolleg's teaching and holiday weeks are applied to the weekly count.\n\n### Keep in mind\nThese rules apply to a § 16b residence permit. If you hold a different permit (for example for a language course not linked to studies), different rules apply. Counting examples: [the 140-day work account](/en/blog/internship-in-germany-with-b1-b2-german-en).\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkollegde-tatil-sureleri-ve-calisma-izinleri-nasil-duzenlenir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie sind die Ferienzeiten und Arbeitserlaubnisse am Studienkolleg geregelt?",
+      "visible": "text",
+      "head": "Am Studienkolleg gibt es normalerweise in den Winter- und Sommermonaten insgesamt etwa 2 bis 4 Monat"
+     },
+     "new": {
+      "question": "Wie sind Ferienzeiten und Arbeitsregeln am Studienkolleg geregelt?",
+      "answer_md": "Mit einer Aufenthaltserlaubnis zum Studium (§ 16b AufenthG) darfst du als Studienkolleg-Teilnehmer arbeiten – das aktuelle Gesetz kennt **keine Sperre im ersten Jahr**. Der Besuch eines Studienkollegs gehört als studienvorbereitende Maßnahme zu § 16b, wenn die Annahme nachgewiesen ist.\n\n### Arbeitsregel (§ 16b Abs. 3)\n- Du darfst bis zu **140 Arbeitstage im Jahr** arbeiten (Arbeitstagekonto).\n- Ein Tag mit bis zu 4 Stunden kann als **halber Tag** zählen.\n- Eine Woche in der Vorlesungszeit mit höchstens 20 Stunden sowie jede Woche außerhalb der Vorlesungszeit kann als **2,5 Arbeitstage** zählen.\n- Pro Woche gilt die für dich günstigere Berechnung.\n\n### Ferien\nDie Ferien legt jedes Studienkolleg in seinem eigenen Semesterkalender fest; eine bundesweit einheitliche Dauer gibt es nicht. Wie die Unterrichts- und Ferienwochen deines Studienkollegs bei der wöchentlichen Zählung angerechnet werden, klärst du am besten mit deiner Ausländerbehörde.\n\n### Wichtig\nDiese Regeln gelten für eine Aufenthaltserlaubnis nach § 16b. Mit einem anderen Aufenthaltstitel (zum Beispiel für einen Sprachkurs ohne Studienbezug) gelten andere Regeln. Rechenbeispiele: [das 140-Tage-Arbeitskonto](/de/blog/internship-in-germany-with-b1-b2-german-de).\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "universiteden-sartli-kabul-aldigimda-dil-kursu-kaydi-zorunlu-mu",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "universiteden-sartli-kabul-aldigimda-dil-kursu-kaydi-zorunlu-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Üniversiteden şartlı kabul aldığımda dil kursu kaydı zorunlu mu?",
+      "visible": "text",
+      "head": "Üniversiteden şartlı kabul almanız durumunda, genellikle belirli bir dil seviyesine ulaşana kadar di"
+     },
+     "new": {
+      "question": "Üniversiteden şartlı kabul aldığımda dil kursu kaydı zorunlu mu?",
+      "answer_md": "Şartın Almanca dil seviyesiyse, vize dosyan için pratikte **evet**: temsilcilik, yükseköğrenime hazırlık dil kursu dosyasında (Türkiye'deki temsilciliklerde şu an 36F bilgi notu) **dil kursu kaydını ya da dil okulu/üniversite teyidini** ister. Ancak iki ayrı konu var:\n\n### 1. Üniversitenin şartı\nŞartlı kabul mektubun hangi şartı koyduğunu söyler. Bağlayıcı eşik genellikle öğrenime başlamadan önce üniversitenin istediği dil sınavıdır (çoğunlukla **DSH** veya **TestDaF**). Kursu nerede ve hangi biçimde alacağın bu şarta ve üniversiteye bağlıdır; her üniversite kendi dil kursunu açmaz, bazı kurslar ücretlidir.\n\n### 2. Vize tarafı\nHazırlık dil kursu, üniversiteye kabul bu kursa bağlıysa öğrenim amaçlı oturumun parçasıdır (§ 16b AufenthG). Temsilcilik dosyada kurs kaydını ya da teyidini görmek ister; belirli bir kurs biçimini veya sertifika seviyesini herkese aynı şekilde dayatan resmî bir kural yok, güncel liste temsilciliğin sayfasındadır.\n\n### Ne yapmalısın?\n- Kabul mektubundaki şartı oku ve üniversiteye kurs imkânını (var mı, ücretli mi, kontenjan) yazılı sor.\n- Kurs kaydını ya da teyidini vize dosyana ekle.\n- Temsilciliğin güncel bilgi notunu kontrol et.\n\nAyrıntılar: [Şartlı kabul ve vize: hangi bilgi notu, hangi dil seviyesi?](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "universiteden-sartli-kabul-aldigimda-dil-kursu-kaydi-zorunlu-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Is a language course mandatory if I get conditional admission from a university?",
+      "visible": "text",
+      "head": "If you receive conditional admission from a university, you'll typically be expected to enroll in a"
+     },
+     "new": {
+      "question": "Do I have to enrol in a language course if I get a conditional admission?",
+      "answer_md": "If your condition is a German language level, then for the visa the practical answer is **yes**: for a study-preparatory language course file (currently information sheet 36F at the German missions in Türkiye), the mission asks for a **language course registration or a confirmation from the language school or university**. But two things need to be kept apart:\n\n### 1. The university's condition\nYour conditional admission letter states the condition. The binding threshold is usually the university's own language exam before your studies start (most often **DSH** or **TestDaF**). Where and in which format you take the course depends on that condition and on the university; not every university runs its own German courses, and some courses are charged for.\n\n### 2. The visa side\nA study-preparatory language course is part of the study purpose if your admission is bound to it (§ 16b AufenthG). The mission wants to see the course registration or confirmation in your file; there is no official rule imposing the same course format or certificate level on everyone — the current checklist is on the mission's website.\n\n### What to do\n- Read the condition in your admission letter and ask the university in writing about its courses (offered? fees? places?).\n- Add the course registration or confirmation to your visa file.\n- Check your mission's current information sheet.\n\nMore: [Conditional admission and the visa: which information sheet, which language level?](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "universiteden-sartli-kabul-aldigimda-dil-kursu-kaydi-zorunlu-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Muss ich mich für einen Sprachkurs anmelden, wenn ich eine bedingte Zulassung erhalte?",
+      "visible": "text",
+      "head": "Wenn du eine bedingte Zulassung von einer Hochschule bekommst, wird in der Regel erwartet, dass du d"
+     },
+     "new": {
+      "question": "Muss ich mich für einen Sprachkurs anmelden, wenn ich eine bedingte Zulassung erhalte?",
+      "answer_md": "Wenn deine Auflage ein deutsches Sprachniveau ist, lautet die Antwort für das Visum in der Praxis **ja**: Für den Antrag zu einem studienvorbereitenden Sprachkurs (derzeit Merkblatt 36F der deutschen Auslandsvertretungen in der Türkei) verlangt die Vertretung eine **Anmeldung zum Sprachkurs oder eine Bestätigung der Sprachschule bzw. Hochschule**. Dabei sind zwei Dinge zu trennen:\n\n### 1. Die Auflage der Hochschule\nDein Zulassungsbescheid nennt die Auflage. Maßgeblich ist meist die Sprachprüfung, die die Hochschule vor Studienbeginn verlangt (in der Regel **DSH** oder **TestDaF**). Wo und in welcher Form du den Kurs besuchst, hängt von dieser Auflage und der Hochschule ab; nicht jede Hochschule bietet eigene Deutschkurse an, und manche Kurse sind kostenpflichtig.\n\n### 2. Das Visum\nEin studienvorbereitender Sprachkurs gehört zum Aufenthaltszweck Studium, wenn die Zulassung an ihn gebunden ist (§ 16b AufenthG). Die Vertretung möchte die Kursanmeldung oder Bestätigung in deinem Antrag sehen; eine offizielle Regel, die allen dieselbe Kursform oder dasselbe Zertifikatsniveau vorschreibt, gibt es nicht – die aktuelle Liste steht auf der Website der Vertretung.\n\n### Was du tun solltest\n- Lies die Auflage in deinem Bescheid und frag die Hochschule schriftlich nach Kursen (Angebot, Kosten, Plätze).\n- Lege die Kursanmeldung oder Bestätigung deinem Visumantrag bei.\n- Prüfe das aktuelle Merkblatt deiner Auslandsvertretung.\n\nMehr dazu: [Bedingte Zulassung und Visum: welches Merkblatt, welches Sprachniveau?](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "sartli-kabul-ile-c1-dil-seviyesine-ulasmadan-universiteye-kayit-yaptirilabilir-mi",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "sartli-kabul-ile-c1-dil-seviyesine-ulasmadan-universiteye-kayit-yaptirilabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Şartlı kabul ile C1 dil seviyesine ulaşmadan üniversiteye kayıt yaptırılabilir mi?",
+      "visible": "text",
+      "head": "Şartlı kabul, genellikle belirli bir dil seviyesine (örn. C1) ulaşmanız koşuluyla verilen bir ön kab"
+     },
+     "new": {
+      "question": "Şartlı kabul ile C1 dil seviyesine ulaşmadan üniversiteye kayıt yaptırılabilir mi?",
+      "answer_md": "Genellikle **hayır; kesin kayıt, üniversitenin koyduğu şartı yerine getirmene bağlıdır**. Ama bunu belirleyen evrensel bir \"C1 kuralı\" değil, üniversitenin ve programın kendi kabul ve kayıt kurallarıdır.\n\n### Neye bakmalısın?\n- **Şartın ne?** Şartlı kabul mektubun hangi belgeyi ve hangi seviyeyi istediğini yazar. Almanca programlarda bu çoğunlukla bir **DSH** veya **TestDaF** sonucudur; gereken seviye üniversiteye ve programa göre değişir.\n- **Şartlı kabul garanti değildir.** Şartı sağlayana kadar kesin kayıt (Immatrikulation) güvence altında değildir.\n- **Hazırlık kursu sırasında durum:** Bazı üniversitelerin kendi hazırlık dil kurslarındaki adaylar için ayrı kuralları vardır. Kursa katılırken nasıl bir statüde olacağına üniversite karar verir.\n\n### Temsilciliğin bilgi notundaki uyarılar\n- Dil sınavı yalnızca bir kez tekrarlanabilir.\n- Dil şartını sağladıktan sonra eski şartlı kabul kendiliğinden devam etmeyebilir; yeniden başvuru gerekebilir.\n\n### Ne yapmalısın?\nKabul mektubundaki şartı ve süreyi oku; kayıt için tam olarak hangi belgenin ne zamana kadar istendiğini üniversitenin öğrenci işlerine (Studierendensekretariat) yazılı sor.\n\nAyrıntılar: [Şartlı kabul ve vize rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "sartli-kabul-ile-c1-dil-seviyesine-ulasmadan-universiteye-kayit-yaptirilabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can I enroll in university with conditional admission before reaching C1 language proficiency?",
+      "visible": "text",
+      "head": "Conditional admission is essentially a preliminary acceptance you receive, but it's always contingen"
+     },
+     "new": {
+      "question": "Can I enrol at a university with a conditional admission before reaching the required language level (e.g. C1)?",
+      "answer_md": "Usually **not: final enrolment depends on meeting the condition set by your university**. What decides this is not a universal \"C1 rule\", but the admission and enrolment rules of your university and programme.\n\n### What to check\n- **What is your condition?** Your conditional admission letter states which document and which level are required. For German-taught programmes this is most often a **DSH** or **TestDaF** result; the required level varies by university and programme.\n- **A conditional admission is not a guarantee.** Until you meet the condition, final enrolment (Immatrikulation) is not secured.\n- **During a preparatory course:** some universities have their own rules for applicants in their preparatory language courses. The university decides what status you have while attending.\n\n### Warnings from the missions' information sheet\n- The language exam can be retaken only once.\n- After you meet the language requirement, your earlier conditional admission may not simply continue; you may have to apply again.\n\n### What to do\nRead the condition and deadline in your admission letter, and ask the university's student office (Studierendensekretariat) in writing exactly which document is needed for enrolment and by when.\n\nMore: [Conditional admission and the visa](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "sartli-kabul-ile-c1-dil-seviyesine-ulasmadan-universiteye-kayit-yaptirilabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kannst du dich mit einer bedingten Zulassung an der Uni einschreiben, ohne das C1-Sprachniveau erreicht zu haben?",
+      "visible": "text",
+      "head": "Eine bedingte Zulassung ist in der Regel eine vorläufige Zusage, die du unter der Bedingung erhältst"
+     },
+     "new": {
+      "question": "Kann ich mich mit einer bedingten Zulassung einschreiben, bevor ich das geforderte Sprachniveau (z. B. C1) erreicht habe?",
+      "answer_md": "In der Regel **nein: Die endgültige Einschreibung hängt davon ab, dass du die Auflage deiner Hochschule erfüllst**. Entscheidend ist dabei keine allgemeine „C1-Regel“, sondern die Zulassungs- und Einschreibungsordnung deiner Hochschule und deines Studiengangs.\n\n### Worauf du achten solltest\n- **Welche Auflage hast du?** Dein Bescheid nennt den geforderten Nachweis und das Niveau. Bei deutschsprachigen Studiengängen ist das meist ein **DSH**- oder **TestDaF**-Ergebnis; das geforderte Niveau unterscheidet sich je nach Hochschule und Studiengang.\n- **Eine bedingte Zulassung ist keine Garantie.** Solange die Auflage nicht erfüllt ist, ist die Immatrikulation nicht gesichert.\n- **Während eines Vorbereitungskurses:** Manche Hochschulen haben eigene Regeln für Teilnehmende ihrer studienvorbereitenden Deutschkurse. Welchen Status du während des Kurses hast, entscheidet die Hochschule.\n\n### Hinweise aus dem Merkblatt der Auslandsvertretungen\n- Die Sprachprüfung kann nur einmal wiederholt werden.\n- Nachdem du die Sprachanforderung erfüllt hast, gilt die frühere bedingte Zulassung möglicherweise nicht einfach weiter; eine neue Bewerbung kann nötig sein.\n\n### Was du tun solltest\nLies Auflage und Frist in deinem Bescheid und frag das Studierendensekretariat schriftlich, welcher Nachweis bis wann für die Einschreibung nötig ist.\n\nMehr dazu: [Bedingte Zulassung und Visum](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vpd-basvuru-ucreti-ve-ek-basvuru-ucreti-ne-kadar",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vpd-basvuru-ucreti-ve-ek-basvuru-ucreti-ne-kadar",
+     "mode": "rewrite",
+     "old": {
+      "question": "VPD başvuru ücreti ve ek başvuru ücreti ne kadar?",
+      "visible": "text",
+      "head": "Uni-Assist ücretleri ilk uni 75 € , ek her uni 30 € . Vize ücretiyle birlikte master başvuru sürecin"
+     },
+     "new": {
+      "question": "VPD başvuru ücreti ve ek başvuru ücreti ne kadar?",
+      "answer_md": "uni-assist'in işlem ücreti **bir dönemde seçtiğin ilk program için 75 €**, **aynı dönemdeki her ek program için 30 €**'dur. uni-assist'e göre bu ücretler **standart başvuru ve VPD başvurusu için aynıdır**.\n\n### Bilmen gerekenler\n- Ücret, değerlendirme sonucundan bağımsız olarak alınır; başvurun olumsuz sonuçlansa da ödenir.\n- Ücret dönem bazındadır: 75 € + 30 € hesabı aynı dönem içindeki seçimler için geçerlidir.\n- **VPD başvurduğun üniversiteye özel** düzenlenir ve uni-assist'e göre verildiği tarihten itibaren **bir yıl** geçerlidir.\n- Bazı üniversiteler ayrıca kendi başvuru ücretini alabilir; bunu üniversitenin sayfasından kontrol et.\n\n### Örnek\nAynı dönemde üç programa uni-assist üzerinden başvurursan: 75 € + 2 × 30 € = **135 €**.\n\n### Ödeme\nuni-assist, ücretin **banka havalesi** veya **kredi kartıyla** (3D Secure, Visa/Mastercard) ödenebileceğini belirtir. Güncel talimatlar için uni-assist'in resmî ödeme sayfasına bak.\n\nKaynak: [uni-assist — ücretler](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vpd-basvuru-ucreti-ve-ek-basvuru-ucreti-ne-kadar-en",
+     "mode": "update",
+     "old": {
+      "question": "How much is the VPD application fee and additional application fee?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How much is the uni-assist fee for a VPD and for additional applications?",
+      "answer_md": "uni-assist charges a handling fee of **EUR 75 for your first chosen study course in a semester** and **EUR 30 for each additional course in the same semester**. According to uni-assist, the costs are **the same for standard and VPD applications**.\n\n### Good to know\n- The fee is charged regardless of the result of the evaluation.\n- The fee is per semester: the 75 + 30 calculation applies to courses chosen in the same semester.\n- **A VPD is issued specifically for the university you apply to** and, according to uni-assist, is valid for **one year** from its date of issue.\n- Some universities charge their own application fee on top; check the university's website.\n\n### Example\nThree courses via uni-assist in the same semester: EUR 75 + 2 × EUR 30 = **EUR 135**.\n\n### Payment\nuni-assist states that fees can be paid by **bank transfer** or **credit card** (3D Secure, Visa/Mastercard). For current instructions, use uni-assist's official payment page.\n\nSource: [uni-assist — fees](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vpd-basvuru-ucreti-ve-ek-basvuru-ucreti-ne-kadar-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie hoch sind die VPD-Antragsgebühr und die Gebühr für weitere Anträge?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie hoch sind die uni-assist-Gebühren für eine VPD und für weitere Bewerbungen?",
+      "answer_md": "uni-assist berechnet **75 € für den ersten gewählten Studiengang in einem Semester** und **30 € für jeden weiteren Studiengang im selben Semester**. Laut uni-assist sind die Kosten **für die normale Bewerbung und das VPD-Verfahren gleich**.\n\n### Gut zu wissen\n- Die Gebühr fällt unabhängig vom Ergebnis der Prüfung an.\n- Die Gebühr gilt pro Semester: Die Rechnung 75 € + 30 € bezieht sich auf Studiengänge im selben Semester.\n- **Eine VPD wird speziell für die Hochschule ausgestellt**, bei der du dich bewirbst, und ist laut uni-assist **ein Jahr** ab Ausstellungsdatum gültig.\n- Manche Hochschulen verlangen zusätzlich eigene Bewerbungsgebühren; prüfe das auf der Website der Hochschule.\n\n### Beispiel\nDrei Studiengänge über uni-assist im selben Semester: 75 € + 2 × 30 € = **135 €**.\n\n### Bezahlung\nLaut uni-assist kannst du per **Überweisung** oder **Kreditkarte** (3D Secure, Visa/Mastercard) zahlen. Aktuelle Hinweise findest du auf der offiziellen Zahlungsseite von uni-assist.\n\nQuelle: [uni-assist – Gebühren](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanya-universitelerinden-on-onay-zulassungsbescheid-sureci-nasil-isler",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanya-universitelerinden-on-onay-zulassungsbescheid-sureci-nasil-isler",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya üniversitelerinden ön onay (Zulassungsbescheid) süreci nasıl işler?",
+      "visible": "text",
+      "head": "Almanya üniversitelerinden ön onay almak, genellikle başvuru belgelerinin değerlendirilmesi ve kabul"
+     },
+     "new": {
+      "question": "Zulassungsbescheid nedir, VPD'den farkı ne?",
+      "answer_md": "**Zulassungsbescheid**, üniversitenin başvurun hakkında verdiği **kabul kararıdır** (kabul mektubu). Bir \"ön onay\" değildir. **VPD** (Vorprüfungsdokumentation) ise uni-assist'in, VPD usulünü kullanan bir üniversiteye başvurman için düzenlediği **ön inceleme belgesidir**; kabul anlamına gelmez.\n\n### VPD\n- uni-assist; hangi belgeleri sunduğunu, bunları nasıl değerlendirdiğini ve notunun Alman not sistemindeki karşılığını belgeler.\n- Yalnızca uni-assist'e **VPD usulünü uygulamasını söyleyen** üniversiteler için gerekir; her üniversite VPD istemez.\n- Başvurduğun **üniversiteye özel** düzenlenir.\n- VPD'yi aldıktan sonra **üniversiteye ayrıca doğrudan başvurman** ve VPD'yi üniversitenin son başvuru tarihinden önce sunman gerekir.\n\n### Zulassungsbescheid\n- Başvurunu inceleyen **üniversite** verir; kabul kararını uni-assist değil, üniversite verir.\n- Şartlı olabilir (örneğin dil şartı); kesin kaydın koşulları kararda yazar.\n\n### Sıralama\n1. Üniversitenin başvuru yolunu kontrol et: doğrudan başvuru, uni-assist ya da VPD usulü.\n2. VPD usulüyse önce uni-assist'ten VPD al, sonra üniversiteye başvur.\n3. Üniversite değerlendirir ve kararını (Zulassungsbescheid ya da ret) bildirir.\n\nKaynak: [uni-assist — VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "zulassungsbescheid-vs-vpd-german-university-admission",
+     "mode": "create",
+     "new": {
+      "question": "What is a Zulassungsbescheid and how is it different from a VPD?",
+      "answer_md": "A **Zulassungsbescheid** is the university's **admission decision** (your admission letter) — it is not a \"pre-approval\". A **VPD** (Vorprüfungsdokumentation) is a **preliminary review document** that uni-assist issues for applications to universities that use the VPD procedure; it is not an admission.\n\n### VPD\n- uni-assist documents which certificates you submitted, how it evaluates them and how your grade translates into the German grading system.\n- It is only needed for universities that have **instructed uni-assist to use the VPD procedure**; not every university asks for one.\n- It is issued **specifically for the university** you apply to.\n- After you receive it, you **still have to apply directly to the university** and submit the VPD before the university's deadline.\n\n### Zulassungsbescheid\n- It is issued by the **university** after examining your application; uni-assist does not decide on admission.\n- It can be conditional (for example on a language requirement); the conditions for final enrolment are stated in the decision.\n\n### Order of steps\n1. Check the university's application route: direct, via uni-assist, or the VPD procedure.\n2. For the VPD procedure, get the VPD from uni-assist first, then apply to the university.\n3. The university assesses your application and sends its decision (Zulassungsbescheid or rejection).\n\nSource: [uni-assist — VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "zulassungsbescheid-vs-vpd-german-university-admission-de",
+     "mode": "create",
+     "new": {
+      "question": "Was ist ein Zulassungsbescheid und wie unterscheidet er sich von einer VPD?",
+      "answer_md": "Ein **Zulassungsbescheid** ist die **Zulassungsentscheidung der Hochschule** – keine „Vorab-Zusage“. Eine **VPD** (Vorprüfungsdokumentation) ist eine **Vorprüfungsbescheinigung**, die uni-assist für Bewerbungen an Hochschulen ausstellt, die das VPD-Verfahren nutzen; sie ist keine Zulassung.\n\n### VPD\n- uni-assist dokumentiert, welche Zeugnisse du eingereicht hast, wie sie bewertet werden und wie deine Note im deutschen Notensystem einzuordnen ist.\n- Sie ist nur für Hochschulen nötig, die uni-assist **mit dem VPD-Verfahren beauftragt** haben; nicht jede Hochschule verlangt eine VPD.\n- Sie wird **speziell für die Hochschule** ausgestellt, bei der du dich bewirbst.\n- Nach Erhalt musst du dich **zusätzlich direkt bei der Hochschule bewerben** und die VPD vor deren Bewerbungsfrist einreichen.\n\n### Zulassungsbescheid\n- Er kommt von der **Hochschule**, die deine Bewerbung prüft; uni-assist entscheidet nicht über die Zulassung.\n- Er kann mit Auflagen verbunden sein (zum Beispiel Sprachnachweis); die Bedingungen für die Einschreibung stehen im Bescheid.\n\n### Reihenfolge\n1. Prüfe den Bewerbungsweg der Hochschule: direkt, über uni-assist oder VPD-Verfahren.\n2. Beim VPD-Verfahren zuerst die VPD bei uni-assist beantragen, dann bei der Hochschule bewerben.\n3. Die Hochschule prüft und teilt ihre Entscheidung mit (Zulassungsbescheid oder Ablehnung).\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    }
+   ],
+   "group_if_missing": "fbe63fb5-97e2-593f-a31a-81939cd7eee2"
+  },
+  {
+   "tr_slug": "uni-assist-odeme-hatasi-durumunda-ne-yapilir",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-odeme-hatasi-durumunda-ne-yapilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist ödeme hatası durumunda ne yapılır?",
+      "visible": "text",
+      "head": "Uni-Assist ödeme hataları yaygın — banka transferi, kart reddetme, çift çekme. Çoğu 2-3 gün içinde ç"
+     },
+     "new": {
+      "question": "Uni-Assist ödeme hatası durumunda ne yapılır?",
+      "answer_md": "Önce **My assist** hesabındaki ödeme durumunu kontrol et ve yalnızca **uni-assist'in resmî ödeme talimatlarını** kullan. Ödeme görünmüyorsa, uni-assist'in resmî **iletişim formu** üzerinden dekontunu gönder.\n\n### Adımlar\n1. **Durumu kontrol et:** Ödemenin hesabına işlenip işlenmediğini My assist'te gör.\n2. **Resmî yolu kullan:** uni-assist, ödemenin **banka havalesi** veya **kredi kartıyla** (3D Secure, Visa/Mastercard) yapılabileceğini belirtir. Banka bilgilerini ve ödeme referansını **yalnızca kendi My assist hesabından ya da uni-assist'in resmî sayfasından** al.\n3. **Bekleme süresi:** uni-assist'e göre uluslararası havaleler iki haftaya kadar sürebilir. İki haftadan uzun süredir onay bekliyorsan **dekontunun bir kopyasını uni-assist'in iletişim formundan** gönder; uni-assist ödemenin ulaşıp ulaşmadığını kontrol eder.\n4. **Kart reddedildiyse:** Kartının yurt dışı ve 3D Secure ödemelerine açık olup olmadığını bankana sor ya da banka havalesini kullan.\n\n### Güvenlik uyarısı\nForumlardan, eski rehberlerden ya da bu sayfanın eski sürümlerinden kopyalanmış banka bilgilerine (IBAN, SWIFT/BIC) **para gönderme**. Doğru bilgi her zaman uni-assist'in resmî kanallarındadır.\n\nResmî sayfa: [uni-assist — ödeme seçenekleri](https://www.uni-assist.de/en/how-to-apply/pay-all-fees/payment-options/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-odeme-hatasi-durumunda-ne-yapilir-en",
+     "mode": "update",
+     "old": {
+      "question": "What to do in case of a Uni-Assist payment error?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What should I do if my uni-assist payment fails?",
+      "answer_md": "First check the payment status in your **My assist** account and use only **uni-assist's official payment instructions**. If the payment does not show up, send your payment slip through uni-assist's official **contact form**.\n\n### Steps\n1. **Check the status:** see in My assist whether your payment has been recorded.\n2. **Use the official route:** uni-assist states that you can pay by **bank transfer** or **credit card** (3D Secure, Visa/Mastercard). Take bank details and your payment reference **only from your own My assist account or uni-assist's official website**.\n3. **Waiting time:** according to uni-assist, international transfers can take up to two weeks. If you have been waiting more than two weeks for the confirmation, **send a copy of your payment slip via uni-assist's contact form**; uni-assist will check whether the payment arrived.\n4. **Card declined:** ask your bank whether your card is enabled for international and 3D Secure payments, or pay by bank transfer instead.\n\n### Safety warning\n**Do not send money** to bank details (IBAN, SWIFT/BIC) copied from forums, old guides or older versions of this page. The correct details are always in uni-assist's official channels.\n\nOfficial page: [uni-assist — payment options](https://www.uni-assist.de/en/how-to-apply/pay-all-fees/payment-options/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-odeme-hatasi-durumunda-ne-yapilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Was tun bei einem Uni-Assist Zahlungsfehler?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was tun, wenn die Zahlung an uni-assist nicht klappt?",
+      "answer_md": "Prüfe zuerst den Zahlungsstatus in deinem **My-assist**-Konto und nutze nur die **offiziellen Zahlungshinweise von uni-assist**. Wird die Zahlung nicht angezeigt, schick deinen Zahlungsbeleg über das offizielle **Kontaktformular** von uni-assist.\n\n### Schritte\n1. **Status prüfen:** Sieh in My assist nach, ob deine Zahlung verbucht wurde.\n2. **Offiziellen Weg nutzen:** Laut uni-assist kannst du per **Überweisung** oder **Kreditkarte** (3D Secure, Visa/Mastercard) zahlen. Bankverbindung und Verwendungszweck übernimmst du **nur aus deinem My-assist-Konto oder von der offiziellen uni-assist-Website**.\n3. **Wartezeit:** Laut uni-assist können Auslandsüberweisungen bis zu zwei Wochen dauern. Wartest du länger als zwei Wochen auf die Eingangsbestätigung, **schick eine Kopie deines Zahlungsbelegs über das Kontaktformular**; uni-assist prüft dann, ob die Zahlung eingegangen ist.\n4. **Karte abgelehnt:** Frag deine Bank, ob die Karte für Auslands- und 3D-Secure-Zahlungen freigeschaltet ist, oder zahle per Überweisung.\n\n### Sicherheitshinweis\n**Überweise kein Geld** an Bankdaten (IBAN, SWIFT/BIC), die aus Foren, alten Ratgebern oder früheren Versionen dieser Seite stammen. Die richtigen Daten findest du immer in den offiziellen Kanälen von uni-assist.\n\nOffizielle Seite: [uni-assist – Zahlungsmöglichkeiten](https://www.uni-assist.de/en/how-to-apply/pay-all-fees/payment-options/)\n"
+     }
+    }
+   ]
+  }
+ ]
+}
