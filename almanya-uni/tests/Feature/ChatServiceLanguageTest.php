@@ -155,9 +155,9 @@ class ChatServiceLanguageTest extends TestCase
 
         $this->assertSame('Ein Minijob ist grundsätzlich rentenversicherungspflichtig [1].', $res['answer']);
         foreach (['Response language: English only. Always answer entirely in English.', 'Yanıt dili: yalnızca Türkçe. Her zaman Türkçe yanıt ver.'] as $rule) {
-            $this->assertSame('Cevap.', app(ChatService::class)->stripInstructionLeak("{$rule}\nCevap."));
+            $this->assertSame('Cevap.', $this->service()->stripInstructionLeak("{$rule}\nCevap."));
         }
         // Doğal cümle içinde geçen "Sprache" vb. kelimelere dokunulmaz
-        $this->assertSame('Die Antwortsprache der Behörde ist Deutsch.', app(ChatService::class)->stripInstructionLeak('Die Antwortsprache der Behörde ist Deutsch.'));
+        $this->assertSame('Die Antwortsprache der Behörde ist Deutsch.', $this->service()->stripInstructionLeak('Die Antwortsprache der Behörde ist Deutsch.'));
     }
 }
