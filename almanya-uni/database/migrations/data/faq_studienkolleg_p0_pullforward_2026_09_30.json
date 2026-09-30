@@ -1,0 +1,51 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "C",
+ "clusters": [
+  {
+   "tr_slug": "studienkolleg-icin-vize-basvurusu-ozel-mi",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-icin-vize-basvurusu-ozel-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg için vize başvurusu özel mi?",
+      "visible": "text",
+      "head": "Studienkolleg vizesi akademik vize (§16b 2. fıkra) kapsamında — dil kursu vizesinden farklı. Süreç s"
+     },
+     "new": {
+      "question": "Studienkolleg için vize başvurusu özel mi?",
+      "answer_md": "Evet, **oturum amacı** farklıdır ve çalışma kuralları buna göre değişir: Studienkolleg, öğrenime hazırlık tedbiri olarak **öğrenim amaçlı oturum** (§ 16b AufenthG) kapsamındadır; öğrenimle bağlantısı olmayan bir **dil kursu** ise ayrı bir izin türüdür (§ 16f AufenthG).\n\n### Studienkolleg (§ 16b)\n- Studienkolleg'e **kabulün (Annahme) belgelendiğinde** öğrenim amaçlı izin kapsamındasın. Kabul belgelenemiyorsa Ausländerbehörde takdire bağlı bir izin (§ 16b Abs. 5) verebilir.\n- **Çalışma:** Yasada \"ilk yıl çalışamazsın\" diye bir yasak yok. Yılda en fazla **140 iş günü** çalışabilirsin (Arbeitstagekonto). 4 saate kadar çalışılan gün yarım gün sayılabilir; ders döneminde en fazla 20 saat çalışılan bir hafta ve ders dönemi dışındaki her hafta 2,5 iş günü sayılabilir; her hafta için lehine olan hesap uygulanır. **Haftalık 20 saat, bu izinde genel bir oturum tavanı değildir.**\n- **Süre:** İzin kural olarak iki yıl (en az bir yıl) için verilir ya da uzatılır. Studienkolleg ve sonraki lisans aynı öğrenim amacının parçasıdır; uzatma otomatik değildir, amaç makul sürede tamamlanabiliyorsa Ausländerbehörde uzatır.\n\n### Dil kursu (§ 16f)\nÖğrenime hazırlık amacı taşımayan bir dil kursu için verilen izin, **haftada 20 saate kadar** çalışmaya izin verir. \"Dil kursu vizesinde çalışma hakkı yok\" ifadesi bugünkü kuralla uyuşmaz.\n\n### Werkstudent kuralı ayrıdır\nWerkstudent'lar için bilinen \"haftada 20 saat\" bir **sosyal sigorta** kuralıdır; oturum hukukundaki çalışma kurallarıyla karıştırılmamalı.\n\n### Belirleyici olan\nOturum izninde yazan ifade ve Ausländerbehörde'nin kararıdır. Vize için güncel belge listesi Almanya'nın temsilciliğinin sayfasındadır.\n\nSayım örnekleri: [140 günlük çalışma hesabı](/tr/blog/internship-in-germany-with-b1-b2-german)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-icin-vize-basvurusu-ozel-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is the visa application for Studienkolleg special?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is the visa application for a Studienkolleg different?",
+      "answer_md": "Yes — the **residence purpose** is different, and the work rules follow from it: a Studienkolleg is a study-preparatory measure under the **residence permit for study purposes** (§ 16b AufenthG), whereas a **language course** not linked to studies is a separate permit type (§ 16f AufenthG).\n\n### Studienkolleg (§ 16b)\n- You are covered by the study permit **once your acceptance (Annahme) at the Studienkolleg is documented**. If acceptance cannot be documented, the Ausländerbehörde may grant a discretionary permit (§ 16b (5)).\n- **Work:** the law has no \"no work in the first year\" ban. You may work up to **140 working days per year** (Arbeitstagekonto). A day of up to 4 hours can count as half a day; a lecture-period week with no more than 20 hours, and every week outside the lecture period, can count as 2.5 working days; for each week the more favourable count applies. **20 hours a week is not a general residence-law ceiling for this permit.**\n- **Duration:** the permit is normally issued or extended for two years (at least one). The Studienkolleg and the subsequent degree are part of the same study purpose; extension is not automatic — the Ausländerbehörde extends it if the purpose can still be achieved within a reasonable time.\n\n### Language course (§ 16f)\nA permit for a language course that does not prepare for studies allows employment of **up to 20 hours per week**. The claim that language-course students \"have no right to work\" does not match the current rule.\n\n### The Werkstudent rule is separate\nThe well-known \"20 hours per week\" for Werkstudenten is a **social-insurance** rule; do not confuse it with the residence-law work rules.\n\n### What decides\nThe wording on your residence permit and the decision of the Ausländerbehörde. The current visa document list is on the website of the German mission.\n\nCounting examples: [the 140-day work account](/en/blog/internship-in-germany-with-b1-b2-german-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-icin-vize-basvurusu-ozel-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist der Visumsantrag für das Studienkolleg speziell?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist der Visumantrag für ein Studienkolleg etwas Besonderes?",
+      "answer_md": "Ja – der **Aufenthaltszweck** ist ein anderer, und danach richten sich die Arbeitsregeln: Ein Studienkolleg gehört als studienvorbereitende Maßnahme zur **Aufenthaltserlaubnis zum Studium** (§ 16b AufenthG), ein **Sprachkurs** ohne Studienbezug ist dagegen ein eigener Aufenthaltstitel (§ 16f AufenthG).\n\n### Studienkolleg (§ 16b)\n- Du fällst unter die Aufenthaltserlaubnis zum Studium, **wenn die Annahme am Studienkolleg nachgewiesen ist**. Kann die Annahme nicht nachgewiesen werden, kann die Ausländerbehörde eine Erlaubnis nach Ermessen erteilen (§ 16b Abs. 5).\n- **Arbeiten:** Ein Verbot im ersten Jahr gibt es nicht. Du darfst bis zu **140 Arbeitstage im Jahr** arbeiten (Arbeitstagekonto). Ein Tag mit bis zu 4 Stunden kann als halber Tag zählen; eine Woche in der Vorlesungszeit mit höchstens 20 Stunden sowie jede Woche außerhalb der Vorlesungszeit kann als 2,5 Arbeitstage zählen; pro Woche gilt die günstigere Berechnung. **20 Stunden pro Woche sind bei diesem Titel keine allgemeine aufenthaltsrechtliche Obergrenze.**\n- **Dauer:** Die Erlaubnis wird in der Regel für zwei Jahre (mindestens ein Jahr) erteilt oder verlängert. Studienkolleg und anschließendes Studium gehören zum selben Studienzweck; die Verlängerung erfolgt nicht automatisch – die Ausländerbehörde verlängert, wenn der Zweck in angemessener Zeit noch erreicht werden kann.\n\n### Sprachkurs (§ 16f)\nEine Aufenthaltserlaubnis für einen nicht studienvorbereitenden Sprachkurs erlaubt eine Beschäftigung von **bis zu 20 Stunden pro Woche**. Die Aussage, im Sprachkursvisum dürfe man „in der Regel nicht arbeiten“, passt nicht zur aktuellen Regel.\n\n### Die Werkstudenten-Regel ist etwas anderes\nDie bekannten „20 Stunden pro Woche“ für Werkstudenten sind eine Regel der **Sozialversicherung**; sie sind nicht mit den aufenthaltsrechtlichen Arbeitsregeln zu verwechseln.\n\n### Was entscheidet\nDer Wortlaut deiner Aufenthaltserlaubnis und die Entscheidung der Ausländerbehörde. Die aktuelle Unterlagenliste für das Visum findest du auf der Website der deutschen Auslandsvertretung.\n\nRechenbeispiele: [das 140-Tage-Arbeitskonto](/de/blog/internship-in-germany-with-b1-b2-german-de)\n"
+     }
+    }
+   ]
+  }
+ ]
+}
