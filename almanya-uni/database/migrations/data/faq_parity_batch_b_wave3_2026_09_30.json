@@ -1,0 +1,1417 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "B",
+ "clusters": [
+  {
+   "tr_slug": "almanyada-universite-basvurularinda-gonulluluk-veya-spor-gibi-ek-aktivitelerin-etkisi-nedir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-universite-basvurularinda-gonulluluk-veya-spor-gibi-ek-aktivitelerin-etkisi-nedir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da üniversite başvurularında gönüllülük veya spor gibi ek aktivitelerin etkisi nedir?",
+      "visible": "text",
+      "head": "Almanya'daki üniversite başvurularında akademik başarı öncelikli olmakla birlikte, gönüllülük projel"
+     },
+     "new": {
+      "question": "Almanya'da üniversite başvurularında gönüllülük veya spor gibi ek aktivitelerin etkisi nedir?",
+      "answer_md": "**Gönüllülük veya spor gibi ek aktivitelerin etkisi için Almanya'da genel bir kural yok; bunları dikkate alıp almadığını her programın kabul ve seçim kuralları belirler.** Bu aktiviteler, programın koyduğu kabul şartlarının yerine geçmez.\n\n### Kararda önce neye bakılır?\n- **Lisans:** önce yükseköğretime giriş yeterliliğin (HZB) aranır. Türk lise diploması tek başına yetmez; YKS sonucu ve yerleştirme de değerlendirilir.\n- **Master:** program kendi şartlarını koyar: lisansının alan uyumu, not, dil yeterliliği ve istenen belgeler.\n- Kontenjanı sınırlı (NC) programlarda adaylar programın seçim kurallarına göre sıralanır.\n\n### Ek aktiviteler ne zaman işe yarar?\n- Programın seçim kuralları ilgili deneyimi veya motivasyonu değerlendiriyorsa, deneyimini istenen belgede somut ve kısa anlat.\n- Programın istemediği bir aktivite ya da sertifika otomatik puan getirmez.\n\n### Pratik öneri\n- Programın başvuru ve seçim yönetmeliğini oku (ör. Zulassungsordnung).\n- Emin değilsen üniversitenin uluslararası ofisine sor; son kararı üniversite verir.\n\nKaynak: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) · [anabin – Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-universite-basvurularinda-gonulluluk-veya-spor-gibi-ek-aktivitelerin-etkisi-nedir-en",
+     "mode": "update",
+     "old": {
+      "question": "How do extracurricular activities like volunteering or sports impact university applications in Germany?",
+      "visible": "text",
+      "head": "While academic achievement is the priority for university applications in Germany, extracurricular a"
+     },
+     "new": {
+      "question": "How do extracurricular activities like volunteering or sports affect university applications in Germany?",
+      "answer_md": "**There is no general rule on how volunteering or sports affect applications in Germany: each program's admission and selection rules decide whether they count at all.** Such activities never replace the program's admission requirements.\n\n### What comes first\n- **Bachelor's:** you first need a higher education entrance qualification (HZB). A Turkish Lise Diploması alone is not enough; the YKS result and placement are assessed as well.\n- **Master's:** each program sets its own requirements, such as subject fit of your bachelor's, grade, language proof and documents.\n- In programs with restricted admission (NC), applicants are ranked according to the program's selection rules.\n\n### When activities can help\n- If the selection rules assess relevant experience or motivation, describe yours briefly and concretely in the requested document.\n- An activity or certificate the program does not ask for earns no automatic points.\n\n### Practical tip\n- Read the program's admission and selection regulations (e.g. Zulassungsordnung).\n- If in doubt, ask the international office. The university makes the final decision.\n\nSource: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) · [anabin – school qualifications with university access](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-universite-basvurularinda-gonulluluk-veya-spor-gibi-ek-aktivitelerin-etkisi-nedir-de",
+     "mode": "update",
+     "old": {
+      "question": "Welchen Einfluss haben ehrenamtliche Tätigkeiten oder Sport auf deine Hochschulbewerbung in Deutschland?",
+      "visible": "text",
+      "head": "Bei Hochschulbewerbungen in Deutschland steht deine akademische Leistung zwar an erster Stelle, aber"
+     },
+     "new": {
+      "question": "Welchen Einfluss haben Ehrenamt oder Sport auf deine Hochschulbewerbung in Deutschland?",
+      "answer_md": "**Eine allgemeine Regel, wie Ehrenamt oder Sport deine Bewerbung beeinflussen, gibt es in Deutschland nicht: Ob solche Aktivitäten überhaupt zählen, legen die Zulassungs- und Auswahlregeln des jeweiligen Studiengangs fest.** Sie ersetzen keine Zulassungsvoraussetzung.\n\n### Was zuerst zählt\n- **Bachelor:** Du brauchst eine Hochschulzugangsberechtigung (HZB). Das türkische Lise Diploması allein reicht nicht; YKS-Ergebnis und Platzierung werden mitbewertet.\n- **Master:** Jeder Studiengang setzt eigene Voraussetzungen, etwa fachliche Passung des Bachelors, Note, Sprachnachweis und Unterlagen.\n- In zulassungsbeschränkten Studiengängen (NC) wirst du nach den Auswahlregeln des Studiengangs gereiht.\n\n### Wann Aktivitäten helfen können\n- Wenn die Auswahlregeln einschlägige Erfahrung oder Motivation bewerten, beschreibe deine Erfahrung im verlangten Dokument kurz und konkret.\n- Eine Aktivität oder ein Zertifikat, das der Studiengang nicht verlangt, bringt keine automatischen Punkte.\n\n### Praxistipp\n- Lies die Zulassungs- bzw. Auswahlordnung des Studiengangs.\n- Im Zweifel fragst du das International Office. Die Entscheidung trifft die Hochschule.\n\nQuelle: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de) · [anabin – Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "anabin-nedir-universiteler-nasil-listeleniyor",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "anabin-nedir-universiteler-nasil-listeleniyor",
+     "mode": "rewrite",
+     "old": {
+      "question": "Anabin nedir, üniversiteler nasıl listeleniyor?",
+      "visible": "text",
+      "head": "Anabin (Anerkennung und Bewertung ausländischer Bildungsnachweise), Almanya'nın yabancı eğitim belge"
+     },
+     "new": {
+      "question": "Anabin nedir, üniversiteler nasıl listeleniyor?",
+      "answer_md": "**anabin, yabancı eğitim belgelerinin ve yükseköğretim kurumlarının Almanya'daki değerlendirmesini gösteren resmi veri tabanıdır; üniversiteler burada H+, H+/- veya H- statüsüyle listelenir.** Bu statüler yalnızca kurumu tanımlar; diplomanın tanındığı ya da kabul alacağın anlamına gelmez.\n\n### Statüler ne anlama gelir?\n- **H+:** Kurum kendi ülkesinde yükseköğretim kurumu olarak tanınır ve Almanya'da da öyle kabul edilir.\n- **H+/-:** Bu kurum türü için tek bir statü yoktur; kurum ayrı değerlendirilir.\n- **H-:** Kurum geçici ya da kalıcı olarak yükseköğretim kurumu sayılmaz.\n\n### H+ ne değildir?\nH+ yalnızca o kurumun diplomalarının denklik değerlendirmesine girebileceğini gösterir. Otomatik tanınma, otomatik kabul ya da üniversiteye giriş yeterliliği (HZB) demek değildir. H kodları lise diplomaları için kullanılmaz; Türk lise diplomaları anabin'de YKS sonucu ve yerleştirmeyle birlikte giriş yollarına göre sınıflandırılır.\n\n### Nasıl kontrol edersin?\n1. anabin → **Institutionen**: üniversiteni ara ve statüsüne bak.\n2. **Hochschulabschlüsse → Abschlusstypen / Abschlüsse**: derece türünün değerlendirmesini gör (\"entspricht\", \"gleichwertig\", \"bedingt vergleichbar\"). Bu da bir tanınma kararı değildir.\n\nanabin eksiksiz değildir; bağlayıcı bilgiyi yetkili eyalet kurumları verir. Master veya doktora başvurusunda dereceni üniversite tek tek inceler.\n\nKaynak: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) · [anabin Institutionen](https://anabin.kmk.org/db/institutionen)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "what-is-anabin-how-are-universities-listed",
+     "mode": "create",
+     "new": {
+      "question": "What is anabin and how are universities listed in it?",
+      "answer_md": "**anabin is the official German database on foreign qualifications and higher-education institutions; universities are listed with an institution status of H+, H+/- or H-.** These codes describe the institution only. They do not mean your degree is recognised or that you will be admitted.\n\n### What the statuses mean\n- **H+:** recognised as a higher-education institution in its home country and regarded as one in Germany.\n- **H+/-:** there is no single status for this type of institution, so it is assessed separately.\n- **H-:** temporarily or permanently not regarded as a higher-education institution.\n\n### What H+ does not mean\nH+ only tells you that degrees from that institution can go through an equivalence assessment. It is not automatic recognition, not automatic admission and not a university entrance qualification (HZB). H codes are not used for school certificates: Turkish school certificates are classified by access routes, combined with the YKS result and placement.\n\n### How to check\n1. anabin → **Institutionen**: search for the university and note its status.\n2. **Hochschulabschlüsse → Abschlusstypen / Abschlüsse**: see how the degree type is rated (\"entspricht\", \"gleichwertig\", \"bedingt vergleichbar\"). That is not a recognition decision either.\n\nanabin is not complete; binding information comes only from the competent Land offices. For a master's or PhD, the university checks your degree individually.\n\nSource: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) · [anabin Institutionen](https://anabin.kmk.org/db/institutionen)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "what-is-anabin-how-are-universities-listed-de",
+     "mode": "create",
+     "new": {
+      "question": "Was ist anabin und wie werden Hochschulen dort gelistet?",
+      "answer_md": "**anabin ist die offizielle Datenbank zur Bewertung ausländischer Bildungsnachweise und Hochschulen; Hochschulen erscheinen dort mit dem Status H+, H+/- oder H-.** Der Status beschreibt nur die Institution – er sagt nicht, dass dein Abschluss anerkannt ist oder dass du zugelassen wirst.\n\n### Was die Status bedeuten\n- **H+:** Die Institution ist im Heimatland als Hochschule anerkannt und gilt auch in Deutschland als Hochschule.\n- **H+/-:** Für diesen Institutionstyp gibt es keinen einheitlichen Status; die Einrichtung wird gesondert bewertet.\n- **H-:** Die Institution gilt vorübergehend oder dauerhaft nicht als Hochschule.\n\n### Was H+ nicht bedeutet\nH+ heißt nur, dass Abschlüsse dieser Institution eine Gleichwertigkeitsprüfung durchlaufen können. Es ist keine automatische Anerkennung, keine Zulassung und keine Hochschulzugangsberechtigung (HZB). Für Schulabschlüsse gibt es keine H-Codes: Türkische Schulzeugnisse werden nach Zugangswegen eingeordnet, zusammen mit YKS-Ergebnis und Platzierung.\n\n### So prüfst du es\n1. anabin → **Institutionen**: Hochschule suchen, Status notieren.\n2. **Hochschulabschlüsse → Abschlusstypen / Abschlüsse**: Bewertung des Abschlusstyps ansehen („entspricht“, „gleichwertig“, „bedingt vergleichbar“). Auch das ist keine Anerkennungsentscheidung.\n\nanabin ist nicht vollständig; verbindlich sind nur die zuständigen Landesstellen. Beim Master oder bei der Promotion prüft die Hochschule deinen Abschluss einzeln.\n\nQuelle: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de) · [anabin Institutionen](https://anabin.kmk.org/db/institutionen)\n"
+     }
+    }
+   ],
+   "group_if_missing": "d3e9a0f6-4024-552d-9229-529b325cbfd8"
+  },
+  {
+   "tr_slug": "bachelor-denkligi-master-basvurusunda-nasil-degerlendirilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "bachelor-denkligi-master-basvurusunda-nasil-degerlendirilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Bachelor denkliği master başvurusunda nasıl değerlendirilir?",
+      "visible": "text",
+      "head": "Bachelor diplomasının master başvurusunda denkliği iki aşamada değerlendirilir: Anabin kontrolü + ün"
+     },
+     "new": {
+      "question": "Bachelor denkliği master başvurusunda nasıl değerlendirilir?",
+      "answer_md": "**Master başvurusunda lisans diplomanın yeterli olup olmadığına üniversite karar verir ve diplomanı tek tek inceler.** anabin'deki H+ işareti bu kararı vermez; yalnızca diplomanın denklik değerlendirmesine alınabileceğini gösterir.\n\n### anabin'de H+ ne anlama gelir?\n- H+/H+/-/H- **yükseköğretim kurumlarının** statüsüdür. H+ = kurum kendi ülkesinde yükseköğretim kurumu olarak tanınır ve Almanya'da da öyle kabul edilir.\n- H+ bir **temel ön koşuldur**; otomatik kabul veya otomatik tanınma anlamına gelmez.\n- Derece türü anabin'de ayrıca değerlendirilir (\"entspricht\", \"gleichwertig\", \"bedingt vergleichbar\"). Bu da bir tanınma kararı değildir.\n\n### Üniversite neye bakar?\n- Lisansının master programıyla **alan uyumu**, notun, dil belgen ve istenen evraklar.\n- Almanya genelinde geçerli bir not ortalaması, NC ya da dil eşiği yoktur; her program kendi şartlarını belirler.\n- Üniversite gerekirse ZAB'a danışabilir.\n\n### ZAB Zeugnisbewertung gerekli mi?\n- ZAB belgesi yabancı yükseköğretim diplomanı Alman sistemine yerleştirir, ama **kabul hakkı vermez**. Üniversite isteyebilir; herkes için zorunlu değildir.\n- Ücret 208 €, işlem süresi genelde yaklaşık 3 ay.\n\n### Nasıl kontrol edersin?\nanabin → Institutionen bölümünde üniversiteni ara, sonra Hochschulabschlüsse bölümünde derece türüne bak. anabin eksiksiz değildir; bağlayıcı bilgi yalnızca yetkili eyalet makamlarından gelir.\n\nKaynak: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) · [anabin Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "how-is-bachelor-degree-assessed-for-master-application-germany",
+     "mode": "create",
+     "new": {
+      "question": "How is your bachelor's degree assessed for a master's application in Germany?",
+      "answer_md": "**The university decides whether your bachelor's degree qualifies you for its master's programme, and it checks your degree individually.** An H+ entry in anabin does not make that decision; it only shows that degrees from your institution can undergo an equivalence assessment.\n\n### What H+ in anabin means\n- H+, H+/- and H- describe **higher-education institutions**. H+ means the institution is recognised in its home country and regarded as a higher-education institution in Germany.\n- H+ is a **basic prerequisite**, not automatic admission and not automatic recognition.\n- The degree type is rated separately (\"entspricht\", \"gleichwertig\", \"bedingt vergleichbar\") — that is not a recognition decision either.\n\n### What the university looks at\n- How well your bachelor's **subject fits** the master's, your grade, your language proof and the required documents.\n- There is no Germany-wide GPA, NC or language threshold; each programme sets its own requirements.\n- The university may consult the ZAB.\n\n### Do you need a ZAB Statement of Comparability?\n- It places a foreign degree in the German system but **gives no admission right**. Some universities ask for it; it is not required of every applicant.\n- Fee 208 €, processing usually about 3 months.\n\n### How to check\nIn anabin, search your university under \"Institutionen\", then look up the degree type under \"Hochschulabschlüsse\". anabin is not complete; binding information comes only from the competent Land offices.\n\nSource: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) · [anabin institutions](https://anabin.kmk.org/db/institutionen) · [ZAB Statement of Comparability](https://zab.kmk.org/en/statement-comparability)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "how-is-bachelor-degree-assessed-for-master-application-germany-de",
+     "mode": "create",
+     "new": {
+      "question": "Wie wird dein Bachelor bei der Masterbewerbung in Deutschland bewertet?",
+      "answer_md": "**Ob dein Bachelor für einen Master reicht, entscheidet die Hochschule – sie prüft deinen Abschluss individuell.** Ein H+ in anabin trifft diese Entscheidung nicht, sondern zeigt nur, dass Abschlüsse deiner Hochschule einer Gleichwertigkeitsprüfung unterzogen werden können.\n\n### Was H+ bedeutet\n- H+, H+/- und H- sind Statusangaben für **Hochschulen**, nicht für Abschlüsse. H+ heißt: im Heimatland als Hochschule anerkannt und in Deutschland als Hochschule angesehen.\n- H+ ist eine **Grundvoraussetzung** – keine automatische Zulassung und keine automatische Anerkennung.\n- Den Abschlusstyp bewertet anabin gesondert („entspricht“, „gleichwertig“, „bedingt vergleichbar“); auch das ist keine Anerkennungsentscheidung.\n\n### Worauf die Hochschule schaut\n- Fachliche Passung deines Bachelors zum Master, Note, Sprachnachweis und geforderte Unterlagen.\n- Es gibt keine bundesweite Noten-, NC- oder Sprachgrenze; jeder Studiengang legt seine Voraussetzungen selbst fest.\n- Die Hochschule kann die ZAB einbeziehen.\n\n### Brauchst du eine ZAB-Zeugnisbewertung?\n- Sie ordnet deinen ausländischen Hochschulabschluss ins deutsche System ein, **begründet aber keinen Zulassungsanspruch**. Manche Hochschulen verlangen sie, Pflicht für alle ist sie nicht.\n- Gebühr 208 €, Bearbeitung meist etwa 3 Monate.\n\n### So prüfst du selbst\nIn anabin unter „Institutionen“ deine Hochschule suchen, dann unter „Hochschulabschlüsse“ den Abschlusstyp. anabin ist nicht vollständig; verbindlich sind nur die zuständigen Landesstellen.\n\nQuelle: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de) · [anabin Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung)\n"
+     }
+    }
+   ],
+   "group_if_missing": "e92d8110-6d98-5279-97e5-fa37da7d7d43"
+  },
+  {
+   "tr_slug": "bachelor-ve-master-farkli-bolumlerde-olabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "bachelor-ve-master-farkli-bolumlerde-olabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Bachelor ve master farklı bölümlerde olabilir mi?",
+      "visible": "text",
+      "head": "Evet, mümkün — ama master programının kabul kriterleri bachelor temelin uygun olmasını ister. Tamame"
+     },
+     "new": {
+      "question": "Bachelor ve master farklı bölümlerde olabilir mi?",
+      "answer_md": "**Evet, olabilir — ama bunu master programının kabul şartları belirler.** Almanya'da her üniversite ve program kendi şartlarını koyar; lisansının alanı bu şartların en önemlilerinden biridir.\n\n### Üniversite neye bakar?\n- **Alan uyumu:** Lisansında aldığın dersler, master programının beklediği temel bilgiyi karşılıyor mu?\n- Not, dil belgesi ve istenen evraklar.\n- Üniversite diplomanı ve transkriptini tek tek inceler; son kararı o verir.\n\n### Almanya genelinde sabit bir kural yok\n- Hangi lisansın hangi mastera \"uygun\" sayıldığına dair herkese açık, sabit bir liste yoktur.\n- Almanya genelinde geçerli bir not ortalaması, NC ya da dil eşiği de yoktur.\n- Aynı adı taşıyan iki program bile farklı bir altyapı isteyebilir.\n\n### Pratikte nasıl ilerlersin?\n- Hedef programın kabul şartlarını (Zulassungsvoraussetzungen) oku ve lisans derslerini tek tek karşılaştır.\n- Emin değilsen başvurmadan önce transkriptinle birlikte programın danışmanlık ofisine sor.\n- Şartları DAAD kabul veritabanından ve üniversitenin kendi sayfasından kontrol et.\n- Kurum tarafı için anabin'de üniversitenin H+ olup olmadığına bak; H+ yalnızca bir ön koşuldur, kabul anlamına gelmez.\n\nKaynak: [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "bachelor-ve-master-farkli-bolumlerde-olabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can your Bachelor's and Master's be in different fields?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can your bachelor's and master's be in different fields?",
+      "answer_md": "**Yes, it is possible — but the master's programme's admission requirements decide.** In Germany each university and programme sets its own requirements, and the subject of your bachelor's is one of the key ones.\n\n### What the university checks\n- **Subject fit:** do the courses in your bachelor's cover the foundation the master's expects?\n- Your grade, language proof and the required documents.\n- The university reviews your degree and transcript individually and makes the final decision.\n\n### No fixed national rule\n- There is no public, fixed list of which bachelor's counts as suitable for which master's.\n- There is also no Germany-wide GPA, NC or language threshold.\n- Two programmes with the same name can ask for different backgrounds.\n\n### How to approach it\n- Read the programme's admission requirements (Zulassungsvoraussetzungen) and compare them course by course with your transcript.\n- If you are unsure, contact the programme's advisory office with your transcript before applying.\n- Check requirements in the DAAD admission database and on the university's own page.\n- For the institution side, check in anabin whether your university is H+; H+ is only a prerequisite, not admission.\n\nSource: [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "bachelor-ve-master-farkli-bolumlerde-olabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Können Bachelor und Master in unterschiedlichen Fächern sein?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Können Bachelor und Master in unterschiedlichen Fächern sein?",
+      "answer_md": "**Ja, das geht – entscheidend sind aber die Zulassungsvoraussetzungen des Masterstudiengangs.** In Deutschland legt jede Hochschule und jeder Studiengang eigene Voraussetzungen fest, und das Fach deines Bachelors gehört zu den wichtigsten.\n\n### Was die Hochschule prüft\n- **Fachliche Passung:** Decken die Module deines Bachelors die Grundlagen ab, die der Master voraussetzt?\n- Note, Sprachnachweis und die geforderten Unterlagen.\n- Die Hochschule prüft Abschluss und Transcript individuell und entscheidet am Ende selbst.\n\n### Keine bundesweite Regel\n- Eine feste, öffentliche Liste, welcher Bachelor zu welchem Master passt, gibt es nicht.\n- Ebenso wenig eine bundesweite Noten-, NC- oder Sprachgrenze.\n- Zwei Studiengänge mit gleichem Namen können unterschiedliche Vorkenntnisse verlangen.\n\n### So gehst du vor\n- Lies die Zulassungsvoraussetzungen des Studiengangs und gleiche sie Modul für Modul mit deinem Transcript ab.\n- Bist du unsicher, frag vor der Bewerbung mit deinem Transcript bei der Studienberatung des Studiengangs nach.\n- Prüfe die Anforderungen in der DAAD-Zulassungsdatenbank und auf der Seite der Hochschule.\n- Schau in anabin, ob deine Hochschule H+ ist – das ist nur eine Voraussetzung, keine Zulassung.\n\nQuelle: [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "dusuk-gpa-ile-almanyada-masterlisans-kabulu-alinir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "dusuk-gpa-ile-almanyada-masterlisans-kabulu-alinir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Düşük GPA ile Almanya'da master/lisans kabulü alınır mı?",
+      "visible": "text",
+      "head": "Almanya'da kabul sadece GPA'ya bağlı değil — düşük not ortalamasıyla da yol var. # GPA'nın Önemi GPA"
+     },
+     "new": {
+      "question": "Düşük GPA ile Almanya'da master/lisans kabulü alınır mı?",
+      "answer_md": "**Düşük not ortalamasıyla kabul almak mümkün olabilir, çünkü Almanya genelinde geçerli bir asgari GPA veya sabit NC sınırı yoktur.** Sonucu programın kendi şartları ve o dönemki aday havuzu belirler.\n\n### Master\n- Her üniversite ve program şartlarını kendisi koyar: lisansının alan uyumu, not, dil ve belgeler.\n- Bazı programlar bir not şartı koyar, bazıları koymaz; bunu programın sayfasında gör.\n- Kontenjanı sınırlı (NC) programlarda kesme noktası aday havuzundan ve seçim kurallarından çıkar; geçmiş yılların değerleri garanti değildir.\n\n### Lisans\n- Lisans başvurusunda üniversite bir lisans GPA'sına değil, **HZB notuna** bakar.\n- Yabancı notlar **modifiye Bavyera formülüyle** Alman sistemine çevrilir. Formüldeki en yüksek ve en düşük not değerlerini sen seçmezsin; sonuç yuvarlanmadan tek ondalığa kesilir. uni-assist üzerinden başvuruyorsan çeviriyi uni-assist yapar.\n- Studienkolleg notunu \"sıfırlamaz\": Feststellungsprüfung gerekiyorsa genel not, yabancı notun ile FSP notunun ortalamasıdır.\n\n### Ne yapabilirsin?\n- Not şartı olmayan veya kabul kısıtlaması bulunmayan programları listele.\n- Şartları programdan programa karşılaştır; kararı her zaman üniversite verir.\n\nKaynak: [KMK not çevirme kararı](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "dusuk-gpa-ile-almanyada-masterlisans-kabulu-alinir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is admission to a Master's/Bachelor's program in Germany possible with a low GPA?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can you get admitted to a Master's or Bachelor's program in Germany with a low GPA?",
+      "answer_md": "**Admission with a low GPA can be possible, because Germany has no nationwide minimum GPA and no fixed NC threshold.** The program's own requirements and that semester's applicant pool decide.\n\n### Master's\n- Each university and program sets its own requirements: subject fit of your bachelor's, grade, language and documents.\n- Some programs set a grade requirement, others don't; check the program page.\n- In programs with restricted admission (NC), the cut-off results from the applicant pool and the selection rules. Values from previous years are no guarantee.\n\n### Bachelor's\n- For a bachelor's application, the university looks at your **HZB grade**, not a university GPA.\n- Foreign grades are converted with the **modified Bavarian formula**. You don't choose the maximum and minimum grade values used in it, and the result is truncated to one decimal, not rounded. If you apply via uni-assist, uni-assist does the conversion.\n- A Studienkolleg does not \"reset\" your grade: if a Feststellungsprüfung is required, your overall grade is the mean of your foreign grade and the FSP grade.\n\n### What you can do\n- Shortlist programs without a grade requirement or without restricted admission.\n- Compare requirements program by program. The university always makes the decision.\n\nSource: [KMK grade conversion rule](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf) · [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "dusuk-gpa-ile-almanyada-masterlisans-kabulu-alinir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kannst du mit einem niedrigen GPA eine Zulassung für ein Master- oder Bachelorstudium in Deutschland bekommen?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Kannst du mit einem niedrigen GPA eine Zulassung für ein Master- oder Bachelorstudium in Deutschland bekommen?",
+      "answer_md": "**Eine Zulassung mit niedrigem Notendurchschnitt kann möglich sein, denn in Deutschland gibt es weder einen bundesweiten Mindest-GPA noch einen festen NC-Wert.** Entscheidend sind die Voraussetzungen des Studiengangs und die Bewerberlage im jeweiligen Semester.\n\n### Master\n- Jede Hochschule und jeder Studiengang legt die Voraussetzungen selbst fest: fachliche Passung des Bachelors, Note, Sprache und Unterlagen.\n- Manche Studiengänge verlangen eine Mindestnote, andere nicht; das steht auf der Seite des Studiengangs.\n- In zulassungsbeschränkten Studiengängen (NC) ergibt sich die Grenze aus der Bewerberlage und den Auswahlregeln. Werte aus Vorjahren sind keine Garantie.\n\n### Bachelor\n- Bei einer Bachelorbewerbung zählt deine **HZB-Note**, nicht ein Hochschul-GPA.\n- Ausländische Noten werden mit der **modifizierten bayerischen Formel** umgerechnet. Die Höchst- und Mindestwerte der Formel wählst du nicht selbst; das Ergebnis wird auf eine Nachkommastelle abgeschnitten, nicht gerundet. Bewirbst du dich über uni-assist, rechnet uni-assist um.\n- Ein Studienkolleg setzt deine Note nicht „zurück\": Ist eine Feststellungsprüfung nötig, ist die Gesamtnote der Mittelwert aus ausländischer Note und FSP-Note.\n\n### Was du tun kannst\n- Suche Studiengänge ohne Mindestnote oder ohne Zulassungsbeschränkung.\n- Vergleiche die Voraussetzungen einzeln. Die Entscheidung trifft immer die Hochschule.\n\nQuelle: [KMK-Beschluss zur Notenumrechnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf) · [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "goethe-b2-ile-sartsiz-master-kabulu-alabilir-miyim",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "goethe-b2-ile-sartsiz-master-kabulu-alabilir-miyim",
+     "mode": "rewrite",
+     "old": {
+      "question": "Goethe B2 ile şartsız master kabulü alabilir miyim?",
+      "visible": "text",
+      "head": "Çoğu Almanca master programı için B2 yetmez — standart şart C1. Ama bazı istisnalar var. # B2 Yeterl"
+     },
+     "new": {
+      "question": "Goethe B2 ile şartsız master kabulü alabilir miyim?",
+      "answer_md": "**Bu tamamen başvurduğun programa bağlı: Almanya'da master için herkese geçerli bir \"B2 yeter\" ya da \"C1 şart\" kuralı yok.** Hangi dil belgesinin hangi seviyede kabul edildiğini üniversite ve program belirler.\n\n### Almanca eğitim veren programlar\n- Çoğu program DSH veya TestDaF gibi belgeler ister; Goethe sertifikasını kabul edip etmediği ve hangi seviyeyi istediği programdan programa değişir.\n- Programın istediği seviyeyi karşılıyorsan şartsız kabul mümkündür; karşılamıyorsan ne olacağına üniversitenin kuralları karar verir.\n\n### İngilizce eğitim veren programlar\n- Burada İngilizce belgen (ör. IELTS/TOEFL) ve varsa Almanca şartı programa göre belirlenir. Almanca hiç istenmeyebilir de.\n\n### Şartlı kabul (bedingte Zulassung)\n- Bazı üniversiteler dil şartını sonradan tamamlama koşuluyla kabul verebilir. Koşulun içeriği o üniversitenin kurallarına bağlıdır.\n- Türkiye'deki Alman temsilciliklerinin bilgi notuna göre bağlayıcı eşik üniversitenin kendi dil sınavıdır; dil şartını tamamladıktan sonra yeniden başvuru gerekebilir.\n\n### Ne yapmalısın?\nHedef programın \"Sprachnachweis\" bölümünü oku ve Goethe B2'nin kabul edilip edilmediğini yazılı olarak kontrol et. Emin değilsen üniversitenin uluslararası ofisine sor.\n\nKaynak: [Şartlı kabul ve dil seviyesi rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level) · [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "goethe-b2-ile-sartsiz-master-kabulu-alabilir-miyim-en",
+     "mode": "update",
+     "old": {
+      "question": "Can I get unconditional Master's admission with Goethe B2?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can I get unconditional master's admission in Germany with Goethe B2?",
+      "answer_md": "**It depends entirely on the programme: there is no Germany-wide rule that \"B2 is enough\" or \"C1 is required\" for a master's.** The university and programme decide which language certificates they accept and at what level.\n\n### German-taught programmes\n- Many ask for DSH or TestDaF; whether a Goethe certificate is accepted, and at which level, varies by programme.\n- If you meet the level the programme requires, unconditional admission is possible; if not, the university's own rules decide what happens.\n\n### English-taught programmes\n- Here the English proof (e.g. IELTS/TOEFL) and any German requirement are set by the programme. Some ask for no German at all.\n\n### Conditional admission (bedingte Zulassung)\n- Some universities admit you on condition that you meet the language requirement later. What that condition involves follows the university's rules.\n- According to the German missions in Türkiye, the university's own language exam is the binding threshold, and a new application may be needed once you meet the language requirement.\n\n### What to do\nRead the \"Sprachnachweis\" section of your target programme and check in writing whether Goethe B2 is accepted. If in doubt, ask the university's international office.\n\nSource: [Conditional admission and language level guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "goethe-b2-ile-sartsiz-master-kabulu-alabilir-miyim-de",
+     "mode": "update",
+     "old": {
+      "question": "Bekomme ich mit Goethe B2 eine bedingungslose Masterzulassung?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Bekomme ich mit Goethe B2 eine Masterzulassung ohne Auflagen?",
+      "answer_md": "**Das hängt ganz vom Studiengang ab: Eine bundesweite Regel „B2 reicht“ oder „C1 ist Pflicht“ gibt es für den Master nicht.** Welche Sprachnachweise auf welchem Niveau gelten, legen Hochschule und Studiengang fest.\n\n### Deutschsprachige Studiengänge\n- Häufig werden DSH oder TestDaF verlangt; ob ein Goethe-Zertifikat akzeptiert wird und auf welchem Niveau, ist je nach Studiengang verschieden.\n- Erfüllst du das geforderte Niveau, ist eine Zulassung ohne Bedingung möglich; wenn nicht, entscheiden die Regeln der Hochschule.\n\n### Englischsprachige Studiengänge\n- Hier bestimmt der Studiengang den Englischnachweis (z. B. IELTS/TOEFL) und ob überhaupt Deutsch verlangt wird.\n\n### Bedingte Zulassung\n- Manche Hochschulen lassen dich unter der Bedingung zu, den Sprachnachweis später zu erbringen. Was genau gilt, regelt die jeweilige Hochschule.\n- Laut den deutschen Auslandsvertretungen in der Türkei ist die Sprachprüfung der Hochschule die verbindliche Schwelle; nach Erfüllen der Sprachanforderung kann eine neue Bewerbung nötig sein.\n\n### Was du tun solltest\nLies den Abschnitt „Sprachnachweis“ deines Wunschstudiengangs und prüfe schriftlich, ob Goethe B2 anerkannt wird. Im Zweifel frag beim International Office nach.\n\nQuelle: [Ratgeber bedingte Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ielts-ile-almanyada-ingilizce-master-basvurusu-yapilabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ielts-ile-almanyada-ingilizce-master-basvurusu-yapilabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "IELTS ile Almanya'da İngilizce master başvurusu yapılabilir mi?",
+      "visible": "text",
+      "head": "Evet — Almanya'daki İngilizce master programlarının çoğu IELTS'i kabul ediyor. # Minimum Skor Progra"
+     },
+     "new": {
+      "question": "IELTS ile Almanya'da İngilizce master başvurusu yapılabilir mi?",
+      "answer_md": "**Evet, İngilizce master programları İngilizce yeterliliğini genellikle IELTS veya TOEFL gibi belgelerle ister — ama hangi sınavın ve hangi puanın kabul edildiğini her program kendisi belirler.** Almanya genelinde geçerli bir IELTS puanı yoktur.\n\n### Neyi kontrol etmelisin?\n- Programın kabul ettiği sınavlar: IELTS, TOEFL veya başka bir belge.\n- İstenen **toplam puan** ve varsa bölüm puanları.\n- Belgenin ne kadar eski olabileceği ve başvuruya nasıl ekleneceği.\n- Programın ayrıca Almanca şartı olup olmadığı — bu da programa göre değişir; bazı programlar Almanca hiç istemez.\n\n### Puan tablolarına dikkat\nİnternette görülen \"mühendislik 6.5, hukuk 7.0\" gibi alan bazlı tablolar kural değildir. Aynı alandaki iki program farklı puan isteyebilir; bağlayıcı olan yalnızca programın kendi şartıdır.\n\n### Dil tek kriter değil\nDil belgesi tek başına kabul getirmez. Üniversite lisansının alan uyumuna, notuna ve evraklarına da bakar ve son kararı kendisi verir.\n\n### Nerede ararsın?\nProgramın resmî sayfasındaki \"Language requirements\" bölümünü ve DAAD kabul veritabanını kullan. Emin değilsen üniversitenin uluslararası ofisine sor.\n\nKaynak: [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Şartlı kabul ve dil seviyesi rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ielts-ile-almanyada-ingilizce-master-basvurusu-yapilabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can one apply for an English master's in Germany with IELTS?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can you apply for an English-taught master's in Germany with IELTS?",
+      "answer_md": "**Yes — English-taught master's programmes usually ask for proof of English such as IELTS or TOEFL, but each programme decides which tests it accepts and what score it needs.** There is no Germany-wide IELTS score.\n\n### What to check\n- Which tests the programme accepts: IELTS, TOEFL or other proof.\n- The required **overall score** and any minimum sub-scores.\n- How old the certificate may be and how to submit it.\n- Whether the programme also asks for German — this varies too, and some programmes require none.\n\n### Be careful with score tables\nField-based tables you see online (\"engineering 6.5, law 7.0\") are not rules. Two programmes in the same field can set different scores; only the programme's own requirement is binding.\n\n### Language is not the only criterion\nA test score alone does not get you admitted. The university also looks at how well your bachelor's fits, your grade and your documents, and it makes the final decision.\n\n### Where to look\nUse the \"Language requirements\" section on the programme's official page and the DAAD admission database. If in doubt, ask the university's international office.\n\nSource: [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Conditional admission and language level guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ielts-ile-almanyada-ingilizce-master-basvurusu-yapilabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kannst du dich mit IELTS für einen englischsprachigen Master in Deutschland bewerben?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Kannst du dich mit IELTS für einen englischsprachigen Master in Deutschland bewerben?",
+      "answer_md": "**Ja – englischsprachige Masterstudiengänge verlangen meist einen Englischnachweis wie IELTS oder TOEFL, aber welche Tests und welche Punktzahl gelten, legt jeder Studiengang selbst fest.** Einen bundesweiten IELTS-Wert gibt es nicht.\n\n### Was du prüfen solltest\n- Welche Nachweise der Studiengang akzeptiert: IELTS, TOEFL oder andere.\n- Die geforderte **Gesamtpunktzahl** und eventuelle Mindestwerte in Teilbereichen.\n- Wie alt das Zertifikat sein darf und wie du es einreichst.\n- Ob zusätzlich Deutsch verlangt wird – auch das hängt vom Studiengang ab; manche verlangen gar keins.\n\n### Vorsicht bei Punktetabellen\nTabellen nach Fachrichtung („Ingenieurwesen 6.5, Jura 7.0“) sind keine Regeln. Zwei Studiengänge im selben Fach können unterschiedliche Werte verlangen; verbindlich ist nur die Vorgabe des Studiengangs.\n\n### Sprache ist nicht alles\nEin Testergebnis allein bringt keine Zulassung. Die Hochschule prüft auch die fachliche Passung deines Bachelors, deine Note und deine Unterlagen und entscheidet selbst.\n\n### Wo du nachschaust\nIm Abschnitt „Language requirements“ auf der offiziellen Studiengangsseite und in der DAAD-Zulassungsdatenbank. Im Zweifel frag beim International Office nach.\n\nQuelle: [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Ratgeber bedingte Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ingilizce-master-programlarinda-almanca-seviyesi-gerekli-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ingilizce-master-programlarinda-almanca-seviyesi-gerekli-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "İngilizce master programlarında Almanca seviyesi gerekli mi?",
+      "visible": "text",
+      "head": "Çoğu İngilizce master programında Almanca zorunlu değil — ama bazı programlar Almanca seviye önerir"
+     },
+     "new": {
+      "question": "İngilizce master programlarında Almanca seviyesi gerekli mi?",
+      "answer_md": "**Her zaman değil: İngilizce master programında Almanca istenip istenmediğini ve hangi seviyenin istendiğini program kendisi belirler.** Almanya genelinde İngilizce programlar için geçerli bir Almanca şartı yoktur.\n\n### Program neyi belirler?\n- İngilizce yeterlilik belgesi (ör. IELTS/TOEFL) ve istenen puan.\n- Almanca şartı olup olmadığı; varsa hangi seviyede ve başvuruda mı yoksa daha sonra mı kanıtlanacağı.\n- Bazı programlar Almanca hiç istemez, bazıları belirli bir seviye ister. Aynı alandaki iki program bile farklı olabilir.\n\n### Şartlı kabul\nBazı üniversiteler dil şartını sonradan tamamlama koşuluyla kabul verebilir. Bu koşulun içeriği o üniversitenin kurallarına bağlıdır.\n\n### Almanca yine de işine yarar mı?\nKabul için gerekmese bile Almanca günlük hayatı, resmî işlemleri ve okurken çalışmayı kolaylaştırır. Ama bu bir kabul şartı değil, senin tercihindir.\n\n### Nasıl kontrol edersin?\nProgramın resmî sayfasındaki \"Language requirements\" bölümünü oku ve DAAD kabul veritabanına bak. Açık değilse üniversitenin uluslararası ofisine yazılı olarak sor.\n\nKaynak: [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Şartlı kabul ve dil seviyesi rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ingilizce-master-programlarinda-almanca-seviyesi-gerekli-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is German proficiency required for English master's programs?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is German required for English-taught master's programmes in Germany?",
+      "answer_md": "**Not always: each English-taught master's programme decides whether it requires German and at what level.** There is no Germany-wide German requirement for English-taught programmes.\n\n### What the programme sets\n- The English proof (e.g. IELTS/TOEFL) and the score it needs.\n- Whether German is required at all — and if so, which level and whether you must prove it at application or later.\n- Some programmes ask for no German, others set a specific level. Even two programmes in the same field can differ.\n\n### Conditional admission\nSome universities admit you on condition that you meet a language requirement later. What that condition involves follows the university's own rules.\n\n### Is German still worth it?\nEven if admission does not require it, German makes everyday life, dealing with authorities and working alongside your studies easier. That is your choice, not an admission requirement.\n\n### How to check\nRead the \"Language requirements\" section on the programme's official page and look it up in the DAAD admission database. If it is unclear, ask the university's international office in writing.\n\nSource: [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Conditional admission and language level guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ingilizce-master-programlarinda-almanca-seviyesi-gerekli-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Sind Deutschkenntnisse in englischsprachigen Masterstudiengängen erforderlich?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Sind Deutschkenntnisse in englischsprachigen Masterstudiengängen erforderlich?",
+      "answer_md": "**Nicht unbedingt: Ob ein englischsprachiger Master Deutsch verlangt und auf welchem Niveau, legt jeder Studiengang selbst fest.** Eine bundesweite Deutschanforderung für englischsprachige Studiengänge gibt es nicht.\n\n### Was der Studiengang festlegt\n- Den Englischnachweis (z. B. IELTS/TOEFL) und die geforderte Punktzahl.\n- Ob überhaupt Deutsch verlangt wird – und wenn ja, welches Niveau und ob du es bei der Bewerbung oder später nachweisen musst.\n- Manche Studiengänge verlangen kein Deutsch, andere ein bestimmtes Niveau. Selbst zwei Studiengänge im gleichen Fach können sich unterscheiden.\n\n### Bedingte Zulassung\nManche Hochschulen lassen dich unter der Bedingung zu, einen Sprachnachweis später zu erbringen. Was genau gilt, regelt die jeweilige Hochschule.\n\n### Lohnt sich Deutsch trotzdem?\nAuch wenn es für die Zulassung nicht nötig ist, erleichtert Deutsch den Alltag, Behördengänge und einen Job neben dem Studium. Das ist deine Entscheidung, keine Zulassungsvoraussetzung.\n\n### So prüfst du es\nLies den Abschnitt „Language requirements“ auf der offiziellen Studiengangsseite und schau in die DAAD-Zulassungsdatenbank. Ist es unklar, frag schriftlich beim International Office nach.\n\nQuelle: [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/) · [Ratgeber bedingte Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "lisans-bitirmeden-uni-assist-vpd-basvurusu-mumkun-mu",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "lisans-bitirmeden-uni-assist-vpd-basvurusu-mumkun-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Lisans bitirmeden Uni-Assist VPD başvurusu mümkün mü?",
+      "visible": "text",
+      "head": "Evet, lisans son sınıfta okurken Uni-Assist VPD başvurusu yapabilirsin. Uni-Assist \"in progress\" (he"
+     },
+     "new": {
+      "question": "Lisans bitirmeden Uni-Assist VPD başvurusu mümkün mü?",
+      "answer_md": "**Bu, başvurduğun üniversiteye bağlı: mezuniyetten önce transkript veya beklenen mezuniyet belgesiyle başvuruyu kabul edip etmeyeceğine üniversite karar verir.** Almanya genelinde tek bir kural yok.\n\n### Önce netleştir: VPD gerekiyor mu?\n- Her üniversite uni-assist kullanmaz. VPD yalnızca üniversite uni-assist'ten VPD prosedürünü uygulamasını istediyse gerekir.\n- VPD; sunduğun belgeleri, uni-assist'in bunları nasıl değerlendirdiğini ve Alman sistemine çevrilmiş notunu kaydeder. **Seçtiğin üniversiteye özel** düzenlenir ve **bir yıl** geçerlidir.\n\n### Lisansın bitmeden başvuracaksan\n- Programın başvuru sayfasında mezuniyet öncesi başvuruya izin verilip verilmediğini ve hangi belgenin istendiğini kontrol et.\n- Belgelerini My assist'e dijital olarak yüklersin; uni-assist'e posta ile gönderim yok. Belgeler orijinal dilde ve Almanca veya İngilizce onaylı tercümeyle birlikte istenir.\n- Ücret: dönemdeki ilk program için **75 €**, aynı dönemdeki her ek program için **30 €**; sonuçtan bağımsız alınır.\n\n### Unutma\n- VPD kabul değildir. VPD geldikten sonra üniversitenin son başvuru tarihinden önce **ayrıca üniversiteye başvurman** gerekir.\n- Mezuniyet belgesini ne zaman ve nasıl teslim edeceğini de üniversite belirler.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – ücretler](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "lisans-bitirmeden-uni-assist-vpd-basvurusu-mumkun-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Is it possible to apply for Uni-Assist VPD before finishing your bachelor's degree?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can I apply for a uni-assist VPD before finishing my bachelor's degree?",
+      "answer_md": "**It depends on the university: it decides whether it accepts an application with a transcript or a certificate of expected graduation before you graduate.** There is no single Germany-wide rule.\n\n### First check: do you need a VPD at all?\n- Not every university uses uni-assist. A VPD is needed only where the university has instructed uni-assist to use the VPD procedure.\n- A VPD records which certificates you submitted, how uni-assist evaluated them and your converted German grade. It is issued **for the specific university** you chose and is valid for **one year**.\n\n### Applying before graduation\n- Check the programme's application page: are applications before graduation allowed, and which document does it want?\n- Upload your documents digitally in My assist — nothing is posted to uni-assist. Certificates are required in the original language plus a certified German or English translation.\n- Fees: **75 €** for the first programme in a semester and **30 €** for each additional programme in the same semester, charged regardless of the result.\n\n### Remember\n- A VPD is not an admission. After you receive it, you must **still apply to the university** directly before its deadline.\n- When and how you submit your final degree certificate is also set by the university.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – fees](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "lisans-bitirmeden-uni-assist-vpd-basvurusu-mumkun-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist es möglich, einen Uni-Assist VPD-Antrag zu stellen, bevor du dein Bachelorstudium abgeschlossen hast?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist es möglich, einen uni-assist-VPD-Antrag zu stellen, bevor du dein Bachelorstudium abgeschlossen hast?",
+      "answer_md": "**Das hängt von der Hochschule ab: Sie entscheidet, ob sie eine Bewerbung mit Transcript oder einer Bescheinigung über den voraussichtlichen Abschluss annimmt.** Eine bundesweite Regel gibt es nicht.\n\n### Zuerst klären: Brauchst du überhaupt eine VPD?\n- Nicht jede Hochschule arbeitet mit uni-assist. Eine VPD brauchst du nur, wenn die Hochschule uni-assist mit dem VPD-Verfahren beauftragt hat.\n- Die VPD dokumentiert, welche Zeugnisse du eingereicht hast, wie uni-assist sie bewertet und welche deutsche Note sich ergibt. Sie wird **für die gewählte Hochschule** ausgestellt und ist **ein Jahr** gültig.\n\n### Bewerbung vor dem Abschluss\n- Prüf auf der Seite des Studiengangs, ob eine Bewerbung vor dem Abschluss möglich ist und welcher Nachweis verlangt wird.\n- Du lädst deine Unterlagen digital in My assist hoch – per Post schickst du nichts an uni-assist. Nötig sind Zeugnisse in Originalsprache plus beglaubigte Übersetzung ins Deutsche oder Englische.\n- Gebühren: **75 €** für den ersten Studiengang im Semester, **30 €** für jeden weiteren im selben Semester – unabhängig vom Ergebnis.\n\n### Denk daran\n- Die VPD ist keine Zulassung. Danach musst du dich **zusätzlich direkt bei der Hochschule** vor deren Frist bewerben.\n- Wann und wie du dein Abschlusszeugnis nachreichst, legt ebenfalls die Hochschule fest.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – Gebühren](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "master-3-sinifta-mi-4-sinif-sonrasi-mi-basvurmali",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "master-3-sinifta-mi-4-sinif-sonrasi-mi-basvurmali",
+     "mode": "rewrite",
+     "old": {
+      "question": "Master 3. sınıfta mı 4. sınıf sonrası mı başvurmalı?",
+      "visible": "text",
+      "head": "Genel kural: Lisans 4. sınıf güz dönemi (Ekim-Kasım) master başvurusu için doğru zaman. Wintersemest"
+     },
+     "new": {
+      "question": "Master için 3. sınıfta mı, 4. sınıf sonrasında mı başvurmalıyım?",
+      "answer_md": "**Doğru zamanı sınıfın değil, hedef programın başvuru tarihi ve mezuniyetten önce başvuruyu kabul edip etmediği belirler.** Almanya'da herkes için geçerli tek bir master başvuru tarihi yoktur; her üniversite kendi tarihini koyar.\n\n### Mezun olmadan başvurmak\n- Henüz mezun olmamış adaydan güncel transkript veya beklenen mezuniyet belgesi kabul edilip edilmeyeceğine üniversite karar verir; genel bir kural yoktur.\n- Programın sayfasında bu durumu düzenleyen bir madde ara; bulamazsan uluslararası ofise sor.\n\n### Takvimi geriye doğru planla\n- Önce hedef programların son başvuru tarihlerini not et.\n- Dil belgesini ve istenen evrakı bu tarihten önce hazırla; dil şartı programa göre değişir.\n- Program uni-assist kullanıyorsa işlem genelde **4–6 hafta** sürer ve uni-assist'in son tarihi üniversitenin son tarihiyle aynıdır.\n- VPD yalnızca üniversite istiyorsa gerekir; o üniversiteye özeldir ve verildiği tarihten itibaren **bir yıl** geçerlidir. VPD aldıktan sonra üniversiteye ayrıca başvurman gerekir.\n\n### 3. sınıfta ne yapabilirsin?\n- Programları araştır; alan uyumunu, not ve dil şartlarını, istenen belgeleri çıkar.\n- Dil hazırlığına erken başla ki son yılında belgelerin hazır olsun.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist üye üniversiteleri](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "master-3-sinifta-mi-4-sinif-sonrasi-mi-basvurmali-en",
+     "mode": "update",
+     "old": {
+      "question": "Should you apply for a Master's program in your 3rd year or after completing your 4th year?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Should you apply for a Master's in Germany in your 3rd year or after your 4th year?",
+      "answer_md": "**The right time depends not on your year of study but on the target program's deadline and on whether it accepts applications before graduation.** Germany has no single master's deadline for everyone; each university sets its own.\n\n### Applying before graduation\n- Whether a current transcript or an expected-graduation certificate is accepted is up to the university; there is no general rule.\n- Look for a rule on this on the program page, or ask the international office.\n\n### Plan backwards\n- First note the deadlines of your target programs.\n- Get your language certificate and required documents ready before that date; language requirements vary by program.\n- If the program uses uni-assist, processing usually takes **4–6 weeks**, and uni-assist's deadline is the university's deadline.\n- A VPD is needed only if the university asks for one. It is issued for that specific university and is valid for **one year** from the date of issue. After receiving it, you still apply directly to the university.\n\n### What to do in your 3rd year\n- Research programs and list subject fit, grade and language requirements and the documents needed.\n- Start language preparation early so your certificates are ready in your final year.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "master-3-sinifta-mi-4-sinif-sonrasi-mi-basvurmali-de",
+     "mode": "update",
+     "old": {
+      "question": "Solltest du dich für einen Master im 3. Studienjahr bewerben oder nach dem 4. Studienjahr?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Solltest du dich im 3. Studienjahr oder nach dem 4. Studienjahr für einen Master bewerben?",
+      "answer_md": "**Der richtige Zeitpunkt hängt nicht vom Studienjahr ab, sondern von der Bewerbungsfrist des Studiengangs und davon, ob er Bewerbungen vor dem Abschluss annimmt.** Eine einheitliche Masterfrist für alle gibt es in Deutschland nicht; jede Hochschule legt ihre eigene fest.\n\n### Bewerbung vor dem Abschluss\n- Ob ein aktuelles Transcript oder eine Bescheinigung über den voraussichtlichen Abschluss reicht, entscheidet die Hochschule; eine allgemeine Regel gibt es nicht.\n- Suche dazu eine Regelung auf der Seite des Studiengangs oder frag beim International Office nach.\n\n### Rückwärts planen\n- Notiere zuerst die Fristen deiner Wunschstudiengänge.\n- Sprachnachweis und Unterlagen sollten vorher fertig sein; die Sprachanforderungen unterscheiden sich je nach Studiengang.\n- Nutzt der Studiengang uni-assist, dauert die Bearbeitung meist **4–6 Wochen**; die Frist bei uni-assist ist die Frist der Hochschule.\n- Eine VPD brauchst du nur, wenn die Hochschule sie verlangt. Sie gilt für diese eine Hochschule und **ein Jahr** ab Ausstellung. Danach bewirbst du dich trotzdem direkt bei der Hochschule.\n\n### Was du im 3. Studienjahr tun kannst\n- Recherchiere Studiengänge und notiere fachliche Passung, Noten- und Sprachanforderungen sowie Unterlagen.\n- Beginne früh mit der Sprachvorbereitung, damit deine Nachweise im letzten Jahr bereitliegen.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist-Mitgliedshochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "nc-nedir-master-basvurusunu-nasil-etkiler",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "nc-nedir-master-basvurusunu-nasil-etkiler",
+     "mode": "rewrite",
+     "old": {
+      "question": "NC nedir, master başvurusunu nasıl etkiler?",
+      "visible": "text",
+      "head": "NC (Numerus Clausus) , talebin kontenjandan fazla olduğu programlarda giriş notu sınırı anlamına gel"
+     },
+     "new": {
+      "question": "NC nedir, master başvurusunu nasıl etkiler?",
+      "answer_md": "**NC (Numerus Clausus), bir programda kabul kısıtlaması olduğunu gösterir; sabit bir not sınırı değil, o dönemin aday havuzuna ve programın seçim kurallarına göre ortaya çıkan bir kesme noktasıdır.** Almanya genelinde geçerli tek bir NC değeri yoktur.\n\n### NC nasıl oluşur?\n- Kontenjandan fazla aday varsa program adayları kendi seçim kurallarına göre sıralar.\n- Kabul alan son adayın değeri o dönemin \"NC\"si olur ve bir sonraki dönem değişebilir. Geçmiş yılların değerleri garanti değildir.\n- Kabul kısıtlaması olmayan programlarda belirleyici olan, programın kabul şartlarıdır.\n\n### Master başvuruna etkisi\n- Her master programı kendi şartlarını koyar: lisansının alan uyumu, not, dil ve belgeler.\n- NC'li bir programda şartları karşılaman tek başına yetmeyebilir; sıralamaya girersin.\n- Yabancı notun modifiye Bavyera formülüyle Alman sistemine çevrilir; bu sistemde 1,0 en iyi nottur.\n\n### Ne yapmalısın?\n- Programın sayfasında kabul kısıtlaması olup olmadığını ve seçim kurallarını kontrol et.\n- Tek programa bağlı kalma; birkaç programın şartlarını karşılaştır. Kararı üniversite verir.\n\nKaynak: [KMK not çevirme kararı](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "nc-nedir-master-basvurusunu-nasil-etkiler-en",
+     "mode": "update",
+     "old": {
+      "question": "What is NC and how does it affect master's applications?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What is NC and how does it affect your master's application?",
+      "answer_md": "**NC (Numerus Clausus) means a program has restricted admission. It is not a fixed grade limit but a cut-off that results from that semester's applicant pool and the program's selection rules.** There is no single Germany-wide NC value.\n\n### How an NC comes about\n- If there are more applicants than places, the program ranks applicants according to its selection rules.\n- The value of the last admitted applicant becomes that semester's \"NC\" and can change next time. Previous years' values are no guarantee.\n- In programs without restricted admission, the program's admission requirements are what counts.\n\n### Effect on your master's application\n- Every master's program sets its own requirements: subject fit of your bachelor's, grade, language and documents.\n- In a program with an NC, meeting the requirements may not be enough on its own; you enter a ranking.\n- Your foreign grade is converted with the modified Bavarian formula into the German scale, where 1.0 is the best grade.\n\n### What to do\n- Check the program page for admission restrictions and selection rules.\n- Don't rely on one program; compare the requirements of several. The university decides.\n\nSource: [KMK grade conversion rule](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "nc-nedir-master-basvurusunu-nasil-etkiler-de",
+     "mode": "update",
+     "old": {
+      "question": "Was ist der NC und wie beeinflusst er deine Masterbewerbung?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was ist der NC und wie beeinflusst er deine Masterbewerbung?",
+      "answer_md": "**Der NC (Numerus Clausus) zeigt, dass ein Studiengang zulassungsbeschränkt ist. Er ist keine feste Notengrenze, sondern ergibt sich aus der Bewerberlage des Semesters und den Auswahlregeln des Studiengangs.** Einen bundesweit gültigen NC-Wert gibt es nicht.\n\n### Wie ein NC entsteht\n- Gibt es mehr Bewerbungen als Plätze, reiht der Studiengang die Bewerber nach seinen Auswahlregeln.\n- Der Wert der zuletzt zugelassenen Person ist der „NC\" dieses Semesters und kann sich beim nächsten Mal ändern. Vorjahreswerte sind keine Garantie.\n- Ohne Zulassungsbeschränkung zählen die Zulassungsvoraussetzungen des Studiengangs.\n\n### Auswirkung auf deine Masterbewerbung\n- Jeder Masterstudiengang legt eigene Voraussetzungen fest: fachliche Passung des Bachelors, Note, Sprache und Unterlagen.\n- Bei einem NC-Studiengang reicht es eventuell nicht, die Voraussetzungen zu erfüllen; du kommst in ein Ranking.\n- Deine ausländische Note wird mit der modifizierten bayerischen Formel in die deutsche Skala umgerechnet, auf der 1,0 die beste Note ist.\n\n### Was du tun solltest\n- Prüfe auf der Seite des Studiengangs, ob er zulassungsbeschränkt ist und welche Auswahlregeln gelten.\n- Setz nicht auf nur einen Studiengang, sondern vergleiche mehrere. Die Hochschule entscheidet.\n\nQuelle: [KMK-Beschluss zur Notenumrechnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "online-master-diplomasi-almanyada-gecerli-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "online-master-diplomasi-almanyada-gecerli-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Online master diploması Almanya'da geçerli mi?",
+      "visible": "text",
+      "head": "Genelde hayır — Almanya'da online (uzaktan) master diploması iş piyasası ve akademik dünyada klasik"
+     },
+     "new": {
+      "question": "Online master diploması Almanya'da geçerli mi?",
+      "answer_md": "**Genel bir \"evet\" ya da \"hayır\" yok: Online bir master diplomasının Almanya'da nasıl değerlendirileceği, diplomayı veren kurumun anabin statüsüne, derece türünün değerlendirmesine ve diplomayı kimin istediğine (üniversite, işveren, kurum) bağlıdır.**\n\n### anabin'de neye bakılır?\n- **Kurum statüsü (Institutionen):** H+ kurumun yükseköğretim kurumu sayıldığını gösterir. Ama H+ yalnızca diplomanın denklik değerlendirmesine girebileceği anlamına gelir; otomatik tanınma değildir. H+/- kurum ayrıca değerlendirilir, H- kurum yükseköğretim kurumu sayılmaz.\n- **Derece türü (Hochschulabschlüsse → Abschlusstypen):** \"entspricht\", \"gleichwertig\", \"bedingt vergleichbar\" gibi ifadeler de bir tanınma kararı değildir.\n\n### Doktora ya da yeni bir master için\nKabul kararını üniversite verir ve dereceni tek tek inceler; gerekirse ZAB'a danışabilir.\n\n### İş ve vize için\nZAB Zeugnisbewertung, yabancı yükseköğretim derecesini Alman sisteminde konumlandıran resmi belgedir; vize/AB Mavi Kart, işverenler (ör. kamu sektörü) ve kurumlar için kullanılır. Ücreti 208 €, işlem genelde yaklaşık 3 ay sürer. Kabul hakkı vermez; tıp, öğretmenlik veya hukuk gibi düzenlenmiş meslekler için ayrıca yetkili kurumun mesleki tanıması gerekir.\n\n### Pratik adım\nKaydolmadan önce kurumu ve derece türünü anabin'de kontrol et. anabin eksiksiz değildir; bağlayıcı bilgi yetkili eyalet kurumlarından gelir.\n\nKaynak: [anabin Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "online-master-diplomasi-almanyada-gecerli-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is an online master's degree valid in Germany?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is an online master's degree valid in Germany?",
+      "answer_md": "**There is no general yes or no: how an online master's degree is treated in Germany depends on the awarding institution's anabin status, the rating of the degree type and who is asking for it (a university, an employer or an authority).**\n\n### What to look at in anabin\n- **Institution status (Institutionen):** H+ means the institution is regarded as a higher-education institution. It only means the degree can undergo an equivalence assessment, not that it is automatically recognised. H+/- institutions are assessed separately; H- institutions are not regarded as higher-education institutions.\n- **Degree type (Hochschulabschlüsse → Abschlusstypen):** ratings such as \"entspricht\", \"gleichwertig\" or \"bedingt vergleichbar\" are not a recognition decision either.\n\n### For a PhD or another master's\nThe university decides on admission and checks your degree individually; it may ask ZAB.\n\n### For jobs and visas\nA ZAB Statement of Comparability places a foreign higher-education degree in the German system and is used for visas and the EU Blue Card, by employers (e.g. the public sector) and by authorities. It costs €208 and usually takes about 3 months. It gives no admission rights, and regulated professions such as medicine, teaching or law need recognition by the competent body.\n\n### Practical step\nCheck the institution and the degree type in anabin before you enrol. anabin is not complete; binding information comes only from the competent Land offices.\n\nSource: [anabin Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB Statement of Comparability](https://zab.kmk.org/en/statement-comparability)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "online-master-diplomasi-almanyada-gecerli-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist ein Online-Masterabschluss in Deutschland anerkannt?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist ein Online-Masterabschluss in Deutschland anerkannt?",
+      "answer_md": "**Ein pauschales Ja oder Nein gibt es nicht: Wie ein Online-Master in Deutschland bewertet wird, hängt vom anabin-Status der verleihenden Institution, der Bewertung des Abschlusstyps und davon ab, wer ihn verlangt – Hochschule, Arbeitgeber oder Behörde.**\n\n### Worauf du in anabin achtest\n- **Status der Institution (Institutionen):** H+ heißt, die Einrichtung gilt als Hochschule. Das bedeutet nur, dass der Abschluss eine Gleichwertigkeitsprüfung durchlaufen kann – keine automatische Anerkennung. H+/- wird gesondert bewertet, H- gilt nicht als Hochschule.\n- **Abschlusstyp (Hochschulabschlüsse → Abschlusstypen):** Einstufungen wie „entspricht“, „gleichwertig“ oder „bedingt vergleichbar“ sind ebenfalls keine Anerkennungsentscheidung.\n\n### Für Promotion oder weiteren Master\nDie Hochschule entscheidet über die Zulassung und prüft deinen Abschluss einzeln; sie kann dafür die ZAB einbeziehen.\n\n### Für Job und Visum\nDie ZAB-Zeugnisbewertung ordnet einen ausländischen Hochschulabschluss ins deutsche System ein und wird für Visum und Blaue Karte EU, von Arbeitgebern (z. B. im öffentlichen Dienst) und Behörden genutzt. Sie kostet 208 € und dauert meist etwa 3 Monate. Einen Zulassungsanspruch gibt sie nicht; reglementierte Berufe wie Medizin, Lehramt oder Jura brauchen die Anerkennung der zuständigen Stelle.\n\n### Praktischer Schritt\nPrüf Institution und Abschlusstyp in anabin, bevor du dich einschreibst. anabin ist nicht vollständig; verbindlich sind die zuständigen Landesstellen.\n\nQuelle: [anabin Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "sertifika-beklemeden-master-basvurusu-yapilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "sertifika-beklemeden-master-basvurusu-yapilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Sertifika beklemeden master başvurusu yapılır mı?",
+      "visible": "text",
+      "head": "Evet — çoğu Alman üniversitesi \"bekleyen sertifika\" ile başvuruya izin veriyor. Şartlı kabul mekaniz"
+     },
+     "new": {
+      "question": "Sertifika beklemeden master başvurusu yapılır mı?",
+      "answer_md": "**Bazı üniversitelerde evet; ama bu Almanya genelinde bir kural değil, her üniversite ve program kendisi belirler.** Diploman veya dil sertifikan henüz elinde değilken başvurunun kabul edilip edilmeyeceğini başvurduğun programın kuralları söyler.\n\n### Mezuniyet belgesi henüz yoksa\n- Transkript veya beklenen mezuniyet belgesiyle başvuruyu kabul edip etmeyeceğine üniversite karar verir. Bunu programın başvuru sayfasından kontrol et.\n- Master kabulünde üniversite lisansının alan uyumunu, notunu, dil belgeni ve evraklarını tek tek inceler. Almanya genelinde sabit bir not, NC veya dil eşiği yok.\n\n### Dil sertifikası henüz yoksa\n- İstenen belge ve seviye programa göre değişir: Almanca programlarda sıkça DSH veya TestDaF, İngilizce programlarda IELTS/TOEFL gibi belgeler istenir. **Evrensel bir C1 veya B2 kuralı yok.**\n- Şartlı kabul varsa üniversitenin koyduğu şarta bağlıdır; şartın içeriğini ve süresini o üniversitenin kuralları belirler.\n\n### Ne yapmalısın?\n- Her programın koşullarını ve son başvuru tarihini ayrı ayrı oku; herkes için ortak bir tarih yok.\n- Program uni-assist ile çalışıyorsa uni-assist'in son tarihi üniversitenin son tarihiyle aynıdır.\n- Emin değilsen başvuru ofisine belgeleri sonradan teslim edip edemeyeceğini sor.\n\nKaynak: [Şartlı kabul ve dil seviyesi rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level) · [DAAD Admission Database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "sertifika-beklemeden-master-basvurusu-yapilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can I apply for a master's program without waiting for my certificates?",
+      "visible": "text",
+      "head": "Yes — most German universities allow applications with \"pending certificates.\" The conditional admis"
+     },
+     "new": {
+      "question": "Can I apply for a master's without waiting for my certificates?",
+      "answer_md": "**At some universities, yes — but there is no Germany-wide rule; each university and programme decides.** Whether you can apply before holding your degree certificate or language certificate depends entirely on the programme you choose.\n\n### No degree certificate yet\n- The university decides whether it accepts a transcript or a certificate of expected graduation at the application stage. Check the programme's application page.\n- For master admission the university checks your bachelor's subject fit, grade, language proof and documents individually. There is no national GPA, NC or language threshold.\n\n### No language certificate yet\n- The required proof and level vary: German-taught programmes often ask for DSH or TestDaF, English-taught ones for proof such as IELTS or TOEFL. **There is no universal C1 or B2 rule.**\n- If a programme offers conditional admission, it is tied to the condition the university sets, and that university's rules decide what you must submit and by when.\n\n### What to do\n- Read each programme's requirements and deadline separately — there is no single deadline that applies to everyone.\n- If the programme uses uni-assist, the uni-assist deadline is the university's deadline.\n- When in doubt, ask the admissions office whether documents can be submitted later.\n\nSource: [Conditional admission and language level guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en) · [DAAD Admission Database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "sertifika-beklemeden-master-basvurusu-yapilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kann ich mich für ein Masterstudium bewerben, ohne auf mein Zeugnis zu warten?",
+      "visible": "text",
+      "head": "Ja – die meisten deutschen Universitäten erlauben eine Bewerbung mit einem \"ausstehenden Zeugnis\". D"
+     },
+     "new": {
+      "question": "Kann ich mich für einen Master bewerben, ohne auf meine Zeugnisse zu warten?",
+      "answer_md": "**An manchen Hochschulen ja – eine deutschlandweite Regel gibt es aber nicht; das legt jede Hochschule und jeder Studiengang selbst fest.** Ob du dich ohne Abschlusszeugnis oder Sprachzertifikat bewerben kannst, steht in den Regeln deines Wunschstudiengangs.\n\n### Abschlusszeugnis fehlt noch\n- Ob ein Transcript oder eine Bescheinigung über den voraussichtlichen Abschluss für die Bewerbung reicht, entscheidet die Hochschule. Schau auf die Bewerbungsseite des Studiengangs.\n- Beim Master prüft die Hochschule fachliche Passung deines Bachelors, Note, Sprachnachweis und Unterlagen individuell. Einen bundesweiten Notenschnitt, NC oder Sprachgrenzwert gibt es nicht.\n\n### Sprachzertifikat fehlt noch\n- Nachweis und Niveau hängen vom Studiengang ab: Deutschsprachige Programme verlangen oft DSH oder TestDaF, englischsprachige etwa IELTS oder TOEFL. **Eine allgemeine C1- oder B2-Regel gibt es nicht.**\n- Gibt es eine Zulassung unter Vorbehalt, hängt sie an der Bedingung der Hochschule; deren Regeln bestimmen, was du bis wann nachreichen musst.\n\n### So gehst du vor\n- Lies Voraussetzungen und Frist jedes Studiengangs einzeln – eine gemeinsame Frist für alle gibt es nicht.\n- Läuft der Studiengang über uni-assist, gilt dort die Frist der Hochschule.\n- Frag im Zweifel bei der Hochschule nach, ob du Unterlagen nachreichen darfst.\n\nQuelle: [Ratgeber bedingte Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de) · [DAAD Admission Database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "sosyal-bilimler-master-programlari-icin-almanca-sarti-nedir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "sosyal-bilimler-master-programlari-icin-almanca-sarti-nedir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Sosyal bilimler master programları için Almanca şartı nedir?",
+      "visible": "text",
+      "head": "Sosyal bilimler master programlarında Almanca şartı çoğunlukla C1 — mühendislikten daha yüksek hassa"
+     },
+     "new": {
+      "question": "Sosyal bilimler master programları için Almanca şartı nedir?",
+      "answer_md": "**Sosyal bilimler master programları için Almanya genelinde tek bir Almanca şartı yok; istenen dil belgesini ve seviyeyi her üniversite ve program kendisi belirler.** \"Sosyal bilimlerde herkes C1 ister\" gibi genel bir kural bulunmaz.\n\n### Almanca eğitimli programlar\n- Dil belgesi ve seviye programdan programa değişir.\n- Almanca programlarda sık istenen belgeler **DSH** veya **TestDaF**'tır; hangi sonucun yettiğini programın başvuru sayfası söyler.\n- Alanın adı (sosyoloji, psikoloji, siyaset bilimi vb.) seviyeyi tek başına belirlemez; belirleyici olan programın kuralıdır.\n\n### İngilizce eğitimli programlar\n- İngilizce belgesini (ör. IELTS/TOEFL) ve varsa Almanca şartını program koyar.\n- Almanya genelinde geçerli bir puan yoktur.\n\n### Dil şartını henüz karşılamıyorsan\n- Bazı üniversiteler şartlı kabul verebilir; koşulu üniversitenin kuralları belirler.\n- Dil şartını karşıladıktan sonra yeni bir başvuru gerekebilir.\n\n### Nasıl kontrol edersin?\n- Programın resmi sayfasında \"Sprachnachweis / Sprachkenntnisse\" bölümünü oku.\n- Belirsiz bir nokta kalırsa üniversitenin uluslararası ofisine sor; son karar üniversitenindir.\n\nKaynak: [Şartlı kabul ve dil seviyesi rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "sosyal-bilimler-master-programlari-icin-almanca-sarti-nedir-en",
+     "mode": "update",
+     "old": {
+      "question": "What is the German language requirement for social sciences master's programs?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What is the German language requirement for social sciences master's programs?",
+      "answer_md": "**There is no single German language requirement for social sciences master's programs in Germany: each university and program decides which certificate and level it accepts.** A blanket rule such as \"social sciences always require C1\" does not exist.\n\n### German-taught programs\n- The required proof and level vary by program.\n- Commonly requested certificates are **DSH** or **TestDaF**; the program's application page states which result is enough.\n- The subject name alone (sociology, psychology, political science, etc.) does not fix the level; the program's own rules do.\n\n### English-taught programs\n- The program sets the English proof (e.g. IELTS/TOEFL) and any German requirement.\n- There is no Germany-wide score.\n\n### If you don't meet the requirement yet\n- Some universities offer conditional admission; the university's rules define the condition.\n- Once you meet the language requirement, a new application may be required.\n\n### How to check\n- Read the \"Sprachnachweis / language requirements\" section on the program's official page.\n- If anything is unclear, ask the international office. The university makes the final decision.\n\nSource: [Conditional admission and language level guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "sosyal-bilimler-master-programlari-icin-almanca-sarti-nedir-de",
+     "mode": "update",
+     "old": {
+      "question": "Welche Deutschkenntnisse sind für Masterstudiengänge in den Sozialwissenschaften erforderlich?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Welche Deutschkenntnisse sind für Masterstudiengänge in den Sozialwissenschaften erforderlich?",
+      "answer_md": "**Für sozialwissenschaftliche Masterstudiengänge gibt es in Deutschland keine einheitliche Deutschanforderung: Welchen Nachweis und welches Niveau du brauchst, legt jede Hochschule und jeder Studiengang selbst fest.** Eine Pauschalregel wie „Sozialwissenschaften verlangen immer C1\" gibt es nicht.\n\n### Deutschsprachige Studiengänge\n- Nachweis und Niveau unterscheiden sich je nach Studiengang.\n- Häufig verlangt werden **DSH** oder **TestDaF**; welches Ergebnis reicht, steht auf der Bewerbungsseite des Studiengangs.\n- Das Fach allein (Soziologie, Psychologie, Politikwissenschaft usw.) bestimmt das Niveau nicht, sondern die Ordnung des Studiengangs.\n\n### Englischsprachige Studiengänge\n- Den Englischnachweis (z. B. IELTS/TOEFL) und eventuelle Deutschanforderungen legt der Studiengang fest.\n- Einen bundesweiten Mindestwert gibt es nicht.\n\n### Wenn du die Anforderung noch nicht erfüllst\n- Manche Hochschulen vergeben eine bedingte Zulassung; die Bedingung regelt die Hochschule.\n- Nachdem du die Sprachanforderung erfüllt hast, kann eine neue Bewerbung nötig sein.\n\n### So prüfst du es\n- Lies den Abschnitt „Sprachnachweis\" auf der offiziellen Seite des Studiengangs.\n- Bei offenen Fragen hilft das International Office. Die Entscheidung trifft die Hochschule.\n\nQuelle: [Ratgeber bedingte Zulassung und Sprachniveau](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-egitimi-1-yil-mi-2-yil-mi-surer",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-egitimi-1-yil-mi-2-yil-mi-surer",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg eğitimi 1 yıl mı 2 yıl mı sürer?",
+      "visible": "text",
+      "head": "Standart Studienkolleg 1 yıl (2 dönem) — 1 Wintersemester + 1 Sommersemester. 2 yıl olanlar istisnai"
+     },
+     "new": {
+      "question": "Studienkolleg eğitimi 1 yıl mı 2 yıl mı sürer?",
+      "answer_md": "**Studienkolleg normalde iki dönem, yani yaklaşık bir yıl sürecek şekilde tasarlanmıştır.** Bu yapı KMK'nın çerçeve düzenlemesine dayanır ve eğitim Feststellungsprüfung (FSP) ile biter.\n\n### Standart yapı\n- Program **iki dönemlik** planlanır.\n- Sonunda FSP'ye girersin: Almanca + kursunun iki dersi.\n- Kurs türü hedeflediğin alana göre belirlenir: üniversitelerde T, M, W, G, S; Fachhochschule'lerde TI, WW, GD, SW, DÜ.\n\n### Süre ne zaman uzar?\n- FSP'yi geçemezsen sınavı **bir kez** tekrarlayabilirsin; bu da toplam süreni doğal olarak uzatır. Tekrarın zamanlamasını Studienkolleg belirler.\n- Studienkolleg'e kabul edilmeden önce Almanca yeterliliğini kanıtlaman gerekir. Bu seviyeye ulaşmak için harcadığın süre iki dönemin içinde değildir.\n\n### Bilmen gerekenler\n- Studienkolleg'de yer garantisi yoktur.\n- Fachhochschule Studienkolleg'inde geçilen FSP, Universität'e giriş hakkı vermez.\n- Oturum izni açısından Studienkolleg, § 16b AufenthG kapsamında öğrenim amacına dahildir; bu dönemde yılda **140 iş günü** çalışabilirsin.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-egitimi-1-yil-mi-2-yil-mi-surer-en",
+     "mode": "update",
+     "old": {
+      "question": "Does Studienkolleg education last 1 or 2 years?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Does Studienkolleg education last 1 or 2 years?",
+      "answer_md": "**A Studienkolleg is designed to last two semesters, so roughly one year.** This follows the KMK framework, and the course ends with the Feststellungsprüfung (FSP).\n\n### The standard setup\n- The programme is planned for **two semesters**.\n- At the end you sit the FSP: German plus two subjects of your course.\n- Your course type depends on what you want to study: T, M, W, G or S at universities; TI, WW, GD, SW or DÜ at Fachhochschulen.\n\n### When it takes longer\n- If you fail the FSP, you can repeat it **once**, which naturally extends your overall time. The Studienkolleg decides when the resit takes place.\n- You must prove your German before you are admitted. The time you spend reaching that level comes on top of the two semesters.\n\n### Worth knowing\n- There is no entitlement to a Studienkolleg place.\n- An FSP passed at a Fachhochschule Studienkolleg does not give access to a university (Universität).\n- For residence purposes, a Studienkolleg counts as study under § 16b AufenthG, and you may work up to **140 working days per year**.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-egitimi-1-yil-mi-2-yil-mi-surer-de",
+     "mode": "update",
+     "old": {
+      "question": "Dauert das Studienkolleg 1 Jahr oder 2 Jahre?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Dauert das Studienkolleg 1 Jahr oder 2 Jahre?",
+      "answer_md": "**Das Studienkolleg ist auf zwei Semester ausgelegt, dauert also in der Regel etwa ein Jahr.** Grundlage ist die Rahmenordnung der KMK; am Ende steht die Feststellungsprüfung (FSP).\n\n### So ist es aufgebaut\n- Geplant sind **zwei Semester**.\n- Zum Abschluss legst du die FSP ab: Deutsch und zwei Fächer deines Kurses.\n- Welchen Kurs du besuchst, hängt von deinem Studienwunsch ab: an Universitäten T, M, W, G oder S, an Fachhochschulen TI, WW, GD, SW oder DÜ.\n\n### Wann es länger dauert\n- Bestehst du die FSP nicht, darfst du sie **einmal** wiederholen – dadurch verlängert sich deine Zeit. Wann die Wiederholung stattfindet, legt das Studienkolleg fest.\n- Deine Deutschkenntnisse musst du schon vor der Aufnahme nachweisen. Die Zeit, bis du dieses Niveau erreichst, kommt zu den zwei Semestern hinzu.\n\n### Gut zu wissen\n- Einen Anspruch auf einen Platz gibt es nicht.\n- Eine FSP an einem Fachhochschul-Studienkolleg berechtigt nicht zum Studium an einer Universität.\n- Aufenthaltsrechtlich zählt das Studienkolleg nach § 16b AufenthG zum Studienzweck; du darfst bis zu **140 Arbeitstage im Jahr** arbeiten.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-feststellungsprufung-sureci-nasil-isler",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-feststellungsprufung-sureci-nasil-isler",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg Feststellungsprüfung süreci nasıl işler?",
+      "visible": "text",
+      "head": "Feststellungsprüfung (FSP) , Studienkolleg'in 1 yıl sonunda yapılan final sınavı — Bachelor kapısını"
+     },
+     "new": {
+      "question": "Studienkolleg Feststellungsprüfung süreci nasıl işler?",
+      "answer_md": "**Feststellungsprüfung (FSP), iki dönemlik Studienkolleg'in sonunda yapılan bitirme sınavıdır ve Almanca ile kursunun iki dersinden oluşur.** Studienkolleg yolundaki adaylar için lisans başvurusu öncesindeki son adımdır.\n\n### Sınavın yapısı\n- Sınav, KMK çerçevesine göre Studienkolleg'in sonunda yapılır.\n- Dersler: **Almanca + kurs türünün iki dersi**. Kurs türleri üniversitelerde T, M, W, G, S; Fachhochschule'lerde TI, WW, GD, SW, DÜ'dür. Hangi iki dersin sınavda olduğunu kursun belirler.\n\n### Notun nasıl hesaplanır?\n- Türk diploma notun modifiye Bavyera formülüyle Alman sistemine çevrilir.\n- Genel notun = bu çevrilmiş not ile FSP notunun **ortalaması**.\n\n### Geçemezsen\n- FSP **bir kez** tekrarlanabilir.\n\n### FSP'den sonra\n- FSP kabul garantisi değildir. Lisans için üniversiteye kendi son tarihinden önce ayrıca başvurman gerekir; kararı üniversite verir.\n- Fachhochschule Studienkolleg'inde geçilen FSP, Universität'e giriş hakkı vermez; kursunu buna göre seç.\n- TestAS, FSP'nin yerine geçmez ve Studienkolleg'den muaf tutmaz.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-feststellungsprufung-sureci-nasil-isler-en",
+     "mode": "update",
+     "old": {
+      "question": "How does the Studienkolleg Feststellungsprüfung process work?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How does the Studienkolleg Feststellungsprüfung process work?",
+      "answer_md": "**The Feststellungsprüfung (FSP) is the final exam at the end of the two-semester Studienkolleg, covering German plus two subjects of your course.** For applicants on the Studienkolleg route, it is the last step before applying for a bachelor's programme.\n\n### How the exam is set up\n- It takes place at the end of the Studienkolleg under the KMK framework.\n- Subjects: **German + two subjects of your course type**. Course types are T, M, W, G and S at universities and TI, WW, GD, SW and DÜ at Fachhochschulen. Your course determines which two subjects are examined.\n\n### How your grade is calculated\n- Your Turkish school grade is converted with the modified Bavarian formula.\n- Your overall grade is the **mean** of that converted grade and your FSP grade.\n\n### If you fail\n- You can repeat the FSP **once**.\n\n### After the FSP\n- Passing does not guarantee admission. You still apply to the university before its deadline, and the university decides.\n- An FSP from a Fachhochschule Studienkolleg does not give access to a university (Universität), so choose your course with that in mind.\n- TestAS does not replace the FSP or exempt you from the Studienkolleg.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-feststellungsprufung-sureci-nasil-isler-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie läuft der Studienkolleg Feststellungsprüfung Prozess ab?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie läuft die Feststellungsprüfung am Studienkolleg ab?",
+      "answer_md": "**Die Feststellungsprüfung (FSP) ist die Abschlussprüfung am Ende des zweisemestrigen Studienkollegs – geprüft werden Deutsch und zwei Fächer deines Kurses.** Wenn du über das Studienkolleg gehst, ist sie der letzte Schritt vor der Bewerbung für ein Bachelorstudium.\n\n### Aufbau der Prüfung\n- Sie findet nach der KMK-Rahmenordnung am Ende des Studienkollegs statt.\n- Prüfungsfächer: **Deutsch + zwei Fächer deines Kurses**. Kurse an Universitäten sind T, M, W, G und S, an Fachhochschulen TI, WW, GD, SW und DÜ. Welche zwei Fächer geprüft werden, richtet sich nach deinem Kurs.\n\n### So entsteht deine Note\n- Deine türkische Schulnote wird mit der modifizierten bayerischen Formel umgerechnet.\n- Deine Gesamtnote ist der **Mittelwert** aus dieser Note und der FSP-Note.\n\n### Wenn du nicht bestehst\n- Du darfst die FSP **einmal** wiederholen.\n\n### Nach der FSP\n- Eine bestandene FSP ist keine Zulassungsgarantie. Du bewirbst dich weiterhin fristgerecht bei der Hochschule, und sie entscheidet.\n- Eine FSP an einem Fachhochschul-Studienkolleg berechtigt nicht zum Studium an einer Universität – wähle deinen Kurs entsprechend.\n- Der TestAS ersetzt die FSP nicht und befreit nicht vom Studienkolleg.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-ile-direkt-bachelor-karsilastirmasi-hangisi-avantajli",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-ile-direkt-bachelor-karsilastirmasi-hangisi-avantajli",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg ile direkt Bachelor karşılaştırması — hangisi avantajlı?",
+      "visible": "text",
+      "head": "İki yol da geçerli ama profiline göre seçim kritik. Kıyaslayalım: # Karşılaştırma Tablosu Açı Studie"
+     },
+     "new": {
+      "question": "Studienkolleg ile direkt Bachelor karşılaştırması — hangisi avantajlı?",
+      "answer_md": "**Bu aslında serbestçe seçebileceğin bir tercih değil: Studienkolleg'e mi gideceğini yoksa doğrudan lisansa mı başvurabileceğini Türk belgelerinin anabin'deki erişim yolu belirler.** Lise diploması tek başına belirleyici değildir; YKS sonucu, yerleştirme ve Türkiye'deki öğrenim süresi birlikte değerlendirilir. Son kararı üniversite verir.\n\n### Doğrudan lisans (Studienkolleg'siz)\n- 12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de **180 puanın üzerinde** YKS + bir fakültede en az 4 yıllık lisans programına **yerleşme** → yerleştiğin ve ilgili alanlarda doğrudan başvuru. Türkiye'de kayıt olman gerekmez.\n- Tamamlanmış Önlisans + TYT 150 üzeri ya da Açıköğretim'de iki başarılı yıl → alan kısıtlı doğrudan erişim.\n- Tamamlanmış lisans (en az 4 yıl) → tüm alanlar.\n\n### Studienkolleg yolu\n- Meslek Lisesi + 180 puan üzeri → alana uygun Studienkolleg; Türkiye'de bir başarılı lisans yılıyla doğrudan erişim.\n- 2 yıllık MYO'da yalnızca bir yıl → sadece Fachhochschule'ler için Studienkolleg.\n- Studienkolleg iki dönemdir ve FSP ile biter.\n\n### Dikkat\n- TestAS puanı veya DAAD bursu Studienkolleg'den muaf tutmaz.\n- Yerleşmen yoksa ya da eşiğin altındaysan tanımlı genel bir yol yoktur; üniversite veya eyalet makamı karar verir.\n\nKaynak: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) · [anabin – Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-ile-direkt-bachelor-karsilastirmasi-hangisi-avantajli-en",
+     "mode": "update",
+     "old": {
+      "question": "Comparison of Studienkolleg with a direct Bachelor — which is more advantageous?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Studienkolleg or a direct bachelor's — which is more advantageous?",
+      "answer_md": "**It is not really your choice: whether you go through a Studienkolleg or can apply directly for a bachelor's is set by the access route anabin assigns to your Turkish qualifications.** Your school certificate alone never decides; the YKS result, your placement and any study periods in Türkiye are assessed together. The university has the final say.\n\n### Direct bachelor's (no Studienkolleg)\n- 12-year general Lise + YKS score **above 180** in SAY, SÖZ, EA or DİL + **placement** in a Lisans programme of at least 4 years at a faculty → direct access to the placed subject and related subjects. You do not need to enrol in Türkiye.\n- Completed Önlisans + TYT above 150, or two successful years at an Açıköğretim faculty → subject-restricted direct access.\n- Completed Lisans (at least 4 years) → all subjects.\n\n### Studienkolleg route\n- Meslek Lisesi + above 180 points → subject-oriented Studienkolleg; one successful Lisans year in Türkiye gives direct access instead.\n- Only one year at a 2-year MYO → Studienkolleg for Fachhochschulen only.\n- A Studienkolleg lasts two semesters and ends with the FSP.\n\n### Watch out\n- No TestAS score and no DAAD scholarship exempts you from the Studienkolleg.\n- Without a placement, or below the threshold, no general route is defined; the university or competent Land authority decides.\n\nSource: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) · [anabin – school qualifications](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-ile-direkt-bachelor-karsilastirmasi-hangisi-avantajli-de",
+     "mode": "update",
+     "old": {
+      "question": "Vergleich: Studienkolleg oder direkter Bachelor – Was ist vorteilhafter?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Studienkolleg oder direkter Bachelor – was ist vorteilhafter?",
+      "answer_md": "**Das kannst du in der Regel nicht frei wählen: Ob du ins Studienkolleg musst oder dich direkt für einen Bachelor bewerben kannst, ergibt sich aus dem Zugangsweg, den anabin deinen türkischen Nachweisen zuordnet.** Das Schulzeugnis allein entscheidet nie – YKS-Ergebnis, Platzierung und Studienzeiten in der Türkei werden zusammen betrachtet. Die letzte Entscheidung trifft die Hochschule.\n\n### Direkt zum Bachelor (ohne Studienkolleg)\n- 12-jährige allgemeine Lise + YKS **über 180 Punkte** in SAY, SÖZ, EA oder DİL + **Platzierung** in einem mindestens 4-jährigen Lisans-Programm an einer Fakultät → direkter Zugang zum platzierten und zu verwandten Fächern. Eine Einschreibung in der Türkei ist nicht nötig.\n- Abgeschlossenes Önlisans + TYT über 150 oder zwei erfolgreiche Jahre an einer Açıköğretim-Fakultät → fachgebundener Direktzugang.\n- Abgeschlossener Lisans (mindestens 4 Jahre) → alle Fächer.\n\n### Weg über das Studienkolleg\n- Meslek Lisesi + über 180 Punkte → fachlich passendes Studienkolleg; nach einem erfolgreichen Lisans-Jahr in der Türkei stattdessen Direktzugang.\n- Nur ein Jahr an einer 2-jährigen MYO → Studienkolleg nur für Fachhochschulen.\n- Das Studienkolleg dauert zwei Semester und endet mit der FSP.\n\n### Achtung\n- Weder ein TestAS-Ergebnis noch ein DAAD-Stipendium befreit vom Studienkolleg.\n- Ohne Platzierung oder unter der Schwelle gibt es keinen allgemein festgelegten Weg; Hochschule oder zuständige Landesbehörde entscheiden.\n\nQuelle: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de) · [anabin – Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-m-kurs-ile-t-kurs-arasindaki-fark-nedir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-m-kurs-ile-t-kurs-arasindaki-fark-nedir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg M-Kurs ile T-Kurs arasındaki fark nedir?",
+      "visible": "text",
+      "head": "M-Kurs ve T-Kurs, Studienkolleg'in farklı akademik alanlara hazırlayan iki ayrı dalı . # Farklılaşma"
+     },
+     "new": {
+      "question": "Studienkolleg M-Kurs ile T-Kurs arasındaki fark nedir?",
+      "answer_md": "**T-Kurs teknik bölümlere, matematik ve fen bilimlerine; M-Kurs ise tıp ve biyoloji alanına hazırlar.** Hangi kursa gideceğini Almanya'da okumak istediğin bölüm belirler.\n\n### Üniversite Studienkolleg'lerindeki kurs türleri\n- **T-Kurs:** teknik bölümler, matematik, fen bilimleri\n- **M-Kurs:** tıp ve biyoloji alanı\n- Diğerleri: **W** (ekonomi/sosyal bilimler), **G** (beşeri bilimler, germanistik, sanat), **S** (diller)\n- Fachhochschule Studienkolleg'lerinde kurslar farklıdır: TI, WW, GD, SW, DÜ\n\n### İki kursun ortak yanları\n- KMK çerçevesine göre **iki yarıyıl** olarak tasarlanır.\n- Sonunda **Feststellungsprüfung (FSP)** vardır: Almanca + kursun iki dersi. Sınav dersleri kurs türüne göre değişir; ayrıntıyı Studienkolleg belirler.\n- Kabulden önce Almanca belgesi istenir; yer garantisi yoktur.\n\n### Seçerken dikkat et\n- Kursu hedef bölümüne göre seç. Hangi bölümün hangi kursla eşleştiğine Studienkolleg ve üniversite karar verir; \"M-Kurs her yöne açık\" gibi genellemelere güvenme.\n- **TestAS puanıyla Studienkolleg'den muafiyet olmaz**; TestAS kursun yerini almaz.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-m-kurs-ile-t-kurs-arasindaki-fark-nedir-en",
+     "mode": "update",
+     "old": {
+      "question": "What's the difference between Studienkolleg M-Kurs and T-Kurs?",
+      "visible": "text",
+      "head": "M-Kurs and T-Kurs are two distinct branches of Studienkolleg, a preparatory college, each designed t"
+     },
+     "new": {
+      "question": "What's the difference between Studienkolleg M-Kurs and T-Kurs?",
+      "answer_md": "**The T-Kurs prepares you for technical subjects, mathematics and the sciences; the M-Kurs prepares you for medicine and biology.** Your intended degree programme decides which one you need.\n\n### Course types at university Studienkollegs\n- **T-Kurs:** technical subjects, maths, sciences\n- **M-Kurs:** medicine and biology\n- Others: **W** (economics/social sciences), **G** (humanities, German studies, arts), **S** (languages)\n- Studienkollegs at Fachhochschulen use different courses: TI, WW, GD, SW, DÜ\n\n### What both courses share\n- Under the KMK framework, each is designed for **two semesters**.\n- Both end with the **Feststellungsprüfung (FSP)**: German plus two subjects of the course. The exam subjects depend on the course type, and the Studienkolleg sets the details.\n- You need German proof before admission, and there is no entitlement to a place.\n\n### Choosing the right one\n- Pick the course that matches your target field. The Studienkolleg and the university decide which degree programmes fit which course, so don't rely on claims that the M-Kurs \"keeps every direction open\".\n- **A TestAS score does not exempt you from Studienkolleg** and does not replace the course.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-m-kurs-ile-t-kurs-arasindaki-fark-nedir-de",
+     "mode": "update",
+     "old": {
+      "question": "Was ist der Unterschied zwischen dem M-Kurs und T-Kurs am Studienkolleg?",
+      "visible": "text",
+      "head": "Der M-Kurs und der T-Kurs sind zwei unterschiedliche Fachrichtungen des Studienkollegs, die dich auf"
+     },
+     "new": {
+      "question": "Was ist der Unterschied zwischen dem M-Kurs und dem T-Kurs am Studienkolleg?",
+      "answer_md": "**Der T-Kurs bereitet dich auf technische Fächer, Mathematik und Naturwissenschaften vor, der M-Kurs auf Medizin und Biologie.** Welcher Kurs passt, hängt von deinem geplanten Studienfach ab.\n\n### Kurstypen an universitären Studienkollegs\n- **T-Kurs:** technische Fächer, Mathematik, Naturwissenschaften\n- **M-Kurs:** Medizin und Biologie\n- Weitere: **W** (Wirtschafts-/Sozialwissenschaften), **G** (Geisteswissenschaften, Germanistik, Kunst), **S** (Sprachen)\n- An Studienkollegs der Fachhochschulen gibt es eigene Kurse: TI, WW, GD, SW, DÜ\n\n### Was beide gemeinsam haben\n- Laut KMK-Rahmenordnung sind sie auf **zwei Semester** angelegt.\n- Am Ende steht die **Feststellungsprüfung (FSP)**: Deutsch und zwei Fächer des Kurses. Welche Fächer geprüft werden, hängt vom Kurstyp ab; die Details legt das Studienkolleg fest.\n- Vor der Aufnahme brauchst du einen Deutschnachweis, einen Anspruch auf einen Platz gibt es nicht.\n\n### Worauf du bei der Wahl achten solltest\n- Wähle den Kurs passend zu deinem Zielfach. Welche Studiengänge zu welchem Kurs gehören, entscheiden Studienkolleg und Hochschule – verlass dich nicht auf Aussagen wie „der M-Kurs hält alle Wege offen\".\n- **Ein TestAS-Ergebnis befreit dich nicht vom Studienkolleg** und ersetzt den Kurs nicht.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-sonrasi-universite-kabulu-garanti-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-sonrasi-universite-kabulu-garanti-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg sonrası üniversite kabulü garanti mi?",
+      "visible": "text",
+      "head": "Hayır — Feststellungsprüfung geçmek Bachelor kabulü garantilemiyor. FSP HZB statüsü verir, ama uniye"
+     },
+     "new": {
+      "question": "Studienkolleg sonrası üniversite kabulü garanti mi?",
+      "answer_md": "**Hayır. Feststellungsprüfung'u (FSP) geçmek üniversite kabulünü garanti etmez.** FSP sana kursuna uygun alanlarda başvuru hakkı kazandırır; kabul kararını her zaman üniversite verir.\n\n### Neden garanti değil?\n- Her bölüm kendi şartlarını ve seçim kurallarını belirler.\n- **NC (kontenjan kısıtı)** olan bölümlerde sınır, başvuran havuzuna göre oluşur; Almanya genelinde sabit bir not yoktur.\n- Başvuruyu yine üniversitenin süresi içinde yapman gerekir. Bazı üniversiteler uni-assist üzerinden, bazıları doğrudan başvuru alır.\n\n### FSP notu nasıl kullanılır?\n- Genel not, **yabancı diploma notun ile FSP notunun ortalamasıdır**. Yabancı not, değiştirilmiş Bavyera formülüyle Alman sistemine çevrilir.\n- Bu not bir lisans not ortalaması değil, üniversiteye giriş (HZB) notudur.\n\n### Dikkat\n- **Fachhochschule Studienkolleg'inde alınan FSP üniversiteye (Universität) giriş hakkı vermez.**\n- Hangi bölümlerin kursuna uyduğuna üniversite karar verir.\n- FSP'de başarısız olursan sınavı bir kez tekrar edebilirsin.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-sonrasi-universite-kabulu-garanti-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is university admission guaranteed after Studienkolleg?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is university admission guaranteed after Studienkolleg?",
+      "answer_md": "**No. Passing the Feststellungsprüfung (FSP) does not guarantee a university place.** It makes you eligible to apply in the fields your course covers, but the university always makes the admission decision.\n\n### Why there is no guarantee\n- Each programme sets its own requirements and selection rules.\n- In **NC (restricted-admission) programmes**, any cut-off results from the applicant pool, so there is no fixed national grade.\n- You still have to apply within the university's deadline — some universities use uni-assist, others take applications directly.\n\n### How your grade is formed\n- Your overall grade is the **mean of your converted foreign grade and your FSP grade**. The foreign grade is converted with the modified Bavarian formula.\n- This is your university-entrance (HZB) grade, not a bachelor's GPA.\n\n### Watch out\n- **An FSP taken at a Fachhochschule Studienkolleg does not give access to a Universität.**\n- The university decides which programmes fit your course type.\n- If you fail the FSP, you can repeat it once.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-sonrasi-universite-kabulu-garanti-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist die Universitätszulassung nach dem Studienkolleg garantiert?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist die Zulassung an der Uni nach dem Studienkolleg garantiert?",
+      "answer_md": "**Nein. Mit bestandener Feststellungsprüfung (FSP) hast du keinen garantierten Studienplatz.** Du darfst dich damit in den Fächern deines Kurses bewerben, über die Zulassung entscheidet aber immer die Hochschule.\n\n### Warum es keine Garantie gibt\n- Jeder Studiengang legt eigene Voraussetzungen und Auswahlregeln fest.\n- Bei **zulassungsbeschränkten (NC-)Studiengängen** ergibt sich eine Grenze erst aus dem Bewerberfeld – einen bundesweit festen Wert gibt es nicht.\n- Du musst dich trotzdem fristgerecht bei der Hochschule bewerben, je nach Hochschule über uni-assist oder direkt.\n\n### So entsteht deine Note\n- Die Gesamtnote ist der **Mittelwert aus umgerechneter ausländischer Note und FSP-Note**. Die ausländische Note wird mit der modifizierten bayerischen Formel umgerechnet.\n- Das ist deine HZB-Note, kein Bachelor-Notendurchschnitt.\n\n### Achtung\n- **Eine FSP an einem Studienkolleg der Fachhochschule berechtigt nicht zum Studium an einer Universität.**\n- Welche Studiengänge zu deinem Kurs passen, entscheidet die Hochschule.\n- Eine nicht bestandene FSP kannst du einmal wiederholen.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-yil-icinde-2-donem-mi-aliyor",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-yil-icinde-2-donem-mi-aliyor",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg yıl içinde 2 dönem mi alıyor?",
+      "visible": "text",
+      "head": "Evet — Studienkolleg yılda 2 dönem başlangıç sunar: Wintersemester (Ekim) ve Sommersemester (Nisan)."
+     },
+     "new": {
+      "question": "Studienkolleg yıl içinde 2 dönem mi alıyor?",
+      "answer_md": "**Studienkolleg eğitimi KMK çerçevesine göre iki yarıyıl (yaklaşık bir akademik yıl) olarak tasarlanır.** Yılda kaç kez öğrenci alındığı ise genel bir kural değildir: kış ve/veya yaz dönemi başlangıcını her Studienkolleg kendisi belirler.\n\n### Süre\n- Program **iki yarıyıl** sürecek şekilde planlanır.\n- Sonunda **Feststellungsprüfung (FSP)** yapılır: Almanca + kursun iki dersi.\n- FSP'yi geçemezsen bir kez tekrar edebilirsin; bu durumda süre uzar.\n\n### Başlangıç dönemleri\n- Hangi kursun (T, M, W, G, S ya da FH kursları) hangi dönemde açıldığı Studienkolleg'e göre değişir.\n- \"Her Studienkolleg yılda iki kez öğrenci alır\" demek doğru değildir. Hedeflediğin Studienkolleg'in sitesinde başvuru ve başlangıç tarihlerini kontrol et.\n- Kabulden önce Almanca belgesi gerekir ve yer garantisi yoktur.\n\n### Planlama ipucu\n- Birden fazla Studienkolleg'e bakıyorsan her birinin başlangıç dönemini ve başvuru süresini ayrı ayrı not al.\n- Oturum izni açısından Studienkolleg, kabulün kanıtlanmasıyla öğrenim amacına dahildir (§ 16b AufenthG).\n\nKaynak: [Studienkolleg merkezleri listesi](/tr/blog/studienkolleg-center-list-2026-public-private-institutions) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-yil-icinde-2-donem-mi-aliyor-en",
+     "mode": "update",
+     "old": {
+      "question": "Does Studienkolleg have 2 semesters in a year?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Does Studienkolleg have 2 semesters in a year?",
+      "answer_md": "**Under the KMK framework, a Studienkolleg course is designed for two semesters — roughly one academic year.** How often new students are taken in is not uniform: each Studienkolleg decides whether a course starts in the winter semester, the summer semester or both.\n\n### Duration\n- The course is planned for **two semesters**.\n- It ends with the **Feststellungsprüfung (FSP)**: German plus two subjects of the course.\n- If you fail the FSP, you can repeat it once, which extends your time.\n\n### Start dates\n- Which courses (T, M, W, G, S or the Fachhochschule courses) open in which semester varies by Studienkolleg.\n- It is not true that every Studienkolleg admits students twice a year. Check the application and start dates on the website of the Studienkolleg you want.\n- You need German proof before admission, and there is no entitlement to a place.\n\n### Planning tip\n- If you are comparing several Studienkollegs, note each one's start semester and application period separately.\n- For residence purposes, a Studienkolleg counts as part of the study purpose once your acceptance is proven (§ 16b AufenthG).\n\nSource: [Studienkolleg centre list](/en/blog/studienkolleg-center-list-2026-public-private-institutions-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-yil-icinde-2-donem-mi-aliyor-de",
+     "mode": "update",
+     "old": {
+      "question": "Hat das Studienkolleg 2 Semester pro Jahr?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Hat das Studienkolleg 2 Semester pro Jahr?",
+      "answer_md": "**Laut KMK-Rahmenordnung ist das Studienkolleg auf zwei Semester angelegt – also etwa ein akademisches Jahr.** Wie oft neue Kurse starten, ist dagegen nicht einheitlich: Ob ein Kurs zum Winter-, zum Sommersemester oder zu beiden beginnt, legt jedes Studienkolleg selbst fest.\n\n### Dauer\n- Der Kurs ist auf **zwei Semester** ausgelegt.\n- Er endet mit der **Feststellungsprüfung (FSP)**: Deutsch und zwei Fächer des Kurses.\n- Bestehst du die FSP nicht, kannst du sie einmal wiederholen – dann verlängert sich deine Zeit.\n\n### Kursbeginn\n- Welche Kurse (T, M, W, G, S oder die FH-Kurse) in welchem Semester starten, ist von Studienkolleg zu Studienkolleg verschieden.\n- Die Aussage „jedes Studienkolleg nimmt zweimal im Jahr auf\" stimmt so nicht. Prüf die Bewerbungs- und Starttermine auf der Website deines Wunsch-Studienkollegs.\n- Vor der Aufnahme brauchst du einen Deutschnachweis; einen Anspruch auf einen Platz gibt es nicht.\n\n### Tipp für die Planung\n- Vergleichst du mehrere Studienkollegs, notier dir Startsemester und Bewerbungszeitraum für jedes einzeln.\n- Aufenthaltsrechtlich gehört das Studienkolleg zum Studienzweck, sobald die Aufnahme nachgewiesen ist (§ 16b AufenthG).\n\nQuelle: [Liste der Studienkollegs](/de/blog/studienkolleg-center-list-2026-public-private-institutions-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkollegde-basarisiz-olursam-ne-olur",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkollegde-basarisiz-olursam-ne-olur",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg'de başarısız olursam ne olur?",
+      "visible": "text",
+      "head": "Studienkolleg'de başarısızlık birden fazla türde olabilir — sebebine göre çözüm yolları mevcut. # Ba"
+     },
+     "new": {
+      "question": "Studienkolleg'de başarısız olursam ne olur?",
+      "answer_md": "**Feststellungsprüfung'u (FSP) geçemezsen sınavı bir kez tekrar edebilirsin.** Tekrar sınavının zamanı, dönem tekrarı ve ikinci başarısızlıktan sonrası için ayrıntıları Studienkolleg ve bağlı olduğu eyalet belirler.\n\n### Kesin olanlar\n- Studienkolleg KMK çerçevesine göre **iki yarıyıl** olarak tasarlanır ve **FSP** ile biter (Almanca + kursun iki dersi).\n- **FSP bir kez tekrarlanabilir.**\n- Studienkolleg'de yer hakkı yoktur; yeni bir kabul otomatik değildir.\n\n### Studienkolleg'e sorman gerekenler\n- Tekrar sınavının ne zaman yapıldığı ve dersleri yeniden alıp almayacağın\n- Dönem içindeki notların ve devamın nasıl değerlendirildiği\n- İkinci kez başarısız olursan açık kalan bir yol olup olmadığı\n\n### Oturum izni\n- § 16b AufenthG'ye göre Studienkolleg, kabulün kanıtlanmasıyla öğrenim amacına dahildir.\n- Başarısızlığın oturum iznine etkisini genel bir kural belirlemez; yabancılar dairesi (Ausländerbehörde) duruma göre karar verir. Erken iletişime geç.\n\n### FSP'yi geçtikten sonra\nFSP üniversite kabulünü garanti etmez; kabul kararını üniversite verir.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkollegde-basarisiz-olursam-ne-olur-en",
+     "mode": "update",
+     "old": {
+      "question": "What happens if you fail at Studienkolleg?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What happens if you fail at Studienkolleg?",
+      "answer_md": "**If you fail the Feststellungsprüfung (FSP), you can repeat it once.** The detailed rules — when the resit takes place, repeating a semester, and what happens after a second failure — are set by the Studienkolleg and its federal state.\n\n### What is fixed\n- Under the KMK framework, the Studienkolleg is designed for **two semesters** and ends with the **FSP** (German plus two subjects of the course).\n- **The FSP can be repeated once.**\n- There is no entitlement to a Studienkolleg place, so a new admission is never automatic.\n\n### What to ask your Studienkolleg\n- When the resit is held and whether you have to retake classes\n- How grades and attendance during the semester are assessed\n- Whether any route remains open after a second failure\n\n### Residence permit\n- Under § 16b AufenthG, a Studienkolleg is part of the study purpose once your acceptance is proven.\n- There is no general rule on how a failure affects your permit; the Ausländerbehörde decides case by case. Contact it early.\n\n### After passing\nPassing the FSP does not guarantee a university place — the university makes the admission decision.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [KMK framework regulation](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkollegde-basarisiz-olursam-ne-olur-de",
+     "mode": "update",
+     "old": {
+      "question": "Was passiert, wenn du im Studienkolleg durchfällst?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was passiert, wenn du im Studienkolleg durchfällst?",
+      "answer_md": "**Fällst du durch die Feststellungsprüfung (FSP), darfst du sie einmal wiederholen.** Die Details – Termin der Wiederholung, Wiederholung eines Semesters, Folgen eines zweiten Nichtbestehens – regeln das Studienkolleg und das jeweilige Bundesland.\n\n### Was feststeht\n- Laut KMK-Rahmenordnung ist das Studienkolleg auf **zwei Semester** angelegt und endet mit der **FSP** (Deutsch und zwei Fächer des Kurses).\n- **Die FSP kann einmal wiederholt werden.**\n- Einen Anspruch auf einen Platz am Studienkolleg gibt es nicht; eine neue Aufnahme ist nie automatisch.\n\n### Was du dein Studienkolleg fragen solltest\n- Wann die Wiederholungsprüfung stattfindet und ob du Kurse erneut besuchen musst\n- Wie Noten und Anwesenheit während des Semesters bewertet werden\n- Ob nach einem zweiten Nichtbestehen noch ein Weg offen ist\n\n### Aufenthaltstitel\n- Nach § 16b AufenthG gehört das Studienkolleg zum Studienzweck, sobald die Aufnahme nachgewiesen ist.\n- Eine allgemeine Regel zu den Folgen gibt es nicht; die Ausländerbehörde entscheidet im Einzelfall. Sprich sie frühzeitig an.\n\n### Nach dem Bestehen\nDie FSP garantiert keinen Studienplatz – über die Zulassung entscheidet die Hochschule.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkollege-kabul-icin-almanca-c1-sart-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkollege-kabul-icin-almanca-c1-sart-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg'e kabul için Almanca C1 şart mı?",
+      "visible": "text",
+      "head": "Çoğu Studienkolleg için B2 yeterli — C1 zorunlu değil. Ama bazı eyaletler B2'nin üstü ister. # Eyale"
+     },
+     "new": {
+      "question": "Studienkolleg'e kabul için Almanca C1 şart mı?",
+      "answer_md": "**Hayır, Studienkolleg'e kabul için genel bir C1 şartı yoktur.** Kabulden önce bir Almanca belgesi istenir, ancak hangi seviyenin ve hangi sertifikaların kabul edildiğini her Studienkolleg kendisi belirler.\n\n### Kesin olanlar\n- Studienkolleg'e başlamadan önce **Almanca yeterlilik kanıtı** gerekir.\n- Almanya genelinde geçerli tek bir C1 ya da B2 kuralı yoktur.\n- Yer garantisi yoktur; bazı Studienkolleg'ler kendi giriş prosedürünü uygular.\n- Kurs iki yarıyıl sürer ve **Feststellungsprüfung** ile biter; bu sınavın bir parçası **Almanca**dır.\n\n### Nasıl kontrol edersin?\n1. Hedeflediğin kurs türünü belirle (T, M, W, G, S ya da FH kursları).\n2. O Studienkolleg'in sitesinde istenen seviyeyi ve kabul edilen sertifikaları oku.\n3. Birden fazla Studienkolleg'e bakıyorsan şartları karşılaştır; değerler farklı olabilir.\n\n### Seviye neden yine de önemli?\nStudienkolleg'de dersler Almanca işlenir ve FSP'de Almanca sınavı var. Resmî şart ne olursa olsun, Almancan ne kadar güçlüyse dersler o kadar kolaylaşır.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [Studienkolleg merkezleri listesi](/tr/blog/studienkolleg-center-list-2026-public-private-institutions)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkollege-kabul-icin-almanca-c1-sart-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is German C1 required for admission to Studienkolleg?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is German C1 required for admission to Studienkolleg?",
+      "answer_md": "**No — there is no general C1 requirement for Studienkolleg admission.** You do need proof of German before you are admitted, but each Studienkolleg sets the level and the certificates it accepts.\n\n### What is certain\n- You must show **German language proof** before admission.\n- There is no single Germany-wide C1 or B2 rule.\n- There is no entitlement to a place, and some Studienkollegs run their own admission procedure.\n- The course lasts two semesters and ends with the **Feststellungsprüfung**, which includes a **German** exam.\n\n### How to check\n1. Decide on your course type (T, M, W, G, S or a Fachhochschule course).\n2. Read the required level and accepted certificates on that Studienkolleg's website.\n3. If you are looking at several Studienkollegs, compare them — the requirements can differ.\n\n### Why your level still matters\nTeaching at a Studienkolleg is in German and the FSP includes German. Whatever the formal minimum is, the stronger your German when you arrive, the easier the subject classes will be.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [Studienkolleg centre list](/en/blog/studienkolleg-center-list-2026-public-private-institutions-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkollege-kabul-icin-almanca-c1-sart-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist Deutsch C1 für die Zulassung zum Studienkolleg erforderlich?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist Deutsch C1 für die Zulassung zum Studienkolleg erforderlich?",
+      "answer_md": "**Nein, eine allgemeine C1-Pflicht für das Studienkolleg gibt es nicht.** Vor der Aufnahme brauchst du zwar einen Deutschnachweis, welches Niveau und welche Zertifikate gelten, legt aber jedes Studienkolleg selbst fest.\n\n### Was sicher ist\n- Vor der Aufnahme musst du **Deutschkenntnisse nachweisen**.\n- Eine bundesweit einheitliche C1- oder B2-Regel gibt es nicht.\n- Einen Anspruch auf einen Platz hast du nicht; manche Studienkollegs haben ein eigenes Aufnahmeverfahren.\n- Der Kurs dauert zwei Semester und endet mit der **Feststellungsprüfung**, zu der eine **Deutschprüfung** gehört.\n\n### So prüfst du es\n1. Leg deinen Kurstyp fest (T, M, W, G, S oder einen FH-Kurs).\n2. Lies auf der Website des Studienkollegs nach, welches Niveau und welche Zertifikate verlangt werden.\n3. Vergleichst du mehrere Studienkollegs, schau dir die Anforderungen einzeln an – sie können sich unterscheiden.\n\n### Warum dein Niveau trotzdem zählt\nDer Unterricht läuft auf Deutsch, und die FSP enthält Deutsch. Je besser dein Deutsch zum Start ist, desto leichter fallen dir die Fachkurse – unabhängig vom formalen Minimum.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [Liste der Studienkollegs](/de/blog/studienkolleg-center-list-2026-public-private-institutions-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "turk-onlisans-mezunlari-almanyada-universiteye-nasil-basvurabilir-ve-sartli-kabul-sureci-nasildir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turk-onlisans-mezunlari-almanyada-universiteye-nasil-basvurabilir-ve-sartli-kabul-sureci-nasildir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türk önlisans mezunları Almanya'da üniversiteye nasıl başvurabilir ve şartlı kabul süreci nasıldır?",
+      "visible": "text",
+      "head": "Türk önlisans mezunlarının Almanya'da doğrudan lisans programlarına kabulü genellikle zordur; çoğu z"
+     },
+     "new": {
+      "question": "Türk önlisans mezunları Almanya'da üniversiteye nasıl başvurabilir ve şartlı kabul süreci nasıldır?",
+      "answer_md": "**Önlisansını tamamlamış ve TYT'de 150 puanın üzerinde almışsan anabin'e göre Almanya'da önceki alanında ve ilgili alanlarda doğrudan, alan kısıtlı üniversite girişi hakkın olur.** Önlisans 2 yıllık kısa bir programdır: tüm alanlara giriş hakkı vermez ve Studienkolleg yoluna da yönlendirmez.\n\n### Hangi durumda hangi yol?\n- **Tamamlanmış Önlisans + TYT 150 üstü:** doğrudan, alan kısıtlı giriş (önceki alan + ilgili alanlar).\n- **MYO'da yalnızca 1 yıl, diploma yok:** yalnızca Fachhochschule'ler için Studienkolleg yolu.\n- \"İlgili alan\" için resmi sabit bir liste yoktur; hangi programın uygun olduğuna üniversite karar verir.\n\n### Başvuru\nÜniversite uni-assist kullanıyorsa başvuru tamamen dijitaldir: belgelerini orijinal dilde ve onaylı Almanca ya da İngilizce tercümesiyle My assist'e yüklersin. Ücret, bir dönemdeki ilk program için 75 €, ek her program için 30 €'dur. Son kararı üniversite verir.\n\n### Şartlı kabul nasıl işler?\nŞartlı kabul, üniversitenin koyduğu şarta (örneğin dil kanıtına) bağlıdır ve kuralları üniversite belirler. Gereken dil ve seviye programa göre değişir; Almanca programlarda çoğunlukla DSH veya TestDaF istenir, genel bir B2/C1 kuralı yoktur. Türkiye'deki Alman temsilciliklerinin bilgi notuna göre bağlayıcı eşik üniversitenin dil sınavıdır; dil şartını karşıladıktan sonra yeniden başvurman gerekebilir.\n\nKaynak: [anabin: Türk okul belgeleri](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [Şartlı kabul rehberi](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "how-can-turkish-onlisans-graduates-apply-to-german-universities",
+     "mode": "create",
+     "new": {
+      "question": "How can Turkish Önlisans graduates apply to German universities, and how does conditional admission work?",
+      "answer_md": "**If you have completed an Önlisans and scored above 150 in the TYT, anabin gives you direct, subject-restricted access to German universities in your previous field and related subjects.** An Önlisans is a 2-year short-cycle programme: it does not give access to all subjects and does not lead to a Studienkolleg.\n\n### Which route applies\n- **Completed Önlisans + TYT above 150:** direct, subject-restricted access (previous field plus related subjects).\n- **Only one year at an MYO, no diploma:** Studienkolleg route for Fachhochschulen only.\n- There is no fixed public list of \"related subjects\"; the university decides which courses fit.\n\n### Applying\nIf the university uses uni-assist, the application is fully digital: upload your certificates in the original language with a certified German or English translation in My assist. Fees are €75 for the first course in a semester and €30 for each additional one. The university makes the final decision.\n\n### How conditional admission works\nConditional admission is tied to a condition set by the university, for example a language proof, and the university's rules decide. The required language and level depend on the programme; German-taught courses often ask for DSH or TestDaF, and there is no universal B2 or C1 rule. According to the German missions in Türkiye, the university's own language exam is the binding threshold, and you may have to apply again once you meet the language requirement.\n\nSource: [anabin: school qualifications](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [Conditional admission guide](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "how-can-turkish-onlisans-graduates-apply-to-german-universities-de",
+     "mode": "create",
+     "new": {
+      "question": "Wie können sich türkische Önlisans-Absolventen an deutschen Hochschulen bewerben und wie läuft die bedingte Zulassung?",
+      "answer_md": "**Hast du dein Önlisans abgeschlossen und im TYT mehr als 150 Punkte erreicht, bekommst du laut anabin einen direkten, fachgebundenen Hochschulzugang in Deutschland – für dein bisheriges Fach und verwandte Fächer.** Das Önlisans ist ein zweijähriges Kurzstudium: Es öffnet nicht alle Fächer und führt auch nicht ins Studienkolleg.\n\n### Welcher Weg gilt?\n- **Abgeschlossenes Önlisans + TYT über 150:** direkter, fachgebundener Zugang (bisheriges Fach und verwandte Fächer).\n- **Nur ein Jahr an einer MYO, ohne Abschluss:** Studienkolleg-Weg, aber nur für Fachhochschulen.\n- Eine feste Liste „verwandter Fächer“ gibt es nicht; welcher Studiengang passt, entscheidet die Hochschule.\n\n### Bewerbung\nArbeitet die Hochschule mit uni-assist, läuft alles digital: Du lädst deine Zeugnisse in Originalsprache mit beglaubigter deutscher oder englischer Übersetzung in My assist hoch. Die Gebühr beträgt 75 € für den ersten Studiengang im Semester und 30 € für jeden weiteren. Die Entscheidung trifft die Hochschule.\n\n### So funktioniert die bedingte Zulassung\nSie ist an eine Bedingung der Hochschule geknüpft, etwa einen Sprachnachweis, und es gelten deren Regeln. Welche Sprache und welches Niveau nötig sind, hängt vom Studiengang ab; bei deutschsprachigen Studiengängen oft DSH oder TestDaF – eine allgemeine B2- oder C1-Regel gibt es nicht. Laut den deutschen Auslandsvertretungen in der Türkei ist die Sprachprüfung der Hochschule die verbindliche Schwelle; nach Erfüllung der Sprachanforderung kann eine neue Bewerbung nötig sein.\n\nQuelle: [anabin: Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [Ratgeber bedingte Zulassung](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ],
+   "group_if_missing": "450e0d2f-2866-57b0-9452-edac97811ad7"
+  },
+  {
+   "tr_slug": "turkiyede-farkli-bir-bolumde-universite-kazanan-bir-ogrenci-almanyada-baska-bir-muhendislik-bolumune-basvurabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turkiyede-farkli-bir-bolumde-universite-kazanan-bir-ogrenci-almanyada-baska-bir-muhendislik-bolumune-basvurabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türkiye'de farklı bir bölümde üniversite kazanan bir öğrenci, Almanya'da başka bir mühendislik bölümüne başvurabilir mi?",
+      "visible": "text",
+      "head": "Türkiye'deki üniversite eğitiminiz ve bölümünüz, Almanya'daki başvurmak istediğiniz bölümle doğrudan"
+     },
+     "new": {
+      "question": "Türkiye'de farklı bir bölümde üniversite kazanan bir öğrenci, Almanya'da başka bir mühendislik bölümüne başvurabilir mi?",
+      "answer_md": "**Mümkün olabilir: YKS yerleştirmesiyle elde ettiğin doğrudan giriş hakkı, yerleştiğin bölüm ve ilgili bölümler için geçerlidir; başka bir mühendislik dalının ilgili sayılıp sayılmadığına ise üniversite karar verir.**\n\n### Genel lise + YKS yerleştirmesi\n- 12 yıllık genel lise, SAY, SÖZ, EA veya DİL puan türünde **180 puanın üzerinde** YKS sonucu ve bir **fakültede en az 4 yıllık** lisans programına yerleşme varsa, anabin'e göre Studienkolleg olmadan **alana bağlı doğrudan giriş** hakkın olur.\n- Türkiye'de kayıt olman veya okuman gerekmez; belirleyici olan puan türü, 180 eşiği ve yerleşmedir, sıralama değil.\n- \"İlgili bölümler\" için herkese açık sabit bir liste yok. Örneğin inşaat mühendisliğine yerleşip makine mühendisliğine başvuruyorsan bunu hedef üniversite değerlendirir.\n- Yerleşme üniversiteye bağlı bir Yüksekokul'daysa doğrudan giriş yalnızca Fachhochschule'ler için geçerlidir.\n\n### Lisansı bitirdiysen\n- En az 4 yıllık tamamlanmış lisans diploması **tüm alanlara** doğrudan giriş sağlar; programın diğer kabul koşulları yine geçerlidir.\n\n### Pratik adımlar\n- anabin'de Türkiye için giriş yollarını kontrol et.\n- uni-assist ile başvuruyorsan Lise Diploması ve YKS yerleştirme sayfasını (üniversite, fakülte, puan türü) yükle.\n- Hedef programa, yerleştiğin bölümün ilgili alan sayılıp sayılmadığını yazılı olarak sor.\n\nKaynak: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) · [anabin – Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "turkiyede-farkli-bir-bolumde-universite-kazanan-bir-ogrenci-almanyada-baska-bir-muhendislik-bolumune-basvurabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you apply for a different engineering program in Germany if you started a different university program in Turkey?",
+      "visible": "text",
+      "head": "Your university education and program in Turkey must be directly relevant to the program you want to"
+     },
+     "new": {
+      "question": "Can a student placed in a different programme in Türkiye apply for another engineering programme in Germany?",
+      "answer_md": "**Possibly: the direct access you gain through a YKS placement covers the placed subject and related subjects, and the German university decides whether another engineering field counts as related.**\n\n### General Lise + YKS placement\n- With a 12-year general Lise, a YKS score **above 180 points** in SAY, SÖZ, EA or DİL and a **placement** in a Lisans programme of **at least 4 years at a faculty**, anabin grants **direct, subject-restricted access** without a Studienkolleg.\n- You do not need to enrol or study in Türkiye. What counts is the score type, the 180 threshold and the placement — not your ranking.\n- There is no fixed public list of related subjects. If you were placed in civil engineering and want mechanical engineering, the target university assesses it.\n- If the placement was at a university-affiliated Yüksekokul, direct access applies to Fachhochschulen only.\n\n### If you completed your Lisans\n- A completed Lisans of at least 4 years gives direct access to **all subjects**; the programme's other admission requirements still apply.\n\n### Practical steps\n- Check the Türkiye access routes in anabin.\n- If you apply via uni-assist, upload your Lise Diploması and the YKS placement page (university, faculty, score type).\n- Ask the target programme in writing whether your placed subject counts as related.\n\nSource: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) · [anabin – school certificates with university access](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "turkiyede-farkli-bir-bolumde-universite-kazanan-bir-ogrenci-almanyada-baska-bir-muhendislik-bolumune-basvurabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kann ich mich in Deutschland für einen anderen Ingenieurstudiengang bewerben, wenn ich in der Türkei in einem anderen Fach studiert habe?",
+      "visible": "text",
+      "head": "Dein bisheriges Studium und dein Fach in der Türkei müssen direkt mit dem Studiengang in Deutschland"
+     },
+     "new": {
+      "question": "Kann ich mich in Deutschland für einen anderen Ingenieurstudiengang bewerben, wenn ich in der Türkei für ein anderes Fach platziert wurde?",
+      "answer_md": "**Unter Umständen ja: Der direkte Zugang über eine YKS-Platzierung gilt für das platzierte Fach und verwandte Fächer – ob ein anderer Ingenieurstudiengang als verwandt gilt, entscheidet die Hochschule.**\n\n### Allgemeine Lise + YKS-Platzierung\n- Mit 12-jähriger allgemeiner Lise, einem YKS-Ergebnis **über 180 Punkten** in SAY, SÖZ, EA oder DİL und einer **Platzierung** in einem mindestens **4-jährigen Lisans-Studiengang an einer Fakultät** hast du laut anabin **direkten, fachgebundenen Zugang** ohne Studienkolleg.\n- Du musst dich in der Türkei weder einschreiben noch dort studieren. Entscheidend sind Punkttyp, 180-Punkte-Grenze und Platzierung – nicht dein Rang.\n- Eine feste öffentliche Liste verwandter Fächer gibt es nicht. Wurdest du etwa für Bauingenieurwesen platziert und willst Maschinenbau studieren, prüft das die Zielhochschule.\n- Lag die Platzierung an einer hochschulgebundenen Yüksekokul, gilt der direkte Zugang nur für Fachhochschulen.\n\n### Mit abgeschlossenem Lisans\n- Ein abgeschlossener Lisans von mindestens 4 Jahren eröffnet direkten Zugang zu **allen Fächern**; die übrigen Zulassungsvoraussetzungen des Studiengangs gelten trotzdem.\n\n### Praktische Schritte\n- Prüf in anabin die Zugangswege für die Türkei.\n- Bewirbst du dich über uni-assist, lade Lise Diploması und YKS-Platzierungsseite (Universität, Fakultät, Punkttyp) hoch.\n- Frag beim Zielstudiengang schriftlich nach, ob dein platziertes Fach als verwandt gilt.\n\nQuelle: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de) · [anabin – Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "turkiyede-yonetim-bilisim-sistemleri-okuyan-bir-ogrenci-almanyada-informatik-bilgisayar-bilimleri-okuyabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turkiyede-yonetim-bilisim-sistemleri-okuyan-bir-ogrenci-almanyada-informatik-bilgisayar-bilimleri-okuyabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türkiye'de Yönetim Bilişim Sistemleri okuyan bir öğrenci Almanya'da Informatik (Bilgisayar Bilimleri) okuyabilir mi?",
+      "visible": "text",
+      "head": "Türkiye'de Yönetim Bilişim Sistemleri (YBS) okuyan öğrenciler, Almanya'da Informatik (Bilgisayar Bil"
+     },
+     "new": {
+      "question": "Türkiye'de Yönetim Bilişim Sistemleri okuyan bir öğrenci Almanya'da Informatik (Bilgisayar Bilimleri) okuyabilir mi?",
+      "answer_md": "**Olabilir, ama otomatik değil: Informatik lisansına girip giremeyeceğin, YBS'ye hangi yolla yerleştiğine ve Türkiye'de lisansı bitirip bitirmediğine bağlıdır; \"ilgili alan\" kararını üniversite verir.** Türk belgeleri anabin'de erişim yollarına göre değerlendirilir.\n\n### Lisansı henüz bitirmediysen\n- **12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de 180 puan üstü + bir fakültede en az 4 yıllık lisansa yerleşme:** yerleştiğin alanda ve ilgili alanlarda doğrudan, alan kısıtlı giriş; Studienkolleg gerekmez. Türkiye'de kayıt olup okumuş olman şart değildir.\n- **Üniversiteye bağlı bir Yüksekokul'da 4 yıllık programa yerleştiysen:** alan kısıtlı giriş yalnızca Fachhochschule'ler için geçerlidir.\n- **Meslek Lisesi mezunuysan:** 180 üstü puanla alana uygun Studienkolleg; Türkiye'de başarılı bir yıl lisans okuduktan sonra doğrudan alan kısıtlı giriş.\n\n### Informatik \"ilgili alan\" sayılır mı?\nResmi sabit bir \"ilgili alanlar\" listesi yoktur; YBS'nin Informatik ile ilgili sayılıp sayılmadığına üniversite karar verir. uni-assist'te Lise Diploması'nın yanında YKS yerleştirme sayfasını (üniversite, fakülte, puan türü) sunarsın.\n\n### Lisansı bitirdiysen\nEn az 4 yıllık tamamlanmış lisans tüm alanlara doğrudan giriş sağlar. Master'a geçmek istiyorsan ise programın kendi şartları (alan uyumu, not, dil) belirleyicidir.\n\nKaynak: [anabin: Türk okul belgeleri](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "can-a-management-information-systems-student-from-turkey-study-computer-science-in-germany",
+     "mode": "create",
+     "new": {
+      "question": "Can a student of Management Information Systems in Türkiye study Informatik (computer science) in Germany?",
+      "answer_md": "**Possibly, but not automatically: whether you can enter an Informatik bachelor's depends on how you were placed in Management Information Systems (YBS) and whether you have finished your Lisans; the university decides what counts as a related subject.** anabin assesses Turkish qualifications by access routes.\n\n### If you have not finished your Lisans\n- **12-year general Lise + a YKS score above 180 in SAY, SÖZ, EA or DİL + placement in a Lisans programme of at least 4 years at a faculty:** direct, subject-restricted access to the placed subject and related subjects, with no Studienkolleg. You do not need to have enrolled or studied in Türkiye.\n- **Placement in a 4-year programme at a university-affiliated Yüksekokul:** subject-restricted access to Fachhochschulen only.\n- **Meslek Lisesi graduates:** with more than 180 points, a subject-oriented Studienkolleg; after one successful year of Lisans study in Türkiye, direct subject-restricted access.\n\n### Does Informatik count as related?\nThere is no fixed public list of related subjects, so the university decides whether YBS is related to Informatik. With uni-assist you submit the Lise Diploması plus the YKS placement page (university, faculty, score type).\n\n### If you have completed your Lisans\nA completed Lisans of at least 4 years gives direct access to all subjects. If you are aiming for a master's instead, the programme's own requirements (subject fit, grade, language) decide.\n\nSource: [anabin: school qualifications](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "can-a-management-information-systems-student-from-turkey-study-computer-science-in-germany-de",
+     "mode": "create",
+     "new": {
+      "question": "Kann jemand, der in der Türkei Wirtschaftsinformatik (Yönetim Bilişim Sistemleri) studiert, in Deutschland Informatik studieren?",
+      "answer_md": "**Möglich, aber nicht automatisch: Ob du in einen Informatik-Bachelor kommst, hängt davon ab, wie du für YBS platziert wurdest und ob du dein Lisans abgeschlossen hast – was als verwandtes Fach gilt, entscheidet die Hochschule.** anabin bewertet türkische Nachweise nach Zugangswegen.\n\n### Wenn du das Lisans noch nicht abgeschlossen hast\n- **12-jährige allgemeine Lise + mehr als 180 Punkte in SAY, SÖZ, EA oder DİL + Platzierung in einem mindestens vierjährigen Lisans-Studiengang an einer Fakultät:** direkter, fachgebundener Zugang für das platzierte Fach und verwandte Fächer, ohne Studienkolleg. Einschreibung oder Studium in der Türkei ist dafür nicht nötig.\n- **Platzierung in einem vierjährigen Programm an einer Yüksekokul einer Universität:** fachgebundener Zugang nur zu Fachhochschulen.\n- **Meslek Lisesi:** mit mehr als 180 Punkten fachorientiertes Studienkolleg; nach einem erfolgreichen Studienjahr in der Türkei direkter fachgebundener Zugang.\n\n### Zählt Informatik als verwandt?\nEine feste Liste verwandter Fächer gibt es nicht; ob YBS als verwandt mit Informatik gilt, entscheidet die Hochschule. Bei uni-assist reichst du Lise Diploması und die YKS-Platzierungsseite (Hochschule, Fakultät, Punktetyp) ein.\n\n### Wenn du das Lisans abgeschlossen hast\nEin abgeschlossenes, mindestens vierjähriges Lisans eröffnet den direkten Zugang zu allen Fächern. Willst du stattdessen in einen Master, entscheiden die Anforderungen des Studiengangs (fachliche Passung, Note, Sprache).\n\nQuelle: [anabin: Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ],
+   "group_if_missing": "fa24a016-3489-577d-87dc-2725586ac363"
+  },
+  {
+   "tr_slug": "uluslararasi-bir-ogrenci-olarak-almanyada-lisans-egitimi-icin-nasil-hazirlanilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uluslararasi-bir-ogrenci-olarak-almanyada-lisans-egitimi-icin-nasil-hazirlanilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uluslararası bir öğrenci olarak Almanya'da lisans eğitimi için nasıl hazırlanılır?",
+      "visible": "text",
+      "head": "Almanya'da lisans eğitimi için öncelikle yeterli düzeyde Almanca dil bilgisine sahip olmanız şarttır"
+     },
+     "new": {
+      "question": "Uluslararası bir öğrenci olarak Almanya'da lisans eğitimi için nasıl hazırlanılır?",
+      "answer_md": "**Hazırlığa önce lise diplomanın Almanya'da doğrudan mı yoksa Studienkolleg üzerinden mi giriş sağladığını netleştirerek başla; sonra dil kanıtını ve başvuru kanalını programa göre planla.** Son kararı her zaman üniversite verir.\n\n### 1. Giriş yeterliliğini (HZB) kontrol et\nTürk lise diploması tek başına belirleyici değildir; anabin onu YKS sonucu ve yerleştirmeyle birlikte değerlendirir.\n- 12 yıllık genel lise + 180 puan üstü (SAY, SÖZ, EA veya DİL) + fakültede en az 4 yıllık lisansa yerleşme → doğrudan, alan kısıtlı giriş; Studienkolleg yok.\n- Meslek Lisesi + 180 üstü → alana uygun Studienkolleg.\n- DAAD veri tabanına göre YKS'ye girmemiş ya da yalnızca TYT sonucu olan lise mezunu kabul edilemez.\n\n### 2. Dil kanıtını programa göre seç\nGereken dil ve seviye programa göre değişir: Almanca programlarda çoğunlukla DSH veya TestDaF, İngilizce programlarda IELTS/TOEFL gibi kanıtları program belirler. Genel bir B2/C1 kuralı yoktur. Studienkolleg'e kabul için de Almanca kanıtı gerekir.\n\n### 3. Başvuru kanalını öğren\nHer üniversite uni-assist kullanmaz. Kullanıyorsa başvuru tamamen dijitaldir; ilk program 75 €, aynı dönemde ek her program 30 €. uni-assist'teki son tarih üniversitenin son tarihidir.\n\n### 4. Notunu bil\nYabancı notun modifiye Bavyera formülüyle Alman sistemine çevrilir; uni-assist bunu değerlendirmesi sırasında yapar.\n\nKaynak: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) · [DAAD kabul veri tabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uluslararasi-bir-ogrenci-olarak-almanyada-lisans-egitimi-icin-nasil-hazirlanilir-en",
+     "mode": "update",
+     "old": {
+      "question": "How do international students prepare for undergraduate study in Germany?",
+      "visible": "text",
+      "head": "First off, you absolutely need a sufficient level of German language proficiency for undergraduate s"
+     },
+     "new": {
+      "question": "How do international students prepare for a bachelor's degree in Germany?",
+      "answer_md": "**Start by finding out whether your school-leaving certificate gives you direct access or a Studienkolleg route in Germany; then plan the language proof and the application channel for each programme.** The university always makes the final decision.\n\n### 1. Check your entrance qualification (HZB)\nA Turkish school certificate on its own is not decisive; anabin assesses it together with the YKS result and placement.\n- 12-year general Lise + a score above 180 (SAY, SÖZ, EA or DİL) + placement in a Lisans programme of at least 4 years at a faculty → direct, subject-restricted access, no Studienkolleg.\n- Meslek Lisesi + above 180 → subject-oriented Studienkolleg.\n- According to the DAAD admission database, a Lise graduate without the YKS, or with only a TYT result, cannot be admitted.\n\n### 2. Choose the language proof per programme\nLanguage and level depend on the programme. German-taught courses often ask for DSH or TestDaF; for English-taught courses the programme sets the proof, such as IELTS or TOEFL. There is no universal B2 or C1 rule. A Studienkolleg also requires German proof before admission.\n\n### 3. Find the application channel\nNot every university uses uni-assist. Where it does, the application is fully digital; fees are €75 for the first course and €30 for each additional course in the same semester. The uni-assist deadline is the university's deadline.\n\n### 4. Know your grade\nuni-assist converts your foreign grade using the modified Bavarian formula.\n\nSource: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uluslararasi-bir-ogrenci-olarak-almanyada-lisans-egitimi-icin-nasil-hazirlanilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie bereite ich mich als internationaler Studierender auf ein Bachelorstudium in Deutschland vor?",
+      "visible": "text",
+      "head": "Für ein Bachelorstudium in Deutschland ist ein ausreichendes Niveau an Deutschkenntnissen absolut no"
+     },
+     "new": {
+      "question": "Wie bereite ich mich als internationaler Studierender auf ein Bachelorstudium in Deutschland vor?",
+      "answer_md": "**Kläre zuerst, ob dein Schulabschluss direkt oder über ein Studienkolleg zum Studium in Deutschland führt; danach planst du Sprachnachweis und Bewerbungsweg passend zum Studiengang.** Die Entscheidung trifft am Ende immer die Hochschule.\n\n### 1. Hochschulzugangsberechtigung (HZB) prüfen\nEin türkisches Schulzeugnis allein entscheidet nichts; anabin bewertet es zusammen mit YKS-Ergebnis und Platzierung.\n- 12-jährige allgemeine Lise + mehr als 180 Punkte (SAY, SÖZ, EA oder DİL) + Platzierung in einem mindestens vierjährigen Lisans-Studiengang an einer Fakultät → direkter, fachgebundener Zugang, kein Studienkolleg.\n- Meslek Lisesi + mehr als 180 Punkte → fachorientiertes Studienkolleg.\n- Laut DAAD-Zulassungsdatenbank kann, wer ohne YKS oder nur mit TYT-Ergebnis abgeschlossen hat, nicht zugelassen werden.\n\n### 2. Sprachnachweis je Studiengang wählen\nSprache und Niveau legt der Studiengang fest: Bei deutschsprachigen Studiengängen oft DSH oder TestDaF, bei englischsprachigen bestimmt das Programm den Nachweis, etwa IELTS oder TOEFL. Eine allgemeine B2- oder C1-Regel gibt es nicht. Auch fürs Studienkolleg brauchst du vorab einen Deutschnachweis.\n\n### 3. Bewerbungsweg klären\nNicht jede Hochschule nutzt uni-assist. Wenn doch, läuft alles digital; 75 € für den ersten und 30 € für jeden weiteren Studiengang im selben Semester. Die uni-assist-Frist ist die Frist der Hochschule.\n\n### 4. Deine Note kennen\nDeine ausländische Note wird mit der modifizierten bayerischen Formel umgerechnet; das übernimmt uni-assist bei der Bewertung.\n\nQuelle: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-ile-universite-paralel-basvurusu-yapilabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-ile-universite-paralel-basvurusu-yapilabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist ile üniversite paralel başvurusu yapılabilir mi?",
+      "visible": "text",
+      "head": "Evet — Uni-Assist'in en büyük avantajı paralel başvuru. Aynı evraklarla birden fazla üniversiteye ek"
+     },
+     "new": {
+      "question": "Uni-Assist ile üniversite paralel başvurusu yapılabilir mi?",
+      "answer_md": "**Evet, aynı dönemde uni-assist üzerinden birden fazla programa başvurabilirsin: dönemdeki ilk program 75 €, aynı dönemdeki her ek program 30 €.** Ancak her üniversite uni-assist kullanmaz ve her başvuru ayrı değerlendirilir.\n\n### Nasıl işler?\n- Belgelerini My assist'e dijital olarak yüklersin; uni-assist'e posta ile belge gönderimi yok.\n- Bu yol yalnızca uni-assist üyesi üniversiteler (yaklaşık 150–160) için geçerlidir ve hangi programın uni-assist ile yürüdüğüne üniversite karar verir. Diğer üniversitelere doğrudan başvurursun.\n- Ücret standart başvuru ve VPD için aynıdır ve sonuç ne olursa olsun alınır.\n\n### VPD her üniversite için ayrıdır\n- VPD **seçtiğin üniversiteye özel** düzenlenir; tek bir VPD tüm üniversitelerde geçmez. Her üniversite için ayrı VPD başvurusu yaparsın.\n- VPD geldikten sonra her üniversiteye, kendi son başvuru tarihinden önce **ayrıca doğrudan başvurman** gerekir. VPD kabul değildir; kararı her üniversite kendisi verir.\n\n### İpuçları\n- Son tarihleri tek tek takip et: uni-assist'in son tarihi ilgili üniversitenin son tarihiyle aynıdır.\n- Kabul koşulları (not, dil, alan uyumu) programa göre değişir; Almanya genelinde ortak bir NC veya not eşiği yok.\n\nKaynak: [uni-assist – ücretler](https://www.uni-assist.de/en/faqs/pay-all-fees/) · [uni-assist üyesi üniversiteler](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-ile-universite-paralel-basvurusu-yapilabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you make parallel university applications with Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can you make parallel university applications with uni-assist?",
+      "answer_md": "**Yes. In the same semester you can apply for several programmes via uni-assist: 75 € for the first programme and 30 € for each additional one.** But not every university uses uni-assist, and each application is assessed separately.\n\n### How it works\n- You upload your documents digitally in My assist; nothing is posted to uni-assist.\n- This route only covers uni-assist member universities (about 150–160), and each university decides which programmes run through uni-assist. For the others you apply directly.\n- The fees are the same for standard and VPD applications and are charged regardless of the result.\n\n### A separate VPD for each university\n- A VPD is issued **for the specific university** you chose — one VPD does not work everywhere. You apply for one per university.\n- After receiving it, you must **still apply directly to each university** before its own deadline. A VPD is not an admission; each university makes its own decision.\n\n### Tips\n- Track every deadline separately: the uni-assist deadline is the respective university's deadline.\n- Admission requirements (grade, language, subject fit) vary by programme; there is no Germany-wide NC or grade threshold.\n\nSource: [uni-assist – fees](https://www.uni-assist.de/en/faqs/pay-all-fees/) · [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-ile-universite-paralel-basvurusu-yapilabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kannst du dich über Uni-Assist parallel an mehreren Universitäten bewerben?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Kannst du dich über uni-assist parallel an mehreren Hochschulen bewerben?",
+      "answer_md": "**Ja. Im selben Semester kannst du dich über uni-assist für mehrere Studiengänge bewerben: 75 € für den ersten, 30 € für jeden weiteren.** Allerdings arbeitet nicht jede Hochschule mit uni-assist, und jede Bewerbung wird einzeln geprüft.\n\n### So funktioniert es\n- Du lädst deine Unterlagen digital in My assist hoch; per Post geht nichts an uni-assist.\n- Der Weg gilt nur für uni-assist-Mitgliedshochschulen (etwa 150–160), und jede Hochschule legt fest, welche Studiengänge über uni-assist laufen. Bei allen anderen bewirbst du dich direkt.\n- Die Gebühren sind für normale Bewerbungen und VPD gleich und fallen unabhängig vom Ergebnis an.\n\n### Pro Hochschule eine eigene VPD\n- Die VPD wird **für die gewählte Hochschule** ausgestellt – eine VPD gilt nicht überall. Du beantragst sie für jede Hochschule gesondert.\n- Danach musst du dich **zusätzlich direkt bei jeder Hochschule** vor deren Frist bewerben. Die VPD ist keine Zulassung; jede Hochschule entscheidet selbst.\n\n### Tipps\n- Behalte jede Frist einzeln im Blick: Die uni-assist-Frist ist die Frist der jeweiligen Hochschule.\n- Zulassungsvoraussetzungen (Note, Sprache, fachliche Passung) unterscheiden sich je Studiengang; einen bundesweiten NC oder Notengrenzwert gibt es nicht.\n\nQuelle: [uni-assist – Gebühren](https://www.uni-assist.de/en/faqs/pay-all-fees/) · [uni-assist-Mitgliedshochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-red-sebepleri-en-cok-hangileridir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-red-sebepleri-en-cok-hangileridir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist red sebepleri en çok hangileridir?",
+      "visible": "text",
+      "head": "Uni-Assist başvurusunda %30-40 red oranı var — sebepler büyük çoğunlukla evrak eksikliği. Yaygın red"
+     },
+     "new": {
+      "question": "uni-assist başvurusunda en sık görülen olumsuz sonuç sebepleri nelerdir?",
+      "answer_md": "**uni-assist resmi bir \"en sık red sebepleri\" istatistiği yayımlamaz; ama olumsuz sonucun nereden çıkabileceği kurallardan bellidir: eksik belgeler, giriş yeterliliğinin (HZB) seçtiğin alana uymaması ve süreç hataları.** Kabul kararını her zaman üniversite verir.\n\n### 1. Belgeler\n- Belgelerin orijinal dilde ve onaylı Almanca ya da İngilizce tercümesiyle yüklenmemesi.\n- Türk lise diplomasıyla başvuruyorsan Lise Diploması'nın yanında YKS yerleştirme sayfasının (üniversite, fakülte, puan türü) eksik olması.\n\n### 2. HZB alana uymuyor\n- Lise diploması tek başına yetmez: 12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de 180 puan üstü + fakültede en az 4 yıllık lisansa yerleşme, yerleştiğin ve ilgili alanlarda alan kısıtlı giriş sağlar. Alakasız bir alana başvurursan olumsuz sonuç çıkabilir; \"ilgili alan\" kararını üniversite verir.\n- Yüksekokul yerleşmesi yalnızca Fachhochschule'lerde giriş sağlar.\n- DAAD veri tabanına göre YKS'ye girmemiş ya da yalnızca TYT sonucu olan lise mezunu kabul edilemez.\n\n### 3. Süreç\n- Son tarih üniversitenin son tarihidir; geç kalan başvuru işleme alınmayabilir.\n- VPD kabul değildir: VPD'den sonra üniversiteye ayrıca başvurmazsan süreç tamamlanmaz.\n- Ücret (ilk program 75 €, aynı dönemde ek program 30 €) sonuçtan bağımsız alınır.\n\nKaynak: [uni-assist Türkiye bilgileri](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-red-sebepleri-en-cok-hangileridir-en",
+     "mode": "update",
+     "old": {
+      "question": "What are the most common reasons for Uni-Assist rejections?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What are the most common reasons for uni-assist rejections?",
+      "answer_md": "**uni-assist does not publish statistics on the most common rejection reasons, but the rules show where a negative result can come from: missing documents, an entrance qualification (HZB) that does not fit the chosen subject, and process mistakes.** The admission decision is always the university's.\n\n### 1. Documents\n- Certificates not uploaded in the original language together with a certified German or English translation.\n- For Turkish school leavers: the Lise Diploması uploaded without the YKS placement page (university, faculty, score type).\n\n### 2. HZB does not match the subject\n- The school certificate alone is not enough. A 12-year general Lise plus a YKS score above 180 in SAY, SÖZ, EA or DİL plus placement in a Lisans programme of at least 4 years at a faculty gives subject-restricted access to the placed subject and related subjects. Applying for an unrelated subject can fail; the university decides what counts as related.\n- Placement at a Yüksekokul gives access to Fachhochschulen only.\n- According to the DAAD admission database, a Lise graduate without the YKS, or with only a TYT result, cannot be admitted.\n\n### 3. Process\n- The uni-assist deadline is the university's deadline; late applications may not be processed.\n- A VPD is not an admission: without the direct application to the university afterwards, nothing is complete.\n- Fees (€75 for the first course, €30 for each additional course in the same semester) are charged regardless of the result.\n\nSource: [uni-assist: Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-red-sebepleri-en-cok-hangileridir-de",
+     "mode": "update",
+     "old": {
+      "question": "Was sind die häufigsten Ablehnungsgründe bei Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was sind die häufigsten Ablehnungsgründe bei uni-assist?",
+      "answer_md": "**uni-assist veröffentlicht keine Statistik zu den häufigsten Ablehnungsgründen – aus den Regeln ergibt sich aber, wo es hakt: fehlende Unterlagen, eine Hochschulzugangsberechtigung (HZB), die nicht zum Fach passt, und Fehler im Ablauf.** Über die Zulassung entscheidet immer die Hochschule.\n\n### 1. Unterlagen\n- Zeugnisse nicht in Originalsprache plus beglaubigter Übersetzung ins Deutsche oder Englische hochgeladen.\n- Bei türkischen Schulabschlüssen: Lise Diploması ohne die YKS-Platzierungsseite (Hochschule, Fakultät, Punktetyp).\n\n### 2. HZB passt nicht zum Fach\n- Das Schulzeugnis allein reicht nicht. Eine 12-jährige allgemeine Lise, mehr als 180 Punkte in SAY, SÖZ, EA oder DİL und eine Platzierung in einem mindestens vierjährigen Lisans-Studiengang an einer Fakultät ergeben einen fachgebundenen Zugang: platziertes Fach und verwandte Fächer. Bewirbst du dich für ein fremdes Fach, kann das scheitern; was verwandt ist, entscheidet die Hochschule.\n- Eine Platzierung an einer Yüksekokul öffnet nur Fachhochschulen.\n- Laut DAAD-Zulassungsdatenbank kann eine Lise-Absolventin oder ein Lise-Absolvent ohne YKS oder nur mit TYT-Ergebnis nicht zugelassen werden.\n\n### 3. Ablauf\n- Die uni-assist-Frist ist die Frist der Hochschule; verspätete Bewerbungen werden womöglich nicht bearbeitet.\n- Die VPD ist keine Zulassung: Ohne anschließende Direktbewerbung bei der Hochschule ist nichts abgeschlossen.\n- Die Gebühren (75 € erster Studiengang, 30 € je weiterer im selben Semester) fallen unabhängig vom Ergebnis an.\n\nQuelle: [uni-assist: Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vpd-belgesiyle-basvuru-sonuclari-ne-zaman-aciklanir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vpd-belgesiyle-basvuru-sonuclari-ne-zaman-aciklanir",
+     "mode": "rewrite",
+     "old": {
+      "question": "VPD belgesiyle başvuru sonuçları ne zaman açıklanır?",
+      "visible": "text",
+      "head": "VPD (Vorprüfungsdokumentation) belgesiyle yapılan üniversite başvurularının sonuçlanma süresi üniver"
+     },
+     "new": {
+      "question": "VPD belgesiyle başvuru sonuçları ne zaman açıklanır?",
+      "answer_md": "**Sabit bir tarih yok: VPD'nin kendisi uni-assist'ten genellikle 4–6 haftada gelir, ama kabul kararını üniversite verir ve ne zaman açıklayacağını da üniversite belirler.** VPD bir kabul belgesi değildir.\n\n### İki ayrı aşama\n1. **uni-assist değerlendirmesi:** uni-assist belgelerini inceler, notunu Alman sistemine çevirir ve VPD'yi My assist'teki \"My Inbox\" bölümüne gönderir. Bu genellikle 4–6 hafta sürer; güncel süreleri uni-assist kendi sitesinde yayımlar.\n2. **Üniversite başvurusu:** VPD geldikten sonra üniversitenin son başvuru tarihinden önce **doğrudan üniversiteye başvurman** ve VPD'yi orada sunman gerekir. Kabul veya ret sonucu bu aşamada üniversiteden gelir.\n\n### Sonucu nereden takip edersin?\n- VPD'nin durumunu My assist'ten, kabul kararını ise üniversitenin başvuru portalından veya yazışmalarından takip et.\n- Karar süresini ve duyuru şeklini her üniversite kendisi belirler; herkes için geçerli bir süre yok. Programın başvuru sayfasına bak ya da başvuru ofisine sor.\n\n### Dikkat\n- VPD yalnızca seçtiğin üniversite için düzenlenir ve düzenlenme tarihinden itibaren **bir yıl** geçerlidir.\n- VPD tek başına başvuru yerine geçmez; üniversiteye ayrıca başvurmazsan kabul kararı da çıkmaz.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – gönderim ve takip](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vpd-belgesiyle-basvuru-sonuclari-ne-zaman-aciklanir-en",
+     "mode": "update",
+     "old": {
+      "question": "When are application results for a VPD document announced?",
+      "visible": "text",
+      "head": "The time it takes for university application results to be announced after submitting a VPD (Vorprüf"
+     },
+     "new": {
+      "question": "When are application results announced when applying with a VPD?",
+      "answer_md": "**There is no fixed date: uni-assist usually issues the VPD itself within 4–6 weeks, but the admission decision comes from the university, which also decides when to announce it.** A VPD is not an admission.\n\n### Two separate stages\n1. **uni-assist evaluation:** uni-assist checks your certificates, converts your grade to the German scale and delivers the VPD to \"My Inbox\" in My assist. This usually takes 4–6 weeks; uni-assist publishes current processing times on its website.\n2. **University application:** once you have the VPD, you must **apply directly to the university** before its deadline and submit the VPD there. The admission or rejection comes from the university at this stage.\n\n### Where to follow your result\n- Track the VPD status in My assist, and the admission decision in the university's application portal or correspondence.\n- Each university sets its own decision timeline and way of notifying applicants; there is no period that applies everywhere. Check the programme's application page or ask the admissions office.\n\n### Keep in mind\n- A VPD is issued only for the university you chose and is valid for **one year** from the date of issue.\n- The VPD does not replace the application — without a separate application to the university, there is no admission decision.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – send and track](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vpd-belgesiyle-basvuru-sonuclari-ne-zaman-aciklanir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wann erfahre ich die Ergebnisse meiner Bewerbung mit VPD?",
+      "visible": "text",
+      "head": "Die Bearbeitungszeit für Uni-Bewerbungen mit einer VPD (Vorprüfungsdokumentation) ist nicht immer gl"
+     },
+     "new": {
+      "question": "Wann erfahre ich das Ergebnis meiner Bewerbung mit VPD?",
+      "answer_md": "**Einen festen Termin gibt es nicht: Die VPD selbst stellt uni-assist meist innerhalb von 4–6 Wochen aus, über die Zulassung entscheidet aber die Hochschule – und sie legt auch fest, wann sie das Ergebnis mitteilt.** Eine VPD ist keine Zulassung.\n\n### Zwei getrennte Schritte\n1. **Prüfung durch uni-assist:** uni-assist prüft deine Zeugnisse, rechnet deine Note in das deutsche System um und stellt die VPD in My assist unter „My Inbox“ bereit. Das dauert meist 4–6 Wochen; aktuelle Bearbeitungszeiten veröffentlicht uni-assist auf seiner Website.\n2. **Bewerbung bei der Hochschule:** Mit der VPD musst du dich **direkt bei der Hochschule** vor deren Frist bewerben und die VPD dort einreichen. Zu- oder Absage kommt in diesem Schritt von der Hochschule.\n\n### Wo du dein Ergebnis verfolgst\n- Den VPD-Status siehst du in My assist, die Zulassungsentscheidung im Bewerbungsportal oder in der Post der Hochschule.\n- Wie lange die Entscheidung dauert und wie sie mitgeteilt wird, bestimmt jede Hochschule selbst; eine einheitliche Frist gibt es nicht. Schau auf die Seite des Studiengangs oder frag nach.\n\n### Wichtig\n- Die VPD gilt nur für die gewählte Hochschule und ist **ein Jahr** ab Ausstellungsdatum gültig.\n- Die VPD ersetzt keine Bewerbung – ohne eigene Bewerbung bei der Hochschule gibt es keine Zulassungsentscheidung.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist – Versand und Status](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vpdnin-gecerlilik-suresi-var-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vpdnin-gecerlilik-suresi-var-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "VPD'nin geçerlilik süresi var mı?",
+      "visible": "text",
+      "head": "VPD'nin resmi sona erme tarihi yok ama pratikte 2-3 yıl içinde tekrar başvuru tavsiye edilir. # VPD"
+     },
+     "new": {
+      "question": "VPD'nin geçerlilik süresi var mı?",
+      "answer_md": "**Evet: VPD, düzenlendiği tarihten itibaren bir yıl geçerlidir.** Üstelik yalnızca seçtiğin üniversite için düzenlenir; her üniversite için ayrı VPD başvurusu yaparsın.\n\n### VPD nedir, ne zaman gerekir?\nVPD (Vorprüfungsdokumentation) yalnızca üniversite uni-assist'i VPD yöntemiyle çalışmaya yönlendirdiyse gerekir. Hangi belgeleri sunduğunu, uni-assist'in bunları nasıl değerlendirdiğini ve Alman sistemine çevrilmiş notunu gösterir. Belge My assist'te \"My Inbox\" bölümüne gelir.\n\n### Bilmen gerekenler\n- **Geçerlilik:** düzenlenme tarihinden itibaren 1 yıl.\n- **Üniversiteye özel:** Tek bir VPD tüm üniversitelerde kullanılamaz.\n- **VPD kabul değildir:** VPD'yi aldıktan sonra üniversitenin son tarihinden önce üniversiteye ayrıca doğrudan başvurman ve VPD'yi orada sunman gerekir. Kararı üniversite verir.\n- **Ücret:** Bir dönemdeki ilk program için 75 €, aynı dönemdeki her ek program için 30 €. Standart başvuruyla aynıdır ve sonuçtan bağımsız alınır.\n\n### Süre dolarsa ne yaparsın?\nBir yıl geçtiyse o üniversite için yeni bir VPD'ye ihtiyacın olur. İşlem genelde 4–6 hafta sürdüğü için başvurunu üniversitenin son tarihinden yeterince önce yap.\n\nKaynak: [uni-assist: VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist: ücretler](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vpdnin-gecerlilik-suresi-var-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is there a validity period for VPD?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is there a validity period for the VPD?",
+      "answer_md": "**Yes. A VPD is valid for one year from its date of issue.** It is also issued specifically for the university you chose, so you apply for a separate VPD for each university.\n\n### What a VPD is and when you need one\nA VPD (Vorprüfungsdokumentation) is only needed where the university has told uni-assist to use the VPD procedure. It records which certificates you submitted, how uni-assist evaluated them and your grade converted to the German scale. You receive it in My assist under \"My Inbox\".\n\n### Key points\n- **Validity:** one year from the date of issue.\n- **University-specific:** one VPD does not work for every university.\n- **Not an admission:** after receiving the VPD you still have to apply directly to the university before its deadline and submit the VPD there. The university decides.\n- **Fees:** €75 for the first course in a semester and €30 for each additional course in the same semester. The fees are the same as for a standard application and are charged regardless of the result.\n\n### If the year has passed\nYou will need a new VPD for that university. Processing usually takes 4–6 weeks, so apply well before the university's deadline.\n\nSource: [uni-assist: VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist: fees](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vpdnin-gecerlilik-suresi-var-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Gibt es eine Gültigkeitsdauer für die VPD?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Gibt es eine Gültigkeitsdauer für die VPD?",
+      "answer_md": "**Die VPD ist ab dem Ausstellungsdatum ein Jahr gültig.** Außerdem wird sie speziell für die gewählte Hochschule ausgestellt – für jede Hochschule beantragst du eine eigene VPD.\n\n### Was die VPD ist und wann du sie brauchst\nEine VPD (Vorprüfungsdokumentation) brauchst du nur, wenn die Hochschule uni-assist mit dem VPD-Verfahren beauftragt hat. Sie dokumentiert, welche Zeugnisse du eingereicht hast, wie uni-assist sie bewertet und welche umgerechnete deutsche Note sich ergibt. Du bekommst sie in My assist unter „My Inbox“.\n\n### Das Wichtigste\n- **Gültigkeit:** ein Jahr ab Ausstellungsdatum.\n- **Hochschulbezogen:** Eine VPD gilt nicht für alle Hochschulen.\n- **Keine Zulassung:** Mit der VPD bewirbst du dich noch direkt bei der Hochschule, und zwar vor deren Frist. Die Entscheidung trifft die Hochschule.\n- **Gebühren:** 75 € für den ersten Studiengang pro Semester, 30 € für jeden weiteren im selben Semester – wie beim Standardverfahren und unabhängig vom Ergebnis.\n\n### Wenn das Jahr um ist\nDann brauchst du für diese Hochschule eine neue VPD. Die Bearbeitung dauert meist 4–6 Wochen, also beantrage sie rechtzeitig vor der Bewerbungsfrist der Hochschule.\n\nQuelle: [uni-assist: VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist: Gebühren](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "wintersemester-icin-uni-assist-deadline-ne-zaman",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "wintersemester-icin-uni-assist-deadline-ne-zaman",
+     "mode": "rewrite",
+     "old": {
+      "question": "Wintersemester için Uni-Assist deadline ne zaman?",
+      "visible": "text",
+      "head": "Wintersemester (Ekim başlangıç) için 15 Temmuz standart deadline — ama uniye göre değişir. # Standar"
+     },
+     "new": {
+      "question": "Wintersemester için uni-assist son başvuru tarihi ne zaman?",
+      "answer_md": "**uni-assist'in herkes için geçerli tek bir Wintersemester son tarihi yoktur: uni-assist'teki son tarih, başvurduğun üniversitenin son tarihidir.** \"Herkes için 15 Temmuz\" gibi genel bir kural yoktur; tarihi her üniversitenin kendi sayfasından kontrol etmelisin.\n\n### Tarihi nasıl bulursun?\n- Her Alman üniversitesi uni-assist kullanmaz (yaklaşık 150–160 üye üniversite var). Hangi program ve başvuranlar için uni-assist kullanılacağına üniversite karar verir.\n- Önce uni-assist'in üye üniversite listesine, sonra üniversitenin programa ait başvuru sayfasına bak.\n\n### Neden erken başvurmalısın?\n- uni-assist'te işlem genelde 4–6 hafta sürer; güncel süreler uni-assist sitesinde yayımlanır.\n- Başvuru tamamen dijitaldir: resmi belgelerinin taramalarını My assist'e yüklersin, uni-assist'e posta göndermezsin. Belgeler orijinal dilde ve onaylı Almanca ya da İngilizce tercümeyle yüklenir.\n- Üniversite VPD yöntemi kullanıyorsa, VPD'yi aldıktan sonra üniversiteye de son tarihinden önce doğrudan başvurman gerekir. Bu adımı da takvimine koy.\n\n### Kısaca\nSon tarihi üniversiteden öğren, işlem süresini ve (varsa) VPD sonrası üniversite başvurusunu hesaba katarak tarihten haftalar önce başvur.\n\nKaynak: [uni-assist üye üniversiteler](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist: gönderim ve takip](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "wintersemester-icin-uni-assist-deadline-ne-zaman-en",
+     "mode": "update",
+     "old": {
+      "question": "When is the Uni-Assist deadline for the Wintersemester?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "When is the uni-assist deadline for the winter semester?",
+      "answer_md": "**There is no single uni-assist deadline for the winter semester: your uni-assist deadline is the deadline of the university you are applying to.** No rule such as \"15 July for everyone\" applies, so check each university's own page.\n\n### How to find the date\n- Not every German university uses uni-assist; there are roughly 150–160 member universities. Each university decides which courses and applicants uni-assist handles.\n- Check uni-assist's list of member universities first, then the application page for your course at the university.\n\n### Why you should apply early\n- Processing at uni-assist usually takes 4–6 weeks; current processing times are published on the uni-assist website.\n- The application is fully digital: you upload scans of your official certificates in My assist and do not post anything to uni-assist. Upload them in the original language plus a certified German or English translation.\n- If the university uses the VPD procedure, you still have to apply directly to the university before its deadline once you have the VPD. Plan for that step too.\n\n### In short\nGet the deadline from the university and apply several weeks ahead, allowing for processing time and, where relevant, the direct application after the VPD.\n\nSource: [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist: send and track](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "wintersemester-icin-uni-assist-deadline-ne-zaman-de",
+     "mode": "update",
+     "old": {
+      "question": "Wann ist die Uni-Assist-Frist für das Wintersemester?",
+      "visible": "text",
+      "head": "Für das Wintersemester (Beginn im Oktober) ist der 15. Juli die Standard-Frist – aber das kann je na"
+     },
+     "new": {
+      "question": "Wann ist die uni-assist-Frist für das Wintersemester?",
+      "answer_md": "**Es gibt keine einheitliche uni-assist-Frist fürs Wintersemester: Bei uni-assist gilt die Bewerbungsfrist der Hochschule, bei der du dich bewirbst.** Eine Regel wie „15. Juli für alle“ gibt es nicht – prüfe die Frist auf der Seite der jeweiligen Hochschule.\n\n### So findest du die Frist\n- Nicht jede deutsche Hochschule arbeitet mit uni-assist; es gibt etwa 150–160 Mitgliedshochschulen. Welche Studiengänge und Bewerbergruppen uni-assist bearbeitet, entscheidet die Hochschule.\n- Schau zuerst in die Liste der uni-assist-Hochschulen und dann auf die Bewerbungsseite deines Studiengangs.\n\n### Warum du früh dran sein solltest\n- Die Bearbeitung bei uni-assist dauert meist 4–6 Wochen; aktuelle Zeiten veröffentlicht uni-assist auf der Website.\n- Die Bewerbung läuft komplett digital: Du lädst Scans deiner offiziellen Zeugnisse in My assist hoch und schickst nichts per Post an uni-assist. Dazu gehören Originalsprache plus beglaubigte Übersetzung ins Deutsche oder Englische.\n- Nutzt die Hochschule das VPD-Verfahren, bewirbst du dich nach Erhalt der VPD noch direkt bei der Hochschule – ebenfalls vor deren Frist.\n\n### Kurz gesagt\nFrist bei der Hochschule nachsehen und einige Wochen vorher bewerben – mit Puffer für die Bearbeitung und gegebenenfalls die Direktbewerbung nach der VPD.\n\nQuelle: [uni-assist-Hochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/) · [uni-assist: Versand und Status](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    }
+   ]
+  }
+ ]
+}
