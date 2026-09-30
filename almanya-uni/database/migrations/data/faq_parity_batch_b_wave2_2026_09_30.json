@@ -1,0 +1,868 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "B",
+ "clusters": [
+  {
+   "tr_slug": "studienkolleg-nedir-kimler-icin-zorunlu",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-nedir-kimler-icin-zorunlu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg nedir, kimler için zorunlu?",
+      "visible": "text",
+      "head": "Studienkolleg , Türk lise mezunlarının Almanya'da doğrudan lisans (Bachelor) okuyamadığı durumda git"
+     },
+     "new": {
+      "question": "Studienkolleg nedir, kimler için zorunlu?",
+      "answer_md": "**Studienkolleg, Almanya'da doğrudan lisansa başlayamayan yabancı adayları iki dönemlik bir hazırlıkla Feststellungsprüfung sınavına hazırlayan okuldur.** Türk lise mezunlarının hepsi için zorunlu değildir: kimin gideceğini diploman, YKS sonucun ve yerleşmen belirler.\n\n### Kimler gitmek zorunda?\n- **Meslek Lisesi** mezunu + YKS'de 180 puanın üzeri: alana uygun Studienkolleg. Türkiye'de bir yıl başarılı lisans okursan doğrudan, alanla sınırlı giriş açılır.\n- 2 yıllık bir **MYO'da** yalnızca bir yıl okuduysan (diploma yok): sadece **Fachhochschule** Studienkolleg'i.\n\n### Kimler gitmez?\n- 12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de **180 puanın üzeri** + en az 4 yıllık bir **fakülte** lisans programına **yerleşme**: Studienkolleg olmadan doğrudan, alanla sınırlı giriş.\n- Tamamlanmış 4 yıllık lisans: tüm alanlara doğrudan giriş.\n\nYerleşmen yoksa ya da puanın eşiğin altındaysa genel bir yol tanımlı değil. Otomatik Studienkolleg de yok, karar üniversitenin veya eyalet makamınındır.\n\n### Kurs türleri ve sınav\n- Üniversitelerde: **T** (teknik, matematik, fen), **M** (tıp, biyoloji), **W** (ekonomi, sosyal bilimler), **G** (beşeri bilimler, Germanistik, sanat), **S** (diller).\n- Fachhochschule'lerde: **TI, WW, GD, SW, DÜ**.\n- Kabulden önce Almanca belgesi gerekir. Yer hakkı garanti değildir.\n- Feststellungsprüfung: Almanca + kursun iki dersi, bir kez tekrarlanabilir. Fachhochschule Studienkolleg'indeki sınav üniversiteye giriş hakkı vermez.\n\nAyrıntılar: [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school)\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-nedir-kimler-icin-zorunlu-en",
+     "mode": "update",
+     "old": {
+      "question": "What is a Studienkolleg, and who is it mandatory for?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What is a Studienkolleg, and who is it mandatory for?",
+      "answer_md": "**A Studienkolleg is a two-semester preparatory course that ends with the Feststellungsprüfung, the exam that lets international applicants without direct university access start a degree in Germany.** It is not mandatory for every Turkish school leaver: your certificate, YKS result and placement decide.\n\n### Who needs it\n- **Meslek Lisesi** (vocational school) graduates with more than 180 YKS points go to a subject-oriented Studienkolleg. After one successful year of Lisans study in Türkiye, direct subject-restricted access opens instead.\n- If you studied only one year at a 2-year **MYO** without a diploma, the Studienkolleg route leads to **Fachhochschulen only**.\n\n### Who doesn't\n- A 12-year general Lise, **more than 180 points** in SAY, SÖZ, EA or DİL, and **placement** in a Lisans programme of at least 4 years at a **faculty** give direct, subject-restricted access without a Studienkolleg.\n- A completed Lisans of at least 4 years gives access to all subjects.\n\nWithout placement, or below the threshold, there is no general route and no automatic Studienkolleg. The university or the competent Land authority decides.\n\n### Courses and the final exam\n- University courses: **T** (technical, maths, sciences), **M** (medicine, biology), **W** (economics, social sciences), **G** (humanities, German studies, arts), **S** (languages).\n- Fachhochschule courses: **TI, WW, GD, SW, DÜ**.\n- You need proof of German before admission, and there is no entitlement to a place.\n- The Feststellungsprüfung covers German plus two course subjects and can be repeated once. Passing it at a Fachhochschule Studienkolleg gives no university access.\n\nMore: [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en)\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK framework](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-nedir-kimler-icin-zorunlu-de",
+     "mode": "update",
+     "old": {
+      "question": "Was ist ein Studienkolleg und für wen ist es verpflichtend?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was ist ein Studienkolleg und für wen ist es verpflichtend?",
+      "answer_md": "**Ein Studienkolleg ist ein auf zwei Semester angelegter Vorbereitungskurs, der mit der Feststellungsprüfung endet und dir ohne direkten Hochschulzugang den Weg ins Studium öffnet.** Pflicht ist es nicht für alle türkischen Schulabsolventen: Entscheidend sind dein Abschluss, dein YKS-Ergebnis und deine Platzierung.\n\n### Wer muss hin?\n- Mit **Meslek Lisesi** (Berufsschule) und über 180 YKS-Punkten gehst du in ein fachlich passendes Studienkolleg. Nach einem erfolgreichen Studienjahr (Lisans) in der Türkei bekommst du stattdessen direkten, fachgebundenen Zugang.\n- Hast du nur ein Jahr an einer 2-jährigen **MYO** ohne Abschluss studiert, führt der Studienkolleg-Weg **nur an Fachhochschulen**.\n\n### Wer nicht?\n- 12-jähriges allgemeinbildendes Lise, **über 180 Punkte** in SAY, SÖZ, EA oder DİL und **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer **Fakultät**: direkter, fachgebundener Zugang ohne Studienkolleg.\n- Ein abgeschlossener mindestens 4-jähriger Lisans öffnet alle Fächer.\n\nOhne Platzierung oder unter der Schwelle gibt es keinen allgemeinen Weg und kein automatisches Studienkolleg. Die Hochschule oder die zuständige Landesstelle entscheidet.\n\n### Kurse und Prüfung\n- An Universitäten: **T** (Technik, Mathe, Naturwissenschaften), **M** (Medizin, Biologie), **W** (Wirtschaft, Sozialwissenschaften), **G** (Geisteswissenschaften, Germanistik, Kunst), **S** (Sprachen).\n- An Fachhochschulen: **TI, WW, GD, SW, DÜ**.\n- Vor der Aufnahme brauchst du einen Deutschnachweis, einen Anspruch auf einen Platz gibt es nicht.\n- Die Feststellungsprüfung umfasst Deutsch und zwei Kursfächer und ist einmal wiederholbar. Eine FSP an einem Fachhochschul-Studienkolleg gibt keinen Universitätszugang.\n\nMehr: [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de)\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "turk-lise-diplomasinin-almanyada-gecerliligi-var-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turk-lise-diplomasinin-almanyada-gecerliligi-var-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türk lise diplomasının Almanya'da geçerliliği var mı?",
+      "visible": "text",
+      "head": "Evet, Türk lise diplomasının (Anadolu lisesi, Fen lisesi, normal lise) Almanya'da geçerliliği var. A"
+     },
+     "new": {
+      "question": "Türk lise diplomasının Almanya'da geçerliliği var mı?",
+      "answer_md": "**Türk lise diploması tek başına Almanya'da üniversiteye giriş hakkı vermez; anabin onu YKS sonucun ve yerleşmenle (veya Türkiye'deki öğrenim sürenle) birlikte değerlendirir.** Doğru kombinasyonla Studienkolleg olmadan doğrudan başvurabilirsin.\n\n### Hangi yol kime açık?\n- **12 yıllık genel lise** + SAY, SÖZ, EA veya DİL'de **180 puanın üzeri** + en az 4 yıllık bir **fakülte** lisans programına **yerleşme**: yerleştiğin ve ilgili alanlarda doğrudan giriş. Türkiye'de kayıt olman gerekmez. Anadolu, Fen veya diğer genel lise ayrımı yapılmaz.\n- Aynısı ama üniversiteye bağlı bir **Yüksekokul'a** yerleşme: yalnızca **Fachhochschule'lerde** doğrudan giriş.\n- **Meslek Lisesi** + 180 üzeri puan: alana uygun Studienkolleg.\n- **Açık Öğretim Lisesi**, İmam Hatip, Anadolu İmam Hatip, Anadolu Teknik: bireysel inceleme.\n\nYerleşmen yoksa ya da puanın eşiğin altındaysa genel bir yol tanımlı değil. DAAD'a göre YKS'ye girmemiş veya yalnızca TYT sonucu olan lise mezunu kabul edilemez. Diğer durumlarda üniversite veya eyalet makamı karar verir.\n\n### Sık yapılan hatalar\n- **H+, H+/-, H-** yükseköğretim kurumlarının durumudur, lise diplomalarının değil.\n- ZAB Zeugnisbewertung üniversite diplomaları içindir. Lise diplomasını üniversite, uni-assist veya eyaletin denklik ofisi değerlendirir.\n- Kriter sıralama değil: puan türü, 180 eşiği ve yerleşmedir.\n\nuni-assist üzerinden başvuruyorsan lise diploması ve YKS yerleşme sayfası (üniversite, fakülte, puan türü) istenir. Son karar her zaman üniversitenindir.\n\nAyrıntılar: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "turk-lise-diplomasinin-almanyada-gecerliligi-var-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Is a Turkish high school diploma valid in Germany?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is a Turkish high school diploma valid in Germany?",
+      "answer_md": "**On its own, a Turkish Lise Diploması does not give access to German universities: anabin assesses it together with your YKS result and placement, or with periods of study in Türkiye.** With the right combination you can apply directly, without a Studienkolleg.\n\n### Routes\n- **12-year general Lise**, **more than 180 points** in SAY, SÖZ, EA or DİL, and **placement** in a Lisans programme of at least 4 years at a **faculty**: direct access to the placed subject and related subjects. You do not need to enrol in Türkiye. anabin does not distinguish Anadolu, Fen or other general Lise types.\n- Same, but placed at a university-affiliated **Yüksekokul**: direct access to **Fachhochschulen only**.\n- **Meslek Lisesi** with more than 180 points: subject-oriented Studienkolleg.\n- **Açık Öğretim Lisesi**, İmam Hatip, Anadolu İmam Hatip, Anadolu Teknik: checked individually.\n\nWithout placement or below the threshold, official sources define no general route. The DAAD admission database says a Lise graduate who did not take the YKS, or only has a TYT result, cannot be admitted. Otherwise the university or the Land authority decides.\n\n### Common misconceptions\n- **H+, H+/- and H-** are statuses of higher-education institutions, not of school certificates.\n- A ZAB Statement of Comparability is for foreign degrees. School certificates are assessed by the university, uni-assist or a Land recognition office.\n- Your YKS ranking is not the criterion. The score type, the 180 threshold and the placement are.\n\nIf you apply via uni-assist, you submit the Lise Diploması plus the YKS placement page (university, faculty, score type). The final decision is always the university's.\n\nMore: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "turk-lise-diplomasinin-almanyada-gecerliligi-var-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Wird dein türkisches Abitur in Deutschland anerkannt?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wird dein türkisches Abitur (Lise Diploması) in Deutschland anerkannt?",
+      "answer_md": "**Allein reicht das türkische Lise Diploması nicht für ein Studium in Deutschland: anabin bewertet es immer zusammen mit deinem YKS-Ergebnis und deiner Platzierung oder mit Studienzeiten in der Türkei.** Mit der richtigen Kombination kannst du dich direkt bewerben, ohne Studienkolleg.\n\n### Die Zugangswege\n- **12-jähriges allgemeinbildendes Lise**, **über 180 Punkte** in SAY, SÖZ, EA oder DİL und **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer **Fakultät**: direkter Zugang zum platzierten und zu verwandten Fächern. Eine Einschreibung in der Türkei ist nicht nötig. Anadolu-, Fen- oder andere allgemeine Lise-Typen unterscheidet anabin nicht.\n- Gleiches, aber Platzierung an einer hochschulangebundenen **Yüksekokul**: direkter Zugang **nur zu Fachhochschulen**.\n- **Meslek Lisesi** mit über 180 Punkten: fachlich passendes Studienkolleg.\n- **Açık Öğretim Lisesi**, İmam Hatip, Anadolu İmam Hatip, Anadolu Teknik: Einzelfallprüfung.\n\nOhne Platzierung oder unter der Schwelle gibt es keinen allgemeinen Weg. Laut DAAD-Zulassungsdatenbank kann, wer die YKS nicht abgelegt hat oder nur ein TYT-Ergebnis hat, nicht zugelassen werden. Sonst entscheidet die Hochschule oder die Landesstelle.\n\n### Typische Irrtümer\n- **H+, H+/- und H-** beschreiben Hochschulen, nicht Schulzeugnisse.\n- Die ZAB-Zeugnisbewertung gilt für ausländische Hochschulabschlüsse. Schulzeugnisse prüft die Hochschule, uni-assist oder eine Zeugnisanerkennungsstelle des Landes.\n- Nicht dein YKS-Rang zählt, sondern Punkttyp, die 180er-Schwelle und die Platzierung.\n\nBei uni-assist reichst du das Lise Diploması und die YKS-Platzierungsseite (Hochschule, Fakultät, Punkttyp) ein. Die letzte Entscheidung trifft immer die Hochschule.\n\nMehr: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "lise-denklik-icin-hangi-notlarin-onemli",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "lise-denklik-icin-hangi-notlarin-onemli",
+     "mode": "rewrite",
+     "old": {
+      "question": "Lise denklik için hangi notların önemli?",
+      "visible": "text",
+      "head": "Türk lise denkliği için YKS puanı + lise GPA kritik. Bazı programlar spesifik dersleri öne çıkarır."
+     },
+     "new": {
+      "question": "Lise denkliği için hangi notlar önemli?",
+      "answer_md": "**Almanya'da iki şey sayılır: lise diploma notun (Alman not sistemine çevrilir) ve YKS'de 180 puanın üzerinde bir puanla bir programa yerleşmen.** YKS sıralaman veya eşiğin ne kadar üzerinde puan aldığın belirleyici değildir.\n\n### YKS: eşik ve yerleşme\n- Genel lise için ölçüt: SAY, SÖZ, EA veya DİL puan türlerinden birinde **180 puanın üzeri** ve en az 4 yıllık bir fakülte lisans programına **yerleşme**. 180 eşiği \"yeni bir karara kadar\" geçerli; 170 yalnızca 2020 sınav yılı için uygulandı.\n- Yalnızca puan yetmez; yerleşme de gerekir. Yerleştiğin alan, Almanya'da hangi alanlara doğrudan başvurabileceğini belirler.\n\n### Diploma notu: nasıl çevrilir?\n- Yabancı notlar **modifiye Bavyera formülüyle** çevrilir: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).\n- Nmax ve Nmin'i sen seçmezsin; ZAB değerlendirmesinden (anabin) gelir. Sonuç bir ondalığa kesilir, yuvarlanmaz.\n- uni-assist üzerinden başvurursan notu uni-assist çevirir.\n- Feststellungsprüfung'a girmen gerekirse genel not, lise notunun ve FSP notunun ortalamasıdır.\n- Bu not bir lisans not ortalaması (GPA) değil, üniversiteye giriş (HZB) notudur.\n\n### Ders notları\nBelirli derslerde not şartı olup olmadığını genel bir tablo değil, programın kendisi belirler. Hangi alanların \"ilgili alan\" sayılacağına da üniversite karar verir. Hedef programın kabul koşullarını üniversitenin sayfasında kontrol et.\n\nAyrıntılar: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK not çevirme kararı](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "turkish-high-school-grades-germany-recognition",
+     "mode": "create",
+     "new": {
+      "question": "Which grades matter when a Turkish high school diploma is assessed in Germany?",
+      "answer_md": "**Two things count: your Lise diploma grade, converted into the German scale, and placement in a programme with more than 180 YKS points.** Your YKS ranking, or how far above the threshold you scored, is not the criterion.\n\n### YKS: threshold and placement\n- For a general Lise, anabin looks for **more than 180 points** in SAY, SÖZ, EA or DİL plus **placement** in a Lisans programme of at least 4 years at a faculty. The 180 threshold applies until further notice; 170 applied only to the 2020 exam year.\n- A score alone is not enough; you also need the placement. The placed subject determines which fields you can enter directly in Germany.\n\n### Diploma grade: how it is converted\n- Foreign grades are converted with the **modified Bavarian formula**: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).\n- Nmax and Nmin come from the ZAB assessment in anabin; you do not choose them. The result is cut to one decimal, not rounded.\n- If you apply via uni-assist, uni-assist converts the grade as part of its evaluation.\n- If you have to take the Feststellungsprüfung, your overall grade is the mean of your foreign grade and the FSP grade.\n- This is your university-entrance (HZB) grade, not a bachelor's GPA.\n\n### Individual subjects\nWhether a programme expects particular grades in particular subjects is set by that programme, not by a general table. The university also decides which subjects count as \"related\" to your placement. Check the admission rules on the programme page.\n\nMore: [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK grade conversion](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "turkish-high-school-grades-germany-recognition-de",
+     "mode": "create",
+     "new": {
+      "question": "Welche Noten zählen bei der Anerkennung des türkischen Lise-Abschlusses?",
+      "answer_md": "**Zwei Dinge zählen: deine Lise-Abschlussnote, umgerechnet in die deutsche Skala, und eine Platzierung mit über 180 YKS-Punkten.** Dein YKS-Rang oder wie weit du über der Schwelle liegst, ist nicht das Kriterium.\n\n### YKS: Schwelle und Platzierung\n- Beim allgemeinbildenden Lise verlangt anabin **über 180 Punkte** in SAY, SÖZ, EA oder DİL und eine **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät. Die 180er-Schwelle gilt bis auf Weiteres, 170 galt nur für den Prüfungsjahrgang 2020.\n- Punkte allein reichen nicht, die Platzierung gehört dazu. Das platzierte Fach bestimmt, für welche Fächer du in Deutschland direkt zugelassen werden kannst.\n\n### Abschlussnote: so wird umgerechnet\n- Ausländische Noten werden mit der **modifizierten bayerischen Formel** umgerechnet: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).\n- Nmax und Nmin stammen aus der ZAB-Bewertung in anabin, du wählst sie nicht selbst. Das Ergebnis wird auf eine Nachkommastelle abgeschnitten, nicht gerundet.\n- Bewirbst du dich über uni-assist, rechnet uni-assist die Note im Rahmen der Prüfung um.\n- Musst du die Feststellungsprüfung ablegen, ist deine Gesamtnote der Mittelwert aus ausländischer Note und FSP-Note.\n- Das ist deine HZB-Note, kein Bachelor-Notenschnitt.\n\n### Einzelne Fächer\nOb ein Studiengang bestimmte Fachnoten verlangt, legt der Studiengang selbst fest, nicht eine allgemeine Tabelle. Welche Fächer als „verwandt“ zu deiner Platzierung gelten, entscheidet ebenfalls die Hochschule. Prüf die Zulassungsregeln auf der Seite des Studiengangs.\n\nMehr: [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK-Notenumrechnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/GesNot05.pdf)\n"
+     }
+    }
+   ],
+   "group_if_missing": "9005dd51-46be-5e0e-b3eb-e0e79efdd0af"
+  },
+  {
+   "tr_slug": "almanyada-universiteye-kabul-sartlari-nelerdir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-universiteye-kabul-sartlari-nelerdir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da üniversiteye kabul şartları nelerdir?",
+      "visible": "text",
+      "head": "Almanya'da üniversiteye kabul şartları, geldiğiniz ülkeye ve eğitim geçmişinize göre değişir. Genell"
+     },
+     "new": {
+      "question": "Almanya'da üniversiteye kabul şartları nelerdir?",
+      "answer_md": "**Temel şart, Almanya'da geçerli bir üniversiteye giriş yeterliliği (HZB) göstermek; üstüne programın dil ve varsa özel koşullarını karşılamak.** Kesin şartları her üniversite kendi programı için belirler.\n\n### 1. Üniversiteye giriş yeterliliği (HZB)\nTürk lise diploması tek başına yetmez; anabin onu YKS sonucun ve yerleşmenle birlikte değerlendirir:\n- Genel lise + SAY, SÖZ, EA veya DİL'de **180 puanın üzeri** + en az 4 yıllık fakülte lisans programına **yerleşme**: Studienkolleg olmadan doğrudan, alanla sınırlı giriş.\n- **Meslek Lisesi** + 180 üzeri puan: alana uygun Studienkolleg ve ardından Feststellungsprüfung.\n- Tamamlanmış **Önlisans** + TYT'de 150 üzeri: önceki alanında ve ilgili alanlarda doğrudan giriş.\n- Tamamlanmış 4 yıllık **lisans**: tüm alanlara doğrudan giriş.\n\nYerleşme yoksa genel bir yol tanımlı değil; karar üniversitenin veya eyalet makamınındır.\n\n### 2. Dil\nGereken dil ve seviye, programın öğretim diline göre değişir ve üniversite tarafından belirlenir. Studienkolleg'e kabul için Almanca belgesi gerekir.\n\n### 3. Başvuru yolu\n- Her üniversite uni-assist kullanmaz. Kullananlarda ücret ilk program için **75 €**, aynı dönemdeki her ek program için **30 €**.\n- Bazı üniversiteler VPD ister. VPD kabul anlamına gelmez; yine üniversiteye kendi son tarihinden önce başvurursun.\n\n### 4. Programa özel koşullar\nNot, ön bilgi ve belgeler gibi ek şartları programın sayfasında kontrol et.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-universiteye-kabul-sartlari-nelerdir-en",
+     "mode": "update",
+     "old": {
+      "question": "What are the admission requirements to study in Germany?",
+      "visible": "text",
+      "head": "Admission requirements to study in Germany vary depending on your home country and educational backg"
+     },
+     "new": {
+      "question": "What are the admission requirements to study in Germany?",
+      "answer_md": "**You need a higher-education entrance qualification (HZB) recognised in Germany, plus the language and any programme-specific requirements set by the university.** Each university defines the exact rules for its own programmes.\n\n### 1. Entrance qualification (HZB)\nFor Turkish applicants, the Lise Diploması alone is not enough; anabin assesses it together with the YKS result and placement:\n- General Lise, **more than 180 points** in SAY, SÖZ, EA or DİL, and **placement** in a Lisans programme of at least 4 years at a faculty: direct, subject-restricted access without a Studienkolleg.\n- **Meslek Lisesi** with more than 180 points: subject-oriented Studienkolleg, then the Feststellungsprüfung.\n- Completed **Önlisans** with more than 150 TYT points: direct access to your previous field and related subjects.\n- Completed Lisans of at least 4 years: access to all subjects.\n\nWithout placement there is no general route; the university or the Land authority decides.\n\n### 2. Language\nWhich language and which level you need depends on the programme's language of instruction and is set by the university. Admission to a Studienkolleg requires proof of German.\n\n### 3. How to apply\n- Not every university uses uni-assist. Where it does, the fee is **75 €** for the first programme and **30 €** for each additional one in the same semester.\n- Some universities require a VPD. A VPD is not an admission; you still apply to the university before its deadline.\n\n### 4. Programme-specific requirements\nCheck grades, prior knowledge and documents on the programme page.\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Turkey](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-universiteye-kabul-sartlari-nelerdir-de",
+     "mode": "update",
+     "old": {
+      "question": "Was sind die Zulassungsvoraussetzungen für ein Studium in Deutschland?",
+      "visible": "text",
+      "head": "Die Zulassungsvoraussetzungen für ein Studium in Deutschland hängen stark von deinem Herkunftsland u"
+     },
+     "new": {
+      "question": "Was sind die Zulassungsvoraussetzungen für ein Studium in Deutschland?",
+      "answer_md": "**Du brauchst eine in Deutschland anerkannte Hochschulzugangsberechtigung (HZB) und musst die Sprach- und Studiengangsvoraussetzungen der Hochschule erfüllen.** Die genauen Regeln legt jede Hochschule für ihre Studiengänge fest.\n\n### 1. Hochschulzugangsberechtigung\nMit türkischem Abschluss reicht das Lise Diploması allein nicht; anabin bewertet es zusammen mit YKS-Ergebnis und Platzierung:\n- Allgemeinbildendes Lise, **über 180 Punkte** in SAY, SÖZ, EA oder DİL und **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät: direkter, fachgebundener Zugang ohne Studienkolleg.\n- **Meslek Lisesi** mit über 180 Punkten: fachlich passendes Studienkolleg, danach Feststellungsprüfung.\n- Abgeschlossenes **Önlisans** mit über 150 TYT-Punkten: direkter Zugang zum bisherigen und zu verwandten Fächern.\n- Abgeschlossener mindestens 4-jähriger Lisans: Zugang zu allen Fächern.\n\nOhne Platzierung gibt es keinen allgemeinen Weg; die Hochschule oder die Landesstelle entscheidet.\n\n### 2. Sprache\nWelche Sprache und welches Niveau du brauchst, hängt von der Unterrichtssprache des Studiengangs ab und legt die Hochschule fest. Für ein Studienkolleg brauchst du einen Deutschnachweis.\n\n### 3. Bewerbungsweg\n- Nicht jede Hochschule nutzt uni-assist. Wo doch, kostet der erste Studiengang **75 €**, jeder weitere im selben Semester **30 €**.\n- Manche Hochschulen verlangen eine VPD. Die VPD ist keine Zulassung; du bewirbst dich trotzdem vor deren Frist bei der Hochschule.\n\n### 4. Studiengangsspezifisches\nNoten, Vorkenntnisse und Unterlagen prüfst du auf der Seite des Studiengangs.\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "turkiyede-universite-1-sinifi-bitirmeden-almanyaya-basvuru-yapilabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turkiyede-universite-1-sinifi-bitirmeden-almanyaya-basvuru-yapilabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türkiye'de üniversite 1. sınıfı bitirmeden Almanya'ya başvuru yapılabilir mi?",
+      "visible": "text",
+      "head": "Türk öğrencilerin Almanya'daki üniversitelere doğrudan başvurabilmesi için genellikle Türkiye'de en"
+     },
+     "new": {
+      "question": "Türkiye'de üniversite 1. sınıfı bitirmeden Almanya'ya başvuru yapılabilir mi?",
+      "answer_md": "**Evet, genel lise mezunuysan: YKS'de 180 puanın üzerinde bir puanla en az 4 yıllık bir fakülte lisans programına yerleştiysen Türkiye'de hiç okumadan doğrudan başvurabilirsin.** \"Önce bir yıl okumak şart\" kuralı herkes için geçerli değildir; lise türüne ve yerleşmene bağlıdır.\n\n### Okumadan başvurabileceğin durumlar\n- **12 yıllık genel lise** + SAY, SÖZ, EA veya DİL'de **180 üzeri** + **fakülteye yerleşme**: yerleştiğin ve ilgili alanlarda doğrudan giriş, Studienkolleg yok. Türkiye'de kayıt olman bile gerekmez.\n- Aynısı ama üniversiteye bağlı bir **Yüksekokul'a** yerleşme: yalnızca **Fachhochschule'lerde** doğrudan giriş.\n\n### Bir yıl okumanın fark yarattığı durumlar\n- **Meslek Lisesi** + 180 üzeri: normalde alana uygun Studienkolleg. Türkiye'de **bir yıl başarılı** lisans okursan doğrudan, alanla sınırlı giriş.\n- 2 yıllık **MYO'da** yalnızca bir yıl (diploma yok): sadece Fachhochschule Studienkolleg'i.\n- **Açıköğretim** fakültesinde lisans: doğrudan giriş için **iki başarılı yıl** gerekir.\n\n### Yerleşmen yoksa\nResmî kaynaklar genel bir yol tanımlamıyor. DAAD'a göre YKS'ye girmemiş veya yalnızca TYT sonucu olan lise mezunu kabul edilemez. Puanın olup yerleşmen yoksa otomatik kabul ya da otomatik Studienkolleg yoktur; üniversite veya eyalet makamı karar verir.\n\nuni-assist'e lise diploması ile YKS yerleşme sayfasını (üniversite, fakülte, puan türü) yüklersin. Son karar üniversitenindir.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "turkiyede-universite-1-sinifi-bitirmeden-almanyaya-basvuru-yapilabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you apply to study in Germany without completing your first year of university in Turkey?",
+      "visible": "text",
+      "head": "For Turkish students to apply directly to universities in Germany, you typically need to have comple"
+     },
+     "new": {
+      "question": "Can you apply to study in Germany without completing your first year of university in Turkey?",
+      "answer_md": "**Yes, if you have a general Lise diploma and were placed in a Lisans programme of at least 4 years at a faculty with more than 180 YKS points, you can apply directly without studying in Türkiye at all.** The idea that everyone must first complete a year at a Turkish university is wrong; it depends on your school type and placement.\n\n### Direct application without prior study\n- **12-year general Lise**, **more than 180 points** in SAY, SÖZ, EA or DİL, and **placement at a faculty**: direct access to the placed subject and related subjects, no Studienkolleg. You don't even have to enrol in Türkiye.\n- Same, but placed at a university-affiliated **Yüksekokul**: direct access to **Fachhochschulen only**.\n\n### When a year of study makes a difference\n- **Meslek Lisesi** with more than 180 points: normally a subject-oriented Studienkolleg. After **one successful year** of Lisans study in Türkiye, direct subject-restricted access instead.\n- Only one year at a 2-year **MYO** without a diploma: Studienkolleg route for Fachhochschulen only.\n- Lisans at an **Açıköğretim** faculty: direct access requires **two successful years**.\n\n### If you have no placement\nOfficial sources define no general route. According to the DAAD admission database, a Lise graduate who did not take the YKS, or only has a TYT result, cannot be admitted. A score without placement gives no automatic admission and no automatic Studienkolleg; the university or the Land authority decides.\n\nFor uni-assist you upload the Lise Diploması and the YKS placement page (university, faculty, score type). The final decision rests with the university.\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Turkey](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "turkiyede-universite-1-sinifi-bitirmeden-almanyaya-basvuru-yapilabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Kann ich mich in Deutschland bewerben, ohne das erste Studienjahr in der Türkei abgeschlossen zu haben?",
+      "visible": "text",
+      "head": "Damit türkische Studierende sich direkt an deutschen Hochschulen bewerben können, müssen sie in der"
+     },
+     "new": {
+      "question": "Kann ich mich in Deutschland bewerben, ohne das erste Studienjahr in der Türkei abgeschlossen zu haben?",
+      "answer_md": "**Ja, wenn du ein allgemeinbildendes Lise abgeschlossen hast und mit über 180 YKS-Punkten in einen mindestens 4-jährigen Lisans-Studiengang an einer Fakultät platziert wurdest, kannst du dich direkt bewerben, ganz ohne Studium in der Türkei.** Die Regel „erst ein Jahr in der Türkei studieren“ gilt nicht pauschal, sie hängt von Schultyp und Platzierung ab.\n\n### Direkt bewerben ohne Vorstudium\n- **12-jähriges allgemeinbildendes Lise**, **über 180 Punkte** in SAY, SÖZ, EA oder DİL und **Platzierung an einer Fakultät**: direkter Zugang zum platzierten und zu verwandten Fächern, kein Studienkolleg. Einschreiben musst du dich in der Türkei nicht.\n- Gleiches, aber Platzierung an einer hochschulangebundenen **Yüksekokul**: direkter Zugang **nur zu Fachhochschulen**.\n\n### Wann ein Studienjahr etwas ändert\n- **Meslek Lisesi** mit über 180 Punkten: normalerweise fachlich passendes Studienkolleg. Nach **einem erfolgreichen Jahr** Lisans-Studium in der Türkei stattdessen direkter, fachgebundener Zugang.\n- Nur ein Jahr an einer 2-jährigen **MYO** ohne Abschluss: Studienkolleg-Weg nur für Fachhochschulen.\n- Lisans an einer **Açıköğretim**-Fakultät: Für den Direktzugang brauchst du **zwei erfolgreiche Jahre**.\n\n### Ohne Platzierung\nOffizielle Quellen sehen keinen allgemeinen Weg vor. Laut DAAD-Zulassungsdatenbank kann, wer die YKS nicht abgelegt hat oder nur ein TYT-Ergebnis hat, nicht zugelassen werden. Punkte ohne Platzierung bedeuten weder automatische Zulassung noch automatisches Studienkolleg; die Hochschule oder die Landesstelle entscheidet.\n\nBei uni-assist lädst du das Lise Diploması und die YKS-Platzierungsseite (Hochschule, Fakultät, Punkttyp) hoch. Die Entscheidung trifft die Hochschule.\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyada-universite-basvurularinda-yks-siralamasi-veya-turkiyedeki-liseuniversite-gecmisi-nasil-degerlendirilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-universite-basvurularinda-yks-siralamasi-veya-turkiyedeki-liseuniversite-gecmisi-nasil-degerlendirilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da üniversite başvurularında YKS sıralaması veya Türkiye'deki lise/üniversite geçmişi nasıl değerlendirilir?",
+      "visible": "text",
+      "head": "Almanya'daki lisans başvurularında YKS (TYT/AYT) sıralaması doğrudan bir kriter değildir. Önemli ola"
+     },
+     "new": {
+      "question": "Almanya'da üniversite başvurularında YKS sıralaması veya Türkiye'deki lise/üniversite geçmişi nasıl değerlendirilir?",
+      "answer_md": "**YKS sıralaman değil; puan türün, 180 puan eşiği ve Türkiye'deki yerleştirmen belirleyicidir.** Lise diploman tek başına Almanya'da üniversiteye giriş hakkı (HZB) vermez; anabin onu YKS sonucu ve yerleştirme belgesiyle, gerekirse Türkiye'deki öğrenim sürenle birlikte değerlendirir.\n\n### Lise + YKS ile ana yollar\n- **12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de 180 puanın üstü + fakültede en az 4 yıllık bir lisans programına yerleştirme** → Studienkolleg'siz, yerleştiğin alan ve ilgili alanlarla sınırlı doğrudan giriş. Türkiye'de kayıt yaptırıp okuman gerekmez.\n- Aynı durum, ama üniversiteye bağlı 4 yıllık bir **yüksekokula** yerleştirme → yalnızca Fachhochschule'lerde alanla sınırlı doğrudan giriş.\n- **Meslek lisesi** + 180 puanın üstü → alana uygun Studienkolleg; Türkiye'de bir yıl başarılı lisans öğreniminden sonra alanla sınırlı doğrudan giriş.\n\n### Türkiye'deki üniversite geçmişin\n- Tamamlanmış **Önlisans** + TYT'de 150 puanın üstü → önceki alan ve ilgili alanlarda doğrudan giriş.\n- Açıköğretim fakültesinde iki başarılı yıl → alanla sınırlı doğrudan giriş.\n- En az 4 yıllık **tamamlanmış lisans** → tüm alanlara doğrudan giriş.\n- **Açık Öğretim Lisesi** tek tek incelenir; sınav sonucunu ve yerleştirmeyi de belgelemen gerekir.\n\n### Karar kimde?\nYerleştirmen yoksa ya da eşiğin altındaysan resmî kaynaklarda genel bir yol tanımlı değil; kararı üniversite veya yetkili eyalet makamı verir. uni-assist lise diploması ile birlikte YKS yerleştirme sayfanı (üniversite, fakülte, puan türü) ister. Ayrıntılar için [anabin rehberimize](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) bak.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-universite-basvurularinda-yks-siralamasi-veya-turkiyedeki-liseuniversite-gecmisi-nasil-degerlendirilir-en",
+     "mode": "update",
+     "old": {
+      "question": "How are YKS rankings or my Turkish high school/university background evaluated for university applications in Germany?",
+      "visible": "text",
+      "head": "For undergraduate applications in Germany, your YKS (TYT/AYT) ranking is not a direct admission crit"
+     },
+     "new": {
+      "question": "How are YKS rankings or my Turkish high school/university background evaluated for university applications in Germany?",
+      "answer_md": "**Your YKS ranking is not the criterion — your score type, the threshold of more than 180 points and your placement in Türkiye are.** A Turkish school certificate alone never grants access to German higher education (HZB); anabin reads it together with your YKS result, your placement document and, in some cases, study periods in Türkiye.\n\n### Lise + YKS routes\n- **12-year general Lise + more than 180 points in SAY, SÖZ, EA or DİL + placement in a Lisans programme of at least 4 years at a faculty** → direct, subject-restricted access (placed subject and related subjects), no Studienkolleg. You do not need to enrol or study in Türkiye.\n- Same, but placement in a 4-year programme at a university-affiliated Yüksekokul → direct subject-restricted access to Fachhochschulen only.\n- **Meslek Lisesi** + more than 180 points → subject-oriented Studienkolleg; after one successful year of Lisans study in Türkiye → direct subject-restricted access.\n\n### Prior study in Türkiye\n- Completed Önlisans + TYT above 150 → direct access in your previous field and related subjects.\n- Two successful years at an Açıköğretim faculty → direct subject-restricted access.\n- Completed Lisans of at least 4 years → direct access to all subjects.\n- Açık Öğretim Lisesi → assessed case by case; you must also prove your exam result and placement.\n\n### Who decides\nWithout a placement, or below the threshold, official sources define no general route — the university or the competent Land authority decides. uni-assist asks for your Lise Diploması plus the YKS placement page (university, faculty, score type). More in our [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en).\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-universite-basvurularinda-yks-siralamasi-veya-turkiyedeki-liseuniversite-gecmisi-nasil-degerlendirilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie werden mein YKS-Ranking und meine Schul-/Uni-Vergangenheit aus der Türkei bei deutschen Hochschulbewerbungen bewertet?",
+      "visible": "text",
+      "head": "Dein YKS (TYT/AYT) Ranking ist bei Bachelor-Bewerbungen in Deutschland kein direktes Kriterium. Viel"
+     },
+     "new": {
+      "question": "Wie werden mein YKS-Ergebnis und meine Schul-/Uni-Vergangenheit aus der Türkei bei deutschen Hochschulbewerbungen bewertet?",
+      "answer_md": "**Entscheidend ist nicht dein YKS-Rang, sondern Punkttyp, die Schwelle von mehr als 180 Punkten und deine Platzierung in der Türkei.** Dein türkisches Schulzeugnis allein verschafft dir keine Hochschulzugangsberechtigung (HZB); anabin bewertet es immer zusammen mit YKS-Ergebnis, Platzierungsnachweis und ggf. Studienzeiten in der Türkei.\n\n### Wege über Lise + YKS\n- **12-jährige allgemeinbildende Lise + mehr als 180 Punkte in SAY, SÖZ, EA oder DİL + Platzierung in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät** → direkter, fachgebundener Zugang (platziertes Fach und verwandte Fächer), ohne Studienkolleg. Einschreiben oder Studieren in der Türkei ist dafür nicht nötig.\n- Platzierung stattdessen an einer universitätsgebundenen 4-jährigen Yüksekokul → fachgebundener Direktzugang nur zu Fachhochschulen.\n- **Meslek Lisesi** + mehr als 180 Punkte → fachlich passendes Studienkolleg; nach einem erfolgreichen Lisans-Studienjahr in der Türkei → fachgebundener Direktzugang.\n\n### Studium in der Türkei\n- Abgeschlossenes Önlisans + TYT über 150 → Direktzugang im bisherigen und in verwandten Fächern.\n- Zwei erfolgreiche Jahre an einer Açıköğretim-Fakultät → fachgebundener Direktzugang.\n- Abgeschlossenes, mindestens 4-jähriges Lisans → Zugang zu allen Fächern.\n- Açık Öğretim Lisesi → Einzelfallprüfung; Prüfungsergebnis und Platzierung musst du zusätzlich nachweisen.\n\n### Wer entscheidet?\nOhne Platzierung oder unter der Schwelle gibt es offiziell keinen allgemeinen Weg – die Hochschule bzw. die zuständige Landesstelle entscheidet. uni-assist verlangt Lise Diploması plus YKS-Platzierungsseite (Hochschule, Fakultät, Punkttyp). Mehr in unserem [anabin-Guide](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de).\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "on-lisans-mezunlari-almanyada-universite-egitimi-alabilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "on-lisans-mezunlari-almanyada-universite-egitimi-alabilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Ön lisans mezunları Almanya'da üniversite eğitimi alabilir mi?",
+      "visible": "text",
+      "head": "Ön lisans mezunları, Almanya'da üniversite eğitimi almak için belirli koşulları sağlamalıdır. Genell"
+     },
+     "new": {
+      "question": "Ön lisans mezunları Almanya'da üniversite eğitimi alabilir mi?",
+      "answer_md": "**Evet: Önlisans'ı tamamladıysan ve TYT'de 150 puanın üstündeysen, Studienkolleg'siz ve önceki alanınla sınırlı doğrudan giriş hakkın olur.** Yani önceki bölümünde ve onunla ilgili alanlarda lisansa başvurabilirsin.\n\n### Önemli ayrımlar\n- **Önlisans bir üniversite diploması (lisans) değildir;** 2 yıllık kısa bir programdır. Tüm alanlara giriş hakkı vermez ve Studienkolleg'e de yönlendirmez.\n- **MYO'da yalnızca bir yıl okuduysan (diploma yok):** yol Studienkolleg üzerinden ve yalnızca Fachhochschule'ler içindir.\n- **Tüm alanlara** doğrudan giriş istiyorsan bunun resmî yolu en az 4 yıllık tamamlanmış bir lisans diplomasıdır.\n\n### \"İlgili alan\" kimin kararı?\nHangi bölümlerin önceki alanınla \"ilgili\" sayıldığına dair herkese açık sabit bir liste yok; bunu başvurduğun üniversite belirler. uni-assist üzerinden başvuruyorsan belgelerini dijital olarak My assist'e yüklersin; son kararı yine üniversite verir.\n\n### Ne yapmalısın?\n1. anabin'de Türkiye için giriş yollarını kontrol et.\n2. Önlisans diplomanı, transkriptini ve TYT sonucunu hazırla.\n3. Hedef bölümün önceki alanınla ilişkili sayılıp sayılmadığını doğrudan üniversiteye sor.\n\nDetaylar için [anabin rehberimize](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) göz at.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "on-lisans-mezunlari-almanyada-universite-egitimi-alabilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can associate degree graduates study at a university in Germany?",
+      "visible": "text",
+      "head": "If you have an associate degree, you'll need to meet specific conditions to study at a university in"
+     },
+     "new": {
+      "question": "Can associate degree (Önlisans) graduates study at a university in Germany?",
+      "answer_md": "**Yes — a completed Önlisans combined with a TYT score above 150 gives you direct, subject-restricted access without a Studienkolleg.** You can apply for bachelor's programmes in your previous field and related subjects.\n\n### Key distinctions\n- **Önlisans is not a university degree.** It is a 2-year short-cycle programme, so it does not give access to all subjects and does not lead to a Studienkolleg.\n- **Only one year at a 2-year MYO, no diploma:** the route is a Studienkolleg, and for Fachhochschulen only.\n- **Access to all subjects** officially requires a completed Lisans of at least 4 years.\n\n### Who decides what is \"related\"?\nThere is no fixed public list of related subjects — the university you apply to decides. If the university uses uni-assist, you upload your documents digitally in My assist, but the admission decision still rests with the university.\n\n### Next steps\n1. Check the routes for Türkiye in anabin.\n2. Prepare your Önlisans diploma, transcript and TYT result.\n3. Ask the university directly whether your target programme counts as related to your previous field.\n\nOur [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en) explains the database in more detail.\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "on-lisans-mezunlari-almanyada-universite-egitimi-alabilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Können Absolventen eines zweijährigen Studiums in Deutschland studieren?",
+      "visible": "text",
+      "head": "Als Absolvent eines zweijährigen Studiums musst du bestimmte Voraussetzungen erfüllen, um in Deutsch"
+     },
+     "new": {
+      "question": "Können Önlisans-Absolventen (zweijähriges Kurzstudium) in Deutschland studieren?",
+      "answer_md": "**Ja: Mit abgeschlossenem Önlisans und mehr als 150 Punkten im TYT hast du einen direkten, fachgebundenen Hochschulzugang – ohne Studienkolleg.** Du kannst dich also für Bachelorstudiengänge in deinem bisherigen und in verwandten Fächern bewerben.\n\n### Wichtige Unterschiede\n- **Önlisans ist kein Hochschulabschluss** im Sinne eines Bachelors, sondern ein 2-jähriges Kurzstudium. Es eröffnet keinen Zugang zu allen Fächern und führt auch nicht ins Studienkolleg.\n- **Nur ein Jahr an einer 2-jährigen MYO, ohne Abschluss:** Der Weg führt über ein Studienkolleg – und nur zu Fachhochschulen.\n- **Zugang zu allen Fächern** gibt offiziell erst ein abgeschlossenes, mindestens 4-jähriges Lisans.\n\n### Was gilt als „verwandtes Fach“?\nEine feste öffentliche Liste gibt es nicht; darüber entscheidet die Hochschule, bei der du dich bewirbst. Läuft die Bewerbung über uni-assist, lädst du deine Unterlagen digital in My assist hoch – die Zulassung entscheidet trotzdem die Hochschule.\n\n### So gehst du vor\n1. Prüfe in anabin die Zugangswege für die Türkei.\n2. Halte Önlisans-Zeugnis, Transcript und TYT-Ergebnis bereit.\n3. Frag direkt bei der Hochschule nach, ob dein Wunschstudiengang als verwandt gilt.\n\nMehr dazu in unserem [anabin-Guide](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de).\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "hazirlik-programini-atlayip-dogrudan-bachelor-basvurusu-mumkun-mu",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "hazirlik-programini-atlayip-dogrudan-bachelor-basvurusu-mumkun-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Hazırlık programını atlayıp doğrudan Bachelor başvurusu mümkün mü?",
+      "visible": "text",
+      "head": "Bazı durumlarda evet — Studienkolleg'i atlayabilirsin . Ama bunun için belirli şartları sağlaman ger"
+     },
+     "new": {
+      "question": "Hazırlık programını (Studienkolleg) atlayıp doğrudan Bachelor başvurusu mümkün mü?",
+      "answer_md": "**Evet, ama bu TestAS puanına ya da bursa değil, Türkiye'deki eğitim geçmişine bağlı.** Örneğin genel lise + 180 puan üstü + fakülteye yerleştirme ile Studienkolleg'siz başvurabilirsin.\n\n### Studienkolleg'siz doğrudan giriş yolları\n- 12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de **180 puanın üstü** + fakültede en az 4 yıllık lisans programına **yerleştirme** → yerleştiğin ve ilgili alanlarda doğrudan giriş. Türkiye'de okuman gerekmez.\n- Aynı durum, üniversiteye bağlı 4 yıllık yüksekokula yerleştirme → yalnızca Fachhochschule'lerde.\n- Meslek lisesi + 180 puan üstü + Türkiye'de **bir yıl başarılı** lisans öğrenimi → alanla sınırlı doğrudan giriş.\n- Tamamlanmış Önlisans + TYT 150 üstü ya da Açıköğretim fakültesinde iki başarılı yıl → alanla sınırlı doğrudan giriş.\n- Tamamlanmış en az 4 yıllık lisans → tüm alanlar.\n\n### Muafiyet sağlamayanlar\n- **TestAS:** Hiçbir TestAS puanı Studienkolleg'den muaf tutmaz.\n- **DAAD bursu:** Studienkolleg zorunluluğunu kaldırmaz.\n- anabin'deki **H+** bir kurum statüsüdür; giriş hakkı ya da otomatik kabul anlamına gelmez.\n\n### Dikkat\nYerleştirmen yoksa veya eşiğin altındaysan genel bir yol tanımlı değil; kararı üniversite ya da yetkili eyalet makamı verir. Doğrudan girişte bile dil ve bölüm şartlarını üniversite belirler. Studienkolleg'e gitmen gerekiyorsa [Studienkolleg rehberimize](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) bak.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "hazirlik-programini-atlayip-dogrudan-bachelor-basvurusu-mumkun-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Is it possible to skip the preparatory program and apply directly for a Bachelor's?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is it possible to skip the Studienkolleg and apply directly for a Bachelor's?",
+      "answer_md": "**Yes, in several cases — but it depends on your Turkish education record, not on a TestAS score or a scholarship.** For example, a general Lise with more than 180 points and a placement at a faculty lets you apply without a Studienkolleg.\n\n### Direct-access routes without Studienkolleg\n- 12-year general Lise + **more than 180 points** in SAY, SÖZ, EA or DİL + **placement** in a Lisans programme of at least 4 years at a faculty → direct access in the placed subject and related subjects. No study in Türkiye required.\n- Same, but placement at a university-affiliated 4-year Yüksekokul → Fachhochschulen only.\n- Meslek Lisesi + more than 180 points + **one successful year** of Lisans study in Türkiye → direct subject-restricted access.\n- Completed Önlisans + TYT above 150, or two successful years at an Açıköğretim faculty → direct subject-restricted access.\n- Completed Lisans of at least 4 years → all subjects.\n\n### What does not exempt you\n- **TestAS:** no TestAS score exempts you from the Studienkolleg.\n- **DAAD scholarship:** does not remove the Studienkolleg requirement.\n- **anabin H+** is an institution status — not an entrance qualification or automatic admission.\n\n### Keep in mind\nWithout a placement, or below the threshold, there is no general official route; the university or the competent Land authority decides. Even with direct access, the university sets language and programme requirements. If you do need a Studienkolleg, see our [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en).\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "hazirlik-programini-atlayip-dogrudan-bachelor-basvurusu-mumkun-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist es möglich, das Studienkolleg zu überspringen und sich direkt für ein Bachelorstudium zu bewerben?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist es möglich, das Studienkolleg zu überspringen und sich direkt für ein Bachelorstudium zu bewerben?",
+      "answer_md": "**Ja, in mehreren Fällen – entscheidend ist aber dein türkischer Bildungsweg, nicht ein TestAS-Ergebnis oder ein Stipendium.** Mit allgemeinbildender Lise, mehr als 180 Punkten und Platzierung an einer Fakultät bewirbst du dich zum Beispiel ohne Studienkolleg.\n\n### Direktzugang ohne Studienkolleg\n- 12-jährige allgemeinbildende Lise + **mehr als 180 Punkte** in SAY, SÖZ, EA oder DİL + **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät → fachgebundener Direktzugang (platziertes und verwandte Fächer). Ein Studium in der Türkei ist nicht nötig.\n- Platzierung an einer universitätsgebundenen 4-jährigen Yüksekokul → nur Fachhochschulen.\n- Meslek Lisesi + mehr als 180 Punkte + **ein erfolgreiches** Lisans-Studienjahr in der Türkei → fachgebundener Direktzugang.\n- Abgeschlossenes Önlisans + TYT über 150 oder zwei erfolgreiche Jahre an einer Açıköğretim-Fakultät → fachgebundener Direktzugang.\n- Abgeschlossenes, mindestens 4-jähriges Lisans → alle Fächer.\n\n### Was dich nicht befreit\n- **TestAS:** Kein TestAS-Ergebnis befreit vom Studienkolleg.\n- **DAAD-Stipendium:** hebt die Studienkolleg-Pflicht nicht auf.\n- **H+ in anabin** ist ein Institutionsstatus – keine HZB und keine automatische Zulassung.\n\n### Beachte\nOhne Platzierung oder unter der Schwelle gibt es keinen allgemeinen offiziellen Weg; die Hochschule bzw. die zuständige Landesstelle entscheidet. Auch bei Direktzugang legt die Hochschule Sprach- und Studiengangsanforderungen fest. Brauchst du doch ein Studienkolleg, hilft dir unser [Studienkolleg-Guide](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de).\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-vpd-nedir-ne-ise-yarar",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-vpd-nedir-ne-ise-yarar",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist VPD nedir, ne işe yarar?",
+      "visible": "text",
+      "head": "VPD = Vorprüfungsdokumentation — Uni-Assist'in senin yabancı diploma ve transkriptini Alman not sist"
+     },
+     "new": {
+      "question": "Uni-Assist VPD nedir, ne işe yarar?",
+      "answer_md": "**VPD (Vorprüfungsdokumentation), uni-assist'in yabancı belgelerini ön incelemeden geçirip notunu Alman not sistemine çevirdiği ve belirli bir üniversite için düzenlediği değerlendirme belgesidir.** Yalnızca başvurduğun üniversite uni-assist'e VPD yöntemini kullanma talimatı verdiyse gerekir ve **kabul anlamına gelmez**.\n\n### VPD'de ne yazar?\n- Hangi belgeleri sunduğun\n- uni-assist'in bu belgeleri nasıl değerlendirdiği\n- Notunun Alman sistemine çevrilmiş hali (modifiye Bavyera formülüyle)\n\n### Kimin için gerekli?\n- Almanya'daki her üniversite uni-assist kullanmaz; yaklaşık 150–160 üye üniversite var ve hangi programların uni-assist'ten geçeceğine üniversite karar verir.\n- VPD, seçtiğin üniversite için ayrı düzenlenir ve düzenlenme tarihinden itibaren **bir yıl** geçerlidir.\n\n### Süreç nasıl işler?\n1. My assist'te başvurunu oluştur, resmi belgelerinin taramalarını yükle: orijinal dildeki belge + Almanca veya İngilizce onaylı tercüme. Başvuru tamamen dijitaldir, uni-assist'e posta gönderilmez.\n2. Ücreti öde: bir dönemdeki ilk program **75 €**, aynı dönemdeki her ek program **30 €**. Ücret sonuçtan bağımsız alınır.\n3. İşlem genelde 4–6 hafta sürer; VPD My assist'teki \"My Inbox\" bölümüne gelir.\n4. VPD'yi, üniversitenin son başvuru tarihinden önce **doğrudan üniversiteye** yaptığın başvuruya ekle. Kabul kararını üniversite verir.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist üye üniversiteleri](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-vpd-nedir-ne-ise-yarar-en",
+     "mode": "update",
+     "old": {
+      "question": "What is Uni-Assist VPD and what is its purpose?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What is a uni-assist VPD and what is it for?",
+      "answer_md": "**A VPD (Vorprüfungsdokumentation) is an evaluation document in which uni-assist checks your foreign certificates, converts your grade to the German scale and issues the result for one specific university.** You only need it if that university has told uni-assist to use the VPD procedure, and it is **not an admission**.\n\n### What does a VPD contain?\n- Which certificates you submitted\n- How uni-assist evaluates them\n- Your grade converted to the German system (modified Bavarian formula)\n\n### Who needs one?\n- Not every German university works with uni-assist. There are about 150–160 member universities, and each decides which courses and applicants uni-assist handles.\n- A VPD is issued for the university you chose and is valid for **one year** from the date of issue.\n\n### How the process works\n1. Create your application in My assist and upload scans of your official certificates in the original language, plus a certified German or English translation. Everything is digital; nothing is posted to uni-assist.\n2. Pay the fee: **75 €** for the first course in a semester, **30 €** for each additional course in the same semester, charged regardless of the result.\n3. Processing usually takes 4–6 weeks. The VPD arrives in \"My Inbox\" in My assist.\n4. Apply **directly to the university** before its deadline and submit the VPD there. The university makes the admission decision.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-vpd-nedir-ne-ise-yarar-de",
+     "mode": "update",
+     "old": {
+      "question": "Was ist Uni-Assist VPD und wozu brauchst du es?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was ist eine uni-assist-VPD und wofür brauchst du sie?",
+      "answer_md": "**Die VPD (Vorprüfungsdokumentation) ist ein Bewertungsdokument: uni-assist prüft deine ausländischen Zeugnisse vor, rechnet deine Note ins deutsche System um und stellt das Ergebnis für eine bestimmte Hochschule aus.** Du brauchst sie nur, wenn diese Hochschule uni-assist mit dem VPD-Verfahren beauftragt hat – und sie ist **keine Zulassung**.\n\n### Was steht in der VPD?\n- Welche Zeugnisse du eingereicht hast\n- Wie uni-assist sie bewertet\n- Deine in das deutsche System umgerechnete Note (modifizierte bayerische Formel)\n\n### Wer braucht eine VPD?\n- Nicht jede deutsche Hochschule arbeitet mit uni-assist. Es gibt etwa 150–160 Mitgliedshochschulen, und jede legt selbst fest, welche Studiengänge und Bewerbergruppen uni-assist bearbeitet.\n- Die VPD wird für die gewählte Hochschule ausgestellt und gilt **ein Jahr** ab Ausstellungsdatum.\n\n### So läuft es ab\n1. Leg deinen Antrag in My assist an und lade Scans deiner offiziellen Zeugnisse hoch – in der Originalsprache plus beglaubigte Übersetzung auf Deutsch oder Englisch. Alles läuft digital, per Post schickst du uni-assist nichts.\n2. Bezahl die Gebühr: **75 €** für den ersten Studiengang pro Semester, **30 €** für jeden weiteren im selben Semester – unabhängig vom Ergebnis.\n3. Die Bearbeitung dauert meist 4–6 Wochen. Die VPD landet in My assist unter „My Inbox“.\n4. Bewirb dich dann **direkt bei der Hochschule** vor deren Frist und reich die VPD dort ein. Über die Zulassung entscheidet die Hochschule.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist-Mitgliedshochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-vpd-belgesi-her-universite-basvurusu-icin-ayri-mi-alinmalidir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-vpd-belgesi-her-universite-basvurusu-icin-ayri-mi-alinmalidir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist VPD belgesi her üniversite başvurusu için ayrı mı alınmalıdır?",
+      "visible": "text",
+      "head": "Uni-Assist'ten aldığınız VPD (Vorprüfungsdokumentation) belgesi, genellikle belirli bir başvuru döne"
+     },
+     "new": {
+      "question": "Uni-Assist VPD belgesi her üniversite başvurusu için ayrı mı alınmalıdır?",
+      "answer_md": "**Evet. VPD, seçtiğin üniversite için özel olarak düzenlenir; VPD isteyen her üniversite için uni-assist'ten ayrı bir VPD talep etmen gerekir.** Tek bir VPD'yi farklı üniversitelere kullanamazsın.\n\n### Neden ayrı?\n- VPD'yi yalnızca uni-assist'e VPD yöntemini kullanma talimatı veren üniversiteler ister. Değerlendirme o üniversitenin talimatına göre yapılır ve belge o üniversite için çıkar.\n- Her VPD, düzenlenme tarihinden itibaren **bir yıl** geçerlidir.\n\n### Maliyet nasıl hesaplanır?\n- Bir dönemdeki ilk program: **75 €**\n- Aynı dönemdeki her ek program: **30 €**\n- Ücret standart başvuru ve VPD için aynıdır ve sonuçtan bağımsız alınır.\n\n### Pratikte ne yapmalısın?\n1. Hedef listendeki üniversitelerin uni-assist kullanıp kullanmadığını ve VPD isteyip istemediğini, üniversitenin başvuru sayfasından ve uni-assist'in üniversite listesinden kontrol et.\n2. VPD isteyen her üniversite için My assist'te ayrı talep oluştur; belgelerini dijital olarak bir kez yüklemen yeterli.\n3. Her VPD'yi ilgili üniversiteye, onun son başvuru tarihinden önce doğrudan başvururken sun.\n\nVPD'nin kendisi kabul değildir; her üniversite kararını kendisi verir.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist ücretleri](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-vpd-belgesi-her-universite-basvurusu-icin-ayri-mi-alinmalidir-en",
+     "mode": "update",
+     "old": {
+      "question": "Do you need a separate Uni-Assist VPD for each university application?",
+      "visible": "text",
+      "head": "The VPD ( Vorprüfungsdokumentation ) document you receive from Uni-Assist can generally be used for"
+     },
+     "new": {
+      "question": "Do you need a separate uni-assist VPD for each university application?",
+      "answer_md": "**Yes. A VPD is issued specifically for the university you chose, so you request a separate VPD from uni-assist for every university that asks for one.** One VPD cannot be reused for other universities.\n\n### Why one per university?\n- Only universities that have instructed uni-assist to use the VPD procedure ask for it. The evaluation follows that university's instruction, and the document is issued for that university.\n- Each VPD is valid for **one year** from the date of issue.\n\n### What it costs\n- First course in a semester: **75 €**\n- Each additional course in the same semester: **30 €**\n- The fees are the same for standard and VPD applications and are charged regardless of the result.\n\n### What to do in practice\n1. Check on each university's application page and in uni-assist's list of member universities whether it uses uni-assist and whether it wants a VPD.\n2. In My assist, request a VPD for each university that requires one. Your certificates are uploaded digitally.\n3. Submit each VPD with your direct application to the matching university before that university's deadline.\n\nA VPD is not an admission: every university makes its own decision.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist fees](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-vpd-belgesi-her-universite-basvurusu-icin-ayri-mi-alinmalidir-de",
+     "mode": "update",
+     "old": {
+      "question": "Brauche ich für jede Uni-Bewerbung ein separates Uni-Assist VPD-Dokument?",
+      "visible": "text",
+      "head": "Das VPD (Vorprüfungsdokumentation), das du von Uni-Assist erhältst, kannst du in der Regel für mehre"
+     },
+     "new": {
+      "question": "Brauchst du für jede Hochschulbewerbung eine eigene uni-assist-VPD?",
+      "answer_md": "**Ja. Eine VPD wird speziell für die von dir gewählte Hochschule ausgestellt – du beantragst bei uni-assist also für jede Hochschule, die eine VPD verlangt, eine eigene.** Eine VPD lässt sich nicht für andere Hochschulen weiterverwenden.\n\n### Warum eine pro Hochschule?\n- Eine VPD verlangen nur Hochschulen, die uni-assist mit dem VPD-Verfahren beauftragt haben. Bewertet wird nach deren Vorgaben, und das Dokument wird für genau diese Hochschule ausgestellt.\n- Jede VPD gilt **ein Jahr** ab Ausstellungsdatum.\n\n### Was es kostet\n- Erster Studiengang pro Semester: **75 €**\n- Jeder weitere Studiengang im selben Semester: **30 €**\n- Die Gebühren sind für das Standard- und das VPD-Verfahren gleich und fallen unabhängig vom Ergebnis an.\n\n### So gehst du vor\n1. Prüf auf der Bewerbungsseite jeder Hochschule und in der uni-assist-Liste der Mitgliedshochschulen, ob sie uni-assist nutzt und eine VPD verlangt.\n2. Beantrag in My assist für jede Hochschule, die das verlangt, eine eigene VPD. Deine Zeugnisse lädst du digital hoch.\n3. Reich jede VPD bei deiner Direktbewerbung an der passenden Hochschule ein – vor deren Frist.\n\nEine VPD ist keine Zulassung: Jede Hochschule entscheidet selbst.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist-Gebühren](https://www.uni-assist.de/en/faqs/pay-all-fees/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "vpd-aldiktan-sonra-universitelere-dogrudan-mi-basvurmaliyim",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "vpd-aldiktan-sonra-universitelere-dogrudan-mi-basvurmaliyim",
+     "mode": "rewrite",
+     "old": {
+      "question": "VPD aldıktan sonra üniversitelere doğrudan mı başvurmalıyım?",
+      "visible": "text",
+      "head": "Üniversiteye göre değişir — bazı uniler tüm başvuruları Uni-Assist üzerinden alır, bazıları kendi po"
+     },
+     "new": {
+      "question": "VPD aldıktan sonra üniversitelere doğrudan mı başvurmalıyım?",
+      "answer_md": "**Evet. VPD bir başvuru değil, bir değerlendirme belgesidir; VPD'yi aldıktan sonra üniversitenin kendi başvuru yoluyla, onun son başvuru tarihinden önce doğrudan başvurup VPD'yi orada sunman gerekir.** VPD tek başına kabul anlamına gelmez; kararı üniversite verir.\n\n### Adım adım\n1. Üniversitenin başvuru sayfasında VPD yöntemini kullanıp kullanmadığını kontrol et.\n2. My assist'te o üniversite için VPD talep et ve resmi belgelerinin taramalarını yükle (orijinal dil + Almanca veya İngilizce onaylı tercüme).\n3. Ücreti öde: dönemdeki ilk program **75 €**, aynı dönemdeki her ek program **30 €**.\n4. VPD, genelde 4–6 hafta içinde My assist'teki \"My Inbox\"a gelir.\n5. Üniversitenin istediği yoldan (çoğunlukla kendi başvuru portalı) başvur ve VPD'yi ekle. Ek belge isteyip istemediğini üniversite belirler.\n\n### Dikkat etmen gerekenler\n- VPD belirli bir üniversite için düzenlenir; başka bir üniversiteye aynı belgeyle başvuramazsın.\n- VPD düzenlenme tarihinden itibaren **bir yıl** geçerlidir.\n- uni-assist'in son tarihi, üniversitenin son tarihiyle aynıdır. VPD'nin gelmesini ve ardından doğrudan başvuruyu bu tarihe sığdırmak için erken başla.\n- Her üniversite uni-assist kullanmaz; bazıları başvuruyu tamamen kendisi alır. Hangi yolun geçerli olduğunu yalnızca üniversitenin kendi başvuru bilgileri söyler.\n\nKaynak: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist üye üniversiteleri](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "vpd-aldiktan-sonra-universitelere-dogrudan-mi-basvurmaliyim-en",
+     "mode": "update",
+     "old": {
+      "question": "After receiving your VPD, should you apply directly to universities?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "After receiving your VPD, do you still need to apply directly to the university?",
+      "answer_md": "**Yes. A VPD is an evaluation, not an application: once you have it, you must apply directly to the university through its own application route before its deadline and submit the VPD there.** The VPD itself is not an admission; the university decides.\n\n### Step by step\n1. Check the university's application page to see whether it uses the VPD procedure.\n2. In My assist, request a VPD for that university and upload scans of your official certificates (original language plus a certified German or English translation).\n3. Pay the fee: **75 €** for the first course in a semester, **30 €** for each additional course in the same semester.\n4. The VPD usually arrives in \"My Inbox\" in My assist within 4–6 weeks.\n5. Apply the way the university specifies (often its own online portal) and attach the VPD. Whether further documents are needed is up to the university.\n\n### Points to watch\n- A VPD is issued for one specific university; you cannot use it to apply elsewhere.\n- It is valid for **one year** from the date of issue.\n- uni-assist's deadline is the university's deadline. Start early so the VPD arrives in time for your direct application.\n- Not every university uses uni-assist; some handle all applications themselves. Only the university's own application information tells you which route applies.\n\nSource: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "vpd-aldiktan-sonra-universitelere-dogrudan-mi-basvurmaliyim-de",
+     "mode": "update",
+     "old": {
+      "question": "Solltest du dich direkt an Hochschulen bewerben, nachdem du dein VPD erhalten hast?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Musst du dich nach Erhalt der VPD noch direkt bei der Hochschule bewerben?",
+      "answer_md": "**Ja. Die VPD ist eine Bewertung, keine Bewerbung: Sobald du sie hast, bewirbst du dich über den Bewerbungsweg der Hochschule direkt dort – vor deren Frist – und reichst die VPD mit ein.** Die VPD selbst ist keine Zulassung; entscheiden tut die Hochschule.\n\n### Schritt für Schritt\n1. Prüf auf der Bewerbungsseite der Hochschule, ob sie das VPD-Verfahren nutzt.\n2. Beantrag in My assist eine VPD für diese Hochschule und lade Scans deiner offiziellen Zeugnisse hoch (Originalsprache plus beglaubigte Übersetzung auf Deutsch oder Englisch).\n3. Bezahl die Gebühr: **75 €** für den ersten Studiengang pro Semester, **30 €** für jeden weiteren im selben Semester.\n4. Die VPD kommt meist innerhalb von 4–6 Wochen in My assist unter „My Inbox“ an.\n5. Bewirb dich auf dem Weg, den die Hochschule vorgibt (oft ihr eigenes Bewerbungsportal), und füg die VPD bei. Ob weitere Unterlagen nötig sind, legt die Hochschule fest.\n\n### Darauf solltest du achten\n- Die VPD wird für eine bestimmte Hochschule ausgestellt; für andere Hochschulen kannst du sie nicht verwenden.\n- Sie gilt **ein Jahr** ab Ausstellungsdatum.\n- Die Frist bei uni-assist ist die Frist der Hochschule. Fang früh an, damit die VPD rechtzeitig für deine Direktbewerbung da ist.\n- Nicht jede Hochschule arbeitet mit uni-assist; manche nehmen alle Bewerbungen selbst entgegen. Welcher Weg gilt, steht nur in den Bewerbungsinfos der Hochschule.\n\nQuelle: [uni-assist – VPD](https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/) · [uni-assist-Mitgliedshochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-evraklarini-postayla-mi-gondermem-gerekiyor",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-evraklarini-postayla-mi-gondermem-gerekiyor",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist evraklarını postayla mı göndermem gerekiyor?",
+      "visible": "text",
+      "head": "Çoğu Uni-Assist başvurusunda online yükleme yeterli — posta gerekmez. Ama bazı uniler orijinal/onayl"
+     },
+     "new": {
+      "question": "Uni-Assist evraklarını postayla mı göndermem gerekiyor?",
+      "answer_md": "**Hayır. uni-assist başvurusu tamamen dijitaldir: resmi belgelerinin taramalarını My assist'e yüklersin, uni-assist'e posta ile belge gönderilmez.** Posta, kurye veya orijinal belge göndermene gerek yoktur.\n\n### Neyi yüklemelisin?\n- Resmi belgelerinin (ör. Lise Diploması, YKS yerleştirme sayfası, transkript) **orijinal dildeki** taramaları\n- Bunların **Almanca veya İngilizce onaylı tercümesi**\n- Hangi belgelerin gerektiği ülkeye ve başvurduğun programa göre değişir; Türkiye için uni-assist'in ülke sayfasına bak.\n\n### Üniversiteye kayıtta durum farklı olabilir\n- Kabul aldıktan sonra bazı üniversiteler kayıt (Immatrikulation) sırasında **onaylı kopya** isteyebilir. Bu tamamen üniversiteye özgüdür; ne istendiğini kabul yazın ve üniversitenin kayıt bilgileri söyler.\n- Bu talep uni-assist'e değil, üniversiteye yöneliktir.\n\n### Pratik ipuçları\n- Taramaların okunaklı ve eksiksiz olsun; tüm sayfaları yükle.\n- Başvurunun durumunu My assist'ten takip edebilirsin; işlem genelde 4–6 hafta sürer, güncel süreler uni-assist sitesinde yayımlanır.\n- uni-assist'in son tarihi, üniversitenin son tarihiyle aynıdır; yüklemeyi son güne bırakma.\n\nKaynak: [uni-assist – belge gönderme ve takip](https://www.uni-assist.de/en/faqs/send-track/) · [uni-assist – Türkiye ülke bilgisi](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-evraklarini-postayla-mi-gondermem-gerekiyor-en",
+     "mode": "update",
+     "old": {
+      "question": "Do I need to send Uni-Assist documents by post?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Do I need to send my uni-assist documents by post?",
+      "answer_md": "**No. The uni-assist application is fully digital: you upload scans of your official certificates in My assist, and nothing is posted to uni-assist.** You do not need to send originals, certified paper copies or a courier package.\n\n### What to upload\n- Scans of your official certificates in the **original language** (for Turkish applicants, e.g. the Lise Diploması, the YKS placement page and transcripts)\n- A **certified translation into German or English**\n- The exact documents depend on your country and course; for Türkiye, see uni-assist's country page.\n\n### Enrolment can be different\n- After admission, some universities may ask for **certified copies** when you enrol. This is university-specific; your admission letter and the university's enrolment information tell you what is needed.\n- That request comes from the university, not from uni-assist.\n\n### Practical tips\n- Make sure scans are legible and complete, including every page.\n- Track your application in My assist. Processing usually takes 4–6 weeks; current times are published on the uni-assist website.\n- uni-assist's deadline is the university's deadline, so don't leave uploads to the last day.\n\nSource: [uni-assist – send and track](https://www.uni-assist.de/en/faqs/send-track/) · [uni-assist – country info Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-evraklarini-postayla-mi-gondermem-gerekiyor-de",
+     "mode": "update",
+     "old": {
+      "question": "Muss ich die Uni-Assist-Dokumente per Post schicken?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Muss ich meine uni-assist-Unterlagen per Post schicken?",
+      "answer_md": "**Nein. Die Bewerbung bei uni-assist läuft komplett digital: Du lädst Scans deiner offiziellen Zeugnisse in My assist hoch – per Post schickst du uni-assist nichts.** Originale, beglaubigte Papierkopien oder ein Kurierpaket sind nicht nötig.\n\n### Was du hochlädst\n- Scans deiner offiziellen Zeugnisse in der **Originalsprache** (bei türkischen Unterlagen z. B. Lise Diploması, YKS-Platzierungsseite, Notenübersicht)\n- Eine **beglaubigte Übersetzung ins Deutsche oder Englische**\n- Welche Unterlagen genau nötig sind, hängt von Land und Studiengang ab; für die Türkei hilft die Länderseite von uni-assist.\n\n### Bei der Einschreibung kann es anders sein\n- Nach der Zulassung verlangen manche Hochschulen bei der Immatrikulation **beglaubigte Kopien**. Das ist hochschulspezifisch – was du brauchst, steht im Zulassungsbescheid und in den Einschreibinfos der Hochschule.\n- Diese Anforderung kommt von der Hochschule, nicht von uni-assist.\n\n### Praktische Tipps\n- Achte auf gut lesbare, vollständige Scans mit allen Seiten.\n- Verfolge deinen Antrag in My assist. Die Bearbeitung dauert meist 4–6 Wochen; aktuelle Zeiten veröffentlicht uni-assist auf der Website.\n- Die Frist bei uni-assist ist die Frist der Hochschule – lass das Hochladen nicht bis zum letzten Tag liegen.\n\nQuelle: [uni-assist – Senden und Verfolgen](https://www.uni-assist.de/en/faqs/send-track/) · [uni-assist – Länderinfo Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-hzb-notu-nasil-hesaplanir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-hzb-notu-nasil-hesaplanir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist HZB notu nasıl hesaplanır?",
+      "visible": "text",
+      "head": "HZB (Hochschulzugangsberechtigung) notu, TR diplomandaki not ortalamasının Alman not sistemine çevir"
+     },
+     "new": {
+      "question": "Uni-Assist HZB notu nasıl hesaplanır?",
+      "answer_md": "**uni-assist, yabancı okul notunu modifiye Bavyera formülüyle Alman not sistemine çevirir: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).** Nmax ve Nmin değerlerini sen seçmezsin; bunlar ZAB'ın değerlendirmesinden (anabin) gelir.\n\n### Formüldeki değerler\n- **Nd:** senin notun\n- **Nmax:** belgenin not sistemindeki en yüksek not\n- **Nmin:** o sistemdeki en düşük geçer not\n- **X:** Alman notu; formül 1,0 (en iyi) ile 4,0 arasında bir sonuç verir.\n\n### Önemli kurallar\n- Sonuç **tek ondalık basamağa kadar alınır ve yuvarlanmaz** (kesilir).\n- Dönüşümü uni-assist değerlendirmesinin bir parçası olarak yapar; VPD yöntemi kullanılıyorsa çevrilmiş not VPD'de yer alır.\n- Studienkolleg'e gidip **Feststellungsprüfung** vermen gerekiyorsa, genel not yabancı notun ile Feststellungsprüfung notunun ortalamasıdır.\n- Türk belgeleri için hangi değerlerin kullanıldığını kendin tahmin etme; anabin ve uni-assist'in değerlendirmesi belirleyicidir.\n\n### HZB notu ≠ lisans ortalaması\nHZB notu, yükseköğretime giriş yeterliliğinin (okul bitirme) notudur; lisans not ortalaman değildir. Yüksek lisans başvurularında diplomanı ve notunu üniversite ayrıca değerlendirir. Bir programın hangi notla kabul ettiğine de üniversite karar verir.\n\nKaynak: [anabin – Sık sorulan sorular](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [uni-assist – Türkiye ülke bilgisi](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-hzb-notu-nasil-hesaplanir-en",
+     "mode": "update",
+     "old": {
+      "question": "How is your HZB grade calculated by Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How does uni-assist calculate your HZB grade?",
+      "answer_md": "**uni-assist converts a foreign school grade to the German scale with the modified Bavarian formula: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).** You do not choose Nmax and Nmin; they come from the ZAB assessment published in anabin.\n\n### What the values mean\n- **Nd:** your grade\n- **Nmax:** the best possible grade in your certificate's grading system\n- **Nmin:** the lowest pass grade in that system\n- **X:** the German grade; the formula gives a result between 1.0 (best) and 4.0.\n\n### Rules that matter\n- The result is taken to **one decimal place and not rounded** (it is truncated).\n- uni-assist converts the grade as part of its evaluation; in the VPD procedure, the converted grade appears on your VPD.\n- If you have to attend a Studienkolleg and pass the **Feststellungsprüfung**, your overall grade is the mean of your foreign grade and your Feststellungsprüfung grade.\n- Don't guess which values apply to Turkish certificates; the anabin data and uni-assist's evaluation are decisive.\n\n### HZB grade is not your bachelor's GPA\nThe HZB grade belongs to your higher-education entrance qualification (school-leaving level), not to a bachelor's degree. For master's applications, the university assesses your degree and grade itself. Which grade a course accepts is also up to the university.\n\nSource: [anabin – FAQ](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [uni-assist – country info Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-hzb-notu-nasil-hesaplanir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie berechnet Uni-Assist den HZB-Notendurchschnitt?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie berechnet uni-assist deine HZB-Note?",
+      "answer_md": "**uni-assist rechnet eine ausländische Schulnote mit der modifizierten bayerischen Formel ins deutsche System um: X = 1 + 3 × (Nmax − Nd) / (Nmax − Nmin).** Nmax und Nmin wählst du nicht selbst – sie stammen aus der ZAB-Bewertung in anabin.\n\n### Was die Werte bedeuten\n- **Nd:** deine Note\n- **Nmax:** die bestmögliche Note im Notensystem deines Zeugnisses\n- **Nmin:** die unterste Bestehensnote in diesem System\n- **X:** die deutsche Note; die Formel ergibt einen Wert zwischen 1,0 (beste) und 4,0.\n\n### Diese Regeln zählen\n- Das Ergebnis wird auf **eine Nachkommastelle ohne Rundung** ermittelt (abgeschnitten).\n- uni-assist rechnet die Note im Rahmen seiner Bewertung um; im VPD-Verfahren steht die umgerechnete Note in deiner VPD.\n- Musst du ein Studienkolleg besuchen und die **Feststellungsprüfung** ablegen, ist deine Gesamtnote der Mittelwert aus ausländischer Note und Note der Feststellungsprüfung.\n- Rate nicht, welche Werte für türkische Zeugnisse gelten – maßgeblich sind die anabin-Daten und die Bewertung durch uni-assist.\n\n### HZB-Note ist nicht dein Bachelor-Schnitt\nDie HZB-Note gehört zu deiner Hochschulzugangsberechtigung (Schulabschluss-Ebene), nicht zu einem Bachelorabschluss. Bei Masterbewerbungen bewertet die Hochschule deinen Abschluss und deine Note selbst. Mit welcher Note ein Studiengang zulässt, entscheidet ebenfalls die Hochschule.\n\nQuelle: [anabin – Häufig gestellte Fragen](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [uni-assist – Länderinfo Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [Studienkolleg-Leitfaden](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "anabin-h-ve-h-ne-anlama-gelir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "anabin-h-ve-h-ne-anlama-gelir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Anabin H+ ve H- ne anlama gelir?",
+      "visible": "text",
+      "head": "Anabin sisteminde H+ ve H- kodları Türk üniversite/lise diplomasının Almanya'da denkliğini gösterir."
+     },
+     "new": {
+      "question": "Anabin H+ ve H- ne anlama gelir?",
+      "answer_md": "**H+, H+/- ve H- anabin'de bir yükseköğretim kurumunun (üniversitenin) statüsünü gösterir; diplomanın denk olduğunu ya da doğrudan kabul aldığını göstermez.** H+ yalnızca o kurumun diplomalarının Almanya'da denklik değerlendirmesinden geçebileceği anlamına gelir.\n\n### Üç statü ne anlatır?\n- **H+:** Kurum kendi ülkesinde yükseköğretim kurumu olarak tanınır ve Almanya'da da öyle kabul edilir.\n- **H+/-:** Bu kurum türü için tek bir statü yoktur; ayrı ayrı değerlendirilir.\n- **H-:** Kurum geçici ya da kalıcı olarak yükseköğretim kurumu sayılmaz.\n\n### H+ ne değildir?\n- H+ **otomatik kabul, otomatik tanınma ya da yükseköğretime giriş yeterliliği (HZB) değildir.** Temel bir ön koşuldur, tek koşul değildir.\n- H kodları **lise diplomaları için kullanılmaz.** Türk lise diplomaları anabin'de ayrı bir bölümde, erişim yollarıyla (doğrudan, Studienkolleg, tek tek inceleme) sınıflanır.\n- Diplomanın **türü** (örneğin Lisans) anabin'de ayrıca \"entspricht\", \"gleichwertig\" veya \"bedingt vergleichbar\" gibi ifadelerle değerlendirilir; bu da bir tanınma kararı değildir.\n\n### Master veya doktora için ne anlama gelir?\nKabul kararını **üniversite** verir ve diplomanı tek tek inceler; gerekirse ZAB'a danışabilir. anabin eksiksiz bir veri tabanı değildir; bağlayıcı bilgi yalnızca yetkili eyalet makamlarından alınır.\n\nDaha ayrıntılı açıklama için: [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n\nKaynak: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin – SSS](https://anabin.kmk.org/db/haeufig-gestellte-fragen)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "what-do-anabin-h-plus-and-h-minus-mean",
+     "mode": "create",
+     "new": {
+      "question": "What do anabin H+ and H- mean?",
+      "answer_md": "**H+, H+/- and H- are anabin statuses for higher-education institutions, not for your diploma.** An H+ status only means that degrees from that institution can go through an equivalence assessment in Germany — it is not a prior decision about your degree.\n\n### The three statuses\n- **H+:** the institution is recognised as a higher-education institution in its home country and is regarded as one in Germany.\n- **H+/-:** there is no single status for this type of institution; it is assessed separately.\n- **H-:** the institution is temporarily or permanently not regarded as a higher-education institution.\n\n### Common misunderstandings\n- H+ is **not** automatic admission, automatic recognition or a higher-education entrance qualification (HZB). It is a basic prerequisite, not the only one.\n- H codes are **not used for school certificates.** Turkish school certificates are listed separately in anabin by access route (direct, Studienkolleg, case by case).\n- The **degree type** is assessed on its own in anabin, with terms such as \"entspricht\", \"gleichwertig\" or \"bedingt vergleichbar\". That is not a recognition decision either.\n\n### What this means for a master's or PhD\nThe **university decides** on admission and checks your degree individually; it may ask the ZAB for an assessment. anabin is not complete, and binding information comes only from the competent Land offices.\n\nMore background: [our anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n\nSource: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin FAQ](https://anabin.kmk.org/db/haeufig-gestellte-fragen)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "what-do-anabin-h-plus-and-h-minus-mean-de",
+     "mode": "create",
+     "new": {
+      "question": "Was bedeuten H+ und H- in anabin?",
+      "answer_md": "**H+, H+/- und H- sind anabin-Status für Hochschulen als Institutionen – sie sagen nichts Verbindliches über deinen Abschluss.** H+ heißt nur, dass Abschlüsse dieser Hochschule in Deutschland einer Gleichwertigkeitsprüfung unterzogen werden können.\n\n### Die drei Status im Überblick\n- **H+:** Die Institution ist im Herkunftsland als Hochschule anerkannt und gilt auch in Deutschland als Hochschule.\n- **H+/-:** Für diesen Institutionstyp gibt es keinen einheitlichen Status; es wird gesondert geprüft.\n- **H-:** Die Institution gilt vorübergehend oder dauerhaft nicht als Hochschule.\n\n### Was H+ nicht bedeutet\n- H+ ist **keine** automatische Zulassung, keine automatische Anerkennung und keine Hochschulzugangsberechtigung (HZB). Es ist eine Grundvoraussetzung, aber nicht die einzige.\n- H-Codes gelten **nicht für Schulabschlüsse.** Türkische Schulzeugnisse stehen in anabin in einem eigenen Bereich und werden nach Zugangswegen eingeordnet (direkt, Studienkolleg, Einzelfallprüfung).\n- Der **Abschlusstyp** wird in anabin separat bewertet, etwa mit „entspricht“, „gleichwertig“ oder „bedingt vergleichbar“. Auch das ist keine Anerkennungsentscheidung.\n\n### Was heißt das für Master oder Promotion?\nÜber die Zulassung **entscheidet die Hochschule**. Sie prüft deinen Abschluss individuell und kann dafür die ZAB einbeziehen. anabin ist nicht vollständig; verbindliche Auskünfte geben nur die zuständigen Stellen der Länder.\n\nMehr dazu: [unser anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n\nQuelle: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin – Häufig gestellte Fragen](https://anabin.kmk.org/db/haeufig-gestellte-fragen)\n"
+     }
+    }
+   ],
+   "group_if_missing": "6dc42631-d064-5408-99e9-bcb7dc5aaf34"
+  },
+  {
+   "tr_slug": "turkiyedeki-universitemin-anabin-durumu-nasil-ogrenilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "turkiyedeki-universitemin-anabin-durumu-nasil-ogrenilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Türkiye'deki üniversitemin Anabin durumu nasıl öğrenilir?",
+      "visible": "text",
+      "head": "Türkiye'deki üniversitenin Anabin durumunu anabin.kmk.org üzerinden ücretsiz öğrenebilirsin. # Adım"
+     },
+     "new": {
+      "question": "Türkiye'deki üniversitemin anabin durumu nasıl öğrenilir?",
+      "answer_md": "**Üniversiteni anabin'in \"Institutionen\" bölümünde arayarak kurum statüsünü (H+, H+/- veya H-) görebilirsin; ardından diplomanın türünü \"Hochschulabschlüsse\" bölümünde ayrıca kontrol etmelisin.** İki sonuç da bir kabul ya da tanınma kararı değildir.\n\n### Adım adım kontrol\n1. [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) sayfasını aç, ülke olarak Türkiye'yi seç ve üniversiteni ara.\n2. Kurumun statüsüne bak: **H+** (Almanya'da yükseköğretim kurumu sayılır), **H+/-** (kurum türü için tek statü yok, ayrıca değerlendirilir) veya **H-** (yükseköğretim kurumu sayılmaz).\n3. Sonra **Hochschulabschlüsse → Abschlusstypen / Abschlüsse** kısmında diploma türünü (örneğin Lisans) kontrol et. Burada \"entspricht\", \"gleichwertig\" veya \"bedingt vergleichbar\" gibi ifadeler görebilirsin.\n\n### Sonucu nasıl okumalısın?\n- **H+ yalnızca** bu kurumun diplomalarının denklik değerlendirmesinden geçebileceğini gösterir. Otomatik kabul, otomatik tanınma ya da HZB anlamına gelmez.\n- Master veya doktora başvurusunda **üniversite** diplomanı tek tek inceler ve karar verir; gerekirse ZAB'a danışabilir.\n- H kodları lise diplomaları için değildir. Lise diploman için anabin'de ayrı bir bölüm vardır: [Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### Üniversiteni bulamazsan\nanabin eksiksiz değildir. Bağlayıcı bilgi yalnızca yetkili eyalet makamlarından alınır; en doğrusu başvuracağın üniversiteye sormaktır.\n\nKaynak: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin – SSS](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "how-to-check-anabin-status-of-turkish-university",
+     "mode": "create",
+     "new": {
+      "question": "How can I check the anabin status of my university in Türkiye?",
+      "answer_md": "**Search for your university in anabin's \"Institutionen\" section to see its institution status (H+, H+/- or H-), then check your degree type separately under \"Hochschulabschlüsse\".** Neither result is an admission or recognition decision.\n\n### Step by step\n1. Open [anabin – Institutionen](https://anabin.kmk.org/db/institutionen), choose Türkei as the country and search for your university.\n2. Read the institution status: **H+** (regarded as a higher-education institution in Germany), **H+/-** (no single status for this institution type; assessed separately) or **H-** (not regarded as a higher-education institution).\n3. Then go to **Hochschulabschlüsse → Abschlusstypen / Abschlüsse** and look up your degree type (for example Lisans). You may see terms like \"entspricht\", \"gleichwertig\" or \"bedingt vergleichbar\".\n\n### How to read the result\n- **H+ only means** that degrees from the institution can undergo an equivalence assessment. It is not automatic admission, automatic recognition or a higher-education entrance qualification (HZB).\n- For a master's or PhD, the **university** checks your degree individually and decides; it may ask the ZAB for an assessment.\n- H codes do not apply to school certificates. For a Lise Diploması, anabin has a separate section: [Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### If your university is not listed\nanabin is not complete. Binding information comes only from the competent Land offices, so ask the university you are applying to.\n\nSource: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin FAQ](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [our anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "how-to-check-anabin-status-of-turkish-university-de",
+     "mode": "create",
+     "new": {
+      "question": "Wie finde ich den anabin-Status meiner Hochschule in der Türkei heraus?",
+      "answer_md": "**Such deine Hochschule in anabin unter „Institutionen“ – dort steht ihr Status (H+, H+/- oder H-). Deinen Abschlusstyp prüfst du danach separat unter „Hochschulabschlüsse“.** Keins der beiden Ergebnisse ist eine Zulassungs- oder Anerkennungsentscheidung.\n\n### So gehst du vor\n1. Öffne [anabin – Institutionen](https://anabin.kmk.org/db/institutionen), wähle als Land die Türkei und suche nach deiner Hochschule.\n2. Lies den Status: **H+** (gilt in Deutschland als Hochschule), **H+/-** (kein einheitlicher Status für diesen Institutionstyp, gesonderte Prüfung) oder **H-** (gilt nicht als Hochschule).\n3. Prüfe anschließend unter **Hochschulabschlüsse → Abschlusstypen / Abschlüsse** deinen Abschlusstyp, zum Beispiel Lisans. Dort findest du Einordnungen wie „entspricht“, „gleichwertig“ oder „bedingt vergleichbar“.\n\n### So liest du das Ergebnis richtig\n- **H+ bedeutet nur**, dass Abschlüsse dieser Hochschule einer Gleichwertigkeitsprüfung unterzogen werden können – keine automatische Zulassung, keine automatische Anerkennung, keine HZB.\n- Bei Master oder Promotion prüft die **Hochschule** deinen Abschluss individuell und entscheidet; sie kann dafür die ZAB einbeziehen.\n- H-Codes gelten nicht für Schulzeugnisse. Für die Lise Diploması gibt es in anabin einen eigenen Bereich: [Schulabschlüsse mit Hochschulzugang](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### Deine Hochschule fehlt in anabin?\nanabin ist nicht vollständig. Verbindliche Auskünfte geben nur die zuständigen Stellen der Länder – frag am besten direkt bei der Hochschule nach, an der du dich bewirbst.\n\nQuelle: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [anabin – Häufig gestellte Fragen](https://anabin.kmk.org/db/haeufig-gestellte-fragen) · [unser anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ],
+   "group_if_missing": "868564d1-1c16-5b7a-b6e4-cd75ff05cd12"
+  },
+  {
+   "tr_slug": "universite-diplomam-almanyada-denk-sayilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "universite-diplomam-almanyada-denk-sayilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Üniversite diplomam Almanya'da denk sayılır mı?",
+      "visible": "text",
+      "head": "Çoğu Türk üniversite diploması Almanya'da denk sayılır — Anabin sisteminde H+ statüsünde. Bazı durum"
+     },
+     "new": {
+      "question": "Üniversite diplomam Almanya'da denk sayılır mı?",
+      "answer_md": "**Bunun genel bir evet/hayır cevabı yok: master veya doktora başvurusunda diplomanı üniversite tek tek inceler ve karar verir.** anabin sana bir ön fikir verir, ama ne anabin ne de H+ statüsü otomatik denklik veya kabul anlamına gelir.\n\n### Önce anabin'e bak\n- **Kurum:** [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) bölümünde üniversiteni ara. H+ yalnızca bu kurumun diplomalarının denklik değerlendirmesinden geçebileceğini gösterir; temel bir ön koşuldur, tek koşul değildir.\n- **Diploma türü:** Hochschulabschlüsse bölümünde Lisans vb. derecen \"entspricht\", \"gleichwertig\" ya da \"bedingt vergleichbar\" gibi ifadelerle yer alabilir. Bu da bir tanınma kararı değildir.\n- anabin eksiksiz değildir; bağlayıcı bilgi yalnızca yetkili eyalet makamlarından gelir.\n\n### ZAB belgesi ne zaman işe yarar?\n**ZAB Zeugnisbewertung**, yabancı yükseköğretim diplomanı Alman sistemine yerleştiren resmi bir belgedir.\n- Üniversiteye **kabul hakkı vermez**; her üniversite kendi şartlarını belirler ve bu belgeyi **isteyebilir**.\n- Vize/AB Mavi Kart, işverenler (örneğin kamu sektörü) ve resmi makamlar için kullanılır.\n- Ücret **208 €** (yeniden düzenleme 104 €), süre genellikle **yaklaşık 3 ay** (daha uzun sürebilir).\n\n### Mesleki tanınma ayrı bir konudur\nTıp, öğretmenlik ve hukuk gibi düzenlenmiş mesleklerde yetkili kurumun ayrıca tanıması gerekir; ZAB belgesi bunun yerine geçmez.\n\nÖnlisans 2 yıllık kısa bir programdır; üniversite diploması (Lisans) gibi değerlendirilmez.\n\nKaynak: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "is-my-turkish-university-degree-recognised-in-germany",
+     "mode": "create",
+     "new": {
+      "question": "Is my Turkish university degree recognised as equivalent in Germany?",
+      "answer_md": "**There is no general yes or no: for a master's or PhD, the university you apply to checks your degree individually and decides.** anabin gives you a first indication, but neither anabin nor an H+ status means automatic equivalence or admission.\n\n### Start with anabin\n- **Institution:** search for your university in [anabin – Institutionen](https://anabin.kmk.org/db/institutionen). H+ only means that its degrees can undergo an equivalence assessment — a basic prerequisite, not the only one.\n- **Degree type:** under Hochschulabschlüsse, your Lisans or other degree may be described as \"entspricht\", \"gleichwertig\" or \"bedingt vergleichbar\". That is not a recognition decision either.\n- anabin is not complete; binding information comes only from the competent Land offices.\n\n### When is a ZAB statement useful?\nThe **ZAB Statement of Comparability** is an official certificate that places a foreign higher-education degree in the German system.\n- It does **not** give you a right to admission; each university sets its own requirements and **may** ask for it.\n- It is used for visas and the EU Blue Card, by employers (e.g. the public sector) and by authorities.\n- Fee **208 €** (re-issue 104 €); processing usually takes **about 3 months** and can take longer.\n\n### Professional recognition is separate\nRegulated professions such as medicine, teaching or law need recognition by the competent body. A ZAB statement does not replace it.\n\nAn Önlisans is a 2-year short-cycle programme and is not treated like a university degree (Lisans).\n\nSource: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB Statement of Comparability](https://zab.kmk.org/en/statement-comparability) · [our anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "is-my-turkish-university-degree-recognised-in-germany-de",
+     "mode": "create",
+     "new": {
+      "question": "Wird mein türkischer Hochschulabschluss in Deutschland als gleichwertig anerkannt?",
+      "answer_md": "**Eine pauschale Antwort gibt es nicht: Bewirbst du dich für Master oder Promotion, prüft die Hochschule deinen Abschluss individuell und entscheidet selbst.** anabin gibt dir eine erste Orientierung – weder anabin noch der Status H+ bedeuten automatisch Gleichwertigkeit oder Zulassung.\n\n### Zuerst in anabin nachsehen\n- **Institution:** Such deine Hochschule unter [anabin – Institutionen](https://anabin.kmk.org/db/institutionen). H+ heißt nur, dass ihre Abschlüsse einer Gleichwertigkeitsprüfung unterzogen werden können – eine Grundvoraussetzung, nicht die einzige.\n- **Abschlusstyp:** Unter Hochschulabschlüsse kann dein Lisans-Abschluss z. B. mit „entspricht“, „gleichwertig“ oder „bedingt vergleichbar“ eingeordnet sein. Auch das ist keine Anerkennungsentscheidung.\n- anabin ist nicht vollständig; verbindlich sind nur Auskünfte der zuständigen Stellen der Länder.\n\n### Wann hilft eine ZAB-Zeugnisbewertung?\nDie **Zeugnisbewertung der ZAB** ordnet einen ausländischen Hochschulabschluss offiziell in das deutsche System ein.\n- Sie begründet **keinen Anspruch auf Zulassung**; jede Hochschule legt ihre Anforderungen selbst fest und **kann** sie verlangen.\n- Genutzt wird sie für Visum und Blaue Karte EU, bei Arbeitgebern (z. B. im öffentlichen Dienst) und Behörden.\n- Gebühr **208 €** (Zweitausfertigung 104 €), Bearbeitung meist **etwa 3 Monate**, teils länger.\n\n### Berufliche Anerkennung ist etwas anderes\nIn reglementierten Berufen wie Medizin, Lehramt oder Recht brauchst du die Anerkennung der zuständigen Stelle; die Zeugnisbewertung ersetzt sie nicht.\n\nEin Önlisans ist ein zweijähriges Kurzstudium und wird nicht wie ein Hochschulabschluss (Lisans) behandelt.\n\nQuelle: [anabin – Institutionen](https://anabin.kmk.org/db/institutionen) · [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [unser anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ],
+   "group_if_missing": "a04b5753-59d6-50bd-8461-13654ec61214"
+  },
+  {
+   "tr_slug": "diploma-denkligi-denklik-basvurusu-sureci-nasil-isler",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "diploma-denkligi-denklik-basvurusu-sureci-nasil-isler",
+     "mode": "rewrite",
+     "old": {
+      "question": "Diploma denkliği (Denklik) başvurusu süreci nasıl işler?",
+      "visible": "text",
+      "head": "Almanya'da eğitim veya iş için diploma denkliği başvurusu genellikle KMK (Kültür Bakanları Konferans"
+     },
+     "new": {
+      "question": "Diploma denkliği (denklik) başvurusu süreci nasıl işler?",
+      "answer_md": "**Süreç, hangi belgeyi ne için değerlendirttiğine göre değişir: lise diplomanı üniversite, uni-assist veya bir eyaletin Zeugnisanerkennungsstelle'si değerlendirir; yabancı üniversite diplomanı ise ZAB, \"Zeugnisbewertung\" adlı resmi belgeyle Alman sistemine yerleştirir.** Hiçbiri tek başına kabul garantisi değildir.\n\n### Lise diploması (lisans başvurusu için)\n- Türk lise diploman tek başına belirleyici değildir; anabin onu YKS sonucu ve yerleştirmeyle birlikte değerlendirir.\n- Son kararı üniversite (veya yetkili eyalet makamı) verir. uni-assist, Lise Diploması ile YKS yerleştirme sayfasını ister.\n- Erişim yolları için: [anabin – Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### Üniversite diploması (master, iş veya vize için)\n1. anabin'de üniversitenin statüsünü (H+, H+/-, H-) ve diploma türünü kontrol et. H+ otomatik denklik değildir.\n2. Master/doktora için başvurduğun **üniversite** diplomanı tek tek inceler; gerekirse ZAB'a danışabilir.\n3. Üniversite, işveren veya bir makam isterse ZAB'dan **Zeugnisbewertung** al: ücret **208 €** (yeniden düzenleme 104 €), süre genellikle **yaklaşık 3 ay**. Bu belge kabul hakkı vermez; vize/AB Mavi Kart, işverenler ve resmi makamlar için kullanılır.\n\n### Mesleki tanınma\nTıp, öğretmenlik ve hukuk gibi düzenlenmiş mesleklerde yetkili kurumun tanıması gerekir; ZAB belgesi bunun yerine geçmez.\n\nKaynak: [ZAB Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [ZAB ücretleri](https://zab.kmk.org/de/zeugnisbewertung/gebuehren) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "diploma-denkligi-denklik-basvurusu-sureci-nasil-isler-en",
+     "mode": "update",
+     "old": {
+      "question": "How does the diploma recognition (Denklik) application process work?",
+      "visible": "text",
+      "head": "Applying for diploma recognition ( Denklik ) for education or work in Germany typically goes through"
+     },
+     "new": {
+      "question": "How does the diploma recognition (denklik) process work?",
+      "answer_md": "**It depends on which document you need assessed and why: school certificates are assessed by the university, uni-assist or a Land Zeugnisanerkennungsstelle, while a foreign university degree can be placed in the German system by the ZAB through a Statement of Comparability.** None of these alone guarantees admission.\n\n### School certificate (for a bachelor's)\n- A Turkish school certificate on its own does not determine access; anabin combines it with the YKS result and placement.\n- The final decision lies with the university (or the competent Land authority). uni-assist asks for the Lise Diploması plus the YKS placement page.\n- Access routes: [anabin – Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### University degree (for a master's, work or a visa)\n1. Check your university's anabin status (H+, H+/-, H-) and your degree type. H+ is not automatic equivalence.\n2. For a master's or PhD, the **university** you apply to checks your degree individually and may ask the ZAB.\n3. If a university, employer or authority asks for it, apply for a **ZAB Statement of Comparability**: fee **208 €** (re-issue 104 €), usually **about 3 months**. It gives no right to admission; it is used for visas and the EU Blue Card, by employers and by authorities.\n\n### Professional recognition\nRegulated professions such as medicine, teaching or law need recognition by the competent body. The ZAB statement does not replace it.\n\nSource: [ZAB Statement of Comparability](https://zab.kmk.org/en/statement-comparability) · [ZAB fees](https://zab.kmk.org/de/zeugnisbewertung/gebuehren) · [our anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "diploma-denkligi-denklik-basvurusu-sureci-nasil-isler-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie funktioniert die Beantragung der **Zeugnisanerkennung** (Denklik)?",
+      "visible": "text",
+      "head": "Die Beantragung der Zeugnisanerkennung für dein Studium oder deinen Job in Deutschland läuft meist ü"
+     },
+     "new": {
+      "question": "Wie funktioniert die Anerkennung ausländischer Zeugnisse (Denklik)?",
+      "answer_md": "**Das hängt davon ab, welches Zeugnis du wofür bewerten lässt: Schulabschlüsse prüfen die Hochschule, uni-assist oder eine Zeugnisanerkennungsstelle des Landes; einen ausländischen Hochschulabschluss ordnet die ZAB mit einer Zeugnisbewertung in das deutsche System ein.** Keins davon garantiert dir allein eine Zulassung.\n\n### Schulabschluss (für ein Bachelorstudium)\n- Dein türkisches Schulzeugnis entscheidet nicht allein; anabin betrachtet es zusammen mit dem YKS-Ergebnis und der Platzierung.\n- Die Entscheidung trifft die Hochschule (bzw. die zuständige Landesstelle). uni-assist verlangt das Lise Diploması und die YKS-Platzierungsseite.\n- Zugangswege: [anabin – Schulabschlüsse](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang)\n\n### Hochschulabschluss (für Master, Job oder Visum)\n1. Prüf in anabin den Status deiner Hochschule (H+, H+/-, H-) und deinen Abschlusstyp. H+ ist keine automatische Gleichwertigkeit.\n2. Beim Master oder bei der Promotion prüft die **Hochschule** deinen Abschluss individuell und kann die ZAB einbeziehen.\n3. Verlangt eine Hochschule, ein Arbeitgeber oder eine Behörde sie, beantragst du eine **ZAB-Zeugnisbewertung**: Gebühr **208 €** (Zweitausfertigung 104 €), Bearbeitung meist **etwa 3 Monate**. Sie begründet keinen Zulassungsanspruch und wird für Visum und Blaue Karte EU, bei Arbeitgebern und Behörden genutzt.\n\n### Berufliche Anerkennung\nFür reglementierte Berufe wie Medizin, Lehramt oder Recht brauchst du die Anerkennung der zuständigen Stelle; die Zeugnisbewertung ersetzt sie nicht.\n\nQuelle: [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [ZAB-Gebühren](https://zab.kmk.org/de/zeugnisbewertung/gebuehren) · [unser anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyadaki-tu9-universiteleri-lise-mezunlari-icin-studienkolleg-sarti-ariyor-mu",
+   "scope": "extra",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyadaki-tu9-universiteleri-lise-mezunlari-icin-studienkolleg-sarti-ariyor-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'daki TU9 üniversiteleri lise mezunları için Studienkolleg şartı arıyor mu?",
+      "visible": "text",
+      "head": "Türkiye'den lise diplomasıyla Almanya'da doğrudan üniversiteye kabul edilmek genellikle mümkün değil"
+     },
+     "new": {
+      "question": "Almanya'daki TU9 üniversiteleri lise mezunları için Studienkolleg şartı arıyor mu?",
+      "answer_md": "**TU9 üniversiteleri için ayrı bir Studienkolleg kuralı yok; Türk lise mezunları için geçerli giriş yolları tüm Alman üniversitelerinde aynıdır.** Studienkolleg gerekip gerekmediği, TU9 olup olmamasına değil senin lise türüne, YKS puanına ve yerleştirmene bağlıdır.\n\n### Genel lise mezunuysan\n- 12 yıllık genel lise + SAY, SÖZ, EA veya DİL'de **180 puanın üstü** + fakültede en az 4 yıllık lisans programına **yerleştirme** → Studienkolleg'siz, yerleştiğin ve ilgili alanlarda doğrudan giriş. Türkiye'de okuman gerekmez.\n- Genel lise mezunu olmak tek başına Studienkolleg zorunluluğu anlamına gelmez.\n\n### Studienkolleg ne zaman devreye girer?\n- **Meslek lisesi** + 180 puan üstü → alana uygun Studienkolleg (ör. mühendislik için T kursu); Türkiye'de bir yıl başarılı lisans öğreniminden sonra ise doğrudan giriş.\n- Yerleştirmen yoksa veya eşiğin altındaysan genel bir yol tanımlı değil; kararı üniversite veya yetkili eyalet makamı verir.\n\n### TU9'a özgü olan ne?\nBölüm bazlı şartları (dil seviyesi, ön bilgi, başvuru süreci) her üniversite kendisi belirler. Bir TU9 üniversitesine başvurmadan önce o bölümün sayfasını ve uni-assist kullanıp kullanmadığını kontrol et. Hedef mühendislik bölümünün yerleştiğin alanla \"ilgili\" sayılıp sayılmadığına da üniversite karar verir.\n\nAyrıntılar için [Studienkolleg rehberimize](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school) bak.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist üniversiteleri](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyadaki-tu9-universiteleri-lise-mezunlari-icin-studienkolleg-sarti-ariyor-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Do TU9 universities in Germany require a Studienkolleg for high school graduates?",
+      "visible": "text",
+      "head": "If you have a high school diploma from Turkey, direct admission to a German university is usually no"
+     },
+     "new": {
+      "question": "Do TU9 universities in Germany require a Studienkolleg for Turkish high school graduates?",
+      "answer_md": "**There is no TU9-specific Studienkolleg rule — the access routes for Turkish school leavers are the same at every German university.** Whether you need a Studienkolleg depends on your type of Lise, your YKS score and your placement, not on whether the university belongs to TU9.\n\n### If you finished a general Lise\n- 12-year general Lise + **more than 180 points** in SAY, SÖZ, EA or DİL + **placement** in a Lisans programme of at least 4 years at a faculty → direct access in the placed subject and related subjects, no Studienkolleg. You do not need to study in Türkiye.\n- A general Lise does not automatically mean you need a Studienkolleg.\n\n### When a Studienkolleg comes in\n- **Meslek Lisesi** + more than 180 points → a subject-oriented Studienkolleg (e.g. the T course for engineering); after one successful year of Lisans study in Türkiye → direct access instead.\n- Without a placement, or below the threshold, there is no general official route; the university or the competent Land authority decides.\n\n### What is TU9-specific\nEach university sets its own programme requirements (language level, prior knowledge, application procedure). Before applying to a TU9 university, check the programme page and whether it uses uni-assist. Whether your target engineering programme counts as related to your placed subject is also the university's call.\n\nSee our [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en) for more.\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist member universities](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyadaki-tu9-universiteleri-lise-mezunlari-icin-studienkolleg-sarti-ariyor-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Verlangen TU9 Universitäten ein Studienkolleg für Abiturienten aus der Türkei?",
+      "visible": "text",
+      "head": "Mit einem türkischen Abitur direkt an einer deutschen Universität zugelassen zu werden, ist meistens"
+     },
+     "new": {
+      "question": "Verlangen TU9-Universitäten ein Studienkolleg von Abiturienten aus der Türkei?",
+      "answer_md": "**Eine eigene TU9-Regel zum Studienkolleg gibt es nicht – die Zugangswege für türkische Schulabschlüsse sind an allen deutschen Hochschulen gleich.** Ob du ein Studienkolleg brauchst, hängt von deinem Lise-Typ, deinen YKS-Punkten und deiner Platzierung ab, nicht davon, ob die Uni zu TU9 gehört.\n\n### Mit allgemeinbildender Lise\n- 12-jährige allgemeinbildende Lise + **mehr als 180 Punkte** in SAY, SÖZ, EA oder DİL + **Platzierung** in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät → fachgebundener Direktzugang (platziertes und verwandte Fächer), ohne Studienkolleg. Ein Studium in der Türkei ist nicht nötig.\n- Eine allgemeinbildende Lise bedeutet also nicht automatisch Studienkolleg.\n\n### Wann das Studienkolleg ins Spiel kommt\n- **Meslek Lisesi** + mehr als 180 Punkte → fachlich passendes Studienkolleg (z. B. T-Kurs für Technik); nach einem erfolgreichen Lisans-Studienjahr in der Türkei stattdessen Direktzugang.\n- Ohne Platzierung oder unter der Schwelle gibt es keinen allgemeinen offiziellen Weg; die Hochschule bzw. die zuständige Landesstelle entscheidet.\n\n### Was an TU9 speziell ist\nStudiengangsspezifische Anforderungen (Sprachniveau, Vorkenntnisse, Bewerbungsweg) legt jede Hochschule selbst fest. Prüf vor der Bewerbung an einer TU9-Uni die Studiengangsseite und ob sie über uni-assist läuft. Ob dein Wunschstudiengang als verwandt zu deinem platzierten Fach gilt, entscheidet ebenfalls die Hochschule.\n\nMehr in unserem [Studienkolleg-Guide](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de).\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [uni-assist-Hochschulen](https://www.uni-assist.de/en/tools/uni-assist-universities/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkollege-gitmeden-veya-turkiyede-bir-yil-okumadan-almanyada-universiteye-kabul-almak-mumkun-mu",
+   "scope": "extra",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkollege-gitmeden-veya-turkiyede-bir-yil-okumadan-almanyada-universiteye-kabul-almak-mumkun-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg'e gitmeden veya Türkiye'de bir yıl okumadan Almanya'da üniversiteye kabul almak mümkün mü?",
+      "visible": "text",
+      "head": "Genel olarak, Türkiye'deki lise diploması Almanya'daki üniversiteye doğrudan kabul için yeterli olma"
+     },
+     "new": {
+      "question": "Studienkolleg'e gitmeden veya Türkiye'de bir yıl okumadan Almanya'da üniversiteye kabul almak mümkün mü?",
+      "answer_md": "**Evet: 12 yıllık genel lise mezunuysan, YKS'de SAY, SÖZ, EA veya DİL puan türünde 180'in üstündeysen ve bir fakültede en az 4 yıllık lisans programına yerleştiysen, Studienkolleg'siz ve Türkiye'de hiç okumadan başvurabilirsin.** Bu giriş hakkı yerleştiğin alan ve ilgili alanlarla sınırlıdır.\n\n### Bu yolun ayrıntıları\n- Türkiye'de kayıt yaptırman veya okuman gerekmez; **yerleştirme** yeterlidir.\n- 180 puan eşiği KMK'nın 30.06.2022 kararıyla \"aksi bildirilene kadar\" geçerli; 170 puan yalnızca 2020 sınav yılı için uygulanmıştı.\n- anabin; Anadolu, Fen veya diğer genel lise türleri arasında fark gözetmez.\n- Yerleştirme üniversiteye bağlı 4 yıllık bir **yüksekokula** ise → yalnızca Fachhochschule'lerde doğrudan giriş.\n- Belirleyici olan sıralaman değil; puan türün, eşik ve yerleştirmendir.\n\n### Yerleştirmen yoksa\nPuanın olup yerleşmediysen ya da eşiğin altındaysan resmî kaynaklar genel bir yol tanımlamıyor. DAAD kabul veritabanına göre YKS'ye girmemiş ya da yalnızca TYT sonucu olan lise mezunu kabul edilemez. Otomatik doğrudan kabul ya da otomatik Studienkolleg yok; kararı üniversite veya yetkili eyalet makamı verir.\n\n### Meslek lisesi mezunuysan\n180 puan üstü ile alana uygun Studienkolleg'e gidersin; Türkiye'de bir yıl başarılı lisans öğreniminden sonra ise doğrudan giriş hakkın olur.\n\nuni-assist, lise diplomanla birlikte YKS yerleştirme sayfanı ister. Ayrıntılar için [anabin rehberimize](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma) bak.\n\nKaynak: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD kabul veritabanı](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkollege-gitmeden-veya-turkiyede-bir-yil-okumadan-almanyada-universiteye-kabul-almak-mumkun-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you get direct university admission in Germany without a Studienkolleg or a year of university in Turkey?",
+      "visible": "text",
+      "head": "Generally, a high school diploma from Turkey might not be enough for direct university admission in"
+     },
+     "new": {
+      "question": "Can you get admitted to a German university without a Studienkolleg or a year of study in Türkiye?",
+      "answer_md": "**Yes — with a 12-year general Lise, a YKS score above 180 points in SAY, SÖZ, EA or DİL and a placement in a Lisans programme of at least 4 years at a faculty, you can apply without a Studienkolleg and without studying in Türkiye.** This access is restricted to the placed subject and related subjects.\n\n### Details of this route\n- You don't need to enrol or study in Türkiye — the **placement** itself is what counts.\n- The 180-point threshold applies \"until further notice\" (KMK decision of 30.06.2022); 170 points applied only to the 2020 exam year.\n- anabin does not distinguish between Anadolu, Fen or other general Lise types.\n- Placement at a university-affiliated 4-year Yüksekokul instead → direct access to Fachhochschulen only.\n- Your ranking is not the criterion; score type, threshold and placement are.\n\n### Without a placement\nIf you have a score but no placement, or are below the threshold, official sources define no general route. According to the DAAD admission database, a Lise graduate who did not take the YKS, or only has a TYT result, cannot be admitted. There is no automatic direct admission and no automatic Studienkolleg — the university or the competent Land authority decides.\n\n### Meslek Lisesi graduates\nWith more than 180 points you go to a subject-oriented Studienkolleg; after one successful year of Lisans study in Türkiye you get direct subject-restricted access instead.\n\nuni-assist asks for your Lise Diploması plus the YKS placement page. More in our [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en).\n\nSource: [anabin – Türkiye](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD admission database](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkollege-gitmeden-veya-turkiyede-bir-yil-okumadan-almanyada-universiteye-kabul-almak-mumkun-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist es möglich, in Deutschland an einer Universität angenommen zu werden, ohne ein Studienkolleg zu besuchen oder ein Jahr in der Türkei studiert zu haben?",
+      "visible": "text",
+      "head": "Generell reicht dein türkisches Abiturzeugnis oft nicht für eine direkte Zulassung an einer deutsche"
+     },
+     "new": {
+      "question": "Kann man ohne Studienkolleg und ohne ein Studienjahr in der Türkei an einer deutschen Hochschule zugelassen werden?",
+      "answer_md": "**Ja – mit 12-jähriger allgemeinbildender Lise, mehr als 180 YKS-Punkten in SAY, SÖZ, EA oder DİL und einer Platzierung in einem mindestens 4-jährigen Lisans-Studiengang an einer Fakultät bewirbst du dich ohne Studienkolleg und ohne Studium in der Türkei.** Der Zugang ist auf das platzierte und verwandte Fächer beschränkt.\n\n### Details zu diesem Weg\n- Einschreiben oder Studieren in der Türkei ist nicht nötig – die **Platzierung** selbst zählt.\n- Die 180-Punkte-Schwelle gilt „bis auf Weiteres“ (KMK-Beschluss vom 30.06.2022); 170 Punkte galten nur für den Prüfungsjahrgang 2020.\n- anabin unterscheidet nicht zwischen Anadolu-, Fen- oder anderen allgemeinbildenden Lise-Typen.\n- Platzierung stattdessen an einer universitätsgebundenen 4-jährigen Yüksekokul → Direktzugang nur zu Fachhochschulen.\n- Nicht dein Rang zählt, sondern Punkttyp, Schwelle und Platzierung.\n\n### Ohne Platzierung\nHast du Punkte, aber keine Platzierung, oder liegst du unter der Schwelle, definieren die offiziellen Quellen keinen allgemeinen Weg. Laut DAAD-Zulassungsdatenbank kann, wer ohne YKS oder nur mit TYT-Ergebnis von der Lise kommt, nicht zugelassen werden. Es gibt weder automatische Direktzulassung noch automatisches Studienkolleg – die Hochschule bzw. die zuständige Landesstelle entscheidet.\n\n### Mit Meslek Lisesi\nMit mehr als 180 Punkten führt der Weg über ein fachlich passendes Studienkolleg; nach einem erfolgreichen Lisans-Studienjahr in der Türkei hast du stattdessen fachgebundenen Direktzugang.\n\nuni-assist verlangt Lise Diploması plus YKS-Platzierungsseite. Mehr im [anabin-Guide](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de).\n\nQuelle: [anabin – Türkei](https://anabin.kmk.org/db/schulabschluesse-mit-hochschulzugang) · [DAAD-Zulassungsdatenbank](https://www.daad.de/en/studying-in-germany/requirements/admission-database/)\n"
+     }
+    }
+   ]
+  }
+ ]
+}
