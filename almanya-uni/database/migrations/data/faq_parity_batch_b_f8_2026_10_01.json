@@ -1,0 +1,1030 @@
+{
+ "audit_label": "2026-09-28",
+ "proposed_batch": "B",
+ "clusters": [
+  {
+   "tr_slug": "a2-dil-seviyesi-ile-studienkolleg-basvurusu-icin-ne-zaman-hazirliklara-baslanmali",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "a2-dil-seviyesi-ile-studienkolleg-basvurusu-icin-ne-zaman-hazirliklara-baslanmali",
+     "mode": "rewrite",
+     "old": {
+      "question": "A2 dil seviyesi ile Studienkolleg başvurusu için ne zaman hazırlıklara başlanmalı?",
+      "visible": "text",
+      "head": "Studienkolleg başvuruları için genellikle B1 veya B2 seviyesinde Almanca bilgisi istenir, ancak bazı"
+     },
+     "new": {
+      "question": "A2 dil seviyesi ile Studienkolleg başvurusu için ne zaman hazırlıklara başlanmalı?",
+      "answer_md": "**A2 ile büyük olasılıkla henüz Studienkolleg'e başvuramazsın; hazırlığa hemen başlamalı ve planını hedef Studienkolleg'in istediği sertifikadan ve başvuru tarihinden geriye doğru kurmalısın.** KMK çerçevesine göre derslere katılmaya yetecek Almanca bilgisi kabulden önce kanıtlanmalıdır.\n\n### Resmi örneklerde istenen seviye\n- **Frankfurt:** başvuruda B1 sertifikası; kurum gerçekçi şans için en az B2 öneriyor.\n- **Hamburg:** başvuruda B2 sertifikası.\n- **TU Berlin:** giriş testi B2 seviyesinde.\n- **Bavyera:** giriş sınavında en az B1+/B2.\n\nA2 ile ön başvuru kabul eden resmi bir örnek bulunmuyor; \"bazı Studienkolleg'ler A2 ile ön başvuru alır\" bilgisi doğrulanmadı.\n\n### Adım adım plan\n1. Hedef Studienkolleg'i ve kurs tipini seç; istenen sertifikayı (B1 ya da B2) ve başvuru dönemini not et.\n2. Studienkolleg başvuru tarihleri çoğu zaman lisans tarihlerinden erkendir; sertifikan bu tarihten önce elinde olmalı.\n3. Giriş sınavı varsa (kuruma göre Almanca, bazılarında matematik de) ayrıca hazırlan.\n\nA2'den B1 veya B2'ye çıkmak için resmi bir süre yok; bu, kursun yoğunluğuna ve senin temposuna bağlı.\n\nKaynak: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "a2-dil-seviyesi-ile-studienkolleg-basvurusu-icin-ne-zaman-hazirliklara-baslanmali-en",
+     "mode": "update",
+     "old": {
+      "question": "When should you start preparing for a Studienkolleg application with an A2 German level?",
+      "visible": "text",
+      "head": "For Studienkolleg applications, a German language level of B1 or B2 is usually required, though some"
+     },
+     "new": {
+      "question": "When should you start preparing for a Studienkolleg application with an A2 German level?",
+      "answer_md": "**With A2 you most likely cannot apply to a Studienkolleg yet, so start preparing now and plan backwards from the certificate and deadline your target Studienkolleg requires.** Under the KMK framework, German good enough to follow the classes has to be proven before admission.\n\n### Levels required in official examples\n- **Frankfurt:** a B1 certificate at application; the university says you need at least B2 for a realistic chance.\n- **Hamburg:** a B2 certificate at application.\n- **TU Berlin:** the entrance test is set at B2 level.\n- **Bavaria:** at least B1+/B2 in the entrance exam.\n\nNo official example of a Studienkolleg accepting a pre-application with A2 could be found, so the claim that some do is not confirmed.\n\n### Step-by-step plan\n1. Pick your target Studienkolleg and course type; note the certificate it wants (B1 or B2) and its application window.\n2. Studienkolleg deadlines are often earlier than degree deadlines, and you need the certificate in hand before yours.\n3. If there is an entrance test (German, at some institutions maths too), prepare for it separately.\n\nThere is no official timeframe for getting from A2 to B1 or B2; it depends on course intensity and your own pace.\n\nSource: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "a2-dil-seviyesi-ile-studienkolleg-basvurusu-icin-ne-zaman-hazirliklara-baslanmali-de",
+     "mode": "update",
+     "old": {
+      "question": "Wann sollte ich mit den Vorbereitungen für die Studienkolleg-Bewerbung mit A2-Sprachniveau beginnen?",
+      "visible": "text",
+      "head": "Für die Bewerbung am Studienkolleg wird meistens ein B1- oder B2-Niveau in Deutsch verlangt. Manche"
+     },
+     "new": {
+      "question": "Wann sollte ich mit den Vorbereitungen für die Studienkolleg-Bewerbung mit A2-Sprachniveau beginnen?",
+      "answer_md": "**Mit A2 kannst du dich sehr wahrscheinlich noch nicht bewerben – fang also jetzt an und plane rückwärts vom Zertifikat und der Frist, die dein Ziel-Studienkolleg verlangt.** Laut KMK-Rahmenordnung musst du vor der Aufnahme Deutschkenntnisse nachweisen, mit denen du dem Unterricht folgen kannst.\n\n### Geforderte Niveaus in offiziellen Beispielen\n- **Frankfurt:** B1-Zertifikat bei der Bewerbung; für eine realistische Chance nennt die Universität mindestens B2.\n- **Hamburg:** B2-Zertifikat bei der Bewerbung.\n- **TU Berlin:** Aufnahmetest auf B2-Niveau.\n- **Bayern:** mindestens B1+/B2 in der Aufnahmeprüfung.\n\nEin offizielles Beispiel für eine Voranmeldung mit A2 ließ sich nicht finden; die Behauptung, manche Studienkollegs akzeptierten das, ist nicht belegt.\n\n### Schritt für Schritt\n1. Wähle Studienkolleg und Kurstyp; notiere das geforderte Zertifikat (B1 oder B2) und den Bewerbungszeitraum.\n2. Studienkolleg-Fristen liegen oft früher als die für Studiengänge; dein Zertifikat muss vorher vorliegen.\n3. Gibt es einen Aufnahmetest (Deutsch, teils auch Mathematik), bereite dich gesondert darauf vor.\n\nEine offizielle Dauer für den Weg von A2 zu B1 oder B2 gibt es nicht; sie hängt von der Kursintensität und deinem Tempo ab.\n\nQuelle: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "devlet-studienkolleg-ucretsiz-mi-ozel-okul-ne-kadar",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "devlet-studienkolleg-ucretsiz-mi-ozel-okul-ne-kadar",
+     "mode": "rewrite",
+     "old": {
+      "question": "Devlet Studienkolleg ücretsiz mi, özel okul ne kadar?",
+      "visible": "text",
+      "head": "Devlet Studienkolleg ücretsiz (sadece semester ücreti ~150-350 €). Özel Studienkolleg ücreti 3,000-1"
+     },
+     "new": {
+      "question": "Devlet Studienkolleg ücretsiz mi, özel okul ne kadar?",
+      "answer_md": "**Devlet Studienkolleg'lerinde genel olarak öğrenim ücreti yok; ama bağlı olduğu yükseköğretim kurumunun dönem katkı payını (Semesterbeitrag) ödersin.** Özel Studienkolleg ücretini her kurum kendisi belirler; resmi bir fiyat aralığı yoktur.\n\n### Devlet Studienkolleg: ücretsiz ama masrafsız değil\n- DAAD'ye göre devlet Studienkolleg'leri genelde ücretsizdir (dönem katkı payı hariç), özel olanlar ise sıklıkla ücret alır.\n- Bazı kurumlar sınav ücreti alır, örneğin: Frankfurt'ta iç Feststellungsprüfung 100 €, Landesstudienkolleg Sachsen-Anhalt'ta (Hochschule Anhalt) giriş sınavı 30 €, TU Berlin'de Propädeutikum 325 €. TU Berlin'de giriş sınavı, dersler ve FSP ise ücretsiz.\n- uni-assist üzerinden başvuruyorsan uni-assist ücreti ayrıca ödenir.\n\n### Baden-Württemberg\nBW'de AB dışından gelen öğrencilerin dönem başına ödediği 1.500 € eyalet bakanlığının açıklamasına göre öğrenim (Studium) içindir. Örneğin Heidelberg Üniversitesi, Studienkolleg'i için uluslararası öğrencilerden öğrenim ücreti alınmadığını, yalnızca dönem katkı payı ödendiğini belirtiyor. Başka bir BW kurumunda bunu kurumun kendisine sor.\n\n### Devlet mi, özel mi?\nHochschule Anhalt, Coburg ve Mittelhessen (Marburg) Studienkolleg'leri devlet kurumudur, özel değildir. Özel bir kurum seçeceksen Feststellungsprüfung'u kimin yaptığını ve hedef üniversitenin bu sınavı kabul edip etmediğini önceden yazılı olarak teyit et.\n\nKaynak: [DAAD – Studienkollegs](https://www.daad.de/en/studying-in-germany/requirements/studienkollegs/) · [Studienkolleg merkez listesi](/tr/blog/studienkolleg-center-list-2026-public-private-institutions)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "devlet-studienkolleg-ucretsiz-mi-ozel-okul-ne-kadar-en",
+     "mode": "update",
+     "old": {
+      "question": "Is a public Studienkolleg free, how much is a private one?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is a public Studienkolleg free, how much is a private one?",
+      "answer_md": "**Public Studienkollegs generally charge no tuition, but you pay the semester contribution (Semesterbeitrag) of the host university.** Private providers set their own prices; there is no official fee range for them.\n\n### Public Studienkolleg: free, but not cost-free\n- According to the DAAD, public Studienkollegs are generally free apart from the semester contribution, while private ones frequently charge fees.\n- Some public institutions charge exam fees, for example: Frankfurt, internal Feststellungsprüfung 100 €; Landesstudienkolleg Sachsen-Anhalt (Hochschule Anhalt), entrance test 30 €; TU Berlin, Propädeutikum 325 €. At TU Berlin the entrance test, classes and the FSP themselves are free.\n- If you apply through uni-assist, its application fee comes on top.\n\n### Baden-Württemberg\nThe Land ministry describes the 1,500 € per semester for non-EU students as a contribution to the cost of degree studies. Heidelberg University, for example, states that its Studienkolleg charges international students no tuition fees, only the semester contribution. For other institutions in the Land, ask the Studienkolleg directly.\n\n### Public or private?\nThe Studienkollegs at Hochschule Anhalt, Coburg and Mittelhessen (Marburg) are public, not private. If you consider a private provider, confirm in writing who holds the Feststellungsprüfung and whether your target university accepts it.\n\nSource: [DAAD – Studienkollegs](https://www.daad.de/en/studying-in-germany/requirements/studienkollegs/) · [Studienkolleg centre list](/en/blog/studienkolleg-center-list-2026-public-private-institutions-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "devlet-studienkolleg-ucretsiz-mi-ozel-okul-ne-kadar-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist ein staatliches Studienkolleg kostenlos? Was kostet ein privates Studienkolleg?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist ein staatliches Studienkolleg kostenlos? Was kostet ein privates Studienkolleg?",
+      "answer_md": "**Staatliche Studienkollegs verlangen in der Regel keine Studiengebühren, du zahlst aber den Semesterbeitrag der jeweiligen Hochschule.** Private Anbieter legen ihre Preise selbst fest; eine offizielle Preisspanne gibt es dafür nicht.\n\n### Staatliches Studienkolleg: gebührenfrei, aber nicht kostenlos\n- Laut DAAD sind staatliche Studienkollegs im Allgemeinen kostenfrei (bis auf den Semesterbeitrag), private verlangen häufig Gebühren.\n- Einzelne Einrichtungen erheben Prüfungsgebühren, zum Beispiel: Frankfurt, interne Feststellungsprüfung 100 €; Landesstudienkolleg Sachsen-Anhalt (Hochschule Anhalt), Aufnahmetest 30 €; TU Berlin, Propädeutikum 325 €. Aufnahmetest, Unterricht und FSP selbst sind an der TU Berlin kostenlos.\n- Bewirbst du dich über uni-assist, kommt dessen Bewerbungsgebühr hinzu.\n\n### Baden-Württemberg\nDie 1.500 € pro Semester für Studierende von außerhalb der EU beziehen sich laut Wissenschaftsministerium auf das Studium. Die Universität Heidelberg etwa gibt an, dass für ihr Studienkolleg keine Studiengebühren für internationale Studierende anfallen, nur der Semesterbeitrag. Bei anderen Einrichtungen im Land fragst du am besten direkt nach.\n\n### Staatlich oder privat?\nDie Studienkollegs an der Hochschule Anhalt, in Coburg und Mittelhessen (Marburg) sind staatlich, nicht privat. Bei einem privaten Anbieter solltest du schriftlich klären, wer die Feststellungsprüfung abnimmt und ob deine Wunschhochschule sie anerkennt.\n\nQuelle: [DAAD – Studienkollegs](https://www.daad.de/en/studying-in-germany/requirements/studienkollegs/) · [Liste der Studienkollegs](/de/blog/studienkolleg-center-list-2026-public-private-institutions-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "devlet-universitelerinde-almanca-hazirlik-fakultelerine-nasil-kayit-olunur",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "devlet-universitelerinde-almanca-hazirlik-fakultelerine-nasil-kayit-olunur",
+     "mode": "rewrite",
+     "old": {
+      "question": "Devlet üniversitelerinde Almanca hazırlık fakültelerine nasıl kayıt olunur?",
+      "visible": "text",
+      "head": "Devlet üniversitelerindeki Almanca hazırlık fakültelerine kayıt olmak için genellikle belirli bir Al"
+     },
+     "new": {
+      "question": "Devlet üniversitelerinde Almanca hazırlık fakültelerine (Studienkolleg) nasıl kayıt olunur?",
+      "answer_md": "**Almanya'da ayrı bir \"Almanca hazırlık fakültesi\" yok; kastedilen genellikle devlet Studienkolleg'idir ve başvuru yolu kuruma ve eyalete göre değişir.** Studienkolleg, okul diploması doğrudan üniversiteye giriş hakkı vermeyen adaylar içindir; bu yüzden \"üniversite giriş yeterliliği (HZB) şart\" bilgisi yanlıştır.\n\n### Başvuru nereye yapılır? (örnekler)\n- **uni-assist üzerinden:** Frankfurt (Goethe-Universität).\n- **Okumak istediğin üniversiteye:** Bavyera'daki üniversite Studienkolleg'leri; Heidelberg'e göre önce Baden-Württemberg'deki bir üniversiteye başvurursun, ardından giriş sınavına davet edilirsin.\n- **Doğrudan Studienkolleg'e:** Hamburg ve Bavyera'daki FH-Studienkolleg'leri.\n\nuni-assist'in kendisi de üye üniversitelerde bile Studienkolleg başvurularından otomatik olarak sorumlu olmadığını belirtir; hedef kurumun sayfasını kontrol et.\n\n### Almanca şartı\nKabulden önce Almanca bilgini kanıtlaman gerekir; seviyeyi kurum belirler. Örnekler: Frankfurt başvuruda B1 (gerçekçi şans için en az B2), Hamburg B2, TU Berlin B2 seviyesinde giriş testi, Bavyera giriş sınavında en az B1+/B2. Çoğu kurumda ardından bir giriş sınavı gelir; Hamburg'da sınav yok, puan sistemi var.\n\n### Tarihler\nStudienkolleg başvuru tarihleri çoğu zaman lisans başvurularından daha erkendir. Yer garantisi yoktur.\n\nKaynak: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "devlet-universitelerinde-almanca-hazirlik-fakultelerine-nasil-kayit-olunur-en",
+     "mode": "update",
+     "old": {
+      "question": "How do I enroll in German preparatory faculties at public universities?",
+      "visible": "text",
+      "head": "To enroll in German preparatory faculties at public universities, you typically need a specific Germ"
+     },
+     "new": {
+      "question": "How do I enroll in a German preparatory college (Studienkolleg) at a public university?",
+      "answer_md": "**There is no separate \"German preparatory faculty\" in Germany; what people have in mind is a public Studienkolleg, and how you apply depends on the institution and the Land.** A Studienkolleg is meant for applicants whose school certificate does not give direct university access, so the idea that you need a university entrance qualification (HZB) first is wrong.\n\n### Where to apply (examples)\n- **Through uni-assist:** Frankfurt (Goethe-Universität).\n- **To the university you want to study at:** the university Studienkollegs in Bavaria; according to Heidelberg, you first apply to a university in Baden-Württemberg and are then invited to the entrance exam.\n- **Directly to the Studienkolleg:** Hamburg and the Bavarian FH-Studienkollegs.\n\nuni-assist itself says it is not automatically responsible for Studienkolleg applications, even at member universities, so check your target institution's page.\n\n### German requirement\nYou must prove German before admission, at a level the institution sets. Examples: Frankfurt B1 at application (at least B2 for a realistic chance), Hamburg B2, TU Berlin an entrance test at B2 level, Bavaria at least B1+/B2 in the entrance exam. An entrance test usually follows; Hamburg has none and uses a points system instead.\n\n### Deadlines\nStudienkolleg deadlines are often earlier than degree-programme deadlines, and there is no guaranteed place.\n\nSource: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "devlet-universitelerinde-almanca-hazirlik-fakultelerine-nasil-kayit-olunur-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie bewirbst du dich für Sprachkurse zur Studienvorbereitung an staatlichen Universitäten?",
+      "visible": "text",
+      "head": "Um dich für Deutsch-Sprachkurse zur Studienvorbereitung an staatlichen Universitäten einzuschreiben,"
+     },
+     "new": {
+      "question": "Wie bewirbst du dich an einem staatlichen Studienkolleg zur Studienvorbereitung?",
+      "answer_md": "**Eine eigene „Deutsch-Vorbereitungsfakultät“ gibt es in Deutschland nicht; gemeint ist meist ein staatliches Studienkolleg, und der Bewerbungsweg hängt von Einrichtung und Bundesland ab.** Das Studienkolleg ist für Bewerberinnen und Bewerber gedacht, deren Schulzeugnis keinen direkten Hochschulzugang eröffnet. Eine Hochschulzugangsberechtigung (HZB) als Voraussetzung zu nennen, ist daher falsch.\n\n### Wo bewirbst du dich? (Beispiele)\n- **Über uni-assist:** Frankfurt (Goethe-Universität).\n- **Bei der Hochschule, an der du studieren willst:** die Studienkollegs an bayerischen Universitäten; laut Heidelberg bewirbst du dich zuerst an einer Hochschule in Baden-Württemberg und wirst dann zur Aufnahmeprüfung eingeladen.\n- **Direkt beim Studienkolleg:** Hamburg und die bayerischen Studienkollegs FH.\n\nuni-assist weist selbst darauf hin, dass es auch bei Mitgliedshochschulen nicht automatisch für Studienkolleg-Bewerbungen zuständig ist. Prüfe deshalb die Seite deiner Ziel-Einrichtung.\n\n### Deutschkenntnisse\nDeutsch musst du vor der Aufnahme nachweisen; das Niveau legt die Einrichtung fest. Beispiele: Frankfurt B1 bei der Bewerbung (realistisch mindestens B2), Hamburg B2, TU Berlin Aufnahmetest auf B2-Niveau, Bayern mindestens B1+/B2 in der Aufnahmeprüfung. Meist folgt ein Aufnahmetest; Hamburg vergibt Plätze stattdessen nach Punkten.\n\n### Fristen\nDie Fristen der Studienkollegs liegen oft früher als die für Studiengänge. Einen Anspruch auf einen Platz gibt es nicht.\n\nQuelle: [uni-assist – Studienkolleg](https://www.uni-assist.de/en/how-to-apply/get-information/studienkolleg-preparatory-course/) · [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "studienkolleg-giris-sinavinda-neler-soruluyor",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "studienkolleg-giris-sinavinda-neler-soruluyor",
+     "mode": "rewrite",
+     "old": {
+      "question": "Studienkolleg giriş sınavında neler soruluyor?",
+      "visible": "text",
+      "head": "Studienkolleg Aufnahmeprüfung (giriş sınavı), 2 ana bölümden oluşur: Almanca + Matematik . Bazı unil"
+     },
+     "new": {
+      "question": "Studienkolleg giriş sınavında neler soruluyor?",
+      "answer_md": "**Almanya genelinde tek tip bir Studienkolleg giriş sınavı yok.** KMK çerçevesi yalnızca kabulden önce derslere katılmaya yetecek Almanca bilgisinin kanıtlanmasını şart koşar; sınavın içeriğini ve usulünü eyalet ve Studienkolleg belirler.\n\n### Örnekler (genel kural değil)\n- **TU Berlin:** Almanca (B2 seviyesinde dört C-Test) ve matematik (yardımcı araç olmadan 60 dakikada 8–10 soru); her bölüm yaklaşık 1 saat.\n- **Bavyera:** Sınavı Studienkolleg yapar; Almanca en az B1+/B2, T/M/W kursları ve FH-Studienkolleg adayları için ayrıca matematik.\n- **Frankfurt (Goethe-Universität):** Yalnızca elektronik bir Almanca C-Test; DSH 2 bile muafiyet sağlamaz.\n- **Studienkolleg Mittelhessen (Marburg):** 35 dakikalık online çoktan seçmeli Almanca testi, matematik yok.\n- **Hamburg:** Giriş sınavı yok; yerler not ortalaması ve bonus puanlarla dağıtılır.\n\n### TestAS muafiyet sağlamaz\nTestAS puanı Studienkolleg'i ortadan kaldırmaz. TestAS'ta 100 puan ortalama sonuçtur, bir eşik değildir. Hiçbir resmi kaynak belirli bir TestAS puanıyla Studienkolleg'in atlanabileceğini söylemiyor; HRK'ya göre üniversite TestAS'ı en fazla lise notunun yanında bonus veya ağırlık olarak kullanabilir.\n\n### Nasıl hazırlanırsın?\nHedef Studienkolleg'in resmi sayfasındaki örnek sınavlara ve kurs tipine (T, M, W, G, S) göre çalış; sınav tarihi, yeri ve konuları kuruma göre değişir.\n\nKaynak: [KMK Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Studienkolleg rehberi](/tr/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "studienkolleg-giris-sinavinda-neler-soruluyor-en",
+     "mode": "update",
+     "old": {
+      "question": "What questions are asked in the Studienkolleg entrance exam?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What questions are asked in the Studienkolleg entrance exam?",
+      "answer_md": "**There is no nationwide Studienkolleg entrance exam.** The KMK framework only requires you to prove, before admission, German good enough to follow the classes; each Land and each Studienkolleg decides what the test looks like.\n\n### Examples (not general rules)\n- **TU Berlin:** German (four C-tests at B2 level) and maths (8–10 tasks in 60 minutes, no aids), roughly 1 hour per subject.\n- **Bavaria:** the Studienkolleg runs the exam; German at least B1+/B2, plus maths for the T/M/W courses and the FH-Studienkolleg.\n- **Frankfurt (Goethe-Universität):** only an electronic German C-test, and even DSH 2 does not get you out of it.\n- **Studienkolleg Mittelhessen (Marburg):** a 35-minute online multiple-choice German test, no maths.\n- **Hamburg:** no entrance exam at all; places are ranked by grade average and bonus points.\n\n### TestAS is not an exemption\nA good TestAS result does not replace the Studienkolleg. A score of 100 is simply the average, not a threshold. No official source names any TestAS score that lets you skip the Studienkolleg; according to the HRK, a university may at most use TestAS as a bonus or weighting next to your school grade.\n\n### How to prepare\nWork through the sample papers on your target Studienkolleg's official site for your course type (T, M, W, G, S). Dates, location and topics vary by institution.\n\nSource: [KMK Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Studienkolleg guide](/en/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "studienkolleg-giris-sinavinda-neler-soruluyor-de",
+     "mode": "update",
+     "old": {
+      "question": "Was wird in der Aufnahmeprüfung des Studienkollegs gefragt?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was wird in der Aufnahmeprüfung des Studienkollegs gefragt?",
+      "answer_md": "**Eine bundesweit einheitliche Aufnahmeprüfung für das Studienkolleg gibt es nicht.** Die KMK-Rahmenordnung verlangt nur, dass du vor der Aufnahme ausreichende Deutschkenntnisse für den Unterricht nachweist; Inhalt und Ablauf legen Land und Studienkolleg fest.\n\n### Beispiele (keine allgemeine Regel)\n- **TU Berlin:** Deutsch (vier C-Tests auf B2-Niveau) und Mathematik (8–10 Aufgaben in 60 Minuten ohne Hilfsmittel), je etwa 1 Stunde.\n- **Bayern:** Das Studienkolleg nimmt die Prüfung ab; Deutsch mindestens B1+/B2, für die Kurse T/M/W und das Studienkolleg FH zusätzlich Mathematik.\n- **Frankfurt (Goethe-Universität):** nur ein elektronischer Deutsch-C-Test; auch mit DSH 2 wirst du davon nicht befreit.\n- **Studienkolleg Mittelhessen (Marburg):** ein 35-minütiger Online-Multiple-Choice-Test in Deutsch, keine Mathematik.\n- **Hamburg:** keine Aufnahmeprüfung; die Plätze werden nach Notendurchschnitt und Bonuspunkten vergeben.\n\n### TestAS ersetzt das Studienkolleg nicht\nEin gutes TestAS-Ergebnis macht das Studienkolleg nicht überflüssig. Ein Score von 100 ist der Durchschnitt, keine Schwelle. Keine offizielle Quelle nennt einen TestAS-Wert, mit dem du das Studienkolleg überspringen kannst; laut HRK kann eine Hochschule den TestAS höchstens als Bonus oder Gewichtung neben der Schulnote nutzen.\n\n### So bereitest du dich vor\nNutze die Beispielaufgaben auf der offiziellen Seite deines Ziel-Studienkollegs für deinen Kurstyp (T, M, W, G, S). Termine, Ort und Themen unterscheiden sich je nach Einrichtung.\n\nQuelle: [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Studienkolleg-Ratgeber](/de/blog/studienkolleg-guide-2026-who-needs-it-which-course-which-school-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "universite-hazirlik-sinifi-kabulu-sonrasi-dil-kursumu-farkli-bir-eyalette-alabilir-miyim",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "universite-hazirlik-sinifi-kabulu-sonrasi-dil-kursumu-farkli-bir-eyalette-alabilir-miyim",
+     "mode": "rewrite",
+     "old": {
+      "question": "Üniversite hazırlık sınıfı kabulü sonrası dil kursumu farklı bir eyalette alabilir miyim?",
+      "visible": "text",
+      "head": "Üniversite hazırlık sınıfı kabulü aldıktan sonra dil kursunuzu illa ki kabul aldığınız eyalette alma"
+     },
+     "new": {
+      "question": "Üniversite hazırlık sınıfı kabulü sonrası dil kursumu farklı bir eyalette alabilir miyim?",
+      "answer_md": "**Otomatik olarak hayır: Studienkolleg kabulünden sonra başka bir eyalette istediğin bir dil okuluna gitmek, oturum izninin amacına kendiliğinden girmez.** İzin Almanya'nın tamamında geçerlidir ama amaca bağlıdır; değişiklik yapmadan önce yabancılar dairesine (Ausländerbehörde), vize aşamasındaysan Alman temsilciliğine danış.\n\n### Yasa ne diyor? (§ 16b AufenthG)\n- Öğrenim amacı hazırlık önlemlerini de kapsar: **Studienkolleg**, kabulün kanıtlanmış olması şartıyla.\n- **Hazırlık dil kursu** ise yalnızca tam zamanlı öğrenime kabul edildiysen ve bu kabul o dil kursuna bağlandıysa bu kapsama girer.\n- Yasa Studienkolleg'i belirli bir eyalete bağlamaz; ancak kabulünle ilgisi olmayan bir dil okulu bu kapsamda sayılmaz.\n\n### Oturum izni\nOturum izni federal bölgenin tamamı için verilir, fakat şartlar ve kayıtlar (Auflagen) içerebilir. İzin için esas olan bir şart ortadan kalkarsa süresi sonradan kısaltılabilir.\n\n### Studienkolleg değiştirmek\nKMK'ya göre bir Studienkolleg'den diğerine geçiş kural olarak mümkün değildir. Geçtiğin Feststellungsprüfung ise bütün eyaletlerde karşılıklı tanınır. FH-Studienkolleg'de geçilen sınav üniversiteye giriş hakkı vermez.\n\nKaynak: [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Şartlı kabul ve vize](/tr/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "universite-hazirlik-sinifi-kabulu-sonrasi-dil-kursumu-farkli-bir-eyalette-alabilir-miyim-en",
+     "mode": "update",
+     "old": {
+      "question": "Can I take my language course in a different state after getting accepted to a Studienkolleg?",
+      "visible": "text",
+      "head": "No, you don't have to take your language course in the same state where you received your Studienkol"
+     },
+     "new": {
+      "question": "Can I take my language course in a different state after getting accepted to a Studienkolleg?",
+      "answer_md": "**Not automatically: after a Studienkolleg acceptance, going to any language school in another Land is not covered by the purpose of your residence permit by default.** The permit is valid throughout Germany but tied to its purpose, so check with the Ausländerbehörde (or the German mission if you are still at the visa stage) before you change anything.\n\n### What the law says (§ 16b AufenthG)\n- The study purpose includes preparatory measures: a **Studienkolleg**, provided your acceptance is proven.\n- A **preparatory language course** counts only if you have been admitted to full-time study and that admission is conditional on the course.\n- The law does not tie a Studienkolleg to a particular Land, but a language school unrelated to your admission does not fall under this.\n\n### Residence permit\nA residence title is issued for the whole federal territory, yet it can carry conditions (Auflagen). If a requirement essential to it lapses, its validity can be shortened.\n\n### Switching Studienkolleg\nAccording to the KMK, moving from one Studienkolleg to another is as a rule not possible. A passed Feststellungsprüfung, on the other hand, is recognised by the Länder mutually. An FSP from an FH-Studienkolleg does not open access to universities.\n\nSource: [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [KMK Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Conditional admission and visa](/en/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "universite-hazirlik-sinifi-kabulu-sonrasi-dil-kursumu-farkli-bir-eyalette-alabilir-miyim-de",
+     "mode": "update",
+     "old": {
+      "question": "Kann ich meinen Sprachkurs in einem anderen Bundesland machen, nachdem ich eine Zulassung für das Studienkolleg erhalten habe?",
+      "visible": "text",
+      "head": "Nachdem du eine Zulassung für das Studienkolleg bekommen hast, musst du deinen Sprachkurs nicht zwin"
+     },
+     "new": {
+      "question": "Kann ich meinen Sprachkurs in einem anderen Bundesland machen, nachdem ich eine Zulassung für das Studienkolleg erhalten habe?",
+      "answer_md": "**Nicht automatisch: Nach der Zusage eines Studienkollegs ist ein beliebiger Sprachkurs in einem anderen Bundesland nicht ohne Weiteres vom Aufenthaltszweck gedeckt.** Dein Titel gilt zwar bundesweit, ist aber zweckgebunden. Kläre einen Wechsel deshalb vorher mit der Ausländerbehörde oder, in der Visumsphase, mit der deutschen Auslandsvertretung.\n\n### Was sagt das Gesetz? (§ 16b AufenthG)\n- Zum Studienzweck gehören studienvorbereitende Maßnahmen: das **Studienkolleg**, wenn die Annahme nachgewiesen ist.\n- Ein **studienvorbereitender Sprachkurs** zählt nur, wenn du zu einem Vollzeitstudium zugelassen bist und die Zulassung an diesen Kurs gebunden ist.\n- Das Gesetz bindet das Studienkolleg an kein bestimmtes Land; eine Sprachschule ohne Bezug zu deiner Zulassung fällt aber nicht darunter.\n\n### Aufenthaltstitel\nDer Aufenthaltstitel wird für das Bundesgebiet erteilt, kann aber mit Auflagen verbunden sein. Fällt eine wesentliche Voraussetzung weg, kann die Geltungsdauer nachträglich verkürzt werden.\n\n### Studienkolleg wechseln\nLaut KMK ist ein Wechsel von einem Studienkolleg zu einem anderen in der Regel nicht möglich. Eine bestandene Feststellungsprüfung erkennen die Länder dagegen gegenseitig an. Die FSP an einem Studienkolleg FH eröffnet keinen Zugang zu Universitäten.\n\nQuelle: [§ 16b AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [KMK-Rahmenordnung](https://www.kmk.org/fileadmin/Dateien/pdf/ZAB/Hochschulzugang_Beschluesse_der_KMK/Rahmenordnung2006.pdf) · [Bedingte Zulassung und Visum](/de/blog/conditional-admission-visa-germany-which-merkblatt-and-language-level-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyada-phd-programlari-nasil-bulunur",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-phd-programlari-nasil-bulunur",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da PhD programları nasıl bulunur?",
+      "visible": "text",
+      "head": "Almanya'da PhD (Doktorat) iki temel yolla alınır: yapılandırılmış doktora programları (Structured) v"
+     },
+     "new": {
+      "question": "Almanya'da PhD programları nasıl bulunur?",
+      "answer_md": "**Almanya'da PhD için iki yol var: bir danışman hocayla bireysel doktora ya da yapılandırılmış bir doktora programı.** Pozisyonları resmi arama portallarında ve doğrudan hocalarla iletişime geçerek bulursun.\n\n### Bireysel doktora (en yaygın yol)\n- Konuna uygun bir profesör (Doktorvater/Doktormutter) bulup ona doğrudan yazarsın; süre genellikle 3–5 yıl.\n- Hoca kabul etse bile bölüm ya da doktora komitesi doktora adaylığını ayrıca onaylar.\n- Not, dil ve belge şartları fakültenin Promotionsordnung'unda yazar; Almanya genelinde sabit bir not sınırı yok.\n\n### Yapılandırılmış programlar\n- Ekip danışmanlığı ve müfredat var; süre genellikle 3–4 yıl.\n- Burs ya da maaş otomatik olarak dahil değil; finansmanı her ilanda ayrıca kontrol et.\n\n### Nerede aranır?\n- **PhDGermany:** uluslararası adaylara yönelik doktora ilanları\n- **DAAD International Programmes:** yaklaşık 230 uluslararası doktora programı\n- **GERiT** ve **Higher Education Compass:** enstitü ve araştırma grubu araması\n- DFG Research Training Groups, Helmholtz ve Leibniz graduate school'ları, International Max Planck Research Schools (IMPRS)\n\n### Ücret\nDevlet üniversitesinde doktora prensipte öğrenim ücretsizdir; kayıt olursan Semesterbeitrag ödersin. Baden-Württemberg ve TUM da doktora adaylarını AB dışı öğrenim ücretinden muaf tutar. TestAS, doktora başvurusu için resmi kaynaklarda geçen bir şart değil.\n\nKaynak: [Research in Germany – PhD pozisyonu bulma](https://www.research-in-germany.org/your-goal/phd/find-your-phd-position.html) · [Research in Germany – PhD başvurusu](https://www.research-in-germany.org/your-goal/phd/How-to-apply-for-a-PhD.html) · [DAAD – Doktora yolları](https://www.daad.de/de/in-deutschland-studieren/promovieren-forschen/wege-zur-promotion/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-phd-programlari-nasil-bulunur-en",
+     "mode": "update",
+     "old": {
+      "question": "How do you find PhD programs in Germany?",
+      "visible": "text",
+      "head": "You can pursue a PhD (Doktorat, the German term for a doctorate or PhD) in Germany through two main"
+     },
+     "new": {
+      "question": "How do you find PhD programs in Germany?",
+      "answer_md": "**There are two routes to a PhD in Germany: an individual doctorate with a supervisor, or a structured doctoral programme.** You find positions through official search portals and by contacting professors directly.\n\n### Individual doctorate (the most common route)\n- You find a professor working on your topic (Doktorvater/Doktormutter) and write to them directly; it typically takes 3–5 years.\n- Even with a professor's agreement, the department or doctoral committee must confirm your eligibility as a doctoral candidate.\n- Grade, language and document requirements are set in the faculty's Promotionsordnung; there is no Germany-wide grade threshold.\n\n### Structured programmes\n- Supervision by a team and a curriculum; typically 3–4 years.\n- Funding is not automatically included, so check each vacancy for a salary or scholarship.\n\n### Where to search\n- **PhDGermany:** PhD openings aimed at international applicants\n- **DAAD International Programmes:** roughly 230 international doctoral programmes\n- **GERiT** and **Higher Education Compass:** search for institutes and research groups\n- DFG Research Training Groups, Helmholtz and Leibniz graduate schools, International Max Planck Research Schools (IMPRS)\n\n### Fees\nA doctorate at a state university is in principle free of tuition; if you enrol, you pay the semester contribution. Baden-Württemberg and TUM also exempt doctoral candidates from their non-EU tuition fees. TestAS is not listed by official sources as a requirement for doctoral admission.\n\nSource: [Research in Germany – find your PhD position](https://www.research-in-germany.org/your-goal/phd/find-your-phd-position.html) · [Research in Germany – how to apply](https://www.research-in-germany.org/your-goal/phd/How-to-apply-for-a-PhD.html) · [DAAD – Wege zur Promotion](https://www.daad.de/de/in-deutschland-studieren/promovieren-forschen/wege-zur-promotion/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-phd-programlari-nasil-bulunur-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie findest du PhD-Programme in Deutschland?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie findest du PhD-Programme in Deutschland?",
+      "answer_md": "**Zur Promotion in Deutschland führen zwei Wege: die Individualpromotion bei einer Betreuerin oder einem Betreuer oder ein strukturiertes Promotionsprogramm.** Stellen findest du über offizielle Suchportale und durch direkten Kontakt zu Professorinnen und Professoren.\n\n### Individualpromotion (der häufigste Weg)\n- Du suchst dir eine passende Doktormutter oder einen Doktorvater und schreibst direkt an; die Dauer liegt meist bei 3–5 Jahren.\n- Auch mit Zusage der Betreuung muss der Fachbereich bzw. der Promotionsausschuss deine Annahme als Doktorand*in bestätigen.\n- Noten-, Sprach- und Unterlagenanforderungen stehen in der Promotionsordnung der Fakultät; eine bundesweite Notengrenze gibt es nicht.\n\n### Strukturierte Programme\n- Betreuung durch ein Team und ein Curriculum; meist 3–4 Jahre.\n- Eine Finanzierung ist nicht automatisch enthalten, prüfe Stelle oder Stipendium bei jeder Ausschreibung.\n\n### Wo suchen?\n- **PhDGermany:** Promotionsangebote speziell für internationale Bewerbende\n- **DAAD International Programmes:** rund 230 internationale Promotionsprogramme\n- **GERiT** und **Hochschulkompass:** Suche nach Instituten und Forschungsgruppen\n- DFG-Graduiertenkollegs, Helmholtz- und Leibniz-Graduiertenschulen, International Max Planck Research Schools (IMPRS)\n\n### Kosten\nEine Promotion an einer staatlichen Hochschule ist grundsätzlich gebührenfrei; bei Einschreibung zahlst du den Semesterbeitrag. Baden-Württemberg und die TUM nehmen Promovierende von ihren Gebühren für Nicht-EU-Studierende aus. Den TestAS nennen offizielle Quellen nicht als Voraussetzung für die Promotion.\n\nQuelle: [Research in Germany – PhD-Stelle finden](https://www.research-in-germany.org/your-goal/phd/find-your-phd-position.html) · [Research in Germany – Bewerbung](https://www.research-in-germany.org/your-goal/phd/How-to-apply-for-a-PhD.html) · [DAAD – Wege zur Promotion](https://www.daad.de/de/in-deutschland-studieren/promovieren-forschen/wege-zur-promotion/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyada-ucretsiz-master-mumkun-mu",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-ucretsiz-master-mumkun-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da ücretsiz master mümkün mü?",
+      "visible": "text",
+      "head": "Evet — Almanya'da master öğrenimi büyük ölçüde ücretsiz. Devlet üniversitelerinin neredeyse tamamı m"
+     },
+     "new": {
+      "question": "Almanya'da ücretsiz master mümkün mü?",
+      "answer_md": "**Evet, çoğu durumda mümkün: devlet üniversitelerindeki master programlarının çoğunda öğrenim ücreti yok. Ama her yerde değil**; AB dışından gelen öğrenciler için önemli istisnalar var.\n\n### İstisnalar\n- **Baden-Württemberg:** AB dışından gelen uluslararası öğrenciler dönem başına **1.500 €** öder (Türk vatandaşları AB dışı sayılır). Muafiyetler var; örneğin Alman HZB'si olanlar, partnerlik anlaşmasıyla gelen değişim öğrencileri ve doktora adayları.\n- **TUM (Bavyera, örnek):** WS 2024/25'ten beri yeni kayıt olan AB dışı master öğrencileri programa göre genellikle dönem başına **4.000 veya 6.000 €** öder. DAAD, Bavyera'da AB dışı öğrencilerden ücret alınabileceğini de belirtiyor.\n- **Weiterbildender (sürekli eğitim) master:** Bu programlar ücretlidir; tutar programa göre değişir.\n\n### Semesterbeitrag öğrenim ücreti değil\nHer öğrenci dönem başında Semesterbeitrag öder. Bu para Studierendenwerk ve öğrenci temsilciliğine gider; DAAD'a göre yaklaşık **70–430 €** arasındadır. Birçok üniversitede semester bileti de buna dahildir.\n\n### Ne yapmalısın?\nBaşvurmadan önce seçtiğin üniversitenin ücret sayfasına bak. Başvurunun doğrudan mı, uni-assist üzerinden mi, VPD ile mi yapılacağını da üniversite belirler; VPD her master başvurusu için gereken bir adım değil.\n\nKaynak: [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/) · [TUM – Tuition fees](https://www.tum.de/en/studies/fees/tuition) · [Baden-Württemberg MWK – Gebühren](https://mwk.baden-wuerttemberg.de/de/hochschulen-studium/studieren-in-bw/studienfinanzierung/gebuehren-fuer-internationale-studierende-und-zweitstudium)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-ucretsiz-master-mumkun-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Is it possible to do a master's degree for free in Germany?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Is it possible to do a master's degree for free in Germany?",
+      "answer_md": "**Often, yes: most master's programmes at state universities charge no tuition. But not everywhere** — there are important exceptions for students from outside the EU.\n\n### Exceptions\n- **Baden-Württemberg:** international students coming from outside the EU pay **1,500 € per semester** (Turkish citizens count as non-EU). Exemptions exist, for example for non-Germans with a German HZB, exchange students under partnership agreements and doctoral candidates.\n- **TUM (Bavaria, example):** since WS 2024/25, newly enrolled non-EU master's students usually pay **4,000 or 6,000 € per semester**, depending on the programme. DAAD also notes that Bavarian universities may charge non-EU students.\n- **Continuing-education (weiterbildende) master's programmes:** these charge fees; the amount depends on the programme.\n\n### The semester contribution is not tuition\nEvery student pays a Semesterbeitrag each semester. It funds the Studierendenwerk and student self-government and, according to DAAD, is roughly **70–430 €**. At many universities it includes a semester ticket.\n\n### What to do\nCheck the fee page of each university before you apply. The university also decides whether you apply directly, through uni-assist or with a VPD — a VPD is not a standard step for every master's application.\n\nSource: [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/) · [TUM – Tuition fees](https://www.tum.de/en/studies/fees/tuition) · [Baden-Württemberg MWK – Gebühren](https://mwk.baden-wuerttemberg.de/de/hochschulen-studium/studieren-in-bw/studienfinanzierung/gebuehren-fuer-internationale-studierende-und-zweitstudium)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-ucretsiz-master-mumkun-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist ein kostenloses Masterstudium in Deutschland möglich?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Ist ein kostenloses Masterstudium in Deutschland möglich?",
+      "answer_md": "**Oft ja: Für die meisten Masterstudiengänge an staatlichen Hochschulen fallen keine Studiengebühren an. Aber nicht überall** – für Studierende von außerhalb der EU gibt es wichtige Ausnahmen.\n\n### Ausnahmen\n- **Baden-Württemberg:** Internationale Studierende, die von außerhalb der EU zum Studium kommen, zahlen **1.500 € pro Semester** (türkische Staatsangehörige gelten als Nicht-EU). Es gibt Befreiungen, zum Beispiel für Nichtdeutsche mit deutscher HZB, Austauschstudierende aus Partnerschaftsabkommen und Promovierende.\n- **TUM (Bayern, Beispiel):** Seit dem WS 2024/25 zahlen neu eingeschriebene Nicht-EU-Masterstudierende je nach Studiengang meist **4.000 oder 6.000 € pro Semester**. Laut DAAD können bayerische Hochschulen generell Gebühren für Nicht-EU-Studierende erheben.\n- **Weiterbildende Masterstudiengänge:** Sie sind gebührenpflichtig; die Höhe hängt vom Angebot ab.\n\n### Der Semesterbeitrag ist keine Studiengebühr\nJede*r Studierende zahlt pro Semester einen Semesterbeitrag. Er finanziert das Studierendenwerk und die studentische Selbstverwaltung und liegt laut DAAD etwa bei **70–430 €**. An vielen Hochschulen ist ein Semesterticket enthalten.\n\n### Was du tun solltest\nPrüfe vor der Bewerbung die Gebührenseite deiner Hochschule. Ob du dich direkt, über uni-assist oder mit VPD bewirbst, legt ebenfalls die Hochschule fest – eine VPD ist kein Standardschritt für jede Masterbewerbung.\n\nQuelle: [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/) · [TUM – Studiengebühren](https://www.tum.de/en/studies/fees/tuition) · [Baden-Württemberg MWK – Gebühren](https://mwk.baden-wuerttemberg.de/de/hochschulen-studium/studieren-in-bw/studienfinanzierung/gebuehren-fuer-internationale-studierende-und-zweitstudium)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "bilgisayar-muhendisligi-master-icin-deatch-karsilastirmasi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "bilgisayar-muhendisligi-master-icin-deatch-karsilastirmasi",
+     "mode": "rewrite",
+     "old": {
+      "question": "Bilgisayar mühendisliği master için DE/AT/CH karşılaştırması?",
+      "visible": "text",
+      "head": "DE/AT/CH üçlüsü Türk öğrenciler için en popüler Almanca konuşan ülkeler. Master için karşılaştırma:"
+     },
+     "new": {
+      "question": "Bilgisayar mühendisliği master için DE/AT/CH karşılaştırması?",
+      "answer_md": "**Resmi kaynaklarla doğrulanabilen karşılaştırma şu an yalnızca öğrenim ücreti için geçerli: Almanya'da devlet üniversitelerinde master çoğunlukla ücretsiz, Avusturya'da devlet üniversiteleri üçüncü ülke öğrencilerinden sabit bir dönem ücreti alıyor, İsviçre'de ücret kuruma göre değişiyor.**\n\n### Almanya (DE)\n- Devlet üniversitelerinde master programlarının çoğunda öğrenim ücreti yok; ayrıca Semesterbeitrag ödenir.\n- İstisnalar: Baden-Württemberg AB dışı öğrencilerden dönem başına 1.500 € alır. TUM (örnek) WS 2024/25'ten beri yeni AB dışı master öğrencilerinden genellikle dönem başına 4.000 veya 6.000 € alır.\n\n### Avusturya (AT)\n- Devlet üniversitelerinde üçüncü ülke öğrencileri genellikle dönem başına **726,72 €** öder; özel durumlarda muafiyet olabilir.\n- Fachhochschule'ler kendi ücretlerini belirleyebilir.\n\n### İsviçre (CH)\n- Ücretler kuruma göre belirlenir. Örnek: ETH Zürih, 2025 sonbahar döneminden itibaren yabancı öğrencilerden dönem başına **2.190 CHF** alıyor.\n\n### Diğer kriterleri ayrıca kontrol et\nProgram içeriği, dil şartı, vize, öğrencilik sırasında çalışma hakkı, mezuniyet sonrası iş arama süresi, bloke hesap tutarı ve yaşam maliyeti ülkeye ve kuruma göre farklı. Bunları burada rakamla vermiyoruz; karar vermeden önce üniversitenin ve ilgili ülkenin göç makamının resmi sayfalarından güncel bilgiyi kontrol et.\n\nKaynak: [Study in Austria – Tuition fee](https://studyinaustria.at/en/plan-your-studies/tuition-fee) · [ETH Zürich – Tuition fees](https://ethz.ch/students/en/studies/financial/tuition-fees.html) · [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "bilgisayar-muhendisligi-master-icin-deatch-karsilastirmasi-en",
+     "mode": "update",
+     "old": {
+      "question": "A comparison for a Master's in Computer Engineering in Germany, Austria, and Switzerland?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How do Germany, Austria and Switzerland compare for a Master's in Computer Engineering?",
+      "answer_md": "**The only part of this comparison that can currently be confirmed from official sources is tuition: in Germany, master's programmes at state universities are mostly tuition-free; Austria's public universities charge third-country students a fixed semester fee; in Switzerland fees depend on the institution.**\n\n### Germany (DE)\n- Most master's programmes at state universities charge no tuition; a semester contribution is paid separately.\n- Exceptions: Baden-Württemberg charges non-EU students 1,500 € per semester. TUM (example) has charged newly enrolled non-EU master's students since WS 2024/25, usually 4,000 or 6,000 € per semester.\n\n### Austria (AT)\n- At public universities, third-country students generally pay **€726.72 per semester**; exemptions apply in special cases.\n- Universities of applied sciences (Fachhochschulen) may set their own fees.\n\n### Switzerland (CH)\n- Fees are set per institution. Example: ETH Zurich charges foreign students **CHF 2,190 per semester** from the autumn semester 2025.\n\n### Check the other factors separately\nProgramme content, language requirements, visas, work rights while studying, post-graduation job-search periods, blocked-account amounts and living costs differ by country and institution. We do not give figures for them here — check the university's pages and the relevant country's immigration authority for current information before deciding.\n\nSource: [Study in Austria – Tuition fee](https://studyinaustria.at/en/plan-your-studies/tuition-fee) · [ETH Zurich – Tuition fees](https://ethz.ch/students/en/studies/financial/tuition-fees.html) · [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "bilgisayar-muhendisligi-master-icin-deatch-karsilastirmasi-de",
+     "mode": "update",
+     "old": {
+      "question": "Vergleich von DE/AT/CH für einen Master in Computeringenieurwesen?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "DE, AT oder CH: Wie unterscheiden sie sich für einen Master in Computer Engineering?",
+      "answer_md": "**Offiziell belegen lässt sich derzeit nur der Vergleich der Studiengebühren: In Deutschland sind Masterstudiengänge an staatlichen Hochschulen meist gebührenfrei, Österreichs öffentliche Universitäten verlangen von Drittstaatsangehörigen einen festen Semesterbetrag, in der Schweiz hängt die Gebühr von der Hochschule ab.**\n\n### Deutschland (DE)\n- Die meisten Masterstudiengänge an staatlichen Hochschulen kosten keine Studiengebühren; der Semesterbeitrag kommt dazu.\n- Ausnahmen: Baden-Württemberg verlangt von Nicht-EU-Studierenden 1.500 € pro Semester. Die TUM (Beispiel) erhebt seit dem WS 2024/25 von neu eingeschriebenen Nicht-EU-Masterstudierenden meist 4.000 oder 6.000 € pro Semester.\n\n### Österreich (AT)\n- An öffentlichen Universitäten zahlen Studierende aus Drittstaaten in der Regel **726,72 € pro Semester**; in besonderen Fällen gibt es Befreiungen.\n- Fachhochschulen dürfen eigene Studiengebühren festlegen.\n\n### Schweiz (CH)\n- Die Gebühren legt jede Hochschule selbst fest. Beispiel: Die ETH Zürich verlangt von ausländischen Studierenden ab dem Herbstsemester 2025 **2.190 CHF pro Semester**.\n\n### Weitere Kriterien separat prüfen\nStudieninhalte, Sprachanforderungen, Visum, Arbeitsrecht im Studium, Jobsuche nach dem Abschluss, Sperrkonto-Beträge und Lebenshaltungskosten unterscheiden sich je nach Land und Hochschule. Hier nennen wir dafür keine Zahlen – prüfe vor deiner Entscheidung die aktuellen Angaben der Hochschule und der zuständigen Migrationsbehörde des jeweiligen Landes.\n\nQuelle: [Study in Austria – Tuition fee](https://studyinaustria.at/en/plan-your-studies/tuition-fee) · [ETH Zürich – Studiengebühren](https://ethz.ch/students/en/studies/financial/tuition-fees.html) · [DAAD – Finanzen](https://www.daad.de/de/in-deutschland-studieren/leben-in-deutschland/finanzen/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "public-health-master-icin-almanyadaki-secenekler-nelerdir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "public-health-master-icin-almanyadaki-secenekler-nelerdir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Public Health master için Almanya'daki seçenekler nelerdir?",
+      "visible": "text",
+      "head": "Public Health (Halk Sağlığı) Almanya'da gelişmekte olan bir alan — MPH veya MSc Public Health olarak"
+     },
+     "new": {
+      "question": "Public Health master için Almanya'daki seçenekler nelerdir?",
+      "answer_md": "**Almanya'da Public Health master programları var, ancak ortak bir şart listesi yok: dil, not, belge ve seçim yöntemini her program kendisi belirler.** Aşağıdaki iki program yalnızca örnektir.\n\n### Örnek 1: Bielefeld Üniversitesi – MSc Public Health\n- En az 6 dönemlik (180 LP) tamamlanmış bir lisans (üniversite veya Fachhochschule).\n- Yetenek değerlendirmesi olarak yaklaşık 10 sayfalık bir proje taslağı.\n- Derslerin çoğu Almanca; Almanca dil belgesi isteniyor.\n- Başvuru doğrudan üniversiteye; ZAB belgesi ya da uni-assist VPD gerekmiyor.\n\n### Örnek 2: Charité Berlin – MSc Public Health\n- Ders dili Almanca; yalnızca bazı modüller İngilizce.\n- Seçimde önceki diploma notu yüzde 55, alan sınavı notu yüzde 45 ağırlıkla sayılıyor.\n\n### Weiterbildender (sürekli eğitim) master\nBu formattaki master programları ücretlidir; bazıları en az bir yıllık mesleki deneyim ister. Ayrıntılar her programın kendi yönetmeliğinde yazar.\n\n### Programları nasıl bulursun?\nDAAD'ın uluslararası program veritabanında ve Hochschulkompass'ta \"Public Health\" diye ara. Sonra her programın başvuru sayfasından ders dilini (Almanca/İngilizce), dil belgesini, kabul şartlarını ve başvuru tarihlerini kontrol et. İngilizce ya da Almanca için Almanya genelinde tek bir puan şartı yok.\n\nKaynak: [Bielefeld – MSc Public Health başvurusu](https://www.uni-bielefeld.de/fakultaeten/gesundheitswissenschaften/studiengaenge/msc/bewerbung/) · [Charité – MSc Public Health](https://bsph.charite.de/en/academic_programs/public_health/application_mscph)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "public-health-master-icin-almanyadaki-secenekler-nelerdir-en",
+     "mode": "update",
+     "old": {
+      "question": "What are your options for a Public Health master's degree in Germany?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What are your options for a Public Health master's degree in Germany?",
+      "answer_md": "**Germany has Public Health master's programmes, but no common set of requirements: each programme sets its own language, grade, document and selection rules.** The two programmes below are examples only.\n\n### Example 1: Bielefeld University – MSc Public Health\n- A completed first degree of at least 6 semesters (180 LP) from a university or a Fachhochschule.\n- A project draft of about 10 pages as the aptitude assessment.\n- Most teaching is in German, and proof of German is required.\n- You apply directly to the university; neither a ZAB statement nor a uni-assist VPD is needed.\n\n### Example 2: Charité Berlin – MSc Public Health\n- The course language is German; only selected modules are taught in English.\n- Selection is based on your previous degree grade (55 percent) and a subject test (45 percent).\n\n### Continuing-education (weiterbildende) master's\nThese programmes charge fees, and some require at least one year of professional experience. Details are in each programme's own regulations.\n\n### How to find programmes\nSearch for \"Public Health\" in the DAAD international programmes database and the Higher Education Compass, then check each programme's application page for the teaching language, language certificate, admission requirements and deadlines. There is no Germany-wide English or German score requirement.\n\nSource: [Bielefeld – MSc Public Health application](https://www.uni-bielefeld.de/fakultaeten/gesundheitswissenschaften/studiengaenge/msc/bewerbung/) · [Charité – MSc Public Health](https://bsph.charite.de/en/academic_programs/public_health/application_mscph)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "public-health-master-icin-almanyadaki-secenekler-nelerdir-de",
+     "mode": "update",
+     "old": {
+      "question": "Welche Optionen hast du für einen Master in Public Health in Deutschland?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Welche Optionen hast du für einen Master in Public Health in Deutschland?",
+      "answer_md": "**In Deutschland gibt es Masterstudiengänge in Public Health, aber keine einheitlichen Voraussetzungen: Sprache, Note, Unterlagen und Auswahlverfahren legt jeder Studiengang selbst fest.** Die beiden folgenden Programme sind nur Beispiele.\n\n### Beispiel 1: Universität Bielefeld – MSc Public Health\n- Ein abgeschlossenes Hochschul- oder Fachhochschulstudium mit mindestens 6 Semestern (180 LP).\n- Als Eignungsnachweis ein Projektentwurf von etwa 10 Seiten.\n- Die meisten Lehrveranstaltungen sind auf Deutsch; ein Deutschnachweis wird verlangt.\n- Die Bewerbung geht direkt an die Universität; weder eine ZAB-Zeugnisbewertung noch eine VPD von uni-assist ist nötig.\n\n### Beispiel 2: Charité Berlin – MSc Public Health\n- Unterrichtssprache ist Deutsch; nur ausgewählte Module sind auf Englisch.\n- Ausgewählt wird nach der Note des vorherigen Abschlusses (55 Prozent) und der Note eines Fachtests (45 Prozent).\n\n### Weiterbildende Master\nSie sind gebührenpflichtig, und manche verlangen mindestens ein Jahr Berufserfahrung. Details stehen in der jeweiligen Studien- und Prüfungsordnung.\n\n### So findest du Programme\nSuche in der DAAD-Datenbank internationaler Studiengänge und im Hochschulkompass nach „Public Health“. Prüfe danach auf der Bewerbungsseite jedes Programms Unterrichtssprache, Sprachnachweis, Zulassungsvoraussetzungen und Fristen. Einen bundesweit einheitlichen Englisch- oder Deutsch-Score gibt es nicht.\n\nQuelle: [Bielefeld – Bewerbung MSc Public Health](https://www.uni-bielefeld.de/fakultaeten/gesundheitswissenschaften/studiengaenge/msc/bewerbung/) · [Charité – MSc Public Health](https://bsph.charite.de/en/academic_programs/public_health/application_mscph)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "ab-disi-bir-ulkeden-almanyaya-universite-transferi-mumkun-mudur",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "ab-disi-bir-ulkeden-almanyaya-universite-transferi-mumkun-mudur",
+     "mode": "rewrite",
+     "old": {
+      "question": "AB dışı bir ülkeden Almanya'ya üniversite transferi mümkün müdür?",
+      "visible": "text",
+      "head": "Topluluk deneyimine göre, Almanya'da doğrudan 'üniversite transferi' diye bir kavram yaygın değildir"
+     },
+     "new": {
+      "question": "AB dışı bir ülkeden Almanya'ya üniversite transferi mümkün müdür?",
+      "answer_md": "**Otomatik bir \"transfer\" yok, ama yolu var: Alman üniversitesine yeniden kabul başvurusu yaparsın (1. veya daha yüksek bir Fachsemester için) ve önceki derslerinin sayılması (Anrechnung) için ayrıca başvurursun.** Kararı üniversite, genelde ilgili sınav kurulu verir; ZAB değil.\n\n### İki ayrı adım\n- **Kabul:** Üniversiteye giriş yetkin (HZB) ve programın koşulları normal başvurudaki gibi kontrol edilir.\n- **Anrechnung (kredi tanıma):** Aldığın derslerin hangilerinin sayılacağına üniversite başvurunla karar verir. Otomatik bir AKTS dönüşümü yok.\n\n### Lizbon Tanıma Sözleşmesi\nSözleşmeye taraf ülkelerde yapılan öğrenimler, üniversite **esaslı bir fark** gösteremediği sürece tanınır; ispat yükü üniversitededir, ret gerekçeli olmalıdır ve itiraz edilebilir. ENIC-NARIC listesine göre Türkiye de bu ülkeler arasında. Ayrıntılar eyalet yasası ve programın Prüfungsordnung'unda.\n\n### Üst dönemden başlama\nÜst Fachsemester başvurusu için yeterli sayılabilir ders (en az bir dönemlik) ve boş kontenjan gerekir; kontenjanlar çoğunlukla bir önceki dönemden gelen öğrencilerle dolar. Örnek (FU Berlin): önce bölüm danışmanlığına ders listeni gönderip Einstufungsprognose alırsın; kayıt için Einstufungsbescheid gerekir. Dil kursları sayılmaz.\n\nÜst dönemde yer garanti değildir; programın danışmanlığına erkenden yaz.\n\nKaynak: [HRK nexus – Anerkennung](https://www.hrk.de/fileadmin/redaktion/hrk-nexus/07-Downloads/07-03-Material/07-03-01_Leitfaden/nexus_Leitfaden_Anerkennung_kurz_online.pdf) · [FU Berlin – Hochschulwechsel](https://www.fu-berlin.de/studium/bewerbung/allgemein/hochschulwechsel/index.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "ab-disi-bir-ulkeden-almanyaya-universite-transferi-mumkun-mudur-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you transfer university credits to Germany from a non-EU country?",
+      "visible": "text",
+      "head": "In Germany, there isn't really a direct 'university transfer' system as you might know it. If you're"
+     },
+     "new": {
+      "question": "Can you transfer university credits to Germany from a non-EU country?",
+      "answer_md": "**There is no automatic transfer, but there is a route: you apply for admission to a German university (first or a higher Fachsemester) and separately apply for your previous courses to be credited (Anrechnung).** The university — usually its examination board — decides, not ZAB.\n\n### Two separate steps\n- **Admission:** your higher-education entrance qualification (HZB) and the programme's requirements are checked as in any application.\n- **Anrechnung (credit recognition):** on application, the university decides which courses count. There is no automatic ECTS conversion.\n\n### Lisbon Recognition Convention\nStudy periods completed in a state party to the convention are recognised unless the university can show a **substantial difference**; the burden of proof lies with the university, refusals must be justified and can be appealed. According to the ENIC-NARIC listing, Türkiye is among these states. Details are set in Land law and the programme's Prüfungsordnung.\n\n### Starting in a higher semester\nYou need enough creditable achievements (at least one semester) and a free place — places are usually filled by students moving up from the previous semester. Example (FU Berlin): you send your course list to the subject advisory service, receive an Einstufungsprognose, and need an Einstufungsbescheid to enrol. Language courses are not credited.\n\nA higher-semester place is not guaranteed, so contact the programme's advisers early.\n\nSource: [HRK nexus – recognition guide](https://www.hrk.de/fileadmin/redaktion/hrk-nexus/07-Downloads/07-03-Material/07-03-01_Leitfaden/nexus_Leitfaden_Anerkennung_kurz_online.pdf) · [FU Berlin – changing university](https://www.fu-berlin.de/studium/bewerbung/allgemein/hochschulwechsel/index.html)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "ab-disi-bir-ulkeden-almanyaya-universite-transferi-mumkun-mudur-de",
+     "mode": "update",
+     "old": {
+      "question": "Kannst du von einer Nicht-EU-Universität direkt nach Deutschland wechseln?",
+      "visible": "text",
+      "head": "Aus Erfahrung wissen wir: Ein direkter 'Universitätstransfer', wie du ihn vielleicht kennst, ist in"
+     },
+     "new": {
+      "question": "Kannst du von einer Nicht-EU-Universität direkt nach Deutschland wechseln?",
+      "answer_md": "**Einen automatischen Wechsel gibt es nicht, wohl aber einen Weg: Du bewirbst dich regulär um Zulassung (1. oder höheres Fachsemester) und beantragst getrennt die Anrechnung deiner bisherigen Studienleistungen.** Darüber entscheidet die Hochschule, meist der Prüfungsausschuss — nicht die ZAB.\n\n### Zwei getrennte Schritte\n- **Zulassung:** Hochschulzugangsberechtigung (HZB) und Voraussetzungen des Studiengangs werden wie bei jeder Bewerbung geprüft.\n- **Anrechnung:** Auf Antrag entscheidet die Hochschule, welche Leistungen zählen. Eine automatische ECTS-Umrechnung gibt es nicht.\n\n### Lissabon-Konvention\nStudienzeiten aus Vertragsstaaten werden anerkannt, sofern die Hochschule keinen **wesentlichen Unterschied** nachweisen kann. Die Beweislast liegt bei ihr, Ablehnungen sind zu begründen und anfechtbar. Laut ENIC-NARIC-Übersicht gehört die Türkei zu diesen Staaten. Details regeln Landeshochschulgesetz und Prüfungsordnung.\n\n### Einstieg in ein höheres Semester\nNötig sind ausreichend anrechenbare Leistungen (mindestens ein Semester) und ein freier Platz — der wird üblicherweise von aufrückenden Studierenden besetzt. Beispiel FU Berlin: Du schickst deine Kursliste an die Studienfachberatung, erhältst eine Einstufungsprognose und brauchst zur Immatrikulation den Einstufungsbescheid. Sprachkurse werden nicht angerechnet.\n\nEin Platz im höheren Semester ist nicht garantiert — melde dich früh bei der Fachberatung.\n\nQuelle: [HRK nexus – Leitfaden Anerkennung](https://www.hrk.de/fileadmin/redaktion/hrk-nexus/07-Downloads/07-03-Material/07-03-01_Leitfaden/nexus_Leitfaden_Anerkennung_kurz_online.pdf) · [FU Berlin – Hochschulwechsel](https://www.fu-berlin.de/studium/bewerbung/allgemein/hochschulwechsel/index.html)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyada-tipbiyoloji-gibi-yuksek-ncli-bolumlere-gecis-mumkun-mu",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyada-tipbiyoloji-gibi-yuksek-ncli-bolumlere-gecis-mumkun-mu",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'da tıp/biyoloji gibi yüksek NC'li bölümlere geçiş mümkün mü?",
+      "visible": "text",
+      "head": "Tıp gibi yüksek NC (Numerus Clausus) gerektiren bölümlere, ilgili alanda önceki eğitim ve not ortala"
+     },
+     "new": {
+      "question": "Almanya'da tıp/biyoloji gibi yüksek NC'li bölümlere geçiş mümkün mü?",
+      "answer_md": "**Mümkün, ama zor ve ülke geneli sabit bir not sınırı yok.** İki ayrı durum var: tıp veya diş hekimliğine birinci dönemden başlamak ya da başka bir ülkedeki tıp eğitiminden üst döneme geçmek.\n\n### Birinci dönemden başlamak\n- Önce diplomanın bu alan için HZB sağlaması gerekir; bunu üniversite veya uni-assist değerlendirir.\n- Türk okul diplomasıyla başvuran Türk vatandaşları Almanlarla eşit sayılmaz; eyaletin belirlediği yabancı kontenjanında yarışır.\n- Oran eyalete göre değişir. Örnek Bavyera: tıpta yüzde 2, diş hekimliğinde yüzde 5; seçim öncelikle yeterlilik derecesine göre yapılır.\n- Bu adaylar hochschulstart'a değil, doğrudan üniversiteye veya uni-assist üzerinden başvurur.\n- Alman HZB'si (örneğin Alman Abitur'u) olanlar Almanlarla eşit sayılır ve hochschulstart kotalarına girer; orada TMS gibi testler seçimde rol oynayabilir.\n\n### Üst döneme geçiş\n- hochschulstart yalnızca 1. dönem yerlerini dağıtır; üst dönem başvurusu doğrudan üniversiteye yapılır ve boş yer olmasına bağlıdır.\n- Yurt dışındaki tıp eğitiminin sayılıp sayılmayacağına eyaletin yetkili makamı karar verir. Kredilendirme tek başına sana yer sağlamaz, geçiş garanti değildir.\n\n### Biyoloji\nBiyolojide kabul genellikle her üniversitenin kendi yerel kurallarına göre yapılır; şartları üniversitenin sayfasından kontrol et.\n\nKaynak: [hochschulstart – Internationale Bewerbende](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende) · [Bavyera HZV](https://www.gesetze-bayern.de/Content/Document/BayHZV/true) · [hochschulstart – SSS](https://www.hochschulstart.de/faq/themengebiete/studienangebot)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyada-tipbiyoloji-gibi-yuksek-ncli-bolumlere-gecis-mumkun-mu-en",
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da tıp/biyoloji gibi yüksek NC'li bölümlere geçiş mümkün mü?",
+      "visible": "text",
+      "head": "Tıp gibi yüksek NC (Numerus Clausus) gerektiren bölümlere, ilgili alanda önceki eğitim ve not ortala"
+     },
+     "new": {
+      "question": "Is it possible to get into or transfer to high-NC subjects like medicine or biology in Germany?",
+      "answer_md": "**Yes, but it is hard, and there is no fixed national grade threshold.** Two situations differ: starting medicine or dentistry in the first semester, or transferring into a higher semester from medical studies abroad.\n\n### Starting in the first semester\n- First, your school certificate must give you an HZB for this subject; the university or uni-assist assesses that.\n- Turkish citizens applying with a Turkish school certificate are not treated like Germans; they compete in a foreigner quota set by each Land.\n- The share varies by Land. Example Bavaria: 2 percent in medicine and 5 percent in dentistry, with selection primarily by the level of qualification.\n- These applicants apply directly to the university or through uni-assist, not via hochschulstart.\n- Applicants with a German HZB (such as a German Abitur) are treated like Germans and go through the hochschulstart quotas, where tests such as the TMS can count.\n\n### Transferring into a higher semester\n- hochschulstart only allocates first-semester places; higher-semester applications go directly to the university and depend on free places.\n- Whether medical study abroad is credited is decided by the competent Land authority. Crediting alone does not give you a place, so a transfer is never guaranteed.\n\n### Biology\nBiology admission is usually handled locally by each university; check the requirements on its website.\n\nSource: [hochschulstart – international applicants](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende) · [Bavaria HZV](https://www.gesetze-bayern.de/Content/Document/BayHZV/true) · [hochschulstart – FAQ](https://www.hochschulstart.de/faq/themengebiete/studienangebot)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyada-tipbiyoloji-gibi-yuksek-ncli-bolumlere-gecis-mumkun-mu-de",
+     "mode": "update",
+     "old": {
+      "question": "Almanya'da tıp/biyoloji gibi yüksek NC'li bölümlere geçiş mümkün mü?",
+      "visible": "text",
+      "head": "Tıp gibi yüksek NC (Numerus Clausus) gerektiren bölümlere, ilgili alanda önceki eğitim ve not ortala"
+     },
+     "new": {
+      "question": "Ist ein Einstieg oder Wechsel in NC-Fächer wie Medizin oder Biologie in Deutschland möglich?",
+      "answer_md": "**Ja, aber es ist schwer, und eine feste bundesweite Notengrenze gibt es nicht.** Zu unterscheiden sind der Studienstart in Medizin oder Zahnmedizin im ersten Semester und der Quereinstieg in ein höheres Semester nach einem Medizinstudium im Ausland.\n\n### Start im ersten Semester\n- Zuerst muss dein Schulabschluss eine HZB für dieses Fach ergeben; das prüft die Hochschule oder uni-assist.\n- Türkische Staatsangehörige mit türkischem Schulabschluss sind Deutschen nicht gleichgestellt; sie konkurrieren in einer Ausländerquote, die jedes Land festlegt.\n- Der Anteil unterscheidet sich je Land. Beispiel Bayern: 2 Prozent in Medizin, 5 Prozent in Zahnmedizin; ausgewählt wird in erster Linie nach dem Grad der Qualifikation.\n- Diese Bewerbenden bewerben sich direkt bei der Hochschule oder über uni-assist, nicht über hochschulstart.\n- Wer eine deutsche HZB hat (etwa ein deutsches Abitur), ist Deutschen gleichgestellt und läuft über die hochschulstart-Quoten; dort können Tests wie der TMS zählen.\n\n### Quereinstieg in ein höheres Semester\n- hochschulstart vergibt nur Plätze im 1. Fachsemester; Bewerbungen für höhere Semester gehen direkt an die Hochschule und hängen von freien Plätzen ab.\n- Ob ein Medizinstudium im Ausland angerechnet wird, entscheidet die zuständige Stelle des Landes. Die Anrechnung allein verschafft dir keinen Studienplatz – ein Wechsel ist nie garantiert.\n\n### Biologie\nIn Biologie läuft die Zulassung meist örtlich über die jeweilige Hochschule; prüfe die Voraussetzungen auf deren Website.\n\nQuelle: [hochschulstart – Internationale Bewerbende](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende) · [Bayerische HZV](https://www.gesetze-bayern.de/Content/Document/BayHZV/true) · [hochschulstart – FAQ](https://www.hochschulstart.de/faq/themengebiete/studienangebot)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "almanyadaki-universitelerde-yas-siniri-var-mi-ve-universite-secimi-nasil-yapilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "almanyadaki-universitelerde-yas-siniri-var-mi-ve-universite-secimi-nasil-yapilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Almanya'daki üniversitelerde yaş sınırı var mı ve üniversite seçimi nasıl yapılır?",
+      "visible": "text",
+      "head": "Almanya'daki devlet üniversitelerinde yaş sınırı bulunmamaktadır; her yaştan öğrenci kabul edilebili"
+     },
+     "new": {
+      "question": "Almanya'daki üniversitelerde yaş sınırı var mı ve üniversite seçimi nasıl yapılır?",
+      "answer_md": "**Hayır, Almanya'da üniversiteye kabul için genel bir yaş sınırı yok.** Yükseköğretim Çerçeve Yasası (HRG § 27) çalışma hakkını gerekli yeterliliğe bağlar, yaşa değil; öğrenci oturum izni (§ 16b AufenthG) de yaş şartı saymaz, üniversiteden kabul ister.\n\n### Yaşın pratikte etkilediği noktalar\n- **Sağlık sigortası:** Zorunlu öğrenci sigortası en fazla 30 yaşına kadar geçerlidir. Sonrasında yalnızca eğitimin türü ya da ailevi/kişisel nedenler bunu haklı gösteriyorsa devam eder; aksi halde gönüllü yasal ya da özel sigorta gerekir.\n- **Burs ve destekler:** Bazı destek programlarının kendi yaş sınırları olabilir. Örneğin BAföG'de sınır 45 yaş; yabancıların BAföG hakkı ise ayrıca kısıtlıdır. Her bursun şartını kendi sayfasından kontrol et.\n\n### Üniversite nasıl seçilir?\n- **Program uyumu:** Diploman ve (master için) lisans alanın programın şartlarına uyuyor mu?\n- **Dil:** Program Almanca mı İngilizce mi, hangi belge isteniyor? Almanya geneli tek bir seviye yok.\n- **Ücret:** Eyalete ve kuruma göre değişir; örneğin Baden-Württemberg AB dışı öğrencilerden dönem başına 1.500 € alır, TUM'da yeni AB dışı öğrenciler için program bazlı ücret var.\n- **Başvuru yolu ve tarihleri:** Doğrudan mı, uni-assist üzerinden mi; bunu üniversite belirler.\n- **Şehir ve yaşam:** Kişisel önceliklerine göre.\n\nKaynak: [SGB V § 5](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [AufenthG § 16b](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [HRG § 27](https://www.gesetze-im-internet.de/hrg/__27.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "almanyadaki-universitelerde-yas-siniri-var-mi-ve-universite-secimi-nasil-yapilir-en",
+     "mode": "update",
+     "old": {
+      "question": "Is there an age limit for universities in Germany, and how do you choose a university?",
+      "visible": "text",
+      "head": "No, there is no age limit at public universities in Germany; students of all ages are welcome to app"
+     },
+     "new": {
+      "question": "Is there an age limit for universities in Germany, and how do you choose a university?",
+      "answer_md": "**No, there is no general age limit for university admission in Germany.** The Framework Act for Higher Education (HRG § 27) ties the right to study to the required qualification rather than age, and the student residence permit (§ 16b AufenthG) sets no age condition — it requires admission by the university.\n\n### Where age matters in practice\n- **Health insurance:** compulsory student health insurance applies at most until age 30. After that it continues only if the type of training or family or personal reasons justify it; otherwise you need voluntary statutory or private insurance.\n- **Scholarships and funding:** some programmes set their own age limits. BAföG, for example, has a limit of 45, and foreigners' eligibility for BAföG is restricted separately. Check the conditions of each scholarship on its own page.\n\n### Choosing a university\n- **Programme fit:** does your certificate (and, for a master's, your bachelor's subject) meet the programme's requirements?\n- **Language:** is the programme taught in German or English, and which certificate is required? There is no single Germany-wide level.\n- **Fees:** these depend on the Land and the institution; Baden-Württemberg, for example, charges non-EU students 1,500 € per semester, and TUM charges programme-specific fees to newly enrolled non-EU students.\n- **Application route and deadlines:** direct or through uni-assist — the university decides.\n- **City and lifestyle:** according to your own priorities.\n\nSource: [SGB V § 5](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [AufenthG § 16b](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [HRG § 27](https://www.gesetze-im-internet.de/hrg/__27.html)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "almanyadaki-universitelerde-yas-siniri-var-mi-ve-universite-secimi-nasil-yapilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Gibt es eine Altersgrenze an deutschen Universitäten und wie wähle ich die richtige Hochschule aus?",
+      "visible": "text",
+      "head": "An staatlichen Universitäten in Deutschland gibt es keine Altersgrenze ; Studierende jeden Alters si"
+     },
+     "new": {
+      "question": "Gibt es eine Altersgrenze an deutschen Universitäten und wie wähle ich die richtige Hochschule aus?",
+      "answer_md": "**Nein, eine allgemeine Altersgrenze für die Zulassung zum Studium gibt es in Deutschland nicht.** Das Hochschulrahmengesetz (§ 27 HRG) knüpft das Studium an die erforderliche Qualifikation, nicht an das Alter, und auch die Aufenthaltserlaubnis zum Studium (§ 16b AufenthG) nennt keine Altersvoraussetzung – verlangt wird die Zulassung durch die Hochschule.\n\n### Wo das Alter praktisch eine Rolle spielt\n- **Krankenversicherung:** Die studentische Pflichtversicherung gilt längstens bis zum vollendeten 30. Lebensjahr. Danach nur, wenn Art der Ausbildung oder familiäre bzw. persönliche Gründe das rechtfertigen; sonst brauchst du eine freiwillige gesetzliche oder eine private Versicherung.\n- **Stipendien und Förderung:** Manche Programme setzen eigene Altersgrenzen. Beim BAföG liegt sie zum Beispiel bei 45 Jahren; für Ausländer*innen ist der BAföG-Anspruch zusätzlich eingeschränkt. Prüfe die Bedingungen jedes Stipendiums auf dessen eigener Seite.\n\n### So wählst du eine Hochschule aus\n- **Passung:** Erfüllt dein Abschluss (beim Master auch dein Bachelorfach) die Voraussetzungen des Studiengangs?\n- **Sprache:** Wird auf Deutsch oder Englisch unterrichtet, welcher Nachweis wird verlangt? Ein bundesweit einheitliches Niveau gibt es nicht.\n- **Gebühren:** Sie hängen von Land und Hochschule ab; Baden-Württemberg verlangt etwa von Nicht-EU-Studierenden 1.500 € pro Semester, die TUM erhebt für neu eingeschriebene Nicht-EU-Studierende studiengangsabhängige Gebühren.\n- **Bewerbungsweg und Fristen:** direkt oder über uni-assist – das legt die Hochschule fest.\n- **Stadt und Lebensstil:** nach deinen eigenen Prioritäten.\n\nQuelle: [SGB V § 5](https://www.gesetze-im-internet.de/sgb_5/__5.html) · [AufenthG § 16b](https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html) · [HRG § 27](https://www.gesetze-im-internet.de/hrg/__27.html)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "dosv-programlar-icin-uni-assist-uzerinden-basvuru-yapilir-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "dosv-programlar-icin-uni-assist-uzerinden-basvuru-yapilir-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "DoSV programlar için Uni-Assist üzerinden başvuru yapılır mı?",
+      "visible": "text",
+      "head": "DoSV programları için Uni-Assist + Hochschulstart.de paralel başvuru gerekir. İki sistem birlikte ça"
+     },
+     "new": {
+      "question": "DoSV programlar için Uni-Assist üzerinden başvuru yapılır mı?",
+      "answer_md": "**Evet — ama yalnızca DoSV'ye katılan üniversite uni-assist ile çalışıyorsa.** Bu durumda hochschulstart.de'deki DoSV portalına kaydolursun ve başvurunu uni-assist üzerinden yaparsın; \"paralel başvuru\" ya da \"önce VPD, sonra hochschulstart\" diye bir akış yoktur.\n\n### DoSV nedir?\nStiftung für Hochschulzulassung'un yürüttüğü bir koordinasyon sistemi: yerel olarak kontenjanlı (bazen kontenjansız) lisans programlarını kapsar. Her NC'li program DoSV'de değildir; hangi programların katıldığını DoSV portalındaki program aramasından görürsün.\n\n### uni-assist ile adımlar\n- DoSV portalına kaydol, **BID** ve **BAN** numaralarını al.\n- My assist'te başvurunu oluştur ve BID/BAN'ı gir — bunlar olmadan uni-assist başvuruyu iletemez.\n- uni-assist olumlu değerlendirdiği başvuruyu üniversiteye elektronik olarak iletir; **kararı üniversite verir.**\n- Önceliklerini ve teklifleri kabulünü hochschulstart hesabında yönetirsin.\n\n### Dikkat\n- Bazı DoSV üniversiteleri uni-assist kullanmaz; o zaman başvuru her zaman üniversitenin kendisi üzerinden olur.\n- Tıp, diş hekimliği, eczacılık ve veterinerlikte AB vatandaşı olmayan ve Alman lise diploması bulunmayan adaylar merkezi süreçten değil, **doğrudan üniversitelere** başvurur.\n- DoSV başvuru aşaması kışın 15 Temmuz'da, yazın 15 Ocak'ta biter; ama bu herkes için tek son tarih değildir — üniversiteler kendi tarihlerini belirler. uni-assist, üniversitenin son tarihinden en az 8 hafta önce başvurmanı önerir.\n\nKaynak: [uni-assist – hochschulstart/DoSV](https://www.uni-assist.de/en/how-to-apply/plan-your-application/hochschulstart-dosv/) · [hochschulstart – Internationale Bewerbende](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "dosv-programlar-icin-uni-assist-uzerinden-basvuru-yapilir-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Can you apply for DoSV programs via Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Can you apply for DoSV programmes via uni-assist?",
+      "answer_md": "**Yes — but only if the DoSV university works with uni-assist.** You register in the DoSV portal at hochschulstart.de and apply through uni-assist; there is no \"get a VPD first, then apply at hochschulstart\" sequence.\n\n### What DoSV is\nA coordination procedure run by the Stiftung für Hochschulzulassung for locally restricted (and occasionally unrestricted) undergraduate programmes. Not every programme with an NC takes part; the course search in the DoSV portal shows which ones do.\n\n### Steps with uni-assist\n- Register in the DoSV portal and note your **BID** and **BAN**.\n- Create your application in My assist and enter BID/BAN — without them uni-assist cannot forward it.\n- uni-assist forwards positively evaluated applications electronically; **the university decides on admission.**\n- You set priorities and accept offers in your hochschulstart account.\n\n### Watch out\n- Some DoSV universities do not use uni-assist; then you always apply via the university itself.\n- For medicine, dentistry, pharmacy and veterinary medicine, applicants who are not EU citizens and have no German school-leaving qualification apply **directly to the universities**, not through the central procedure.\n- The DoSV application phase ends on 15 July (winter) and 15 January (summer), but this is not a single deadline for everyone — universities set their own. uni-assist recommends applying at least 8 weeks before the university's deadline.\n\nSource: [uni-assist – hochschulstart/DoSV](https://www.uni-assist.de/en/how-to-apply/plan-your-application/hochschulstart-dosv/) · [hochschulstart – international applicants](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "dosv-programlar-icin-uni-assist-uzerinden-basvuru-yapilir-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Für DoSV-Studiengänge bewirbst du dich über Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Kannst du dich für DoSV-Studiengänge über uni-assist bewerben?",
+      "answer_md": "**Ja — aber nur, wenn die DoSV-Hochschule mit uni-assist zusammenarbeitet.** Dann registrierst du dich im DoSV-Portal von hochschulstart.de und bewirbst dich über uni-assist; einen Ablauf „erst VPD, dann mit der VPD zu hochschulstart“ gibt es nicht.\n\n### Was ist das DoSV?\nEin Koordinierungsverfahren der Stiftung für Hochschulzulassung für örtlich zulassungsbeschränkte (vereinzelt auch zulassungsfreie) grundständige Studiengänge. Nicht jeder NC-Studiengang nimmt teil; das zeigt die Studienangebotssuche im DoSV-Portal.\n\n### Ablauf mit uni-assist\n- Im DoSV-Portal registrieren und **BID** und **BAN** notieren.\n- Bewerbung in My assist anlegen und BID/BAN eintragen — ohne sie kann uni-assist sie nicht weiterleiten.\n- uni-assist leitet positiv bewertete Bewerbungen elektronisch weiter; **über die Zulassung entscheidet die Hochschule.**\n- Prioritäten setzt du und Angebote nimmst du in deinem hochschulstart-Konto an.\n\n### Achtung\n- Manche DoSV-Hochschulen arbeiten nicht mit uni-assist; dann läuft die Bewerbung immer über die Hochschule selbst.\n- Für Medizin, Zahnmedizin, Pharmazie und Tiermedizin bewerben sich nicht gleichgestellte ausländische Bewerber (keine EU-Bürger, kein deutsches Abitur) **direkt bei den Hochschulen**, nicht im zentralen Verfahren.\n- Die DoSV-Bewerbungsphase endet am 15. Juli (Winter) bzw. 15. Januar (Sommer), das ist aber keine einheitliche Frist für alle — die Hochschulen legen eigene Fristen fest. uni-assist empfiehlt, mindestens 8 Wochen vor der Hochschulfrist einzureichen.\n\nQuelle: [uni-assist – hochschulstart/DoSV](https://www.uni-assist.de/en/how-to-apply/plan-your-application/hochschulstart-dosv/) · [hochschulstart – Internationale Bewerbende](https://www.hochschulstart.de/informieren-planen/internationale-bewerbende)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "osym-universite-kazandi-belgesinin-almanya-basvurularinda-gecerlilik-suresi-var-mi",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "osym-universite-kazandi-belgesinin-almanya-basvurularinda-gecerlilik-suresi-var-mi",
+     "mode": "rewrite",
+     "old": {
+      "question": "ÖSYM üniversite kazandı belgesinin Almanya başvurularında geçerlilik süresi var mı?",
+      "visible": "text",
+      "head": "Almanya'daki üniversite başvurularında ÖSYM üniversite kazandı belgesinin üzerinden belirli bir süre"
+     },
+     "new": {
+      "question": "ÖSYM üniversite kazandı belgesinin Almanya başvurularında geçerlilik süresi var mı?",
+      "answer_md": "**Resmî kaynaklarda bunun için yayımlanmış bir geçerlilik süresi yok — ama \"süre hiç önemli değil\" diyen resmî bir kural da yok.** Eski bir sonucun kabul edilip edilmediğini başvurduğun üniversiteye veya uni-assist'e sorman gerekir.\n\n### Ne isteniyor?\nuni-assist, Lise Diploması sahiplerinden YKS/ÖSYM sonucunun ikinci kısmını, yani **Yerleştirme Sonuçları**'nı ister: Türkiye'de bir üniversiteye yerleştirildiğini, üniversitenin ve fakültenin adını ve puan türünü göstermelidir. Almanya'da yükseköğretime erişimde belirleyici olan da puan türü, eşik ve yerleştirmedir.\n\n### Geçerlilik konusunda bilinenler\n- uni-assist'in Türkiye sayfası bu belge için bir son kullanma tarihi veya sınav yılı sınırı belirtmez.\n- anabin/KMK ve ÖSYM de yurt dışı başvuruları için bir geçerlilik süresi yayımlamaz.\n- ÖSYM artık yerleştirme sonuç belgesini basmıyor ve postalamıyor; sonucu çevrim içi alırsın. Çeviri için uni-assist Türkiye'de yeminli tercüman onayını kabul eder.\n\n### Ne yapmalısın?\nSonucun birkaç yıl önceye aitse, başvurmadan önce üniversiteye veya uni-assist'e eski yerleştirme sonucunu kabul edip etmediklerini yazılı olarak sor. Nihai kararı üniversite verir.\n\nKaynak: [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [ÖSYM – YKS yerleştirme sonuçları](https://www.osym.gov.tr/2025yks-yerlestirme-sonuclari-aciklandi) · [anabin rehberi](/tr/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "osym-universite-kazandi-belgesinin-almanya-basvurularinda-gecerlilik-suresi-var-mi-en",
+     "mode": "update",
+     "old": {
+      "question": "Does my ÖSYM university placement document expire for German university applications?",
+      "visible": "text",
+      "head": "Generally, there's no specific expiration date for your ÖSYM university placement document (the resu"
+     },
+     "new": {
+      "question": "Does my ÖSYM university placement document expire for German university applications?",
+      "answer_md": "**Official sources publish no validity period for it — but there is no official rule saying its age never matters either.** Whether an older result is accepted is something to confirm with your university or uni-assist.\n\n### What is required\nuni-assist asks Lise Diploması holders for the second part of the YKS/ÖSYM result, the **Yerleştirme Sonuçları**: it must show that you were placed at a university in Türkiye, with the name of the university, the faculty and the points type. For access to higher education in Germany, what counts is the points type, the threshold and the placement.\n\n### What is known about validity\n- uni-assist's Türkiye page states no expiry date or exam-year limit for this document.\n- anabin/KMK and ÖSYM do not publish a validity period for applications abroad either.\n- ÖSYM no longer prints or mails a placement result document; you retrieve the result online. For translations, uni-assist accepts a sworn translator (yeminli tercüman) in Türkiye.\n\n### What to do\nIf your result is several years old, ask the university or uni-assist in writing before applying whether they accept an older placement result. The university makes the final decision.\n\nSource: [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [ÖSYM – YKS placement results](https://www.osym.gov.tr/2025yks-yerlestirme-sonuclari-aciklandi) · [anabin guide](/en/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-en)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "osym-universite-kazandi-belgesinin-almanya-basvurularinda-gecerlilik-suresi-var-mi-de",
+     "mode": "update",
+     "old": {
+      "question": "Gibt es eine Gültigkeitsdauer für mein ÖSYM-Zulassungsdokument bei der Bewerbung in Deutschland?",
+      "visible": "text",
+      "head": "Für die Bewerbung an deutschen Hochschulen ist es normalerweise kein Problem, wenn dein ÖSYM-Zulassu"
+     },
+     "new": {
+      "question": "Gibt es eine Gültigkeitsdauer für dein ÖSYM-Platzierungsergebnis bei der Bewerbung in Deutschland?",
+      "answer_md": "**Offizielle Stellen nennen dafür keine Gültigkeitsdauer — es gibt aber auch keine offizielle Regel, dass das Alter egal ist.** Ob ein älteres Ergebnis akzeptiert wird, klärst du mit deiner Hochschule oder uni-assist.\n\n### Was verlangt wird\nuni-assist verlangt von Inhabern des Lise Diploması den zweiten Teil des YKS/ÖSYM-Ergebnisses, die **Yerleştirme Sonuçları**: Daraus muss hervorgehen, dass du an einer Hochschule in der Türkei platziert wurdest, mit Name der Hochschule, Fakultät und Punkttyp. Für den Hochschulzugang in Deutschland zählen Punkttyp, Schwelle und Platzierung.\n\n### Was zur Gültigkeit bekannt ist\n- Die Türkei-Seite von uni-assist nennt weder ein Ablaufdatum noch eine Begrenzung auf bestimmte Prüfungsjahre.\n- Auch anabin/KMK und ÖSYM veröffentlichen keine Gültigkeitsdauer für Bewerbungen im Ausland.\n- ÖSYM druckt und verschickt kein Platzierungsdokument mehr; das Ergebnis rufst du online ab. Für Übersetzungen akzeptiert uni-assist vereidigte Übersetzer (yeminli tercüman) in der Türkei.\n\n### Was du tun solltest\nLiegt dein Ergebnis schon einige Jahre zurück, frag vor der Bewerbung schriftlich bei der Hochschule oder uni-assist nach, ob ein älteres Platzierungsergebnis akzeptiert wird. Die endgültige Entscheidung trifft die Hochschule.\n\nQuelle: [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/) · [ÖSYM – YKS-Ergebnisse](https://www.osym.gov.tr/2025yks-yerlestirme-sonuclari-aciklandi) · [anabin-Ratgeber](/de/blog/what-is-anabin-h-h-h-how-is-a-turkish-diploma-de)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "universiteye-kayit-icin-gerekli-belgeler-nelerdir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "universiteye-kayit-icin-gerekli-belgeler-nelerdir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Üniversiteye kayıt için gerekli belgeler nelerdir?",
+      "visible": "text",
+      "head": "Üniversiteye kayıt için gerekli belgeler, başvurulan üniversiteye ve programa göre değişiklik göster"
+     },
+     "new": {
+      "question": "Üniversiteye kayıt için gerekli belgeler nelerdir?",
+      "answer_md": "**Kayıt (Immatrikulation), başvurudan ayrı bir adımdır: kabul aldıktan sonra yapılır ve hangi belgelerin ne zamana kadar isteneceğini kabul mektubun (Zulassungsbescheid) söyler.** Tek tip bir liste yoktur; her üniversite kendi listesini belirler.\n\n### Sık istenen belgeler\n- Kayıt başvurusu (çoğu yerde çevrim içi doldurulup imzalanır)\n- Kabul mektubu (Zulassungsbescheid)\n- Geçerli pasaport / kimlik\n- **Sağlık sigortası durumu:** yasal gereklilik (§ 199a SGB V) gereği kayıttan önce sigortalı, muaf veya sigorta yükümlüsü olmadığını kanıtlarsın. Bu bildirim yasal sağlık sigortası şirketi tarafından üniversiteye **elektronik olarak** gönderilir; kâğıt belge veya seyahat sağlık sigortası örneğin FU Berlin'de kabul edilmez.\n- Dönem ücretinin (Semesterbeitrag) ödendiğine dair kanıt — tutar üniversiteye göre değişir\n- Üniversitenin istediği biçimde diploma ve belgeler (asıl veya onaylı kopya, çeviri; yurt dışı belgelerinde gerekirse VPD) ve dil belgeleri\n\n### Örnekler\nFU Berlin ve LMU München gibi üniversiteler listelerini kendi kayıt sayfalarında yayımlar; LMU örneğin kabul mektubunda adı geçen ek belgeleri de ister.\n\n### Başvuru ile karıştırma\nLise diploması, transkript, dil belgesi gibi belgeler öncelikle **başvuru** aşamasında istenir; kayıtta ise çoğunlukla asılları veya onaylı kopyaları kontrol edilir.\n\nKaynak: [§ 199a SGB V](https://www.gesetze-im-internet.de/sgb_5/__199a.html) · [FU Berlin – Unterlagen](https://www.fu-berlin.de/studium/bewerbung/immatrikulation/unterlagen/index.html)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "documents-needed-to-enrol-at-a-german-university",
+     "mode": "create",
+     "new": {
+      "question": "What documents do you need to enrol at a university in Germany?",
+      "answer_md": "**Enrolment (Immatrikulation) is a separate step from applying: it comes after admission, and your admission letter (Zulassungsbescheid) tells you which documents are needed and by when.** There is no single national checklist; each university sets its own.\n\n### Commonly required\n- Enrolment application (usually completed online and signed)\n- Admission letter (Zulassungsbescheid)\n- Valid passport / ID\n- **Health-insurance status:** by law (§ 199a SGB V) you must prove before enrolment that you are insured, exempt or not subject to statutory insurance. A statutory health insurer sends this notification to the university **electronically**; a paper certificate or travel insurance is not accepted, for example at FU Berlin.\n- Proof of payment of the semester fee (Semesterbeitrag) — the amount varies by university\n- Certificates in the form the university asks for (originals or certified copies, translations; a VPD for foreign certificates where required) and language certificates\n\n### Examples\nUniversities such as FU Berlin and LMU München publish their lists on their enrolment pages; LMU, for example, also asks for anything named in the admission letter.\n\n### Do not confuse it with the application\nSchool certificates, transcripts and language certificates are mainly **application** documents; at enrolment, the originals or certified copies are often checked.\n\nSource: [§ 199a SGB V](https://www.gesetze-im-internet.de/sgb_5/__199a.html) · [FU Berlin – Unterlagen](https://www.fu-berlin.de/studium/bewerbung/immatrikulation/unterlagen/index.html)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "documents-needed-to-enrol-at-a-german-university-de",
+     "mode": "create",
+     "new": {
+      "question": "Welche Unterlagen brauchst du für die Immatrikulation an einer deutschen Hochschule?",
+      "answer_md": "**Die Immatrikulation ist ein eigener Schritt nach der Zulassung: Welche Unterlagen du bis wann einreichen musst, steht in deinem Zulassungsbescheid.** Eine bundesweit einheitliche Liste gibt es nicht; jede Hochschule legt ihre eigene fest.\n\n### Häufig verlangt\n- Immatrikulationsantrag (meist online ausgefüllt und unterschrieben)\n- Zulassungsbescheid\n- Gültiger Reisepass / Ausweis\n- **Krankenversicherungsstatus:** Nach § 199a SGB V weist du vor der Einschreibung nach, dass du gesetzlich versichert, befreit oder nicht versicherungspflichtig bist. Die gesetzliche Krankenkasse übermittelt diese Meldung **elektronisch** an die Hochschule; Papierbescheinigungen oder eine Reisekrankenversicherung werden etwa an der FU Berlin nicht akzeptiert.\n- Nachweis über den gezahlten Semesterbeitrag — die Höhe hängt von der Hochschule ab\n- Zeugnisse in der verlangten Form (Original oder beglaubigte Kopie, Übersetzung; bei ausländischen Zeugnissen ggf. VPD) sowie Sprachnachweise\n\n### Beispiele\nHochschulen wie die FU Berlin und die LMU München veröffentlichen ihre Listen auf den Immatrikulationsseiten; die LMU verlangt zum Beispiel auch alles, was im Zulassungsbescheid genannt ist.\n\n### Nicht mit der Bewerbung verwechseln\nSchulzeugnis, Transkript und Sprachzertifikat gehören vor allem zur **Bewerbung**; bei der Einschreibung werden oft die Originale oder beglaubigten Kopien geprüft.\n\nQuelle: [§ 199a SGB V](https://www.gesetze-im-internet.de/sgb_5/__199a.html) · [FU Berlin – Unterlagen](https://www.fu-berlin.de/studium/bewerbung/immatrikulation/unterlagen/index.html)\n"
+     }
+    }
+   ],
+   "group_if_missing": "1f6d8ec6-d93c-566b-974e-f97f2920e9ed"
+  },
+  {
+   "tr_slug": "aps-ile-uni-assist-arasindaki-iliski-ve-siralama-nedir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "aps-ile-uni-assist-arasindaki-iliski-ve-siralama-nedir",
+     "mode": "rewrite",
+     "old": {
+      "question": "APS ile Uni-Assist arasındaki ilişki ve sıralama nedir?",
+      "visible": "text",
+      "head": "Türk öğrenci olarak APS'ye ihtiyacın YOK. APS (Akademische Prüfstelle), sadece Çin, Vietnam, Hindist"
+     },
+     "new": {
+      "question": "APS ile Uni-Assist arasındaki ilişki ve sıralama nedir?",
+      "answer_md": "**Türkiye'de alınmış belgelerle başvuruyorsan APS'ye ihtiyacın yok.** APS yalnızca Çin, Vietnam ve Hindistan'da verilmiş belgeler için var; bu belgeler varsa sıralama **önce APS sertifikası, sonra uni-assist'e (veya üniversiteye) başvuru** şeklindedir.\n\n### APS nedir?\nAlman Büyükelçiliği ile DAAD'ın ortak kurumu. Çin, Vietnam ve Hindistan'daki eğitim belgelerinin gerçekliğini kontrol eder ve olumlu sonuçta sertifika verir. Bu ülkelerin belgeleriyle Alman üniversitesine başvuruda APS sertifikası bir ön şarttır.\n\n### Vatandaşlık değil, belgenin ülkesi belirler\n- Türk vatandaşısın ama lise/lisans belgen Çin, Vietnam veya Hindistan'dan → o ülkenin APS kontrolü gerekebilir.\n- Belgelerin Türkiye'den → APS yok. uni-assist'in Türkiye sayfası Lise Diploması ve YKS yerleştirme sonucu gibi belgeleri ister, APS istemez.\n\n### uni-assist ne zaman devreye girer?\nuni-assist herkes için zorunlu değildir; yalnızca seçtiğin üniversite başvuruları uni-assist üzerinden alıyorsa kullanırsın. Aksi hâlde doğrudan üniversiteye başvurursun.\n\n### Unutma\nAPS kontrolü ne üniversitenin kabul kararının ne de vize kararının yerine geçer; kabulü üniversite verir.\n\nKaynak: [uni-assist – APS](https://www.uni-assist.de/en/tools/glossary-of-terms/description/term/akademische-pruefstelle-aps/) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "aps-ile-uni-assist-arasindaki-iliski-ve-siralama-nedir-en",
+     "mode": "update",
+     "old": {
+      "question": "What is the relationship and order between APS and Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What is the relationship and order between APS and uni-assist?",
+      "answer_md": "**If your certificates were issued in Türkiye, you do not need APS.** APS only exists for certificates from China, Vietnam and India; if you hold such certificates, the order is **APS certificate first, then your application to uni-assist (or the university).**\n\n### What APS is\nA joint institution of the German Embassy and the DAAD. It checks the authenticity of educational certificates from China, Vietnam and India and issues a certificate if the result is positive. For applicants with certificates from these countries, the APS certificate is a requirement for applying to a German university.\n\n### Where the certificate comes from matters, not citizenship\n- Turkish citizen with a school or university certificate from China, Vietnam or India → that country's APS check may apply.\n- Certificates from Türkiye → no APS. uni-assist's Türkiye page lists documents such as the Lise Diploması and the YKS placement result, but no APS certificate.\n\n### When uni-assist comes in\nuni-assist is not mandatory for everyone; you use it only if your chosen university handles applications through uni-assist. Otherwise you apply directly to the university.\n\n### Keep in mind\nThe APS check replaces neither the university's admission decision nor the visa decision; admission is decided by the university.\n\nSource: [uni-assist – APS](https://www.uni-assist.de/en/tools/glossary-of-terms/description/term/akademische-pruefstelle-aps/) · [uni-assist – Türkiye](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "aps-ile-uni-assist-arasindaki-iliski-ve-siralama-nedir-de",
+     "mode": "update",
+     "old": {
+      "question": "Was ist die Beziehung und Reihenfolge zwischen APS und Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie hängen APS und uni-assist zusammen und in welcher Reihenfolge?",
+      "answer_md": "**Wenn deine Zeugnisse aus der Türkei stammen, brauchst du keine APS.** Die APS gibt es nur für Zeugnisse aus China, Vietnam und Indien; hast du solche Zeugnisse, gilt: **erst das APS-Zertifikat, dann die Bewerbung bei uni-assist (oder der Hochschule).**\n\n### Was ist die APS?\nEine gemeinsame Einrichtung der Deutschen Botschaft und des DAAD. Sie prüft die Echtheit von Bildungsnachweisen aus China, Vietnam und Indien und stellt bei positivem Ergebnis ein Zertifikat aus. Für Bewerber mit Zeugnissen aus diesen Ländern ist das APS-Zertifikat Voraussetzung für die Bewerbung an einer deutschen Hochschule.\n\n### Entscheidend ist das Ausstellungsland, nicht die Staatsangehörigkeit\n- Türkischer Staatsbürger mit Schul- oder Hochschulzeugnis aus China, Vietnam oder Indien → die APS-Prüfung dieses Landes kann nötig sein.\n- Zeugnisse aus der Türkei → keine APS. Die Türkei-Seite von uni-assist verlangt etwa Lise Diploması und YKS-Platzierungsergebnis, aber kein APS-Zertifikat.\n\n### Wann kommt uni-assist ins Spiel?\nuni-assist ist nicht für alle Pflicht; du nutzt es nur, wenn deine Wunschhochschule Bewerbungen über uni-assist abwickelt. Sonst bewirbst du dich direkt bei der Hochschule.\n\n### Wichtig\nDie APS-Prüfung ersetzt weder die Zulassungsentscheidung der Hochschule noch die Visumentscheidung; über die Zulassung entscheidet die Hochschule.\n\nQuelle: [uni-assist – APS](https://www.uni-assist.de/en/tools/glossary-of-terms/description/term/akademische-pruefstelle-aps/) · [uni-assist – Türkei](https://www.uni-assist.de/en/tools/info-country-by-country/details-country/country/tr/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-mein-konto-guncellemesi-nasil-yapilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-mein-konto-guncellemesi-nasil-yapilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist Mein Konto güncellemesi nasıl yapılır?",
+      "visible": "text",
+      "head": "Uni-Assist Mein Konto sayfası, başvurularını yönetebileceğin ana panel. # Mein Konto'da Yapılabilece"
+     },
+     "new": {
+      "question": "Uni-Assist Mein Konto güncellemesi nasıl yapılır?",
+      "answer_md": "**uni-assist'in hesabı bugün \"My assist\" adını taşır; kişisel bilgilerini hesap alanında kendin düzeltir, yeni belgeleri de aynı portaldan yüklersin.** Bilgilerin değişse bile yeni bir başvuru formu doldurman gerekmez.\n\n### My assist'te neler yapılır?\n- Başvuru oluşturma ve yönetme, durum takibi\n- Belge yükleme, TestAS sonucu iletme\n- İşlem ücretini ödeme (çevrim içi gönderimden sonra)\n- uni-assist ile iletişim\n- Değerlendirme sonucu ve VPD, hesabındaki **\"My inbox\"** bölümüne gelir.\n\n### Belgeleri güncelleme\n- uni-assist'in SSS sayfasına göre dosyalar **PDF, her biri en fazla 10 MB** olmalı.\n- İşlenmiş bir belgeyi silemezsin; **yeni sürümü yüklersin**, belgeler yeniden işlendiğinde bu sürüm dikkate alınır.\n- Eksik belgeler üniversitenin başvuru son tarihinden önce yüklenmiş olmalı. Yeniden değerlendirme genelde 4–6 hafta sürer.\n\n### Ücret hatırlatması\nBir dönemde ilk program 75 €, **aynı dönemdeki** her ek program 30 €; ücret sonuçtan bağımsız alınır.\n\n### Durum takibi\nuni-assist kabul kararı vermez; hesabında görünen durum yalnızca değerlendirme aşamasını gösterir, kabulü üniversite verir.\n\nKaynak: [uni-assist – Apply online](https://www.uni-assist.de/en/how-to-apply/apply-online/) · [uni-assist – SSS](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-mein-konto-guncellemesi-nasil-yapilir-en",
+     "mode": "update",
+     "old": {
+      "question": "How do you update your Uni-Assist Mein Konto?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How do you update your uni-assist account (My assist)?",
+      "answer_md": "**uni-assist's account is now called \"My assist\": you correct your personal details yourself in the account area and upload new documents in the same portal.** A change in your details does not require a new application form.\n\n### What you can do in My assist\n- Create and manage applications, track their status\n- Upload documents, submit TestAS results\n- Pay the handling fee (after submitting online)\n- Contact uni-assist\n- Evaluation results and the VPD arrive in **\"My inbox\"**.\n\n### Updating documents\n- According to uni-assist's FAQ, files must be **PDFs of up to 10 MB each**.\n- Once a document has been processed you cannot delete it; **upload a newer version**, which is used when your documents are processed again.\n- Missing documents must be uploaded before the university's application deadline. Re-processing usually takes 4–6 weeks.\n\n### Fees at a glance\n75 € for the first course in a semester, 30 € for each additional course **in the same semester**; charged regardless of the result.\n\n### Tracking status\nuni-assist does not grant admission; the status in your account only reflects the evaluation, and the university decides on admission.\n\nSource: [uni-assist – Apply online](https://www.uni-assist.de/en/how-to-apply/apply-online/) · [uni-assist – FAQ](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-mein-konto-guncellemesi-nasil-yapilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie aktualisierst du dein Uni-Assist Mein Konto?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie aktualisierst du dein uni-assist-Konto (My assist)?",
+      "answer_md": "**Das uni-assist-Konto heißt heute „My assist“: Deine persönlichen Daten korrigierst du selbst im Kontobereich, neue Unterlagen lädst du im selben Portal hoch.** Ändern sich deine Angaben, musst du keinen neuen Antrag stellen.\n\n### Was du in My assist machen kannst\n- Bewerbungen anlegen und verwalten, Status verfolgen\n- Unterlagen hochladen, TestAS-Ergebnisse übermitteln\n- Bearbeitungsgebühr zahlen (nach dem Online-Absenden)\n- uni-assist kontaktieren\n- Bewertungsergebnisse und die VPD landen in **„My inbox“**.\n\n### Unterlagen aktualisieren\n- Laut uni-assist-FAQ: **PDF-Dateien, jeweils bis 10 MB**.\n- Bereits bearbeitete Dokumente kannst du nicht löschen; **lade eine neuere Version hoch** — sie wird bei der erneuten Bearbeitung berücksichtigt.\n- Fehlende Unterlagen müssen vor der Bewerbungsfrist der Hochschule hochgeladen sein. Die erneute Prüfung dauert meist 4–6 Wochen.\n\n### Gebühren kurz\n75 € für den ersten Studiengang eines Semesters, 30 € für jeden weiteren **im selben Semester**; fällig unabhängig vom Ergebnis.\n\n### Status verfolgen\nuni-assist vergibt keine Studienplätze; der Status zeigt nur die Prüfung, über die Zulassung entscheidet die Hochschule.\n\nQuelle: [uni-assist – Apply online](https://www.uni-assist.de/en/how-to-apply/apply-online/) · [uni-assist – FAQ](https://www.uni-assist.de/en/faqs/send-track/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "uni-assist-uzerinden-basvuru-reddedilirse-ne-yapmaliyim",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "uni-assist-uzerinden-basvuru-reddedilirse-ne-yapmaliyim",
+     "mode": "rewrite",
+     "old": {
+      "question": "Uni-Assist üzerinden başvuru reddedilirse ne yapmalıyım?",
+      "visible": "text",
+      "head": "Uni-Assist başvurusunun reddedilmesi (rejected/abgelehnt) kalıcı değil — sebebine göre düzeltebilirs"
+     },
+     "new": {
+      "question": "Uni-Assist üzerinden başvuru reddedilirse ne yapmalıyım?",
+      "answer_md": "**Önce kimin \"red\" verdiğini ayır: uni-assist yalnızca biçimsel şartları kontrol eder, kabul ya da reddi üniversite verir.** Çözüm yolu buna göre değişir.\n\n### uni-assist değerlendirmesi olumsuzsa\n- Durum **\"Faulty\"** ise başvurun üniversitenin tüm şartlarını karşılamıyor demektir ve uni-assist onu iletemez.\n- Eksik belgeyi My assist'e **üniversitenin başvuru son tarihinden önce** yükleyebilirsin; yeniden inceleme genelde 4–6 hafta sürer, bu yüzden erken davran.\n- Son tarih geçtiyse başvuru bu dönem iletilemez; sonraki bir döneme yeniden başvurursun ve **ücreti yeniden ödersin**.\n- Ücret sonuçtan bağımsızdır; olumsuz sonuçta iade edilmez (75 € ilk program, aynı dönemde her ek program 30 €).\n\n### Değerlendirmede hata olduğunu düşünüyorsan\nuni-assist'in şartlarına göre değerlendirme sonucundaki hataları, sonucu aldıktan sonra **14 takvim günü içinde** posta yoluyla veya web sitesindeki iletişim formuyla uni-assist'e bildirmelisin.\n\n### Reddi üniversite verdiyse\nBu uni-assist'in değil, üniversitenin kararıdır. İtiraz yolu ve süresi üniversitenin ret yazısında belirtilir; oradaki talimatı izle.\n\nKaynak: [uni-assist – Status & evaluation result](https://www.uni-assist.de/en/how-to-apply/send-track/status-evaluation-result-admission/) · [uni-assist – Terms and conditions](https://www.uni-assist.de/en/terms-and-conditions/)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "uni-assist-uzerinden-basvuru-reddedilirse-ne-yapmaliyim-en",
+     "mode": "update",
+     "old": {
+      "question": "What should I do if my application is rejected via Uni-Assist?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What should I do if my application via uni-assist is rejected?",
+      "answer_md": "**First work out who said no: uni-assist only checks formal criteria, while admission or rejection is decided by the university.** What you can do depends on which it was.\n\n### If uni-assist's evaluation is negative\n- Status **\"Faulty\"** means your application does not meet all of the university's criteria, so uni-assist cannot forward it.\n- You can upload missing documents in My assist **before the university's application deadline**; re-processing usually takes 4–6 weeks, so act early.\n- Once the deadline has passed, the application cannot be forwarded this semester; you reapply for a later semester and **pay the fees again**.\n- Fees are charged regardless of the result and are not refunded after a negative evaluation (75 € for the first course, 30 € for each additional course in the same semester).\n\n### If you think the evaluation is wrong\nUnder uni-assist's terms, errors in the evaluation result must be reported to uni-assist by post or via the contact form on its website **within 14 calendar days** of receiving it.\n\n### If the university rejected you\nThat is the university's decision, not uni-assist's. How and by when you can challenge it is stated in the university's decision letter — follow those instructions.\n\nSource: [uni-assist – Status & evaluation result](https://www.uni-assist.de/en/how-to-apply/send-track/status-evaluation-result-admission/) · [uni-assist – Terms and conditions](https://www.uni-assist.de/en/terms-and-conditions/)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "uni-assist-uzerinden-basvuru-reddedilirse-ne-yapmaliyim-de",
+     "mode": "update",
+     "old": {
+      "question": "Was solltest du tun, wenn deine Bewerbung über Uni-Assist abgelehnt wird?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Was solltest du tun, wenn deine Bewerbung über uni-assist abgelehnt wird?",
+      "answer_md": "**Kläre zuerst, wer abgelehnt hat: uni-assist prüft nur formale Kriterien, über Zulassung oder Ablehnung entscheidet die Hochschule.** Danach richtet sich, was du tun kannst.\n\n### Wenn die Prüfung bei uni-assist negativ ist\n- Status **„Faulty“** heißt: Deine Bewerbung erfüllt nicht alle Kriterien der Hochschule, uni-assist kann sie nicht weiterleiten.\n- Fehlende Unterlagen kannst du in My assist **vor der Bewerbungsfrist der Hochschule** nachreichen; die erneute Prüfung dauert meist 4–6 Wochen, also handle früh.\n- Ist die Frist abgelaufen, wird die Bewerbung in diesem Semester nicht weitergeleitet; du bewirbst dich für ein späteres Semester neu und **zahlst die Gebühren erneut**.\n- Die Gebühr ist unabhängig vom Ergebnis und wird bei negativem Ergebnis nicht erstattet (75 € für den ersten Studiengang, 30 € für jeden weiteren im selben Semester).\n\n### Wenn du die Bewertung für falsch hältst\nLaut den AGB von uni-assist meldest du Fehler im Bewertungsergebnis **innerhalb von 14 Kalendertagen** nach Erhalt per Post oder über das Kontaktformular auf der Website.\n\n### Wenn die Hochschule abgelehnt hat\nDas ist eine Entscheidung der Hochschule, nicht von uni-assist. Wie und bis wann du dagegen vorgehen kannst, steht in der Rechtsbehelfsbelehrung ihres Bescheids — halte dich daran.\n\nQuelle: [uni-assist – Status & evaluation result](https://www.uni-assist.de/en/how-to-apply/send-track/status-evaluation-result-admission/) · [uni-assist – Terms and conditions](https://www.uni-assist.de/en/terms-and-conditions/)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "berlinde-denklik-icin-evrak-listesi-nelerdir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "berlinde-denklik-icin-evrak-listesi-nelerdir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Berlin'de denklik için evrak listesi nelerdir?",
+      "visible": "text",
+      "head": "Berlin'de Senatsverwaltung für Bildung, Jugend und Familie lise denklik (Hochschulzugangsberechtigun"
+     },
+     "new": {
+      "question": "Berlin'de denklik için evrak listesi nelerdir?",
+      "answer_md": "**Berlin'de tek bir \"denklik\" evrak listesi yok: liste, belgeni ne için tanıtmak istediğine göre değişir.** Almanya'da üniversiteye başvuracaksan lise diplomanı (HZB) Berlin Senato idaresi değil, **yalnızca üniversite, uni-assist veya Stiftung für Hochschulzulassung** değerlendirir; bunun için ayrı bir başvuru yapmazsın.\n\n### Meslek eğitimi veya iş için okul diploması (Berlin Zeugnisanerkennungsstelle)\nSadece Berlin'de ikamet ediyorsan ya da Berlin'de bir iş/eğitim teklifin veya sözleşmen varsa başvurabilirsin. Yabancı okul belgesi için ücret **55 €**. Resmî liste:\n- doldurulup imzalanmış başvuru formu (berlin.de)\n- eğitim geçmişini gösteren özgeçmiş\n- diploma ve karneler, varsa öğrenim/meslek belgeleri\n- yeminli tercümanın Almanca tercümeleri (İngilizce/Fransızca belgeler hariç)\n- pasaport veya kimlik kopyası\n- oturum izni/vize kopyası\n- Meldebescheinigung (varsa; zorunlu değil)\n- gerekiyorsa isim değişikliği belgesi\n\nŞahsen başvuruda asıllar ve basit kopyalar, postayla başvuruda resmî onaylı kopyalar istenir.\n\n### Yabancı üniversite diploması\n- Düzenlenmemiş meslekler: **ZAB Zeugnisbewertung**, online, **208 €**, genelde yaklaşık 3 ay; belge listesini ZAB'ın online Pre-Check'i verir.\n- Sağlık meslekleri: LAGeSo bünyesindeki Landesprüfungsamt für Gesundheitsberufe; diğer düzenlenmiş meslekler için ilgili makamda **mesleki tanınma** gerekir.\n\nanabin'deki H+ yalnızca kurum statüsüdür, tek başına denklik anlamına gelmez.\n\nKaynak: [berlin.de – Schulische Abschlüsse](https://www.berlin.de/sen/bjf/anerkennung/schulische-abschluesse/) · [ZAB SSS](https://zab.kmk.org/en/statement-of-comparability/faq)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "berlinde-denklik-icin-evrak-listesi-nelerdir-en",
+     "mode": "update",
+     "old": {
+      "question": "What documents do you need for degree recognition in Berlin?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "What documents do you need for degree recognition in Berlin?",
+      "answer_md": "**There is no single \"recognition\" document list in Berlin — it depends on what you need the recognition for.** If you want to study, your foreign school-leaving certificate (HZB) is assessed **only by the university, uni-assist or the Stiftung für Hochschulzulassung**, not by Berlin's Senate administration. No separate recognition application is needed.\n\n### School certificate for vocational training or work (Berlin Zeugnisanerkennungsstelle)\nOpen only to people living in Berlin or holding a Berlin job/training offer or contract. Fee for foreign certificates: **55 €**. Official list:\n- completed and signed application form (berlin.de)\n- CV showing your education history\n- school certificates plus any study or vocational certificates\n- German translations by a sworn translator (English/French documents are exempt)\n- copy of passport or ID card\n- copy of residence permit or visa\n- Meldebescheinigung, if you have one (not mandatory)\n- proof of name change, if relevant\n\nIn person you bring originals and simple copies; postal applications need officially certified copies.\n\n### Foreign university degrees\n- Non-regulated professions: **ZAB Statement of Comparability**, online, **208 €**, usually about 3 months; ZAB's online Pre-Check generates your document checklist.\n- Health professions: Landesprüfungsamt für Gesundheitsberufe at LAGeSo; other regulated professions need **professional recognition** from the competent authority.\n\nAn H+ status in anabin only describes the institution and grants no recognition by itself.\n\nSource: [berlin.de – Schulische Abschlüsse](https://www.berlin.de/sen/bjf/anerkennung/schulische-abschluesse/) · [ZAB FAQ](https://zab.kmk.org/en/statement-of-comparability/faq)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "berlinde-denklik-icin-evrak-listesi-nelerdir-de",
+     "mode": "update",
+     "old": {
+      "question": "Welche Dokumente benötigst du für die Anerkennung in Berlin?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Welche Dokumente benötigst du für die Anerkennung in Berlin?",
+      "answer_md": "**Eine einheitliche \"Anerkennungs\"-Liste für Berlin gibt es nicht — entscheidend ist, wofür du die Anerkennung brauchst.** Willst du studieren, prüft deine ausländische Hochschulzugangsberechtigung (HZB) **ausschließlich die Hochschule, uni-assist oder die Stiftung für Hochschulzulassung**, nicht die Senatsverwaltung. Einen eigenen Anerkennungsantrag stellst du dafür nicht.\n\n### Schulabschluss für Ausbildung oder Beruf (Zeugnisanerkennungsstelle Berlin)\nNur möglich, wenn du in Berlin wohnst oder einen Ausbildungs-/Arbeitsplatz in Berlin (Angebot oder Vertrag) nachweist. Gebühr für ausländische Abschlüsse: **55 €**. Offizielle Liste:\n- ausgefüllter und unterschriebener Antrag (berlin.de)\n- Lebenslauf mit Bildungsverlauf\n- Zeugnisse, ggf. Studien- und Berufsnachweise\n- deutsche Übersetzungen durch vereidigte Übersetzer (englische/französische Nachweise ausgenommen)\n- Kopie von Pass oder Personalausweis\n- Kopie von Aufenthaltstitel oder Visum\n- Meldebescheinigung, sofern vorhanden (kein Muss)\n- ggf. Nachweis der Namensänderung\n\nPersönlich legst du Originale und einfache Kopien vor, bei postalischer Einreichung amtlich beglaubigte Kopien.\n\n### Ausländischer Hochschulabschluss\n- Nicht reglementierte Berufe: **ZAB-Zeugnisbewertung**, online, **208 €**, meist etwa 3 Monate; die Unterlagenliste erzeugt der Online-Pre-Check der ZAB.\n- Gesundheitsberufe: Landesprüfungsamt für Gesundheitsberufe beim LAGeSo; andere reglementierte Berufe brauchen eine **berufliche Anerkennung** der zuständigen Stelle.\n\nDer anabin-Status H+ beschreibt nur die Institution und ersetzt keine Anerkennung.\n\nQuelle: [berlin.de – Schulische Abschlüsse](https://www.berlin.de/sen/bjf/anerkennung/schulische-abschluesse/) · [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "diploma-denkligi-islemleri-almanyadan-mi-yoksa-turkiyeden-mi-daha-kolay-yapilir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "diploma-denkligi-islemleri-almanyadan-mi-yoksa-turkiyeden-mi-daha-kolay-yapilir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Diploma denkliği işlemleri Almanya'dan mı yoksa Türkiye'den mi daha kolay yapılır?",
+      "visible": "text",
+      "head": "Diploma denkliği işlemleri, hangi mesleki alanda denklik aradığınıza ve hangi ülkenin prosedürlerine"
+     },
+     "new": {
+      "question": "Diploma denkliği işlemleri Almanya'dan mı yoksa Türkiye'den mi daha kolay yapılır?",
+      "answer_md": "**Kararı her zaman Alman kurumları verir ve temel başvuruları Türkiye'den de yapabilirsin; Almanya'da bulunmak çoğu durumda şart değildir.** Hangi işlemin gerektiği, belgeyi ne için kullanacağına bağlı:\n\n### Üniversiteye başvuru\nAyrı bir \"diploma denkliği\" almana gerek yok. Lise diplomanı (HZB) veya lisans diplomanı başvurduğun **üniversite ya da uni-assist** değerlendirir. Bir üniversite ZAB belgesi isteyebilir, ama bu genel bir kural değildir.\n\n### ZAB Zeugnisbewertung (yabancı üniversite diploması)\n- Tamamen online; giriş BundID ile yapılır ve BundID hesabı uyruğundan bağımsız olarak sadece e-posta adresiyle açılabilir.\n- Belgelerin basit taramaları genelde yeterli; genellikle apostil veya onay gerekmez.\n- ZAB, Almanya adresi veya Anmeldung şartı koymuyor.\n- Ücret **208 €**, süre genelde yaklaşık 3 ay.\n\n### Mesleki tanınma (düzenlenmiş meslekler)\nYurt dışından da başvurabilirsin. Yetkili makam mesleğe ve Almanya'da çalışmayı planladığın yere göre belirlenir; Anerkennungs-Finder bunu gösterir.\n\n### İstisna\nİkamete bağlı bazı eyalet hizmetleri var: örneğin Berlin'de okul diplomasının iş/meslek eğitimi için tanınması Berlin'de ikamet ya da Berlin'de iş/eğitim teklifi ister.\n\nKaynak: [ZAB SSS](https://zab.kmk.org/en/statement-of-comparability/faq) · [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de/html/en/pro/recognition-procedure.php)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "diploma-denkligi-islemleri-almanyadan-mi-yoksa-turkiyeden-mi-daha-kolay-yapilir-en",
+     "mode": "update",
+     "old": {
+      "question": "Is it easier to get your diploma recognized from Germany or your home country?",
+      "visible": "text",
+      "head": "The process for getting your diploma recognized depends on your specific professional field and whic"
+     },
+     "new": {
+      "question": "Is it easier to get your diploma recognized from Germany or your home country?",
+      "answer_md": "**German bodies always make the decision, and the main procedures can be started from Türkiye — being in Germany is usually not required.** Which procedure you need depends on the purpose:\n\n### Applying to a university\nYou don't need a separate \"diploma recognition\". Your school-leaving certificate (HZB) or bachelor's degree is assessed by the **university or uni-assist**. A university may ask for a ZAB statement, but that is not a general rule.\n\n### ZAB Statement of Comparability (foreign university degree)\n- Fully online; you log in with a BundID account, which anyone can create with just an e-mail address, regardless of nationality.\n- Simple scans usually suffice; generally no apostille or certification.\n- ZAB does not require a German address or Anmeldung.\n- Fee **208 €**, usually about 3 months.\n\n### Professional recognition (regulated professions)\nYou can apply from abroad. The competent authority depends on the profession and where in Germany you plan to work — the Anerkennungs-Finder tells you which one.\n\n### Exception\nSome Land services are tied to residence: in Berlin, for example, recognising a school certificate for work or vocational training requires living in Berlin or a Berlin job/training offer.\n\nSource: [ZAB FAQ](https://zab.kmk.org/en/statement-of-comparability/faq) · [Recognition in Germany](https://www.anerkennung-in-deutschland.de/html/en/pro/recognition-procedure.php)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "diploma-denkligi-islemleri-almanyadan-mi-yoksa-turkiyeden-mi-daha-kolay-yapilir-de",
+     "mode": "update",
+     "old": {
+      "question": "Ist die Anerkennung meines Abschlusses einfacher, wenn ich sie aus Deutschland oder der Türkei beantrage?",
+      "visible": "text",
+      "head": "Die Anerkennung deines Abschlusses hängt stark davon ab, in welchem Berufsfeld du die Anerkennung su"
+     },
+     "new": {
+      "question": "Ist die Anerkennung meines Abschlusses einfacher, wenn ich sie aus Deutschland oder der Türkei beantrage?",
+      "answer_md": "**Entscheiden tun immer deutsche Stellen — und die wichtigsten Verfahren kannst du auch aus der Türkei starten. In Deutschland sein musst du dafür meist nicht.** Welches Verfahren du brauchst, hängt vom Zweck ab:\n\n### Bewerbung an einer Hochschule\nEine gesonderte \"Diplomanerkennung\" brauchst du nicht. Deine Hochschulzugangsberechtigung (HZB) oder deinen Bachelor prüft die **Hochschule bzw. uni-assist**. Eine Hochschule kann eine ZAB-Zeugnisbewertung verlangen, das ist aber keine allgemeine Regel.\n\n### ZAB-Zeugnisbewertung (ausländischer Hochschulabschluss)\n- Komplett online; Login über BundID, das du unabhängig von deiner Staatsangehörigkeit mit einer E-Mail-Adresse anlegen kannst.\n- Einfache Scans reichen in der Regel; meist keine Apostille oder Beglaubigung.\n- Eine deutsche Adresse oder Anmeldung verlangt die ZAB nicht.\n- Gebühr **208 €**, Bearbeitung meist etwa 3 Monate.\n\n### Berufliche Anerkennung (reglementierte Berufe)\nDer Antrag geht auch aus dem Ausland. Zuständig ist die Stelle für deinen Beruf und den geplanten Arbeitsort in Deutschland — das zeigt dir der Anerkennungs-Finder.\n\n### Ausnahme\nManche Landesleistungen hängen am Wohnsitz: In Berlin etwa setzt die Anerkennung eines Schulabschlusses für Ausbildung oder Beruf einen Wohnsitz in Berlin oder ein Berliner Arbeits-/Ausbildungsangebot voraus.\n\nQuelle: [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [Anerkennung in Deutschland – FAQ](https://www.anerkennung-in-deutschland.de/html/de/service/faq.php)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "diploma-denkligi-islemleri-icin-odenmesi-gereken-ucretler-ve-istenen-belgeler-nelerdir",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "diploma-denkligi-islemleri-icin-odenmesi-gereken-ucretler-ve-istenen-belgeler-nelerdir",
+     "mode": "rewrite",
+     "old": {
+      "question": "Diploma denkliği işlemleri için ödenmesi gereken ücretler ve istenen belgeler nelerdir?",
+      "visible": "text",
+      "head": "Diploma denkliği işlemleri için eyaletten eyalete ve mesleğe göre değişen ücretler talep edilebilir."
+     },
+     "new": {
+      "question": "Diploma denkliği işlemleri için ödenmesi gereken ücretler ve istenen belgeler nelerdir?",
+      "answer_md": "**Tek bir \"denklik ücreti\" yok: ZAB Zeugnisbewertung 208 € tutar, düzenlenmiş meslekler için mesleki tanınmanın ücreti ve belge listesi ise mesleğe ve yetkili makama göre değişir.** Önce hangi işleme ihtiyacın olduğunu netleştir.\n\n### ZAB Zeugnisbewertung (yabancı üniversite diploması, düzenlenmemiş meslekler)\n- Ücret: **208 €**, başvuru gönderildikten sonra online ödenir.\n- Süre: dosya tamamlandıktan sonra genelde yaklaşık 3 ay.\n- Belgeler: sabit bir liste yok; ZAB'ın online **Pre-Check**'i diplomana ve ülkene göre bir kontrol listesi üretir.\n- Basit PDF taramalar genelde yeterli, genellikle apostil gerekmez. Tercüme yalnızca listede isteniyorsa eklenir, asıl dildeki belgenin yerine geçmez.\n\n### Mesleki tanınma (ör. hekimlik, öğretmenlik gibi düzenlenmiş meslekler)\n- Ücret mesleğe ve makama göre çok farklıdır; tercüme ve onay masrafları da eklenir.\n- Tipik belgeler: kimlik, diploma, eğitimin içeriğini ve süresini gösteren belgeler, çoğu zaman onaylı tercümeler. Kesin liste yetkili makama göre değişir (Anerkennungs-Finder).\n- Süre normalde 3–4 ay.\n- ZAB belgesi mesleki tanınmanın yerine geçmez.\n\n### Üniversite başvurusu\nAyrı bir denklik ücreti yok; belgelerini üniversite veya uni-assist değerlendirir. uni-assist kullanan üniversitelerde dönemdeki ilk program için **75 €** ödersin.\n\nKaynak: [ZAB SSS](https://zab.kmk.org/en/statement-of-comparability/faq) · [Anerkennung in Deutschland](https://www.anerkennung-in-deutschland.de/html/en/pro/recognition-procedure.php)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "diploma-denkligi-islemleri-icin-odenmesi-gereken-ucretler-ve-istenen-belgeler-nelerdir-en",
+     "mode": "update",
+     "old": {
+      "question": "What are the fees and required documents for diploma recognition procedures?",
+      "visible": "text",
+      "head": "Fees for diploma recognition procedures can vary significantly depending on the German state and you"
+     },
+     "new": {
+      "question": "What are the fees and required documents for diploma recognition procedures?",
+      "answer_md": "**There is no single \"recognition fee\": a ZAB Statement of Comparability costs 208 €, while fees and documents for professional recognition in regulated professions depend on the profession and the competent authority.** First work out which procedure you actually need.\n\n### ZAB Statement of Comparability (foreign university degree, non-regulated professions)\n- Fee: **208 €**, paid online after you submit the application.\n- Processing: usually about 3 months once the file is complete.\n- Documents: no fixed list; ZAB's online **Pre-Check** generates a checklist for your degree and country.\n- Simple PDF scans usually suffice, generally without an apostille. Translations are needed only if the checklist asks for them and never replace the original-language document.\n\n### Professional recognition (regulated professions, e.g. medicine or teaching)\n- Costs vary greatly by profession and authority, plus translation and certification costs.\n- Typical documents: ID, qualification certificates, proof of training content and duration, often certified translations. The exact list depends on the authority (Anerkennungs-Finder).\n- Normally takes 3–4 months.\n- A ZAB statement cannot replace professional recognition.\n\n### University admission\nNo separate recognition fee: the university or uni-assist assesses your documents. At universities using uni-assist you pay **75 €** for the first programme in a semester.\n\nSource: [ZAB FAQ](https://zab.kmk.org/en/statement-of-comparability/faq) · [Recognition in Germany](https://www.anerkennung-in-deutschland.de/html/en/pro/recognition-procedure.php)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "diploma-denkligi-islemleri-icin-odenmesi-gereken-ucretler-ve-istenen-belgeler-nelerdir-de",
+     "mode": "update",
+     "old": {
+      "question": "Welche Gebühren und Dokumente brauchst du für die Anerkennung deines Abschlusses?",
+      "visible": "text",
+      "head": "Für die Anerkennung deines Abschlusses können Gebühren anfallen, die je nach Bundesland und Beruf va"
+     },
+     "new": {
+      "question": "Welche Gebühren und Dokumente brauchst du für die Anerkennung deines Abschlusses?",
+      "answer_md": "**Eine einheitliche \"Anerkennungsgebühr\" gibt es nicht: Die ZAB-Zeugnisbewertung kostet 208 €, Gebühren und Unterlagen für die berufliche Anerkennung reglementierter Berufe legt die zuständige Stelle je nach Beruf fest.** Kläre zuerst, welches Verfahren du wirklich brauchst.\n\n### ZAB-Zeugnisbewertung (ausländischer Hochschulabschluss, nicht reglementierte Berufe)\n- Gebühr: **208 €**, online zu zahlen nach dem Absenden des Antrags.\n- Dauer: meist etwa 3 Monate ab vollständigen Unterlagen.\n- Unterlagen: keine feste Liste; der Online-**Pre-Check** der ZAB erstellt eine Checkliste für deinen Abschluss und dein Land.\n- Einfache PDF-Scans reichen in der Regel, meist ohne Apostille. Übersetzungen nur, wenn die Checkliste sie verlangt — sie ersetzen nie das Dokument in Originalsprache.\n\n### Berufliche Anerkennung (reglementierte Berufe, z. B. Medizin oder Lehramt)\n- Die Kosten unterscheiden sich stark je nach Beruf und Stelle; dazu kommen Übersetzungs- und Beglaubigungskosten.\n- Typische Unterlagen: Ausweis, Abschlusszeugnisse, Nachweise zu Inhalt und Dauer der Ausbildung, oft beglaubigte Übersetzungen. Die genaue Liste hängt von der Stelle ab (Anerkennungs-Finder).\n- Dauer normalerweise 3–4 Monate.\n- Eine ZAB-Zeugnisbewertung ersetzt keine berufliche Anerkennung.\n\n### Hochschulzulassung\nKeine eigene Anerkennungsgebühr: Hochschule oder uni-assist prüfen deine Unterlagen. Bei Hochschulen mit uni-assist zahlst du **75 €** für den ersten Studiengang im Semester.\n\nQuelle: [ZAB-Zeugnisbewertung](https://zab.kmk.org/de/zeugnisbewertung) · [Anerkennung in Deutschland – FAQ](https://www.anerkennung-in-deutschland.de/html/de/service/faq.php)\n"
+     }
+    }
+   ]
+  },
+  {
+   "tr_slug": "dis-hekimligi-masterphd-programlari-nasil",
+   "scope": "batch",
+   "records": [
+    {
+     "locale": "tr",
+     "slug": "dis-hekimligi-masterphd-programlari-nasil",
+     "mode": "rewrite",
+     "old": {
+      "question": "Diş hekimliği master/PhD programları nasıl?",
+      "visible": "text",
+      "head": "Almanya'da diş hekimliği (Zahnmedizin) klasik master programı değil — Türkiye'deki diş hekimliği 5 y"
+     },
+     "new": {
+      "question": "Diş hekimliği master/PhD programları nasıl?",
+      "answer_md": "**Almanya'da diş hekimleri için tek tip bir \"master yolu\" yok: Diş hekimi olarak çalışmak için Approbation, akademik kariyer için doktora (Dr. med. dent.) ya da akademik bir MSc programı söz konusu.**\n\n### Diş hekimi olarak çalışmak: Approbation\n- Yurt dışı diş hekimliği diplomasıyla Almanya'da meslek yapmak için Approbation gerekir.\n- Türkiye gibi üçüncü ülke diplomalarında önce denklik incelenir; önemli farklar varsa devlet sınavı içeriğine dayanan **Kenntnisprüfung** gerekir. İstersen doğrudan Kenntnisprüfung'a da başvurabilirsin.\n- Dil: Almanca B2 ve genellikle C1 düzeyinde bir Fachsprachprüfung. Örnek Berlin: dosya tamamlandıktan sonra 4 ay içinde karar verilir; toplam süre resmi olarak sabit değil.\n- Geçiş için **Berufserlaubnis** alınabilir: geri alınabilir ve toplamda en fazla 2 yıllık diş hekimliği faaliyetini kapsar.\n\n### Uzmanlık (Fachzahnarzt)\nUzmanlık unvanının tanınmasına eyaletin diş hekimleri odası (Landeszahnärztekammer) karar verir; başvuru için önce Approbation veya Berufserlaubnis gerekir.\n\n### Doktora (Dr. med. dent.)\nKurallar her fakültenin Promotionsordnung'undadır. Örnek Heidelberg: Yurt dışı diş hekimliği mezunları, dekan ZAB'ın görüşünü aldıktan sonra diplomayı denk sayarsa kabul edilebilir; Approbation şart olarak sayılmıyor, ek koşul konabilir.\n\n### Akademik MSc programları\nİçerik, dil ve şartlar programa göre değişir; weiterbildend (sürekli eğitim) master'lar ücretlidir. Her programın kendi sayfasından kontrol et.\n\nKaynak: [Anerkennung in Deutschland – Zahnarzt](https://www.anerkennung-in-deutschland.de/html/en/2728.php) · [ZHG § 2](https://www.gesetze-im-internet.de/zhg/__2.html) · [Heidelberg – Dr. med. dent. şartları](https://www.medizinische-fakultaet-hd.uni-heidelberg.de/fakultaet/akademische-laufbahn/promotion/promotion-zum-dr-med-dent/promotionsverfahren-promotionsbuero/zulassungsvoraussetzungen)\n"
+     }
+    },
+    {
+     "locale": "en",
+     "slug": "dis-hekimligi-masterphd-programlari-nasil-en",
+     "mode": "update",
+     "old": {
+      "question": "How are dental master/PhD programs?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "How do master's and PhD programmes in dentistry work in Germany?",
+      "answer_md": "**There is no single \"master's route\" for dentists in Germany: to work as a dentist you need Approbation, while an academic career runs through a doctorate (Dr. med. dent.) or an academic MSc programme.**\n\n### Working as a dentist: Approbation\n- To practise in Germany with a foreign dental qualification, you need Approbation.\n- For third-country diplomas such as Turkish ones, equivalence is checked first; if there are substantial differences, you take a **Kenntnisprüfung** based on the state-exam content. You can also apply for the Kenntnisprüfung directly.\n- Language: German at B2 level, plus in most cases a specialist language exam (Fachsprachprüfung) at C1. Example Berlin: a decision within 4 months of a complete file; the total duration is not officially fixed.\n- In the meantime, a **Berufserlaubnis** is possible: it is revocable and covers at most 2 years of dental practice in total.\n\n### Specialist title (Fachzahnarzt)\nRecognition of a specialist title is handled by the Land's dental chamber (Landeszahnärztekammer) and requires Approbation or a Berufserlaubnis first.\n\n### Doctorate (Dr. med. dent.)\nEach faculty's Promotionsordnung sets the rules. Example Heidelberg: foreign dental graduates can be admitted if the Dean, after consulting the ZAB, deems the foreign exam equivalent; Approbation is not listed as a requirement, but conditions may be imposed.\n\n### Academic MSc programmes\nContent, language and requirements vary by programme; continuing-education (weiterbildende) master's programmes charge fees. Check each programme's own page.\n\nSource: [Anerkennung in Deutschland – dentist](https://www.anerkennung-in-deutschland.de/html/en/2728.php) · [ZHG § 2](https://www.gesetze-im-internet.de/zhg/__2.html) · [Heidelberg – Dr. med. dent. requirements](https://www.medizinische-fakultaet-hd.uni-heidelberg.de/fakultaet/akademische-laufbahn/promotion/promotion-zum-dr-med-dent/promotionsverfahren-promotionsbuero/zulassungsvoraussetzungen)\n"
+     }
+    },
+    {
+     "locale": "de",
+     "slug": "dis-hekimligi-masterphd-programlari-nasil-de",
+     "mode": "update",
+     "old": {
+      "question": "Wie sind Zahnmedizin Master-/PhD-Programme?",
+      "visible": "empty"
+     },
+     "new": {
+      "question": "Wie funktionieren Master- und PhD-Programme in der Zahnmedizin in Deutschland?",
+      "answer_md": "**Einen einheitlichen „Masterweg“ für Zahnärzt*innen gibt es in Deutschland nicht: Für die Berufsausübung brauchst du die Approbation, für eine akademische Laufbahn kommen die Promotion (Dr. med. dent.) oder ein akademischer MSc infrage.**\n\n### Als Zahnärzt*in arbeiten: Approbation\n- Wer mit einem ausländischen Zahnmedizinabschluss in Deutschland praktizieren will, braucht die Approbation.\n- Bei Abschlüssen aus Drittstaaten wie der Türkei wird zuerst die Gleichwertigkeit geprüft; bei wesentlichen Unterschieden folgt eine **Kenntnisprüfung**, die sich auf den Inhalt der staatlichen Abschlussprüfung bezieht. Du kannst die Kenntnisprüfung auch direkt beantragen.\n- Sprache: Deutsch auf B2-Niveau, dazu meist eine Fachsprachprüfung auf C1-Niveau. Beispiel Berlin: Entscheidung innerhalb von 4 Monaten nach vollständigen Unterlagen; eine Gesamtdauer ist offiziell nicht festgelegt.\n- Übergangsweise ist eine **Berufserlaubnis** möglich: widerruflich und für höchstens 2 Jahre zahnärztlicher Tätigkeit insgesamt.\n\n### Fachzahnarzt-Titel\nDie Anerkennung übernimmt die Landeszahnärztekammer; Voraussetzung ist zuvor die Approbation oder Berufserlaubnis.\n\n### Promotion (Dr. med. dent.)\nMaßgeblich ist die Promotionsordnung der jeweiligen Fakultät. Beispiel Heidelberg: Wer das Examen im Ausland abgelegt hat, kann zugelassen werden, wenn die Dekanin bzw. der Dekan nach Anhörung der ZAB die Prüfung als gleichwertig anerkennt; die Approbation wird nicht als Voraussetzung genannt, Auflagen sind möglich.\n\n### Akademische MSc-Programme\nInhalte, Sprache und Voraussetzungen unterscheiden sich; weiterbildende Master sind gebührenpflichtig. Prüfe die Seite des jeweiligen Programms.\n\nQuelle: [Anerkennung in Deutschland – Zahnarzt](https://www.anerkennung-in-deutschland.de/html/en/2728.php) · [ZHG § 2](https://www.gesetze-im-internet.de/zhg/__2.html) · [Heidelberg – Zulassung Dr. med. dent.](https://www.medizinische-fakultaet-hd.uni-heidelberg.de/fakultaet/akademische-laufbahn/promotion/promotion-zum-dr-med-dent/promotionsverfahren-promotionsbuero/zulassungsvoraussetzungen)\n"
+     }
+    }
+   ]
+  }
+ ]
+}
