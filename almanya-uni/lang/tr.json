@@ -4644,5 +4644,8 @@
     "Marketing": "Pazarlama",
     "Session, security and language preference. Always on.": "Oturum, güvenlik ve dil tercihi. Her zaman açık.",
     "Google Analytics, Microsoft Clarity (heatmaps and session recording) and our own page-view counter.": "Google Analytics, Microsoft Clarity (ısı haritası ve oturum kaydı) ve kendi sayfa görüntüleme sayacımız.",
-    "Meta and TikTok pixels. Currently not configured, so nothing loads.": "Meta ve TikTok pikselleri. Şu anda tanımlı değil, hiçbir şey yüklenmiyor."
+    "Meta and TikTok pixels. Currently not configured, so nothing loads.": "Meta ve TikTok pikselleri. Şu anda tanımlı değil, hiçbir şey yüklenmiyor.",
+    "Last known application deadline: :date": "Son bilinen başvuru tarihi: :date",
+    "Check the university's official page for the current deadline.": "Güncel tarihi üniversitenin resmî sayfasından kontrol edin.",
+    "(last known)": "(son bilinen)"
 }

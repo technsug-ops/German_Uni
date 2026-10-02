@@ -87,7 +87,9 @@ class SitemapLocaleCoverageTest extends TestCase
     {
         $city = DB::table('cities')->insertGetId(['name_de' => 'Teststadt', 'name_tr' => 'Test şehri', 'slug' => 'sitemap-teststadt', 'is_active' => true, 'created_at' => now(), 'updated_at' => now()]);
         $uni = DB::table('universities')->insertGetId(['name_de' => 'Test Uni', 'name_tr' => 'Test Üni', 'slug' => 'sitemap-test-uni', 'city_id' => $city, 'is_active' => true, 'created_at' => now(), 'updated_at' => now()]);
-        foreach (['sitemap-indexable-program' => 'Açıklama', 'sitemap-thin-program' => null] as $slug => $desc) {
+        // İndekslenebilir = programa özgü anlamlı açıklama (Program::isThin); tek kelime/başlık tekrarı incedir.
+        $meaningful = 'Program, veri analizi, istatistiksel modelleme ve makine öğrenmesi yöntemlerini proje odaklı derslerle öğretir.';
+        foreach (['sitemap-indexable-program' => $meaningful, 'sitemap-thin-program' => null] as $slug => $desc) {
             DB::table('programs')->insert(['name_de' => $slug, 'slug' => $slug, 'degree' => 'master', 'university_id' => $uni,
                 'is_active' => true, 'description_tr' => $desc, 'created_at' => now(), 'updated_at' => now()]);
         }

@@ -4705,5 +4705,8 @@
     "Marketing": "Marketing",
     "Session, security and language preference. Always on.": "Sitzung, Sicherheit und Sprachauswahl. Immer aktiv.",
     "Google Analytics, Microsoft Clarity (heatmaps and session recording) and our own page-view counter.": "Google Analytics, Microsoft Clarity (Heatmaps und Sitzungsaufzeichnung) und unser eigener Seitenaufruf-Zähler.",
-    "Meta and TikTok pixels. Currently not configured, so nothing loads.": "Meta- und TikTok-Pixel. Derzeit nicht konfiguriert, es wird nichts geladen."
+    "Meta and TikTok pixels. Currently not configured, so nothing loads.": "Meta- und TikTok-Pixel. Derzeit nicht konfiguriert, es wird nichts geladen.",
+    "Last known application deadline: :date": "Zuletzt bekannte Bewerbungsfrist: :date",
+    "Check the university's official page for the current deadline.": "Bitte prüfen Sie die aktuelle Frist auf der offiziellen Hochschulseite.",
+    "(last known)": "(zuletzt bekannt)"
 }

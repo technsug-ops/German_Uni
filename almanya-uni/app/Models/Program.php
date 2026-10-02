@@ -130,41 +130,134 @@ class Program extends Model
         $val = $this->attributes['name_' . app()->getLocale()] ?? null;
         return ($val && $val !== $this->name) ? $val : null;
     }
+    /** Anlamlı sayılmak için ad/derece/kalıp temizliğinden sonra gereken en az FARKLI kelime sayısı. */
+    public const MIN_MEANINGFUL_WORDS = 6;
+
+    /** Programa özgü bilgi taşımayan derece/kalıp kelimeleri (TR/EN/DE), küçük harf. */
+    private const BOILERPLATE_WORDS = [
+        'master', 'masters', 'bachelor', 'bachelors', 'msc', 'mba', 'meng', 'mres', 'llm', 'bsc', 'beng', 'phd',
+        'doctoral', 'doctorate', 'science', 'sciences', 'arts', 'and', 'the', 'for', 'und', 'der', 'die', 'das', 'für',
+        'programme', 'program', 'programm', 'programs', 'studiengang', 'studiengänge', 'degree', 'course', 'courses',
+        'studies', 'study', 'studium', 'yüksek', 'lisans', 'programı', 'bir', 'full', 'time', 'part', 'tam', 'zamanlı',
+    ];
+
     /**
-     * Sayfası ARAMA MOTORUNA sunulacak kadar veri taşıyor mu?
+     * Metinde programa özgü kaç farklı anlamlı kelime var? HTML, entity, noktalama, sayılar, programın kendi adları
+     * (de/en/tr + derece tanımı), ≤2 harfli kelimeler ve derece/kalıp kelimeleri çıkarılır. "Physics (MSc)" → 0.
+     */
+    public function meaningfulWordCount(?string $text): int
+    {
+        if ($text === null || trim($text) === '') {
+            return 0;
+        }
+        $t = mb_strtolower(html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        foreach (['name_de', 'name_en', 'name_tr', 'degree_specification'] as $c) {
+            $n = mb_strtolower(trim((string) ($this->attributes[$c] ?? '')));
+            if (mb_strlen($n) > 2) {
+                $t = preg_replace('/(?<![\p{L}\p{N}])'.preg_quote($n, '/').'(?![\p{L}\p{N}])/u', ' ', $t) ?? $t;
+            }
+        }
+        preg_match_all('/[^\W\d_]+/u', $t, $m);
+        $words = array_filter($m[0], fn ($w) => mb_strlen($w) > 2 && ! in_array($w, self::BOILERPLATE_WORDS, true));
+
+        return count(array_unique($words));
+    }
+
+    public function isMeaningfulText(?string $text): bool
+    {
+        return $this->meaningfulWordCount($text) >= self::MIN_MEANINGFUL_WORDS;
+    }
+
+    public function hasMeaningfulDescription(): bool
+    {
+        return $this->isMeaningfulText($this->attributes['description_tr'] ?? null)
+            || $this->isMeaningfulText($this->attributes['description_en'] ?? null);
+    }
+
+    public function hasMeaningfulRequirements(): bool
+    {
+        foreach (['qualification_requirements_tr', 'qualification_requirements_en', 'language_requirements_tr', 'language_requirements_en'] as $c) {
+            if ($this->isMeaningfulText($this->attributes[$c] ?? null)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Sayfası ARAMA MOTORUNA sunulacak kadar programa özgü içerik taşıyor mu?
      *
-     * Hochschulkompass importu bir programın yalnızca adını, derecesini ve NC durumunu getirir;
-     * açıklama/gereklilik/tarih/ücret yoktur. Bu sayfalar kullanıcı için listelerde ve
-     * filtrelerde değerli (programın VARLIĞI bilginin kendisi), ama tek başına indekslenirse
-     * "ince içerik" yığını olur. Bu yüzden: sitede görünür, index'e girmez — veri dolunca
-     * kendiliğinden indekslenir hale gelir.
+     * İnce = anlamlı açıklama YOK ve anlamlı başvuru/dil şartı metni YOK. Yalnız ad + derece (Hochschulkompass),
+     * açıklaması program adının tekrarı olan kayıtlar (DAAD "Physics (MSc)") ve yalnız süre/ücret/tarih taşıyan
+     * kayıtlar incedir. İnce sayfa sitede görünür (200), noindex,follow alır ve sitemap'e girmez; veri dolunca
+     * kendiliğinden indekslenir. Kaynak URL'si eksikliği tek başına ince yapmaz.
      */
     public function isThin(): bool
     {
-        $empty = fn ($v) => $v === null || $v === '';
-
-        return $empty($this->description_tr)
-            && $empty($this->description_en)
-            && $empty($this->qualification_requirements_tr)
-            && $empty($this->language_requirements_tr)
-            && $empty($this->application_deadline_winter)
-            && $empty($this->application_deadline_summer)
-            && $this->tuition_fee_eur === null
-            && $this->duration_semesters === null;
+        return ! $this->hasMeaningfulDescription() && ! $this->hasMeaningfulRequirements();
     }
 
-    /** isThin() ile AYNI ölçüt — sitemap/sorgu tarafı için. */
+    /**
+     * Sorgu tarafı ÖN filtre: isThin() olmayan her kaydı kapsayan üst küme (açıklama ya da şart metni dolu).
+     * Kesin karar PHP'de isThin() ile verilir (sitemap bunu satır satır uygular).
+     */
     public function scopeIndexable($q)
     {
         return $q->where(function ($w) {
-            $w->whereNotNull('description_tr')->where('description_tr', '!=', '')
-                ->orWhere(fn ($x) => $x->whereNotNull('description_en')->where('description_en', '!=', ''))
-                ->orWhere(fn ($x) => $x->whereNotNull('qualification_requirements_tr')->where('qualification_requirements_tr', '!=', ''))
-                ->orWhere(fn ($x) => $x->whereNotNull('language_requirements_tr')->where('language_requirements_tr', '!=', ''))
-                ->orWhereNotNull('application_deadline_winter')
-                ->orWhereNotNull('application_deadline_summer')
-                ->orWhereNotNull('tuition_fee_eur')
-                ->orWhereNotNull('duration_semesters');
+            foreach (['description_tr', 'description_en', 'qualification_requirements_tr', 'qualification_requirements_en',
+                'language_requirements_tr', 'language_requirements_en'] as $c) {
+                $w->orWhere(fn ($x) => $x->whereNotNull($c)->where($c, '!=', ''));
+            }
         });
+    }
+
+    /**
+     * Sayfa dilinde gösterilecek açıklama: ['text' => …, 'fallback' => bool]. Kendi dilinde anlamlı açıklama varsa o;
+     * yoksa TR/DE sayfada İngilizce kaynak metin (fallback, etiketli); EN sayfada TR'ye ASLA düşülmez.
+     * description_de sütunu yok → DE sayfada İngilizce metin her zaman fallback olarak etiketlenir.
+     */
+    public function displayDescription(?string $locale = null): ?array
+    {
+        $locale ??= app()->getLocale();
+        $own = in_array($locale, ['tr', 'en'], true) ? ($this->attributes["description_{$locale}"] ?? null) : null;
+        if ($this->isMeaningfulText($own)) {
+            return ['text' => $own, 'fallback' => false];
+        }
+        $en = $this->attributes['description_en'] ?? null;
+        if ($locale !== 'en' && $this->isMeaningfulText($en)) {
+            return ['text' => $en, 'fallback' => true];
+        }
+
+        return null;
+    }
+
+    /**
+     * Şart metni (qualification|language|required_documents) sayfa dilinde: ['text' => …, 'fallback' => bool].
+     * TR: _tr, yoksa _en (fallback). EN: yalnız _en. DE: _en (fallback, etiketli) — TR metne ASLA düşülmez.
+     */
+    public function displayRequirement(string $kind, ?string $locale = null): ?array
+    {
+        $locale ??= app()->getLocale();
+        $tr = trim((string) ($this->attributes["{$kind}_tr"] ?? ''));
+        $en = trim((string) ($this->attributes["{$kind}_en"] ?? ''));
+        if ($locale === 'tr' && $tr !== '') {
+            return ['text' => $tr, 'fallback' => false];
+        }
+        if ($en !== '') {
+            return ['text' => $en, 'fallback' => $locale !== 'en'];
+        }
+
+        return null;
+    }
+
+    /** Başvuru tarihi durumu: 'current' (bugün ve sonrası), 'past' (geçmiş, "son bilinen"), null (tarih yok). */
+    public static function deadlineState($date): ?string
+    {
+        if (! $date) {
+            return null;
+        }
+
+        return \Illuminate\Support\Carbon::parse($date)->startOfDay()->lt(now()->startOfDay()) ? 'past' : 'current';
     }
 }

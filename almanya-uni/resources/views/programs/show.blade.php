@@ -12,15 +12,22 @@
     $langLabel  = $langLabels[$program->language] ?? $program->language;
 
     $title = $program->name . ' — ' . $degreeLabel . ' @ ' . $program->university->display_name;
-    $description = $program->description
-        ? \Illuminate\Support\Str::limit($program->description, 160)
-        : ($program->description_en
-            ? \Illuminate\Support\Str::limit($program->description_en, 160)
-            : __(':uni :program :degree program — application requirements, deadlines, tuition and detailed information.', [
-                'uni' => $program->university->display_name,
-                'program' => $program->name,
-                'degree' => $degreeLabel,
-            ]));
+
+    // Açıklama + şartlar sayfa dilinde (Program::displayDescription/displayRequirement): EN/DE'de TR metne asla
+    // düşülmez; başka dilden gösterilen metin 'fallback' olarak etiketlenir. Meta yalnız kendi dilindeki açıklamadan.
+    $desc = $program->displayDescription();
+    $description = ($desc && ! $desc['fallback'])
+        ? \Illuminate\Support\Str::limit($desc['text'], 160)
+        : __(':uni :program :degree program — application requirements, deadlines, tuition and detailed information.', [
+            'uni' => $program->university->display_name,
+            'program' => $program->name,
+            'degree' => $degreeLabel,
+        ]);
+    // "Orijinal İngilizce metin" yalnız kendi dilinde AYRI bir açıklama gösterilirken ve içerik gerçekten farklıysa.
+    $normText = fn ($s) => mb_strtolower(preg_replace('/\s+/u', ' ', trim(strip_tags((string) $s))));
+    $showEnOriginal = $desc && ! $desc['fallback'] && app()->getLocale() !== 'en'
+        && $program->isMeaningfulText($program->description_en)
+        && $normText($program->description_en) !== $normText($desc['text']);
 @endphp
 
 @section('title', $title . ' — ' . brand('name'))
@@ -112,45 +119,40 @@
     {{-- ============ ANA İÇERİK ============ --}}
     <div class="lg:col-span-2 space-y-8">
 
-        {{-- TR description --}}
-        @if ($program->description)
+        {{-- Açıklama: kendi dilinde → normal; yoksa (TR/DE) İngilizce kaynak metin BİR KEZ, etiketli. EN'de TR'ye düşülmez. --}}
+        @if ($desc && ! $desc['fallback'])
             <section class="bg-white border border-gray-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('About the Program') }}</h2>
-                <div class="blog-content text-gray-800 leading-relaxed whitespace-pre-line">{!! app(\App\Services\Content\BlogAutoLinker::class)->process(nl2br(e($program->description))) !!}</div>
+                <div class="blog-content text-gray-800 leading-relaxed whitespace-pre-line">{!! app(\App\Services\Content\BlogAutoLinker::class)->process(nl2br(e($desc['text']))) !!}</div>
+            </section>
+        @elseif ($desc)
+            <section class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start gap-3 mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-900">
+                    <x-svg-icon name="information-circle" class="w-5 h-5 flex-shrink-0 text-yellow-600" />
+                    <p>{{ __('A translated description for this program is not ready yet — the original English text is shown below.') }}</p>
+                </div>
+                <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Program Description') }} <span class="text-sm font-normal text-gray-500">({{ __('English') }})</span></h2>
+                <div class="text-gray-800 leading-relaxed" lang="en">{!! nl2br(e($desc['text'])) !!}</div>
             </section>
         @endif
 
-        {{-- EN description --}}
-        @if ($program->description_en)
+        {{-- Orijinal İngilizce metin: yalnız kendi dilindeki açıklamadan GERÇEKTEN farklıysa (aynı metin iki kez basılmaz) --}}
+        @if ($showEnOriginal)
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                @if ($program->description)
-                    <details class="group">
-                        <summary class="cursor-pointer text-sm font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700 list-none flex items-center gap-2">
-                            <span class="group-open:rotate-90 transition-transform">▶</span>
-                            {{ __('Show the original English text') }}
-                        </summary>
-                        <div class="text-gray-700 leading-relaxed mt-4">{!! nl2br(e($program->description_en)) !!}</div>
-                    </details>
-                @else
-                    <div class="flex items-start gap-3 mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-900">
-                        <x-svg-icon name="information-circle" class="w-5 h-5 flex-shrink-0 text-yellow-600" />
-                        <p>{{ __('A translated description for this program is not ready yet — the original English text is shown below.') }}</p>
-                    </div>
-                    <h2 class="text-xl font-bold text-gray-900 mb-3">{{ __('Program Description') }} <span class="text-sm font-normal text-gray-500">({{ __('English') }})</span></h2>
-                    <div class="text-gray-800 leading-relaxed">{!! nl2br(e($program->description_en)) !!}</div>
-                @endif
+                <details class="group">
+                    <summary class="cursor-pointer text-sm font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700 list-none flex items-center gap-2">
+                        <span class="group-open:rotate-90 transition-transform">▶</span>
+                        {{ __('Show the original English text') }}
+                    </summary>
+                    <div class="text-gray-700 leading-relaxed mt-4" lang="en">{!! nl2br(e($program->description_en)) !!}</div>
+                </details>
             </section>
         @endif
 
         @php
-            // Locale-aware gereklilik: TR sayfada _tr → yoksa _en (DAAD); EN/DE'de _en → yoksa _tr.
-            $pick = function ($tr, $en) {
-                $tr = trim((string) $tr); $en = trim((string) $en);
-                return app()->getLocale() === 'tr' ? ($tr !== '' ? $tr : $en) : ($en !== '' ? $en : $tr);
-            };
-            $qualReq = $pick($program->qualification_requirements_tr, $program->qualification_requirements_en);
-            $langReq = $pick($program->language_requirements_tr, $program->language_requirements_en);
-            $docsReq = $pick($program->required_documents_tr, $program->required_documents_en);
+            $qualReq = $program->displayRequirement('qualification_requirements');
+            $langReq = $program->displayRequirement('language_requirements');
+            $docsReq = $program->displayRequirement('required_documents');
         @endphp
 
         {{-- Başvuru şartları --}}
@@ -158,8 +160,9 @@
             <section class="bg-accent-50 border border-accent-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-accent-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="list-bullet" class="w-6 h-6" /> {{ __('Application Requirements') }}
+                    @if ($qualReq['fallback'])<span class="text-sm font-normal text-accent-700">({{ __('English') }})</span>@endif
                 </h2>
-                <div class="text-accent-900 leading-relaxed whitespace-pre-line prose prose-sm max-w-none">{!! nl2br(e($qualReq)) !!}</div>
+                <div class="text-accent-900 leading-relaxed whitespace-pre-line prose prose-sm max-w-none" @if ($qualReq['fallback']) lang="en" @endif>{!! nl2br(e($qualReq['text'])) !!}</div>
             </section>
         @endif
 
@@ -168,8 +171,9 @@
             <section class="bg-blue-50 border border-blue-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-blue-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="language" class="w-6 h-6" /> {{ __('Language Requirements') }}
+                    @if ($langReq['fallback'])<span class="text-sm font-normal text-blue-700">({{ __('English') }})</span>@endif
                 </h2>
-                <div class="text-blue-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($langReq)) !!}</div>
+                <div class="text-blue-900 leading-relaxed whitespace-pre-line" @if ($langReq['fallback']) lang="en" @endif>{!! nl2br(e($langReq['text'])) !!}</div>
             </section>
         @endif
 
@@ -178,8 +182,9 @@
             <section class="bg-purple-50 border border-purple-200 rounded-xl p-6">
                 <h2 class="text-2xl font-bold text-purple-900 mb-3 flex items-center gap-2">
                     <x-svg-icon name="document-text" class="w-6 h-6" /> {{ __('Required Documents') }}
+                    @if ($docsReq['fallback'])<span class="text-sm font-normal text-purple-700">({{ __('English') }})</span>@endif
                 </h2>
-                <div class="text-purple-900 leading-relaxed whitespace-pre-line">{!! nl2br(e($docsReq)) !!}</div>
+                <div class="text-purple-900 leading-relaxed whitespace-pre-line" @if ($docsReq['fallback']) lang="en" @endif>{!! nl2br(e($docsReq['text'])) !!}</div>
             </section>
         @endif
 
@@ -337,19 +342,23 @@
                     </div>
                 @endif
 
-                @if ($program->application_deadline_winter)
-                    <div>
-                        <dt class="text-gray-500">{{ __('Winter Semester Deadline') }}</dt>
-                        <dd class="font-semibold text-gray-900">{{ $program->application_deadline_winter->format('d.m.Y') }}</dd>
-                    </div>
-                @endif
-
-                @if ($program->application_deadline_summer)
-                    <div>
-                        <dt class="text-gray-500">{{ __('Summer Semester Deadline') }}</dt>
-                        <dd class="font-semibold text-gray-900">{{ $program->application_deadline_summer->format('d.m.Y') }}</dd>
-                    </div>
-                @endif
+                {{-- Geçmiş tarih güncel gibi sunulmaz: "son bilinen" + resmî sayfayı kontrol et. Yeni tarih üretilmez/tahmin edilmez. --}}
+                @foreach (['winter' => __('Winter Semester Deadline'), 'summer' => __('Summer Semester Deadline')] as $sem => $semLabel)
+                    @php $dl = $sem === 'winter' ? $program->application_deadline_winter : $program->application_deadline_summer; @endphp
+                    @if ($dl)
+                        <div data-deadline-state="{{ \App\Models\Program::deadlineState($dl) }}">
+                            <dt class="text-gray-500">{{ $semLabel }}</dt>
+                            @if (\App\Models\Program::deadlineState($dl) === 'past')
+                                <dd class="text-gray-600">
+                                    {{ __('Last known application deadline: :date', ['date' => $dl->format('d.m.Y')]) }}
+                                    <span class="block text-xs text-gray-500 mt-0.5">{{ __("Check the university's official page for the current deadline.") }}</span>
+                                </dd>
+                            @else
+                                <dd class="font-semibold text-gray-900">{{ $dl->format('d.m.Y') }}</dd>
+                            @endif
+                        </div>
+                    @endif
+                @endforeach
 
                 @if (! is_null($program->nc_value))
                     <div>

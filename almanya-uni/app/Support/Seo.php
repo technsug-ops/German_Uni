@@ -133,7 +133,8 @@ class Seo
             '@context' => 'https://schema.org',
             '@type' => 'Course',
             'name' => $program->name_de,
-            'description' => $program->description_tr ?: $program->description_en,
+            // Sayfa dilindeki açıklama (EN/DE'de Türkçe metin yok; başlık tekrarı "açıklama" sayılmaz)
+            'description' => $program->displayDescription()['text'] ?? null,
             'provider' => $uniName ? [
                 '@type' => 'CollegeOrUniversity',
                 'name' => $uniName,

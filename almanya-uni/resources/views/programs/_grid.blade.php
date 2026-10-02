@@ -119,13 +119,21 @@
                             @if ($p->application_deadline_winter)
                                 <span class="inline-flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
-                                    {{ __('Winter:') }} {{ $p->application_deadline_winter->format('d.m') }}
+                                    @if (\App\Models\Program::deadlineState($p->application_deadline_winter) === 'past')
+                                        <span class="text-gray-400">{{ __('Winter:') }} {{ $p->application_deadline_winter->format('d.m.Y') }} {{ __('(last known)') }}</span>
+                                    @else
+                                        {{ __('Winter:') }} {{ $p->application_deadline_winter->format('d.m') }}
+                                    @endif
                                 </span>
                             @endif
                             @if ($p->application_deadline_summer)
                                 <span class="inline-flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
-                                    {{ __('Summer:') }} {{ $p->application_deadline_summer->format('d.m') }}
+                                    @if (\App\Models\Program::deadlineState($p->application_deadline_summer) === 'past')
+                                        <span class="text-gray-400">{{ __('Summer:') }} {{ $p->application_deadline_summer->format('d.m.Y') }} {{ __('(last known)') }}</span>
+                                    @else
+                                        {{ __('Summer:') }} {{ $p->application_deadline_summer->format('d.m') }}
+                                    @endif
                                 </span>
                             @endif
                             @if ($p->university?->is_uni_assist_member)

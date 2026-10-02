@@ -457,14 +457,20 @@ class SitemapController extends Controller
                 }
             });
 
-        // indexable(): yalnız ad+derece taşıyan (HK importu) programlar noindex olduğu için
-        // sitemap'e de girmez — noindex URL'i sitemap'te sunmak çelişkili sinyaldir.
+        // İnce programlar (Program::isThin — anlamlı açıklama/şart metni yok) noindex olduğu için sitemap'e de
+        // girmez; noindex URL'i sitemap'te sunmak çelişkili sinyaldir. indexable() SQL ön filtresi, kesin karar
+        // sayfadaki noindex ile AYNI PHP kuralı (isThin) ile satır satır verilir.
         Program::where('is_active', true)
             ->indexable()
-            ->select(['slug', 'updated_at', 'description_tr', 'language'])
+            ->select(['slug', 'updated_at', 'description_tr', 'description_en', 'language', 'name_de', 'name_en', 'name_tr',
+                'degree_specification', 'qualification_requirements_tr', 'qualification_requirements_en',
+                'language_requirements_tr', 'language_requirements_en'])
             ->orderBy('id')
             ->chunk(1000, function ($chunk) use (&$urls) {
                 foreach ($chunk as $p) {
+                    if ($p->isThin()) {
+                        continue;
+                    }
                     // Değer sinyali (crawl bütçesi yoğunlaştırma): uluslararası
                     // (İngilizce/both) programlar öncelikli; Almanca-only uzun-kuyruk
                     // daha düşük → Google önce marka-hedefi sayfaları tarasın.
