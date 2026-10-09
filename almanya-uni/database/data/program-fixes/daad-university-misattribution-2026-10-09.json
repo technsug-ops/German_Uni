@@ -1,0 +1,918 @@
+{
+ "checked_at": "2026-10-09",
+ "source": "DAAD International Programmes API (academy field)",
+ "programs": [
+  {
+   "source_id": "4289",
+   "name_de": "AgriGenomics",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "6148",
+   "name_de": "MSc Computer Science",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4282",
+   "name_de": "MSc Marine Geosciences",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4275",
+   "name_de": "MSc in Economics",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "6159",
+   "name_de": "MSc in Electrical and Information Engineering",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4506",
+   "name_de": "MSc in Environmental and Resource Economics",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4274",
+   "name_de": "MSc in Quantitative Economics",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4287",
+   "name_de": "MSc in Quantitative Finance",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "9697",
+   "name_de": "Master of Laws (LLM Int)",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "4114",
+   "name_de": "Master of Science in Climate Physics",
+   "degree": "master",
+   "daad_academy": "Kiel University",
+   "from": "Hochschule für Angewandte Wissenschaften Kiel",
+   "to": "Christian-Albrechts-Universität zu Kiel"
+  },
+  {
+   "source_id": "11121",
+   "name_de": "Wind Energy Engineering",
+   "degree": "master",
+   "daad_academy": "Flensburg University of Applied Sciences",
+   "from": "Hochschule Offenburg",
+   "to": "Hochschule Flensburg"
+  },
+  {
+   "source_id": "11147",
+   "name_de": "Engineering and Management",
+   "degree": "bachelor",
+   "daad_academy": "Merseburg University of Applied Sciences",
+   "from": "Hochschule für Angewandte Wissenschaften Hamburg",
+   "to": "Hochschule Merseburg"
+  },
+  {
+   "source_id": "11196",
+   "name_de": "Master of Science in Polymer Materials Science",
+   "degree": "master",
+   "daad_academy": "Merseburg University of Applied Sciences",
+   "from": "Hochschule für Angewandte Wissenschaften Hamburg",
+   "to": "Hochschule Merseburg"
+  },
+  {
+   "source_id": "8923",
+   "name_de": "German Intensive Course – DeutschPlus",
+   "degree": "other",
+   "daad_academy": "Brandenburg University of Applied Sciences",
+   "from": "Hochschule Neubrandenburg",
+   "to": "Technische Hochschule Brandenburg"
+  },
+  {
+   "source_id": "4669",
+   "name_de": "Computer Science (CTS)",
+   "degree": "bachelor",
+   "daad_academy": "Ulm University of Applied Sciences",
+   "from": "Hochschule für angewandte Wissenschaften Neu-Ulm",
+   "to": "Technische Hochschule Ulm"
+  },
+  {
+   "source_id": "9157",
+   "name_de": "Electrical Engineering and Information Technology",
+   "degree": "bachelor",
+   "daad_academy": "Ulm University of Applied Sciences",
+   "from": "Hochschule für angewandte Wissenschaften Neu-Ulm",
+   "to": "Technische Hochschule Ulm"
+  },
+  {
+   "source_id": "5057",
+   "name_de": "Augsburg Programme on European & International Economic Law",
+   "degree": "studienkolleg",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "9965",
+   "name_de": "Data Science",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "6889",
+   "name_de": "English and American Studies",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "11067",
+   "name_de": "German-French Management (Double Degree; MSc)",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "11076",
+   "name_de": "Global Business Management (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "11244",
+   "name_de": "Ibero-Romance Cultural Studies (IRK)",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "5306",
+   "name_de": "International Master's Mathematical Analysis and Modelling",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "8945",
+   "name_de": "MA Research on Learning and Instruction",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "3802",
+   "name_de": "Master Materials Science & Engineering",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "4001",
+   "name_de": "Master of Science in Software Engineering",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "10558",
+   "name_de": "Mathematics and Computer Science",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "11074",
+   "name_de": "Medical Information Sciences",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "9734",
+   "name_de": "Urban Cultures (URC)",
+   "degree": "master",
+   "daad_academy": "University of Augsburg",
+   "from": "Technische Hochschule Augsburg",
+   "to": "Universität Augsburg"
+  },
+  {
+   "source_id": "6297",
+   "name_de": ":prime — Foundation Programme",
+   "degree": "sprachkurs",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "7661",
+   "name_de": "Applied Geosciences",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3713",
+   "name_de": "Communication & Information Technology, MSc (CIT)",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3714",
+   "name_de": "Control, Microsystems, Microelectronics (CMM)",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3844",
+   "name_de": "Digital Media",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "8334",
+   "name_de": "Digital Media and Society",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4119",
+   "name_de": "Ecology",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3913",
+   "name_de": "Environmental Physics (PEP)",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "7885",
+   "name_de": "Industrial Mathematics and Data Analysis",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3710",
+   "name_de": "International Studies in Aquatic Tropical Ecology",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4912",
+   "name_de": "Language – Science Events – Reflections on Culture",
+   "degree": "other",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "7877",
+   "name_de": "MSc Mathematics",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4706",
+   "name_de": "MSc Physical Geography: Environmental History",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "9585",
+   "name_de": "Management Information Systems",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3881",
+   "name_de": "Marine Biology",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "7705",
+   "name_de": "Marine Geosciences",
+   "degree": "bachelor",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "3712",
+   "name_de": "Marine Geosciences",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4353",
+   "name_de": "Materials Chemistry and Mineralogy",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "9172",
+   "name_de": "Natural Sciences for Sustainability",
+   "degree": "bachelor",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4256",
+   "name_de": "Neurosciences",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "10482",
+   "name_de": "Physics",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4191",
+   "name_de": "Physics and Electrical Engineering (PIP)",
+   "degree": "phd",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "6284",
+   "name_de": "Space Engineering",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "4771",
+   "name_de": "Space Sciences and Technologies (Space-ST)",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "10456",
+   "name_de": "The Economics of Global Challenges",
+   "degree": "master",
+   "daad_academy": "University of Bremen",
+   "from": "Hochschule Bremen",
+   "to": "Universität Bremen"
+  },
+  {
+   "source_id": "5408",
+   "name_de": "Global Communication: Politics and Society",
+   "degree": "master",
+   "daad_academy": "University of Erfurt",
+   "from": "Fachhochschule Erfurt",
+   "to": "Universität Erfurt"
+  },
+  {
+   "source_id": "10325",
+   "name_de": "Master of Arts in Religious Studies",
+   "degree": "master",
+   "daad_academy": "University of Erfurt",
+   "from": "Fachhochschule Erfurt",
+   "to": "Universität Erfurt"
+  },
+  {
+   "source_id": "4764",
+   "name_de": "Albrecht Mendelssohn Bartholdy Graduate School of Law",
+   "degree": "phd",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9577",
+   "name_de": "Atmospheric Science",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9032",
+   "name_de": "British and American Cultures",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "6287",
+   "name_de": "CUI: Advanced Imaging of Matter Graduate School",
+   "degree": "other",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "10434",
+   "name_de": "Communication & Journalism Research for a Sustainable Society",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "11159",
+   "name_de": "Earth System Physics",
+   "degree": "bachelor",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4054",
+   "name_de": "European Doctorate in Law & Economics (EDLE)",
+   "degree": "phd",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "3640",
+   "name_de": "European Master's in Law & Economics (EMLE)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4115",
+   "name_de": "Integrated Climate System Sciences (ICSS)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9654",
+   "name_de": "Joint Degree Programme in Law (Hamburg/Istanbul)",
+   "degree": "bachelor",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "10681",
+   "name_de": "Law of the Sea and International Environmental Law (LoSIEL)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "11146",
+   "name_de": "MA African Languages and Cultures",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "11144",
+   "name_de": "MSc Innovation, Business and Sustainability (MIBAS)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4350",
+   "name_de": "MSc Intelligent Adaptive Systems (IAS)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9755",
+   "name_de": "MSc in Business Administration",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "6934",
+   "name_de": "Manuscript Cultures",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9054",
+   "name_de": "Marine Ecosystem and Fisheries Sciences",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "3649",
+   "name_de": "Master of International Taxation (M.I.Tax)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4076",
+   "name_de": "Master of Science in Economics",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4423",
+   "name_de": "Master of Science in Ocean and Climate Physics (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4079",
+   "name_de": "Master of Science in Politics, Economics and Philosophy",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "3646",
+   "name_de": "Master's Programme in European and International Law (MEIL)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9652",
+   "name_de": "Master's in Law and Economics of the Arab Region (LLM/MA)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "5609",
+   "name_de": "Mathematical Physics (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "9052",
+   "name_de": "Molecular Plant Science",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "4116",
+   "name_de": "PhD Integrated Climate and Earth System Sciences (SICSS)",
+   "degree": "phd",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "10408",
+   "name_de": "Psychology (Research)",
+   "degree": "master",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "6935",
+   "name_de": "Understanding Written Artefacts",
+   "degree": "phd",
+   "daad_academy": "University of Hamburg",
+   "from": "Technische Universität Hamburg",
+   "to": "Universität Hamburg"
+  },
+  {
+   "source_id": "6911",
+   "name_de": "BioGeoSciences (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "6924",
+   "name_de": "E-Government (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "11252",
+   "name_de": "Life Science (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "4688",
+   "name_de": "Material Science (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "4579",
+   "name_de": "Mathematical Modelling, Simulation and Optimisation (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "4384",
+   "name_de": "Web and Data Science (MSc)",
+   "degree": "master",
+   "daad_academy": "University of Koblenz",
+   "from": "Hochschule Koblenz",
+   "to": "Universität Koblenz"
+  },
+  {
+   "source_id": "5483",
+   "name_de": "Graduate School of Economic and Social Sciences",
+   "degree": "other",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "10609",
+   "name_de": "Mannheim Master in Finance, Accounting and Taxation",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "4425",
+   "name_de": "Mannheim Master in Management",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "10610",
+   "name_de": "Mannheim Master in Operations and Supply Chain Management",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "4716",
+   "name_de": "Master of Arts in Sociology",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "6939",
+   "name_de": "Master of Comparative Business Law (M.C.B.L.)",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "4193",
+   "name_de": "Master of Science in Economics",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "4071",
+   "name_de": "Master's in Political Science",
+   "degree": "master",
+   "daad_academy": "University of Mannheim",
+   "from": "Technische Hochschule Mannheim",
+   "to": "Universität Mannheim"
+  },
+  {
+   "source_id": "4581",
+   "name_de": "Cognitive Systems (Master of Science)",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "3793",
+   "name_de": "Communication and Information Technology (Master of Science)",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "3947",
+   "name_de": "International PhD Programme in Molecular Medicine (IGradU)",
+   "degree": "phd",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "11030",
+   "name_de": "MSc Artificial Intelligence for Connected Industries",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "4692",
+   "name_de": "MSc Chemical Engineering",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "8982",
+   "name_de": "Master of Science in Biology",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "11025",
+   "name_de": "Master of Science in Biomedical Engineering",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "6114",
+   "name_de": "Master of Science in Biophysics",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "3948",
+   "name_de": "Master of Science in Energy Science and Technology",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "3650",
+   "name_de": "Master of Science in Finance",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "11032",
+   "name_de": "Master of Science in Management and Economics",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "11031",
+   "name_de": "Master of Science in Mathematical Data Science",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "6093",
+   "name_de": "Master of Science in Molecular Medicine",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "4580",
+   "name_de": "Master of Science in Molecular and Translational Neuroscience",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "6111",
+   "name_de": "Master of Science in Physics",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  },
+  {
+   "source_id": "8349",
+   "name_de": "Master of Science in Quantum Engineering",
+   "degree": "master",
+   "daad_academy": "Ulm University",
+   "from": "Technische Hochschule Ulm",
+   "to": "Universität Ulm"
+  }
+ ]
+}

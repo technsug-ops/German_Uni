@@ -188,10 +188,16 @@ class DaadImport extends Command
         return $candidates->first();
     }
 
+    /**
+     * normalizeUniName() kurum türünü (universität/hochschule/technische…) siler; bu yüzden "Ulm University" hem
+     * Universität Ulm'a hem TH Ulm'a %100 benzer. En yüksek skoru BİRDEN FAZLA üniversite paylaşıyorsa eşleşme
+     * belirsizdir → null (yanlış üniversiteye bağlamak, hiç bağlamamaktan kötüdür; 2026-10-09'da 114 kayıt düzeltildi).
+     */
     private function fuzzyMatch(string $normalized): ?University
     {
         $best = null;
         $bestScore = 0;
+        $tied = false;
 
         foreach (University::query()->select('id', 'name_de', 'name_en', 'short_name')->cursor() as $u) {
             $candidates = array_filter([$u->name_de, $u->name_en, $u->short_name]);
@@ -202,8 +208,17 @@ class DaadImport extends Command
                 if ($pct > $bestScore) {
                     $bestScore = $pct;
                     $best = $u;
+                    $tied = false;
+                } elseif ($pct === $bestScore && $best && $best->id !== $u->id) {
+                    $tied = true;
                 }
             }
+        }
+
+        if ($tied && $bestScore >= 88) {
+            $this->warn("   belirsiz üniversite eşleşmesi (aynı skor birden çok kurumda), atlandı: {$normalized}");
+
+            return null;
         }
 
         return $bestScore >= 88 ? $best : null;
