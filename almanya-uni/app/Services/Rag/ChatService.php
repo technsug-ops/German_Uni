@@ -2,8 +2,13 @@
 
 namespace App\Services\Rag;
 
+use App\Mail\GeminiAccessAlert;
+use App\Models\User;
 use App\Support\MarkdownRenderer;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * RAG sohbet üretimi — retrieval bağlamından GROUNDED cevap.
@@ -53,6 +58,9 @@ class ChatService
         try {
             $qv = $this->embedder->embedOne($message, GeminiEmbedder::TASK_QUERY);
         } catch (\Throwable $e) {
+            if (preg_match('/^Embed HTTP (401|403|429)\b/', $e->getMessage())) {
+                $this->alertAccessDenied($e->getMessage());
+            }
             return $this->result($this->error($locale), [], 'low', 0.0);
         }
 
@@ -169,11 +177,36 @@ class ChatService
                 ->withHeaders(['x-goog-api-key' => $this->key])
                 ->retry(2, 2000, throw: false)
                 ->post(self::API . $this->model . ':generateContent', $this->buildPayload($message, $locale, $sources, $history));
-            if (! $resp->ok()) return $this->error($locale);
+            if (! $resp->ok()) {
+                if (in_array($resp->status(), [401, 403, 429], true)) {
+                    $this->alertAccessDenied('Chat HTTP ' . $resp->status() . ': ' . mb_substr($resp->body(), 0, 300));
+                }
+                return $this->error($locale);
+            }
             $text = $this->stripInstructionLeak((string) $resp->json('candidates.0.content.parts.0.text'));
             return $text ?: $this->error($locale);
         } catch (\Throwable $e) {
             return $this->error($locale);
+        }
+    }
+
+    /**
+     * Gemini erişimi reddedildi (2026-10-09: prepaid kredi bitince 403 "project denied access") → admin'e e-posta.
+     * Hata kullanıcıya genel mesajla yutulduğu için aksi halde fark edilmiyor. Cache::add ile 6 saatte bir kez.
+     */
+    private function alertAccessDenied(string $detail): void
+    {
+        try {
+            if (! Cache::add('gemini_access_alert_sent', true, now()->addHours(6))) {
+                return;
+            }
+            Log::error('Gemini erişimi reddedildi: ' . $detail);
+            $to = config('mail.admin_email') ?: User::where('is_admin', true)->orderBy('id')->value('email');
+            if ($to) {
+                Mail::to($to)->send(new GeminiAccessAlert($detail));
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Gemini erişim uyarısı gönderilemedi: ' . $e->getMessage());
         }
     }
 
