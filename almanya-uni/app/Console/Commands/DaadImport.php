@@ -100,7 +100,9 @@ class DaadImport extends Command
             }
         }
 
-        $degreeMap = [1=>'bachelor',2=>'master',3=>'phd',4=>'other',5=>'other',6=>'studienkolleg',7=>'sprachkurs',8=>'other',10=>'other'];
+        // DAAD courseType (2026-10-09 API'den doğrulandı): 4 = doktora/graduate school, 5/6/56 = yaz-kış okulu ve kısa
+        // kurs (6 eskiden 'studienkolleg' sayılıyordu → Studienkolleg filtresinde 92 yaz okulu görünüyordu), 7 = hazırlık.
+        $degreeMap = [1=>'bachelor',2=>'master',3=>'phd',4=>'phd',5=>'other',6=>'other',56=>'other',7=>'sprachkurs',8=>'other',10=>'other'];
         $degreeId = (int) ($c['courseType'] ?? 0);
         $degree = $degreeMap[$degreeId] ?? 'other';
 

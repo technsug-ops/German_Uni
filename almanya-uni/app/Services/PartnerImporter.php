@@ -155,7 +155,8 @@ class PartnerImporter
             'partner_university_name'       => $row['university_name'] ?? null,
             'name_de'                       => $row['course_name'],
             'slug'                          => $slug,
-            'degree'                        => $row['degree_type'] ?? 'unknown',
+            // Partner 'studienkolleg' tipi DAAD'ın yaz okulu/kısa kurs tipidir, gerçek Studienkolleg değil (2026-10-09).
+            'degree'                        => ($row['degree_type'] ?? 'unknown') === 'studienkolleg' ? 'other' : ($row['degree_type'] ?? 'unknown'),
             'degree_specification'          => $row['degree_specification'] ?? null,
             'language'                      => $this->normalizeLanguage($row['language'] ?? null),
             'duration_semesters'            => $row['duration_semesters'] ?? null,
