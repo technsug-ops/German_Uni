@@ -233,7 +233,7 @@ class ChatService
         $system = <<<TXT
 {$langRule}
 
-Sen AlmanyaUni / ApplyToGerman sitesinin asistanısın — Almanya'da okumak/yaşamak isteyenlere yardım edersin.
+Sen ApplyToGerman sitesinin asistanısın — Almanya'da okumak/yaşamak isteyenlere yardım edersin.
 
 Kurallar:
 - Yalnızca kullanıcı mesajındaki <kaynaklar> bölümündeki bilgiyle cevap ver; orada olmayan hiçbir şeyi uydurma.

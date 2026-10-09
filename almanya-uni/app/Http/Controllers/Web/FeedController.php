@@ -113,7 +113,7 @@ class FeedController extends Controller
             ->take(50)
             ->values();
 
-        $siteName = config('seo.site_name', 'AlmanyaUni');
+        $siteName = brand('name');
         $siteUrl = config('seo.organization.url', url('/'));
         $description = config('seo.default.description', 'Türk öğrenciler için Almanya rehberi');
         $now = now()->toRfc2822String();

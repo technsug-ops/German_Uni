@@ -6,10 +6,10 @@
  * Buradaki değerler SADECE FALLBACK (brand resolve edilemediği edge case'ler için).
  */
 return [
-    'site_name' => 'AlmanyaUni',
+    'site_name' => 'ApplyToGerman',
 
     'default' => [
-        'title' => 'AlmanyaUni — Almanya Üniversite & Kariyer Rehberi',
+        'title' => 'ApplyToGerman — Almanya Üniversite & Kariyer Rehberi',
         'description' => 'Türk öğrenciler için Almanya rehberi: 488 üniversite, 18.306 program, 180 şehir, 3.560 meslek. Burslar, başvuru rehberleri, yaşam maliyeti hesaplayıcı ve kariyer araçları — ücretsiz.',
         // og:image fallback brand'a göre runtime'da seçilir (components/seo.blade.php)
         'image' => '/og-default.png',
@@ -18,7 +18,7 @@ return [
     ],
 
     'organization' => [
-        'name' => 'AlmanyaUni',
+        'name' => 'ApplyToGerman',
         'url' => env('APP_URL', 'http://localhost'),
         'logo' => '/logo.png',
         'sameAs' => [
@@ -28,7 +28,7 @@ return [
 
     'twitter' => [
         // brand-specific handle config/brand.php'den (brand('twitter'))
-        'handle' => '@almanyauni',
+        'handle' => '@applytogerman',
         'card' => 'summary_large_image',
     ],
 

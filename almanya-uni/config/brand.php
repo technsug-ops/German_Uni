@@ -31,7 +31,7 @@ return [
             'twitter'        => '@applytogerman',
             'mail_from'      => 'merhaba@almanyauni.com',
             'mail_from_name' => 'ApplyToGerman',
-            'copyright'      => 'ApplyToGerman (AlmanyaUni)',
+            'copyright'      => 'ApplyToGerman',
             'apple_title'    => 'ApplyToGerman',
             'default_locale' => 'tr',
             'theme_color'    => '#1A1A1A', // Marka siyahı (ApplyToGerman logo sistemi)
@@ -51,7 +51,7 @@ return [
             'twitter'        => '@applytogerman',
             'mail_from'      => 'hello@applytogerman.com',
             'mail_from_name' => 'ApplyToGerman',
-            'copyright'      => 'ApplyToGerman (AlmanyaUni)',
+            'copyright'      => 'ApplyToGerman',
             'apple_title'    => 'ApplyToGerman',
             'default_locale' => 'en',
             'theme_color'    => '#1A1A1A', // Marka siyahı (ApplyToGerman logo sistemi)

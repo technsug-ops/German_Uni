@@ -1,0 +1,51 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\TestCase;
+
+/**
+ * Tek marka (2026-10-10): TR/EN/DE'de kullanıcıya görünen marka yalnız ApplyToGerman. Eskiden çeviri metinleri,
+ * footer telif satırı ve chatbot adı "ApplyToGerman (AlmanyaUni)" / "AlmanyaUni Asistanı" gösteriyordu.
+ *
+ * Bilerek korunan teknik izler sayfada kalabilir: almanyauni_* çerez adları ve Organization şemasındaki
+ * alternateName (eski alan adı almanyauni.com → applytogerman.com yönlendirmesiyle varlık sürekliliği).
+ */
+class BrandSingleNameTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public static function locales(): array
+    {
+        return [['tr', 'ApplyToGerman Asistanı'], ['en', 'ApplyToGerman Assistant'], ['de', 'ApplyToGerman-Assistent']];
+    }
+
+    #[DataProvider('locales')]
+    public function test_home_shows_only_applytogerman(string $locale, string $assistant): void
+    {
+        $html = $this->get("/{$locale}")->assertOk()->getContent();
+
+        $this->assertStringContainsString('<meta property="og:site_name" content="ApplyToGerman">', $html);
+        $this->assertStringContainsString('&copy; ' . date('Y') . ' ApplyToGerman.', $html);
+        $this->assertMatchesRegularExpression('/"@type":\s*"WebSite",\s*"name":\s*"ApplyToGerman"/', $html);
+
+        if (str_contains($html, 'Assist')) {
+            $this->assertStringContainsString($assistant, $html);
+        }
+
+        $visible = preg_replace(['/almanyauni_[a-z_]+/', '/"alternateName":\s*"AlmanyaUni"/'], '', $html);
+        $this->assertStringNotContainsString('AlmanyaUni', $visible);
+    }
+
+    public function test_lang_files_have_no_dual_brand(): void
+    {
+        foreach (['tr', 'en', 'de'] as $l) {
+            $values = json_decode(file_get_contents(lang_path("{$l}.json")), true);
+            foreach ($values as $key => $value) {
+                $this->assertStringNotContainsString('AlmanyaUni', $value, "{$l}.json: {$key}");
+            }
+        }
+    }
+}

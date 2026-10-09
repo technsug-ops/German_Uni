@@ -3,7 +3,7 @@
     $__locale = app()->getLocale();
     $t = match ($__locale) {
         'de' => [
-            'title' => 'AlmanyaUni Assistent',
+            'title' => 'ApplyToGerman-Assistent',
             'open' => 'Frag den Assistenten',
             'greet' => 'Hallo! Ich beantworte Fragen zum Studium und Leben in Deutschland — gestützt auf unsere Inhalte.',
             'placeholder' => 'Stelle deine Frage…',
@@ -20,7 +20,7 @@
             'lead_done' => 'Erhalten! Wir melden uns bald.',
         ],
         'en' => [
-            'title' => 'AlmanyaUni Assistant',
+            'title' => 'ApplyToGerman Assistant',
             'open' => 'Ask the assistant',
             'greet' => 'Hi! I answer questions about studying and living in Germany — grounded in our content.',
             'placeholder' => 'Ask your question…',
@@ -37,7 +37,7 @@
             'lead_done' => 'Got it! We\'ll be in touch soon.',
         ],
         default => [
-            'title' => 'AlmanyaUni Asistanı',
+            'title' => 'ApplyToGerman Asistanı',
             'open' => 'Asistana sor',
             'greet' => 'Merhaba! Almanya’da okumak ve yaşamak hakkındaki sorularını içeriğimize dayanarak yanıtlıyorum.',
             'placeholder' => 'Sorunu yaz…',
