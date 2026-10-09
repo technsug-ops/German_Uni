@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\DB;
 /**
  * Resmî kaynak doğrulama dosyasını (ör. database/data/program-verification/pilot-2026-10-02.json) uygular.
  *
- *  - Program, id + slug ile eşleşmeli; eşleşmezse atlanır (yanlış programa yazılmaz).
+ *  - Program, kaynak + dış kimlik + kimlik alanlarıyla tam olarak eşleşmeli (bkz. resolve()); eşleşmezse atlanır.
  *  - Program düzeyi doğrulama alanları (official_program_url, application_method, application_url, uni_assist_required,
  *    vpd_required) YALNIZ boşsa doldurulur; dolu ve farklıysa dokunulmaz, raporlanır. Mevcut program verisi
  *    (ad, dil, tarih, ücret…) bu komutla ASLA değiştirilmez — düzeltme önerileri ayrı onaya tabidir.
  *  - Doğrulama kayıtları (alan + aday grubu + dönem) anahtarıyla upsert edilir; aynı içerik tekrar gelirse değişiklik yok.
- *  - Migration DEĞİLDİR: deploy'da otomatik çalışmaz; elle ve bilinçli çalıştırılır.
+ *  - Deploy'da kendiliğinden çalışmaz; her veri dosyası ayrı bir data-migration ile bilinçli olarak yüklenir
+ *    (pilot: 2026_10_09_000100_import_program_verification_pilot).
  */
 class ProgramsVerificationImport extends Command
 {
