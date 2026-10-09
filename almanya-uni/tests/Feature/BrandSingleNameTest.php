@@ -39,6 +39,19 @@ class BrandSingleNameTest extends TestCase
         $this->assertStringNotContainsString('AlmanyaUni', $visible);
     }
 
+    /** Arama sayfasının logosu "Almanya" + "Uni" diye iki span'e bölünmüş yazılıydı; düz metin aramasından kaçıyordu. */
+    #[DataProvider('locales')]
+    public function test_search_page_logo_is_applytogerman(string $locale): void
+    {
+        foreach (['', '?q=Berlin'] as $query) {
+            $html = $this->get("/{$locale}/search{$query}")->assertOk()->getContent();
+            $text = strip_tags($html);
+
+            $this->assertStringContainsString('ApplyToGerman', $text);
+            $this->assertStringNotContainsString('AlmanyaUni', $text);
+        }
+    }
+
     public function test_lang_files_have_no_dual_brand(): void
     {
         foreach (['tr', 'en', 'de'] as $l) {

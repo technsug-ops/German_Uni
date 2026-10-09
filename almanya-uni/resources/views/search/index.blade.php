@@ -29,7 +29,7 @@
         <div class="w-full max-w-xl flex flex-col items-center">
             <div class="mb-6 text-center">
                 <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
-                    <span class="text-primary-500">Almanya</span><span class="text-accent-500">Uni</span>
+                    <span class="text-primary-500">Apply</span><span class="text-accent-500">To</span><span class="text-primary-500">German</span>
                 </h1>
                 <p class="text-gray-500 mt-2 text-sm">{{ __('University, city, program — all in a single search.') }}</p>
             </div>
@@ -67,7 +67,7 @@
     <div class="border-b border-gray-200 bg-white sticky top-0 z-20">
         <div class="max-w-[1400px] mx-auto px-4 py-4 flex items-center gap-4">
             <a href="{{ route('search.index') }}" class="flex-shrink-0 text-2xl font-bold tracking-tight">
-                <span class="text-primary-500">Almanya</span><span class="text-accent-500">Uni</span>
+                <span class="text-primary-500">Apply</span><span class="text-accent-500">To</span><span class="text-primary-500">German</span>
             </a>
             <form method="GET" action="{{ route('search.index') }}" class="flex-1 max-w-xl">
                 <div class="relative">
