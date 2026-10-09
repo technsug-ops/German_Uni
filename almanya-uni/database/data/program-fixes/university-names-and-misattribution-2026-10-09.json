@@ -1,0 +1,673 @@
+{
+    "checked_at": "2026-10-09",
+    "source": "DAAD International Programmes API (academy field); partner source_url = DAAD detail page",
+    "university_name_en": [
+        {
+            "name_de": "Health and Medical University Potsdam",
+            "wrong_name_en": "University of Potsdam",
+            "name_en": null
+        },
+        {
+            "name_de": "htk academy",
+            "wrong_name_en": "University of Europe for Applied Sciences",
+            "name_en": null
+        },
+        {
+            "name_de": "Akademie für Tonkunst",
+            "wrong_name_en": "Edward MacDowell",
+            "name_en": null
+        },
+        {
+            "name_de": "FHDW Fachhochschule für die Wirtschaft Hannover",
+            "wrong_name_en": "Celle",
+            "name_en": null
+        },
+        {
+            "name_de": "media Akademie - Hochschule Stuttgart",
+            "wrong_name_en": "Steinbeis-Hochschule Berlin",
+            "name_en": null
+        },
+        {
+            "name_de": "Whitecliffe University of Applied Sciences",
+            "wrong_name_en": "Berlin International College (BIC)",
+            "name_en": null
+        },
+        {
+            "name_de": "Frankfurter Akademie für Kommunikation und Design",
+            "wrong_name_en": "Frankfurt",
+            "name_en": null
+        },
+        {
+            "name_de": "Lazi Akademie",
+            "wrong_name_en": "Łaziska, Opole Voivodeship",
+            "name_en": null
+        },
+        {
+            "name_de": "Fachhochschule Dresden",
+            "wrong_name_en": "FHD (disambiguation)",
+            "name_en": null
+        },
+        {
+            "name_de": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+            "wrong_name_en": "Munich University of Applied Sciences",
+            "name_en": null
+        },
+        {
+            "name_de": "Popakademie Baden-Württemberg GmbH",
+            "wrong_name_en": "Peter Kurz",
+            "name_en": null
+        },
+        {
+            "name_de": "ISS International Business School of Service Management Hamburg",
+            "wrong_name_en": "Technical University of Munich",
+            "name_en": null
+        },
+        {
+            "name_de": "SRH Distance Learning University",
+            "wrong_name_en": "International University Liaison Indonesia",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for Extraterrestrial Physics",
+            "wrong_name_en": "Max Planck Institute for Physics",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for the Physics of Complex Systems",
+            "wrong_name_en": "Max Planck Institute for Physics",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for Chemical Physics of Solids",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute of Immunobiology and Epigenetics",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for Heart and Lung Research",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute of Microstructure Physics",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for Human Cognitive and Brain Sciences",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "Max Planck Institute for Biological Intelligence",
+            "wrong_name_en": "List of Max Planck Institutes",
+            "name_en": null
+        },
+        {
+            "name_de": "German International University",
+            "wrong_name_en": "List of universities in Germany",
+            "name_en": null
+        },
+        {
+            "name_de": "Evangelische Hochschule Hessen",
+            "wrong_name_en": "Prussian Union of Churches",
+            "name_en": null
+        },
+        {
+            "name_de": "Deutsche Hochschule für angewandte Wissenschaften",
+            "wrong_name_en": "Universities and research institutions in Berlin",
+            "name_en": null
+        },
+        {
+            "name_de": "Macromedia University of Applied Sciences",
+            "wrong_name_en": "Funeral doom",
+            "name_en": null
+        },
+        {
+            "name_de": "Fachhochschule für Sport und Management Potsdam",
+            "wrong_name_en": "University of Europe for Applied Sciences",
+            "name_en": null
+        },
+        {
+            "name_de": "Universität Potsdam",
+            "wrong_name_en": "Universität Potsdam",
+            "name_en": "University of Potsdam"
+        }
+    ],
+    "programs": [
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f1-ea78-7059-837d-c49684131ddb",
+            "name_de": "Electric Vehicle Propulsion and Control (E-PiCo)",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-078c-7168-b212-22e10ff92c1d",
+            "name_de": "Master of Laws (LLM Int) – International Law",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0862-70dc-bebb-dffdc9b490ae",
+            "name_de": "Master of Science in AgriGenomics",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0968-72ef-ae46-97896bde9000",
+            "name_de": "Master of Science in Climate Physics: Meteorology and Physical Oceanography",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-09d1-731d-8444-0c072426c9de",
+            "name_de": "Master of Science in Computer Science",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-09f5-701c-81c4-1b3618695bce",
+            "name_de": "Master of Science in Dairy Science",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0a84-72d8-b39c-1d3db2333dbc",
+            "name_de": "Master of Science in Economics",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0aae-71e4-913b-247c02dca74f",
+            "name_de": "Master of Science in Electrical and Information Engineering",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0adc-709c-8f3f-dd89720165fc",
+            "name_de": "Master of Science in Environmental and Resource Economics",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0c26-701c-87d9-419691ed8bde",
+            "name_de": "Master of Science in Marine Geosciences",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0c45-7138-8c75-b2600aa8087d",
+            "name_de": "Master of Science in Mathematical Finance",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0db4-7361-8405-cb8c23105404",
+            "name_de": "Master of Science in Quantitative Economics",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-0dbc-7333-914f-109f340f2a40",
+            "name_de": "Master of Science in Quantitative Finance",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f2-166d-7155-8821-99f67d226029",
+            "name_de": "Medical Life Sciences",
+            "degree": "master",
+            "daad_academy": "Kiel University",
+            "from": "Hochschule für Angewandte Wissenschaften Kiel",
+            "to": "Christian-Albrechts-Universität zu Kiel"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f1-f231-70ca-955e-01d78fcdd561",
+            "name_de": "German Intensive Course – Start Your Studies with DeutschPlus",
+            "degree": "other",
+            "daad_academy": "Brandenburg University of Applied Sciences",
+            "from": "Hochschule Neubrandenburg",
+            "to": "Technische Hochschule Brandenburg"
+        },
+        {
+            "source": "partner",
+            "external_id_field": "partner_id",
+            "external_id": "019de9f1-f8fb-7383-9f59-62470850f2a3",
+            "name_de": "Intelligent Systems (ISY)",
+            "degree": "master",
+            "daad_academy": "Ulm University of Applied Sciences",
+            "from": "Hochschule für angewandte Wissenschaften Neu-Ulm",
+            "to": "Technische Hochschule Ulm"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4325",
+            "name_de": "Anglophone Modernities in Literature and Culture",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "11075",
+            "name_de": "Anglophone Postcolonial Studies",
+            "degree": "bachelor",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7016",
+            "name_de": "Applied Cultural and Translation Studies (German-Polish)",
+            "degree": "bachelor",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4693",
+            "name_de": "Astrophysics",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4338",
+            "name_de": "Biochemistry and Molecular Biology",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5373",
+            "name_de": "Bioinformatics",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10376",
+            "name_de": "Chemistry of Functional Molecules and Materials",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "9081",
+            "name_de": "Climate, Earth, Water, Sustainability (CLEWS)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "6099",
+            "name_de": "Clinical Exercise Science (CES)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4696",
+            "name_de": "Cognitive Science",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "6262",
+            "name_de": "Cognitive Systems: Language, Learning, and Reasoning",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "8305",
+            "name_de": "Computer Science",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "8329",
+            "name_de": "DSH Course+",
+            "degree": "other",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5252",
+            "name_de": "Digital Health",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10472",
+            "name_de": "Digital Health",
+            "degree": "phd",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "8342",
+            "name_de": "Eastern European Cultural Studies",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5665",
+            "name_de": "Ecology, Evolution, and Conservation (EEC)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7014",
+            "name_de": "Economic Policy and Quantitative Methods (EPQM)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "8930",
+            "name_de": "European Film Business and Law",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10463",
+            "name_de": "Foundations of AI",
+            "degree": "phd",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "8308",
+            "name_de": "Geosciences",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7662",
+            "name_de": "Information and Data Engineering (IDE)",
+            "degree": "phd",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10377",
+            "name_de": "Intercultural Communication and Management (ICM)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4170",
+            "name_de": "International Experimental and Clinical Linguistics (IECL)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5365",
+            "name_de": "International War Studies",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5304",
+            "name_de": "Jewish Theology",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7033",
+            "name_de": "Linguistics: Empirical and Theoretical Foundations",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "9604",
+            "name_de": "MBA General Management",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7263",
+            "name_de": "Mathematics",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5376",
+            "name_de": "National and International Administration and Policy (MANIA)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10384",
+            "name_de": "Public Health, Exercise, and Nutrition (PEN)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4855",
+            "name_de": "Remote Sensing, geoInformation, and Visualisation (RSIV)",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "10461",
+            "name_de": "Secure Distributed Computing (SeDiC)",
+            "degree": "phd",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "5248",
+            "name_de": "Study Preparation Brandenburg",
+            "degree": "sprachkurs",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "6990",
+            "name_de": "Sustainable Development Academy | SDA",
+            "degree": "studienkolleg",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "7619",
+            "name_de": "Systems Design",
+            "degree": "phd",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        },
+        {
+            "source": "daad",
+            "external_id_field": "source_id",
+            "external_id": "4697",
+            "name_de": "Toxicology",
+            "degree": "master",
+            "daad_academy": "University of Potsdam",
+            "from": "Health and Medical University Potsdam",
+            "to": "Universität Potsdam"
+        }
+    ]
+}
