@@ -41,6 +41,16 @@ class UniversityWebController extends Controller
         'constructor-university' => 'constructor-university-bremen-partner-019ddbba',
         'dresden-international-university' => 'diu-dresden-international-university-gmbh-partner-019ddbba',
         'jade-university-of-applied-sciences-wilhelmshavenoldenburgelsfleth-partner-019de9f1' => 'jade-hochschule-partner-019ddbba',
+        // 2026-10-09 ikinci tur (database/migrations/2026_10_09_001100_merge_more_duplicate_university_records.php).
+        'hochschule-bochum-partner-019ddbba' => 'hochschule-fur-technik-wirtschaft-und-gesundheit-bochum-q1622078',
+        'bochum-university-of-applied-sciences-partner-019de9f1' => 'hochschule-fur-technik-wirtschaft-und-gesundheit-bochum-q1622078',
+        'fachhochschule-macromedia-q1346417' => 'macromedia-university-of-applied-sciences-hs366',
+        'german-international-school-of-management-and-administration-gisma-partner-019ddbba' => 'gisma-university-of-applied-sciences-hs518',
+        'brandenburg-university-of-technology-cottbus-senftenberg-partner-019de9f1' => 'brandenburgische-technische-universitat-cottbus-senftenberg-partner-019ddbba',
+        'technical-university-of-applied-sciences-wildau-partner-019de9f1' => 'technische-hochschule-wildau-q686171',
+        'hamburg-university-of-technology-partner-019de9f1' => 'technische-universitat-hamburg-q1060',
+        'fau-erlangen-nurnberg-partner-019de9f1' => 'friedrich-alexander-universitat-erlangen-nurnberg-q40025',
+        'freie-universitat-berlin-e-medien-q130548543' => 'freie-universitat-berlin',
     ];
 
     public function index(Request $request): View|\Illuminate\Http\Response
