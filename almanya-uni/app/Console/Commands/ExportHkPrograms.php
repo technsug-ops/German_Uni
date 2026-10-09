@@ -178,10 +178,17 @@ class ExportHkPrograms extends Command
         }
 
         // Kurum eşleştirme: ad normalizasyonu + elle alias dosyası (slug ile taşınır, ID ile değil).
+        // normUni() kurum türünü ve virgülden sonrasını sildiği için farklı kurumlar aynı anahtara düşebilir
+        // ("Universität Hamburg" / "Technische Universität Hamburg", "Hochschule für Technik, … Leipzig" / "… Offenburg").
+        // Eskiden SONUNCU kazanıyordu (2026-10-09: 1.029 program yanlış üniversitedeydi) → çakışan anahtar null olur ve
+        // yalnız birebir ad eşleşmesi kabul edilir.
         $uniBySlugKey = [];
+        $uniByExactName = [];
         $uniNameBySlug = [];
         foreach (DB::table('universities')->where('is_active', 1)->get(['id', 'name_de', 'slug']) as $u) {
-            $uniBySlugKey[$this->normUni($u->name_de)] = $u->slug;
+            $key = $this->normUni($u->name_de);
+            $uniBySlugKey[$key] = array_key_exists($key, $uniBySlugKey) ? null : $u->slug;
+            $uniByExactName[mb_strtolower(trim($u->name_de), 'UTF-8')] = $u->slug;
             $uniNameBySlug[$u->slug] = $u->name_de;
         }
         $aliases = [];
@@ -219,8 +226,9 @@ class ExportHkPrograms extends Command
             }
             $stats['aday']++;
 
-            $uniSlug = $uniBySlugKey[$this->normUni((string) $r->hochschule)]
-                ?? ($aliases[$r->hochschule] ?? null);
+            $uniSlug = $uniByExactName[mb_strtolower(rtrim(trim((string) $r->hochschule), ','), 'UTF-8')]
+                ?? ($aliases[$r->hochschule] ?? null)
+                ?? $uniBySlugKey[$this->normUni((string) $r->hochschule)] ?? null;
             if (! $uniSlug || ! is_string($uniSlug)) {
                 $stats['uni_yok']++;
                 continue;
