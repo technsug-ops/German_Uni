@@ -27,6 +27,14 @@ class TrackPageView
      */
     private const REQ_ATTR = '_pageview_pending';
 
+    /**
+     * Saklama süresi: gizlilik politikası "erişim kayıtları 90 günde anonimleştirilir" diyor; satırlar silinir.
+     * Prod'da cron'a güvenilemediği için temizlik, kayıt sonrası piyango ile yapılır (Laravel session GC gibi).
+     */
+    public const RETENTION_DAYS = 90;
+    private const PRUNE_LOTTERY = 100; // her ~100 kayıtta bir
+    private const PRUNE_BATCH = 5000;
+
     private const EXCLUDED_PATHS = [
         'admin', 'api', 'livewire', 'sanctum',
         '_debugbar', 'telescope', 'horizon',
@@ -85,9 +93,21 @@ class TrackPageView
 
         try {
             DB::table('page_views')->insert($pending);
+            if (random_int(1, self::PRUNE_LOTTERY) === 1) {
+                self::pruneExpired();
+            }
         } catch (\Throwable $e) {
             \Log::warning('TrackPageView insert error: ' . $e->getMessage());
         }
+    }
+
+    /** Saklama süresini aşan satırları siler (en fazla bir parti). Döner: silinen satır sayısı. */
+    public static function pruneExpired(): int
+    {
+        return DB::table('page_views')
+            ->where('created_at', '<', now()->subDays(self::RETENTION_DAYS))
+            ->limit(self::PRUNE_BATCH)
+            ->delete();
     }
 
     private function record(Request $request, Response $response, float $duration): void
