@@ -4668,5 +4668,8 @@
     "Applicants with a German degree or school certificate": "Alman diploma/okul belgesi olan adaylar",
     "International applicants": "Uluslararası adaylar",
     "Applicants who need a student visa": "Öğrenci vizesi gereken adaylar",
-    "This value conflicts with the official programme page. Check the official page.": "Bu bilgi resmî program sayfasıyla çelişiyor. Resmî sayfayı kontrol edin."
+    "This value conflicts with the official programme page. Check the official page.": "Bu bilgi resmî program sayfasıyla çelişiyor. Resmî sayfayı kontrol edin.",
+    "This programme is no longer listed": "Bu program artık listelenmiyor",
+    "It was removed because it is not a degree programme or its record was outdated. You can search our current programmes instead:": "Bir derece programı olmadığı ya da kaydı güncelliğini yitirdiği için kaldırıldı. Bunun yerine güncel programlarımızda arama yapabilirsin:",
+    "Browse all programmes": "Tüm programlara göz at"
 }

@@ -8,6 +8,7 @@ use App\Models\Program;
 use App\Models\State;
 use App\Models\University;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -175,7 +176,7 @@ class ProgramController extends Controller
         return view('programs.index', $viewData);
     }
 
-    public function show(string $slug): View
+    public function show(string $slug): View|RedirectResponse
     {
         $program = Program::where('slug', $slug)
             ->with([
@@ -185,6 +186,15 @@ class ProgramController extends Controller
                 'field:id,slug,name_tr,name_en,name_de,icon,color',
             ])
             ->firstOrFail();
+
+        // Pasif (dedupe/merge edilmiş ya da derece programı olmadığı için kaldırılmış) program: eski veriyle 200 +
+        // index sunmak yerine aktif kopyasına 301, kopyası yoksa 410 (kalıcı olarak kaldırıldı).
+        if (! $program->is_active) {
+            $counterpart = $program->activeCounterpart();
+            abort_unless($counterpart, 410);
+
+            return redirect()->route('programs.show', ['slug' => $counterpart->slug], 301);
+        }
 
         \App\Support\ActivityLogger::log($program, $program->name_de);
 

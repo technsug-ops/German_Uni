@@ -178,6 +178,24 @@ class Program extends Model
         return $q->where('is_active', true);
     }
 
+    /**
+     * Pasifleştirilmiş (dedupe/merge) bir programın yerine geçen AKTİF kayıt: aynı üniversite + derece, ad_de/ad_en
+     * çapraz birebir (programs:dedupe ve 2026-10-09 merge migration'larıyla aynı kural). Yoksa null.
+     */
+    public function activeCounterpart(): ?self
+    {
+        $names = array_values(array_filter([$this->name_de, $this->name_en]));
+        if ($names === []) {
+            return null;
+        }
+
+        return self::where('university_id', $this->university_id)->where('degree', $this->degree)->where('is_active', true)
+            ->whereKeyNot($this->getKey())
+            ->where(fn ($q) => $q->whereIn('name_de', $names)->orWhereIn('name_en', $names))
+            ->orderByRaw("source IN ('daad', 'partner')")->orderBy('id')
+            ->first(['id', 'slug']);
+    }
+
     public function scopeOfDegree($q, string $degree)
     {
         return $q->where('degree', $degree);
