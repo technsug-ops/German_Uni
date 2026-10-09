@@ -40,7 +40,12 @@ class BrandSingleNameTest extends TestCase
     }
 
     /** Arama sayfasının logosu "Almanya" + "Uni" diye iki span'e bölünmüş yazılıydı; düz metin aramasından kaçıyordu. */
-    #[DataProvider('locales')]
+    public static function localeCodes(): array
+    {
+        return [['tr'], ['en'], ['de']];
+    }
+
+    #[DataProvider('localeCodes')]
     public function test_search_page_logo_is_applytogerman(string $locale): void
     {
         foreach (['', '?q=Berlin'] as $query) {
