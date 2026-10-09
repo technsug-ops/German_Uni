@@ -1,0 +1,759 @@
+{
+    "slug": "katholische-stiftungshochschule-fur-angewandte-wissenschaften-munchen-partner-019ddbbb",
+    "generated_at": "2026-10-09",
+    "sources": [
+        "https://www.ksh-muenchen.de/portrait",
+        "https://www.ksh-muenchen.de/studienganguebersicht",
+        "https://www.ksh-muenchen.de/internationale-vollstudierende",
+        "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen"
+    ],
+    "student_count": 2400,
+    "image_url": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "content_blocks": [
+        {
+            "alt": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+            "type": "hero",
+            "source": "wikipedia",
+            "image_url": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+        },
+        {
+            "h": null,
+            "type": "intro",
+            "body_md": "München'in kalbinde, insan odaklı bir eğitim hayal ediyorsan, Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) tam sana göre olabilir! Bavyera'nın bu canlı şehrinde yer alan KSH München, özellikle Sosyal Hizmet (Soziale Arbeit), Sağlık (Gesundheit), Hemşirelik (Pflege) ve Pedagoji alanlarında kaliteli ve uygulamaya yönelik bir eğitim sunuyor. Burası, Almanya'nın en köklü Katolik sosyal hizmet eğitim kurumlarından biri olmasının yanı sıra, Katolik Kilisesi'ne ait Bavyera'daki en büyük ikinci eğitim kurumu. Ancak endişelenme, dini bir bağlılık şartı aranmıyor; kapıları herkese açık. İki ana kampüsü var: biri hareketli München'de, diğeri ise daha sakin ve doğal güzellikleriyle bilinen Benediktbeuern'de. Eğer kariyerini insanlara yardım etmeye adamak istiyorsan, KSH München'in sunduğu lisans (Bachelor) ve yüksek lisans (Master) programları sana eşsiz fırsatlar sunabilir. Türkiye'den gelen öğrenciler için de özel destekler ve uluslararası bir öğrenci ortamı mevcut. Uni-Assist (üniversite başvurularını ön inceleyen kurum) üzerinden başvurunu yapıp, C1 seviyesi Almanca bilginle bu prestijli üniversitenin bir parçası olabilirsin."
+        },
+        {
+            "h": "Hızlı Bakış",
+            "type": "quick_facts",
+            "items": [
+                {
+                    "label": "Üniversite Adı",
+                    "value": "Katholische Stiftungshochschule für angewandte Wissenschaften München"
+                },
+                {
+                    "label": "Şehir",
+                    "value": "München"
+                },
+                {
+                    "label": "Eyalet",
+                    "value": "Bayern"
+                },
+                {
+                    "label": "Üniversite Tipi",
+                    "value": "Fachhochschule / Uygulamalı Bilimler Üniversitesi"
+                },
+                {
+                    "label": "Taşıyıcı Kurum",
+                    "value": "Kirchlich (Katolik Kilisesi Vakfı), Devlet Onaylı"
+                },
+                {
+                    "label": "Kuruluş Yılı",
+                    "value": "1971"
+                },
+                {
+                    "label": "Öğrenci Sayısı",
+                    "value": "Yaklaşık 2.400"
+                },
+                {
+                    "label": "Fakülte Sayısı",
+                    "value": "3"
+                },
+                {
+                    "label": "Uni-Assist Üyesi",
+                    "value": "Evet"
+                }
+            ]
+        },
+        {
+            "h": "München: Bavyera'nın Canlı Kalbi ve Öğrenci Şehri",
+            "type": "section",
+            "body_md": "München, Almanya'nın güneyinde, Bavyera eyaletinin başkenti ve ülkenin en güzel şehirlerinden biri. Sadece Oktoberfest'iyle değil, aynı zamanda zengin kültürü, tarihi yapıları ve yüksek yaşam kalitesiyle de biliniyor. Öğrenciler için burası tam bir cennet; şehirde TU München ve LMU München gibi devasa üniversitelerin yanı sıra, KSH München gibi daha niş ve özel alanlara odaklanmış kurumlar da var. Ancak KSH München'in kendine özgü bir misyonu var: insan odaklı sosyal ve sağlık bilimleri eğitimi. Şehrin altyapısı, yeşil alanları (Englischer Garten gibi), müzeleri (Deutsches Museum) ve kafeleriyle öğrenci hayatına çok şey katıyor. Alp Dağları'na yakınlığı sayesinde hafta sonları doğa sporları yapma imkanı da cabası. München, hem akademik hem de sosyal açıdan sana unutulmaz bir deneyim sunacak bir şehir."
+        },
+        {
+            "h": "Katholische Stiftungshochschule München: İnsan Odaklı ve Uygulamalı Eğitim",
+            "type": "section",
+            "body_md": "KSH München, adından da anlaşılacağı üzere, Katolik bir vakıf tarafından kurulmuş olsa da, öğrenci kabulünde herhangi bir dini şart aramıyor. Üniversitenin temel felsefesi 'insan odaklılık'. Burada verilen eğitim, Sosyal Hizmet (Soziale Arbeit), Sağlık (Gesundheit), Hemşirelik (Pflege) ve Pedagoji alanlarına yoğunlaşmış durumda. Bu da demek oluyor ki, mezun olduğunda doğrudan insanlarla çalışacağın, topluma katkı sağlayacağın bir mesleğe sahip olacaksın. Üniversitenin iki kampüsü var: biri München'de, diğeri ise daha huzurlu bir ortam sunan Benediktbeuern'de. Eğitim müfredatları, teorik bilginin yanı sıra güçlü bir pratik deneyimle harmanlanmış. Bu, özellikle Fachhochschule (Uygulamalı Bilimler Üniversitesi) olmasının getirdiği bir avantaj. 71 profesör ve 300'den fazla dışarıdan ders veren öğretim görevlisiyle, alanında uzman kişilerden eğitim alma fırsatın olacak. Ayrıca, 60'tan fazla ulusal ve uluslararası partner üniversite ağı sayesinde, eğitiminin bir kısmını yurt dışında geçirme şansın da bulunuyor. Bu, hem kültürel bir deneyim hem de CV'n için önemli bir artı demek."
+        },
+        {
+            "h": "Akademik Ortam ve Uluslararası Öğrenciler İçin Başvuru Süreci",
+            "type": "section",
+            "body_md": "KSH München, uluslararası öğrencileri kucaklayan bir akademik ortama sahip. Eğer Türkiye'den geliyorsan ve burada tam zamanlı bir lisans veya yüksek lisans eğitimi almak istiyorsan, bilmen gereken birkaç önemli adım var. Öncelikle, tüm programlar Almanca olarak verildiği için ileri düzey Almanca bilgisine sahip olman şart. Üniversite, C1 seviyesinde Almanca yeterliliğini gösteren bir belge (TestDaF, DSH, Telc C1 Hochschule gibi kabul edilen sınavlar) istiyor. İkinci önemli adım ise, yabancı yükseköğrenim yeterlilik belgelerinin (lise diploması, üniversite transkriptleri vb.) Uni-Assist e.V. (üniversite başvurularını ön inceleyen harici hizmet sağlayıcı) tarafından ön kontrol edilmesidir. Uni-Assist'ten alacağın Vorprüfungsdokumentation (VPD - ön inceleme belgesi) olmadan başvurunu tamamlayamazsın. Bu belgeyi başvuru evraklarınla birlikte sunman gerekiyor. Bu süreçler biraz zaman alabilir, bu yüzden son başvuru tarihlerini kaçırmamak için erkenden harekete geçmeni öneririm. KSH München'in web sitesindeki 'Internationale Vollstudierende' bölümünü mutlaka kontrol etmelisin."
+        },
+        {
+            "h": "München'de Konaklama ve Şehirde Yaşam",
+            "type": "section",
+            "body_md": "München, Almanya'nın en pahalı şehirlerinden biri olarak biliniyor, bu yüzden konaklama bulmak biraz zorlayıcı olabilir. Öğrenci olarak en yaygın seçeneklerden biri Wohngemeinschaft (WG - paylaşımlı ev) odalarıdır. Bu, hem kira maliyetini düşürmenin hem de yeni insanlarla tanışmanın harika bir yoludur. Öğrenci yurtları (Studentenwerk München tarafından işletilenler gibi) da bir diğer seçenek, ancak buralara başvurular genellikle çok erken başlıyor ve bekleme listeleri uzun olabiliyor. Şehrin farklı semtleri farklı yaşam tarzları sunar. Örneğin, Schwabing genç ve canlı atmosferiyle bilinirken, Maxvorstadt akademik kurumlara yakınlığıyla öne çıkar. KSH München'in kampüslerine yakın semtlerde konaklama arayışına girmen, ulaşım süreni kısaltacaktır. Konaklama arayışına başlamadan önce bütçeni belirleyip, çeşitli online platformları (WG-Gesucht.de gibi) ve üniversitenin öğrenci işleri birimini (Studentenwerk) araştırmanı şiddetle tavsiye ederim. München'de yaşam pahalı olsa da, sunduğu kültürel etkinlikler, sosyal imkanlar ve doğal güzellikler bu maliyeti dengeleyebilir."
+        },
+        {
+            "h": "İş İmkânları ve Türk Topluluğu",
+            "type": "section",
+            "body_md": "München, Almanya'nın en güçlü ekonomilerinden birine sahip, bu da öğrencilere ve mezunlara geniş iş imkanları sunuyor. KSH München'in odaklandığı sosyal hizmet, sağlık ve pedagoji alanları da Almanya'da sürekli talep gören meslek grupları arasında. Öğrenciyken Werkstudent (öğrenci işi) olarak çalışarak hem harçlığını çıkarabilir hem de alanında deneyim kazanabilirsin. Üniversitenin kariyer hizmetleri veya yerel iş bulma kurumları (Agentur für Arbeit) bu konuda sana yardımcı olabilir. München'de oldukça büyük ve aktif bir Türk topluluğu da bulunuyor. Bu topluluklar, yeni gelen öğrencilere uyum sürecinde destek olabilir, sosyal etkinlikler düzenleyebilir ve memleket hasretini biraz olsun dindirebilir. Şehirdeki Türk derneklerini ve sosyal medya gruplarını araştırarak bu topluluklara ulaşabilirsin."
+        },
+        {
+            "h": "Aylık Yaşam Maliyeti (Tahmini)",
+            "type": "cost_of_living",
+            "items": [
+                {
+                    "note": "München için ortalama WG odası kirası",
+                    "label": "Kira (paylaşımlı WG odası)",
+                    "amount": "450-700"
+                },
+                {
+                    "note": "Evde yemek yaparak tasarruf edilebilir",
+                    "label": "Yemek ve Market",
+                    "amount": "250-350"
+                },
+                {
+                    "note": "Yasal öğrenci sigortası",
+                    "label": "Sağlık Sigortası",
+                    "amount": "120-130"
+                },
+                {
+                    "note": "Üniversitenin sunduğu Semesterticket'e göre değişir",
+                    "label": "Ulaşım (Semesterticket)",
+                    "amount": "50-100"
+                },
+                {
+                    "label": "Eğlence ve Sosyal Aktiviteler",
+                    "amount": "100-200"
+                },
+                {
+                    "label": "Telefon/İnternet",
+                    "amount": "20-40"
+                }
+            ],
+            "total": "990-1520",
+            "currency": "EUR"
+        },
+        {
+            "h": "Gezilecek Yerler ve Öğrenci Mekânları",
+            "type": "places",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-muenchen",
+                    "name": "KSH München – München Kampüsü",
+                    "type": "university_campus",
+                    "description": "Üniversitenin ana kampüsü, şehir merkezine yakın konumuyla öğrencilere kolay ulaşım imkanı sunar."
+                },
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-benediktbeuern",
+                    "name": "KSH München – Benediktbeuern Kampüsü",
+                    "type": "university_campus",
+                    "description": "Daha sakin ve doğal bir ortamda eğitim almak isteyenler için Alp eteklerinde yer alan kampüs."
+                },
+                {
+                    "name": "Marienplatz",
+                    "type": "square",
+                    "description": "München'in kalbi, Neues Rathaus (Yeni Belediye Binası) ve Glockenspiel (çan oyunu) ile ünlü."
+                },
+                {
+                    "url": "https://www.muenchen.de/int/en/sights/parks/english-garden.html",
+                    "name": "Englischer Garten",
+                    "type": "park",
+                    "description": "Avrupa'nın en büyük şehir parklarından biri, sörfçüleri ve bira bahçeleriyle meşhur."
+                },
+                {
+                    "url": "https://www.deutsches-museum.de/",
+                    "name": "Deutsches Museum",
+                    "type": "museum",
+                    "description": "Bilim ve teknoloji alanında dünyanın en büyük müzelerinden biri, mutlaka görülmeli."
+                },
+                {
+                    "name": "Viktualienmarkt",
+                    "type": "market",
+                    "description": "Şehrin en ünlü açık hava pazarı, taze ürünler, yerel lezzetler ve bira bahçeleriyle dolu."
+                },
+                {
+                    "url": "https://www.schloss-nymphenburg.de/englisch/palace/index.htm",
+                    "name": "Nymphenburg Sarayı",
+                    "type": "landmark",
+                    "description": "Bavyera elektörlerinin yazlık sarayı, görkemli bahçeleriyle huzurlu bir kaçış noktası."
+                },
+                {
+                    "name": "Hofbräuhaus",
+                    "type": "restaurant",
+                    "description": "Dünyaca ünlü tarihi bira salonu, geleneksel Bavyera atmosferini deneyimlemek için ideal."
+                }
+            ]
+        },
+        {
+            "h": "Öğrenci Yaşamı ve Kültür",
+            "type": "student_culture",
+            "body_md": "KSH München'de öğrenci olmak, sadece derslere girmekten ibaret değil; aynı zamanda canlı ve destekleyici bir topluluğun parçası olmak demek. Üniversite, 'insan odaklı' misyonunu öğrenci yaşamına da yansıtıyor. Burada uluslararası öğrencilerin de kendilerini evlerinde hissetmeleri için çeşitli destek programları ve etkinlikler düzenleniyor. Küçük öğrenci sayısı (yaklaşık 2.400) sayesinde, profesörlerle daha yakın ilişkiler kurma ve kişiselleştirilmiş bir eğitim alma şansın yüksek. Kampüslerdeki öğrenci kulüpleri ve topluluklar, ilgi alanlarına göre yeni arkadaşlar edinmene ve boş zamanlarını değerlendirmene olanak tanıyor. München'in genel öğrenci kültürü de oldukça zengin. Şehirdeki birçok öğrenci kafesi, bar ve kültürel etkinlik, ders dışı zamanlarını dolu dolu geçirmeni sağlar. Ayrıca, KSH München'in pratik odaklı eğitimi sayesinde, öğrenciyken gönüllü çalışmalara katılarak veya staj yaparak mesleki deneyim kazanma fırsatların da bolca olacak.",
+            "highlights": [
+                "Uluslararası öğrenci dostu bir ortam.",
+                "Küçük sınıflar ve birebir ilgi imkanı.",
+                "Sosyal ve sağlık alanlarına odaklanmış pratik eğitim.",
+                "60'tan fazla uluslararası partner üniversite ile değişim programları.",
+                "München ve Benediktbeuern'deki iki kampüsle farklı yaşam deneyimleri.",
+                "Öğrenci kulüpleri ve gönüllü projelerle aktif sosyal yaşam.",
+                "Kariyer hizmetleri ve staj imkanlarıyla mesleki gelişim desteği."
+            ]
+        },
+        {
+            "h": "Sıkça Sorulanlar",
+            "type": "faq",
+            "items": [
+                {
+                    "a": "KSH München'deki tüm programlar Almanca olarak verildiği için, başvuru yaparken C1 seviyesinde Almanca yeterliliğini gösteren bir belge sunman gerekiyor. Kabul edilen sınavlar genellikle TestDaF, DSH veya Telc C1 Hochschule'dır. Detaylı ve güncel liste için üniversitenin resmi web sitesindeki 'Internationale Vollstudierende' bölümünü kontrol etmelisin.",
+                    "q": "KSH München'e başvurmak için hangi Almanca seviyesi gerekiyor?"
+                },
+                {
+                    "a": "Eğer yabancı bir lise diplomasına veya üniversite derecesine sahipsen, KSH München'e başvurmadan önce belgelerinin Uni-Assist e.V. tarafından ön kontrol edilmesini sağlamalısın. Uni-Assist'ten alacağın Vorprüfungsdokumentation (VPD - ön inceleme belgesi) ile başvurunu tamamlayabilirsin. Bu belge, eğitimin Almanya'daki standartlara uygun olup olmadığını gösterir.",
+                    "q": "Yabancı lise diplomamla KSH München'e doğrudan başvurabilir miyim?"
+                }
+            ]
+        },
+        {
+            "h": null,
+            "type": "cta",
+            "body_md": "KSH München'de insan odaklı bir kariyer seni bekliyor olabilir! Daha fazla bilgi ve başvuru detayları için hemen resmi web sitesini ziyaret et."
+        },
+        {
+            "h": "Programlar",
+            "phd": 0,
+            "type": "programs_summary",
+            "total": 22,
+            "master": 4,
+            "bachelor": 18
+        },
+        {
+            "h": "Faydalı Linkler",
+            "type": "external_links",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/",
+                    "type": "official",
+                    "label": "Resmi web sitesi"
+                },
+                {
+                    "url": "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen",
+                    "type": "wikipedia",
+                    "label": "Wikipedia (DE)"
+                }
+            ]
+        },
+        {
+            "data": {
+                "url": "https://www.ksh-muenchen.de/",
+                "logo": null,
+                "name": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+                "@type": "CollegeOrUniversity",
+                "image": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+                "sameAs": [
+                    "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "postalCode": "81667",
+                    "addressRegion": "Bayern",
+                    "streetAddress": "Preysingstr. 95",
+                    "addressCountry": "DE",
+                    "addressLocality": "München"
+                },
+                "@context": "https://schema.org",
+                "description": "München'in kalbinde, insan odaklı bir eğitim hayal ediyorsan, Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) tam sana göre olabilir! Bavyera'nın bu canlı şehrinde yer alan KSH München, özellikle Sosyal Hizmet (Soziale Arbeit), Sağlık (Gesundheit), Hemşirelik (Pflege) ve Pedagoji alanlarında kaliteli ve uygulamaya yönelik bir eğitim sunuyor. Burası, Almanya'nın en köklü Katolik sosyal hizmet eğitim kurumlarından biri olmasının yanı sıra, Katolik Kilisesi'ne ait Bavyera'daki en büyük ikinci eğitim kurumu. Ancak endişelenme, dini bir bağlılık şartı aranmıyor; kapıları herkese açık. İki ana kampüsü var: biri hareketli München'de, diğeri ise daha sakin ve doğal güzellikleriyle bilinen Benediktbeuern'de. Eğer kariyerini insanlara yardım etmeye adamak istiyorsan, KSH München'in sunduğu lisans (Bachelor) ve yüksek lisans (Master) programları sana eşsiz fırsatlar sunabilir. Türkiye'den gelen öğrenciler için de özel destekler ve uluslararası bir öğrenci ortamı mevcut. Uni-Assist (üniversite başvurularını ön inceleyen kurum) üzerinden başvurunu yapıp, C1 seviyesi Almanca bilginle bu prestijli üniversitenin bir parçası olabilirsin.",
+                "foundingDate": "1971",
+                "numberOfStudents": null
+            },
+            "type": "schema_jsonld"
+        }
+    ],
+    "content_blocks_en": [
+        {
+            "alt": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+            "type": "hero",
+            "source": "wikipedia",
+            "image_url": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+        },
+        {
+            "h": null,
+            "type": "intro",
+            "body_md": "If you're dreaming of a human-centered education in the heart of Munich, the Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) might be the perfect fit for you! Located in Bavaria's vibrant capital, KSH München offers high-quality, practice-oriented programs, especially in Social Work (Soziale Arbeit), Health (Gesundheit), Nursing (Pflege), and Pedagogy. This isn't just one of Germany's most established Catholic social service education institutions; it's also the second-largest educational institution in Bavaria affiliated with the Catholic Church. But don't worry, religious affiliation isn't a requirement; its doors are open to everyone.\n\nThe university has two main campuses: one in bustling Munich and another in Benediktbeuern, known for its calmer atmosphere and natural beauty. If you want to dedicate your career to helping people, KSH München's Bachelor's and Master's programs can offer you unique opportunities. They also provide special support for international students, including those from Turkey, fostering a diverse student environment. You can apply through Uni-Assist (an external service provider that pre-checks university applications) and become part of this prestigious university with your C1 level German proficiency."
+        },
+        {
+            "h": "Quick Facts",
+            "type": "quick_facts",
+            "items": [
+                {
+                    "label": "University Name",
+                    "value": "Katholische Stiftungshochschule für angewandte Wissenschaften München"
+                },
+                {
+                    "label": "City",
+                    "value": "München"
+                },
+                {
+                    "label": "State",
+                    "value": "Bayern"
+                },
+                {
+                    "label": "University Type",
+                    "value": "Fachhochschule / University of Applied Sciences"
+                },
+                {
+                    "label": "Supporting Body",
+                    "value": "Church-affiliated (Catholic Church Foundation), State-approved"
+                },
+                {
+                    "label": "Founded Year",
+                    "value": "1971"
+                },
+                {
+                    "label": "Number of Students",
+                    "value": "Approx. 2,400"
+                },
+                {
+                    "label": "Number of Faculties",
+                    "value": "3"
+                },
+                {
+                    "label": "Uni-Assist Member",
+                    "value": "Yes"
+                }
+            ]
+        },
+        {
+            "h": "Munich: Bavaria's Vibrant Heart and Student City",
+            "type": "section",
+            "body_md": "Munich, the capital of Bavaria in southern Germany, is one of the country's most beautiful cities. It's not just famous for Oktoberfest, but also for its rich culture, historical buildings, and high quality of life. For students, this place is a paradise; the city hosts massive universities like TU München and LMU München, as well as more niche, specialized institutions like KSH München. KSH München, however, has a unique mission: human-centered social and health sciences education.\n\nThe city's infrastructure, green spaces (like the Englischer Garten), museums (such as the Deutsches Museum), and cafes add so much to student life. Its proximity to the Alps also means you can enjoy outdoor sports on weekends. Munich is a city that will offer you an unforgettable experience, both academically and socially."
+        },
+        {
+            "h": "Katholische Stiftungshochschule München: Human-Centered and Applied Education",
+            "type": "section",
+            "body_md": "As its name suggests, KSH München was founded by a Catholic foundation, but it doesn't require any religious affiliation for student admission. The university's core philosophy is 'human-centeredness.' The education here focuses on Social Work (Soziale Arbeit), Health (Gesundheit), Nursing (Pflege), and Pedagogy. This means that when you graduate, you'll have a profession where you directly work with people and contribute to society.\n\nThe university has two campuses: one in Munich and another in Benediktbeuern, which offers a more peaceful environment. The curricula blend theoretical knowledge with strong practical experience—a significant advantage of being a Fachhochschule (University of Applied Sciences). With 71 professors and over 300 external lecturers, you'll have the opportunity to learn from experts in their fields. Plus, with a network of over 60 national and international partner universities, you might even get the chance to spend part of your studies abroad. This is both a cultural experience and a major plus for your resume."
+        },
+        {
+            "h": "Academic Environment and Application Process for International Students",
+            "type": "section",
+            "body_md": "KSH München boasts an academic environment that embraces international students. If you're coming from abroad and want to pursue a full-time Bachelor's or Master's degree here, there are a few important steps you need to know. First, since all programs are taught in German, you must have advanced German language skills. The university requires proof of C1 level German proficiency (accepted exams include TestDaF, DSH, Telc C1 Hochschule).\n\nSecond, and crucially, your foreign higher education qualifications (high school diploma, university transcripts, etc.) must be pre-checked by Uni-Assist e.V. (an external service provider for university applications). You cannot complete your application without the Vorprüfungsdokumentation (VPD – pre-check document) you receive from Uni-Assist. You'll need to submit this document along with your application materials. These processes can take some time, so I recommend starting early to avoid missing any application deadlines. Make sure to check the 'Internationale Vollstudierende' section on KSH München's website for the most current information."
+        },
+        {
+            "h": "Accommodation and City Life in Munich",
+            "type": "section",
+            "body_md": "Munich is known as one of Germany's most expensive cities, so finding accommodation can be a bit challenging. One of the most common options for students is a Wohngemeinschaft (WG – shared apartment) room. This is a great way to both reduce your rent costs and meet new people. Student dormitories (like those operated by Studentenwerk München, the student services organization) are another option, but applications usually open very early, and waiting lists can be long.\n\nDifferent neighborhoods in the city offer different lifestyles. For example, Schwabing is known for its young and lively atmosphere, while Maxvorstadt stands out for its proximity to academic institutions. Searching for accommodation in neighborhoods close to KSH München's campuses will shorten your commute. Before you start your accommodation search, I strongly advise you to determine your budget and research various online platforms (like WG-Gesucht.de) and the university's student affairs office (Studentenwerk). While living in Munich can be expensive, the cultural events, social opportunities, and natural beauty it offers can balance out the cost."
+        },
+        {
+            "h": "Job Opportunities and the Turkish Community",
+            "type": "section",
+            "body_md": "Munich has one of Germany's strongest economies, offering extensive job opportunities for students and graduates. The fields KSH München focuses on—social work, health, and pedagogy—are also among the professions consistently in demand in Germany. As a student, you can work as a Werkstudent (student assistant job) to earn money and gain experience in your field. The university's career services or local employment agencies (Agentur für Arbeit – Federal Employment Agency) can help you with this.\n\nMunich also has a sizable and active Turkish community. These communities can support new students during their integration process, organize social events, and help ease any homesickness. You can connect with these communities by researching Turkish associations and social media groups in the city."
+        },
+        {
+            "h": "Estimated Monthly Cost of Living",
+            "type": "cost_of_living",
+            "items": [
+                {
+                    "note": "Average WG room rent in Munich",
+                    "label": "Rent (shared WG room)",
+                    "amount": "450-700"
+                },
+                {
+                    "note": "Can save money by cooking at home",
+                    "label": "Food and Groceries",
+                    "amount": "250-350"
+                },
+                {
+                    "note": "Mandatory student health insurance",
+                    "label": "Health Insurance",
+                    "amount": "120-130"
+                },
+                {
+                    "note": "Varies based on the university's Semesterticket",
+                    "label": "Transportation (Semesterticket – semester ticket for public transport)",
+                    "amount": "50-100"
+                },
+                {
+                    "label": "Entertainment and Social Activities",
+                    "amount": "100-200"
+                },
+                {
+                    "label": "Phone/Internet",
+                    "amount": "20-40"
+                }
+            ],
+            "total": "990-1520",
+            "currency": "EUR"
+        },
+        {
+            "h": "Places to Visit and Student Hangouts",
+            "type": "places",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-muenchen",
+                    "name": "KSH München – Munich Campus",
+                    "type": "university_campus",
+                    "description": "The university's main campus, located close to the city center, offers easy access for students."
+                },
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-benediktbeuern",
+                    "name": "KSH München – Benediktbeuern Campus",
+                    "type": "university_campus",
+                    "description": "For those who prefer studying in a calmer, natural environment, this campus is nestled at the foot of the Alps."
+                },
+                {
+                    "name": "Marienplatz",
+                    "type": "square",
+                    "description": "The heart of Munich, famous for the Neues Rathaus (New Town Hall) and its Glockenspiel (carillon)."
+                },
+                {
+                    "url": "https://www.muenchen.de/int/en/sights/parks/english-garden.html",
+                    "name": "Englischer Garten",
+                    "type": "park",
+                    "description": "One of Europe's largest urban parks, known for its surfers and beer gardens."
+                },
+                {
+                    "url": "https://www.deutsches-museum.de/",
+                    "name": "Deutsches Museum",
+                    "type": "museum",
+                    "description": "One of the world's largest museums of science and technology – a must-see."
+                },
+                {
+                    "name": "Viktualienmarkt",
+                    "type": "market",
+                    "description": "The city's most famous open-air market, full of fresh produce, local delicacies, and beer gardens."
+                },
+                {
+                    "url": "https://www.schloss-nymphenburg.de/englisch/palace/index.htm",
+                    "name": "Nymphenburg Palace",
+                    "type": "landmark",
+                    "description": "The summer residence of Bavarian electors, offering a peaceful escape with its magnificent gardens."
+                },
+                {
+                    "name": "Hofbräuhaus",
+                    "type": "restaurant",
+                    "description": "A world-famous historic beer hall, ideal for experiencing a traditional Bavarian atmosphere."
+                }
+            ]
+        },
+        {
+            "h": "Student Life and Culture",
+            "type": "student_culture",
+            "body_md": "Being a student at KSH München isn't just about attending classes; it's about being part of a vibrant and supportive community. The university reflects its 'human-centered' mission in student life too. Various support programs and events are organized to help international students feel at home. Thanks to the smaller student body (around 2,400 students), you have a better chance of building closer relationships with professors and receiving a more personalized education.\n\nStudent clubs and communities on campus allow you to make new friends based on your interests and fill your free time. Munich's general student culture is also quite rich. Many student cafes, bars, and cultural events in the city ensure you'll have a full social life outside of studies. Furthermore, KSH München's practice-oriented education means you'll have plenty of opportunities to gain professional experience through volunteer work or internships while you're still a student.",
+            "highlights": [
+                "An international student-friendly environment.",
+                "Small class sizes and opportunities for individual attention.",
+                "Practical education focused on social and health fields.",
+                "Exchange programs with over 60 international partner universities.",
+                "Two campuses in Munich and Benediktbeuern offering different living experiences.",
+                "Active social life with student clubs and volunteer projects.",
+                "Career services and internship opportunities supporting professional development."
+            ]
+        },
+        {
+            "h": "Frequently Asked Questions",
+            "type": "faq",
+            "items": [
+                {
+                    "a": "Since all programs at KSH München are taught in German, you need to submit proof of C1 level German proficiency when applying. Accepted exams typically include TestDaF, DSH, or Telc C1 Hochschule. For a detailed and up-to-date list, you should check the 'Internationale Vollstudierende' section on the university's official website.",
+                    "q": "What German language level is required to apply to KSH München?"
+                },
+                {
+                    "a": "If you have a foreign high school diploma or university degree, you must have your documents pre-checked by Uni-Assist e.V. before applying to KSH München. You can complete your application with the Vorprüfungsdokumentation (VPD – pre-check document) you receive from Uni-Assist. This document verifies whether your education meets German standards.",
+                    "q": "Can I apply directly to KSH München with my foreign high school diploma?"
+                }
+            ]
+        },
+        {
+            "h": null,
+            "type": "cta",
+            "body_md": "A human-centered career might be waiting for you at KSH München! Visit the official website now for more information and application details."
+        },
+        {
+            "h": "Programs",
+            "phd": 0,
+            "type": "programs_summary",
+            "total": 22,
+            "master": 4,
+            "bachelor": 18
+        },
+        {
+            "h": "Useful Links",
+            "type": "external_links",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/",
+                    "type": "official",
+                    "label": "Official website"
+                },
+                {
+                    "url": "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen",
+                    "type": "wikipedia",
+                    "label": "Wikipedia (DE)"
+                }
+            ]
+        },
+        {
+            "data": {
+                "url": "https://www.ksh-muenchen.de/",
+                "logo": null,
+                "name": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+                "@type": "CollegeOrUniversity",
+                "image": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+                "sameAs": [
+                    "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "postalCode": "81667",
+                    "addressRegion": "Bayern",
+                    "streetAddress": "Preysingstr. 95",
+                    "addressCountry": "DE",
+                    "addressLocality": "München"
+                },
+                "@context": "https://schema.org",
+                "description": "If you're dreaming of a human-centered education in the heart of Munich, the Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) might be the perfect fit for you! Located in Bavaria's vibrant capital, KSH München offers high-quality, practice-oriented programs, especially in Social Work (Soziale Arbeit), Health (Gesundheit), Nursing (Pflege), and Pedagogy. This isn't just one of Germany's most established Catholic social service education institutions; it's also the second-largest educational institution in Bavaria affiliated with the Catholic Church. But don't worry, religious affiliation isn't a requirement; its doors are open to everyone. The university has two main campuses: one in bustling Munich and another in Benediktbeuern, known for its calmer atmosphere and natural beauty. If you want to dedicate your career to helping people, KSH München's Bachelor's and Master's programs can offer you unique opportunities. They also provide special support for international students, including those from Turkey, fostering a diverse student environment. You can apply through Uni-Assist (an external service provider that pre-checks university applications) and become part of this prestigious university with your C1 level German proficiency.",
+                "foundingDate": "1971",
+                "numberOfStudents": null
+            },
+            "type": "schema_jsonld"
+        }
+    ],
+    "content_blocks_de": [
+        {
+            "alt": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+            "type": "hero",
+            "source": "wikipedia",
+            "image_url": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+        },
+        {
+            "h": null,
+            "type": "intro",
+            "body_md": "Wenn du von einer menschenzentrierten Ausbildung im Herzen Münchens träumst, könnte die Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) genau das Richtige für dich sein! In dieser lebendigen bayerischen Metropole bietet die KSH München eine qualitativ hochwertige und praxisorientierte Ausbildung, insbesondere in den Studiengängen Soziale Arbeit, Gesundheit, Pflege und Pädagogik. Sie ist nicht nur eine der ältesten katholischen Bildungseinrichtungen für soziale Arbeit in Deutschland, sondern auch die zweitgrößte Bildungseinrichtung der katholischen Kirche in Bayern. Aber keine Sorge, eine religiöse Zugehörigkeit ist keine Voraussetzung; ihre Türen stehen allen offen. Sie hat zwei Hauptstandorte: einen im pulsierenden München und einen weiteren im ruhigeren, für seine Naturschönheiten bekannten Benediktbeuern. Wenn du deine Karriere der Hilfe für Menschen widmen möchtest, können dir die Bachelor- und Master-Studiengänge der KSH München einzigartige Möglichkeiten bieten. Für Studierende aus der Türkei gibt es spezielle Unterstützungsangebote und ein internationales Studienumfeld. Bewirb dich über Uni-Assist (die Vorprüfungsstelle für Hochschulbewerbungen) und werde mit deinen Deutschkenntnissen auf C1-Niveau Teil dieser renommierten Hochschule."
+        },
+        {
+            "h": "Auf einen Blick",
+            "type": "quick_facts",
+            "items": [
+                {
+                    "label": "Hochschulname",
+                    "value": "Katholische Stiftungshochschule für angewandte Wissenschaften München"
+                },
+                {
+                    "label": "Stadt",
+                    "value": "München"
+                },
+                {
+                    "label": "Bundesland",
+                    "value": "Bayern"
+                },
+                {
+                    "label": "Hochschultyp",
+                    "value": "Fachhochschule / Hochschule für angewandte Wissenschaften"
+                },
+                {
+                    "label": "Träger",
+                    "value": "Kirchlich (Stiftung der Katholischen Kirche), staatlich anerkannt"
+                },
+                {
+                    "label": "Gründungsjahr",
+                    "value": "1971"
+                },
+                {
+                    "label": "Studierendenzahl",
+                    "value": "Yaklaşık 2.400"
+                },
+                {
+                    "label": "Anzahl der Fakultäten",
+                    "value": "3"
+                },
+                {
+                    "label": "Uni-Assist Mitglied",
+                    "value": "Evet"
+                }
+            ]
+        },
+        {
+            "h": "München: Das lebendige Herz Bayerns und eine Studierendenstadt",
+            "type": "section",
+            "body_md": "München, im Süden Deutschlands gelegen, ist die Landeshauptstadt Bayerns und eine der schönsten Städte des Landes. Sie ist nicht nur für ihr Oktoberfest bekannt, sondern auch für ihre reiche Kultur, historischen Gebäude und hohe Lebensqualität. Für Studierende ist sie ein wahres Paradies; neben riesigen Universitäten wie der TU München und der LMU München gibt es in der Stadt auch spezialisierte Einrichtungen wie die KSH München, die sich auf Nischenbereiche konzentrieren. Die KSH München hat jedoch eine ganz eigene Mission: eine menschenzentrierte Ausbildung in den Sozial- und Gesundheitswissenschaften. Die städtische Infrastruktur, die Grünflächen (wie der Englische Garten), die Museen (Deutsches Museum) und Cafés bereichern das Studierendenleben enorm. Die Nähe zu den Alpen bietet dir zudem die Möglichkeit, am Wochenende Outdoor-Sportarten zu betreiben. München ist eine Stadt, die dir sowohl akademisch als auch sozial ein unvergessliches Erlebnis bieten wird."
+        },
+        {
+            "h": "Katholische Stiftungshochschule München: Menschenzentrierte und praxisorientierte Ausbildung",
+            "type": "section",
+            "body_md": "Die KSH München wurde, wie der Name schon sagt, von einer katholischen Stiftung gegründet, verlangt aber keine religiöse Zugehörigkeit für die Zulassung von Studierenden. Die Grundphilosophie der Hochschule ist die 'Menschenzentrierung'. Die hier angebotenen Studiengänge konzentrieren sich auf die Bereiche Soziale Arbeit, Gesundheit, Pflege und Pädagogik. Das bedeutet, dass du nach deinem Abschluss einen Beruf ausüben wirst, in dem du direkt mit Menschen arbeitest und einen Beitrag zur Gesellschaft leistest. Die Hochschule hat zwei Standorte: einen in München und einen weiteren im beschaulicheren Benediktbeuern. Die Lehrpläne verbinden theoretisches Wissen mit einer starken praktischen Erfahrung. Dies ist ein Vorteil, der sich insbesondere aus ihrer Eigenschaft als Fachhochschule (Hochschule für angewandte Wissenschaften) ergibt. Mit 71 Professorinnen und Professoren sowie über 300 externen Lehrbeauftragten hast du die Möglichkeit, von Expertinnen und Experten deines Fachgebiets unterrichtet zu werden. Darüber hinaus hast du dank eines Netzwerks von über 60 nationalen und internationalen Partnerhochschulen die Chance, einen Teil deines Studiums im Ausland zu verbringen. Das ist sowohl eine kulturelle Erfahrung als auch ein wichtiger Pluspunkt für deinen Lebenslauf."
+        },
+        {
+            "h": "Akademisches Umfeld und Bewerbungsprozess für internationale Studierende",
+            "type": "section",
+            "body_md": "Die KSH München bietet ein akademisches Umfeld, das internationale Studierende willkommen heißt. Wenn du aus der Türkei kommst und hier ein Vollzeit-Bachelor- oder Masterstudium absolvieren möchtest, gibt es einige wichtige Schritte, die du beachten solltest. Zunächst ist es unerlässlich, dass du über fortgeschrittene Deutschkenntnisse verfügst, da alle Studiengänge auf Deutsch angeboten werden. Die Hochschule verlangt einen Nachweis über Deutschkenntnisse auf C1-Niveau (anerkannte Prüfungen wie TestDaF, DSH, Telc C1 Hochschule). Der zweite wichtige Schritt ist die Vorprüfung deiner ausländischen Hochschulzugangsberechtigung (Abiturzeugnis, Hochschulzeugnisse etc.) durch Uni-Assist e.V. (einen externen Dienstleister, der Hochschulbewerbungen vorprüft). Ohne die Vorprüfungsdokumentation (VPD), die du von Uni-Assist erhältst, kannst du deine Bewerbung nicht abschließen. Dieses Dokument musst du zusammen mit deinen Bewerbungsunterlagen einreichen. Diese Prozesse können etwas Zeit in Anspruch nehmen, daher empfehle ich dir, frühzeitig aktiv zu werden, um die Bewerbungsfristen nicht zu verpassen. Überprüfe unbedingt den Bereich 'Internationale Vollstudierende' auf der Webseite der KSH München."
+        },
+        {
+            "h": "Wohnen in München und das Stadtleben",
+            "type": "section",
+            "body_md": "München gilt als eine der teuersten Städte Deutschlands, daher kann die Wohnungssuche eine Herausforderung sein. Eine der gängigsten Optionen für Studierende sind Wohngemeinschaften (WG-Zimmer). Dies ist eine großartige Möglichkeit, sowohl die Mietkosten zu senken als auch neue Leute kennenzulernen. Studierendenwohnheime (wie die vom Studentenwerk München betriebenen) sind eine weitere Option, aber die Bewerbungen beginnen hier oft sehr früh und die Wartelisten können lang sein. Verschiedene Stadtteile bieten unterschiedliche Lebensstile. Schwabing ist zum Beispiel für seine junge und lebendige Atmosphäre bekannt, während Maxvorstadt durch seine Nähe zu akademischen Einrichtungen hervorsticht. Wenn du in Stadtteilen in der Nähe der KSH München-Standorte nach einer Unterkunft suchst, verkürzt das deine Pendelzeit. Ich rate dir dringend, dein Budget festzulegen und verschiedene Online-Plattformen (wie WG-Gesucht.de) sowie die Studierendenverwaltung der Hochschule (Studentenwerk) zu recherchieren, bevor du mit der Wohnungssuche beginnst. Obwohl das Leben in München teuer ist, können die angebotenen kulturellen Veranstaltungen, sozialen Möglichkeiten und Naturschönheiten diese Kosten ausgleichen."
+        },
+        {
+            "h": "Jobmöglichkeiten und die türkische Gemeinschaft",
+            "type": "section",
+            "body_md": "München verfügt über eine der stärksten Wirtschaften Deutschlands, was Studierenden und Absolventen vielfältige Jobmöglichkeiten bietet. Die Bereiche Soziale Arbeit, Gesundheit und Pädagogik, auf die sich die KSH München konzentriert, gehören ebenfalls zu den Berufsgruppen, die in Deutschland ständig gefragt sind. Als Werkstudent kannst du während deines Studiums arbeiten, um dein Taschengeld aufzubessern und gleichzeitig Berufserfahrung in deinem Fachgebiet zu sammeln. Die Career Services der Hochschule oder lokale Arbeitsagenturen (Agentur für Arbeit) können dir dabei helfen. In München gibt es auch eine recht große und aktive türkische Gemeinschaft. Diese Gemeinschaften können Neuankömmlingen bei der Integration helfen, soziale Veranstaltungen organisieren und ein wenig das Heimweh lindern. Recherchiere türkische Vereine und Social-Media-Gruppen in der Stadt, um diese Gemeinschaften zu finden."
+        },
+        {
+            "h": "Monatliche Lebenshaltungskosten (Schätzung)",
+            "type": "cost_of_living",
+            "items": [
+                {
+                    "note": "Durchschnittliche WG-Zimmer-Miete in München",
+                    "label": "Miete (WG-Zimmer)",
+                    "amount": "450-700"
+                },
+                {
+                    "note": "Durch Kochen zu Hause kann gespart werden",
+                    "label": "Essen und Lebensmittel",
+                    "amount": "250-350"
+                },
+                {
+                    "note": "Gesetzliche Studierendenversicherung",
+                    "label": "Krankenversicherung",
+                    "amount": "120-130"
+                },
+                {
+                    "note": "Variiert je nach Semesterticket der Hochschule",
+                    "label": "Transport (Semesterticket)",
+                    "amount": "50-100"
+                },
+                {
+                    "label": "Freizeit und soziale Aktivitäten",
+                    "amount": "100-200"
+                },
+                {
+                    "label": "Telefon/Internet",
+                    "amount": "20-40"
+                }
+            ],
+            "total": "990-1520",
+            "currency": "EUR"
+        },
+        {
+            "h": "Sehenswürdigkeiten und Studierenden-Hotspots",
+            "type": "places",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-muenchen",
+                    "name": "KSH München – Campus München",
+                    "type": "university_campus",
+                    "description": "Der Hauptcampus der Hochschule bietet Studierenden durch seine zentrumsnahe Lage eine gute Erreichbarkeit."
+                },
+                {
+                    "url": "https://www.ksh-muenchen.de/studieren-in-benediktbeuern",
+                    "name": "KSH München – Campus Benediktbeuern",
+                    "type": "university_campus",
+                    "description": "Der Campus am Fuße der Alpen für alle, die eine ruhigere und naturnahe Lernumgebung bevorzugen."
+                },
+                {
+                    "name": "Marienplatz",
+                    "type": "square",
+                    "description": "Das Herz Münchens, bekannt für das Neue Rathaus und das Glockenspiel."
+                },
+                {
+                    "url": "https://www.muenchen.de/int/en/sights/parks/english-garden.html",
+                    "name": "Englischer Garten",
+                    "type": "park",
+                    "description": "Einer der größten Stadtparks Europas, berühmt für seine Surfer und Biergärten."
+                },
+                {
+                    "url": "https://www.deutsches-museum.de/",
+                    "name": "Deutsches Museum",
+                    "type": "museum",
+                    "description": "Eines der größten Wissenschafts- und Technikmuseen der Welt, ein Muss für jeden Besuch."
+                },
+                {
+                    "name": "Viktualienmarkt",
+                    "type": "market",
+                    "description": "Der berühmteste Freiluftmarkt der Stadt, voller frischer Produkte, lokaler Spezialitäten und Biergärten."
+                },
+                {
+                    "url": "https://www.schloss-nymphenburg.de/englisch/palace/index.htm",
+                    "name": "Schloss Nymphenburg",
+                    "type": "landmark",
+                    "description": "Die Sommerresidenz der bayerischen Kurfürsten, ein friedlicher Rückzugsort mit prächtigen Gärten."
+                },
+                {
+                    "name": "Hofbräuhaus",
+                    "type": "restaurant",
+                    "description": "Das weltberühmte historische Brauhaus, ideal, um die traditionelle bayerische Atmosphäre zu erleben."
+                }
+            ]
+        },
+        {
+            "h": "Studierendenleben und Kultur",
+            "type": "student_culture",
+            "body_md": "Studierende an der KSH München zu sein, bedeutet nicht nur, Vorlesungen zu besuchen; es bedeutet auch, Teil einer lebendigen und unterstützenden Gemeinschaft zu sein. Die Hochschule spiegelt ihre 'menschenzentrierte' Mission auch im Studierendenleben wider. Hier werden verschiedene Unterstützungsprogramme und Veranstaltungen organisiert, damit sich auch internationale Studierende wie zu Hause fühlen. Dank der geringen Studierendenzahl (ca. 2.400) hast du gute Chancen, engere Beziehungen zu den Professorinnen und Professoren aufzubauen und eine persönliche Ausbildung zu erhalten. Studierendenclubs und -gemeinschaften auf den Campus ermöglichen es dir, neue Freunde nach deinen Interessen zu finden und deine Freizeit sinnvoll zu gestalten. Auch die allgemeine Studierendenkultur in München ist sehr reichhaltig. Viele Studierenden-Cafés, Bars und kulturelle Veranstaltungen in der Stadt sorgen dafür, dass du deine Zeit außerhalb der Vorlesungen voll auskosten kannst. Zudem hast du dank der praxisorientierten Ausbildung der KSH München reichlich Gelegenheit, während deines Studiums durch ehrenamtliche Arbeit oder Praktika Berufserfahrung zu sammeln.",
+            "highlights": [
+                "Ein internationales und studierendenfreundliches Umfeld.",
+                "Kleine Studiengruppen und individuelle Betreuung.",
+                "Praxisorientierte Ausbildung mit Fokus auf soziale und gesundheitliche Bereiche.",
+                "Austauschprogramme mit über 60 internationalen Partnerhochschulen.",
+                "Zwei Campus in München und Benediktbeuern für unterschiedliche Studienerlebnisse.",
+                "Aktives Sozialleben durch Studierendenclubs und ehrenamtliche Projekte.",
+                "Unterstützung bei der beruflichen Entwicklung durch Career Services und Praktikumsmöglichkeiten."
+            ]
+        },
+        {
+            "h": "Häufig gestellte Fragen",
+            "type": "faq",
+            "items": [
+                {
+                    "a": "Da alle Studiengänge an der KSH München auf Deutsch angeboten werden, musst du bei deiner Bewerbung einen Nachweis über Deutschkenntnisse auf C1-Niveau vorlegen. Anerkannte Prüfungen sind in der Regel TestDaF, DSH oder Telc C1 Hochschule. Überprüfe für eine detaillierte und aktuelle Liste unbedingt den Bereich 'Internationale Vollstudierende' auf der offiziellen Webseite der Hochschule.",
+                    "q": "Welches Deutschniveau benötige ich für die Bewerbung an der KSH München?"
+                },
+                {
+                    "a": "Wenn du ein ausländisches Abiturzeugnis oder einen Hochschulabschluss besitzt, musst du deine Dokumente vor der Bewerbung an der KSH München von Uni-Assist e.V. vorprüfen lassen. Mit der Vorprüfungsdokumentation (VPD), die du von Uni-Assist erhältst, kannst du deine Bewerbung abschließen. Dieses Dokument zeigt, ob deine Ausbildung den deutschen Standards entspricht.",
+                    "q": "Kann ich mich mit meinem ausländischen Abiturzeugnis direkt an der KSH München bewerben?"
+                }
+            ]
+        },
+        {
+            "h": null,
+            "type": "cta",
+            "body_md": "Eine menschenzentrierte Karriere könnte dich an der KSH München erwarten! Besuche jetzt die offizielle Webseite für weitere Informationen und Bewerbungsdetails."
+        },
+        {
+            "h": "Studiengänge",
+            "phd": 0,
+            "type": "programs_summary",
+            "total": 22,
+            "master": 4,
+            "bachelor": 18
+        },
+        {
+            "h": "Nützliche Links",
+            "type": "external_links",
+            "items": [
+                {
+                    "url": "https://www.ksh-muenchen.de/",
+                    "type": "official",
+                    "label": "Offizielle Webseite"
+                },
+                {
+                    "url": "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen",
+                    "type": "wikipedia",
+                    "label": "Wikipedia (DE)"
+                }
+            ]
+        },
+        {
+            "data": {
+                "url": "https://www.ksh-muenchen.de/",
+                "logo": null,
+                "name": "Katholische Stiftungshochschule für angewandte Wissenschaften München",
+                "@type": "CollegeOrUniversity",
+                "image": "https://thumb.wikimedia.org/wikipedia/de/thumb/9/95/Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg/langde-330px-Katholische_Stiftungsfachhochschule_M%C3%BCnchen_logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+                "sameAs": [
+                    "https://de.wikipedia.org/wiki/Katholische_Stiftungshochschule_M%C3%BCnchen"
+                ],
+                "address": {
+                    "@type": "PostalAddress",
+                    "postalCode": "81667",
+                    "addressRegion": "Bayern",
+                    "streetAddress": "Preysingstr. 95",
+                    "addressCountry": "DE",
+                    "addressLocality": "München"
+                },
+                "@context": "https://schema.org",
+                "description": "Wenn du von einer menschenzentrierten Ausbildung im Herzen Münchens träumst, könnte die Katholische Stiftungshochschule für angewandte Wissenschaften München (KSH München) genau das Richtige für dich sein! In dieser lebendigen bayerischen Metropole bietet die KSH München eine qualitativ hochwertige und praxisorientierte Ausbildung, insbesondere in den Studiengängen Soziale Arbeit, Gesundheit, Pflege und Pädagogik. Sie ist nicht nur eine der ältesten katholischen Bildungseinrichtungen für soziale Arbeit in Deutschland, sondern auch die zweitgrößte Bildungseinrichtung der katholischen Kirche in Bayern. Aber keine Sorge, eine religiöse Zugehörigkeit ist keine Voraussetzung; ihre Türen stehen allen offen. Sie hat zwei Hauptstandorte: einen im pulsierenden München und einen weiteren im ruhigeren, für seine Naturschönheiten bekannten Benediktbeuern. Wenn du deine Karriere der Hilfe für Menschen widmen möchtest, können dir die Bachelor- und Master-Studiengänge der KSH München einzigartige Möglichkeiten bieten. Für Studierende aus der Türkei gibt es spezielle Unterstützungsangebote und ein internationales Studienumfeld. Bewirb dich über Uni-Assist (die Vorprüfungsstelle für Hochschulbewerbungen) und werde mit deinen Deutschkenntnissen auf C1-Niveau Teil dieser renommierten Hochschule.",
+                "foundingDate": "1971",
+                "numberOfStudents": null
+            },
+            "type": "schema_jsonld"
+        }
+    ]
+}
