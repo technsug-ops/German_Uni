@@ -28,6 +28,19 @@
     $showEnOriginal = $desc && ! $desc['fallback'] && app()->getLocale() !== 'en'
         && $program->isMeaningfulText($program->description_en)
         && $normText($program->description_en) !== $normText($desc['text']);
+
+    // Doğrulama katmanı (V1): sayfada yalnız VERIFIED kayıtlar kullanılır; bilinmeyen asla "hayır" gösterilmez.
+    // verifiedRecords: yalnız VERIFIED + kimlik çelişkisi yok + değer doğrulamadan beri değişmemiş.
+    $program->loadMissing('verifications');
+    $verifiedRoutes = $program->verifiedRecords('application_method')->sortBy('applicant_group')->values();
+    $conflictNote = __('This value conflicts with the official programme page. Check the official page.');
+    $routeLabel = fn ($v) => __(match (\App\Models\ProgramVerification::normalizeScalar($v->source_value)) {
+        'uni_assist' => 'Via uni-assist',
+        'direct_portal' => "Via the university's application portal",
+        'vpd_then_portal' => 'VPD from uni-assist, then the university portal',
+        'hochschulstart' => 'Via Hochschulstart (DoSV)',
+        default => 'See the official programme page',
+    });
 @endphp
 
 @section('title', $title . ' — ' . brand('name'))
@@ -299,6 +312,9 @@
                     <div>
                         <dt class="text-gray-500">{{ __('Language of Instruction') }}</dt>
                         <dd class="font-semibold text-gray-900">{{ $langLabel }}</dd>
+                        @if ($program->hasFieldConflict('language'))
+                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="language">⚠ {{ $conflictNote }}</p>
+                        @endif
                     </div>
                 @endif
 
@@ -319,6 +335,9 @@
                                 {{ number_format($program->tuition_fee_eur, 0, ',', '.') }} € / {{ __('semester') }}
                             @endif
                         </dd>
+                        @if ($program->hasFieldConflict('tuition'))
+                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="tuition">⚠ {{ $conflictNote }}</p>
+                        @endif
                     </div>
                 @endif
 
@@ -327,6 +346,11 @@
                         <dt class="text-gray-500">Semester Beitrag</dt>
                         <dd class="font-semibold text-gray-900">{{ number_format($program->cost_per_semester_eur, 0, ',', '.') }} € / {{ __('semester') }}</dd>
                     </div>
+                @endif
+                @if ($verifiedTuition = $program->verifiedRecord('tuition'))
+                    <p class="text-xs text-gray-500 -mt-1" data-verified-field="tuition">
+                        {{ __('Fees verified on the official page on :date', ['date' => $verifiedTuition->verified_at->format('d.m.Y')]) }}@if ($verifiedTuition->applicant_group) · {{ __(\App\Models\ProgramVerification::APPLICANT_GROUPS[$verifiedTuition->applicant_group] ?? '') }}@endif
+                    </p>
                 @endif
 
                 @if (! is_null($program->application_fee_eur))
@@ -359,6 +383,15 @@
                         </div>
                     @endif
                 @endforeach
+                @if (($program->application_deadline_winter || $program->application_deadline_summer) && $program->hasFieldConflict('deadline'))
+                    <p class="text-xs text-amber-700 -mt-1" data-conflict-field="deadline">⚠ {{ $conflictNote }}</p>
+                @endif
+                {{-- Doğrulama tarihi yalnız ait olduğu bilgide: deadline doğrulandıysa sayfanın tamamı güncelmiş gibi sunulmaz --}}
+                @if ($verifiedDeadline = $program->verifiedRecord('deadline'))
+                    <p class="text-xs text-gray-500 -mt-1" data-verified-field="deadline">
+                        {{ __('Deadline verified on the official page on :date', ['date' => $verifiedDeadline->verified_at->format('d.m.Y')]) }}@if ($verifiedDeadline->term) · {{ $verifiedDeadline->term }}@endif
+                    </p>
+                @endif
 
                 @if (! is_null($program->nc_value))
                     <div>
@@ -374,12 +407,28 @@
                     </div>
                 @endif
 
-                @if ($program->university->is_uni_assist_member)
+                {{-- Başvuru yolu: yalnız resmî sayfada DOĞRULANMIŞ program düzeyi bilgi; aday grubuna göre ayrı satırlar.
+                     Üniversitenin uni-assist üyeliği, bu programın uni-assist kullandığı anlamına gelmez. --}}
+                @if ($verifiedRoutes->isNotEmpty())
+                    <div class="pt-2 mt-3 border-t border-gray-100" data-verified-routes>
+                        <p class="text-xs text-gray-500 mb-1">{{ __('How to apply (official programme page)') }}</p>
+                        <ul class="space-y-1.5">
+                            @foreach ($verifiedRoutes as $route)
+                                <li class="text-sm">
+                                    <span class="font-semibold text-gray-900">{{ __(\App\Models\ProgramVerification::APPLICANT_GROUPS[$route->applicant_group] ?? 'All applicants') }}:</span>
+                                    <span class="text-gray-800">{{ $routeLabel($route) }}</span>
+                                    @if ($route->term)<span class="text-xs text-gray-500">({{ $route->term }})</span>@endif
+                                </li>
+                            @endforeach
+                        </ul>
+                        <p class="text-xs text-gray-500 mt-1">{{ __('Verified on the official page on :date', ['date' => $verifiedRoutes->max('verified_at')->format('d.m.Y')]) }}</p>
+                    </div>
+                @elseif ($program->university->is_uni_assist_member)
                     <div class="pt-2 mt-3 border-t border-gray-100">
-                        <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-green-700">
-                            ✓ {{ __('Uni-Assist member') }}
+                        <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-700">
+                            {{ __('University is a uni-assist member') }}
                         </span>
-                        <p class="text-xs text-gray-500 mt-1">{{ __('Applications go through Uni-Assist.') }}</p>
+                        <p class="text-xs text-gray-500 mt-1">{{ __('Whether this programme uses uni-assist depends on the programme and your applicant group. Check the official programme page.') }}</p>
                     </div>
                 @endif
 
@@ -414,6 +463,17 @@
                     </a>
                 </div>
             </dl>
+
+            {{-- Resmî program sayfası: yalnız URL var VE program kimliği o kaynakta doğrulandıysa (ana sayfa/tahmini URL yok) --}}
+            @if ($program->hasVerifiedOfficialUrl())
+                <div class="mt-5" data-official-program-url>
+                    <a href="{{ $program->official_program_url }}" target="_blank" rel="noopener"
+                       class="block text-center border border-primary-600 text-primary-700 hover:bg-primary-50 font-semibold px-4 py-2.5 rounded-lg transition">
+                        {{ __('Official programme page') }} ↗
+                    </a>
+                    <p class="text-xs text-gray-500 mt-1 text-center">{{ __('Programme match verified on the official page on :date.', ['date' => $program->verifiedRecord('identity')->verified_at->format('d.m.Y')]) }}</p>
+                </div>
+            @endif
 
             <div class="mt-5 space-y-2">
                 <x-favorite-button :model="$program" type="program" size="lg" :block="true" />

@@ -26,18 +26,23 @@ class ContentMaintain extends Command
         $apply = $this->option('apply');
         $fixOpts = $apply ? ['--apply' => true] : [];
 
-        $this->line('▶ programs:fix-deadlines');
-        $this->call('programs:fix-deadlines', $fixOpts);
+        // DEADLINE KOMUTLARI DAİMA YALNIZ RAPOR (Program Verification V1 güvenlik kapısı, 02.10.2026):
+        //  - fix-deadlines: geçmiş tarihe bugünü geçene dek YIL EKLER (resmî kaynak yok).
+        //  - reparse-deadlines / parse-deadlines: metinde yıl yoksa DeadlineParser::guessUpcomingYear ile yıl TAHMİN eder;
+        //    reparse mevcut (geçmiş) tarihi bu tahminle yeniden yazabilir.
+        // Otomatik bakım kaynaksız tarih üretmesin; bu komutlar gerekirse elle ve bilinçli çalıştırılır.
+        // DİKKAT: parse-deadlines bayrağı ters — --dry-run verilmezse YAZAR.
+        $this->line('▶ programs:fix-deadlines (yalnız rapor)');
+        $this->call('programs:fix-deadlines', []);
 
         $this->line('▶ programs:fix-data');
         $this->call('programs:fix-data', $fixOpts);
 
-        $this->line('▶ programs:reparse-deadlines');
-        $this->call('programs:reparse-deadlines', $fixOpts);
+        $this->line('▶ programs:reparse-deadlines (yalnız rapor)');
+        $this->call('programs:reparse-deadlines', []);
 
-        // parse-deadlines flag'i ters (--dry-run); apply'da boş bırak (execute), değilse dry-run.
-        $this->line('▶ programs:parse-deadlines');
-        $this->call('programs:parse-deadlines', $apply ? [] : ['--dry-run' => true]);
+        $this->line('▶ programs:parse-deadlines (yalnız rapor)');
+        $this->call('programs:parse-deadlines', ['--dry-run' => true]);
 
         $this->line('▶ universities:fix-cities');
         $this->call('universities:fix-cities', $fixOpts);

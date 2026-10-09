@@ -9,6 +9,8 @@ use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use App\Models\ProgramVerification;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -109,14 +111,76 @@ class ProgramForm
                     ]),
 
                 Section::make('Kaynak & Meta')
+                    ->description('IMPORT kaynağı: programın sisteme nereden geldiği. Bu, resmî üniversite doğrulaması DEĞİLDİR.')
                     ->collapsed()
                     ->columns(2)
                     ->components([
                         TextInput::make('partner_id')->label('Partner ID')->disabled(),
                         TextInput::make('partner_university_name')->label('Partner uni adı')->disabled(),
-                        TextInput::make('source')->label('Kaynak'),
-                        TextInput::make('source_url')->label('Kaynak URL')->url(),
-                        DateTimePicker::make('last_synced_at')->label('Son senkronizasyon'),
+                        TextInput::make('source')->label('Import kaynağı'),
+                        TextInput::make('source_url')->label('Import kaynak URL')->url(),
+                        DateTimePicker::make('last_synced_at')->label('Veri çekildi (son senkron)'),
+                    ]),
+
+                Section::make('Kaynak ve Doğrulama')
+                    ->description('Resmî program sayfası ve program düzeyinde başvuru bilgisi. Boş = BİLİNMİYOR (hayır değil). Alan bazında doğrulama kayıtları sayfanın altındaki "Doğrulamalar" tablosunda. Yalnız tam yetkili admin düzenleyebilir.')
+                    ->collapsible()
+                    ->columns(2)
+                    ->components([
+                        TextEntry::make('verification_summary')
+                            ->label('Doğrulama kapsamı')
+                            ->state(function ($record) {
+                                if (! $record) {
+                                    return 'Henüz doğrulama yok';
+                                }
+                                $s = $record->verificationSummary();
+                                $txt = "{$s['total']} kritik alanın {$s['verified']}'i doğrulandı";
+                                if ($s['needs_review']) {
+                                    $txt .= " · {$s['needs_review']} alanda inceleme gerekli";
+                                }
+                                if ($s['conflict']) {
+                                    $txt .= " · {$s['conflict']} alanda çelişki";
+                                }
+
+                                return $txt;
+                            })
+                            ->columnSpan(2),
+                        TextInput::make('official_program_url')
+                            ->label('Resmî program sayfası (üniversitenin kendi sitesi)')
+                            ->helperText('Üniversite ana sayfası değil; programın kendi sayfası. URL eklemek hiçbir alanı doğrulanmış yapmaz — sitede bağlantı ancak "Program kimliği" doğrulanınca görünür.')
+                            ->url()
+                            ->maxLength(500)
+                            ->columnSpan(2)
+                            ->disabled(fn () => ! auth()->user()?->isFullAdmin())
+                            ->dehydrated(fn () => (bool) auth()->user()?->isFullAdmin()),
+                        Select::make('application_method')
+                            ->label('Başvuru yöntemi')
+                            ->options(ProgramVerification::APPLICATION_METHODS)
+                            ->placeholder('Bilinmiyor')
+                            ->native(false)
+                            ->disabled(fn () => ! auth()->user()?->isFullAdmin())
+                            ->dehydrated(fn () => (bool) auth()->user()?->isFullAdmin()),
+                        TextInput::make('application_url')
+                            ->label('Başvuru bağlantısı')
+                            ->url()
+                            ->maxLength(500)
+                            ->disabled(fn () => ! auth()->user()?->isFullAdmin())
+                            ->dehydrated(fn () => (bool) auth()->user()?->isFullAdmin()),
+                        Select::make('uni_assist_required')
+                            ->label('uni-assist kullanılıyor mu?')
+                            ->options(['yes' => 'Evet', 'no' => 'Hayır'])
+                            ->placeholder('Bilinmiyor')
+                            ->helperText('Üniversitenin uni-assist üyeliği bu programın uni-assist kullandığı anlamına gelmez. Aday grubuna göre değişiyorsa ayrıntıyı doğrulama kaydına yazın.')
+                            ->native(false)
+                            ->disabled(fn () => ! auth()->user()?->isFullAdmin())
+                            ->dehydrated(fn () => (bool) auth()->user()?->isFullAdmin()),
+                        Select::make('vpd_required')
+                            ->label('VPD gerekli mi?')
+                            ->options(['yes' => 'Evet', 'no' => 'Hayır'])
+                            ->placeholder('Bilinmiyor')
+                            ->native(false)
+                            ->disabled(fn () => ! auth()->user()?->isFullAdmin())
+                            ->dehydrated(fn () => (bool) auth()->user()?->isFullAdmin()),
                     ]),
             ]);
     }

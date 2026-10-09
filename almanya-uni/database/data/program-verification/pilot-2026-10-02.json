@@ -1,0 +1,1731 @@
+{
+    "label": "program-verification-pilot-2026-10-02",
+    "checked_at": "2026-10-02",
+    "programs": [
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019de9f2-2280-7095-9c7b-01a881016409",
+                "name_de": "Renewable Energy Systems",
+                "degree": "master",
+                "university": "Nordhausen University of Applied Sciences"
+            },
+            "local_id": 15534,
+            "slug": "renewable-energy-systems-master-81016409",
+            "set": {
+                "official_program_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Renewable Energy Systems — Master of Engineering (M.Eng.)",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "Master of Engineering (M.Eng.) in Renewable Energy Systems",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "Language: English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "uni_assist",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "via the website of uni-assist (Interested parties with a German university degree via the university's online portal)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "german_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "via the website of uni-assist (Interested parties with a German university degree via the university's online portal)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "via the website of uni-assist (Interested parties with a German university degree via the university's online portal)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "winter semester (no year stated) | all | Application period start of the winter semester: 1 December - 30 April; summer semester | all | Application period Start of the summer semester: - (no summer intake)",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "1 December - 30 April ... Application period Start of the summer semester: -",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: kış başvurusu 1 Ara–30 Nis (yıl yok), YAZ ALIMI YOK; programda yaz tarihi 2027-04-30 var"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=0 (all (long-term fee 500 EUR/semester only if standard period exceeded by >4 semesters)); semester_contribution=346.8",
+                    "source_url": "https://www.hs-nordhausen.de/en/all-study-programmes/application-2/financial-2/semester-fee/",
+                    "evidence": "Programme page: Tuition fees: none. Semester-fee page (Winter term 2026): first-semester students 346.80 euros; continuing students 326.80 euros (incl. Germany ticket 226.80)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: öğrenim ücreti yok; dönem katkı payı 346,80 € (WS 2026 ilk dönem); programda ücret alanları boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor in mechanical/electrical/energy/renewable energy engineering or related; CGPA 2.5 (German scale) or better; English B2 (TOEFL iBT 79 / IELTS 6.0); APS for India, China, Vietnam. 3 semesters for 210-ECTS bachelor, 4 for 180 ECTS.",
+                    "source_url": "https://www.hs-nordhausen.de/en/study-programmes/renewable-energy-systems/",
+                    "evidence": "A minimum CGPA of 2.5 (according to the German grading system) or better; English language skills at level B2 (e.g. TOEFL iBT 79 or higher, IELTS 6.0 or higher)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbc-c662-727c-95a1-1cc4267083fa",
+                "name_de": "Science, Single-Subject GEODETIC ENGINEERING",
+                "degree": "master",
+                "university": "Rheinische Friedrich-Wilhelms-Universität Bonn"
+            },
+            "local_id": 8079,
+            "slug": "science-single-subject-geodetic-engineering-master-267083fa",
+            "set": {
+                "official_program_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                "application_method": "direct_portal",
+                "application_url": "https://application.uni-bonn.de"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "Geodetic Engineering — Master's program (M.Sc. per our record; degree abbreviation not quoted on fetched page)",
+                    "source_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                    "evidence": "Master's program Geodetic Engineering",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Aynı program; programdaki ad bozuk ('Science, Single-Subject GEODETIC ENGINEERING'), resmî ad 'Geodetic Engineering'"
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                    "evidence": "It is a full-time program taught entirely in English.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                    "evidence": "Apply through the Online-Application at the Online Application Portal for Graduate Programs.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "not stated (application window in 2026; presumably WS 2026/27 but page does not say) | non-EU/EEA citizens | 2026-05-31; not stated (application window in 2026) | EU/EEA citizens | 2026-08-31",
+                    "source_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                    "evidence": "non-EU/EWR citizens from 3 January 2026 till 31 May 2026; EU/EWR citizens from 3 January 2026 till 31 August 2026",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB dışı 31.05.2026, AB/AEA 31.08.2026 (dönem adı yok); programdaki 2026-07-15 ikisiyle de uyuşmuyor"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor with >=24 credits in at least two of Mathematics/Physics/Programming and >=48 credits in at least two of six areas (physical geodesy, data analysis, photogrammetry, measurement technology, algorithmics, urban development); English B2 (exemptions apply). Open admission.",
+                    "source_url": "https://www.gug.uni-bonn.de/en/master-ge/apply",
+                    "evidence": "a total of at least 24 credits from at least two of the following three subjects: Mathematics, Physics, Programming ... The niveau has to be minimun B2",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019de9f2-11de-7309-acc0-36e8f5b7acca",
+                "name_de": "Master’s College European Studies (MAC-ES)",
+                "degree": "master",
+                "university": "RWTH Aachen University"
+            },
+            "local_id": 15138,
+            "slug": "masters-college-european-studies-mac-es-master-f5b7acca",
+            "set": [],
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "Master's College European Studies (MAC-ES) — none - non-degree digital qualification programme preparing for the MPA European Studies",
+                    "source_url": "https://www.academy.rwth-aachen.de/en/programs/masters-degree-programs/detail/master-of-public-administration-european-studies",
+                    "evidence": "International applicants are strongly encouraged to complete the Master's College European Studies (MAC-ES) before starting their studies. In this digital qualification program...",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "MAC-ES bir yüksek lisans DEĞİL; MPA European Studies'e hazırlayan çevrimiçi hazırlık kursu"
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "",
+                    "source_url": "https://www.academy.rwth-aachen.de/en/programs/masters-degree-programs/detail/master-of-public-administration-european-studies",
+                    "evidence": "MPA-ES: Language: English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Language stated explicitly only for the MPA-ES (English), not for MAC-ES."
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019de9f1-f78d-727a-b41e-43f6c6b5cc92",
+                "name_de": "Information and Communication Engineering",
+                "degree": "master",
+                "university": "Hamburg University of Applied Sciences"
+            },
+            "local_id": 14322,
+            "slug": "information-and-communication-engineering-master-c6b5cc92",
+            "set": {
+                "official_program_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Information and Communications Engineering — Master of Science (M.Sc.)",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "Information and Communications Engineering (M.Sc.)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "Language: English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "all: direct_portal",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "Applications for all Master's courses must be submitted online.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynakta başvuru yolu bu program için açık değil"
+                },
+                {
+                    "field": "vpd",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "",
+                    "source_url": "https://www.haw-hamburg.de/en/study/applications/international-applicants/",
+                    "evidence": "Higher education entrance qualification – preliminary review documentation (VPD) from uni assist (page appears Bachelor-focused; not confirmed for Master's)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak bu program için açık değil"
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester (no year stated) | all | For the winter semester: 1 June–15 July; summer semester (no year stated) | all | For the summer semester: 1 December–15 January",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "For the summer semester: 1 December–15 January ... For the winter semester: 1 June–15 July",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: kış 1 Haz–15 Tem, yaz 1 Ara–15 Oca (yıl yok); programda tarih yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=None (None); semester_contribution=397",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "Semester contribution €397 including semester ticket and Germany-wide rail pass",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: dönem katkı payı 397 €, öğrenim ücreti belirtilmemiş; programda boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor/Diplom in Electrical Engineering & IT, Information Engineering, Renewable Energy Systems, Computer Science for Technical Systems, Energy Management, Mechatronics or comparable; English B2; Diploma Supplement/Transcript.",
+                    "source_url": "https://www.haw-hamburg.de/en/master-information-and-communications-engineering/",
+                    "evidence": "You are also required to provide proof of proficiency in English at the B2 level",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbc-7c44-711b-b70a-890958e71740",
+                "name_de": "Management and Engineering",
+                "degree": "master",
+                "university": "Leuphana Universität Lüneburg"
+            },
+            "local_id": 7078,
+            "slug": "management-and-engineering-master-58e71740",
+            "set": {
+                "official_program_url": "https://www.leuphana.de/en/graduate-school/masters-programmes/management-engineering.html",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Management & Engineering — Master of Science (M.Sc.)",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-programmes/management-engineering.html",
+                    "evidence": "Management & Engineering (M.Sc.)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "de",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-programmes/management-engineering.html",
+                    "evidence": "German, some seminars in English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-application.html",
+                    "evidence": "you can apply online directly to Leuphana via myCampus ... You can apply for our Master's programmes via uni-assist if you obtained your Bachelor's degree outside the EU / EEA.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "uni_assist",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-application.html",
+                    "evidence": "you can apply online directly to Leuphana via myCampus ... You can apply for our Master's programmes via uni-assist if you obtained your Bachelor's degree outside the EU / EEA.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-application.html",
+                    "evidence": "You can apply for our Master's programmes via uni-assist if you obtained your Bachelor's degree outside the EU / EEA.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester (start 1 October; no year stated) | EU degrees | 30 September; winter semester (start 1 October; no year stated) | non-EU degrees | 1 May",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-programmes/management-engineering.html",
+                    "evidence": "Application deadline: EU degrees 30 September; Non-EU degrees 1 May",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB dışı diploma 1 Mayıs, AB diploma 30 Eylül (yıl yok); programdaki 2027-05-01 gün/ay eşleşiyor, yıl kaynakta yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "tuition=0 (all); semester_contribution=452.94",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-application.html",
+                    "evidence": "The semester contribution for one semester currently amounts to 452.94 Euros. ... There are no other tuition fees at Leuphana. (programme page says approx. 480 EUR)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: öğrenim ücreti YOK, dönem katkı payı 452,94 €; programda tuition_fee_eur=450 (katkı payı yanlış alana yazılmış görünüyor)"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Details on separate 'Admission and Requirements' page (not fetched). Extra selection points for GTEBS (formerly TM-WISO) or GMAT. Two profiles: Production Systems (business background) / Production Technology (engineering). 40 places.",
+                    "source_url": "https://www.leuphana.de/en/graduate-school/masters-programmes/management-engineering.html",
+                    "evidence": "study aptitude test (GTEBS (formerly TM-WISO) or GMAT)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbba-0c65-7177-9aad-5fd96bd3cb65",
+                "name_de": "International Licensing Law",
+                "degree": "master",
+                "university": "Hochschule Darmstadt"
+            },
+            "local_id": 88,
+            "slug": "international-licensing-law-master-6bd3cb65",
+            "set": {
+                "official_program_url": "https://h-da.de/en/studies/study-programmes/study-programmes/economy-and-society/international-licensing-law",
+                "application_method": "direct_portal",
+                "application_url": "https://my.h-da.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces?page=1&noDBAction=y&init=y"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "International Licensing Law (Master of Laws) — LL.M. (Master of Laws)",
+                    "source_url": "https://h-da.de/en/studies/study-programmes/study-programmes/economy-and-society/international-licensing-law",
+                    "evidence": "International Licensing Law (Master of Laws) ... application-oriented four-semester Master's programme",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "both",
+                    "source_url": "https://h-da.de/en/studies/study-programmes/study-programmes/economy-and-society/international-licensing-law",
+                    "evidence": "Language: German, partly English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://h-da.de/en/studies/study-programmes/application-procedure",
+                    "evidence": "Registration and application via my.h-da",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester (no year stated) | German certificate holders | 01.09.; winter semester (general master rule) | all master applicants (not differentiated) | WiSe: June to 01.09.",
+                    "source_url": "https://h-da.de/en/studies/study-programmes/study-programmes/economy-and-society/international-licensing-law",
+                    "evidence": "Application deadline: 01.09. (German certificate); general deadlines page (https://h-da.de/en/studies/study-programmes/application-procedure/application-deadlines): 'WiSe: June to 01.09. SoSe: December to 01.03.'",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: Alman belgesi 01.09. (yıl yok), yabancı belge tarihi yok; programdaki 2026-09-01 gün/ay eşleşiyor, yıl kaynakta yok"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Qualified diploma or bachelor's degree in a field of law, or a first state examination in law.",
+                    "source_url": "https://h-da.de/en/studies/study-programmes/study-programmes/economy-and-society/international-licensing-law",
+                    "evidence": "a qualified diploma or bachelor's degree in a field of law or a first state examination in law",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbb-bf2d-73bf-906a-5a0efbcb1675",
+                "name_de": "Bauingenieurwesen und Geodäsie",
+                "degree": "bachelor",
+                "university": "Technische Universität Darmstadt"
+            },
+            "local_id": 5139,
+            "slug": "bauingenieurwesen-und-geodasie-bachelor-fbcb1675",
+            "set": {
+                "official_program_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_178752.de.jsp",
+                "application_method": "direct_portal",
+                "application_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/index.de.jsp"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Bauingenieurwesen und Geodäsie — Bachelor of Science",
+                    "source_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_178752.de.jsp",
+                    "evidence": "Bauingenieurwesen und Geodäsie ... Bachelor of Science ... zulassungsfrei",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "de",
+                    "source_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_178752.de.jsp",
+                    "evidence": "Deutsch. Einzelne Lehrveranstaltungen können in englischer Sprache angeboten werden.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_178752.de.jsp",
+                    "evidence": "Online-Bewerbung",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "WS 2026/27 | all (not differentiated on page) | 2026-08-31",
+                    "source_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_1/index.de.jsp",
+                    "evidence": "Bauingenieurwesen und Geodäsie 01.06.26 – 31.08.26 frei",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: WS 2026/27 01.06.–31.08.2026 (tüm adaylar); programda tarih yok"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Studienberechtigung (HZB); 12-week internship before studies (proof by end of 2nd semester); international applicants see separate requirements page.",
+                    "source_url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_178752.de.jsp",
+                    "evidence": "Vor der Aufnahme des Studiums ist ein 12-wöchiges Praktikum zu absolvieren",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbc-d05f-731b-95d5-377412baed31",
+                "name_de": "International Business",
+                "degree": "bachelor",
+                "university": "Karlshochschule International University"
+            },
+            "local_id": 8230,
+            "slug": "international-business-bachelor-12baed31",
+            "set": {
+                "official_program_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                "application_method": "direct_portal",
+                "application_url": "https://khs-kunden.de/location/66101010?register=42808545990"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "International Business (B.A.) — Bachelor of Arts (B.A.)",
+                    "source_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                    "evidence": "International Business (B.A.) ... 6 semesters ... 180 ECTS",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                    "evidence": "English + other language courses",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                    "evidence": "Apply now (online application portal link)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester (no year stated; start end of September) | EU | Sept. 1; winter semester (no year stated) | international (non-EU) | July 15 or later (depending on the visa process of the home country)",
+                    "source_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                    "evidence": "EU: Sept. 1 / Non-EU: July 15 or later (depending on the visa process of the home country)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB 1 Eylül, AB dışı '15 Temmuz veya sonrası (vizeye bağlı)', yıl yok; programdaki 2026-07-15 gün/ay eşleşiyor"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=None (EU: 550 EUR/month; non-EU: 750 EUR/month); semester_contribution=None",
+                    "source_url": "https://www.karlshochschule.de/en/bachelor-programs/international-business-b-a.html",
+                    "evidence": "EU: 550 € /month; Non-EU: 750 € / month",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak yalnız aylık ücret veriyor (AB 550 €/ay, AB dışı 750 €/ay); programdaki 4500 €/dönem kaynakta açıkça yok"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbd-bb87-7131-a40e-dbdb31358ff1",
+                "name_de": "Science Architectural Heritage Conservation",
+                "degree": "bachelor",
+                "university": "Hochschule RheinMain"
+            },
+            "local_id": 10943,
+            "slug": "science-architectural-heritage-conservation-bachelor-31358ff1",
+            "set": {
+                "official_program_url": "https://www.hs-rm.de/architektur-und-bauingenieurwesen/studiengaenge/bachelor/baukulturerbe"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "Baukulturerbe (EN: Architectural Heritage Conservation) — Bachelor of Science",
+                    "source_url": "https://www.hs-rm.de/en/architecture-and-civil-engineering/degree-programs/bachelors-degree/architectural-heritage-conservation",
+                    "evidence": "Bachelor's degree program in Architectural Heritage Conservation (B.Sc.) ... Wiesbaden | Campus Kurt-Schumacher-Ring",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Aynı program; programdaki ad yanlış ('Science Architectural Heritage Conservation'), resmî Almanca ad 'Baukulturerbe'"
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "de",
+                    "source_url": "https://www.hs-rm.de/architektur-und-bauingenieurwesen/studiengaenge/bachelor/baukulturerbe",
+                    "evidence": "Unterrichtssprache: Deutsch",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester (no year stated) | German HZB (German certificates) | Ende September; winter semester (no year stated) | international (foreign certificates) | 01.09",
+                    "source_url": "https://www.hs-rm.de/architektur-und-bauingenieurwesen/studiengaenge/bachelor/baukulturerbe",
+                    "evidence": "Bewerbungsfrist: deutsche Zeugnisse Ende September; ausländische Zeugnisse 01.09; Kein NC",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: Alman belgesi 'Eylül sonu', yabancı belge 01.09. (yıl yok); programda tarih yok"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "No NC (admission-free); good English skills required. HZB details are in admission regulations (Amtliche Mitteilungen 981), not verified here.",
+                    "source_url": "https://www.hs-rm.de/architektur-und-bauingenieurwesen/studiengaenge/bachelor/baukulturerbe",
+                    "evidence": "Gute Englischkenntnisse werden vorausgesetzt ... Kein NC",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "partner",
+                "external_id_field": "partner_id",
+                "external_id": "019ddbbc-bff5-7377-99a2-86ce31c32bad",
+                "name_de": "Game Design",
+                "degree": "bachelor",
+                "university": "Hochschule für Technik und Wirtschaft Berlin"
+            },
+            "local_id": 7984,
+            "slug": "game-design-bachelor-31c32bad",
+            "set": {
+                "official_program_url": "https://gamedesign.htw-berlin.de/bachelor/alles-auf-einen-blick/",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Game Design — Bachelor of Arts (BA)",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/alles-auf-einen-blick/",
+                    "evidence": "Abschluss: Bachelor of Arts (BA); Regelstudienzeit: 7 Semester; Studienbeginn: jeweils zum Wintersemester",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "both",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/alles-auf-einen-blick/",
+                    "evidence": "Unterrichtssprache: Deutsch und Englisch",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "other + direct_portal",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/bewerbung/",
+                    "evidence": "Bewerber_innen mit internationaler Hochschulzugangsberechtigung ... bewerben sich direkt (ohne uni-assist) über das Bewerbungsportal der HTW Berlin.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/bewerbung/",
+                    "evidence": "Bewerber_innen mit internationaler Hochschulzugangsberechtigung ... bewerben sich direkt (ohne uni-assist) über das Bewerbungsportal der HTW Berlin.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "no",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/bewerbung/",
+                    "evidence": "bewerben sich direkt (ohne uni-assist) über das Bewerbungsportal der HTW Berlin",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "WS 2026/27 | all (aptitude test online registration) | 2026-06-15; WS 2026/27 | all (aptitude test homework submission) | 2026-06-15; WS 2026/27 | all (enrolment application) | After passing the qualifying examination",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/bewerbung/",
+                    "evidence": "15.06.2026 Letzter Tag der Abgabe (Posteingangsstempel der HTW Berlin)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: WS 2026/27 yetenek sınavı kaydı/teslimi 15.06.2026, kayıt başvurusu sınav sonrası; programda tarih yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "tuition=0 (all); semester_contribution=None",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/alles-auf-einen-blick/",
+                    "evidence": "Studiengebühren: keine",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Passed aptitude test (homework/portfolio + on-site test) and Allgemeine Hochschulreife / Fachhochschulreife / fachgebundene Studienberechtigung. German level not stated.",
+                    "source_url": "https://gamedesign.htw-berlin.de/bachelor/alles-auf-einen-blick/",
+                    "evidence": "Bestandene Eignungsprüfung und Allgemeine Hochschulreife / Fachhochschulreife / fachgebundene Studienberechtigung",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "10344",
+                "name_de": "Energy Systems Engineering and Management",
+                "degree": "bachelor",
+                "university": "Hochschule Heilbronn"
+            },
+            "local_id": 17345,
+            "slug": "energy-systems-engineering-and-management-bachelor-daad10344",
+            "set": {
+                "official_program_url": "https://www.hs-heilbronn.de/de/wirtschaftsingenieurwesen-energiemanagement",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Energy Systems Engineering and Management — Bachelor of Science (B.Sc.), 7 semesters, 210 ECTS, Campus Künzelsau",
+                    "source_url": "https://www.hs-heilbronn.de/de/wirtschaftsingenieurwesen-energiemanagement",
+                    "evidence": "Energy Systems Engineering and Management ... Bachelor of Science (B.Sc.) ... 7 Semester, 210 ECTS",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.hs-heilbronn.de/de/wirtschaftsingenieurwesen-energiemanagement",
+                    "evidence": "Jetzt für das neue englischsprachige Bachelorprogramm informieren!",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "german_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "other",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "International non-EU applicants: credential evaluation via Studienkolleg Konstanz (free) or Uni-Assist (fee-based); direct application via eCampus after evaluation (fetch-tool summary of German page)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "International non-EU applicants: credential evaluation via Studienkolleg Konstanz (free) or Uni-Assist (fee-based); direct application via eCampus after evaluation (fetch-tool summary of German page)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "vpd_then_portal",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "International non-EU applicants: credential evaluation via Studienkolleg Konstanz (free) or Uni-Assist (fee-based); direct application via eCampus after evaluation (fetch-tool summary of German page)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "credential evaluation via Studienkolleg Konstanz (free) or Uni-Assist (fee-based)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "vpd",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "credential evaluation via Studienkolleg Konstanz (free) or Uni-Assist (fee-based)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak bu program için açık değil"
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester | all (restricted programmes) | applications close by July 15 (winter) for restricted programs; winter semester | all (unrestricted programmes) | end of September for unrestricted programs; summer semester | all (restricted programmes) | January 15 (summer)",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "Unsere Bewerbungsportale öffnen Mitte Mai ... restricted: July 15 (winter) / January 15 (summer); unrestricted: end of September / early March",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak yalnız genel HHN lisans tarihlerini veriyor (kısıtlı 15 Tem / kısıtsız Eylül sonu); programa hangisi uyuyor belirsiz"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=1500 (international (non-EU/EEA)); semester_contribution=188",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor ; https://www.hs-heilbronn.de/de/semesterbeitrag",
+                    "evidence": "Internationale Studierende aus Nicht-EU/EWR-Staaten bezahlen eine Gebühr in Höhe von 1.500 Euro pro Semester | Die Höhe des Semesterbeitrags für das Wintersemester 2026/27 beträgt insgesamt 188,00 Euro.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB dışı 1.500 €/dönem, katkı payı 188 € (WS 2026/27); programda boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "German HZB or recognised equivalent; English B2 for this English-taught programme (per HHN bachelor application page); international-profile variant requires German B2 by semester 5.",
+                    "source_url": "https://www.hs-heilbronn.de/de/bewerbung-bachelor",
+                    "evidence": "Energy Systems Engineering and Management listed with B2 English requirement (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "8312",
+                "name_de": "English and American Studies",
+                "degree": "bachelor",
+                "university": "Universität Bayreuth"
+            },
+            "local_id": 17356,
+            "slug": "english-and-american-studies-bachelor-daad8312",
+            "set": {
+                "official_program_url": "https://www.uni-bayreuth.de/en/bachelor/english-and-american-studies",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "English and American Studies (German: Anglistik / Amerikanistik) — Bachelor of Arts (B.A.)",
+                    "source_url": "https://www.uni-bayreuth.de/en/bachelor/english-and-american-studies",
+                    "evidence": "English and American Studies, Bachelor of Arts (B.A.)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "both",
+                    "source_url": "https://www.uni-bayreuth.de/en/bachelor/english-and-american-studies",
+                    "evidence": "This degree programme is taught in German and English.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "vpd_then_portal",
+                    "source_url": "https://www.international-office.uni-bayreuth.de/de/studiengangsseiten/bachelor/anglistik-amerikanistik-ba/index.html",
+                    "evidence": "CAMPUSonline with required VPD (Vorprüfungsdokumentation) through uni-assist for non-EU applicants (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.international-office.uni-bayreuth.de/de/studiengangsseiten/bachelor/anglistik-amerikanistik-ba/index.html",
+                    "evidence": "CAMPUSonline with required VPD (Vorprüfungsdokumentation) through uni-assist for non-EU applicants (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.studierendenkanzlei.uni-bayreuth.de/en/prospective-students/international-applicants/degree-students/periods-and-deadlines/periods-and-deadlines-for-bachelors/index.php",
+                    "evidence": "Prospective students who did not obtain their university entrance qualification within the German education system must have their documents reviewed in advance by uni-assist",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "vpd",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.international-office.uni-bayreuth.de/de/studiengangsseiten/bachelor/anglistik-amerikanistik-ba/index.html",
+                    "evidence": "VPD (Vorprüfungsdokumentation) through uni-assist (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "winter semester (summer start not possible) | international (non-EU) | 15. April – 15. Juli; winter semester | DE/EU | April 15 – October 15 (general bachelor period)",
+                    "source_url": "https://www.international-office.uni-bayreuth.de/de/studiengangsseiten/bachelor/anglistik-amerikanistik-ba/index.html",
+                    "evidence": "Bewerbungsfrist: 15. April – 15. Juli ... Sommersemester: Studienbeginn zum Sommersemester nicht möglich",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB dışı 15 Nis–15 Tem, DE/AB 15 Nis–15 Eki (kış); programdaki 2027-04-15 başvuru AÇILIŞ tarihi, son tarih değil"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "HZB; unrestricted admission (zulassungsfrei); German B2 required; good English; documents: passport, school certificate with grades (+ certified DE/EN translation), CV.",
+                    "source_url": "https://www.uni-bayreuth.de/en/bachelor/english-and-american-studies",
+                    "evidence": "Proof of German language proficiency at B2 level or equivalent is required for admission",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "10351",
+                "name_de": "International Electrical Engineering",
+                "degree": "bachelor",
+                "university": "Ostbayerische Technische Hochschule Regensburg"
+            },
+            "local_id": 17442,
+            "slug": "international-electrical-engineering-iee-bachelor-daad10351",
+            "set": {
+                "official_program_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "International Electrical Engineering (IEE) — Bachelor (info page: Bachelor of Science; faculty info-session PDF: B.Eng.)",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "Bachelor of Science in International Electrical Engineering (IEE)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Same programme and level as ours; degree title conflicts with OTH PDF 2025_05_15_InternationalElectricalEngineering_InfoSession.pdf titled 'B.ENG. INTERNATIONAL ELECTRICAL ENGINEERING (IEE)'. 8 semesters."
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "The main language of instruction in this programme is English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Search snippet from OTH pages says English in semesters 1-4/5 and German in semesters 5-8 (thesis in either language) -> likely 'both', but not confirmed verbatim in fetch."
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "german_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "International applicants with non-German qualifications must obtain a VPD from Uni-Assist or equivalent (Studienkolleg certificate or IB Diploma) (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "vpd_then_portal",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "International applicants with non-German qualifications must obtain a VPD from Uni-Assist or equivalent (Studienkolleg certificate or IB Diploma) (fetch-tool summary)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "VPD from Uni-Assist",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "vpd",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "VPD from Uni-Assist",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "winter semester | all - first semester | May 1 – September 15; winter semester | all - higher semester | May 1 – June 15; summer semester | higher semester only | November 15 – January 15",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "Winter Semester, first semester: May 1 – September 15",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: kış 1. yarıyıl 1 Mayıs–15 Eylül (yıl yok); programda tarih yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=500 (non-EU students in English-taught programmes (since WS 2024/25)); semester_contribution=None",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "500 € per semester",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: İngilizce programlarda AB dışı 500 €/dönem; programda boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "HZB (non-German: VPD / Studienkolleg / IB); English CEFR B1 minimum, B2 preferred; German A2 for applicants with non-German qualifications.",
+                    "source_url": "https://www.oth-regensburg.de/en/studieren/im-studium/abteilung-studium/infoblaetter-studiengaenge/iee",
+                    "evidence": "level B1 of the Common European Framework ... B2 is preferred ... CEFR level A2",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "3663",
+                "name_de": "BSc in Computer Science",
+                "degree": "bachelor",
+                "university": "Constructor University"
+            },
+            "local_id": 17226,
+            "slug": "bachelor-of-science-in-computer-science-bachelor-daad3663",
+            "set": {
+                "official_program_url": "https://constructor.university/programs/undergraduate-education/computer-science",
+                "application_method": "direct_portal",
+                "application_url": "https://apply.constructor.university/"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Computer Science — Bachelor of Science (BSc), 3 years full-time",
+                    "source_url": "https://constructor.university/programs/undergraduate-education/computer-science",
+                    "evidence": "Computer Science ... Bachelor of Science (BSc)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://constructor.university/programs/undergraduate-education/computer-science",
+                    "evidence": "Language: English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://constructor.university/admission-aid/application-information-undergraduate",
+                    "evidence": "Applicants submit through the Application portal at https://apply.constructor.university/",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Fall 2027 (classes start Sep 2027) | first-year applicants - Early Action | 2027-02-01; Fall 2027 | first-year applicants (visa and no visa) - rolling admissions | 2027-07-15; Fall Semester 2027 | transfer applicants | 2027-06-01",
+                    "source_url": "https://constructor.university/admission-aid/application-information-undergraduate",
+                    "evidence": "Early Action: October 1, 2026 – February 1, 2027; Rolling Admissions (Visa and No Visa): February 2, 2027 – July 15, 2027",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: Fall 2027 Early Action 2027-02-01, rolling 2027-07-15, transfer 2027-06-01; programda tarih yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "tuition=11925 (all (no group distinction stated)); semester_contribution=None",
+                    "source_url": "https://constructor.university/programs/undergraduate-education/computer-science",
+                    "evidence": "Tuition Fee: €11,925 per semester; One-time Enrollment Fee: €640 (EU), €940 (non-EU)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: 11.925 €/dönem; programda 10.000 €"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "English proficiency (e.g. IELTS 6.5; waiver for native speakers or 6+ years of English-medium instruction); SAT/ACT not required.",
+                    "source_url": "https://constructor.university/admission-aid/application-information-undergraduate",
+                    "evidence": "Constructor University does not require SAT/ACT scores for admission evaluation.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "10507",
+                "name_de": "Master of Science in Statistics",
+                "degree": "master",
+                "university": "Humboldt-Universität zu Berlin"
+            },
+            "local_id": 18698,
+            "slug": "master-of-science-in-statistics-joint-masters-programme-master-daad10507",
+            "set": {
+                "official_program_url": "https://www.stat.de/admission"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "MSc Statistics (Master of Science in Statistics, Joint Masters Program in Berlin) — Master of Science, 4 semesters, 120 ECTS",
+                    "source_url": "https://www.stat.de/admission",
+                    "evidence": "A requirement for entry into the Statistics Master's Programme is a university degree with a quantitative focus",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Joint programme HU/FU/TU/Charité. hu-berlin.de and wiwi.hu-berlin.de programme pages are blocked by Anubis bot protection; stat.de is the joint programme's own site (Impressum links to hu-berlin.de) but NOT on the hu-berlin.de domain. HU flyer on www"
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "all: direct_portal",
+                    "source_url": "https://www.stat.de/admission",
+                    "evidence": "Applications are processed exclusively by the Admissions Office (Studierendenservice) at HU-Berlin.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynakta başvuru yolu bu program için açık değil"
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "",
+                    "source_url": "https://www.hu-berlin.de/de/studium/bewerbung/bewerbung-und-zulassung/informationen-fuer-internationale-studieninteressierte/allgemeine-hinweise-zur-bewerbung-fuer-masterstudiengaenge",
+                    "evidence": "Search snippet only (page blocked): HU has applications with foreign qualifications pre-screened through uni-assist",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak bu program için açık değil"
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "WS 2026/27 | all | 2026-06-14; winter semester (each year) | all | Bewerbungsschluss für den Studienbeginn zum Wintersemester ist der 15. Juli jeden Jahres. (old HU flyer, outdated)",
+                    "source_url": "https://www.stat.de/admission",
+                    "evidence": "The application phase for Winter Semester 2026/27 starts on 18 May 2026 and ends on 14 June 2026.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Ortak program sitesi: WS 2026/27 18.05.–14.06.2026; programdaki 2027-05-02 hiçbir kaynakta yok"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "University degree with quantitative focus; min. 30 ECTS in mathematics (analysis, linear algebra), probability theory, statistics, econometrics or comparable; German and English both at least B1. Winter intake only.",
+                    "source_url": "https://www.stat.de/admission",
+                    "evidence": "Another compulsory requirement is proficiency in both German and English (both at level B1 or higher).",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "7066",
+                "name_de": "MSc Data Science",
+                "degree": "master",
+                "university": "Freie Universität Berlin"
+            },
+            "local_id": 18581,
+            "slug": "master-of-science-in-data-science-master-daad7066",
+            "set": {
+                "official_program_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Data Science (Master Program Data Science) — Master of Science (M.Sc.)",
+                    "source_url": "https://www.fu-berlin.de/en/studium/studienangebot/master/data-science/index.html",
+                    "evidence": "Degree: \"Master of Science (M.Sc.)\" ... Program Start: \"Winter semester\"",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.fu-berlin.de/en/studium/studienangebot/master/data-science/index.html",
+                    "evidence": "Language of Instruction: \"English\"",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "vpd_then_portal",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "Students, who have obtained their BSc degree outside Germany require a VPD (which may be applied for at any time at uni-assist and is valid for one year). ... in Germany need to apply directly at the university.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "german_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "Students, who have obtained their BSc degree outside Germany require a VPD (which may be applied for at any time at uni-assist and is valid for one year). ... in Germany need to apply directly at the university.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "require a VPD (which may be applied for at any time at uni-assist and is valid for one year)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "vpd",
+                    "applicant_group": "foreign_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "Students, who have obtained their BSc degree outside Germany require a VPD",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "WS 2026/27 | all | 2026-05-31; SS 2027 | all | Applications may be submitted between December and mid-January, 2027.",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "Applications for our Master's programme Data Science ... are accepted from mid-April until 31st of May. (FAQ timeline page)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: WS 2026/27 son tarih 31.05.2026; programdaki 2027-05-31 gün/ay eşleşiyor, WS 2027/28 tarihi kaynakta henüz yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=0 (all (no tuition fees except continuing-education programmes)); semester_contribution=376.8",
+                    "source_url": "https://www.fu-berlin.de/studium/studieren/studienorganisation/gebuehren/index.html",
+                    "evidence": "erhebt – außer für weiterbildende Studienangebote – keine Studiengebühren ... [Neu-Immatrikulation WS 2026/27] insgesamt 376,80€ zu entrichten",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: öğrenim ücreti yok, katkı payı 376,80 € (WS 2026/27); programda boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor's degree in a relevant field with maths and computer science coursework; English C1; completed self-disclosure form; restricted admission (NC), only top 20 ranked applicants admitted (points for grades, coursework, extracurricular experience).",
+                    "source_url": "https://www.mi.fu-berlin.de/en/data-science/prospective-students/index.html",
+                    "evidence": "The required level of English is C1.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "7708",
+                "name_de": "MSc Natural Language Processing",
+                "degree": "master",
+                "university": "Universität Trier"
+            },
+            "local_id": 18659,
+            "slug": "master-of-science-in-natural-language-processing-master-daad7708",
+            "set": {
+                "official_program_url": "https://www.uni-trier.de/studium/studienangebot/studienfaecher/studiengang?sgaid=316&cHash=afde8e1d700c3286464fab16014352d4",
+                "application_method": "direct_portal",
+                "application_url": "https://www.uni-trier.de/en/studies/application-admission/application-english-taught-master-programmes"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "Natural Language Processing (M.Sc., 1-Fach) — Master of Science",
+                    "source_url": "https://www.uni-trier.de/studium/studienangebot/studienfaecher/studiengang?sgaid=316&cHash=afde8e1d700c3286464fab16014352d4",
+                    "evidence": "Natural Language Processing (M.Sc., 1-Fach) ... Master of Science ... 4 semesters (120 ECTS)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.uni-trier.de/studium/studienangebot/studienfaecher/studiengang?sgaid=316&cHash=afde8e1d700c3286464fab16014352d4",
+                    "evidence": "Unterrichtssprache: Englisch",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.uni-trier.de/en/studies/application-admission/application-english-taught-master-programmes",
+                    "evidence": "All applications for English-taught masters proceed through the online portal PORTA only.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "winter semester | international (non-EU) | May 1-31; winter semester | EU | May 1 - Jul 15; summer semester | all (non-EU and EU) | Dec 15 - Jan 15",
+                    "source_url": "https://www.uni-trier.de/en/studies/application-admission/application-english-taught-master-programmes",
+                    "evidence": "Winter Semester | May 1-31 (Non-EU) | May 1 - Jul 15 (EU); Summer Semester | Dec 15 - Jan 15 | Dec 15 - Jan 15. Generic page for all English-taught master programmes (applies to NLP). Our record (15 March both terms) does not match. A uni-trier.de search snippet mentioned WS26/27 non-EU 'May 5th 2026 - May 31st 2026'.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: kış AB dışı 31 May / AB 15 Tem, yaz 15 Oca; programdaki 2027-03-15 (kış ve yaz) uyuşmuyor"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor in computational linguistics (grade 2.5 or better), or language/media/communication science (2.3, 20+ CS credits), or computer science (2.3, 20+ credits in language/media/communication science); proof of English proficiency.",
+                    "source_url": "https://www.uni-trier.de/studium/studienangebot/studienfaecher/studiengang?sgaid=316&cHash=afde8e1d700c3286464fab16014352d4",
+                    "evidence": "Nachweis von Kenntnissen der englischen Sprache",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "4123",
+                "name_de": "Executive Master of Public Administration (Executive MPA)",
+                "degree": "master",
+                "university": "Hertie School"
+            },
+            "local_id": 18019,
+            "slug": "executive-master-of-public-administration-executive-mpa-master-daad4123",
+            "set": {
+                "official_program_url": "https://www.hertie-school.org/en/empa/admissions"
+            },
+            "verifications": [
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Per unverified search snippet: good higher-education degree in any discipline, at least three years of relevant work experience, proficiency in English.",
+                    "source_url": "https://www.hertie-school.org/en/empa/admissions",
+                    "evidence": "UNVERIFIED snippet: 'good higher education degree in any discipline, at least three years of relevant work experience ... and proficiency in English'",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "3726",
+                "name_de": "Master of Public Policy",
+                "degree": "master",
+                "university": "Fachhochschule Erfurt"
+            },
+            "local_id": 18518,
+            "slug": "master-of-public-policy-mpp-at-the-willy-brandt-school-of-public-policy-master-daad3726",
+            "set": {
+                "official_program_url": "https://www.uni-erfurt.de/en/studies/course-offerings/master/public-policy",
+                "application_method": "direct_portal",
+                "application_url": "https://www.uni-erfurt.de/en/brandtschool/studies/admissions/application-process"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "Master of Public Policy (MPP), Willy Brandt School of Public Policy — Master of Public Policy (M.P.P.), 120 ECTS",
+                    "source_url": "https://www.uni-erfurt.de/en/studies/course-offerings/master/public-policy",
+                    "evidence": "two-year, full-time degree offered by the Willy Brandt School of Public Policy at the University of Erfurt ... leads to a Master of Public Policy (M.P.P.) degree",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Program Universität Erfurt (Willy Brandt School) programı; kayıtta Fachhochschule Erfurt yazıyor"
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.uni-erfurt.de/en/studies/course-offerings/master/public-policy",
+                    "evidence": "Language: English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.uni-erfurt.de/en/brandtschool/studies/admissions/application-process",
+                    "evidence": "Please note that we do not accept applications via e-mail.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "WS 2027/28 (2027 intake) | students requiring a student visa | 2027-04-30; WS 2027/28 (2027 intake) | students not requiring a visa (incl. EU/EFTA) | 2027-07-15; winter semester (annual) | all (priority round) | Priority Deadline: February 28/29",
+                    "source_url": "https://www.uni-erfurt.de/en/brandtschool/studies/admissions/application-process",
+                    "evidence": "Application Opens: January 1, 2027 ... April 30, 2027 – For students requiring student visas; July 15, 2027 – For students who do not need visas",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: WS 2027/28 vize gereken 30.04.2027, vize gerekmeyen 15.07.2027; programda tarih yok"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=2100 (all; students starting in 2026 (EUR 2,225/semester in 2027/28 for that cohort)); semester_contribution=340",
+                    "source_url": "https://www.uni-erfurt.de/en/brandtschool/studies/admissions/faqs",
+                    "evidence": "EUR 2,100 per semester for the academic year 2026/27 and EUR 2,225 per semester for the academic year 2027/28 ... semester contribution fee EUR 340 (subject to change)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: 2.100 €/dönem (2026 kohortu, 2027/28'de 2.225 €) + katkı payı 340 €; ücret eşleşiyor, katkı payı programda yok"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "University degree of at least 6 semesters; minimum one year professional work experience; very good English (TOEFL iBT 90, IELTS Academic 6.5, or Cambridge C1 Advanced/C2 Proficiency). CV and statement of purpose required. No restricted admission.",
+                    "source_url": "https://www.uni-erfurt.de/en/studies/course-offerings/master/public-policy",
+                    "evidence": "college or university degree (i.e., Bachelor, Master, Diploma, state exam, etc.) with a minimum duration of 6 semesters",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        },
+        {
+            "match": {
+                "source": "daad",
+                "external_id_field": "source_id",
+                "external_id": "6938",
+                "name_de": "MSc Chemistry",
+                "degree": "master",
+                "university": "Technische Hochschule Ulm"
+            },
+            "local_id": 18556,
+            "slug": "master-of-science-in-chemistry-master-daad6938",
+            "set": {
+                "official_program_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                "application_method": "multiple"
+            },
+            "verifications": [
+                {
+                    "field": "identity",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "Chemistry - Master of Science — Master of Science (M.Sc.)",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "Chemistry - Master of Science (MSc)",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "THU'da Kimya yüksek lisansı yok; İngilizce MSc Chemistry Universität Ulm programı"
+                },
+                {
+                    "field": "language",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "en",
+                    "source_url": "https://www.uni-ulm.de/en/nawi/faculty-of-natural-sciences/studies/study-programs/study-course/course/chemistry-master/",
+                    "evidence": "Lectures are conducted entirely in English",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "german_degree",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "direct_portal",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "German applicants: Campus portal of Ulm University; International applicants: uni-assist online portal",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "application_method",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "uni_assist",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "German applicants: Campus portal of Ulm University; International applicants: uni-assist online portal",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "uni_assist",
+                    "applicant_group": "international",
+                    "term": "",
+                    "status": "verified",
+                    "source_value": "yes",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "International applicants: uni-assist online portal",
+                    "checked_at": "2026-10-02",
+                    "review_reason": null
+                },
+                {
+                    "field": "deadline",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "conflict",
+                    "source_value": "winter semester | all | 1 April - 15 May; summer semester | all | 15 October - 15 November",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "Winter semester: \"1 April - 15 May\"; Summer semester: \"15 October - 15 November\". Our summer deadline (15 May) does not match official 15 November.",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: kış 1 Nis–15 May, yaz 15 Eki–15 Kas; programdaki yaz tarihi 2027-05-15 yanlış"
+                },
+                {
+                    "field": "tuition",
+                    "applicant_group": "non_eu",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "tuition=1500 (international (non-EU/EEA); EU: none); semester_contribution=192",
+                    "source_url": "https://www.uni-ulm.de/en/study/organisation/tuition-fees/",
+                    "evidence": "1,500 EUR per semester [non-EU] ... [WS 2026/27] total amount due from all students is 192.00 €",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak: AB dışı 1.500 €/dönem, AB ücretsiz; katkı payı 192 € (WS 2026/27); programda boş"
+                },
+                {
+                    "field": "requirements",
+                    "applicant_group": "",
+                    "term": "",
+                    "status": "needs_review",
+                    "source_value": "Bachelor with at least 85 ECTS in chemistry modules and 25 ECTS chemistry lab work; final grade 3.0 or better; letter of motivation (max one page); English B2.",
+                    "source_url": "https://www.uni-ulm.de/en/study/application-and-enrolment/masters-programmes/chemistry-master/",
+                    "evidence": "not less than 85 ECTS credits in chemistry modules ... not less than 25 ECTS credits in chemistry laboratory work",
+                    "checked_at": "2026-10-02",
+                    "review_reason": "Kaynak özeti kaydedildi; programdaki şart metniyle elle karşılaştırılmadı"
+                }
+            ]
+        }
+    ],
+    "matching": "source + external id (partner_id | source_id) must match exactly one programme AND name_de + degree + university must be identical; local_id/slug are informational only"
+}

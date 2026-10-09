@@ -47,6 +47,14 @@ Schedule::command('content:maintain --apply')
     ->onOneServer()
     ->appendOutputTo(storage_path('logs/content-maintain.log'));
 
+// 04:20 — import (03:30) + bakım (03:50) SONRASI: doğrulanmış program alanı query-builder ile değiştiyse
+// (ör. deadline rollover) doğrulama kaydı NEEDS_REVIEW olur. Eloquent yazımları Program::saved'da zaten yakalanır.
+Schedule::command('programs:verification-reconcile')
+    ->dailyAt('04:20')
+    ->withoutOverlapping(30)
+    ->onOneServer()
+    ->appendOutputTo(storage_path('logs/program-verification.log'));
+
 /*
 |--------------------------------------------------------------------------
 | Gemini Translate Daily Batch

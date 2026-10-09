@@ -57,6 +57,12 @@ class Program extends Model
         'financial_support',
         'support_info',
         'start_semester',
+        // Doğrulama katmanı (V1) — import kaynağı source/source_url/last_synced_at'te kalır
+        'official_program_url',
+        'application_method',
+        'application_url',
+        'uni_assist_required',
+        'vpd_required',
     ];
 
     protected $casts = [
@@ -83,6 +89,88 @@ class Program extends Model
     public function favorites(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Favorite::class, 'favoriteable');
+    }
+
+    public function verifications(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProgramVerification::class);
+    }
+
+    protected static function booted(): void
+    {
+        // Sync/düzenleme sonrası: doğrulanmış alanın değeri değiştiyse kayıt NEEDS_REVIEW olur (verified_at korunur).
+        // Query-builder ile yazan akışlar için ayrıca programs:verification-reconcile komutu vardır.
+        static::saved(function (self $p) {
+            if ($p->wasChanged() && ProgramVerification::where('program_id', $p->id)->where('status', ProgramVerification::VERIFIED)->exists()) {
+                ProgramVerification::reconcile($p);
+            }
+        });
+    }
+
+    private function verificationRows(): \Illuminate\Support\Collection
+    {
+        return $this->relationLoaded('verifications') ? $this->verifications : $this->verifications()->get();
+    }
+
+    /** Program kimliği resmî kaynakla çelişiyor mu (yanlış üniversite/program/derece/ad)? */
+    public function hasIdentityConflict(): bool
+    {
+        return $this->verificationRows()->where('field', 'identity')->where('status', ProgramVerification::CONFLICT)->isNotEmpty();
+    }
+
+    /** Alanda resmî kaynakla çelişki kaydı var mı (sayfada değerin yanında uyarı gösterilir)? */
+    public function hasFieldConflict(string $field): bool
+    {
+        return $this->verificationRows()->where('field', $field)->where('status', ProgramVerification::CONFLICT)->isNotEmpty();
+    }
+
+    /**
+     * SAYFADA gösterilebilecek doğrulanmış kayıtlar. Üç koruma:
+     *  1) durum VERIFIED (NEEDS_REVIEW/CONFLICT asla doğrulanmış gibi sunulmaz);
+     *  2) program kimliğinde çelişki yok (yanlış programın kaynağından gelen bilgi doğru programa doğrulanmış sayılmaz);
+     *  3) programdaki değer doğrulama anındaki parmak iziyle hâlâ AYNI — query-builder güncellemesinden sonra,
+     *     reconcile henüz çalışmamış olsa bile değişmiş değer eski doğrulama etiketiyle gösterilmez.
+     */
+    public function verifiedRecords(string $field): \Illuminate\Support\Collection
+    {
+        if ($field !== 'identity' && $this->hasIdentityConflict()) {
+            return collect();
+        }
+        $fp = ProgramVerification::fingerprint($this, $field);
+
+        return $this->verificationRows()
+            ->where('field', $field)
+            ->where('status', ProgramVerification::VERIFIED)
+            ->filter(fn ($v) => $v->program_value_fingerprint === $fp)
+            ->values();
+    }
+
+    /** Alanın sayfada gösterilebilir en yeni doğrulaması (bkz. verifiedRecords korumaları). */
+    public function verifiedRecord(string $field): ?ProgramVerification
+    {
+        return $this->verifiedRecords($field)->sortByDesc('verified_at')->first();
+    }
+
+    /** Resmî program bağlantısı yalnız URL VAR ve program kimliği o kaynakta (hâlâ geçerli biçimde) doğrulandıysa. */
+    public function hasVerifiedOfficialUrl(): bool
+    {
+        return filled($this->official_program_url) && ! $this->hasIdentityConflict() && $this->verifiedRecord('identity') !== null;
+    }
+
+    /** Admin özeti: ['verified' => n, 'total' => 8, 'needs_review' => n, 'conflict' => n] — alan başına en iyi durum. */
+    public function verificationSummary(): array
+    {
+        $rows = $this->relationLoaded('verifications') ? $this->verifications : $this->verifications()->get();
+        $byField = $rows->groupBy('field');
+        $count = fn ($status) => $byField->filter(fn ($g) => $g->contains('status', $status))->count();
+
+        return [
+            'verified' => $byField->filter(fn ($g) => $g->contains('status', ProgramVerification::VERIFIED)
+                && ! $g->contains(fn ($v) => in_array($v->status, [ProgramVerification::CONFLICT, ProgramVerification::NEEDS_REVIEW], true)))->count(),
+            'total' => count(ProgramVerification::FIELDS),
+            'needs_review' => $count(ProgramVerification::NEEDS_REVIEW),
+            'conflict' => $count(ProgramVerification::CONFLICT),
+        ];
     }
 
     public function scopeActive($q)

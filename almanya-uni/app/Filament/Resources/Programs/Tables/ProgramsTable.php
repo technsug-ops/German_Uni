@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Programs\Tables;
 
 use App\Models\FieldOfStudy;
+use App\Models\ProgramVerification;
 use App\Models\University;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
@@ -112,6 +113,14 @@ class ProgramsTable
                     ->label('Aktif')
                     ->boolean()
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                // VERIFIED doğrulama kaydı sayısı (salt okunur; alan bazlı "X/8" özeti program detayında)
+                TextColumn::make('verified_records_count')
+                    ->label('Doğrulanmış kayıt')
+                    ->counts(['verifications as verified_records_count' => fn (Builder $q) => $q->where('status', ProgramVerification::VERIFIED)])
+                    ->badge()
+                    ->color(fn ($state) => (int) $state > 0 ? 'success' : 'gray')
+                    ->toggleable(),
             ])
             ->filters([
                 SelectFilter::make('degree')
@@ -154,6 +163,38 @@ class ProgramsTable
                 Filter::make('has_description_tr')
                     ->label('Türkçe açıklama var')
                     ->query(fn (Builder $q) => $q->whereNotNull('description_tr')),
+
+                // ── Kaynak ve doğrulama ──
+                SelectFilter::make('source')
+                    ->label('Import kaynağı')
+                    ->options(['partner' => 'Partner API', 'daad' => 'DAAD', 'hochschulkompass' => 'Hochschulkompass']),
+                TernaryFilter::make('official_program_url')
+                    ->label('Resmî program URL\'si')
+                    ->nullable()
+                    ->trueLabel('Var')
+                    ->falseLabel('Yok')
+                    ->queries(
+                        true: fn (Builder $q) => $q->whereNotNull('official_program_url')->where('official_program_url', '!=', ''),
+                        false: fn (Builder $q) => $q->where(fn ($w) => $w->whereNull('official_program_url')->orWhere('official_program_url', '')),
+                    ),
+                TernaryFilter::make('has_verifications')
+                    ->label('Doğrulama kaydı')
+                    ->trueLabel('Var')
+                    ->falseLabel('Yok')
+                    ->queries(
+                        true: fn (Builder $q) => $q->whereHas('verifications'),
+                        false: fn (Builder $q) => $q->whereDoesntHave('verifications'),
+                    ),
+                SelectFilter::make('verification_status')
+                    ->label('Doğrulama durumu')
+                    ->options([
+                        ProgramVerification::NEEDS_REVIEW => 'İnceleme gerekli (NEEDS_REVIEW)',
+                        ProgramVerification::CONFLICT => 'Çelişki (CONFLICT)',
+                        ProgramVerification::VERIFIED => 'En az bir alan doğrulandı',
+                    ])
+                    ->query(fn (Builder $q, array $data) => filled($data['value'] ?? null)
+                        ? $q->whereHas('verifications', fn ($v) => $v->where('status', $data['value']))
+                        : $q),
             ])
             ->recordActions([
                 EditAction::make(),
