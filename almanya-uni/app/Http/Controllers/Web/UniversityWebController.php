@@ -22,9 +22,25 @@ class UniversityWebController extends Controller
      * route'u daha ÖNCE tanımlı olduğundan ilk eşleşen o oluyor, sonuç 404. Burada çözülünce
      * route sırasından bağımsız ve dört dilde birden çalışıyor.
      */
-    private const MERGED_SLUGS = [
+    public const MERGED_SLUGS = [
         'institut-fur-kunst-und-bildgeschichte-ikb-der-humboldt-universitat-zu-berlin-q75251125' => 'humboldt-universitat-zu-berlin',
         'technische-universitat-berlin-institut-fur-technische-akustik-q101385266' => 'technische-universitat-berlin',
+        // 2026-10-09: aynı kurumun partner/DAAD kabuk kayıtları; programlar kanonik kayda taşındı, kabuk pasif kaldı
+        // (database/migrations/2026_10_09_000700_merge_duplicate_university_records.php).
+        'hochschule-fresenius-university-of-applied-sciences-partner-019de9f1' => 'hochschule-fresenius-partner-019ddbba',
+        'anhalt-university-of-applied-sciences-partner-019de9f1' => 'hochschule-anhalt-q1622074',
+        'paderborn-university-partner-019de9ee' => 'universitat-paderborn-q679134',
+        'university-of-applied-sciences-emdenleer-partner-019de9f1' => 'hochschule-emdenleer-q1622096',
+        'rheinmain-university-of-applied-sciences-partner-019de9f1' => 'hochschule-rheinmain-q542415',
+        'ifs-internationale-filmschule-koln-partner-019de9f2' => 'ifs-internationale-filmschule-partner-019ddbba',
+        'accadis-hochschule-bad-homburg-university-of-applied-sciences-partner-019de9f1' => 'accadis-hochschule-bad-homburg-partner-019ddbbb',
+        'university-of-applied-sciences-ravensburg-weingarten-partner-019de9f1' => 'hochschule-ravensburg-weingarten-q2718933',
+        'reutlingen-university-partner-019de9f1' => 'hochschule-reutlingen-q317125',
+        'fachhochschule-wedel-university-of-applied-sciences-partner-019de9f2' => 'fachhochschule-wedel-partner-019ddbba',
+        'furtwangen-university-partner-019de9f1' => 'hochschule-furtwangen-partner-019ddbba',
+        'constructor-university' => 'constructor-university-bremen-partner-019ddbba',
+        'dresden-international-university' => 'diu-dresden-international-university-gmbh-partner-019ddbba',
+        'jade-university-of-applied-sciences-wilhelmshavenoldenburgelsfleth-partner-019de9f1' => 'jade-hochschule-partner-019ddbba',
     ];
 
     public function index(Request $request): View|\Illuminate\Http\Response
@@ -236,17 +252,17 @@ class UniversityWebController extends Controller
 
     public function show(string $slugOrId): View|RedirectResponse
     {
+        // Merge edilmiş kaydın slug'ı → kanonik sayfaya kalıcı yönlendir. Kabuk kayıt DB'de (pasif) dursa bile.
+        if ($canonical = self::MERGED_SLUGS[$slugOrId] ?? null) {
+            return redirect()->route('universities.show', ['slugOrId' => $canonical], 301);
+        }
+
         $university = University::where('slug', $slugOrId)
             ->orWhere('id', $slugOrId)
             ->with(['city.state'])
             ->first();
 
         if (!$university) {
-            // Merge edilmiş alt-birim slug'ı ise kanonik sayfaya kalıcı yönlendir (404 bırakma).
-            if ($canonical = self::MERGED_SLUGS[$slugOrId] ?? null) {
-                return redirect()->route('universities.show', ['slugOrId' => $canonical], 301);
-            }
-
             abort(404);
         }
 
