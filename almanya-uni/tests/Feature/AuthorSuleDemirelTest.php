@@ -33,9 +33,11 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertSame('Şule Demirel', $u->name);
         $this->assertTrue((bool) $u->is_author);
         $this->assertSame(['linkedin' => self::LINKEDIN], $u->social_links);
-        $this->assertStringStartsWith('Şule Demirel, ApplyToGerman\'da Türkiye Öğrenci Direktörü.', $u->bio, 'onaylı biyografi');
-        $this->assertStringContainsString('DreamToMove', $u->bio_en);
-        $this->assertStringContainsString('DreamToMove', $u->bio_de);
+        // Ham kolonlar: User modeli bio/role_label'ı aktif dile göre çevirir (CI'da varsayılan dil EN).
+        $row = DB::table('users')->where('slug', 'sule-demirel')->first();
+        $this->assertStringStartsWith('Şule Demirel, ApplyToGerman\'da Türkiye Öğrenci Direktörü.', $row->bio, 'onaylı biyografi');
+        $this->assertStringContainsString('DreamToMove', $row->bio_en);
+        $this->assertStringContainsString('DreamToMove', $row->bio_de);
         $this->assertStringContainsString('DreamToMove', $this->get('/tr/author/sule-demirel')->getContent());
         $this->assertNull($u->years_experience);
     }
@@ -63,9 +65,10 @@ class AuthorSuleDemirelTest extends TestCase
 
     public function test_director_title_moves_her_above_contributors(): void
     {
-        $u = User::where('slug', 'sule-demirel')->first();
-        $this->assertSame('Türkiye Öğrenci Direktörü', $u->role_label);
-        $this->assertSame('Director, Students from Türkiye', $u->role_label_en);
+        $row = DB::table('users')->where('slug', 'sule-demirel')->first();
+        $this->assertSame('Türkiye Öğrenci Direktörü', $row->role_label);
+        $this->assertSame('Director, Students from Türkiye', $row->role_label_en);
+        $this->assertSame('Direktorin für Studierende aus der Türkei', $row->role_label_de);
 
         $html = $this->get('/tr/team')->assertOk()->getContent();
         $name = mb_strpos($html, 'Şule Demirel');
