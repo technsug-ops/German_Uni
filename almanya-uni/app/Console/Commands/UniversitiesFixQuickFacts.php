@@ -44,6 +44,8 @@ class UniversitiesFixQuickFacts extends Command
             ->select('id', 'name_de', 'traegerschaft', 'content_blocks', 'content_blocks_en', 'content_blocks_de')
             ->chunkById(200, function ($unis) use ($apply, $samples, $counts, &$fixedCount, &$fixedType, &$shown, &$uniTouched) {
                 foreach ($unis as $u) {
+                    // Editoryal kilitli kayıtların hızlı bilgileri elle doğrulandı; program sayısı geri eklenmez.
+                    if (University::blocksLocked($u->content_blocks)) continue;
                     $real = $this->realCounts($counts->get($u->id));
                     $typePolarity = $this->traegerPolarity($u->traegerschaft);
 

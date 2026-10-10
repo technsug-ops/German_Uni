@@ -70,6 +70,8 @@ class TranslateContentBlocks extends Command
             $name = $row->name ?? $row->name_tr ?? ('#' . $row->id);
             $blocks = $row->content_blocks;
             if (! is_array($blocks) || ! count($blocks)) continue;
+            // Editoryal kilitli üniversitelerin EN/DE blokları elle yazıldı; makine çevirisi üzerine yazmaz.
+            if ($row instanceof University && $row->hasEditorialLock()) { $this->line("   🔒 #{$row->id} editoryal kilitli — atlandı"); continue; }
             $this->line(sprintf('[%d/%d] #%d %s (%d blok)', $i + 1, $rows->count(), $row->id, mb_substr($name, 0, 40), count($blocks)));
 
             foreach ($locales as $loc) {

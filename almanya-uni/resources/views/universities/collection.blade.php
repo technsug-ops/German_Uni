@@ -13,11 +13,18 @@
     $cIntro    = __($collection['intro']);
 
     // ItemList structured data — each curated university as a linked list item (SEO).
+    // Karar sayfasında (paths) listeye yalnız başlığın vaat ettiği yolu sunan kurumlar girer ('listed'); "karıştırılan
+    // yollar" bölümündeki kurumlar görünür ama ItemList'e girmez (şema görünür sınıflandırmayla çelişmesin).
+    $listItems = collect($universities->items())->values();
+    if (! empty($collection['paths'])) {
+        $listedSlugs = collect($collection['paths']['sections'])->where('listed', true)->flatMap(fn ($s) => array_keys($s['items']))->all();
+        $listItems = $listItems->filter(fn ($u) => in_array($u['slug'], $listedSlugs, true))->values();
+    }
     $itemList = [
         '@context' => 'https://schema.org',
         '@type'    => 'ItemList',
         'name'     => $cTitle,
-        'itemListElement' => collect($universities->items())->values()->map(fn ($u, $i) => [
+        'itemListElement' => $listItems->map(fn ($u, $i) => [
             '@type'    => 'ListItem',
             'position' => $i + 1,
             'url'      => route('universities.show', $u['slug']),
@@ -60,6 +67,11 @@
         <p class="text-gray-700 max-w-3xl leading-relaxed">{{ $cIntro }}</p>
     </div>
 </section>
+
+{{-- ─────────────── KARAR SAYFASI: başvuru yolları (şartlı kabul koleksiyonu) ─────────────── --}}
+@if (! empty($collection['paths']))
+    @include('universities._admission_paths', ['collection' => $collection, 'universities' => $universities])
+@endif
 
 {{-- ─────────────── 2-KOLON GRUPLU GÖRÜNÜM (varsa) ─────────────── --}}
 @if (! empty($collection['groups']))
@@ -116,7 +128,7 @@
 {{-- ─────────────── GRID (reuses universities._grid) ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        @if (empty($collection['groups']))
+        @if (empty($collection['groups']) && empty($collection['paths']))
             @include('universities._grid')
         @endif
 

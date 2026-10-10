@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
-@section('title', (isset($university) ? $university['name_de'] : __('University')) . ' — ' . brand('name'))
+@php
+    // Editoryal kilitli (resmî kaynakla doğrulanmış) profillerde intro bloğu kendi SEO başlığını/açıklamasını taşır.
+    // Bloklar controller'da locale'e göre seçildiği için alanlar da sayfanın dilindedir.
+    $editorialIntro = isset($university)
+        ? collect($university['content_blocks'] ?? [])->first(fn ($b) => is_array($b) && ($b['type'] ?? null) === 'intro' && ! empty($b['seo_title']))
+        : null;
+    $uniLocked = isset($university) && \App\Models\University::blocksLocked($university['content_blocks'] ?? null);
+    $uniPageTitle = $editorialIntro['seo_title'] ?? (isset($university) ? $university['name_de'] : __('University'));
+@endphp
+
+@section('title', $uniPageTitle . ' — ' . brand('name'))
 
 @if (isset($university))
     @php
@@ -19,7 +29,8 @@
         // Locale-aware description fallback. strict: EN/DE meta'da Türkçe sızmaz
         // (çeviri yoksa otomatik EN açıklamaya düşer).
         $descFallback = localized_pick($university, 'description', strict: true) ?? $autoDesc;
-        $uniDesc = \App\Support\Seo::descriptionFromBlocks($university['content_blocks'] ?? null, $descFallback);
+        $uniDesc = $editorialIntro['seo_description']
+            ?? \App\Support\Seo::descriptionFromBlocks($university['content_blocks'] ?? null, $descFallback);
 
         $uniOgImage = $university_model->image_url
             ?? $university['logo_url']
@@ -27,7 +38,7 @@
     @endphp
 
     <x-seo
-        :title="$university['name_de']"
+        :title="$uniPageTitle"
         :description="$uniDesc"
         :image="$uniOgImage"
     />
@@ -165,7 +176,8 @@
                             <div class="text-2xl font-extrabold">{{ $progTotal }}</div>
                             <div class="text-xs opacity-90 mt-0.5">{{ __('Program') }} →</div>
                         </button>
-                        @if ($progEn > 0)
+                        {{-- Kilitli profillerde katalogdaki dil etiketi resmî kaynakla doğrulanmadığı için İngilizce sayısı gösterilmez. --}}
+                        @if ($progEn > 0 && ! $uniLocked)
                             <button @click="tab='prog'" class="flex-1 text-left rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progEn }}</div>
                                 <div class="text-xs opacity-90 mt-0.5">🇬🇧 {{ __('English-taught programs') }} →</div>
@@ -306,9 +318,12 @@
                         <h2 class="text-2xl font-bold text-gray-900">{{ __('Programs & Departments') }}</h2>
                         <p class="text-sm text-gray-600">
                             {{ $progTotal }} {{ __('active programs') }} ·
-                            {{ $progEn }} {{ __('English') }} ·
+                            @unless ($uniLocked){{ $progEn }} {{ __('English') }} · @endunless
                             {{ $progNcFree }} NC-frei
                         </p>
+                        @if ($uniLocked)
+                            <p class="text-xs text-gray-500 mt-1 max-w-2xl">{{ __('This list shows the programmes in our catalogue and may be incomplete. Check the official programme page for the current list and the language of instruction.') }}</p>
+                        @endif
                     </div>
                 </div>
 
@@ -543,6 +558,9 @@
 @endisset
 
 @isset($university_model)
+{{-- Genel "nasıl başvururum" kutusu (uni-assist + 15 Temmuz/15 Ocak varsayımı) editoryal kilitli profillerde gösterilmez:
+     bu profiller kurumun resmî başvuru yolunu ve tarihlerini kendi bloklarında anlatır, genel kutu onlarla çelişebilir. --}}
+@unless ($uniLocked)
 <div class="max-w-4xl mx-auto px-4">
     <x-featured-snippet
         :question="__('How do I apply to :uni as an international student?', ['uni' => $university_model->display_name])"
@@ -556,6 +574,7 @@
         ]"
     />
 </div>
+@endunless
 
 {{-- Generic FAQ — sadece content_blocks içinde FAQ blok YOKSA göster (çift FAQ önleme) --}}
 @php

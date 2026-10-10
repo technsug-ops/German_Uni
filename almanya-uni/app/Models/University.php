@@ -122,6 +122,25 @@ class University extends Model
      *   DE: "Technische Universität München"
      */
     /**
+     * Editoryal kilit: content_blocks içinde `editorial_lock: true` taşıyan bir blok varsa içerik resmî kaynakla elle
+     * doğrulanmıştır (ör. 2026_10_10 şartlı kabul paketi). universities:enrich, content:translate-blocks --force ve
+     * universities:fix-quickfacts bu kayıtların bloklarına yazmaz; değişiklik yeni bir data-migration ile yapılır.
+     */
+    public function hasEditorialLock(): bool
+    {
+        return self::blocksLocked($this->content_blocks);
+    }
+
+    public static function blocksLocked(mixed $blocks): bool
+    {
+        if (is_string($blocks)) {
+            $blocks = json_decode($blocks, true);
+        }
+
+        return is_array($blocks) && collect($blocks)->contains(fn ($b) => is_array($b) && ! empty($b['editorial_lock']));
+    }
+
+    /**
      * Alias so polymorphic relations (e.g. Favorite.favoriteable) can call
      * $item->name uniformly across Uni / Program / Profession / City.
      */

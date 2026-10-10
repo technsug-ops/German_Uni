@@ -1,0 +1,1764 @@
+{
+    "checked": "2026-10-10",
+    "universities": {
+        "universitat-bremen-q500692": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "related_forum_topics",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/vorbereitungsstudium",
+                "label": {
+                    "tr": "Resmî sayfa: Vorbereitungsstudium",
+                    "en": "Official page: preparatory studies",
+                    "de": "Offizielle Seite: Vorbereitungsstudium"
+                }
+            },
+            "sources": [
+                "https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/faq/fragen-zur-studienplatzbewerbung",
+                "https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/vorbereitungsstudium",
+                "https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/bewerbungen-nicht-eu",
+                "https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/deutschkenntnisse"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Bremen: Başvuru Şartları, Dil Belgesi ve Hazırlık Yolu",
+                    "seo_description": "Universität Bremen şartlı kabul vermiyor. C1'i olmayan lisans adayları için Vorbereitungsstudium, kabul edilen Almanca belgeler, başvuru yolu ve tarihler.",
+                    "intro": "**Universität Bremen**, Bremen eyaletinin en büyük üniversitesi; Türk öğrenciler arasında **Bremen Üniversitesi** olarak bilinir. Bu sayfada önce en çok sorulan konuyu, Almancası yetersiz adaylar için hangi yolun olduğunu, ardından başvuru şartlarını, dil belgelerini ve tarihleri resmî sayfalara göre bulacaksın.\n\nKısa cevap: Bremen, yeterli Almanca olmadan **şartlı kabul vermediğini** açıkça yazıyor. C1'i olmayan lisans adayları için ayrı bir yol var: en fazla dört dönemlik **Vorbereitungsstudium** (hazırlık öğrenciliği). Bu yol bölümde yer ayırmaz.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "Lisans: uni-assist VPD + MOIN · Yüksek lisans: doğrudan"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Şartlı kabul yok · Vorbereitungsstudium var"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "Bremen'in başvuru SSS'sinde açık bir cümle var: *\"Eine bedingte Zulassung ohne ausreichende Deutschkenntnisse ist nicht möglich.\"* Yani Almancası yetersiz adaya bölüme şartlı kabul verilmiyor.\n\nVar olan yol **Vorbereitungsstudium (VBS)**:\n\n- Doğrudan üniversiteye giriş hakkı olan ama henüz C1 kanıtlayamayan **lisans ve hukuk** adayları içindir.\n- En fazla **4 dönem** sürer; SOLO ve ek mentorluk programı olan PALS olmak üzere iki biçimi var.\n- Haftada en az 20 saatlik bir yoğun Almanca kursuna kayıtlı olduğunu belgelemen gerekir. Üniversite bu kursları kendisi vermez.\n- VBS'ye başvuru için son tarih yok; 3. VBS dönemine devam için B1 istenir.\n- VBS bölümde **yer ayırmaz**. C1 belgesiyle MOIN portalından bölüme ayrıca başvurursun.\n\nDiğer üniversitelerle karşılaştırma için: [Almanya'da şartlı kabul veren üniversiteler](/tr/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Başvuru şartları ve kabul edilen Almanca belgeler",
+                            "Almanca programlar için Bremen'in kabul ettiği belgeler:\n\n- DSH-2 veya DSH-3 (DSH-1 yeterli değil)\n- TestDaF: toplam 16 puan, dört bölümün her birinde en az 3\n- Goethe-Zertifikat C1 veya C2, telc Deutsch C1 Hochschule, DSD II\n\nLisans başvurusunda C1 belgesi kış dönemi için **15 Eylül'e**, yaz dönemi için **15 Mart'a** kadar sonradan verilebilir. Hangi belgenin sana uygun olduğunu [Almanca dil belgeleri rehberinde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans (AB dışı):** önce uni-assist'ten VPD alırsın, sonra doğrudan Bremen'e (MOIN portalı) başvurursun. Son tarih kış dönemi için 15 Temmuz, yaz dönemi için 15 Ocak; uni-assist VPD başvurusunu 1 Haziran / 1 Aralık'a kadar yapmayı öneriyor.\n- **Yüksek lisans:** uluslararası adaylar da her zaman doğrudan Bremen'e başvurur; tarihler programa göre Masterportal'da yazar.\n- **Ücret:** 2026/27 kış dönemi Semesterbeitrag toplam 443,40 €. Bremen 2020/21 kış döneminden beri uzun süreli öğrenim ücreti almıyor.\n- **Vize:** resmî sayfaya göre başvuru onayıyla (Bewerberbestätigung) vizeye başvurabilirsin; VBS kaydı öğrenci vizesiyle kalışa izin verir. Bu bir vize garantisi değildir.\n\nTarihler kontrol tarihindeki resmî kurallardır; başvurmadan önce resmî sayfadan teyit et."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Bremen'de öğretim dili tamamen İngilizce olan yüksek lisans programları da var. Resmî program sayfalarında öğretim dili İngilizce olarak geçen iki örnek:\n\n- [Artificial Intelligence and Intelligent Systems (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/artificial-intelligence-and-intelligent-systems-master)\n- [Marine Microbiology (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/marine-microbiology-master)\n\nİngilizce programlarda dil şartı programa göre değişir; yukarıdaki Almanca hazırlık yolu bu programlar için geçerli değildir."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "Universität Bremen şartlı kabul veriyor mu?",
+                            "Hayır. Bremen'in resmî SSS'sine göre yeterli Almanca olmadan şartlı kabul mümkün değil. C1'i olmayan lisans adayları için Vorbereitungsstudium var; bu hazırlık statüsü bölümde yer ayırmaz."
+                        ],
+                        [
+                            "Vorbereitungsstudium ne kadar sürer, kurs ücretini kim öder?",
+                            "En fazla 4 dönem sürer. Haftada en az 20 saatlik bir yoğun Almanca kursuna kayıtlı olman gerekir; Bremen bu kursları vermez, kursu sen seçip ödersin."
+                        ],
+                        [
+                            "Bremen hangi Almanca belgeleri kabul ediyor?",
+                            "DSH-2 veya DSH-3, toplam 16 puanlı ve her bölümde en az 3 puanlı TestDaF, Goethe C1/C2, telc C1 Hochschule ve DSD II. DSH-1 yeterli değil."
+                        ],
+                        [
+                            "Yüksek lisansa uni-assist üzerinden mi başvurulur?",
+                            "Hayır. Resmî sayfaya göre yüksek lisans başvuruları uluslararası adaylar için de her zaman doğrudan Universität Bremen'e yapılır. uni-assist VPD lisans ve hukuk başvuruları için istenir."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden ilgilendiğin bölümleri incele, ardından başvuru yolunu [resmî Vorbereitungsstudium sayfasından](https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/vorbereitungsstudium) teyit et. Diğer üniversitelerle karşılaştırma için [şartlı kabul sayfamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "University of Bremen: Admission Requirements, German Certificate and Preparatory Route",
+                    "seo_description": "The University of Bremen offers no conditional admission. Preparatory studies for Bachelor's applicants without C1, accepted German certificates, deadlines.",
+                    "intro": "**Universität Bremen** is the largest university in the state of Bremen. This page starts with the question applicants ask most often, which route exists if your German is not yet good enough, and then covers admission requirements, language certificates and deadlines based on the official pages.\n\nShort answer: Bremen states clearly that it does **not offer conditional admission** without sufficient German. Bachelor's applicants without C1 have a separate route: the **Vorbereitungsstudium** (preparatory studies) of up to four semesters. It does not reserve a place in a degree programme.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "Bachelor's: uni-assist VPD + MOIN · Master's: directly"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No conditional admission · Preparatory studies available"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "Bremen's application FAQ says: *\"Eine bedingte Zulassung ohne ausreichende Deutschkenntnisse ist nicht möglich.\"* Conditional admission without sufficient German is not possible.\n\nThe route that exists is the **Vorbereitungsstudium (VBS)**:\n\n- It is for **Bachelor's and law** applicants who have direct university entrance but cannot yet prove C1.\n- It lasts up to **4 semesters** and comes in two forms, SOLO and PALS (PALS adds a mentoring programme).\n- You must show that you are booked on an intensive German course of at least 20 hours a week. The university does not run these courses itself.\n- There is no application deadline for the VBS; re-registering for the third VBS semester requires B1.\n- The VBS does **not reserve a place**. With your C1 certificate you apply separately for the degree through the MOIN portal.\n\nTo compare with other universities, see [universities offering conditional admission in Germany](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Admission requirements and accepted German certificates",
+                            "Bremen accepts these certificates for German-taught programmes:\n\n- DSH-2 or DSH-3 (DSH-1 is not enough)\n- TestDaF: 16 points in total and at least 3 in each of the four parts\n- Goethe-Zertifikat C1 or C2, telc Deutsch C1 Hochschule, DSD II\n\nFor a Bachelor's application, the C1 certificate can be handed in up to **15 September** (winter semester) or **15 March** (summer semester). Our [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's (non-EU):** first get a VPD from uni-assist, then apply directly to Bremen through the MOIN portal. Deadlines are 15 July (winter) and 15 January (summer); uni-assist recommends applying for the VPD by 1 June / 1 December.\n- **Master's:** international applicants always apply directly to Bremen; deadlines are set per programme in the Master's portal.\n- **Costs:** the semester contribution for winter semester 2026/27 is €443.40 in total. Bremen has not charged long-term study fees since winter semester 2020/21.\n- **Visa:** according to the official page you can apply for a visa with the application confirmation, and enrolment in the VBS allows residence on a student visa. This is not a visa guarantee.\n\nThese are the official rules on the check date; confirm them on the official page before you apply."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Bremen also offers Master's programmes taught entirely in English. Two examples whose official pages list English as the language of instruction:\n\n- [Artificial Intelligence and Intelligent Systems (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/artificial-intelligence-and-intelligent-systems-master)\n- [Marine Microbiology (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/marine-microbiology-master)\n\nLanguage requirements for English-taught programmes are set per programme; the German preparatory route above does not apply to them."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does the University of Bremen offer conditional admission?",
+                            "No. According to Bremen's official FAQ, conditional admission without sufficient German is not possible. Bachelor's applicants without C1 can use the Vorbereitungsstudium, a preparatory status that does not reserve a degree place."
+                        ],
+                        [
+                            "How long is the Vorbereitungsstudium and who pays for the course?",
+                            "It lasts up to 4 semesters. You must be booked on an intensive German course of at least 20 hours a week; Bremen does not run these courses, so you choose and pay for the course yourself."
+                        ],
+                        [
+                            "Which German certificates does Bremen accept?",
+                            "DSH-2 or DSH-3, TestDaF with 16 points in total and at least 3 in every part, Goethe C1/C2, telc C1 Hochschule and DSD II. DSH-1 is not enough."
+                        ],
+                        [
+                            "Do Master's applicants apply through uni-assist?",
+                            "No. According to the official page, Master's applications always go directly to the University of Bremen, also for international applicants. The uni-assist VPD is required for Bachelor's and law applications."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the programmes tab on this page, then confirm the route on the [official preparatory studies page](https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/vorbereitungsstudium). To compare with other universities, see our [conditional admission overview](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "Universität Bremen: Zulassungsvoraussetzungen, Deutschnachweis und Vorbereitungsstudium",
+                    "seo_description": "Die Uni Bremen vergibt keine bedingte Zulassung. Vorbereitungsstudium für Bachelorbewerbungen ohne C1, anerkannte Deutschnachweise, Bewerbungsweg, Fristen.",
+                    "intro": "Die **Universität Bremen** ist die größte Hochschule des Landes Bremen. Diese Seite beantwortet zuerst die häufigste Frage – welcher Weg offensteht, wenn das Deutsch noch nicht reicht – und danach Zulassungsvoraussetzungen, Sprachnachweise und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Bremen schreibt ausdrücklich, dass eine **bedingte Zulassung** ohne ausreichende Deutschkenntnisse **nicht möglich** ist. Für Bachelorbewerber*innen ohne C1 gibt es einen eigenen Weg: das **Vorbereitungsstudium** mit höchstens vier Semestern. Es reserviert keinen Studienplatz.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "Bachelor: uni-assist-VPD + MOIN · Master: direkt"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Keine bedingte Zulassung · Vorbereitungsstudium möglich"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "In den FAQ zur Studienplatzbewerbung heißt es: *\"Eine bedingte Zulassung ohne ausreichende Deutschkenntnisse ist nicht möglich.\"*\n\nDer vorhandene Weg ist das **Vorbereitungsstudium (VBS)**:\n\n- Es richtet sich an **Bachelor- und Jura**-Bewerber*innen mit direkter Hochschulzugangsberechtigung, die noch kein C1 nachweisen können.\n- Es dauert höchstens **4 Semester** und hat zwei Varianten, SOLO und PALS (mit zusätzlichem Mentoring).\n- Du musst einen gebuchten Deutsch-Intensivkurs mit mindestens 20 Stunden pro Woche nachweisen. Die Universität bietet diese Kurse nicht selbst an.\n- Für das VBS gibt es keine Bewerbungsfrist; für die Rückmeldung ins dritte VBS-Semester ist B1 nötig.\n- Das VBS **reserviert keinen Studienplatz**. Mit dem C1-Nachweis bewirbst du dich separat über das MOIN-Portal für das Fachstudium.\n\nZum Vergleich mit anderen Hochschulen: [bedingte Zulassung an deutschen Hochschulen](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Zulassungsvoraussetzungen und anerkannte Deutschnachweise",
+                            "Für deutschsprachige Studiengänge erkennt Bremen an:\n\n- DSH-2 oder DSH-3 (DSH-1 reicht nicht)\n- TestDaF: insgesamt 16 Punkte und in allen vier Teilen mindestens 3\n- Goethe-Zertifikat C1 oder C2, telc Deutsch C1 Hochschule, DSD II\n\nBei einer Bachelorbewerbung kann der C1-Nachweis bis **15. September** (Wintersemester) bzw. **15. März** (Sommersemester) nachgereicht werden. Die Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor (Nicht-EU):** zuerst eine VPD bei uni-assist, dann die Bewerbung direkt bei der Universität Bremen über das MOIN-Portal. Fristen: 15. Juli (Winter) und 15. Januar (Sommer); uni-assist empfiehlt den VPD-Antrag bis 1. Juni bzw. 1. Dezember.\n- **Master:** auch internationale Bewerber*innen bewerben sich immer direkt bei der Universität; die Fristen stehen je Studiengang im Masterportal.\n- **Kosten:** Der Semesterbeitrag für das Wintersemester 2026/27 beträgt insgesamt 443,40 €. Langzeitstudiengebühren erhebt Bremen seit dem Wintersemester 2020/21 nicht mehr.\n- **Visum:** Laut offizieller Seite kannst du mit der Bewerberbestätigung ein Visum beantragen; die Einschreibung ins VBS ermöglicht den Aufenthalt mit Studierendenvisum. Eine Visumgarantie ist das nicht.\n\nDas sind die offiziellen Regeln zum Prüfdatum; prüfe sie vor der Bewerbung auf der offiziellen Seite."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Bremen bietet auch Masterstudiengänge vollständig auf Englisch an. Zwei Beispiele, deren offizielle Seiten Englisch als Unterrichtssprache nennen:\n\n- [Artificial Intelligence and Intelligent Systems (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/artificial-intelligence-and-intelligent-systems-master)\n- [Marine Microbiology (M.Sc.)](https://www.uni-bremen.de/studium/orientieren-bewerben/studienangebot/dbs/study/marine-microbiology-master)\n\nDie Sprachanforderungen englischsprachiger Studiengänge legt jeder Studiengang selbst fest; der deutsche Vorbereitungsweg oben gilt für sie nicht."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die Universität Bremen eine bedingte Zulassung?",
+                            "Nein. Laut den offiziellen FAQ ist eine bedingte Zulassung ohne ausreichende Deutschkenntnisse nicht möglich. Bachelorbewerber*innen ohne C1 können das Vorbereitungsstudium nutzen; es reserviert keinen Studienplatz."
+                        ],
+                        [
+                            "Wie lange dauert das Vorbereitungsstudium und wer zahlt den Kurs?",
+                            "Höchstens 4 Semester. Du brauchst einen gebuchten Deutsch-Intensivkurs mit mindestens 20 Stunden pro Woche; die Universität bietet diese Kurse nicht an, du wählst und bezahlst den Kurs selbst."
+                        ],
+                        [
+                            "Welche Deutschnachweise erkennt Bremen an?",
+                            "DSH-2 oder DSH-3, TestDaF mit insgesamt 16 Punkten und mindestens 3 in jedem Teil, Goethe C1/C2, telc C1 Hochschule und DSD II. DSH-1 reicht nicht."
+                        ],
+                        [
+                            "Läuft die Masterbewerbung über uni-assist?",
+                            "Nein. Laut offizieller Seite gehen Masterbewerbungen immer direkt an die Universität Bremen, auch von internationalen Bewerber*innen. Die uni-assist-VPD ist für Bachelor- und Jura-Bewerbungen nötig."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die passenden Programme an und prüfe den Weg auf der [offiziellen Seite zum Vorbereitungsstudium](https://www.uni-bremen.de/studium/orientieren-bewerben/studienplatzbewerbung/bewerbungen-aus-dem-ausland/vorbereitungsstudium). Den Vergleich mit anderen Hochschulen findest du in unserer [Übersicht zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "universitat-duisburg-essen-q696757": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [
+                4
+            ],
+            "official": {
+                "url": "https://www.uni-due.de/international/international-admissions.php",
+                "label": {
+                    "tr": "Resmî sayfa: uluslararası başvuru",
+                    "en": "Official page: international admissions",
+                    "de": "Offizielle Seite: internationale Bewerbung"
+                }
+            },
+            "sources": [
+                "https://www.uni-due.de/international/international-admissions.php",
+                "https://www.uni-due.de/international/bewerbung.php"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Duisburg-Essen: Başvuru Şartları, Dil Kursu Kabulü ve Tarihler",
+                    "seo_description": "Duisburg-Essen, NC'siz programlarda Almancası yetersiz adaylara dil kursuna kabul veriyor; bölüm için yeniden başvuru gerekir. DSH şartı ve tarihler.",
+                    "intro": "**Universität Duisburg-Essen (UDE)**, Duisburg ve Essen'deki iki kampüsüyle Almanya'nın büyük devlet üniversitelerinden biri. Türk adaylar en çok \"Almancam yetersizken nasıl başvururum?\" sorusunu soruyor; bu sayfa önce onu, sonra dil belgelerini, başvuru kanallarını ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: UDE, NC'siz lisans ve yüksek lisans programlarına Almancası yetersiz olarak başvurana **dil kursuna kabul belgesi** veriyor. Bu bir bölüm kabulü değil; DSH'yi geçtikten sonra bölüm için **yeniden başvurman** gerekiyor.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "Lisans: uni-assist · Yüksek lisans: programa göre uni-assist veya UDE portalı"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Dil kursuna kabul (yalnız NC'siz programlar)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "UDE'nin uluslararası başvuru sayfasına göre NC'siz (zulassungsfrei) bir lisans ya da yüksek lisans programına yeterli Almanca olmadan da başvurabilirsin. Başarılı adaylar bir **\"Zulassungsbescheid zum Sprachkurs\"**, yani dil kursuna kabul belgesi alır.\n\n- Dil kursu öğrencisi olarak kaydolursun; derslere ve sınavlara giremezsin.\n- UDE kendi Almanca kursunu vermez; haftada en az 18 ders saatlik özel bir dil okuluna gidersin. Okullar ücret alır.\n- NC'li (zulassungsbeschränkt) programlar için dil kursu başvurusu **mümkün değil**.\n- Kurs bitince, bölüm için süresi içinde **yeniden başvurman** gerekir; yer ayrılmaz.\n\nBu yolun şartlı kabulden farkını ve diğer üniversiteleri [şartlı kabul karşılaştırmamızda](/tr/universities/collections/conditional-admission-universities) görebilirsin."
+                        ],
+                        [
+                            "Dil şartı ve kabul edilen belgeler",
+                            "Bölüme başlamadan önce **DSH-2 seviyesi** gerekir; bazı programlar DSH-3 ister. Kabul edilen belgeler arasında DSH-2, DSD II, telc Deutsch C1 Hochschule, tüm bölümlerde TDN 4'lü TestDaF ve Feststellungsprüfung var.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans:** uni-assist başvuru portalı üzerinden.\n- **Yüksek lisans:** bazı programlar (ör. BWL, Informatik, Psikoloji, VWL, Wirtschaftsinformatik) uni-assist üzerinden; diğerleri UDE'nin kendi başvuru portalından. Programının listesini resmî sayfadan kontrol et.\n- **Tarihler (resmî sayfa, son güncelleme 02.09.2026):** kış dönemi NC'li programlar 01.05–15.06, NC'siz programlar 01.05–31.07; yaz dönemi NC'li 01.11–15.12, NC'siz 01.11–31.01. Bazı program sayfaları hâlâ eski tarihleri gösteriyor; çelişki görürsen uluslararası ofise sor.\n- **Ücret:** UDE öğrenim ücreti almıyor. 2026/27 kış dönemi Semesterbeitrag toplam 367,80 €.\n- **Vize:** resmî sayfaya göre kabul belgesiyle öğrenim ya da dil kursu amaçlı vizeye başvurabilirsin. Turist vizesiyle gelmemen öneriliyor. Bu bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "UDE'de İngilizce yürütülen yüksek lisans programları da var. Resmî program sayfasına göre iki örnek:\n\n- [Development and Governance (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=31)\n- [Contemporary East Asian Studies (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=30) (bir Doğu Asya dili eğitimi de içerir)\n\nDil kursu kabulü yolu Almanca programlar içindir; İngilizce programların dil şartını program sayfasından kontrol et."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "Duisburg-Essen şartlı kabul veriyor mu?",
+                            "UDE bölüme şartlı kabul değil, NC'siz programlar için **dil kursuna kabul** veriyor. Dil kursu öğrencisi olarak derslere giremezsin ve DSH sonrası bölüm için yeniden başvurman gerekir."
+                        ],
+                        [
+                            "NC'li bir programa dil kursu kabulüyle başvurabilir miyim?",
+                            "Hayır. Resmî sayfaya göre NC'li ve yerel NC'li programlar için dil kursu başvurusu mümkün değil."
+                        ],
+                        [
+                            "Hangi Almanca seviyesi gerekiyor?",
+                            "Bölüme başlamadan önce DSH-2 seviyesi; bazı programlarda DSH-3. Kabul edilen belgeler arasında DSH-2, telc C1 Hochschule, tüm bölümlerde TDN 4'lü TestDaF ve DSD II var."
+                        ],
+                        [
+                            "Başvuru uni-assist üzerinden mi?",
+                            "Lisans başvuruları uni-assist üzerinden. Yüksek lisansta bir grup program uni-assist, diğerleri UDE'nin kendi portalı üzerinden; programını resmî listeden kontrol et."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden NC'siz programları incele ve başvuru yolunu [UDE'nin uluslararası başvuru sayfasından](https://www.uni-due.de/international/international-admissions.php) teyit et. Diğer seçenekler için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "University of Duisburg-Essen: Admission Requirements, German Course Admission and Deadlines",
+                    "seo_description": "Duisburg-Essen admits applicants without enough German to a German course for admission-free programmes; they reapply for the degree. DSH, deadlines.",
+                    "intro": "The **University of Duisburg-Essen (UDE)** is one of Germany's large public universities, with campuses in Duisburg and Essen. Applicants most often ask how to apply when their German is not good enough yet. This page answers that first and then covers language certificates, application channels and deadlines based on the official pages.\n\nShort answer: for admission-free Bachelor's and Master's programmes, UDE gives applicants without sufficient German an **admission to a German course**. This is not admission to the degree; after passing the DSH you **apply again** for the programme.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "Bachelor's: uni-assist · Master's: uni-assist or UDE portal, depending on the programme"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "Admission to a German course (admission-free programmes only)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "According to UDE's international admissions page, you can apply for an admission-free (zulassungsfrei) Bachelor's or Master's programme without sufficient German. Successful applicants receive a **\"Zulassungsbescheid zum Sprachkurs\"**, an admission to a German course.\n\n- You enrol as a German-course student and cannot attend lectures or take exams.\n- UDE does not run its own German courses; you attend a private language school with at least 18 lessons a week. The schools charge fees.\n- For admission-restricted (NC) programmes, a German-course application is **not possible**.\n- After the course you must **apply again** for the degree within the deadline; no place is reserved.\n\nSee how this differs from conditional admission, and how other universities handle it, in our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and accepted certificates",
+                            "Before the degree programme starts you need **DSH-2 level**; some programmes require DSH-3. Accepted certificates include DSH-2, DSD II, telc Deutsch C1 Hochschule, TestDaF with TDN 4 in all parts, and the Feststellungsprüfung.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's:** through the uni-assist application portal.\n- **Master's:** some programmes (e.g. Business Administration, Computer Science, Psychology, Economics, Business Informatics) go through uni-assist; all others through UDE's own application portal. Check your programme on the official list.\n- **Deadlines (official page, last updated 2 September 2026):** winter semester NC programmes 1 May – 15 June, admission-free programmes 1 May – 31 July; summer semester NC 1 November – 15 December, admission-free 1 November – 31 January. Some programme pages still show older dates; if they conflict, ask the International Office.\n- **Costs:** UDE charges no tuition fees. The semester contribution for winter semester 2026/27 is €367.80 in total.\n- **Visa:** according to the official page, the admission notice lets you apply for a study or German-course visa; it advises against entering on a tourist visa. This is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "UDE also runs Master's programmes taught in English. Two examples from the official programme pages:\n\n- [Development and Governance (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=31)\n- [Contemporary East Asian Studies (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=30) (includes training in an East Asian language)\n\nThe German-course route applies to German-taught programmes; check the language requirement of English-taught programmes on their programme page."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does the University of Duisburg-Essen offer conditional admission?",
+                            "UDE does not give conditional admission to the degree. For admission-free programmes it gives **admission to a German course**. As a German-course student you cannot attend lectures, and after the DSH you apply again for the degree."
+                        ],
+                        [
+                            "Can I use German-course admission for an NC programme?",
+                            "No. According to the official page, German-course applications are not possible for programmes with NC or local NC."
+                        ],
+                        [
+                            "Which German level do I need?",
+                            "DSH-2 level before the degree programme starts, DSH-3 for some programmes. Accepted certificates include DSH-2, telc C1 Hochschule, TestDaF with TDN 4 in all parts and DSD II."
+                        ],
+                        [
+                            "Do I apply through uni-assist?",
+                            "Bachelor's applications go through uni-assist. For Master's programmes, a group of programmes uses uni-assist and the others use UDE's own portal; check your programme on the official list."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the admission-free programmes in the programmes tab on this page and confirm the route on [UDE's international admissions page](https://www.uni-due.de/international/international-admissions.php). For other options, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "Universität Duisburg-Essen: Zulassungsvoraussetzungen, Zulassung zum Deutschkurs und Fristen",
+                    "seo_description": "Die UDE lässt Bewerber*innen ohne ausreichendes Deutsch für zulassungsfreie Studiengänge zum Sprachkurs zu; danach neue Bewerbung. DSH und Fristen.",
+                    "intro": "Die **Universität Duisburg-Essen (UDE)** ist mit ihren Campus in Duisburg und Essen eine der großen staatlichen Universitäten Deutschlands. Die häufigste Frage internationaler Bewerber*innen lautet: Wie bewerbe ich mich, wenn mein Deutsch noch nicht reicht? Diese Seite beantwortet das zuerst und erklärt danach Sprachnachweise, Bewerbungswege und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Für zulassungsfreie Bachelor- und Masterstudiengänge erteilt die UDE Bewerber*innen ohne ausreichende Deutschkenntnisse eine **Zulassung zum Sprachkurs**. Das ist keine Studienzulassung; nach bestandener DSH **bewirbst du dich erneut**.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "Bachelor: uni-assist · Master: je nach Studiengang uni-assist oder UDE-Portal"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Zulassung zum Sprachkurs (nur zulassungsfreie Studiengänge)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Laut der Seite zur internationalen Bewerbung kannst du dich auch ohne ausreichende Deutschkenntnisse für einen zulassungsfreien Bachelor- oder Masterstudiengang bewerben. Erfolgreiche Bewerber*innen erhalten einen **\"Zulassungsbescheid zum Sprachkurs\"**.\n\n- Du wirst als Deutschkursstudent*in eingeschrieben und kannst keine Lehrveranstaltungen besuchen oder Prüfungen ablegen.\n- Die UDE bietet keine eigenen Deutschkurse an; du besuchst eine private Sprachschule mit mindestens 18 Unterrichtsstunden pro Woche. Die Schulen erheben Gebühren.\n- Für zulassungsbeschränkte (NC-)Studiengänge sind Deutschkursbewerbungen **nicht möglich**.\n- Nach dem Kurs musst du dich fristgerecht **neu bewerben**; ein Platz wird nicht reserviert.\n\nWie sich das von der bedingten Zulassung unterscheidet und wie andere Hochschulen es handhaben, zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und anerkannte Nachweise",
+                            "Vor Beginn des Fachstudiums brauchst du **DSH-2-Niveau**, für einige Studiengänge DSH-3. Anerkannt werden unter anderem DSH-2, DSD II, telc Deutsch C1 Hochschule, TestDaF mit TDN 4 in allen Teilen und die Feststellungsprüfung.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor:** über das Bewerbungsportal von uni-assist.\n- **Master:** einige Studiengänge (z. B. BWL, Informatik, Psychologie, VWL, Wirtschaftsinformatik) über uni-assist, alle anderen über das Bewerbungsportal der UDE. Prüfe deinen Studiengang auf der offiziellen Liste.\n- **Fristen (offizielle Seite, letzte Änderung 02.09.2026):** Wintersemester NC-Studiengänge 01.05.–15.06., zulassungsfreie Studiengänge 01.05.–31.07.; Sommersemester NC 01.11.–15.12., zulassungsfrei 01.11.–31.01. Einige Studiengangsseiten nennen noch ältere Fristen; frag bei Widersprüchen das International Office.\n- **Kosten:** Die UDE erhebt keine Studiengebühren. Der Semesterbeitrag für das Wintersemester 2026/27 beträgt insgesamt 367,80 €.\n- **Visum:** Laut offizieller Seite kannst du mit dem Zulassungsbescheid ein Visum zu Studienzwecken bzw. zum Deutschkurs beantragen; von der Einreise mit Touristenvisum wird abgeraten. Eine Visumgarantie ist das nicht."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die UDE bietet auch englischsprachige Masterstudiengänge an. Zwei Beispiele laut offizieller Studiengangsseite:\n\n- [Development and Governance (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=31)\n- [Contemporary East Asian Studies (M.A.)](https://www.uni-due.de/studienangebote/studiengang.php?id=30) (mit Ausbildung in einer ostasiatischen Sprache)\n\nDer Deutschkurs-Weg gilt für deutschsprachige Studiengänge; die Sprachanforderung englischsprachiger Studiengänge steht auf der jeweiligen Studiengangsseite."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die Universität Duisburg-Essen eine bedingte Zulassung?",
+                            "Keine bedingte Studienzulassung, sondern für zulassungsfreie Studiengänge eine **Zulassung zum Sprachkurs**. Als Deutschkursstudent*in kannst du keine Lehrveranstaltungen besuchen und bewirbst dich nach der DSH neu."
+                        ],
+                        [
+                            "Geht die Deutschkursbewerbung auch für NC-Studiengänge?",
+                            "Nein. Laut offizieller Seite sind Deutschkursbewerbungen für Studiengänge mit NC oder Orts-NC nicht möglich."
+                        ],
+                        [
+                            "Welches Deutschniveau brauche ich?",
+                            "DSH-2-Niveau vor Beginn des Fachstudiums, für einige Studiengänge DSH-3. Anerkannt werden u. a. DSH-2, telc C1 Hochschule, TestDaF mit TDN 4 in allen Teilen und DSD II."
+                        ],
+                        [
+                            "Bewerbe ich mich über uni-assist?",
+                            "Bachelorbewerbungen laufen über uni-assist. Im Master nutzt eine Gruppe von Studiengängen uni-assist, die übrigen das UDE-Portal; prüfe deinen Studiengang auf der offiziellen Liste."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die zulassungsfreien Programme an und prüfe den Weg auf der [Seite zur internationalen Bewerbung](https://www.uni-due.de/international/international-admissions.php). Weitere Optionen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "philipps-universitat-marburg-q155354": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "related_forum_topics",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.uni-marburg.de/de/studium/im-studium/formalitaeten/sprachnachweise/deutschkenntnisse",
+                "label": {
+                    "tr": "Resmî sayfa: Almanca bilgisi ve şartlı kabul",
+                    "en": "Official page: German skills and conditional admission",
+                    "de": "Offizielle Seite: Deutschkenntnisse und bedingte Zulassung"
+                }
+            },
+            "sources": [
+                "https://www.uni-marburg.de/de/studium/im-studium/formalitaeten/sprachnachweise/deutschkenntnisse"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Philipps-Universität Marburg: Şartlı Kabul, Başvuru Şartları ve Dil Belgesi",
+                    "seo_description": "Marburg, NC'siz programlara uni-assist ile başvuranlara şartlı kabul ve iki dönem dil öğrenciliği veriyor. Kapsam, DSH şartı, belge ve başvuru tarihleri.",
+                    "intro": "**Philipps-Universität Marburg**, 1527'de kurulan ve Hessen'de yer alan köklü bir devlet üniversitesi; şehrin büyük kısmı öğrencilerden oluşur. Bu sayfa önce Almancası yetersiz adaylar için var olan yolu, sonra dil belgelerini, başvuru kanalını ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: Marburg, NC'siz bir programa uni-assist üzerinden Almancası yetersiz başvuran adaylara **şartlı kabul (bedingte Zulassung)** veriyor ve onları iki dönem **dil öğrencisi** olarak kaydediyor. Üniversiteye göre bu, dil öğrencisi olarak kayıtlı kaldığın sürece bölüm yerini ayırır.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "uni-assist (lisans ve yüksek lisans)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Şartlı kabul (NC'siz programlar)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "Marburg'un Almanca bilgisi sayfasına göre NC'siz programlara uni-assist üzerinden Almanca bilgisi olmadan da başvurabilir ve **şartlı kabul** alabilirsin.\n\n- İki dönem **dil öğrencisi** (Sprachstudent*in) olarak kaydolursun. Üniversite, şartlı kabulün bu süre boyunca çalışma yerini \"ayırdığını\" yazıyor.\n- Devam belgesiyle 3. ve 4. DSH dönemine geçmek mümkün; 5. döneme kayıt yenileme yapılamaz.\n- Dil kursunu kendin bulur ve ödersin (dış ya da iç sağlayıcılar; iletişim: Studienkolleg Mittelhessen). Semesterbeitrag ayrıca ödenir.\n- **NC'li programlar için geçerli değil.** Program değiştirmek ya da NC'li bir programa geçmek için uni-assist üzerinden yeni başvuru gerekir.\n- Yüksek lisans sayfası bu olanağa atıf yapıyor, ancak resmî sayfa yolun yüksek lisansı da kapsadığını açıkça yazmıyor; başvurmadan önce teyit et.\n\nYasal çerçeve: dil hazırlığı için oturum izni Aufenthaltsgesetz § 16b'ye göre genellikle bir yıl, en fazla iki yıl. Diğer üniversitelerle karşılaştırma: [Almanya'da şartlı kabul veren üniversiteler](/tr/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Dil şartı ve belge teslimi",
+                            "Gereken DSH seviyesi programa göre değişir. DSH-2 eşdeğeri sayılan belgeler arasında DSD II (tüm bölümlerde C1), Feststellungsprüfung, Goethe-Zertifikat C2 (GDS), ÖSD C2, telc Deutsch C1 Hochschule ve tüm bölümlerde en az 4 puanlı TestDaF var. 2027 yaz döneminden itibaren birleştirilmiş belgeler kabul edilmeyecek.\n\nŞartlı kabul aldığın programa geçmek için belgeyi Marvin portalına **kış dönemi için 30 Eylül'e**, **yaz dönemi için 31 Mart'a** kadar yüklemelisin. Sınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans (yabancı diploma):** NC'siz programlara uni-assist üzerinden. Kabul ve kayıt Marvin portalı üzerinden yürür.\n- **Yüksek lisans (yabancı diploma):** uni-assist üzerinden; tarihler programa göre değişir.\n- **Lisans tarihleri (yabancı diploma):** kış dönemi NC'li 01.06–15.07, NC'siz 01.06–15.08; yaz dönemi NC'li 01.11–15.01, NC'siz 01.11–15.02.\n- **Ücret:** Marburg ne öğrenim ücreti ne uzun süreli öğrenim ücreti alıyor. 2026/27 kış dönemi Semesterbeitrag 424,80 €.\n- **Vize:** resmî sayfa vize hakkında bir taahhüt vermiyor; şartlı kabul bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Marburg'da öğretim dili İngilizce olan yüksek lisans programları da var. Resmî sayfalarda öğretim dili İngilizce olarak geçen iki örnek:\n\n- [Economics of the Middle East (M.Sc.)](https://www.uni-marburg.de/de/studium/nach-dem-abschluss/masterstudium/masterstudiengaenge/m-emea)\n- [Functional Materials (M.Sc.)](https://www.uni-marburg.de/de/fb13/studium/studiengaenge/master)\n\nŞartlı kabul yolu Almanca programlar için anlatılıyor; İngilizce programların dil şartı programa göre belirlenir."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "Marburg şartlı kabul veriyor mu?",
+                            "Evet, NC'siz programlara uni-assist üzerinden başvuran ve Almancası yetersiz adaylara. İki dönem dil öğrencisi olarak kaydolursun; üniversite bu sürede bölüm yerinin ayrıldığını yazıyor. NC'li programlar için bu yol yok."
+                        ],
+                        [
+                            "Dil kursunu üniversite mi veriyor, ücretli mi?",
+                            "Kursa kendin kaydolur ve ücretini ödersin; dış ya da iç sağlayıcılar var, iletişim adresi Studienkolleg Mittelhessen. Semesterbeitrag ayrıca ödenir."
+                        ],
+                        [
+                            "Dil belgesini ne zamana kadar sunmalıyım?",
+                            "Şartlı kabul aldığın program için belgeyi Marvin'e kış dönemi için 30 Eylül'e, yaz dönemi için 31 Mart'a kadar yüklemelisin. Gereken DSH seviyesi programa göre değişir."
+                        ],
+                        [
+                            "Marburg öğrenim ücreti alıyor mu?",
+                            "Hayır. Resmî sayfaya göre Marburg ne öğrenim ücreti ne de uzun süreli öğrenim ücreti alıyor. 2026/27 kış dönemi Semesterbeitrag 424,80 €."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden NC'siz programları incele ve kapsamı [Marburg'un resmî Almanca bilgisi sayfasından](https://www.uni-marburg.de/de/studium/im-studium/formalitaeten/sprachnachweise/deutschkenntnisse) teyit et. Diğer üniversiteler için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "University of Marburg: Conditional Admission, Admission Requirements and German Certificate",
+                    "seo_description": "Marburg gives conditional admission and two semesters as a language student for admission-free programmes via uni-assist. Scope, DSH and deadlines.",
+                    "intro": "**Philipps-Universität Marburg** is a long-established public university in Hesse, founded in 1527, in a town where students make up a large part of the population. This page first explains the route for applicants whose German is not yet sufficient, then language certificates, the application channel and deadlines, based on the official pages.\n\nShort answer: Marburg gives **conditional admission (bedingte Zulassung)** to applicants without sufficient German who apply for an admission-free programme through uni-assist, and enrols them as **language students** for two semesters. According to the university, this reserves the study place while you are enrolled as a language student.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "uni-assist (Bachelor's and Master's)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "Conditional admission (admission-free programmes)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "According to Marburg's page on German skills, you can apply for admission-free programmes through uni-assist without German and receive **conditional admission**.\n\n- You are enrolled as a **language student** (Sprachstudent*in) for two semesters. The university writes that conditional admission \"reserves\" your study place during this time.\n- With proof of attendance you can continue into DSH semesters 3 and 4; re-registration for a fifth semester is not possible.\n- You find and pay for the language course yourself (external or internal providers; contact: Studienkolleg Mittelhessen). The semester contribution is paid separately.\n- **Not for NC programmes.** Changing programme or moving to an NC programme needs a new application through uni-assist.\n- The Master's page refers to this option, but the official page does not state explicitly that the route covers Master's programmes; confirm before applying.\n\nLegal framework: a residence permit for language preparation is usually granted for one year and should not exceed two years (Residence Act § 16b). To compare with other universities, see [universities offering conditional admission in Germany](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and certificate deadlines",
+                            "The required DSH level depends on the programme. Certificates accepted as DSH-2 equivalents include DSD II (C1 in all parts), the Feststellungsprüfung, Goethe-Zertifikat C2 (GDS), ÖSD C2, telc Deutsch C1 Hochschule and TestDaF with at least 4 points in all parts. From summer semester 2027, combined certificates will not be accepted.\n\nTo move into the programme you were conditionally admitted to, upload the certificate in the Marvin portal by **30 September** (winter semester) or **31 March** (summer semester). Our [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's (foreign school certificate):** admission-free programmes through uni-assist. Admission and enrolment then run through the Marvin portal.\n- **Master's (foreign degree):** through uni-assist; deadlines vary by programme.\n- **Bachelor's deadlines (foreign certificate):** winter semester NC 1 June – 15 July, admission-free 1 June – 15 August; summer semester NC 1 November – 15 January, admission-free 1 November – 15 February.\n- **Costs:** Marburg charges neither tuition nor long-term study fees. The semester contribution for winter semester 2026/27 is €424.80.\n- **Visa:** the official page makes no statement about visas; conditional admission is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Marburg also offers Master's programmes taught in English. Two examples whose official pages list English as the language of instruction:\n\n- [Economics of the Middle East (M.Sc.)](https://www.uni-marburg.de/de/studium/nach-dem-abschluss/masterstudium/masterstudiengaenge/m-emea)\n- [Functional Materials (M.Sc.)](https://www.uni-marburg.de/de/fb13/studium/studiengaenge/master)\n\nThe conditional admission route is described for German-taught programmes; English-taught programmes set their own language requirements."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does the University of Marburg offer conditional admission?",
+                            "Yes, for applicants without sufficient German who apply for admission-free programmes through uni-assist. You are enrolled as a language student for two semesters, and the university says your place is reserved during that time. The route does not apply to NC programmes."
+                        ],
+                        [
+                            "Does the university run the language course, and is it paid?",
+                            "You register for the course yourself and pay for it; there are external and internal providers, and the contact is Studienkolleg Mittelhessen. The semester contribution is paid separately."
+                        ],
+                        [
+                            "By when must I hand in the language certificate?",
+                            "For the programme you were conditionally admitted to, upload it in Marvin by 30 September for a winter semester or 31 March for a summer semester. The required DSH level depends on the programme."
+                        ],
+                        [
+                            "Does Marburg charge tuition fees?",
+                            "No. According to the official page, Marburg charges neither tuition nor long-term study fees. The semester contribution for winter semester 2026/27 is €424.80."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the admission-free programmes in the programmes tab on this page and confirm the scope on [Marburg's official page on German skills](https://www.uni-marburg.de/de/studium/im-studium/formalitaeten/sprachnachweise/deutschkenntnisse). For other universities, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "Philipps-Universität Marburg: Bedingte Zulassung, Zulassungsvoraussetzungen und Deutschnachweis",
+                    "seo_description": "Marburg vergibt für zulassungsfreie Studiengänge über uni-assist eine bedingte Zulassung mit zwei Semestern als Sprachstudent*in. Umfang, DSH, Fristen.",
+                    "intro": "Die **Philipps-Universität Marburg** ist eine traditionsreiche staatliche Universität in Hessen, gegründet 1527, in einer Stadt, die stark von Studierenden geprägt ist. Diese Seite erklärt zuerst den Weg für Bewerber*innen, deren Deutsch noch nicht reicht, und danach Sprachnachweise, Bewerbungsweg und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Marburg vergibt Bewerber*innen ohne ausreichende Deutschkenntnisse, die sich über uni-assist für einen zulassungsfreien Studiengang bewerben, eine **bedingte Zulassung** und schreibt sie für zwei Semester als **Sprachstudent*innen** ein. Laut Universität reserviert das den Studienplatz, solange du als Sprachstudent*in eingeschrieben bist.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "uni-assist (Bachelor und Master)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Bedingte Zulassung (zulassungsfreie Studiengänge)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Laut der Seite zu Deutschkenntnissen kannst du dich ohne Deutschkenntnisse über uni-assist für zulassungsfreie Studiengänge bewerben und erhältst eine **bedingte Zulassung**.\n\n- Du wirst für zwei Semester als **Sprachstudent*in** eingeschrieben. Die Universität schreibt, dass die bedingte Zulassung deinen Studienplatz in dieser Zeit \"reserviert\".\n- Mit Nachweisen sind ein drittes und viertes DSH-Semester möglich; eine Rückmeldung in ein fünftes Semester ist ausgeschlossen.\n- Den Sprachkurs suchst und bezahlst du selbst (externe oder interne Anbieter; Kontakt: Studienkolleg Mittelhessen). Der Semesterbeitrag kommt hinzu.\n- **Nicht für NC-Studiengänge.** Für einen Fachwechsel oder einen NC-Studiengang ist eine neue Bewerbung über uni-assist nötig.\n- Die Masterseite verweist auf diese Möglichkeit, die offizielle Seite sagt aber nicht ausdrücklich, dass der Weg auch für Masterstudiengänge gilt; kläre das vor der Bewerbung.\n\nRechtlicher Rahmen: Der Aufenthalt zur Sprachvorbereitung beträgt nach § 16b AufenthG in der Regel ein Jahr und soll zwei Jahre nicht überschreiten. Zum Vergleich: [bedingte Zulassung an deutschen Hochschulen](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und Nachweisfristen",
+                            "Das nötige DSH-Niveau hängt vom Studiengang ab. Als DSH-2-Äquivalente gelten u. a. DSD II (C1 in allen Teilen), Feststellungsprüfung, Goethe-Zertifikat C2 (GDS), ÖSD C2, telc Deutsch C1 Hochschule und TestDaF mit mindestens 4 Punkten in allen Teilen. Ab dem Sommersemester 2027 werden kombinierte Zertifikate nicht mehr anerkannt.\n\nFür den Wechsel in den bedingt zugelassenen Studiengang lädst du den Nachweis in Marvin hoch: bis **30. September** (Wintersemester) bzw. **31. März** (Sommersemester). Die Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor (ausländische HZB):** zulassungsfreie Studiengänge über uni-assist; Zulassung und Einschreibung laufen danach über Marvin.\n- **Master (ausländischer Abschluss):** über uni-assist; Fristen je nach Studiengang.\n- **Bachelorfristen (ausländische HZB):** Wintersemester NC 01.06.–15.07., ohne NC 01.06.–15.08.; Sommersemester NC 01.11.–15.01., ohne NC 01.11.–15.02.\n- **Kosten:** Marburg erhebt weder Studien- noch Langzeitstudiengebühren. Der Semesterbeitrag im Wintersemester 2026/27 beträgt 424,80 €.\n- **Visum:** Die offizielle Seite äußert sich nicht zum Visum; eine bedingte Zulassung ist keine Visumgarantie."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Marburg bietet auch Masterstudiengänge mit Unterrichtssprache Englisch an. Zwei Beispiele laut offizieller Seite:\n\n- [Economics of the Middle East (M.Sc.)](https://www.uni-marburg.de/de/studium/nach-dem-abschluss/masterstudium/masterstudiengaenge/m-emea)\n- [Functional Materials (M.Sc.)](https://www.uni-marburg.de/de/fb13/studium/studiengaenge/master)\n\nDie bedingte Zulassung ist für deutschsprachige Studiengänge beschrieben; englischsprachige Studiengänge legen ihre Sprachanforderungen selbst fest."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die Universität Marburg eine bedingte Zulassung?",
+                            "Ja, an Bewerber*innen ohne ausreichende Deutschkenntnisse, die sich über uni-assist für zulassungsfreie Studiengänge bewerben. Du wirst zwei Semester als Sprachstudent*in eingeschrieben; laut Universität ist dein Platz in dieser Zeit reserviert. Für NC-Studiengänge gilt der Weg nicht."
+                        ],
+                        [
+                            "Bietet die Universität den Sprachkurs an, und kostet er etwas?",
+                            "Du meldest dich selbst zu einem Kurs an und zahlst ihn; es gibt externe und interne Anbieter, Kontakt ist das Studienkolleg Mittelhessen. Der Semesterbeitrag kommt hinzu."
+                        ],
+                        [
+                            "Bis wann muss ich den Sprachnachweis einreichen?",
+                            "Für den bedingt zugelassenen Studiengang bis 30. September (Wintersemester) bzw. 31. März (Sommersemester) in Marvin. Das nötige DSH-Niveau hängt vom Studiengang ab."
+                        ],
+                        [
+                            "Erhebt Marburg Studiengebühren?",
+                            "Nein. Laut offizieller Seite erhebt Marburg weder Studien- noch Langzeitstudiengebühren. Der Semesterbeitrag im Wintersemester 2026/27 beträgt 424,80 €."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die zulassungsfreien Programme an und prüfe den Umfang auf der [offiziellen Seite zu Deutschkenntnissen](https://www.uni-marburg.de/de/studium/im-studium/formalitaeten/sprachnachweise/deutschkenntnisse). Andere Hochschulen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "technische-universitat-clausthal-q447354": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/conditional-admission",
+                "label": {
+                    "tr": "Resmî sayfa: Conditional Admission",
+                    "en": "Official page: conditional admission",
+                    "de": "Offizielle Seite: bedingte Zulassung"
+                }
+            },
+            "sources": [
+                "https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/conditional-admission",
+                "https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/application",
+                "https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/admission-requirements"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TU Clausthal: Şartlı Kabul, Başvuru Şartları ve Tarihler",
+                    "seo_description": "TU Clausthal, Almanca programlara yurt dışından başvuranlara şartlı kabul ve partner okulda yoğun kurs kaydı veriyor. DSH/TestDaF, HISinOne, tarihler.",
+                    "intro": "**Technische Universität Clausthal (TU Clausthal)**, Harz Dağları'ndaki Clausthal-Zellerfeld'de madencilik, malzeme ve enerji alanlarıyla bilinen küçük bir teknik üniversite. Bu sayfa önce Almancası yetersiz adaylar için var olan yolu, sonra başvuru şartlarını, portalı ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: TU Clausthal, yurt dışından **Almanca bir programa** başvuran adaylara **şartlı kabul (Conditional Admission)** veriyor ve aynı anda partner dil okulunda ücretli bir yoğun Almanca kursu için kayıt onayı gönderiyor.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "HISinOne (üniversitenin kendi portalı)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Şartlı kabul (Almanca programlar)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "TU Clausthal'in resmî sayfası şöyle diyor: Almanca bir programa başvurursan *\"programa şartlı kabul ve aynı anda bir Almanca yoğun kursu için kayıt onayı\"* alırsın.\n\n- Kurslar partner dil okullarında (Volkshochschule Goslar ve Sprachenzentrum Mariaspring) yapılır ve **ücretlidir**.\n- Almanya içinden başvuranlar bu yoldan yararlanamaz.\n- Almancan çok azsa kabul sonraki dönem için verilebilir: sayfadaki örneğe göre kış dönemine A2 ile başvuran birinin kabulü sonraki yaz dönemi için düzenlenir.\n- Resmî sayfa bölüm yerinin ayrılıp ayrılmadığını ya da kurs sonrası yeniden başvuru gerekip gerekmediğini yazmıyor; bunu başvurmadan önce uluslararası ofise sor.\n\nDiğer üniversitelerle karşılaştırma: [Almanya'da şartlı kabul veren üniversiteler](/tr/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Dil şartı ve kabul edilen belgeler",
+                            "Programa doğrudan kabul için DSH-2 veya DSH-3, TestDaF (TDN 4) ya da eşdeğer tanınmış bir Almanca sınavı gerekir. Şartlı kabulde bu belgeyi kurs sonunda sunarsın; resmî sayfa bunun için bir tarih vermiyor.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans ve yüksek lisans:** TU Clausthal'in kendi başvuru portalı **HISinOne** üzerinden; başvuru için bir işlem ücreti alınıyor. Resmî sayfalar uni-assist'ten söz etmiyor.\n- **Almanca programlar (şartlı kabul başvuruları dahil):** kış dönemi için 1 Ekim (yüksek lisans) ve 15 Ekim (lisans); yaz dönemi için 1 Nisan (yüksek lisans) ve 15 Nisan (lisans).\n- **İngilizce programlar:** kış dönemi 15 Temmuz, yaz dönemi 15 Ocak.\n- **Ücret:** resmî sayfaya göre dönem ücreti toplam 242 € (sayfa hangi dönem için geçerli olduğunu belirtmiyor). Öğrenim kredisi tükendikten sonra dönem başına 500 € uzun süreli öğrenim ücreti alınıyor.\n- **Vize:** resmî sayfaya göre bu belgelerle vizeye başvurabilirsin; şartlı kabulü almadan vize randevusu almaman isteniyor. Bu bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "TU Clausthal'de tamamen İngilizce yüksek lisans programları da var:\n\n- [Petroleum Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/petroleum-engineering-master) — öğretim dili İngilizce\n- [Mining Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/mining-engineering-master) — tamamen İngilizce\n\nŞartlı kabul yolu yalnız **Almanca** programlar içindir; İngilizce programların tarihleri ve dil şartı farklıdır."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "TU Clausthal şartlı kabul veriyor mu?",
+                            "Evet. Yurt dışından Almanca bir programa başvuranlar, programa şartlı kabulle birlikte partner dil okulunda ücretli yoğun Almanca kursu için kayıt onayı alır. Almanya içinden başvuranlar bu yoldan yararlanamaz."
+                        ],
+                        [
+                            "Şartlı kabul için başvuru nereden yapılır?",
+                            "TU Clausthal'in kendi portalı HISinOne üzerinden. Almanca programlar için son tarihler kış dönemi 1 Ekim (yüksek lisans) ve 15 Ekim (lisans), yaz dönemi 1 Nisan ve 15 Nisan."
+                        ],
+                        [
+                            "Kurs sonunda hangi belge gerekiyor?",
+                            "Programa tam kabul için DSH-2 veya DSH-3, TestDaF (TDN 4) ya da eşdeğer tanınmış bir Almanca sınavı."
+                        ],
+                        [
+                            "İngilizce programlar için de şartlı kabul var mı?",
+                            "Hayır. Şartlı kabul yolu Almanca programlar için tanımlanmış; İngilizce programların başvuru tarihleri de farklı (kış 15 Temmuz, yaz 15 Ocak)."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden Almanca programları incele ve koşulları [TU Clausthal'in resmî şartlı kabul sayfasından](https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/conditional-admission) teyit et. Diğer üniversiteler için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "TU Clausthal: Conditional Admission, Admission Requirements and Deadlines",
+                    "seo_description": "TU Clausthal gives applicants from abroad conditional admission to German-taught programmes plus an intensive course at a partner school. Deadlines.",
+                    "intro": "**Technische Universität Clausthal (TU Clausthal)** is a small technical university in Clausthal-Zellerfeld in the Harz mountains, known for mining, materials and energy. This page first explains the route for applicants whose German is not yet sufficient, then admission requirements, the portal and deadlines, based on the official pages.\n\nShort answer: TU Clausthal gives applicants from abroad for a **German-taught programme** **conditional admission** and, at the same time, a registration confirmation for a fee-based intensive German course at a partner language school.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "HISinOne (the university's own portal)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "Conditional admission (German-taught programmes)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "TU Clausthal's official page says that if you apply for a German-taught programme, *\"you will receive conditional admission to the program and, at the same time, confirmation of registration for a German language intensive course.\"*\n\n- The courses take place at partner language schools (Volkshochschule Goslar and Sprachenzentrum Mariaspring) and are **fee-based**.\n- Applicants who apply from within Germany are not considered for this route.\n- With very little German, admission may be issued for a later semester: in the page's example, someone applying for the winter semester with A2 is admitted for the following summer semester.\n- The official page does not say whether the degree place is reserved or whether you must reapply after the course; ask the International Office before you apply.\n\nTo compare with other universities, see [universities offering conditional admission in Germany](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and accepted certificates",
+                            "Direct admission to the programme requires DSH-2 or DSH-3, TestDaF (TDN 4) or an equivalent recognised German exam. With conditional admission you hand in this certificate after the course; the official page gives no deadline for it.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's and Master's:** through TU Clausthal's own application portal **HISinOne**; a processing fee applies. The official pages do not mention uni-assist.\n- **German-taught programmes (including conditional admission):** winter semester 1 October (Master's) and 15 October (Bachelor's); summer semester 1 April (Master's) and 15 April (Bachelor's).\n- **English-taught programmes:** 15 July (winter) and 15 January (summer).\n- **Costs:** according to the official page, the semester fee is €242 in total (the page does not say which semester it refers to). After the study credit is used up, a long-term fee of €500 per semester applies.\n- **Visa:** according to the official page you may apply for a visa with these documents, and you should not book a visa appointment before you have conditional admission. This is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "TU Clausthal also offers Master's programmes taught entirely in English:\n\n- [Petroleum Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/petroleum-engineering-master) — language of instruction English\n- [Mining Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/mining-engineering-master) — taught entirely in English\n\nThe conditional admission route applies to **German-taught** programmes only; English-taught programmes have different deadlines and language requirements."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does TU Clausthal offer conditional admission?",
+                            "Yes. Applicants from abroad for a German-taught programme receive conditional admission together with a registration confirmation for a fee-based intensive German course at a partner school. Applicants from within Germany are not considered."
+                        ],
+                        [
+                            "Where do I apply for conditional admission?",
+                            "Through TU Clausthal's own portal, HISinOne. Deadlines for German-taught programmes are 1 October (Master's) and 15 October (Bachelor's) for the winter semester, and 1 April and 15 April for the summer semester."
+                        ],
+                        [
+                            "Which certificate do I need after the course?",
+                            "For full admission: DSH-2 or DSH-3, TestDaF (TDN 4) or an equivalent recognised German exam."
+                        ],
+                        [
+                            "Is there conditional admission for English-taught programmes?",
+                            "No. The route is defined for German-taught programmes; English-taught programmes also have different deadlines (15 July for winter, 15 January for summer)."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the German-taught programmes in the programmes tab on this page and confirm the conditions on [TU Clausthal's official conditional admission page](https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/conditional-admission). For other universities, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "TU Clausthal: Bedingte Zulassung, Zulassungsvoraussetzungen und Fristen",
+                    "seo_description": "Die TU Clausthal vergibt Bewerbungen aus dem Ausland eine bedingte Zulassung zu deutschsprachigen Studiengängen plus Intensivkurs. HISinOne, Fristen.",
+                    "intro": "Die **Technische Universität Clausthal (TU Clausthal)** ist eine kleine technische Universität in Clausthal-Zellerfeld im Harz, bekannt für Bergbau, Werkstoffe und Energie. Diese Seite erklärt zuerst den Weg für Bewerber*innen, deren Deutsch noch nicht reicht, und danach Zulassungsvoraussetzungen, Portal und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Die TU Clausthal vergibt Bewerber*innen aus dem Ausland für einen **deutschsprachigen Studiengang** eine **bedingte Zulassung** und zugleich eine Anmeldebestätigung für einen kostenpflichtigen Deutsch-Intensivkurs an einer Partnersprachschule.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "HISinOne (eigenes Portal der Universität)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Bedingte Zulassung (deutschsprachige Studiengänge)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Laut offizieller Seite erhältst du bei einer Bewerbung für einen deutschsprachigen Studiengang eine bedingte Zulassung zum Studiengang und gleichzeitig eine Anmeldebestätigung für einen Deutschkurs.\n\n- Die Kurse finden an Partnersprachschulen statt (Volkshochschule Goslar und Sprachenzentrum Mariaspring) und sind **kostenpflichtig**.\n- Wer sich aus Deutschland bewirbt, wird für diesen Weg nicht berücksichtigt.\n- Bei sehr geringen Deutschkenntnissen kann die Zulassung für ein späteres Semester gelten: Im Beispiel der Seite wird jemand, der sich mit A2 zum Wintersemester bewirbt, zum folgenden Sommersemester zugelassen.\n- Ob der Studienplatz reserviert ist oder ob du dich nach dem Kurs neu bewerben musst, sagt die offizielle Seite nicht; frag vor der Bewerbung beim International Office nach.\n\nZum Vergleich: [bedingte Zulassung an deutschen Hochschulen](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und anerkannte Nachweise",
+                            "Für die direkte Zulassung brauchst du DSH-2 oder DSH-3, TestDaF (TDN 4) oder eine gleichwertige anerkannte Deutschprüfung. Bei bedingter Zulassung reichst du diesen Nachweis nach dem Kurs ein; eine Frist dafür nennt die offizielle Seite nicht.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor und Master:** über das eigene Bewerbungsportal **HISinOne**; es fällt eine Bearbeitungsgebühr an. uni-assist wird auf den offiziellen Seiten nicht erwähnt.\n- **Deutschsprachige Studiengänge (auch bedingte Zulassung):** Wintersemester 1. Oktober (Master) und 15. Oktober (Bachelor); Sommersemester 1. April (Master) und 15. April (Bachelor).\n- **Englischsprachige Studiengänge:** 15. Juli (Winter) und 15. Januar (Sommer).\n- **Kosten:** Laut offizieller Seite beträgt der Semesterbeitrag insgesamt 242 € (das Semester nennt die Seite nicht). Nach Verbrauch des Studienguthabens fallen 500 € Langzeitstudiengebühren pro Semester an.\n- **Visum:** Laut offizieller Seite kannst du mit diesen Unterlagen grundsätzlich ein Visum beantragen; einen Visumtermin sollst du erst nach Erhalt der bedingten Zulassung vereinbaren. Eine Visumgarantie ist das nicht."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die TU Clausthal bietet auch vollständig englischsprachige Masterstudiengänge an:\n\n- [Petroleum Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/petroleum-engineering-master) — Unterrichtssprache Englisch\n- [Mining Engineering (M.Sc.)](https://www.studiengaenge.tu-clausthal.de/master-studiengaenge/mining-engineering-master) — vollständig auf Englisch\n\nDie bedingte Zulassung gilt nur für **deutschsprachige** Studiengänge; englischsprachige Studiengänge haben andere Fristen und Sprachanforderungen."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die TU Clausthal eine bedingte Zulassung?",
+                            "Ja. Bewerber*innen aus dem Ausland für deutschsprachige Studiengänge erhalten eine bedingte Zulassung und eine Anmeldebestätigung für einen kostenpflichtigen Deutsch-Intensivkurs an einer Partnerschule. Bewerbungen aus Deutschland werden nicht berücksichtigt."
+                        ],
+                        [
+                            "Wo bewerbe ich mich für die bedingte Zulassung?",
+                            "Über das eigene Portal der TU Clausthal, HISinOne. Fristen für deutschsprachige Studiengänge: 1. Oktober (Master) und 15. Oktober (Bachelor) im Winter, 1. April und 15. April im Sommer."
+                        ],
+                        [
+                            "Welchen Nachweis brauche ich nach dem Kurs?",
+                            "Für die volle Zulassung DSH-2 oder DSH-3, TestDaF (TDN 4) oder eine gleichwertige anerkannte Deutschprüfung."
+                        ],
+                        [
+                            "Gibt es die bedingte Zulassung auch für englischsprachige Studiengänge?",
+                            "Nein. Der Weg ist für deutschsprachige Studiengänge beschrieben; englischsprachige Studiengänge haben zudem andere Fristen (15. Juli im Winter, 15. Januar im Sommer)."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die deutschsprachigen Programme an und prüfe die Bedingungen auf der [offiziellen Seite zur bedingten Zulassung](https://www.izc.tu-clausthal.de/en/ways-to-clausthal/degree-seeking-students/conditional-admission). Andere Hochschulen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "technische-universitat-dortmund-q685557": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://international.tu-dortmund.de/studienbewerber/-innen/bewerbung/deutschkurs/",
+                "label": {
+                    "tr": "Resmî sayfa: Almanca kursu ve şartlı kabul",
+                    "en": "Official page: German course and conditional admission",
+                    "de": "Offizielle Seite: Deutschkurs und bedingte Zulassung"
+                }
+            },
+            "sources": [
+                "https://international.tu-dortmund.de/studienbewerber/-innen/bewerbung/deutschkurs/",
+                "https://international.tu-dortmund.de/en/international-applicants/application/german-language-course/",
+                "https://international.tu-dortmund.de/en/international-applicants/before-the-application/language-requirements/"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TU Dortmund: Başvuru Şartları, Dil Kursuna Kabul ve Tarihler",
+                    "seo_description": "TU Dortmund, C1'i olmayan adaylara bölüm kabulü değil dil kursuna erişim belgesi veriyor. B1/B2 ve NC kuralları, kabul edilen belgeler, uni-assist, tarihler.",
+                    "intro": "**Technische Universität Dortmund (TU Dortmund)**, Ruhr bölgesinde yaklaşık 30.000 öğrencisi olan büyük bir devlet üniversitesi. Bu sayfa önce C1 belgesi olmayan adaylar için resmî yolu, sonra kabul edilen belgeleri, başvuru kanalını ve tarihleri anlatıyor.\n\nKısa cevap: TU Dortmund, B1'e kadar Almancası olan adaylara bölüme kabul değil, **dil kursuna erişim belgesi** veriyor. B2'si olan ve NC'siz bir programa başvuran aday ise C1 belgesini kayıtta sunabiliyor. Dil kursu öğrencileri bölüm için **yeniden başvurmak** zorunda.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "uni-assist (lisans ve yüksek lisans)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Dil kursuna erişim belgesi; bölüm için yeniden başvuru"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "TU Dortmund'un resmî sayfası (Almanca sürüm esas alınarak) üç durumu ayırıyor:\n\n- **B1'e kadar Almanca:** dil kursuna erişim belgesi (*Zugangsbescheid zum Sprachkurs*) alırsın.\n- **B2 + NC'siz program:** Almanca belgesini programa kayıt sırasında sunabilirsin. Sunamazsan başvurduğun dönem ve sonraki dönem dil kursu öğrencisi olarak kaydolabilirsin.\n- **B2 + NC'li program:** C1 belgesini başvuru süresi bitmeden (kış dönemi için 15 Temmuz) sunmazsan yalnız dil kursuna erişim belgesi alırsın; belge sonradan teslim edilemez.\n\nÖnemli sınırlar:\n\n- Dil kursu öğrencisi olarak kayıt **isteğe bağlıdır**; derslere ve sınavlara giremezsin.\n- TU Dortmund hazırlık Almanca kursu vermez; kursu dışarıda (Almanya dışında da olabilir) bulursun.\n- Yeterli dil belgesini aldıktan sonra bölüm için **süresi içinde yeniden başvurman** gerekir.\n\nDiğer üniversitelerle karşılaştırma: [Almanya'da şartlı kabul veren üniversiteler](/tr/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Dil şartı ve kabul edilen belgeler",
+                            "TU Dortmund'un kabul ettiği Almanca belgeler arasında DSH (2. veya 3. seviye), toplamda en az 16 TDN'li TestDaF ve telc Deutsch C1 Hochschule var. Belge normalde başvuru süresi bitmeden sunulur; NC'siz programlarda kayıt aşamasında sunulabilir.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans ve yüksek lisans (AB dışı):** uni-assist üzerinden (\"My assist\"); başvuru durumu ve karar sonra TU Dortmund Campus Portal'da görünür.\n- **Kış dönemi:** Almanca programlar yaklaşık Mart ortası – 15 Temmuz; İngilizce programlar yaklaşık Ocak başı – 15 Mayıs.\n- **Yaz dönemi:** tüm programlar yaklaşık Kasım başı – 15 Ocak. Bazı yüksek lisans programlarının (ör. Raumplanung) tarihleri farklı.\n- **Ücret:** 2026/27 kış dönemi Semesterbeitrag 339,70 €. Genel bir öğrenim ücreti yok; resmî sayfaya göre birkaç program ayrıca öğrenim ücreti alıyor.\n- **Vize:** dil kursu sayfası vize konusunda bir şey söylemiyor; dil kursu erişim belgesi bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "TU Dortmund'da İngilizce yüksek lisans programları da var. Resmî program sayfalarına göre iki örnek:\n\n- [Medical Physics and Physics of Living Systems (M.Sc.)](https://physik.tu-dortmund.de/en/study/courses-and-qualification/master-of-medical-physics/) — tamamen İngilizce\n- [Data Science in Sports and Health (M.Sc.)](https://sport.kmst.tu-dortmund.de/en/studies/degree-programs/master-data-science-in-sports-and-health/)\n\nİngilizce programların kış dönemi son tarihi Almanca programlardan erken (15 Mayıs); dil kursu yolu Almanca programlarla ilgilidir."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "TU Dortmund şartlı kabul veriyor mu?",
+                            "Bölüme değil, dil kursuna erişim belgesi veriyor. B1'e kadar Almancası olanlar bu belgeyi alır; dil kursu öğrencileri derslere giremez ve dil belgesinden sonra bölüm için yeniden başvurur."
+                        ],
+                        [
+                            "B2 ile başvurursam ne olur?",
+                            "NC'siz bir programa B2 ile başvurursan C1 belgesini kayıtta sunabilirsin. NC'li programda C1 başvuru süresi bitmeden (kış dönemi için 15 Temmuz) sunulmalı; yoksa yalnız dil kursuna erişim belgesi alırsın."
+                        ],
+                        [
+                            "TU Dortmund hangi Almanca belgeleri kabul ediyor?",
+                            "DSH (2. veya 3. seviye), toplamda en az 16 TDN'li TestDaF ve telc Deutsch C1 Hochschule bunlardan bazıları."
+                        ],
+                        [
+                            "Başvuru uni-assist üzerinden mi?",
+                            "Evet. AB dışı adaylar lisans ve yüksek lisans için uni-assist üzerinden başvurur; karar daha sonra TU Dortmund Campus Portal'da görünür."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programının NC'li olup olmadığını kontrol et ve yolu [TU Dortmund'un resmî Almanca kursu sayfasından](https://international.tu-dortmund.de/studienbewerber/-innen/bewerbung/deutschkurs/) teyit et. Diğer üniversiteler için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "TU Dortmund: Admission Requirements, German Course Admission and Deadlines",
+                    "seo_description": "TU Dortmund gives applicants without C1 access to a German course, not degree admission. B1/B2 and NC rules, accepted certificates, uni-assist, deadlines.",
+                    "intro": "**Technische Universität Dortmund (TU Dortmund)** is a large public university in the Ruhr region with around 30,000 students. This page first explains the official route for applicants without a C1 certificate, then accepted certificates, the application channel and deadlines.\n\nShort answer: with German up to B1, TU Dortmund gives you a **letter of access to a German course**, not degree admission. Applicants with B2 who apply for an admission-free programme can hand in the C1 certificate at enrolment. German-course students must **apply again** for the degree.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "uni-assist (Bachelor's and Master's)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "Access to a German course; new application for the degree"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "TU Dortmund's official page (we follow the German version, which is clearer than the English one) distinguishes three cases:\n\n- **German up to B1:** you receive a letter of access to a language course (*Zugangsbescheid zum Sprachkurs*).\n- **B2 and an admission-free programme:** you may hand in the German certificate at enrolment. If that is not possible, you can enrol as a German-course student for the semester you applied for and the following one.\n- **B2 and an NC programme:** if you do not submit C1 by the application deadline (15 July for the winter semester), you only receive access to a language course; the certificate cannot be submitted later.\n\nImportant limits:\n\n- Enrolment as a German-course student is **voluntary**, and you cannot attend lectures or take exams.\n- TU Dortmund offers no preparatory German courses; you find a course elsewhere (it can also be outside Germany).\n- Once you have sufficient proof of German, you must **apply again within the deadline**.\n\nTo compare with other universities, see [universities offering conditional admission in Germany](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and accepted certificates",
+                            "Certificates TU Dortmund accepts include the DSH (level 2 or 3), TestDaF with at least 16 TDN in total and telc Deutsch C1 Hochschule. The certificate is normally due by the application deadline; for admission-free programmes it can be submitted at enrolment.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's and Master's (non-EU):** through uni-assist (\"My assist\"); your status and the decision then appear in TU Dortmund's Campus Portal.\n- **Winter semester:** German-taught programmes approx. mid-March to 15 July; English-taught programmes approx. early January to 15 May.\n- **Summer semester:** all programmes approx. early November to 15 January. Some Master's programmes (e.g. Raumplanung) have different deadlines.\n- **Costs:** the semester contribution for winter semester 2026/27 is €339.70. There is no general tuition fee; according to the official page a few programmes charge tuition.\n- **Visa:** the German-course page says nothing about visas; a letter of access to a language course is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "TU Dortmund also runs English-taught Master's programmes. Two examples from the official programme pages:\n\n- [Medical Physics and Physics of Living Systems (M.Sc.)](https://physik.tu-dortmund.de/en/study/courses-and-qualification/master-of-medical-physics/) — taught entirely in English\n- [Data Science in Sports and Health (M.Sc.)](https://sport.kmst.tu-dortmund.de/en/studies/degree-programs/master-data-science-in-sports-and-health/)\n\nThe winter-semester deadline for English-taught programmes is earlier (15 May); the German-course route concerns German-taught programmes."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does TU Dortmund offer conditional admission?",
+                            "It gives access to a German course, not admission to the degree. Applicants with German up to B1 receive this letter; German-course students cannot attend lectures and apply again for the degree once they have the certificate."
+                        ],
+                        [
+                            "What happens if I apply with B2?",
+                            "For an admission-free programme you can hand in the C1 certificate at enrolment. For an NC programme, C1 must be submitted by the application deadline (15 July for the winter semester); otherwise you only receive access to a language course."
+                        ],
+                        [
+                            "Which German certificates does TU Dortmund accept?",
+                            "Among others the DSH (level 2 or 3), TestDaF with at least 16 TDN in total and telc Deutsch C1 Hochschule."
+                        ],
+                        [
+                            "Do I apply through uni-assist?",
+                            "Yes. Non-EU applicants apply for Bachelor's and Master's programmes through uni-assist; the decision later appears in TU Dortmund's Campus Portal."
+                        ]
+                    ],
+                    "cta": "**Next step:** check in the programmes tab on this page whether your programme is NC-restricted, then confirm the route on [TU Dortmund's official German course page](https://international.tu-dortmund.de/studienbewerber/-innen/bewerbung/deutschkurs/). For other universities, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "TU Dortmund: Zulassungsvoraussetzungen, Zugang zum Deutschkurs und Fristen",
+                    "seo_description": "Die TU Dortmund erteilt ohne C1 einen Zugangsbescheid zum Sprachkurs, keine Studienzulassung. B1/B2- und NC-Regeln, Nachweise, uni-assist, Fristen.",
+                    "intro": "Die **Technische Universität Dortmund (TU Dortmund)** ist eine große staatliche Universität im Ruhrgebiet mit rund 30.000 Studierenden. Diese Seite erklärt zuerst den offiziellen Weg für Bewerber*innen ohne C1-Nachweis und danach anerkannte Nachweise, Bewerbungsweg und Fristen.\n\nKurz gesagt: Mit Deutsch bis B1 erhältst du an der TU Dortmund einen **Zugangsbescheid zum Sprachkurs**, keine Studienzulassung. Wer B2 hat und sich für einen zulassungsfreien Studiengang bewirbt, kann den C1-Nachweis bei der Einschreibung einreichen. Deutschkursstudierende **bewerben sich erneut** für das Studium.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "uni-assist (Bachelor und Master)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Zugang zum Sprachkurs; neue Bewerbung für das Studium"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Die offizielle Seite der TU Dortmund unterscheidet drei Fälle:\n\n- **Deutsch bis B1:** Du erhältst einen *Zugangsbescheid zum Sprachkurs*.\n- **B2 und zulassungsfreier Studiengang:** Du kannst den Deutschnachweis bei der Einschreibung einreichen. Klappt das nicht, kannst du dich für das beworbene und das folgende Semester als Deutschkursstudent*in einschreiben.\n- **B2 und NC-Studiengang:** Reichst du bis zur Bewerbungsfrist (Wintersemester: 15. Juli) keinen C1-Nachweis ein, erhältst du nur einen Zugangsbescheid zum Sprachkurs; ein Nachreichen ist nicht möglich.\n\nWichtige Grenzen:\n\n- Die Einschreibung als Deutschkursstudent*in ist **freiwillig**; Lehrveranstaltungen und Prüfungen sind nicht möglich.\n- Die TU Dortmund bietet keine studienvorbereitenden Deutschkurse an; den Kurs suchst du dir selbst (auch außerhalb Deutschlands möglich).\n- Mit ausreichendem Deutschnachweis musst du dich **form- und fristgerecht neu bewerben**.\n\nZum Vergleich: [bedingte Zulassung an deutschen Hochschulen](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und anerkannte Nachweise",
+                            "Anerkannt werden u. a. die DSH (Stufe 2 oder 3), TestDaF mit insgesamt mindestens 16 TDN und telc Deutsch C1 Hochschule. Der Nachweis ist normalerweise bis zur Bewerbungsfrist fällig; bei zulassungsfreien Studiengängen kann er bei der Einschreibung eingereicht werden.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor und Master (Nicht-EU):** über uni-assist (\"My assist\"); Status und Entscheidung erscheinen danach im Campus Portal der TU Dortmund.\n- **Wintersemester:** deutschsprachige Studiengänge etwa Mitte März bis 15. Juli; englischsprachige etwa Anfang Januar bis 15. Mai.\n- **Sommersemester:** alle Studiengänge etwa Anfang November bis 15. Januar. Einige Masterstudiengänge (z. B. Raumplanung) haben andere Fristen.\n- **Kosten:** Der Semesterbeitrag im Wintersemester 2026/27 beträgt 339,70 €. Allgemeine Studiengebühren gibt es nicht; laut offizieller Seite erheben einzelne Studiengänge Gebühren.\n- **Visum:** Die Deutschkurs-Seite äußert sich nicht zum Visum; ein Zugangsbescheid zum Sprachkurs ist keine Visumgarantie."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die TU Dortmund bietet auch englischsprachige Masterstudiengänge an. Zwei Beispiele laut offizieller Studiengangsseite:\n\n- [Medical Physics and Physics of Living Systems (M.Sc.)](https://physik.tu-dortmund.de/en/study/courses-and-qualification/master-of-medical-physics/) — vollständig auf Englisch\n- [Data Science in Sports and Health (M.Sc.)](https://sport.kmst.tu-dortmund.de/en/studies/degree-programs/master-data-science-in-sports-and-health/)\n\nDie Winterfrist für englischsprachige Studiengänge ist früher (15. Mai); der Deutschkurs-Weg betrifft deutschsprachige Studiengänge."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die TU Dortmund eine bedingte Zulassung?",
+                            "Sie erteilt einen Zugangsbescheid zum Sprachkurs, keine Studienzulassung. Bewerber*innen mit Deutsch bis B1 erhalten diesen Bescheid; Deutschkursstudierende besuchen keine Lehrveranstaltungen und bewerben sich mit dem Nachweis neu."
+                        ],
+                        [
+                            "Was passiert, wenn ich mich mit B2 bewerbe?",
+                            "Bei einem zulassungsfreien Studiengang kannst du den C1-Nachweis bei der Einschreibung einreichen. Bei einem NC-Studiengang muss C1 bis zur Bewerbungsfrist (Wintersemester: 15. Juli) vorliegen; sonst erhältst du nur einen Zugangsbescheid zum Sprachkurs."
+                        ],
+                        [
+                            "Welche Deutschnachweise erkennt die TU Dortmund an?",
+                            "Unter anderem die DSH (Stufe 2 oder 3), TestDaF mit insgesamt mindestens 16 TDN und telc Deutsch C1 Hochschule."
+                        ],
+                        [
+                            "Bewerbe ich mich über uni-assist?",
+                            "Ja. Bewerber*innen aus Nicht-EU-Staaten bewerben sich für Bachelor und Master über uni-assist; die Entscheidung erscheint später im Campus Portal der TU Dortmund."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Prüfe im Reiter Studiengänge, ob dein Studiengang zulassungsbeschränkt ist, und kläre den Weg auf der [offiziellen Deutschkurs-Seite der TU Dortmund](https://international.tu-dortmund.de/studienbewerber/-innen/bewerbung/deutschkurs/). Andere Hochschulen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "universitat-hamburg-q156725": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.uni-hamburg.de/campuscenter/bewerbung/international/studium-mit-abschluss/sprachkenntnisse/deutschkenntnisse.html",
+                "label": {
+                    "tr": "Resmî sayfa: Almanca bilgisi",
+                    "en": "Official page: German language skills",
+                    "de": "Offizielle Seite: Deutschkenntnisse"
+                }
+            },
+            "sources": [
+                "https://www.uni-hamburg.de/campuscenter/bewerbung/international/studium-mit-abschluss/sprachkenntnisse/deutschkenntnisse.html",
+                "https://www.uni-hamburg.de/campuscenter/bewerbung/fristen-termine.html",
+                "https://www.uni-hamburg.de/campuscenter/bewerbung/international/master.html"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Hamburg: Başvuru Şartları, Almanca Belgesi ve Tarihler",
+                    "seo_description": "Universität Hamburg şartlı kabul ve hazırlık Almanca kursu sunmuyor; dil belgesi kayıt süresi içinde verilmeli. Kabul edilen belgeler, STiNE ve tarihler.",
+                    "intro": "**Universität Hamburg**, Almanya'nın en büyük üniversitelerinden biri; ana kampüsü şehir merkezine yakın Rotherbaum'da. Bu sayfa önce Almancası yetersiz adayların en çok sorduğu soruyu, sonra kabul edilen belgeleri, başvuru portalını ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: Universität Hamburg'da **şartlı kabul ya da hazırlık Almanca kursu yolu yok**. Almanca programlar için dil belgesini kayıt başvurusuyla birlikte, kayıt süresi içinde sunman gerekiyor; sonradan teslim edilemiyor.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "STiNE (üniversitenin kendi portalı)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Hazırlık yolu yok · belge kayıtta zorunlu"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "Resmî sayfa açık: *\"An der Universität Hamburg werden keine vorbereitenden Deutschkurse für Studieninteressierte angeboten.\"* Üniversitenin Studienkolleg Propädeutikum programı da 2025'ten itibaren sunulmuyor.\n\n- Almanca dil belgesi **kayıt başvurusuyla birlikte, kayıt süresi içinde** sunulmalı. Lisans sayfasına göre kayıt süresi bittikten sonra sonradan teslim mümkün değil.\n- Bu kural tüm lisans, Staatsexamen ve Almanca yüksek lisans programları için geçerli.\n- İngilizce yüksek lisans programları dil şartını program bazında belirliyor.\n\nYani başvurmadan önce dil belgeni tamamlamış olman gerekiyor. Belge olmadan başvurabileceğin üniversiteleri [şartlı kabul karşılaştırmamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Kabul edilen Almanca belgeler",
+                            "- DSH-2 veya DSH-3\n- TestDaF: toplam 15 TDN; üç bölümde en az 4, bir bölümde en az 3\n- Goethe-Zertifikat C1, telc Deutsch C1 Hochschule\n\nBelge en fazla **3 yıllık** olmalı; kış dönemi için 1 Haziran, yaz dönemi için 1 Aralık esas alınır. Sınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans:** uluslararası adaylar doğrudan üniversitenin **STiNE** portalından başvurur. Yabancı okul diplomasının tanınması (Anerkennungsvermerk) Hamburg'un başvuru portalından ücretsiz istenir; uni-assist VPD kabul edilir ama zorunlu değildir.\n- **Yüksek lisans:** yine Hamburg'un başvuru portalı üzerinden.\n- **Kış dönemi tarihleri:** lisans ve Staatsexamen 01.06–15.07; yüksek lisans 01.05–15.06; uluslararası yüksek lisans programları 15.02–31.03. **Yaz dönemi:** 01.12–15.01.\n- **Ücret:** Hamburg 2012/13 kış döneminden beri öğrenim ücreti almıyor. 2026/27 kış dönemi Semesterbeitrag 402 €.\n- **Vize:** resmî sayfa, başvuru süresi biter bitmez başvuru onayıyla \"öğrenim ve öğrenim yeri arama\" vizesine başvurmayı öneriyor. Bu bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Hamburg'da öğretim dili İngilizce olan yüksek lisans programları da var. Resmî başvuru bilgi belgelerine göre iki örnek:\n\n- [Physics (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/physics.pdf)\n- [Data Science and Artificial Intelligence (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/224-Bewerbungsinfo-MSc-Data-Science-and-Artificial-Intelligence.pdf)\n\nBu programların dil şartı ve tarihleri program sayfasında yazar; uluslararası yüksek lisansların başvuru dönemi daha erken."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "Universität Hamburg şartlı kabul veriyor mu?",
+                            "Hayır. Resmî sayfaya göre Hamburg hazırlık Almanca kursu sunmuyor ve Almanca belge kayıt başvurusuyla, kayıt süresi içinde verilmeli; sonradan teslim mümkün değil."
+                        ],
+                        [
+                            "Hamburg hangi Almanca belgeleri kabul ediyor?",
+                            "DSH-2 veya DSH-3, toplam 15 TDN'li TestDaF (üç bölüm en az 4, bir bölüm en az 3), Goethe C1 ve telc C1 Hochschule. Belge en fazla 3 yıllık olmalı."
+                        ],
+                        [
+                            "Başvuru uni-assist üzerinden mi?",
+                            "Hayır. Lisans başvuruları üniversitenin STiNE portalından yapılıyor; uni-assist VPD kabul ediliyor ama zorunlu değil. Yüksek lisans başvuruları da Hamburg'un portalı üzerinden."
+                        ],
+                        [
+                            "Hamburg'da öğrenim ücreti var mı?",
+                            "Hayır, 2012/13 kış döneminden beri öğrenim ücreti alınmıyor. 2026/27 kış dönemi Semesterbeitrag 402 €."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programları incele ve dil şartını [Hamburg'un resmî Almanca bilgisi sayfasından](https://www.uni-hamburg.de/campuscenter/bewerbung/international/studium-mit-abschluss/sprachkenntnisse/deutschkenntnisse.html) teyit et. Belgesiz başvuru yolları için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "University of Hamburg: Admission Requirements, German Certificate and Deadlines",
+                    "seo_description": "The University of Hamburg offers no conditional admission or German courses; the certificate is due at enrolment. Accepted certificates, STiNE, deadlines.",
+                    "intro": "**Universität Hamburg** is one of Germany's largest universities, with its main campus in Rotherbaum near the city centre. This page first answers the question applicants without enough German ask most often, then covers accepted certificates, the application portal and deadlines based on the official pages.\n\nShort answer: Universität Hamburg has **no conditional admission and no preparatory German course**. For German-taught programmes, you must submit your language certificate with the enrolment application within the enrolment period; it cannot be handed in later.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "STiNE (the university's own portal)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No preparatory route · certificate required at enrolment"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "The official page is clear: *\"An der Universität Hamburg werden keine vorbereitenden Deutschkurse für Studieninteressierte angeboten.\"* The university's Studienkolleg Propädeutikum has also not been offered since 2025.\n\n- The German certificate must be submitted **with the enrolment application, within the enrolment period**. According to the Bachelor's page, it cannot be handed in after the enrolment period has ended.\n- This applies to all Bachelor's, Staatsexamen and German-taught Master's programmes.\n- English-taught Master's programmes set their own language requirements per programme.\n\nIn practice you need your certificate before you apply. Universities where you can apply without one are listed in our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Accepted German certificates",
+                            "- DSH-2 or DSH-3\n- TestDaF: 15 TDN in total, at least 4 in three parts and at least 3 in one part\n- Goethe-Zertifikat C1, telc Deutsch C1 Hochschule\n\nThe certificate must be no more than **3 years old**, counted to 1 June (winter semester) or 1 December (summer semester). Our [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's:** international applicants apply directly through the university's **STiNE** portal. Recognition of a foreign school certificate (Anerkennungsvermerk) is requested free of charge in Hamburg's application portal; a uni-assist VPD is accepted but not required.\n- **Master's:** also through Hamburg's application portal.\n- **Winter semester deadlines:** Bachelor's and Staatsexamen 1 June – 15 July; Master's 1 May – 15 June; international Master's programmes 15 February – 31 March. **Summer semester:** 1 December – 15 January.\n- **Costs:** Hamburg has charged no tuition fees since winter semester 2012/13. The semester contribution for winter semester 2026/27 is €402.\n- **Visa:** the official page recommends applying for a visa for study and study-place search with your application confirmation right after the application deadline. This is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Hamburg also offers Master's programmes taught in English. Two examples from the official application information sheets:\n\n- [Physics (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/physics.pdf)\n- [Data Science and Artificial Intelligence (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/224-Bewerbungsinfo-MSc-Data-Science-and-Artificial-Intelligence.pdf)\n\nTheir language requirements and deadlines are listed on the programme pages; international Master's programmes have an earlier application period."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does the University of Hamburg offer conditional admission?",
+                            "No. According to the official page, Hamburg offers no preparatory German courses, and the German certificate must be submitted with the enrolment application within the enrolment period; it cannot be handed in later."
+                        ],
+                        [
+                            "Which German certificates does Hamburg accept?",
+                            "DSH-2 or DSH-3, TestDaF with 15 TDN in total (at least 4 in three parts, at least 3 in one), Goethe C1 and telc C1 Hochschule. The certificate must be no more than 3 years old."
+                        ],
+                        [
+                            "Do I apply through uni-assist?",
+                            "No. Bachelor's applications go through the university's STiNE portal; a uni-assist VPD is accepted but not required. Master's applications also go through Hamburg's portal."
+                        ],
+                        [
+                            "Are there tuition fees in Hamburg?",
+                            "No, there have been no tuition fees since winter semester 2012/13. The semester contribution for winter semester 2026/27 is €402."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the programmes tab on this page and confirm the language requirement on [Hamburg's official page on German skills](https://www.uni-hamburg.de/campuscenter/bewerbung/international/studium-mit-abschluss/sprachkenntnisse/deutschkenntnisse.html). For routes without a certificate, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "Universität Hamburg: Zulassungsvoraussetzungen, Deutschnachweis und Fristen",
+                    "seo_description": "Die Uni Hamburg bietet keine bedingte Zulassung und keine Deutschkurse; der Nachweis ist bei der Immatrikulation fällig. Nachweise, STiNE, Fristen.",
+                    "intro": "Die **Universität Hamburg** gehört zu den größten Universitäten Deutschlands; der Hauptcampus liegt in Rotherbaum nahe der Innenstadt. Diese Seite beantwortet zuerst die häufigste Frage von Bewerber*innen ohne ausreichendes Deutsch und danach anerkannte Nachweise, Bewerbungsportal und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: An der Universität Hamburg gibt es **keine bedingte Zulassung und keine vorbereitenden Deutschkurse**. Für deutschsprachige Studiengänge reichst du den Sprachnachweis mit dem Immatrikulationsantrag innerhalb der Immatrikulationsfrist ein; ein Nachreichen ist nicht möglich.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "STiNE (eigenes Portal der Universität)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Kein Vorbereitungsweg · Nachweis bei der Immatrikulation"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Die offizielle Seite ist eindeutig: *\"An der Universität Hamburg werden keine vorbereitenden Deutschkurse für Studieninteressierte angeboten.\"* Auch das Propädeutikum des Studienkollegs wird seit 2025 nicht mehr angeboten.\n\n- Der Deutschnachweis muss **mit dem Immatrikulationsantrag innerhalb der Immatrikulationsfrist** eingereicht werden. Laut Bachelorseite ist ein Nachreichen nach Ende der Immatrikulationsfrist nicht möglich.\n- Das gilt für alle Bachelor-, Staatsexamens- und deutschsprachigen Masterstudiengänge.\n- Englischsprachige Masterstudiengänge legen ihre Sprachanforderungen je Studiengang fest.\n\nPraktisch brauchst du den Nachweis also vor der Bewerbung. Hochschulen, an denen du dich ohne Nachweis bewerben kannst, zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Anerkannte Deutschnachweise",
+                            "- DSH-2 oder DSH-3\n- TestDaF: insgesamt 15 TDN, drei Teile mindestens 4, ein Teil mindestens 3\n- Goethe-Zertifikat C1, telc Deutsch C1 Hochschule\n\nDer Nachweis darf höchstens **3 Jahre alt** sein, gerechnet bis 1. Juni (Wintersemester) bzw. 1. Dezember (Sommersemester). Die Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor:** Internationale Studieninteressierte bewerben sich direkt über das Online-Portal **STiNE**. Den Anerkennungsvermerk für die ausländische Schulqualifikation beantragst du kostenfrei im Bewerbungsportal; eine uni-assist-VPD wird akzeptiert, ist aber nicht nötig.\n- **Master:** ebenfalls über das Bewerbungsportal der Universität Hamburg.\n- **Fristen Wintersemester:** Bachelor und Staatsexamen 01.06.–15.07.; Master 01.05.–15.06.; internationale Masterstudiengänge 15.02.–31.03. **Sommersemester:** 01.12.–15.01.\n- **Kosten:** Seit dem Wintersemester 2012/13 werden keine Studiengebühren erhoben. Der Semesterbeitrag im Wintersemester 2026/27 beträgt 402 €.\n- **Visum:** Die offizielle Seite empfiehlt, direkt nach Ablauf der Bewerbungsfrist mit der Bewerberbestätigung ein Visum zum Studium und zur Studienplatzsuche zu beantragen. Eine Visumgarantie ist das nicht."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die Universität Hamburg bietet auch Masterstudiengänge mit Unterrichtssprache Englisch an. Zwei Beispiele laut offizieller Bewerbungsinfo:\n\n- [Physics (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/physics.pdf)\n- [Data Science and Artificial Intelligence (M.Sc.)](https://www.uni-hamburg.de/onTEAM/studiengaenge/224-Bewerbungsinfo-MSc-Data-Science-and-Artificial-Intelligence.pdf)\n\nSprachanforderungen und Fristen stehen auf den Studiengangsseiten; internationale Masterstudiengänge haben einen früheren Bewerbungszeitraum."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die Universität Hamburg eine bedingte Zulassung?",
+                            "Nein. Laut offizieller Seite bietet die Universität keine vorbereitenden Deutschkurse an, und der Deutschnachweis muss mit dem Immatrikulationsantrag innerhalb der Immatrikulationsfrist vorliegen; ein Nachreichen ist nicht möglich."
+                        ],
+                        [
+                            "Welche Deutschnachweise erkennt Hamburg an?",
+                            "DSH-2 oder DSH-3, TestDaF mit insgesamt 15 TDN (drei Teile mindestens 4, ein Teil mindestens 3), Goethe C1 und telc C1 Hochschule. Der Nachweis darf höchstens 3 Jahre alt sein."
+                        ],
+                        [
+                            "Läuft die Bewerbung über uni-assist?",
+                            "Nein. Bachelorbewerbungen laufen über das STiNE-Portal der Universität; eine uni-assist-VPD wird akzeptiert, ist aber nicht nötig. Auch Masterbewerbungen laufen über das Portal der Universität Hamburg."
+                        ],
+                        [
+                            "Gibt es in Hamburg Studiengebühren?",
+                            "Nein, seit dem Wintersemester 2012/13 nicht mehr. Der Semesterbeitrag im Wintersemester 2026/27 beträgt 402 €."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die Programme an und prüfe die Sprachanforderung auf der [offiziellen Seite zu Deutschkenntnissen](https://www.uni-hamburg.de/campuscenter/bewerbung/international/studium-mit-abschluss/sprachkenntnisse/deutschkenntnisse.html). Wege ohne Nachweis zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "technische-universitat-braunschweig-q734324": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "table",
+                "video",
+                "faq",
+                "cta",
+                "related_forum_topics",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [
+                8
+            ],
+            "official": {
+                "url": "https://www.tu-braunschweig.de/en/international-students/application",
+                "label": {
+                    "tr": "Resmî sayfa: uluslararası başvuru",
+                    "en": "Official page: international application",
+                    "de": "Offizielle Seite: internationale Bewerbung"
+                }
+            },
+            "sources": [
+                "https://www.tu-braunschweig.de/learning-german/preparatory-courses",
+                "https://www.tu-braunschweig.de/en/international-students/application",
+                "https://www.tu-braunschweig.de/en/application",
+                "https://www.tu-braunschweig.de/en/fmb/students/bachelors-degree-programmes/sustainable-engineering-of-products-and-processes"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TU Braunschweig: Başvuru Şartları, Hazırlık Almanca Kursları ve Tarihler",
+                    "seo_description": "TU Braunschweig şartlı kabul vermiyor; ücretli hazırlık Almanca kursları kabul anlamına gelmiyor. Dil belgesi kuralları, kendi portal ve tarihler.",
+                    "intro": "**Technische Universität Braunschweig**, Almanya'nın en eski teknik üniversitesi ve TU9 üyesi. Bu sayfa önce Almancası yetersiz adaylar için resmî durumu, sonra kabul edilen belgeleri, başvuru portalını ve tarihleri anlatıyor.\n\nKısa cevap: TU Braunschweig **şartlı kabul vermiyor**. Üniversitenin ücretli hazırlık Almanca kursları var, ama bu kurslar için verilen başvuru onayı açıkça *\"keine Zulassung … keine bedingte Zulassung\"*. NC'siz programlara B2 kursuna devam ederken başvurabilirsin; kayıt için dil belgesi şart.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "TU Braunschweig'ın kendi portalı (uni-assist değil)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Şartlı kabul yok · ücretli hazırlık kursları"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "TU Braunschweig'ın dil merkezi A1'den C1'e kadar **ücretli hazırlık Almanca kursları** (Studienvorbereitende Deutschkurse) ve TestDaF hazırlığı veriyor. Resmî sayfadaki uyarılar net:\n\n- Bu kurslar için verilen başvuru onayı (Bewerbungsbestätigung) **kabul değil ve şartlı kabul değil**.\n- Kurs katılımcıları üniversiteye **öğrenci olarak kaydedilmez**.\n- B2 kursuna devam ederken bölüme normal başvuru yapabilirsin.\n\nTek program istisnası: iki dilli **Sustainable Engineering of Products and Processes (B.Sc.)** en az A2 Almancayla kabul ediyor; dil şartı (DSH-1 veya TestDaF 4x3) 3. dönemin sonuna kadar tamamlanmalı.\n\nGerçek şartlı kabul veren üniversiteleri [karşılaştırma sayfamızda](/tr/universities/collections/conditional-admission-universities) görebilirsin."
+                        ],
+                        [
+                            "Dil şartı ve kabul edilen belgeler",
+                            "Kabul edilen belgeler: her bölümde 4'lü TestDaF, telc Deutsch C1 Hochschule, DSH-2, DSD II, Goethe-Zertifikat C2 ve Feststellungsprüfung. Belge başvuru süresi bitmeden sunulur. **NC'siz programlarda** başvuru anında en az B2 seviyesinde bir kursa devam ettiğini göstermen yeterli; ancak resmî sayfaya göre belge olmadan **kayıt mümkün değil**.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Lisans ve yüksek lisans:** TU Braunschweig'ın kendi başvuru portalı üzerinden; yabancı belgelerin değerlendirmesi için 75 € ücret alınıyor. Resmî başvuru sayfası uni-assist'ten söz etmiyor.\n- **Lisans ve Almanca yüksek lisans:** kış dönemi 1 Haziran – 15 Temmuz, yaz dönemi 1 Aralık – 15 Ocak.\n- **İngilizce / iki dilli uluslararası yüksek lisans:** kış dönemi 1 Şubat – 15 Mart, yaz dönemi 1 Ağustos – 15 Eylül.\n- **Hazırlık kursu ücretleri:** A1, A2, B1 ve C1 kursları 980 €, B2 kursu 1.400 €, TestDaF hazırlığı 560 €; TestDaF sınavı 210 € (harici); kurs başvuru onayı 75 €.\n- **Dönem ücreti:** 2026/27 kış dönemi Semesterbeitrag 472,50 €. Standart süre artı altı dönemi aşanlardan dönem başına 500 € uzun süreli öğrenim ücreti alınıyor.\n- **Vize:** kurs başvuru onayıyla *öğrenime hazırlık vizesine* başvurulabiliyor; kurslardan sonra bir üniversiteye kaydolursan bu vize öğrenim vizesine çevrilebiliyor. Bu bir vize garantisi değildir."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "TU Braunschweig'da tamamen İngilizce yüksek lisans programları da var:\n\n- [Data Science (M.Sc.)](https://www.tu-braunschweig.de/en/data-science/prospectivestudents) — tamamen İngilizce\n- [Solar System Physics (M.Sc.)](https://www.tu-braunschweig.de/en/prospective-students/solar-system-physics) — tamamen İngilizce\n\nUluslararası yüksek lisans programlarının başvuru dönemi Almanca programlardan farklı."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "TU Braunschweig şartlı kabul veriyor mu?",
+                            "Hayır. Hazırlık Almanca kursları için verilen başvuru onayı resmî olarak ne kabul ne de şartlı kabul. Tek istisna iki dilli SEPP lisans programı; A2 ile kabul ediyor."
+                        ],
+                        [
+                            "Hazırlık Almanca kursları ne kadar?",
+                            "A1, A2, B1 ve C1 kursları 980 €, B2 kursu 1.400 €, TestDaF hazırlığı 560 €; TestDaF sınavı 210 € ve kurs başvuru onayı 75 €."
+                        ],
+                        [
+                            "Dil belgem olmadan başvurabilir miyim?",
+                            "NC'siz programlarda başvuru anında en az B2 seviyesinde bir kursa devam ettiğini göstermen yeterli, ama kayıt için dil belgesi şart. Diğer programlarda belge başvuru süresi bitmeden sunulmalı."
+                        ],
+                        [
+                            "Başvuru uni-assist üzerinden mi?",
+                            "Hayır. TU Braunschweig'a lisans ve yüksek lisans başvuruları üniversitenin kendi portalından yapılıyor; yabancı belgelerin değerlendirmesi için 75 € alınıyor."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programının NC'li olup olmadığını kontrol et ve başvuru koşullarını [TU Braunschweig'ın resmî uluslararası başvuru sayfasından](https://www.tu-braunschweig.de/en/international-students/application) teyit et. Gerçek şartlı kabul veren üniversiteler için [karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "TU Braunschweig: Admission Requirements, Preparatory German Courses and Deadlines",
+                    "seo_description": "TU Braunschweig offers no conditional admission; its paid preparatory German courses are not an admission. Certificate rules, own portal, deadlines.",
+                    "intro": "**Technische Universität Braunschweig** is Germany's oldest technical university and a TU9 member. This page first explains the official position for applicants whose German is not yet sufficient, then accepted certificates, the application portal and deadlines.\n\nShort answer: TU Braunschweig **does not offer conditional admission**. The university runs fee-based preparatory German courses, but the application confirmation for them is explicitly *\"keine Zulassung … keine bedingte Zulassung\"*. For admission-free programmes you can apply while attending a B2 course; enrolment requires the certificate.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "TU Braunschweig's own portal (not uni-assist)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No conditional admission · fee-based preparatory courses"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "TU Braunschweig's language centre runs **fee-based preparatory German courses** (Studienvorbereitende Deutschkurse) from A1 to C1, plus TestDaF preparation. The official page is explicit:\n\n- The application confirmation (Bewerbungsbestätigung) for these courses is **not an admission and not a conditional admission**.\n- Course participants are **not enrolled as students** of the university.\n- While attending a B2 course you can submit a regular application for a degree programme.\n\nOne programme exception: the bilingual **Sustainable Engineering of Products and Processes (B.Sc.)** admits students with at least A2 German; the language requirement (DSH-1 or TestDaF 4x3) must be met by the end of the third semester.\n\nUniversities that do offer conditional admission are listed in our [comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and accepted certificates",
+                            "Accepted certificates: TestDaF with 4 in every section, telc Deutsch C1 Hochschule, DSH-2, DSD II, Goethe-Zertifikat C2 and the Feststellungsprüfung. The certificate is due by the application deadline. For **admission-free programmes**, it is enough to show that you are attending at least a B2 course when you apply; according to the official page, however, **enrolment is not possible** without the certificate.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Bachelor's and Master's:** through TU Braunschweig's own application portal; assessing foreign qualifications costs €75. The official application page does not mention uni-assist.\n- **Bachelor's and German-taught Master's:** winter semester 1 June – 15 July, summer semester 1 December – 15 January.\n- **English-taught or bilingual international Master's:** winter semester 1 February – 15 March, summer semester 1 August – 15 September.\n- **Preparatory course fees:** A1, A2, B1 and C1 courses €980 each, B2 course €1,400, TestDaF preparation €560; TestDaF exam €210 (external); course application confirmation €75.\n- **Semester fee:** the semester contribution for winter semester 2026/27 is €472.50. Long-term study fees of €500 per semester apply after the standard period plus six semesters.\n- **Visa:** the course application confirmation can be used to apply for a visa for study preparation, which can be converted into a study visa if you enrol at a university after the courses. This is not a visa guarantee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "TU Braunschweig also offers Master's programmes taught entirely in English:\n\n- [Data Science (M.Sc.)](https://www.tu-braunschweig.de/en/data-science/prospectivestudents) — entirely in English\n- [Solar System Physics (M.Sc.)](https://www.tu-braunschweig.de/en/prospective-students/solar-system-physics) — entirely in English\n\nInternational Master's programmes have a different application period from German-taught programmes."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does TU Braunschweig offer conditional admission?",
+                            "No. The application confirmation for the preparatory German courses is officially neither an admission nor a conditional admission. The only exception is the bilingual SEPP Bachelor's programme, which admits students with A2."
+                        ],
+                        [
+                            "How much do the preparatory German courses cost?",
+                            "A1, A2, B1 and C1 courses cost €980 each, the B2 course €1,400 and TestDaF preparation €560; the TestDaF exam is €210 and the course application confirmation €75."
+                        ],
+                        [
+                            "Can I apply without my language certificate?",
+                            "For admission-free programmes it is enough to show that you are attending at least a B2 course when you apply, but enrolment requires the certificate. For other programmes the certificate is due by the application deadline."
+                        ],
+                        [
+                            "Do I apply through uni-assist?",
+                            "No. Bachelor's and Master's applications to TU Braunschweig go through the university's own portal; assessing foreign qualifications costs €75."
+                        ]
+                    ],
+                    "cta": "**Next step:** check in the programmes tab on this page whether your programme is NC-restricted and confirm the conditions on [TU Braunschweig's official international application page](https://www.tu-braunschweig.de/en/international-students/application). For universities that do offer conditional admission, see our [comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "TU Braunschweig: Zulassungsvoraussetzungen, studienvorbereitende Deutschkurse und Fristen",
+                    "seo_description": "Die TU Braunschweig vergibt keine bedingte Zulassung; die kostenpflichtigen Deutschkurse sind keine Zulassung. Nachweisregeln, eigenes Portal, Fristen.",
+                    "intro": "Die **Technische Universität Braunschweig** ist die älteste Technische Hochschule Deutschlands und Mitglied der TU9. Diese Seite erklärt zuerst die offizielle Lage für Bewerber*innen, deren Deutsch noch nicht reicht, und danach anerkannte Nachweise, Bewerbungsportal und Fristen.\n\nKurz gesagt: Die TU Braunschweig vergibt **keine bedingte Zulassung**. Es gibt kostenpflichtige studienvorbereitende Deutschkurse, aber die Bewerbungsbestätigung dafür ist ausdrücklich *\"keine Zulassung … keine bedingte Zulassung\"*. Für zulassungsfreie Studiengänge kannst du dich während eines B2-Kurses bewerben; für die Einschreibung brauchst du den Nachweis.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "Eigenes Portal der TU Braunschweig (nicht uni-assist)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Keine bedingte Zulassung · kostenpflichtige Vorbereitungskurse"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Das Sprachenzentrum der TU Braunschweig bietet **kostenpflichtige studienvorbereitende Deutschkurse** von A1 bis C1 sowie TestDaF-Vorbereitung an. Die offizielle Seite ist eindeutig:\n\n- Die Bewerbungsbestätigung für diese Kurse ist **keine Zulassung und keine bedingte Zulassung**.\n- Kursteilnehmende werden **nicht als Studierende eingeschrieben**.\n- Sobald du einen B2-Kurs besuchst, kannst du dich regulär für ein Studium bewerben.\n\nEine Ausnahme auf Studiengangsebene: Der zweisprachige Bachelor **Sustainable Engineering of Products and Processes (B.Sc.)** lässt mit mindestens A2 zu; die Sprachanforderung (DSH-1 oder TestDaF 4x3) muss bis zum Ende des dritten Semesters erfüllt sein.\n\nHochschulen mit echter bedingter Zulassung zeigt unser [Vergleich](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und anerkannte Nachweise",
+                            "Anerkannt werden TestDaF mit 4 in allen Teilen, telc Deutsch C1 Hochschule, DSH-2, DSD II, Goethe-Zertifikat C2 und die Feststellungsprüfung. Der Nachweis ist bis zur Bewerbungsfrist fällig. Bei **zulassungsfreien Studiengängen** genügt bei der Bewerbung der Nachweis, dass du mindestens einen B2-Kurs besuchst; laut offizieller Seite ist eine **Einschreibung ohne Nachweis aber nicht möglich**.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bachelor und Master:** über das eigene Bewerbungsportal der TU Braunschweig; für die Bewertung ausländischer Zeugnisse fallen 75 € an. uni-assist wird auf der offiziellen Bewerbungsseite nicht erwähnt.\n- **Bachelor und deutschsprachiger Master:** Wintersemester 1. Juni – 15. Juli, Sommersemester 1. Dezember – 15. Januar.\n- **Englischsprachiger oder zweisprachiger internationaler Master:** Wintersemester 1. Februar – 15. März, Sommersemester 1. August – 15. September.\n- **Kursgebühren:** A1-, A2-, B1- und C1-Kurse je 980 €, B2-Kurs 1.400 €, TestDaF-Vorbereitung 560 €; TestDaF-Prüfung 210 € (extern); Bewerbungsbestätigung 75 €.\n- **Semesterbeitrag:** im Wintersemester 2026/27 472,50 €. Langzeitstudiengebühren von 500 € pro Semester fallen nach Regelstudienzeit plus sechs Semestern an.\n- **Visum:** Mit der Bewerbungsbestätigung kannst du ein Visum für die Studienvorbereitung beantragen; schreibst du dich nach den Kursen an einer Universität ein, kann es in ein Visum für das Studium umgewandelt werden. Eine Visumgarantie ist das nicht."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die TU Braunschweig bietet auch vollständig englischsprachige Masterstudiengänge an:\n\n- [Data Science (M.Sc.)](https://www.tu-braunschweig.de/en/data-science/prospectivestudents) — ausschließlich auf Englisch\n- [Solar System Physics (M.Sc.)](https://www.tu-braunschweig.de/en/prospective-students/solar-system-physics) — vollständig auf Englisch\n\nInternationale Masterstudiengänge haben einen anderen Bewerbungszeitraum als deutschsprachige."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die TU Braunschweig eine bedingte Zulassung?",
+                            "Nein. Die Bewerbungsbestätigung für die studienvorbereitenden Deutschkurse ist offiziell weder Zulassung noch bedingte Zulassung. Einzige Ausnahme ist der zweisprachige Bachelor SEPP, der mit A2 zulässt."
+                        ],
+                        [
+                            "Was kosten die studienvorbereitenden Deutschkurse?",
+                            "A1-, A2-, B1- und C1-Kurse je 980 €, der B2-Kurs 1.400 € und die TestDaF-Vorbereitung 560 €; die TestDaF-Prüfung kostet 210 € und die Bewerbungsbestätigung 75 €."
+                        ],
+                        [
+                            "Kann ich mich ohne Sprachnachweis bewerben?",
+                            "Bei zulassungsfreien Studiengängen genügt bei der Bewerbung der Besuch eines B2-Kurses, für die Einschreibung brauchst du aber den Nachweis. Bei anderen Studiengängen muss er bis zur Bewerbungsfrist vorliegen."
+                        ],
+                        [
+                            "Bewerbe ich mich über uni-assist?",
+                            "Nein. Bachelor- und Masterbewerbungen an der TU Braunschweig laufen über das eigene Portal; die Bewertung ausländischer Zeugnisse kostet 75 €."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Prüfe im Reiter Studiengänge, ob dein Studiengang zulassungsbeschränkt ist, und kläre die Bedingungen auf der [offiziellen Seite zur internationalen Bewerbung](https://www.tu-braunschweig.de/en/international-students/application). Hochschulen mit bedingter Zulassung zeigt unser [Vergleich](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "universitat-paderborn-q679134": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "cost_of_living",
+                "places",
+                "section",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [
+                6
+            ],
+            "official": {
+                "url": "https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/sprachliche-voraussetzungen",
+                "label": {
+                    "tr": "Resmî sayfa: dil şartları",
+                    "en": "Official page: language requirements",
+                    "de": "Offizielle Seite: sprachliche Voraussetzungen"
+                }
+            },
+            "sources": [
+                "https://www.uni-paderborn.de/en/zfs/dsh-courses",
+                "https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/sprachliche-voraussetzungen",
+                "https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/bewerbergruppen",
+                "https://www.uni-paderborn.de/studium/internationale-studierende/bewerbungsverfahren-fristen/bewerbungsfristen"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Paderborn: Başvuru Şartları, Dil Belgesi ve Tarihler",
+                    "seo_description": "Paderborn DSH kursunu kapattı; Almanca programlar DSH-2 veya TestDaF 4 istiyor. Programa göre uni-assist ya da üniversite portalı, tarihler.",
+                    "intro": "**Universität Paderborn**, Kuzey Ren-Vestfalya'da bilişim, mühendislik ve dijitalleşme alanlarıyla bilinen bir devlet üniversitesi. Bu sayfa önce Almancası yetersiz adaylar için güncel durumu, sonra dil şartını, başvuru kanallarını ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: Paderborn **DSH kursunu kapattı** ve artık kurs başvurusu kabul etmiyor. Almanca lisans ve yüksek lisans programları için DSH-2, TestDaF 4 ya da eşdeğer bir belge gerekiyor; şartlı kabul ya da dil kursuna kabul yolu yok.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "Programa göre üniversite portalı veya uni-assist"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "DSH kursu kapandı · belge gerekli"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "Paderborn'un dil merkezi sayfası: *\"Paderborn University is unfortunately discontinuing its DSH programme. Applications for DSH courses are therefore no longer possible.\"*\n\n- İstisna yalnız mülteci statüsünü belgeleyen ve Paderborn ya da çevresinde yaşayan kişiler için.\n- 2025/26 kış dönemi için zaten kabul almış olanlar kurslarına başlayabiliyor.\n- Almanca lisans ve yüksek lisans programlarına başvurmak için tanınmış bir Almanca belgesi gerekiyor; bunu **çalışmaya başlamadan önce** kanıtlaman gerekiyor.\n\nBelge olmadan başvurabileceğin üniversiteleri [şartlı kabul karşılaştırmamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Dil şartı ve kabul edilen belgeler",
+                            "Almanca programlar için kabul edilen belgeler: DSH-2, tüm bölümlerde 4'lü TestDaF, DSD II, Goethe-Zertifikat C2, telc Deutsch C1 Hochschule ve Feststellungsprüfung.\n\nİstisna: **International Economics and Management (M.Sc.)** Almanca ve İngilizce yürütülüyor; en az A2 Almanca isteniyor, eksik kalan Almanca toplam 240 saatlik kurslarla yüksek lisans bitmeden tamamlanmalı.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Başvuru adımları, tarihler ve ücretler",
+                            "- **Başvuru kanalı:** resmî sayfaya göre başvuru *üniversitenin başvuru portalı ya da uni-assist üzerinden* yapılıyor. AB dışı adaylar önce programın uni-assist listesinde olup olmadığına bakar; listede olmayan programlar için PAUL portalında ön inceleme (Vorabprüfung) istenir.\n- **uni-assist tarihleri:** Almanca programlar kış dönemi için 31 Mayıs, yaz dönemi için 15 Ocak; İngilizce programlar kış dönemi için 31 Mayıs, yaz dönemi için 30 Kasım.\n- **Ön inceleme (PAUL):** kış dönemi 15 Nisan – 31 Mayıs, yaz dönemi 1 Aralık – 15 Ocak.\n- **Ücret:** Paderborn öğrenim ücreti almıyor. 2026/27 kış dönemi toplam dönem ücreti 351,15 €."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Paderborn'da tamamen İngilizce yüksek lisans programları da var:\n\n- [Computer Science (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/computer-science-master) — öğretim dili İngilizce\n- [Additive Manufacturing (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/additive-manufacturing-master) — öğretim dili İngilizce; resmî sayfaya göre Almanca bilgisi gerekmiyor"
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "Paderborn şartlı kabul ya da dil kursu veriyor mu?",
+                            "Hayır. Paderborn DSH kursunu kapattı ve mülteci istisnası dışında kurs başvurusu kabul etmiyor. Almanca programlar için çalışmaya başlamadan önce tanınmış bir Almanca belgesi gerekiyor."
+                        ],
+                        [
+                            "Paderborn uni-assist üyesi mi?",
+                            "Başvuru programa göre değişiyor. Resmî sayfaya göre başvuru üniversitenin portalı ya da uni-assist üzerinden yapılıyor; uni-assist listesinde olmayan programlar için PAUL portalında ön inceleme gerekiyor."
+                        ],
+                        [
+                            "Almanca programlar için hangi belge gerekiyor?",
+                            "DSH-2, tüm bölümlerde 4'lü TestDaF, DSD II, Goethe C2, telc C1 Hochschule veya Feststellungsprüfung."
+                        ],
+                        [
+                            "Paderborn öğrenim ücreti alıyor mu?",
+                            "Hayır. 2026/27 kış dönemi toplam dönem ücreti 351,15 €."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programını seç, ardından başvuru kanalını ve dil şartını [Paderborn'un resmî dil şartları sayfasından](https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/sprachliche-voraussetzungen) teyit et. Belgesiz başvuru yolları için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "Paderborn University: Admission Requirements, German Certificate and Deadlines",
+                    "seo_description": "Paderborn has discontinued its DSH course; German-taught programmes need DSH-2 or TestDaF 4. University portal or uni-assist by programme, deadlines.",
+                    "intro": "**Paderborn University** is a public university in North Rhine-Westphalia known for computer science, engineering and digitalisation. This page first explains the current situation for applicants whose German is not yet sufficient, then the language requirement, application channels and deadlines based on the official pages.\n\nShort answer: Paderborn has **discontinued its DSH course** and no longer accepts course applications. German-taught Bachelor's and Master's programmes require DSH-2, TestDaF 4 or an equivalent certificate; there is no conditional admission or German-course route.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "University portal or uni-assist, depending on the programme"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "DSH course discontinued · certificate required"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "Paderborn's language centre states: *\"Paderborn University is unfortunately discontinuing its DSH programme. Applications for DSH courses are therefore no longer possible.\"*\n\n- The only exception is for people with proven refugee status who already live in or near Paderborn.\n- Students already admitted for winter semester 2025/26 can still start their courses.\n- To apply for German-taught Bachelor's and Master's programmes you need a recognised German certificate, which you must prove **before you start your studies**.\n\nUniversities where you can apply without a certificate are listed in our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language requirement and accepted certificates",
+                            "Accepted certificates for German-taught programmes: DSH-2, TestDaF with 4 in all parts, DSD II, Goethe-Zertifikat C2, telc Deutsch C1 Hochschule and the Feststellungsprüfung.\n\nException: **International Economics and Management (M.Sc.)** is taught in German and English. It requires at least A2 German, and missing German must be acquired through courses totalling 240 hours before completing the degree.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Application steps, deadlines and costs",
+                            "- **Application channel:** according to the official page, you apply *through the university's applicant portal or through uni-assist*. Non-EU applicants first check whether their programme is on the uni-assist list; programmes not on it require a preliminary review (Vorabprüfung) in the PAUL portal.\n- **uni-assist deadlines:** German-taught programmes 31 May (winter) and 15 January (summer); English-taught programmes 31 May (winter) and 30 November (summer).\n- **Preliminary review (PAUL):** winter semester 15 April – 31 May, summer semester 1 December – 15 January.\n- **Costs:** Paderborn charges no tuition fees. The total semester fee for winter semester 2026/27 is €351.15."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Paderborn also offers Master's programmes taught entirely in English:\n\n- [Computer Science (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/computer-science-master) — language of study English\n- [Additive Manufacturing (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/additive-manufacturing-master) — language of study English; according to the official page no German is required"
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does Paderborn University offer conditional admission or a German course?",
+                            "No. Paderborn has discontinued its DSH course and, apart from a refugee exception, no longer accepts course applications. German-taught programmes require a recognised German certificate before you start."
+                        ],
+                        [
+                            "Does Paderborn use uni-assist?",
+                            "It depends on the programme. According to the official page you apply through the university's portal or through uni-assist; programmes not on the uni-assist list require a preliminary review in the PAUL portal."
+                        ],
+                        [
+                            "Which certificate do German-taught programmes require?",
+                            "DSH-2, TestDaF with 4 in all parts, DSD II, Goethe C2, telc C1 Hochschule or the Feststellungsprüfung."
+                        ],
+                        [
+                            "Does Paderborn charge tuition fees?",
+                            "No. The total semester fee for winter semester 2026/27 is €351.15."
+                        ]
+                    ],
+                    "cta": "**Next step:** choose your programme in the programmes tab on this page, then confirm the application channel and language requirement on [Paderborn's official language requirements page](https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/sprachliche-voraussetzungen). For routes without a certificate, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "Universität Paderborn: Zulassungsvoraussetzungen, Deutschnachweis und Fristen",
+                    "seo_description": "Paderborn hat sein DSH-Programm eingestellt; deutschsprachige Studiengänge verlangen DSH-2 oder TestDaF 4. Portal oder uni-assist, Fristen.",
+                    "intro": "Die **Universität Paderborn** ist eine staatliche Universität in Nordrhein-Westfalen mit Schwerpunkten in Informatik, Ingenieurwissenschaften und Digitalisierung. Diese Seite erklärt zuerst die aktuelle Lage für Bewerber*innen, deren Deutsch noch nicht reicht, und danach Sprachanforderung, Bewerbungswege und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Paderborn hat sein **DSH-Programm eingestellt** und nimmt keine Kursbewerbungen mehr an. Deutschsprachige Bachelor- und Masterstudiengänge verlangen DSH-2, TestDaF 4 oder einen gleichwertigen Nachweis; einen Weg über bedingte Zulassung oder Deutschkurs gibt es nicht.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "Je nach Studiengang Bewerberportal oder uni-assist"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "DSH-Programm eingestellt · Nachweis nötig"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Das Zentrum für Sprachlehre schreibt, dass die Universität Paderborn ihr DSH-Programm einstellt und Bewerbungen für DSH-Kurse daher nicht mehr möglich sind.\n\n- Ausgenommen sind nur Personen mit nachgewiesenem Flüchtlingsstatus, die bereits in Paderborn oder Umgebung wohnen.\n- Wer für das Wintersemester 2025/26 bereits zugelassen wurde, kann den Kurs noch beginnen.\n- Für deutschsprachige Bachelor- und Masterstudiengänge brauchst du einen anerkannten Deutschnachweis, den du **vor Beginn des Studiums** erbringen musst.\n\nHochschulen, an denen du dich ohne Nachweis bewerben kannst, zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachanforderung und anerkannte Nachweise",
+                            "Für deutschsprachige Studiengänge anerkannt: DSH-2, TestDaF mit 4 in allen Teilen, DSD II, Goethe-Zertifikat C2, telc Deutsch C1 Hochschule und Feststellungsprüfung.\n\nAusnahme: **International Economics and Management (M.Sc.)** wird auf Deutsch und Englisch unterrichtet. Verlangt wird mindestens A2; fehlende Deutschkenntnisse müssen über Kurse im Umfang von 240 Stunden vor dem Masterabschluss erworben werden.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Bewerbungsschritte, Fristen und Kosten",
+                            "- **Bewerbungsweg:** Laut offizieller Seite erfolgt die Bewerbung zum Fachstudium *über das Bewerberportal der Universität Paderborn oder über uni-assist*. Bewerber*innen aus Nicht-EU-Staaten prüfen zuerst die uni-assist-Liste; für Studiengänge, die nicht darauf stehen, ist eine Vorabprüfung in PAUL nötig.\n- **Fristen uni-assist:** deutschsprachige Studiengänge 31. Mai (Winter) und 15. Januar (Sommer); englischsprachige 31. Mai (Winter) und 30. November (Sommer).\n- **Vorabprüfung (PAUL):** Wintersemester 15. April – 31. Mai, Sommersemester 1. Dezember – 15. Januar.\n- **Kosten:** Die Universität Paderborn erhebt keine Studiengebühren. Die Gebühren im Wintersemester 2026/27 belaufen sich insgesamt auf 351,15 €."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Paderborn bietet auch vollständig englischsprachige Masterstudiengänge an:\n\n- [Computer Science (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/computer-science-master) — Studiensprache Englisch\n- [Additive Manufacturing (M.Sc.)](https://www.uni-paderborn.de/en/studyoffer/course_of_study/additive-manufacturing-master) — Studiensprache Englisch; laut offizieller Seite sind keine Deutschkenntnisse erforderlich"
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Bietet die Universität Paderborn eine bedingte Zulassung oder einen Deutschkurs an?",
+                            "Nein. Das DSH-Programm wurde eingestellt; außer für Geflüchtete in der Region werden keine Kursbewerbungen mehr angenommen. Deutschsprachige Studiengänge verlangen vor Studienbeginn einen anerkannten Deutschnachweis."
+                        ],
+                        [
+                            "Nutzt Paderborn uni-assist?",
+                            "Das hängt vom Studiengang ab. Laut offizieller Seite bewirbst du dich über das Bewerberportal der Universität oder über uni-assist; für Studiengänge außerhalb der uni-assist-Liste ist eine Vorabprüfung in PAUL nötig."
+                        ],
+                        [
+                            "Welcher Nachweis gilt für deutschsprachige Studiengänge?",
+                            "DSH-2, TestDaF mit 4 in allen Teilen, DSD II, Goethe C2, telc C1 Hochschule oder Feststellungsprüfung."
+                        ],
+                        [
+                            "Erhebt Paderborn Studiengebühren?",
+                            "Nein. Die Gebühren im Wintersemester 2026/27 betragen insgesamt 351,15 €."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Wähle im Reiter Studiengänge deinen Studiengang und prüfe Bewerbungsweg und Sprachanforderung auf der [offiziellen Seite zu sprachlichen Voraussetzungen](https://www.uni-paderborn.de/studium/international-office/degree-students/bewerbungsverfahren-fristen/sprachliche-voraussetzungen). Wege ohne Nachweis zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        },
+        "rwth-aachen-university-partner-019de9ee": {
+            "expected_types": [
+                "hero",
+                "intro",
+                "quick_facts",
+                "section",
+                "section",
+                "cost_of_living",
+                "places",
+                "student_culture",
+                "video",
+                "faq",
+                "cta",
+                "gallery",
+                "programs_summary",
+                "external_links",
+                "schema_jsonld"
+            ],
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/zugangsvoraussetzungen/~zwyn/sprachkenntnisse/",
+                "label": {
+                    "tr": "Resmî sayfa: dil bilgisi şartları",
+                    "en": "Official page: language requirements",
+                    "de": "Offizielle Seite: Sprachkenntnisse"
+                }
+            },
+            "sources": [
+                "https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/zugangsvoraussetzungen/~zwyn/sprachkenntnisse/",
+                "https://www.rwth-aachen.de/cms/root/studium/Vor-dem-Studium/~egh/Einschreibung/",
+                "https://www.rwth-aachen.de/cms/root/studium/Vor-dem-Studium/~bsottx/Bewerbungs-und-Einschreibefrist/",
+                "https://www.rwth-aachen.de/cms/root/studium/im-studium/internationales/~inno/faq/"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "RWTH Aachen: Başvuru Şartları, Almanca Belgesi ve Master Başvurusu",
+                    "seo_description": "RWTH Aachen hazırlık Almanca kursu vermiyor; belge olmadan başvurulabilir ama C1 kayıt sonuna kadar gerekir. RWTHonline, lisans ve master tarihleri.",
+                    "intro": "**RWTH Aachen University**, Kuzey Ren-Vestfalya'nın Aachen şehrinde, mühendislik ve teknik bilimlerde Almanya'nın en tanınmış üniversitelerinden biri. Aynı şehirdeki **FH Aachen** ayrı bir kurumdur. Bu sayfa önce Almancası yetersiz adayların sorusunu, sonra başvuru kanalını, lisans ve yüksek lisans tarihlerini resmî sayfalara göre anlatıyor.\n\nKısa cevap: RWTH **şu anda hazırlık Almanca kursu vermiyor** ve şartlı kabul ya da dil kursuna kabul yolu sunmuyor. Dil belgen olmadan başvurabilirsin, ama Almanca belgeyi **kayıt süresi bitmeden** sunman gerekiyor.",
+                    "facts": [
+                        [
+                            "Başvuru yolu",
+                            "RWTHonline (üniversitenin kendi portalı)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Hazırlık kursu yok · belge kayıt süresi sonuna kadar"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: Almancan yetersizse hangi yol var?",
+                            "RWTH'nin dil şartları sayfası: *\"Die RWTH Aachen bietet ihren zukünftigen Studierenden derzeit leider keine studienvorbereitende Deutschkurse an.\"*\n\n- Uluslararası lisans adayları **kayıtta C1** seviyesinde Almanca kanıtlamalı.\n- NC'li ve NC'siz programlarda dil belgesi **kayıt süresinin sonuna kadar** sunulmalı. Yani belge olmadan başvurmak mümkün, ama bu bir dil kursu kabulü değil.\n- RWTH'nin uluslararası SSS sayfası ve bazı eski sayfalar hâlâ dil kursu katılımcılarının \"belirli koşullarda\" kaydolabileceğini yazıyor. Bu ifade, kursların şu anda sunulmadığını söyleyen güncel sayfalarla çelişiyor; kesin bilgi için üniversiteye yaz.\n\nGerçek şartlı kabul veren üniversiteleri [karşılaştırma sayfamızda](/tr/universities/collections/conditional-admission-universities) görebilirsin."
+                        ],
+                        [
+                            "Başvuru adımları ve tarihler: lisans ve yüksek lisans",
+                            "- **Lisans:** RWTHonline üzerinden çevrim içi başvuru. Uluslararası adaylar için tarihler: NC'siz programlar kış dönemi **20 Ekim**, yaz dönemi **20 Nisan**; NC'li programlar 15 Temmuz ve 15 Ocak.\n- **Yüksek lisans (AB dışı):** başvuru tamamen çevrim içi. NC'siz programlar kış dönemi için **1 Mart**, yaz dönemi için **1 Eylül**; NC'li programlar 15 Temmuz ve 15 Ocak.\n- Resmî sayfalar uni-assist'ten söz etmiyor; başvuru RWTH'nin kendi sistemi üzerinden.\n\nAlmanca belgeleri [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Ücretler ve oturum",
+                            "- **Ücret:** RWTH'nin resmî ifadesi: AB dışı uluslararası öğrencilerden ek öğrenim ücreti alınmayacak; yalnız normal Semesterbeitrag ödenir (tutar AStA sayfasında). Sayfa bu ifadenin hangi dönemden itibaren geçerli olduğunu belirtmiyor.\n- **Oturum:** resmî sayfaya göre AB dışından başvuranlar yalnız sınırlı bir süre, en fazla on iki ay, oturum izni alabiliyor."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "RWTH'de öğretim dili İngilizce olan yüksek lisans programları da var. Resmî program sayfalarına göre iki örnek:\n\n- [Data Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/~pzpc/data-science-m-sc/?lidx=1)\n- [Data Analytics & Decision Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/management-and-engineering-in-technology/~puiq/data-analytics-decision-science-m-sc/?lidx=1)\n\nKatalogumuzdaki RWTH programlarının dil etiketleri henüz resmî kaynakla doğrulanmadı; programın öğretim dilini resmî program sayfasından kontrol et."
+                        ]
+                    ],
+                    "faq_h": "Sıkça Sorulanlar",
+                    "faq": [
+                        [
+                            "RWTH Aachen şartlı kabul veriyor mu?",
+                            "Hayır. RWTH şu anda hazırlık Almanca kursu vermiyor ve şartlı kabul ya da dil kursuna kabul yolu sunmuyor. Belge olmadan başvurabilirsin, ama Almanca belgeyi kayıt süresi bitmeden sunman gerekir."
+                        ],
+                        [
+                            "RWTH'ya uni-assist üzerinden mi başvurulur?",
+                            "Resmî sayfalar uni-assist'ten söz etmiyor. Lisans başvuruları RWTHonline üzerinden, yüksek lisans başvuruları da çevrim içi olarak RWTH'nin kendi sistemi üzerinden yapılıyor."
+                        ],
+                        [
+                            "RWTH yüksek lisans başvuru tarihleri ne zaman?",
+                            "AB dışı adaylar için NC'siz programlarda kış dönemi 1 Mart, yaz dönemi 1 Eylül; NC'li programlarda 15 Temmuz ve 15 Ocak."
+                        ],
+                        [
+                            "RWTH öğrenim ücreti alıyor mu?",
+                            "Resmî sayfaya göre AB dışı öğrencilerden ek öğrenim ücreti alınmıyor; yalnız normal Semesterbeitrag ödeniyor."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden ilgilendiğin programları incele ve dil şartını [RWTH'nin resmî dil şartları sayfasından](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/zugangsvoraussetzungen/~zwyn/sprachkenntnisse/) teyit et. Belgesiz başvuru yolları için [şartlı kabul karşılaştırmamıza](/tr/universities/collections/conditional-admission-universities) bak."
+                },
+                "en": {
+                    "seo_title": "RWTH Aachen: Admission Requirements, German Certificate and Master's Application",
+                    "seo_description": "RWTH Aachen offers no preparatory German courses; you can apply without a certificate, but C1 is due by enrolment. RWTHonline, Bachelor's and Master's dates.",
+                    "intro": "**RWTH Aachen University** in Aachen, North Rhine-Westphalia, is one of Germany's best-known universities for engineering and technology. **FH Aachen**, in the same city, is a separate institution. This page first answers the question of applicants whose German is not yet sufficient, then covers the application channel and Bachelor's and Master's deadlines, based on the official pages.\n\nShort answer: RWTH **currently offers no preparatory German courses** and no conditional admission or German-course route. You can apply without your language certificate, but you must submit the German certificate **by the end of the enrolment period**.",
+                    "facts": [
+                        [
+                            "How to apply",
+                            "RWTHonline (the university's own portal)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No preparatory course · certificate by end of enrolment"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: which route is there if your German is not good enough?",
+                            "RWTH's language requirements page says: *\"Die RWTH Aachen bietet ihren zukünftigen Studierenden derzeit leider keine studienvorbereitende Deutschkurse an.\"*\n\n- International Bachelor's applicants must prove German at **C1 level at enrolment**.\n- For both NC and admission-free programmes, language certificates must be submitted **by the end of the enrolment period**. You can apply without the certificate, but this is not a German-course admission.\n- RWTH's international FAQ and some older pages still say that German-course participants can be enrolled \"under certain conditions\". This conflicts with the current pages stating that no courses are offered; contact the university for a definite answer.\n\nUniversities that do offer conditional admission are listed in our [comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Application steps and deadlines: Bachelor's and Master's",
+                            "- **Bachelor's:** online application through RWTHonline. International applicants: admission-free programmes **20 October** (winter) and **20 April** (summer); NC programmes 15 July and 15 January.\n- **Master's (non-EU):** the application is submitted entirely online. Admission-free programmes **1 March** (winter) and **1 September** (summer); NC programmes 15 July and 15 January.\n- The official pages do not mention uni-assist; applications go through RWTH's own system.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Fees and residence",
+                            "- **Fees:** RWTH states that there will be no additional tuition fees for international students from non-EU countries; only the regular semester contribution applies (amount on the AStA page). The page does not say from which semester this applies.\n- **Residence:** according to the official page, applicants from outside the EU can only receive a residence permit for a limited time, at most twelve months."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "RWTH also offers Master's programmes taught in English. Two examples from the official programme pages:\n\n- [Data Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/~pzpc/data-science-m-sc/?lidx=1)\n- [Data Analytics & Decision Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/management-and-engineering-in-technology/~puiq/data-analytics-decision-science-m-sc/?lidx=1)\n\nThe language labels of RWTH programmes in our catalogue have not yet been verified against official sources; check the language of instruction on the official programme page."
+                        ]
+                    ],
+                    "faq_h": "Frequently Asked Questions",
+                    "faq": [
+                        [
+                            "Does RWTH Aachen offer conditional admission?",
+                            "No. RWTH currently offers no preparatory German courses and no conditional admission or German-course route. You can apply without a certificate, but the German certificate must be submitted by the end of the enrolment period."
+                        ],
+                        [
+                            "Do I apply to RWTH through uni-assist?",
+                            "The official pages do not mention uni-assist. Bachelor's applications go through RWTHonline, and Master's applications are also submitted online through RWTH's own system."
+                        ],
+                        [
+                            "What are the RWTH Master's deadlines?",
+                            "For non-EU applicants: admission-free programmes 1 March (winter) and 1 September (summer); NC programmes 15 July and 15 January."
+                        ],
+                        [
+                            "Does RWTH charge tuition fees?",
+                            "According to the official page, there are no additional tuition fees for non-EU students; only the regular semester contribution applies."
+                        ]
+                    ],
+                    "cta": "**Next step:** browse the programmes tab on this page and confirm the language requirement on [RWTH's official language requirements page](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/zugangsvoraussetzungen/~zwyn/sprachkenntnisse/). For routes without a certificate, see our [conditional admission comparison](/en/universities/collections/conditional-admission-universities)."
+                },
+                "de": {
+                    "seo_title": "RWTH Aachen: Zulassungsvoraussetzungen, Deutschnachweis und Masterbewerbung",
+                    "seo_description": "Die RWTH bietet keine studienvorbereitenden Deutschkurse; Bewerbung ohne Nachweis möglich, C1 bis Ende der Einschreibung. RWTHonline, Fristen.",
+                    "intro": "Die **RWTH Aachen University** in Nordrhein-Westfalen gehört zu den bekanntesten technischen Universitäten Deutschlands. Die **FH Aachen** in derselben Stadt ist eine eigene Hochschule. Diese Seite beantwortet zuerst die Frage von Bewerber*innen ohne ausreichendes Deutsch und erklärt danach Bewerbungsweg sowie Bachelor- und Masterfristen nach den offiziellen Seiten.\n\nKurz gesagt: Die RWTH bietet **derzeit keine studienvorbereitenden Deutschkurse** an und keinen Weg über bedingte Zulassung oder Deutschkurs. Du kannst dich ohne Sprachnachweis bewerben, musst den Deutschnachweis aber **bis zum Ende der Einschreibefrist** vorlegen.",
+                    "facts": [
+                        [
+                            "Bewerbungsweg",
+                            "RWTHonline (eigenes Portal der Universität)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Kein Vorbereitungskurs · Nachweis bis Ende der Einschreibung"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Welcher Weg bleibt, wenn das Deutsch nicht reicht?",
+                            "Auf der Seite zu Sprachkenntnissen heißt es: *\"Die RWTH Aachen bietet ihren zukünftigen Studierenden derzeit leider keine studienvorbereitende Deutschkurse an.\"*\n\n- Internationale Bachelorbewerber*innen müssen **bei der Einschreibung C1** nachweisen.\n- Bei zulassungsbeschränkten und zulassungsfreien Studiengängen müssen Sprachnachweise **bis zum Ende der Einschreibefrist** vorliegen. Eine Bewerbung ohne Nachweis ist also möglich, aber keine Zulassung zum Deutschkurs.\n- Die internationale FAQ und einige ältere Seiten schreiben noch, dass Deutschkursteilnehmende \"unter bestimmten Bedingungen\" eingeschrieben werden können. Das widerspricht den aktuellen Seiten, nach denen derzeit keine Kurse angeboten werden; frag im Zweifel direkt bei der RWTH nach.\n\nHochschulen mit echter bedingter Zulassung zeigt unser [Vergleich](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bewerbungsschritte und Fristen: Bachelor und Master",
+                            "- **Bachelor:** Online-Bewerbung über RWTHonline. Internationale Bewerber*innen: zulassungsfreie Studiengänge **20. Oktober** (Winter) und **20. April** (Sommer); NC-Studiengänge 15. Juli und 15. Januar.\n- **Master (Nicht-EU):** Die Bewerbung wird vollständig online eingereicht. Zulassungsfreie Studiengänge **1. März** (Winter) und **1. September** (Sommer); NC-Studiengänge 15. Juli und 15. Januar.\n- uni-assist wird auf den offiziellen Seiten nicht erwähnt; die Bewerbung läuft über das System der RWTH.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Kosten und Aufenthalt",
+                            "- **Kosten:** Laut RWTH wird es weiterhin keine zusätzlichen Studiengebühren für internationale Studierende aus Nicht-EU-Ländern geben; es fällt nur der normale Semesterbeitrag an (Höhe auf der AStA-Seite). Ab wann diese Aussage gilt, nennt die Seite nicht.\n- **Aufenthalt:** Laut offizieller Seite erhalten Bewerber*innen von außerhalb der EU nur für begrenzte Zeit, höchstens zwölf Monate, eine Aufenthaltsbewilligung."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Die RWTH bietet auch Masterstudiengänge mit Unterrichtssprache Englisch an. Zwei Beispiele laut offizieller Studiengangsseite:\n\n- [Data Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/~pzpc/data-science-m-sc/?lidx=1)\n- [Data Analytics & Decision Science (M.Sc.)](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/studiengaenge/liste-aktuelle-studiengaenge/studiengangbeschreibung/management-and-engineering-in-technology/~puiq/data-analytics-decision-science-m-sc/?lidx=1)\n\nDie Sprachangaben der RWTH-Studiengänge in unserem Katalog sind noch nicht mit offiziellen Quellen abgeglichen; prüfe die Unterrichtssprache auf der offiziellen Studiengangsseite."
+                        ]
+                    ],
+                    "faq_h": "Häufig gestellte Fragen",
+                    "faq": [
+                        [
+                            "Vergibt die RWTH Aachen eine bedingte Zulassung?",
+                            "Nein. Die RWTH bietet derzeit keine studienvorbereitenden Deutschkurse und keinen Weg über bedingte Zulassung oder Deutschkurs an. Du kannst dich ohne Nachweis bewerben, musst ihn aber bis zum Ende der Einschreibefrist vorlegen."
+                        ],
+                        [
+                            "Bewerbe ich mich bei der RWTH über uni-assist?",
+                            "uni-assist wird auf den offiziellen Seiten nicht erwähnt. Bachelorbewerbungen laufen über RWTHonline, Masterbewerbungen ebenfalls online über das System der RWTH."
+                        ],
+                        [
+                            "Welche Fristen gelten für den Master an der RWTH?",
+                            "Für Bewerber*innen aus Nicht-EU-Staaten: zulassungsfreie Studiengänge 1. März (Winter) und 1. September (Sommer); NC-Studiengänge 15. Juli und 15. Januar."
+                        ],
+                        [
+                            "Erhebt die RWTH Studiengebühren?",
+                            "Laut offizieller Seite gibt es keine zusätzlichen Studiengebühren für Nicht-EU-Studierende; es fällt nur der normale Semesterbeitrag an."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Sieh dir im Reiter Studiengänge die passenden Programme an und prüfe die Sprachanforderung auf der [offiziellen Seite zu Sprachkenntnissen](https://www.rwth-aachen.de/cms/root/studium/vor-dem-studium/zugangsvoraussetzungen/~zwyn/sprachkenntnisse/). Wege ohne Nachweis zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                }
+            }
+        }
+    }
+}

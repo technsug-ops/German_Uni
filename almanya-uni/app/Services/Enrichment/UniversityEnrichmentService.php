@@ -25,6 +25,10 @@ class UniversityEnrichmentService
      */
     public function enrich(University $uni, bool $force = false, array $sourceUrls = []): array
     {
+        // Resmî kaynakla elle doğrulanmış içerik --force ile de ezilmez (bkz. University::hasEditorialLock).
+        if ($uni->hasEditorialLock()) {
+            return ['success' => false, 'error' => 'Editoryal kilitli içerik (resmî kaynaklı); enrich atlandı'];
+        }
         if (!$force && $uni->last_enriched_at && $uni->last_enriched_at->diffInDays(now()) < 30) {
             return ['success' => false, 'error' => 'Yakın zamanda enrich edildi'];
         }
