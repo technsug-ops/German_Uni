@@ -58,6 +58,21 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertStringNotContainsString('%C5%9Fule', $visible, 'kodlanmış adres görünür metinde yok (şemada olması doğru)');
     }
 
+    public function test_director_title_moves_her_above_contributors(): void
+    {
+        $u = User::where('slug', 'sule-demirel')->first();
+        $this->assertSame('Türkiye Öğrenci Direktörü', $u->role_label);
+        $this->assertSame('Director, Students from Türkiye', $u->role_label_en);
+
+        $html = $this->get('/tr/team')->assertOk()->getContent();
+        $name = mb_strpos($html, 'Şule Demirel');
+        // Bölüm başlığı (sayfa <title>'ı değil); başka katkı sağlayan yoksa bölüm hiç basılmaz.
+        $contributors = mb_strpos($html, 'Katkı Sağlayanlar</h2>');
+        $this->assertNotFalse($name);
+        $this->assertStringContainsString('Türkiye Öğrenci Direktörü', $html);
+        $this->assertTrue($contributors === false || $name < $contributors, 'katkı sağlayanların üstünde, editör/direktör grubunda');
+    }
+
     public function test_team_page_card_links_to_author_profile(): void
     {
         $html = $this->get('/tr/team')->assertOk()->getContent();
