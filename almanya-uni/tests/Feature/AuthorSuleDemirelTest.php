@@ -79,6 +79,15 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertTrue($contributors === false || $name < $contributors, 'katkı sağlayanların üstünde, editör/direktör grubunda');
     }
 
+    public function test_profile_photo_is_served_from_the_site(): void
+    {
+        $row = DB::table('users')->where('slug', 'sule-demirel')->first();
+
+        $this->assertSame('https://applytogerman.com/img/team/sule-demirel.jpg', $row->avatar_url);
+        $this->assertFileExists(public_path('img/team/sule-demirel.jpg'));
+        $this->assertStringContainsString('/img/team/sule-demirel.jpg', $this->get('/tr/author/sule-demirel')->getContent());
+    }
+
     public function test_team_page_card_links_to_author_profile(): void
     {
         $html = $this->get('/tr/team')->assertOk()->getContent();
