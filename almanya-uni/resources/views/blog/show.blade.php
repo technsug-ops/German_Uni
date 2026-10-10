@@ -384,7 +384,7 @@
                                             $url = match ($type) {
                                                 'email'    => 'mailto:' . $value,
                                                 'twitter'  => 'https://twitter.com/' . ltrim($value, '@'),
-                                                'linkedin' => 'https://linkedin.com/in/' . $value,
+                                                'linkedin' => str_starts_with($value, 'http') ? $value : 'https://linkedin.com/in/' . $value,
                                                 'github'   => 'https://github.com/' . $value,
                                                 default    => $value,
                                             };

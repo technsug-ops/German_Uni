@@ -291,7 +291,8 @@ class Seo
             foreach ((array) ($post->author->social_links ?? []) as $type => $value) {
                 $authorSameAs[] = match ($type) {
                     'twitter'  => 'https://twitter.com/' . ltrim($value, '@'),
-                    'linkedin' => 'https://linkedin.com/in/' . $value,
+                    // Tam profil adresi saklanmışsa olduğu gibi kullan (önek eklenirse sameAs bozuk URL olur).
+                    'linkedin' => str_starts_with((string) $value, 'http') ? $value : 'https://linkedin.com/in/' . $value,
                     'github'   => 'https://github.com/' . $value,
                     'email'    => null,
                     default    => $value,
@@ -300,6 +301,7 @@ class Seo
             $author = array_filter([
                 '@type' => 'Person',
                 'name' => $post->author->name,
+                'url' => $post->author->slug ? route('author.show', $post->author->slug) : null,
                 'description' => $post->author->bio,
                 'jobTitle' => $post->author->role_label,
                 'image' => $post->author->avatar_url,
