@@ -30,7 +30,7 @@ class AboutController extends Controller
                 ->take(20)
                 ->select('id', 'user_id', 'title', 'slug', 'type', 'locale', 'published_at', 'reading_minutes')])
             ->orderByDesc('posts_count')
-            ->get(['id', 'name', 'slug', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url', 'is_admin']);
+            ->get(['id', 'name', 'slug', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url', 'is_admin', 'is_author', 'is_editor']);
 
         // Statüye göre grupla
         $founders = $people->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));

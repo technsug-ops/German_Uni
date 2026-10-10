@@ -53,6 +53,16 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertStringContainsString('Şule Demirel', $html);
         $this->assertStringContainsString('href="' . self::LINKEDIN . '"', $html);
         $this->assertStringNotContainsString('linkedin.com/in/https', $html);
+        $this->assertMatchesRegularExpression('/<span>LinkedIn<\/span>/', $html, 'buton okunur etiketle');
+        $visible = strip_tags(preg_replace('/<script\b.*?<\/script>/s', '', $html));
+        $this->assertStringNotContainsString('%C5%9Fule', $visible, 'kodlanmış adres görünür metinde yok (şemada olması doğru)');
+    }
+
+    public function test_team_page_card_links_to_author_profile(): void
+    {
+        $html = $this->get('/tr/team')->assertOk()->getContent();
+
+        $this->assertStringContainsString('href="' . route('author.show', 'sule-demirel') . '"', $html);
     }
 
     private function postBy(User $u, string $slug): void

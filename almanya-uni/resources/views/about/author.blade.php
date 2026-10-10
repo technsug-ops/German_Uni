@@ -106,15 +106,29 @@
                                     default                          => 'globe',
                                 };
                                 $isTwitter = str_contains($host, 'x.com') || str_contains($host, 'twitter');
+                                $isLinkedin = str_contains($host, 'linkedin');
+                                // Ham adres yerine okunur etiket (kodlanmış URL, ör. %C5%9F, görünmesin).
+                                $label = match (true) {
+                                    $isLinkedin                     => 'LinkedIn',
+                                    str_contains($host, 'github')   => 'GitHub',
+                                    $isTwitter                      => 'X',
+                                    str_starts_with($url, 'mailto') => substr($url, 7),
+                                    default                         => preg_replace('/^www\./', '', $host) ?: $url,
+                                };
                             @endphp
                             <a href="{{ $url }}" target="_blank" rel="noopener nofollow me"
-                               class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium transition">
+                               @if ($isLinkedin)
+                                   class="inline-flex items-center gap-2 bg-white text-[#0a66c2] hover:bg-indigo-50 px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition"
+                               @else
+                                   class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium transition"
+                               @endif
+                               aria-label="{{ $author->name }} — {{ $label }}">
                                 @if ($isTwitter)
                                     <span>𝕏</span>
                                 @else
-                                    <x-svg-icon :name="$iconName" class="w-3.5 h-3.5" />
+                                    <x-svg-icon :name="$iconName" class="{{ $isLinkedin ? 'w-4 h-4' : 'w-3.5 h-3.5' }}" />
                                 @endif
-                                <span>{{ str_replace(['https://', 'http://', 'mailto:'], '', $url) }}</span>
+                                <span>{{ $label }}</span>
                             </a>
                         @endforeach
                     </div>

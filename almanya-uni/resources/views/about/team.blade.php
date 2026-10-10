@@ -313,7 +313,10 @@
             <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2"><x-svg-icon name="leaf" class="w-6 h-6 text-emerald-600" /> {{ __('Contributors') }}</h2>
             <div class="flex flex-wrap gap-4">
                 @foreach ($others as $i => $p)
-                    <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3">
+                    {{-- Profili açılabilen kişi (slug + yazar/editör/admin; bkz. AboutController::author) karta tıklayınca profiline gider. --}}
+                    @php $profileUrl = $p->slug && ($p->is_author || $p->is_editor || $p->is_admin) ? route('author.show', $p->slug) : null; @endphp
+                    <{{ $profileUrl ? 'a' : 'div' }} @if ($profileUrl) href="{{ $profileUrl }}" @endif
+                         class="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 {{ $profileUrl ? 'hover:border-emerald-400 hover:shadow-md transition' : '' }}">
                         @if ($p->avatar_url)
                             <img src="{{ $p->avatar_url }}" alt="{{ $p->name }}" class="w-10 h-10 rounded-full object-cover">
                         @else
@@ -323,7 +326,7 @@
                             <p class="font-semibold text-sm text-gray-900">{{ $p->name }}</p>
                             <p class="text-xs text-gray-500">{{ $p->role_label ? __($p->role_label) : __('Contributor') }}</p>
                         </div>
-                    </div>
+                    </{{ $profileUrl ? 'a' : 'div' }}>
                 @endforeach
             </div>
         </section>
