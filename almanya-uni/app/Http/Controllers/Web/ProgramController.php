@@ -56,7 +56,8 @@ class ProgramController extends Controller
             $query->where('degree', $filters['degree']);
         }
         if ($filters['language']) {
-            $query->where('language', $filters['language']);
+            // Dil filtresinde, dili resmî kaynakla çelişen kayıt o dilde kesin bilgi gibi listelenmez.
+            $query->where('language', $filters['language'])->withoutLanguageConflict();
         }
         if ($filters['field']) {
             $query->whereHas('field', fn ($f) => $f->where('slug', $filters['field']));

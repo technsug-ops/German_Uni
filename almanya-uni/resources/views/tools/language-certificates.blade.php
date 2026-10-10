@@ -4,7 +4,7 @@
 
 <x-seo
     :title="__('German Language Certificates for University')"
-    :description="__('TestDaF vs DSH vs telc C1 Hochschule vs Goethe C2: which German certificate do you need for university admission? Levels, cost, where to take it — compared and verified.')"
+    :description="__('TestDaF, DSH, telc C1 Hochschule, Goethe C2 or C1: what each German certificate is for, which the HRK/KMK framework lists and what to check.')"
 />
 
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
@@ -14,13 +14,46 @@
 ])" />
 
 @php
-    // Doğrulanmış (2026-06-04): Auswärtiges Amt-akredite + üniversite admission sayfaları.
+    // Doğrulandı 2026-10-10: HRK/KMK Rahmenordnung (RO-DT, HRK 04.11.2025 / KMK 27.11.2025) §§ 2–8, testdaf.de,
+    // telc.net, Goethe-Institut sınav tanımları, uni-assist, LMU ve RWTH dil sayfaları. Ücretler yer/tarihe göre
+    // değiştiği için gösterilmez. Kabul edilen belge ve seviyeyi üniversite/program belirler.
     $rows = [
-        ['name' => 'TestDaF', 'sub' => 'TDN 4', 'level' => '≈ C1', 'where' => __('Worldwide'),      'cost' => '~€195',    'best' => __('Best when applying from abroad'), 'star' => true],
-        ['name' => 'DSH',     'sub' => 'DSH-2', 'level' => '≈ C1', 'where' => __('Germany only'),    'cost' => '€100–150', 'best' => __('Only if already in Germany'),     'star' => false],
-        ['name' => 'telc Deutsch C1 Hochschule', 'sub' => 'C1', 'level' => 'C1', 'where' => __('Worldwide'), 'cost' => __('Varies'), 'best' => __('Standardized, widely accepted'), 'star' => true],
-        ['name' => 'Goethe-Zertifikat C2 (GDS)', 'sub' => 'C2', 'level' => 'C2', 'where' => __('Worldwide'), 'cost' => __('Varies'), 'best' => __('Exempts you from TestDaF/DSH'), 'star' => false],
+        ['name' => 'TestDaF', 'sub' => 'TDN 3 · TDN 4 · TDN 5',
+         'use' => __('Test for university admission, digital or on paper.'),
+         'who' => __('Listed in the framework regulation. TDN 4 in all four parts counts as proof for all programmes; the university sets the level for each programme.'),
+         'check' => __('The TDN required in each part, and whether the university only accepts a recent certificate.')],
+        ['name' => 'DSH', 'sub' => 'DSH-1 · DSH-2 · DSH-3',
+         'use' => __('University entrance exam offered by universities and recognised Studienkollegs in Germany.'),
+         'who' => __('Listed in the framework regulation. A registered DSH is recognised by German universities; DSH-2 counts for all programmes. An admission based on DSH-1 at one university does not bind others.'),
+         'check' => __('The DSH level the programme requires, and whether DSH-1 is accepted.')],
+        ['name' => 'telc Deutsch C1 Hochschule', 'sub' => 'C1',
+         'use' => __('Exam at C1 designed for university entrance.'),
+         'who' => __('Listed as an exempting certificate in the framework regulation; individual universities can have different rules.'),
+         'check' => __('Whether the programme\'s list of certificates includes it.')],
+        ['name' => 'Goethe-Zertifikat C2: GDS', 'sub' => 'C2',
+         'use' => __('The highest Goethe-Institut exam.'),
+         'who' => __('Listed as an exempting certificate in the framework regulation. Recognition of older Goethe diplomas is up to the university.'),
+         'check' => __('Usually accepted as listed; check the programme page if you hold an older Goethe diploma.')],
+        ['name' => 'Goethe-Zertifikat C1', 'sub' => 'C1',
+         'use' => __('General German at C1.'),
+         'who' => __('Not in the framework regulation, so each university decides. RWTH Aachen accepts it, for example; LMU München lists only the C2 certificate.'),
+         'check' => __('Whether Goethe C1 appears on the programme\'s list.')],
+        ['name' => 'DSD II', 'sub' => __('School diploma'),
+         'use' => __('The KMK German Language Diploma, second level, usually taken at school.'),
+         'who' => __('Listed in the framework regulation.'),
+         'check' => __('The level shown on the diploma.')],
+        ['name' => __('Course attendance certificate'), 'sub' => __('Not an exam'),
+         'use' => __('Shows that you attended or completed a German course.'),
+         'who' => __('Many universities do not accept it as language proof. Some accept it at the application stage for admission-free programmes, with the exam result due by enrolment.'),
+         'check' => __('What is enough at application and what must be handed in by enrolment.')],
     ];
+    $locale = app()->getLocale();
+    $guideSlug = [
+        'tr' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish'],
+        'en' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-en'],
+        'de' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-de'],
+    ][$locale] ?? null;
+    $guidePost = $guideSlug ? \App\Models\Post::published()->where('locale', $locale)->whereIn('slug', $guideSlug)->first() : null;
 @endphp
 
 @section('content')
@@ -39,7 +72,7 @@
             {{ __('German Language Certificates for University') }}
         </h1>
         <p class="text-lg md:text-xl text-violet-100 max-w-3xl">
-            {{ __('Most German-taught programs require C1 German. Five certificates are accepted for university admission — here is how they compare and which one fits you.') }}
+            {{ __('German-taught degree programmes require proof of German. Which certificate and which level are accepted is decided by the university and the programme. Here is what each certificate is and what to check.') }}
         </p>
     </div>
 </section>
@@ -49,7 +82,7 @@
     {{-- Featured snippet (AIO hedefi) --}}
     <x-featured-snippet
         :question="__('Which German certificate do I need for university — TestDaF or DSH?')"
-        :answer="__('For German-taught programs you usually need C1 German. TestDaF (TDN 4) and telc C1 Hochschule can be taken worldwide and are accepted at virtually all German universities — best if you apply from abroad. DSH (DSH-2) is taken only in Germany, at the university. Goethe-Zertifikat C2 also qualifies and exempts you from TestDaF/DSH.')"
+        :answer="__('Both are listed in the HRK/KMK framework regulation for German-taught study: TestDaF with TDN 4 in all four parts and DSH-2 count as proof for all programmes. telc Deutsch C1 Hochschule and Goethe-Zertifikat C2 are listed as exempting certificates. Goethe C1 is not in the framework regulation, so it depends on the university. The level each programme requires is set by the university.')"
     />
 
     {{-- KARŞILAŞTIRMA TABLOSU --}}
@@ -59,66 +92,68 @@
                 <thead class="bg-gray-50 text-left">
                     <tr>
                         <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Certificate') }}</th>
-                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Level') }}</th>
-                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Where') }}</th>
-                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Cost') }}</th>
-                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Best for') }}</th>
+                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('What it is used for') }}</th>
+                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('Who decides whether it is accepted') }}</th>
+                        <th class="px-4 py-3 font-semibold text-gray-700">{{ __('What to check on the programme page') }}</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-100">
+                <tbody class="divide-y divide-gray-100 align-top">
                     @foreach ($rows as $r)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3 font-bold text-gray-900">
+                            <td class="px-4 py-3 font-bold text-gray-900 min-w-[9rem]">
                                 {{ $r['name'] }}
-                                @if ($r['star'])<span class="ml-1 text-xs font-medium text-violet-600">★</span>@endif
                                 <span class="block text-xs font-normal text-gray-500">{{ $r['sub'] }}</span>
                             </td>
-                            <td class="px-4 py-3 text-gray-700">{{ $r['level'] }}</td>
-                            <td class="px-4 py-3 text-gray-700">{{ $r['where'] }}</td>
-                            <td class="px-4 py-3 font-mono text-gray-700">{{ $r['cost'] }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ $r['best'] }}</td>
+                            <td class="px-4 py-3 text-gray-700 min-w-[12rem]">{{ $r['use'] }}</td>
+                            <td class="px-4 py-3 text-gray-700 min-w-[14rem]">{{ $r['who'] }}</td>
+                            <td class="px-4 py-3 text-gray-600 min-w-[12rem]">{{ $r['check'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div class="px-4 py-2 text-xs text-gray-500 border-t border-gray-100">
-            ★ {{ __('Bookable worldwide — practical when applying from your home country.') }} · {{ __('DSD II (school diploma) is also accepted.') }}
+            {{ __('Framework regulation = the HRK/KMK framework regulation on German language exams for study at German universities (RO-DT), version of November 2025.') }}
         </div>
     </section>
 
-    {{-- SKOR GEREKSİNİMLERİ --}}
+    {{-- SEVİYELER --}}
     <section class="mt-8 bg-indigo-50 border border-indigo-100 rounded-xl p-6">
         <h2 class="text-xl font-bold text-indigo-900 mb-3 inline-flex items-center gap-2">
-            <x-svg-icon name="check" class="w-5 h-5" /> {{ __('Score requirements') }}
+            <x-svg-icon name="check" class="w-5 h-5" /> {{ __('Levels in the framework regulation') }}
         </h2>
         <ul class="text-indigo-800 text-sm space-y-2 leading-relaxed">
-            <li>• <strong>{{ __('C1-taught programs (most)') }}:</strong> {{ __('TestDaF TDN 4 in all four parts, DSH-2, or telc C1 Hochschule.') }}</li>
-            <li>• <strong>{{ __('B2-level programs') }}:</strong> {{ __('TestDaF TDN 3 or DSH-1 may be enough.') }}</li>
-            <li>• <strong>{{ __('Competitive programs (medicine, law, some TU9)') }}:</strong> {{ __('may require TDN 5 / DSH-3.') }}</li>
+            <li>• {{ __('TestDaF with TDN 4 in all four parts and DSH-2 count as proof for all programmes.') }}</li>
+            <li>• {{ __('TDN 3 and DSH-1 are entry levels. They are only enough where the university allows them for a programme.') }}</li>
+            <li>• {{ __('TDN 5 and DSH-3 are above the level the regulation requires; a university can still ask for more in a specific programme.') }}</li>
         </ul>
         <x-source-note
             :sources="[
-                ['name' => 'TestDaF', 'url' => 'https://www.testdaf.de/'],
-                ['name' => 'Goethe-Institut', 'url' => 'https://www.goethe.de/'],
+                ['name' => 'HRK — RO-DT', 'url' => 'https://www.hrk.de/themen/internationales/internationale-studierende-und-forschende/hochschulzugang-fuer-internationale-studierende/sprachnachweis-deutsch/'],
+                ['name' => 'TestDaF', 'url' => 'https://www.testdaf.de/de/teilnehmende/mein-testdaf/faq/faq-ergebnisse-und-zertifikat/'],
+                ['name' => 'uni-assist', 'url' => 'https://www.uni-assist.de/bewerben/dokumente-sammeln/sprachzertifikate/'],
             ]"
-            updated="2026-06-04"
+            updated="2026-10-10"
             :note="__('Each program sets its own requirement — always confirm on the university\'s admissions page.')"
             class="!bg-white/60 !border-indigo-100"
         />
     </section>
 
-    {{-- HANGİSİNİ SEÇMELİSİN --}}
+    {{-- KARAR --}}
     <section class="mt-8 bg-emerald-50 border border-emerald-100 rounded-xl p-6">
         <h2 class="text-xl font-bold text-emerald-900 mb-3 inline-flex items-center gap-2">
             <x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('Which one should you take?') }}
         </h2>
         <ul class="text-emerald-800 text-sm space-y-2 leading-relaxed">
-            <li>• {{ __('Applying from your home country? Choose TestDaF or telc C1 Hochschule — both are bookable worldwide.') }}</li>
-            <li>• {{ __('DSH is cheaper but only available inside Germany (e.g. during a Studienkolleg or prep course).') }}</li>
-            <li>• {{ __('Already have Goethe-Zertifikat C2? It is accepted and exempts you from a separate university exam.') }}</li>
+            <li>• {{ __('Start with the programme\'s list of accepted certificates; the university decides which certificates and levels count.') }}</li>
+            <li>• {{ __('TestDaF and telc are taken at test centres; DSH is offered by universities and recognised Studienkollegs in Germany.') }}</li>
+            <li>• {{ __('A Goethe C1 certificate is not accepted everywhere, because it is not in the framework regulation.') }}</li>
+            <li>• {{ __('A course attendance certificate is not an exam result. Check what the university accepts at application and what is due by enrolment.') }}</li>
             <li>• {{ __('Need to reach C1 first?') }} <a href="{{ route('language-courses.index') }}" class="underline">{{ __('Find a German course') }}</a> {{ __('(university, private or online).') }}</li>
         </ul>
+        @if ($guidePost)
+            <p class="mt-4"><a href="{{ $guidePost->publicUrl() }}" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition">{{ __('Read the guide: German level and certificates for university') }} →</a></p>
+        @endif
     </section>
 
     {{-- Cross-link --}}
@@ -128,21 +163,21 @@
             <p class="font-bold text-gray-900">{{ __('Language Courses') }}</p>
             <p class="text-xs text-gray-500 mt-0.5">{{ __('Where to learn German') }}</p>
         </a>
+        <a href="{{ route('discover.english') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-violet-400 hover:shadow-sm transition">
+            <p class="mb-1 text-violet-600"><x-svg-icon name="academic-cap" class="w-6 h-6" /></p>
+            <p class="font-bold text-gray-900">{{ __('English-taught programs') }}</p>
+            <p class="text-xs text-gray-500 mt-0.5">{{ __('Bachelor\'s and Master\'s taught in English') }}</p>
+        </a>
         <a href="{{ route('tools.visa-appointment') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-violet-400 hover:shadow-sm transition">
             <p class="mb-1 text-violet-600"><x-svg-icon name="calendar" class="w-6 h-6" /></p>
             <p class="font-bold text-gray-900">{{ __('Visa Appointment') }}</p>
             <p class="text-xs text-gray-500 mt-0.5">{{ __('iData step-by-step') }}</p>
         </a>
-        <a href="{{ route('tools.blocked-account') }}" class="block bg-white border border-gray-200 rounded-xl p-4 hover:border-violet-400 hover:shadow-sm transition">
-            <p class="mb-1 text-violet-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></p>
-            <p class="font-bold text-gray-900">{{ __('Blocked Account') }}</p>
-            <p class="text-xs text-gray-500 mt-0.5">{{ __('Sperrkonto for the visa') }}</p>
-        </a>
     </section>
 
     {{-- Disclaimer --}}
     <p class="text-xs text-gray-400 mt-8 text-center max-w-3xl mx-auto">
-        {{ __('Levels and costs are based on official exam-provider and university sources verified on the date shown and may change. Always confirm the exact requirement on your target university\'s admissions page.') }}
+        {{ __('Based on the HRK/KMK framework regulation, exam providers and university pages checked on the date shown. Always confirm the exact requirement on your target university\'s admissions page.') }}
     </p>
 </div>
 @endsection

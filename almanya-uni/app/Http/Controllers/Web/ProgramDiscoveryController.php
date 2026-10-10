@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\FieldOfStudy;
+use App\Models\Post;
 use App\Models\Program;
 use App\Models\University;
 use Illuminate\Contracts\View\View;
@@ -14,29 +15,52 @@ use Illuminate\Contracts\View\View;
  */
 class ProgramDiscoveryController extends Controller
 {
-    /** /english-taught — Almanya'da İngilizce verilen bölümler. */
+    /**
+     * /english-taught — İngilizce lisans ve yüksek lisans programlarını bulma sayfası (program seçimi; kurum seçimi
+     * universities/collections/english-taught-universities sayfasında).
+     *
+     * Sayılar katalog dil etiketinden gelir (resmî doğrulama değildir) ve programs.index filtreleriyle aynı kümeyi
+     * sayar: "tamamen İngilizce" = language 'en', "iki dilli" = language 'both' — ikisi birbirine katılmaz. Dil ya da
+     * kimlik doğrulaması resmî kaynakla çelişen kayıtlar sayılmaz; liste filtresi de aynı kuralı uygular.
+     */
     public function englishTaught(): View
     {
-        $langs = ['en', 'both'];
+        $counts = Program::where('is_active', true)->withoutLanguageConflict()
+            ->whereIn('language', ['en', 'both'])
+            ->whereIn('degree', ['bachelor', 'master'])
+            ->selectRaw('degree, language, count(*) as c')
+            ->groupBy('degree', 'language')
+            ->get()
+            ->mapWithKeys(fn ($r) => ["{$r->degree}.{$r->language}" => (int) $r->c]);
 
         $fields = FieldOfStudy::active()
-            ->withCount(['programs as cnt' => fn ($q) => $q->where('is_active', true)->whereIn('language', $langs)])
+            ->withCount(['programs as cnt' => fn ($q) => $q->where('is_active', true)->withoutLanguageConflict()->where('language', 'en')])
             ->get()
             ->filter(fn ($f) => $f->cnt > 0)
             ->sortByDesc('cnt')
             ->values();
 
-        $total = Program::where('is_active', true)->whereIn('language', $langs)->count();
+        // Başvuru (İngilizce master) ve dil belgesi kararı için aynı dildeki rehberler (çeviri grubu kardeşleri).
+        $locale = app()->getLocale();
+        $guides = collect(self::ENGLISH_GUIDES)
+            ->map(fn ($slugs) => Post::where('is_published', true)->where('locale', $locale)->whereIn('slug', (array) ($slugs[$locale] ?? []))->first())
+            ->filter();
 
-        $topUnis = University::where('is_active', true)
-            ->withCount(['programs as cnt' => fn ($q) => $q->where('is_active', true)->whereIn('language', $langs)])
-            ->having('cnt', '>', 0)
-            ->orderByDesc('cnt')
-            ->take(12)
-            ->get();
-
-        return view('discover.english', compact('fields', 'total', 'topUnis'));
+        return view('discover.english', compact('counts', 'fields', 'guides'));
     }
+
+    private const ENGLISH_GUIDES = [
+        'master' => [
+            'tr' => 'english-masters-in-germany-without-german-knowledge-finding-programs-and-application',
+            'en' => 'english-masters-in-germany-without-german-knowledge-finding-programs-and-application-en',
+            'de' => 'english-masters-in-germany-without-german-knowledge-finding-programs-and-application-de',
+        ],
+        'language' => [
+            'tr' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish'],
+            'en' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-en'],
+            'de' => ['goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de', 'goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-de'],
+        ],
+    ];
 
     /** /tuition-free — ücretsiz (devlet üniversitesi) bölümler. */
     public function tuitionFree(): View

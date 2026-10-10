@@ -20,6 +20,9 @@
         $listedSlugs = collect($collection['paths']['sections'])->where('listed', true)->flatMap(fn ($s) => array_keys($s['items']))->all();
         $listItems = $listItems->filter(fn ($u) => in_array($u['slug'], $listedSlugs, true))->values();
     }
+    if (! empty($collection['examples'])) {
+        $listItems = $listItems->filter(fn ($u) => isset($collection['examples'][$u['slug']]))->values();
+    }
     $itemList = [
         '@context' => 'https://schema.org',
         '@type'    => 'ItemList',
@@ -71,6 +74,11 @@
 {{-- ─────────────── KARAR SAYFASI: başvuru yolları (şartlı kabul koleksiyonu) ─────────────── --}}
 @if (! empty($collection['paths']))
     @include('universities._admission_paths', ['collection' => $collection, 'universities' => $universities])
+@endif
+
+{{-- ─────────────── PROGRAM ÖRNEKLERİ (İngilizce eğitim koleksiyonu) ─────────────── --}}
+@if (! empty($collection['examples']))
+    @include('universities._program_examples', ['collection' => $collection, 'universities' => $universities])
 @endif
 
 {{-- ─────────────── 2-KOLON GRUPLU GÖRÜNÜM (varsa) ─────────────── --}}
@@ -128,7 +136,7 @@
 {{-- ─────────────── GRID (reuses universities._grid) ─────────────── --}}
 <section class="bg-gray-50 py-10">
     <div class="max-w-[1400px] mx-auto px-4">
-        @if (empty($collection['groups']) && empty($collection['paths']))
+        @if (empty($collection['groups']) && empty($collection['paths']) && empty($collection['examples']))
             @include('universities._grid')
         @endif
 

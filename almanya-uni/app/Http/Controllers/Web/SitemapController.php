@@ -246,8 +246,10 @@ class SitemapController extends Controller
 
         $urls[] = $this->entry(route('universities.index'), now(), 'daily', 0.9);
         $urls[] = $this->entry(route('popular-universities'), now(), 'weekly', 0.85);
-        // Yalnız şartlı kabul koleksiyonu (resmî kaynaklı karar sayfası); diğer koleksiyonların indeks politikası ayrı karar.
+        // Yalnız resmî kaynaklı karar sayfası olan koleksiyonlar (şartlı kabul; İngilizce program örnekleri);
+        // diğer koleksiyonların indeks politikası ayrı karar.
         $urls[] = $this->entry(route('universities.collection', 'conditional-admission-universities'), now(), 'monthly', 0.8);
+        $urls[] = $this->entry(route('universities.collection', 'english-taught-universities'), now(), 'monthly', 0.8);
         $urls[] = $this->entry(route('cities.index'), now(), 'daily', 0.9);
         $urls[] = $this->entry(route('fields.index'), now(), 'weekly', 0.9);
         $urls[] = $this->entry(route('states.index'), now(), 'weekly', 0.9);

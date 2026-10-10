@@ -107,6 +107,15 @@ class Program extends Model
         });
     }
 
+    /**
+     * Dil ya da kimlik doğrulaması resmî kaynakla çelişen programları dışarıda bırakır. İngilizce program
+     * listelerinde (english-taught sayısı + language filtresi) katalog dil etiketi kesin bilgi gibi sunulmasın diye.
+     */
+    public function scopeWithoutLanguageConflict(\Illuminate\Database\Eloquent\Builder $q): \Illuminate\Database\Eloquent\Builder
+    {
+        return $q->whereDoesntHave('verifications', fn ($v) => $v->whereIn('field', ['language', 'identity'])->where('status', ProgramVerification::CONFLICT));
+    }
+
     private function verificationRows(): \Illuminate\Support\Collection
     {
         return $this->relationLoaded('verifications') ? $this->verifications : $this->verifications()->get();

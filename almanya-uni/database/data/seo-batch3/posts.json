@@ -1,0 +1,284 @@
+{
+    "checked": "2026-10-10",
+    "replace": [
+        {
+            "locale": "tr",
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application"
+            ],
+            "file": "english-master.tr.md",
+            "old_titles": [
+                "Almanca Bilmeden Almanya'da İngilizce Master: Program Bulma ve Başvuru"
+            ],
+            "title": "Almanya'da İngilizce Yüksek Lisans: Almanca Bilmeden Şartlar ve Başvuru",
+            "meta_title": "Almanya'da İngilizce Yüksek Lisans: Dil Şartı ve Başvuru",
+            "meta_description": "Almanya'da İngilizce yüksek lisans: IELTS/TOEFL ve MOI kabulü programa bağlı, bazıları Almanca da ister. Resmî örneklerle şartlar ve başvuru adımları.",
+            "excerpt": "Almanca bilmeden İngilizce master mümkün mü, IELTS şart mı, İngilizce lisans sınav yerine geçer mi? Resmî program örnekleriyle dil koşulları ve başvuru adımları.",
+            "featured_image_caption": "İngilizce yüksek lisansta dil koşulunu her program kendisi belirler."
+        },
+        {
+            "locale": "en",
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application-en"
+            ],
+            "file": "english-master.en.md",
+            "old_titles": [
+                "English Master's in Germany Without German Knowledge: Finding Programs and Application"
+            ],
+            "title": "English-Taught Master's in Germany Without German: Requirements and Application",
+            "meta_title": "English-Taught Master's in Germany: Language Rules and Application",
+            "meta_description": "English-taught Master's in Germany: accepted tests and MOI depend on the programme, and some ask for German too. Official examples and application steps.",
+            "excerpt": "Can you do a Master's in Germany without German? Is IELTS required, and does an English-taught Bachelor's replace a test? Language rules and application steps, with official examples.",
+            "featured_image_caption": "For an English-taught Master's, each programme sets its own language requirement."
+        },
+        {
+            "locale": "de",
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application-de"
+            ],
+            "file": "english-master.de.md",
+            "old_titles": [
+                "Englischsprachiger Master in Deutschland ohne Deutschkenntnisse: Studiengänge finden und bewerben"
+            ],
+            "title": "Englischsprachiger Master in Deutschland ohne Deutsch: Voraussetzungen und Bewerbung",
+            "meta_title": "Englischsprachiger Master in Deutschland: Sprachnachweis und Bewerbung",
+            "meta_description": "Englischsprachiger Master in Deutschland: Welche Tests und ob ein englischsprachiges Studium zählen, entscheidet der Studiengang. Mit offiziellen Beispielen.",
+            "excerpt": "Master ohne Deutschkenntnisse? Brauchst du IELTS, und ersetzt ein englischsprachiger Bachelor den Test? Sprachregeln und Bewerbungsschritte mit offiziellen Beispielen.",
+            "featured_image_caption": "Beim englischsprachigen Master legt jeder Studiengang seine Sprachanforderung selbst fest."
+        },
+        {
+            "locale": "tr",
+            "slugs": [
+                "goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish",
+                "goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish"
+            ],
+            "file": "language-guide.tr.md",
+            "old_titles": [
+                "Goethe, telc, TestDaF, DSH Farkı: Türk Öğrenciler İçin Almanya Dil Sınavı Kıyaslama"
+            ],
+            "title": "Goethe, telc, TestDaF, DSH Farkı: Üniversite İçin Almanca Seviyesi ve Dil Belgeleri",
+            "meta_title": "TestDaF mı DSH mı? Üniversite İçin Almanca Dil Şartları",
+            "meta_description": "Almanya'da üniversite için hangi Almanca belgesi geçer? TestDaF, DSH, telc C1 Hochschule ve Goethe farkı, başvuru ile kayıt ayrımı; resmî kaynaklarla.",
+            "excerpt": "B1, B2, C1 ne zaman yeter? Kurs belgesi ile sınav belgesi, başvuru ile kesin kayıt arasındaki fark ve TestDaF, DSH, telc, Goethe belgelerinin resmî çerçevedeki yeri.",
+            "featured_image_caption": null
+        },
+        {
+            "locale": "en",
+            "slugs": [
+                "goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en",
+                "goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-en"
+            ],
+            "file": "language-guide.en.md",
+            "old_titles": [
+                "Goethe, telc, TestDaF, DSH Difference: German Language Exam Comparison for Turkish Students",
+                "Goethe, telc, TestDaF, DSH Differences: German Language Exam Comparison for Turkish Students"
+            ],
+            "title": "Goethe, telc, TestDaF, DSH: German Level and Language Certificates for University",
+            "meta_title": "TestDaF or DSH? German Language Requirements for University",
+            "meta_description": "Which German certificate counts for university? TestDaF, DSH, telc C1 Hochschule and Goethe compared, plus application vs enrolment, from official sources.",
+            "excerpt": "When are B1, B2 or C1 enough? Course certificate vs exam result, application vs enrolment, and where TestDaF, DSH, telc and Goethe stand in the official framework.",
+            "featured_image_caption": null
+        },
+        {
+            "locale": "de",
+            "slugs": [
+                "goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de",
+                "goethe-telc-testdaf-dsh-differences-german-language-exam-comparison-for-turkish-de"
+            ],
+            "file": "language-guide.de.md",
+            "old_titles": [
+                "Goethe, telc, TestDaF, DSH Unterschied: Vergleich deutscher Sprachprüfungen für türkische Studierende",
+                "Goethe, telc, TestDaF, DSH Unterschiede: Deutsch-Sprachprüfung Vergleich für türkische Studierende"
+            ],
+            "title": "Goethe, telc, TestDaF, DSH: Deutschniveau und Sprachnachweise für das Studium",
+            "meta_title": "TestDaF oder DSH? Deutsche Sprachanforderungen fürs Studium",
+            "meta_description": "Welcher Deutschnachweis zählt fürs Studium? TestDaF, DSH, telc C1 Hochschule und Goethe im Vergleich, dazu Bewerbung vs. Einschreibung, mit Quellen.",
+            "excerpt": "Wann reichen B1, B2 oder C1? Kursbescheinigung vs. Prüfungszeugnis, Bewerbung vs. Einschreibung und wo TestDaF, DSH, telc und Goethe in der Rahmenordnung stehen.",
+            "featured_image_caption": null
+        }
+    ],
+    "fixes": [
+        {
+            "locale": "tr",
+            "slugs": [
+                "doing-a-masters-in-germany-2026-a-z-guide"
+            ],
+            "rules": [
+                [
+                    [
+                        "14 eyalette devlet üniversitelerinde 0 €/sömestre"
+                    ],
+                    "Baden-Württemberg dışındaki devlet üniversitelerinin çoğunda genel öğrenim ücreti yok; Baden-Württemberg ve TUM gibi bazı üniversiteler AB/AEA dışından gelen öğrencilerden ücret alıyor"
+                ],
+                [
+                    [
+                        "DAAD'a göre 2.500+ İngilizce master programı var — Almanca öğrenmek zorunda kalmazsın"
+                    ],
+                    "Almanca bilmeden başvurabileceğin İngilizce programlar var; dil koşulunu her program kendisi belirler ([İngilizce programlar](/tr/english-taught))"
+                ],
+                [
+                    [
+                        "İngilizce eğitim veriliyorsa:\n- IELTS 6.5+ (bazı top üni'ler 7.0)\n- TOEFL iBT 88+ (top üni'ler 100+)\n- Cambridge CAE (C1 Advanced)\n- Bazı üni'ler Duolingo English Test 110+ kabul ediyor (post-COVID standart)"
+                    ],
+                    "**İngilizce eğitim** veriliyorsa kabul edilen sınavları ve puanları program belirler. Kontrol ettiğimiz resmî örneklerde istenen seviye B2 ile C1 arasında değişiyor; bazı programlar önceki İngilizce eğitimini sınav yerine sayıyor, bazıları saymıyor. Örnekler ve ayrıntılar: [Almanca bilmeden İngilizce yüksek lisans](/tr/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application) · [İngilizce eğitim veren üniversiteler](/tr/universities/collections/english-taught-universities)"
+                ],
+                [
+                    [
+                        "DAAD veritabanında 2.500+ tamamen İngilizce master programı var. Almanca bilgisi sıfır olsa da bu programlara başvuru ve eğitim İngilizce yapılır. Ancak günlük hayat için A2-B1 seviyesi Almanca öğrenmek pratiktir."
+                    ],
+                    "Almanca bilmeden başvurabileceğin İngilizce yüksek lisans programları var. Ama dil koşulunu her program kendisi belirler ve bazı programlar belli bir aşamada temel Almanca isteyebilir; günlük yaşamda da Almanca işini kolaylaştırır. Ayrıntılar: [İngilizce yüksek lisans rehberi](/tr/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application)."
+                ],
+                [
+                    [
+                        "14 eyalette evet, Baden-Württemberg'de AB dışı için 1.500 €/sömestre."
+                    ],
+                    "Çoğu devlet üniversitesinde genel öğrenim ücreti yok; Baden-Württemberg AB dışından gelen öğrencilerden 1.500 €/sömestre alıyor ve TUM gibi bazı üniversiteler AB/AEA dışından gelen öğrencilerden kendi ücretini alıyor. Dönem katkı payı (Semesterbeitrag) her yerde ayrıca ödenir."
+                ]
+            ]
+        },
+        {
+            "locale": "en",
+            "slugs": [
+                "doing-a-masters-in-germany-2026-a-z-guide-en"
+            ],
+            "rules": [
+                [
+                    [
+                        "0 €/semester at public Universitäten in 14 Bundesländer"
+                    ],
+                    "no general tuition fees at most public universities outside Baden-Württemberg; Baden-Württemberg and some universities such as TUM charge students from outside the EU/EEA"
+                ],
+                [
+                    [
+                        "According to the DAAD, there are 2,500+ English Master's programs – you don't have to learn German"
+                    ],
+                    "There are English-taught programmes you can apply to without German; each programme sets its own language requirement ([English-taught programmes](/en/english-taught))"
+                ],
+                [
+                    [
+                        "If the education is in English:\n- IELTS 6.5+ (some top Universitäten 7.0)\n- TOEFL iBT 88+ (top Universitäten 100+)\n- Cambridge CAE (C1 Advanced)\n- Some Universitäten accept Duolingo English Test 110+ (post-COVID standard)"
+                    ],
+                    "If the programme is taught in **English**, the programme decides which tests and scores it accepts. In the official examples we checked, the required level ranges from B2 to C1; some programmes accept a previous degree taught in English instead of a test and some do not. Examples and details: [English-taught Master's in Germany without German](/en/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application-en) · [Universities with English-taught programmes](/en/universities/collections/english-taught-universities)"
+                ],
+                [
+                    [
+                        "The DAAD database lists 2,500+ fully English-taught Master's programs. Even with zero German knowledge, you can apply to these programs and study in English. However, learning A2-B1 level German is practical for daily life."
+                    ],
+                    "There are English-taught Master's programmes you can apply to without German. Each programme sets its own language requirement, and some expect basic German at a certain stage; German also makes everyday life easier. Details: [English-taught Master's guide](/en/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application-en)."
+                ],
+                [
+                    [
+                        "In 14 Bundesländer, yes. In Baden-Württemberg, it's 1,500 €/semester for non-EU students."
+                    ],
+                    "Most public universities charge no general tuition fees; Baden-Württemberg charges students from outside the EU 1,500 €/semester, and some universities such as TUM charge students from outside the EU/EEA their own fees. The semester contribution (Semesterbeitrag) is paid everywhere."
+                ]
+            ]
+        },
+        {
+            "locale": "de",
+            "slugs": [
+                "doing-a-masters-in-germany-2026-a-z-guide-de"
+            ],
+            "rules": [
+                [
+                    [
+                        "0 €/Semester an staatlichen Universitäten in 14 Bundesländern"
+                    ],
+                    "an den meisten staatlichen Universitäten außerhalb Baden-Württembergs keine allgemeinen Studiengebühren; Baden-Württemberg und einzelne Hochschulen wie die TUM verlangen von Studierenden aus Nicht-EU/EWR-Staaten Gebühren"
+                ],
+                [
+                    [
+                        "Laut DAAD gibt es über 2.500 englischsprachige Masterprogramme – du musst nicht unbedingt Deutsch lernen"
+                    ],
+                    "Es gibt englischsprachige Studiengänge, für die du dich ohne Deutsch bewerben kannst; die Sprachanforderung legt jeder Studiengang selbst fest ([englischsprachige Studiengänge](/de/english-taught))"
+                ],
+                [
+                    [
+                        "Wenn der Unterricht auf Englisch erfolgt:\n- IELTS 6.5+ (einige Top-Universitäten 7.0)\n- TOEFL iBT 88+ (Top-Universitäten 100+)\n- Cambridge CAE (C1 Advanced)\n- Einige Universitäten akzeptieren den Duolingo English Test 110+ (Post-COVID-Standard)"
+                    ],
+                    "Wenn der Unterricht **auf Englisch** erfolgt, legt der Studiengang fest, welche Tests und Ergebnisse gelten. In den geprüften offiziellen Beispielen reicht das verlangte Niveau von B2 bis C1; manche Studiengänge erkennen ein englischsprachiges Vorstudium statt eines Tests an, andere nicht. Beispiele und Details: [Englischsprachiger Master ohne Deutschkenntnisse](/de/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application-de) · [Universitäten mit englischsprachigen Studiengängen](/de/universities/collections/english-taught-universities)"
+                ],
+                [
+                    [
+                        "In der DAAD-Datenbank gibt es über 2.500 komplett englischsprachige Masterprogramme. Auch wenn du keine Deutschkenntnisse hast, kannst du dich für diese Programme bewerben und das Studium auf Englisch absolvieren. Für den Alltag ist es jedoch praktisch, Deutsch auf A2-B1-Niveau zu lernen."
+                    ],
+                    "Es gibt englischsprachige Masterstudiengänge, für die du dich ohne Deutschkenntnisse bewerben kannst. Die Sprachanforderung legt aber jeder Studiengang selbst fest, und manche verlangen zu einem bestimmten Zeitpunkt Grundkenntnisse in Deutsch; im Alltag macht Deutsch vieles leichter. Details: [Leitfaden zum englischsprachigen Master](/de/blog/english-masters-in-germany-without-german-knowledge-finding-programs-and-application-de)."
+                ],
+                [
+                    [
+                        "In 14 Bundesländern ja, in Baden-Württemberg 1.500 €/Semester für Nicht-EU-Bürger."
+                    ],
+                    "An den meisten staatlichen Universitäten gibt es keine allgemeinen Studiengebühren; Baden-Württemberg verlangt von Nicht-EU-Studierenden 1.500 €/Semester, und einzelne Hochschulen wie die TUM erheben von Studierenden aus Nicht-EU/EWR-Staaten eigene Gebühren. Der Semesterbeitrag fällt überall an."
+                ]
+            ]
+        },
+        {
+            "locale": "tr",
+            "slugs": [
+                "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school",
+                "study-in-germany-bachelor-application-2026-the-complete-guide-for-turkish"
+            ],
+            "rules": [
+                [
+                    [
+                        "İngilizce programlar için IELTS veya TOEFL gibi uluslararası geçerliliği olan bir İngilizce dil yeterlilik belgesi sunmanız gerekir."
+                    ],
+                    "İngilizce programlarda hangi İngilizce kanıtının kabul edildiğini program belirler; örneğin TU Braunschweig'in iki dilli bir lisans programı okulda iki yıl İngilizce eğitimi de kanıt sayıyor."
+                ],
+                [
+                    [
+                        "[Almanya'da İngilizce Lisans Programları Rehberi](/almanya-ingilizce-lisans-programlari)",
+                        "Almanya'da İngilizce Lisans Programları Rehberi"
+                    ],
+                    "[Almanya'da İngilizce lisans programlarını incele](/tr/english-taught) · [İngilizce eğitim veren üniversiteler ve resmî program örnekleri](/tr/universities/collections/english-taught-universities)"
+                ]
+            ]
+        },
+        {
+            "locale": "en",
+            "slugs": [
+                "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school-en",
+                "study-in-germany-bachelor-application-2026-the-complete-guide-for-turkish-en"
+            ],
+            "rules": [
+                [
+                    [
+                        "For English-taught programs, you'll need to provide an internationally recognized English language proficiency certificate like IELTS or TOEFL.",
+                        "For English programs, you need to provide an internationally recognized English language proficiency certificate such as IELTS or TOEFL."
+                    ],
+                    "For English-taught programmes, the programme decides which proof of English it accepts; a bilingual Bachelor's at TU Braunschweig, for example, also accepts two years of school education in English."
+                ],
+                [
+                    [
+                        "[Guide to English Bachelor's Programs in Germany](/almanya-ingilizce-lisans-programlari)",
+                        "Guide to English Bachelor Programs in Germany"
+                    ],
+                    "[Explore English-taught Bachelor's programmes](/en/english-taught) · [Universities with English-taught programmes and official examples](/en/universities/collections/english-taught-universities)"
+                ]
+            ]
+        },
+        {
+            "locale": "de",
+            "slugs": [
+                "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school-de",
+                "study-in-germany-bachelor-application-2026-the-complete-guide-for-turkish-de"
+            ],
+            "rules": [
+                [
+                    [
+                        "Für englischsprachige Studiengänge musst du einen international anerkannten Englischnachweis wie IELTS oder TOEFL vorlegen."
+                    ],
+                    "Bei englischsprachigen Studiengängen legt der Studiengang fest, welcher Englischnachweis gilt; ein zweisprachiger Bachelor der TU Braunschweig erkennt zum Beispiel auch zwei Jahre englischsprachigen Schulunterricht an."
+                ],
+                [
+                    [
+                        "[Leitfaden für englischsprachige Bachelor-Studiengänge in Deutschland](/almanya-ingilizce-lisans-programlari)",
+                        "Leitfaden für englische Bachelorstudiengänge in Deutschland"
+                    ],
+                    "[Englischsprachige Bachelor-Studiengänge ansehen](/de/english-taught) · [Universitäten mit englischsprachigen Studiengängen und offiziellen Beispielen](/de/universities/collections/english-taught-universities)"
+                ]
+            ]
+        }
+    ],
+    "leftover": "/\\b14\\s+(eyalet|Bundesl)|2[.,]500\\+|über 2\\.500|almanya-ingilizce-lisans-programlari/u"
+}
