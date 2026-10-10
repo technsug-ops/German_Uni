@@ -33,7 +33,10 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertSame('Şule Demirel', $u->name);
         $this->assertTrue((bool) $u->is_author);
         $this->assertSame(['linkedin' => self::LINKEDIN], $u->social_links);
-        $this->assertNull($u->bio, 'biyografi onay bekliyor');
+        $this->assertStringStartsWith('Şule Demirel, ApplyToGerman\'da Türkiye Öğrenci Direktörü.', $u->bio, 'onaylı biyografi');
+        $this->assertStringContainsString('DreamToMove', $u->bio_en);
+        $this->assertStringContainsString('DreamToMove', $u->bio_de);
+        $this->assertStringContainsString('DreamToMove', $this->get('/tr/author/sule-demirel')->getContent());
         $this->assertNull($u->years_experience);
     }
 
