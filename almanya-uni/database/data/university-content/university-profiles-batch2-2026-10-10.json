@@ -1,0 +1,1350 @@
+{
+    "checked": "2026-10-10",
+    "universities": {
+        "technische-universitat-berlin": {
+            "expected": {
+                "tr": null,
+                "en": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "section",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "de": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "section",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ]
+            },
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.tu.berlin/en/studierendensekretariat/bachelors-application-enrollment/prospective-students-with-an-international-higher-education-entrance-qualification/admission-requirements",
+                "label": {
+                    "tr": "Resmî sayfa: uluslararası lisans başvurusu",
+                    "en": "Official page: international Bachelor's application",
+                    "de": "Offizielle Seite: internationale Bachelorbewerbung"
+                }
+            },
+            "sources": [
+                "https://www.tu.berlin/en/studierendensekretariat/bachelors-application-enrollment/prospective-students-with-an-international-higher-education-entrance-qualification/admission-requirements",
+                "https://www.tu.berlin/en/i-a-office-of-student-affairs/masters-application-enrollment/application/applying-with-a-primary-university-degree-from-a-foreign-university",
+                "https://www.tu.berlin/en/studying/applying-and-enrolling/dates-deadlines",
+                "https://www.tu.berlin/en/studying/organizing-your-studies/topics-a-z/semester-fees",
+                "https://www.tu.berlin/en/international/students-1/preparatory-school"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TU Berlin: Başvuru Şartları, Master Başvurusu, Dil Belgesi ve Tarihler",
+                    "seo_description": "Berlin Teknik Üniversitesi'ne başvuru: uni-assist VPD ve tuPORT, Almanca/İngilizce belge şartları, 2026/27 tarihleri, ücretsiz eğitim ve Semesterbeitrag.",
+                    "intro": "**Technische Universität Berlin (TU Berlin)**, Türkçede **Berlin Teknik Üniversitesi** olarak da bilinen, Berlin-Charlottenburg'daki büyük teknik üniversite. Bu sayfa lisans ve yüksek lisans başvurusunu, dil belgelerini, ücretleri ve tarihleri resmî sayfalara göre özetliyor.\n\nKısa cevap: Yabancı diplomayla başvuranlar önce **uni-assist'ten VPD** alır, ardından TU Berlin'in kendi portalı **tuPORT** üzerinden başvurur. TU Berlin'de **öğrenim ücreti yok** ve resmî sayfaya göre **şartlı ya da geçici kabul de yok**; dil belgesi başvuruda gerekir.",
+                    "facts": [
+                        [
+                            "Resmî ad",
+                            "Technische Universität Berlin (TU Berlin)"
+                        ],
+                        [
+                            "Başvuru yolu",
+                            "uni-assist VPD + tuPORT (lisans ve yüksek lisans)"
+                        ],
+                        [
+                            "Öğrenim ücreti",
+                            "Yok (sürekli eğitim master'ları hariç)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Şartlı kabul yok"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: başvuru nasıl işliyor?",
+                            "- **Lisans:** uni-assist'ten TU Berlin için düzenlenmiş bir VPD alırsın; sonra başvuru süresi bitmeden TU Berlin'in portalından başvurursun. Resmî sayfa: *\"Without a VPD issued for TU Berlin, it is not possible to apply to TU Berlin!\"* uni-assist dil belgelerini TU Berlin adına kontrol etmez.\n- **Yüksek lisans:** lisansını yurt dışında tamamlayanlar 2026 yaz döneminden itibaren VPD'ye ihtiyaç duyuyor; başvuru tuPORT'taki \"Study & Teaching\" uygulamasından yapılır. Dönem başına **yalnız bir** yüksek lisans başvurusu yapılabilir.\n- **Şartlı kabul:** resmî sayfa açık: *\"There is no 'conditional admission' or 'provisional admission' at TU Berlin.\"* Okul diploması doğrudan girişe yetmeyenler için Studienkolleg (Feststellungsprüfung) var; Almanca hazırlık programı Propädeutikum 2026/27 kış döneminde açılmıyor.\n\nŞartlı kabul veren üniversiteleri [karşılaştırma sayfamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Lisans ve yüksek lisans şartları",
+                            "- **Lisans:** yabancı lise diplomasıyla başvuruda her zaman Almanca dil belgesi gerekir (Almanca programlar).\n- **Yüksek lisans:** kural olarak aynı ya da yakın alanda bir lisans diploması istenir; ayrıntılı şartlar programa göre değişir. Programın resmî sayfasındaki kabul yönetmeliğini mutlaka oku.\n\nYüksek lisans sürecinin genel adımlarını [Almanya'da yüksek lisans rehberimizde](/tr/blog/doing-a-masters-in-germany-2026-a-z-guide) anlattık."
+                        ],
+                        [
+                            "Dil belgeleri: hangisi, ne zaman?",
+                            "- **Almanca programlar:** DSH-2/3, tüm bölümlerde 4 puanlı TestDaF, DSD II, Goethe C2, ÖSD C2, telc Deutsch C1 Hochschule ve diğerleri. **Nihai belge** gerekir; dijital TestDaF \"Kombiniertes Zertifikat\" kabul edilmiyor. Yüksek lisansta belge başvuruyla birlikte sunulur.\n- **İngilizce programlar:** İngilizce belge her İngilizce programda zorunlu; genel tabloda örneğin TOEFL iBT 87 (B2+) ve 95 (C1) öneriliyor, kesin seviye programa göre değişiyor.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Ücretler ve 2026/27 başvuru tarihleri",
+                            "- **Öğrenim ücreti:** TU Berlin'de yok; tek istisna sürekli eğitim (weiterbildende) yüksek lisans programları.\n- **Semesterbeitrag:** 2026/27 kış dönemi için Semesterticket dahil 379,06 €.\n- **2026/27 kış dönemi:** lisans NC'li 01.06.–15.07.2026, NC'siz 01.06.–31.08.2026; Almanca NC'li yüksek lisans 01.04.–15.06.2026; NC'li İngilizce yüksek lisans 01.04.–15.05.2026; NC'siz yüksek lisans 01.06.–31.08.2026.\n- **2027 yaz dönemi:** lisans NC'li 01.12.2026–15.01.2027, NC'siz 01.12.2026–28.02.2027; yüksek lisans NC'li 01.12.2026–15.01.2027, NC'siz 01.12.2026–28.02.2027.\n\nYabancı diplomalı adaylar için de aynı tarihler geçerli. Almanya'daki ücret sistemini [öğrenim ücreti rehberimizde](/tr/blog/is-university-free-in-germany-2026-real-costs) karşılaştırdık."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Resmî program sayfalarında öğretim dili İngilizce olan üç örnek:\n\n- [Computational Neuroscience (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/computational-neuroscience-m-sc)\n- [Polymer Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/polymer-science-m-sc)\n- [Geodesy and Geoinformation Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/geodesy-and-geoinformation-science-m-sc)\n\nNC'li İngilizce yüksek lisans programlarının kış dönemi son tarihi (15 Mayıs) Almanca programlardan erken."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "TU Berlin şartlı kabul veriyor mu?",
+                            "Hayır. Resmî sayfaya göre TU Berlin'de şartlı ya da geçici kabul yok. Dil belgesi başvuruda gerekir; okul diploması yetmeyenler için Studienkolleg var."
+                        ],
+                        [
+                            "TU Berlin'e uni-assist ile mi başvurulur?",
+                            "uni-assist yalnız VPD için kullanılır. Lisansta TU Berlin için düzenlenmiş VPD şart, yüksek lisansta yabancı lisans diplomasıyla 2026 yaz döneminden itibaren VPD isteniyor. Başvurunun kendisi TU Berlin'in tuPORT portalından yapılır."
+                        ],
+                        [
+                            "TU Berlin'de öğrenim ücreti var mı?",
+                            "Hayır, sürekli eğitim yüksek lisansları dışında öğrenim ücreti yok. 2026/27 kış dönemi Semesterbeitrag Semesterticket dahil 379,06 €."
+                        ],
+                        [
+                            "Kaç yüksek lisans programına başvurabilirim?",
+                            "TU Berlin'de dönem başına yalnız bir yüksek lisans başvurusu yapılabiliyor; tercihini başvurmadan önce netleştir."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programını seç, ardından başvuru adımlarını [TU Berlin'in resmî uluslararası başvuru sayfasından](https://www.tu.berlin/en/studierendensekretariat/bachelors-application-enrollment/prospective-students-with-an-international-higher-education-entrance-qualification/admission-requirements) ve tarihleri [resmî takvimden](https://www.tu.berlin/en/studying/applying-and-enrolling/dates-deadlines) teyit et.",
+                    "facts_h": "Hızlı Bakış",
+                    "links_h": "Faydalı Linkler",
+                    "faq_h": "Sıkça Sorulanlar"
+                },
+                "en": {
+                    "seo_title": "TU Berlin: Admission Requirements, Master's Application, Language and Deadlines",
+                    "seo_description": "Applying to TU Berlin: uni-assist VPD and tuPORT, German and English certificate rules, 2026/27 deadlines, no tuition fees, semester contribution.",
+                    "intro": "**Technische Universität Berlin (TU Berlin)** is a large technical university in Berlin-Charlottenburg. This page summarises the Bachelor's and Master's application, language certificates, fees and deadlines based on the official pages.\n\nShort answer: applicants with a foreign qualification first get a **VPD from uni-assist** and then apply through TU Berlin's own portal **tuPORT**. TU Berlin charges **no tuition fees**, and according to the official page there is **no conditional or provisional admission**; the language certificate is required when you apply.",
+                    "facts": [
+                        [
+                            "Official name",
+                            "Technische Universität Berlin (TU Berlin)"
+                        ],
+                        [
+                            "How to apply",
+                            "uni-assist VPD + tuPORT (Bachelor's and Master's)"
+                        ],
+                        [
+                            "Tuition fees",
+                            "None (except continuing-education Master's)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No conditional admission"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: how does the application work?",
+                            "- **Bachelor's:** you get a VPD issued for TU Berlin from uni-assist, then apply through TU Berlin's portal before the deadline. The official page says: *\"Without a VPD issued for TU Berlin, it is not possible to apply to TU Berlin!\"* uni-assist does not check language certificates for TU Berlin.\n- **Master's:** applicants whose first degree is from a foreign university need a VPD from the summer semester 2026 onwards; you apply in the \"Study & Teaching\" app in tuPORT. Only **one** Master's application per semester is allowed.\n- **Conditional admission:** the official page is clear: *\"There is no 'conditional admission' or 'provisional admission' at TU Berlin.\"* If your school certificate does not give direct entry, there is the Studienkolleg (Feststellungsprüfung); the German Propädeutikum will not run in winter semester 2026/27.\n\nUniversities that do offer conditional admission are listed in our [comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bachelor's and Master's requirements",
+                            "- **Bachelor's:** applicants with an international school certificate always need a German certificate (German-taught programmes).\n- **Master's:** as a rule you need a Bachelor's degree in the same or a related subject; detailed requirements are set per programme. Read the admission regulations on the official programme page.\n\nOur [guide to a Master's in Germany](/en/blog/doing-a-masters-in-germany-2026-a-z-guide-en) explains the general steps."
+                        ],
+                        [
+                            "Language certificates: which and when?",
+                            "- **German-taught programmes:** DSH-2/3, TestDaF with 4 in all modules, DSD II, Goethe C2, ÖSD C2, telc Deutsch C1 Hochschule and others. The **final certificate** is required; the digital TestDaF \"Kombiniertes Zertifikat\" is not accepted. For Master's programmes the certificate is submitted with the application.\n- **English-taught programmes:** English proof is required for every English-taught programme; the general table recommends, for example, TOEFL iBT 87 (B2+) or 95 (C1), and the exact level depends on the programme.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Fees and 2026/27 deadlines",
+                            "- **Tuition:** none at TU Berlin; the only exception is continuing-education (weiterbildende) Master's programmes.\n- **Semester contribution:** €379.06 for winter semester 2026/27, including the semester ticket.\n- **Winter semester 2026/27:** Bachelor's with NC 1 June – 15 July 2026, without NC 1 June – 31 August 2026; German-taught restricted Master's 1 April – 15 June 2026; restricted English-taught Master's 1 April – 15 May 2026; open-admission Master's 1 June – 31 August 2026.\n- **Summer semester 2027:** Bachelor's with NC 1 December 2026 – 15 January 2027, without NC 1 December 2026 – 28 February 2027; Master's restricted 1 December 2026 – 15 January 2027, open 1 December 2026 – 28 February 2027.\n\nThe same deadlines apply to applicants with international qualifications. Our [tuition fee guide](/en/blog/is-university-free-in-germany-2026-real-costs-en) compares fees across Germany."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Three examples whose official programme pages list English as the language of instruction:\n\n- [Computational Neuroscience (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/computational-neuroscience-m-sc)\n- [Polymer Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/polymer-science-m-sc)\n- [Geodesy and Geoinformation Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/geodesy-and-geoinformation-science-m-sc)\n\nRestricted English-taught Master's programmes close earlier (15 May for the winter semester) than German-taught ones."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Does TU Berlin offer conditional admission?",
+                            "No. According to the official page, TU Berlin has no conditional or provisional admission. The language certificate is required with the application; the Studienkolleg is for applicants whose school certificate does not give direct entry."
+                        ],
+                        [
+                            "Do I apply to TU Berlin through uni-assist?",
+                            "uni-assist is used only for the VPD. Bachelor's applicants need a VPD issued for TU Berlin, and Master's applicants with a foreign first degree need one from summer semester 2026. The application itself is made in TU Berlin's tuPORT portal."
+                        ],
+                        [
+                            "Are there tuition fees at TU Berlin?",
+                            "No, apart from continuing-education Master's programmes. The semester contribution for winter semester 2026/27 is €379.06 including the semester ticket."
+                        ],
+                        [
+                            "How many Master's programmes can I apply for?",
+                            "TU Berlin allows only one Master's application per semester, so decide on your programme before you apply."
+                        ]
+                    ],
+                    "cta": "**Next step:** choose your programme in the programmes tab on this page, then confirm the steps on [TU Berlin's official international application page](https://www.tu.berlin/en/studierendensekretariat/bachelors-application-enrollment/prospective-students-with-an-international-higher-education-entrance-qualification/admission-requirements) and the dates in the [official calendar](https://www.tu.berlin/en/studying/applying-and-enrolling/dates-deadlines).",
+                    "facts_h": "Quick Facts",
+                    "links_h": "Useful Links",
+                    "faq_h": "Frequently Asked Questions"
+                },
+                "de": {
+                    "seo_title": "TU Berlin: Zulassungsvoraussetzungen, Masterbewerbung, Sprachnachweise und Fristen",
+                    "seo_description": "Bewerbung an der TU Berlin: uni-assist-VPD und tuPORT, Deutsch- und Englischnachweise, Fristen 2026/27, keine Studiengebühren, Semesterbeitrag.",
+                    "intro": "Die **Technische Universität Berlin (TU Berlin)** ist eine große technische Universität in Berlin-Charlottenburg. Diese Seite fasst Bachelor- und Masterbewerbung, Sprachnachweise, Kosten und Fristen nach den offiziellen Seiten zusammen.\n\nKurz gesagt: Mit ausländischer Qualifikation holst du zuerst eine **VPD bei uni-assist** und bewirbst dich dann über das eigene Portal **tuPORT**. Die TU Berlin erhebt **keine Studiengebühren**, und laut offizieller Seite gibt es **keine bedingte oder vorläufige Zulassung**; der Sprachnachweis ist bei der Bewerbung nötig.",
+                    "facts": [
+                        [
+                            "Offizieller Name",
+                            "Technische Universität Berlin (TU Berlin)"
+                        ],
+                        [
+                            "Bewerbungsweg",
+                            "uni-assist-VPD + tuPORT (Bachelor und Master)"
+                        ],
+                        [
+                            "Studiengebühren",
+                            "Keine (außer weiterbildende Master)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Keine bedingte Zulassung"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Wie läuft die Bewerbung?",
+                            "- **Bachelor:** Du holst bei uni-assist eine für die TU Berlin ausgestellte VPD und bewirbst dich dann fristgerecht über das Portal der TU Berlin. Ohne eine für die TU Berlin ausgestellte VPD ist keine Bewerbung möglich; uni-assist prüft die Sprachnachweise nicht für die TU Berlin.\n- **Master:** Wer den ersten Abschluss im Ausland erworben hat, braucht ab dem Sommersemester 2026 eine VPD; beworben wird in der App \"Study & Teaching\" in tuPORT. Pro Semester ist **nur eine** Masterbewerbung möglich.\n- **Bedingte Zulassung:** Die offizielle Seite ist eindeutig: Eine \"conditional admission\" oder \"provisional admission\" gibt es an der TU Berlin nicht. Wer keinen direkten Hochschulzugang hat, kann das Studienkolleg (Feststellungsprüfung) besuchen; das Propädeutikum findet im Wintersemester 2026/27 nicht statt.\n\nHochschulen mit bedingter Zulassung zeigt unser [Vergleich](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Voraussetzungen für Bachelor und Master",
+                            "- **Bachelor:** Mit ausländischer Hochschulzugangsberechtigung brauchst du immer einen Deutschnachweis (deutschsprachige Studiengänge).\n- **Master:** In der Regel ist ein Bachelorabschluss im gleichen oder einem verwandten Fach nötig; die Details regelt jeder Studiengang. Lies die Zulassungsordnung auf der offiziellen Studiengangsseite.\n\nDie allgemeinen Schritte erklärt unser [Ratgeber zum Master in Deutschland](/de/blog/doing-a-masters-in-germany-2026-a-z-guide-de)."
+                        ],
+                        [
+                            "Sprachnachweise: welche und wann?",
+                            "- **Deutschsprachige Studiengänge:** DSH-2/3, TestDaF mit 4 in allen Modulen, DSD II, Goethe C2, ÖSD C2, telc Deutsch C1 Hochschule u. a. Nötig ist das **endgültige Zertifikat**; das digitale TestDaF-\"Kombinierte Zertifikat\" wird nicht anerkannt. Im Master wird der Nachweis mit der Bewerbung eingereicht.\n- **Englischsprachige Studiengänge:** Ein Englischnachweis ist für jeden englischsprachigen Studiengang Pflicht; die allgemeine Tabelle empfiehlt z. B. TOEFL iBT 87 (B2+) oder 95 (C1), das genaue Niveau hängt vom Studiengang ab.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Kosten und Fristen 2026/27",
+                            "- **Studiengebühren:** keine; Ausnahme sind weiterbildende Masterstudiengänge.\n- **Semesterbeitrag:** 379,06 € im Wintersemester 2026/27 inklusive Semesterticket.\n- **Wintersemester 2026/27:** Bachelor mit NC 01.06.–15.07.2026, ohne NC 01.06.–31.08.2026; deutschsprachige zulassungsbeschränkte Master 01.04.–15.06.2026; zulassungsbeschränkte englischsprachige Master 01.04.–15.05.2026; zulassungsfreie Master 01.06.–31.08.2026.\n- **Sommersemester 2027:** Bachelor mit NC 01.12.2026–15.01.2027, ohne NC 01.12.2026–28.02.2027; Master zulassungsbeschränkt 01.12.2026–15.01.2027, zulassungsfrei 01.12.2026–28.02.2027.\n\nFür internationale Bewerbungen gelten dieselben Fristen. Unser [Ratgeber zu Studiengebühren](/de/blog/is-university-free-in-germany-2026-real-costs-de) vergleicht die Kosten in Deutschland."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Drei Beispiele mit Unterrichtssprache Englisch laut offizieller Studiengangsseite:\n\n- [Computational Neuroscience (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/computational-neuroscience-m-sc)\n- [Polymer Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/polymer-science-m-sc)\n- [Geodesy and Geoinformation Science (M.Sc.)](https://www.tu.berlin/en/studying/study-programs/all-programs-offered/study-course/geodesy-and-geoinformation-science-m-sc)\n\nZulassungsbeschränkte englischsprachige Master enden im Winter früher (15. Mai) als deutschsprachige."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Vergibt die TU Berlin eine bedingte Zulassung?",
+                            "Nein. Laut offizieller Seite gibt es an der TU Berlin keine bedingte oder vorläufige Zulassung. Der Sprachnachweis ist bei der Bewerbung nötig; das Studienkolleg ist für Bewerber*innen ohne direkten Hochschulzugang."
+                        ],
+                        [
+                            "Bewerbe ich mich an der TU Berlin über uni-assist?",
+                            "uni-assist wird nur für die VPD genutzt. Für den Bachelor brauchst du eine für die TU Berlin ausgestellte VPD, für den Master mit ausländischem Erstabschluss ab dem Sommersemester 2026. Die Bewerbung selbst läuft über tuPORT."
+                        ],
+                        [
+                            "Gibt es an der TU Berlin Studiengebühren?",
+                            "Nein, außer bei weiterbildenden Masterstudiengängen. Der Semesterbeitrag im Wintersemester 2026/27 beträgt 379,06 € inklusive Semesterticket."
+                        ],
+                        [
+                            "Für wie viele Masterstudiengänge kann ich mich bewerben?",
+                            "An der TU Berlin ist pro Semester nur eine Masterbewerbung möglich; entscheide dich vor der Bewerbung."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Wähle im Reiter Studiengänge deinen Studiengang und prüfe die Schritte auf der [offiziellen Seite für internationale Bewerbungen](https://www.tu.berlin/en/studierendensekretariat/bachelors-application-enrollment/prospective-students-with-an-international-higher-education-entrance-qualification/admission-requirements) sowie die Termine im [offiziellen Kalender](https://www.tu.berlin/en/studying/applying-and-enrolling/dates-deadlines).",
+                    "facts_h": "Auf einen Blick",
+                    "links_h": "Nützliche Links",
+                    "faq_h": "Häufig gestellte Fragen"
+                }
+            }
+        },
+        "technische-universitat-munchen-partner-019ddbba": {
+            "expected": {
+                "tr": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "section",
+                    "section",
+                    "faq",
+                    "cta",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "en": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "section",
+                    "section",
+                    "faq",
+                    "cta",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "de": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "section",
+                    "section",
+                    "faq",
+                    "cta",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ]
+            },
+            "remove_indexes": [
+                6
+            ],
+            "official": {
+                "url": "https://www.tum.de/en/studies/application/application-info-portal/uni-assist",
+                "label": {
+                    "tr": "Resmî sayfa: TUM başvuru ve VPD",
+                    "en": "Official page: TUM application and VPD",
+                    "de": "Offizielle Seite: TUM-Bewerbung und VPD"
+                }
+            },
+            "sources": [
+                "https://www.tum.de/en/studies/application/bachelor/application-bachelor",
+                "https://www.tum.de/en/studies/application/master/application-master",
+                "https://www.tum.de/en/studies/application/application-info-portal/uni-assist",
+                "https://www.tum.de/en/studies/fees/tuition",
+                "https://www.tum.de/en/studies/application/application-info-portal/admission-requirements/language-certificates",
+                "https://www.tum.de/en/studies/fees-and-financial-aid/campus-munich-garching-wzw-and-tum-asia"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TUM (Münih Teknik Üniversitesi): Başvuru Şartları, Master, Ücretler ve Dil",
+                    "seo_description": "TUM'a başvuru: TUMonline ve VPD farkı, yetenek değerlendirmesi, AB dışı öğrenim ücretleri (2.000–6.000 €/dönem), dil belgeleri ve İngilizce programlar.",
+                    "intro": "**Technische Universität München (TUM)**, Türkçede **Münih Teknik Üniversitesi** olarak bilinen, Münih, Garching, Weihenstephan ve Straubing'de kampüsleri olan teknik üniversite. LMU München ve Hochschule München ayrı kurumlardır. Bu sayfa TUM'a başvuruyu, yetenek değerlendirmesini, ücretleri ve dil şartlarını resmî sayfalara göre anlatıyor.\n\nKısa cevap: Başvuru her zaman **TUMonline** üzerinden yapılır; bazı adaylar ayrıca **uni-assist'ten VPD** alır. Çoğu program **iki aşamalı yetenek değerlendirmesi** uygular. AB/AEA dışından gelen yeni öğrenciler 2024/25 kış döneminden beri **öğrenim ücreti** öder.",
+                    "facts": [
+                        [
+                            "Resmî ad",
+                            "Technische Universität München (TUM)"
+                        ],
+                        [
+                            "Başvuru yolu",
+                            "TUMonline (gerekirse ayrıca uni-assist VPD)"
+                        ],
+                        [
+                            "AB dışı öğrenim ücreti",
+                            "Lisans 2.000/3.000 €, master 4.000/6.000 € (dönem, genellikle)"
+                        ],
+                        [
+                            "Almanca belge olmadan",
+                            "Hazırlık ya da şartlı kabul yolu yok"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: TUMonline ve VPD farkı",
+                            "- **Başvurunun kendisi:** lisans ve yüksek lisans için TUMonline. Resmî sayfa: *\"An application for a VPD via uni-assist alone does not qualify as an application for a degree program at TUM. An application via TUMonline is always necessary.\"*\n- **VPD kimlere gerekir:** Alman okul diploması olmayan lisans adayları, lisansını Almanya dışında tamamlayan yüksek lisans adayları ve Studienkolleg mezunları.\n- **Almancası yetersiz adaylar:** TUM'da dil kursuna kabul ya da şartlı kabul yolu yok. TUM Studienkolleg'i okul diploması doğrudan girişe yetmeyenler içindir ve en az B2 Almanca ister.\n\nŞartlı kabul veren üniversiteleri [karşılaştırma sayfamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Lisans ve yüksek lisans: yetenek değerlendirmesi",
+                            "- **Lisans:** program yetenek değerlendirmesine (Eignungsfeststellungsverfahren) tabiyse iki aşamalı bir süreç izlenir; bazı lisans programları ise kontenjansız, NC'li ya da SOV (yetenek önerisi) usulüyle kabul eder.\n- **Yüksek lisans:** yüksek lisans programları iki aşamalı yetenek değerlendirmesine (Eignungsverfahren) tabidir. Bazı programlar, Lizbon Tanıma Sözleşmesi dışındaki ülkelerden alınan lisans diplomaları için ek bir çevrim içi test istiyor.\n- Değerlendirme ölçütleri ve mülakat/yazılı sınav biçimi programa göre değişir; programın resmî sayfasını oku.\n\nGenel yüksek lisans adımları için [Almanya'da yüksek lisans rehberimize](/tr/blog/doing-a-masters-in-germany-2026-a-z-guide) bak."
+                        ],
+                        [
+                            "Dil belgeleri: hangisi, ne zaman?",
+                            "- **Almanca programlar:** belge **başvuru süresi bitmeden** sunulmalı. Kabul edilenler: DSH-2, DSD II, telc Deutsch C1 Hochschule, tüm bölümlerde 4'lü TestDaF, Goethe C2, ÖSD C2. Daha düşük seviye yalnız birkaç lisans programında (ör. Aerospace, Information Engineering) yeterli.\n- **İngilizce programlar:** belge kural olarak başvuru süresi bitmeden sunulur; örnek eşikler TOEFL iBT 88, IELTS Academic 6.5, PTE Academic 65. Bazı programlar İngilizceyi yetenek değerlendirmesinde ölçer ya da İngilizce lisans eğitimini kanıt sayar; kesin kural programa göre değişir.\n\nAlmanca sınavları [dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Ücretler ve başvuru tarihleri",
+                            "- **Öğrenim ücreti (AB/AEA dışı, 2024/25 kış döneminden itibaren yeni kayıtlar):** lisans genellikle dönem başına 2.000 veya 3.000 €, yüksek lisans 4.000 veya 6.000 €. 2027/28 kış döneminden itibaren lisans 2.300/3.400 €, yüksek lisans 4.600/6.800 € olacak. Kesin tutar programın sayfasında yazar.\n- **Muaf olanlar (örnek):** AB/AEA vatandaşları, Alman okul diploması (ör. Abitur) olanlar, Almanya'da en az altı dönemlik bir diploma alanlar, doktora adayları ve Studienkolleg öğrencileri. Studienkolleg üzerinden giriş hakkı kazananlar ise ücret öder.\n- **Semesterbeitrag:** Münih, Garching ve Weihenstephan için şu an 97 €; toplu taşıma bileti dahil değil.\n- **Tarihler:** üniversite genelinde tek bir tarih yok, program sayfasına bakılmalı. Örnek: Informatics ve Mechanical Engineering lisansında kış dönemi 15.05.–15.07.; Informatics yüksek lisansında kış dönemi 01.02.–31.05., yaz dönemi 01.10.–30.11.\n\nAlmanya genelindeki ücret durumunu [öğrenim ücreti rehberimizde](/tr/blog/is-university-free-in-germany-2026-real-costs) karşılaştırdık."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Resmî program sayfasında öğretim dili İngilizce olan üç örnek:\n\n- [AI in Biomedicine (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/ai-in-biomedicine-master-of-science-msc)\n- [Quantum Science & Technology (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/quantum-science-technology-master-of-science-msc)\n- [Mathematics in Data Science (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/mathematics-in-data-science-master-of-science-msc)\n\nBazı popüler programların sayfası dili \"genellikle İngilizce\" diye veriyor; tamamen İngilizce olup olmadığını program sayfasından kontrol et."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "TUM'a uni-assist ile mi başvurulur?",
+                            "Hayır. Başvuru her zaman TUMonline üzerinden yapılır. uni-assist yalnız bazı adaylar için VPD verir; VPD tek başına TUM'a başvuru sayılmaz."
+                        ],
+                        [
+                            "TUM öğrenim ücreti alıyor mu?",
+                            "AB/AEA dışından gelen ve 2024/25 kış döneminden itibaren kaydolan öğrenciler için evet: lisans genellikle 2.000 veya 3.000 €, yüksek lisans 4.000 veya 6.000 € (dönem başına). 2027/28 kış döneminden itibaren tutarlar artıyor; muafiyetler var."
+                        ],
+                        [
+                            "TUM şartlı kabul veriyor mu?",
+                            "Hayır. TUM'da dil kursuna kabul ya da şartlı kabul yolu yok. Almanca programlar için dil belgesi başvuru süresi bitmeden sunulmalı."
+                        ],
+                        [
+                            "Yetenek değerlendirmesi nedir?",
+                            "Yüksek lisans programlarında ve bazı lisans programlarında uygulanan iki aşamalı seçme süreci. Belgeler puanlanır, gerekirse mülakat ya da yazılı sınav yapılır; ölçütler programa göre değişir."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programını seç, ücretini ve başvuru tarihini programın resmî sayfasından kontrol et; VPD gerekip gerekmediğini [TUM'un uni-assist sayfasından](https://www.tum.de/en/studies/application/application-info-portal/uni-assist) öğren.",
+                    "facts_h": "Hızlı Bakış",
+                    "links_h": "Faydalı Linkler",
+                    "faq_h": "Sıkça Sorulanlar"
+                },
+                "en": {
+                    "seo_title": "TUM (Technical University of Munich): Admission, Master's, Fees and Language",
+                    "seo_description": "Applying to TUM: TUMonline vs. VPD, aptitude assessment, non-EU tuition fees (€2,000–6,000 per semester), language certificates and English-taught programmes.",
+                    "intro": "**Technische Universität München (TUM)** is a technical university with campuses in Munich, Garching, Weihenstephan and Straubing. LMU Munich and Hochschule München are separate institutions. This page explains applying to TUM, the aptitude assessment, fees and language requirements based on the official pages.\n\nShort answer: you always apply through **TUMonline**; some applicants additionally need a **VPD from uni-assist**. Most programmes use a **two-stage aptitude assessment**. New students from outside the EU/EEA have paid **tuition fees** since winter semester 2024/25.",
+                    "facts": [
+                        [
+                            "Official name",
+                            "Technische Universität München (TUM)"
+                        ],
+                        [
+                            "How to apply",
+                            "TUMonline (plus a uni-assist VPD if required)"
+                        ],
+                        [
+                            "Non-EU tuition",
+                            "Bachelor's €2,000/3,000, Master's €4,000/6,000 per semester (usually)"
+                        ],
+                        [
+                            "Without a German certificate",
+                            "No preparatory or conditional route"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: TUMonline vs. VPD",
+                            "- **The application itself:** TUMonline, for Bachelor's and Master's. The official page says: *\"An application for a VPD via uni-assist alone does not qualify as an application for a degree program at TUM. An application via TUMonline is always necessary.\"*\n- **Who needs a VPD:** Bachelor's applicants without a German school-leaving qualification, Master's applicants whose Bachelor's is not from a German university, and Studienkolleg graduates.\n- **Applicants without enough German:** TUM has no German-course admission or conditional admission. The TUM Studienkolleg is for applicants whose school certificate does not give direct entry, and it requires at least B2 German.\n\nUniversities that do offer conditional admission are listed in our [comparison](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bachelor's and Master's: aptitude assessment",
+                            "- **Bachelor's:** if your programme is subject to aptitude assessment (Eignungsfeststellungsverfahren), a two-stage procedure follows; other Bachelor's programmes are unrestricted, NC-restricted or use an aptitude recommendation (SOV).\n- **Master's:** Master's programmes are subject to a two-stage aptitude assessment (Eignungsverfahren). Some programmes add an online test for Bachelor's degrees from countries outside the Lisbon Recognition Convention.\n- Criteria and the form of interview or written test depend on the programme; read the official programme page.\n\nFor the general steps, see our [guide to a Master's in Germany](/en/blog/doing-a-masters-in-germany-2026-a-z-guide-en)."
+                        ],
+                        [
+                            "Language certificates: which and when?",
+                            "- **German-taught programmes:** proof must be submitted **before the end of the application period**. Accepted: DSH-2, DSD II, telc Deutsch C1 Hochschule, TestDaF with 4 in all sections, Goethe C2, ÖSD C2. Lower levels are accepted only for a few Bachelor's programmes (e.g. Aerospace, Information Engineering).\n- **English-taught programmes:** proof is, as a rule, due before the end of the application period; example thresholds are TOEFL iBT 88, IELTS Academic 6.5 and PTE Academic 65. Some programmes assess English in the aptitude assessment or accept an English-taught Bachelor's; the exact rule depends on the programme.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the German exams."
+                        ],
+                        [
+                            "Fees and deadlines",
+                            "- **Tuition (non-EU/EEA, newly enrolled since winter semester 2024/25):** usually €2,000 or €3,000 per semester for Bachelor's and €4,000 or €6,000 for Master's. From winter semester 2027/28: Bachelor's €2,300/€3,400, Master's €4,600/€6,800. The exact amount is on the programme page.\n- **Exempt (examples):** EU/EEA citizens, holders of a German school-leaving qualification (e.g. Abitur), graduates of a German degree of at least six semesters, doctoral candidates and Studienkolleg students. Those who qualify for university through the Studienkolleg do pay.\n- **Semester fee:** currently €97 for Munich, Garching and Weihenstephan; no transport ticket included.\n- **Deadlines:** there is no single university-wide date; check the programme page. Examples: Informatics and Mechanical Engineering B.Sc. 15 May – 15 July (winter); Informatics M.Sc. 1 February – 31 May (winter) and 1 October – 30 November (summer).\n\nOur [tuition fee guide](/en/blog/is-university-free-in-germany-2026-real-costs-en) compares fees across Germany."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Three examples whose official programme pages state English as the language of instruction:\n\n- [AI in Biomedicine (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/ai-in-biomedicine-master-of-science-msc)\n- [Quantum Science & Technology (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/quantum-science-technology-master-of-science-msc)\n- [Mathematics in Data Science (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/mathematics-in-data-science-master-of-science-msc)\n\nSome popular programmes list the language as \"usually English\"; check the programme page to see whether it is fully English-taught."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Do I apply to TUM through uni-assist?",
+                            "No. You always apply through TUMonline. uni-assist only issues a VPD for some applicants, and a VPD alone does not count as an application to TUM."
+                        ],
+                        [
+                            "Does TUM charge tuition fees?",
+                            "Yes, for students from outside the EU/EEA enrolling from winter semester 2024/25: usually €2,000 or €3,000 for Bachelor's and €4,000 or €6,000 for Master's per semester. Amounts rise from winter semester 2027/28, and there are exemptions."
+                        ],
+                        [
+                            "Does TUM offer conditional admission?",
+                            "No. TUM has no German-course admission or conditional admission. For German-taught programmes the certificate is due before the end of the application period."
+                        ],
+                        [
+                            "What is the aptitude assessment?",
+                            "A two-stage selection procedure used for Master's programmes and some Bachelor's programmes. Documents are scored and, where needed, followed by an interview or written test; criteria depend on the programme."
+                        ]
+                    ],
+                    "cta": "**Next step:** choose your programme in the programmes tab on this page, check its fee and deadline on the official programme page, and find out whether you need a VPD on [TUM's uni-assist page](https://www.tum.de/en/studies/application/application-info-portal/uni-assist).",
+                    "facts_h": "Quick Facts",
+                    "links_h": "Useful Links",
+                    "faq_h": "Frequently Asked Questions"
+                },
+                "de": {
+                    "seo_title": "TUM (Technische Universität München): Bewerbung, Master, Gebühren und Sprache",
+                    "seo_description": "Bewerbung an der TUM: TUMonline und VPD, Eignungsverfahren, Gebühren für Nicht-EU (2.000–6.000 € pro Semester), Sprachnachweise, englischsprachige Master.",
+                    "intro": "Die **Technische Universität München (TUM)** ist eine technische Universität mit Standorten in München, Garching, Weihenstephan und Straubing. LMU München und Hochschule München sind eigene Hochschulen. Diese Seite erklärt Bewerbung, Eignungsverfahren, Gebühren und Sprachanforderungen nach den offiziellen Seiten.\n\nKurz gesagt: Beworben wird immer über **TUMonline**; manche brauchen zusätzlich eine **VPD von uni-assist**. Die meisten Studiengänge haben ein **zweistufiges Eignungsverfahren**. Neue Studierende aus Nicht-EU/EWR-Staaten zahlen seit dem Wintersemester 2024/25 **Studiengebühren**.",
+                    "facts": [
+                        [
+                            "Offizieller Name",
+                            "Technische Universität München (TUM)"
+                        ],
+                        [
+                            "Bewerbungsweg",
+                            "TUMonline (bei Bedarf zusätzlich uni-assist-VPD)"
+                        ],
+                        [
+                            "Studiengebühren Nicht-EU",
+                            "Bachelor 2.000/3.000 €, Master 4.000/6.000 € pro Semester (meist)"
+                        ],
+                        [
+                            "Ohne Deutschnachweis",
+                            "Kein Vorbereitungs- oder Zulassungsweg"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: TUMonline und VPD",
+                            "- **Die Bewerbung selbst:** über TUMonline, für Bachelor und Master. Laut offizieller Seite gilt ein VPD-Antrag bei uni-assist allein nicht als Bewerbung; eine Bewerbung über TUMonline ist immer nötig.\n- **Wer eine VPD braucht:** Bachelorbewerber*innen ohne deutsche Hochschulzugangsberechtigung, Masterbewerber*innen mit nicht in Deutschland erworbenem Bachelor sowie Absolvent*innen des Studienkollegs.\n- **Ohne ausreichendes Deutsch:** Die TUM bietet keine Zulassung zum Deutschkurs und keine bedingte Zulassung an. Das Studienkolleg der TUM richtet sich an Bewerber*innen ohne direkten Hochschulzugang und setzt mindestens B2 voraus.\n\nHochschulen mit bedingter Zulassung zeigt unser [Vergleich](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bachelor und Master: Eignungsverfahren",
+                            "- **Bachelor:** Unterliegt dein Studiengang dem Eignungsfeststellungsverfahren, folgt ein zweistufiges Verfahren; andere Bachelorstudiengänge sind zulassungsfrei, NC-beschränkt oder nutzen eine Studienorientierung (SOV).\n- **Master:** Masterstudiengänge haben ein zweistufiges Eignungsverfahren. Manche verlangen für Bachelorabschlüsse aus Staaten außerhalb der Lissabon-Konvention zusätzlich einen Online-Test.\n- Kriterien sowie Gespräch oder schriftlicher Test hängen vom Studiengang ab; lies die offizielle Studiengangsseite.\n\nDie allgemeinen Schritte erklärt unser [Ratgeber zum Master in Deutschland](/de/blog/doing-a-masters-in-germany-2026-a-z-guide-de)."
+                        ],
+                        [
+                            "Sprachnachweise: welche und wann?",
+                            "- **Deutschsprachige Studiengänge:** Der Nachweis muss **vor Ende der Bewerbungsfrist** vorliegen. Anerkannt: DSH-2, DSD II, telc Deutsch C1 Hochschule, TestDaF mit 4 in allen Teilen, Goethe C2, ÖSD C2. Niedrigere Niveaus gelten nur für einzelne Bachelorstudiengänge (z. B. Aerospace, Information Engineering).\n- **Englischsprachige Studiengänge:** Der Nachweis ist in der Regel bis zum Ende der Bewerbungsfrist fällig; Beispielwerte sind TOEFL iBT 88, IELTS Academic 6.5 und PTE Academic 65. Manche Studiengänge prüfen Englisch im Eignungsverfahren oder erkennen einen englischsprachigen Bachelor an.\n\nDie Deutschprüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Gebühren und Fristen",
+                            "- **Studiengebühren (Nicht-EU/EWR, Neueinschreibung ab Wintersemester 2024/25):** meist 2.000 oder 3.000 € pro Semester im Bachelor und 4.000 oder 6.000 € im Master. Ab dem Wintersemester 2027/28: Bachelor 2.300/3.400 €, Master 4.600/6.800 €. Der genaue Betrag steht auf der Studiengangsseite.\n- **Befreit (Beispiele):** EU/EWR-Bürger*innen, Inhaber*innen einer deutschen Hochschulzugangsberechtigung (z. B. Abitur), Absolvent*innen eines mindestens sechssemestrigen deutschen Studiums, Promovierende und Studierende des Studienkollegs. Wer den Hochschulzugang über das Studienkolleg erwirbt, zahlt.\n- **Semesterbeitrag:** derzeit 97 € für München, Garching und Weihenstephan; ohne Ticket.\n- **Fristen:** Es gibt keine einheitliche Frist; maßgeblich ist die Studiengangsseite. Beispiele: Informatik und Maschinenwesen B.Sc. 15.05.–15.07. (Winter); Informatics M.Sc. 01.02.–31.05. (Winter) und 01.10.–30.11. (Sommer).\n\nUnser [Ratgeber zu Studiengebühren](/de/blog/is-university-free-in-germany-2026-real-costs-de) vergleicht die Kosten in Deutschland."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Drei Beispiele mit Unterrichtssprache Englisch laut offizieller Studiengangsseite:\n\n- [AI in Biomedicine (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/ai-in-biomedicine-master-of-science-msc)\n- [Quantum Science & Technology (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/quantum-science-technology-master-of-science-msc)\n- [Mathematics in Data Science (M.Sc.)](https://www.tum.de/en/studies/degree-programs/detail/mathematics-in-data-science-master-of-science-msc)\n\nManche beliebten Studiengänge geben die Sprache als \"meist Englisch\" an; prüfe auf der Studiengangsseite, ob sie vollständig englischsprachig sind."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Bewerbe ich mich an der TUM über uni-assist?",
+                            "Nein. Die Bewerbung läuft immer über TUMonline. uni-assist stellt nur für einen Teil der Bewerber*innen die VPD aus; die VPD allein ist keine Bewerbung an der TUM."
+                        ],
+                        [
+                            "Erhebt die TUM Studiengebühren?",
+                            "Ja, für Studierende aus Nicht-EU/EWR-Staaten mit Einschreibung ab dem Wintersemester 2024/25: meist 2.000 oder 3.000 € im Bachelor und 4.000 oder 6.000 € im Master pro Semester. Ab dem Wintersemester 2027/28 steigen die Beträge; es gibt Befreiungen."
+                        ],
+                        [
+                            "Vergibt die TUM eine bedingte Zulassung?",
+                            "Nein. Die TUM bietet weder Zulassung zum Deutschkurs noch bedingte Zulassung. Für deutschsprachige Studiengänge muss der Nachweis vor Ende der Bewerbungsfrist vorliegen."
+                        ],
+                        [
+                            "Was ist das Eignungsverfahren?",
+                            "Ein zweistufiges Auswahlverfahren für Masterstudiengänge und einige Bachelorstudiengänge. Die Unterlagen werden bewertet, bei Bedarf folgt ein Gespräch oder ein schriftlicher Test; die Kriterien legt der Studiengang fest."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Wähle im Reiter Studiengänge deinen Studiengang, prüfe Gebühr und Frist auf der offiziellen Studiengangsseite und kläre auf der [uni-assist-Seite der TUM](https://www.tum.de/en/studies/application/application-info-portal/uni-assist), ob du eine VPD brauchst.",
+                    "facts_h": "Auf einen Blick",
+                    "links_h": "Nützliche Links",
+                    "faq_h": "Häufig gestellte Fragen"
+                }
+            }
+        },
+        "universitat-heidelberg-partner-019ddbba": {
+            "expected": {
+                "tr": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "section",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "en": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "section",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "de": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "section",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ]
+            },
+            "remove_indexes": [
+                5
+            ],
+            "official": {
+                "url": "https://www.uni-heidelberg.de/en/study/application-enrolment/starting-the-first-academic-semester-of-your-degree-programme",
+                "label": {
+                    "tr": "Resmî sayfa: lisans başvurusu (heiCO)",
+                    "en": "Official page: Bachelor's application (heiCO)",
+                    "de": "Offizielle Seite: Bachelorbewerbung (heiCO)"
+                }
+            },
+            "sources": [
+                "https://www.uni-heidelberg.de/en/study/application-enrolment/starting-the-first-academic-semester-of-your-degree-programme",
+                "https://www.uni-heidelberg.de/en/study/application-enrolment/starting-your-degree-course-in-the-first-academic-semester",
+                "https://www.uni-heidelberg.de/en/study/advisory-services/learning-languages/language-requirements-for-international-students",
+                "https://www.uni-heidelberg.de/en/study/management-of-studies/semester-fees/tuition-fees-for-international-students",
+                "https://www.uni-heidelberg.de/en/study-financing-for-international-students",
+                "https://www.uni-heidelberg.de/en/study/international-studies/language-preparation-at-heidelberg-university"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Heidelberg: Başvuru Şartları, Master, Dil Belgesi ve Ücretler",
+                    "seo_description": "Heidelberg Üniversitesi'ne başvuru heiCO'dan; DSH-2 çoğunlukla kayıtta, AB dışı öğrencilere 1.500 € dönem ücreti, tarihler ve İngilizce master örnekleri.",
+                    "intro": "**Ruprecht-Karls-Universität Heidelberg**, Türkçede **Heidelberg Üniversitesi** olarak bilinen, Almanya'nın en eski üniversitesi. PH Heidelberg ve SRH Heidelberg ayrı kurumlardır. Bu sayfa lisans ve yüksek lisans başvurusunu, dil belgelerini, ücretleri ve tarihleri resmî sayfalara göre özetliyor.\n\nKısa cevap: Tüm adaylar **heiCO** portalından başvurur. Almanca programlarda DSH-2 seviyesi çoğu programda **kayıtta** kanıtlanır; bazı programlar başvuruda ister. Baden-Württemberg kuralı gereği AB/AEA dışından gelen öğrenciler **dönem başına 1.500 €** öğrenim ücreti öder.",
+                    "facts": [
+                        [
+                            "Resmî ad",
+                            "Ruprecht-Karls-Universität Heidelberg"
+                        ],
+                        [
+                            "Başvuru yolu",
+                            "heiCO (üniversitenin kendi portalı)"
+                        ],
+                        [
+                            "AB dışı öğrenim ücreti",
+                            "1.500 € / dönem (lisans, Staatsexamen, ardışık master)"
+                        ],
+                        [
+                            "Almanca belge",
+                            "Çoğu programda kayıtta (DSH-2 seviyesi)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: başvuru nasıl işliyor?",
+                            "- **Lisans:** resmî sayfaya göre uyruk ve program fark etmeksizin tüm adaylar heiCO üzerinden çevrim içi başvurur.\n- **Yüksek lisans:** başvuru yine heiCO üzerinden; resmî sayfa birkaç istisna program olduğunu belirtiyor. Resmî sayfalarda uni-assist'ten söz edilmiyor.\n- **Almancası yetersiz adaylar:** bir programa kabul edilen adaylar DSH sınavına Internationales Studienzentrum'da (ISZ) kaydolabilir; belge kayıtta gerekir. ISZ'nin Almanca kursuna başvuru ise yalnız kurs yeri içindir, bölüm kabulü değildir. Okul diploması doğrudan girişe yetmeyenler için Studienkolleg var (B2 ve giriş sınavı gerekiyor); resmî sayfalar Studienkolleg öğrencilerine bölüm yeri ayrıldığını yazmıyor.\n\nŞartlı kabul ve dil kursu yollarını [karşılaştırma sayfamızda](/tr/universities/collections/conditional-admission-universities) anlattık."
+                        ],
+                        [
+                            "Lisans ve yüksek lisans şartları",
+                            "- **Lisans:** yabancı lise diplomasının doğrudan girişe yetip yetmediği programa ve ülkeye göre değişir; yetmiyorsa Studienkolleg ve Feststellungsprüfung gerekir.\n- **Yüksek lisans:** kabul şartları programın kabul yönetmeliğinde (Zulassungsordnung) yazar; İngilizce yüksek lisanslar \"çok iyi\" İngilizce ister.\n\nYüksek lisans sürecinin genel adımlarını [Almanya'da yüksek lisans rehberimizde](/tr/blog/doing-a-masters-in-germany-2026-a-z-guide) anlattık."
+                        ],
+                        [
+                            "Dil belgeleri: hangisi, ne zaman?",
+                            "- **Almanca programlar:** en az DSH-2 seviyesi, çoğu programda **kayıt sırasında**. Psikoloji, tıp, hukuk, biyokimya ve moleküler biyoteknoloji gibi bazı programlar belgeyi **başvuruda** ister. DSH-2 seviyesine denk sayılanlar arasında DSD II, Goethe C2, tüm bölümlerde TDN 4'lü TestDaF, ÖSD C2, telc Deutsch C1 Hochschule ve Feststellungsprüfung var.\n- **İngilizce programlar:** şartlar programa özgü kabul yönetmeliğinde yazar.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Ücretler ve başvuru tarihleri",
+                            "- **Öğrenim ücreti:** yabancı okul diplomasıyla gelen AB/AEA dışı öğrenciler lisans, Staatsexamen ve ardışık yüksek lisansta **dönem başına 1.500 €** öder (2017/18 kış döneminden beri). AB/AEA vatandaşları ve Alman okul diploması olanlar muaf; başka istisnalar da var. İkinci lisans için dönem başına 650 €.\n- **Semesterbeitrag:** 2026/27 kış dönemi itibarıyla dönem başına 189,80 €.\n- **Lisans tarihleri:** kontenjansız programlarda kış dönemi 01.06.–31.10., yaz dönemi 01.12.–30.04.; kontenjanlı ya da giriş sınavlı programlarda 01.06.–15.07. ve 01.12.–15.01. Tıp, eczacılık ve diş hekimliğine AB dışından başvuruda Heidelberg dönemi 01.06.–15.07.\n- **Yüksek lisans tarihleri:** genel kural kış dönemi 1 Nisan – 30 Eylül, yaz dönemi 1 Ekim – 31 Mart; birçok programın kendi tarihi var (ör. Molecular Biosciences 1 Şubat – 15 Mart). Resmî sayfa, kabul yönetmeliğindeki tarihlerin farklı olabileceği uyarısını yapıyor.\n\nBaden-Württemberg ücretini [öğrenim ücreti rehberimizde](/tr/blog/is-university-free-in-germany-2026-real-costs) ayrıntılı anlattık."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Resmî program sayfasında öğretim dili İngilizce ve \"tamamen İngilizce tamamlanabilir\" olarak geçen üç örnek:\n\n- [Molecular Biosciences (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/molecular-biosciences/molecular-biosciences-master)\n- [Matter to Life (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/matter-to-life/matter-to-life-master)\n- [Mathematics of Machine Learning and Data Science (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/mathematics/mathematics-of-machine-learning-and-data-science-master)\n\nBazı programlar \"İngilizce, kısmen Almanca\" yürütülüyor; dil bilgisini program sayfasından kontrol et."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Heidelberg Üniversitesi'ne uni-assist ile mi başvurulur?",
+                            "Hayır. Resmî sayfaya göre lisans ve yüksek lisans başvuruları üniversitenin kendi portalı heiCO üzerinden yapılır; yüksek lisansta birkaç istisna program var."
+                        ],
+                        [
+                            "Heidelberg öğrenim ücreti alıyor mu?",
+                            "Evet, yabancı okul diplomasıyla gelen AB/AEA dışı öğrencilerden lisans, Staatsexamen ve ardışık yüksek lisansta dönem başına 1.500 €. Muafiyetler var; ikinci lisans 650 €."
+                        ],
+                        [
+                            "Almanca belgeyi ne zaman sunmalıyım?",
+                            "Çoğu programda DSH-2 seviyesi kayıt sırasında kanıtlanır; psikoloji, tıp ve hukuk gibi bazı programlar belgeyi başvuruda ister. Programının sayfasını kontrol et."
+                        ],
+                        [
+                            "Heidelberg şartlı kabul veriyor mu?",
+                            "Resmî sayfalarda bölüme şartlı kabul diye bir yol yok. Kabul alan adaylar DSH'ye ISZ'de kaydolabilir ve belgeyi kayıtta sunar; ISZ Almanca kursuna kabul ise bölüm kabulü değildir."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programını seç, dil belgesinin başvuruda mı kayıtta mı istendiğini program sayfasından kontrol et ve başvuruyu [heiCO üzerinden](https://www.uni-heidelberg.de/en/study/application-enrolment/starting-the-first-academic-semester-of-your-degree-programme) yap. Ücret kurallarını [resmî ücret sayfasından](https://www.uni-heidelberg.de/en/study/management-of-studies/semester-fees/tuition-fees-for-international-students) teyit et.",
+                    "facts_h": "Hızlı Bakış",
+                    "links_h": "Faydalı Linkler",
+                    "faq_h": "Sıkça Sorulanlar"
+                },
+                "en": {
+                    "seo_title": "Heidelberg University: Admission Requirements, Master's, German Certificate and Fees",
+                    "seo_description": "Apply to Heidelberg via heiCO; DSH-2 usually at enrolment, €1,500 per semester for non-EU students, application deadlines and English-taught Master's examples.",
+                    "intro": "**Ruprecht-Karls-Universität Heidelberg** is Germany's oldest university. PH Heidelberg and SRH Heidelberg are separate institutions. This page summarises the Bachelor's and Master's application, language certificates, fees and deadlines based on the official pages.\n\nShort answer: all applicants apply through the **heiCO** portal. For German-taught programmes, DSH-2 level is proven **at enrolment** for most programmes; some require it with the application. Under the Baden-Württemberg rule, students from outside the EU/EEA pay **€1,500 per semester** in tuition.",
+                    "facts": [
+                        [
+                            "Official name",
+                            "Ruprecht-Karls-Universität Heidelberg"
+                        ],
+                        [
+                            "How to apply",
+                            "heiCO (the university's own portal)"
+                        ],
+                        [
+                            "Non-EU tuition",
+                            "€1,500 per semester (Bachelor's, Staatsexamen, consecutive Master's)"
+                        ],
+                        [
+                            "German certificate",
+                            "At enrolment for most programmes (DSH-2 level)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: how does the application work?",
+                            "- **Bachelor's:** according to the official page, all applicants, regardless of nationality and programme, apply online through heiCO.\n- **Master's:** applications also go through heiCO; the official page notes a few exceptions. The official pages do not mention uni-assist.\n- **Applicants without enough German:** applicants admitted to a programme can register for the DSH at the Internationales Studienzentrum (ISZ); the certificate is due at enrolment. Applying for an ISZ German course is for a course place only, not a degree admission. For applicants whose school certificate does not give direct entry there is the Studienkolleg (B2 and an entrance test required); the official pages do not say a degree place is reserved for Studienkolleg students.\n\nWe compare conditional admission and German-course routes in our [overview](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bachelor's and Master's requirements",
+                            "- **Bachelor's:** whether a foreign school certificate gives direct entry depends on the country and programme; if not, the Studienkolleg and Feststellungsprüfung are required.\n- **Master's:** requirements are set in each programme's admission regulations (Zulassungsordnung); English-taught Master's programmes require very good English.\n\nOur [guide to a Master's in Germany](/en/blog/doing-a-masters-in-germany-2026-a-z-guide-en) explains the general steps."
+                        ],
+                        [
+                            "Language certificates: which and when?",
+                            "- **German-taught programmes:** at least DSH-2 level, proven **at enrolment** for most programmes. Some programmes such as Psychology, Medicine, Law, Biochemistry and Molecular Biotechnology require it **with the application**. Recognised as equivalent to DSH-2 are, among others, DSD II, Goethe C2, TestDaF with TDN 4 in all parts, ÖSD C2, telc Deutsch C1 Hochschule and the Feststellungsprüfung.\n- **English-taught programmes:** requirements are set in the programme's admission regulations.\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Fees and deadlines",
+                            "- **Tuition:** non-EU/EEA students with a foreign school certificate pay **€1,500 per semester** for Bachelor's, Staatsexamen and consecutive Master's programmes (since winter semester 2017/18). EU/EEA citizens and holders of a German school certificate are exempt, and further exceptions apply. A second degree costs €650 per semester.\n- **Semester fee:** €189.80 per semester as of winter semester 2026/27.\n- **Bachelor's deadlines:** unrestricted programmes 1 June – 31 October (winter) and 1 December – 30 April (summer); restricted programmes or those with an entrance test 1 June – 15 July and 1 December – 15 January. For Medicine, Pharmacy and Dentistry, non-EU applicants apply to Heidelberg from 1 June to 15 July.\n- **Master's deadlines:** the general rule is 1 April – 30 September (winter) and 1 October – 31 March (summer); many programmes set their own dates (e.g. Molecular Biosciences 1 February – 15 March). The official page warns that dates in the admission regulations may differ.\n\nOur [tuition fee guide](/en/blog/is-university-free-in-germany-2026-real-costs-en) explains the Baden-Württemberg fee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Three examples whose official programme pages list English as the language of instruction and state they can be completed entirely in English:\n\n- [Molecular Biosciences (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/molecular-biosciences/molecular-biosciences-master)\n- [Matter to Life (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/matter-to-life/matter-to-life-master)\n- [Mathematics of Machine Learning and Data Science (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/mathematics/mathematics-of-machine-learning-and-data-science-master)\n\nSome programmes are taught in \"English, partially German\"; check the language on the programme page."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Do I apply to Heidelberg through uni-assist?",
+                            "No. According to the official page, Bachelor's and Master's applications go through the university's own portal, heiCO; a few Master's programmes are exceptions."
+                        ],
+                        [
+                            "Does Heidelberg charge tuition fees?",
+                            "Yes, €1,500 per semester for non-EU/EEA students with a foreign school certificate in Bachelor's, Staatsexamen and consecutive Master's programmes. There are exemptions; a second degree costs €650."
+                        ],
+                        [
+                            "When must I submit my German certificate?",
+                            "For most programmes DSH-2 level is proven at enrolment; some programmes such as Psychology, Medicine and Law require it with the application. Check your programme page."
+                        ],
+                        [
+                            "Does Heidelberg offer conditional admission?",
+                            "The official pages describe no conditional admission to a degree. Admitted applicants can register for the DSH at the ISZ and hand in the certificate at enrolment; admission to the ISZ German course is not a degree admission."
+                        ]
+                    ],
+                    "cta": "**Next step:** choose your programme in the programmes tab on this page, check on the programme page whether the German certificate is due with the application or at enrolment, and apply [through heiCO](https://www.uni-heidelberg.de/en/study/application-enrolment/starting-the-first-academic-semester-of-your-degree-programme). Confirm the fee rules on the [official fee page](https://www.uni-heidelberg.de/en/study/management-of-studies/semester-fees/tuition-fees-for-international-students).",
+                    "facts_h": "Quick Facts",
+                    "links_h": "Useful Links",
+                    "faq_h": "Frequently Asked Questions"
+                },
+                "de": {
+                    "seo_title": "Universität Heidelberg: Zulassungsvoraussetzungen, Master, Deutschnachweis und Gebühren",
+                    "seo_description": "Bewerbung über heiCO; DSH-2 meist bei der Einschreibung, 1.500 € pro Semester für Nicht-EU-Studierende, Bewerbungsfristen und englischsprachige Master.",
+                    "intro": "Die **Ruprecht-Karls-Universität Heidelberg** ist die älteste Universität Deutschlands. PH Heidelberg und SRH Heidelberg sind eigene Hochschulen. Diese Seite fasst Bachelor- und Masterbewerbung, Sprachnachweise, Gebühren und Fristen nach den offiziellen Seiten zusammen.\n\nKurz gesagt: Alle bewerben sich über das Portal **heiCO**. In deutschsprachigen Studiengängen wird DSH-2-Niveau meist **bei der Einschreibung** nachgewiesen; einige Studiengänge verlangen es schon bei der Bewerbung. Nach baden-württembergischem Recht zahlen Studierende aus Nicht-EU/EWR-Staaten **1.500 € pro Semester**.",
+                    "facts": [
+                        [
+                            "Offizieller Name",
+                            "Ruprecht-Karls-Universität Heidelberg"
+                        ],
+                        [
+                            "Bewerbungsweg",
+                            "heiCO (eigenes Portal der Universität)"
+                        ],
+                        [
+                            "Studiengebühren Nicht-EU",
+                            "1.500 € pro Semester (Bachelor, Staatsexamen, konsekutiver Master)"
+                        ],
+                        [
+                            "Deutschnachweis",
+                            "Meist bei der Einschreibung (DSH-2-Niveau)"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Wie läuft die Bewerbung?",
+                            "- **Bachelor:** Laut offizieller Seite bewerben sich alle, unabhängig von Staatsangehörigkeit und Studiengang, online über heiCO.\n- **Master:** ebenfalls über heiCO; die offizielle Seite nennt einige Ausnahmen. uni-assist wird auf den offiziellen Seiten nicht erwähnt.\n- **Ohne ausreichendes Deutsch:** Wer zu einem Studiengang zugelassen ist, kann sich am Internationalen Studienzentrum (ISZ) zur DSH anmelden; der Nachweis ist bei der Einschreibung fällig. Eine Bewerbung für den ISZ-Deutschkurs ist nur eine Bewerbung um einen Kursplatz, keine Studienzulassung. Ohne direkten Hochschulzugang gibt es das Studienkolleg (B2 und Aufnahmeprüfung); dass Studienkolleg-Teilnehmenden ein Studienplatz reserviert wird, steht auf den offiziellen Seiten nicht.\n\nBedingte Zulassung und Deutschkurs-Wege vergleicht unsere [Übersicht](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Voraussetzungen für Bachelor und Master",
+                            "- **Bachelor:** Ob ein ausländisches Schulzeugnis den direkten Zugang eröffnet, hängt von Land und Studiengang ab; sonst sind Studienkolleg und Feststellungsprüfung nötig.\n- **Master:** Die Voraussetzungen stehen in der Zulassungsordnung des Studiengangs; englischsprachige Master verlangen sehr gute Englischkenntnisse.\n\nDie allgemeinen Schritte erklärt unser [Ratgeber zum Master in Deutschland](/de/blog/doing-a-masters-in-germany-2026-a-z-guide-de)."
+                        ],
+                        [
+                            "Sprachnachweise: welche und wann?",
+                            "- **Deutschsprachige Studiengänge:** mindestens DSH-2-Niveau, meist **bei der Einschreibung**. Einige Studiengänge wie Psychologie, Medizin, Jura, Biochemie und Molekulare Biotechnologie verlangen den Nachweis **schon bei der Bewerbung**. Als DSH-2-gleichwertig gelten u. a. DSD II, Goethe C2, TestDaF mit TDN 4 in allen Teilen, ÖSD C2, telc Deutsch C1 Hochschule und die Feststellungsprüfung.\n- **Englischsprachige Studiengänge:** Die Anforderungen stehen in der Zulassungsordnung des Studiengangs.\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Gebühren und Fristen",
+                            "- **Studiengebühren:** Nicht-EU/EWR-Studierende mit ausländischer Hochschulzugangsberechtigung zahlen im Bachelor, Staatsexamen und konsekutiven Master **1.500 € pro Semester** (seit dem Wintersemester 2017/18). EU/EWR-Bürger*innen und Bildungsinländer*innen sind befreit, weitere Ausnahmen gibt es. Ein Zweitstudium kostet 650 € pro Semester.\n- **Semesterbeitrag:** 189,80 € pro Semester (Stand Wintersemester 2026/27).\n- **Bachelorfristen:** zulassungsfreie Studiengänge 01.06.–31.10. (Winter) und 01.12.–30.04. (Sommer); zulassungsbeschränkte oder mit Eignungsprüfung 01.06.–15.07. und 01.12.–15.01. Für Medizin, Pharmazie und Zahnmedizin bewerben sich Nicht-EU-Bewerber*innen in Heidelberg vom 01.06. bis 15.07.\n- **Masterfristen:** Grundregel 1. April – 30. September (Winter) und 1. Oktober – 31. März (Sommer); viele Studiengänge haben eigene Fristen (z. B. Molecular Biosciences 1. Februar – 15. März). Die offizielle Seite weist darauf hin, dass Fristen in den Zulassungsordnungen abweichen können.\n\nDie baden-württembergische Gebühr erklärt unser [Ratgeber zu Studiengebühren](/de/blog/is-university-free-in-germany-2026-real-costs-de)."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Drei Beispiele mit Unterrichtssprache Englisch, die laut offizieller Seite vollständig auf Englisch studierbar sind:\n\n- [Molecular Biosciences (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/molecular-biosciences/molecular-biosciences-master)\n- [Matter to Life (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/matter-to-life/matter-to-life-master)\n- [Mathematics of Machine Learning and Data Science (M.Sc.)](https://www.uni-heidelberg.de/en/study/all-subjects/mathematics/mathematics-of-machine-learning-and-data-science-master)\n\nManche Studiengänge laufen \"Englisch, teilweise Deutsch\"; prüfe die Sprache auf der Studiengangsseite."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Bewerbe ich mich in Heidelberg über uni-assist?",
+                            "Nein. Laut offizieller Seite laufen Bachelor- und Masterbewerbungen über das eigene Portal heiCO; einige Masterstudiengänge sind Ausnahmen."
+                        ],
+                        [
+                            "Erhebt die Universität Heidelberg Studiengebühren?",
+                            "Ja, 1.500 € pro Semester für Nicht-EU/EWR-Studierende mit ausländischer Hochschulzugangsberechtigung im Bachelor, Staatsexamen und konsekutiven Master. Es gibt Befreiungen; ein Zweitstudium kostet 650 €."
+                        ],
+                        [
+                            "Wann muss ich den Deutschnachweis einreichen?",
+                            "In den meisten Studiengängen wird DSH-2-Niveau bei der Einschreibung nachgewiesen; einige Studiengänge wie Psychologie, Medizin und Jura verlangen ihn bei der Bewerbung. Prüfe deine Studiengangsseite."
+                        ],
+                        [
+                            "Vergibt Heidelberg eine bedingte Zulassung?",
+                            "Eine bedingte Studienzulassung beschreiben die offiziellen Seiten nicht. Zugelassene können sich am ISZ zur DSH anmelden und den Nachweis bei der Einschreibung einreichen; die Zulassung zum ISZ-Deutschkurs ist keine Studienzulassung."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Wähle im Reiter Studiengänge deinen Studiengang, prüfe auf der Studiengangsseite, ob der Deutschnachweis bei Bewerbung oder Einschreibung fällig ist, und bewirb dich [über heiCO](https://www.uni-heidelberg.de/en/study/application-enrolment/starting-the-first-academic-semester-of-your-degree-programme). Die Gebührenregeln stehen auf der [offiziellen Gebührenseite](https://www.uni-heidelberg.de/en/study/management-of-studies/semester-fees/tuition-fees-for-international-students).",
+                    "facts_h": "Auf einen Blick",
+                    "links_h": "Nützliche Links",
+                    "faq_h": "Häufig gestellte Fragen"
+                }
+            }
+        },
+        "albert-ludwigs-universitat-freiburg-im-breisgau-partner-019ddbba": {
+            "expected": {
+                "tr": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "en": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "de": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ]
+            },
+            "remove_indexes": [],
+            "official": {
+                "url": "https://uni-freiburg.de/studium/bewerben/internationals/vollzeitstudium/",
+                "label": {
+                    "tr": "Resmî sayfa: uluslararası başvuru",
+                    "en": "Official page: international applicants",
+                    "de": "Offizielle Seite: internationale Bewerbung"
+                }
+            },
+            "sources": [
+                "https://uni-freiburg.de/studium/bewerben/wie-bewerbe-ich-mich/",
+                "https://uni-freiburg.de/studium/bewerben/internationals/vollzeitstudium/",
+                "https://uni-freiburg.de/studium/bewerben/termine-und-fristen/",
+                "https://uni-freiburg.de/studium/im-studium/studiengebuehren-internationale-studierende/",
+                "https://uni-freiburg.de/studium/im-studium/semesterbeitrag-studiengebuehren/",
+                "https://uni-freiburg.de/studium/bewerben/sprachnachweise/"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "Universität Freiburg: Başvuru Şartları, Dil Belgesi, Ücretler ve Tarihler",
+                    "seo_description": "Freiburg Üniversitesi'ne başvuru kendi portalından; NC'siz programlarda C1 kayda kadar, AB dışına 1.500 € dönem ücreti, tarihler, İngilizce master.",
+                    "intro": "**Albert-Ludwigs-Universität Freiburg**, Türkçede **Freiburg Üniversitesi** olarak bilinen, Kara Orman'ın eteğindeki Freiburg im Breisgau'da köklü bir devlet üniversitesi. PH Freiburg ayrı bir kurumdur. Bu sayfa başvuru yolunu, dil belgelerinin hangi aşamada istendiğini, ücretleri ve tarihleri resmî sayfalara göre anlatıyor.\n\nKısa cevap: Tüm adaylar üniversitenin **kendi çevrim içi portalından** başvurur. **NC'siz** programlara DSH 1, TestDaF 3 ya da bir C1 kursuna devam belgesiyle başvurup **C1 belgesini kayda kadar** sunabilirsin; NC'li programlarda belge başvuruda gerekir. AB/AEA dışından gelen öğrenciler **dönem başına 1.500 €** öğrenim ücreti öder.",
+                    "facts": [
+                        [
+                            "Resmî ad",
+                            "Albert-Ludwigs-Universität Freiburg"
+                        ],
+                        [
+                            "Başvuru yolu",
+                            "Üniversitenin çevrim içi başvuru portalı (HISinOne)"
+                        ],
+                        [
+                            "AB dışı öğrenim ücreti",
+                            "1.500 € / dönem (lisans, Staatsexamen, ardışık master)"
+                        ],
+                        [
+                            "Almanca belge",
+                            "NC'li: başvuruda · NC'siz: kayda kadar"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: başvuru ve Almanca belge",
+                            "- **Başvuru:** lisans ve yüksek lisans için uyruk fark etmeksizin üniversitenin çevrim içi başvuru portalı. Yüksek lisans başvurularını önce ilgili bölüm inceler. Resmî sayfalarda uni-assist'ten söz edilmiyor.\n- **NC'li lisans programları:** C1 seviyesindeki dil belgesi **başvuruda** hazır olmalı.\n- **NC'siz lisans programları:** DSH 1, TestDaF 3 ya da bir C1 kursuna devam ettiğini gösteren belgeyle başvurabilirsin; C1 belgesini **en geç kayıtta** sunman zorunlu. Bu bir şartlı kabul değil, belgeyi kayda kadar tamamlama imkânı.\n- **Okul diploması yetmeyenler:** Freiburg portalından başvurulan, Studienkolleg Heidelberg'de bir yıllık Feststellungsprüfung kursu var (B2 gerekli; kış 01.06.–15.07., yaz 01.12.–15.01.). Resmî sayfalar bölüm yeri ayrıldığını yazmıyor.\n\nDiğer üniversitelerdeki yolları [şartlı kabul karşılaştırmamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Dil belgeleri ve yüksek lisans şartları",
+                            "- **Almanca (lisans):** DSH-2/3, tüm bölümlerde TestDaF 4/5, Goethe C2, DSD II, telc Deutsch C1 Hochschule ya da Almanca bir okul bitirme belgesi.\n- **Yüksek lisans:** dil ve akademik şartlar programa göre değişir; üniversite, yüksek lisans başvuruları için program bazında bir dil şartları listesi yayımlıyor. Kabul edilen İngilizce testleri resmî dil belgeleri sayfasında.\n\nAlmanca sınavları [dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish), yüksek lisans adımlarını [yüksek lisans rehberimizde](/tr/blog/doing-a-masters-in-germany-2026-a-z-guide) anlattık."
+                        ],
+                        [
+                            "Ücretler ve başvuru tarihleri",
+                            "- **Öğrenim ücreti:** AB/AEA dışından gelip lisans, Staatsexamen ya da ardışık yüksek lisansa başlayanlar için **dönem başına 1.500 €** (2017/18 kış döneminden beri). Sürekli eğitim yüksek lisansları bu ücretten muaf; Almanya'da okul bitirenler ve kalıcı oturumu olanlar gibi gruplar da muaf olabilir. İkinci lisans: 650 €.\n- **Semesterbeitrag:** resmî sayfaya göre güncel tutar dönem başına 190 € (Studierendenwerk 103 €, idari ücret 80 €, öğrenci birliği 7 €); sayfa hangi dönem için geçerli olduğunu belirtmiyor.\n- **Tarihler (resmî tabloda yazıldığı gibi):** NC'li programlar kış dönemi 01.06.–15.07.2026; NC'siz programlar yaz dönemi 01.12.2025–09.04.2026, kış dönemi 01.06.–08.10.2026. 2027 yaz dönemi tarihleri henüz yayımlanmadı.\n- **Yüksek lisans:** tarihler programa göre değişir (ör. Environmental Governance 01.03.–15.05., Neuroscience 01.03.–31.03.).\n\nBaden-Württemberg ücretini [öğrenim ücreti rehberimizde](/tr/blog/is-university-free-in-germany-2026-real-costs) anlattık."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Resmî program sayfasında öğretim dili İngilizce olan iki örnek:\n\n- [Environmental Governance (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/174) — İngilizce C1 isteniyor\n- [Neuroscience (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/685) — İngilizce B2 isteniyor\n\nBazı programlar Almanca ve İngilizce bilgiyi birlikte ya da alternatif olarak istiyor; dil şartını program sayfasından kontrol et."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Freiburg Üniversitesi'ne uni-assist ile mi başvurulur?",
+                            "Hayır. Resmî sayfaya göre lisans ve yüksek lisans başvuruları uyruk fark etmeksizin üniversitenin kendi çevrim içi portalından yapılır."
+                        ],
+                        [
+                            "C1 belgem yokken başvurabilir miyim?",
+                            "NC'siz lisans programlarına DSH 1, TestDaF 3 ya da C1 kursuna devam belgesiyle başvurabilirsin; C1 belgesini en geç kayıtta sunman gerekir. NC'li programlarda belge başvuruda istenir."
+                        ],
+                        [
+                            "Freiburg öğrenim ücreti alıyor mu?",
+                            "Evet, AB/AEA dışından gelip lisans, Staatsexamen ya da ardışık yüksek lisansa başlayanlardan dönem başına 1.500 €. Muafiyetler var; ikinci lisans 650 €."
+                        ],
+                        [
+                            "Semesterbeitrag ne kadar?",
+                            "Resmî sayfaya göre güncel tutar dönem başına 190 €; öğrenim ücretinden ayrı ödenir."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programının NC'li olup olmadığına bak, dil belgesinin hangi aşamada istendiğini [Freiburg'un uluslararası başvuru sayfasından](https://uni-freiburg.de/studium/bewerben/internationals/vollzeitstudium/) teyit et ve ücret kurallarını [resmî ücret sayfasından](https://uni-freiburg.de/studium/im-studium/studiengebuehren-internationale-studierende/) kontrol et.",
+                    "facts_h": "Hızlı Bakış",
+                    "links_h": "Faydalı Linkler",
+                    "faq_h": "Sıkça Sorulanlar"
+                },
+                "en": {
+                    "seo_title": "University of Freiburg: Admission Requirements, Language Certificates, Fees and Deadlines",
+                    "seo_description": "Apply to Freiburg via its own portal; C1 due by enrolment for admission-free programmes, €1,500 per semester for non-EU students, deadlines, English Master's.",
+                    "intro": "**Albert-Ludwigs-Universität Freiburg** is a long-established public university in Freiburg im Breisgau at the edge of the Black Forest. PH Freiburg is a separate institution. This page explains how to apply, when language certificates are due, fees and deadlines based on the official pages.\n\nShort answer: all applicants apply through the university's **own online portal**. For **admission-free** programmes you can apply with DSH 1, TestDaF 3 or proof of attending a C1 course and hand in the **C1 certificate by enrolment**; restricted programmes require the certificate with the application. Students from outside the EU/EEA pay **€1,500 per semester** in tuition.",
+                    "facts": [
+                        [
+                            "Official name",
+                            "Albert-Ludwigs-Universität Freiburg"
+                        ],
+                        [
+                            "How to apply",
+                            "The university's online application portal (HISinOne)"
+                        ],
+                        [
+                            "Non-EU tuition",
+                            "€1,500 per semester (Bachelor's, Staatsexamen, consecutive Master's)"
+                        ],
+                        [
+                            "German certificate",
+                            "Restricted: with application · Admission-free: by enrolment"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: application and German certificate",
+                            "- **Applying:** for Bachelor's and Master's, regardless of nationality, through the university's online application portal. Master's applications are first reviewed by the department. The official pages do not mention uni-assist.\n- **Restricted Bachelor's programmes:** the C1-level language certificate must be available **when you apply**.\n- **Admission-free Bachelor's programmes:** you can apply with DSH 1, TestDaF 3 or proof of attending a C1 course; the C1 certificate must be submitted **by enrolment at the latest**. This is not conditional admission, but a chance to complete the certificate before enrolment.\n- **If your school certificate does not give direct entry:** there is a one-year Feststellungsprüfung course at the Studienkolleg in Heidelberg, applied for through the Freiburg portal (B2 required; winter 1 June – 15 July, summer 1 December – 15 January). The official pages do not say a degree place is reserved.\n\nRoutes at other universities are compared in our [conditional admission overview](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Language certificates and Master's requirements",
+                            "- **German (Bachelor's):** DSH-2/3, TestDaF 4/5 in all four parts, Goethe C2, DSD II, telc Deutsch C1 Hochschule or a German-language school-leaving certificate.\n- **Master's:** language and academic requirements depend on the programme; the university publishes a programme-by-programme list of language requirements for Master's applications. Accepted English tests are listed on the official language certificates page.\n\nOur [German certificates guide](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams, and our [Master's guide](/en/blog/doing-a-masters-in-germany-2026-a-z-guide-en) explains the steps."
+                        ],
+                        [
+                            "Fees and deadlines",
+                            "- **Tuition:** **€1,500 per semester** for students from outside the EU/EEA starting a Bachelor's, Staatsexamen or consecutive Master's (since winter semester 2017/18). Continuing-education Master's are exempt, and groups such as holders of a German school-leaving certificate or permanent residents can be exempt. Second degree: €650.\n- **Semester fee:** according to the official page, currently €190 per semester (Studierendenwerk €103, administrative fee €80, student body €7); the page does not name the semester.\n- **Deadlines (as printed in the official table):** restricted programmes 1 June – 15 July 2026 for the winter semester; admission-free programmes 1 December 2025 – 9 April 2026 (summer) and 1 June – 8 October 2026 (winter). Summer semester 2027 dates are not yet published.\n- **Master's:** deadlines vary by programme (e.g. Environmental Governance 1 March – 15 May, Neuroscience 1 March – 31 March).\n\nOur [tuition fee guide](/en/blog/is-university-free-in-germany-2026-real-costs-en) explains the Baden-Württemberg fee."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Two examples whose official programme pages state English as the language of instruction:\n\n- [Environmental Governance (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/174) — English C1 required\n- [Neuroscience (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/685) — English B2 required\n\nSome programmes require German and English together or as alternatives; check the language requirement on the programme page."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Do I apply to Freiburg through uni-assist?",
+                            "No. According to the official page, Bachelor's and Master's applications go through the university's own online portal, regardless of nationality."
+                        ],
+                        [
+                            "Can I apply without a C1 certificate?",
+                            "For admission-free Bachelor's programmes you can apply with DSH 1, TestDaF 3 or proof of attending a C1 course; the C1 certificate is due by enrolment. Restricted programmes require it with the application."
+                        ],
+                        [
+                            "Does Freiburg charge tuition fees?",
+                            "Yes, €1,500 per semester for students from outside the EU/EEA starting a Bachelor's, Staatsexamen or consecutive Master's. There are exemptions; a second degree costs €650."
+                        ],
+                        [
+                            "How much is the semester fee?",
+                            "According to the official page, currently €190 per semester; it is paid separately from tuition."
+                        ]
+                    ],
+                    "cta": "**Next step:** check in the programmes tab on this page whether your programme is restricted, confirm when the language certificate is due on [Freiburg's international application page](https://uni-freiburg.de/studium/bewerben/internationals/vollzeitstudium/), and check the fee rules on the [official fee page](https://uni-freiburg.de/studium/im-studium/studiengebuehren-internationale-studierende/).",
+                    "facts_h": "Quick Facts",
+                    "links_h": "Useful Links",
+                    "faq_h": "Frequently Asked Questions"
+                },
+                "de": {
+                    "seo_title": "Universität Freiburg: Zulassungsvoraussetzungen, Sprachnachweise, Gebühren und Fristen",
+                    "seo_description": "Bewerbung über das eigene Portal; C1 bei zulassungsfreien Studiengängen bis zur Einschreibung, 1.500 € pro Semester für Nicht-EU, Fristen, Master auf Englisch.",
+                    "intro": "Die **Albert-Ludwigs-Universität Freiburg** ist eine traditionsreiche staatliche Universität in Freiburg im Breisgau am Rand des Schwarzwalds. Die PH Freiburg ist eine eigene Hochschule. Diese Seite erklärt Bewerbungsweg, Zeitpunkt der Sprachnachweise, Gebühren und Fristen nach den offiziellen Seiten.\n\nKurz gesagt: Alle bewerben sich über das **eigene Online-Bewerbungsportal**. Für **zulassungsfreie** Studiengänge kannst du dich mit DSH 1, TestDaF 3 oder dem Nachweis eines C1-Kurses bewerben und den **C1-Nachweis bis zur Immatrikulation** nachreichen; zulassungsbeschränkte Studiengänge verlangen ihn bei der Bewerbung. Studierende aus Nicht-EU/EWR-Staaten zahlen **1.500 € pro Semester**.",
+                    "facts": [
+                        [
+                            "Offizieller Name",
+                            "Albert-Ludwigs-Universität Freiburg"
+                        ],
+                        [
+                            "Bewerbungsweg",
+                            "Online-Bewerbungsportal der Universität (HISinOne)"
+                        ],
+                        [
+                            "Studiengebühren Nicht-EU",
+                            "1.500 € pro Semester (Bachelor, Staatsexamen, konsekutiver Master)"
+                        ],
+                        [
+                            "Deutschnachweis",
+                            "Zulassungsbeschränkt: bei Bewerbung · zulassungsfrei: bis zur Immatrikulation"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Bewerbung und Deutschnachweis",
+                            "- **Bewerbung:** Bachelor und Master, unabhängig von der Staatsangehörigkeit, über das Online-Bewerbungsportal der Universität. Masterbewerbungen prüft zunächst der jeweilige Fachbereich. uni-assist wird auf den offiziellen Seiten nicht erwähnt.\n- **Zulassungsbeschränkte Bachelorstudiengänge:** Das C1-Sprachzertifikat muss **bei der Bewerbung** vorliegen.\n- **Zulassungsfreie Bachelorstudiengänge:** Bewerbung mit DSH 1, TestDaF 3 oder Nachweis eines C1-Kurses möglich; ein C1-Zertifikat muss **bis zur Immatrikulation** zwingend nachgereicht werden. Das ist keine bedingte Zulassung, sondern eine Nachreichfrist.\n- **Ohne direkten Hochschulzugang:** Über das Freiburger Portal bewirbst du dich für den einjährigen Kurs zur Feststellungsprüfung am Studienkolleg Heidelberg (B2 nötig; Winter 01.06.–15.07., Sommer 01.12.–15.01.). Eine Reservierung des Studienplatzes nennen die offiziellen Seiten nicht.\n\nWege an anderen Hochschulen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Sprachnachweise und Masterzulassung",
+                            "- **Deutsch (Bachelor):** DSH-2/3, TestDaF 4/5 in allen vier Teilen, Goethe C2, DSD II, telc Deutsch C1 Hochschule oder ein deutschsprachiges Schulabschlusszeugnis.\n- **Master:** Sprach- und Fachvoraussetzungen hängen vom Studiengang ab; die Universität veröffentlicht eine Übersicht der Sprachanforderungen für Masterbewerbungen. Anerkannte Englischtests stehen auf der offiziellen Seite zu Sprachnachweisen.\n\nUnser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de) vergleicht die Prüfungen, der [Master-Ratgeber](/de/blog/doing-a-masters-in-germany-2026-a-z-guide-de) erklärt die Schritte."
+                        ],
+                        [
+                            "Gebühren und Fristen",
+                            "- **Studiengebühren:** **1.500 € pro Semester** für Studierende aus Nicht-EU/EWR-Staaten, die ein Bachelor-, Staatsexamens- oder konsekutives Masterstudium beginnen (seit dem Wintersemester 2017/18). Weiterbildende Master sind ausgenommen; Gruppen wie Bildungsinländer*innen oder Daueraufenthaltsberechtigte können befreit sein. Zweitstudium: 650 €.\n- **Semesterbeitrag:** laut offizieller Seite derzeit 190 € pro Semester (Studierendenwerk 103 €, Verwaltungskostenbeitrag 80 €, Studierendenschaft 7 €); ein Semester nennt die Seite nicht.\n- **Fristen (wie in der offiziellen Tabelle):** zulassungsbeschränkte Studiengänge 01.06.–15.07.2026 (Winter); zulassungsfreie 01.12.2025–09.04.2026 (Sommer) und 01.06.–08.10.2026 (Winter). Fristen für das Sommersemester 2027 sind noch nicht veröffentlicht.\n- **Master:** Fristen je nach Studiengang (z. B. Environmental Governance 01.03.–15.05., Neuroscience 01.03.–31.03.).\n\nDie baden-württembergische Gebühr erklärt unser [Ratgeber zu Studiengebühren](/de/blog/is-university-free-in-germany-2026-real-costs-de)."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Zwei Beispiele mit Unterrichtssprache Englisch laut offizieller Studiengangsseite:\n\n- [Environmental Governance (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/174) — Englisch C1 verlangt\n- [Neuroscience (M.Sc.)](https://uni-freiburg.de/studium/studienangebot/studiengang/685) — Englisch B2 verlangt\n\nManche Studiengänge verlangen Deutsch und Englisch zusammen oder alternativ; prüfe die Sprachanforderung auf der Studiengangsseite."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Bewerbe ich mich in Freiburg über uni-assist?",
+                            "Nein. Laut offizieller Seite laufen Bachelor- und Masterbewerbungen unabhängig von der Staatsangehörigkeit über das eigene Online-Portal der Universität."
+                        ],
+                        [
+                            "Kann ich mich ohne C1-Zertifikat bewerben?",
+                            "Für zulassungsfreie Bachelorstudiengänge ja, mit DSH 1, TestDaF 3 oder Nachweis eines C1-Kurses; das C1-Zertifikat ist bis zur Immatrikulation fällig. Zulassungsbeschränkte Studiengänge verlangen es bei der Bewerbung."
+                        ],
+                        [
+                            "Erhebt die Universität Freiburg Studiengebühren?",
+                            "Ja, 1.500 € pro Semester für Studierende aus Nicht-EU/EWR-Staaten im Bachelor, Staatsexamen oder konsekutiven Master. Es gibt Befreiungen; ein Zweitstudium kostet 650 €."
+                        ],
+                        [
+                            "Wie hoch ist der Semesterbeitrag?",
+                            "Laut offizieller Seite derzeit 190 € pro Semester; er wird zusätzlich zu den Studiengebühren gezahlt."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Prüfe im Reiter Studiengänge, ob dein Studiengang zulassungsbeschränkt ist, kläre auf der [Seite für internationale Bewerbungen](https://uni-freiburg.de/studium/bewerben/internationals/vollzeitstudium/), wann der Sprachnachweis fällig ist, und prüfe die Gebührenregeln auf der [offiziellen Gebührenseite](https://uni-freiburg.de/studium/im-studium/studiengebuehren-internationale-studierende/).",
+                    "facts_h": "Auf einen Blick",
+                    "links_h": "Nützliche Links",
+                    "faq_h": "Häufig gestellte Fragen"
+                }
+            }
+        },
+        "technische-universitat-darmstadt-q310695": {
+            "expected": {
+                "tr": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "en": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ],
+                "de": [
+                    "hero",
+                    "intro",
+                    "quick_facts",
+                    "section",
+                    "section",
+                    "cost_of_living",
+                    "places",
+                    "student_culture",
+                    "video",
+                    "faq",
+                    "cta",
+                    "related_forum_topics",
+                    "gallery",
+                    "programs_summary",
+                    "external_links",
+                    "schema_jsonld"
+                ]
+            },
+            "remove_indexes": [],
+            "official": {
+                "url": "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/internationale_studierende/index.en.jsp",
+                "label": {
+                    "tr": "Resmî sayfa: uluslararası öğrenciler",
+                    "en": "Official page: international students",
+                    "de": "Offizielle Seite: internationale Studierende"
+                }
+            },
+            "sources": [
+                "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/internationale_studierende/index.en.jsp",
+                "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_1/index.en.jsp",
+                "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_2/index.en.jsp",
+                "https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbung_master/index.en.jsp",
+                "https://www.tu-darmstadt.de/studieren/studieren_von_a_bis_z/artikel_details_de_en_286144.en.jsp"
+            ],
+            "locales": {
+                "tr": {
+                    "seo_title": "TU Darmstadt: Başvuru Şartları, Master, Dil Belgesi ve Tarihler",
+                    "seo_description": "Darmstadt Teknik Üniversitesi'ne başvuru TUCaN'dan; DSH-2 ve eşdeğerleri, B2 ile DSH için şartlı kabul, 2026/27 tarihleri ve İngilizce master örnekleri.",
+                    "intro": "**Technische Universität Darmstadt (TU Darmstadt)**, Türkçede **Darmstadt Teknik Üniversitesi** olarak bilinen, TU9 üyesi bir teknik üniversite. Aynı şehirdeki **Hochschule Darmstadt (h_da)** ayrı bir kurumdur. Bu sayfa lisans ve yüksek lisans başvurusunu, dil belgelerini ve tarihleri resmî sayfalara göre özetliyor.\n\nKısa cevap: Alman ya da yabancı diplomayla tüm adaylar TU Darmstadt'ın kendi portalı **TUCaN** üzerinden, aynı tarihlerde başvurur. Almanca programlar için **DSH-2** ya da eşdeğeri gerekir. B2 belgesi olan adaylar TU Darmstadt'tan alınan **şartlı kabulle** DSH sınavına girebiliyor.",
+                    "facts": [
+                        [
+                            "Resmî ad",
+                            "Technische Universität Darmstadt"
+                        ],
+                        [
+                            "Başvuru yolu",
+                            "TUCaN (lisans ve yüksek lisans)"
+                        ],
+                        [
+                            "Almanca belge",
+                            "DSH-2 veya eşdeğeri"
+                        ],
+                        [
+                            "Almanca yetersizse",
+                            "B2 ile DSH için şartlı kabul"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kısa cevap: başvuru nasıl işliyor?",
+                            "- **Başvuru:** resmî sayfaya göre Alman ya da yabancı okul diplomasıyla tüm adaylar çevrim içi **TUCaN** portalını kullanır ve aynı tarihler geçerlidir. İncelediğimiz resmî sayfalarda uni-assist'ten söz edilmiyor.\n- **Yüksek lisans:** çevrim içi başvurudan sonra yazdırılan kapak sayfası ve belge kopyaları posta ile gönderilmelidir; resmî sayfa: *\"Your application is NOT complete after Step 1!\"*\n- **Almancası yetersiz adaylar:** TU Darmstadt'ın DSH sınavına girmek için TU Darmstadt'tan **şartlı kabul** ve en geç başvuru süresi sonunda **B2 seviyesinde belge** (ör. DSH-1, TestDaF TDN 14/15, Goethe/ÖSD/telc B2, UNIcert II) gerekiyor. DSH hazırlık kursları Studienkolleg Darmstadt'ta. Şartlı kabulün süresi ve bölüm yerinin ne kadar ayrıldığı bu sayfada ayrıntılı yazmıyor; başvurmadan önce teyit et.\n\nDiğer üniversitelerdeki yolları [şartlı kabul karşılaştırmamızda](/tr/universities/collections/conditional-admission-universities) bulabilirsin."
+                        ],
+                        [
+                            "Lisans ve yüksek lisans şartları",
+                            "- **Lisans:** okul diploması doğrudan girişe yetmeyenler için Studienkolleg Darmstadt'ta iki dönemlik T-kursu ve G-kursu var.\n- **Yüksek lisans:** kabul için aynı programda TU Darmstadt lisansı ya da eşdeğer bir lisans diploması gerekir; ayrıntılar programa göre değişir. Örneğin Artificial Intelligence and Machine Learning en az 60 AKTS'lik ilgili temel ders ya da kampüste bir giriş sınavı istiyor.\n- Yüksek lisans kabulünden sonra lisans diplomasının ne zamana kadar sunulacağı resmî sayfalarda farklı yazılmış; kesin tarihi programın kabul belgesinden kontrol et.\n\nGenel adımlar için [Almanya'da yüksek lisans rehberimize](/tr/blog/doing-a-masters-in-germany-2026-a-z-guide) bak."
+                        ],
+                        [
+                            "Dil belgeleri: hangisi, ne zaman?",
+                            "- **Almanca programlar (lisans ve yüksek lisans):** DSH-2 ya da eşdeğeri: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III, Feststellungsprüfung. Dil belgesi başvuru belgeleri arasında listeleniyor.\n- **İngilizce yüksek lisans programları:** varsayılan şart IELTS 7,0, TOEFL iBT 95, PTE 76, UNIcert III ya da önceki diplomanın İngilizce okunduğunu gösteren belge. Bazı programlar daha düşük (ör. Mechanics) ya da farklı (ör. AI & ML için İngilizce C1) seviye istiyor.\n\nSınavları [Almanca dil belgeleri rehberimizde](/tr/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish) karşılaştırdık."
+                        ],
+                        [
+                            "Tarihler ve ücretler",
+                            "- **2026/27 kış dönemi lisans:** NC'li programlar 01.06.–15.07.2026, NC'siz programlar 01.06.–31.08.2026.\n- **Yüksek lisans:** tarihler programa göre değişir (ör. Artificial Intelligence and Machine Learning 01.06.–15.07.2026); bazı programlarda uluslararası adaylar için erken tarih var. Bazı yüksek lisans programları 2027 yaz dönemi için uluslararası başvuruları 1 Eylül 2026'dan itibaren alıyor.\n- **2027 yaz dönemi:** tarihler Kasım'da yayımlanıyor; şu an resmî tabloda yok.\n- **Semesterbeitrag (2026/27 kış dönemi):** 06.07.–15.09.2026 arasında ödenirse 402,68 €, 16.09.–30.09.2026 arasında 432,68 €.\n- **Öğrenim ücreti:** başvuru sayfalarında genel bir öğrenim ücreti kuralı yok; üniversitenin öğrenci sayfası programların çoğunun ücretsiz olduğunu yazıyor. Programının sayfasını kontrol et."
+                        ],
+                        [
+                            "İngilizce yüksek lisans örnekleri",
+                            "Resmî program sayfasında dili İngilizce olan üç örnek:\n\n- [Artificial Intelligence and Machine Learning (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_334592.en.jsp)\n- [IT Security (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_341504.en.jsp)\n- [Materials Science (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_183552.en.jsp)\n\nBazı programlarda tek tük dersler Almanca verilebiliyor; ayrıntı için program sayfasına bak."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "TU Darmstadt'a uni-assist ile mi başvurulur?",
+                            "Resmî başvuru sayfasına göre Alman ya da yabancı diplomalı tüm adaylar TU Darmstadt'ın kendi portalı TUCaN üzerinden başvurur; incelediğimiz sayfalarda uni-assist geçmiyor. Yüksek lisansta ayrıca posta ile belge gönderimi gerekiyor."
+                        ],
+                        [
+                            "TU Darmstadt şartlı kabul veriyor mu?",
+                            "TU Darmstadt'ın DSH sınavına girebilmek için TU Darmstadt'tan şartlı kabul ve en geç başvuru süresi sonunda B2 belgesi gerekiyor. Şartlı kabulün süresi ve kapsamı resmî sayfada ayrıntılı değil; başvurmadan önce sor."
+                        ],
+                        [
+                            "Almanca programlar için hangi belge gerekiyor?",
+                            "DSH-2 ya da eşdeğeri: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III veya Feststellungsprüfung."
+                        ],
+                        [
+                            "TU Darmstadt ile Hochschule Darmstadt aynı mı?",
+                            "Hayır. TU Darmstadt teknik bir üniversite (TU9 üyesi), Hochschule Darmstadt (h_da) ise ayrı bir uygulamalı bilimler üniversitesi; başvuru portalları ve şartları farklı."
+                        ]
+                    ],
+                    "cta": "**Sonraki adım:** Bu sayfadaki programlar sekmesinden programını seç, tarihini [resmî lisans takviminden](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_1/index.en.jsp) ya da programın sayfasından kontrol et ve başvuru adımlarını [TU Darmstadt'ın uluslararası öğrenciler sayfasından](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/internationale_studierende/index.en.jsp) teyit et.",
+                    "facts_h": "Hızlı Bakış",
+                    "links_h": "Faydalı Linkler",
+                    "faq_h": "Sıkça Sorulanlar"
+                },
+                "en": {
+                    "seo_title": "TU Darmstadt: Admission Requirements, Master's, German Certificate and Deadlines",
+                    "seo_description": "Apply to TU Darmstadt through TUCaN; DSH-2 and equivalents, conditional admission for the DSH with B2, 2026/27 deadlines, semester fee, English Master's.",
+                    "intro": "**Technische Universität Darmstadt (TU Darmstadt)** is a technical university and TU9 member. **Hochschule Darmstadt (h_da)** in the same city is a separate institution. This page summarises the Bachelor's and Master's application, language certificates and deadlines based on the official pages.\n\nShort answer: all applicants, with a German or foreign qualification, apply through TU Darmstadt's own portal **TUCaN** with the same deadlines. German-taught programmes require **DSH-2** or an equivalent. Applicants with a B2 certificate can take the DSH with **conditional admission** from TU Darmstadt.",
+                    "facts": [
+                        [
+                            "Official name",
+                            "Technische Universität Darmstadt"
+                        ],
+                        [
+                            "How to apply",
+                            "TUCaN (Bachelor's and Master's)"
+                        ],
+                        [
+                            "German certificate",
+                            "DSH-2 or equivalent"
+                        ],
+                        [
+                            "Without enough German",
+                            "Conditional admission for the DSH with B2"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Short answer: how does the application work?",
+                            "- **Applying:** according to the official page, all applicants with a German or foreign school certificate use the online portal **TUCaN**, and the same deadlines apply. The official pages we reviewed do not mention uni-assist.\n- **Master's:** after the online application you must also post a printed cover sheet and copies of documents; the official page says: *\"Your application is NOT complete after Step 1!\"*\n- **Applicants without enough German:** to take TU Darmstadt's DSH you need **conditional admission** from TU Darmstadt and a **B2-level certificate** (e.g. DSH-1, TestDaF TDN 14/15, Goethe/ÖSD/telc B2, UNIcert II) by the application deadline at the latest. DSH preparation courses run at the Studienkolleg Darmstadt. The page does not detail how long the conditional admission lasts or whether the degree place is reserved; confirm before you apply.\n\nRoutes at other universities are compared in our [conditional admission overview](/en/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Bachelor's and Master's requirements",
+                            "- **Bachelor's:** applicants whose school certificate does not give direct entry can take the two-semester T-course or G-course at the Studienkolleg Darmstadt.\n- **Master's:** admission requires a Bachelor's in the same programme at TU Darmstadt or an equivalent degree; details depend on the programme. For example, Artificial Intelligence and Machine Learning requires at least 60 ECTS in matching core courses or an on-campus entrance exam.\n- The official pages give different deadlines for submitting the Bachelor's certificate after Master's admission; check the exact date in your admission letter.\n\nFor general steps, see our [guide to a Master's in Germany](/en/blog/doing-a-masters-in-germany-2026-a-z-guide-en)."
+                        ],
+                        [
+                            "Language certificates: which and when?",
+                            "- **German-taught programmes (Bachelor's and Master's):** DSH-2 or an equivalent: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III, Feststellungsprüfung. The language certificate is listed among the application documents.\n- **English-taught Master's programmes:** the default requirement is IELTS 7.0, TOEFL iBT 95, PTE 76, UNIcert III or confirmation that your previous degree was taught in English. Some programmes require a lower (e.g. Mechanics) or different level (e.g. English C1 for AI & ML).\n\nOur [guide to German language certificates](/en/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-en) compares the exams."
+                        ],
+                        [
+                            "Deadlines and fees",
+                            "- **Winter semester 2026/27, Bachelor's:** NC programmes 1 June – 15 July 2026, unrestricted programmes 1 June – 31 August 2026.\n- **Master's:** deadlines vary by programme (e.g. Artificial Intelligence and Machine Learning 1 June – 15 July 2026); some programmes have earlier deadlines for international applicants. Some Master's programmes accept international applications for summer semester 2027 from 1 September 2026.\n- **Summer semester 2027:** deadlines are published in November and are not yet in the official table.\n- **Semester fee (winter semester 2026/27):** €402.68 if paid between 6 July and 15 September 2026, €432.68 if paid between 16 and 30 September 2026.\n- **Tuition:** the application pages state no general tuition rule; the university's student page says most programmes are tuition-free. Check your programme page."
+                        ],
+                        [
+                            "English-taught Master's examples",
+                            "Three examples whose official programme pages list English as the language:\n\n- [Artificial Intelligence and Machine Learning (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_334592.en.jsp)\n- [IT Security (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_341504.en.jsp)\n- [Materials Science (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_183552.en.jsp)\n\nIn some programmes individual courses may be taught in German; see the programme page."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Do I apply to TU Darmstadt through uni-assist?",
+                            "According to the official application page, all applicants with a German or foreign qualification apply through TU Darmstadt's own portal, TUCaN; the pages we reviewed do not mention uni-assist. Master's applicants must also post documents."
+                        ],
+                        [
+                            "Does TU Darmstadt offer conditional admission?",
+                            "To take TU Darmstadt's DSH you need conditional admission from TU Darmstadt and a B2 certificate by the application deadline. The official page does not detail its duration or scope; ask before you apply."
+                        ],
+                        [
+                            "Which certificate do German-taught programmes require?",
+                            "DSH-2 or an equivalent: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III or the Feststellungsprüfung."
+                        ],
+                        [
+                            "Is TU Darmstadt the same as Hochschule Darmstadt?",
+                            "No. TU Darmstadt is a technical university (TU9 member); Hochschule Darmstadt (h_da) is a separate university of applied sciences with its own portal and requirements."
+                        ]
+                    ],
+                    "cta": "**Next step:** choose your programme in the programmes tab on this page, check its deadline in the [official Bachelor's calendar](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_1/index.en.jsp) or on the programme page, and confirm the steps on [TU Darmstadt's international students page](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/internationale_studierende/index.en.jsp).",
+                    "facts_h": "Quick Facts",
+                    "links_h": "Useful Links",
+                    "faq_h": "Frequently Asked Questions"
+                },
+                "de": {
+                    "seo_title": "TU Darmstadt: Zulassungsvoraussetzungen, Master, Deutschnachweis und Fristen",
+                    "seo_description": "Bewerbung an der TU Darmstadt über TUCaN; DSH-2 und Äquivalente, bedingte Zulassung zur DSH mit B2, Fristen 2026/27, Semesterbeitrag, englischsprachige Master.",
+                    "intro": "Die **Technische Universität Darmstadt (TU Darmstadt)** ist eine technische Universität und Mitglied der TU9. Die **Hochschule Darmstadt (h_da)** in derselben Stadt ist eine eigene Hochschule. Diese Seite fasst Bachelor- und Masterbewerbung, Sprachnachweise und Fristen nach den offiziellen Seiten zusammen.\n\nKurz gesagt: Alle bewerben sich, mit deutscher oder ausländischer Hochschulzugangsberechtigung, über das eigene Portal **TUCaN** mit denselben Fristen. Deutschsprachige Studiengänge verlangen die **DSH-2** oder ein Äquivalent. Mit B2-Nachweis kannst du mit einer **bedingten Zulassung** der TU Darmstadt an der DSH teilnehmen.",
+                    "facts": [
+                        [
+                            "Offizieller Name",
+                            "Technische Universität Darmstadt"
+                        ],
+                        [
+                            "Bewerbungsweg",
+                            "TUCaN (Bachelor und Master)"
+                        ],
+                        [
+                            "Deutschnachweis",
+                            "DSH-2 oder Äquivalent"
+                        ],
+                        [
+                            "Ohne ausreichendes Deutsch",
+                            "Bedingte Zulassung zur DSH mit B2"
+                        ]
+                    ],
+                    "sections": [
+                        [
+                            "Kurz gesagt: Wie läuft die Bewerbung?",
+                            "- **Bewerbung:** Laut offizieller Seite nutzen alle, ob mit deutscher oder ausländischer Hochschulzugangsberechtigung, das Online-Portal **TUCaN**; es gelten dieselben Fristen. Auf den geprüften offiziellen Seiten wird uni-assist nicht erwähnt.\n- **Master:** Nach der Online-Bewerbung müssen ein ausgedrucktes Deckblatt und Kopien per Post geschickt werden; die Bewerbung ist nach Schritt 1 noch nicht vollständig.\n- **Ohne ausreichendes Deutsch:** Für die DSH der TU Darmstadt brauchst du eine **bedingte Zulassung** der TU Darmstadt und spätestens bis zur Bewerbungsfrist einen **B2-Nachweis** (z. B. DSH-1, TestDaF TDN 14/15, Goethe/ÖSD/telc B2, UNIcert II). DSH-Vorbereitungskurse bietet das Studienkolleg Darmstadt an. Dauer der bedingten Zulassung und Reservierung des Studienplatzes beschreibt die Seite nicht im Detail; kläre das vor der Bewerbung.\n\nWege an anderen Hochschulen zeigt unser [Vergleich zur bedingten Zulassung](/de/universities/collections/conditional-admission-universities)."
+                        ],
+                        [
+                            "Voraussetzungen für Bachelor und Master",
+                            "- **Bachelor:** Ohne direkten Hochschulzugang gibt es am Studienkolleg Darmstadt den zweisemestrigen T-Kurs und G-Kurs.\n- **Master:** Voraussetzung ist ein Bachelor im gleichen Studiengang der TU Darmstadt oder ein gleichwertiger Abschluss; Details regelt der Studiengang. Artificial Intelligence and Machine Learning verlangt z. B. mindestens 60 ECTS in passenden Kernfächern oder eine Eingangsprüfung vor Ort.\n- Die Frist zur Nachreichung des Bachelorzeugnisses nach der Masterzulassung steht auf den offiziellen Seiten unterschiedlich; maßgeblich ist dein Zulassungsbescheid.\n\nDie allgemeinen Schritte erklärt unser [Ratgeber zum Master in Deutschland](/de/blog/doing-a-masters-in-germany-2026-a-z-guide-de)."
+                        ],
+                        [
+                            "Sprachnachweise: welche und wann?",
+                            "- **Deutschsprachige Studiengänge (Bachelor und Master):** DSH-2 oder Äquivalent: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III, Feststellungsprüfung. Der Sprachnachweis gehört zu den Bewerbungsunterlagen.\n- **Englischsprachige Master:** Standard sind IELTS 7,0, TOEFL iBT 95, PTE 76, UNIcert III oder der Nachweis, dass das vorherige Studium auf Englisch war. Einige Studiengänge verlangen ein niedrigeres (z. B. Mechanics) oder anderes Niveau (z. B. Englisch C1 für AI & ML).\n\nDie Prüfungen vergleicht unser [Ratgeber zu Deutschnachweisen](/de/blog/goethe-telc-testdaf-dsh-difference-german-language-exam-comparison-for-turkish-de)."
+                        ],
+                        [
+                            "Fristen und Kosten",
+                            "- **Wintersemester 2026/27, Bachelor:** NC-Studiengänge 01.06.–15.07.2026, zulassungsfreie 01.06.–31.08.2026.\n- **Master:** Fristen je nach Studiengang (z. B. Artificial Intelligence and Machine Learning 01.06.–15.07.2026); manche Studiengänge haben frühere Fristen für internationale Bewerbungen. Einige Master nehmen internationale Bewerbungen für das Sommersemester 2027 ab 1. September 2026 an.\n- **Sommersemester 2027:** Die Fristen werden im November veröffentlicht und stehen noch nicht in der offiziellen Tabelle.\n- **Semesterbeitrag (Wintersemester 2026/27):** 402,68 € bei Zahlung vom 06.07. bis 15.09.2026, 432,68 € bei Zahlung vom 16.09. bis 30.09.2026.\n- **Studiengebühren:** Die Bewerbungsseiten nennen keine allgemeine Gebührenregel; laut Studierendenseite der Universität sind die meisten Studiengänge gebührenfrei. Prüfe deine Studiengangsseite."
+                        ],
+                        [
+                            "Englischsprachige Masterstudiengänge (Beispiele)",
+                            "Drei Beispiele mit Sprache Englisch laut offizieller Studiengangsseite:\n\n- [Artificial Intelligence and Machine Learning (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_334592.en.jsp)\n- [IT Security (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_341504.en.jsp)\n- [Materials Science (M.Sc.)](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_183552.en.jsp)\n\nIn manchen Studiengängen können einzelne Lehrveranstaltungen auf Deutsch stattfinden; Details auf der Studiengangsseite."
+                        ]
+                    ],
+                    "faq": [
+                        [
+                            "Bewerbe ich mich an der TU Darmstadt über uni-assist?",
+                            "Laut offizieller Bewerbungsseite bewerben sich alle, mit deutscher oder ausländischer Hochschulzugangsberechtigung, über das eigene Portal TUCaN; auf den geprüften Seiten wird uni-assist nicht erwähnt. Im Master sind zusätzlich Unterlagen per Post nötig."
+                        ],
+                        [
+                            "Vergibt die TU Darmstadt eine bedingte Zulassung?",
+                            "Für die DSH der TU Darmstadt brauchst du eine bedingte Zulassung der TU Darmstadt und bis zur Bewerbungsfrist einen B2-Nachweis. Dauer und Umfang beschreibt die offizielle Seite nicht im Detail; frag vor der Bewerbung nach."
+                        ],
+                        [
+                            "Welcher Deutschnachweis gilt für deutschsprachige Studiengänge?",
+                            "DSH-2 oder Äquivalent: TestDaF TDN 16, DSD II, Goethe C1/C2, ÖSD C1/C2, telc Deutsch C1 Hochschule, UNIcert III oder Feststellungsprüfung."
+                        ],
+                        [
+                            "Sind TU Darmstadt und Hochschule Darmstadt dasselbe?",
+                            "Nein. Die TU Darmstadt ist eine technische Universität (TU9), die Hochschule Darmstadt (h_da) eine eigene Hochschule für angewandte Wissenschaften mit eigenem Portal und eigenen Voraussetzungen."
+                        ]
+                    ],
+                    "cta": "**Nächster Schritt:** Wähle im Reiter Studiengänge deinen Studiengang, prüfe die Frist im [offiziellen Bachelorkalender](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/bewerbungsfristen/bachelor_studiengaenge_1/index.en.jsp) oder auf der Studiengangsseite und kläre die Schritte auf der [Seite für internationale Studierende](https://www.tu-darmstadt.de/studieren/studieninteressierte/bewerbung_zulassung_tu/internationale_studierende/index.en.jsp).",
+                    "facts_h": "Auf einen Blick",
+                    "links_h": "Nützliche Links",
+                    "faq_h": "Häufig gestellte Fragen"
+                }
+            }
+        }
+    }
+}
