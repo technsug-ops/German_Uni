@@ -97,6 +97,9 @@ return new class extends Migration
         ],
         'de' => [
             'content_md' => [
+                // Yalnız canlıdaki DE metninde: yazının başındaki özet kutusu excerpt cümlesini tekrarlıyor.
+                [["In 14 Bundesländern sind staatliche Universitäten kostenlos, Baden-Württemberg erhebt von Nicht-EU-Studierenden 1.500 €/Semester."],
+                    "In den meisten Bundesländern gibt es an staatlichen Universitäten keine allgemeinen Studiengebühren; Baden-Württemberg erhebt von Nicht-EU-Studierenden 1.500 €/Semester, einzelne Hochschulen wie die TUM eigene Gebühren."],
                 [["Diese Regelung gilt heute in 14 Bundesländern. Das heißt: Bayern, Berlin, Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen – keine Studiengebühren.",
                     "Diese Entscheidung gilt heute in 14 Bundesländern. Das heißt: Bayern, Berlin, Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen – keine Studiengebühren."],
                     "Heute gibt es außerhalb Baden-Württembergs – in Bayern, Berlin, Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt, Schleswig-Holstein und Thüringen – **keine allgemeinen landesweiten Studiengebühren.** Das heißt nicht, dass jede Hochschule gebührenfrei ist: Die TUM in Bayern verlangt seit dem Wintersemester 2024/25 von neuen Studierenden aus Nicht-EU/EWR-Staaten Studiengebühren."],
