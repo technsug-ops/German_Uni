@@ -8,11 +8,13 @@
         . ($stateName ? ', ' . __('state of :state', ['state' => $stateName]) : '')
         . '. ' . __('Cost of living, places to visit, student culture and application guide.');
 
-    // Content blocks TR-only — EN/DE'de auto-generated description (yoksa TR sızar)
-    $description = app()->getLocale() === 'tr'
+    // Editoryal kilitli şehirlerde (bkz. City::hasEditorialLock) her dilin intro bloğu seo_title/seo_description taşır;
+    // aksi hâlde TR'de intro'dan türetilen, EN/DE'de otomatik açıklama (TR sızmasın).
+    $editorialIntro = collect($city->localizedBlocks() ?? [])->first(fn ($b) => is_array($b) && ($b['type'] ?? null) === 'intro' && ! empty($b['seo_title']));
+    $description = $editorialIntro['seo_description'] ?? (app()->getLocale() === 'tr'
         ? \App\Support\Seo::descriptionFromBlocks($city->content_blocks, $autoDesc)
-        : $autoDesc;
-    $title = $city->name . ' — ' . __('Student City Guide');
+        : $autoDesc);
+    $title = $editorialIntro['seo_title'] ?? ($city->name . ' — ' . __('Student City Guide'));
 @endphp
 
 <x-seo
@@ -182,17 +184,19 @@
                     <a href="{{ route('housing.providers') }}" class="text-sm text-primary-600 hover:underline">{{ __('All providers') }} →</a>
                 </div>
 
-                @if ($city->avg_rent_min)
+                @if ($city->avg_rent_min || $city->stw_capacity || $city->stw_waiting)
                     <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4 mb-4 text-sm inline-flex flex-wrap items-center gap-1">
-                        <x-svg-icon name="currency-euro" class="w-4 h-4 text-amber-700" />
-                        <strong>{{ __('Average dorm price:') }}</strong> €{{ $city->avg_rent_min }}–€{{ $city->avg_rent_max }}/{{ __('mo') }}
+                        @if ($city->avg_rent_min)
+                            <x-svg-icon name="currency-euro" class="w-4 h-4 text-amber-700" />
+                            <strong>{{ __('Dorm rent range:') }}</strong> €{{ $city->avg_rent_min }}{{ $city->avg_rent_max ? '–€' . $city->avg_rent_max : '+' }}/{{ __('mo') }}
+                        @endif
                         @if ($city->stw_capacity)
-                            <span>·</span>
+                            @if ($city->avg_rent_min)<span>·</span>@endif
                             <x-svg-icon name="home" class="w-4 h-4 text-amber-700" />
                             <strong>{{ __('STW capacity:') }}</strong> {{ __(':n beds', ['n' => number_format($city->stw_capacity, 0, ',', '.')]) }}
                         @endif
                         @if ($city->stw_waiting)
-                            <span>·</span>
+                            @if ($city->avg_rent_min || $city->stw_capacity)<span>·</span>@endif
                             <x-svg-icon name="clock" class="w-4 h-4 text-amber-700" />
                             <strong>{{ __('Waiting time:') }}</strong> {{ $city->stw_waiting }}
                         @endif
@@ -281,7 +285,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     @foreach ($topFieldsInCity as $field)
                         <a href="{{ route('fields.show', $field->slug) }}"
-                           class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center">
+                           class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-4 text-center min-w-0 break-words [overflow-wrap:anywhere]">
                             <div class="mb-1 flex justify-center" style="color: {{ $field->color ?? '#1e40af' }};">{!! e_icon($field->icon, 'w-10 h-10') !!}</div>
                             <h3 class="font-bold text-sm text-gray-900 group-hover:text-primary-600 leading-tight">{{ $field->name }}</h3>
                             <p class="text-xs text-gray-500 mt-1">{{ __(':n programs', ['n' => $field->programs_count]) }}</p>
@@ -325,7 +329,7 @@
 
         {{-- Üniversiteler bölümü — her zaman göster (content_blocks içinde olsa bile detaylı kart listesi faydalı) --}}
         @if($city->universities->isNotEmpty())
-            <section class="mt-12">
+            <section id="universities" class="mt-12 scroll-mt-24">
                 <h2 class="text-2xl font-bold mb-1 text-gray-900">{{ __('Universities in :city', ['city' => $city->name]) }}</h2>
                 <p class="text-sm text-gray-500 mb-5">{{ __(':n universities in this city', ['n' => $city->universities->count()]) }}</p>
 

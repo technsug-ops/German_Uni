@@ -419,7 +419,7 @@
                 }
                 if ($city->avg_rent_min) {
                     $rent = number_format($city->avg_rent_min, 0, ',', '.') . '€' . ($city->avg_rent_max ? '–' . number_format($city->avg_rent_max, 0, ',', '.') . '€' : '');
-                    $cityStats[] = ['v' => $rent, 'l' => __('WG kira / ay'), 'i' => 'home', 'c' => 'bg-emerald-600 text-white'];
+                    $cityStats[] = ['v' => $rent, 'l' => __('Yurt kira aralığı / ay'), 'i' => 'home', 'c' => 'bg-emerald-600 text-white'];
                 }
                 if ($city->stw_capacity) {
                     $cityStats[] = ['v' => number_format($city->stw_capacity, 0, ',', '.'), 'l' => __('Yurt kapasitesi'), 'i' => 'home', 'c' => 'bg-amber-500 text-white'];

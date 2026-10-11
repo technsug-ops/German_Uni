@@ -60,6 +60,8 @@ class HousingProvider extends Model
     {
         if (! $this->price_min && ! $this->price_max) return '—';
         if ($this->price_min === $this->price_max) return '€' . $this->price_min;
+        if (! $this->price_max) return '€' . $this->price_min . '+';
+        if (! $this->price_min) return '≤ €' . $this->price_max;
         return '€' . $this->price_min . '–€' . $this->price_max;
     }
 

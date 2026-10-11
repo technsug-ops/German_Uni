@@ -67,6 +67,12 @@ class CitiesCostFillFromAi extends Command
                 $bar->advance();
                 continue;
             }
+            // Editoryal kilitli şehirde cost_of_living bloğu elle doğrulanmıştır; --force ile de parse edilip yazılmaz.
+            if ($city->hasEditorialLock()) {
+                $manualExists++;
+                $bar->advance();
+                continue;
+            }
 
             // Katman 2: AI cost_of_living block parse
             $data = null;

@@ -244,7 +244,7 @@
 
                 @if ($d->rent_min_eur || $d->rent_max_eur)
                     <p class="text-sm text-gray-700 mb-2 inline-flex items-center gap-1">
-                        <x-svg-icon name="currency-euro" class="w-4 h-4" /> <strong>{{ $d->rent_min_eur }}-{{ $d->rent_max_eur }} €</strong>/{{ __('month') }}
+                        <x-svg-icon name="currency-euro" class="w-4 h-4" /> <strong>{{ $d->rent_min_eur && $d->rent_max_eur ? $d->rent_min_eur . '-' . $d->rent_max_eur : ($d->rent_max_eur ? '≤ ' . $d->rent_max_eur : $d->rent_min_eur . '+') }} €</strong>/{{ __('month') }}
                     </p>
                 @endif
 

@@ -62,9 +62,10 @@
                 @endif
                 <dl class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     @foreach($block['items'] ?? [] as $item)
-                        <div class="bg-white ring-1 ring-gray-200 rounded-lg p-3 shadow-sm">
-                            <dt class="text-xs uppercase tracking-wider text-gray-600 font-medium">{{ $txt($item['label'] ?? '') }}</dt>
-                            <dd class="text-base font-semibold mt-1 text-gray-900">{{ $txt($item['value'] ?? '—') }}</dd>
+                        {{-- min-w-0 + overflow-wrap: uzun bileşik sözcükler (ör. Deutschlandsemesterticket) dar ekranda hücreyi taşırmasın --}}
+                        <div class="bg-white ring-1 ring-gray-200 rounded-lg p-3 shadow-sm min-w-0">
+                            <dt class="text-xs uppercase tracking-wider text-gray-600 font-medium break-words [overflow-wrap:anywhere]">{{ $txt($item['label'] ?? '') }}</dt>
+                            <dd class="text-base font-semibold mt-1 text-gray-900 break-words [overflow-wrap:anywhere]">{{ $txt($item['value'] ?? '—') }}</dd>
                         </div>
                     @endforeach
                 </dl>

@@ -103,6 +103,18 @@ class City extends Model
         return $this->{'content_blocks_' . $locale} ?: null;
     }
 
+    /**
+     * Editoryal kilit: content_blocks içinde `editorial_lock: true` taşıyan bir blok varsa içerik resmî kaynakla elle
+     * doğrulanmıştır (ör. 2026_10_11 öğrenci şehirleri paketi). cities:enrich, content:translate-blocks ve
+     * cities:cost-fill bu şehirlere yazmaz; değişiklik yeni bir data-migration ile yapılır (bkz. University::hasEditorialLock).
+     */
+    public function hasEditorialLock(): bool
+    {
+        $blocks = $this->content_blocks;
+
+        return is_array($blocks) && collect($blocks)->contains(fn ($b) => is_array($b) && ! empty($b['editorial_lock']));
+    }
+
     public function getNameAttribute(): string
     {
         $locale = app()->getLocale();

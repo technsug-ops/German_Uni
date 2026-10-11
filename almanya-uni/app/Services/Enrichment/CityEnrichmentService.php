@@ -23,6 +23,10 @@ class CityEnrichmentService
      */
     public function enrich(City $city, bool $force = false, array $sourceUrls = []): array
     {
+        // Resmî kaynakla elle doğrulanmış içerik --force ile de ezilmez (bkz. City::hasEditorialLock).
+        if ($city->hasEditorialLock()) {
+            return ['success' => false, 'error' => 'Editoryal kilitli — içerik elle doğrulanmış, enrich atlandı'];
+        }
         if (!$force && $city->last_enriched_at && $city->last_enriched_at->diffInDays(now()) < 30) {
             return ['success' => false, 'error' => 'Yakın zamanda enrich edildi'];
         }
