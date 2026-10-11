@@ -32,13 +32,14 @@ class AboutController extends Controller
             ->orderByDesc('posts_count')
             ->get(['id', 'name', 'slug', 'role_label', 'role_label_en', 'role_label_de', 'bio', 'bio_en', 'bio_de', 'avatar_url', 'is_admin', 'is_author', 'is_editor']);
 
-        // Statüye göre grupla
-        $founders = $people->filter(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'));
+        // Statüye göre grupla. Ham TR unvanına bakılır: role_label erişimcisi aktif dile çevirir (EN "Founder", "Editor"),
+        // çevrilmiş metinde 'kurucu'/'editör' bulunmaz ve EN/DE sayfasında herkes "katkı sağlayan"a düşerdi.
+        $role = fn ($u) => mb_strtolower($u->getAttributes()['role_label'] ?? '');
+        $founders = $people->filter(fn ($u) => str_contains($role($u), 'kurucu'));
         // Editörler: 'editör' veya 'direktör' (kurucu haric). Direktör editörlerin BASINDA gorunur.
-        $editors  = $people->filter(fn ($u) => (str_contains(mb_strtolower($u->role_label ?? ''), 'editör')
-                || str_contains(mb_strtolower($u->role_label ?? ''), 'direktör'))
-            && ! str_contains(mb_strtolower($u->role_label ?? ''), 'kurucu'))
-            ->sortByDesc(fn ($u) => str_contains(mb_strtolower($u->role_label ?? ''), 'direktör') ? 1 : 0)
+        $editors  = $people->filter(fn ($u) => (str_contains($role($u), 'editör') || str_contains($role($u), 'direktör'))
+            && ! str_contains($role($u), 'kurucu'))
+            ->sortByDesc(fn ($u) => str_contains($role($u), 'direktör') ? 1 : 0)
             ->values();
         $others   = $people->reject(fn ($u) => $founders->contains('id', $u->id) || $editors->contains('id', $u->id));
 

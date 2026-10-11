@@ -88,6 +88,21 @@ class AuthorSuleDemirelTest extends TestCase
         $this->assertStringContainsString('/img/team/sule-demirel.jpg', $this->get('/tr/author/sule-demirel')->getContent());
     }
 
+    public function test_team_page_has_the_same_layout_in_every_language(): void
+    {
+        $sections = [];
+        foreach (['tr' => 'Katkı Sağlayanlar', 'en' => 'Contributors', 'de' => 'Mitwirkende'] as $locale => $heading) {
+            $html = $this->get("/{$locale}/team")->assertOk()->getContent();
+            $sections[$locale] = substr_count($html, '<section');
+            $name = mb_strpos($html, 'Şule Demirel');
+            $contributors = mb_strpos($html, $heading . '</h2>');
+            $this->assertNotFalse($name, $locale);
+            $this->assertTrue($contributors === false || $name < $contributors, "{$locale}: direktör grubunda, katkı sağlayanların üstünde");
+        }
+        $this->assertSame($sections['tr'], $sections['en'], 'EN sayfası TR ile aynı bölümleri gösterir');
+        $this->assertSame($sections['tr'], $sections['de'], 'DE sayfası TR ile aynı bölümleri gösterir');
+    }
+
     public function test_team_page_card_links_to_author_profile(): void
     {
         $html = $this->get('/tr/team')->assertOk()->getContent();
