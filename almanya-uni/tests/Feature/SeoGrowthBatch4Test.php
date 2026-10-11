@@ -22,6 +22,9 @@ class SeoGrowthBatch4Test extends TestCase
 
     private const MIGRATION = 'database/migrations/2026_10_11_000400_apply_batch4_student_cities_and_living_cost_guide.php';
 
+    /** Ortama özgü (prod'da farklı) çeviri grubunu temsil eder. */
+    private const FIXTURE_GROUP = '0b4b4b4b-0000-4000-8000-000000000004';
+
     private const CITIES = ['berlin-q64' => 'Berlin', 'munchen-q1726' => 'München', 'aachen-q1017' => 'Aachen', 'hamburg-q1055' => 'Hamburg'];
 
     private function data(): array
@@ -65,7 +68,7 @@ class SeoGrowthBatch4Test extends TestCase
         }
         if ($guides) {
             $g = $data['guide'];
-            $this->insertPost('tr', $g['posts']['tr']['slug'], $g['posts']['tr']['old_titles'][0], "## Eski bölüm\n\nEski metin.", $g['group']);
+            $this->insertPost('tr', $g['posts']['tr']['slug'], $g['posts']['tr']['old_titles'][0], "## Eski bölüm\n\nEski metin.", self::FIXTURE_GROUP);
             foreach ($data['supporting'] as $s) {
                 $this->insertPost($s['locale'], $s['slugs'][0], 'Destek ' . $s['locale'], "Giriş.\n\n" . $s['before_heading'] . "\n\nMetin.\n\n## Başka\n\nMetin.", null);
             }
@@ -195,19 +198,19 @@ class SeoGrowthBatch4Test extends TestCase
         $g = $data['guide'];
         $tr = Post::where('slug', $g['posts']['tr']['slug'])->firstOrFail();
         $this->assertSame($g['posts']['tr']['title'], $tr->title);
-        $this->assertSame($g['group'], $tr->translation_group_id);
+        $this->assertSame(self::FIXTURE_GROUP, $tr->translation_group_id, 'ortamın mevcut çeviri grubu korunur');
         $this->assertTrue($tr->published_at->lt(now()->subMonths(3)), 'TR ilk yayın tarihi korunur');
         $this->assertStringContainsString('<table', $tr->content_html);
         foreach (['en', 'de'] as $loc) {
             $s = Post::where('locale', $loc)->where('slug', $g['posts'][$loc]['slug'])->firstOrFail();
-            $this->assertSame($g['group'], $s->translation_group_id);
+            $this->assertSame(self::FIXTURE_GROUP, $s->translation_group_id, 'EN/DE kardeşler TR rehberin grubuna bağlanır');
             $this->assertTrue((bool) $s->is_published);
             $this->assertNotNull($s->published_at);
             $this->assertGreaterThan(now()->subMinute(), $s->published_at, 'EN/DE ilk gerçek yayın anı');
             $this->assertSame((int) $tr->user_id, (int) $s->user_id);
             $this->assertSame($g['posts'][$loc]['title'], $s->title);
         }
-        $this->assertSame(3, Post::where('translation_group_id', $g['group'])->count());
+        $this->assertSame(3, Post::where('translation_group_id', self::FIXTURE_GROUP)->count());
 
         // destekleyici rehberler: satır tam bir kez, başlık korunur
         foreach ($data['supporting'] as $s) {
@@ -253,10 +256,43 @@ class SeoGrowthBatch4Test extends TestCase
             $this->assertStringContainsString("kaldırılacak 'Studieren in Hamburg: Chancen und Möglichkeiten' bölümü bulunamadı", $e->getMessage());
         }
         $this->assertEquals($before, $this->snapshot());
-        $this->assertSame(1, Post::where('translation_group_id', $this->data()['guide']['group'])->count(), 'EN/DE rehber de oluşturulmadı');
+        $this->assertSame(1, Post::where('translation_group_id', self::FIXTURE_GROUP)->count(), 'EN/DE rehber de oluşturulmadı');
     }
 
-    public function test_guide_with_unexpected_title_or_wrong_group_blocks_everything(): void
+    public function test_guide_group_is_read_from_the_environment(): void
+    {
+        // Prod'daki grup UUID'si local'dekinden farklı (ilk migration Str::uuid() üretmişti) → sabit UUID beklenmez.
+        $this->seedBatch();
+        $g = $this->data()['guide'];
+        DB::table('posts')->where('slug', $g['posts']['tr']['slug'])->update(['translation_group_id' => null]);
+
+        $this->run400();
+
+        $tr = Post::where('locale', 'tr')->where('slug', $g['posts']['tr']['slug'])->firstOrFail();
+        $this->assertNotEmpty($tr->translation_group_id, 'grubu olmayan TR rehbere grup atanır');
+        foreach (['en', 'de'] as $loc) {
+            $this->assertSame($tr->translation_group_id, Post::where('locale', $loc)->where('slug', $g['posts'][$loc]['slug'])->value('translation_group_id'));
+        }
+        $this->assertSame(3, Post::where('translation_group_id', $tr->translation_group_id)->count());
+    }
+
+    public function test_existing_sibling_slug_in_another_group_blocks_everything(): void
+    {
+        $this->seedBatch();
+        $g = $this->data()['guide'];
+        $this->insertPost('en', $g['posts']['en']['slug'], 'Başka grup', 'Metin.', '11111111-2222-4333-8444-555555555555');
+        $before = $this->snapshot();
+
+        try {
+            $this->run400();
+            $this->fail('RuntimeException bekleniyordu');
+        } catch (RuntimeException $e) {
+            $this->assertStringContainsString('başka bir çeviri grubuna ait', $e->getMessage());
+        }
+        $this->assertEquals($before, $this->snapshot());
+    }
+
+    public function test_guide_with_unexpected_title_blocks_everything(): void
     {
         $this->seedBatch();
         $g = $this->data()['guide'];

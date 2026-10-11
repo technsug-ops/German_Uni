@@ -4,6 +4,7 @@ use App\Models\Post;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 /**
  * SEO Growth Batch 4 — öğrenci şehirleri (Berlin, München, Aachen, Hamburg), yaşam maliyeti rehberi ve iki destekleyici
@@ -49,8 +50,9 @@ return new class extends Migration
         $head = $data['headings'];
 
         $anyCity = DB::table('cities')->whereIn('slug', array_keys($data['cities']))->exists();
-        $anyGuide = DB::table('posts')->where('translation_group_id', $data['guide']['group'])->exists();
-        if (app()->environment('testing') && ! $anyCity && ! $anyGuide) {
+        $anyGuide = DB::table('posts')->whereIn('slug', array_column($data['guide']['posts'], 'slug'))->exists();
+        // Test ortamında hedef şehir yoksa iş yok (CI'daki taze DB'de eski migration'dan gelen TR rehber tek başına hedef değildir).
+        if (app()->environment('testing') && ! $anyCity) {
             return;
         }
 
@@ -119,9 +121,10 @@ return new class extends Migration
             if (! app()->environment('testing') || $anyGuide) {
                 $problems[] = "rehber tr/{$trSpec['slug']}: bulunamadı";
             }
-        } elseif ($tr->translation_group_id !== $g['group']) {
-            $problems[] = "rehber tr/{$trSpec['slug']}: çeviri grubu beklenenden farklı";
         } else {
+            // Çeviri grubu ortamdan okunur: TR rehberi oluşturan migration grubu Str::uuid() ile üretmişti,
+            // yani her ortamda (local/CI/prod) farklı. Sabit bir UUID beklemek prod'da doğrulamayı düşürür.
+            $group = (string) ($tr->translation_group_id ?: Str::uuid());
             $fields = $this->postFields($trSpec);
             $this->checkLengths("rehber tr", $fields, $problems);
             $applied = collect($fields)->every(fn ($v, $k) => (string) $tr->{$k} === $v);
@@ -130,8 +133,12 @@ return new class extends Migration
                     $problems[] = "rehber tr/{$trSpec['slug']}: beklenmeyen başlık (kısmen uygulanmış ya da farklı içerik)";
                 } else {
                     $tr->fill($fields);
+                    $tr->translation_group_id = $group;
                     $plan['posts'][] = $tr;
                 }
+            } elseif (! $tr->translation_group_id) {
+                $tr->translation_group_id = $group;
+                $plan['posts'][] = $tr;
             }
             foreach (['en', 'de'] as $loc) {
                 $spec = $g['posts'][$loc];
@@ -139,14 +146,14 @@ return new class extends Migration
                 $this->checkLengths("rehber $loc", $fields, $problems);
                 $sibling = Post::where('locale', $loc)->where('slug', $spec['slug'])->first();
                 if ($sibling) {
-                    if ($sibling->translation_group_id !== $g['group']) {
+                    if ($sibling->translation_group_id !== $group) {
                         $problems[] = "rehber $loc/{$spec['slug']}: slug başka bir çeviri grubuna ait";
                     } elseif (! collect($fields)->every(fn ($v, $k) => (string) $sibling->{$k} === $v)) {
                         $problems[] = "rehber $loc/{$spec['slug']}: mevcut kayıt beklenen içerikten farklı; elle değiştirilmiş içerik ezilmez";
                     }
                     continue; // aynı içerik → no-op
                 }
-                $other = Post::where('locale', $loc)->where('translation_group_id', $g['group'])->first();
+                $other = Post::where('locale', $loc)->where('translation_group_id', $group)->first();
                 if ($other) {
                     $problems[] = "rehber $loc: grupta farklı slug'lı kayıt var ({$other->slug})";
                     continue;
@@ -155,7 +162,7 @@ return new class extends Migration
                 $new->slug = $spec['slug'];
                 $new->locale = $loc;
                 $new->type = 'blog';
-                $new->translation_group_id = $g['group'];
+                $new->translation_group_id = $group;
                 $new->user_id = $tr->user_id;
                 $new->category_id = $tr->category_id;
                 $new->is_published = true;
