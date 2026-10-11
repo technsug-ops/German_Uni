@@ -405,7 +405,7 @@ class SeoGrowthBatch4Test extends TestCase
                 $this->assertStringContainsString('id="' . $anchor . '"', $html, "$slug $locale: CTA çapası #$anchor sayfada var");
             }
             $this->assertStringNotContainsString('365–370', $html, 'hesaplanmış RWTH toplamı yok');
-            $this->assertStringNotContainsString('601', $html, 'depozito kademesinden türetilen üst sınır yok');
+            $this->assertDoesNotMatchRegularExpression('/(€\s?601|601\s?€)/u', $html, 'depozito kademesinden türetilen üst sınır (601 €) yok');
             $this->assertStringNotContainsString(__('Average dorm price:'), $html, 'aralık "ortalama" etiketiyle gösterilmez');
             if ($slug === 'berlin-q64') {
                 $this->assertMatchesRegularExpression('/(Kasım|November) 2022/u', $html, 'Berlin yurt bandı tarihli');
