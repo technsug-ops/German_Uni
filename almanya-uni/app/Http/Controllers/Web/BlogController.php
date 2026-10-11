@@ -125,10 +125,19 @@ class BlogController extends Controller
 
     public function show(string $slug)
     {
+        $with = ['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'category', 'approvedComments'];
         $post = Post::published()
-            ->with(['author:id,name,slug,avatar_url,role_label,role_label_en,role_label_de,bio,bio_en,bio_de,social_links', 'category', 'approvedComments'])
+            ->with($with)
             ->where('slug', $slug)
             ->first();
+
+        // Taslak önizleme: yayında olmayan yazıyı YALNIZ admin/editör oturumu aynı adreste görür (noindex, sayaç
+        // artmaz, listelerde/sitemap'te yok). Ayrı route/token yok; ziyaretçi için davranış değişmez (404).
+        $preview = false;
+        if (! $post && $this->canPreviewDrafts()) {
+            $post = Post::blogType()->forLocale()->with($with)->where('slug', $slug)->first();
+            $preview = $post !== null;
+        }
 
         // İngilizce-slug geçişi: eski slug → yeni slug 301 (404 yok, SEO/indeks korunur).
         // YALNIZCA bu dilin kaydı kullanılır: eskiden dil filtresi yoktu ve /en/blog/<tr-slug>
@@ -151,7 +160,9 @@ class BlogController extends Controller
             return redirect()->to($post->publicUrl(), 301);
         }
 
-        Post::where('id', $post->id)->increment('view_count');
+        if (! $preview) {
+            Post::where('id', $post->id)->increment('view_count');
+        }
 
         // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (slug locale'e göre
         // farklı: tr=base, en=base-en, de=base-de → naif prefix-swap 404 verirdi).
@@ -159,10 +170,11 @@ class BlogController extends Controller
         // doluysa paylaşılıyordu; boş olduğunda layout naif prefix-swap'a düşüp
         // /en/blog/<tr-slug> gibi var olmayan adresleri hreflang olarak yazıyordu.
         // Kardeş doğrulanamıyorsa tek doğru davranış SADECE kendini bildirmektir.
+        // Önizlemede (noindex) editör dil kardeşi taslaklar arasında geçebilsin diye yayın şartı aranmaz.
         $localeUrls = $post->translation_group_id
             ? Post::blogType()
                 ->where('translation_group_id', $post->translation_group_id)
-                ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+                ->when(! $preview, fn ($q) => $q->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now()))
                 ->get(['locale', 'slug'])
                 ->mapWithKeys(fn ($s) => [$s->locale => url($s->locale . '/blog/' . $s->slug)])
                 ->all()
@@ -187,7 +199,16 @@ class BlogController extends Controller
             'post' => $post,
             'related' => $related,
             'categories' => $this->sidebarCategories(),
+            'preview' => $preview,
         ]);
+    }
+
+    /** Yayında olmayan yazıyı yalnız panel yetkisi olan (admin/editör) oturum görebilir. */
+    private function canPreviewDrafts(): bool
+    {
+        $user = auth()->user();
+
+        return $user !== null && ($user->is_admin === true || $user->is_editor === true);
     }
 
     /**

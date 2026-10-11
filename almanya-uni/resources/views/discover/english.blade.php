@@ -46,7 +46,8 @@
         <h2 class="font-bold text-gray-900 text-lg mb-2">{{ __('English-taught Bachelor\'s and Master\'s options') }}</h2>
         <p class="text-sm text-gray-700 leading-relaxed">{{ __('In July 2025, Germany had 1,928 English-taught Master\'s programmes and 424 English-taught Bachelor\'s programmes.') }}</p>
         <p class="text-xs text-gray-500 mt-2 leading-relaxed">{{ __('These are published figures for July 2025. They are not the number of programmes in our catalogue and not a count of programmes open for applications today.') }}</p>
-        <p class="text-xs text-gray-500 mt-2 leading-relaxed">{{ __('Source: ApplyToGerman Germany Student Statistics Report 2026 (prepared by the ApplyToGerman team), p. 6; HRK Higher Education Compass / DZHW calculations; Wissenschaft weltoffen kompakt 2026, Figures 36–37.') }}</p>
+        {{-- Rapor adı yalnız rapor yayındayken aynı dildeki yazıya bağlanır (taslakken düz metin; StudentStatisticsReport). --}}
+        <p class="text-xs text-gray-500 mt-2 leading-relaxed">{!! __('Source: :report (prepared by the ApplyToGerman team), p. 6; HRK Higher Education Compass / DZHW calculations; Wissenschaft weltoffen kompakt 2026, Figures 36–37.', ['report' => \App\Support\StudentStatisticsReport::nameHtml()]) !!}</p>
     </section>
 
     {{-- Derece × öğretim dili (katalog sayıları) --}}

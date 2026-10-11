@@ -183,6 +183,18 @@
 .blog-content th { background-color: #f9fafb; font-weight: 600; }
 .blog-content hr { border-color: #e5e7eb; margin: 2rem 0; }
 .blog-content img { border-radius: 0.5rem; }
+/* Markdown tabloları: dar ekranda yatay kaydırma (MarkdownRenderer table/wrap) */
+.blog-content .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+.blog-content .table-wrap table { margin: 0; min-width: 100%; }
+.blog-content td[align="right"], .blog-content th[align="right"] { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Kaynak notları (MarkdownRenderer footnote): üst simge numara + belge sonunda liste */
+.blog-content sup { font-size: 0.7em; line-height: 0; vertical-align: super; padding: 0 1px; }
+.blog-content a.footnote-ref { text-decoration: none; font-weight: 600; }
+.blog-content .footnotes { font-size: 0.875rem; color: #4b5563; }
+.blog-content .footnotes ol { padding-left: 1.5em; }
+.blog-content .footnotes li { margin-top: 0.4em; scroll-margin-top: 5rem; }
+.blog-content .footnotes p { color: inherit; display: inline; }
+.blog-content a.footnote-backref { text-decoration: none; margin-left: 0.25em; }
 .heading-anchor {
     color: #9ca3af;
     margin-left: 0.5rem;

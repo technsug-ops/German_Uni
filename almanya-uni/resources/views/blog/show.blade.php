@@ -10,6 +10,7 @@
     :publishedAt="$post->published_at"
     :updatedAt="$post->updated_at"
     :author="$post->author?->name"
+    :noindex="! empty($preview)"
 />
 
 <x-json-ld :data="\App\Support\Seo::clean(\App\Support\Seo::article($post))" />
@@ -45,6 +46,13 @@
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Main content -->
         <div class="lg:col-span-3">
+            {{-- Taslak önizleme (yalnız admin/editör oturumu; BlogController::show) --}}
+            @if (! empty($preview))
+                <div data-draft-preview class="mb-6 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900" role="status">
+                    <strong>{{ __('Draft preview') }}</strong> · {{ __('This article is not published yet. Only editors can see this page; it is not indexed and not listed.') }}
+                </div>
+            @endif
+
             <!-- Geri + Breadcrumb -->
             <div class="flex items-center gap-3 mb-6">
                 <button type="button" onclick="history.length > 1 ? history.back() : (window.location.href='{{ route('blog.index') }}')"

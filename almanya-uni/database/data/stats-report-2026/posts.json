@@ -1,0 +1,61 @@
+{
+    "translation_group_id": "4f0a7c6e-2d3b-4e8a-9c1d-7b5e6a2f9d31",
+    "author_slug": "sule-demirel",
+    "category_slug": "almanyada-egitim",
+    "pdf": "public/reports/almanya-ogrenci-istatistikleri-2026/ApplyToGerman_Almanya_Ogrenci_Istatistikleri_Raporu_2026_TR.pdf",
+    "pdf_md5": "028c3216ec94a1df0c704086ab7cb42d",
+    "images": [
+        "public/reports/almanya-ogrenci-istatistikleri-2026/ingilizce-programlar.png",
+        "public/reports/almanya-ogrenci-istatistikleri-2026/turkiye-ogrenci-degisimi.png",
+        "public/reports/almanya-ogrenci-istatistikleri-2026/turkiye-hzb-eyaletler.png"
+    ],
+    "posts": {
+        "tr": {
+            "slug": "germany-student-statistics-2026-international-students-and-turkiye",
+            "title": "Almanya Öğrenci İstatistikleri 2026: Uluslararası Öğrenciler ve Türkiye",
+            "meta_title": "Almanya Öğrenci İstatistikleri 2026 | ApplyToGerman",
+            "meta_description": "Almanya’daki uluslararası öğrenciler, Türkiye’den eğitim hareketliliği ve İngilizce programlar: ApplyToGerman ekibinin kaynaklı istatistik raporu.",
+            "excerpt": "Almanya’daki uluslararası öğrenci sayıları, Türkiye vatandaşı öğrencilerin yıllık değişimi, İngilizce programlar, eyaletler, vize ve mezuniyet göstergeleri bir arada.",
+            "file": "report.tr.md"
+        },
+        "en": {
+            "slug": "germany-student-statistics-2026-international-students-and-turkiye-en",
+            "title": "Germany Student Statistics 2026: International Students and Türkiye",
+            "meta_title": "Germany Student Statistics 2026 | ApplyToGerman",
+            "meta_description": "International students in Germany, educational mobility from Türkiye and English-taught programmes: the ApplyToGerman team's sourced statistics report.",
+            "excerpt": "Numbers of international students in Germany, the year-on-year change among students with Turkish citizenship, English-taught programmes, federal states, visa and graduation indicators in one place.",
+            "file": "report.en.md"
+        },
+        "de": {
+            "slug": "germany-student-statistics-2026-international-students-and-turkiye-de",
+            "title": "Studierendenstatistik Deutschland 2026: Internationale Studierende und die Türkei",
+            "meta_title": "Studierendenstatistik Deutschland 2026 | ApplyToGerman",
+            "meta_description": "Internationale Studierende in Deutschland, Bildungsmobilität aus der Türkei und englischsprachige Studiengänge: der belegte Statistikbericht des ApplyToGerman-Teams.",
+            "excerpt": "Zahlen der internationalen Studierenden in Deutschland, die jährliche Veränderung bei Studierenden mit türkischer Staatsangehörigkeit, englischsprachige Studiengänge, Bundesländer, Visum- und Abschlussindikatoren an einem Ort.",
+            "file": "report.de.md"
+        }
+    },
+    "guide_citations": {
+        "tr": {
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application"
+            ],
+            "plain": "*Kaynak: ApplyToGerman Almanya Öğrenci İstatistikleri Raporu 2026 (hazırlayan: ApplyToGerman Ekibi), s. 3;",
+            "linked": "*Kaynak: [ApplyToGerman Almanya Öğrenci İstatistikleri Raporu 2026](/tr/blog/germany-student-statistics-2026-international-students-and-turkiye) (hazırlayan: ApplyToGerman Ekibi), s. 3;"
+        },
+        "en": {
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application-en"
+            ],
+            "plain": "*Source: ApplyToGerman Germany Student Statistics Report 2026 (prepared by the ApplyToGerman team), p. 3;",
+            "linked": "*Source: [ApplyToGerman Germany Student Statistics Report 2026](/en/blog/germany-student-statistics-2026-international-students-and-turkiye-en) (prepared by the ApplyToGerman team), p. 3;"
+        },
+        "de": {
+            "slugs": [
+                "english-masters-in-germany-without-german-knowledge-finding-programs-and-application-de"
+            ],
+            "plain": "*Quelle: ApplyToGerman Bericht zur Studierendenstatistik Deutschland 2026 (erstellt vom ApplyToGerman-Team), S. 3;",
+            "linked": "*Quelle: [ApplyToGerman Bericht zur Studierendenstatistik Deutschland 2026](/de/blog/germany-student-statistics-2026-international-students-and-turkiye-de) (erstellt vom ApplyToGerman-Team), S. 3;"
+        }
+    }
+}
