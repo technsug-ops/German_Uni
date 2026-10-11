@@ -69,6 +69,10 @@ class SeoGrowthBatch4Test extends TestCase
         if ($guides) {
             $g = $data['guide'];
             $this->insertPost('tr', $g['posts']['tr']['slug'], $g['posts']['tr']['old_titles'][0], "## Eski bölüm\n\nEski metin.", self::FIXTURE_GROUP);
+            // Prod'da olduğu gibi: eski TR metnin EN/DE çevirileri aynı grupta, kendi slug'larıyla zaten yayında.
+            foreach (['en', 'de'] as $loc) {
+                $this->insertPost($loc, $g['posts'][$loc]['slug'], $g['posts'][$loc]['old_titles'][0], "Old translated guide.", self::FIXTURE_GROUP);
+            }
             foreach ($data['supporting'] as $s) {
                 $this->insertPost($s['locale'], $s['slugs'][0], 'Destek ' . $s['locale'], "Giriş.\n\n" . $s['before_heading'] . "\n\nMetin.\n\n## Başka\n\nMetin.", null);
             }
@@ -205,8 +209,8 @@ class SeoGrowthBatch4Test extends TestCase
             $s = Post::where('locale', $loc)->where('slug', $g['posts'][$loc]['slug'])->firstOrFail();
             $this->assertSame(self::FIXTURE_GROUP, $s->translation_group_id, 'EN/DE kardeşler TR rehberin grubuna bağlanır');
             $this->assertTrue((bool) $s->is_published);
-            $this->assertNotNull($s->published_at);
-            $this->assertGreaterThan(now()->subMinute(), $s->published_at, 'EN/DE ilk gerçek yayın anı');
+            $this->assertTrue($s->published_at->lt(now()->subMonths(3)), 'mevcut EN/DE kardeşin slug\'ı ve ilk yayın tarihi korunur');
+            $this->assertStringContainsString('<table', $s->content_html);
             $this->assertSame((int) $tr->user_id, (int) $s->user_id);
             $this->assertSame($g['posts'][$loc]['title'], $s->title);
         }
@@ -256,7 +260,8 @@ class SeoGrowthBatch4Test extends TestCase
             $this->assertStringContainsString("kaldırılacak 'Studieren in Hamburg: Chancen und Möglichkeiten' bölümü bulunamadı", $e->getMessage());
         }
         $this->assertEquals($before, $this->snapshot());
-        $this->assertSame(1, Post::where('translation_group_id', self::FIXTURE_GROUP)->count(), 'EN/DE rehber de oluşturulmadı');
+        $g = $this->data()['guide'];
+        $this->assertSame($g['posts']['en']['old_titles'][0], Post::where('locale', 'en')->where('slug', $g['posts']['en']['slug'])->value('title'), 'EN/DE rehber de güncellenmedi');
     }
 
     public function test_guide_group_is_read_from_the_environment(): void
@@ -265,6 +270,7 @@ class SeoGrowthBatch4Test extends TestCase
         $this->seedBatch();
         $g = $this->data()['guide'];
         DB::table('posts')->where('slug', $g['posts']['tr']['slug'])->update(['translation_group_id' => null]);
+        DB::table('posts')->whereIn('slug', [$g['posts']['en']['slug'], $g['posts']['de']['slug']])->delete(); // kardeş yok → oluşturulur
 
         $this->run400();
 
@@ -274,6 +280,27 @@ class SeoGrowthBatch4Test extends TestCase
             $this->assertSame($tr->translation_group_id, Post::where('locale', $loc)->where('slug', $g['posts'][$loc]['slug'])->value('translation_group_id'));
         }
         $this->assertSame(3, Post::where('translation_group_id', $tr->translation_group_id)->count());
+        foreach (['en', 'de'] as $loc) {
+            $s = Post::where('locale', $loc)->where('slug', $g['posts'][$loc]['slug'])->firstOrFail();
+            $this->assertGreaterThan(now()->subMinute(), $s->published_at, 'yeni oluşturulan kardeşin ilk gerçek yayın anı');
+            $this->assertTrue((bool) $s->is_published);
+        }
+    }
+
+    public function test_hand_edited_sibling_blocks_everything(): void
+    {
+        $this->seedBatch();
+        $g = $this->data()['guide'];
+        DB::table('posts')->where('locale', 'en')->where('slug', $g['posts']['en']['slug'])->update(['title' => 'Hand-edited title']);
+        $before = $this->snapshot();
+
+        try {
+            $this->run400();
+            $this->fail('RuntimeException bekleniyordu');
+        } catch (RuntimeException $e) {
+            $this->assertStringContainsString('elle değiştirilmiş içerik ezilmez', $e->getMessage());
+        }
+        $this->assertEquals($before, $this->snapshot());
     }
 
     public function test_existing_sibling_slug_in_another_group_blocks_everything(): void
@@ -371,7 +398,7 @@ class SeoGrowthBatch4Test extends TestCase
             $this->assertStringContainsString('class="overflow-x-auto rounded-lg ring-1 ring-gray-200"', $html, 'tablolar mobilde kaydırılabilir');
             $this->assertStringContainsString('id="universities"', $html);
             $this->assertStringContainsString("/{$locale}/english-taught", $html);
-            $this->assertStringContainsString('/blog/real-cost-of-being-a-student-in-germany-budget-truth', $html, 'yaşam maliyeti rehberine bağlantı');
+            $this->assertStringContainsString("/{$locale}/blog/" . $data['guide']['posts'][$locale]['slug'], $html, 'yaşam maliyeti rehberine bağlantı (aynı dil)');
             preg_match_all('/\]\(#([a-z0-9-]+)\)/u', $t['cta'], $m);
             $this->assertNotEmpty($m[1], 'CTA sayfa içi çapa içerir');
             foreach ($m[1] as $anchor) {

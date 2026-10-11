@@ -148,10 +148,25 @@ return new class extends Migration
                 if ($sibling) {
                     if ($sibling->translation_group_id !== $group) {
                         $problems[] = "rehber $loc/{$spec['slug']}: slug başka bir çeviri grubuna ait";
-                    } elseif (! collect($fields)->every(fn ($v, $k) => (string) $sibling->{$k} === $v)) {
-                        $problems[] = "rehber $loc/{$spec['slug']}: mevcut kayıt beklenen içerikten farklı; elle değiştirilmiş içerik ezilmez";
+                        continue;
                     }
-                    continue; // aynı içerik → no-op
+                    if (collect($fields)->every(fn ($v, $k) => (string) $sibling->{$k} === $v)) {
+                        continue; // aynı içerik → no-op
+                    }
+                    // Prod'daki mevcut EN/DE çeviriler (eski TR metnin çevirisi) yalnız bilinen eski başlıkla yerinde güncellenir;
+                    // slug ve ilk yayın tarihi korunur, elle değiştirilmiş içerik ezilmez.
+                    if (! in_array((string) $sibling->title, $spec['old_titles'], true)) {
+                        $problems[] = "rehber $loc/{$spec['slug']}: mevcut kayıt beklenen içerikten farklı; elle değiştirilmiş içerik ezilmez";
+                        continue;
+                    }
+                    $sibling->fill($fields);
+                    $sibling->is_published = true;
+                    if ($sibling->published_at) {
+                        $plan['posts'][] = $sibling;
+                    } else {
+                        $plan['new_posts'][] = $sibling; // taslaktı → ilk gerçek yayın anı
+                    }
+                    continue;
                 }
                 $other = Post::where('locale', $loc)->where('translation_group_id', $group)->first();
                 if ($other) {
