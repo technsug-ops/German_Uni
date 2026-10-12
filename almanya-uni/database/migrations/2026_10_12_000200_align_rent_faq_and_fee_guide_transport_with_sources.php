@@ -138,7 +138,7 @@ MD,
                 }
                 $md = (string) $faq->answer_md;
                 if (! mb_check_encoding($md, 'UTF-8')) {
-                    $md = (string) iconv('UTF-8', 'UTF-8//IGNORE', $md); // parmak izi kontrolü için; cevap zaten bütünüyle değişiyor
+                    $md = mb_scrub($md, 'UTF-8'); // parmak izi kontrolü için; cevap zaten bütünüyle değişiyor
                 }
                 if (trim($md) === trim(self::FAQ_NEW[$loc])) {
                     continue; // zaten uygulanmış
@@ -171,9 +171,11 @@ MD,
                 if (! mb_check_encoding($md, 'UTF-8')) {
                     // Prod'daki kayıt geçersiz UTF-8 bayt içeriyor (Markdown işleyici kaydetmede bunu reddeder:
                     // "Unexpected encoding"). Yalnız geçersiz baytlar düşürülür; metin aynen kalır.
-                    $md = (string) iconv('UTF-8', 'UTF-8//IGNORE', $md);
+                    $md = mb_scrub($md, 'UTF-8'); // geçersiz baytlar düşer; metin aynen kalır
                 }
-                $lines = preg_split('/\R/', $md);
+                // DİKKAT: '/\R/' kullanılmaz: u bayrağı olmadan tek bayt 0x85 (NEL) de satır sonu sayılır ve çok baytlı karakterlerin
+                // devam baytını (ör. 😅 = F0 9F 98 85, Kiril х = D1 85) yutup geçersiz UTF-8 üretir (prod'da görülen hata).
+                $lines = preg_split('/\r\n|\n|\r/', $md);
                 if (collect($spec['lines'])->every(fn ($l) => in_array($l['new'], $lines, true))) {
                     continue; // zaten uygulanmış → no-op
                 }
@@ -188,7 +190,12 @@ MD,
                     $changed[$hits[0]] = $l['new'];
                 }
                 $eol = str_contains($md, "\r\n") ? "\r\n" : "\n"; // satır sonu biçimini koru
-                $post->content_md = implode($eol, $changed);
+                $assembled = implode($eol, $changed);
+                if (! mb_check_encoding($assembled, 'UTF-8')) {
+                    $problems[] = "rehber $loc/{$spec['slug']}: birleştirilen metin UTF-8 değil";
+                    continue;
+                }
+                $post->content_md = $assembled;
                 $plan[] = $post;
             }
         }
