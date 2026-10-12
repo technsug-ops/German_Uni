@@ -2,23 +2,27 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Str;
+
 /**
- * Lightweight math captcha — adds a simple addition question to forms
- * to deter brute-force/spam bots without third-party services or images.
+ * Basit toplama captcha'sı — üçüncü taraf servis ve görsel olmadan form spam'ini azaltır.
  *
- * STATELESS (HMAC-imzalı token): cevap session yerine, app key ile imzalı
- * kendinden-doğrulanır bir token'da taşınır. Bu sayede:
- *  - Doğru cevap session kaybı / TTL bitişi yüzünden reddedilmez (eski bug).
- *  - Aynı sayfada birden çok captcha (newsletter inline + sticky) çakışmaz.
- *  - Sayfa cache'lense bile token geçerlilik penceresi boyunca çalışır.
- * Tekrar-kullanım (replay) penceresi kısa (2 saat) + honeypot + rate-limit ile sınırlı.
+ * SUNUCU TARAFLI, OTURUMA BAĞLI: cevap istemciye HİÇ gitmez. İstemci yalnız rastgele, anlamsız bir
+ * referans (captcha_key) taşır; cevap, süre ve kullanım durumu oturumda tutulur.
+ *  - Süreli: her soru TTL içinde geçerlidir.
+ *  - Tek kullanımlık: doğru cevapla doğrulanan referans hemen silinir (replay yok).
+ *  - Oturuma bağlı: başka oturumdan gelen referans tanınmaz.
+ *  - Aynı sayfada birden çok captcha (bülten inline + sticky) için oturumda birden çok soru saklanır.
+ * Eski tasarım (HMAC imzalı token) cevabı base64 içinde istemciye taşıyordu; bu bir sızıntıydı.
  */
 class MathCaptcha
 {
-    private const TTL_SECONDS = 7200; // 2 saat
+    public const SESSION_KEY = 'math_captcha';
+    public const TTL_SECONDS = 3600;   // 1 saat (oturum ömrü 2 saat)
+    public const MAX_PENDING = 20;     // oturumda bekleyen soru sayısı (eskiler atılır)
 
     /**
-     * Generate a new captcha question + a signed token carrying the answer.
+     * Yeni soru üret; cevabı oturuma yaz, istemciye yalnız referansı ver.
      *
      * @return array{key:string, question:string, a:int, b:int}
      */
@@ -26,64 +30,57 @@ class MathCaptcha
     {
         $a = random_int(1, 9);
         $b = random_int(1, 9);
-        $answer = $a + $b;
-        $expires = time() + self::TTL_SECONDS;
+        $key = Str::random(40);
 
-        return [
-            'key' => self::makeToken($answer, $expires),
-            'question' => "{$a} + {$b}",
-            'a' => $a,
-            'b' => $b,
-        ];
+        $pending = self::pending();
+        $pending[$key] = ['answer' => $a + $b, 'expires' => time() + self::TTL_SECONDS];
+        if (count($pending) > self::MAX_PENDING) {
+            uasort($pending, fn ($x, $y) => $x['expires'] <=> $y['expires']);
+            $pending = array_slice($pending, -self::MAX_PENDING, null, true);
+        }
+        session()->put(self::SESSION_KEY, $pending);
+
+        return ['key' => $key, 'question' => "{$a} + {$b}", 'a' => $a, 'b' => $b];
     }
 
     /**
-     * Validate a submitted answer against the signed token (no session).
+     * Gönderilen cevabı oturumdaki soruyla doğrula. Doğruysa soru silinir (tek kullanım);
+     * süresi dolmuş, bilinmeyen, değiştirilmiş veya başka oturuma ait referans reddedilir.
      */
     public static function validate(?string $key, $submittedAnswer): bool
     {
-        if (! $key || ! is_string($key)) {
+        if (! is_string($key) || $key === '' || strlen($key) > 64) {
             return false;
         }
-
-        $decoded = base64_decode($key, true);
-        if ($decoded === false) {
+        $pending = self::pending();
+        $entry = $pending[$key] ?? null;
+        if (! is_array($entry)) {
             return false;
         }
+        if (time() > (int) ($entry['expires'] ?? 0)) {
+            unset($pending[$key]);
+            session()->put(self::SESSION_KEY, $pending);
 
-        $parts = explode('|', $decoded);
-        if (count($parts) !== 3) {
             return false;
         }
-
-        [$answer, $expires, $sig] = $parts;
-        if (! ctype_digit($answer) || ! ctype_digit($expires)) {
-            return false;
+        if (! is_numeric($submittedAnswer) || (int) $submittedAnswer !== (int) $entry['answer']) {
+            return false; // yanlış cevap: soru kalır, kullanıcı aynı soruya yeniden cevap verebilir (TTL içinde)
         }
+        unset($pending[$key]);
+        session()->put(self::SESSION_KEY, $pending);
 
-        // Süresi geçmiş token
-        if (time() > (int) $expires) {
-            return false;
-        }
-
-        // İmza doğrulama (constant-time)
-        $expected = self::sign($answer . '|' . $expires);
-        if (! hash_equals($expected, $sig)) {
-            return false;
-        }
-
-        return (int) $submittedAnswer === (int) $answer;
+        return true;
     }
 
-    private static function makeToken(int $answer, int $expires): string
+    /** @return array<string, array{answer:int, expires:int}> */
+    private static function pending(): array
     {
-        $payload = $answer . '|' . $expires;
+        $pending = session()->get(self::SESSION_KEY, []);
+        if (! is_array($pending)) {
+            return [];
+        }
+        $now = time();
 
-        return base64_encode($payload . '|' . self::sign($payload));
-    }
-
-    private static function sign(string $payload): string
-    {
-        return hash_hmac('sha256', $payload, (string) config('app.key'));
+        return array_filter($pending, fn ($e) => is_array($e) && (int) ($e['expires'] ?? 0) >= $now);
     }
 }

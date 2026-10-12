@@ -21,15 +21,15 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Math-captcha'lı formlar (login / register / forgot-password) için
-     * geçerli captcha alanları. MathCaptcha stateless (HMAC token) olduğundan
-     * gerçek token + doğru cevabı döner (session seed'e gerek yok).
+     * Math-captcha'lı formlar (login / register / forgot-password / bülten) için geçerli captcha alanları.
+     * MathCaptcha oturuma bağlıdır: soru test oturumuna yazılır, istemci alanları referans + doğru cevaptır.
      *
      *   $this->post('/login', ['email' => ..., 'password' => ..., ...$this->captcha()]);
      */
     protected function captcha(): array
     {
         $c = MathCaptcha::generate();
+        $this->withSession([MathCaptcha::SESSION_KEY => session()->get(MathCaptcha::SESSION_KEY)]);
 
         return ['captcha_key' => $c['key'], 'captcha_answer' => $c['a'] + $c['b']];
     }
