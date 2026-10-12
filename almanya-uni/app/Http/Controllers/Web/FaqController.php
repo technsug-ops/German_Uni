@@ -125,9 +125,9 @@ class FaqController extends Controller
         if (! $topic) {
             // Eski konu slug'ı: FAQ slug'ı da eskiyse ikisini tek 301'de çöz (zincir yok)
             if ($newTopic = \App\Support\SlugRedirects::to('faq_topic', $topicSlug)) {
-                $newSlug = \App\Support\SlugRedirects::to('faq', $slug) ?? $slug;
+                [$sibTopic, $sibSlug] = $this->currentLocaleTarget($slug);
 
-                return redirect()->route('faqs.show', ['topic' => $newTopic, 'slug' => $newSlug] + request()->query(), 301);
+                return redirect()->route('faqs.show', ['topic' => $sibTopic ?? $newTopic, 'slug' => $sibSlug ?? $slug] + request()->query(), 301);
             }
             abort(404);
         }
@@ -152,9 +152,14 @@ class FaqController extends Controller
                     return redirect()->route('faqs.show', [$topic->slug, $sibling->slug], 301);
                 }
             }
-            // Eski (Türkçe) FAQ slug'ı → İngilizce slug (slug_redirects, entity 'faq')
+            // Eski (Türkçe) FAQ slug'ı → İngilizce slug (slug_redirects, entity 'faq', dile özgü)
             if ($r = \App\Support\SlugRedirects::response('faq', 'slug', $slug)) {
                 return $r;
+            }
+            // Eski slug başka bir dile aitse (ör. /en/faq/…/<eski-tr-slug>): grubun bu dildeki kardeşine tek adımda
+            [$sibTopic, $sibSlug] = $this->currentLocaleTarget($slug);
+            if ($sibSlug) {
+                return redirect()->route('faqs.show', ['topic' => $sibTopic, 'slug' => $sibSlug] + request()->query(), 301);
             }
             throw new NotFoundHttpException();
         }
@@ -195,5 +200,27 @@ class FaqController extends Controller
             'faq' => $faq,
             'related' => $related,
         ]);
+    }
+
+    /**
+     * Eski (başka dile ait olabilecek) FAQ slug'ı için bu dildeki kardeşin [konu slug'ı, slug] çifti; yoksa [null, null].
+     * Dile özgü yönlendirme önce denenir; sonra dil gözetmeden eşleşen hedefin çeviri grubundan bu dilin kardeşi bulunur.
+     */
+    private function currentLocaleTarget(string $slug): array
+    {
+        $locale = app()->getLocale();
+        $direct = \App\Support\SlugRedirects::to('faq', $slug, $locale);
+        $mappedSlug = $direct ?? \App\Support\SlugRedirects::toAny('faq', $slug);
+        if (! $mappedSlug) {
+            return [null, null];
+        }
+        $mapped = Faq::where('is_published', true)->where('slug', $mappedSlug)->with('topic:id,slug')->first();
+        if (! $mapped) {
+            return [null, null];
+        }
+        $sibling = $mapped->locale === $locale ? $mapped
+            : ($mapped->translation_group_id ? Faq::published()->where('translation_group_id', $mapped->translation_group_id)->with('topic:id,slug')->first() : null);
+
+        return $sibling && $sibling->topic ? [$sibling->topic->slug, $sibling->slug] : [null, null];
     }
 }

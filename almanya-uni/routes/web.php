@@ -1574,13 +1574,22 @@ Route::get('/', function (\Illuminate\Http\Request $request) use ($__brandDefaul
 Route::fallback(function (\Illuminate\Http\Request $request) use ($__brandDefaultLocale) {
     $path  = trim($request->path(), '/');
     $first = explode('/', $path)[0] ?? '';
+    $qs = $request->getQueryString();
     if (in_array($first, array_keys(config('locale.locales', [])), true)) {
-        // Locale prefix'li ama route bulunamadı → 404. Locale'i set et ki 404 sayfası doğru dilde render olsun.
         \Illuminate\Support\Facades\App::setLocale($first);
+        // /{locale}/sss/… gibi eski takma ad ya da taşınmış slug → tek adımda 301, yoksa gerçek 404
+        $rest = trim(substr($path, strlen($first)), '/');
+        if ($rest !== '' && ($resolved = \App\Support\LegacyPaths::resolve($rest, $first)) !== null) {
+            return redirect('/' . $first . '/' . $resolved . ($qs ? '?' . $qs : ''), 301);
+        }
         abort(404);
     }
-    $target = $__brandDefaultLocale($request);
-    $qs = $request->getQueryString();
+    $target = \App\Support\LegacyPaths::localeHint($path) ?? $__brandDefaultLocale($request);
+    // Locale'siz eski takma ad / taşınmış slug: dil + son yol tek 301'de; bilinen yol ise yalnız dil normalizasyonu (302)
+    $resolved = $path !== '' ? \App\Support\LegacyPaths::resolve($path, $target) : null;
+    if ($resolved !== null) {
+        return redirect('/' . $target . '/' . $resolved . ($qs ? '?' . $qs : ''), 301);
+    }
     return redirect('/' . $target . ($path ? '/' . $path : '') . ($qs ? '?' . $qs : ''), 302);
 });
 
@@ -2414,26 +2423,9 @@ Route::get('/locale/{locale}', function ($locale) {
 require __DIR__ . '/auth.php';
 
 // ─────────── Eski TR slug → yeni evrensel slug (301) ───────────
-
-Route::redirect('/arama', '/search', 301);
-Route::redirect('/biz-kimiz', '/about', 301);
-Route::redirect('/blog/kategori/{slug}', '/blog/category/{slug}', 301);
-Route::redirect('/sss', '/faq', 301);
-Route::redirect('/sss/{topic}', '/faq/{topic}', 301);
-Route::redirect('/sss/{topic}/{slug}', '/faq/{topic}/{slug}', 301);
-Route::redirect('/karsilastir', '/compare', 301);
-Route::redirect('/karsilastir/sonuc', '/compare/result', 301);
-Route::redirect('/siralama', '/rankings', 301);
-Route::redirect('/siralama/{slug}', '/rankings/{slug}', 301);
-Route::redirect('/programlar', '/programs', 301);
-Route::redirect('/programlar/{slug}', '/programs/{slug}', 301);
-Route::redirect('/meslekler', '/professions', 301);
-Route::redirect('/meslekler/{slug}', '/professions/{slug}', 301);
-Route::redirect('/harita', '/map', 301);
-Route::redirect('/araclar', '/tools', 301);
-Route::redirect('/araclar/yasam-maliyeti', '/tools/cost-of-living', 301);
-Route::redirect('/araclar/not-donusturucu', '/tools/grade-converter', 301);
-Route::redirect('/araclar/uni-onerisi', '/tools/recommendation', 301);
+// Locale'siz eski takma adlar (/sss, /araclar, /blog/kategori, …) artık Route::fallback içinde
+// App\Support\LegacyPaths ile TEK adımda son URL'ye (locale + yeni slug) 301 olur; buradaki ayrı
+// Route::redirect tanımları zincir (301 → 302 → 301) üretiyordu.
 
 // NOT: Merge edilen alt-birim slug'larının 301'i burada Route::redirect ile denendi ama
 // hiç çalışmadı — üni sayfaları Route::prefix('{locale}') grubunda ve /universities/{slugOrId}
