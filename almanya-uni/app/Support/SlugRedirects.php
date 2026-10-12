@@ -12,6 +12,22 @@ use Illuminate\Support\Facades\Schema;
  */
 final class SlugRedirects
 {
+    /**
+     * Metinden (ör. İngilizce FAQ sorusu) ≤ $max karakterlik, kelime sınırında kesilmiş ASCII slug üretir.
+     * Boş/sayısal olmayan parça kalmazsa '' döner.
+     */
+    public static function fromText(string $text, int $max = 80): string
+    {
+        $slug = \Illuminate\Support\Str::slug($text, '-', 'en');
+        if (strlen($slug) > $max) {
+            $cut = substr($slug, 0, $max);
+            $pos = strrpos($cut, '-');
+            $slug = $pos !== false && $pos > 20 ? substr($cut, 0, $pos) : $cut;
+        }
+
+        return trim($slug, '-');
+    }
+
     public static function to(string $entity, string $slug): ?string
     {
         static $hasTable = null;

@@ -123,8 +123,11 @@ class FaqController extends Controller
     {
         $topic = FaqTopic::active()->where('slug', $topicSlug)->first();
         if (! $topic) {
-            if ($r = \App\Support\SlugRedirects::response('faq_topic', 'topic', $topicSlug)) {
-                return $r;
+            // Eski konu slug'ı: FAQ slug'ı da eskiyse ikisini tek 301'de çöz (zincir yok)
+            if ($newTopic = \App\Support\SlugRedirects::to('faq_topic', $topicSlug)) {
+                $newSlug = \App\Support\SlugRedirects::to('faq', $slug) ?? $slug;
+
+                return redirect()->route('faqs.show', ['topic' => $newTopic, 'slug' => $newSlug] + request()->query(), 301);
             }
             abort(404);
         }
