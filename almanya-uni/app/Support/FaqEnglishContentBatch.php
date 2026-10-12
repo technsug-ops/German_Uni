@@ -87,9 +87,10 @@ final class FaqEnglishContentBatch
             }
             // Mevcut slug ile (henüz uygulanmamış) ya da yeni soru ile (uygulanmış, slug değişmiş) bulunur
             $row = $all->first(fn ($r) => $r->locale === 'en' && $r->slug === $rep['en_slug'])
-                ?? $all->first(fn ($r) => $r->locale === 'en' && $r->question === $rep['question']);
+                ?? $all->first(fn ($r) => $r->locale === 'en' && self::same($r->question, $rep['question']));
             if (! $row) {
-                $out['problems'][] = "onarım '{$rep['en_slug']}': EN kayıt yok (slug ve yeni soru ile bulunamadı)";
+                // Bu ortamda kayıt yok (prod/yerel farkı): bu madde atlanır, diğerleri etkilenmez
+                $out['skipped'][] = "onarım '{$rep['en_slug']}': EN kayıt yok (slug ve yeni soru ile bulunamadı) — atlandı";
                 continue;
             }
             if (! $row->translation_group_id) {
@@ -102,12 +103,14 @@ final class FaqEnglishContentBatch
             }
             $affected[$row->translation_group_id] = true;
             $groups[$row->translation_group_id]['en_question'] = $rep['question'];
-            if ($row->question === $rep['question'] && (string) $row->answer_md === $rep['answer_md']) {
+            if (self::same($row->question, $rep['question']) && (string) $row->answer_md === $rep['answer_md']) {
                 $out['skipped'][] = "onarım en#{$row->id}: zaten uygulanmış";
                 continue;
             }
-            if ($row->question !== $rep['expect_question']) {
-                $out['problems'][] = "onarım en#{$row->id}: mevcut soru beklenen eski metinle eşleşmiyor (üzerine yazılmadı): '" . mb_substr($row->question, 0, 60) . "'";
+            if (! self::same($row->question, $rep['expect_question'])) {
+                // Eski içerik beklenenle uyuşmuyor: ÜZERİNE YAZILMAZ, raporlanır; diğer maddeler devam eder
+                $out['skipped'][] = "onarım en#{$row->id}: mevcut soru beklenen eski metinle eşleşmiyor — üzerine yazılmadı: '" . mb_substr($row->question, 0, 70) . "'";
+                unset($affected[$row->translation_group_id], $groups[$row->translation_group_id]);
                 continue;
             }
             $out['repairs'][] = ['id' => $row->id, 'group' => $row->translation_group_id, 'old_question' => $row->question, 'question' => $rep['question'], 'answer_md' => $rep['answer_md']];
@@ -125,8 +128,8 @@ final class FaqEnglishContentBatch
                 $out['problems'][] = "oluşturma tr#{$cre['tr_id']}: TR kaydı yok";
                 continue;
             }
-            if ($tr->locale !== 'tr' || $tr->question !== $cre['expect_question']) {
-                $out['problems'][] = "oluşturma tr#{$tr->id}: TR kaydı beklenen soruyla eşleşmiyor ('{$tr->locale}': '" . mb_substr($tr->question, 0, 60) . "')";
+            if ($tr->locale !== 'tr' || ! self::same($tr->question, $cre['expect_question'])) {
+                $out['skipped'][] = "oluşturma tr#{$tr->id}: TR kaydı beklenen soruyla eşleşmiyor ('{$tr->locale}': '" . mb_substr($tr->question, 0, 70) . "') — atlandı";
                 continue;
             }
             if (! $tr->translation_group_id) {
@@ -146,16 +149,19 @@ final class FaqEnglishContentBatch
             $affected[$gid] = true;
             $groups[$gid]['en_question'] = $cre['question'];
             if ($existingEn) {
-                if ($existingEn->question === $cre['question'] && (string) $existingEn->answer_md === $cre['answer_md']) {
+                if (self::same($existingEn->question, $cre['question']) && (string) $existingEn->answer_md === $cre['answer_md']) {
                     $out['skipped'][] = "oluşturma tr#{$tr->id}: EN kardeş en#{$existingEn->id} zaten var (aynı içerik)";
                 } else {
-                    $out['problems'][] = "oluşturma tr#{$tr->id}: grupta EN kayıt en#{$existingEn->id} zaten var (yayın=" . (int) $existingEn->is_published . ", içerik farklı) — yeni kayıt açılmadı";
+                    // Taslak/eşdeğer kayıt varsa yeni kayıt açılmaz; elle karar için raporlanır
+                    $out['skipped'][] = "oluşturma tr#{$tr->id}: grupta EN kayıt en#{$existingEn->id} zaten var (yayın=" . (int) $existingEn->is_published . ", içerik farklı) — yeni kayıt açılmadı";
+                    unset($affected[$gid], $groups[$gid]);
                 }
                 continue;
             }
-            $dupe = $all->first(fn ($r) => $r->locale === 'en' && $r->question === $cre['question']);
+            $dupe = $all->first(fn ($r) => $r->locale === 'en' && self::same($r->question, $cre['question']));
             if ($dupe) {
-                $out['problems'][] = "oluşturma tr#{$tr->id}: aynı İngilizce soru başka grupta var (en#{$dupe->id})";
+                $out['skipped'][] = "oluşturma tr#{$tr->id}: aynı İngilizce soru başka grupta var (en#{$dupe->id}) — yeni kayıt açılmadı";
+                unset($affected[$gid], $groups[$gid]);
                 continue;
             }
             $out['creations'][] = ['tr_id' => $tr->id, 'group' => $gid, 'topic_id' => $tr->faq_topic_id, 'topic' => $cre['topic'], 'question' => $cre['question'], 'answer_md' => $cre['answer_md']];
@@ -370,6 +376,14 @@ final class FaqEnglishContentBatch
         } catch (\Throwable $e) {
             throw new RuntimeException("EN FAQ paketi uygulanmadı: $label kaydedilemedi: " . $e->getMessage(), 0, $e);
         }
+    }
+
+    /** Metin eşitliği: boşluk/satır sonu ve tipografik kesme işareti farkları yok sayılır (içerik farkı değil). */
+    public static function same(?string $a, ?string $b): bool
+    {
+        $n = fn (?string $s) => trim(preg_replace('/\s+/u', ' ', str_replace(['’', '‘', '`'], "'", (string) $s)));
+
+        return $n($a) === $n($b);
     }
 
     private static function looksTurkish(string $text): bool

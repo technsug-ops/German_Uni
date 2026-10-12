@@ -156,30 +156,36 @@ class FaqEnContentBatch1Test extends TestCase
         $this->get('/en/faq/money')->assertOk()->assertSee('What is the Steuer-ID and how do I get it?');
     }
 
-    public function test_unexpected_old_text_or_existing_en_sibling_blocks_everything(): void
+    public function test_unexpected_old_text_is_never_overwritten_and_existing_en_sibling_prevents_a_duplicate(): void
     {
         $ids = $this->seedFixture();
         DB::table('faqs')->where('id', $ids['a_en'])->update(['question' => 'Elle düzenlenmiş soru?']);
-        $before = DB::table('faqs')->orderBy('id')->get()->toArray();
+        $beforeA = DB::table('faqs')->whereIn('id', [$ids['a_tr'], $ids['a_en'], $ids['a_de']])->orderBy('id')->get()->toArray();
         $plan = FaqEnglishContentBatch::plan($this->data($ids));
-        $this->assertNotEmpty($plan['problems']);
-        $this->assertStringContainsString('eşleşmiyor', $plan['problems'][0]);
-        try {
-            FaqEnglishContentBatch::apply($plan);
-            $this->fail('RuntimeException bekleniyordu');
-        } catch (RuntimeException $e) {
-            $this->assertStringContainsString('hiçbir şey yazılmadı', $e->getMessage());
-        }
-        $this->assertEquals($before, DB::table('faqs')->orderBy('id')->get()->toArray());
-        $this->assertSame(0, DB::table('faqs')->where('translation_group_id', self::G['b'])->where('locale', 'en')->count());
+        $this->assertSame([], $plan['problems']);
+        $this->assertSame([], $plan['repairs'], 'uyuşmayan eski metin üzerine yazılmaz');
+        $this->assertStringContainsString('eşleşmiyor', implode(' ', $plan['skipped']));
+        $this->assertCount(1, $plan['creations'], 'diğer maddeler devam eder');
+        FaqEnglishContentBatch::apply($plan);
+        $this->assertEquals($beforeA, DB::table('faqs')->whereIn('id', [$ids['a_tr'], $ids['a_en'], $ids['a_de']])->orderBy('id')->get()->toArray(), 'A grubu (slug dahil) dokunulmadı');
+        $this->assertSame(1, DB::table('faqs')->where('translation_group_id', self::G['b'])->where('locale', 'en')->count());
 
-        // Grupta taslak EN varsa yeni kayıt açılmaz
-        DB::table('faqs')->where('id', $ids['a_en'])->update(['question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?']);
-        $this->faqRow('en', 'steuer-draft-en', 'Draft about Steuer-ID?', self::G['b'], 'money');
-        DB::table('faqs')->where('slug', 'steuer-draft-en')->update(['is_published' => 0]);
-        $plan = FaqEnglishContentBatch::plan($this->data($ids));
-        $this->assertCount(1, $plan['problems']);
-        $this->assertStringContainsString('zaten var', $plan['problems'][0]);
+        // Grupta taslak EN varsa yeni kayıt açılmaz (ikinci grup örneği)
+        $gC = '0b4b4b4b-0000-4000-8000-00000000000f';
+        $cTr = $this->faqRow('tr', 'bloke-hesap-adresi', 'Bloke hesap açarken hangi adresi belirtmeliyim?', $gC, 'money');
+        $this->faqRow('en', 'blocked-draft-en', 'Draft about the blocked account address?', $gC, 'money');
+        DB::table('faqs')->where('slug', 'blocked-draft-en')->update(['is_published' => 0]);
+        $data = ['repairs' => [], 'creations' => [['tr_id' => $cTr, 'expect_question' => 'Bloke hesap açarken hangi adresi belirtmeliyim?', 'topic' => 'money', 'question' => 'Which address should I give when opening a blocked account?', 'answer_md' => 'Use the address the provider asks for; most accept your home address abroad.']]];
+        $plan = FaqEnglishContentBatch::plan($data);
+        $this->assertSame([], $plan['problems']);
+        $this->assertSame([], $plan['creations']);
+        $this->assertStringContainsString('zaten var', implode(' ', $plan['skipped']));
+        $this->assertSame(1, DB::table('faqs')->where('translation_group_id', $gC)->where('locale', 'en')->count());
+        $this->assertSame('bloke-hesap-adresi', DB::table('faqs')->where('id', $cTr)->value('slug'), 'atlanan grubun slug\'ına dokunulmaz');
+
+        // Tipografik kesme işareti / boşluk farkı içerik farkı sayılmaz
+        $this->assertTrue(FaqEnglishContentBatch::same("Almanya’da  staj? ", "Almanya'da staj?"));
+        $this->assertFalse(FaqEnglishContentBatch::same('Almanya\'da staj?', 'Almanya\'da stajlar?'));
     }
 
     public function test_migration_is_silent_on_a_database_without_the_batch_records(): void
