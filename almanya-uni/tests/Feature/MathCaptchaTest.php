@@ -19,10 +19,11 @@ class MathCaptchaTest extends TestCase
     {
         $c = MathCaptcha::generate();
         $answer = (string) ($c['a'] + $c['b']);
-        $this->assertStringNotContainsString($answer, $c['key']);
-        $this->assertStringNotContainsString($answer, (string) base64_decode($c['key'], true));
-        $this->assertStringNotContainsString('|', (string) base64_decode($c['key'], true), 'eski imzalı token biçimi yok');
+        // Referans rastgele alfasayısal bir dizidir; cevabı, süreyi ya da imza yapısını taşımaz.
+        // (Rastgele dizinin base64 çözümü tesadüfen rakam içerebileceği için çözülmüş hali test edilmez.)
+        $this->assertSame(0, preg_match('/[^A-Za-z0-9]/', $c['key']));
         $this->assertSame(40, strlen($c['key']));
+        $this->assertSame($c['a'] + $c['b'], session()->get(MathCaptcha::SESSION_KEY)[$c['key']]['answer'], 'cevap yalnız oturumda');
     }
 
     public function test_correct_answer_passes_once_and_is_not_replayable(): void
