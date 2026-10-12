@@ -22,9 +22,15 @@ class FieldController extends Controller
         return view('fields.index', compact('fields'));
     }
 
-    public function show(string $slug): View
+    public function show(string $slug): View|\Illuminate\Http\RedirectResponse
     {
-        $field = FieldOfStudy::active()->where('slug', $slug)->firstOrFail();
+        $field = FieldOfStudy::active()->where('slug', $slug)->first();
+        if (! $field) {
+            if ($r = \App\Support\SlugRedirects::response('field', 'slug', $slug)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         $topUnis = University::whereHas('programs', fn ($q) => $q->where('field_of_study_id', $field->id)->where('is_active', 1))
             ->where('is_active', 1)

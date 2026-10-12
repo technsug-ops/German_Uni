@@ -77,9 +77,15 @@ class FaqController extends Controller
         ]);
     }
 
-    public function topic(string $slug): View
+    public function topic(string $slug): View|\Illuminate\Http\RedirectResponse
     {
-        $topic = FaqTopic::active()->where('slug', $slug)->firstOrFail();
+        $topic = FaqTopic::active()->where('slug', $slug)->first();
+        if (! $topic) {
+            if ($r = \App\Support\SlugRedirects::response('faq_topic', 'topic', $slug)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         // Locale-aware: only show FAQs in the current site language
         $faqs = $topic->faqs()
@@ -115,7 +121,13 @@ class FaqController extends Controller
 
     public function show(string $topicSlug, string $slug)
     {
-        $topic = FaqTopic::active()->where('slug', $topicSlug)->firstOrFail();
+        $topic = FaqTopic::active()->where('slug', $topicSlug)->first();
+        if (! $topic) {
+            if ($r = \App\Support\SlugRedirects::response('faq_topic', 'topic', $topicSlug)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         $faq = Faq::published()
             ->where('faq_topic_id', $topic->id)
@@ -136,6 +148,10 @@ class FaqController extends Controller
                 if ($sibling) {
                     return redirect()->route('faqs.show', [$topic->slug, $sibling->slug], 301);
                 }
+            }
+            // Eski (Türkçe) FAQ slug'ı → İngilizce slug (slug_redirects, entity 'faq')
+            if ($r = \App\Support\SlugRedirects::response('faq', 'slug', $slug)) {
+                return $r;
             }
             throw new NotFoundHttpException();
         }

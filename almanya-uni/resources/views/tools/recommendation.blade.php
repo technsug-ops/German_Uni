@@ -148,15 +148,15 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                     @php
                         $fields = [
-                            ['muhendislik',     'cog',          __('Engineering')],
-                            ['bilisim',         'cursor-arrow-rays', __('Computer Science / IT')],
-                            ['matematik-doga',  'beaker',       __('Mathematics / Natural Sciences')],
-                            ['tip-saglik',      'shield-check', __('Medicine / Health')],
-                            ['hukuk-ekonomi',   'scale',        __('Law / Economics')],
-                            ['sosyal-bilimler', 'users',        __('Social Sciences')],
-                            ['sanat-tasarim',   'sparkles',     __('Art / Design')],
-                            ['dil-kultur',      'language',     __('Language / Culture')],
-                            ['tarim-ormancilik','globe',        __('Agriculture / Forestry')],
+                            ['engineering',     'cog',          __('Engineering')],
+                            ['computer-science',         'cursor-arrow-rays', __('Computer Science / IT')],
+                            ['mathematics-natural-sciences',  'beaker',       __('Mathematics / Natural Sciences')],
+                            ['medicine-health',      'shield-check', __('Medicine / Health')],
+                            ['law-economics',   'scale',        __('Law / Economics')],
+                            ['social-sciences', 'users',        __('Social Sciences')],
+                            ['arts-design',   'sparkles',     __('Art / Design')],
+                            ['languages-culture',      'language',     __('Language / Culture')],
+                            ['agriculture-forestry-nutrition','globe',        __('Agriculture / Forestry')],
                         ];
                     @endphp
                     @foreach ($fields as [$v, $icon, $label])

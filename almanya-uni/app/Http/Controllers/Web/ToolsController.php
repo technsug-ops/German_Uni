@@ -769,16 +769,16 @@ class ToolsController extends Controller
 
         // 3) Field → RIASEC ağırlıkları (her alanın baskın profili)
         $fieldRiasec = [
-            'muhendislik'      => ['R' => 3, 'I' => 2],
-            'bilisim'          => ['I' => 3, 'C' => 2, 'R' => 1],
-            'matematik-doga'   => ['I' => 3, 'R' => 1],
-            'tip-saglik'       => ['S' => 3, 'I' => 2],
-            'hukuk-ekonomi'    => ['E' => 3, 'C' => 2],
-            'sosyal-bilimler'  => ['S' => 3, 'I' => 1],
-            'sanat-tasarim'    => ['A' => 3, 'R' => 1],
-            'dil-kultur'       => ['A' => 2, 'S' => 2],
-            'tarim-ormancilik' => ['R' => 3, 'I' => 1],
-            'veteriner-spor'   => ['R' => 2, 'S' => 2, 'I' => 1],
+            'engineering'      => ['R' => 3, 'I' => 2],
+            'computer-science'          => ['I' => 3, 'C' => 2, 'R' => 1],
+            'mathematics-natural-sciences'   => ['I' => 3, 'R' => 1],
+            'medicine-health'       => ['S' => 3, 'I' => 2],
+            'law-economics'    => ['E' => 3, 'C' => 2],
+            'social-sciences'  => ['S' => 3, 'I' => 1],
+            'arts-design'    => ['A' => 3, 'R' => 1],
+            'languages-culture'       => ['A' => 2, 'S' => 2],
+            'agriculture-forestry-nutrition' => ['R' => 3, 'I' => 1],
+            'veterinary-sport-sciences'   => ['R' => 2, 'S' => 2, 'I' => 1],
         ];
 
         // 4) Field skorla (kullanıcı RIASEC × field ağırlığı dot-product)

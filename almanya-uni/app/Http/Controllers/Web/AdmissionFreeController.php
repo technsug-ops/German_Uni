@@ -55,9 +55,15 @@ class AdmissionFreeController extends Controller
         return view('admission-free.index', compact('fields', 'totalNcFree', 'topUnis', 'topCities'));
     }
 
-    public function bySubject(string $slug): View
+    public function bySubject(string $slug): View|\Illuminate\Http\RedirectResponse
     {
-        $field = FieldOfStudy::where('slug', $slug)->active()->firstOrFail();
+        $field = FieldOfStudy::where('slug', $slug)->active()->first();
+        if (! $field) {
+            if ($r = \App\Support\SlugRedirects::response('field', 'slug', $slug)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         $programs = Program::where('field_of_study_id', $field->id)
             ->where('is_active', true)

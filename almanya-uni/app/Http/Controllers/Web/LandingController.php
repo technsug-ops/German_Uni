@@ -29,12 +29,18 @@ class LandingController extends Controller
     /**
      * Şehir × Alan filtreli landing.
      * URL: /{locale}/programs/city/{city}/field/{field}
-     * Örnek: /tr/programs/city/berlin-q64/field/bilisim
+     * Örnek: /tr/programs/city/berlin-q64/field/computer-science
      */
-    public function cityField(string $city, string $field, Request $request): View
+    public function cityField(string $city, string $field, Request $request): View|\Illuminate\Http\RedirectResponse
     {
         $cityModel = City::where('slug', $city)->where('is_active', true)->firstOrFail();
-        $fieldModel = FieldOfStudy::where('slug', $field)->firstOrFail();
+        $fieldModel = FieldOfStudy::where('slug', $field)->first();
+        if (! $fieldModel) {
+            if ($r = \App\Support\SlugRedirects::response('field', 'field', $field)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         $degree = $this->validDegree($request->query('degree'));
 
@@ -111,13 +117,19 @@ class LandingController extends Controller
     /**
      * Alan × Derece filtreli landing.
      * URL: /{locale}/programs/field/{field}/degree/{degree}
-     * Örnek: /tr/programs/field/bilisim/degree/master
+     * Örnek: /tr/programs/field/computer-science/degree/master
      */
-    public function fieldDegree(string $field, string $degree): View
+    public function fieldDegree(string $field, string $degree): View|\Illuminate\Http\RedirectResponse
     {
         abort_unless(in_array($degree, ['bachelor', 'master', 'phd'], true), 404);
 
-        $fieldModel = FieldOfStudy::where('slug', $field)->firstOrFail();
+        $fieldModel = FieldOfStudy::where('slug', $field)->first();
+        if (! $fieldModel) {
+            if ($r = \App\Support\SlugRedirects::response('field', 'field', $field)) {
+                return $r;
+            }
+            abort(404);
+        }
 
         $query = $this->baseProgramQuery()
             ->where('field_of_study_id', $fieldModel->id)
@@ -140,18 +152,24 @@ class LandingController extends Controller
     /**
      * Alan × ÖĞRETİM DİLİ landing.
      * URL: /{locale}/programs/field/{field}/language/{lang}   (lang: de|en)
-     * Örnek: /tr/programs/field/hukuk-ekonomi/language/de — "Almanca ekonomi/hukuk programları"
+     * Örnek: /tr/programs/field/law-economics/language/de — "Almanca ekonomi/hukuk programları"
      *
      * NEDEN VAR: dil boyutu şimdiye kadar yalnızca ŞEHİR kırılımında vardı (city-language).
      * Oysa kullanıcı "Almanya'da Almanca ekonomi nerede okunur" diye ALAN + DİL soruyor;
      * bu sorunun karşılığı olan bir sayfa yoktu. Hochschulkompass importundan sonra Almanca
      * programlar katalogda gerçekten temsil edildiği için bu sayfa artık dolu.
      */
-    public function fieldLanguage(string $field, string $lang, Request $request): View
+    public function fieldLanguage(string $field, string $lang, Request $request): View|\Illuminate\Http\RedirectResponse
     {
         abort_unless(in_array($lang, ['en', 'de'], true), 404);
 
-        $fieldModel = FieldOfStudy::where('slug', $field)->firstOrFail();
+        $fieldModel = FieldOfStudy::where('slug', $field)->first();
+        if (! $fieldModel) {
+            if ($r = \App\Support\SlugRedirects::response('field', 'field', $field)) {
+                return $r;
+            }
+            abort(404);
+        }
         $degree = $this->validDegree($request->query('degree'));
 
         $query = $this->baseProgramQuery()

@@ -30,14 +30,14 @@ class ProfessionsLinkField extends Command
         $fields = FieldOfStudy::all()->keyBy(function ($f) {
             // Slug bazlı eşleştirme
             return match (true) {
-                str_contains($f->slug, 'muhendis') => 'engineering',
-                str_contains($f->slug, 'bilisim') || str_contains($f->slug, 'bilgisayar') => 'it',
-                str_contains($f->slug, 'matematik') || str_contains($f->slug, 'doga') => 'science',
-                str_contains($f->slug, 'tip') || str_contains($f->slug, 'saglik') => 'health',
-                str_contains($f->slug, 'hukuk') || str_contains($f->slug, 'ekonomi') => 'law_economics',
-                str_contains($f->slug, 'sosyal') => 'social',
-                str_contains($f->slug, 'sanat') || str_contains($f->slug, 'tasarim') => 'art',
-                str_contains($f->slug, 'dil') || str_contains($f->slug, 'kultur') => 'language_culture',
+                str_contains($f->slug, 'muhendis') || str_contains($f->slug, 'engineering') => 'engineering',
+                str_contains($f->slug, 'bilisim') || str_contains($f->slug, 'bilgisayar') || str_contains($f->slug, 'computer') => 'it',
+                str_contains($f->slug, 'matematik') || str_contains($f->slug, 'doga') || str_contains($f->slug, 'mathematics') => 'science',
+                str_contains($f->slug, 'tip') || str_contains($f->slug, 'saglik') || str_contains($f->slug, 'medicine') => 'health',
+                str_contains($f->slug, 'hukuk') || str_contains($f->slug, 'ekonomi') || str_contains($f->slug, 'law-economics') => 'law_economics',
+                str_contains($f->slug, 'sosyal') || str_contains($f->slug, 'social') => 'social',
+                str_contains($f->slug, 'sanat') || str_contains($f->slug, 'tasarim') || str_contains($f->slug, 'arts-design') => 'art',
+                str_contains($f->slug, 'dil') || str_contains($f->slug, 'kultur') || str_contains($f->slug, 'languages') => 'language_culture',
                 str_contains($f->slug, 'tarim') => 'agriculture',
                 str_contains($f->slug, 'veteriner') || str_contains($f->slug, 'spor') => 'vet_sports',
                 default => $f->slug,

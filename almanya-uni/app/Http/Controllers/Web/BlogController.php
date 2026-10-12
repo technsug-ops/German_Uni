@@ -256,8 +256,14 @@ class BlogController extends Controller
             ->withFragment('comments');
     }
 
-    public function category(string $slug, Request $request): View
+    public function category(string $slug, Request $request): View|\Illuminate\Http\RedirectResponse
     {
+        if (! Category::active()->where('slug', $slug)->exists()) {
+            if ($r = \App\Support\SlugRedirects::response('category', 'slug', $slug)) {
+                return $r;
+            }
+            abort(404);
+        }
         // kind filtresi YOK: bazı blog yazıları haber kategorilerinde (universities,
         // visa-residence, practical…) duruyor ve yazı sayfası bu kategoriye /blog/category/…
         // linki basıyordu → sayfa 404 veriyordu. Site kendi bastığı linki açabilmeli.

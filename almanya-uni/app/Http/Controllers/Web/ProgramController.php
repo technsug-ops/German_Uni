@@ -15,8 +15,11 @@ class ProgramController extends Controller
 {
     private const PER_PAGE = 20;
 
-    public function index(Request $request): View|\Illuminate\Http\Response
+    public function index(Request $request): View|\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
     {
+        if ($r = \App\Support\SlugRedirects::queryResponse(['field' => 'field'])) {
+            return $r; // ?field=eski-slug → 301 (İngilizce slug)
+        }
         $filters = $this->cleanFilters($request);
 
         $query = Program::query()
