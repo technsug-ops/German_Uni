@@ -1674,6 +1674,19 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // EN FAQ içerik paketi önizlemesi (2026-10-13 batch1). SALT OKUMA: hiçbir şey yazmaz.
+    // Migration (2026_10_13_000700) uygulandıktan sonra "0 | 0 | 0 …" göstermesi = ikinci çalıştırma değişiklik yapmaz.
+    Route::get('/admin/ops/faq-en-batch', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        try {
+            $plan = \App\Support\FaqEnglishContentBatch::plan(\App\Support\FaqEnglishContentBatch::load(database_path('data/faq-en/2026-10-13-batch1.json')));
+            $out = "MOD: ÖNİZLEME (hiçbir şey yazılmadı)\n\n" . \App\Support\FaqEnglishContentBatch::describe($plan);
+        } catch (\Throwable $e) {
+            $out = 'EXCEPTION: ' . $e->getMessage();
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Hukuki sayfa rollout doğrulaması (SSH yok → legal:audit + legal:parity tarayıcıdan).
     // SALT OKUMA: hiçbir şey yazmaz. Legacy JSON kolonları düşürülünce (Faz B) kaldırılabilir.
     // Mükerrer temizliği + dile duyarlı blog yönlendirmesi raporu (2026-09-25). SALT OKUMA.
