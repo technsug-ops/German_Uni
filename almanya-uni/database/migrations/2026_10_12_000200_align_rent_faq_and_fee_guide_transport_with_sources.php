@@ -110,6 +110,15 @@ MD,
         $problems = [];
         $notes = [];
         $plan = [];
+        // Kaynak metinlerin kendisi UTF-8 olmalı (deploy sırasında dosya bozulursa commonmark "Unexpected encoding" fırlatır).
+        foreach (self::FAQ_NEW as $loc => $txt) {
+            if (! mb_check_encoding($txt, 'UTF-8')) $problems[] = "migration kaynağı: FAQ_NEW[$loc] UTF-8 değil";
+        }
+        foreach (self::GUIDE as $loc => $spec) {
+            foreach ($spec['lines'] as $i => $l) {
+                if (! mb_check_encoding($l['new'], 'UTF-8')) $problems[] = "migration kaynağı: GUIDE[$loc][$i] UTF-8 değil";
+            }
+        }
 
         /* ---------------------------------------------------------------- FAQ kümesi */
         $faqTr = Faq::where('locale', 'tr')->where('slug', self::FAQ_TR_SLUG)->first();
@@ -128,6 +137,9 @@ MD,
                     continue;
                 }
                 $md = (string) $faq->answer_md;
+                if (! mb_check_encoding($md, 'UTF-8')) {
+                    $md = (string) iconv('UTF-8', 'UTF-8//IGNORE', $md); // parmak izi kontrolü için; cevap zaten bütünüyle değişiyor
+                }
                 if (trim($md) === trim(self::FAQ_NEW[$loc])) {
                     continue; // zaten uygulanmış
                 }
@@ -156,6 +168,11 @@ MD,
                     continue;
                 }
                 $md = (string) $post->content_md;
+                if (! mb_check_encoding($md, 'UTF-8')) {
+                    // Prod'daki kayıt geçersiz UTF-8 bayt içeriyor (Markdown işleyici kaydetmede bunu reddeder:
+                    // "Unexpected encoding"). Yalnız geçersiz baytlar düşürülür; metin aynen kalır.
+                    $md = (string) iconv('UTF-8', 'UTF-8//IGNORE', $md);
+                }
                 $lines = preg_split('/\R/', $md);
                 if (collect($spec['lines'])->every(fn ($l) => in_array($l['new'], $lines, true))) {
                     continue; // zaten uygulanmış → no-op
@@ -184,7 +201,13 @@ MD,
         }
         DB::transaction(function () use ($plan) {
             foreach ($plan as $model) {
-                $model->save(); // answer_html / content_html model tarafında yeniden üretilir
+                try {
+                    $model->save(); // answer_html / content_html model tarafında yeniden üretilir
+                } catch (\Throwable $e) {
+                    // Hangi kaydın hangi hatayla düştüğü görünsün; transaction geri alınır.
+                    $label = ($model instanceof Faq ? 'faq ' : 'rehber ') . $model->locale . '/' . $model->slug . ' (id ' . $model->getKey() . ')';
+                    throw new RuntimeException("Kira/ulaşım uyumu uygulanmadı, hiçbir şey yazılmadı: $label kaydedilemedi: " . $e->getMessage(), 0, $e);
+                }
             }
         });
     }
