@@ -25,7 +25,7 @@ class RentFaqAndFeeGuideTransportAlignmentTest extends TestCase
 
     private const OLD_GUIDE_TR = "# Başlık\n\n| Universität Bonn | ~330 € |\n\n**Pratik bilgi:** 330 € öderken **150 € Semesterticket'a gidiyor** — yani Berlin BVG aboneliği 6 ay boyunca dahil. Tek başına aylık 60 € olan toplu taşıma aboneliği, sömestre içinde \"ücretsiz\" geliyor.\n\n---\n\n| Gider kalemi | Berlin / Doğu Almanya | Münih / Frankfurt | Küçük şehir (Tübingen, Konstanz) |\n|---|---|---|---|\n| Telefon + internet | 30–50 € | 30–50 € | 30–50 € |\n| Toplu taşıma (sömestreticket içinde) | 0 € (dahil) | 0 € (dahil) | 0 € (dahil) |\n| **Toplam aylık** | **830–1.225 €** | **1.130–1.615 €** | **780–1.095 €** |\n\nTUM ve Baden-Württemberg istisnası korunur.\n";
 
-    private const OLD_GUIDE_DE = "# Titel\n\n**Praktische Info:** Wenn du 330 € zahlst, gehen **150 € an das Semesterticket** – das bedeutet, ein 6-monatiges BVG-Abo in Berlin ist inklusive. Ein ÖPNV-Abo, das allein monatlich 60 € kostet, ist im Semester quasi „kostenlos“ enthalten.\n\n| Öffentliche Verkehrsmittel (im Semesterticket enthalten) | 0 € (inklusive) | 0 € (inklusive) | 0 € (inklusive) |\n| **Gesamt monatlich** | **830–1.225 €** | **1.130–1.615 €** | **780–1.095 €** |\n";
+    private const OLD_GUIDE_DE = "# Titel\r\n\r\n**Praktischer Tipp:** Wenn du 330 € zahlst, gehen davon **150 € an das Semesterticket** – das heißt, ein 6-monatiges BVG-Abonnement in Berlin ist inklusive. Ein ÖPNV-Abonnement, das allein monatlich 60 € kostet, ist im Semesterbeitrag quasi „kostenlos“ enthalten.\n\n| Öffentliche Verkehrsmittel (im Semesterticket enthalten) | 0 € (inklusive) | 0 € (inklusive) | 0 € (inklusive) |\n| **Gesamt monatlich** | **830–1.225 €** | **1.130–1.615 €** | **780–1.095 €** |\n";
 
     private function run200(): void
     {
@@ -88,6 +88,8 @@ class RentFaqAndFeeGuideTransportAlignmentTest extends TestCase
         $de = Post::where('locale', 'de')->where('slug', 'is-university-free-in-germany-2026-real-costs-de')->firstOrFail();
         $this->assertStringNotContainsString('150 € an das Semesterticket', $de->content_md);
         $this->assertStringContainsString('226,80 €', $de->content_md);
+        $this->assertStringContainsString("\r\n", $de->content_md, 'CRLF korunur');
+        $this->assertStringNotContainsString('Praktischer Tipp', $de->content_md);
 
         $en = Post::where('locale', 'en')->where('slug', 'is-university-free-in-germany-2026-real-costs-en')->firstOrFail();
         $this->assertSame('<p>eski</p>', $en->content_html, 'EN kısa sürüm dokunulmadı');

@@ -78,23 +78,27 @@ Details und Quellen: die Stadtseiten [Berlin](/de/cities/berlin-q64), [München]
 MD,
     ];
 
-    /** Rehber: dil → slug + [eski satır => yeni satır] (tam satır eşleşmesi, her biri tam bir kez). EN kardeşi bu blokları içermez. */
+    /**
+     * Rehber: dil → slug + satır kuralları. Prod'daki Markdown yerel kopyadan küçük farklarla ayrışabildiği için
+     * (ör. DE "Praktischer Tipp … gehen davon …"), eski satır tam metinle değil satır başı + zorunlu rakamlarla bulunur;
+     * yine de tam bir satır eşleşmelidir, yoksa hiçbir şey yazılmaz. EN kardeşi kısa özet sürümüdür, bu blokları içermez.
+     */
     private const GUIDE = [
-        'tr' => ['slug' => 'is-university-free-in-germany-2026-real-costs', 'replacements' => [
-            '**Pratik bilgi:** 330 € öderken **150 € Semesterticket\'a gidiyor** — yani Berlin BVG aboneliği 6 ay boyunca dahil. Tek başına aylık 60 € olan toplu taşıma aboneliği, sömestre içinde "ücretsiz" geliyor.'
-            => '**Pratik bilgi (Berlin, 2026/27 kış dönemi):** TU Berlin\'de 379,06 €, FU Berlin\'de 376,80 € olan Semesterbeitrag\'ın **226,80 €\'su Deutschlandsemesterticket**\'tir: altı ay boyunca Almanya genelinde yerel ve bölgesel toplu taşıma, aylık 37,80 €\'ya denk gelir (63 €\'luk Deutschlandticket\'in %60\'ı). Bilet Semesterbeitrag\'da olan şehirlerde (Berlin, Hamburg, Aachen) aylık bütçeye ulaşımı ikinci kez yazma. Münih\'te ise Semesterticket yok: öğrenciler Bavyera indirimli Deutschlandticket\'i ayda 43 € ödeyerek ayrıca alır. Kurum bazlı tutarlar: [Berlin](/tr/cities/berlin-q64), [Münih](/tr/cities/munchen-q1726), [Hamburg](/tr/cities/hamburg-q1055).',
-            '| Toplu taşıma (sömestreticket içinde) | 0 € (dahil) | 0 € (dahil) | 0 € (dahil) |'
-            => '| Toplu taşıma | 0 € (Deutschlandsemesterticket Semesterbeitrag\'da) | Münih 43 € (Semesterticket yok, öğrenci Deutschlandticket\'i); Frankfurt: üniversitenin Semesterbeitrag tablosuna bak | Üniversiteye bağlı: bilet Semesterbeitrag\'daysa 0 €, değilse ayrı bilet |',
-            '| **Toplam aylık** | **830–1.225 €** | **1.130–1.615 €** | **780–1.095 €** |'
-            => '| **Toplam aylık** | **830–1.225 €** | **1.130–1.615 €** (Münih: +43 € bilet) | **780–1.095 €** (+ varsa ayrı bilet) |',
+        'tr' => ['slug' => 'is-university-free-in-germany-2026-real-costs', 'lines' => [
+            ['starts' => '**Pratik bilgi', 'needs' => ['150 €', '60 €'],
+                'new' => '**Pratik bilgi (Berlin, 2026/27 kış dönemi):** TU Berlin\'de 379,06 €, FU Berlin\'de 376,80 € olan Semesterbeitrag\'ın **226,80 €\'su Deutschlandsemesterticket**\'tir: altı ay boyunca Almanya genelinde yerel ve bölgesel toplu taşıma, aylık 37,80 €\'ya denk gelir (63 €\'luk Deutschlandticket\'in %60\'ı). Bilet Semesterbeitrag\'da olan şehirlerde (Berlin, Hamburg, Aachen) aylık bütçeye ulaşımı ikinci kez yazma. Münih\'te ise Semesterticket yok: öğrenciler Bavyera indirimli Deutschlandticket\'i ayda 43 € ödeyerek ayrıca alır. Kurum bazlı tutarlar: [Berlin](/tr/cities/berlin-q64), [Münih](/tr/cities/munchen-q1726), [Hamburg](/tr/cities/hamburg-q1055).'],
+            ['starts' => '| Toplu taşıma', 'needs' => ['0 €'],
+                'new' => '| Toplu taşıma | 0 € (Deutschlandsemesterticket Semesterbeitrag\'da) | Münih 43 € (Semesterticket yok, öğrenci Deutschlandticket\'i); Frankfurt: üniversitenin Semesterbeitrag tablosuna bak | Üniversiteye bağlı: bilet Semesterbeitrag\'daysa 0 €, değilse ayrı bilet |'],
+            ['starts' => '| **Toplam aylık**', 'needs' => ['1.130–1.615'],
+                'new' => '| **Toplam aylık** | **830–1.225 €** | **1.130–1.615 €** (Münih: +43 € bilet) | **780–1.095 €** (+ varsa ayrı bilet) |'],
         ]],
-        'de' => ['slug' => 'is-university-free-in-germany-2026-real-costs-de', 'replacements' => [
-            '**Praktische Info:** Wenn du 330 € zahlst, gehen **150 € an das Semesterticket** – das bedeutet, ein 6-monatiges BVG-Abo in Berlin ist inklusive. Ein ÖPNV-Abo, das allein monatlich 60 € kostet, ist im Semester quasi „kostenlos“ enthalten.'
-            => '**Praktische Info (Berlin, Wintersemester 2026/27):** Vom Semesterbeitrag der TU Berlin (379,06 €) und der FU Berlin (376,80 €) entfallen **226,80 € auf das Deutschlandsemesterticket**: sechs Monate Nah- und Regionalverkehr in ganz Deutschland, umgerechnet 37,80 € im Monat (60 % des Deutschlandtickets zu 63 €). Wo das Ticket im Semesterbeitrag steckt (Berlin, Hamburg, Aachen), rechne Mobilität im Monatsbudget nicht noch einmal. In München gibt es kein Semesterticket: Studierende kaufen das ermäßigte Bayern-Deutschlandticket für 43 € im Monat separat. Beträge je Hochschule: [Berlin](/de/cities/berlin-q64), [München](/de/cities/munchen-q1726), [Hamburg](/de/cities/hamburg-q1055).',
-            '| Öffentliche Verkehrsmittel (im Semesterticket enthalten) | 0 € (inklusive) | 0 € (inklusive) | 0 € (inklusive) |'
-            => '| Öffentliche Verkehrsmittel | 0 € (Deutschlandsemesterticket im Semesterbeitrag) | München 43 € (kein Semesterticket, ermäßigtes Deutschlandticket); Frankfurt: siehe Semesterbeitrag der Hochschule | je Hochschule: 0 € mit Ticket im Semesterbeitrag, sonst separates Ticket |',
-            '| **Gesamt monatlich** | **830–1.225 €** | **1.130–1.615 €** | **780–1.095 €** |'
-            => '| **Gesamt monatlich** | **830–1.225 €** | **1.130–1.615 €** (München: +43 € Ticket) | **780–1.095 €** (+ ggf. separates Ticket) |',
+        'de' => ['slug' => 'is-university-free-in-germany-2026-real-costs-de', 'lines' => [
+            ['starts' => '**Praktische', 'needs' => ['150 €', '60 €'],
+                'new' => '**Praktische Info (Berlin, Wintersemester 2026/27):** Vom Semesterbeitrag der TU Berlin (379,06 €) und der FU Berlin (376,80 €) entfallen **226,80 € auf das Deutschlandsemesterticket**: sechs Monate Nah- und Regionalverkehr in ganz Deutschland, umgerechnet 37,80 € im Monat (60 % des Deutschlandtickets zu 63 €). Wo das Ticket im Semesterbeitrag steckt (Berlin, Hamburg, Aachen), rechne Mobilität im Monatsbudget nicht noch einmal. In München gibt es kein Semesterticket: Studierende kaufen das ermäßigte Bayern-Deutschlandticket für 43 € im Monat separat. Beträge je Hochschule: [Berlin](/de/cities/berlin-q64), [München](/de/cities/munchen-q1726), [Hamburg](/de/cities/hamburg-q1055).'],
+            ['starts' => '| Öffentliche Verkehrsmittel', 'needs' => ['0 €'],
+                'new' => '| Öffentliche Verkehrsmittel | 0 € (Deutschlandsemesterticket im Semesterbeitrag) | München 43 € (kein Semesterticket, ermäßigtes Deutschlandticket); Frankfurt: siehe Semesterbeitrag der Hochschule | je Hochschule: 0 € mit Ticket im Semesterbeitrag, sonst separates Ticket |'],
+            ['starts' => '| **Gesamt monatlich**', 'needs' => ['1.130–1.615'],
+                'new' => '| **Gesamt monatlich** | **830–1.225 €** | **1.130–1.615 €** (München: +43 € Ticket) | **780–1.095 €** (+ ggf. separates Ticket) |'],
         ]],
     ];
 
@@ -152,18 +156,22 @@ MD,
                     continue;
                 }
                 $md = (string) $post->content_md;
-                $oldGone = collect(array_keys($spec['replacements']))->every(fn (string $old) => ! str_contains($md, $old));
-                $newThere = collect(array_values($spec['replacements']))->every(fn (string $new) => str_contains($md, $new));
-                if ($oldGone && $newThere) {
-                    continue; // zaten uygulanmış
+                $lines = preg_split('/\R/', $md);
+                if (collect($spec['lines'])->every(fn ($l) => in_array($l['new'], $lines, true))) {
+                    continue; // zaten uygulanmış → no-op
                 }
-                foreach ($spec['replacements'] as $old => $new) {
-                    if (substr_count($md, $old) !== 1) {
-                        $problems[] = "rehber $loc/{$spec['slug']}: '" . mb_substr($old, 0, 40) . "…' tam bir kez bulunamadı";
+                $changed = $lines;
+                foreach ($spec['lines'] as $l) {
+                    $hits = array_keys(array_filter($changed, fn ($line) => str_starts_with($line, $l['starts'])
+                        && collect($l['needs'])->every(fn ($n) => str_contains($line, $n)) && $line !== $l['new']));
+                    if (count($hits) !== 1) {
+                        $problems[] = "rehber $loc/{$spec['slug']}: '{$l['starts']}…' satırı tam bir kez bulunamadı (" . count($hits) . ')';
                         continue 2;
                     }
+                    $changed[$hits[0]] = $l['new'];
                 }
-                $post->content_md = str_replace(array_keys($spec['replacements']), array_values($spec['replacements']), $md);
+                $eol = str_contains($md, "\r\n") ? "\r\n" : "\n"; // satır sonu biçimini koru
+                $post->content_md = implode($eol, $changed);
                 $plan[] = $post;
             }
         }
