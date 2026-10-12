@@ -43,7 +43,7 @@
                 <div class="flex-1">
                     <h2 class="text-xl font-bold text-blue-900 mb-2">{{ __('NC Frei (Zulassungsfrei) Data Loading') }}</h2>
                     <p class="text-blue-800 mb-4">
-                        {{ __('Our database has :total programs in :field, but the NC status (zulassungsfrei / örtlich / bundesweit) for each has not yet arrived from our partner data provider.', ['total' => number_format($total_in_field, 0, ',', '.'), 'field' => $field->name_tr]) }}
+                        {{ __('Our database has :total programs in :field, but the NC status (zulassungsfrei / örtlich / bundesweit) for each has not yet arrived from our partner data provider.', ['total' => number_format($total_in_field, 0, ',', '.'), 'field' => $field->name]) }}
                     </p>
                     <p class="text-blue-800 mb-4">
                         {{ __('For this information you can use Hochschulkompass\'s official Zulassungsmodus filter:') }}
@@ -56,7 +56,7 @@
                         </a>
                         <a href="{{ route('programs.index', ['field' => $field->slug]) }}"
                            class="inline-block bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold px-5 py-2.5 rounded-lg transition">
-                            {{ __('All :field programs', ['field' => $field->name_tr]) }}
+                            {{ __('All :field programs', ['field' => $field->name]) }}
                         </a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
             <div>
                 <p class="text-sm text-emerald-800">
                     <strong class="text-emerald-900 text-lg">{{ $programs->total() }}</strong> {{ __('NC Frei programs') }} ·
-                    {{ __('Out of :total :field programs in total.', ['total' => number_format($total_in_field, 0, ',', '.'), 'field' => $field->name_tr]) }}
+                    {{ __('Out of :total :field programs in total.', ['total' => number_format($total_in_field, 0, ',', '.'), 'field' => $field->name]) }}
                 </p>
             </div>
             <a href="{{ hochschulkompass_url($field->name, 'zulassungsfrei') }}" target="_blank" rel="noopener"
@@ -109,7 +109,7 @@
 
     {{-- SEO için açıklayıcı içerik --}}
     <section class="mt-12 prose max-w-none text-gray-700">
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What does NC Frei mean in :field?', ['field' => $field->name_tr]) }}</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ __('What does NC Frei mean in :field?', ['field' => $field->name]) }}</h2>
         <p class="mb-3">
             {{ __('In Germany, university programs fall into three groups:') }}
         </p>
@@ -119,7 +119,7 @@
             <li><strong class="text-red-700">{{ __('Bundesweit zulassungsbeschränkt:') }}</strong> {{ __('Germany-wide central quota (applied via Hochschulstart — medicine, pharmacy etc.).') }}</li>
         </ul>
         <p class="mb-4">
-            {{ __('In the :field area, international students often prioritise NC Frei programs because the conversion of high school diplomas into the German grade system (modifizierte bayerische Formel) can yield unpredictable results. NC Frei programs eliminate this risk.', ['field' => $field->name_tr]) }}
+            {{ __('In the :field area, international students often prioritise NC Frei programs because the conversion of high school diplomas into the German grade system (modifizierte bayerische Formel) can yield unpredictable results. NC Frei programs eliminate this risk.', ['field' => $field->name]) }}
         </p>
         <p>
             <a href="{{ route('faqs.topic', 'master') }}" class="text-primary-600 hover:underline">→ {{ __('Germany application process FAQ') }}</a> ·
