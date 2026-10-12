@@ -55,7 +55,7 @@ class FaqEnContentBatch1Test extends TestCase
     {
         return [
             'repairs' => [[
-                'en_id' => $ids['a_en'], 'expect_question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?',
+                'en_slug' => 'almanyada-zorunlu-olmayan-stajlarda-maas-odenir-mi-en', 'expect_question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?',
                 'question' => 'Are voluntary internships paid in Germany?', 'answer_md' => "Usually yes. Under § 22 MiLoG interns are entitled to the minimum wage (€13.90/h in 2026) unless the internship is mandatory or a voluntary one of up to three months.",
             ]],
             'creations' => [[
@@ -192,7 +192,7 @@ class FaqEnContentBatch1Test extends TestCase
     public function test_real_batch_file_is_well_formed_english_with_unique_short_slugs(): void
     {
         $data = FaqEnglishContentBatch::load(database_path('data/faq-en/2026-10-13-batch1.json'));
-        $this->assertCount(17, $data['repairs']);
+        $this->assertCount(12, $data['repairs']);
         $this->assertCount(10, $data['creations']);
         $bases = [];
         foreach (array_merge($data['repairs'], $data['creations']) as $item) {
@@ -204,7 +204,9 @@ class FaqEnContentBatch1Test extends TestCase
             $this->assertNotContains($base, $bases, "çift slug tabanı: $base");
             $bases[] = $base;
         }
-        $ids = array_merge(array_column($data['repairs'], 'en_id'), array_column($data['creations'], 'tr_id'), array_column($data['pending'] ?? [], 'tr_id'));
-        $this->assertSame(count($ids), count(array_unique($ids)), 'aynı kayıt birden fazla listede');
+        $ids = array_merge(array_column($data['creations'], 'tr_id'), array_column($data['pending'] ?? [], 'tr_id'), array_column($data['dropped_creations'] ?? [], 'tr_id'));
+        $this->assertSame(count($ids), count(array_unique($ids)), 'aynı TR kayıt birden fazla listede');
+        $slugs = array_merge(array_column($data['repairs'], 'en_slug'), array_column($data['already_english_on_prod'] ?? [], 'en_slug'));
+        $this->assertSame(count($slugs), count(array_unique($slugs)), 'aynı EN slug birden fazla listede');
     }
 }

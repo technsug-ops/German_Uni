@@ -56,8 +56,14 @@ final class FaqEnglishContentBatch
                 return $out;
             }
         }
-        $refIds = array_merge(array_column($data['repairs'], 'en_id'), array_column($data['creations'], 'tr_id'));
-        if (! $refIds || DB::table('faqs')->whereIn('id', $refIds)->doesntExist()) {
+        // Paket bu veritabanına ait mi? (EN kayıt id'leri ortamlar arasında farklı → slug ya da yeni soru ile tanınır; TR id'ler sabit)
+        $refSlugs = array_column($data['repairs'], 'en_slug');
+        $refQuestions = array_column($data['repairs'], 'question');
+        $refIds = array_column($data['creations'], 'tr_id');
+        $known = DB::table('faqs')->where(function ($q) use ($refSlugs, $refQuestions, $refIds) {
+            $q->whereIn('id', $refIds ?: [0])->orWhere(fn ($w) => $w->where('locale', 'en')->whereIn('slug', $refSlugs ?: ['']))->orWhere(fn ($w) => $w->where('locale', 'en')->whereIn('question', $refQuestions ?: ['']));
+        })->exists();
+        if (! $known) {
             $out['empty'] = true; // boş/test DB: paket bu veritabanına ait değil
 
             return $out;
@@ -73,19 +79,17 @@ final class FaqEnglishContentBatch
         $affected = []; // gid → true
 
         foreach ($data['repairs'] as $i => $rep) {
-            foreach (['en_id', 'expect_question', 'question', 'answer_md'] as $k) {
+            foreach (['en_slug', 'expect_question', 'question', 'answer_md'] as $k) {
                 if (empty($rep[$k])) {
                     $out['problems'][] = "repairs[$i]: '$k' eksik";
                     continue 2;
                 }
             }
-            $row = $byId->get((int) $rep['en_id']);
+            // Mevcut slug ile (henüz uygulanmamış) ya da yeni soru ile (uygulanmış, slug değişmiş) bulunur
+            $row = $all->first(fn ($r) => $r->locale === 'en' && $r->slug === $rep['en_slug'])
+                ?? $all->first(fn ($r) => $r->locale === 'en' && $r->question === $rep['question']);
             if (! $row) {
-                $out['problems'][] = "onarım en#{$rep['en_id']}: kayıt yok";
-                continue;
-            }
-            if ($row->locale !== 'en') {
-                $out['problems'][] = "onarım en#{$row->id}: dil '{$row->locale}', 'en' bekleniyordu";
+                $out['problems'][] = "onarım '{$rep['en_slug']}': EN kayıt yok (slug ve yeni soru ile bulunamadı)";
                 continue;
             }
             if (! $row->translation_group_id) {

@@ -1,106 +1,88 @@
 {
   "batch": "2026-10-13-faq-en-batch1",
-  "notes": "EN FAQ content package, batch 1. repairs: existing EN records whose question/answer were still Turkish (record id and translation group are kept). creations: EN siblings for Turkish-only groups (the EN row is created in the TR row's group and topic). Facts were checked on 13 Oct 2026 against the primary sources listed per item. Period/scope of every figure is stated in the answer itself.",
+  "notes": "EN FAQ content package, batch 1. repairs: existing EN records whose question/answer were still Turkish on production (identified by current EN slug + current question, because record ids differ between environments; record id and translation group are kept). creations: EN siblings for Turkish-only groups (the EN row is created in the TR row's group and topic). Facts were checked on 13 Oct 2026 against the primary sources listed per item. Period/scope of every figure is stated in the answer itself.",
   "repairs": [
     {
-      "en_id": 1897,
-      "expect_question": "Almanya'ya belirli köpek ırklarını getirmek mümkün müdür?",
-      "question": "Can I bring certain dog breeds into Germany?",
-      "answer_md": "Not every breed. Under the German dog import law (HundVerbrEinfG, § 2) **Pit Bull Terriers, American Staffordshire Terriers, Staffordshire Bull Terriers, Bull Terriers and crosses of these breeds may not be brought into Germany**, whether from an EU country or from outside the EU. In addition, each federal state (Bundesland) keeps its own list of \"dangerous\" breeds; a dog of a breed on the list of the state where it will live is also barred from entry.\n\nWhat this means in practice:\n\n- Check the breed list of the **specific state** you are moving to, not only the federal list. The lists differ (for example Bavaria and Berlin list additional breeds).\n- Dogs of other breeds can come in under the normal EU pet rules: microchip, valid rabies vaccination and, depending on the country of origin, an EU pet passport or a veterinary health certificate.\n- Breaking the import ban can lead to the dog being refused entry or seized and to fines.\n\nIf your dog is a mixed breed, get a written breed assessment from a vet before you travel, because customs decide on the spot.\n\nSource: HundVerbrEinfG § 1–2 (gesetze-im-internet.de), state dog regulations (Hundeverordnungen)."
-    },
-    {
-      "en_id": 1903,
+      "en_slug": "vize-gorusmelerinde-veya-resmi-kurumlarda-yetkililerle-iletisimde-sorun-en",
       "expect_question": "Vize görüşmelerinde veya resmi kurumlarda yetkililerle iletişimde sorun yaşarsam ne yapmalıyım?",
+      "local_en_id": 1903,
       "question": "What can I do about communication problems with officials at visa interviews?",
       "answer_md": "A few practical steps that students report working well:\n\n- **Bring someone who speaks German.** At most offices (Bürgeramt, Ausländerbehörde, Studentenwerk) you may bring a friend or an interpreter. Ask when you book the appointment; a few offices require that the companion is not a fellow applicant.\n- **Ask for things in writing.** If a decision or a document list is unclear, ask for it by e-mail or on paper. Written instructions are easier to translate and to check later.\n- **Stay factual and keep records.** Note the date, the office, the name or counter number and what was said. This matters if you need to escalate.\n- **Escalate if it does not get resolved.** You can complain to the head of the office or file a formal complaint about an official's conduct (Dienstaufsichtsbeschwerde). For a visa decision you disagree with, the German mission usually offers a remonstration (Remonstration) within the period stated in the refusal letter.\n\nAt visa interviews at the German missions in Turkey, questions are normally asked in Turkish, German or English; you may answer in the language you are most comfortable with unless the interview is explicitly testing your German."
     },
     {
-      "en_id": 1925,
+      "en_slug": "almanyada-sadece-ingilizce-ile-yasamak-mumkun-mudur-en",
       "expect_question": "Almanya'da sadece İngilizce ile yaşamak mümkün müdür?",
+      "local_en_id": 1925,
       "question": "Is it possible to live in Germany with English only?",
       "answer_md": "For an English-taught degree in a large city: yes, you can get by for a while. For everything around the degree: only partly.\n\nWhere English usually works:\n\n- University (international offices, English-taught programmes, many student jobs in IT or research).\n- Big-city daily life: shops, cafés, public transport apps, international student housing.\n\nWhere German is usually needed:\n\n- **Public offices**: Bürgeramt (Anmeldung), Ausländerbehörde (residence permit), tax office. Forms and letters are in German and staff are not required to speak English.\n- **Housing**: most landlords, rental contracts and house rules are in German.\n- **Health care**: many doctors speak some English, but receptionists, pharmacies and hospital paperwork are mostly German.\n- **Contracts** (phone, internet, insurance, gym): German, with German cancellation rules.\n- **Part-time jobs outside IT/academia** and most internships.\n\nRealistic plan: start with A2–B1 German before or during your first year. It makes offices, housing and jobs much easier and is required anyway for many residence-permit options after graduation."
     },
     {
-      "en_id": 1947,
+      "en_slug": "hastane-is-mulakatlarinda-ne-tur-sorular-sorulur-en",
       "expect_question": "Hastane iş mülakatlarında ne tür sorular sorulur?",
+      "local_en_id": 1947,
       "question": "What kind of questions are asked in hospital job interviews in Germany?",
       "answer_md": "Hospital interviews in Germany are usually structured around four areas:\n\n1. **Professional knowledge and experience** – your training, previous wards or departments, procedures you can do independently, how you handle documentation and hygiene standards.\n2. **Teamwork and reliability** – shift work, handovers, working with nurses, doctors and other professions, how you deal with conflict in a team.\n3. **Stress and difficult situations** – examples of emergencies you handled, how you prioritise, how you react to mistakes.\n4. **Language and integration** – your German level, whether you understand patients and colleagues, whether you plan to stay.\n\nFor regulated health professions (doctors, nurses, physiotherapists and others) the interview is not the only hurdle: you also need recognition of your qualification and proof of German, normally at least B2, plus a professional language exam (Fachsprachprüfung) for doctors. Employers often ask about the status of your recognition procedure.\n\nPrepare a short German self-introduction, two or three concrete examples from your practice, and questions about the ward, onboarding and language support."
     },
     {
-      "en_id": 1981,
+      "en_slug": "lisans-egitimimden-farkli-bir-alanda-yuksek-lisans-yapabilir-miyim-en",
       "expect_question": "Lisans eğitimimden farklı bir alanda yüksek lisans yapabilir miyim?",
+      "local_en_id": 1981,
       "question": "Can I do a master's in a different field from my bachelor's?",
       "answer_md": "Sometimes, but it depends on the programme's admission regulations, not on a general rule.\n\n- Most master's programmes in Germany are **consecutive** (konsekutiv): they build on a bachelor's in the same or a closely related field. Their admission regulations (Zulassungsordnung) usually require a minimum number of ECTS credits in specific subjects, for example 60 ECTS in economics or 30 ECTS in mathematics. If your bachelor's does not contain them, the application is rejected or you are asked to complete bridging modules first.\n- Some programmes are explicitly **open to graduates of other fields** (interdisciplinary programmes, conversion programmes, many management, data science or sustainability master's). These say so in the admission regulations.\n- **Continuing-education master's** (weiterbildend) often require work experience instead of a specific bachelor's subject and usually charge tuition.\n\nHow to check: open the programme's Zulassungsordnung or \"admission requirements\" page and compare the required ECTS by subject with your transcript. If it is borderline, e-mail the programme coordinator with your transcript before applying. Universities decide case by case; there is no national equivalence rule for switching fields."
     },
     {
-      "en_id": 2003,
-      "expect_question": "Almanya'da bilgisayar bilimleri dışı bir lisans derecesiyle bilgisayar bilimleri yüksek lisansına başvurabilir miyim?",
-      "question": "Can I apply for a computer science master's in Germany with a non-CS bachelor's degree?",
-      "answer_md": "It depends on how much computer science and mathematics your bachelor's contains, because German CS master's programmes admit on the basis of ECTS credits in defined subject areas, not on the degree title.\n\nTypical requirements in the admission regulations of CS master's programmes:\n\n- a minimum number of ECTS credits in **computer science** (often in the range of 40–60 ECTS covering programming, algorithms and data structures, theoretical CS, databases, operating systems or software engineering);\n- a minimum in **mathematics** (often 20–30 ECTS: linear algebra, analysis, discrete mathematics, statistics).\n\nGraduates of mathematics, physics, electrical engineering or information systems often meet these; graduates of business, biology or social sciences usually do not.\n\nOptions if you fall short:\n\n- programmes designed for non-CS graduates (search for \"computer science for non-majors\", \"applied informatics\", \"information systems\" or \"data science\" with open admission requirements);\n- conditional admission with bridging modules (Auflagen) where offered;\n- taking the missing modules first, for example as a guest or second-degree student.\n\nAlways read the specific programme's Zulassungsordnung; the ECTS figures above are typical examples, not a national standard."
-    },
-    {
-      "en_id": 2111,
+      "en_slug": "almanyada-zorunlu-olmayan-stajlarda-maas-odenir-mi-en",
       "expect_question": "Almanya'da zorunlu olmayan stajlarda maaş ödenir mi?",
+      "local_en_id": 2111,
       "question": "Are voluntary internships paid in Germany?",
       "answer_md": "Usually yes, and often the minimum wage is legally required.\n\nUnder the Minimum Wage Act (§ 22 MiLoG) interns are treated as employees and are entitled to the statutory minimum wage (**€13.90 per hour since 1 January 2026**), unless the internship is one of these exceptions:\n\n- a **mandatory internship** required by your study regulations, school regulations or a training regulation;\n- a **voluntary internship of up to three months** for orientation before training or studies;\n- a **voluntary internship of up to three months accompanying your studies** or training, provided you have not done such an internship with the same employer before.\n\nSo: a voluntary internship that lasts **longer than three months** must be paid at least the minimum wage for the entire period, from the first day. Mandatory internships and short voluntary ones may be unpaid, although many companies pay something anyway.\n\nPractical points:\n\n- The contract should state whether the internship is mandatory (then attach the study regulation) or voluntary, and its length.\n- Non-EU students on a study residence permit must also count internship days against their working-time allowance unless the internship is mandatory under the study regulations; check with the Ausländerbehörde.\n\nSources: § 22 MiLoG (gesetze-im-internet.de); Federal Government announcement of the 2026 minimum wage (bundesregierung.de). The rate rises to €14.60 on 1 January 2027."
     },
     {
-      "en_id": 2135,
+      "en_slug": "almanyada-doktor-bulmakta-zorlanirsam-veya-acil-durumlarda-ne-yapmaliyim-en",
       "expect_question": "Almanya'da doktor bulmakta zorlanırsam veya acil durumlarda ne yapmalıyım?",
+      "local_en_id": 2135,
       "question": "What should I do if I cannot find a doctor in Germany or have an emergency?",
       "answer_md": "Use the right number for the situation:\n\n- **112** – life-threatening emergencies (ambulance and fire service). Free, 24/7, works from any phone.\n- **116117** – the on-call medical service (ärztlicher Bereitschaftsdienst) for illnesses that cannot wait until the next day but are not life-threatening, outside normal practice hours. Free with a German phone contract, 24/7. The same service runs the online appointment service for people with statutory insurance and a nationwide practice search at 116117.de.\n- **Notaufnahme** (hospital emergency department) – for urgent cases; expect long waits for non-urgent problems.\n\nIf no practice accepts new patients:\n\n- try the appointment service on 116117.de or by phone; practices must reserve some slots for it;\n- ask your health insurer (Krankenkasse) for a list of practices taking new patients;\n- go to a practice early in the morning as a walk-in (\"offene Sprechstunde\"), which many general practitioners offer;\n- for acute problems, use a Bereitschaftspraxis (on-call practice, often attached to a hospital) in the evening or at weekends.\n\nTake your insurance card (or, for private insurance, your policy details) and a list of your medication. For dental emergencies there is a separate dental on-call service listed on 116117.de.\n\nSource: 116117.de (Kassenärztliche Bundesvereinigung)."
     },
     {
-      "en_id": 2185,
-      "expect_question": "Almanya'da daire kiralama sürecinde Almanca bilmek ne kadar önemli?",
-      "question": "How important is German when renting an apartment in Germany?",
-      "answer_md": "Very. The private rental market runs almost entirely in German: listings, viewings, the application file, the lease (Mietvertrag), the handover protocol and all later letters (rent increases, utility statements, repairs) are in German, and landlords are not required to provide translations.\n\nWhere you can manage with little German:\n\n- **Student halls** (Studentenwerk) and private student residences: online applications, often with English pages and English-speaking staff.\n- Furnished rooms on international platforms and shared flats (WG) with international students.\n- University housing offices and welcome services, which often help with the first contract.\n\nWhere German matters most:\n\n- competing for a private flat in a tight market: landlords pick from many applicants and often prefer people they can communicate with;\n- understanding what you sign: fixed-term clauses, deposit (max. three months' basic rent under § 551 BGB), notice periods, renovation obligations;\n- dealing with problems later (defects, deposit return).\n\nPractical advice: aim for A2–B1 before you look for a private flat, prepare a German application file (Schufa or equivalent, proof of financing, ID copy, a short German introduction), and have a German-speaking friend read any contract before you sign. Never pay money before you have seen the flat and received a signed lease."
-    },
-    {
-      "en_id": 2205,
+      "en_slug": "almanyada-dil-sinavlarinin-zorlugu-sehirden-sehire-degisir-mi-en",
       "expect_question": "Almanya'da dil sınavlarının zorluğu şehirden şehire değişir mi?",
+      "local_en_id": 2205,
       "question": "Does the difficulty of German language exams vary from city to city?",
       "answer_md": "For the standardised exams, no. For the university-run DSH, partly.\n\n- **TestDaF** is developed and graded centrally by the TestDaF-Institut; the paper is the same on each exam date regardless of the test centre, in Germany or abroad.\n- **Goethe-Zertifikat** and **telc** exams are standardised too: the same format and assessment criteria everywhere, with central or centrally trained examiners.\n- **DSH** (Deutsche Sprachprüfung für den Hochschulzugang) is different: each university sets and runs its own DSH within a common framework agreed by the universities (HRK) and the education ministers (KMK). Format, topics and strictness therefore differ between universities, and candidates do report that some DSH exams feel harder than others. A passed DSH is nevertheless recognised nationwide.\n\nWhat really changes from place to place is **access**: waiting times for TestDaF dates, how often a university offers the DSH, and whether a DSH is open to external candidates.\n\nIf you want the most predictable route, take TestDaF or a Goethe C1/C2 exam; if you take the DSH, practise with the sample exams of the specific university."
     },
     {
-      "en_id": 2235,
-      "expect_question": "Almanya'da tıp/biyoloji gibi yüksek NC'li bölümlere geçiş mümkün mü?",
-      "question": "Can I switch into high-NC subjects like medicine or biology in Germany?",
-      "answer_md": "Possible, but there is no shortcut: a \"switch\" means a new application for a place in that subject, and you compete under that subject's admission rules.\n\n- **Medicine, dentistry, veterinary medicine and pharmacy** have nationwide restricted admission. Applicants with a German or EU higher-education entrance qualification apply through hochschulstart.de; non-EU applicants with a foreign school-leaving certificate apply directly to the universities (or through uni-assist), where a small share of places is reserved for international applicants. Selection is mainly by grades (converted to the German scale) and, at many universities, by aptitude tests or interviews; grades close to 1.0 are typical for the grade-based quota. German is required at the time of application, usually C1 (DSH-2 or TestDaF 4×4).\n- **Biology and similar subjects** have a local NC (numerus clausus) at many universities, but not everywhere; some universities admit without NC.\n- Credits from your current degree can be transferred only into a **higher semester** of the new subject if the university recognises them (Einstufung); otherwise you start from the first semester.\n\nPractical route: check the previous years' NC values of the universities you consider, check whether your grades and German level are competitive, and apply to several universities with different selection criteria at the same time."
-    },
-    {
-      "en_id": 2239,
+      "en_slug": "almanyada-ortalama-gelirimin-ne-kadarini-kiraya-ayirmaliyim-en",
       "expect_question": "Almanya'da ortalama gelirimin ne kadarını kiraya ayırmalıyım?",
+      "local_en_id": 2239,
       "question": "How much of my income should I spend on rent in Germany?",
       "answer_md": "There is no legal rule, but two numbers matter in practice:\n\n- **Budgeting guideline**: many advisors and housing offices recommend keeping warm rent (rent plus heating and service charges) at **around 30 % of your net income**. Above 40 % your budget becomes fragile.\n- **Landlord practice**: private landlords commonly expect a net income of roughly **three times the basic rent** before they consider an application. Students usually show the blocked account, a scholarship or a parental guarantee instead.\n\nFor students the reference point is the amount the visa requires you to prove: the blocked account is based on the BAföG maximum rate (€992 per month, i.e. €11,904 per year, the figure applied by the Foreign Office for 2025 – check the current amount when you apply). A student room in Germany typically costs a few hundred euros per month, with Munich, Frankfurt, Hamburg, Stuttgart and Berlin at the top and cities in eastern Germany and the Ruhr area at the bottom; see our [student rent map](/en/student-rent-map) for the city averages and their source.\n\nPractical advice: fix your maximum warm rent first, then search. A cheaper room in a student hall or shared flat (WG) is often what makes the budget work in expensive cities, and the Studentenwerk waiting lists are worth joining as soon as you are admitted."
     },
     {
-      "en_id": 2283,
+      "en_slug": "is-teklifini-kabul-ettikten-ancak-sozlesmeyi-imzalamadan-once-geri-cekilmek-en",
       "expect_question": "İş teklifini kabul ettikten ancak sözleşmeyi imzalamadan önce geri çekilmek mümkün müdür?",
+      "local_en_id": 2283,
       "question": "Can I withdraw after accepting a job offer but before signing the contract?",
       "answer_md": "Be careful: in Germany an employment contract does **not** need a signed document to exist. If the employer offered you the job with the essential terms (position, start date, salary) and you clearly accepted – by e-mail, on the phone or in person – a contract may already have been concluded. The written document that follows is then only the documentation required by the Nachweisgesetz, not the contract itself.\n\nWhat that means:\n\n- If no contract has been concluded yet (for example, you only said you were interested or terms were still open), you can simply inform the employer that you will not take the job.\n- If a contract exists, you cannot just \"withdraw\"; you would have to **terminate** it. Before the start date this is usually possible with the notice period agreed for the probation period (two weeks during an agreed probation period, § 622 (3) BGB), unless the contract excludes termination before the start date. Some contracts contain a contractual penalty for not starting, which can be enforced if it is validly agreed.\n- In practice most employers accept a prompt, polite written cancellation and do not pursue claims, but they are not obliged to.\n\nRecommendation: decide quickly, tell the employer in writing as soon as possible, and keep the message short and professional. If you have already received a signed contract, read its termination clause before you reply."
     },
     {
-      "en_id": 2361,
+      "en_slug": "almanyada-tam-zamanli-bir-iste-calisirken-ek-is-yapmak-mumkun-mudur-en",
       "expect_question": "Almanya'da tam zamanlı bir işte çalışırken ek iş yapmak mümkün müdür?",
+      "local_en_id": 2361,
       "question": "Can I take on a side job while working full-time in Germany?",
       "answer_md": "Generally yes. A side job (Nebentätigkeit) is allowed, but four sets of rules apply:\n\n1. **Your employment contract.** Many contracts require you to notify the employer or obtain consent before taking a second job. The employer may only refuse if the side job harms its legitimate interests, for example work for a competitor or work that leaves you too tired for your main job.\n2. **Working time law.** The limits of the Working Hours Act apply to the total of all your jobs: normally 8 hours per working day, up to 10 hours if the average over six months stays at 8 (§ 3 ArbZG), plus a rest period of 11 hours between shifts. A full-time job plus a substantial second job can breach this.\n3. **Tax and social insurance.** A second employment is taxed in tax class VI (higher withholding, settled in the tax return) unless it is a mini-job (up to €603 per month in 2026), which the employer taxes at a flat rate. Self-employed side work must be registered (trade office or tax office).\n4. **Residence permit.** If your right to work comes from a residence permit, check its conditions: some permits restrict employment to a specific employer or require permission from the Ausländerbehörde for additional work.\n\nTell your employer in writing, keep the total hours within the legal limit, and get the tax treatment right from the first month."
     },
     {
-      "en_id": 2393,
-      "expect_question": "Almanya'dan ayrılırken Rundfunkbeitrag (radyo/TV vergisi) iptali unutulursa ne olur?",
-      "question": "What happens if I forget to cancel the Rundfunkbeitrag when leaving Germany?",
-      "answer_md": "The fee keeps running. The Rundfunkbeitrag (€18.36 per month per home, as of 2026) is charged per registered household until you **deregister the home** (Wohnung abmelden) with the Beitragsservice; the contribution service does not stop it automatically when you leave the country.\n\nConsequences of forgetting:\n\n- The unpaid months accumulate as a debt, with late-payment surcharges. Reminders and fee notices go to your last German address.\n- The debt can be enforced in Germany (Vollstreckung), and it does not expire simply because you moved abroad. If you return to Germany and register again, the old account can be matched to you through the registration data.\n- It does **not** appear in a certificate of conduct (Führungszeugnis), which only records criminal convictions.\n\nHow to cancel properly:\n\n1. Deregister your address at the Bürgeramt when you move abroad (Abmeldung, within two weeks of moving out, § 17 BMG) and keep the Abmeldebescheinigung.\n2. Submit the \"Wohnung abmelden\" form on rundfunkbeitrag.de with your contribution number (Beitragsnummer) and the deregistration certificate as proof. The deregistration takes effect from the end of the month in which you move out, provided you report it in time.\n\nIf you already forgot: deregister now and send the Abmeldebescheinigung; the service can backdate the cancellation to the documented move-out date, but months before that remain due.\n\nSource: rundfunkbeitrag.de (Beitragsservice), § 17 Bundesmeldegesetz."
-    },
-    {
-      "en_id": 2581,
+      "en_slug": "airbnbde-kalirken-ikamet-kaydi-anmeldung-mumkun-mudur-en",
       "expect_question": "Airbnb'de kalırken ikamet kaydı (Anmeldung) mümkün müdür?",
+      "local_en_id": 2581,
       "question": "Can I register my address (Anmeldung) while staying in an Airbnb?",
       "answer_md": "Only if the host cooperates. The registration office needs a **landlord confirmation (Wohnungsgeberbestätigung, § 19 BMG)** signed by the person providing the accommodation. Without it, the Bürgeramt will not register you at that address. Many Airbnb hosts refuse because registering guests can conflict with their own lease or with local short-term-rental rules; some hosts who rent legally do issue it, so ask before you book.\n\nWhen you must register at all (Bundesmeldegesetz):\n\n- Anyone who moves into a home in Germany has to register **within two weeks** of moving in (§ 17 BMG).\n- If you come from abroad and are not yet registered anywhere in Germany, a temporary stay creates the duty to register only once it **exceeds three months** (§ 27 (2) BMG). For hotels and similar commercial accommodation the ordinary registration duty starts after six months, but a person without any German registration must register within two weeks once the stay exceeds three months (§ 29 BMG).\n\nSo a few weeks in an Airbnb while you look for a room does not by itself oblige you to register. The practical problem is that you usually **need** the registration earlier: for the residence permit, a bank account, the tax ID and enrolment at some universities. Plan for it:\n\n- prefer temporary rooms or student halls whose provider confirms the Wohnungsgeberbestätigung in advance;\n- as soon as you sign a proper lease or sublease, register within two weeks;\n- do not use a friend's address without actually living there – incorrect registration is an administrative offence.\n\nSource: §§ 17, 19, 27, 29 Bundesmeldegesetz (gesetze-im-internet.de)."
     },
     {
-      "en_id": 2587,
+      "en_slug": "almanyada-issizken-ve-bir-yillik-kira-pesin-odemeyle-uzun-sureli-daire-en",
       "expect_question": "Almanya'da işsizken ve bir yıllık kira peşin ödemeyle uzun süreli daire kiralamak mümkün müdür?",
+      "local_en_id": 2587,
       "question": "Can I rent long-term in Germany while unemployed by prepaying a year's rent?",
       "answer_md": "It is legally possible but rarely a good idea, and it is a classic fraud pattern.\n\n- **Deposit limit**: a landlord may demand a security deposit of at most three months' basic rent (§ 551 BGB), payable in three monthly instalments. A full year's rent in advance is not a deposit; it is a voluntary prepayment of rent that the law does not require and does not protect in the same way.\n- **What landlords actually check**: proof of income or financing (for students: blocked account, scholarship, parental guarantee), a credit report (Schufa) and ID. Offering a large prepayment instead can make serious landlords suspicious rather than reassured.\n- **Fraud risk**: adverts that ask for a prepayment or deposit before a viewing, keys \"sent by courier\", or landlords \"abroad\" are scams. Never transfer money before you have seen the flat, met the landlord or agent, and received a signed lease. Prefer a bank transfer with the lease reference over cash or payment services.\n\nBetter alternatives if you have no income yet:\n\n- a **guarantor** (Mietbürgschaft) from a parent or relative, or a rent guarantee from a bank or insurer;\n- student halls through the Studentenwerk, which check enrolment rather than income;\n- a room in a shared flat (WG) or a furnished temporary rental for the first months, then a long-term lease once you have a job or enrolment confirmation.\n\nIf you do agree a prepayment with a verified landlord, put it in the lease explicitly as prepaid rent for named months, with the refund rule if the lease ends early."
     }
@@ -112,13 +94,6 @@
       "topic": "recognition",
       "question": "Do German universities require a YKS ranking from Turkish applicants?",
       "answer_md": "There is no ranking threshold set by German universities, but **YKS still matters** for Turkish school leavers, because it decides whether your Lise Diploması gives direct university access.\n\nHow Turkish school-leaving qualifications are assessed (anabin, the KMK database used by universities and uni-assist, and the information sheet of the German missions in Turkey):\n\n- **Lise Diploması alone** (12-year general secondary school): no direct access; you first attend a **Studienkolleg** and pass the Feststellungsprüfung.\n- **Lise Diploması + YKS with placement** (proof of the YKS result and of placement in a degree programme at a Turkish university): **direct, subject-restricted access** to German universities for subjects related to the programme you were placed in. The ÖSYM result document and the placement document are required.\n- **Completed Önlisans (2-year associate degree)** or **successfully completed years of study** at a Turkish university: direct access to related subjects, depending on the case.\n\nWhat universities do look at once you have access: your converted grade (Lise grade and, for some universities, the YKS result), the subject's NC (numerus clausus), the required German or English level and any subject-specific tests. A few programmes with local admission procedures set a minimum converted grade; that is the closest thing to a \"ranking\" requirement.\n\nCheck your own case in anabin (\"Schulabschlüsse\" → Türkei) and on the uni-assist country page for Turkey, and confirm with the university's admissions office if your programme is not clearly related to your YKS placement. The rules can be updated by the KMK, so verify them for the semester you apply for."
-    },
-    {
-      "tr_id": 254,
-      "expect_question": "Üniversiteye kayıt için gerekli belgeler nelerdir?",
-      "topic": "uni-assist",
-      "question": "Which documents do I need to enrol at a German university?",
-      "answer_md": "Enrolment (Immatrikulation) comes after admission and follows the university's own checklist, which you receive with the admission letter (Zulassungsbescheid). The usual set:\n\n- **Admission letter** and the completed enrolment application (often online first, then in person or by post).\n- **Passport** with the visa or residence permit (non-EU students); EU citizens show an ID card.\n- **Health insurance confirmation**: either the electronic notification from a German statutory insurer (students under 30 are normally compulsorily insured, § 5 (1) no. 9 SGB V) or the statutory insurer's confirmation that you are exempt because of private or foreign coverage. A foreign policy alone is not accepted; a German statutory insurer must confirm the exemption.\n- **Original or certified copies** of your school-leaving certificate, university degree (for master's), transcripts and, where applicable, the Studienkolleg certificate, with certified translations if they were requested in the application.\n- **Language certificate** (DSH, TestDaF, Goethe, telc or an English test) in the original.\n- **Proof of payment of the semester contribution** (Semesterbeitrag), which includes the semester ticket at most universities.\n- One or two **passport photos** for the student card, and sometimes a deregistration certificate (Exmatrikulationsbescheinigung) if you studied in Germany before.\n\nMiss the enrolment deadline in the admission letter and the place is given to the next applicant, so request your health insurance confirmation and certified copies before you travel. Universities apply different rules on which documents must be shown in the original; the admission letter is the authoritative list."
     },
     {
       "tr_id": 265,
@@ -175,6 +150,13 @@
       "topic": "money",
       "question": "How much tax do working students pay in Germany?",
       "answer_md": "Often nothing at the end of the year, because student incomes are usually below the tax-free allowance – but tax may still be withheld from each payslip and refunded later.\n\nKey figures for 2026:\n\n- **Basic tax-free allowance (Grundfreibetrag): €12,348 per year** (§ 32a EStG, assessment year 2026). Taxable income up to this amount is taxed at 0 %. The rate above it starts at 14 % and rises with income.\n- **Mini-job limit: €603 per month** (tied to the minimum wage of €13.90 per hour). In a mini-job the employer normally pays a flat 2 % tax and you receive the pay in full; the income does not go into your own tax return.\n- A single student in a regular student job is in **tax class I**; the employer withholds wage tax (Lohnsteuer) automatically once the monthly pay is roughly above €1,200–1,300 (the monthly share of the allowance plus lump sums). What was withheld but not owed comes back when you file a tax return (ELSTER) after the year ends; filing is voluntary for employees and possible for four years back.\n- A second job at the same time is taxed in **tax class VI** with high withholding; it is settled in the tax return.\n\nSocial insurance is separate from tax: as a **Werkstudent** (enrolled, no more than 20 hours per week during the lecture period) you pay only pension contributions (9.3 % of gross in 2026), no unemployment or health contributions from the job; your student health insurance continues. Above 20 hours in the lecture period you lose this privilege and pay full contributions.\n\nTwo more points: a scholarship such as DAAD is normally tax-free; and non-EU students must stay within the working-time limits of their residence permit (140 full or 280 half days per year, or the 20-hour weekly route, § 16b AufenthG) regardless of tax.\n\nSources: § 32a EStG (gesetze-im-internet.de), bundesregierung.de on the 2026 minimum wage and mini-job limit, § 16b AufenthG."
+    },
+    {
+      "tr_id": 215,
+      "expect_question": "Almanya'da öğrenci konaklaması (yurt/ev) nasıl bulunur?",
+      "topic": "housing",
+      "question": "How do I find student accommodation (dorm or flat) in Germany?",
+      "answer_md": "Start early and use several channels at once; in most university cities demand is far higher than supply, especially from July to October before the winter semester.\n\nThe main options, cheapest first:\n\n- **Studentenwerk / Studierendenwerk halls**: the public student-services organisation of each city runs subsidised halls. Apply online as soon as you have your admission letter (some accept applications before admission). Waiting lists in Munich, Hamburg, Berlin, Cologne and Frankfurt can be several months; smaller cities often have rooms available at the start of the semester. Priority rules differ by city; international first-year students are often favoured.\n- **Shared flats (WG)**: a room in a Wohngemeinschaft is the most common student housing. The main portal is WG-Gesucht; current flatmates choose the newcomer, so a short personal message in German and a quick reply time matter more than documents.\n- **Private student residences**: furnished rooms with all-inclusive rents, English-language booking and contracts. Convenient for the first semester but usually the most expensive option per square metre.\n- **Private flats**: ImmobilienScout24, Immowelt, Kleinanzeigen and local newspapers. Landlords expect a complete application file (ID, proof of income or financing, Schufa or an equivalent from your home country, a short introduction).\n- **University housing offices and welcome services**: many universities keep lists of private landlords and run temporary-housing programmes for the first weeks.\n\nSafety rules: never pay a deposit or rent before you have seen the room (or had someone see it for you) and received a signed contract; be suspicious of landlords \"abroad\" who want a transfer first; a legitimate deposit is at most three months' basic rent.\n\nBridge solution: book a hostel, a short-term furnished room or a sublet for the first weeks and search on site; viewings in person increase your chances considerably. For how much rent to expect per city, see our [student rent map](/en/student-rent-map)."
     }
   ],
   "pending": [
@@ -197,6 +179,44 @@
     {
       "tr_id": 207,
       "reason": "Repeats the ZAB 150–200 € / 10–16 weeks figures (official: 208 €, 3 months). Held back with tr#203."
+    }
+  ],
+  "already_english_on_prod": [
+    {
+      "prod_en_id": 1153,
+      "en_slug": "can-i-bring-certain-dog-breeds-to-germany-en",
+      "question": "Can I bring certain dog breeds to Germany?",
+      "note": "Prod EN question and answer already English on 2026-10-13 (repaired by another process); not touched."
+    },
+    {
+      "prod_en_id": 1441,
+      "en_slug": "how-important-is-german-when-renting-a-flat-in-germany-en",
+      "question": "How important is German when renting a flat in Germany?",
+      "note": "Prod EN question and answer already English on 2026-10-13 (repaired by another process); not touched."
+    },
+    {
+      "prod_en_id": 1491,
+      "en_slug": "is-it-possible-to-get-into-or-transfer-to-high-nc-subjects-like-medicine-or-en",
+      "question": "Is it possible to get into or transfer to high-NC subjects like medicine or biology in Germany?",
+      "note": "Prod EN question and answer already English on 2026-10-13 (repaired by another process); not touched."
+    },
+    {
+      "prod_en_id": 1649,
+      "en_slug": "what-happens-if-i-forget-to-deregister-from-the-rundfunkbeitrag-broadcasting-en",
+      "question": "What happens if I forget to deregister from the Rundfunkbeitrag (broadcasting fee) when leaving Germany?",
+      "note": "Prod EN question and answer already English on 2026-10-13; not touched."
+    },
+    {
+      "prod_en_id": 1259,
+      "en_slug": "can-i-apply-for-a-computer-science-masters-in-germany-with-a-bachelors-in-a-en",
+      "question": "Can I apply for a Computer Science Master's in Germany with a Bachelor's in a different field?",
+      "note": "Prod group already carries an English question and slug (local copy still Turkish); not touched."
+    }
+  ],
+  "dropped_creations": [
+    {
+      "tr_id": 254,
+      "reason": "Prod already has a published EN sibling (what-documents-do-you-need-to-enrol-at-a-university-in-germany-en); no duplicate created."
     }
   ]
 }
