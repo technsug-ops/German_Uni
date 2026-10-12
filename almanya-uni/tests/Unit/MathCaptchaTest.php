@@ -79,8 +79,9 @@ class MathCaptchaTest extends TestCase
         $c = MathCaptcha::generate();
         $answer = (string) ($c['a'] + $c['b']);
 
-        $this->assertStringNotContainsString($answer, $c['key']);
+        // Rastgele alfasayısal referans tesadüfen cevap rakamını içerebilir; sızıntı testi yapıyı ve oturumu kontrol eder.
         $this->assertSame(0, preg_match('/[^A-Za-z0-9]/', $c['key']), 'referans yalnız alfasayısal, yapı taşımaz');
+        $this->assertSame((int) $answer, session()->get(MathCaptcha::SESSION_KEY)[$c['key']]['answer'], 'cevap yalnız oturumda');
         $this->assertTrue(MathCaptcha::validate($c['key'], $answer));
         $this->assertFalse(MathCaptcha::validate($c['key'], $answer), 'ikinci kullanım (replay) reddedilir');
     }
