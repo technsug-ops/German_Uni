@@ -260,7 +260,139 @@ class UniversityWebController extends Controller
         ];
     }
 
-    public function show(string $slugOrId): View|RedirectResponse
+    /** Üniversite sayfasında sayfa başına program. 2 sütunlu ızgarada çift sayı; diğer liste sayfalarıyla (meslekler: 24) aynı. */
+    public const PROGRAMS_PER_PAGE = 24;
+
+    /** Filtre değerleri: degree = veritabanındaki derece değeri; lang = öğretim dili (both her iki filtrede sayılır). */
+    private const LANG_FILTERS = ['en' => ['en', 'both'], 'de' => ['de', 'both']];
+
+    /** Derece sırası: önce lisans ve yüksek lisans, sonra diğerleri. */
+    private const DEGREE_ORDER = ['bachelor', 'master', 'staatsexamen', 'diplom', 'magister', 'phd', 'other', 'sprachkurs', 'unknown'];
+
+    /**
+     * Üniversite program listesi: sayaçlar, filtreler, sayfa.
+     *
+     * - ?degree=<derece> ve ?lang=en|de filtreleri; geçersiz değer → 404.
+     * - ?page=N: N ≥ 2 ve ≤ son sayfa; ?page=1 → aynı URL'ye page'siz 301; geçersiz/aralık dışı → 404.
+     * - Sıra: anlamlı metni olan programlar önce (Program::scopeIndexable ön filtresiyle aynı sütunlar), sonra derece,
+     *   ad, id (deterministik → sayfalar arasında kayıp/tekrar yok). Noindex programlar gizlenmez, sona doğru kayar.
+     *
+     * @return array<string,mixed>|RedirectResponse
+     */
+    private function programListing(Request $request, University $university): array|RedirectResponse
+    {
+        $base = fn () => $university->programs()->where('is_active', true);
+
+        $order = array_flip(self::DEGREE_ORDER);
+        $degreeCounts = $base()->selectRaw('degree, COUNT(*) as n')->groupBy('degree')->pluck('n', 'degree')
+            ->map(fn ($n) => (int) $n)
+            ->sortBy(fn ($n, $d) => $order[$d] ?? 99)
+            ->all();
+        $total = array_sum($degreeCounts);
+        $langCounts = [];
+        foreach (self::LANG_FILTERS as $key => $values) {
+            $langCounts[$key] = $base()->whereIn('language', $values)->count();
+        }
+        $ncFree = $base()->where('admission_mode', 'zulassungsfrei')->count();
+
+        $degree = $request->query('degree');
+        $lang = $request->query('lang');
+        if ($degree !== null && (! is_string($degree) || ! isset($degreeCounts[$degree]))) {
+            abort(404);
+        }
+        if ($lang !== null && (! is_string($lang) || ! isset(self::LANG_FILTERS[$lang]) || $langCounts[$lang] === 0)) {
+            abort(404);
+        }
+        $filters = array_filter(['degree' => $degree, 'lang' => $lang], fn ($v) => $v !== null);
+
+        $rawPage = $request->query('page');
+        if ($rawPage !== null) {
+            if (! is_string($rawPage) || ! preg_match('/^[1-9]\d{0,4}$/', $rawPage)) {
+                abort(404);
+            }
+            if ($rawPage === '1') {
+                $query = $filters ? '?' . http_build_query($filters) : '';
+
+                return redirect()->to(url(request()->path()) . $query, 301);
+            }
+        }
+        $pageNo = $rawPage === null ? 1 : (int) $rawPage;
+
+        $richSql = '(' . implode(' OR ', array_map(fn ($c) => "COALESCE($c, '') <> ''", [
+            'description_tr', 'description_en', 'qualification_requirements_tr', 'qualification_requirements_en',
+            'language_requirements_tr', 'language_requirements_en',
+        ])) . ')';
+        $degreeSql = 'FIELD(degree, ' . implode(', ', array_map(fn ($d) => "'$d'", self::DEGREE_ORDER)) . ')';
+
+        $page = $base()
+            ->when($degree, fn ($q) => $q->where('degree', $degree))
+            ->when($lang, fn ($q) => $q->whereIn('language', self::LANG_FILTERS[$lang]))
+            ->orderByRaw("$richSql DESC")
+            ->orderByRaw("$degreeSql = 0, $degreeSql")
+            ->orderBy('name_de')
+            ->orderBy('id')
+            ->with('field:id,name_tr,name_en,name_de,icon,color,slug')
+            ->paginate(self::PROGRAMS_PER_PAGE, [
+                'id', 'university_id', 'field_of_study_id', 'name_de', 'slug',
+                'degree', 'degree_specification', 'language', 'duration_semesters',
+                'location', 'description_tr', 'description_en',
+                'application_deadline_summer', 'application_deadline_winter',
+                'tuition_fee_eur', 'subjects', 'admission_mode',
+            ], 'page', $pageNo)
+            ->withQueryString()
+            ->fragment('programs');
+
+        if ($rawPage !== null && $pageNo > $page->lastPage()) {
+            abort(404);
+        }
+        // Geçerli değerlerin sonuçsuz kombinasyonu (ör. ?degree=bachelor&lang=en, 0 program) → 404 (soft-404 değil).
+        if ($filters && $page->total() === 0) {
+            abort(404);
+        }
+
+        // Çip sayıları diğer filtreye göre: dil çipleri seçili derece içinde, derece çipleri seçili dil içinde sayılır.
+        // Görünüm sonuç vermeyen çipi göstermez → boş kombinasyona bağlantı verilmez.
+        $langCountsInDegree = $langCounts;
+        if ($degree) {
+            foreach (self::LANG_FILTERS as $key => $values) {
+                $langCountsInDegree[$key] = $base()->where('degree', $degree)->whereIn('language', $values)->count();
+            }
+        }
+        $degreeCountsInLang = $degreeCounts;
+        if ($lang) {
+            $inLang = $base()->whereIn('language', self::LANG_FILTERS[$lang])
+                ->selectRaw('degree, COUNT(*) as n')->groupBy('degree')->pluck('n', 'degree')->all();
+            foreach ($degreeCounts as $d => $_) {
+                $degreeCountsInLang[$d] = (int) ($inLang[$d] ?? 0);
+            }
+        }
+
+        // Canonical / hreflang: sayfa 1 (filtresiz) → mevcut davranış (paylaşım yok). Filtresiz sayfa N≥2 farklı liste
+        // taşır → self-canonical ?page=N ve aynı sayfanın dil kardeşleri. Filtreli URL'ler → filtresiz üniversite URL'si.
+        if ($filters || $pageNo > 1) {
+            $suffix = (! $filters && $pageNo > 1) ? '?page=' . $pageNo : '';
+            $urls = [];
+            foreach (\App\Support\Hreflang::activeLocales() as $loc) {
+                $urls[$loc] = route('universities.show', ['locale' => $loc, 'slugOrId' => $university->slug]) . $suffix;
+            }
+            view()->share('localeUrls', $urls);
+            view()->share('canonicalUrl', $urls[app()->getLocale()] ?? null);
+        }
+
+        return [
+            'page' => $page,
+            'total' => $total,
+            'degree_counts' => $degreeCounts,
+            'lang_counts' => $langCounts,
+            'degree_counts_in_lang' => $degreeCountsInLang,
+            'lang_counts_in_degree' => $langCountsInDegree,
+            'nc_free' => $ncFree,
+            'filters' => $filters,
+            'open_tab' => $filters || $pageNo > 1,
+        ];
+    }
+
+    public function show(Request $request, string $slugOrId): View|RedirectResponse
     {
         // Merge edilmiş kaydın slug'ı → kanonik sayfaya kalıcı yönlendir. Kabuk kayıt DB'de (pasif) dursa bile.
         if ($canonical = self::MERGED_SLUGS[$slugOrId] ?? null) {
@@ -302,21 +434,15 @@ class UniversityWebController extends Controller
             'image_url' => $university->image_url,
         ];
 
-        // Programs (gruplandırılmış)
-        $programs = $university->programs()
-            ->where('is_active', true)
-            ->orderBy('degree')
-            ->orderBy('name_de')
-            ->with('field:id,name_tr,name_en,name_de,icon,color,slug')
-            ->get([
-                'id', 'university_id', 'field_of_study_id', 'name_de', 'slug',
-                'degree', 'degree_specification', 'language', 'duration_semesters',
-                'location', 'description_tr', 'description_en',
-                'application_deadline_summer', 'application_deadline_winter',
-                'tuition_fee_eur', 'subjects', 'admission_mode',
-            ]);
-
-        $programsByDegree = $programs->groupBy('degree');
+        // Programlar: sayfalı + filtreli liste (SEO Recovery Faz 1).
+        // Önceden tüm aktif programlar tek HTML'de listeleniyordu (Mainz: 399 bağlantı, 1,65 MB). Artık sayfa başına
+        // PROGRAMS_PER_PAGE kayıt; sonraki sayfalara gerçek <a href> bağlantıları; kullanıcı her programa erişebilir.
+        $listing = $this->programListing($request, $university);
+        if ($listing instanceof RedirectResponse) {
+            return $listing;
+        }
+        $programs = $listing['page'];
+        $programsByDegree = $programs->getCollection()->groupBy('degree');
 
         // Benzer üniler — önce aynı şehirde, sonra aynı tipte
         $similarUnis = University::query()
@@ -393,6 +519,7 @@ class UniversityWebController extends Controller
             'university_model'   => $university,
             'programs'           => $programs,
             'programs_by_degree' => $programsByDegree,
+            'programListing'     => $listing,
             'similarUnis'        => $similarUnis,
             'experiences'        => $experiences,
             'cityUniCount'       => $cityUniCount,

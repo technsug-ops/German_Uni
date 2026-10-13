@@ -89,8 +89,9 @@
     {{-- iOS apple-touch-icon SVG'yi yok sayar → 180px PNG (ApplyToGerman onyx app ikonu) --}}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon-180.png') }}">
 
-    {{-- Self-canonical (her sayfa) — query string'siz mevcut URL (duplicate content önleme) --}}
-    <link rel="canonical" href="{{ url(request()->path()) }}">
+    {{-- Self-canonical (her sayfa) — query string'siz mevcut URL (duplicate content önleme).
+         Farklı içerik taşıyan bir sorgu URL'si için controller 'canonicalUrl' paylaşabilir (ör. üniversite program listesi ?page=N). --}}
+    <link rel="canonical" href="{{ view()->shared('canonicalUrl') ?: url(request()->path()) }}">
 
     @stack('meta')
     @stack('head')

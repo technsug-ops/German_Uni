@@ -61,9 +61,12 @@
 
 @php
     // ── Tab istatistikleri ──
-    $progTotal  = $programs->count();
-    $progNcFree = $programs->where('admission_mode', 'zulassungsfrei')->count();
-    $progEn     = $programs->whereIn('language', ['en', 'both'])->count();
+    // Sayaçlar tüm aktif programlardan (sayfadaki 24 kayıttan değil) — UniversityWebController::programListing
+    $progTotal  = $programListing['total'];
+    $progNcFree = $programListing['nc_free'];
+    $progEn     = $programListing['lang_counts']['en'];
+    $progFilters = $programListing['filters'];
+    $progUrl = fn (array $q) => url(request()->path()) . ($q ? '?' . http_build_query($q) : '') . '#programs';
     $city       = $university_model->city;
     $typeLabel  = match ($university['type']) {
         'public' => __('Public University'),
@@ -134,7 +137,8 @@
 </section>
 
 {{-- ─────────────── TABS ─────────────── --}}
-<div x-data="{ tab: 'uni' }" class="max-w-[1400px] mx-auto px-4 py-8">
+{{-- Sayfalı/filtreli program URL'lerinde (?page=, ?degree=, ?lang=) ya da #programs ile açılınca Programlar sekmesi açık başlar. --}}
+<div x-data="{ tab: '{{ $programListing['open_tab'] ? 'prog' : 'uni' }}' }" x-init="if (location.hash === '#programs') tab = 'prog'" class="max-w-[1400px] mx-auto px-4 py-8">
 
     {{-- Tab nav --}}
     <div class="flex flex-wrap gap-1 border-b border-gray-200 mb-6">
@@ -178,10 +182,10 @@
                         </button>
                         {{-- Kilitli profillerde katalogdaki dil etiketi resmî kaynakla doğrulanmadığı için İngilizce sayısı gösterilmez. --}}
                         @if ($progEn > 0 && ! $uniLocked)
-                            <button @click="tab='prog'" class="flex-1 text-left rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white p-4 transition">
+                            <a href="{{ $progUrl(['lang' => 'en']) }}" rel="nofollow" class="flex-1 text-left rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progEn }}</div>
                                 <div class="text-xs opacity-90 mt-0.5">🇬🇧 {{ __('English-taught programs') }} →</div>
-                            </button>
+                            </a>
                         @endif
                         @if ($progNcFree > 0)
                             <a href="{{ route('admission-free.by-university', $university['slug']) }}" class="flex-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white p-4 transition">
@@ -303,8 +307,8 @@
     </div>
 
     {{-- ═══════════ TAB: PROGRAMLAR ═══════════ --}}
-    <div x-show="tab==='prog'" x-cloak>
-        @if ($programs->isNotEmpty())
+    <div x-show="tab==='prog'" x-cloak id="programs" class="scroll-mt-24">
+        @if ($progTotal > 0)
             @php
                 $degreeLabels = [
                     'bachelor' => ['Bachelor', 'academic-cap'], 'master' => ['Master', 'target'],
@@ -327,11 +331,61 @@
                     </div>
                 </div>
 
+                {{-- Filtreler: gerçek <a href> bağlantıları (JS gerekmez). Filtreli URL'lerin canonical'ı filtresiz üniversite sayfasıdır. --}}
+                @php
+                    $chip = 'inline-flex items-center gap-1 min-h-[40px] px-3 py-2 rounded-full border text-sm font-medium transition';
+                    $chipOn = 'bg-primary-600 border-primary-600 text-white';
+                    $chipOff = 'bg-white border-gray-300 text-gray-700 hover:border-primary-500 hover:text-primary-700';
+                    $degreeChipLabel = fn ($d) => match ($d) {
+                        'bachelor' => __('Bachelor'), 'master' => __('Master'), 'phd' => __('PhD'), 'other' => __('Other'),
+                        default => $degreeLabels[$d][0] ?? ucfirst($d),
+                    };
+                @endphp
+                {{-- Filtre bağlantıları rel="nofollow": kullanıcı için çalışır, tarayıcıya filtre kombinasyonlarını izlememe ipucu verir
+                     (programların hepsine filtresiz sayfalama ile takip edilebilir bağlantı zaten var). Sonuç vermeyen çip gösterilmez. --}}
+                @php
+                    $fRel = fn (array $q) => $q ? 'nofollow' : null;
+                    $langSel = $progFilters['lang'] ?? null;
+                    $degreeSel = $progFilters['degree'] ?? null;
+                @endphp
+                <nav aria-label="{{ __('Filter programs') }}" class="space-y-3 mb-2">
+                    @if (count($programListing['degree_counts']) > 1)
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 mr-1">{{ __('Degree') }}</span>
+                            @php $q = array_filter(['lang' => $langSel]); @endphp
+                            <a href="{{ $progUrl($q) }}" @if ($fRel($q)) rel="nofollow" @endif class="{{ $chip }} {{ $degreeSel ? $chipOff : $chipOn }}" @if (! $degreeSel) aria-current="true" @endif>{{ __('All') }} <span class="opacity-75">({{ $langSel ? $programListing['lang_counts'][$langSel] : $progTotal }})</span></a>
+                            @foreach ($programListing['degree_counts_in_lang'] as $d => $n)
+                                @continue($n === 0)
+                                @php $q = array_filter(['degree' => $d, 'lang' => $langSel]); @endphp
+                                <a href="{{ $progUrl($q) }}" rel="nofollow" class="{{ $chip }} {{ $degreeSel === $d ? $chipOn : $chipOff }}" @if ($degreeSel === $d) aria-current="true" @endif>{{ $degreeChipLabel($d) }} <span class="opacity-75">({{ $n }})</span></a>
+                            @endforeach
+                        </div>
+                    @endif
+                    {{-- Kilitli profillerde dil etiketi doğrulanmadığı için dil filtresi gösterilmez. --}}
+                    @if (! $uniLocked && ($programListing['lang_counts']['en'] > 0 || $programListing['lang_counts']['de'] > 0))
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 mr-1">{{ __('Language of instruction') }}</span>
+                            @php $q = array_filter(['degree' => $degreeSel]); @endphp
+                            <a href="{{ $progUrl($q) }}" @if ($fRel($q)) rel="nofollow" @endif class="{{ $chip }} {{ $langSel ? $chipOff : $chipOn }}" @if (! $langSel) aria-current="true" @endif>{{ __('All') }}</a>
+                            @foreach (['en' => __('English-taught'), 'de' => __('German-taught')] as $l => $lLabel)
+                                @continue($programListing['lang_counts_in_degree'][$l] === 0)
+                                @php $q = array_filter(['degree' => $degreeSel, 'lang' => $l]); @endphp
+                                <a href="{{ $progUrl($q) }}" rel="nofollow" class="{{ $chip }} {{ $langSel === $l ? $chipOn : $chipOff }}" @if ($langSel === $l) aria-current="true" @endif>{{ $lLabel }} <span class="opacity-75">({{ $programListing['lang_counts_in_degree'][$l] }})</span></a>
+                            @endforeach
+                        </div>
+                    @endif
+                </nav>
+
+                @if ($programs->total() > 0)
+                    <p class="text-sm text-gray-600 mt-4" aria-live="polite">{{ __('Showing :from–:to of :total programs', ['from' => $programs->firstItem(), 'to' => $programs->lastItem(), 'total' => $programs->total()]) }}</p>
+                @else
+                    <p class="text-sm text-gray-600 mt-6">{{ __('No programs match these filters.') }} <a href="{{ $progUrl([]) }}" class="font-semibold text-primary-700 underline">{{ __('Clear filters') }}</a></p>
+                @endif
+
                 @foreach ($programs_by_degree as $degree => $items)
                     @php [$label, $iconName] = $degreeLabels[$degree] ?? [ucfirst($degree), 'book-open']; @endphp
                     <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3 flex items-center gap-2">
                         <x-svg-icon name="{{ $iconName }}" class="w-5 h-5" /> {{ $label }}
-                        <span class="text-sm font-normal text-gray-500">({{ $items->count() }})</span>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         @foreach ($items as $p)
@@ -382,6 +436,35 @@
                         @endforeach
                     </div>
                 @endforeach
+
+                {{-- Sayfalama: her sayfaya gerçek <a href> (JS'siz taranabilir). Sayfa 1 = filtresiz üniversite URL'si; ?page=1 kullanılmaz. --}}
+                @if ($programs->hasPages())
+                    @php
+                        $pgCur = $programs->currentPage();
+                        $pgLast = $programs->lastPage();
+                        $pgUrl = fn (int $n) => $progUrl(array_filter($progFilters + ['page' => $n > 1 ? $n : null]));
+                        $pgWindow = collect([1, $pgLast])->merge(range(max(1, $pgCur - 2), min($pgLast, $pgCur + 2)))->unique()->sort()->values();
+                        $pgBtn = 'inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-3 rounded-lg border text-sm font-semibold transition';
+                    @endphp
+                    <nav aria-label="{{ __('Programs pagination') }}" class="mt-8 flex flex-wrap items-center justify-center gap-2">
+                        @if ($pgCur > 1)
+                            <a href="{{ $pgUrl($pgCur - 1) }}" rel="{{ $progFilters ? 'prev nofollow' : 'prev' }}" class="{{ $pgBtn }} border-gray-300 text-gray-700 hover:border-primary-500">← {{ __('Previous') }}</a>
+                        @endif
+                        @foreach ($pgWindow as $i => $n)
+                            @if ($i > 0 && $n - $pgWindow[$i - 1] > 1)
+                                <span class="px-1 text-gray-400" aria-hidden="true">…</span>
+                            @endif
+                            @if ($n === $pgCur)
+                                <span aria-current="page" class="{{ $pgBtn }} bg-primary-600 border-primary-600 text-white">{{ $n }}</span>
+                            @else
+                                <a href="{{ $pgUrl($n) }}" @if ($progFilters) rel="nofollow" @endif class="{{ $pgBtn }} border-gray-300 text-gray-700 hover:border-primary-500">{{ $n }}</a>
+                            @endif
+                        @endforeach
+                        @if ($pgCur < $pgLast)
+                            <a href="{{ $pgUrl($pgCur + 1) }}" rel="{{ $progFilters ? 'next nofollow' : 'next' }}" class="{{ $pgBtn }} border-gray-300 text-gray-700 hover:border-primary-500">{{ __('Next') }} →</a>
+                        @endif
+                    </nav>
+                @endif
             </div>
         @else
             <div class="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500">{{ __('No programs listed for this university yet.') }}</div>

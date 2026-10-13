@@ -1345,5 +1345,10 @@
     "All articles in the :category category.": "All articles in the :category category.",
     "AlmanyaUni": "ApplyToGerman",
     "AlmanyaUni Editör Ekibi": "ApplyToGerman Editorial Team",
-    "Popular Programs": "Popular Programs"
+    "Popular Programs": "Popular Programs",
+    "Previous": "Previous",
+    "Programs pagination": "Programs pagination",
+    "Filter programs": "Filter programs",
+    "Showing :from–:to of :total programs": "Showing :from–:to of :total programs",
+    "No programs match these filters.": "No programs match these filters."
 }
