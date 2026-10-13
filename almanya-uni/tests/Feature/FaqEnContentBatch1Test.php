@@ -188,6 +188,38 @@ class FaqEnContentBatch1Test extends TestCase
         $this->assertFalse(FaqEnglishContentBatch::same('Almanya\'da staj?', 'Almanya\'da stajlar?'));
     }
 
+    public function test_tr_only_record_without_translation_group_gets_a_group_and_a_linked_en_sibling(): void
+    {
+        $this->seedFixture();
+        $trId = $this->faqRow('tr', 'almanyada-calisan-ogrenciler-ne-kadar-vergi-oder', 'Almanya\'da çalışan öğrenciler ne kadar vergi öder?', null, 'money');
+        $data = ['repairs' => [], 'creations' => [['tr_id' => $trId, 'expect_question' => 'Almanya\'da çalışan öğrenciler ne kadar vergi öder?', 'topic' => 'money',
+            'question' => 'How much tax do working students pay in Germany?', 'answer_md' => 'Often nothing at year end: the basic allowance is €12,348 for 2026 (§ 32a EStG).']]];
+        $plan = FaqEnglishContentBatch::plan($data);
+        $this->assertSame([], $plan['problems']);
+        $this->assertCount(1, $plan['creations']);
+        $this->assertTrue($plan['creations'][0]['assign_group']);
+        $this->assertStringContainsString('yeni çeviri grubu atanır', FaqEnglishContentBatch::describe($plan));
+        $this->assertNull(DB::table('faqs')->where('id', $trId)->value('translation_group_id'), 'önizleme yazmaz');
+
+        FaqEnglishContentBatch::apply($plan);
+        $tr = Faq::findOrFail($trId);
+        $this->assertNotNull($tr->translation_group_id);
+        $this->assertSame(36, strlen($tr->translation_group_id));
+        $en = Faq::where('locale', 'en')->where('translation_group_id', $tr->translation_group_id)->firstOrFail();
+        $this->assertSame('how-much-tax-do-working-students-pay-in-germany-en', $en->slug);
+        $this->assertSame('how-much-tax-do-working-students-pay-in-germany', $tr->slug);
+        $this->assertSame('how-much-tax-do-working-students-pay-in-germany', SlugRedirects::to('faq', 'almanyada-calisan-ogrenciler-ne-kadar-vergi-oder', 'tr'));
+        $this->get('/tr/faq/money/almanyada-calisan-ogrenciler-ne-kadar-vergi-oder')->assertStatus(301)->assertRedirect('/tr/faq/money/how-much-tax-do-working-students-pay-in-germany');
+        $html = $this->get('/en/faq/money/how-much-tax-do-working-students-pay-in-germany-en')->assertOk()->getContent();
+        $this->assertStringContainsString('<link rel="alternate" hreflang="tr" href="' . url('/tr/faq/money/how-much-tax-do-working-students-pay-in-germany') . '"', $html);
+
+        // İkinci çalıştırma: grup artık var, EN kardeş aynı içerikle var → no-op
+        $plan2 = FaqEnglishContentBatch::plan($data);
+        $this->assertSame([], $plan2['problems']);
+        $this->assertSame([], $plan2['creations']);
+        $this->assertStringContainsString('zaten var (aynı içerik)', implode(' ', $plan2['skipped']));
+    }
+
     public function test_migration_is_silent_on_a_database_without_the_batch_records(): void
     {
         $before = DB::table('faqs')->count();

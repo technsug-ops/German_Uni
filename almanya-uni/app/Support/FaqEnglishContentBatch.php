@@ -132,9 +132,11 @@ final class FaqEnglishContentBatch
                 $out['skipped'][] = "oluşturma tr#{$tr->id}: TR kaydı beklenen soruyla eşleşmiyor ('{$tr->locale}': '" . mb_substr($tr->question, 0, 70) . "') — atlandı";
                 continue;
             }
+            $assignGroup = null;
             if (! $tr->translation_group_id) {
-                $out['problems'][] = "oluşturma tr#{$tr->id}: TR kaydının çeviri grubu yok";
-                continue;
+                // TR-only kayıt henüz bir çeviri grubunda değil (canlıda böyle): yeni grup kimliği atanır, EN kardeş ona bağlanır.
+                $assignGroup = (string) \Illuminate\Support\Str::uuid();
+                $tr->translation_group_id = $assignGroup; // bellek içi: slug/yönlendirme planı grubu görsün
             }
             if (($topics[$tr->faq_topic_id] ?? null) !== $cre['topic']) {
                 $out['problems'][] = "oluşturma tr#{$tr->id}: konu '" . ($topics[$tr->faq_topic_id] ?? '?') . "', paket '{$cre['topic']}' diyor";
@@ -164,7 +166,7 @@ final class FaqEnglishContentBatch
                 unset($affected[$gid], $groups[$gid]);
                 continue;
             }
-            $out['creations'][] = ['tr_id' => $tr->id, 'group' => $gid, 'topic_id' => $tr->faq_topic_id, 'topic' => $cre['topic'], 'question' => $cre['question'], 'answer_md' => $cre['answer_md']];
+            $out['creations'][] = ['tr_id' => $tr->id, 'group' => $gid, 'assign_group' => $assignGroup !== null, 'topic_id' => $tr->faq_topic_id, 'topic' => $cre['topic'], 'question' => $cre['question'], 'answer_md' => $cre['answer_md']];
         }
         if ($out['problems']) {
             return $out;
@@ -299,6 +301,12 @@ final class FaqEnglishContentBatch
             $newIds = [];
             foreach ($plan['creations'] as $c) {
                 $tr = Faq::findOrFail($c['tr_id']);
+                if (! empty($c['assign_group'])) {
+                    if ($tr->translation_group_id && $tr->translation_group_id !== $c['group']) {
+                        throw new RuntimeException("EN FAQ paketi: tr#{$tr->id} plan ile yazma arasında gruba bağlanmış; yeniden önizleme gerekir");
+                    }
+                    DB::table('faqs')->where('id', $tr->id)->update(['translation_group_id' => $c['group']]);
+                }
                 $faq = new Faq([
                     'faq_topic_id' => $c['topic_id'], 'question' => $c['question'], 'slug' => '__slugmove-new-' . $c['tr_id'], 'answer_md' => $c['answer_md'],
                     'intent' => $tr->intent ?: 'community', 'category' => $tr->category, 'is_featured' => false, 'sort_order' => (int) $tr->sort_order, 'is_published' => true,
@@ -351,7 +359,7 @@ final class FaqEnglishContentBatch
             $l[] = "  onar en#{$r['id']}: '" . mb_substr($r['old_question'], 0, 50) . "' → '{$r['question']}'";
         }
         foreach ($plan['creations'] as $c) {
-            $l[] = "  oluştur tr#{$c['tr_id']} → en [{$c['topic']}] '{$c['question']}' slug=" . ($c['slug'] ?? '?');
+            $l[] = "  oluştur tr#{$c['tr_id']} → en [{$c['topic']}] '{$c['question']}' slug=" . ($c['slug'] ?? '?') . (! empty($c['assign_group']) ? ' (TR kaydına yeni çeviri grubu atanır)' : '');
         }
         foreach ($plan['slugs'] as $m) {
             $l[] = "  slug #{$m['id']} ({$m['locale']}): {$m['old']} → {$m['new']}";
