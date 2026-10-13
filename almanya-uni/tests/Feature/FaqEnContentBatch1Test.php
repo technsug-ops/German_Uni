@@ -220,6 +220,91 @@ class FaqEnContentBatch1Test extends TestCase
         $this->assertStringContainsString('zaten var (aynı içerik)', implode(' ', $plan2['skipped']));
     }
 
+    public function test_german_repair_and_answer_patch_keep_slugs_and_are_idempotent(): void
+    {
+        $ids = $this->seedFixture();
+        // Grup A önce batch-1 gibi EN onarımı + slug taşıma almış olsun
+        FaqEnglishContentBatch::apply(FaqEnglishContentBatch::plan($this->data($ids)));
+        $deSlug = Faq::findOrFail($ids['a_de'])->slug; // are-voluntary-internships-paid-in-germany-2-de
+        $trSlug = Faq::findOrFail($ids['a_tr'])->slug;
+        $redirectsBefore = DB::table('slug_redirects')->count();
+
+        $data = [
+            'repairs' => [['locale' => 'de', 'slug' => $deSlug, 'expect_question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?',
+                'question' => 'Werden freiwillige Praktika in Deutschland bezahlt?', 'answer_md' => 'Meistens ja: nach § 22 MiLoG gilt der Mindestlohn (13,90 € pro Stunde 2026), außer bei Pflichtpraktika und freiwilligen Praktika bis drei Monate.']],
+            'patches' => [['locale' => 'tr', 'slug' => $trSlug, 'expect_question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?', 'replace' => ['Cevap.' => 'Cevap: § 22 MiLoG uyarınca asgari ücret ödenir.']]],
+            'creations' => [],
+        ];
+        $plan = FaqEnglishContentBatch::plan($data);
+        $this->assertSame([], $plan['problems']);
+        $this->assertCount(1, $plan['repairs']);
+        $this->assertCount(1, $plan['patches']);
+        $this->assertSame([], $plan['slugs'], 'TR/DE onarımı slug değiştirmez');
+        $this->assertStringContainsString('onar de#', FaqEnglishContentBatch::describe($plan));
+        $counts = FaqEnglishContentBatch::apply($plan);
+        $this->assertSame(1, $counts['repairs']);
+        $this->assertSame(1, $counts['patches']);
+
+        $de = Faq::findOrFail($ids['a_de']);
+        $this->assertSame('Werden freiwillige Praktika in Deutschland bezahlt?', $de->question);
+        $this->assertSame($deSlug, $de->slug, 'URL değişmedi');
+        $this->assertStringContainsString('<p>Meistens ja', $de->answer_html);
+        $this->assertFalse($de->contentIsBroken());
+        $tr = Faq::findOrFail($ids['a_tr']);
+        $this->assertSame('Cevap: § 22 MiLoG uyarınca asgari ücret ödenir.', $tr->answer_md);
+        $this->assertSame('Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?', $tr->question, 'yama soruyu değiştirmez');
+        $this->assertSame($redirectsBefore, DB::table('slug_redirects')->count(), 'yönlendirme eklenmedi');
+
+        $html = $this->get('/de/faq/work/' . $deSlug)->assertOk()->getContent();
+        $this->assertStringContainsString('Werden freiwillige Praktika in Deutschland bezahlt?', $html);
+        $this->assertStringNotContainsString('maaş ödenir mi', $html);
+        $this->assertStringContainsString('<link rel="alternate" hreflang="en" href="' . url('/en/faq/work/are-voluntary-internships-paid-in-germany-2-en') . '"', $html);
+
+        // İkinci çalıştırma no-op; yama "zaten uygulanmış"
+        $snap = DB::table('faqs')->orderBy('id')->get()->toArray();
+        $plan2 = FaqEnglishContentBatch::plan($data);
+        $this->assertSame([[], []], [$plan2['repairs'], $plan2['patches']]);
+        $this->assertStringContainsString('yama tr#' . $ids['a_tr'] . ': zaten uygulanmış', implode(' ', $plan2['skipped']));
+        FaqEnglishContentBatch::apply($plan2);
+        $this->assertEquals($snap, DB::table('faqs')->orderBy('id')->get()->toArray());
+
+        // Yama hedef metni tam bir kez bulunamazsa üzerine yazılmaz
+        $plan3 = FaqEnglishContentBatch::plan(['repairs' => [], 'creations' => [], 'patches' => [['locale' => 'tr', 'slug' => $trSlug, 'expect_question' => 'Almanya\'da zorunlu olmayan stajlarda maaş ödenir mi?', 'replace' => ['yok böyle bir metin' => 'x']]]]);
+        $this->assertSame([], $plan3['problems']);
+        $this->assertSame([], $plan3['patches']);
+        $this->assertStringContainsString('tam bir kez bulunamadı', implode(' ', $plan3['skipped']));
+    }
+
+    public function test_real_batch2_file_is_well_formed_german_patches_and_de_repairs(): void
+    {
+        $data = FaqEnglishContentBatch::load(database_path('data/faq-en/2026-10-13-batch2.json'));
+        $this->assertCount(12, $data['repairs']);
+        $this->assertCount(6, $data['patches']);
+        $this->assertSame([], $data['creations']);
+        foreach ($data['repairs'] as $r) {
+            $this->assertSame('de', $r['locale']);
+            $this->assertStringEndsWith('-de', $r['slug']);
+            $this->assertFalse(Faq::looksTurkish($r['question']), $r['question']);
+            $this->assertFalse(Faq::looksTurkish($r['answer_md']), 'Türkçe cevap: ' . $r['question']);
+            $this->assertMatchesRegularExpression('/[ıİğşç]/u', $r['expect_question'], 'beklenen eski soru Türkçe olmalı: ' . $r['expect_question']);
+            $this->assertGreaterThan(400, mb_strlen($r['answer_md']));
+            $this->assertMatchesRegularExpression('/[äöüß]|\b(und|nicht|eine?)\b/u', $r['answer_md'], 'Almanca metin bekleniyor: ' . $r['question']);
+        }
+        foreach ($data['patches'] as $p) {
+            $this->assertContains($p['locale'], ['tr', 'en', 'de']);
+            $this->assertStringContainsString('208', implode(' ', array_values($p['replace'])));
+            $this->assertStringContainsString('3', implode(' ', array_values($p['replace'])));
+            if ($p['locale'] === 'de') {
+                $this->assertStringEndsWith('-de', $p['slug']);
+            }
+            if ($p['locale'] === 'en') {
+                $this->assertStringEndsWith('-en', $p['slug']);
+            }
+        }
+        $slugs = array_merge(array_column($data['repairs'], 'slug'), array_map(fn ($p) => $p['locale'] . ':' . $p['slug'], $data['patches']));
+        $this->assertSame(count($slugs), count(array_unique($slugs)));
+    }
+
     public function test_migration_is_silent_on_a_database_without_the_batch_records(): void
     {
         $before = DB::table('faqs')->count();

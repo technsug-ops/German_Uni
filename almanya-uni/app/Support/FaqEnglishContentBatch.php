@@ -48,7 +48,7 @@ final class FaqEnglishContentBatch
      */
     public static function plan(array $data): array
     {
-        $out = ['repairs' => [], 'creations' => [], 'slugs' => [], 'redirects' => [], 'rewrites' => [], 'kb' => [], 'skipped' => [], 'problems' => [], 'empty' => false];
+        $out = ['repairs' => [], 'patches' => [], 'creations' => [], 'slugs' => [], 'redirects' => [], 'rewrites' => [], 'kb' => [], 'skipped' => [], 'problems' => [], 'empty' => false];
         foreach (['faqs', 'faq_topics', 'slug_redirects'] as $t) {
             if (! Schema::hasTable($t)) {
                 $out['empty'] = true;
@@ -56,12 +56,12 @@ final class FaqEnglishContentBatch
                 return $out;
             }
         }
-        // Paket bu veritabanına ait mi? (EN kayıt id'leri ortamlar arasında farklı → slug ya da yeni soru ile tanınır; TR id'ler sabit)
-        $refSlugs = array_column($data['repairs'], 'en_slug');
+        // Paket bu veritabanına ait mi? (kayıt id'leri ortamlar arasında farklı → slug ya da yeni soru ile tanınır; TR id'ler sabit)
+        $refSlugs = array_values(array_filter(array_merge(array_column($data['repairs'], 'en_slug'), array_column($data['repairs'], 'slug'), array_column($data['patches'] ?? [], 'slug'))));
         $refQuestions = array_column($data['repairs'], 'question');
         $refIds = array_column($data['creations'], 'tr_id');
         $known = DB::table('faqs')->where(function ($q) use ($refSlugs, $refQuestions, $refIds) {
-            $q->whereIn('id', $refIds ?: [0])->orWhere(fn ($w) => $w->where('locale', 'en')->whereIn('slug', $refSlugs ?: ['']))->orWhere(fn ($w) => $w->where('locale', 'en')->whereIn('question', $refQuestions ?: ['']));
+            $q->whereIn('id', $refIds ?: [0])->orWhereIn('slug', $refSlugs ?: [''])->orWhere(fn ($w) => $w->where('locale', 'en')->whereIn('question', $refQuestions ?: ['']));
         })->exists();
         if (! $known) {
             $out['empty'] = true; // boş/test DB: paket bu veritabanına ait değil
@@ -79,41 +79,90 @@ final class FaqEnglishContentBatch
         $affected = []; // gid → true
 
         foreach ($data['repairs'] as $i => $rep) {
-            foreach (['en_slug', 'expect_question', 'question', 'answer_md'] as $k) {
+            // locale (varsayılan en); slug anahtarı 'slug' ya da eski ad 'en_slug'
+            $loc = $rep['locale'] ?? 'en';
+            $rep['slug'] = $rep['slug'] ?? $rep['en_slug'] ?? null;
+            foreach (['slug', 'expect_question', 'question', 'answer_md'] as $k) {
                 if (empty($rep[$k])) {
                     $out['problems'][] = "repairs[$i]: '$k' eksik";
                     continue 2;
                 }
             }
+            if (! in_array($loc, ['tr', 'en', 'de'], true)) {
+                $out['problems'][] = "repairs[$i]: geçersiz locale '$loc'";
+                continue;
+            }
             // Mevcut slug ile (henüz uygulanmamış) ya da yeni soru ile (uygulanmış, slug değişmiş) bulunur
-            $row = $all->first(fn ($r) => $r->locale === 'en' && $r->slug === $rep['en_slug'])
-                ?? $all->first(fn ($r) => $r->locale === 'en' && self::same($r->question, $rep['question']));
+            $row = $all->first(fn ($r) => $r->locale === $loc && $r->slug === $rep['slug'])
+                ?? $all->first(fn ($r) => $r->locale === $loc && self::same($r->question, $rep['question']));
             if (! $row) {
                 // Bu ortamda kayıt yok (prod/yerel farkı): bu madde atlanır, diğerleri etkilenmez
-                $out['skipped'][] = "onarım '{$rep['en_slug']}': EN kayıt yok (slug ve yeni soru ile bulunamadı) — atlandı";
+                $out['skipped'][] = "onarım '{$rep['slug']}' ($loc): kayıt yok (slug ve yeni soru ile bulunamadı) — atlandı";
                 continue;
             }
             if (! $row->translation_group_id) {
-                $out['problems'][] = "onarım en#{$row->id}: çeviri grubu yok";
+                $out['problems'][] = "onarım {$loc}#{$row->id}: çeviri grubu yok";
                 continue;
             }
-            if (self::looksTurkish($rep['question']) || self::looksTurkish($rep['answer_md'])) {
-                $out['problems'][] = "onarım en#{$row->id}: yeni metin Türkçe görünüyor";
+            if ($loc !== 'tr' && (self::looksTurkish($rep['question']) || self::looksTurkish($rep['answer_md']))) {
+                $out['problems'][] = "onarım {$loc}#{$row->id}: yeni metin Türkçe görünüyor";
                 continue;
             }
             $affected[$row->translation_group_id] = true;
-            $groups[$row->translation_group_id]['en_question'] = $rep['question'];
+            if ($loc === 'en') {
+                $groups[$row->translation_group_id]['en_question'] = $rep['question'];
+            }
             if (self::same($row->question, $rep['question']) && (string) $row->answer_md === $rep['answer_md']) {
-                $out['skipped'][] = "onarım en#{$row->id}: zaten uygulanmış";
+                $out['skipped'][] = "onarım {$loc}#{$row->id}: zaten uygulanmış";
                 continue;
             }
             if (! self::same($row->question, $rep['expect_question'])) {
                 // Eski içerik beklenenle uyuşmuyor: ÜZERİNE YAZILMAZ, raporlanır; diğer maddeler devam eder
-                $out['skipped'][] = "onarım en#{$row->id}: mevcut soru beklenen eski metinle eşleşmiyor — üzerine yazılmadı: '" . mb_substr($row->question, 0, 70) . "'";
-                unset($affected[$row->translation_group_id], $groups[$row->translation_group_id]);
+                $out['skipped'][] = "onarım {$loc}#{$row->id}: mevcut soru beklenen eski metinle eşleşmiyor — üzerine yazılmadı: '" . mb_substr($row->question, 0, 70) . "'";
+                if ($loc === 'en') {
+                    unset($affected[$row->translation_group_id], $groups[$row->translation_group_id]);
+                }
                 continue;
             }
-            $out['repairs'][] = ['id' => $row->id, 'group' => $row->translation_group_id, 'old_question' => $row->question, 'question' => $rep['question'], 'answer_md' => $rep['answer_md']];
+            $out['repairs'][] = ['id' => $row->id, 'locale' => $loc, 'group' => $row->translation_group_id, 'old_question' => $row->question, 'question' => $rep['question'], 'answer_md' => $rep['answer_md']];
+        }
+
+        // Yama: cevap içinde tam bir kez geçen alt dizgi değişimi (soru ve slug değişmez; bağlantılar korunur)
+        foreach ($data['patches'] ?? [] as $i => $pt) {
+            $loc = $pt['locale'] ?? 'en';
+            foreach (['slug', 'expect_question', 'replace'] as $k) {
+                if (empty($pt[$k])) {
+                    $out['problems'][] = "patches[$i]: '$k' eksik";
+                    continue 2;
+                }
+            }
+            $row = $all->first(fn ($r) => $r->locale === $loc && $r->slug === $pt['slug']);
+            if (! $row) {
+                $out['skipped'][] = "yama '{$pt['slug']}' ($loc): kayıt yok — atlandı";
+                continue;
+            }
+            if (! self::same($row->question, $pt['expect_question'])) {
+                $out['skipped'][] = "yama {$loc}#{$row->id}: soru beklenenle eşleşmiyor — atlandı";
+                continue;
+            }
+            $md = (string) $row->answer_md;
+            if (collect($pt['replace'])->every(fn ($new, $old) => str_contains($md, $new) && ! str_contains($md, $old))) {
+                $out['skipped'][] = "yama {$loc}#{$row->id}: zaten uygulanmış";
+                continue;
+            }
+            $ok = true;
+            foreach ($pt['replace'] as $old => $new) {
+                if (substr_count($md, $old) !== 1) {
+                    $out['skipped'][] = "yama {$loc}#{$row->id}: '" . mb_substr($old, 0, 50) . "…' tam bir kez bulunamadı (" . substr_count($md, $old) . ') — üzerine yazılmadı';
+                    $ok = false;
+                    break;
+                }
+            }
+            if (! $ok) {
+                continue;
+            }
+            $out['patches'][] = ['id' => $row->id, 'locale' => $loc, 'answer_md' => str_replace(array_keys($pt['replace']), array_values($pt['replace']), $md),
+                'summary' => implode(' | ', array_map(fn ($o) => "'" . mb_substr($o, 0, 40) . "…'", array_keys($pt['replace'])))];
         }
 
         foreach ($data['creations'] as $i => $cre) {
@@ -190,7 +239,12 @@ final class FaqEnglishContentBatch
         $moves = []; // old slug (per locale) → new
         $ownIds = fn (array $members) => array_filter(array_column($members, 'id'));
         foreach ($planned as $gid => $members) {
-            $base = SlugRedirects::fromText((string) $groups[$gid]['en_question']);
+            // Taban: paketteki yeni EN soru; yoksa veritabanındaki EN soru (TR/DE onarımı slug'ı değiştirmez); EN yoksa dokunulmaz
+            $enQuestion = $groups[$gid]['en_question'] ?? ($all->first(fn ($r) => $r->translation_group_id === $gid && $r->locale === 'en')?->question);
+            if ($enQuestion === null) {
+                continue;
+            }
+            $base = SlugRedirects::fromText((string) $enQuestion);
             if ($base === '') {
                 $out['problems'][] = "grup $gid: İngilizce sorudan slug üretilemedi";
                 continue;
@@ -286,7 +340,8 @@ final class FaqEnglishContentBatch
             throw new RuntimeException('EN FAQ paketi uygulanmadı, hiçbir şey yazılmadı: ' . implode('; ', array_slice($plan['problems'], 0, 12)) . (count($plan['problems']) > 12 ? ' …(' . count($plan['problems']) . ')' : ''));
         }
         $counts = ['repairs' => 0, 'creations' => 0, 'slugs' => 0, 'redirects' => 0, 'rewrites' => 0, 'kb' => 0];
-        if ($plan['empty'] || (! $plan['repairs'] && ! $plan['creations'] && ! $plan['slugs'] && ! $plan['redirects'] && ! $plan['rewrites'])) {
+        $counts['patches'] = 0;
+        if ($plan['empty'] || (! $plan['repairs'] && ! $plan['patches'] && ! $plan['creations'] && ! $plan['slugs'] && ! $plan['redirects'] && ! $plan['rewrites'])) {
             return $counts;
         }
         DB::transaction(function () use ($plan, &$counts) {
@@ -295,8 +350,14 @@ final class FaqEnglishContentBatch
                 $faq = Faq::findOrFail($r['id']);
                 $faq->question = $r['question'];
                 $faq->answer_md = $r['answer_md'];
-                self::save($faq, "en#{$r['id']}");
+                self::save($faq, ($r['locale'] ?? 'en') . "#{$r['id']}");
                 $counts['repairs']++;
+            }
+            foreach ($plan['patches'] as $p) {
+                $faq = Faq::findOrFail($p['id']);
+                $faq->answer_md = $p['answer_md'];
+                self::save($faq, "yama {$p['locale']}#{$p['id']}");
+                $counts['patches']++;
             }
             $newIds = [];
             foreach ($plan['creations'] as $c) {
@@ -350,13 +411,16 @@ final class FaqEnglishContentBatch
             return "Paket bu veritabanına ait kayıt içermiyor (boş/test DB) — yapılacak işlem yok.\n";
         }
         $l = [];
-        $l[] = sprintf('ONARIM: %d | OLUŞTURMA: %d | SLUG TAŞIMA: %d | YÖNLENDİRME (yeni): %d | YÖNLENDİRME (hedef güncelleme): %d | KB URL: %d | ATLANAN: %d | SORUN: %d',
-            count($plan['repairs']), count($plan['creations']), count($plan['slugs']), count($plan['redirects']), count($plan['rewrites']), count($plan['kb']), count($plan['skipped']), count($plan['problems']));
+        $l[] = sprintf('ONARIM: %d | YAMA: %d | OLUŞTURMA: %d | SLUG TAŞIMA: %d | YÖNLENDİRME (yeni): %d | YÖNLENDİRME (hedef güncelleme): %d | KB URL: %d | ATLANAN: %d | SORUN: %d',
+            count($plan['repairs']), count($plan['patches'] ?? []), count($plan['creations']), count($plan['slugs']), count($plan['redirects']), count($plan['rewrites']), count($plan['kb']), count($plan['skipped']), count($plan['problems']));
         foreach ($plan['problems'] as $p) {
             $l[] = "  !! $p";
         }
         foreach ($plan['repairs'] as $r) {
-            $l[] = "  onar en#{$r['id']}: '" . mb_substr($r['old_question'], 0, 50) . "' → '{$r['question']}'";
+            $l[] = '  onar ' . ($r['locale'] ?? 'en') . "#{$r['id']}: '" . mb_substr($r['old_question'], 0, 50) . "' → '{$r['question']}'";
+        }
+        foreach ($plan['patches'] ?? [] as $p) {
+            $l[] = "  yama {$p['locale']}#{$p['id']}: {$p['summary']}";
         }
         foreach ($plan['creations'] as $c) {
             $l[] = "  oluştur tr#{$c['tr_id']} → en [{$c['topic']}] '{$c['question']}' slug=" . ($c['slug'] ?? '?') . (! empty($c['assign_group']) ? ' (TR kaydına yeni çeviri grubu atanır)' : '');

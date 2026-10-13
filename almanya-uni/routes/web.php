@@ -1674,15 +1674,24 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
-    // EN FAQ içerik paketi önizlemesi (2026-10-13 batch1). SALT OKUMA: hiçbir şey yazmaz.
-    // Migration (2026_10_13_000700) uygulandıktan sonra "0 | 0 | 0 …" göstermesi = ikinci çalıştırma değişiklik yapmaz.
+    // FAQ içerik paketleri önizlemesi (database/data/faq-en/*.json). SALT OKUMA: hiçbir şey yazmaz.
+    // İlgili migration uygulandıktan sonra bir paketin "0 | 0 | 0 …" göstermesi = ikinci çalıştırma değişiklik yapmaz.
+    // ?file=<ad> ile tek paket.
     Route::get('/admin/ops/faq-en-batch', function () {
         abort_unless(auth()->user()?->is_admin, 403);
-        try {
-            $plan = \App\Support\FaqEnglishContentBatch::plan(\App\Support\FaqEnglishContentBatch::load(database_path('data/faq-en/2026-10-13-batch1.json')));
-            $out = "MOD: ÖNİZLEME (hiçbir şey yazılmadı)\n\n" . \App\Support\FaqEnglishContentBatch::describe($plan);
-        } catch (\Throwable $e) {
-            $out = 'EXCEPTION: ' . $e->getMessage();
+        $files = glob(database_path('data/faq-en/*.json')) ?: [];
+        if ($only = request()->query('file')) {
+            $files = array_filter($files, fn ($f) => basename($f, '.json') === $only);
+        }
+        $out = "MOD: ÖNİZLEME (hiçbir şey yazılmadı)\n";
+        foreach ($files as $f) {
+            $out .= "\n=== " . basename($f) . " ===\n";
+            try {
+                $plan = \App\Support\FaqEnglishContentBatch::plan(\App\Support\FaqEnglishContentBatch::load($f));
+                $out .= \App\Support\FaqEnglishContentBatch::describe($plan);
+            } catch (\Throwable $e) {
+                $out .= 'EXCEPTION: ' . $e->getMessage() . "\n";
+            }
         }
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
