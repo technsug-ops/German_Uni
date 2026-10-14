@@ -22,14 +22,14 @@ class ApplicationTracker extends Model
     ];
 
     public const STEPS = [
-        ['key' => 'eligibility',       'order' => 1, 'emoji' => '🎓', 'title' => 'Eligibility Check',        'desc' => 'Is your diploma recognized in Germany?',                       'tool_route' => 'tools.eligibility-checker', 'duration' => '5 min'],
-        ['key' => 'university_match',  'order' => 2, 'emoji' => '🎯', 'title' => 'Find your universities',  'desc' => 'Take the recommendation quiz + browse rankings.',              'tool_route' => 'tools.recommendation',      'duration' => '15 min'],
-        ['key' => 'documents',         'order' => 3, 'emoji' => '📋', 'title' => 'Prepare documents',       'desc' => 'Diploma + apostille + sworn translation + motivation letter.', 'tool_route' => 'translation-offices.index', 'tool_label' => 'Find sworn translators', 'duration' => '2-4 weeks'],
-        ['key' => 'apply',             'order' => 4, 'emoji' => '📨', 'title' => 'Submit applications',     'desc' => 'Via uni-assist or directly to universities.',                  'tool_route' => 'tools.deadlines',           'duration' => '1-2 weeks'],
-        ['key' => 'acceptance',        'order' => 5, 'emoji' => '✅', 'title' => 'Get acceptance letter',   'desc' => 'Verify the offer + plan your next steps.',                     'tool_route' => null,                        'duration' => '4-8 weeks'],
-        ['key' => 'financial_proof',   'order' => 6, 'emoji' => '🏦', 'title' => 'Open blocked account',    'desc' => '€11,904 in a Sperrkonto. Compare providers.',                  'tool_route' => 'tools.blocked-account',     'duration' => '1-3 days'],
-        ['key' => 'visa',              'order' => 7, 'emoji' => '🛂', 'title' => 'Apply for student visa',  'desc' => 'Book consulate appointment + prepare interview.',              'tool_route' => 'tools.visa-cost',           'duration' => '4-8 weeks'],
-        ['key' => 'arrival',           'order' => 8, 'emoji' => '✈️', 'title' => 'Pre-arrival checklist',   'desc' => 'Housing + Anmeldung + bank + insurance.',                      'tool_route' => 'tools.cost-of-living',      'duration' => 'Before departure'],
+        ['key' => 'eligibility',       'order' => 1, 'emoji' => '🎓', 'icon' => 'academic-cap', 'title' => 'Eligibility Check',        'desc' => 'Is your diploma recognized in Germany?',                       'tool_route' => 'tools.eligibility-checker', 'duration' => '5 min'],
+        ['key' => 'university_match',  'order' => 2, 'emoji' => '🎯', 'icon' => 'search', 'title' => 'Find your universities',  'desc' => 'Take the recommendation quiz + browse rankings.',              'tool_route' => 'tools.recommendation',      'duration' => '15 min'],
+        ['key' => 'documents',         'order' => 3, 'emoji' => '📋', 'icon' => 'document-text', 'title' => 'Prepare documents',       'desc' => 'Diploma + apostille + sworn translation + motivation letter.', 'tool_route' => 'translation-offices.index', 'tool_label' => 'Find sworn translators', 'duration' => '2-4 weeks'],
+        ['key' => 'apply',             'order' => 4, 'emoji' => '📨', 'icon' => 'plane', 'title' => 'Submit applications',     'desc' => 'Via uni-assist or directly to universities.',                  'tool_route' => 'tools.deadlines',           'duration' => '1-2 weeks'],
+        ['key' => 'acceptance',        'order' => 5, 'emoji' => '✅', 'icon' => 'check-circle', 'title' => 'Get acceptance letter',   'desc' => 'Verify the offer + plan your next steps.',                     'tool_route' => null,                        'duration' => '4-8 weeks'],
+        ['key' => 'financial_proof',   'order' => 6, 'emoji' => '🏦', 'icon' => 'building-library', 'title' => 'Open blocked account',    'desc' => '€11,904 in a Sperrkonto. Compare providers.',                  'tool_route' => 'tools.blocked-account',     'duration' => '1-3 days'],
+        ['key' => 'visa',              'order' => 7, 'emoji' => '🛂', 'icon' => 'fingerprint', 'title' => 'Apply for student visa',  'desc' => 'Book consulate appointment + prepare interview.',              'tool_route' => 'tools.visa-cost',           'duration' => '4-8 weeks'],
+        ['key' => 'arrival',           'order' => 8, 'emoji' => '✈️', 'icon' => 'map-pin', 'title' => 'Pre-arrival checklist',   'desc' => 'Housing + Anmeldung + bank + insurance.',                      'tool_route' => 'tools.cost-of-living',      'duration' => 'Before departure'],
     ];
 
     public function user(): BelongsTo

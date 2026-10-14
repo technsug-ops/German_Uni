@@ -14,7 +14,7 @@
 
         <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8">
             @foreach ($journeySteps as $i => $s)
-                <span class="inline-flex w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-white/10 ring-1 ring-white/15 items-center justify-center text-xl" title="{{ __($s['title']) }}">{{ $s['emoji'] }}</span>
+                <span class="inline-flex w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-white/10 ring-1 ring-white/15 items-center justify-center text-white/90" title="{{ __($s['title']) }}"><x-svg-icon :name="$s['icon']" class="w-5 h-5 md:w-6 md:h-6" /><span class="sr-only">{{ __($s['title']) }}</span></span>
                 @if ($i < count($journeySteps) - 1)<span class="text-white/30 hidden sm:inline">→</span>@endif
             @endforeach
         </div>
