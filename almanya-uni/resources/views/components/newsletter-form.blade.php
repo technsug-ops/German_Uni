@@ -41,7 +41,7 @@
         @csrf
         <input type="hidden" name="source" value="{{ $source }}">
 
-        {{-- 🍯 honeypot --}}
+        {{-- honeypot --}}
         <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
             <label>{{ __('Website (leave empty):') }} <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
         </div>

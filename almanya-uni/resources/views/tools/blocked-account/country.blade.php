@@ -20,7 +20,7 @@
             <span class="text-white">{{ $country['name'] }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            {{ $country['flag'] }} {{ __('Blocked Account for :demonym Students', ['demonym' => $country['demonym_' . app()->getLocale()] ?? $country['demonym_en']]) }}
+            {{ __('Blocked Account for :demonym Students', ['demonym' => $country['demonym_' . app()->getLocale()] ?? $country['demonym_en']]) }}
         </h1>
         <p class="text-lg text-blue-100 max-w-3xl">
             {!! __('You need <strong class="text-white">€11,904</strong> in a German Sperrkonto for the student visa. This page compares providers that work for applicants from :country and shows specific steps.', ['country' => $country['name']]) !!}
@@ -32,7 +32,7 @@
     {{-- COUNTRY-SPECIFIC NOTE --}}
     <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-5 mb-8">
         <div class="flex gap-3 items-start">
-            <span class="text-2xl">{{ $country['flag'] }}</span>
+            <x-svg-icon name="information-circle" class="w-6 h-6 shrink-0 text-amber-700" />
             <div>
                 <p class="font-bold text-amber-900 mb-1">{{ __('Important for :country applicants', ['country' => $country['name']]) }}</p>
                 <p class="text-sm text-amber-800 leading-relaxed">{{ $country['note_focus'] }}</p>
@@ -138,8 +138,7 @@
             @foreach ($otherCountries as $key => $oc)
                 <a href="{{ route('tools.blocked-account.country', $key) }}"
                    class="bg-white border border-gray-200 hover:border-primary-400 rounded-lg px-4 py-3 transition group">
-                    <span class="text-2xl">{{ $oc['flag'] }}</span>
-                    <span class="ml-2 font-semibold text-gray-900 group-hover:text-primary-700">{{ $oc['name'] }}</span>
+                    <span class="font-semibold text-gray-900 group-hover:text-primary-700">{{ $oc['name'] }}</span>
                 </a>
             @endforeach
         </div>

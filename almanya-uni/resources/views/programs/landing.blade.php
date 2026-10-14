@@ -111,12 +111,12 @@
                 <span class="text-primary-300 mx-2">·</span>
                 <a href="{{ route('programs.field-language', [$field->slug, $language === 'de' ? 'en' : 'de']) }}"
                    class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">
-                    {{ $language === 'de' ? '🇬🇧 ' . __('English programs') : '🇩🇪 ' . __('German programs') }}
+                    {{ $language === 'de' ? __('English programs') : __('German programs') }}
                 </a>
                 @if (($ncFreeCount ?? 0) > 0)
                     <a href="{{ route('admission-free.by-subject', $field->slug) }}"
                        class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
-                       title="{{ __('NC-free programs') }}">✅ {{ __('NC-free') }} ({{ number_format($ncFreeCount, 0, ',', '.') }})</a>
+                       title="{{ __('NC-free programs') }}">{{ __('NC-free') }} ({{ number_format($ncFreeCount, 0, ',', '.') }})</a>
                 @endif
             </div>
         @endif
@@ -135,7 +135,7 @@
                 <span class="text-primary-300 mx-2">·</span>
                 <a href="{{ route('programs.city-language', [$city->slug, 'en']) }}"
                    class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
-                   title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}">🇬🇧 {{ __('English programs') }}</a>
+                   title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}">{{ __('English programs') }}</a>
             </div>
         @endif
     </div>
@@ -172,11 +172,11 @@
                                 <div class="flex flex-wrap gap-1.5 text-xs">
                                     <span class="px-2 py-0.5 rounded bg-primary-50 text-primary-700 font-semibold">{{ __(ucfirst($program->degree)) }}</span>
                                     @if ($program->language === 'en')
-                                        <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">🇬🇧 {{ __('English') }}</span>
+                                        <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">{{ __('English') }}</span>
                                     @elseif ($program->language === 'de')
-                                        <span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700 font-semibold">🇩🇪 {{ __('German') }}</span>
+                                        <span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700 font-semibold">{{ __('German') }}</span>
                                     @elseif ($program->language === 'both')
-                                        <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold">🇬🇧/🇩🇪 {{ __('Both') }}</span>
+                                        <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold">{{ __('English') }}/{{ __('German') }}</span>
                                     @endif
                                     @if ($program->duration_semesters)
                                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-100 text-gray-700"><x-svg-icon name="clock" class="w-3 h-3" /> {{ $program->duration_semesters }} {{ __('sem') }}</span>

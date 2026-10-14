@@ -17,7 +17,7 @@
     @if ($compact)
         <div class="flex items-center gap-2">
             <label for="captcha_answer" class="text-sm font-semibold {{ $labelTone }} whitespace-nowrap">
-                🤖 {{ $captcha['question'] }} =
+                {{ $captcha['question'] }} =
             </label>
             <input
                 type="number"
@@ -33,7 +33,7 @@
         </div>
     @else
         <label for="captcha_answer" class="block text-sm font-semibold text-gray-700 mb-1">
-            🤖 {{ __('Bot check') }}
+            {{ __('Bot check') }}
         </label>
         <div class="flex items-center gap-3">
             <span class="px-3 py-2 bg-gray-100 border border-gray-300 rounded-md font-mono text-base text-gray-900 select-none">

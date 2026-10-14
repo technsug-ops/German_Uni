@@ -39,7 +39,7 @@
 <body>
 <div class="w">
     <div class="card">
-        <div class="hd">🇩🇪 {{ __('Studying in Germany — by the numbers') }}</div>
+        <div class="hd">{{ __('Studying in Germany — by the numbers') }}</div>
         <div class="grid">
             @foreach ($cells as [$v, $l])
                 <div class="cell"><div class="v">{{ $v }}</div><div class="l">{{ $l }}</div></div>

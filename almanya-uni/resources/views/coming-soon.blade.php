@@ -28,7 +28,7 @@
                     ['wrench-screwdriver', 'Cost-of-living calculator, grade converter, application timeline'],
                 ],
                 'footer' => 'We\'re translating university descriptions, blog posts, and FAQs. Expected launch: Q3 2026.',
-                'switch_back' => '🇹🇷 Switch back to Turkish',
+                'switch_back' => 'Switch back to Turkish',
             ],
             'de' => [
                 'badge' => 'Bald verfügbar',
@@ -44,7 +44,7 @@
                     ['wrench-screwdriver', 'Lebenshaltungskosten-Rechner, Notenumrechner, Bewerbungstimeline'],
                 ],
                 'footer' => 'Wir übersetzen Hochschulbeschreibungen, Blogbeiträge und FAQs. Geplanter Start: Q3 2026.',
-                'switch_back' => '🇹🇷 Zurück zu Türkisch',
+                'switch_back' => 'Zurück zu Türkisch',
             ],
             default => [
                 'badge' => 'Yakında',
@@ -55,7 +55,7 @@
                 'features_title' => 'Burada bulacağın',
                 'features' => [],
                 'footer' => 'Üni açıklamaları, blog yazıları ve SSS çevirileri sürüyor. Beklenen yayın: 2026 Q3.',
-                'switch_back' => '🇹🇷 Türkçe\'ye geç',
+                'switch_back' => 'Türkçe\'ye geç',
             ],
         };
     @endphp

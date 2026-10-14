@@ -63,7 +63,7 @@ class GlossaryController extends Controller
 
         return [
             'slug' => $raw['slug'],
-            'icon' => $raw['icon'] ?? '📘',
+            'icon' => $raw['icon'] ?? 'book-open',
             'title' => $pick('title'),
             'short' => $pick('short'),
             'body' => $pick('body'),

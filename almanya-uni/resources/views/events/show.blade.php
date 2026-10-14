@@ -82,9 +82,9 @@
             @else
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Online') }}</span>
             @endif
-            @if ($event->language_flag && $event->source !== 'ticketmaster')
+            @if ($event->language_label && $event->source !== 'ticketmaster')
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-xs font-bold ring-1 ring-white/30" title="{{ __('Event language') }}">
-                    {{ $event->language_flag }} {{ $event->language_label }}
+                    {{ $event->language_label }}
                 </span>
             @endif
             @if ($event->isRecurring())
@@ -219,7 +219,7 @@
 
                 <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                        ⭐ {{ __('Reviews') }}
+                        <x-svg-icon name="star" class="w-6 h-6 text-amber-500" /> {{ __('Reviews') }}
                         @if ($reviewCount > 0)
                             <span class="text-base font-normal text-gray-500">({{ $reviewCount }})</span>
                         @endif
@@ -269,7 +269,7 @@
                     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
 
                     <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition">
-                        ⭐ {{ __('Submit review') }}
+                        {{ __('Submit review') }}
                     </button>
                 </form>
 

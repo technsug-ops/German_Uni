@@ -49,15 +49,15 @@
         <div class="flex flex-wrap gap-2 mb-6">
             <a href="{{ route('admission-free.index') }}"
                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold transition">
-                🟢 {{ __('NC-free (zulassungsfrei) programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+                {{ __('NC-free (zulassungsfrei) programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
             </a>
             <a href="{{ route('discover.english') }}"
                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition">
-                🇬🇧 {{ __('English-taught programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+                {{ __('English-taught programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
             </a>
             <a href="{{ route('discover.tuition-free') }}"
                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white text-sm font-semibold transition">
-                💶 {{ __('Tuition-free programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
+                {{ __('Tuition-free programs') }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
             </a>
         </div>
 

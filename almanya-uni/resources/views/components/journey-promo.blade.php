@@ -21,7 +21,7 @@
 
         <a href="{{ route('journey.show') }}"
            class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg">
-            <x-svg-icon name="rocket-launch" class="w-5 h-5" /> {{ __('Start your roadmap') }}
+            {{ __('Start your roadmap') }} <x-svg-icon name="arrow-right" class="w-5 h-5" />
         </a>
     </div>
 </section>

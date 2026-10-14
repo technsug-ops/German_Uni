@@ -38,7 +38,7 @@
                             {{ __('Hi') }}{{ $subscriber->name ? ' ' . $subscriber->name : '' }},
                         </h1>
                         <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#374151;">
-                            {!! __('Thanks for subscribing to the <strong>:brand newsletter</strong>! 🎉', ['brand' => $brandName]) !!}
+                            {!! __('Thanks for subscribing to the <strong>:brand newsletter</strong>!', ['brand' => $brandName]) !!}
                         </p>
                         <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#374151;">
                             {{ __('To confirm your email address, click the button below. One click — after that, weekly digests and important updates will start landing in your inbox.') }}
@@ -50,7 +50,7 @@
                                 <td style="background:#F97316;border-radius:8px;">
                                     <a href="{{ $confirmUrl }}"
                                        style="display:inline-block;padding:14px 28px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:8px;">
-                                        ✅ {{ __('Confirm my email') }}
+                                        {{ __('Confirm my email') }}
                                     </a>
                                 </td>
                             </tr>
@@ -65,7 +65,7 @@
 
                         <hr style="border:none;border-top:1px solid #E5E7EB;margin:0 0 20px;">
 
-                        <h3 style="margin:0 0 12px;font-size:15px;color:#1F2937;">📬 {{ __('What\'s in the newsletter?') }}</h3>
+                        <h3 style="margin:0 0 12px;font-size:15px;color:#1F2937;">{{ __('What\'s in the newsletter?') }}</h3>
                         <ul style="margin:0 0 24px;padding-left:20px;color:#374151;font-size:14px;line-height:1.7;">
                             <li>{{ __('New blog posts (1-2 per week)') }}</li>
                             <li>{{ __('Application deadlines + reminders') }}</li>

@@ -64,7 +64,7 @@
                         $budgets = [
                             ['low',  'currency-euro', '< €1,000',         __('East Germany — Leipzig, Dresden, Chemnitz (rent ≤ €280)')],
                             ['mid',  'briefcase',     '€1,000–€1,400',    __('Berlin, Cologne, Hannover, Stuttgart range')],
-                            ['high', 'sparkles',      '> €1,400',          __('Munich, Frankfurt, Hamburg, Düsseldorf')],
+                            ['high', 'banknotes',      '> €1,400',          __('Munich, Frankfurt, Hamburg, Düsseldorf')],
                         ];
                     @endphp
                     @foreach ($budgets as [$v, $icon, $label, $desc])
@@ -121,7 +121,7 @@
                             ['nord', 'map-pin',  __('North'),     'Hamburg, Bremen, Kiel'],
                             ['west', 'home',     __('West'),      'Cologne, Düsseldorf, Aachen'],
                             ['sued', 'mountain', __('South'),     'Munich, Stuttgart, Karlsruhe'],
-                            ['ost',  'sparkles', __('East'),      'Berlin, Leipzig, Dresden'],
+                            ['ost',  'map', __('East'),      'Berlin, Leipzig, Dresden'],
                             ['any',  'globe',    __('Any'),       __('All work')],
                         ];
                     @endphp
@@ -154,7 +154,7 @@
                             ['medicine-health',      'shield-check', __('Medicine / Health')],
                             ['law-economics',   'scale',        __('Law / Economics')],
                             ['social-sciences', 'users',        __('Social Sciences')],
-                            ['arts-design',   'sparkles',     __('Art / Design')],
+                            ['arts-design',   'paint-brush',     __('Art / Design')],
                             ['languages-culture',      'language',     __('Language / Culture')],
                             ['agriculture-forestry-nutrition','globe',        __('Agriculture / Forestry')],
                         ];
@@ -181,8 +181,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     @php
                         $langs = [
-                            ['de',   'flag',          __('German'),       __('Classic, free, deep integration'), '🇩🇪'],
-                            ['en',   'flag',          __('English'),      __('Fastest path if you don\'t speak German'), '🇬🇧'],
+                            ['de',   'language',      __('German'),       __('Classic, free, deep integration'), null],
+                            ['en',   'language',      __('English'),      __('Fastest path if you don\'t speak German'), null],
                             ['both', 'globe',         __('Either works'), __('Start in English, switch to German later'), null],
                         ];
                     @endphp
@@ -213,7 +213,7 @@
                     @php
                         $types = [
                             ['public',  'building-office', __('Public'),  __('No / low tuition, more classical')],
-                            ['private', 'sparkles',        __('Private'), __('Expensive but boutique, lots of English')],
+                            ['private', 'building-office',        __('Private'), __('Expensive but boutique, lots of English')],
                             ['any',     'puzzle',          __('Any'),     __('I\'ll consider both')],
                         ];
                     @endphp
@@ -233,7 +233,7 @@
             {{-- 7. LIFESTYLE --}}
             <div x-show="currentStep === 6" x-transition.duration.300ms class="space-y-5">
                 <div class="text-center mb-6">
-                    <div class="flex justify-center mb-3 text-indigo-600"><x-svg-icon name="sparkles" class="w-12 h-12" /></div>
+                    <div class="flex justify-center mb-3 text-indigo-600"><x-svg-icon name="users" class="w-12 h-12" /></div>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ __('How do you want campus life to be?') }}</h2>
                     <p class="text-gray-500 text-sm mt-2">{{ __('Intensity + social life rhythm') }}</p>
                 </div>

@@ -30,10 +30,10 @@
 
 <div class="max-w-[1400px] mx-auto px-4 py-8 space-y-10">
 
-    {{-- 🔥 ÖNE ÇIKANLAR --}}
+    {{-- ÖNE ÇIKANLAR --}}
     @if ($highlights->isNotEmpty())
         <section>
-            <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">🔥 {{ __('Highlights') }}</h2>
+            <h2 class="text-xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="fire" class="w-5 h-5 text-rose-600" /> {{ __('Highlights') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($highlights as $e)
                     @include('events._concert-card', ['event' => $e, 'big' => true])
@@ -42,7 +42,7 @@
         </section>
     @endif
 
-    {{-- 📍 ŞEHRE GÖRE GEZ — fotoğraflı şehir filtresi --}}
+    {{-- ŞEHRE GÖRE GEZ — fotoğraflı şehir filtresi --}}
     @if ($cities->isNotEmpty())
         <section>
             <div class="flex items-center justify-between mb-3">
@@ -106,7 +106,7 @@
                     <a href="{{ route('events.concerts', array_filter(['type' => $key, 'city' => $activeCity?->slug, 'when' => $when])) }}"
                        class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                               {{ $type === $key ? 'bg-rose-600 text-white border-rose-600' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
-                        {!! e_icon($meta['emoji'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
+                        {!! e_icon($meta['icon'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
                     </a>
                 @endforeach
             </div>
@@ -137,7 +137,7 @@
         @endif
     </section>
 
-    {{-- 🔔 BANA HABER VER --}}
+    {{-- BANA HABER VER --}}
     <section class="max-w-2xl mx-auto">
         @include('events._alert-subscribe', ['alertCities' => $alertCities])
     </section>

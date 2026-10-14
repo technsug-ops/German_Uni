@@ -166,9 +166,9 @@ class CityController extends Controller
 
         // Şehir boyut badge'i için kategori
         $citySize = match (true) {
-            $city->population > 1_000_000 => ['🌆', 'Metropol', 'rose'],
-            $city->population > 200_000   => ['🏙️', 'Orta', 'blue'],
-            $city->population > 0          => ['🏘️', 'Küçük', 'amber'],
+            $city->population > 1_000_000 => ['building-office', 'Metropol', 'rose'],
+            $city->population > 200_000   => ['building-office', 'Orta', 'blue'],
+            $city->population > 0          => ['home', 'Küçük', 'amber'],
             default                        => null,
         };
 

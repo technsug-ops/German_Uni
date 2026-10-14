@@ -11,22 +11,13 @@
 
 {{-- ════ HERO — vibrant + animated ════ --}}
 <section class="relative bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 text-white overflow-hidden">
-    {{-- Decorative dots, sparkles, swooshes --}}
+    {{-- Decorative dots and swooshes --}}
     <div class="absolute inset-0 pointer-events-none opacity-50">
-        <svg class="absolute top-6 left-[15%] w-12 h-12 animate-pulse" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="white" fill-opacity="0.4"/>
-        </svg>
         <svg class="absolute top-1/3 right-[10%] w-10 h-10 animate-pulse" style="animation-delay: 0.7s" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="3" fill="white" fill-opacity="0.5"/>
         </svg>
-        <svg class="absolute bottom-8 left-[20%] w-16 h-16 animate-pulse" style="animation-delay: 1.4s" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="white" fill-opacity="0.3"/>
-        </svg>
         <svg class="absolute top-12 right-[25%] w-6 h-6" viewBox="0 0 24 24" fill="white" fill-opacity="0.4">
             <circle cx="12" cy="12" r="2"/>
-        </svg>
-        <svg class="absolute bottom-12 right-[15%] w-8 h-8 animate-bounce" style="animation-duration: 3s" viewBox="0 0 24 24" fill="white" fill-opacity="0.35">
-            <path d="M12 2 L13 10 L22 12 L13 14 L12 22 L11 14 L2 12 L11 10 Z"/>
         </svg>
         <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-pink-400/30 rounded-full blur-3xl"></div>
         <div class="absolute -top-10 -right-10 w-80 h-80 bg-indigo-400/30 rounded-full blur-3xl"></div>
@@ -41,7 +32,7 @@
 
         <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
             <div>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full bg-white/15 backdrop-blur-sm text-xs font-bold uppercase tracking-wider ring-1 ring-white/25"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Meet the team') }}</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full bg-white/15 backdrop-blur-sm text-xs font-bold uppercase tracking-wider ring-1 ring-white/25"><x-svg-icon name="users" class="w-3.5 h-3.5" /> {{ __('Meet the team') }}</span>
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] drop-shadow mb-4">
                     {{ __('The people behind') }}
                     <br>
@@ -209,7 +200,7 @@
                 ['from' => 'from-rose-400',    'to' => 'to-pink-500',    'bg' => 'from-rose-50/80 to-pink-50',     'ring' => 'ring-rose-200',    'badge' => 'bg-rose-100 text-rose-800',       'icon' => 'paint-brush'],
                 ['from' => 'from-sky-400',     'to' => 'to-indigo-500',  'bg' => 'from-sky-50/80 to-indigo-50',    'ring' => 'ring-sky-200',     'badge' => 'bg-sky-100 text-sky-800',         'icon' => 'globe'],
                 ['from' => 'from-emerald-400', 'to' => 'to-teal-500',    'bg' => 'from-emerald-50/80 to-teal-50',  'ring' => 'ring-emerald-200', 'badge' => 'bg-emerald-100 text-emerald-800', 'icon' => 'leaf'],
-                ['from' => 'from-amber-400',   'to' => 'to-orange-500',  'bg' => 'from-amber-50/80 to-orange-50',  'ring' => 'ring-amber-200',   'badge' => 'bg-amber-100 text-amber-800',     'icon' => 'sparkles'],
+                ['from' => 'from-amber-400',   'to' => 'to-orange-500',  'bg' => 'from-amber-50/80 to-orange-50',  'ring' => 'ring-amber-200',   'badge' => 'bg-amber-100 text-amber-800',     'icon' => 'light-bulb'],
                 ['from' => 'from-violet-400',  'to' => 'to-purple-500',  'bg' => 'from-violet-50/80 to-purple-50', 'ring' => 'ring-violet-200',  'badge' => 'bg-violet-100 text-violet-800',   'icon' => 'star'],
                 ['from' => 'from-fuchsia-400', 'to' => 'to-rose-500',    'bg' => 'from-fuchsia-50/80 to-rose-50',  'ring' => 'ring-fuchsia-200', 'badge' => 'bg-fuchsia-100 text-fuchsia-800', 'icon' => 'heart'],
             ];

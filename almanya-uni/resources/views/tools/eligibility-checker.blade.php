@@ -43,7 +43,7 @@
                 <select name="country" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
                     <option value="">{{ __('Select country...') }}</option>
                     @foreach ($countries as $key => $c)
-                        <option value="{{ $key }}" @selected(($old['country'] ?? '') === $key)>{{ $c['flag'] }} {{ $c['name'] }}</option>
+                        <option value="{{ $key }}" @selected(($old['country'] ?? '') === $key)>{{ $c['name'] }}</option>
                     @endforeach
                 </select>
                 <p class="text-xs text-gray-500 mt-1.5">{{ __('Choose the country where you completed your most recent diploma — not your citizenship.') }}</p>

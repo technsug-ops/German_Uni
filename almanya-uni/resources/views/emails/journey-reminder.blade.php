@@ -15,7 +15,6 @@
             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
                 <tr>
                     <td style="background:linear-gradient(135deg,#1E40AF 0%,#7C3AED 100%);padding:32px 32px 28px;border-bottom:3px solid #F97316;text-align:center;">
-                        <div style="display:inline-block;width:50px;height:50px;background:#F97316;border-radius:12px;text-align:center;line-height:50px;font-size:24px;margin-bottom:12px;">🗺️</div>
                         <h1 style="color:#fff;font-size:24px;font-weight:800;margin:0;">
                             {{ $name ? __('Hi :name,', ['name' => $name]) : __('Your journey awaits') }}
                         </h1>
@@ -42,13 +41,13 @@
                         @if ($nextStep)
                             <div style="background:#FEF3C7;border-left:4px solid #F59E0B;padding:14px 18px;border-radius:6px;margin-bottom:20px;">
                                 <p style="font-size:12px;font-weight:700;color:#78350F;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 4px;">{{ __('Next step') }}</p>
-                                <p style="font-size:16px;font-weight:700;color:#1F2937;margin:0;">{{ $nextStep['emoji'] }} {{ __($nextStep['title']) }}</p>
+                                <p style="font-size:16px;font-weight:700;color:#1F2937;margin:0;">{{ __($nextStep['title']) }}</p>
                                 <p style="font-size:13px;color:#4B5563;margin:6px 0 0;">{{ __($nextStep['desc']) }}</p>
-                                <p style="font-size:12px;color:#6B7280;margin:6px 0 0;">⏱️ {{ __($nextStep['duration']) }}</p>
+                                <p style="font-size:12px;color:#6B7280;margin:6px 0 0;">{{ __($nextStep['duration']) }}</p>
                             </div>
                         @else
                             <div style="background:#D1FAE5;border-left:4px solid #10B981;padding:14px 18px;border-radius:6px;margin-bottom:20px;">
-                                <p style="font-size:15px;font-weight:700;color:#064E3B;margin:0;">🎉 {{ __('All :total steps complete!', ['total' => $totalSteps]) }}</p>
+                                <p style="font-size:15px;font-weight:700;color:#064E3B;margin:0;">{{ __('All :total steps complete!', ['total' => $totalSteps]) }}</p>
                                 <p style="font-size:13px;color:#065F46;margin:6px 0 0;">{{ __('Viel Erfolg in Deutschland!') }}</p>
                             </div>
                         @endif
@@ -58,7 +57,7 @@
                 <tr>
                     <td style="padding:0 32px 28px;text-align:center;">
                         <a href="{{ $journeyUrl }}" style="display:inline-block;background:#1E40AF;color:#fff;padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">
-                            🗺️ {{ __('Continue your journey') }}
+                            {{ __('Continue your journey') }}
                         </a>
                     </td>
                 </tr>

@@ -180,7 +180,7 @@ TXT;
     /** Ortak Imagen illüstrasyon üretimi + public/images/news kaydı. */
     private function illustration(string $title, ?string $cat, string $idHint): ?string
     {
-        if (! $this->apiKey) return null;
+        if (! config('services.image.enabled') || ! $this->apiKey) return null;
 
         // ÖNEMLİ: başlığı prompt'a VERME. Imagen tırnak içindeki başlığı görsele
         // basıyor (üstelik bozuk + Türkçe) → diller-arası ortak görselde sızıntı.

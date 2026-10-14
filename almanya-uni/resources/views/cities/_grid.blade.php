@@ -8,13 +8,13 @@
 
 @if($cities->isEmpty())
     <x-empty-state
-        icon="🏙️"
+        icon="building-office"
         :title="__('No city matches these filters.')"
         :description="__('Try removing a filter or browse universities and states.')"
         :actions="[
             ['label' => __('Clear filters'), 'url' => route('cities.index'), 'primary' => true, 'icon' => '↺'],
-            ['label' => __('States'), 'url' => route('states.index'), 'icon' => '🗺️'],
-            ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => '🎓'],
+            ['label' => __('States'), 'url' => route('states.index'), 'icon' => 'map'],
+            ['label' => __('Universities'), 'url' => route('universities.index'), 'icon' => 'academic-cap'],
         ]"
     />
 @else

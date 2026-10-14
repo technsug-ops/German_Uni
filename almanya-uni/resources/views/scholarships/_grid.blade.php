@@ -7,7 +7,7 @@
 
 @if ($scholarships->isEmpty())
     <x-empty-state
-        icon="🎖️"
+        icon="trophy"
         :title="__('No scholarships match this filter.')"
         :description="__('Try removing one of the filters or browse the full DAAD catalog.')"
         :actions="[

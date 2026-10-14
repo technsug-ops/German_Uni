@@ -35,7 +35,7 @@
                         @if ($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->name }}" class="w-16 h-16 rounded object-contain bg-gray-50 p-1 border">
                         @else
-                            <div class="w-16 h-16 rounded bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center text-3xl">{{ $item->type_emoji }}</div>
+                            <div class="w-16 h-16 rounded bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center"><x-svg-icon :name="$item->type_icon ?? 'building-office'" class="w-9 h-9" /></div>
                         @endif
                         <div>
                             <h1 class="text-2xl font-extrabold text-gray-900 leading-tight">{{ $item->name }}</h1>

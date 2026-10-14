@@ -98,7 +98,7 @@
             <button type="button" id="chip-english"
                     data-active="false"
                     class="text-xs px-3 py-1.5 rounded-full border bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 transition data-[active=true]:bg-blue-600 data-[active=true]:text-white">
-                🇬🇧 {{ __('Has English programs') }}
+                {{ __('Has English programs') }}
             </button>
 
             <span class="text-xs text-gray-400 mx-2">·</span>
@@ -127,7 +127,7 @@
 
     {{-- CTA: kira haritası --}}
     <a href="{{ route('map.rents') }}" class="flex items-center gap-2 mb-4 px-4 py-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100 transition text-sm font-medium">
-        <span>💶</span>
+        <x-svg-icon name="currency-euro" class="w-5 h-5 shrink-0" />
         <span>{{ __('Looking for rents instead? See the Student Rent Map — rent by university city.') }}</span>
         <span class="ml-auto font-bold">→</span>
     </a>

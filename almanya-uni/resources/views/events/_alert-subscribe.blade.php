@@ -8,7 +8,7 @@
 
 <div class="bg-gradient-to-br from-rose-50 to-orange-50 border border-rose-200 rounded-2xl p-5 md:p-6">
     <div class="flex items-start gap-3 mb-3">
-        <span class="text-2xl" aria-hidden="true">📩</span>
+        <span class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-rose-600 ring-1 ring-rose-200" aria-hidden="true"><x-svg-icon name="envelope" class="w-5 h-5" /></span>
         <div>
             <h3 class="font-bold text-gray-900 leading-snug">
                 @if ($city)
@@ -34,7 +34,7 @@
     <form method="POST" action="{{ route('events.alerts.subscribe') }}" class="space-y-3">
         @csrf
         <input type="hidden" name="source" value="{{ $city ? 'city_page' : 'events_page' }}">
-        {{-- 🍯 honeypot --}}
+        {{-- honeypot --}}
         <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
 
         @if ($city)
@@ -59,7 +59,7 @@
 
         <button type="submit"
                 class="w-full inline-flex items-center justify-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-bold px-5 py-2.5 rounded-lg shadow-sm transition">
-            🔔 {{ __('Notify me') }}
+            <x-svg-icon name="bell" class="w-5 h-5" /> {{ __('Notify me') }}
         </button>
     </form>
 
@@ -71,11 +71,11 @@
                     data-city-id="{{ $city->id }}"
                     data-subscribe-url="{{ route('events.alerts.push.subscribe') }}"
                     data-msg-loading="{{ __('Enabling…') }}"
-                    data-msg-done="{{ __('✅ Browser notifications on') }}"
+                    data-msg-done="{{ __('Browser notifications on') }}"
                     data-msg-denied="{{ __('Notifications blocked in your browser') }}"
                     data-msg-error="{{ __('Could not enable notifications') }}"
                     class="inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-rose-700 hover:text-rose-900 disabled:opacity-60">
-                <span data-push-label>🔔 {{ __('Or: instant browser notifications') }}</span>
+                <x-svg-icon name="bell" class="w-4 h-4" /><span data-push-label>{{ __('Or: instant browser notifications') }}</span>
             </button>
             <p data-push-note="{{ $city->id }}" class="text-xs text-gray-500 mt-1"></p>
         </div>

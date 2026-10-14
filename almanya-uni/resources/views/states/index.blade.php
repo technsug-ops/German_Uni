@@ -60,7 +60,7 @@
                     'west'  => [__('West'), 'wrench-screwdriver', 'NRW, RP, HE, SL',
                         'bg-emerald-600 text-white border-emerald-600',
                         'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'],
-                    'ost'   => [__('East'), 'sparkles', 'BE, BB, SN, ST, TH',
+                    'ost'   => [__('East'), 'map', 'BE, BB, SN, ST, TH',
                         'bg-rose-600 text-white border-rose-600',
                         'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100'],
                 ];
@@ -108,7 +108,7 @@
     <div class="max-w-[1400px] mx-auto px-4">
         @if ($states->isEmpty())
             <x-empty-state
-                icon="🗺️"
+                icon="map"
                 :title="__('No states available right now')"
                 :description="__('Try browsing cities directly while we are updating the catalog.')"
                 :actions="[
@@ -136,7 +136,7 @@
                             </div>
                         @endif
                         @if($state->content_blocks)
-                            <span class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm"><x-svg-icon name="sparkles" class="w-3 h-3" /> {{ __('Guide') }}</span>
+                            <span class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm"><x-svg-icon name="book-open" class="w-3 h-3" /> {{ __('Guide') }}</span>
                         @endif
                         <span class="absolute bottom-2 right-2 inline-block px-2 py-0.5 rounded-full bg-black/60 backdrop-blur text-white text-xs font-semibold">
                             {{ __(':n unis', ['n' => $state->uni_count]) }}

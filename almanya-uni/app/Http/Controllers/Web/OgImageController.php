@@ -125,7 +125,7 @@ class OgImageController extends Controller
             'badge'    => mb_strtoupper(__('Study Field')),
             'title'    => $f->name,
             'subtitle' => $f->name_de,
-            'meta'     => ($f->icon ? $f->icon . ' ' : '') . __('Germany'),
+            'meta'     => __('Germany'),
             'color'    => $f->color ?: '#7C3AED',
         ];
     }

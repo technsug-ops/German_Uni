@@ -13,7 +13,7 @@
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <tr><td style="background:linear-gradient(135deg,#be123c 0%,#e11d48 50%,#f97316 100%);padding:28px 24px;color:#ffffff;text-align:center;">
-                <h1 style="margin:0;font-size:23px;font-weight:800;">🎵 {{ __('Events in :city', ['city' => $city->name]) }}</h1>
+                <h1 style="margin:0;font-size:23px;font-weight:800;">{{ __('Events in :city', ['city' => $city->name]) }}</h1>
                 <p style="margin:6px 0 0;font-size:13px;color:#fecdd3;">{{ now()->translatedFormat('d F Y') }}</p>
             </td></tr>
 
@@ -28,7 +28,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #fbcfe8;background:#fff1f2;border-radius:8px;">
                         <tr><td style="padding:13px 15px;">
                             <p style="margin:0 0 4px;font-weight:700;color:#9f1239;font-size:15px;">
-                                {{ $event->type_emoji ?? '🎵' }} {{ $event->title }}
+                                {{ $event->title }}
                             </p>
                             <p style="margin:0;font-size:13px;color:#be123c;">
                                 {{ $event->starts_at->translatedFormat('d M Y · H:i') }}

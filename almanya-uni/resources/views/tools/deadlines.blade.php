@@ -12,9 +12,9 @@
 @php
     $degreeLabel = fn ($d) => degree_label($d);
     $langLabel = fn ($l) => match ($l) {
-        'en'   => '🇬🇧 ' . __('English'),
-        'de'   => '🇩🇪 ' . __('German'),
-        'both' => '🇬🇧🇩🇪 ' . __('Both'),
+        'en'   => __('English'),
+        'de'   => __('German'),
+        'both' => __('Both'),
         default => '—',
     };
 
@@ -77,9 +77,9 @@
                 </select>
                 <select name="language" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All languages') }}</option>
-                    <option value="en" @selected($filters['language'] === 'en')>🇬🇧 {{ __('English') }}</option>
-                    <option value="de" @selected($filters['language'] === 'de')>🇩🇪 {{ __('German') }}</option>
-                    <option value="both" @selected($filters['language'] === 'both')>🇬🇧🇩🇪 {{ __('Both') }}</option>
+                    <option value="en" @selected($filters['language'] === 'en')>{{ __('English') }}</option>
+                    <option value="de" @selected($filters['language'] === 'de')>{{ __('German') }}</option>
+                    <option value="both" @selected($filters['language'] === 'both')>{{ __('Both') }}</option>
                 </select>
                 <select name="field" onchange="this.form.submit()" class="px-3 py-2 rounded-lg border border-gray-300 text-sm bg-white">
                     <option value="">{{ __('All fields') }}</option>
@@ -198,7 +198,7 @@
                                     {{-- Semester --}}
                                     <div class="hidden md:block col-span-1">
                                         <span class="inline-flex items-center text-xs text-gray-600 font-medium" title="{{ $sem === 'winter' ? __('Winter') : __('Summer') }}">
-                                            <x-svg-icon name="{{ $sem === 'winter' ? 'sparkles' : 'sparkles' }}" class="w-4 h-4" />
+                                            <x-svg-icon name="{{ $sem === 'winter' ? 'calendar' : 'sun' }}" class="w-4 h-4" />
                                         </span>
                                     </div>
 
@@ -222,7 +222,7 @@
                                         <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 font-medium">{{ $degreeLabel($p->degree) }}</span>
                                         @if ($p->language)
                                             <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 font-medium" title="{{ $langLabel($p->language) }}">
-                                                {{ $p->language === 'both' ? '🇬🇧🇩🇪' : ($p->language === 'en' ? '🇬🇧' : '🇩🇪') }}
+                                                {{ $p->language === 'both' ? 'EN/DE' : ($p->language === 'en' ? 'EN' : 'DE') }}
                                             </span>
                                         @endif
                                         @if ($p->field)
@@ -264,7 +264,7 @@
         <h3 class="font-bold text-gray-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> {{ __('Application Periods in Germany') }}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
             <div>
-                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="sparkles" class="w-4 h-4" /> Wintersemester ({{ __('Winter') }})</p>
+                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="calendar" class="w-4 h-4" /> Wintersemester ({{ __('Winter') }})</p>
                 <ul class="list-disc list-inside space-y-1 text-xs">
                     <li>{{ __('Starts in October, runs through February') }}</li>
                     <li>{!! __('Most unis: <strong>July 15</strong> deadline') !!}</li>
@@ -273,7 +273,7 @@
                 </ul>
             </div>
             <div>
-                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="sparkles" class="w-4 h-4" /> Sommersemester ({{ __('Summer') }})</p>
+                <p class="font-semibold mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="sun" class="w-4 h-4" /> Sommersemester ({{ __('Summer') }})</p>
                 <ul class="list-disc list-inside space-y-1 text-xs">
                     <li>{{ __('Starts in April, runs through September') }}</li>
                     <li>{!! __('Most unis: <strong>January 15</strong> deadline') !!}</li>

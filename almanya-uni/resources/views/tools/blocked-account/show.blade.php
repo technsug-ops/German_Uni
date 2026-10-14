@@ -37,7 +37,7 @@
                 </h1>
                 <p class="mt-1 text-blue-100">
                     <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/15 ring-1 ring-white/20 text-sm">
-                        {!! e_icon($provider->type_emoji, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
+                        {!! e_icon($provider->type_icon, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
                     </span>
                     @if ($provider->backend_bank)
                         <span class="ml-2 text-sm opacity-90">{{ __('Bank:') }} {{ $provider->backend_bank }}</span>
@@ -148,7 +148,7 @@
         {{-- EK ÖZELLİKLER — tek-dil (TR); EN/DE'de sızıntı olmasın diye gizle --}}
         @if (app()->getLocale() === 'tr' && is_array($provider->features) && count($provider->features))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="sparkles" class="w-5 h-5 text-primary-600" /> {{ __('Additional Features') }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-5 h-5 text-primary-600" /> {{ __('Additional Features') }}</h2>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($provider->features as $f)
                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-800">{{ $f }}</span>
@@ -169,9 +169,9 @@
                 @if ($provider->turkish_students_note)
                     <div>
                         @if (app()->getLocale() === 'tr')
-                            <h3 class="font-bold text-blue-900 mb-1">🇹🇷 Türk Öğrenciler İçin</h3>
+                            <h3 class="font-bold text-blue-900 mb-1">Türk Öğrenciler İçin</h3>
                         @else
-                            <h3 class="font-bold text-blue-900 mb-1">🇹🇷 {{ __('Notes for Turkish Students') }}</h3>
+                            <h3 class="font-bold text-blue-900 mb-1">{{ __('Notes for Turkish Students') }}</h3>
                         @endif
                         <p class="text-blue-800">{{ $provider->turkish_students_note }}</p>
                     </div>

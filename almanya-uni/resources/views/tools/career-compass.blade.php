@@ -35,10 +35,10 @@
     @php
         // RIASEC soruları: her seçenek bir harf. Değer soruları: ikili tercih.
         $riasecQuestions = [
-            ['q1', 'sparkles', __('A free Saturday — which is most appealing?'), [
+            ['q1', 'sun', __('A free Saturday — which is most appealing?'), [
                 ['R', 'wrench-screwdriver', __('Repair/assemble something')],
                 ['I', 'beaker',             __('Explore science/technology')],
-                ['A', 'sparkles',           __('Work on art/music/writing')],
+                ['A', 'paint-brush',           __('Work on art/music/writing')],
                 ['S', 'users',              __('Meet friends / help others')],
             ]],
             ['q2', 'users', __('Your natural role in a group project?'), [
@@ -50,25 +50,25 @@
             ['q3', 'trophy', __('Which praise makes you happier?'), [
                 ['R', 'wrench-screwdriver', __('"Well done, you are very skilled"')],
                 ['I', 'light-bulb',         __('"You are very smart, great analysis"')],
-                ['A', 'sparkles',           __('"You are very creative"')],
+                ['A', 'paint-brush',           __('"You are very creative"')],
                 ['S', 'heart',              __('"You get along great with people"')],
             ]],
             ['q4', 'light-bulb', __('What excites you about the business world?'), [
                 ['R', 'building-storefront', __('Building something tangible')],
                 ['I', 'search',              __('Solving a puzzle/data')],
-                ['E', 'rocket-launch',       __('Starting and running your own business')],
+                ['E', 'briefcase',       __('Starting and running your own business')],
                 ['C', 'list-bullet',         __('Working in an orderly, systematic way')],
             ]],
             ['q5', 'book-open', __('Favorite type of class at school?'), [
                 ['R', 'cog',     __('Lab / workshop')],
                 ['I', 'beaker',  __('Math / science')],
-                ['A', 'sparkles', __('Art / literature')],
+                ['A', 'book-open', __('Art / literature')],
                 ['S', 'globe',   __('Social studies / history')],
             ]],
             ['q6', 'mountain', __('When you face a problem?'), [
                 ['R', 'wrench-screwdriver', __('I try right away, solve with my hands')],
                 ['I', 'beaker',             __('I research, look for a logical solution')],
-                ['A', 'sparkles',           __('I try a creative, unconventional way')],
+                ['A', 'light-bulb',           __('I try a creative, unconventional way')],
                 ['C', 'list-bullet',        __('I plan in detail, go step by step')],
             ]],
             ['q7', 'building-office', __('Which environment suits you?'), [
@@ -83,7 +83,7 @@
         $valueQuestions = [
             ['v_income', 'scale', __('More important in career choice?'), [
                 ['income',  'banknotes', __('High and guaranteed salary')],
-                ['meaning', 'sparkles',  __('Meaningful work that benefits society')],
+                ['meaning', 'heart',  __('Meaningful work that benefits society')],
             ]],
             ['v_rhythm', 'calendar', __('Your ideal workday?'), [
                 ['stable',  'arrow-path', __('Same routine, predictable')],
@@ -99,7 +99,7 @@
             ]],
             ['v_security', 'shield-check', __('Which is closer to you?'), [
                 ['security', 'home',         __('Stable, guaranteed position')],
-                ['freedom',  'rocket-launch', __('My own business, flexibility, freedom')],
+                ['freedom',  'briefcase', __('My own business, flexibility, freedom')],
             ]],
         ];
 
@@ -320,11 +320,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 @foreach ($result['programs'] as $prog)
                     <a href="{{ route('programs.show', $prog->slug) }}" class="flex items-start gap-3 p-3 border border-gray-100 rounded-lg hover:bg-gray-50 hover:border-rose-300 transition">
-                        <span class="text-xl flex-shrink-0 flex items-center">
-                            @if ($prog->language === 'en') 🇬🇧
-                            @elseif ($prog->language === 'both') <x-svg-icon name="globe" class="w-5 h-5 text-rose-600" />
-                            @else 🇩🇪
-                            @endif
+                        <span class="flex-shrink-0 inline-flex items-center justify-center min-w-[2.25rem] px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 text-[11px] font-bold">
+                            {{ $prog->language === 'en' ? 'EN' : ($prog->language === 'both' ? 'EN/DE' : 'DE') }}
                         </span>
                         <div class="flex-1 min-w-0">
                             <p class="font-semibold text-sm text-gray-900 leading-tight">{{ $prog->name }}</p>

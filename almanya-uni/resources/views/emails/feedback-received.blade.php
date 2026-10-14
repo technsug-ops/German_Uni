@@ -12,7 +12,7 @@
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <tr><td style="background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);padding:24px;color:#fff;">
-                <h1 style="margin:0;font-size:22px;font-weight:700;">💬 Yeni Geri Bildirim</h1>
+                <h1 style="margin:0;font-size:22px;font-weight:700;">Yeni Geri Bildirim</h1>
                 <p style="margin:6px 0 0;font-size:13px;color:#bfdbfe;">
                     {{ \App\Models\Feedback::TYPES[$feedback->type] ?? $feedback->type }}
                     · {{ $feedback->created_at->format('d.m.Y H:i') }}

@@ -11,7 +11,7 @@
                 @else from-amber-500 to-orange-500
                 @endif
                 text-white flex items-center justify-center">
-                {!! e_icon($provider->type_emoji, 'w-7 h-7') !!}
+                {!! e_icon($provider->type_icon, 'w-7 h-7') !!}
             </div>
         @endif
         <div class="flex-1 min-w-0">

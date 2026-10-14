@@ -67,7 +67,7 @@
                                 </span>
                             @endif
                             @if ($p->news_priority > 0)
-                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 font-medium">📌 {{ __('Featured') }}</span>
+                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 font-medium inline-flex items-center gap-1"><x-svg-icon name="bookmark" class="w-3 h-3" /> {{ __('Featured') }}</span>
                             @endif
                             <span class="text-gray-400 ml-auto">{{ ($p->event_date ?? $p->published_at)?->translatedFormat('d F Y') }}</span>
                         </div>

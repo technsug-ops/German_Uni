@@ -19,9 +19,9 @@ class Contribution extends Model
     ];
 
     public const TYPES = [
-        'experience' => '📝 Deneyim',
-        'tip'        => '💡 İpucu',
-        'correction' => '✏️ Düzeltme',
+        'experience' => 'Deneyim',
+        'tip'        => 'İpucu',
+        'correction' => 'Düzeltme',
     ];
 
     public const TARGETS = [

@@ -8,7 +8,7 @@
     <div class="px-4 py-3 text-white" style="background: {{ $event->type_color }};">
         <div class="flex items-center justify-between gap-2">
             <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider">
-                {!! e_icon($event->type_emoji, 'w-3.5 h-3.5') !!}
+                {!! e_icon($event->type_icon, 'w-3.5 h-3.5') !!}
                 {{ $event->type_label }}
             </span>
             @if ($isLive)
@@ -35,9 +35,9 @@
                     <x-svg-icon name="user" class="w-3.5 h-3.5 text-gray-400" /> <span class="truncate">{{ $event->host }}</span>
                 </p>
             @endif
-            @if ($event->language_flag && $event->source !== 'ticketmaster')
+            @if ($event->language_label && $event->source !== 'ticketmaster')
                 <p class="flex items-center gap-1.5 text-gray-500">
-                    <x-svg-icon name="globe" class="w-3.5 h-3.5 text-gray-400" /> <span>{{ $event->language_flag }} {{ $event->language_label }}</span>
+                    <x-svg-icon name="globe" class="w-3.5 h-3.5 text-gray-400" /> <span>{{ $event->language_label }}</span>
                 </p>
             @endif
             @if ($event->mode === 'offline' && $event->location_city)

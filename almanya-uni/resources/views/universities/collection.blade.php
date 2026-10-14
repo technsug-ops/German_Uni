@@ -58,7 +58,7 @@
             <span class="text-white">{{ $cTitle }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold mb-3 leading-tight flex items-center gap-3">
-            <span aria-hidden="true">{{ $collection['icon'] }}</span> {{ $cTitle }}
+            <span aria-hidden="true" class="inline-flex align-middle"><x-svg-icon :name="$collection['icon']" class="w-8 h-8" /></span> {{ $cTitle }}
         </h1>
         <p class="text-lg md:text-xl text-white/90 max-w-3xl">{{ $cSubtitle }}</p>
     </div>
@@ -97,7 +97,7 @@
                     @php $a = $accentMap[$group['accent']] ?? $accentMap['emerald']; @endphp
                     <div>
                         <h2 class="text-lg font-bold mb-4 inline-flex items-center gap-2 {{ $a['head'] }}">
-                            <span aria-hidden="true">{{ $group['icon'] }}</span> {{ __($group['title']) }}
+                            {!! e_icon($group['icon'] ?? '', 'w-5 h-5 inline') !!} {{ __($group['title']) }}
                         </h2>
                         <div class="space-y-3">
                             @foreach ($group['items'] as $slug => $meta)
@@ -148,14 +148,14 @@
                     @if ($oSlug !== $slug)
                         <a href="{{ route('universities.collection', $oSlug) }}"
                            class="group flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-500 hover:shadow-md transition">
-                            <span class="text-2xl shrink-0" aria-hidden="true">{{ $o['icon'] }}</span>
+                            <span class="shrink-0 text-primary-600" aria-hidden="true"><x-svg-icon :name="$o['icon']" class="w-6 h-6" /></span>
                             <span class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ __($o['title']) }}</span>
                         </a>
                     @endif
                 @endforeach
                 <a href="{{ route('universities.index') }}"
                    class="group flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-500 hover:shadow-md transition">
-                    <span class="text-2xl shrink-0" aria-hidden="true">🎓</span>
+                    <span class="shrink-0 text-primary-600" aria-hidden="true"><x-svg-icon name="academic-cap" class="w-6 h-6" /></span>
                     <span class="font-semibold text-gray-900 group-hover:text-primary-600 leading-snug">{{ __('All universities') }}</span>
                 </a>
             </div>

@@ -86,7 +86,7 @@
                 <div class="flex items-baseline justify-between">
                     <span class="text-gray-600">{{ __('Rate') }}</span>
                     @if ($mentor->is_free)
-                        <strong class="text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="sparkles" class="w-4 h-4" /> {{ __('Free') }}</strong>
+                        <strong class="text-emerald-700 inline-flex items-center gap-1"><x-svg-icon name="gift" class="w-4 h-4" /> {{ __('Free') }}</strong>
                     @else
                         <strong class="text-amber-700 text-lg">{{ number_format($mentor->rate_eur, 0, ',', '.') }} €</strong>
                     @endif
@@ -106,7 +106,7 @@
                 @if (! empty($mentor->languages))
                     <div class="flex items-baseline justify-between">
                         <span class="text-gray-600">{{ __('Language') }}</span>
-                        <span>{{ collect($mentor->languages)->map(fn($l) => match($l) {'tr'=>'🇹🇷 TR','de'=>'🇩🇪 DE','en'=>'🇬🇧 EN',default=>$l})->join(' · ') }}</span>
+                        <span>{{ collect($mentor->languages)->map(fn($l) => match($l) {'tr'=>'TR','de'=>'DE','en'=>'EN',default=>$l})->join(' · ') }}</span>
                     </div>
                 @endif
             </div>
@@ -164,9 +164,9 @@
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-700 mb-1 inline-flex items-center gap-1.5"><x-svg-icon name="language" class="w-3.5 h-3.5" /> {{ __('Preferred language') }}</label>
                                     <select name="preferred_language" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
-                                        <option value="tr">🇹🇷 Türkçe</option>
-                                        <option value="en">🇬🇧 English</option>
-                                        <option value="de">🇩🇪 Deutsch</option>
+                                        <option value="tr">Türkçe</option>
+                                        <option value="en">English</option>
+                                        <option value="de">Deutsch</option>
                                     </select>
                                 </div>
                             </div>

@@ -31,7 +31,7 @@
             </a>
             <button type="button" onclick="document.getElementById('feedbackToggle')?.click()"
                     class="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold transition">
-                💬 {{ __('Report this error') }}
+                <span class="inline-flex items-center gap-2"><x-svg-icon name="chat-bubble" class="w-5 h-5" /> {{ __('Report this error') }}</span>
             </button>
         </div>
 

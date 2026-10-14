@@ -28,7 +28,7 @@
             <span class="text-white">{{ __('Studienkolleg Finder') }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            🎓 {{ __('Studienkolleg Finder') }}
+            {{ __('Studienkolleg Finder') }}
         </h1>
         <p class="text-lg md:text-xl text-violet-100 max-w-3xl">
             {{ __('Your German high-school equivalent is rated Anabin H-? You need a Studienkolleg — a 1-year foundation year before Bachelor. Compare 30+ official Studienkollegs by city, track, and tuition.') }}
@@ -79,11 +79,11 @@
         </a>
         <a href="{{ route('tools.studienkolleg', ['type' => 'staatlich']) }}"
            class="px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $activeFilter['type'] === 'staatlich' ? 'bg-violet-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-            🏛️ {{ __('Public (free)') }} ({{ $stats['staatlich'] }})
+            {{ __('Public (free)') }} ({{ $stats['staatlich'] }})
         </a>
         <a href="{{ route('tools.studienkolleg', ['type' => 'privat']) }}"
            class="px-3 py-1.5 rounded-full text-xs font-semibold transition {{ $activeFilter['type'] === 'privat' ? 'bg-violet-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-            🏢 {{ __('Private (paid)') }} ({{ $stats['privat'] }})
+            {{ __('Private (paid)') }} ({{ $stats['privat'] }})
         </a>
 
         <span class="text-xs text-gray-500 ml-4 mr-1">{{ __('Track:') }}</span>
@@ -113,7 +113,7 @@
                     <div class="flex items-start justify-between gap-3 mb-2">
                         <div class="flex-1 min-w-0">
                             <h3 class="font-bold text-gray-900 leading-tight mb-1">{{ $sk->name }}</h3>
-                            <p class="text-sm text-gray-500">📍 {{ $cityName }}</p>
+                            <p class="text-sm text-gray-500 inline-flex items-center gap-1"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ $cityName }}</p>
                         </div>
                         <span class="shrink-0 text-xs font-bold px-2 py-1 rounded-full {{ $sk->type === 'staatlich' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800' }}">
                             {{ $sk->type_label }}

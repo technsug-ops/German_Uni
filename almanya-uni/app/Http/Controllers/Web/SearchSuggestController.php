@@ -26,7 +26,7 @@ class SearchSuggestController extends Controller
             return response()->json(['results' => [], 'q' => $q]);
         }
 
-        $key = 'search:suggest:v4:' . app()->getLocale() . ':' . md5(mb_strtolower($q));
+        $key = 'search:suggest:v5:' . app()->getLocale() . ':' . md5(mb_strtolower($q));
         $results = Cache::remember($key, 300, function () use ($q) {
             $like = '%' . $q . '%';
             // Kavram/sinonim eşleşmeleri en üstte (sperrkonto = blocked account = bloke hesap)
@@ -42,7 +42,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($u) use (&$all) {
                     $all[] = [
                         'type' => 'university',
-                        'type_label' => '🎓 ' . __('University'),
+                        'type_label' => __('University'),
                         'title' => $u->name_de,
                         'subtitle' => $u->short_name,
                         'url' => "/universities/{$u->slug}",
@@ -61,7 +61,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($c) use (&$all) {
                     $all[] = [
                         'type' => 'city',
-                        'type_label' => '🏙️ ' . __('City'),
+                        'type_label' => __('City'),
                         'title' => $c->name,
                         'subtitle' => __(':count universities', ['count' => $c->universities_count]),
                         'url' => "/cities/{$c->slug}",
@@ -80,7 +80,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'program',
-                        'type_label' => '📚 ' . __('Program'),
+                        'type_label' => __('Program'),
                         'title' => $p->name_de,
                         'subtitle' => ucfirst($p->degree) . ($p->university ? " · {$p->university->name_de}" : ''),
                         'url' => "/programs/{$p->slug}",
@@ -98,7 +98,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($f) use (&$all) {
                     $all[] = [
                         'type' => 'field',
-                        'type_label' => '🎯 ' . __('Field'),
+                        'type_label' => __('Field'),
                         'title' => $f->name,
                         'subtitle' => $f->name_de !== $f->name ? $f->name_de : null,
                         'url' => "/fields/{$f->slug}",
@@ -116,7 +116,7 @@ class SearchSuggestController extends Controller
                 ->each(function ($s) use (&$all) {
                     $all[] = [
                         'type' => 'state',
-                        'type_label' => '🗺️ ' . __('State'),
+                        'type_label' => __('State'),
                         'title' => $s->name_de,
                         'subtitle' => $s->name !== $s->name_de ? $s->name : null,
                         'url' => "/states/{$s->slug}",
@@ -135,11 +135,11 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'profession',
-                        'type_label' => '💼 ' . __('Profession'),
+                        'type_label' => __('Profession'),
                         'title' => $p->name,
                         'subtitle' => $p->kldb_code ? "KldB {$p->kldb_code}" : null,
                         'url' => "/professions/{$p->slug}",
-                        'icon' => $p->field?->icon ?: '💼',
+                        'icon' => $p->field?->icon ?: 'briefcase',
                         'image' => null,
                     ];
                 });
@@ -156,11 +156,11 @@ class SearchSuggestController extends Controller
                 ->each(function ($s) use (&$all) {
                     $all[] = [
                         'type' => 'scholarship',
-                        'type_label' => $s->is_daad ? '🎖️ ' . __('DAAD Scholarship') : '🎖️ ' . __('Scholarship'),
+                        'type_label' => $s->is_daad ? __('DAAD Scholarship') : __('Scholarship'),
                         'title' => $s->name_en ?: $s->name_de,
                         'subtitle' => null,
                         'url' => "/scholarships/{$s->slug}",
-                        'icon' => '🎖️',
+                        'icon' => 'trophy',
                         'image' => null,
                     ];
                 });
@@ -175,11 +175,11 @@ class SearchSuggestController extends Controller
                 ->each(function ($s) use (&$all) {
                     $all[] = [
                         'type' => 'studienkolleg',
-                        'type_label' => '🎓 Studienkolleg',
+                        'type_label' => 'Studienkolleg',
                         'title' => $s->name,
                         'subtitle' => $s->city_name_cache . ' · ' . ($s->type === 'privat' ? __('Private') : __('Public')),
                         'url' => "/tools/studienkolleg#" . $s->slug,
-                        'icon' => '🎓',
+                        'icon' => 'academic-cap',
                         'image' => null,
                     ];
                 });
@@ -192,11 +192,11 @@ class SearchSuggestController extends Controller
                 ->each(function ($h) use (&$all) {
                     $all[] = [
                         'type' => 'housing',
-                        'type_label' => '🏠 ' . __('Housing provider'),
+                        'type_label' => __('Housing provider'),
                         'title' => $h->name,
                         'subtitle' => $h->type ?: null,
                         'url' => "/housing/providers/{$h->slug}",
-                        'icon' => '🏠',
+                        'icon' => 'home',
                         'image' => null,
                     ];
                 });
@@ -210,11 +210,11 @@ class SearchSuggestController extends Controller
                 ->each(function ($b) use (&$all) {
                     $all[] = [
                         'type' => 'sperrkonto',
-                        'type_label' => '🏦 Sperrkonto',
+                        'type_label' => 'Sperrkonto',
                         'title' => $b->name,
                         'subtitle' => $b->type === 'fintech' ? 'FinTech' : __('Bank'),
                         'url' => "/tools/sperrkonto/{$b->slug}",
-                        'icon' => '🏦',
+                        'icon' => 'building-library',
                         'image' => null,
                     ];
                 });
@@ -230,16 +230,22 @@ class SearchSuggestController extends Controller
                 ->each(function ($p) use (&$all) {
                     $all[] = [
                         'type' => 'post',
-                        'type_label' => '📝 Blog · ' . ($p->category?->name ?? __('Article')),
+                        'type_label' => 'Blog · ' . ($p->category?->name ?? __('Article')),
                         'title' => $p->title,
                         'subtitle' => __(':count min read', ['count' => $p->reading_minutes]),
                         'url' => $p->publicUrl(),
                         'image' => $p->featured_image,
-                        'icon' => '📝',
+                        'icon' => 'document-text',
                     ];
                 });
 
-            return $all;
+            // İkonlar Heroicon adı (veya DB'deki eski emoji) olarak gelir; istemci
+            // ham metin basmasın diye SVG'ye çevrilir (icon_html) ve 'icon' boşaltılır.
+            return array_map(function (array $r) {
+                $r['icon_html'] = ! empty($r['icon']) ? (e_icon($r['icon'], 'w-5 h-5 text-primary-700') ?: null) : null;
+                $r['icon'] = null;
+                return $r;
+            }, $all);
         });
 
         return response()->json([

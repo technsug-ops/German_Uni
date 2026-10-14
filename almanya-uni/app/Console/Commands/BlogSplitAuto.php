@@ -161,8 +161,11 @@ TXT;
         return $sections;
     }
 
-    private function downloadCover(string $prompt, string $slug): string
+    private function downloadCover(string $prompt, string $slug): ?string
     {
+        if (! config('services.image.enabled')) {
+            return null; // Yapay zeka kapak üretimi kapalı (services.image.enabled).
+        }
         $url = 'https://image.pollinations.ai/prompt/' . rawurlencode($prompt . ', photorealistic, Germany, students')
             . '?width=1200&height=630&nologo=true&seed=' . random_int(1, 9999);
         $path = "blog/{$slug}.jpg";

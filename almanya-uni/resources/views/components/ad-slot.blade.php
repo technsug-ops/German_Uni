@@ -62,8 +62,8 @@
 @if ($affiliateConfig && ! empty($affiliateConfig['active']) && $adText)
     <div class="ad-slot-affiliate bg-gradient-to-br from-accent-50 to-primary-50 border border-accent-200 rounded-xl p-5 md:p-6 my-6 shadow-sm">
         <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-accent-500 text-white rounded-lg flex items-center justify-center text-xl">
-                💰
+            <div class="flex-shrink-0 w-12 h-12 bg-accent-500 text-white rounded-lg flex items-center justify-center">
+                <x-svg-icon name="banknotes" class="w-6 h-6" />
             </div>
             <div class="flex-1">
                 <div class="flex items-baseline gap-2 mb-1">
@@ -74,7 +74,7 @@
                 <p class="text-sm text-gray-700 leading-relaxed mb-3">{{ $adText['desc'] }}</p>
                 <a href="{{ $affiliateConfig['url'] }}" target="_blank" rel="sponsored noopener nofollow"
                    class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white px-5 py-2.5 rounded-lg font-bold text-sm transition shadow-sm">
-                    👉 {{ $adText['cta'] }}
+                    {{ $adText['cta'] }} <x-svg-icon name="arrow-right" class="w-4 h-4" />
                 </a>
                 <p class="text-[11px] text-gray-500 mt-2">{{ $adText['disclaimer'] }}</p>
             </div>

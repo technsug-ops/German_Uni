@@ -55,7 +55,7 @@
                     @endif
                     @if ($user->is_contributor)
                         <span class="inline-flex items-center gap-1 bg-emerald-500 text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" title="{{ __('Approved community contributor') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-3.5 h-3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 0 0-3.09 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-3.5 h-3.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>
                             {{ __('Community Contributor') }}
                         </span>
                     @endif
@@ -152,7 +152,7 @@
             <div class="flex items-start justify-between gap-4 mb-5 flex-wrap">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">
-                        <x-svg-icon name="rocket-launch" class="w-4 h-4" />
+                        <x-svg-icon name="flag" class="w-4 h-4" />
                         {{ __('Getting Started') }}
                     </div>
                     <h2 class="text-2xl font-extrabold text-gray-900">{{ __('Welcome, :name!', ['name' => $user->name]) }}</h2>
@@ -253,7 +253,7 @@
                 {{-- Tier ladder --}}
                 <div class="flex items-center gap-1 text-xs">
                     @foreach ([
-                        1 => ['sparkles', __('Newcomer'), 0],
+                        1 => ['user', __('Newcomer'), 0],
                         2 => ['book-open', __('Researcher'), 20],
                         3 => ['target', __('Decision maker'), 40],
                         4 => ['plane', __('On the way to Germany'), 60],
@@ -443,7 +443,7 @@
     {{-- Hızlı CTA --}}
     <section class="mt-8 bg-gradient-to-br from-accent-50 to-white border border-accent-200 rounded-xl p-6">
         <h2 class="text-lg font-bold text-gray-900 mb-3 inline-flex items-center gap-1.5">
-            <x-svg-icon name="rocket-launch" class="w-5 h-5" />
+            <x-svg-icon name="arrow-right" class="w-5 h-5" />
             {{ __('What\'s next?') }}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">

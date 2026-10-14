@@ -63,7 +63,7 @@
                         <a href="{{ route('events.index', ['type' => $key]) }}"
                            class="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full border transition
                                   {{ $type === $key ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' }}">
-                            {!! e_icon($meta['emoji'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
+                            {!! e_icon($meta['icon'] ?? '', 'w-3 h-3') !!} {{ $meta['label'] }}
                         </a>
                     @endforeach
                 </div>
@@ -79,7 +79,7 @@
         <a href="{{ route('events.concerts') }}"
            class="group flex items-center justify-between gap-4 mb-8 rounded-xl border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-pink-50 px-5 py-4 hover:border-rose-400 transition">
             <div class="flex items-center gap-3">
-                <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-rose-600 text-white text-xl">🎵</span>
+                <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-rose-600 text-white"><x-svg-icon name="musical-note" class="w-6 h-6" /></span>
                 <div>
                     <h2 class="font-bold text-gray-900 text-base md:text-lg">{{ __('Germany Concerts & Culture Calendar') }}</h2>
                     <p class="text-xs md:text-sm text-gray-600">{{ __('Concerts, theatre, comedy & festivals across Germany — browse by city. (:count events)', ['count' => $concertCount]) }}</p>
@@ -111,10 +111,10 @@
 
     @php $highlights = $upcoming->take(6); $restUpcoming = $upcoming->slice(6); @endphp
 
-    {{-- 🔥 ÖNE ÇIKANLAR --}}
+    {{-- ÖNE ÇIKANLAR --}}
     @if ($highlights->isNotEmpty())
         <section class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2">🔥 {{ __('Highlights') }}</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 inline-flex items-center gap-2"><x-svg-icon name="fire" class="w-6 h-6 text-rose-600" /> {{ __('Highlights') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($highlights as $e)
                     <a href="{{ route('events.show', $e->slug) }}"
@@ -122,7 +122,7 @@
                         <div class="relative p-5 h-32 flex flex-col justify-between text-white"
                              style="background: linear-gradient(135deg, {{ $e->type_color }}, rgba(0,0,0,.5));">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-white/20 backdrop-blur px-2 py-0.5 rounded-full">{!! e_icon($e->type_emoji, 'w-3 h-3') !!} {{ $e->type_label }}</span>
+                                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide bg-white/20 backdrop-blur px-2 py-0.5 rounded-full">{!! e_icon($e->type_icon, 'w-3 h-3') !!} {{ $e->type_label }}</span>
                                 <span class="text-[11px] font-semibold bg-black/25 px-2 py-0.5 rounded-full whitespace-nowrap">{{ $e->starts_at->translatedFormat('d M · H:i') }}</span>
                             </div>
                             <div class="font-extrabold text-lg leading-tight line-clamp-2 drop-shadow">{{ $e->title }}</div>
@@ -191,7 +191,7 @@
                     ['icon' => 'chat-bubble', 'title' => __('Live webinar (60 min)'), 'desc' => __('30-min topic-deep dive + 30-min Q&A on Zoom. Most fundamentals (visa, Sperrkonto, Anabin) covered here.')],
                     ['icon' => 'wrench-screwdriver', 'title' => __('Hands-on workshop (90 min)'), 'desc' => __('Bring your own laptop: live uni-assist application, Sperrkonto setup, real Bürgeramt appointment search.')],
                     ['icon' => 'users', 'title' => __('Expert panel (75 min)'), 'desc' => __('3-4 alumni or experts on one theme (Werkstudent law, scholarship strategy, German bureaucracy).')],
-                    ['icon' => 'sparkles', 'title' => __('Mentor matching night (60 min)'), 'desc' => __('Speed-dating-style: 6-min rotations with 5-6 mentors. Find your mentor in one evening.')],
+                    ['icon' => 'users', 'title' => __('Mentor matching night (60 min)'), 'desc' => __('Speed-dating-style: 6-min rotations with 5-6 mentors. Find your mentor in one evening.')],
                     ['icon' => 'building-office', 'title' => __('University open day (online)'), 'desc' => __('Direct calls with German uni admissions offices — TUM, LMU, Heidelberg, etc.')],
                     ['icon' => 'cake', 'title' => __('Student meetup (offline)'), 'desc' => __('In-person meetups in Berlin, Munich, Frankfurt, Hamburg. Free, casual, Turkish + English.')],
                 ];
@@ -256,7 +256,7 @@
         :faqs="[
             ['q' => __('Are events really free?'), 'a' => __('Yes — every AlmanyaUni event is free by default. If a specific event has a fee (rare; usually for a hands-on workshop with materials cost), it is clearly shown with a €X badge on the event card and in the sticky sidebar.')],
             ['q' => __('Do I have to register?'), 'a' => __('No. You can RSVP if you want your spot counted, or if you want the Zoom link delivered via email. But drop-ins (just click the live Zoom link on the event page) are equally welcome.')],
-            ['q' => __('What language are events in?'), 'a' => __('Each event page shows a flag chip with the presentation language: 🇹🇷 Türkçe, 🇬🇧 English, 🇩🇪 Deutsch, or 🌍 multi (Turkish + German). Most events are in Turkish; international panels are in English.')],
+            ['q' => __('What language are events in?'), 'a' => __('Each event page shows a chip with the presentation language: Türkçe, English, Deutsch, or multi (Turkish + German). Most events are in Turkish; international panels are in English.')],
             ['q' => __('Will there be a recording?'), 'a' => __('Yes for most webinars and panels. The recording goes up on the same event page within 48 hours. Workshops with live exercises are not recorded (interaction matters).')],
             ['q' => __('Can I propose a topic?'), 'a' => __('Absolutely — that is how half our events get planned. Email technsug@gmail.com with your topic, your background, and a sentence on why this audience needs it.')],
         ]"

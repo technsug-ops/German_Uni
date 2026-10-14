@@ -20,7 +20,7 @@
         {{-- Emoji + pulse glow (mobilde küçük) --}}
         <span class="relative shrink-0 inline-flex items-center justify-center">
             <span class="absolute inset-0 rounded-full bg-white/30 animate-ping" style="animation-duration: 2s;"></span>
-            <span class="relative text-base sm:text-xl">{{ $isLive ? '🔴' : $event->type_emoji }}</span>
+            @if ($isLive)<span class="relative block w-3 h-3 rounded-full bg-red-500 ring-2 ring-white"></span>@else<span class="relative inline-flex"><x-svg-icon :name="$event->type_icon" class="w-4 h-4 sm:w-5 sm:h-5" /></span>@endif
         </span>
 
         <div class="flex-1 min-w-0 flex items-center gap-2 sm:gap-3 flex-nowrap overflow-hidden">
@@ -33,9 +33,9 @@
                 <span class="hidden md:inline text-white/95 text-xs whitespace-nowrap font-semibold">— {{ __('on air now') }}</span>
             @else
                 <a href="{{ route('events.show', $event->slug) }}" class="font-semibold truncate hover:underline drop-shadow-sm min-w-0">{{ $event->type_label }}: "{{ $event->title }}"</a>
-                @if ($event->language_flag)
+                @if ($event->language_label)
                     <span class="hidden md:inline-flex shrink-0 items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur text-[11px] font-bold whitespace-nowrap" title="{{ __('Event language') }}">
-                        {{ $event->language_flag }} {{ $event->language_label }}
+                        {{ $event->language_label }}
                     </span>
                 @endif
                 {{-- Geri sayım: mobilde kompakt (kutusuz), masaüstünde kutulu --}}

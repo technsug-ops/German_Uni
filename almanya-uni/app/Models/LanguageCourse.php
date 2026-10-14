@@ -27,9 +27,9 @@ class LanguageCourse extends Model
     ];
 
     public const TYPES = [
-        'university' => ['label' => 'Üniversite Dil Kursu', 'emoji' => '🎓', 'color' => 'indigo'],
-        'private'    => ['label' => 'Özel Dil Kursu',       'emoji' => '🏫', 'color' => 'emerald'],
-        'online'     => ['label' => 'Online Dil Kursu',     'emoji' => '💻', 'color' => 'amber'],
+        'university' => ['label' => 'Üniversite Dil Kursu', 'emoji' => '🎓', 'icon' => 'academic-cap', 'color' => 'indigo'],
+        'private'    => ['label' => 'Özel Dil Kursu',       'emoji' => '🏫', 'icon' => 'building-library', 'color' => 'emerald'],
+        'online'     => ['label' => 'Online Dil Kursu',     'emoji' => '💻', 'icon' => 'computer', 'color' => 'amber'],
     ];
 
     /** CEFR seviyeleri. */
@@ -58,6 +58,12 @@ class LanguageCourse extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '🗣️';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'language';
     }
 
     /** Affiliate varsa onu, yoksa website'i kullan (tık yönlendirmesi için). */

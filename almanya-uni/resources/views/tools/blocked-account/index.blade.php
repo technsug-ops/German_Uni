@@ -215,7 +215,7 @@
                 null        => [__('All'),                'banknotes',        null],
                 'cheapest'  => [__('Cheapest'),           'currency-euro',    null],
                 // "Türkçe destek" sinyali yalnızca TR kitlesini ilgilendirir → sadece /tr
-                'turkish'   => [__('Turkish support'),    null,               '🇹🇷'],
+                'turkish'   => [__('Turkish support'),    'language',         null],
                 'insurance' => [__('Insurance included'), 'shield-check',     null],
                 'fast'      => [__('Fast (≤7 days)'),     'fire',             null],
                 'fintech'   => ['FinTech',                'cursor-arrow-rays', null],
@@ -328,7 +328,7 @@
                                 {{-- "Türkçe destek" sinyali yalnızca TR kitlesini ilgilendirir → sadece /tr --}}
                                 @if (app()->getLocale() === 'tr' && is_array($p->supported_languages) && in_array('tr', $p->supported_languages))
                                     <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-red-50 text-red-700 ring-1 ring-red-100">
-                                        🇹🇷 {{ __('Turkish support') }}
+                                        <x-svg-icon name="language" class="w-3.5 h-3.5" /> {{ __('Turkish support') }}
                                     </span>
                                 @endif
                             </div>
@@ -439,7 +439,7 @@
             @foreach (\App\Http\Controllers\Web\BlockedAccountController::countriesData() as $key => $c)
                 <a href="{{ route('tools.blocked-account.country', $key) }}"
                    class="group bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl px-4 py-3 transition flex items-center gap-3">
-                    <span class="text-2xl">{{ $c['flag'] }}</span>
+                    <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-50 text-primary-600"><x-svg-icon name="globe" class="w-5 h-5" /></span>
                     <div class="min-w-0">
                         <p class="font-semibold text-gray-900 group-hover:text-primary-700 truncate">{{ $c['name'] }}</p>
                         <p class="text-xs text-gray-500">{{ __('Sperrkonto guide') }}</p>

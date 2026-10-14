@@ -51,7 +51,7 @@
             <a href="{{ route('mentors.index', array_merge(request()->query(), ['free' => ($filters['freeOnly'] ?? false) ? null : 1])) }}"
                class="text-xs px-3 py-1.5 rounded-full border transition
                       {{ ($filters['freeOnly'] ?? false) ? 'bg-amber-600 text-white border-amber-600' : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100' }} inline-flex items-center gap-1">
-                <x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Free only') }}
+                <x-svg-icon name="gift" class="w-3.5 h-3.5" /> {{ __('Free only') }}
             </a>
         </div>
     </section>
@@ -157,7 +157,7 @@
                 $perks = [
                     ['icon' => 'bell', 'title' => __('Visibility'), 'desc' => __('Personal mentor profile + dedicated SEO-indexed URL — your expertise gets discovered.')],
                     ['icon' => 'currency-euro', 'title' => __('Earning option'), 'desc' => __('Set your own hourly rate (or stay free). AlmanyaUni does not take commission in the first year.')],
-                    ['icon' => 'sparkles', 'title' => __('Premium access'), 'desc' => __('Active mentors get free AlmanyaUni Premium membership + early access to new tools.')],
+                    ['icon' => 'star', 'title' => __('Premium access'), 'desc' => __('Active mentors get free AlmanyaUni Premium membership + early access to new tools.')],
                     ['icon' => 'users', 'title' => __('Community'), 'desc' => __('Private Slack with other mentors, monthly peer-learning calls, networking with alumni.')],
                 ];
             @endphp

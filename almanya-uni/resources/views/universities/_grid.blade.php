@@ -106,13 +106,13 @@
     <div class="mt-8">{{ $universities->links() }}</div>
 @else
     <x-empty-state
-        icon="🎓"
+        icon="academic-cap"
         :title="__('No universities match these criteria.')"
         :description="__('Try loosening one of the filters or browse all universities below.')"
         :actions="[
             ['label' => __('Reset all filters'), 'url' => route('universities.index'), 'primary' => true, 'icon' => '↺'],
-            ['label' => __('Browse by city'), 'url' => route('cities.index'), 'icon' => '🏙️'],
-            ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => '🎯'],
+            ['label' => __('Browse by city'), 'url' => route('cities.index'), 'icon' => 'building-office'],
+            ['label' => __('Browse by field'), 'url' => route('fields.index'), 'icon' => 'target'],
         ]"
     />
 @endif

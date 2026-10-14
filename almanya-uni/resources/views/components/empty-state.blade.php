@@ -1,5 +1,5 @@
 @props([
-    'icon' => '📭',
+    'icon' => 'inbox',
     'title' => null,
     'description' => null,
     'actions' => [],
@@ -9,7 +9,7 @@
     Reusable empty-state card.
     Usage:
         <x-empty-state
-            icon="🎓"
+            icon="academic-cap"
             :title="__('No universities match')"
             :description="__('Loosen a filter or browse below.')"
             :actions="[

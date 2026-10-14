@@ -26,9 +26,9 @@ class HousingProvider extends Model
     ];
 
     public const TYPES = [
-        'studierendenwerk' => ['label' => 'Devlet (Studierendenwerk)', 'emoji' => '🏛️', 'color' => 'emerald'],
-        'private_chain'    => ['label' => 'Özel Şirket',                'emoji' => '🏢', 'color' => 'indigo'],
-        'platform'         => ['label' => 'Portal / Platform',          'emoji' => '🌐', 'color' => 'amber'],
+        'studierendenwerk' => ['label' => 'Devlet (Studierendenwerk)', 'emoji' => '🏛️', 'icon' => 'building-library', 'color' => 'emerald'],
+        'private_chain'    => ['label' => 'Özel Şirket',                'emoji' => '🏢', 'icon' => 'building-office', 'color' => 'indigo'],
+        'platform'         => ['label' => 'Portal / Platform',          'emoji' => '🌐', 'icon' => 'globe', 'color' => 'amber'],
     ];
 
     public function getRouteKeyName(): string
@@ -54,6 +54,12 @@ class HousingProvider extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '🏠';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'home';
     }
 
     public function getPriceRangeAttribute(): string

@@ -72,7 +72,7 @@
             <a href="{{ route('housing.providers', ['type' => $key]) }}"
                class="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition
                       {{ $type === $key ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100' }}">
-                {!! e_icon($meta['emoji'] ?? '', 'w-3.5 h-3.5') !!} {{ $meta['label'] }}
+                {!! e_icon($meta['icon'] ?? '', 'w-3.5 h-3.5') !!} {{ $meta['label'] }}
             </a>
         @endforeach
     </div>

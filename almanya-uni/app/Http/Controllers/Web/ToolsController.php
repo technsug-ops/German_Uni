@@ -24,7 +24,7 @@ class ToolsController extends Controller
                 'slug'        => 'sablonlar',
                 'title'       => __('Application Templates'),
                 'description' => __('Copy-ready German templates: CV (Lebenslauf), motivation & recommendation letters, application emails.'),
-                'icon'        => '📝',
+                'icon'        => 'pencil-square',
                 'route'       => route('templates.index'),
                 'live'        => true,
             ],
@@ -32,7 +32,7 @@ class ToolsController extends Controller
                 'slug'        => 'yasam-maliyeti',
                 'title'       => __('Cost of Living Calculator'),
                 'description' => __('Calculate your monthly expenses as a student in Germany, city by city.'),
-                'icon'        => '💰',
+                'icon'        => 'banknotes',
                 'route'       => route('tools.cost-of-living'),
                 'live'        => true,
             ],
@@ -40,7 +40,7 @@ class ToolsController extends Controller
                 'slug'        => 'not-donusturucu',
                 'title'       => __('Grade Converter'),
                 'description' => __('Convert your university grade to the German 1-5 system.'),
-                'icon'        => '📊',
+                'icon'        => 'chart-bar',
                 'route'       => route('tools.grade-converter'),
                 'live'        => true,
             ],
@@ -48,7 +48,7 @@ class ToolsController extends Controller
                 'slug'        => 'eligibility-checker',
                 'title'       => __('Eligibility Checker'),
                 'description' => __('Is your diploma recognized in Germany? Anabin-based check for 15 countries — direct entry, Studienkolleg, or APS.'),
-                'icon'        => '✅',
+                'icon'        => 'check-circle',
                 'route'       => route('tools.eligibility-checker'),
                 'live'        => true,
             ],
@@ -56,7 +56,7 @@ class ToolsController extends Controller
                 'slug'        => 'studienkolleg',
                 'title'       => __('Studienkolleg Finder'),
                 'description' => __('Foundation-year programs for students whose diploma is not directly recognized. Filter by type and state.'),
-                'icon'        => '📚',
+                'icon'        => 'book-open',
                 'route'       => route('tools.studienkolleg'),
                 'live'        => true,
             ],
@@ -64,7 +64,7 @@ class ToolsController extends Controller
                 'slug'        => 'uni-onerisi',
                 'title'       => __('University Match Quiz'),
                 'description' => __('8 questions → the German universities that fit you best.'),
-                'icon'        => '🎯',
+                'icon'        => 'target',
                 'route'       => route('tools.recommendation'),
                 'live'        => true,
             ],
@@ -72,7 +72,7 @@ class ToolsController extends Controller
                 'slug'        => 'kariyer-pusulasi',
                 'title'       => __('Career Compass'),
                 'description' => __('Talent (RIASEC) + value analysis → real professions that match you from 3,500+ data.'),
-                'icon'        => '🧭',
+                'icon'        => 'compass',
                 'route'       => route('tools.career-compass'),
                 'live'        => true,
             ],
@@ -80,7 +80,7 @@ class ToolsController extends Controller
                 'slug'        => 'basvuru-takvimi',
                 'title'       => __('Application Calendar'),
                 'description' => __('See upcoming deadlines, filter, add to calendar. 7,000+ programs.'),
-                'icon'        => '📅',
+                'icon'        => 'calendar',
                 'route'       => route('tools.deadlines'),
                 'live'        => true,
             ],
@@ -88,7 +88,7 @@ class ToolsController extends Controller
                 'slug'        => 'vize-maliyeti',
                 'title'       => __('Visa Cost Calculator'),
                 'description' => __('Add up ALL costs of the Germany student visa process step by step.'),
-                'icon'        => '💸',
+                'icon'        => 'banknotes',
                 'route'       => route('tools.visa-cost'),
                 'live'        => true,
             ],
@@ -96,7 +96,7 @@ class ToolsController extends Controller
                 'slug'        => 'butce-planlayici',
                 'title'       => __('Budget Planner'),
                 'description' => __('Monthly income + expense + savings goal. City-based, with work income.'),
-                'icon'        => '📈',
+                'icon'        => 'arrow-trending-up',
                 'route'       => route('tools.budget-planner'),
                 'live'        => true,
             ],
@@ -104,7 +104,7 @@ class ToolsController extends Controller
                 'slug'        => 'bloke-hesap',
                 'title'       => __('Blocked Account (Sperrkonto) Finder'),
                 'description' => __('Compare blocked account providers for the Germany student visa. Price, speed, insurance combo.'),
-                'icon'        => '🏦',
+                'icon'        => 'building-library',
                 'route'       => route('tools.blocked-account'),
                 'live'        => true,
             ],
@@ -112,7 +112,7 @@ class ToolsController extends Controller
                 'slug'        => 'health-insurance',
                 'title'       => __('Health Insurance Comparison'),
                 'description' => __('Public (GKV) vs private vs expat insurance for students. Price, visa acceptance, enrolment validity side by side.'),
-                'icon'        => '🩺',
+                'icon'        => 'heart',
                 'route'       => route('tools.health-insurance'),
                 'live'        => true,
             ],
@@ -120,7 +120,7 @@ class ToolsController extends Controller
                 'slug'        => 'visa-appointment',
                 'title'       => __('Visa Appointment (iData)'),
                 'description' => __('Step-by-step Germany student visa appointment via iData in Turkey: process, fees, offices.'),
-                'icon'        => '🛂',
+                'icon'        => 'fingerprint',
                 'route'       => route('tools.visa-appointment'),
                 'live'        => true,
                 'locales'     => ['tr'], // iData yalnızca Türkiye'den başvuranlar için → sadece /tr
@@ -129,7 +129,7 @@ class ToolsController extends Controller
                 'slug'        => 'language-certificates',
                 'title'       => __('Language Certificates'),
                 'description' => __('TestDaF vs DSH vs telc vs Goethe — which German certificate do you need for university?'),
-                'icon'        => '🎓',
+                'icon'        => 'academic-cap',
                 'route'       => route('tools.language-certificates'),
                 'live'        => true,
             ],
@@ -137,7 +137,7 @@ class ToolsController extends Controller
                 'slug'        => 'pathway-finder',
                 'title'       => __('Germany Pathway Finder'),
                 'description' => __('5 questions → Studienkolleg, Bachelor, Master, PhD, Ausbildung or Sprachkurs. Real durations + costs.'),
-                'icon'        => '🧭',
+                'icon'        => 'compass',
                 'route'       => route('tools.pathway-finder'),
                 'live'        => true,
             ],
@@ -145,7 +145,7 @@ class ToolsController extends Controller
                 'slug'        => 'inspire-me',
                 'title'       => __('Inspire Me'),
                 'description' => __('Stuck choosing? Random university + city + programme + scholarship + profession + field. Each refresh = 6 new picks.'),
-                'icon'        => '✨',
+                'icon'        => 'light-bulb',
                 'route'       => route('tools.inspire-me'),
                 'live'        => true,
             ],
@@ -348,21 +348,21 @@ class ToolsController extends Controller
             $suggestions[] = ['type' => 'info', 'msg' => __('Pick a city → an automatic expense estimate appears.')];
         } elseif ($totalIncome < $expenseTotal) {
             $deficit = $expenseTotal - $totalIncome;
-            $suggestions[] = ['type' => 'warning', 'msg' => __('❌ You have a :amount€ monthly shortfall. Add work income (e.g. a Minijob up to €603/month or a Werkstudent job) or move to a WG.', ['amount' => $deficit])];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('You have a :amount€ monthly shortfall. Add work income (e.g. a Minijob up to €603/month or a Werkstudent job) or move to a WG.', ['amount' => $deficit])];
         } elseif (! $coversGoal) {
             $shortage = $savingsGoal - $netBalance;
-            $suggestions[] = ['type' => 'warning', 'msg' => __('⚠️ You need :amount€ more for your savings goal. Cut entertainment/food or look for a scholarship.', ['amount' => $shortage])];
+            $suggestions[] = ['type' => 'warning', 'msg' => __('You need :amount€ more for your savings goal. Cut entertainment/food or look for a scholarship.', ['amount' => $shortage])];
         } else {
             $extra = $netBalance - $savingsGoal;
-            $suggestions[] = ['type' => 'success', 'msg' => __('✅ Your savings goal is covered. You have :amount€ extra — save or invest it.', ['amount' => $extra])];
+            $suggestions[] = ['type' => 'success', 'msg' => __('Your savings goal is covered. You have :amount€ extra — save or invest it.', ['amount' => $extra])];
         }
 
         if ($income['job'] > 603) {
-            $suggestions[] = ['type' => 'info', 'msg' => __('ℹ️ Above €603/month a job is no longer a Minijob (2026). A Werkstudent job has no fixed earnings cap; what matters for student social-insurance status is working up to 20 hours a week during the lecture period.')];
+            $suggestions[] = ['type' => 'info', 'msg' => __('Above €603/month a job is no longer a Minijob (2026). A Werkstudent job has no fixed earnings cap; what matters for student social-insurance status is working up to 20 hours a week during the lecture period.')];
         }
 
         if ($income['job'] === 0 && $netBalance < 0) {
-            $suggestions[] = ['type' => 'info', 'msg' => __('💡 With a student residence permit you can work up to 140 working days a year (Arbeitstagekonto). The statutory minimum wage in 2026 is €13.90/hour.')];
+            $suggestions[] = ['type' => 'info', 'msg' => __('With a student residence permit you can work up to 140 working days a year (Arbeitstagekonto). The statutory minimum wage in 2026 is €13.90/hour.')];
         }
 
         return view('tools.budget-planner', [
@@ -496,7 +496,7 @@ class ToolsController extends Controller
             $ics .= "DTSTAMP:" . now()->format('Ymd\THis\Z') . "\r\n";
             $ics .= "DTSTART;VALUE=DATE:$date\r\n";
             $ics .= "DTEND;VALUE=DATE:$date\r\n";
-            $ics .= "SUMMARY:📅 $title — Başvuru deadline\r\n";
+            $ics .= "SUMMARY:$title — Başvuru deadline\r\n";
             $ics .= "DESCRIPTION:" . ($semester === 'summer' ? 'Yaz' : 'Kış') . " dönemi başvurusu. Detay: $url\r\n";
             $ics .= "URL:$url\r\n";
             $ics .= "END:VEVENT\r\n";
@@ -523,7 +523,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 15000,
                 'required' => true,
                 'recoverable' => true,
-                'icon' => '🏦',
+                'icon' => 'building-library',
             ],
             'visa_fee' => [
                 'label' => __('Vize başvuru ücreti'),
@@ -532,7 +532,7 @@ class ToolsController extends Controller
                 'min' => 50, 'max' => 100,
                 'required' => true,
                 'recoverable' => false,
-                'icon' => '📋',
+                'icon' => 'list-bullet',
             ],
             'idata_appointment' => [
                 'label' => __('iDATA appointment + courier'),
@@ -543,7 +543,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 100,
                 'required' => false,
                 'recoverable' => false,
-                'icon' => '📦',
+                'icon' => 'archive-box',
             ],
             'uni_assist' => [
                 'label' => __('Uni-Assist application'),
@@ -552,7 +552,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 500,
                 'required' => false,
                 'recoverable' => false,
-                'icon' => '📨',
+                'icon' => 'envelope',
             ],
             'lang_test' => [
                 'label' => __('German language exam'),
@@ -561,7 +561,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 250,
                 'required' => false,
                 'recoverable' => false,
-                'icon' => '📚',
+                'icon' => 'book-open',
             ],
             'translation' => [
                 'label' => __('Belge çeviri + onaylama'),
@@ -570,7 +570,7 @@ class ToolsController extends Controller
                 'min' => 100, 'max' => 600,
                 'required' => true,
                 'recoverable' => false,
-                'icon' => '🖋️',
+                'icon' => 'pencil',
             ],
             'health_insurance_initial' => [
                 'label' => __('Travel health insurance (90 days)'),
@@ -579,7 +579,7 @@ class ToolsController extends Controller
                 'min' => 20, 'max' => 80,
                 'required' => true,
                 'recoverable' => false,
-                'icon' => '🩺',
+                'icon' => 'heart',
             ],
             'flight' => [
                 'label' => __('Flight ticket (one-way)'),
@@ -588,7 +588,7 @@ class ToolsController extends Controller
                 'min' => 100, 'max' => 700,
                 'required' => true,
                 'recoverable' => false,
-                'icon' => '✈️',
+                'icon' => 'plane',
             ],
             'first_month' => [
                 'label' => __('Almanya\'da ilk ay (Sperrkonto dışı tampon)'),
@@ -597,7 +597,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 2000,
                 'required' => false,
                 'recoverable' => false,
-                'icon' => '💶',
+                'icon' => 'currency-euro',
             ],
             'aps' => [
                 'label' => __('APS (NOT required for Turkey, optional)'),
@@ -606,7 +606,7 @@ class ToolsController extends Controller
                 'min' => 0, 'max' => 300,
                 'required' => false,
                 'recoverable' => false,
-                'icon' => '🎓',
+                'icon' => 'academic-cap',
             ],
         ];
 
@@ -916,23 +916,23 @@ class ToolsController extends Controller
     {
         $code = implode('', $topTwo);
         $map = [
-            'RI' => ['emoji' => '🔧', 'title' => __('Analyst-Builder'), 'desc' => __('Both hands-on and logic-driven. Engineering and technical fields are your natural domain.')],
-            'IR' => ['emoji' => '🔬', 'title' => __('Researcher-Engineer'), 'desc' => __('Understands first, then builds. Science, engineering and technology attract you.')],
-            'IA' => ['emoji' => '🧪', 'title' => __('Creative Thinker'), 'desc' => __('Analytical intelligence + creativity. Research, design and innovation are your field.')],
-            'AI' => ['emoji' => '🎨', 'title' => __('Creative Analyst'), 'desc' => __('Artistic vision + logic. Design, architecture and digital creativity suit you.')],
-            'AS' => ['emoji' => '🎭', 'title' => __('Expressive-Social'), 'desc' => __('Creative and people-focused. Language, culture, education and communication energize you.')],
-            'SA' => ['emoji' => '🤝', 'title' => __('Social-Creative'), 'desc' => __('You enjoy connecting with people and creative expression. Health, education, social work.')],
-            'SI' => ['emoji' => '🩺', 'title' => __('Compassionate Solver'), 'desc' => __('Helping people + analysis. Medicine, health and social sciences are your field.')],
-            'IS' => ['emoji' => '🧠', 'title' => __('Analytical Helper'), 'desc' => __('Research + people focus. Psychology, medical research, social science suit you.')],
-            'EC' => ['emoji' => '💼', 'title' => __('Leader-Organizer'), 'desc' => __('Entrepreneurship + order. Business, law, economics and management are your domain.')],
-            'CE' => ['emoji' => '📊', 'title' => __('Systematic Manager'), 'desc' => __('Order + leadership. Finance, auditing, administrative and legal fields suit you.')],
-            'RE' => ['emoji' => '🏗️', 'title' => __('Practical Entrepreneur'), 'desc' => __('Application + business-building. Technical entrepreneurship and production management are your field.')],
-            'IC' => ['emoji' => '💻', 'title' => __('Data-System Type'), 'desc' => __('Analysis + order. IT, data science and software are your natural domain.')],
-            'CI' => ['emoji' => '🖥️', 'title' => __('Systematic Analyst'), 'desc' => __('Order + research. IT, systems administration and data analysis suit you.')],
+            'RI' => ['emoji' => 'wrench-screwdriver', 'title' => __('Analyst-Builder'), 'desc' => __('Both hands-on and logic-driven. Engineering and technical fields are your natural domain.')],
+            'IR' => ['emoji' => 'beaker', 'title' => __('Researcher-Engineer'), 'desc' => __('Understands first, then builds. Science, engineering and technology attract you.')],
+            'IA' => ['emoji' => 'beaker', 'title' => __('Creative Thinker'), 'desc' => __('Analytical intelligence + creativity. Research, design and innovation are your field.')],
+            'AI' => ['emoji' => 'paint-brush', 'title' => __('Creative Analyst'), 'desc' => __('Artistic vision + logic. Design, architecture and digital creativity suit you.')],
+            'AS' => ['emoji' => 'ticket', 'title' => __('Expressive-Social'), 'desc' => __('Creative and people-focused. Language, culture, education and communication energize you.')],
+            'SA' => ['emoji' => 'users', 'title' => __('Social-Creative'), 'desc' => __('You enjoy connecting with people and creative expression. Health, education, social work.')],
+            'SI' => ['emoji' => 'heart', 'title' => __('Compassionate Solver'), 'desc' => __('Helping people + analysis. Medicine, health and social sciences are your field.')],
+            'IS' => ['emoji' => 'light-bulb', 'title' => __('Analytical Helper'), 'desc' => __('Research + people focus. Psychology, medical research, social science suit you.')],
+            'EC' => ['emoji' => 'briefcase', 'title' => __('Leader-Organizer'), 'desc' => __('Entrepreneurship + order. Business, law, economics and management are your domain.')],
+            'CE' => ['emoji' => 'chart-bar', 'title' => __('Systematic Manager'), 'desc' => __('Order + leadership. Finance, auditing, administrative and legal fields suit you.')],
+            'RE' => ['emoji' => 'building-office', 'title' => __('Practical Entrepreneur'), 'desc' => __('Application + business-building. Technical entrepreneurship and production management are your field.')],
+            'IC' => ['emoji' => 'computer', 'title' => __('Data-System Type'), 'desc' => __('Analysis + order. IT, data science and software are your natural domain.')],
+            'CI' => ['emoji' => 'computer', 'title' => __('Systematic Analyst'), 'desc' => __('Order + research. IT, systems administration and data analysis suit you.')],
         ];
 
         return $map[$code] ?? [
-            'emoji' => '🧭',
+            'emoji' => 'compass',
             'title' => __('Versatile Profile'),
             'desc' => __('You have several strengths — that means a wide range of professions. Explore the suggestions below.'),
         ];
@@ -1138,7 +1138,7 @@ class ToolsController extends Controller
             };
             $score += $budgetScore;
             if ($budgetScore >= 16) {
-                $reasons[] = ['icon' => '💰', 'text' => 'Bütçene uygun şehir (€' . $cityRent . '–€' . ($uni->city?->avg_rent_max ?: $cityRent + 80) . '/ay)'];
+                $reasons[] = ['icon' => 'banknotes', 'text' => 'Bütçene uygun şehir (€' . $cityRent . '–€' . ($uni->city?->avg_rent_max ?: $cityRent + 80) . '/ay)'];
             }
 
             // b) Şehir büyüklüğü (max 15)
@@ -1150,7 +1150,7 @@ class ToolsController extends Controller
             };
             $score += $sizeScore;
             if ($sizeScore >= 12) {
-                $reasons[] = ['icon' => '🏙️', 'text' => match (true) {
+                $reasons[] = ['icon' => 'building-office', 'text' => match (true) {
                     $pop >= 500000 => 'Büyük metropol (' . number_format($pop, 0, ',', '.') . ' nüfus)',
                     $pop >= 150000 => 'Orta büyüklükte şehir (' . number_format($pop, 0, ',', '.') . ' nüfus)',
                     default        => 'Sakin öğrenci şehri (' . number_format($pop, 0, ',', '.') . ' nüfus)',
@@ -1160,7 +1160,7 @@ class ToolsController extends Controller
             // c) Bölge (max 10)
             if ($answers['region'] !== 'any' && $uni->city?->state?->region === $answers['region']) {
                 $score += 10;
-                $reasons[] = ['icon' => '🧭', 'text' => 'İstediğin bölgede (' . $this->regionLabel($answers['region']) . ' Almanya)'];
+                $reasons[] = ['icon' => 'compass', 'text' => 'İstediğin bölgede (' . $this->regionLabel($answers['region']) . ' Almanya)'];
             } elseif ($answers['region'] === 'any') {
                 $score += 6;
             }
@@ -1170,7 +1170,7 @@ class ToolsController extends Controller
                 $score += 6;
             } elseif ($uni->type === $answers['uni_type']) {
                 $score += 10;
-                $reasons[] = ['icon' => '🎓', 'text' => $answers['uni_type'] === 'public' ? 'Devlet üniversitesi (harç yok / düşük)' : 'Özel üniversite (butik / İngilizce odaklı)'];
+                $reasons[] = ['icon' => 'academic-cap', 'text' => $answers['uni_type'] === 'public' ? 'Devlet üniversitesi (harç yok / düşük)' : 'Özel üniversite (butik / İngilizce odaklı)'];
             }
 
             // e) Alan + Dil programı sayısı (max 25)
@@ -1199,16 +1199,16 @@ class ToolsController extends Controller
                 };
                 $score += $fieldScore;
                 if ($programCount >= 3) {
-                    $reasons[] = ['icon' => '📚', 'text' => $programCount . ' program — alanın güçlü'];
+                    $reasons[] = ['icon' => 'book-open', 'text' => $programCount . ' program — alanın güçlü'];
                 }
 
                 // dil bonus
                 if ($answers['lang'] === 'en' && $englishProgramCount >= 1) {
                     $score += 10;
-                    $reasons[] = ['icon' => '🇬🇧', 'text' => $englishProgramCount . ' İngilizce program'];
+                    $reasons[] = ['icon' => 'language', 'text' => $englishProgramCount . ' İngilizce program'];
                 } elseif ($answers['lang'] === 'de' && $programCount > $englishProgramCount) {
                     $score += 10;
-                    $reasons[] = ['icon' => '🇩🇪', 'text' => 'Almanca programlar mevcut'];
+                    $reasons[] = ['icon' => 'language', 'text' => 'Almanca programlar mevcut'];
                 } elseif ($answers['lang'] === 'both') {
                     $score += 8;
                 }
@@ -1224,7 +1224,7 @@ class ToolsController extends Controller
             };
             $score += $lifestyleScore;
             if ($lifestyleScore >= 8) {
-                $reasons[] = ['icon' => '✨', 'text' => match ($answers['lifestyle']) {
+                $reasons[] = ['icon' => 'light-bulb', 'text' => match ($answers['lifestyle']) {
                     'quiet'    => 'Sakin/yoğun olmayan kampüs',
                     'balanced' => 'Dengeli kampüs hayatı',
                     'vibrant'  => 'Hareketli, büyük öğrenci topluluğu',
@@ -1301,30 +1301,30 @@ class ToolsController extends Controller
     {
         // Tip belirleme: lifestyle + community + city_size
         if ($a['city_size'] === 'large' && $a['lifestyle'] === 'vibrant') {
-            return ['emoji' => '🌆', 'title' => __('Metropol Tipi'), 'description' => __('Berlin/Hamburg/München tipi — büyük şehir, kalabalık, sürekli aksiyon.')];
+            return ['emoji' => 'building-office', 'title' => __('Metropol Tipi'), 'description' => __('Berlin/Hamburg/München tipi — büyük şehir, kalabalık, sürekli aksiyon.')];
         }
         if ($a['city_size'] === 'small' && $a['lifestyle'] === 'quiet') {
-            return ['emoji' => '🌲', 'title' => __('Klasik Üni-Şehir Tipi'), 'description' => __('Tübingen/Göttingen/Heidelberg tipi — bisiklet + bira bahçesi + akademik odak.')];
+            return ['emoji' => 'leaf', 'title' => __('Klasik Üni-Şehir Tipi'), 'description' => __('Tübingen/Göttingen/Heidelberg tipi — bisiklet + bira bahçesi + akademik odak.')];
         }
         if ($a['region'] === 'sued' && $a['lifestyle'] !== 'vibrant') {
-            return ['emoji' => '🏔️', 'title' => __('Bavyera Tipi'), 'description' => __('Güney Almanya — dağ + brezel + güçlü teknik üniversite.')];
+            return ['emoji' => 'map', 'title' => __('Bavyera Tipi'), 'description' => __('Güney Almanya — dağ + brezel + güçlü teknik üniversite.')];
         }
         if ($a['region'] === 'nord') {
-            return ['emoji' => '⚓', 'title' => __('Kuzey Tipi'), 'description' => __('Hamburg/Bremen/Kiel — liman + denizci + minimal estetik.')];
+            return ['emoji' => 'map', 'title' => __('Kuzey Tipi'), 'description' => __('Hamburg/Bremen/Kiel — liman + denizci + minimal estetik.')];
         }
         if ($a['region'] === 'ost') {
-            return ['emoji' => '🎨', 'title' => __('Doğu Almanya Tipi'), 'description' => __('Leipzig/Dresden — ucuz + sanatçı + alternatif sahne.')];
+            return ['emoji' => 'paint-brush', 'title' => __('Doğu Almanya Tipi'), 'description' => __('Leipzig/Dresden — ucuz + sanatçı + alternatif sahne.')];
         }
         if ($a['budget'] === 'low' && $a['lifestyle'] !== 'vibrant') {
-            return ['emoji' => '💪', 'title' => __('Pratik Bütçe Tipi'), 'description' => __('Akıllı para — düşük kira + güçlü uni = en uygun yatırım.')];
+            return ['emoji' => 'banknotes', 'title' => __('Pratik Bütçe Tipi'), 'description' => __('Akıllı para — düşük kira + güçlü uni = en uygun yatırım.')];
         }
         if ($a['field'] === 'muhendislik' && $a['region'] === 'sued') {
-            return ['emoji' => '⚙️', 'title' => __('Bavyera Mühendisi'), 'description' => __('TU München/Stuttgart/Karlsruhe — Almanya\'nın endüstri kalbi.')];
+            return ['emoji' => 'cog', 'title' => __('Bavyera Mühendisi'), 'description' => __('TU München/Stuttgart/Karlsruhe — Almanya\'nın endüstri kalbi.')];
         }
         if (in_array($a['field'], ['bilisim', 'matematik-doga'])) {
-            return ['emoji' => '💻', 'title' => __('Tech Tipi'), 'description' => __('KIT/TU München/Aachen — Almanya\'nın tech merkezleri seni bekliyor.')];
+            return ['emoji' => 'computer', 'title' => __('Tech Tipi'), 'description' => __('KIT/TU München/Aachen — Almanya\'nın tech merkezleri seni bekliyor.')];
         }
-        return ['emoji' => '🎯', 'title' => __('Dengeli Tipi'), 'description' => __('Her şeyden biraz — bütçe + akademik + lifestyle dengesi.')];
+        return ['emoji' => 'target', 'title' => __('Dengeli Tipi'), 'description' => __('Her şeyden biraz — bütçe + akademik + lifestyle dengesi.')];
     }
 
     private function regionLabel(string $r): string
@@ -1498,7 +1498,7 @@ class ToolsController extends Controller
             'doctor' => [
                 'name' => 'Hekim (Doktor)',
                 'name_en' => 'Medical Doctor',
-                'icon' => '🩺',
+                'icon' => 'heart',
                 'regulated' => true,
                 'authority' => 'Landesärztekammer (eyalet tabipler odası)',
                 'authority_url' => 'https://www.bundesaerztekammer.de/',
@@ -1521,7 +1521,7 @@ class ToolsController extends Controller
             'engineer' => [
                 'name' => 'Mühendis',
                 'name_en' => 'Engineer',
-                'icon' => '⚙️',
+                'icon' => 'cog',
                 'regulated' => false,
                 'authority' => 'IHK FOSA (Foreign Skills Approval) — opsiyonel sertifikasyon',
                 'authority_url' => 'https://www.ihk-fosa.de/',
@@ -1543,7 +1543,7 @@ class ToolsController extends Controller
             'nurse' => [
                 'name' => 'Hemşire',
                 'name_en' => 'Nurse',
-                'icon' => '👩‍⚕️',
+                'icon' => 'heart',
                 'regulated' => true,
                 'authority' => 'Eyalet sağlık otoritesi (örn. Regierungspräsidium Düsseldorf)',
                 'authority_url' => 'https://www.anerkennung-in-deutschland.de/',
@@ -1566,7 +1566,7 @@ class ToolsController extends Controller
             'teacher' => [
                 'name' => 'Öğretmen',
                 'name_en' => 'Teacher',
-                'icon' => '🎓',
+                'icon' => 'academic-cap',
                 'regulated' => true,
                 'authority' => 'Eyalet Kultusministerium (eğitim bakanlığı)',
                 'authority_url' => 'https://www.anerkennung-in-deutschland.de/',
@@ -1589,7 +1589,7 @@ class ToolsController extends Controller
             'it_specialist' => [
                 'name' => 'IT Uzmanı / Yazılım Geliştirici',
                 'name_en' => 'IT Specialist / Software Developer',
-                'icon' => '💻',
+                'icon' => 'computer',
                 'regulated' => false,
                 'authority' => 'Yok — direkt iş başvurusu serbest',
                 'authority_url' => 'https://www.make-it-in-germany.com/en/working-in-germany/it-specialists',
@@ -1611,7 +1611,7 @@ class ToolsController extends Controller
             'lawyer' => [
                 'name' => 'Avukat',
                 'name_en' => 'Lawyer',
-                'icon' => '⚖️',
+                'icon' => 'scale',
                 'regulated' => true,
                 'authority' => 'Eyalet Anwaltskammer',
                 'authority_url' => 'https://www.brak.de/',
@@ -1640,13 +1640,13 @@ class ToolsController extends Controller
         $notes = [];
 
         if ($exp >= 5 && ! $profession['regulated']) {
-            $notes[] = '✅ ' . $exp . ' yıl tecrübe ile Senior pozisyon hedefleyebilirsin — Anerkennung\'a gerek yok.';
+            $notes[] = $exp . ' yıl tecrübe ile Senior pozisyon hedefleyebilirsin — Anerkennung\'a gerek yok.';
         }
         if ($profession['regulated'] && $exp < 2) {
-            $notes[] = '⚠️ Regulated meslek + 2 yıldan az tecrübe = denklik testleri daha sıkı olabilir.';
+            $notes[] = 'Regulated meslek + 2 yıldan az tecrübe = denklik testleri daha sıkı olabilir.';
         }
         if (in_array($data['country_origin'] ?? 'TR', ['TR', 'tr'])) {
-            $notes[] = 'ℹ️ Türk diplomaları için spesifik: Çevirilerin Beglaubigte Übersetzung olması ve transkriptin notu içermesi şart.';
+            $notes[] = 'Türk diplomaları için spesifik: Çevirilerin Beglaubigte Übersetzung olması ve transkriptin notu içermesi şart.';
         }
 
         return [
@@ -1819,22 +1819,22 @@ class ToolsController extends Controller
     public static function eligibilityCountries(): array
     {
         return [
-            'germany'   => ['name' => 'Deutschland', 'flag' => '🇩🇪', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
-            'turkey'    => ['name' => 'Türkiye',     'flag' => '🇹🇷', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
-            'india'     => ['name' => 'India',       'flag' => '🇮🇳', 'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'pakistan'  => ['name' => 'Pakistan',    'flag' => '🇵🇰', 'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'china'     => ['name' => 'China',       'flag' => '🇨🇳', 'needs_aps' => true,  'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
-            'nigeria'   => ['name' => 'Nigeria',     'flag' => '🇳🇬', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'usa'       => ['name' => 'USA',         'flag' => '🇺🇸', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
-            'uk'        => ['name' => 'UK',          'flag' => '🇬🇧', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
-            'uae'       => ['name' => 'UAE',         'flag' => '🇦🇪', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'iran'      => ['name' => 'Iran',        'flag' => '🇮🇷', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'brazil'    => ['name' => 'Brazil',      'flag' => '🇧🇷', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
-            'russia'    => ['name' => 'Russia',      'flag' => '🇷🇺', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
-            'ukraine'   => ['name' => 'Ukraine',     'flag' => '🇺🇦', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
-            'egypt'     => ['name' => 'Egypt',       'flag' => '🇪🇬', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'morocco'   => ['name' => 'Morocco',     'flag' => '🇲🇦', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
-            'syria'     => ['name' => 'Syria',       'flag' => '🇸🇾', 'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'germany'   => ['name' => 'Deutschland', 'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
+            'turkey'    => ['name' => 'Türkiye',     'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
+            'india'     => ['name' => 'India',       'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'pakistan'  => ['name' => 'Pakistan',    'needs_aps' => true,  'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'china'     => ['name' => 'China',       'needs_aps' => true,  'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
+            'nigeria'   => ['name' => 'Nigeria',     'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'usa'       => ['name' => 'USA',         'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
+            'uk'        => ['name' => 'UK',          'needs_aps' => false, 'anabin' => ['high_school' => 'H+',  'bachelor' => 'H+', 'master' => 'H+']],
+            'uae'       => ['name' => 'UAE',         'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'iran'      => ['name' => 'Iran',        'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'brazil'    => ['name' => 'Brazil',      'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
+            'russia'    => ['name' => 'Russia',      'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
+            'ukraine'   => ['name' => 'Ukraine',     'needs_aps' => false, 'anabin' => ['high_school' => 'H+-', 'bachelor' => 'H+', 'master' => 'H+']],
+            'egypt'     => ['name' => 'Egypt',       'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'morocco'   => ['name' => 'Morocco',     'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
+            'syria'     => ['name' => 'Syria',       'needs_aps' => false, 'anabin' => ['high_school' => 'H-',  'bachelor' => 'H+-','master' => 'H+']],
         ];
     }
 
@@ -2082,7 +2082,7 @@ class ToolsController extends Controller
         return [
             'studienkolleg' => [
                 'key'        => 'studienkolleg',
-                'icon'       => '🏫',
+                'icon'       => 'building-library',
                 'name'       => 'Studienkolleg',
                 'subtitle'   => __('Foundation year — bridge to bachelor'),
                 'duration'   => __('1 year + Bachelor 3 years = 4 years total'),
@@ -2095,7 +2095,7 @@ class ToolsController extends Controller
             ],
             'bachelor' => [
                 'key'        => 'bachelor',
-                'icon'       => '🎓',
+                'icon'       => 'academic-cap',
                 'name'       => __('Bachelor'),
                 'subtitle'   => __('Direct undergraduate study (3–4 years)'),
                 'duration'   => __('3–4 years'),
@@ -2108,7 +2108,7 @@ class ToolsController extends Controller
             ],
             'master' => [
                 'key'        => 'master',
-                'icon'       => '📚',
+                'icon'       => 'book-open',
                 'name'       => __('Master'),
                 'subtitle'   => __('Specialised postgraduate (1.5–2 years)'),
                 'duration'   => __('1.5–2 years'),
@@ -2121,7 +2121,7 @@ class ToolsController extends Controller
             ],
             'phd' => [
                 'key'        => 'phd',
-                'icon'       => '🔬',
+                'icon'       => 'beaker',
                 'name'       => __('PhD / Doctorate'),
                 'subtitle'   => __('Research doctorate (3–5 years)'),
                 'duration'   => __('3–5 years'),
@@ -2134,7 +2134,7 @@ class ToolsController extends Controller
             ],
             'ausbildung' => [
                 'key'        => 'ausbildung',
-                'icon'       => '🔧',
+                'icon'       => 'wrench-screwdriver',
                 'name'       => 'Ausbildung',
                 'subtitle'   => __('Paid vocational training (2–3.5 years)'),
                 'duration'   => __('2–3.5 years'),
@@ -2147,7 +2147,7 @@ class ToolsController extends Controller
             ],
             'sprachkurs' => [
                 'key'        => 'sprachkurs',
-                'icon'       => '💬',
+                'icon'       => 'chat-bubble',
                 'name'       => __('Sprachkurs (Language School)'),
                 'subtitle'   => __('Intensive German course (6–18 months)'),
                 'duration'   => __('6–18 months until B2/C1'),

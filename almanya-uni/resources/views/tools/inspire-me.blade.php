@@ -19,7 +19,7 @@
             <span class="text-white">{{ __('Inspire Me') }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
-            <x-svg-icon name="sparkles" class="w-8 h-8 md:w-10 md:h-10" />
+            <x-svg-icon name="light-bulb" class="w-8 h-8 md:w-10 md:h-10" />
             {{ __('Inspire Me — Discover Germany') }}
         </h1>
         <p class="text-lg md:text-xl text-pink-100 max-w-3xl mb-5">
@@ -102,9 +102,9 @@
                     <div class="aspect-[16/10] bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center relative">
                         <div class="opacity-90 flex items-center justify-center text-white">{!! $program->field ? e_icon($program->field->icon, 'w-16 h-16') : view('components.svg-icon', ['name' => 'book-open', 'class' => 'w-16 h-16'])->render() !!}</div>
                         @if ($program->language === 'en')
-                            <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">🇬🇧 EN</span>
+                            <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">EN</span>
                         @elseif ($program->language === 'both')
-                            <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">🇬🇧🇩🇪</span>
+                            <span class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs font-bold text-white">EN/DE</span>
                         @endif
                     </div>
                     <div class="p-5">

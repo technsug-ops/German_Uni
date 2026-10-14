@@ -36,11 +36,11 @@ class SearchTools
             $title = $tool['title'][$locale] ?? $tool['title']['en'] ?? reset($tool['title']);
             $out[] = [
                 'type' => 'tool',
-                'type_label' => '🔧 ' . __('Tool'),
+                'type_label' => __('Tool'),
                 'title' => $title,
                 'subtitle' => null,
                 'url' => self::url($tool['route']),
-                'icon' => $tool['icon'] ?? '🔧',
+                'icon' => $tool['icon'] ?? 'wrench-screwdriver',
             ];
         }
 

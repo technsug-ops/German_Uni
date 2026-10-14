@@ -18,31 +18,31 @@ class AboutGermanyController extends Controller
 
         // 10 reasons — default English, __() handles locale, 6th reason is locale-aware
         $reasons = [
-            ['icon' => '💰', 'title' => __('Free Public Education'),
+            ['icon' => 'banknotes', 'title' => __('Free Public Education'),
              'desc' => __('Public universities charge €150-350 per semester (campus services only). No tuition fee — a tenth of foundation universities in many countries.')],
-            ['icon' => '🇪🇺', 'title' => __('EU Work Authorization'),
+            ['icon' => 'globe', 'title' => __('EU Work Authorization'),
              'desc' => __('After graduation, finding a job in Germany unlocks the right to work in all 27 EU countries. One of the strongest cards a non-EU passport can earn.')],
-            ['icon' => '🔍', 'title' => __('18-Month Job Seeker Visa'),
+            ['icon' => 'search', 'title' => __('18-Month Job Seeker Visa'),
              'desc' => __('You don\'t have to leave after graduation. You get 18 months (1.5 years) to stay in Germany and search for a job (Aufenthaltserlaubnis zur Arbeitsplatzsuche).')],
-            ['icon' => '🏭', 'title' => __('Europe\'s Largest Economy'),
+            ['icon' => 'building-office', 'title' => __('Europe\'s Largest Economy'),
              'desc' => __('Germany produces 25% of the EU\'s GDP. Engineering, automotive, chemistry, pharma, finance — global leaders in every sector.')],
-            ['icon' => '🌍', 'title' => __('2,000+ English-Taught Programs'),
+            ['icon' => 'globe', 'title' => __('2,000+ English-Taught Programs'),
              'desc' => __('Study a master\'s or PhD without German. Bachelor\'s options are growing too. Thousands of English-taught programs in the DAAD database.')],
 
             // 6th reason — locale-aware (TR-specific in Turkish, generic elsewhere)
             $isTr
-                ? ['icon' => '🤝', 'title' => '3M+ Türk Topluluğu',
+                ? ['icon' => 'users', 'title' => '3M+ Türk Topluluğu',
                    'desc' => 'Almanya\'da 3 milyondan fazla Türk vatandaşı yaşıyor — yalnızlık değil, kültürel köprü. Türk marketleri, restoranları, dernekleri her şehirde.']
-                : ['icon' => '🌐', 'title' => __('Multicultural Society'),
+                : ['icon' => 'globe', 'title' => __('Multicultural Society'),
                    'desc' => __('25% of Germany\'s population has a migration background — over 12 million international individuals. Every major city has international markets, restaurants, and cultural centers.')],
 
-            ['icon' => '🏥', 'title' => __('World-Class Healthcare'),
+            ['icon' => 'heart', 'title' => __('World-Class Healthcare'),
              'desc' => __('Insurance covers all doctor + hospital costs. Student rate is ~€125/month — thousands of euros of treatment covered annually.')],
-            ['icon' => '🚆', 'title' => __('Heart of Europe'),
+            ['icon' => 'map', 'title' => __('Heart of Europe'),
              'desc' => __('Reach Paris in 4 hours, Amsterdam in 6, Rome by overnight train. Semester Ticket gives free city public transport for students.')],
-            ['icon' => '🎓', 'title' => __('40+ Nobel-Winning Institutions'),
+            ['icon' => 'academic-cap', 'title' => __('40+ Nobel-Winning Institutions'),
              'desc' => __('Max Planck institutes, Fraunhofer, Helmholtz — Germany leads European research. The right choice for an academic career.')],
-            ['icon' => '💼', 'title' => __('High Post-Grad Salaries'),
+            ['icon' => 'briefcase', 'title' => __('High Post-Grad Salaries'),
              'desc' => __('Engineers start at €60,000+/year. IT €55-70K, doctors €70-90K. Stable euro income with strong purchasing power.')],
         ];
 

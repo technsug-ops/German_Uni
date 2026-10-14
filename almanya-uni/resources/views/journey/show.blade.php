@@ -107,8 +107,8 @@
             'arrival' => [
                 'label'    => __('Phase 3 · Arriving in Germany'),
                 'subtitle' => __('Sperrkonto, visa, Anmeldung, Krankenkasse'),
-                'icon'     => null,
-                'flag'     => '🇩🇪',
+                'icon'     => 'map-pin',
+                'flag'     => null,
                 'range'    => [7, 8],
                 'color'    => 'emerald',  // emerald-600/teal-600
                 'hex'      => '#059669',

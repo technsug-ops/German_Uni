@@ -20,26 +20,24 @@
 {{-- HERO --}}
 {{-- =================================================================== --}}
 <section class="relative overflow-hidden bg-gradient-to-b from-primary-900 to-primary-800 lg:bg-gradient-to-br lg:from-primary-800 lg:via-primary-900 lg:to-primary-800 text-white">
-    {{-- ===== MASAÜSTÜ: full-bleed yatay panorama (solunda lacivert geçiş) ===== --}}
-    {{-- Gemini ile üretildi, logo temizlendi, WebP optimize. --}}
-    <div aria-hidden="true" class="hidden lg:block absolute inset-0 z-0">
-        <img src="{{ asset('img/hero/hero-desktop.webp') }}" alt=""
-             width="2180" height="771"
+    {{-- Gerçek fotoğraf: "Brandenburger Tor abends", Thomas Wolf (www.foto-tw.de), CC BY-SA 3.0 — Wikimedia Commons.
+         Lisans atıf ister; atıf satırı hero'nun sağ altında. (Önceki Gemini üretimi görseller 2026-10-14'te kaldırıldı.) --}}
+    {{-- ===== MASAÜSTÜ: fotoğraf sağ tarafta, soldan lacivert geçiş ===== --}}
+    <div aria-hidden="true" class="hidden lg:block absolute inset-y-0 right-0 w-[58%] z-0">
+        <img src="{{ asset('img/hero/brandenburg.webp') }}" alt=""
+             width="1400" height="933"
              fetchpriority="high" decoding="async"
-             class="w-full h-full object-cover object-center">
-        {{-- Soldan (yazı tarafı) lacivert → sağa şeffaf --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/40 to-transparent"></div>
+             class="w-full h-full object-cover object-[center_35%]">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/80 to-primary-900/25"></div>
     </div>
 
-    {{-- ===== MOBİL: full-bleed arka plan (kapı sağ-üstte, yazı sol/alt lacivert zeminde) ===== --}}
-    {{-- Görsel zaten çoğunlukla lacivert; ağır overlay gerekmez. object-right-top → kapı sağ-üstte kalır. --}}
+    {{-- ===== MOBİL: fotoğraf arka planda, yazı okunsun diye koyu katman ===== --}}
     <div aria-hidden="true" class="lg:hidden absolute inset-0 z-0">
-        <img src="{{ asset('img/hero/hero-mobile.webp') }}" alt=""
-             width="1200" height="1800"
+        <img src="{{ asset('img/hero/brandenburg.webp') }}" alt=""
+             width="1400" height="933"
              fetchpriority="high" decoding="async"
-             class="w-full h-full object-cover object-right-top">
-        {{-- En altta hafif navy — alt içerik (stat kartları) net dursun --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/50 via-transparent to-transparent"></div>
+             class="w-full h-full object-cover object-[center_30%]">
+        <div class="absolute inset-0 bg-primary-900/80"></div>
     </div>
 
     {{-- ince nokta deseni (tüm hero) --}}
@@ -122,7 +120,7 @@
                 data.results.forEach(r => {
                     const img = r.image
                         ? `<img src="${esc(r.image)}" alt="" class="w-10 h-10 object-cover rounded shrink-0 bg-gray-100" loading="lazy">`
-                        : `<div class="w-10 h-10 rounded bg-primary-100 flex items-center justify-center text-base shrink-0">${esc(r.icon || '·')}</div>`;
+                        : `<div class="w-10 h-10 rounded bg-primary-100 flex items-center justify-center text-primary-600 shrink-0">${r.icon_html || ''}</div>`;
                     html += `<li><a href="${esc(r.url)}" class="flex items-start gap-3 p-3 hover:bg-gray-50 transition">
                         ${img}
                         <div class="flex-1 min-w-0">
@@ -200,13 +198,17 @@
         {{-- Popüler aramalar --}}
         <div class="flex flex-wrap items-center gap-2 text-sm">
             <span class="font-semibold text-primary-100 mr-1">{{ __('Popular searches') }}</span>
-            <a href="{{ route('popular-universities') }}" class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 border border-white/20 px-3.5 py-1.5 rounded-full font-semibold transition">⭐ {{ __('Popular Universities') }}</a>
-            <a href="{{ route('programs.index', ['language' => 'en']) }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition">🇬🇧 {{ __('English Programs') }}</a>
+            <a href="{{ route('popular-universities') }}" class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 border border-white/20 px-3.5 py-1.5 rounded-full font-semibold transition"><x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ __('Popular Universities') }}</a>
+            <a href="{{ route('programs.index', ['language' => 'en']) }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="language" class="w-4 h-4" /> {{ __('English Programs') }}</a>
             <a href="{{ route('scholarships.daad') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="trophy" class="w-3.5 h-3.5" /> {{ __('DAAD Scholarship') }}</a>
             <a href="{{ route('tools.deadlines') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="calendar" class="w-3.5 h-3.5" /> {{ __('Deadline calendar') }}</a>
             <a href="{{ route('tools.visa-cost') }}" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/15 px-3.5 py-1.5 rounded-full transition"><x-svg-icon name="banknotes" class="w-3.5 h-3.5" /> {{ __('Visa cost') }}</a>
         </div>
     </div>
+    <p class="absolute bottom-1 right-2 z-10 text-[10px] leading-tight text-white/60">
+        {{ __('Photo') }}: <a href="https://commons.wikimedia.org/wiki/File:Brandenburger_Tor_abends.jpg" class="underline hover:text-white" rel="nofollow noopener" target="_blank">Thomas Wolf, www.foto-tw.de</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/3.0/" class="underline hover:text-white" rel="nofollow noopener license" target="_blank">CC BY-SA 3.0</a>
+    </p>
 </section>
 
 {{-- =================================================================== --}}
@@ -380,16 +382,13 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach ($featured_programs as $program)
             @php
-                $seed = crc32($program['name']);
-                $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
-                $palette = $palettes[$seed % count($palettes)];
-                $langBadge = $program['language'] === 'en' ? '🇬🇧 EN' : ($program['language'] === 'both' ? '🌐 EN/DE' : '🇩🇪 DE');
+                $langBadge = $program['language'] === 'en' ? 'EN' : ($program['language'] === 'both' ? 'EN/DE' : 'DE');
             @endphp
             <a href="{{ route('programs.show', $program['slug']) }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                 {{-- Bölüm (field) görseli — üni/şehir kartı stili. Gradient + ikon arkada; resim üste biner, hata olursa kalkar. --}}
-                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
-                    <span class="absolute inset-0 flex items-center justify-center text-4xl drop-shadow pointer-events-none" aria-hidden="true">{{ $program['icon'] ?? '🎓' }}</span>
+                <div class="aspect-[16/9] overflow-hidden relative bg-gray-100">
+                    <span class="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none" aria-hidden="true">{!! e_icon($program['icon'] ?? '', 'w-10 h-10') ?: e_icon('academic-cap', 'w-10 h-10') !!}</span>
                     @if(!empty($program['image_url']))
                         <img src="{{ $program['image_url'] }}" alt="{{ $program['field_name'] ?? '' }} — {{ $program['name'] }}"
                              width="640" height="360" loading="lazy" decoding="async"
@@ -430,9 +429,6 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach ($featured_universities as $uni)
             @php
-                $seed = crc32($uni['name_de']);
-                $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
-                $palette = $palettes[$seed % count($palettes)];
                 $typeBadge = match($uni['type'] ?? null) {
                     'public' => [__('Public'), 'bg-emerald-50 text-emerald-700'],
                     'private' => [__('Private'), 'bg-amber-50 text-amber-700'],
@@ -444,8 +440,8 @@
             <a href="{{ route('universities.show', $uni['slug']) }}"
                class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                 {{-- Gradient + initials always behind; image overlays if URL present, removed on error --}}
-                <div class="aspect-[16/9] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
-                    <span class="absolute inset-0 flex items-center justify-center text-4xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
+                <div class="aspect-[16/9] overflow-hidden relative bg-gray-100">
+                    <span class="absolute inset-0 flex items-center justify-center text-4xl font-extrabold text-gray-400 pointer-events-none">{{ mb_substr($uni['name_de'], 0, 2) }}</span>
                     @if(!empty($uni['image_url']))
                         <img src="{{ $uni['image_url'] }}" alt="{{ $uni['name_de'] }} — {{ __('University in Germany') }}"
                              width="640" height="360" loading="lazy" decoding="async"
@@ -497,14 +493,14 @@
         </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        @php $homeAccents = ['primary' => 'from-primary-600 to-accent-500', 'accent' => 'from-emerald-600 to-teal-500', 'amber' => 'from-amber-600 to-orange-500']; @endphp
+        @php $homeAccents = ['primary' => 'bg-primary-50 text-primary-700', 'accent' => 'bg-emerald-50 text-emerald-700', 'amber' => 'bg-amber-50 text-amber-700']; @endphp
         @foreach (\App\Support\UniversityCollections::all() as $cSlug => $c)
             <a href="{{ route('universities.collection', $cSlug) }}"
                class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
-                <div class="bg-gradient-to-br {{ $homeAccents[$c['accent']] ?? $homeAccents['primary'] }} p-5 text-white">
-                    <span class="text-4xl drop-shadow" aria-hidden="true">{{ $c['icon'] }}</span>
-                </div>
                 <div class="p-5 flex-1 flex flex-col">
+                    <span class="inline-flex w-11 h-11 rounded-xl items-center justify-center mb-4 {{ $homeAccents[$c['accent']] ?? $homeAccents['primary'] }}" aria-hidden="true">
+                        <x-svg-icon :name="$c['icon']" class="w-6 h-6" />
+                    </span>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition leading-snug mb-1">{{ __($c['title']) }}</h3>
                     <p class="text-sm text-gray-600 line-clamp-2 mb-3">{{ __($c['subtitle']) }}</p>
                     <span class="mt-auto text-xs font-semibold text-primary-600">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>
@@ -533,15 +529,12 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 @foreach ($cities as $city)
                     @php
-                        $seed = crc32($city['name']);
-                        $palettes = ['from-blue-500 to-cyan-400', 'from-purple-500 to-pink-500', 'from-amber-500 to-orange-400', 'from-emerald-500 to-teal-400', 'from-rose-500 to-fuchsia-500', 'from-indigo-500 to-violet-500'];
-                        $palette = $palettes[$seed % count($palettes)];
                     @endphp
                     <a href="{{ route('cities.show', $city['slug']) }}"
                        class="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-500 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col">
                         {{-- Gradient + letter always rendered; image overlays if URL present, removed on error (Wikimedia 429 fallback) --}}
-                        <div class="aspect-[4/3] overflow-hidden relative bg-gradient-to-br {{ $palette }}">
-                            <span class="absolute inset-0 flex items-center justify-center text-5xl font-extrabold text-white/90 drop-shadow pointer-events-none">{{ mb_substr($city['name'], 0, 1) }}</span>
+                        <div class="aspect-[4/3] overflow-hidden relative bg-gray-100">
+                            <span class="absolute inset-0 flex items-center justify-center text-5xl font-extrabold text-gray-400 pointer-events-none">{{ mb_substr($city['name'], 0, 1) }}</span>
                             @if(!empty($city['image_url']))
                                 <img src="{{ $city['image_url'] }}" alt="{{ __(':city — student city in Germany', ['city' => $city['name']]) }}"
                                      width="400" height="300" loading="lazy" decoding="async"
@@ -550,7 +543,7 @@
                             @endif
                             @if(!empty($city['has_content']))
                                 <span class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                                    <x-svg-icon name="sparkles" class="w-3 h-3" />
+                                    <x-svg-icon name="book-open" class="w-3 h-3" />
                                     {{ __('Guide') }}
                                 </span>
                             @endif

@@ -184,7 +184,7 @@
                         @if ($progEn > 0 && ! $uniLocked)
                             <a href="{{ $progUrl(['lang' => 'en']) }}" rel="nofollow" class="flex-1 text-left rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white p-4 transition">
                                 <div class="text-2xl font-extrabold">{{ $progEn }}</div>
-                                <div class="text-xs opacity-90 mt-0.5">🇬🇧 {{ __('English-taught programs') }} →</div>
+                                <div class="text-xs opacity-90 mt-0.5">{{ __('English-taught programs') }} →</div>
                             </a>
                         @endif
                         @if ($progNcFree > 0)

@@ -58,16 +58,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @php
                 $fields = [
-                    ['🛠️', __('Engineering'), __('Mechanical, Computer, Electrical-Electronics, Automotive and Industrial Engineering are the most in-demand. Germany\'s automotive and heavy-industry base makes these especially attractive.')],
-                    ['📊', __('Business, Economics & Management'), __('Popular for post-graduation careers at global companies and the wide choice of English-taught MBA and business programs.')],
-                    ['🔬', __('Mathematics & Natural Sciences'), __('Physics, Chemistry, Biology and Biotechnology — a magnet for researchers thanks to institutions like the Max Planck Society.')],
-                    ['🩺', __('Medicine & Health Sciences'), __('Medicine, Dentistry and Psychology are prestigious and highly sought — but admission (Numerus Clausus, NC) is among the toughest.')],
-                    ['🏛️', __('Architecture & Design'), __('Urban planning and sustainable architecture programs attract strong, steady interest.')],
+                    ['wrench-screwdriver', __('Engineering'), __('Mechanical, Computer, Electrical-Electronics, Automotive and Industrial Engineering are the most in-demand. Germany\'s automotive and heavy-industry base makes these especially attractive.')],
+                    ['chart-bar', __('Business, Economics & Management'), __('Popular for post-graduation careers at global companies and the wide choice of English-taught MBA and business programs.')],
+                    ['beaker', __('Mathematics & Natural Sciences'), __('Physics, Chemistry, Biology and Biotechnology — a magnet for researchers thanks to institutions like the Max Planck Society.')],
+                    ['heart', __('Medicine & Health Sciences'), __('Medicine, Dentistry and Psychology are prestigious and highly sought — but admission (Numerus Clausus, NC) is among the toughest.')],
+                    ['building-office', __('Architecture & Design'), __('Urban planning and sustainable architecture programs attract strong, steady interest.')],
                 ];
             @endphp
             @foreach ($fields as [$icon, $title, $desc])
                 <div class="bg-white border border-gray-200 rounded-xl p-5">
-                    <h3 class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><span aria-hidden="true">{{ $icon }}</span> {{ $title }}</h3>
+                    <h3 class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><span aria-hidden="true" class="text-primary-600"><x-svg-icon :name="$icon" class="w-5 h-5" /></span> {{ $title }}</h3>
                     <p class="text-sm text-gray-600 leading-relaxed">{{ $desc }}</p>
                 </div>
             @endforeach
@@ -200,13 +200,13 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-5">{{ __('Two strategies international students follow') }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="bg-primary-50 border border-primary-200 rounded-xl p-5">
-                <h3 class="font-bold text-primary-900 mb-2 inline-flex items-center gap-2"><span aria-hidden="true">🏆</span> {{ __('Global prestige seekers') }}</h3>
+                <h3 class="font-bold text-primary-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="globe" class="w-5 h-5" /> {{ __('Global prestige seekers') }}</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">
                     {{ __('Students aiming for academic careers or jobs at global giants (Siemens, BMW, SAP) cluster at TU9 research universities like TUM, RWTH Aachen and KIT. Their world-ranked degrees carry weight back home.') }}
                 </p>
             </div>
             <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
-                <h3 class="font-bold text-emerald-900 mb-2 inline-flex items-center gap-2"><span aria-hidden="true">🚀</span> {{ __('Fast track to work') }}</h3>
+                <h3 class="font-bold text-emerald-900 mb-2 inline-flex items-center gap-2"><x-svg-icon name="briefcase" class="w-5 h-5" /> {{ __('Fast track to work') }}</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">
                     {{ __('The fastest-rising trend: students who want to stay and start working at mid-sized industrial firms choose Universities of Applied Sciences (Fachhochschule) — e.g. Rhine-Waal University of Applied Sciences, with over 50% international students and many fully English-taught programs.') }}
                 </p>
@@ -216,7 +216,7 @@
 
     {{-- ─────────────── İNGİLİZCE PROGRAMLARIN ETKİSİ ─────────────── --}}
     <section class="bg-blue-50 border border-blue-200 rounded-xl p-5 md:p-6">
-        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2">🇬🇧 {{ __('The role of English-taught programs') }}</h2>
+        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2"><x-svg-icon name="language" class="w-5 h-5 text-primary-600" /> {{ __('The role of English-taught programs') }}</h2>
         <p class="text-sm text-gray-700 leading-relaxed mb-3">
             {{ __('The single biggest factor shaping international students\' choice of field and university is the availability of English-taught programs. Business and Engineering are the most popular fields precisely because they offer the most English-taught programs.') }}
         </p>

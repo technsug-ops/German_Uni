@@ -113,7 +113,7 @@
                     </a>
                     <a href="{{ route('scholarships.daad') }}"
                        class="flex items-center justify-center gap-2 text-center w-full px-4 py-2.5 rounded-lg bg-white border border-emerald-300 hover:bg-emerald-50 text-emerald-700 font-semibold text-sm transition">
-                        <x-svg-icon name="sparkles" class="w-4 h-4" /> {{ __('DAAD Scholarships (reduce the cost)') }}
+                        <x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ __('DAAD Scholarships (reduce the cost)') }}
                     </a>
                 </div>
 

@@ -12,8 +12,8 @@
      role="dialog" aria-labelledby="pwaPromptTitle" aria-describedby="pwaPromptDesc">
     <div class="p-4">
         <div class="flex items-start gap-3 mb-3">
-            <div class="shrink-0 w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-2xl">
-                📲
+            <div class="shrink-0 w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600">
+                <x-svg-icon name="computer" class="w-6 h-6" />
             </div>
             <div class="flex-1 min-w-0">
                 <p id="pwaPromptTitle" class="font-bold text-gray-900 leading-tight mb-1">
@@ -34,7 +34,7 @@
         <div id="pwaPromptAndroid" class="hidden">
             <button type="button" id="pwaInstallBtn"
                     class="w-full px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm rounded-lg transition">
-                ⬇ {{ __('Install app') }}
+                {{ __('Install app') }}
             </button>
         </div>
 

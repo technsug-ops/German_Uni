@@ -42,7 +42,7 @@
            class="group block bg-white rounded-2xl border border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div class="bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 p-8 text-white">
-                    <div class="text-6xl mb-3">🇩🇪</div>
+                    <div class="mb-3"><x-svg-icon name="academic-cap" class="w-14 h-14" /></div>
                     <h2 class="text-2xl font-extrabold">DAAD</h2>
                     <p class="text-sm text-blue-100 mt-2">Deutscher Akademischer Austauschdienst</p>
                 </div>
@@ -55,7 +55,7 @@
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-50 text-blue-700"><x-svg-icon name="academic-cap" class="w-3.5 h-3.5" /> {{ __('Master 992 €/month') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-50 text-purple-700"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> {{ __('PhD 1,400 €/month') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-50 text-emerald-700"><x-svg-icon name="target" class="w-3.5 h-3.5" /> {{ __('Postdoc 2,150 €/month') }}</span>
-                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 text-amber-700"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Summer school') }}</span>
+                        <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 text-amber-700"><x-svg-icon name="sun" class="w-3.5 h-3.5" /> {{ __('Summer school') }}</span>
                         <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-rose-50 text-rose-700"><x-svg-icon name="paint-brush" class="w-3.5 h-3.5" /> {{ __('Artists') }}</span>
                     </div>
                     <span class="inline-flex items-center gap-1 mt-5 text-primary-600 group-hover:text-primary-700 font-semibold">
@@ -74,7 +74,7 @@
                 {{-- Erasmus+ --}}
                 <a href="https://erasmus-plus.ec.europa.eu" target="_blank" rel="noopener"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-6">
-                    <div class="text-4xl mb-3">🇪🇺</div>
+                    <div class="mb-3 text-primary-600"><x-svg-icon name="globe" class="w-10 h-10" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Erasmus+ Programme</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('EU exchange program. Study a semester/year in Germany from your home university.') }}</p>
                     <p class="text-xs text-gray-500">{{ __('350-550 €/month (by country tier)') }}</p>
@@ -83,7 +83,7 @@
                 {{-- Deutschlandstipendium --}}
                 <a href="https://www.deutschlandstipendium.de" target="_blank" rel="noopener"
                    class="group bg-white rounded-xl border border-gray-200 hover:border-primary-500 hover:shadow-md transition p-6">
-                    <div class="text-4xl mb-3">🇩🇪</div>
+                    <div class="mb-3 text-primary-600"><x-svg-icon name="banknotes" class="w-10 h-10" /></div>
                     <h3 class="font-bold text-gray-900 group-hover:text-primary-600 mb-1">Deutschlandstipendium</h3>
                     <p class="text-sm text-gray-600 mb-3">{{ __('Half government, half private sponsor. Based on achievement and social engagement. Open to students of every nationality.') }}</p>
                     <p class="text-xs text-gray-500">{{ __('300 €/month, 1-2 semesters') }}</p>

@@ -22,11 +22,11 @@
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="{{ route('home') }}"
                class="inline-flex items-center justify-center gap-2 bg-primary-700 hover:bg-primary-800 text-white px-6 py-3 rounded-lg font-semibold transition">
-                🏠 Ana sayfaya dön
+                <x-svg-icon name="home" class="w-5 h-5" /> Ana sayfaya dön
             </a>
             <a href="{{ route('blog.index') }}"
                class="inline-flex items-center justify-center gap-2 bg-white border border-gray-300 hover:border-primary-500 text-gray-800 hover:text-primary-700 px-6 py-3 rounded-lg font-semibold transition">
-                📚 Blog'a gözat
+                <x-svg-icon name="book-open" class="w-5 h-5" /> Blog'a gözat
             </a>
         </div>
 

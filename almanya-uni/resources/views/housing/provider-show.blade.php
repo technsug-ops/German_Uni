@@ -32,12 +32,12 @@
                 @if ($provider->logo_url)
                     <img src="{{ $provider->logo_url }}" alt="" class="w-full h-full object-contain p-2">
                 @else
-                    {!! e_icon($provider->type_emoji, 'w-12 h-12 md:w-14 md:h-14') !!}
+                    {!! e_icon($provider->type_icon, 'w-12 h-12 md:w-14 md:h-14') !!}
                 @endif
             </div>
             <div class="flex-1 min-w-0">
                 <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/20 mb-2">
-                    {!! e_icon($provider->type_emoji, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
+                    {!! e_icon($provider->type_icon, 'w-3.5 h-3.5') !!} {{ $provider->type_label }}
                 </span>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-1">{{ $provider->name }}</h1>
                 @if ($provider->price_min)
@@ -60,7 +60,7 @@
         {{-- ÖZELLİKLER --}}
         @if (! empty($provider->features))
             <section class="bg-white border border-gray-200 rounded-xl p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="sparkles" class="w-5 h-5 text-emerald-600" /> {{ __('Features') }}</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="check-circle" class="w-5 h-5 text-emerald-600" /> {{ __('Features') }}</h2>
                 <div class="flex flex-wrap gap-2">
                     @foreach ($provider->features as $f)
                         <span class="text-xs px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">{{ str_replace('_', ' ', $f) }}</span>
@@ -104,7 +104,7 @@
                     @foreach ($related as $r)
                         <a href="{{ route('housing.provider-show', $r->slug) }}"
                            class="flex items-center gap-3 p-3 border border-gray-100 rounded hover:bg-gray-50 transition">
-                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600">{!! e_icon($r->type_emoji, 'w-5 h-5') !!}</span>
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600">{!! e_icon($r->type_icon, 'w-5 h-5') !!}</span>
                             <div class="flex-1 min-w-0">
                                 <p class="font-semibold text-sm text-gray-900 truncate">{{ $r->name }}</p>
                                 @if ($r->price_min)

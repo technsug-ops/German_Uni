@@ -13,7 +13,7 @@
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <tr><td style="background:linear-gradient(135deg,#be123c 0%,#e11d48 50%,#f97316 100%);padding:28px 24px;color:#ffffff;text-align:center;">
-                <h1 style="margin:0;font-size:23px;font-weight:800;">🎵 {{ __('Event alerts for :city', ['city' => $city?->name]) }}</h1>
+                <h1 style="margin:0;font-size:23px;font-weight:800;">{{ __('Event alerts for :city', ['city' => $city?->name]) }}</h1>
             </td></tr>
 
             <tr><td style="padding:24px 24px 8px;">

@@ -16,7 +16,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
 
         <span class="absolute top-3 left-3 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide text-white px-2 py-0.5 rounded-full shadow"
-              style="background: {{ $event->type_color }};">{!! e_icon($event->type_emoji, 'w-3 h-3') !!} {{ $event->type_label }}</span>
+              style="background: {{ $event->type_color }};">{!! e_icon($event->type_icon, 'w-3 h-3') !!} {{ $event->type_label }}</span>
         <span class="absolute top-3 right-3 text-[11px] font-semibold text-white bg-black/45 backdrop-blur px-2 py-0.5 rounded-full whitespace-nowrap">{{ $event->starts_at->translatedFormat('d M') }}</span>
 
         <div class="absolute inset-x-0 bottom-0 p-3">

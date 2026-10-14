@@ -103,7 +103,7 @@
                                 </div>
                             </template>
 
-                            {{-- 👍/👎 geri bildirim (selam mesajı hariç) --}}
+                            {{-- olumlu/olumsuz geri bildirim (selam mesajı hariç) --}}
                             <template x-if="m.q">
                                 <div class="mt-1.5 flex items-center gap-1.5 pl-1">
                                     <template x-if="!m.voted">

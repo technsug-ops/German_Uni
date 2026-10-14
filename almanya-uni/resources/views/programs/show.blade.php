@@ -313,7 +313,7 @@
                         <dt class="text-gray-500">{{ __('Language of Instruction') }}</dt>
                         <dd class="font-semibold text-gray-900">{{ $langLabel }}</dd>
                         @if ($program->hasFieldConflict('language'))
-                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="language">⚠ {{ $conflictNote }}</p>
+                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="language"><x-svg-icon name="exclamation-triangle" class="w-3.5 h-3.5 inline -mt-0.5" /> {{ $conflictNote }}</p>
                         @endif
                     </div>
                 @endif
@@ -336,7 +336,7 @@
                             @endif
                         </dd>
                         @if ($program->hasFieldConflict('tuition'))
-                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="tuition">⚠ {{ $conflictNote }}</p>
+                            <p class="text-xs text-amber-700 mt-0.5" data-conflict-field="tuition"><x-svg-icon name="exclamation-triangle" class="w-3.5 h-3.5 inline -mt-0.5" /> {{ $conflictNote }}</p>
                         @endif
                     </div>
                 @endif
@@ -384,7 +384,7 @@
                     @endif
                 @endforeach
                 @if (($program->application_deadline_winter || $program->application_deadline_summer) && $program->hasFieldConflict('deadline'))
-                    <p class="text-xs text-amber-700 -mt-1" data-conflict-field="deadline">⚠ {{ $conflictNote }}</p>
+                    <p class="text-xs text-amber-700 -mt-1" data-conflict-field="deadline"><x-svg-icon name="exclamation-triangle" class="w-3.5 h-3.5 inline -mt-0.5" /> {{ $conflictNote }}</p>
                 @endif
                 {{-- Doğrulama tarihi yalnız ait olduğu bilgide: deadline doğrulandıysa sayfanın tamamı güncelmiş gibi sunulmaz --}}
                 @if ($verifiedDeadline = $program->verifiedRecord('deadline'))

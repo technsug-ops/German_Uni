@@ -385,7 +385,7 @@
                 <a href="https://www.deutschlandstipendium.de"
                    target="_blank" rel="noopener"
                    class="group flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary-50 transition">
-                    <div class="text-2xl">🇩🇪</div>
+                    <div class="shrink-0 text-primary-600"><x-svg-icon name="banknotes" class="w-6 h-6" /></div>
                     <div>
                         <p class="font-bold text-gray-900 group-hover:text-primary-700">Deutschlandstipendium</p>
                         <p class="text-xs text-gray-600 mt-0.5">{{ __('300 €/month, based on merit and social engagement') }}</p>

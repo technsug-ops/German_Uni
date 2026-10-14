@@ -13,7 +13,7 @@
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
             <tr><td style="background:linear-gradient(135deg,#1e40af 0%,#3b82f6 50%,#f97316 100%);padding:28px 24px;color:#ffffff;text-align:center;">
-                <h1 style="margin:0;font-size:24px;font-weight:800;">⭐ {{ __('Your favorites') }}</h1>
+                <h1 style="margin:0;font-size:24px;font-weight:800;">{{ __('Your favorites') }}</h1>
                 <p style="margin:6px 0 0;font-size:13px;color:#bfdbfe;">{{ now()->translatedFormat('d F Y') }}</p>
             </td></tr>
 
@@ -27,7 +27,7 @@
             {{-- DEADLINE'LAR (öncelikli) --}}
             @if (! empty($payload['upcoming_deadlines']))
                 <tr><td style="padding:18px 24px 4px;">
-                    <h3 style="margin:0 0 10px;font-size:15px;color:#dc2626;">⏰ {{ __('Upcoming deadlines (next 30 days)') }}</h3>
+                    <h3 style="margin:0 0 10px;font-size:15px;color:#dc2626;">{{ __('Upcoming deadlines (next 30 days)') }}</h3>
                     @foreach ($payload['upcoming_deadlines'] as $dl)
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:10px;border:1px solid #fecaca;background:#fef2f2;border-radius:8px;">
                             <tr><td style="padding:12px 14px;">
@@ -46,7 +46,7 @@
             {{-- YENİ PROGRAMLAR (favori üniversitelerden) --}}
             @if (! empty($payload['new_programs']))
                 <tr><td style="padding:18px 24px 4px;">
-                    <h3 style="margin:0 0 10px;font-size:15px;color:#059669;">✨ {{ __('New programmes at your favorite universities') }}</h3>
+                    <h3 style="margin:0 0 10px;font-size:15px;color:#059669;">{{ __('New programmes at your favorite universities') }}</h3>
                     @foreach ($payload['new_programs'] as $p)
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:10px;border:1px solid #d1fae5;background:#f0fdf4;border-radius:8px;">
                             <tr><td style="padding:12px 14px;">
@@ -64,7 +64,7 @@
             {{-- İLGİLİ BLOG'LAR --}}
             @if (! empty($payload['related_blogs']))
                 <tr><td style="padding:18px 24px 4px;">
-                    <h3 style="margin:0 0 10px;font-size:15px;color:#1e40af;">📖 {{ __('New blog posts you might find useful') }}</h3>
+                    <h3 style="margin:0 0 10px;font-size:15px;color:#1e40af;">{{ __('New blog posts you might find useful') }}</h3>
                     @foreach ($payload['related_blogs'] as $blog)
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:10px;border:1px solid #dbeafe;background:#eff6ff;border-radius:8px;">
                             <tr><td style="padding:12px 14px;">

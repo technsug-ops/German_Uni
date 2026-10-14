@@ -14,7 +14,7 @@ return [
 
     'aps' => [
         'slug' => 'aps',
-        'icon' => '📜',
+        'icon' => 'document-text',
         'title' => [
             'tr' => 'APS (Akademische Prüfstelle)',
             'en' => 'APS (Akademische Prüfstelle)',
@@ -50,7 +50,7 @@ return [
 
     'uni-assist' => [
         'slug' => 'uni-assist',
-        'icon' => '📋',
+        'icon' => 'list-bullet',
         'title' => [
             'tr' => 'Uni-Assist',
             'en' => 'Uni-Assist',
@@ -86,7 +86,7 @@ return [
 
     'sperrkonto' => [
         'slug' => 'sperrkonto',
-        'icon' => '🏦',
+        'icon' => 'building-library',
         'title' => [
             'tr' => 'Sperrkonto (Bloke Hesap)',
             'en' => 'Sperrkonto (Blocked Account)',
@@ -122,7 +122,7 @@ return [
 
     'studienkolleg' => [
         'slug' => 'studienkolleg',
-        'icon' => '📚',
+        'icon' => 'book-open',
         'title' => [
             'tr' => 'Studienkolleg',
             'en' => 'Studienkolleg',
@@ -158,7 +158,7 @@ return [
 
     'blue-card' => [
         'slug' => 'blue-card',
-        'icon' => '💳',
+        'icon' => 'credit-card',
         'title' => [
             'tr' => 'Mavi Kart (Blue Card EU)',
             'en' => 'EU Blue Card',
@@ -194,7 +194,7 @@ return [
 
     'daad' => [
         'slug' => 'daad',
-        'icon' => '🎖️',
+        'icon' => 'trophy',
         'title' => [
             'tr' => 'DAAD (Alman Akademik Değişim Servisi)',
             'en' => 'DAAD — German Academic Exchange Service',
@@ -230,7 +230,7 @@ return [
 
     'anabin' => [
         'slug' => 'anabin',
-        'icon' => '🔍',
+        'icon' => 'search',
         'title' => [
             'tr' => 'Anabin (KMK Diploma Veritabanı)',
             'en' => 'Anabin — KMK Diploma Database',
@@ -266,7 +266,7 @@ return [
 
     'ects' => [
         'slug' => 'ects',
-        'icon' => '🎓',
+        'icon' => 'academic-cap',
         'title' => [
             'tr' => 'ECTS (Avrupa Kredi Transfer Sistemi)',
             'en' => 'ECTS — European Credit Transfer System',

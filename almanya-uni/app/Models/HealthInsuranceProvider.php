@@ -47,9 +47,9 @@ class HealthInsuranceProvider extends Model
      * Sigorta tipleri. label çeviri için __() ile sarılır; emoji e_icon ile SVG'ye map'lenir.
      */
     public const TYPES = [
-        'public'  => ['label' => 'Gesetzlich (GKV)', 'emoji' => '🏛️', 'color' => 'emerald'],
-        'private' => ['label' => 'Privat (PKV)',     'emoji' => '⚡',  'color' => 'indigo'],
-        'expat'   => ['label' => 'Expat / Incoming',  'emoji' => '🌍', 'color' => 'amber'],
+        'public'  => ['label' => 'Gesetzlich (GKV)', 'emoji' => '🏛️', 'icon' => 'building-library', 'color' => 'emerald'],
+        'private' => ['label' => 'Privat (PKV)',     'emoji' => '⚡', 'icon' => 'bolt',  'color' => 'indigo'],
+        'expat'   => ['label' => 'Expat / Incoming',  'emoji' => '🌍', 'icon' => 'globe', 'color' => 'amber'],
     ];
 
     public function getRouteKeyName(): string
@@ -75,6 +75,12 @@ class HealthInsuranceProvider extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '🩺';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'heart';
     }
 
     /**

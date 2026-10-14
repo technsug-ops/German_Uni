@@ -69,7 +69,7 @@
             @endif
             @if (! empty($regionLabel))
                 <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                    {{ $regionLabel[0] }} {{ $regionLabel[1] }}
+                    <x-svg-icon :name="$regionLabel[0]" class="w-4 h-4" /> {{ $regionLabel[1] }}
                 </span>
             @endif
             @if ($state->population)

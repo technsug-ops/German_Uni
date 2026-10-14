@@ -129,7 +129,7 @@
                            class="flex items-center gap-3 bg-white border border-gray-200 hover:border-primary-400 hover:shadow-md rounded-xl p-4 transition">
                             <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg shrink-0"
                                   style="background-color: #1E40AF14; color: #1E40AF;">
-                                {!! e_icon($tool['icon'] ?? '🔧', 'w-4 h-4') !!}
+                                {!! e_icon($tool['icon'] ?? 'wrench-screwdriver', 'w-4 h-4') !!}
                             </span>
                             <span class="font-semibold text-gray-900">{{ $tool['title'] }}</span>
                         </a>

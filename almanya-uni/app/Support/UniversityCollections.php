@@ -5,7 +5,7 @@ namespace App\Support;
 /**
  * Curated, editorial university collections → category landing pages.
  *
- * Each entry: slug => [icon, accent, title, subtitle, intro, uni_slugs[]].
+ * Each entry: slug => [icon (Heroicon adı), accent, title, subtitle, intro, uni_slugs[]].
  * `title`/`subtitle`/`intro` are English strings used directly as __() keys
  * (TR/DE live in lang/tr.json + lang/de.json, per the project i18n convention).
  *
@@ -21,7 +21,7 @@ class UniversityCollections
     {
         return [
             'top-public-universities' => [
-                'icon'     => '🏛️',
+                'icon'     => 'building-library',
                 'accent'   => 'primary',
                 'title'    => 'Most Preferred Public Universities in Germany',
                 'subtitle' => 'Germany\'s most sought-after state universities — tuition-free, world-ranked, and the top choice of international students.',
@@ -41,7 +41,7 @@ class UniversityCollections
             ],
 
             'english-taught-universities' => [
-                'icon'     => '🌍',
+                'icon'     => 'language',
                 'accent'   => 'accent',
                 'title'    => 'Universities Teaching in English in Germany',
                 'subtitle' => 'Ten English-taught programme examples at eight German universities, checked on official pages (October 2026), with the language certificate each one asks for.',
@@ -196,7 +196,7 @@ class UniversityCollections
             ],
 
             'conditional-admission-universities' => [
-                'icon'     => '📝',
+                'icon'     => 'document-text',
                 'accent'   => 'amber',
                 'title'    => 'Universities Offering Conditional Admission in Germany',
                 'subtitle' => 'Conditional admission, German-course admission or certificate at enrolment? 9 German universities compared using their official pages (checked October 2026).',

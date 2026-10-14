@@ -351,7 +351,7 @@
                                     <td class="px-4 py-3">
                                         @if ($u['has_content'])
                                             <a href="{{ route('universities.show', $u['slug']) }}" class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-xs font-semibold hover:bg-emerald-100">
-                                                <span class="inline-flex items-center gap-1"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Available') }}</span> →
+                                                <span class="inline-flex items-center gap-1"><x-svg-icon name="check-circle" class="w-3.5 h-3.5" /> {{ __('Available') }}</span> →
                                             </a>
                                         @else
                                             <span class="inline-block px-2 py-0.5 rounded bg-gray-100 text-gray-500 text-xs">— {{ __('Coming soon') }}</span>

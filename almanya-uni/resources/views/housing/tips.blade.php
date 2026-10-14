@@ -10,7 +10,7 @@
             <span class="mx-2">/</span>
             <span>{{ __('Experiences') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-extrabold">💬 {{ __('Community Experiences') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-extrabold">{{ __('Community Experiences') }}</h1>
         <p class="text-primary-100 mt-2">{{ __('What international students go through while finding a home in Germany.') }}</p>
     </div>
 </section>
@@ -18,8 +18,8 @@
 <div class="max-w-[1400px] mx-auto px-4 py-8">
     @auth
         <div class="mb-6 text-right">
-            <a href="{{ lroute('housing.tip-create') }}" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-bold px-5 py-2.5 rounded-lg transition">
-                ✍ {{ __('Share my experience') }}
+            <a href="{{ lroute('housing.tip-create') }}" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-5 py-2.5 rounded-lg transition">
+                <x-svg-icon name="pencil-square" class="w-5 h-5" /> {{ __('Share my experience') }}
             </a>
         </div>
     @endauth
@@ -49,7 +49,7 @@
                     </div>
                     <p class="text-sm text-gray-700 leading-relaxed mb-3">{{ $tip->content }}</p>
                     <p class="text-xs text-gray-500">
-                        @if ($tip->city_name) 📍 {{ $tip->city_name }} · @endif
+                        @if ($tip->city_name) <x-svg-icon name="map-pin" class="w-3.5 h-3.5 inline -mt-0.5" /> {{ $tip->city_name }} · @endif
                         {{ $tip->user->name ?? __('Anonymous') }} · {{ $tip->created_at->diffForHumans() }}
                     </p>
                 </article>

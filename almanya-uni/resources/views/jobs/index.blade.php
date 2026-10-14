@@ -80,8 +80,8 @@
                 <label class="block text-xs font-bold text-gray-700 mb-1">{{ __('Language') }}</label>
                 <select name="lang" class="w-full px-2 py-2 border border-gray-300 rounded-lg text-sm">
                     <option value="">{{ __('All') }}</option>
-                    <option value="en" @selected(($filters['lang'] ?? '') === 'en')>🇬🇧 EN</option>
-                    <option value="de" @selected(($filters['lang'] ?? '') === 'de')>🇩🇪 DE</option>
+                    <option value="en" @selected(($filters['lang'] ?? '') === 'en')>EN</option>
+                    <option value="de" @selected(($filters['lang'] ?? '') === 'de')>DE</option>
                     <option value="both" @selected(($filters['lang'] ?? '') === 'both')>{{ __('Both') }}</option>
                 </select>
             </div>
@@ -157,9 +157,9 @@
                                     <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> {{ __('Remote OK') }}</span>
                                 @endif
                                 @if ($job->language === 'en')
-                                    <span>·</span><span>🇬🇧 English</span>
+                                    <span>·</span><span>English</span>
                                 @elseif ($job->language === 'de')
-                                    <span>·</span><span>🇩🇪 Deutsch</span>
+                                    <span>·</span><span>Deutsch</span>
                                 @elseif ($job->language === 'both')
                                     <span>·</span><span class="inline-flex items-center gap-1"><x-svg-icon name="globe" class="w-3.5 h-3.5" /> EN + DE</span>
                                 @endif

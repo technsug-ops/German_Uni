@@ -9,7 +9,7 @@
 
 @php
     $categoryMeta = [
-        'oncelik' => ['title' => __('Student & Community Favorites'), 'desc' => __('Universities most suitable for international students and most discussed in the community.'), 'icon' => 'star',           'flag' => '🇹🇷'],
+        'oncelik' => ['title' => __('Student & Community Favorites'), 'desc' => __('Universities most suitable for international students and most discussed in the community.'), 'icon' => 'star'],
         'dunya'   => ['title' => __('World Rankings'),     'desc' => __('German universities in QS World + Times Higher Education lists.'),                                      'icon' => 'globe'],
         'genel'   => ['title' => __('General Rankings'),      'desc' => __('Largest, oldest, and newest German universities.'),                                                  'icon' => 'chart-bar'],
         'alan'    => ['title' => __('By Field / Subject'),     'desc' => __('Strongest universities in engineering, IT, medicine, law and other fields.'),                       'icon' => 'target'],
@@ -27,7 +27,7 @@
             str_contains($slug, 'en-iyi')             => 'target',
             str_contains($slug, 'en-buyuk')           => 'users',
             str_contains($slug, 'en-eski')            => 'building-office',
-            str_contains($slug, 'en-yeni')            => 'sparkles',
+            str_contains($slug, 'en-yeni')            => 'clock',
             str_contains($slug, 'devlet')             => 'check-circle',
             str_contains($slug, 'ozel')               => 'star',
             str_contains($slug, 'uygulamali')         => 'wrench-screwdriver',
@@ -71,7 +71,7 @@
                 @if ($stats['newest_uni'])
                     <a href="{{ route('rankings.show', 'en-yeni-universiteler') }}"
                        class="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur rounded-lg p-4 transition">
-                        <p class="text-xs uppercase tracking-wider text-primary-200 mb-1 inline-flex items-center gap-1"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Newest') }}</p>
+                        <p class="text-xs uppercase tracking-wider text-primary-200 mb-1 inline-flex items-center gap-1"><x-svg-icon name="clock" class="w-3.5 h-3.5" /> {{ __('Newest') }}</p>
                         <p class="font-bold leading-tight">{{ $stats['newest_uni']->name_de }}</p>
                         <p class="text-sm text-accent-300 mt-1">{{ __('Year :y', ['y' => $stats['newest_uni']->founded_year]) }}</p>
                     </a>

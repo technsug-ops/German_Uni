@@ -278,8 +278,8 @@ if (! function_exists('e_icon')) {
             '🛠️' => 'wrench-screwdriver',
             '🔧' => 'wrench-screwdriver',
             '🔍' => 'search',
-            '🎁' => 'sparkles',
-            '🎖️' => 'sparkles',
+            '🎁' => 'star',
+            '🎖️' => 'trophy',
             '🏆' => 'trophy',
             '🥇' => 'trophy',
             '💰' => 'banknotes',
@@ -287,7 +287,7 @@ if (! function_exists('e_icon')) {
             '📅' => 'calendar',
             '📆' => 'calendar',
             '🗓️' => 'calendar',
-            '✨' => 'sparkles',
+            '✨' => 'star',
             '⭐' => 'star',
             '💡' => 'light-bulb',
             '🚀' => 'rocket-launch',
@@ -338,7 +338,7 @@ if (! function_exists('e_icon')) {
             '🐾' => 'paw',
             '🐛' => 'beaker',
             '🌱' => 'leaf',
-            '✨' => 'sparkles',
+            '✨' => 'star',
             '❤️' => 'heart',
             '🩺' => 'heart',
             '🏥' => 'heart',
@@ -348,7 +348,7 @@ if (! function_exists('e_icon')) {
             '🔬' => 'beaker',
             '🎬' => 'photo',
             '🎭' => 'photo',
-            '🎵' => 'sparkles',
+            '🎵' => 'play',
             '🛂' => 'fingerprint',       // passport / visa control
             '🗣️' => 'chat-bubble',       // speaking / language
             '🏫' => 'building-library',   // school building
@@ -361,11 +361,16 @@ if (! function_exists('e_icon')) {
             '🛡️' => 'shield-check',       // recognition / protection
         ];
 
-        $name = $map[$emoji] ?? null;
+        $emoji = trim($emoji);
+        // Bir Heroicon adı da kabul edilir (veri emoji yerine ikon adı taşıyabilir).
+        if (preg_match('/^[a-z][a-z-]*$/', $emoji)) {
+            return view('components.svg-icon', ['name' => $emoji, 'class' => $class])->render();
+        }
+        $bare = str_replace("\u{FE0F}", '', $emoji);
+        $name = $map[$emoji] ?? $map[$bare] ?? $map[$bare . "\u{FE0F}"] ?? null;
         if (! $name) {
-            // Unknown emoji — keep it (admin's deliberate choice for niche pages).
-            // Wrap with a span so callers get consistent inline-block layout.
-            return '<span class="inline-block">' . e($emoji) . '</span>';
+            // Bilinmeyen emoji hiç gösterilmez: sitede ham emoji görünmesin.
+            return '';
         }
 
         // Render via the same component the rest of the UI uses, so the icon

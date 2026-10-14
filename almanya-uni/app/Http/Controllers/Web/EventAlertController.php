@@ -26,7 +26,7 @@ class EventAlertController extends Controller
             'email'        => ['required', 'email:rfc', 'max:191'],
             'city_id'      => ['required', 'integer', 'exists:cities,id'],
             'source'       => ['nullable', 'string', 'max:50'],
-            'website'      => ['nullable', 'max:0'],          // 🍯 honeypot
+            'website'      => ['nullable', 'max:0'],          // honeypot
             'gdpr_consent' => ['accepted'],
         ], [
             'gdpr_consent.accepted' => __('You must accept the privacy terms.'),
@@ -95,7 +95,7 @@ class EventAlertController extends Controller
 
         return view('newsletter.result', [
             'success' => true,
-            'title'   => __('Subscription confirmed! 🎉'),
+            'title'   => __('Subscription confirmed!'),
             'message' => __('You will now get event alerts for :city at :email.', ['city' => $sub->city?->name, 'email' => $sub->email]),
         ]);
     }

@@ -11,7 +11,7 @@
 @if (! empty($data['title']))
 <figure class="not-prose my-8 rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-sm">
     {{-- Başlık --}}
-    <div class="bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 text-white px-6 py-6">
+    <div class="bg-primary-800 text-white px-6 py-6">
         <p class="text-[11px] font-bold uppercase tracking-widest text-white/70 mb-1 inline-flex items-center gap-1.5">
             <x-svg-icon name="chart-bar" class="w-3.5 h-3.5" /> {{ __('Infographic') }}
         </p>
@@ -52,7 +52,7 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                             @foreach ($items as $it)
                                 <div class="bg-gray-50 rounded-lg p-3 text-center">
-                                    <div class="text-2xl mb-1">{{ $it['icon'] ?? '📌' }}</div>
+                                    @if ($ic = e_icon($it['icon'] ?? '', 'w-6 h-6'))<div class="mb-1 text-primary-600">{!! $ic !!}</div>@endif
                                     <div class="text-lg font-extrabold text-gray-900 leading-tight">{{ $it['value'] ?? '' }}</div>
                                     <div class="text-xs text-gray-600 mt-0.5">{{ $it['label'] ?? '' }}</div>
                                 </div>
@@ -75,7 +75,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             @foreach ($items as $it)
                                 <div class="border border-gray-200 rounded-lg p-3">
-                                    <div class="font-semibold text-gray-900 flex items-center gap-2">{{ $it['icon'] ?? '' }} {{ $it['label'] ?? '' }}</div>
+                                    <div class="font-semibold text-gray-900 flex items-center gap-2"><span class="text-primary-600">{!! e_icon($it['icon'] ?? '', 'w-5 h-5') !!}</span> {{ $it['label'] ?? '' }}</div>
                                     @if (! empty($it['value'])) <div class="text-sm text-gray-700 mt-1">{{ $it['value'] }}</div> @endif
                                     @if (! empty($it['note'])) <div class="text-xs text-gray-500 mt-0.5">{{ $it['note'] }}</div> @endif
                                 </div>
@@ -85,7 +85,7 @@
                         <ul class="space-y-2">
                             @foreach ($items as $it)
                                 <li class="flex items-start gap-2.5 text-sm">
-                                    <span class="flex-shrink-0">{{ $it['icon'] ?? '✅' }}</span>
+                                    <span class="flex-shrink-0 text-primary-600 mt-0.5">{!! e_icon($it['icon'] ?? '', 'w-5 h-5') ?: e_icon('check-circle', 'w-5 h-5') !!}</span>
                                     <span class="text-gray-700">
                                         @if (! empty($it['label'])) <span class="font-semibold text-gray-900">{{ $it['label'] }}</span> @endif
                                         @if (! empty($it['value'])) {{ $it['label'] ? '— ' : '' }}{{ $it['value'] }} @endif

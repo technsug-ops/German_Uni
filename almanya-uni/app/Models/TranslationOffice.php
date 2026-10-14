@@ -27,9 +27,9 @@ class TranslationOffice extends Model
     ];
 
     public const TYPES = [
-        'sworn_individual' => ['label' => 'Yeminli Tercüman (Birey)', 'emoji' => '👤', 'color' => 'indigo'],
-        'agency'           => ['label' => 'Tercüme Bürosu',           'emoji' => '🏢', 'color' => 'emerald'],
-        'online'           => ['label' => 'Online Tercüme',           'emoji' => '🌐', 'color' => 'amber'],
+        'sworn_individual' => ['label' => 'Yeminli Tercüman (Birey)', 'emoji' => '👤', 'icon' => 'user', 'color' => 'indigo'],
+        'agency'           => ['label' => 'Tercüme Bürosu',           'emoji' => '🏢', 'icon' => 'building-office', 'color' => 'emerald'],
+        'online'           => ['label' => 'Online Tercüme',           'emoji' => '🌐', 'icon' => 'globe', 'color' => 'amber'],
     ];
 
     public function getRouteKeyName(): string
@@ -55,6 +55,12 @@ class TranslationOffice extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '📜';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'document-text';
     }
 
     public function getOutboundUrlAttribute(): ?string

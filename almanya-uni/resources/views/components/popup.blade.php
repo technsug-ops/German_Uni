@@ -5,7 +5,7 @@
     $body     = $popup->body();
     $cta      = $popup->ctaLabel();
     $secondary= $popup->secondaryLabel();
-    $emoji    = $popup->emoji ?: ($popup->media_type === 'video' ? '🎬' : '✨');
+    $emoji    = $popup->emoji ?: ($popup->media_type === 'video' ? 'play' : null);
     $accent   = $popup->accent_color ?: null;
     $theme    = $popup->theme;
     $position = $popup->position;
@@ -121,7 +121,7 @@
         <div class="p-6 md:p-8">
             @if ($title)
                 <h2 class="text-2xl md:text-3xl font-extrabold leading-tight mb-2 flex items-start gap-2 flex-wrap">
-                    <span>{{ $emoji }}</span>
+                    @if ($emoji)<span class="inline-flex mt-1">{!! e_icon($emoji, 'w-7 h-7') !!}</span>@endif
                     <span class="flex-1">{{ $title }}</span>
                 </h2>
             @endif

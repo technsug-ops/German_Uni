@@ -17,7 +17,7 @@
             <span class="mx-2">/</span>
             <span>{{ __('Grade Converter') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">📊 {{ __('Grade Converter (TR → DE)') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">{{ __('Grade Converter (TR → DE)') }}</h1>
         <p class="text-primary-100 max-w-3xl">
             {!! __('Convert your Turkish university grade to the German system. The calculation uses the <strong>modifizierte bayerische Formel</strong> — the standard used by DAAD and uni-assist.') !!}
         </p>
@@ -65,7 +65,7 @@
                 </p>
                 <p class="text-primary-800">{{ $result['german_text'] }}</p>
                 @if ($result['note'])
-                    <p class="text-sm text-orange-700 mt-3">⚠️ {{ $result['note'] }}</p>
+                    <p class="text-sm text-orange-700 mt-3 flex items-start gap-1.5"><x-svg-icon name="exclamation-triangle" class="w-4 h-4 shrink-0 mt-0.5" /> <span>{{ $result['note'] }}</span></p>
                 @endif
             </div>
         @endif

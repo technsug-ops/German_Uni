@@ -12,7 +12,7 @@
             <span class="mx-2">/</span>
             <span>{{ __('New') }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-extrabold">✍️ {{ __('Share your experience') }}</h1>
+        <h1 class="text-3xl md:text-4xl font-extrabold">{{ __('Share your experience') }}</h1>
         <p class="text-primary-100 mt-2">{{ __('Tell other students what you went through — help shorten their path.') }}</p>
     </div>
 </section>
@@ -46,7 +46,7 @@
                     <option value="wg" @selected(old('category') === 'wg')>{{ __('WG (shared flat)') }}</option>
                     <option value="private" @selected(old('category') === 'private')>{{ __('Private apartment') }}</option>
                     <option value="dorm" @selected(old('category') === 'dorm')>{{ __('Dorm (Studierendenwerk)') }}</option>
-                    <option value="scam-warning" @selected(old('category') === 'scam-warning')>⚠️ {{ __('Scam warning') }}</option>
+                    <option value="scam-warning" @selected(old('category') === 'scam-warning')>{{ __('Scam warning') }}</option>
                     <option value="landlord-talk" @selected(old('category') === 'landlord-talk')>{{ __('Talk with landlord') }}</option>
                     <option value="other" @selected(old('category') === 'other')>{{ __('Other') }}</option>
                 </select>
@@ -70,8 +70,8 @@
             <p class="text-xs text-gray-500 mt-1">{{ __('Minimum 50, maximum 5000 characters.') }}</p>
         </div>
 
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900">
-            ℹ️ {!! __('Your post will be published after <strong>editor approval</strong>. Do not include personal details (phone, address, landlord name).') !!}
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900 flex items-start gap-2">
+            <x-svg-icon name="information-circle" class="w-5 h-5 shrink-0 text-blue-700" /> <span>{!! __('Your post will be published after <strong>editor approval</strong>. Do not include personal details (phone, address, landlord name).') !!}</span>
         </div>
 
         <div class="flex justify-end gap-3">

@@ -22,7 +22,7 @@
 
 @if ($professions->isEmpty())
     <x-empty-state
-        icon="💼"
+        icon="briefcase"
         :title="__('No profession found.')"
         :description="__('Try the full profession list or browse by field of study.')"
         :actions="[

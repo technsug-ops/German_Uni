@@ -34,7 +34,7 @@
 
     {{-- Açıklama --}}
     <section class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 md:p-6">
-        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2">ℹ️ {{ __('What does “NC-free” mean?') }}</h2>
+        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2"><x-svg-icon name="information-circle" class="w-5 h-5 text-emerald-700" /> {{ __('What does “NC-free” mean?') }}</h2>
         <p class="text-sm text-gray-700 leading-relaxed">
             {{ __('“Zulassungsfrei” means the program has no numerus clausus (NC) — there is no minimum grade cut-off. If you meet the basic requirements (degree, language certificate), you are admitted. This is the lowest-risk route for international students worried about their grades. Always confirm the current status on the official program page, as admission can change per semester.') }}
         </p>

@@ -17,9 +17,9 @@
     // Rozet varyantları — koyu / açık / sayılı. Hepsi tek <a>, inline style (her sitede çalışır).
     $badgeBase = 'display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;font:600 13px/1 sans-serif;text-decoration:none;';
     $badges = [
-        'dark'  => ['label' => __('Dark'),  'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#1A1A1A;color:#fff;">🇩🇪 ' . __('Data by') . ' ' . $name . '</a>'],
-        'light' => ['label' => __('Light'), 'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#fff;color:#1A1A1A;border:1px solid #e5e7eb;">🇩🇪 ' . __('Data by') . ' ' . $name . '</a>'],
-        'count' => ['label' => __('With numbers'), 'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#1a368d;color:#fff;">🇩🇪 ' . number_format($totals['programs']) . ' ' . __('German study programs') . ' · ' . $name . '</a>'],
+        'dark'  => ['label' => __('Dark'),  'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#1A1A1A;color:#fff;">' . __('Data by') . ' ' . $name . '</a>'],
+        'light' => ['label' => __('Light'), 'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#fff;color:#1A1A1A;border:1px solid #e5e7eb;">' . __('Data by') . ' ' . $name . '</a>'],
+        'count' => ['label' => __('With numbers'), 'html' => '<a href="' . $domain . '" style="' . $badgeBase . 'background:#1a368d;color:#fff;">' . number_format($totals['programs']) . ' ' . __('German study programs') . ' · ' . $name . '</a>'],
     ];
 
     // Konu-bazlı hazır linkler — spesifik araç/sayfalara derin linkler.
@@ -228,7 +228,7 @@
             @foreach ($pressAssets as $a)
                 <a href="{{ asset($a['file']) }}" download
                    class="flex flex-col items-center justify-center gap-2 border border-gray-200 rounded-xl p-4 hover:border-primary-400 hover:shadow-sm transition text-center">
-                    <span class="text-2xl">⬇</span>
+                    <span class="text-primary-600"><x-svg-icon name="arrow-down-tray" class="w-6 h-6" /></span>
                     <span class="text-xs font-semibold text-gray-700 leading-tight">{{ $a['label'] }}</span>
                 </a>
             @endforeach

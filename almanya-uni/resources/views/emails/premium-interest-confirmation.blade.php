@@ -22,9 +22,6 @@
 
                 <tr>
                     <td style="background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%);padding:36px 32px 32px;text-align:center;">
-                        <div style="display:inline-block;width:56px;height:56px;background:#fff;border-radius:14px;text-align:center;line-height:56px;font-size:28px;margin-bottom:14px;">
-                            {{ $isBeta ? '🚀' : '⭐' }}
-                        </div>
                         <h1 style="color:#fff;font-size:24px;font-weight:800;margin:0 0 8px;">
                             {{ $name ? __('Hi :name!', ['name' => $name]) : __('Hi there!') }}
                         </h1>
@@ -76,17 +73,17 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding:8px 0;">
-                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/tools/pathway-finder" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">🧭 {{ __('Pathway Finder quiz') }} →</a>
+                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/tools/pathway-finder" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">{{ __('Pathway Finder quiz') }} →</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 0;">
-                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/tools/eligibility-checker" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">✅ {{ __('Eligibility Checker') }} →</a>
+                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/tools/eligibility-checker" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">{{ __('Eligibility Checker') }} →</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 0;">
-                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/journey" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">🗺️ {{ __('Application Tracker (8 steps)') }} →</a>
+                                    <a href="{{ $brandHomeUrl }}/{{ $locale }}/journey" style="color:#1E40AF;text-decoration:none;font-weight:600;font-size:14px;">{{ __('Application Tracker (8 steps)') }} →</a>
                                 </td>
                             </tr>
                         </table>

@@ -86,7 +86,7 @@ class StateController extends Controller
                 ->where('is_active', 1)->where('type', 'private')->count(),
         ];
 
-        // ⚠️ Bayat istatistik düzeltmesi: content_blocks içindeki 'universities_in_city'
+        // Not: bayat istatistik düzeltmesi: content_blocks içindeki 'universities_in_city'
         // bloğu enrichment ANINDA hesaplanmış sayıları gömüyor. Sonradan ~üni pasifleşti
         // (986→645 temizliği) → kart canlı sayı (52) gösterirken blok bayat (72) kalıyordu.
         // Render anında CANLI sayıyla override et → kart ile detay her zaman uyumlu.
@@ -147,10 +147,10 @@ class StateController extends Controller
 
         // Bölge etiketi (locale-aware)
         $regionLabel = match ($state->region) {
-            'nord'  => ['🌊', __('Northern Germany')],
-            'sued'  => ['⛰️', __('Southern Germany')],
-            'west'  => ['🏭', __('Western Germany')],
-            'ost'   => ['🌅', __('Eastern Germany')],
+            'nord'  => ['map-pin', __('Northern Germany')],
+            'sued'  => ['map-pin', __('Southern Germany')],
+            'west'  => ['map-pin', __('Western Germany')],
+            'ost'   => ['map-pin', __('Eastern Germany')],
             default => null,
         };
 

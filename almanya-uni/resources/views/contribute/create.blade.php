@@ -95,7 +95,7 @@
                         </div>
                         <span class="text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap
                             {{ $c->status==='approved' ? 'bg-emerald-100 text-emerald-700' : ($c->status==='rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700') }}">
-                            {{ ['pending'=>'⏳ ' . __('Pending approval'),'approved'=>'✅ ' . __('Published'),'rejected'=>'❌ ' . __('Rejected')][$c->status] ?? $c->status }}
+                            {{ ['pending'=>__('Pending approval'),'approved'=>__('Published'),'rejected'=>__('Rejected')][$c->status] ?? $c->status }}
                         </span>
                     </div>
                 @endforeach

@@ -9,13 +9,10 @@
 
 @section('content')
 
-{{-- HERO with decorative sparkles + animated CTA + live social proof --}}
+{{-- HERO with soft background shapes + animated CTA + live social proof --}}
 <section class="relative bg-gradient-to-br from-primary-700 via-indigo-600 to-purple-600 text-white overflow-hidden">
     <div class="absolute inset-0 pointer-events-none opacity-50">
-        <svg class="absolute top-8 left-[10%] w-12 h-12 animate-pulse" viewBox="0 0 24 24" fill="white" fill-opacity="0.4"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
         <svg class="absolute top-1/3 right-[12%] w-10 h-10 animate-pulse" style="animation-delay: 0.7s" viewBox="0 0 24 24" fill="white" fill-opacity="0.5"><circle cx="12" cy="12" r="3"/></svg>
-        <svg class="absolute bottom-12 left-[18%] w-16 h-16 animate-pulse" style="animation-delay: 1.4s" viewBox="0 0 24 24" fill="white" fill-opacity="0.3"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
-        <svg class="absolute bottom-8 right-[20%] w-8 h-8 animate-bounce" style="animation-duration: 3s" viewBox="0 0 24 24" fill="white" fill-opacity="0.35"><path d="M12 2 L13 10 L22 12 L13 14 L12 22 L11 14 L2 12 L11 10 Z"/></svg>
         <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-amber-400/30 rounded-full blur-3xl"></div>
         <div class="absolute -top-10 -right-10 w-80 h-80 bg-indigo-400/30 rounded-full blur-3xl"></div>
     </div>
@@ -52,13 +49,13 @@
         @if ($total >= 5)
             <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-sm text-primary-100">
                 @if (($counts['beta_signups'] ?? 0) > 0)
-                    <span class="flex items-center gap-1"><x-svg-icon name="rocket-launch" class="w-4 h-4" /> <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
+                    <span class="flex items-center gap-1"><x-svg-icon name="users" class="w-4 h-4" /> <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
                 @endif
                 @if (($counts['premium_tier'] ?? 0) > 0)
                     <span class="flex items-center gap-1"><x-svg-icon name="star" class="w-4 h-4" /> <strong>{{ $counts['premium_tier'] }}</strong> {{ __('Premium') }}</span>
                 @endif
                 @if (($counts['pro_tier'] ?? 0) > 0)
-                    <span class="flex items-center gap-1"><x-svg-icon name="sparkles" class="w-4 h-4" /> <strong>{{ $counts['pro_tier'] }}</strong> {{ __('Pro') }}</span>
+                    <span class="flex items-center gap-1"><x-svg-icon name="star" class="w-4 h-4" /> <strong>{{ $counts['pro_tier'] }}</strong> {{ __('Pro') }}</span>
                 @endif
             </div>
         @endif
@@ -190,7 +187,7 @@
                     <input type="checkbox" name="wants_beta" value="1" {{ old('wants_beta') ? 'checked' : '' }}
                            class="mt-0.5 w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500">
                     <span>
-                        <span class="block font-bold text-purple-900 text-sm inline-flex items-center gap-1.5"><x-svg-icon name="rocket-launch" class="w-4 h-4" /> {{ __('Join the beta tester program') }}</span>
+                        <span class="block font-bold text-purple-900 text-sm inline-flex items-center gap-1.5"><x-svg-icon name="arrow-right" class="w-4 h-4" /> {{ __('Join the beta tester program') }}</span>
                         <span class="block text-xs text-gray-600 mt-0.5">{{ __('Get 3 months free + lifetime 30% off in exchange for feedback. We invite ~20 testers in the next 2 weeks.') }}</span>
                     </span>
                 </label>
@@ -209,7 +206,7 @@
             <div class="mt-6 pt-5 border-t border-amber-200 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-700">
                 <span class="flex items-center gap-1.5"><x-svg-icon name="users" class="w-4 h-4 text-gray-500" /> <strong>{{ number_format($counts['total']) }}</strong> {{ __('signups so far') }}</span>
                 @if ($counts['beta_signups'] > 0)
-                    <span class="flex items-center gap-1.5"><x-svg-icon name="rocket-launch" class="w-4 h-4 text-purple-600" /> <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
+                    <span class="flex items-center gap-1.5"><x-svg-icon name="users" class="w-4 h-4 text-purple-600" /> <strong>{{ $counts['beta_signups'] }}</strong> {{ __('beta testers') }}</span>
                 @endif
             </div>
         @endif

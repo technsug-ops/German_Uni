@@ -27,8 +27,8 @@ class PremiumInterestConfirmation extends Mailable
         app()->setLocale($locale);
 
         $subject = $this->interest->wants_beta
-            ? "{$name} — " . __('Welcome to the beta tester list 🚀')
-            : "{$name} — " . __('You\'re on the Premium early-bird list ⭐');
+            ? "{$name} — " . __('Welcome to the beta tester list')
+            : "{$name} — " . __('You\'re on the Premium early-bird list');
 
         return new Envelope(
             from: new Address($fromAddr, $fromName),

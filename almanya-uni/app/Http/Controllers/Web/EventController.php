@@ -86,7 +86,7 @@ class EventController extends Controller
             return $query;
         };
 
-        // 🔥 Öne çıkanlar — en yakın 6 (gün filtresinden bağımsız, şehir+tip uygulanır)
+        // Öne çıkanlar — en yakın 6 (gün filtresinden bağımsız, şehir+tip uygulanır)
         $highlights = $applyBase(Event::active()->external()->upcoming())
             ->orderBy('starts_at')->take(6)->get();
 

@@ -66,7 +66,7 @@ class BlogSplitPilot extends Command
                     'excerpt'                => $b['excerpt'],
                     'content_md'             => $b['content_md'],
                     'featured_image'         => $cover,
-                    'featured_image_caption' => $b['cover_caption'],
+                    'featured_image_caption' => $cover ? $b['cover_caption'] : null,
                     'meta_title'             => $b['meta_title'],
                     'meta_description'       => $b['meta_description'],
                     'is_published'           => true,
@@ -90,8 +90,11 @@ class BlogSplitPilot extends Command
     }
 
     /** Pollinations görselini indirip storage/app/public/blog/{slug}.jpg olarak kaydeder. */
-    private function downloadCover(string $url, string $slug): string
+    private function downloadCover(string $url, string $slug): ?string
     {
+        if (! config('services.image.enabled')) {
+            return null; // Yapay zeka kapak üretimi kapalı (services.image.enabled).
+        }
         $path = "blog/{$slug}.jpg";
         try {
             $this->line("  ⬇️  Kapak indiriliyor: {$slug} …");

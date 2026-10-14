@@ -47,7 +47,7 @@
 <div class="w">
     <div class="card">
         <div class="hd">
-            <h1>🇩🇪 {{ __('Germany Cost of Living Calculator') }}</h1>
+            <h1>{{ __('Germany Cost of Living Calculator') }}</h1>
             <p>{{ __('Estimated monthly student expenses') }}</p>
         </div>
         <div class="body">

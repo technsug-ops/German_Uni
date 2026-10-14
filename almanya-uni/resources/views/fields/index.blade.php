@@ -41,12 +41,12 @@
     <div class="max-w-[1400px] mx-auto px-4">
         @if ($fields->isEmpty())
             <x-empty-state
-                icon="🎯"
+                icon="target"
                 :title="__('No fields available right now')"
                 :description="__('Try browsing universities or programs while we are updating the catalog.')"
                 :actions="[
-                    ['label' => __('Universities'), 'url' => route('universities.index'), 'primary' => true, 'icon' => '🎓'],
-                    ['label' => __('Programs'), 'url' => route('programs.index'), 'icon' => '📚'],
+                    ['label' => __('Universities'), 'url' => route('universities.index'), 'primary' => true, 'icon' => 'academic-cap'],
+                    ['label' => __('Programs'), 'url' => route('programs.index'), 'icon' => 'book-open'],
                 ]"
             />
         @else

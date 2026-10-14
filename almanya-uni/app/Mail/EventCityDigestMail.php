@@ -35,7 +35,7 @@ class EventCityDigestMail extends Mailable
 
         return new Envelope(
             from: new Address($fromAddr, $fromName),
-            subject: __(':count new events in :city this week 🎵', ['count' => $count, 'city' => $this->city->name]),
+            subject: __(':count new events in :city this week', ['count' => $count, 'city' => $this->city->name]),
         );
     }
 

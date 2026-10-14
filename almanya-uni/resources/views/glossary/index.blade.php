@@ -18,7 +18,7 @@
             <span class="text-white">{{ __('Glossary') }}</span>
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3">
-            📘 {{ __('Germany Education Glossary') }}
+            {{ __('Germany Education Glossary') }}
         </h1>
         <p class="text-lg md:text-xl text-indigo-100 max-w-3xl">
             {{ __('Plain-language explanations of the key terms you\'ll encounter while applying to and studying in Germany. Each entry has FAQ and links to official sources.') }}
@@ -37,7 +37,7 @@
                     @php $gColor = $entry['color'] ?? '#1E40AF'; @endphp
                     <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
                           style="background-color: {{ $gColor }}14; color: {{ $gColor }};">
-                        {!! e_icon($entry['icon'] ?? '📘', 'w-6 h-6') !!}
+                        {!! e_icon($entry['icon'] ?? 'book-open', 'w-6 h-6') !!}
                     </span>
                     <div class="flex-1 min-w-0">
                         <h2 class="text-xl font-bold text-gray-900 group-hover:text-indigo-700 leading-tight mb-2">
@@ -58,8 +58,8 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-2">{{ __('Need to know more?') }}</h2>
         <p class="text-gray-700 mb-5">{{ __('Browse our FAQ for ' . count($entries) . '+ answered questions about studying in Germany.', ['count' => count($entries)]) }}</p>
         <div class="flex flex-wrap gap-3 justify-center">
-            <a href="{{ route('faqs.index') }}" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-lg transition" title="{{ __('FAQ') }}">💬 {{ __('Frequently Asked Questions') }}</a>
-            <a href="{{ route('tools.index') }}" class="bg-white border border-primary-300 hover:bg-primary-50 text-primary-700 font-semibold px-6 py-3 rounded-lg transition" title="{{ __('All tools') }}">🛠️ {{ __('Decision Tools') }}</a>
+            <a href="{{ route('faqs.index') }}" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-lg transition" title="{{ __('FAQ') }}">{{ __('Frequently Asked Questions') }}</a>
+            <a href="{{ route('tools.index') }}" class="bg-white border border-primary-300 hover:bg-primary-50 text-primary-700 font-semibold px-6 py-3 rounded-lg transition" title="{{ __('All tools') }}">{{ __('Decision Tools') }}</a>
         </div>
     </section>
 </div>

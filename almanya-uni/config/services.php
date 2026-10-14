@@ -108,6 +108,9 @@ return [
     ],
 
     'image' => [
+        // Yapay zeka görsel üretimi varsayılan KAPALI (2026-10-14): sitede AI görsel kullanılmıyor.
+        // Bilinçli olarak açmak için IMAGE_GENERATION_ENABLED=true.
+        'enabled'   => (bool) env('IMAGE_GENERATION_ENABLED', false),
         // Provider priority — sırayla dene, ilki fail ederse sonrakine düş.
         // nano_banana = Gemini 2.5 Flash Image (paid tier gerek)
         // pollinations = ücretsiz FLUX (key gerek yok)

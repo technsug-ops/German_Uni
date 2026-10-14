@@ -27,7 +27,7 @@ class NewsletterConfirmation extends Mailable
 
         return new Envelope(
             from: new Address($fromAddr, $fromName),
-            subject: $name . ' — E-posta adresini doğrula 📬',
+            subject: $name . ' — E-posta adresini doğrula',
         );
     }
 

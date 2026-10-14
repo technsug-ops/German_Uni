@@ -56,8 +56,7 @@
                                     <td style="padding:14px 16px;border:1px solid #E5E7EB;border-radius:10px;background:#FAFAFA;margin-bottom:8px;">
                                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                                             <tr>
-                                                <td style="vertical-align:top;width:46px;font-size:24px;">{{ $tool['emoji'] }}</td>
-                                                <td style="vertical-align:top;padding-left:10px;">
+                                                <td style="vertical-align:top;">
                                                     <a href="{{ $tool['url'] }}" style="color:#1E40AF;text-decoration:none;font-weight:700;font-size:15px;display:block;margin-bottom:3px;">{{ $tool['title'] }} →</a>
                                                     <p style="font-size:13px;line-height:1.55;color:#4B5563;margin:0;">{{ $tool['desc'] }}</p>
                                                 </td>
@@ -76,7 +75,7 @@
                     <td style="padding:0 32px 24px;">
                         <div style="background:#FEF3C7;border-left:4px solid #F59E0B;padding:14px 18px;border-radius:6px;">
                             <p style="font-size:13px;line-height:1.6;color:#78350F;margin:0;">
-                                <strong>📅 {{ __('What to expect:') }}</strong>
+                                <strong>{{ __('What to expect:') }}</strong>
                                 {{ __('1–2 emails a week with new guides, application deadlines, and scholarship alerts. Unsubscribe with a single click anytime.') }}
                             </p>
                         </div>
@@ -87,7 +86,7 @@
                 <tr>
                     <td style="padding:0 32px 30px;text-align:center;">
                         <a href="{{ $brandHomeUrl }}/{{ $locale }}" style="display:inline-block;background:#1E40AF;color:#fff;padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">
-                            🏠 {{ __('Explore :brand', ['brand' => $brandName]) }}
+                            {{ __('Explore :brand', ['brand' => $brandName]) }}
                         </a>
                     </td>
                 </tr>

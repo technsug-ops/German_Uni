@@ -181,7 +181,7 @@
 
     {{-- İPUÇLARI --}}
     <section class="mt-8 bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-        <h2 class="text-xl font-bold text-emerald-900 mb-3">🇹🇷 İpuçları</h2>
+        <h2 class="text-xl font-bold text-emerald-900 mb-3 inline-flex items-center gap-2"><x-svg-icon name="light-bulb" class="w-5 h-5" /> İpuçları</h2>
         <ul class="text-emerald-800 text-sm space-y-2 leading-relaxed">
             <li>• Kabul gelir gelmez portal başvurusunu başlat; ulusal vize değerlendirmesi uzun sürer.</li>
             <li>• Belgeleri <strong>eksiksiz ve düzenli</strong> yükle; eksik belge süreci uzatır.</li>

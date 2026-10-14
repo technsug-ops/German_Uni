@@ -31,7 +31,7 @@ class NewsletterController extends Controller
             'name'            => ['nullable', 'string', 'max:100'],
             'source'          => ['nullable', 'string', 'max:50'],
             'language'        => ['nullable', 'string', \Illuminate\Validation\Rule::in($activeLocales)],
-            'website'         => ['nullable', 'max:0'],  // 🍯 honeypot — bot doldurursa max=0 fail
+            'website'         => ['nullable', 'max:0'],  // honeypot — bot doldurursa max=0 fail
             'gdpr_consent'    => ['accepted'],
             'captcha_answer'  => ['required', new \App\Rules\MathCaptchaRule()],
         ], [
@@ -119,7 +119,7 @@ class NewsletterController extends Controller
         if ($sub->is_confirmed) {
             return view('newsletter.result', [
                 'success' => true,
-                'title'   => 'Zaten doğrulanmışsın 🎉',
+                'title'   => 'Zaten doğrulanmışsın',
                 'message' => 'E-posta adresin daha önce doğrulanmıştı. Bültenleri almaya devam edeceksin.',
             ]);
         }
@@ -147,7 +147,7 @@ class NewsletterController extends Controller
 
         return view('newsletter.result', [
             'success' => true,
-            'title'   => 'Aboneliğin onaylandı! 🎉',
+            'title'   => 'Aboneliğin onaylandı!',
             'message' => 'AlmanyaUni e-bülteni artık ' . $sub->email . ' adresine gelecek. Yeni yazılarımız haftada 1-2 yayınlanır.',
             'subscriber' => $sub,
         ]);

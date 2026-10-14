@@ -91,7 +91,7 @@
                     <p class="text-white/90 mt-2.5 inline-flex items-center gap-1.5 text-sm md:text-base">
                         <x-svg-icon name="map" class="w-4 h-4" /> {{ $city->state->name }}
                         @if($citySize)
-                            <span class="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs font-semibold backdrop-blur">{{ $citySize[0] }} {{ $citySize[1] }}</span>
+                            <span class="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs font-semibold backdrop-blur">{{ $citySize[1] }}</span>
                         @endif
                     </p>
                 @endif
@@ -315,7 +315,7 @@
                             <div class="flex flex-wrap gap-1.5 mt-2 text-xs">
                                 <span class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700">{{ ucfirst($p->degree) }}</span>
                                 @if ($p->language === 'en' || $p->language === 'both')
-                                    <span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">🇬🇧 {{ __('English') }}</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-700">{{ __('English') }}</span>
                                 @endif
                             </div>
                             @if ($p->university)
@@ -447,7 +447,7 @@
                 <a href="{{ route('programs.city-language', [$city->slug, 'en']) }}"
                    title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}"
                    class="group flex items-center gap-3 bg-white border border-blue-200 hover:border-blue-500 hover:shadow-md rounded-xl p-4 transition">
-                    <span class="text-3xl shrink-0">🇬🇧</span>
+                    <span class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 text-blue-700"><x-svg-icon name="language" class="w-6 h-6" /></span>
                     <div class="min-w-0">
                         <p class="font-bold text-gray-900 group-hover:text-blue-700 leading-tight">{{ __('English-taught programs in :city', ['city' => $city->name]) }}</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ __('All English Bachelor/Master programs') }}</p>

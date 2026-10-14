@@ -33,7 +33,7 @@
                 <span><strong class="text-lg">{{ $states->count() }}</strong> {{ __('states') }}</span>
             </div>
             <a href="{{ route('map.rents') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-primary-800 font-semibold hover:bg-amber-50 transition ring-1 ring-white/40">
-                💶 {{ __('Student Rent Map') }} <span aria-hidden="true">→</span>
+                <x-svg-icon name="currency-euro" class="w-5 h-5" /> {{ __('Student Rent Map') }} <span aria-hidden="true">→</span>
             </a>
         </div>
     </div>

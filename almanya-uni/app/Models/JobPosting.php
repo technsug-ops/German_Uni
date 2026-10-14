@@ -77,7 +77,16 @@ class JobPosting extends Model
 
     public function getPositionIconAttribute(): string
     {
-        return self::POSITION_TYPES[$this->position_type]['icon'] ?? '💼';
+        // Public görünüm Heroicon adı kullanır (POSITION_TYPES['icon'] admin'deki emoji etiketi).
+        return [
+            'phd'        => 'beaker',
+            'postdoc'    => 'beaker',
+            'lecturer'   => 'book-open',
+            'professor'  => 'academic-cap',
+            'researcher' => 'search',
+            'admin'      => 'archive-box',
+            'industry'   => 'building-office',
+        ][$this->position_type] ?? 'briefcase';
     }
 
     public function getIsExpiredAttribute(): bool

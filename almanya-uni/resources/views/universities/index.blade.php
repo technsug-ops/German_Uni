@@ -38,7 +38,7 @@
             @endif
         </div>
         <a href="{{ route('popular-universities') }}" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-primary-700 font-bold shadow hover:bg-primary-50 transition">
-            <span aria-hidden="true">⭐</span> {{ __('Most Preferred Fields & Universities in Germany') }}
+            <x-svg-icon name="academic-cap" class="w-4 h-4" /> {{ __('Most Preferred Fields & Universities in Germany') }}
             <x-svg-icon name="arrow-right" class="w-4 h-4" />
         </a>
     </div>
@@ -139,7 +139,7 @@
             @foreach ($collections as $cSlug => $c)
                 <a href="{{ route('universities.collection', $cSlug) }}"
                    class="group flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-primary-500 hover:bg-white hover:shadow-md transition">
-                    <span class="text-3xl shrink-0" aria-hidden="true">{{ $c['icon'] }}</span>
+                    <span class="shrink-0 inline-flex w-10 h-10 rounded-lg bg-primary-50 text-primary-600 items-center justify-center" aria-hidden="true"><x-svg-icon :name="$c['icon']" class="w-5 h-5" /></span>
                     <span class="min-w-0">
                         <span class="block font-bold text-gray-900 group-hover:text-primary-600 leading-snug">{{ __($c['title']) }}</span>
                         <span class="block text-xs text-gray-500 mt-1">{{ count($c['uni_slugs']) }} {{ __('universities') }} →</span>

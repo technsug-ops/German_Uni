@@ -163,14 +163,12 @@
                             <div class="flex flex-wrap gap-1">
                                 @foreach ((array) $author->languages_spoken as $code)
                                     @php
-                                        $flag = ['tr' => '🇹🇷', 'en' => '🇬🇧', 'de' => '🇩🇪', 'fr' => '🇫🇷', 'es' => '🇪🇸',
-                                                 'it' => '🇮🇹', 'pl' => '🇵🇱', 'ru' => '🇷🇺', 'ar' => '🇸🇦', 'fa' => '🇮🇷'][$code] ?? '🌐';
                                         $label = ['tr' => __('Turkish'), 'en' => __('English'), 'de' => __('German'), 'fr' => __('French'),
                                                   'es' => __('Spanish'), 'it' => __('Italian'), 'pl' => __('Polish'),
                                                   'ru' => __('Russian'), 'ar' => __('Arabic'), 'fa' => __('Persian (Farsi)')][$code] ?? $code;
                                     @endphp
                                     <span class="inline-flex items-center gap-1 bg-white border border-indigo-200 text-xs font-semibold px-2 py-1 rounded">
-                                        {{ $flag }} {{ $label }}
+                                        {{ $label }}
                                     </span>
                                 @endforeach
                             </div>

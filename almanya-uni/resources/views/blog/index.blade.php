@@ -68,7 +68,7 @@
         <div class="flex items-center gap-2">
             <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Sort:') }}</span>
             @foreach ([
-                'newest'  => ['label' => __('Newest'),  'icon' => 'sparkles'],
+                'newest'  => ['label' => __('Newest'),  'icon' => 'clock'],
                 'oldest'  => ['label' => __('Oldest'),  'icon' => 'calendar'],
                 'popular' => ['label' => __('Popular'), 'icon' => 'fire'],
             ] as $key => $meta)
@@ -86,7 +86,7 @@
         <div class="flex items-center gap-2">
             <span class="text-xs text-gray-500 font-semibold uppercase tracking-wide">{{ __('Length:') }}</span>
             @foreach ([
-                'short'  => ['label' => __('Short (≤5 min)'), 'icon' => 'rocket-launch'],
+                'short'  => ['label' => __('Short (≤5 min)'), 'icon' => 'bolt'],
                 'medium' => ['label' => __('Medium (5–15 min)'), 'icon' => 'book-open'],
                 'long'   => ['label' => __('Long (>15 min)'),  'icon' => 'compass'],
             ] as $key => $meta)
@@ -143,7 +143,7 @@
         <div class="lg:col-span-3">
             @if ($posts->isEmpty())
                 <x-empty-state
-                    icon="✍️"
+                    icon="pencil-square"
                     :title="__('No posts yet.')"
                     :description="__('New content for this category is coming soon. Browse our FAQ in the meantime.')"
                     :actions="[

@@ -62,7 +62,7 @@
                 {{ number_format($totals['all']) }} {{ __('programs') }}
             </span>
             <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
-                🇬🇧 {{ $totals['english'] }} {{ __('English') }}
+                <x-svg-icon name="language" class="w-4 h-4" /> {{ $totals['english'] }} {{ __('English') }}
             </span>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25">
                 <x-svg-icon name="building-office" class="w-4 h-4" />
@@ -81,13 +81,13 @@
             @if ($field->programs()->where('is_active', 1)->where('admission_mode', 'zulassungsfrei')->exists())
                 <a href="{{ route('admission-free.by-subject', $field->slug) }}"
                    class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition">
-                    🟢 {{ __('NC-free programs') }} →
+                    {{ __('NC-free programs') }} →
                 </a>
             @endif
             @if ($field->programs()->where('is_active', 1)->whereIn('language', ['en', 'both'])->exists())
                 <a href="{{ route('programs.index', ['field' => $field->slug, 'language' => 'en']) }}"
                    class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-blue-500 text-white font-semibold hover:bg-blue-600 transition">
-                    🇬🇧 {{ __('In English') }} →
+                    {{ __('In English') }} →
                 </a>
             @endif
         </div>

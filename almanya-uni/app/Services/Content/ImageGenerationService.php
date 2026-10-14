@@ -39,7 +39,7 @@ class ImageGenerationService
 
     public function isConfigured(): bool
     {
-        return true; // Pollinations ücretsiz, key gerek yok
+        return (bool) config('services.image.enabled');
     }
 
     /**
@@ -48,6 +48,9 @@ class ImageGenerationService
      */
     public function generateForAsset(ContentAsset $asset, ?array $customPrompts = null): array
     {
+        if (! $this->isConfigured()) {
+            return ['success' => false, 'error' => 'Yapay zeka görsel üretimi kapalı (IMAGE_GENERATION_ENABLED).'];
+        }
         $preset = self::SIZE_PRESETS[$asset->asset_type] ?? self::SIZE_PRESETS['blog'];
         $prompts = $customPrompts ?? $this->extractPrompts($asset, $preset['count']);
 

@@ -215,71 +215,71 @@ class Event extends Model
      */
     public const TYPES = [
         // 🤝 Networking
-        'speed_networking'     => ['emoji' => '⚡', 'label' => 'Speed Networking',     'color' => '#0F766E', 'category' => 'networking'],
-        'founder_dating'       => ['emoji' => '🚀', 'label' => 'Founder Speed Dating', 'color' => '#0F766E', 'category' => 'networking'],
-        'tech_meet'            => ['emoji' => '💼', 'label' => 'Tech Şirketle Tanışma','color' => '#0F766E', 'category' => 'networking'],
-        'internship_showcase'  => ['emoji' => '📊', 'label' => 'Staj Tanıtım Günü',    'color' => '#0F766E', 'category' => 'networking'],
-        'case_competition'     => ['emoji' => '🏆', 'label' => 'Case Competition',     'color' => '#0F766E', 'category' => 'networking'],
-        'mentorship_match'     => ['emoji' => '🤝', 'label' => 'Mentor Eşleşme',       'color' => '#0F766E', 'category' => 'networking'],
+        'speed_networking'     => ['emoji' => '⚡', 'icon' => 'bolt', 'label' => 'Speed Networking',     'color' => '#0F766E', 'category' => 'networking'],
+        'founder_dating'       => ['emoji' => '🚀', 'icon' => 'users', 'label' => 'Founder Speed Dating', 'color' => '#0F766E', 'category' => 'networking'],
+        'tech_meet'            => ['emoji' => '💼', 'icon' => 'briefcase', 'label' => 'Tech Şirketle Tanışma','color' => '#0F766E', 'category' => 'networking'],
+        'internship_showcase'  => ['emoji' => '📊', 'icon' => 'chart-bar', 'label' => 'Staj Tanıtım Günü',    'color' => '#0F766E', 'category' => 'networking'],
+        'case_competition'     => ['emoji' => '🏆', 'icon' => 'trophy', 'label' => 'Case Competition',     'color' => '#0F766E', 'category' => 'networking'],
+        'mentorship_match'     => ['emoji' => '🤝', 'icon' => 'users', 'label' => 'Mentor Eşleşme',       'color' => '#0F766E', 'category' => 'networking'],
 
         // 🛠️ Skill
-        'webinar'              => ['emoji' => '🎙️', 'label' => 'Webinar',              'color' => '#7C3AED', 'category' => 'skill'],
-        'workshop'             => ['emoji' => '🛠️', 'label' => 'Atölye',               'color' => '#7C3AED', 'category' => 'skill'],
-        'bootcamp'             => ['emoji' => '💻', 'label' => 'Bootcamp',             'color' => '#7C3AED', 'category' => 'skill'],
-        'hackathon'            => ['emoji' => '⚡', 'label' => 'Hackathon',            'color' => '#7C3AED', 'category' => 'skill'],
-        'masterclass'          => ['emoji' => '🎓', 'label' => 'Master Class',         'color' => '#7C3AED', 'category' => 'skill'],
-        'sprint'               => ['emoji' => '🏃', 'label' => 'Product Sprint',       'color' => '#7C3AED', 'category' => 'skill'],
+        'webinar'              => ['emoji' => '🎙️', 'icon' => 'microphone', 'label' => 'Webinar',              'color' => '#7C3AED', 'category' => 'skill'],
+        'workshop'             => ['emoji' => '🛠️', 'icon' => 'wrench-screwdriver', 'label' => 'Atölye',               'color' => '#7C3AED', 'category' => 'skill'],
+        'bootcamp'             => ['emoji' => '💻', 'icon' => 'computer', 'label' => 'Bootcamp',             'color' => '#7C3AED', 'category' => 'skill'],
+        'hackathon'            => ['emoji' => '⚡', 'icon' => 'bolt', 'label' => 'Hackathon',            'color' => '#7C3AED', 'category' => 'skill'],
+        'masterclass'          => ['emoji' => '🎓', 'icon' => 'academic-cap', 'label' => 'Master Class',         'color' => '#7C3AED', 'category' => 'skill'],
+        'sprint'               => ['emoji' => '🏃', 'icon' => 'bolt', 'label' => 'Product Sprint',       'color' => '#7C3AED', 'category' => 'skill'],
 
         // 🌍 Peer Learning
-        'meetup'               => ['emoji' => '👥', 'label' => 'Buluşma',              'color' => '#EA580C', 'category' => 'peer-learning'],
-        'exchange_networking'  => ['emoji' => '🌍', 'label' => 'Erasmus Tanışma',      'color' => '#EA580C', 'category' => 'peer-learning'],
-        'cultural_night'       => ['emoji' => '🎭', 'label' => 'Kültür Gecesi',        'color' => '#EA580C', 'category' => 'peer-learning'],
-        'study_group'          => ['emoji' => '📚', 'label' => 'Çalışma Grubu',        'color' => '#EA580C', 'category' => 'peer-learning'],
-        'city_exploration'     => ['emoji' => '🚴', 'label' => 'Şehir Keşif',          'color' => '#EA580C', 'category' => 'peer-learning'],
-        'house_party'          => ['emoji' => '🏠', 'label' => 'Uluslararası Parti',   'color' => '#EA580C', 'category' => 'peer-learning'],
+        'meetup'               => ['emoji' => '👥', 'icon' => 'users', 'label' => 'Buluşma',              'color' => '#EA580C', 'category' => 'peer-learning'],
+        'exchange_networking'  => ['emoji' => '🌍', 'icon' => 'globe', 'label' => 'Erasmus Tanışma',      'color' => '#EA580C', 'category' => 'peer-learning'],
+        'cultural_night'       => ['emoji' => '🎭', 'icon' => 'ticket', 'label' => 'Kültür Gecesi',        'color' => '#EA580C', 'category' => 'peer-learning'],
+        'study_group'          => ['emoji' => '📚', 'icon' => 'book-open', 'label' => 'Çalışma Grubu',        'color' => '#EA580C', 'category' => 'peer-learning'],
+        'city_exploration'     => ['emoji' => '🚴', 'icon' => 'map', 'label' => 'Şehir Keşif',          'color' => '#EA580C', 'category' => 'peer-learning'],
+        'house_party'          => ['emoji' => '🏠', 'icon' => 'home', 'label' => 'Uluslararası Parti',   'color' => '#EA580C', 'category' => 'peer-learning'],
 
         // 🧠 Personal Growth
-        'entrepreneurship'     => ['emoji' => '🧠', 'label' => 'Girişimcilik',         'color' => '#DB2777', 'category' => 'personal-growth'],
-        'wellbeing_retreat'    => ['emoji' => '💪', 'label' => 'Refah Retreat',        'color' => '#DB2777', 'category' => 'personal-growth'],
-        'goal_setting'         => ['emoji' => '🎯', 'label' => 'Hedef Belirleme',      'color' => '#DB2777', 'category' => 'personal-growth'],
-        'book_club'            => ['emoji' => '📖', 'label' => 'Kitap Kulübü',         'color' => '#DB2777', 'category' => 'personal-growth'],
-        'finance_workshop'     => ['emoji' => '💰', 'label' => 'Finans Atölyesi',      'color' => '#DB2777', 'category' => 'personal-growth'],
-        'info_session'         => ['emoji' => '📋', 'label' => 'Bilgilendirme',        'color' => '#DB2777', 'category' => 'personal-growth'],
-        'qa_live'              => ['emoji' => '❓', 'label' => 'Canlı Soru-Cevap',     'color' => '#DB2777', 'category' => 'personal-growth'],
-        'deadline'             => ['emoji' => '📅', 'label' => 'Deadline Hatırlatma',  'color' => '#DC2626', 'category' => 'personal-growth'],
+        'entrepreneurship'     => ['emoji' => '🧠', 'icon' => 'light-bulb', 'label' => 'Girişimcilik',         'color' => '#DB2777', 'category' => 'personal-growth'],
+        'wellbeing_retreat'    => ['emoji' => '💪', 'icon' => 'heart', 'label' => 'Refah Retreat',        'color' => '#DB2777', 'category' => 'personal-growth'],
+        'goal_setting'         => ['emoji' => '🎯', 'icon' => 'target', 'label' => 'Hedef Belirleme',      'color' => '#DB2777', 'category' => 'personal-growth'],
+        'book_club'            => ['emoji' => '📖', 'icon' => 'book-open', 'label' => 'Kitap Kulübü',         'color' => '#DB2777', 'category' => 'personal-growth'],
+        'finance_workshop'     => ['emoji' => '💰', 'icon' => 'banknotes', 'label' => 'Finans Atölyesi',      'color' => '#DB2777', 'category' => 'personal-growth'],
+        'info_session'         => ['emoji' => '📋', 'icon' => 'list-bullet', 'label' => 'Bilgilendirme',        'color' => '#DB2777', 'category' => 'personal-growth'],
+        'qa_live'              => ['emoji' => '❓', 'icon' => 'question-mark-circle', 'label' => 'Canlı Soru-Cevap',     'color' => '#DB2777', 'category' => 'personal-growth'],
+        'deadline'             => ['emoji' => '📅', 'icon' => 'calendar', 'label' => 'Deadline Hatırlatma',  'color' => '#DC2626', 'category' => 'personal-growth'],
 
         // 🏔️ Adventure
-        'climbing_trip'        => ['emoji' => '🏔️', 'label' => 'Tırmanış Gezisi',     'color' => '#0891B2', 'category' => 'adventure'],
-        'startup_retreat'      => ['emoji' => '🚣', 'label' => 'Startup Retreat',      'color' => '#0891B2', 'category' => 'adventure'],
-        'conference_roadtrip'  => ['emoji' => '🏨', 'label' => 'Konferans Road Trip',  'color' => '#0891B2', 'category' => 'adventure'],
-        'esports'              => ['emoji' => '🎮', 'label' => 'Esports Turnuva',      'color' => '#0891B2', 'category' => 'adventure'],
-        'film_night'           => ['emoji' => '🎬', 'label' => 'Belgesel Gecesi',      'color' => '#0891B2', 'category' => 'adventure'],
+        'climbing_trip'        => ['emoji' => '🏔️', 'icon' => 'map', 'label' => 'Tırmanış Gezisi',     'color' => '#0891B2', 'category' => 'adventure'],
+        'startup_retreat'      => ['emoji' => '🚣', 'icon' => 'map', 'label' => 'Startup Retreat',      'color' => '#0891B2', 'category' => 'adventure'],
+        'conference_roadtrip'  => ['emoji' => '🏨', 'icon' => 'building-office', 'label' => 'Konferans Road Trip',  'color' => '#0891B2', 'category' => 'adventure'],
+        'esports'              => ['emoji' => '🎮', 'icon' => 'computer', 'label' => 'Esports Turnuva',      'color' => '#0891B2', 'category' => 'adventure'],
+        'film_night'           => ['emoji' => '🎬', 'icon' => 'play', 'label' => 'Belgesel Gecesi',      'color' => '#0891B2', 'category' => 'adventure'],
 
         // 🏭 Industry Immersion
-        'factory_tour'         => ['emoji' => '🏭', 'label' => 'Fabrika Gezisi',       'color' => '#CA8A04', 'category' => 'industry-immersion'],
-        'banking_day'          => ['emoji' => '🏦', 'label' => 'Bankacılık Günü',      'color' => '#CA8A04', 'category' => 'industry-immersion'],
-        'studio_visit'         => ['emoji' => '🎮', 'label' => 'Game Studio Ziyareti', 'color' => '#CA8A04', 'category' => 'industry-immersion'],
-        'architecture_vr'      => ['emoji' => '🏗️', 'label' => 'Mimari + VR',         'color' => '#CA8A04', 'category' => 'industry-immersion'],
-        'media_house'          => ['emoji' => '📺', 'label' => 'Medya Evi Tur',        'color' => '#CA8A04', 'category' => 'industry-immersion'],
-        'open_day'             => ['emoji' => '🏛️', 'label' => 'Üni Tanıtım Günü',    'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'factory_tour'         => ['emoji' => '🏭', 'icon' => 'building-office', 'label' => 'Fabrika Gezisi',       'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'banking_day'          => ['emoji' => '🏦', 'icon' => 'building-library', 'label' => 'Bankacılık Günü',      'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'studio_visit'         => ['emoji' => '🎮', 'icon' => 'computer', 'label' => 'Game Studio Ziyareti', 'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'architecture_vr'      => ['emoji' => '🏗️', 'icon' => 'building-office', 'label' => 'Mimari + VR',         'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'media_house'          => ['emoji' => '📺', 'icon' => 'tv', 'label' => 'Medya Evi Tur',        'color' => '#CA8A04', 'category' => 'industry-immersion'],
+        'open_day'             => ['emoji' => '🏛️', 'icon' => 'building-library', 'label' => 'Üni Tanıtım Günü',    'color' => '#CA8A04', 'category' => 'industry-immersion'],
 
         // 🎤 Special Format
-        'ted_talk'             => ['emoji' => '🎤', 'label' => 'TED-Style Talk',       'color' => '#9333EA', 'category' => 'special-format'],
-        'popup_festival'       => ['emoji' => '🎪', 'label' => 'Pop-up Festival',      'color' => '#9333EA', 'category' => 'special-format'],
-        'film_festival'        => ['emoji' => '🎬', 'label' => 'Film Festivali',       'color' => '#9333EA', 'category' => 'special-format'],
-        'pitch_competition'    => ['emoji' => '🏆', 'label' => 'Pitch Yarışması',      'color' => '#9333EA', 'category' => 'special-format'],
-        'virtual_summit'       => ['emoji' => '🌐', 'label' => 'Virtual Summit',       'color' => '#9333EA', 'category' => 'special-format'],
-        'ama_session'          => ['emoji' => '💬', 'label' => 'AMA (Ask Me Anything)', 'color' => '#9333EA', 'category' => 'special-format'],
-        'panel'                => ['emoji' => '🎤', 'label' => 'Panel',                'color' => '#9333EA', 'category' => 'special-format'],
-        'conference'           => ['emoji' => '🎯', 'label' => 'Konferans',            'color' => '#9333EA', 'category' => 'special-format'],
+        'ted_talk'             => ['emoji' => '🎤', 'icon' => 'microphone', 'label' => 'TED-Style Talk',       'color' => '#9333EA', 'category' => 'special-format'],
+        'popup_festival'       => ['emoji' => '🎪', 'icon' => 'ticket', 'label' => 'Pop-up Festival',      'color' => '#9333EA', 'category' => 'special-format'],
+        'film_festival'        => ['emoji' => '🎬', 'icon' => 'play', 'label' => 'Film Festivali',       'color' => '#9333EA', 'category' => 'special-format'],
+        'pitch_competition'    => ['emoji' => '🏆', 'icon' => 'trophy', 'label' => 'Pitch Yarışması',      'color' => '#9333EA', 'category' => 'special-format'],
+        'virtual_summit'       => ['emoji' => '🌐', 'icon' => 'globe', 'label' => 'Virtual Summit',       'color' => '#9333EA', 'category' => 'special-format'],
+        'ama_session'          => ['emoji' => '💬', 'icon' => 'chat-bubble', 'label' => 'AMA (Ask Me Anything)', 'color' => '#9333EA', 'category' => 'special-format'],
+        'panel'                => ['emoji' => '🎤', 'icon' => 'microphone', 'label' => 'Panel',                'color' => '#9333EA', 'category' => 'special-format'],
+        'conference'           => ['emoji' => '🎯', 'icon' => 'target', 'label' => 'Konferans',            'color' => '#9333EA', 'category' => 'special-format'],
 
         // 🎵 Kültür & Konser (dış kaynak: Ticketmaster importu)
-        'concert'              => ['emoji' => '🎵', 'label' => 'Konser',              'color' => '#E11D48', 'category' => 'culture'],
-        'music_festival'       => ['emoji' => '🎪', 'label' => 'Müzik Festivali',     'color' => '#E11D48', 'category' => 'culture'],
-        'theater'              => ['emoji' => '🎭', 'label' => 'Tiyatro',             'color' => '#E11D48', 'category' => 'culture'],
-        'opera_classical'      => ['emoji' => '🎻', 'label' => 'Opera & Klasik',      'color' => '#E11D48', 'category' => 'culture'],
-        'exhibition'           => ['emoji' => '🖼️', 'label' => 'Sergi',               'color' => '#E11D48', 'category' => 'culture'],
-        'comedy'               => ['emoji' => '🎙️', 'label' => 'Komedi',              'color' => '#E11D48', 'category' => 'culture'],
+        'concert'              => ['emoji' => '🎵', 'icon' => 'musical-note', 'label' => 'Konser',              'color' => '#E11D48', 'category' => 'culture'],
+        'music_festival'       => ['emoji' => '🎪', 'icon' => 'ticket', 'label' => 'Müzik Festivali',     'color' => '#E11D48', 'category' => 'culture'],
+        'theater'              => ['emoji' => '🎭', 'icon' => 'ticket', 'label' => 'Tiyatro',             'color' => '#E11D48', 'category' => 'culture'],
+        'opera_classical'      => ['emoji' => '🎻', 'icon' => 'musical-note', 'label' => 'Opera & Klasik',      'color' => '#E11D48', 'category' => 'culture'],
+        'exhibition'           => ['emoji' => '🖼️', 'icon' => 'photo', 'label' => 'Sergi',               'color' => '#E11D48', 'category' => 'culture'],
+        'comedy'               => ['emoji' => '🎙️', 'icon' => 'microphone', 'label' => 'Komedi',              'color' => '#E11D48', 'category' => 'culture'],
     ];
 
     public function getTypeLabelAttribute(): string
@@ -290,6 +290,12 @@ class Event extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '📅';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'calendar';
     }
 
     public function getTypeColorAttribute(): string

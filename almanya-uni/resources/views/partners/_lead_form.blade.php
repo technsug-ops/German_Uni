@@ -5,7 +5,7 @@
 
     @if (session('lead_success'))
         <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-lg p-3">
-            ✅ {{ __('Thanks! Your request has been received.') }}
+            {{ __('Thanks! Your request has been received.') }}
         </div>
     @else
         <form method="POST" action="{{ route('partner-lead.store') }}" class="space-y-2.5">

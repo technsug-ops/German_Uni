@@ -31,9 +31,9 @@ class NewsletterWelcome extends Mailable
 
         $locale = $this->subscriber->language ?: 'tr';
         $subject = match ($locale) {
-            'en' => "Welcome to {$name} 🎓 — Start here",
-            'de' => "Willkommen bei {$name} 🎓 — Starte hier",
-            default => "Hoş geldin — {$name} ailesine katıldın 🎓",
+            'en' => "Welcome to {$name} — Start here",
+            'de' => "Willkommen bei {$name} — Starte hier",
+            default => "Hoş geldin — {$name} ailesine katıldın",
         };
 
         return new Envelope(

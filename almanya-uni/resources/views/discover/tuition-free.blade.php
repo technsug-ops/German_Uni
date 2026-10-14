@@ -24,7 +24,7 @@
             {{ __('Public universities in Germany charge no tuition — you pay only a small semester contribution (≈ €100–350), which usually includes a public-transport ticket.') }}
         </p>
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/25 text-sm font-semibold">
-            <span class="text-base">💶</span>
+            <x-svg-icon name="currency-euro" class="w-5 h-5" />
             {{ __(':count tuition-free programs', ['count' => number_format($total, 0, '.', '.')]) }}
         </div>
     </div>
@@ -34,7 +34,7 @@
 
     {{-- Açıklama --}}
     <section class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 md:p-6">
-        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2">ℹ️ {{ __('Is studying in Germany really free?') }}</h2>
+        <h2 class="font-bold text-gray-900 text-lg mb-2 inline-flex items-center gap-2"><x-svg-icon name="information-circle" class="w-5 h-5 text-emerald-700" /> {{ __('Is studying in Germany really free?') }}</h2>
         <p class="text-sm text-gray-700 leading-relaxed">
             {{ __('At state (public) universities, yes — there is no tuition fee for Bachelor\'s or Master\'s, regardless of nationality. You pay a per-semester contribution of roughly €100–350 (often including a semester transport ticket). Exceptions: private universities charge tuition, and a few states (e.g. Baden-Württemberg) charge non-EU students ~€1,500/semester. Always confirm on the official program page.') }}
         </p>

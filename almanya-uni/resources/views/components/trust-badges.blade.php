@@ -35,8 +35,8 @@
                         <span class="text-sm font-semibold text-gray-300 group-hover:text-white">{{ $badge->display_name }}</span>
                     @endif
                     @if ($badge->rating)
-                        <span class="text-xs font-bold text-amber-300">
-                            ⭐ {{ rtrim(rtrim(number_format((float) $badge->rating, 1), '0'), '.') }}
+                        <span class="inline-flex items-center gap-1 text-xs font-bold text-amber-300">
+                            <x-svg-icon name="star" class="w-3.5 h-3.5" /> {{ rtrim(rtrim(number_format((float) $badge->rating, 1), '0'), '.') }}
                             @if ($badge->review_count)
                                 <span class="text-gray-400 font-normal">({{ number_format($badge->review_count) }})</span>
                             @endif

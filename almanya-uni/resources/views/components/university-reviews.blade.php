@@ -111,19 +111,19 @@
                             <button type="button" @click="vote('helpful')"
                                     class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-emerald-700 hover:bg-emerald-50 px-2 py-1 rounded transition"
                                     :disabled="voted">
-                                👍 <span x-text="counts.helpful"></span>
+                                <x-svg-icon name="hand-thumb-up" class="w-4 h-4" /> <span x-text="counts.helpful"></span>
                                 <span class="hidden sm:inline">{{ __('Helpful') }}</span>
                             </button>
                             <button type="button" @click="vote('unhelpful')"
                                     class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-800 hover:bg-gray-50 px-2 py-1 rounded transition"
                                     :disabled="voted">
-                                👎 <span x-text="counts.unhelpful"></span>
+                                <x-svg-icon name="hand-thumb-down" class="w-4 h-4" /> <span x-text="counts.unhelpful"></span>
                             </button>
                             <button type="button" @click="vote('report')"
                                     class="ml-auto inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-red-600 transition"
                                     :disabled="voted"
                                     title="{{ __('Report this review') }}">
-                                🚩 <span class="hidden sm:inline">{{ __('Report') }}</span>
+                                <x-svg-icon name="flag" class="w-4 h-4" /> <span class="hidden sm:inline">{{ __('Report') }}</span>
                             </button>
                             <span x-show="voted" x-cloak class="text-xs text-emerald-700">✓ {{ __('Thanks!') }}</span>
                         </footer>

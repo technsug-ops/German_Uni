@@ -37,7 +37,7 @@
             <span class="text-white">DAAD</span>
         </nav>
         <div class="flex items-start gap-5 flex-wrap">
-            <div class="text-7xl">🇩🇪</div>
+            <div class="shrink-0 inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/15 ring-1 ring-white/25"><x-svg-icon name="academic-cap" class="w-12 h-12" /></div>
             <div class="flex-1 min-w-0">
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">{{ __('DAAD Scholarships') }}</h1>
                 <p class="text-lg text-blue-100 mt-2">{{ __('Deutscher Akademischer Austauschdienst — German Academic Exchange Service') }}</p>
@@ -57,7 +57,7 @@
         <a href="#master" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="book-open" class="w-3.5 h-3.5" /> {{ __('Master') }}</a>
         <a href="#phd" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="beaker" class="w-3.5 h-3.5" /> PhD</a>
         <a href="#postdoc" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="target" class="w-3.5 h-3.5" /> Postdoc</a>
-        <a href="#summer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="sparkles" class="w-3.5 h-3.5" /> {{ __('Summer School') }}</a>
+        <a href="#summer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="sun" class="w-3.5 h-3.5" /> {{ __('Summer School') }}</a>
         <a href="#art" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="photo" class="w-3.5 h-3.5" /> {{ __('Arts') }}</a>
         <a href="#how-to" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="document-text" class="w-3.5 h-3.5" /> {{ __('Application') }}</a>
         <a href="#contact" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-primary-50 text-gray-700 whitespace-nowrap"><x-svg-icon name="map-pin" class="w-3.5 h-3.5" /> {{ __('Turkey Office') }}</a>
@@ -329,7 +329,7 @@
         {{-- ═══════ SUMMER ═══════ --}}
         <article id="summer" class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
             <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 inline-flex items-center gap-2">
-                <x-svg-icon name="sparkles" class="w-6 h-6" />
+                <x-svg-icon name="sun" class="w-6 h-6" />
                 {{ __('Summer School & Short-Term') }}
             </h2>
             <p class="text-gray-700 mb-5">
@@ -545,13 +545,13 @@
                 </a>
                 <a href="https://www.daad.de/en/" target="_blank"
                    class="block bg-white rounded-lg p-3 hover:bg-blue-50 transition text-center">
-                    <div class="text-2xl mb-1">🇩🇪</div>
+                    <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="globe" class="w-6 h-6" /></div>
                     <p class="font-semibold text-gray-900">daad.de</p>
                 </a>
                 @if (app()->getLocale() === 'tr')
                 <a href="https://www.daad-turkey.org/" target="_blank"
                    class="block bg-white rounded-lg p-3 hover:bg-blue-50 transition text-center">
-                    <div class="text-2xl mb-1">🇹🇷</div>
+                    <div class="flex justify-center mb-1 text-primary-600"><x-svg-icon name="building-office" class="w-6 h-6" /></div>
                     <p class="font-semibold text-gray-900">DAAD Türkiye</p>
                 </a>
                 @else

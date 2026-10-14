@@ -22,7 +22,7 @@
 
 @if ($programs->isEmpty())
     <x-empty-state
-        icon="📚"
+        icon="book-open"
         :title="__('No results found.')"
         :description="__('Try relaxing the filters or change your search term.')"
         :actions="[

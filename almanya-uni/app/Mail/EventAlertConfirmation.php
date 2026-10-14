@@ -27,7 +27,7 @@ class EventAlertConfirmation extends Mailable
 
         return new Envelope(
             from: new Address($fromAddr, $fromName),
-            subject: $name . ' — ' . __('Confirm your :city event alerts 📬', ['city' => $city]),
+            subject: $name . ' — ' . __('Confirm your :city event alerts', ['city' => $city]),
         );
     }
 

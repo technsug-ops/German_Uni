@@ -15,7 +15,7 @@
                 <p class="text-xs text-gray-600 line-clamp-2 mt-0.5">{{ $mentor->headline }}</p>
             @endif
             @if ($mentor->is_featured)
-                <span class="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">⭐ Öne Çıkan</span>
+                <span class="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">Öne Çıkan</span>
             @endif
         </div>
     </div>
@@ -30,12 +30,12 @@
 
     <div class="mt-auto pt-3 border-t border-gray-100 flex items-baseline justify-between text-xs text-gray-600">
         @if ($mentor->is_free)
-            <span class="font-semibold text-emerald-600">🎁 Ücretsiz</span>
+            <span class="font-semibold text-emerald-600">Ücretsiz</span>
         @else
             <span class="font-semibold text-amber-700">{{ number_format($mentor->rate_eur, 0, ',', '.') }} €/{{ $mentor->session_duration ?: 'seans' }}</span>
         @endif
         @if ($mentor->rating_avg)
-            <span>⭐ {{ number_format($mentor->rating_avg, 1) }} ({{ $mentor->rating_count }})</span>
+            <span class="inline-flex items-center gap-1"><x-svg-icon name="star" class="w-3.5 h-3.5 text-amber-500" /> {{ number_format($mentor->rating_avg, 1) }} ({{ $mentor->rating_count }})</span>
         @elseif ($mentor->sessions_count > 0)
             <span>{{ $mentor->sessions_count }} seans</span>
         @endif

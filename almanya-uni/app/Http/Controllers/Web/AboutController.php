@@ -236,7 +236,7 @@ class AboutController extends Controller
             'avatar' => $initials($u->name),
             'color'  => 'accent',
             'social' => array_values(array_filter([
-                $u->id === 1 ? ['icon' => '✉️', 'label' => 'ceo@applytogerman.com', 'url' => 'mailto:ceo@applytogerman.com'] : null,
+                $u->id === 1 ? ['icon' => 'envelope', 'label' => 'ceo@applytogerman.com', 'url' => 'mailto:ceo@applytogerman.com'] : null,
             ])),
         ])->values()->all();
 
@@ -251,7 +251,7 @@ class AboutController extends Controller
             'social' => [
                 // mailto yerine in-app iletişim formu — mail istemcisi olmayan kullanıcıda
                 // da çalışır (sayfanın geri kalanı zaten route('contact') kullanıyor).
-                ['icon' => '✉️', 'label' => __('Write to us'), 'url' => route('contact', ['type' => 'partnership', 'subject' => 'Contribution'])],
+                ['icon' => 'envelope', 'label' => __('Write to us'), 'url' => route('contact', ['type' => 'partnership', 'subject' => 'Contribution'])],
             ],
         ];
 

@@ -58,13 +58,13 @@
         </p>
         <div class="flex flex-wrap gap-3 text-sm">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span>🏙️</span><span><strong class="text-lg">{{ $cities->count() }}</strong> {{ __('cities') }}</span>
+                <x-svg-icon name="building-office" class="w-5 h-5" /><span><strong class="text-lg">{{ $cities->count() }}</strong> {{ __('cities') }}</span>
             </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span>🟢</span><span>{{ __('Cheapest') }}: <strong>{{ $cheapest->name }}</strong> {{ $cheapest->student_rent_warm30 }} €</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>{{ __('Cheapest') }}: <strong>{{ $cheapest->name }}</strong> {{ $cheapest->student_rent_warm30 }} €</span>
             </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/20">
-                <span>🔴</span><span>{{ __('Most expensive') }}: <strong>{{ $expensive->name }}</strong> {{ $expensive->student_rent_warm30 }} €</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span><span>{{ __('Most expensive') }}: <strong>{{ $expensive->name }}</strong> {{ $expensive->student_rent_warm30 }} €</span>
             </div>
         </div>
 

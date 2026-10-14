@@ -40,8 +40,8 @@ class BlockedAccountProvider extends Model
     ];
 
     public const TYPES = [
-        'fintech'          => ['label' => 'FinTech', 'emoji' => '⚡', 'color' => 'indigo'],
-        'traditional_bank' => ['label' => 'Geleneksel Banka', 'emoji' => '🏛️', 'color' => 'amber'],
+        'fintech'          => ['label' => 'FinTech', 'emoji' => '⚡', 'icon' => 'bolt', 'color' => 'indigo'],
+        'traditional_bank' => ['label' => 'Geleneksel Banka', 'emoji' => '🏛️', 'icon' => 'building-library', 'color' => 'amber'],
     ];
 
     public function getRouteKeyName(): string
@@ -67,6 +67,12 @@ class BlockedAccountProvider extends Model
     public function getTypeEmojiAttribute(): string
     {
         return self::TYPES[$this->type]['emoji'] ?? '🏦';
+    }
+
+    /** Heroicon adı (svg-icon) — public görünümler emoji yerine bunu kullanır. */
+    public function getTypeIconAttribute(): string
+    {
+        return self::TYPES[$this->type]['icon'] ?? 'building-library';
     }
 
     public function getFirstYearCostEurAttribute(): ?float
