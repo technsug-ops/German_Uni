@@ -1696,6 +1696,26 @@ Route::middleware('auth')->group(function () {
         return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
     });
 
+    // OSV resmî kaynak onarım paketleri önizlemesi (database/data/osv/*.json). SALT OKUMA: hiçbir şey yazmaz.
+    // Migration uygulandıktan sonra tüm satırlar "already" görünmeli; "mismatch" = beklenen metin prod'da farklı, atlandı.
+    Route::get('/admin/ops/osv-repair', function () {
+        abort_unless(auth()->user()?->is_admin, 403);
+        $files = glob(database_path('data/osv/*.json')) ?: [];
+        if ($only = request()->query('file')) {
+            $files = array_filter($files, fn ($f) => basename($f, '.json') === $only);
+        }
+        $out = "MOD: ÖNİZLEME (hiçbir şey yazılmadı)\n";
+        foreach ($files as $f) {
+            $out .= "\n=== " . basename($f) . " ===\n";
+            try {
+                $out .= \App\Support\OfficialInfoRepair::describe(\App\Support\OfficialInfoRepair::plan(\App\Support\OfficialInfoRepair::load($f)));
+            } catch (\Throwable $e) {
+                $out .= 'EXCEPTION: ' . $e->getMessage() . "\n";
+            }
+        }
+        return response($out, 200)->header('Content-Type', 'text/plain; charset=utf-8');
+    });
+
     // Hukuki sayfa rollout doğrulaması (SSH yok → legal:audit + legal:parity tarayıcıdan).
     // SALT OKUMA: hiçbir şey yazmaz. Legacy JSON kolonları düşürülünce (Faz B) kaldırılabilir.
     // Mükerrer temizliği + dile duyarlı blog yönlendirmesi raporu (2026-09-25). SALT OKUMA.

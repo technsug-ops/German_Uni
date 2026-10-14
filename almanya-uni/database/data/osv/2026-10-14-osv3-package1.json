@@ -1,0 +1,2153 @@
+{
+    "package": "2026-10-14-osv3-package1-remonstration-aps-visa-channel",
+    "checked_at": "2026-10-14",
+    "notes": "OSV-3 Paket 1. Remonstrasyon (kaldırıldı 01.07.2025; yeni başvuru veya Rechtsbehelfsbelehrung'a göre dava), APS (yalnız Çin/Vietnam/Hindistan belgeleri; Türkiye belgeleri için yok), Türkiye'den öğrenim/öğrenim yeri arama vizesi kanalı (yalnız Auslandsportal) ve iDATA bedelleri (39,92 € ve/veya 12 €, TL). Kayıtlar slug+locale ile bulunur; beklenen metin yoksa atlanır.",
+    "sources": {
+        "aa_remonstration": {
+            "url": "https://www.auswaertiges-amt.de/de/2715934-2715934",
+            "owner": "Auswärtiges Amt",
+            "scope": "Schengen ve ulusal vizeler, dünya geneli; 01.07.2025 itibarıyla. Yasal başvuru yolu ve yeni başvuru hakkı korunur; sayfa dava süresi vermez."
+        },
+        "tr_missions_study": {
+            "url": "https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622",
+            "owner": "Türkiye'deki Alman temsilcilikleri",
+            "scope": "Öğrenim ve öğrenim yeri arama vizeleri yalnızca Konsolosluk Hizmet Portalı (digital.diplo.de/studium) üzerinden. Ücret bilgisi vermez."
+        },
+        "tr_missions_national": {
+            "url": "https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742",
+            "owner": "Türkiye'deki Alman temsilcilikleri",
+            "scope": "Ulusal vizeler: harici hizmet sağlayıcı iDATA ve IOM-FAP; iDATA hizmet bedeli 39,92 €, randevu ücreti 12 €, TL ile. Vize harcını belirtmez."
+        },
+        "aufenthv_46": {
+            "url": "https://www.gesetze-im-internet.de/aufenthv/__46.html",
+            "owner": "gesetze-im-internet.de (BMJ)",
+            "scope": "§ 46 Abs. 2 Nr. 1 AufenthV: ulusal vize 75 €. § 52a (Türk vatandaşlarına indirim) ulusal vizeyi kapsamıyor; diğer muafiyetler ayrıca incelenmedi."
+        },
+        "aps_india_faq": {
+            "url": "https://aps-india.de/faqs/",
+            "owner": "APS India",
+            "scope": "Belirleyici olan uyruk değil, belgenin verildiği ülke. İstisnalar: belge Hindistan dışından, IB gibi uluslararası diploma, Alman/AB kamu bursu. APS kabul veya vize kararı vermez."
+        },
+        "aps_india_about": {
+            "url": "https://aps-india.de/about-us/",
+            "owner": "APS India",
+            "scope": "APS: Çin (2001), Vietnam (2007), Hindistan (2022)."
+        }
+    },
+    "edits": [
+        {
+            "key": "R-163-tr",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- 30 gün içinde **itiraz** (Remonstration) hakkı var\n- İtiraz sonucu 6-12 hafta",
+            "replace": "- Konsolosluğa itiraz (Remonstration) usulü 1 Temmuz 2025'te kaldırıldı ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), kontrol: 14.10.2026)\n- Seçenekler: ret gerekçesini gidererek yeni başvuru ya da ret kararındaki hukuki yol bildirimine (Rechtsbehelfsbelehrung) göre dava; süre ve yetkili mahkeme bu bildirimde yazar"
+        },
+        {
+            "key": "R-575-en",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- You have the right to **appeal** (Remonstration) within 30 days\n- Appeal result 6-12 weeks",
+            "replace": "- The remonstration procedure (objection at the mission) was abolished on 1 July 2025 ([Federal Foreign Office](https://www.auswaertiges-amt.de/de/2715934-2715934), checked 14.10.2026)\n- Your options: a new application that addresses the refusal reasons, or legal action as set out in the notice of legal remedies (Rechtsbehelfsbelehrung) in the refusal; the deadline and the competent court are stated there"
+        },
+        {
+            "key": "R-576-de",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Du hast das Recht, innerhalb von 30 Tagen **Widerspruch** (Remonstration) einzulegen\n- Ergebnis des Widerspruchs 6-12 Wochen",
+            "replace": "- Das Remonstrationsverfahren bei der Auslandsvertretung wurde zum 1. Juli 2025 abgeschafft ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), geprüft am 14.10.2026)\n- Deine Optionen: ein neuer Antrag, der die Ablehnungsgründe ausräumt, oder der Rechtsweg gemäß der Rechtsbehelfsbelehrung im Ablehnungsbescheid; Frist und zuständiges Gericht stehen dort"
+        },
+        {
+            "key": "R-164-tr",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "### İtiraz (Remonstration) Hakkı\n- 30 gün içinde yazılı itiraz\n- Almanca/İngilizce mektup + red mektubu kopyası\n- Konsolosluğa direkt gönder (IDATA üzerinden değil)\n- Karar 6-12 hafta",
+            "replace": "### Remonstration Kaldırıldı\n- Konsolosluğa itiraz (Remonstration) usulü 1 Temmuz 2025'te kaldırıldı ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), kontrol: 14.10.2026)\n- Seçenekler: ret gerekçesini gidererek yeni başvuru ya da ret kararındaki hukuki yol bildirimine (Rechtsbehelfsbelehrung) göre dava; süre ve yetkili mahkeme bu bildirimde yazar"
+        },
+        {
+            "key": "R-578-de",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "### Recht auf Remonstration (Einspruch)\n- Lege innerhalb von 30 Tagen schriftlich Einspruch ein.\n- Sende ein Schreiben auf Deutsch/Englisch + eine Kopie des Ablehnungsschreibens.\n- Schicke es direkt an die Botschaft (nicht über IDATA).\n- Die Entscheidung dauert 6-12 Wochen.",
+            "replace": "### Remonstration abgeschafft\n- Das Remonstrationsverfahren bei der Auslandsvertretung wurde zum 1. Juli 2025 abgeschafft ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), geprüft am 14.10.2026)\n- Deine Optionen: ein neuer Antrag, der die Ablehnungsgründe ausräumt, oder der Rechtsweg gemäß der Rechtsbehelfsbelehrung im Ablehnungsbescheid; Frist und zuständiges Gericht stehen dort"
+        },
+        {
+            "key": "R-170-tr",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- **30 gün içinde itiraz (Remonstration)** hakkı",
+            "replace": "- Konsolosluğa itiraz (Remonstration) usulü 1 Temmuz 2025'te kaldırıldı ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), kontrol: 14.10.2026)\n- Seçenekler: ret gerekçesini gidererek yeni başvuru ya da ret kararındaki hukuki yol bildirimine (Rechtsbehelfsbelehrung) göre dava; süre ve yetkili mahkeme bu bildirimde yazar"
+        },
+        {
+            "key": "R-589-en",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Right to **appeal (Remonstration) within 30 days**",
+            "replace": "- The remonstration procedure (objection at the mission) was abolished on 1 July 2025 ([Federal Foreign Office](https://www.auswaertiges-amt.de/de/2715934-2715934), checked 14.10.2026)\n- Your options: a new application that addresses the refusal reasons, or legal action as set out in the notice of legal remedies (Rechtsbehelfsbelehrung) in the refusal; the deadline and the competent court are stated there"
+        },
+        {
+            "key": "R-590-de",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Recht auf **Einspruch (Remonstration) innerhalb von 30 Tagen**",
+            "replace": "- Das Remonstrationsverfahren bei der Auslandsvertretung wurde zum 1. Juli 2025 abgeschafft ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), geprüft am 14.10.2026)\n- Deine Optionen: ein neuer Antrag, der die Ablehnungsgründe ausräumt, oder der Rechtsweg gemäß der Rechtsbehelfsbelehrung im Ablehnungsbescheid; Frist und zuständiges Gericht stehen dort"
+        },
+        {
+            "key": "R-170-tr-2",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- 30 gün **itiraz hakkı** kullan veya",
+            "replace": "- Ret kararındaki hukuki yol bildirimine (Rechtsbehelfsbelehrung) göre dava aç ([Remonstration kaldırıldı](https://www.auswaertiges-amt.de/de/2715934-2715934)) veya"
+        },
+        {
+            "key": "R-589-en-2",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Use your **30-day right to appeal** or",
+            "replace": "- Take legal action as set out in the notice of legal remedies (Rechtsbehelfsbelehrung) in the refusal ([remonstration abolished](https://www.auswaertiges-amt.de/de/2715934-2715934)), or"
+        },
+        {
+            "key": "R-590-de-2",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Nutze das **Einspruchsrecht** innerhalb von 30 Tagen oder",
+            "replace": "- Beschreite den Rechtsweg gemäß der Rechtsbehelfsbelehrung im Bescheid ([Remonstration abgeschafft](https://www.auswaertiges-amt.de/de/2715934-2715934)) oder"
+        },
+        {
+            "key": "R-1159-en",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "what-can-i-do-about-communication-problems-with-officials-at-visa-interviews-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "For a visa decision you disagree with, the German mission usually offers a remonstration (Remonstration) within the period stated in the refusal letter.",
+            "replace": "A complaint concerns how you were treated, not the visa decision itself. The remonstration procedure against visa refusals was abolished on 1 July 2025 ([Federal Foreign Office](https://www.auswaertiges-amt.de/de/2715934-2715934), checked 14.10.2026); if you disagree with a refusal, you can file a new application or take legal action as set out in the notice of legal remedies (Rechtsbehelfsbelehrung) in the refusal."
+        },
+        {
+            "key": "R-1160-de",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "faqs",
+            "slug": "what-can-i-do-about-communication-problems-with-officials-at-visa-interviews-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "Bei einer Visumentscheidung, die du für falsch hältst, bietet die Auslandsvertretung in der Regel eine Remonstration innerhalb der im Bescheid genannten Frist an.",
+            "replace": "Eine Beschwerde betrifft den Umgang mit dir, nicht die Visumentscheidung selbst. Das Remonstrationsverfahren gegen Visumablehnungen wurde zum 1. Juli 2025 abgeschafft ([Auswärtiges Amt](https://www.auswaertiges-amt.de/de/2715934-2715934), geprüft am 14.10.2026); hältst du eine Ablehnung für falsch, kannst du einen neuen Antrag stellen oder den Rechtsweg gemäß der Rechtsbehelfsbelehrung im Bescheid beschreiten."
+        },
+        {
+            "key": "R-post5-excerpt",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection",
+            "locale": "tr",
+            "field": "excerpt",
+            "op": "replace",
+            "find": "Reddedilme nedenleri + Remonstration dilekçesi rehberi.",
+            "replace": "Reddedilme nedenleri ve Remonstration kalktıktan sonra kalan yollar."
+        },
+        {
+            "key": "R-post36-excerpt",
+            "topic": "remonstration",
+            "sources": [
+                "aa_remonstration"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection-de",
+            "locale": "de",
+            "field": "excerpt",
+            "op": "replace",
+            "find": "Gründe für eine Ablehnung + Leitfaden für den Remonstrationsantrag.",
+            "replace": "Gründe für eine Ablehnung und die Wege nach dem Ende der Remonstration."
+        },
+        {
+            "key": "A-post13-tr",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "can-you-study-for-an-english-masters-in-germany-without-knowing",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**APS Belgesi (Akademische Prüfstelle):** Türkiye'den başvuran öğrenciler için APS belgesi zorunludur. Bu belge, akademik belgelerinizin orijinalliğini ve denkliğini kontrol eden bir kurum tarafından verilir. APS süreci zaman alabilir, bu yüzden başvurularınızı erkenden yapmanız önemlidir.",
+            "replace": "**APS (Akademische Prüfstelle):** APS yalnızca Çin, Vietnam ve Hindistan'da verilmiş eğitim belgeleri için vardır; belirleyici olan uyruk değil, belgenin verildiği ülkedir. Belgelerin Türkiye'de verildiyse APS gerekmez ([APS India SSS](https://aps-india.de/faqs/), kontrol: 14.10.2026). Kabul kararını üniversite verir; başvuru yolunu programın sayfasından ve uni-assist'ten kontrol et."
+        },
+        {
+            "key": "A-post170-en",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "can-you-study-for-an-english-masters-in-germany-without-knowing-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**APS Certificate (Akademische Prüfstelle):** For students applying from Turkey, an APS certificate (Academic Evaluation Centre) is mandatory. This document is issued by an institution that verifies the authenticity and equivalence of your academic records. The APS process can take time, so it's important to apply early.",
+            "replace": "**APS (Akademische Prüfstelle):** APS only exists for educational documents issued in China, Vietnam and India; what matters is the country that issued the documents, not your nationality. If your documents were issued in Türkiye, you do not need APS ([APS India FAQ](https://aps-india.de/faqs/), checked 14.10.2026). Admission is decided by the university; check the application route on the programme page and with uni-assist."
+        },
+        {
+            "key": "A-post171-de",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "can-you-study-for-an-english-masters-in-germany-without-knowing-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**APS-Zertifikat (Akademische Prüfstelle):** Für Studierende, die sich aus der Türkei bewerben, ist das APS-Zertifikat obligatorisch. Dieses Dokument wird von einer Institution ausgestellt, die die Echtheit und Gleichwertigkeit deiner akademischen Unterlagen überprüft. Der APS-Prozess kann zeitaufwendig sein, daher ist es wichtig, deine Bewerbungen frühzeitig einzureichen.",
+            "replace": "**APS (Akademische Prüfstelle):** Die APS gibt es nur für Bildungsnachweise aus China, Vietnam und Indien; entscheidend ist das Land, in dem die Zeugnisse ausgestellt wurden, nicht die Staatsangehörigkeit. Stammen deine Zeugnisse aus der Türkei, brauchst du keine APS ([APS India FAQ](https://aps-india.de/faqs/), geprüft am 14.10.2026). Über die Zulassung entscheidet die Hochschule; prüfe den Bewerbungsweg auf der Programmseite und bei uni-assist."
+        },
+        {
+            "key": "A-aps-guide-tr-title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide",
+            "locale": "tr",
+            "field": "title",
+            "op": "set",
+            "expect_sha256": "41b8a6f85f91f772445c3fdc941d749edaedfeda149f0d0fd264bb9d22e9492e",
+            "value": "APS Sertifikası ve Türkiye: Türk Öğrencilere Gerekli mi?"
+        },
+        {
+            "key": "A-aps-guide-tr-meta_title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide",
+            "locale": "tr",
+            "field": "meta_title",
+            "op": "set",
+            "expect_sha256": "41b8a6f85f91f772445c3fdc941d749edaedfeda149f0d0fd264bb9d22e9492e",
+            "value": "APS Türkiye: Türk Öğrencilere APS Gerekli mi? (2026)"
+        },
+        {
+            "key": "A-aps-guide-tr-meta_description",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide",
+            "locale": "tr",
+            "field": "meta_description",
+            "op": "set",
+            "expect_sha256": "f90d890831eba20fd9f30962a7d6f8b34480178d1e839f49d3b97215ef8d1983",
+            "value": "APS yalnız Çin, Vietnam ve Hindistan'da verilmiş eğitim belgeleri için var. Belgelerin Türkiye'de verildiyse APS gerekmez. Uyruk değil, belge ülkesi belirleyici."
+        },
+        {
+            "key": "A-aps-guide-tr-excerpt",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide",
+            "locale": "tr",
+            "field": "excerpt",
+            "op": "set",
+            "expect_sha256": "f90d890831eba20fd9f30962a7d6f8b34480178d1e839f49d3b97215ef8d1983",
+            "value": "APS yalnız Çin, Vietnam ve Hindistan'da verilmiş eğitim belgeleri için var; Türkiye'de verilmiş belgelerle başvuruda APS gerekmez."
+        },
+        {
+            "key": "A-aps-guide-tr-content_md",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "set",
+            "expect_sha256": "c9c655716d47a963578ad2f3623ccded7fb2228c060dda7a1e5065f3cc11a207",
+            "value": "# APS Sertifikası ve Türkiye: Türk Öğrencilere Gerekli mi?\n\n> **Kısa cevap:** Lise veya üniversite belgelerin Türkiye'de verildiyse Almanya'daki üniversite başvurun için **APS gerekmez**. APS (Akademische Prüfstelle) yalnızca **Çin, Vietnam ve Hindistan**'da verilmiş eğitim belgeleri için vardır.\n\n## APS nedir?\n\nAPS, belirli ülkelerde verilmiş eğitim belgelerini Almanya'da yükseköğrenim için inceleyen bir değerlendirme merkezidir. Belgelerin gerçekliğini ve Almanya'da yükseköğrenime erişim açısından uygunluğunu üniversite başvurusundan önce kontrol eder. Bugün APS yalnızca üç ülke için vardır: Çin (2001'den beri), Vietnam (2007'den beri) ve Hindistan (2022'den beri) ([APS India – Hakkımızda](https://aps-india.de/about-us/)).\n\n## Belirleyici olan uyruk değil, belgenin verildiği ülke\n\nAPS India'nın açıklamasına göre başvuranın uyruğu belirleyici değildir; önemli olan ilgili eğitim belgelerinin bu ülkedeki bir kurum tarafından verilmiş olmasıdır ([APS India – SSS](https://aps-india.de/faqs/)). Pratikte:\n\n- Türk vatandaşısın ve belgelerin **Türkiye'den** → APS yok.\n- Türk vatandaşısın ama örneğin **lisans diploman Hindistan'dan** → o ülkenin APS incelemesi gerekebilir.\n\n## İstisnalar (APS India örneği)\n\nAPS India; ilgili diploması Hindistan dışından olanları, IB gibi uluslararası lise diploması sahiplerini ve Alman veya AB kamu kaynaklı burs alanları istisna sayar ([APS India – SSS](https://aps-india.de/faqs/)). Çin ve Vietnam'ın kuralları kendi APS sitelerinde yer alır.\n\n## APS, anabin, uni-assist ve kabul: karıştırma\n\n- **APS** kabul kararı vermez ve vize kararı vermez; üniversitenin, uni-assist'in veya başka bir kabul makamının kararının yerine geçmez ([APS India – SSS](https://aps-india.de/faqs/)).\n- **Kabulü** üniversite verir. Başvurunun uni-assist üzerinden mi, doğrudan üniversiteye mi yapılacağını programın sayfası söyler.\n- **anabin**, yabancı diplomaların Almanya'da yükseköğrenime erişim açısından nasıl değerlendirildiğini gösteren veritabanıdır; APS de incelemesinde anabin'de yayımlanan ölçütleri uygular ([APS India – SSS](https://aps-india.de/faqs/)). Türkiye'den gelen belgeler için değerlendirme APS olmadan, üniversite veya uni-assist tarafından yapılır.\n\n## Düzeltme notu\n\nBu yazının önceki sürümü Türkiye'den başvuranlar için APS zorunluluğu, Ankara'da bir APS ofisi ve APS mülakatı anlatıyordu. Bu bilgiler doğru değildi; yazı 14.10.2026'da resmî APS India sayfalarına göre düzeltildi.\n\n*Kaynaklar (kontrol: 14.10.2026): [APS India – SSS](https://aps-india.de/faqs/), [APS India – Hakkımızda](https://aps-india.de/about-us/).*"
+        },
+        {
+            "key": "A-aps-guide-en-title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-en",
+            "locale": "en",
+            "field": "title",
+            "op": "set",
+            "expect_sha256": "06bdc1a6efa4a2f00d5ed0567be483788476bbd4c1ce5ccbd8272acc900e3640",
+            "value": "APS Certificate and Türkiye: Do Turkish Students Need APS?"
+        },
+        {
+            "key": "A-aps-guide-en-meta_title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-en",
+            "locale": "en",
+            "field": "meta_title",
+            "op": "set",
+            "expect_sha256": "06bdc1a6efa4a2f00d5ed0567be483788476bbd4c1ce5ccbd8272acc900e3640",
+            "value": "APS and Türkiye: Do Turkish Students Need APS? (2026)"
+        },
+        {
+            "key": "A-aps-guide-en-meta_description",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-en",
+            "locale": "en",
+            "field": "meta_description",
+            "op": "set",
+            "expect_sha256": "6784bc7418ac4bc97d131bf226346feb6ee32c7be9f7c502f23aaa52f46b230f",
+            "value": "APS only exists for educational documents issued in China, Vietnam and India. If your documents were issued in Türkiye, you do not need APS. The issuing country counts, not nationality."
+        },
+        {
+            "key": "A-aps-guide-en-excerpt",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-en",
+            "locale": "en",
+            "field": "excerpt",
+            "op": "set",
+            "expect_sha256": "6784bc7418ac4bc97d131bf226346feb6ee32c7be9f7c502f23aaa52f46b230f",
+            "value": "APS only exists for educational documents issued in China, Vietnam and India; if your documents were issued in Türkiye, you do not need APS."
+        },
+        {
+            "key": "A-aps-guide-en-content_md",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "set",
+            "expect_sha256": "d97fa53a7269aa2dc175ced42a63cf4f039c94d473a1575861d8e9130d3f1b2b",
+            "value": "# APS Certificate and Türkiye: Do Turkish Students Need APS?\n\n> **Short answer:** If your school or university documents were issued in Türkiye, you **do not need APS** for your application to a German university. APS (Akademische Prüfstelle) only exists for educational documents issued in **China, Vietnam and India**.\n\n## What is APS?\n\nAPS is an evaluation centre that reviews educational documents issued in certain countries for study in Germany. It checks the authenticity of documents and whether they give access to higher education in Germany before you apply to universities. Today APS exists for three countries only: China (since 2001), Vietnam (since 2007) and India (since 2022) ([APS India – About us](https://aps-india.de/about-us/)).\n\n## The issuing country counts, not your nationality\n\nAccording to APS India, the applicant's nationality is not decisive; what matters is whether the relevant academic documents were issued by educational institutions in that country ([APS India – FAQ](https://aps-india.de/faqs/)). In practice:\n\n- You are a Turkish citizen and your documents are **from Türkiye** → no APS.\n- You are a Turkish citizen but, for example, your **bachelor's degree is from India** → that country's APS check may apply.\n\n## Exemptions (APS India example)\n\nAPS India exempts applicants whose relevant degree was not issued in India, holders of international school qualifications such as the International Baccalaureate, and holders of scholarships funded by German or EU public funds ([APS India – FAQ](https://aps-india.de/faqs/)). China and Vietnam publish their own rules on their APS websites.\n\n## Do not mix up APS, anabin, uni-assist and admission\n\n- **APS** does not decide on admission or visas and does not replace the decision of a university, uni-assist or any other admission authority ([APS India – FAQ](https://aps-india.de/faqs/)).\n- **Admission** is decided by the university. The programme page tells you whether to apply through uni-assist or directly.\n- **anabin** is the database that shows how foreign qualifications are assessed for access to German higher education; APS applies the criteria published in anabin ([APS India – FAQ](https://aps-india.de/faqs/)). Documents from Türkiye are assessed without APS, by the university or uni-assist.\n\n## Correction note\n\nAn earlier version of this article described an APS requirement for applicants from Türkiye, an APS office in Ankara and an APS interview. That information was wrong; the article was corrected on 14.10.2026 based on the official APS India pages.\n\n*Sources (checked 14.10.2026): [APS India – FAQ](https://aps-india.de/faqs/), [APS India – About us](https://aps-india.de/about-us/).*"
+        },
+        {
+            "key": "A-aps-guide-de-title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-de",
+            "locale": "de",
+            "field": "title",
+            "op": "set",
+            "expect_sha256": "0d185e68fc921faece70a5c1c7b78a36d0b0fba3fe880599b5da2f13266546d3",
+            "value": "APS-Zertifikat und Türkei: Brauchen türkische Studierende die APS?"
+        },
+        {
+            "key": "A-aps-guide-de-meta_title",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-de",
+            "locale": "de",
+            "field": "meta_title",
+            "op": "set",
+            "expect_sha256": "0d185e68fc921faece70a5c1c7b78a36d0b0fba3fe880599b5da2f13266546d3",
+            "value": "APS und Türkei: Brauchen türkische Studierende APS? (2026)"
+        },
+        {
+            "key": "A-aps-guide-de-meta_description",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-de",
+            "locale": "de",
+            "field": "meta_description",
+            "op": "set",
+            "expect_sha256": "3d190fb3ea1c6f81562b5c33ccf757f36a72049401892bec6b8fcb9e5b50e0f3",
+            "value": "Die APS gibt es nur für Bildungsnachweise aus China, Vietnam und Indien. Stammen deine Zeugnisse aus der Türkei, brauchst du keine APS. Entscheidend ist das Ausstellungsland."
+        },
+        {
+            "key": "A-aps-guide-de-excerpt",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-de",
+            "locale": "de",
+            "field": "excerpt",
+            "op": "set",
+            "expect_sha256": "3d190fb3ea1c6f81562b5c33ccf757f36a72049401892bec6b8fcb9e5b50e0f3",
+            "value": "Die APS gibt es nur für Bildungsnachweise aus China, Vietnam und Indien; mit Zeugnissen aus der Türkei brauchst du keine APS."
+        },
+        {
+            "key": "A-aps-guide-de-content_md",
+            "topic": "aps",
+            "sources": [
+                "aps_india_faq",
+                "aps_india_about"
+            ],
+            "table": "posts",
+            "slug": "aps-certificate-turkey-2026-germany-university-guide-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "set",
+            "expect_sha256": "453e3a2dfd4196eb8cb3ddb20f55c32bdfe49a72b34dfb277ae8104f67513505",
+            "value": "# APS-Zertifikat und Türkei: Brauchen türkische Studierende die APS?\n\n> **Kurz gesagt:** Wenn deine Schul- oder Hochschulzeugnisse in der Türkei ausgestellt wurden, brauchst du für deine Bewerbung an einer deutschen Hochschule **keine APS**. Die APS (Akademische Prüfstelle) gibt es nur für Bildungsnachweise aus **China, Vietnam und Indien**.\n\n## Was ist die APS?\n\nDie APS ist eine Prüfstelle, die in bestimmten Ländern ausgestellte Bildungsnachweise für ein Studium in Deutschland prüft. Sie prüft vor der Hochschulbewerbung die Echtheit der Unterlagen und ob sie den Zugang zum Studium in Deutschland eröffnen. Heute gibt es die APS nur für drei Länder: China (seit 2001), Vietnam (seit 2007) und Indien (seit 2022) ([APS India – Über uns](https://aps-india.de/about-us/)).\n\n## Entscheidend ist das Ausstellungsland, nicht die Staatsangehörigkeit\n\nLaut APS India ist die Staatsangehörigkeit nicht entscheidend; es kommt darauf an, ob die maßgeblichen Bildungsnachweise von Einrichtungen in diesem Land ausgestellt wurden ([APS India – FAQ](https://aps-india.de/faqs/)). In der Praxis:\n\n- Türkische Staatsangehörigkeit, Zeugnisse **aus der Türkei** → keine APS.\n- Türkische Staatsangehörigkeit, aber z. B. **Bachelor aus Indien** → die APS-Prüfung dieses Landes kann nötig sein.\n\n## Ausnahmen (Beispiel APS India)\n\nAPS India nimmt Personen aus, deren maßgeblicher Abschluss nicht in Indien ausgestellt wurde, Inhaber internationaler Schulabschlüsse wie des International Baccalaureate sowie Stipendiaten aus deutschen oder EU-Mitteln ([APS India – FAQ](https://aps-india.de/faqs/)). China und Vietnam veröffentlichen ihre Regeln auf ihren eigenen APS-Seiten.\n\n## APS, anabin, uni-assist und Zulassung nicht verwechseln\n\n- Die **APS** entscheidet weder über die Zulassung noch über das Visum und ersetzt nicht die Entscheidung einer Hochschule, von uni-assist oder einer anderen Zulassungsstelle ([APS India – FAQ](https://aps-india.de/faqs/)).\n- Über die **Zulassung** entscheidet die Hochschule. Ob du dich über uni-assist oder direkt bewirbst, steht auf der Programmseite.\n- **anabin** ist die Datenbank zur Bewertung ausländischer Abschlüsse für den Hochschulzugang; die APS wendet die in anabin veröffentlichten Kriterien an ([APS India – FAQ](https://aps-india.de/faqs/)). Zeugnisse aus der Türkei werden ohne APS von der Hochschule oder uni-assist bewertet.\n\n## Korrekturhinweis\n\nEine frühere Fassung dieses Artikels beschrieb eine APS-Pflicht für Bewerber aus der Türkei, ein APS-Büro in Ankara und ein APS-Interview. Diese Angaben waren falsch; der Artikel wurde am 14.10.2026 anhand der offiziellen Seiten von APS India korrigiert.\n\n*Quellen (geprüft am 14.10.2026): [APS India – FAQ](https://aps-india.de/faqs/), [APS India – Über uns](https://aps-india.de/about-us/).*"
+        },
+        {
+            "key": "V-post5-channel",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Türkiye'deki Alman konsoloslukları **iDATA Visa Service** üzerinden randevu yönetiyor. Randevu **online alınır**, **ücretsizdir**.",
+            "replace": "Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca **Konsolosluk Hizmet Portalı** üzerinden yürütülüyor ([digital.diplo.de/studium](https://digital.diplo.de/studium)); bu vize türlerinde iDATA kanal değil. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), kontrol: 14.10.2026)."
+        },
+        {
+            "key": "V-post5-step1",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "1. **`vfsglobal.com`** veya konsolosluğun resmi web sitesi üzerinden hesap aç",
+            "replace": "1. [digital.diplo.de/studium](https://digital.diplo.de/studium) adresinden Konsolosluk Hizmet Portalı'na gir ve hesap aç; üçüncü taraf sitelere güvenme"
+        },
+        {
+            "key": "V-post35-channel",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "German missions in Türkiye manage appointments through an external service provider (iDATA for some missions, VFS Global for others). The appointment itself is **booked online and free of charge** — only the visa fee is paid at the mission.",
+            "replace": "In Türkiye, **study and study-place-search** visa applications are now handled only through the **Consular Services Portal** ([digital.diplo.de/studium](https://digital.diplo.de/studium)); iDATA is not the channel for these visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026)."
+        },
+        {
+            "key": "V-post35-step1",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "1. Create an account on the provider named on **your** mission's official page — do not trust third-party sites.",
+            "replace": "1. Open the Consular Services Portal at [digital.diplo.de/studium](https://digital.diplo.de/studium) and create an account — do not trust third-party sites."
+        },
+        {
+            "key": "V-post36-channel",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Die deutschen Konsulate in der Türkei verwalten Termine über den **iDATA Visa Service**. Termine werden **online vereinbart** und sind **kostenlos**.",
+            "replace": "In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das **Auslandsportal** ([digital.diplo.de/studium](https://digital.diplo.de/studium)); iDATA ist für diese Visumarten nicht der Antragsweg. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), geprüft am 14.10.2026)."
+        },
+        {
+            "key": "V-post36-step1",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-2026-application-steps-documents-rejection-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "1. Erstelle ein Konto auf **`vfsglobal.com`** oder der offiziellen Website des Konsulats.",
+            "replace": "1. Öffne das Auslandsportal unter [digital.diplo.de/studium](https://digital.diplo.de/studium) und erstelle ein Konto — vertraue keinen Drittanbieter-Seiten."
+        },
+        {
+            "key": "V-idata-guide-tr-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-idata-guide-en-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-idata-guide-de-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Deutschland-Visum: So bekommst du deinen Termin bei iDATA – Frust vermeiden, schnell handeln\n",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-post7-only",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Almanya vize randevusu için tek resmi platform iDATA'nın web sitesidir (www.idata.com.tr).",
+            "replace": "Öğrenim ve öğrenim yeri arama dışındaki ulusal vizelerde randevu iDATA'nın web sitesinden (www.idata.com.tr) alınır; temsilcilikler ayrıca IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742))."
+        },
+        {
+            "key": "V-post7-center",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Almanya vizesi için başvurularınızı doğrudan iDATA üzerinden yapmanız gerekmektedir.",
+            "replace": "Öğrenim ve öğrenim yeri arama vizeleri ise iDATA'dan değil, Konsolosluk Hizmet Portalı'ndan ([digital.diplo.de/studium](https://digital.diplo.de/studium)) yürür."
+        },
+        {
+            "key": "V-post7-ankara",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Adresi Ankara olan bir öğrenci, Almanya eğitim vizesi başvurusu için **iDATA**'dan randevu almalıdır. Türkiye'de Almanya vizesi başvurularında yetkili tek aracı kurum iDATA'dır.",
+            "replace": "Adresi Ankara olan bir öğrenci, öğrenim vizesi başvurusunu iDATA'dan değil, **Konsolosluk Hizmet Portalı** üzerinden ([digital.diplo.de/studium](https://digital.diplo.de/studium)) yapar ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır."
+        },
+        {
+            "key": "V-post7-only2",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Almanya vizesi randevuları yalnızca iDATA'nın resmi web sitesi (www.idata.com.tr) üzerinden alınır.",
+            "replace": "Öğrenim dışındaki ulusal vize randevuları iDATA'nın resmi web sitesi (www.idata.com.tr) üzerinden alınır; öğrenim ve öğrenim yeri arama vizeleri Konsolosluk Hizmet Portalı'ndan yürür."
+        },
+        {
+            "key": "V-post39-only",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "The only official platform for Germany visa appointments is iDATA's website (www.idata.com.tr).",
+            "replace": "For national visas other than study and study-place search, appointments are booked on iDATA's website (www.idata.com.tr); the missions also work with IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742))."
+        },
+        {
+            "key": "V-post39-center",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "You must apply for your Germany visa directly through iDATA.",
+            "replace": "Study and study-place-search visas, however, go through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium)), not iDATA."
+        },
+        {
+            "key": "V-post39-ankara",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "A student whose address is in Ankara should get an appointment from **iDATA** for a Germany education visa application. iDATA is the only authorized intermediary institution for Germany visa applications in Turkey.",
+            "replace": "A student whose address is in Ankara applies for a study visa through the **Consular Services Portal** ([digital.diplo.de/studium](https://digital.diplo.de/studium)), not iDATA ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). For other national visas the missions work with iDATA and IOM-FAP."
+        },
+        {
+            "key": "V-post39-only2",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Germany visa appointments are only made through iDATA's official website (www.idata.com.tr).",
+            "replace": "Appointments for national visas other than study are made through iDATA's official website (www.idata.com.tr); study and study-place-search visas go through the Consular Services Portal."
+        },
+        {
+            "key": "V-post178-intro",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "In der Türkei ist **iDATA** die offizielle und autorisierte Stelle für Visumanträge für Deutschland.",
+            "replace": "Für die meisten nationalen Visa arbeiten die Vertretungen in der Türkei mit **iDATA** und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)); Visa für Studium und Studienplatzsuche laufen dagegen ausschließlich über das Auslandsportal ([digital.diplo.de/studium](https://digital.diplo.de/studium))."
+        },
+        {
+            "key": "V-post178-only",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Die einzige offizielle Plattform für die Terminvergabe für ein Deutschland-Visum ist die Website von iDATA (www.idata.com.tr).",
+            "replace": "Für nationale Visa außer Studium und Studienplatzsuche werden Termine über die Website von iDATA (www.idata.com.tr) vergeben; die Vertretungen arbeiten zusätzlich mit IOM-FAP."
+        },
+        {
+            "key": "V-post178-center",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Du musst deine Anträge für ein Deutschland-Visum direkt über iDATA stellen.",
+            "replace": "Visa für Studium und Studienplatzsuche beantragst du jedoch über das Auslandsportal ([digital.diplo.de/studium](https://digital.diplo.de/studium)), nicht über iDATA."
+        },
+        {
+            "key": "V-post178-ankara",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Ein Studierender mit Wohnsitz in Ankara sollte einen Termin für seinen Antrag auf ein deutsches Bildungs-Visum bei **iDATA** vereinbaren. In der Türkei ist iDATA die einzige autorisierte Vermittlungsstelle für deutsche Visumanträge.",
+            "replace": "Ein Studierender mit Wohnsitz in Ankara stellt den Antrag auf ein Studienvisum über das **Auslandsportal** ([digital.diplo.de/studium](https://digital.diplo.de/studium)), nicht über iDATA ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP."
+        },
+        {
+            "key": "V-strategy-tr-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Almanya Konsolosluk Vize Randevusu — 2026 Stratejisi\n",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "\n> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-strategy-en-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Germany Consulate Visa Appointment — 2026 Waiting Times and City Strategy\n",
+            "marker": "Update (14.10.2026):",
+            "text": "\n> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-strategy-de-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Deutschland Konsulat Visumstermin — 2026 Wartezeiten und Stadtstrategie\n",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-post93-codes",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Bu kodları konsolosluk değil **iDATA online randevu sistemi** kullanıyor — başvururken doğru olanı seçmek kritik.",
+            "replace": "Öğrenim (36F) ve öğrenim yeri arama başvuruları artık iDATA'dan değil, Konsolosluk Hizmet Portalı'ndan ([digital.diplo.de/studium](https://digital.diplo.de/studium)) yapılıyor; portalda doğru vize amacını seçmek kritik ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622))."
+        },
+        {
+            "key": "V-post93-process",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "İstanbul/Ankara/İzmir'de **iDATA zorunlu** — konsolosluk doğrudan randevu vermiyor. Süreç:\n\n1. `https://www.idata.com.tr/` → kullanıcı kaydı\n2. Vize türü → **Ulusal Vize (D Vizesi)** seç\n3. Kategori → **Studienbewerber** (36.f) veya **Studium** (36F)\n4. Şehir + tarih seç\n5. €75 ücreti onla öde (vize harcı ayrı, randevuya gidişte cash veya kart)",
+            "replace": "Öğrenim ve öğrenim yeri arama vizelerinde **iDATA kanal değil**; başvuru yalnızca Konsolosluk Hizmet Portalı'ndan yürür ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), kontrol: 14.10.2026). Süreç:\n\n1. [digital.diplo.de/studium](https://digital.diplo.de/studium) → portal hesabı aç\n2. Vize amacını seç: öğrenim (Studium) veya öğrenim yeri arama (Studienbewerbung)\n3. Formu doldur, belgeleri yükle; temsilciliğin yönlendirmesini izle\n4. Ulusal vize harcı **75 €** ([AufenthV § 46](https://www.gesetze-im-internet.de/aufenthv/__46.html)); bazı başvuru grupları için muafiyet veya indirim olabilir\n\nDiğer ulusal vizelerde (ör. aile birleşimi, çalışma) temsilcilikler iDATA ve IOM-FAP ile çalışır; iDATA'da iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)."
+        },
+        {
+            "key": "V-post92-codes",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "These codes are used not by the consulate but by the **iDATA online appointment system** — choosing the correct one when applying is critical.",
+            "replace": "Study (36F) and study-place-search applications are no longer made through iDATA but through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium)); choosing the right visa purpose there is critical ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622))."
+        },
+        {
+            "key": "V-post92-process",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "In Istanbul/Ankara/Izmir, **iDATA is mandatory** — the consulate does not provide direct appointments. The process:\n\n1. `https://www.idata.com.tr/` → user registration\n2. Visa type → Select **National Visa (D Visa)**\n3. Category → **Studienbewerber** (36.f) or **Studium** (36F)\n4. Select city + date\n5. Pay the €75 fee online (visa fee is separate, cash or card at the appointment)",
+            "replace": "For study and study-place-search visas **iDATA is not the channel**; applications go only through the Consular Services Portal ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026). The process:\n\n1. [digital.diplo.de/studium](https://digital.diplo.de/studium) → create a portal account\n2. Choose the visa purpose: study (Studium) or study-place search (Studienbewerbung)\n3. Fill in the form, upload documents and follow the mission's instructions\n4. National visa fee **€75** ([AufenthV § 46](https://www.gesetze-im-internet.de/aufenthv/__46.html)); some applicant groups may be exempt or pay less\n\nFor other national visas (e.g. family reunion, work) the missions work with iDATA and IOM-FAP; at iDATA you pay the iDATA service fee of €39.92 and/or €12 appointment booking fee (charged in Turkish lira; [German missions in Türkiye](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), checked 14.10.2026)."
+        },
+        {
+            "key": "V-post91-codes",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Diese Codes werden nicht vom Konsulat, sondern vom **iDATA Online-Terminsystem** verwendet — die richtige Auswahl bei der Bewerbung ist entscheidend.",
+            "replace": "Anträge für Studium (36F) und Studienplatzsuche laufen nicht mehr über iDATA, sondern über das Auslandsportal ([digital.diplo.de/studium](https://digital.diplo.de/studium)); entscheidend ist dort der richtige Aufenthaltszweck ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622))."
+        },
+        {
+            "key": "V-post91-process",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "In Istanbul/Ankara/Izmir ist **iDATA obligatorisch** — das Konsulat vergibt keine direkten Termine. Der Prozess:\n\n1. `https://www.idata.com.tr/` → Benutzerregistrierung\n2. Visumtyp → Wähle **Nationales Visum (D-Visum)**\n3. Kategorie → **Studienbewerber** (36.f) oder **Studium** (36F)\n4. Stadt + Datum auswählen\n5. Gebühr von 75 € online bezahlen (Visumgebühr ist separat, Barzahlung oder Karte beim Termin)",
+            "replace": "Für Visa zu Studium und Studienplatzsuche ist **iDATA nicht der Antragsweg**; Anträge laufen ausschließlich über das Auslandsportal ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), geprüft am 14.10.2026). Der Prozess:\n\n1. [digital.diplo.de/studium](https://digital.diplo.de/studium) → Konto im Portal anlegen\n2. Aufenthaltszweck wählen: Studium oder Studienbewerbung\n3. Formular ausfüllen, Unterlagen hochladen und den Hinweisen der Vertretung folgen\n4. Gebühr für das nationale Visum **75 €** ([AufenthV § 46](https://www.gesetze-im-internet.de/aufenthv/__46.html)); für manche Antragsgruppen gibt es Befreiungen oder Ermäßigungen\n\nFür andere nationale Visa (z. B. Familiennachzug, Arbeit) arbeiten die Vertretungen mit iDATA und IOM-FAP; bei iDATA fällt die iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026) an."
+        },
+        {
+            "key": "V-note-tr-1e304e",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-1e304e",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-1e304e",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-tr-bfdc8b",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-bfdc8b",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-bfdc8b",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-tr-80ae14",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-80ae14",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-80ae14",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "F-163-tr",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Online ön kayıt + ücret ödeme (30 €)",
+            "replace": "- Online ön kayıt + iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)"
+        },
+        {
+            "key": "F-575-en",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Online pre-registration + fee payment (30 €)",
+            "replace": "- Online pre-registration + iDATA service fee of €39.92 and/or €12 appointment booking fee (charged in Turkish lira; [German missions in Türkiye](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), checked 14.10.2026)"
+        },
+        {
+            "key": "F-576-de",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Online-Voranmeldung + Gebührenzahlung (30 €)",
+            "replace": "- Online-Voranmeldung + iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)"
+        },
+        {
+            "key": "F-164-tr",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Online form doldur + IDATA hizmet ücreti (30 €) öde",
+            "replace": "- Online form doldur + iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)"
+        },
+        {
+            "key": "F-578-de",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Fülle das Online-Formular aus und bezahle die IDATA Servicegebühr (30 €)",
+            "replace": "- Fülle das Online-Formular aus und bezahle die iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)"
+        },
+        {
+            "key": "F-166-tr-step",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- **30 € IDATA hizmet ücreti** (sabit)",
+            "replace": "- iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)"
+        },
+        {
+            "key": "F-166-tr-check",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "✅ 30 € hizmet ücreti",
+            "replace": "✅ iDATA hizmet bedeli / randevu ücreti"
+        },
+        {
+            "key": "F-166-tr-table",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "| Vize Türü | Konsolosluk ücreti | IDATA hizmet | Toplam |\n| --- | --- | --- | --- |\n| **Öğrenci D vizesi (§16b)** | 75 € | 30 € | **105 €** |\n| **Dil kursu (§16f)** | 75 € | 30 € | 105 € |\n| **Schengen C vizesi** | 80 € | 30 € | 110 € |\n| **Aile birleşimi** | 75 € | 30 € | 105 € |\n| **İş / Mavi Kart** | 100 € | 30 € | 130 € |",
+            "replace": "| Kalem | Tutar | Not |\n| --- | --- | --- |\n| **Ulusal (D) vize harcı** | 75 € | [AufenthV § 46 Abs. 2 Nr. 1](https://www.gesetze-im-internet.de/aufenthv/__46.html); bazı gruplar için muafiyet veya indirim olabilir |\n| **iDATA hizmet bedeli** | 39,92 € | Yalnız iDATA üzerinden yürüyen başvurularda; TL ile ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |\n| **iDATA randevu ücreti** | 12 € | TL ile ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |\n\nÖğrenim ve öğrenim yeri arama vizeleri iDATA'dan değil, Konsolosluk Hizmet Portalı'ndan yürür; bu başvurularda iDATA bedeli yoktur. Kontrol: 14.10.2026."
+        },
+        {
+            "key": "F-166-tr-refund",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "— 75 € ve 30 € gider",
+            "replace": "— vize harcı ve iDATA bedeli geri ödenmez"
+        },
+        {
+            "key": "F-166-tr-only",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**IDATA dışı vize başvurusu kabul edilmiyor** — direkt konsolosluğa gitmek mümkün değil",
+            "replace": "**Öğrenim ve öğrenim yeri arama vizeleri iDATA'dan değil, Konsolosluk Hizmet Portalı'ndan yürür** ([digital.diplo.de/studium](https://digital.diplo.de/studium)); diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır"
+        },
+        {
+            "key": "F-582-de-step",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- **30 € IDATA Servicegebühr** (fest)",
+            "replace": "- iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)"
+        },
+        {
+            "key": "F-582-de-check",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "✅ 30 € Servicegebühr",
+            "replace": "✅ iDATA-Servicegebühr / Terminbuchungsgebühr"
+        },
+        {
+            "key": "F-582-de-table",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "| Visumart | Konsulatsgebühr | IDATA-Service | Gesamt |\n| --- | --- | --- | --- |\n| **Studentenvisum D (§16b)** | 75 € | 30 € | **105 €** |\n| **Sprachkurs (§16f)** | 75 € | 30 € | 105 € |\n| **Schengen C Visum** | 80 € | 30 € | 110 € |\n| **Familienzusammenführung** | 75 € | 30 € | 105 € |\n| **Arbeit / Blaue Karte** | 100 € | 30 € | 130 € |",
+            "replace": "| Posten | Betrag | Hinweis |\n| --- | --- | --- |\n| **Gebühr nationales Visum (D)** | 75 € | [AufenthV § 46 Abs. 2 Nr. 1](https://www.gesetze-im-internet.de/aufenthv/__46.html); Befreiungen oder Ermäßigungen für manche Gruppen möglich |\n| **iDATA-Servicegebühr** | 39,92 € | nur bei Anträgen über iDATA; in TL ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |\n| **iDATA-Terminbuchungsgebühr** | 12 € | in TL ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |\n\nVisa für Studium und Studienplatzsuche laufen nicht über iDATA, sondern über das Auslandsportal; dort fällt keine iDATA-Gebühr an. Geprüft am 14.10.2026."
+        },
+        {
+            "key": "F-582-de-only",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Visumanträge außerhalb von IDATA werden nicht angenommen** — ein direkter Gang zum Konsulat ist nicht möglich.",
+            "replace": "**Visa für Studium und Studienplatzsuche laufen nicht über iDATA, sondern über das Auslandsportal** ([digital.diplo.de/studium](https://digital.diplo.de/studium)); für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP."
+        },
+        {
+            "key": "F-582-de-refund",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "— die 75 € und 30 € sind verloren.",
+            "replace": "— Visumgebühr und iDATA-Gebühr werden nicht erstattet."
+        },
+        {
+            "key": "F-581-en-all",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "All visa applications, whether for study in Germany, English-taught programs, or other purposes, are processed through IDATA.",
+            "replace": "Study and study-place-search visas are the exception: they are handled only through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium), [source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026). For other national visas the missions work with iDATA and IOM-FAP."
+        },
+        {
+            "key": "F-114-tr",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "| **IDATA hizmet ücreti** | 30 € |",
+            "replace": "| **iDATA hizmet bedeli** (öğrenim vizesinde yok; diğer ulusal vizeler) | 39,92 € ve/veya 12 € randevu ücreti, TL ile ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |"
+        },
+        {
+            "key": "F-114-tr-refund",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "(genelde 30 € hizmet ücreti)",
+            "replace": "(iDATA hizmet bedeli)"
+        },
+        {
+            "key": "F-479-en",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "| **IDATA service fee** | 30 € |",
+            "replace": "| **iDATA service fee** (not for study visas; other national visas) | €39.92 and/or €12 appointment fee, in TL ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |"
+        },
+        {
+            "key": "F-479-en-refund",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "(generally the 30 € service fee)",
+            "replace": "(the iDATA service fee)"
+        },
+        {
+            "key": "F-480-de",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "| **IDATA Servicegebühr** | 30 € |",
+            "replace": "| **iDATA-Servicegebühr** (nicht beim Studienvisum; andere nationale Visa) | 39,92 € und/oder 12 € Terminbuchungsgebühr, in TL ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)) |"
+        },
+        {
+            "key": "F-480-de-refund",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "is-the-75eur-fee-sufficient-for-the-visa-application-or-are-there-additional-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "(in der Regel die 30 € Servicegebühr)",
+            "replace": "(die iDATA-Servicegebühr)"
+        },
+        {
+            "key": "F-170-tr-a",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Önceki ödediğin hizmet ücreti **kaybolur** (30 €)",
+            "replace": "- Önceki ödediğin iDATA bedeli **kaybolur**"
+        },
+        {
+            "key": "F-170-tr-b",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Ödediğin 30 € **iade edilmez** — yeniden öde",
+            "replace": "- Ödediğin iDATA bedeli **iade edilmez** — yeniden öde"
+        },
+        {
+            "key": "F-170-tr-c",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- IDATA hizmet ücreti 30 € **iade edilmez** — yeniden ödemen lazım",
+            "replace": "- iDATA bedeli **iade edilmez** — yeniden ödemen lazım"
+        },
+        {
+            "key": "F-170-tr-d",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Tüm ücretler yeniden — vize 75 € + IDATA 30 €",
+            "replace": "- Tüm ücretler yeniden — vize harcı 75 € + iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)"
+        },
+        {
+            "key": "F-589-en-a",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- The service fee you previously paid **is lost** (30 €)",
+            "replace": "- The iDATA fee you previously paid **is lost**"
+        },
+        {
+            "key": "F-589-en-b",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- The 30 € you paid **is not refunded** — you have to pay again",
+            "replace": "- The iDATA fee you paid **is not refunded** — you have to pay again"
+        },
+        {
+            "key": "F-589-en-c",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- The IDATA service fee of 30 € **is not refunded** — you have to pay again",
+            "replace": "- The iDATA fee **is not refunded** — you have to pay again"
+        },
+        {
+            "key": "F-589-en-d",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- All fees again — visa 75 € + IDATA 30 €",
+            "replace": "- All fees again — visa fee €75 + iDATA service fee of €39.92 and/or €12 appointment booking fee (charged in Turkish lira; [German missions in Türkiye](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), checked 14.10.2026)"
+        },
+        {
+            "key": "F-590-de-a",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Die zuvor bezahlte Servicegebühr **geht verloren** (30 €)",
+            "replace": "- Die zuvor bezahlte iDATA-Gebühr **geht verloren**"
+        },
+        {
+            "key": "F-590-de-b",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Die von dir bezahlten 30 € **werden nicht zurückerstattet** — zahle erneut",
+            "replace": "- Die von dir bezahlte iDATA-Gebühr **wird nicht zurückerstattet** — zahle erneut"
+        },
+        {
+            "key": "F-590-de-c",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Die IDATA-Servicegebühr von 30 € **wird nicht zurückerstattet** — du musst sie erneut bezahlen",
+            "replace": "- Die iDATA-Gebühr **wird nicht zurückerstattet** — du musst sie erneut bezahlen"
+        },
+        {
+            "key": "F-590-de-d",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "if-the-appointment-is-cancelled-do-you-have-to-re-book-it-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Alle Gebühren erneut — Visum 75 € + IDATA 30 €",
+            "replace": "- Alle Gebühren erneut — Visumgebühr 75 € + iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)"
+        },
+        {
+            "key": "F-169-tr",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Vize türü seç + hizmet ücreti 30 €",
+            "replace": "- Vize türü seç + iDATA hizmet bedeli 39,92 € ve/veya 12 € randevu ücreti (TL olarak tahsil edilir; [Türkiye'deki Alman temsilcilikleri](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol: 14.10.2026)"
+        },
+        {
+            "key": "F-587-en",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Select your visa type + pay the service fee of 30 €.",
+            "replace": "- Select your visa type + pay the iDATA service fee of €39.92 and/or €12 appointment booking fee (charged in Turkish lira; [German missions in Türkiye](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), checked 14.10.2026)."
+        },
+        {
+            "key": "F-588-de",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Wähle die Visumart + Servicegebühr 30 €",
+            "replace": "- Wähle die Visumart + iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)"
+        },
+        {
+            "key": "F-580-de",
+            "topic": "visa-fee",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-appointment-status-for-a-language-course-visa-at-the-istanbul-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- Fülle das Formular aus und bezahle die Servicegebühr von 30 €.",
+            "replace": "- Fülle das Formular aus und bezahle die iDATA-Servicegebühr 39,92 € und/oder 12 € Terminbuchungsgebühr (in TL erhoben; [Deutsche Vertretungen in der Türkei](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 14.10.2026)."
+        },
+        {
+            "key": "V-13-tr-vfs",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "1. **VFS Global / IDATA web sayfasını sabah 09:00'da yenile**",
+            "replace": "1. **iDATA web sayfasını sabah 09:00'da yenile** (öğrenim vizesi değil, diğer ulusal vizeler için; Türkiye'de Almanya için VFS Global değil iDATA ve IOM-FAP çalışır)"
+        },
+        {
+            "key": "V-292-en-vfs",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "1. **Refresh the VFS Global / IDATA website at 09:00 AM**",
+            "replace": "1. **Refresh the iDATA website at 09:00 AM** (for national visas other than study; in Türkiye the German missions work with iDATA and IOM-FAP, not VFS Global)"
+        },
+        {
+            "key": "V-293-de-vfs",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "1. **Aktualisiere die Webseite von VFS Global / IDATA um 09:00 Uhr morgens**",
+            "replace": "1. **Aktualisiere die iDATA-Webseite um 09:00 Uhr morgens** (für nationale Visa außer Studium; in der Türkei arbeiten die deutschen Vertretungen mit iDATA und IOM-FAP, nicht mit VFS Global)"
+        },
+        {
+            "key": "V-guide232-tr-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-guide-en-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Before Your Consulate Appointment: How the German Student Visa Process Works (2026 Guide)\n",
+            "marker": "Update (14.10.2026):",
+            "text": "\n> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-guide-de-note",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "insert_after",
+            "find": "# Vor dem Konsulatstermin: Wie läuft der deutsche Studentenvisum-Prozess ab? (2026 Leitfaden)\n",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
+        },
+        {
+            "key": "V-232-box",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Türkiye'de başvurular çoğunlukla **[iDATA](https://www.idata.com.tr) vize merkezi** üzerinden yapılır (randevu, belge teslimi, biyometri); **konsolosluk** başvuruyu değerlendirip karar verir.",
+            "replace": "Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı ([digital.diplo.de/studium](https://digital.diplo.de/studium)) üzerinden yürütülüyor; iDATA bu vize türleri için kanal değil ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), kontrol: 14.10.2026). Kararı temsilcilik verir."
+        },
+        {
+            "key": "V-232-box2",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "— bazı konsolosluklarda (ör. İstanbul, İzmir) başvuru buradan yapılıp iDATA randevusu portal üzerinden veriliyor (bkz. [İzmir Auslandsportal notu](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process)).",
+            "replace": "— öğrenim ve öğrenim yeri arama vizesi için tek kanal budur (geçiş dönemi için bkz. [İzmir Auslandsportal notu](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process))."
+        },
+        {
+            "key": "V-232-step",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "3. **Randevu** — iDATA üzerinden ulusal vize randevusu al.",
+            "replace": "3. **Başvuru** — öğrenim vizesi başvurusunu Konsolosluk Hizmet Portalı'ndan ([digital.diplo.de/studium](https://digital.diplo.de/studium)) yap; sonraki adımlar için temsilciliğin yönlendirmesini izle."
+        },
+        {
+            "key": "V-232-intake",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Belge teslimi ve biyometri **iDATA'da** olur; **karar konsolosluğundur** ve görüşmeye **konsolosluk** çağırır.",
+            "replace": "Öğrenim vizesinde başvuru iDATA'dan değil, Konsolosluk Hizmet Portalı'ndan yürür; **karar temsilciliğindir** ve gerekirse görüşmeye **temsilcilik** çağırır."
+        },
+        {
+            "key": "V-245-lead",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "step-by-step: iDATA appointment, biometrics,",
+            "replace": "step-by-step: Consular Services Portal application, biometrics,"
+        },
+        {
+            "key": "V-245-box",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "In Turkey, most applications are submitted through the **[iDATA](https://www.idata.com.tr) visa application center** (for appointments, document submission, and biometrics); the **consulate** then evaluates the application and makes the final decision.",
+            "replace": "In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium)); iDATA is not the channel for these visa types ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026). The mission makes the decision."
+        },
+        {
+            "key": "V-245-box2",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "For some consulates (e.g., Istanbul, Izmir), you'll start your application there and then book your iDATA appointment through the portal (see our [note on the Izmir Auslandsportal](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process)).",
+            "replace": "For study and study-place-search visas it is the only channel (for the transition period, see our [note on the Izmir Auslandsportal](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process))."
+        },
+        {
+            "key": "V-245-step",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "3.  **Appointment booking** — schedule your national visa appointment through iDATA.",
+            "replace": "3.  **Application** — submit your study visa application through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium)) and follow the mission's instructions for the next steps."
+        },
+        {
+            "key": "V-245-intake",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Document submission and biometrics happen at **iDATA;** the **decision rests with the consulate,** and the **consulate** will call you for an interview.",
+            "replace": "For a study visa the application runs through the Consular Services Portal, not iDATA; the **decision rests with the mission,** and the **mission** calls you for an interview if needed."
+        },
+        {
+            "key": "V-246-lead",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Schritt für Schritt: iDATA-Termin, Biometrie,",
+            "replace": "Schritt für Schritt: Antrag über das Auslandsportal, Biometrie,"
+        },
+        {
+            "key": "V-246-box",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "In der Türkei werden die meisten Anträge über das **[iDATA](https://www.idata.com.tr) Visazentrum** gestellt (Terminvereinbarung, Dokumentenabgabe, Biometrie); das **Konsulat** prüft den Antrag und trifft die Entscheidung.",
+            "replace": "In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal ([digital.diplo.de/studium](https://digital.diplo.de/studium)); iDATA ist für diese Visumarten nicht der Antragsweg ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), geprüft am 14.10.2026). Die Entscheidung trifft die Auslandsvertretung."
+        },
+        {
+            "key": "V-246-box2",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "— bei einigen Konsulaten (z.B. Istanbul, Izmir) wird der Antrag dort gestellt und der iDATA-Termin über das Portal vereinbart (siehe [Hinweis zum Auslandsportal in Izmir](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process)).",
+            "replace": "— für Visa zu Studium und Studienplatzsuche ist es der einzige Antragsweg (zur Übergangszeit siehe [Hinweis zum Auslandsportal in Izmir](/tr/blog/izmir-consulate-auslandsportal-digital-diplo-visa-process))."
+        },
+        {
+            "key": "V-246-step",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "3.  **Terminvereinbarung** — vereinbare einen nationalen Visumtermin über iDATA.",
+            "replace": "3.  **Antrag** — stelle den Antrag auf das Studienvisum über das Auslandsportal ([digital.diplo.de/studium](https://digital.diplo.de/studium)) und folge für die nächsten Schritte den Hinweisen der Vertretung."
+        },
+        {
+            "key": "V-246-intake",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "Die Dokumentenabgabe und Biometrie erfolgen bei **iDATA**; die **Entscheidung liegt beim Konsulat**, und das **Konsulat** lädt dich zu einem Interview ein.",
+            "replace": "Beim Studienvisum läuft der Antrag über das Auslandsportal, nicht über iDATA; die **Entscheidung liegt bei der Auslandsvertretung**, die dich bei Bedarf zu einem Interview einlädt."
+        },
+        {
+            "key": "V-note-tr-f87417",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-f87417",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-f87417",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-tr-03c59c",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-03c59c",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-03c59c",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-tr-b5d446",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-b5d446",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-b5d446",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-tr-db70a0",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Güncelleme (14.10.2026):",
+            "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-en-db70a0",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Update (14.10.2026):",
+            "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-note-de-db70a0",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "prepend",
+            "marker": "Aktualisierung (14.10.2026):",
+            "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
+        },
+        {
+            "key": "V-2000-intro",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study",
+                "tr_missions_national"
+            ],
+            "table": "faqs",
+            "slug": "how-do-i-book-a-german-visa-appointment-and-do-i-upload-documents-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "The German missions in Turkey work exclusively with the external service provider **iDATA** for appointments and document intake (for some categories also with IOM-FAP). The steps for a national visa such as a student visa:",
+            "replace": "**Study and study-place-search visas** are now handled only through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium), [source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026); iDATA is not the channel for them. For other national visas the German missions in Turkey work with the external service providers iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)). The steps for such a national visa:"
+        },
+        {
+            "key": "V-1999-wait",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-german-visa-take-and-what-affects-the-processing-time-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "- **Waiting time for an appointment**: appointments are allocated in the order of registration on the iDATA waiting list, and demand peaks between June and September before the winter semester.",
+            "replace": "- **Application channel and demand**: study visa applications from Türkiye now go only through the Consular Services Portal ([digital.diplo.de/studium](https://digital.diplo.de/studium), [source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 14.10.2026), not the iDATA waiting list; demand peaks between June and September before the winter semester."
+        },
+        {
+            "key": "V-1999-todo",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-german-visa-take-and-what-affects-the-processing-time-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "What you can do: register for an appointment as soon as you have the admission letter (or even the application confirmation if the mission accepts it),",
+            "replace": "What you can do: start the portal application as soon as you have the admission letter,"
+        },
+        {
+            "key": "V-1999-fee",
+            "topic": "visa",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-german-visa-take-and-what-affects-the-processing-time-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "Processing time cannot be bought: iDATA's service fee covers appointment handling, not faster decisions.",
+            "replace": "Processing time cannot be bought."
+        }
+    ],
+    "html": [
+        {
+            "key": "A-glossary-tooltip",
+            "table": "posts",
+            "field": "content_html",
+            "find": "Akademische Prüfstelle — Türkiye'den başvuranların akademik belgelerinin denkliğini kontrol eden kurum. Çoğu başvuru için zorunlu.",
+            "replace": "Akademische Prüfstelle — Çin, Vietnam ve Hindistan'da verilmiş eğitim belgelerini inceleyen birim. Türkiye'de verilmiş belgeler için APS yok."
+        }
+    ]
+}

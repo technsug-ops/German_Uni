@@ -297,14 +297,17 @@ class KbEmbed extends Command
     {
         $hashes = array_map(fn ($m) => hash('sha256', $m['content']), $metas);
 
+        // Karşılaştırma dry-run'da da yapılır (salt okuma): önizleme, gerçek çalıştırmanın
+        // yeniden gömeceği chunk sayısını gösterir. Silme/yazma yalnız gerçek çalıştırmada.
+        $existing = KbChunk::where('source_type', $type)->where('source_id', $id)
+            ->where('locale', $locale)->orderBy('chunk_index')
+            ->pluck('content_hash')->all();
+        if ($existing === $hashes && count($existing) > 0) {
+            $this->skipped += count($metas);
+            return;
+        }
+
         if (! $this->dry) {
-            $existing = KbChunk::where('source_type', $type)->where('source_id', $id)
-                ->where('locale', $locale)->orderBy('chunk_index')
-                ->pluck('content_hash')->all();
-            if ($existing === $hashes && count($existing) > 0) {
-                $this->skipped += count($metas);
-                return;
-            }
             // değişti → eskiyi temizle (yeni chunk'lar flush'ta yazılacak)
             KbChunk::where('source_type', $type)->where('source_id', $id)
                 ->where('locale', $locale)->delete();

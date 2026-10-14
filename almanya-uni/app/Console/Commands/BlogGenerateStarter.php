@@ -89,7 +89,7 @@ class BlogGenerateStarter extends Command
         //    Kaynak sorunun puanı yorumda duruyor ki konunun neden burada olduğu sorgulanabilsin.
         ['title' => 'Ailenin Ziyaret Vizesi Reddedildi: Sebepleri ve İtiraz Yolu', 'topic' => 'vize',
          'kw' => 'almanya ziyaret vizesi reddi itiraz', 'category' => 'vize',
-         'pain' => 'Mezuniyet/ziyaret için gelen aileye ret; Remonstration süreci ve ret gerekçeleri'],
+         'pain' => 'Mezuniyet/ziyaret için gelen aileye ret; Remonstration 01.07.2025\'te kalktı → yeni başvuru veya dava, ret gerekçeleri'],
         ['title' => 'Ausländerbehörde Gecikirse: Fiktionsbescheinigung ve Untätigkeitsklage', 'topic' => 'burokrasi',
          'kw' => 'ausländerbehörde gecikme fiktionsbescheinigung', 'category' => 'vize',
          'pain' => 'Oturum uzatma aylarca bekliyor; ara belge nasıl alınır, dava ne zaman mantıklı'],

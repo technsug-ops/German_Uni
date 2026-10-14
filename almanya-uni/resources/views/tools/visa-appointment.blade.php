@@ -1,10 +1,22 @@
 @extends('layouts.app')
 
-@section('title', __('Germany Student Visa Appointment (iData) — Step-by-Step Guide') . ' — ' . brand('name'))
+{{--
+    Türkiye'den Almanya öğrenim vizesi rehberi (yalnız /tr; controller diğer dilleri araç listesine yönlendirir).
+    OSV-3 (14.10.2026) resmî kaynak düzeltmesi:
+      - Öğrenim ve öğrenim yeri arama vizeleri YALNIZCA Konsolosluk Hizmet Portalı (digital.diplo.de/studium) üzerinden
+        → https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622
+      - Diğer ulusal vizeler: harici hizmet sağlayıcılar iDATA ve IOM-FAP; iDATA hizmet bedeli 39,92 €, randevu ücreti 12 €, TL ile
+        → https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742
+      - Ulusal vize harcı 75 € → AufenthV § 46 Abs. 2 Nr. 1
+    Eski sürümdeki "iData tek yetkili kanal" iddiası, eski iData ücret tutarı, ofis adresleri ve reşit olmayanlar için
+    indirimli harç tutarı doğrulanamadığı veya yanlış olduğu için kaldırıldı.
+--}}
+
+@section('title', 'Almanya Öğrenim Vizesi Başvurusu (Türkiye): Konsolosluk Hizmet Portalı ve iData — ' . brand('name'))
 
 <x-seo
-    :title="__('Germany Student Visa Appointment (iData)')"
-    :description="__('How to book your Germany student visa appointment via iData in Turkey: national (Type-D) visa, fees, required documents, Istanbul & Ankara offices — verified, step by step.')"
+    title="Almanya Öğrenim Vizesi Başvurusu (Türkiye): Portal ve iData"
+    description="Türkiye'den Almanya öğrenim ve öğrenim yeri arama vizesi başvurusu yalnızca Konsolosluk Hizmet Portalı üzerinden yapılır. iData'nın kapsamı, ulusal vize harcı ve iData bedelleri resmî kaynaklarla."
 />
 
 <x-json-ld :data="\App\Support\Seo::breadcrumbs([
@@ -14,10 +26,14 @@
 ])" />
 
 @php
-    // Doğrulanmış figürler (2026-06-04, çoklu kaynak: iData + Auswärtiges Amt).
-    $nationalFee = '€75';
-    $idataFee = '€32.81';
-    $isTr = app()->getLocale() === 'tr';
+    // Kontrol: 14.10.2026 (kaynaklar yukarıda).
+    $nationalFee = '75 €';
+    $idataFee = '39,92 €';
+    $idataBookingFee = '12 €';
+    $studyUrl = 'https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622';
+    $nationalUrl = 'https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742';
+    $portalUrl = 'https://digital.diplo.de/studium';
+    $feeLawUrl = 'https://www.gesetze-im-internet.de/aufenthv/__46.html';
 @endphp
 
 @section('content')
@@ -33,29 +49,29 @@
         </nav>
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow mb-3 inline-flex items-center gap-3">
             <x-svg-icon name="calendar" class="w-8 h-8 md:w-10 md:h-10" />
-            {{ __('Germany Student Visa Appointment (iData)') }}
+            Almanya Öğrenim Vizesi Başvurusu (Türkiye)
         </h1>
         <p class="text-lg md:text-xl text-rose-100 max-w-3xl">
-            {{ __('iData is the only center authorized by the German Foreign Office to collect visa applications in Turkey. Here is the verified, step-by-step process for the student (national / Type-D) visa.') }}
+            Türkiye'de <strong>öğrenim ve öğrenim yeri arama</strong> vizesi başvuruları artık yalnızca <strong>Konsolosluk Hizmet Portalı</strong> üzerinden yürütülüyor. iData bu iki vize türü için kanal değil; diğer ulusal vizelerde temsilcilikler iData ve IOM-FAP ile çalışıyor.
         </p>
 
         {{-- Quick facts --}}
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
             <div class="bg-white/15 backdrop-blur rounded-lg p-3 ring-1 ring-white/20">
-                <p class="text-2xl font-bold">iData</p>
-                <p class="text-xs text-rose-100 mt-0.5">{{ __('Only authorized center') }}</p>
+                <p class="text-2xl font-bold">Portal</p>
+                <p class="text-xs text-rose-100 mt-0.5">Öğrenim vizesi başvuru kanalı</p>
             </div>
             <div class="bg-white/15 backdrop-blur rounded-lg p-3 ring-1 ring-white/20">
-                <p class="text-2xl font-bold">{{ __('Type-D') }}</p>
-                <p class="text-xs text-rose-100 mt-0.5">{{ __('National visa (>90 days)') }}</p>
+                <p class="text-2xl font-bold">Tip D</p>
+                <p class="text-xs text-rose-100 mt-0.5">Ulusal vize (90 günden uzun)</p>
             </div>
             <div class="bg-white/15 backdrop-blur rounded-lg p-3 ring-1 ring-white/20">
                 <p class="text-2xl font-bold">{{ $nationalFee }}</p>
-                <p class="text-xs text-rose-100 mt-0.5">{{ __('Visa fee + :fee iData', ['fee' => $idataFee]) }}</p>
+                <p class="text-xs text-rose-100 mt-0.5">Ulusal vize harcı</p>
             </div>
             <div class="bg-white/15 backdrop-blur rounded-lg p-3 ring-1 ring-white/20">
-                <p class="text-2xl font-bold">{{ __('Online') }}</p>
-                <p class="text-xs text-rose-100 mt-0.5">{{ __('Appointment via iData site') }}</p>
+                <p class="text-2xl font-bold">{{ $idataFee }}</p>
+                <p class="text-xs text-rose-100 mt-0.5">iData hizmet bedeli (öğrenim dışı ulusal vizeler)</p>
             </div>
         </div>
     </div>
@@ -65,100 +81,66 @@
 
     {{-- Featured snippet (AIO / Google AI Overview hedefi) --}}
     <x-featured-snippet
-        :question="__('How do I get a Germany student visa appointment in Turkey?')"
-        :answer="__('Germany student visa applications in Turkey are submitted only through iData, the officially authorized center. Register on the waiting list for free on the iData website; once your appointment is confirmed, pay the iData service fee within 48 hours. Submit your documents on the appointment day at the Istanbul or Ankara office. The national (Type-D) visa fee is €75 plus a €32.81 iData service fee.')"
+        question="Türkiye'den Almanya öğrenci vizesi başvurusu nasıl yapılır?"
+        answer="Türkiye'de öğrenim ve öğrenim yeri arama vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (digital.diplo.de/studium) üzerinden yapılır; iData bu vize türleri için kanal değildir. Portalda hesap açar, vize amacını seçer, formu doldurur ve belgelerini yüklersin; sonraki adımlarda temsilciliğin yönlendirmesini izlersin. Ulusal vize harcı 75 €'dur (AufenthV § 46)."
         :steps="[
-            ['title' => __('Prepare your documents'), 'description' => __('Admission letter, blocked account (Sperrkonto) proof, academic records, health insurance, passport.')],
-            ['title' => __('Register on the iData website'), 'description' => __('Join the national-visa waiting list for free; appointments are made only online since July 2024.')],
-            ['title' => __('Confirm + pay the service fee'), 'description' => __('After the appointment is confirmed, pay the €32.81 iData fee within 48 hours.')],
-            ['title' => __('Attend the appointment'), 'description' => __('Submit documents and biometrics at the Istanbul or Ankara iData office.')],
-            ['title' => __('Wait for processing'), 'description' => __('A national visa takes longer than a Schengen visa — plan for several weeks to months.')],
+            ['title' => 'Belgelerini hazırla', 'description' => 'Kabul belgesi, bloke hesap (Sperrkonto) dökümü, diploma ve transkript, dil belgesi, sağlık sigortası, geçerli pasaport.'],
+            ['title' => 'Portal hesabı aç', 'description' => 'digital.diplo.de/studium adresinden Konsolosluk Hizmet Portalı\'na gir ve hesap oluştur.'],
+            ['title' => 'Vize amacını seç ve formu doldur', 'description' => 'Öğrenim veya öğrenim yeri arama amacını seç, formu doldur ve belgelerini yükle.'],
+            ['title' => 'Temsilciliğin yönlendirmesini izle', 'description' => 'Sonraki adımlar (ör. kimlik ve biyometri işlemleri) için portaldaki ve temsilcilikten gelen bilgileri takip et.'],
+            ['title' => 'Kararı bekle', 'description' => 'Ulusal vize değerlendirmesi Schengen vizesinden uzun sürer; kabul gelir gelmez başvur.'],
         ]"
     />
 
-    {{-- ADIM ADIM (locale-split: TR tam rehber / EN-DE özet) --}}
+    {{-- ADIM ADIM --}}
     <section class="mt-10">
         <h2 class="text-2xl font-bold text-gray-900 mb-5 inline-flex items-center gap-2">
             <x-svg-icon name="list-bullet" class="w-6 h-6" /> {{ __('Step-by-step') }}
         </h2>
 
-        @if ($isTr)
         <ol class="space-y-4">
             <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">1</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 mb-1">Evraklarını hazırla</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Üniversite kabul belgesi (Zulassung), <a href="{{ route('tools.blocked-account') }}" class="text-rose-600 underline">bloke hesap (Sperrkonto)</a> dökümü, diploma/transkript, Almanca/İngilizce dil belgesi, sağlık sigortası, geçerli pasaport, biyometrik fotoğraf ve online doldurulan başvuru formu (VIDEX). Evrak eksikliği randevunun reddine yol açar.</p>
+                    <h3 class="font-bold text-gray-900 mb-1">Belgelerini hazırla</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Üniversite kabul belgesi (Zulassung), <a href="{{ route('tools.blocked-account') }}" class="text-rose-600 underline">bloke hesap (Sperrkonto)</a> dökümü, diploma ve transkript, Almanca veya İngilizce dil belgesi, sağlık sigortası ve geçerli pasaport. Güncel belge listesini portalda ve temsilciliğin sayfasında kontrol et.</p>
                 </div>
             </li>
             <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">2</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 mb-1">iData web sitesinden randevu al</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">25 Temmuz 2024'ten beri randevular <strong>yalnızca iData web sitesi</strong> üzerinden yapılır. Ulusal (öğrenci) vize bekleme listesine <strong>ücretsiz</strong> kayıt olabilirsin. Öğrenci/ulusal vize için danışma hattı: 0850 460 8493.</p>
+                    <h3 class="font-bold text-gray-900 mb-1">Konsolosluk Hizmet Portalı'nda hesap aç</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Öğrenim ve öğrenim yeri arama vizesi başvuruları <strong>yalnızca</strong> <a href="{{ $portalUrl }}" target="_blank" rel="noopener" class="text-rose-600 underline">digital.diplo.de/studium</a> üzerinden yürütülüyor (<a href="{{ $studyUrl }}" target="_blank" rel="noopener" class="underline">Türkiye'deki Alman temsilcilikleri</a>). Bu iki vize türü için iData'dan randevu alınmaz.</p>
                 </div>
             </li>
             <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">3</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 mb-1">Randevu onayı → 48 saat içinde hizmet ücreti</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">iData'dan randevu onayını aldıktan sonra <strong>48 saat içinde</strong> {{ $idataFee }} hizmet ücretini ödemen gerekir; aksi halde randevu iptal olur.</p>
+                    <h3 class="font-bold text-gray-900 mb-1">Vize amacını seç, formu doldur, belgeleri yükle</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Kabul belgen varsa öğrenim, henüz yoksa öğrenim yeri arama amacını seç. Formu eksiksiz doldur ve belgelerini portal üzerinden yükle.</p>
                 </div>
             </li>
             <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">4</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 mb-1">Başvuru günü (ofiste)</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Randevu günü İstanbul veya Ankara iData ofisinde evraklarını teslim eder, biyometrik veri (parmak izi + foto) verirsin. Ulusal vize harcı {{ $nationalFee }}'tur (kamu bursu alanlar muaf olabilir).</p>
+                    <h3 class="font-bold text-gray-900 mb-1">Temsilciliğin yönlendirmesini izle</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Sonraki adımlar için portaldaki ve temsilcilikten gelen bilgileri takip et. Ulusal vize harcı {{ $nationalFee }}'dur (<a href="{{ $feeLawUrl }}" target="_blank" rel="noopener" class="underline">AufenthV § 46</a>); bazı başvuru grupları için muafiyet veya indirim olabilir.</p>
                 </div>
             </li>
             <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">5</span>
                 <div>
-                    <h3 class="font-bold text-gray-900 mb-1">Değerlendirme ve pasaport teslimi</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Ulusal vize değerlendirmesi Schengen'den uzundur — <strong>haftalar, bazen aylar</strong> sürebilir. Bu yüzden kabul gelir gelmez randevu almaya çalış. Sonuç hazır olunca pasaportunu iData'dan teslim alırsın.</p>
+                    <h3 class="font-bold text-gray-900 mb-1">Değerlendirme</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Ulusal vize değerlendirmesi Schengen vizesinden uzundur; <strong>haftalar, bazen aylar</strong> sürebilir. Bu yüzden kabul gelir gelmez başvur.</p>
                 </div>
             </li>
         </ol>
-        @else
-        <ol class="space-y-4">
-            <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">1</span>
-                <div>
-                    <h3 class="font-bold text-gray-900 mb-1">{{ __('Prepare your documents') }}</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">{{ __('Admission letter (Zulassung), blocked account (Sperrkonto) proof, academic records, language certificate, health insurance, valid passport, biometric photo and the online application form (VIDEX). Missing documents lead to rejection.') }}</p>
-                </div>
-            </li>
-            <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">2</span>
-                <div>
-                    <h3 class="font-bold text-gray-900 mb-1">{{ __('Register on the iData website') }}</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">{{ __('Since 25 July 2024, appointments are made only on the iData website. You can join the national (student) visa waiting list for free.') }}</p>
-                </div>
-            </li>
-            <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">3</span>
-                <div>
-                    <h3 class="font-bold text-gray-900 mb-1">{{ __('Confirm + pay the service fee') }}</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">{{ __('After your appointment is confirmed, pay the :fee iData service fee within 48 hours, otherwise the appointment is cancelled.', ['fee' => $idataFee]) }}</p>
-                </div>
-            </li>
-            <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">4</span>
-                <div>
-                    <h3 class="font-bold text-gray-900 mb-1">{{ __('Attend the appointment') }}</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">{{ __('On the day, submit documents and biometrics at the Istanbul or Ankara iData office. The national visa fee is :fee (scholarship holders may be exempt).', ['fee' => $nationalFee]) }}</p>
-                </div>
-            </li>
-            <li class="bg-white border border-gray-200 rounded-xl p-5 flex gap-4">
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center">5</span>
-                <div>
-                    <h3 class="font-bold text-gray-900 mb-1">{{ __('Wait for processing') }}</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">{{ __('A national visa takes longer than a Schengen visa — several weeks to months. Apply as soon as you receive your admission.') }}</p>
-                </div>
-            </li>
-        </ol>
-        @endif
+    </section>
+
+    {{-- iData'nın kapsamı --}}
+    <section class="mt-10 bg-sky-50 border border-sky-100 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-sky-900 mb-3">iData ne zaman devreye girer?</h2>
+        <p class="text-sm text-sky-900 leading-relaxed">Öğrenim ve öğrenim yeri arama dışındaki ulusal vizelerde (ör. aile birleşimi, çalışma) Türkiye'deki Alman temsilcilikleri harici hizmet sağlayıcılar <strong>iData ve IOM-FAP</strong> ile çalışır; başvurular ilgili büyükelçilik veya başkonsolosluğun vize bölümünde sonuçlandırılır (<a href="{{ $nationalUrl }}" target="_blank" rel="noopener" class="underline">kaynak</a>). Kendi vize türünün kanalını her zaman temsilciliğin sayfasından doğrula.</p>
     </section>
 
     {{-- ÜCRETLER --}}
@@ -170,57 +152,43 @@
             <table class="w-full text-sm">
                 <tbody class="divide-y divide-amber-100">
                     <tr>
-                        <td class="py-2 pr-4 text-amber-900">{{ __('National (Type-D) visa fee') }}</td>
-                        <td class="py-2 font-bold text-amber-900 text-right">{{ $nationalFee }} <span class="font-normal text-amber-700">({{ __('€37.50 for minors') }})</span></td>
+                        <td class="py-2 pr-4 text-amber-900">Ulusal (Tip D) vize harcı <span class="text-amber-700">— AufenthV § 46 Abs. 2 Nr. 1; bazı gruplar için muafiyet veya indirim olabilir</span></td>
+                        <td class="py-2 font-bold text-amber-900 text-right">{{ $nationalFee }}</td>
                     </tr>
                     <tr>
-                        <td class="py-2 pr-4 text-amber-900">{{ __('iData service fee') }}</td>
+                        <td class="py-2 pr-4 text-amber-900">iData hizmet bedeli <span class="text-amber-700">— yalnız iData üzerinden yürüyen ulusal vizelerde; TL ile ödenir</span></td>
                         <td class="py-2 font-bold text-amber-900 text-right">{{ $idataFee }}</td>
                     </tr>
                     <tr>
-                        <td class="py-2 pr-4 text-amber-900">{{ __('Public-scholarship holders') }}</td>
-                        <td class="py-2 font-bold text-amber-900 text-right">{{ __('May be exempt') }}</td>
+                        <td class="py-2 pr-4 text-amber-900">iData randevu ücreti <span class="text-amber-700">— TL ile ödenir</span></td>
+                        <td class="py-2 font-bold text-amber-900 text-right">{{ $idataBookingFee }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <p class="text-xs text-amber-800 mt-3">Öğrenim ve öğrenim yeri arama vizeleri portal üzerinden yürüdüğü için bu başvurularda iData bedeli ödenmez.</p>
         <x-source-note
             :sources="[
-                ['name' => 'iData', 'url' => 'https://www.idata.com.tr/de/en'],
-                ['name' => 'Auswärtiges Amt', 'url' => 'https://tuerkei.diplo.de/'],
+                ['name' => 'Türkiye\'deki Alman temsilcilikleri – öğrenim vizesi', 'url' => $studyUrl],
+                ['name' => 'Türkiye\'deki Alman temsilcilikleri – ulusal vize ve iData', 'url' => $nationalUrl],
+                ['name' => 'AufenthV § 46', 'url' => $feeLawUrl],
             ]"
-            updated="2026-06-04"
-            :note="__('Fees change — always confirm on the official iData / consulate site.')"
+            updated="2026-10-14"
+            note="Ücretler ve kanallar değişebilir; başvurmadan önce temsilciliğin güncel sayfasını kontrol et."
             class="!bg-white/60 !border-amber-100"
         />
     </section>
 
-    {{-- OFİSLER --}}
-    <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white border border-gray-200 rounded-xl p-5">
-            <h3 class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-5 h-5" /> {{ __('Istanbul office') }}</h3>
-            <p class="text-sm text-gray-600">İnönü Caddesi No: 10, Gümüşsuyu — Beyoğlu / İstanbul</p>
-        </div>
-        <div class="bg-white border border-gray-200 rounded-xl p-5">
-            <h3 class="font-bold text-gray-900 mb-1 inline-flex items-center gap-2"><x-svg-icon name="building-office" class="w-5 h-5" /> {{ __('Ankara office') }}</h3>
-            <p class="text-sm text-gray-600">Atatürk Bulvarı No: 118, Kavaklıdere — Çankaya / Ankara</p>
-        </div>
-    </section>
-
-    @if ($isTr)
-    {{-- TÜRK ÖĞRENCİLER İÇİN İPUÇLARI (Telegram topluluk sinyalinden) --}}
+    {{-- İPUÇLARI --}}
     <section class="mt-8 bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-        <h2 class="text-xl font-bold text-emerald-900 mb-3">🇹🇷 İpuçları (topluluk deneyiminden)</h2>
+        <h2 class="text-xl font-bold text-emerald-900 mb-3">🇹🇷 İpuçları</h2>
         <ul class="text-emerald-800 text-sm space-y-2 leading-relaxed">
-            <li>• <strong>Randevu kıtlığı</strong> en büyük dert — kabul gelir gelmez bekleme listesine kaydol, beklemeyi sonraya bırakma.</li>
-            <li>• Bekleme listesine kayıt <strong>ücretsiz</strong>; ücreti sadece randevu onaylanınca (48 saat içinde) ödüyorsun.</li>
-            <li>• Evrakları <strong>eksiksiz ve düzenli</strong> götür — eksik evrak randevu reddi demek, yeni randevu haftalar kaybettirir.</li>
-            <li>• <a href="{{ route('tools.blocked-account') }}" class="underline">Sperrkonto</a> dökümü ve kabul belgesi olmadan başvuru kabul edilmez.</li>
-            <li>• Sperrkonto, vizede maddi durum kanıtı (<strong>Finanzierungsnachweis</strong>) olarak resmi kabul görür; yetkili herhangi bir sağlayıcıda açabilirsin (<a href="https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2621556-2621556" target="_blank" rel="noopener nofollow" class="underline">Almanya Dışişleri · Merkblatt</a>).</li>
-            <li>• Sahte "randevu satıcılarına" itibar etme — tek yetkili kanal iData web sitesidir.</li>
+            <li>• Kabul gelir gelmez portal başvurusunu başlat; ulusal vize değerlendirmesi uzun sürer.</li>
+            <li>• Belgeleri <strong>eksiksiz ve düzenli</strong> yükle; eksik belge süreci uzatır.</li>
+            <li>• <a href="{{ route('tools.blocked-account') }}" class="underline">Sperrkonto</a>, vizede maddi durum kanıtı (<strong>Finanzierungsnachweis</strong>) olarak resmi kabul görür (<a href="https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2621556-2621556" target="_blank" rel="noopener nofollow" class="underline">Almanya Dışişleri · Merkblatt</a>).</li>
+            <li>• "Hızlı randevu" satan üçüncü taraflara itibar etme; öğrenim vizesi için resmî kanal Konsolosluk Hizmet Portalı'dır.</li>
         </ul>
     </section>
-    @endif
 
     {{-- Cross-link --}}
     <section class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -243,7 +211,7 @@
 
     {{-- Disclaimer --}}
     <p class="text-xs text-gray-400 mt-8 text-center max-w-3xl mx-auto">
-        {{ __('This guide is informational and based on official iData and Federal Foreign Office sources verified on the date shown. The process and fees may change — always confirm on the official iData website and the German consulate before applying.') }}
+        Bu rehber bilgilendirme amaçlıdır ve 14.10.2026'da kontrol edilen resmî kaynaklara dayanır. Süreç ve ücretler değişebilir; başvurmadan önce Türkiye'deki Alman temsilciliklerinin güncel sayfasını kontrol et.
     </p>
 </div>
 @endsection

@@ -225,7 +225,7 @@ class BlogAutoLinker
     /** Glossary + entity terimlerini tek haritada birleştir (cache'li). */
     private function buildTermMap(string $locale = 'tr'): array
     {
-        return Cache::remember("blog_autolinker_terms_v3_{$locale}", 3600, function () use ($locale) {
+        return Cache::remember("blog_autolinker_terms_v4_{$locale}", 3600, function () use ($locale) {
             $map = [];
 
             // 1) Glossary (TÜRKÇE tanımlar) — SADECE TR içeriğe. DE/EN'e Türkçe tooltip sızmasın.
@@ -269,7 +269,8 @@ class BlogAutoLinker
         return [
             'Sperrkonto'        => 'Bloke hesap — Almanya öğrenci vizesi için ~11.904 €/yıl (2025) bloke edilen banka hesabı. Aylık ~992 € çekilebilir.',
             'Bloke hesap'       => 'Sperrkonto — vize için bloke edilen, aylık limitli para çekilen banka hesabı.',
-            'APS'               => 'Akademische Prüfstelle — Türkiye\'den başvuranların akademik belgelerinin denkliğini kontrol eden kurum. Çoğu başvuru için zorunlu.',
+            // OSV-3 (14.10.2026): APS yalnız Çin/Vietnam/Hindistan belgeleri için; Türkiye belgeleri için yok (aps-india.de/faqs).
+            'APS'               => 'Akademische Prüfstelle — Çin, Vietnam ve Hindistan\'da verilmiş eğitim belgelerini inceleyen birim. Türkiye\'de verilmiş belgeler için APS yok.',
             'VPD'               => 'Vorprüfungsdokumentation — uni-assist\'in not ortalamanı Alman sistemine çevirdiği ön-değerlendirme belgesi.',
             'Anmeldung'         => 'İkamet kaydı — yeni şehre taşınınca Bürgeramt\'ta yapılan resmi adres bildirimi (genelde 14 gün içinde).',
             'Uni-Assist'        => 'Birçok Alman üniversitesinin uluslararası başvurularını toplayan merkezi servis (uni-assist.de).',

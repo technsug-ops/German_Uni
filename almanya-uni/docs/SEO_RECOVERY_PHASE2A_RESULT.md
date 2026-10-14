@@ -170,8 +170,9 @@ Sayfalama render sorunu, kök neden (son kontrol):
 
 - [x] Rapor ve kod onaylandı (14.10.2026); §6 ertelendi (4 hafta GSC izleme).
 - [x] Son kontrol: sayfalama kök nedeni bulundu ve düzeltildi; 78 404'ün hepsi son sayfanın ötesi.
-- [ ] Tam test paketi yeşil (pre-push).
-- [ ] Canlıda kontrol:
+- [x] Tam test paketi yeşil (pre-push), i18n temiz. Commit `bc0639d`; GitHub Actions "Safety-net tests" ve "Build & Deploy" başarılı (FTPS ilk denemede).
+- [x] Canlı kontrol (14.10.2026, yalnız GET): 37/37 geçti. Deploy öncesi aynı betik 20/37 geçiyordu; kalan 17 madde bu paketin düzelttiği davranışlardı. GSC örneğinden 60 URL (30'u 404, 30'u 200 sınıfı) canlıda izlendi: yönlendirme sayısı ve son durum 60/60 yerel ölçümle aynı. İlk turda 18 istek sitenin kazıyıcı sınırına (`ThrottleScrapers`, dakikada 90; Googlebot muaf) takılıp 429 aldı; yavaş tekrar denemede 18/18 eşleşti.
+- [x] Canlıda kontrol:
   - Sitenin iç bağlantı biçimleri 200 dönüyor (§5 listesi).
   - Karışık sıra → tek 301.
   - `page=1` → 301.

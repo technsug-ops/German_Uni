@@ -537,7 +537,9 @@ class ToolsController extends Controller
             'idata_appointment' => [
                 'label' => __('iDATA appointment + courier'),
                 'desc'  => __('iDATA visa appointment fee + courier shipping of documents.'),
-                'default' => 30,
+                // OSV-3 (14.10.2026): öğrenim/öğrenim yeri arama vizesi Konsolosluk Hizmet Portalı'ndan yürür → iDATA bedeli yok.
+                // Diğer ulusal vizelerde iDATA 39,92 € ve/veya 12 € (TL) — tuerkei.diplo.de/.../2728742-2728742
+                'default' => 0,
                 'min' => 0, 'max' => 100,
                 'required' => false,
                 'recoverable' => false,

@@ -88,15 +88,17 @@ class SeedHowtoBriefs extends Command
             'notes' => 'Schufa BasisScore otomatik oluşur Anmeldung + banka açılışı sonrası. Ücretsiz "Datenkopie nach §15 DSGVO" yılda 1 kez. Yabancılar için ev: Wunderflats (Schufa-free), 3-6 ay depozit, garantörlü konutlar.',
         ],
         [
-            'title' => 'Vize Reddi Sonrası Remonstration 2026 — Konsolosluk İtiraz Mektubu Rehberi',
+            // OSV-3 (14.10.2026): Remonstration 01.07.2025'te kalktı (auswaertiges-amt.de/de/2715934-2715934).
+            // Brief artık itiraz mektubu değil, kalan yolları (yeni başvuru / Rechtsbehelfsbelehrung'a göre dava) ister.
+            'title' => 'Vize Reddi Sonrası 2026 — Remonstration Kalktı: Yeni Başvuru mu, Dava mı?',
             'slug' => 'vize-reddi-remonstration-itiraz-2026',
             'audience' => 'aday_ogrenci',
             'topic' => 'vize',
             'primary_keyword' => 'vize reddi sonrası ne yapmalı',
-            'secondary_keywords' => ['remonstration mektubu örnek', 'vize itiraz süresi 1 ay', '36F vize red sebepleri', 'vize tekrar başvuru', 'idata vize reddi'],
-            'pain_point' => 'Vize reddi mektubu geldi — "yetersiz finans", "şüpheli niyet", "evrak eksikliği" gibi belirsiz gerekçeler. 1 ay içinde Remonstration (itiraz) hakkı var ama nasıl yazılır? Yeniden başvurmak mı, itiraz etmek mi? Türk konsolosluklarındaki red oranı + itiraz başarı şansı.',
+            'secondary_keywords' => ['remonstration kaldırıldı', 'vize reddi dava', '36F vize red sebepleri', 'vize tekrar başvuru', 'rechtsbehelfsbelehrung'],
+            'pain_point' => 'Vize reddi mektubu geldi — "yetersiz finans", "şüpheli niyet", "evrak eksikliği" gibi belirsiz gerekçeler. Remonstration (konsolosluğa itiraz) 1 Temmuz 2025\'te kaldırıldı; geriye yeni başvuru ve ret kararındaki hukuki yol bildirimine göre dava kaldı. Hangisi ne zaman mantıklı?',
             'topic_filter' => 'vize',
-            'notes' => 'Remonstration 1 ay zorunlu, ücretsiz, posta ile. 60% itiraz başarısı (red sebebine göre). Yeniden başvuru daha hızlı ama §75 ücreti yeniden. Avukat €200-500 — sadece kompleks vakalar.',
+            'notes' => 'Remonstration 01.07.2025 itibarıyla kaldırıldı — itiraz mektubu önerme. Yollar: gerekçeyi gidererek yeni başvuru veya Rechtsbehelfsbelehrung\'a göre dava; süre ve mahkeme bilgisini uydurma, kararın kendisine yönlendir. Kaynaksız ücret veya başarı oranı verme.',
         ],
         [
             'title' => 'ZAB Diploma Denkliği 2026 — Master/PhD İçin Resmi Tanıma Süreci',
