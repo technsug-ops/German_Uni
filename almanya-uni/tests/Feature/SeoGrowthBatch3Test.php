@@ -201,7 +201,7 @@ class SeoGrowthBatch3Test extends TestCase
         $this->assertSame(($before['master.en'] ?? 0) + 1, $after['master.en'], 'çelişkili dil kaydı sayılmaz');
         $this->assertSame(($before['master.both'] ?? 0) + 1, $after['master.both'], 'iki dilli kayıt ayrı sayılır');
 
-        $list = $this->get('/tr/programs?language=en&degree=master&q=B3')->assertOk()->getContent();
+        $list = $this->get('/tr/programs?q=B3&degree=master&language=en')->assertOk()->getContent();
         $this->assertStringContainsString('b3-en-master', $list);
         $this->assertStringNotContainsString('b3-conflict-master', $list, 'dil filtresi çelişkili kaydı listelemez');
         $this->assertStringNotContainsString('b3-both-master', $list, 'tamamen İngilizce filtresine iki dilli kayıt girmez');

@@ -165,6 +165,8 @@
     </div>
 
     <div class="mt-8">
-        {{ $programs->links() }}
+        {{-- Görünüm açıkça verilir: Livewire (Filament tabloları) statik Paginator::$defaultView'ı kendi
+             wire:click görünümüne çevirir; aynı süreçte sızarsa taranabilir <a href> bağlantıları kaybolur. --}}
+        {{ $programs->links('pagination::tailwind') }}
     </div>
 @endif

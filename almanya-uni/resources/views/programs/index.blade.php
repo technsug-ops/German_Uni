@@ -109,7 +109,7 @@
                 <span class="text-xs text-gray-500 mr-1">{{ __('Quick:') }}</span>
 
                 {{-- 1) Sadece İngilizce --}}
-                <a href="{{ request()->fullUrlWithQuery(['language' => $filters['language'] === 'en' ? null : 'en']) }}"
+                <a href="{{ $facetUrl(['language' => $filters['language'] === 'en' ? null : 'en']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['language'] === 'en' ? 'bg-blue-600 text-white border-blue-600' : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100' }}">
                     {{ __('English only') }}
@@ -117,7 +117,7 @@
 
                 {{-- 2) Türkçe açıklamalı (description_tr) --}}
                 @if (app()->getLocale() === 'tr')
-                <a href="{{ request()->fullUrlWithQuery(['has_tr' => $filters['has_tr'] ? null : 1]) }}"
+                <a href="{{ $facetUrl(['has_tr' => $filters['has_tr'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['has_tr'] ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' }}">
                     Türkçe rehberli
@@ -125,35 +125,35 @@
                 @endif
 
                 {{-- 3) Bachelor only --}}
-                <a href="{{ request()->fullUrlWithQuery(['degree' => $filters['degree'] === 'bachelor' ? null : 'bachelor']) }}"
+                <a href="{{ $facetUrl(['degree' => $filters['degree'] === 'bachelor' ? null : 'bachelor']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['degree'] === 'bachelor' ? 'bg-amber-600 text-white border-amber-600' : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100' }}">
                     Bachelor
                 </a>
 
                 {{-- 4) Master only --}}
-                <a href="{{ request()->fullUrlWithQuery(['degree' => $filters['degree'] === 'master' ? null : 'master']) }}"
+                <a href="{{ $facetUrl(['degree' => $filters['degree'] === 'master' ? null : 'master']) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['degree'] === 'master' ? 'bg-purple-600 text-white border-purple-600' : 'bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100' }}">
                     Master
                 </a>
 
                 {{-- 5) Başvuru ücretsiz --}}
-                <a href="{{ request()->fullUrlWithQuery(['no_app_fee' => $filters['no_app_fee'] ? null : 1]) }}"
+                <a href="{{ $facetUrl(['no_app_fee' => $filters['no_app_fee'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['no_app_fee'] ? 'bg-teal-600 text-white border-teal-600' : 'bg-teal-50 text-teal-700 border-teal-200 hover:bg-teal-100' }}">
                     {{ __('Free application') }}
                 </a>
 
                 {{-- 6) Deadline açık --}}
-                <a href="{{ request()->fullUrlWithQuery(['deadline_open' => $filters['deadline_open'] ? null : 1]) }}"
+                <a href="{{ $facetUrl(['deadline_open' => $filters['deadline_open'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['deadline_open'] ? 'bg-rose-600 text-white border-rose-600' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
                     {{ __('Open deadline') }}
                 </a>
 
                 {{-- 7) Uni-Assist üzerinden --}}
-                <a href="{{ request()->fullUrlWithQuery(['uni_assist' => $filters['uni_assist'] ? null : 1]) }}"
+                <a href="{{ $facetUrl(['uni_assist' => $filters['uni_assist'] ? null : 1]) }}"
                    class="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full border transition
                           {{ $filters['uni_assist'] ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' }}">
                     {{ __('Uni-Assist member') }}
@@ -373,7 +373,7 @@
         <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center gap-3 text-sm flex-wrap">
             <span class="text-blue-900 font-semibold flex-shrink-0">{{ __('Admission mode') }}:</span>
             @if (($admission_counts['zulassungsfrei'] ?? 0) > 0)
-            <a href="{{ request()->fullUrlWithQuery(['admission' => 'zulassungsfrei', 'page' => null]) }}"
+            <a href="{{ $facetUrl(['admission' => 'zulassungsfrei']) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'zulassungsfrei'
                             ? 'bg-blue-600 text-white'
@@ -382,7 +382,7 @@
             </a>
             @endif
             @if (($admission_counts['oertlich'] ?? 0) > 0)
-            <a href="{{ request()->fullUrlWithQuery(['admission' => 'oertlich', 'page' => null]) }}"
+            <a href="{{ $facetUrl(['admission' => 'oertlich']) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'oertlich'
                             ? 'bg-blue-600 text-white'
@@ -391,7 +391,7 @@
             </a>
             @endif
             @if (($admission_counts['bundesweit'] ?? 0) > 0)
-            <a href="{{ request()->fullUrlWithQuery(['admission' => 'bundesweit', 'page' => null]) }}"
+            <a href="{{ $facetUrl(['admission' => 'bundesweit']) }}"
                class="inline-block text-xs font-semibold px-3 py-1.5 rounded transition whitespace-nowrap
                       {{ ($filters['admission'] ?? null) === 'bundesweit'
                             ? 'bg-blue-600 text-white'
@@ -400,7 +400,7 @@
             </a>
             @endif
             @if (! empty($filters['admission']))
-                <a href="{{ request()->fullUrlWithQuery(['admission' => null, 'page' => null]) }}" class="text-xs text-gray-600 hover:text-gray-900 underline">{{ __('clear') }}</a>
+                <a href="{{ $facetUrl(['admission' => null]) }}" class="text-xs text-gray-600 hover:text-gray-900 underline">{{ __('clear') }}</a>
             @endif
             <span class="ml-auto text-xs text-blue-700">
                 {{ __('More detailed:') }} <a href="{{ hochschulkompass_url($filters['q'] ?: null) }}" target="_blank" rel="noopener" class="underline hover:text-blue-900">Hochschulkompass ↗</a>

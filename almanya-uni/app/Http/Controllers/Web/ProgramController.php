@@ -15,12 +15,46 @@ class ProgramController extends Controller
 {
     private const PER_PAGE = 20;
 
+    /**
+     * Liste filtrelerinin kanonik sırası (SEO Recovery Faz 2A). Normalizasyon bu sırayı kullanır; çipler ve sayfalama
+     * bağlantıları da bu sırada üretilir. `page` her zaman sondadır (Laravel sayfalayıcısının ürettiği sıra).
+     */
+    // Sıra, sitenin kendi ürettiği iç bağlantılarla (alan/şehir/keşfet sayfaları: ?field=…&degree=…, ?field=…&language=…,
+    // ?uni=…&free_only=1) aynıdır → iç bağlantılar normalizasyon yönlendirmesi almaz.
+    private const FACET_ORDER = ['q', 'field', 'degree', 'language', 'state', 'uni', 'has_tr', 'free_only', 'no_app_fee', 'uni_assist',
+        'semester', 'deadline_open', 'duration_range', 'admission', 'sort'];
+
+    private const FACET_BOOLEANS = ['has_tr', 'free_only', 'no_app_fee', 'uni_assist', 'deadline_open'];
+
+    /** Normalizasyona dahil edilmeyen teknik parametreler (XHR parçası). */
+    private const FACET_PASSTHROUGH = ['partial'];
+
     public function index(Request $request): View|\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
     {
-        if ($r = \App\Support\SlugRedirects::queryResponse(['field' => 'field'])) {
-            return $r; // ?field=eski-slug → 301 (İngilizce slug)
-        }
+        // ?field=eski-slug (Türkçe) → İngilizce slug. Faz 2A: ayrı bir 301 değil, aşağıdaki kanonik normalizasyonla
+        // AYNI yönlendirmede uygulanır (eski slug + karışık sıra → tek 301, zincir yok).
+        $rawField = $request->query('field');
+        $movedField = is_string($rawField) && $rawField !== '' ? \App\Support\SlugRedirects::to('field', $rawField) : null;
         $filters = $this->cleanFilters($request);
+        if ($movedField !== null) {
+            $filters['field'] = $movedField;
+        }
+
+        // Faz 2A: geçersiz filtre değeri / sayfa → 404; boş, varsayılan ya da karışık sıralı parametreler → kanonik
+        // URL'ye tek 301. XHR (partial) isteklerinde yönlendirme yapılmaz (async filtre arayüzü).
+        $this->abortOnInvalidFacets($request, $filters['field']);
+        $isXhr = $request->ajax() || $request->wantsJson() || $request->boolean('partial');
+        $rawPage = $request->query('page');
+        $pageNo = $rawPage === null || $rawPage === '' ? 1 : (int) $rawPage;
+        if (! $isXhr) {
+            // Karşılaştırma çözümlenmiş parametrelerle (sıra dahil) yapılır; yalnız kodlama farkı (+ / %20) yönlendirme sebebi değildir.
+            $expected = $this->facetQuery($filters, $pageNo) + $this->unknownParams($request);
+            if ($expected !== $request->query()) {
+                $qs = http_build_query($expected, '', '&', PHP_QUERY_RFC3986);
+
+                return redirect()->to(url($request->path()) . ($qs !== '' ? '?' . $qs : ''), 301);
+            }
+        }
 
         $query = Program::query()
             ->where('is_active', true)
@@ -129,7 +163,14 @@ class ProgramController extends Controller
                         ->orderBy('name_de'),
         };
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
+        // Sayfalama bağlantıları kanonik filtre sorgusunu taşır (bilinmeyen/izleme parametreleri taşınmaz).
+        // 1. sayfa bağlantısı ?page=1 taşımaz (aksi halde normalizasyon 301'ine düşerdi).
+        $programs = \App\Support\CanonicalPageOnePaginator::fromPaginator(
+            $query->paginate(self::PER_PAGE, ['*'], 'page', $pageNo)
+        )->appends($this->facetQuery($filters, 1));
+        if ($pageNo > 1 && $pageNo > $programs->lastPage()) {
+            abort(404); // son sayfanın ötesi: boş liste yerine 404 (soft-404 değil)
+        }
 
         // Lookup data filtre dropdownları için (cache'lenebilir, küçükler)
         // Locale-aware select — accessor name_tr/en/de tümünü ister
@@ -168,6 +209,8 @@ class ProgramController extends Controller
             'total_en'  => $totalEn,
             'admission_counts' => $admissionCounts,
             'hasFilter' => $hasFilter,
+            // Çip bağlantıları: mevcut filtreler + değişiklik, sayfa sıfırlanır, kanonik sıra.
+            'facetUrl'  => fn (array $changes) => $this->facetUrl($filters, $changes),
             'nonEuTuitionStates' => ['baden-wurttemberg', 'sachsen-anhalt'],
         ];
 
@@ -239,6 +282,94 @@ class ProgramController extends Controller
     /**
      * Query parametrelerini temizle (XSS / invalid value koruması).
      */
+    /**
+     * Kanonik filtre dizisi (değerleri doğrulanmış $filters'tan): yalnız etkin değerler, FACET_ORDER sırasında,
+     * boolean'lar '1', varsayılan sıralama (relevance) yok, sayfa > 1 ise sonda.
+     *
+     * @return array<string,string>
+     */
+    private function facetQuery(array $filters, int $page): array
+    {
+        $out = [];
+        foreach (self::FACET_ORDER as $key) {
+            $v = $filters[$key] ?? null;
+            if (in_array($key, self::FACET_BOOLEANS, true)) {
+                if ($v) {
+                    $out[$key] = '1';
+                }
+            } elseif ($key === 'sort') {
+                if ($v && $v !== 'relevance') {
+                    $out[$key] = $v;
+                }
+            } elseif ($v !== null && $v !== '') {
+                $out[$key] = (string) $v;
+            }
+        }
+        if ($page > 1) {
+            $out['page'] = (string) $page;
+        }
+
+        return $out;
+    }
+
+
+    /** @return array<string,mixed> FACET/page/passthrough dışındaki parametreler (orijinal sırada). */
+    private function unknownParams(Request $request): array
+    {
+        return array_diff_key($request->query(), array_flip(array_merge(self::FACET_ORDER, ['page'], self::FACET_PASSTHROUGH)));
+    }
+
+    /** Çip URL'si: mevcut filtrelere değişiklik uygulanır (null = kaldır), sayfa her zaman sıfırlanır. */
+    private function facetUrl(array $filters, array $changes): string
+    {
+        foreach ($changes as $k => $v) {
+            $filters[$k] = $v;
+        }
+        $qs = http_build_query($this->facetQuery($filters, 1), '', '&', PHP_QUERY_RFC3986);
+
+        return route('programs.index') . ($qs !== '' ? '?' . $qs : '');
+    }
+
+    /**
+     * Geçersiz filtre → 404 (aynı içeriği farklı URL'lerle sunmak yerine). Boş değer geçersiz sayılmaz (normalizasyonla
+     * kaldırılır). Serbest metin alanları (q, uni) doğrulanmaz: kullanıcı araması; sonuçsuz arama 200 kalır.
+     */
+    private function abortOnInvalidFacets(Request $request, ?string $field): void
+    {
+        $enums = [
+            'degree' => ['bachelor', 'master', 'phd', 'staatsexamen', 'diplom', 'magister', 'other'],
+            'language' => ['de', 'en', 'both'],
+            'semester' => ['winter', 'summer'],
+            'duration_range' => ['short', 'mid', 'long'],
+            'admission' => ['zulassungsfrei', 'oertlich', 'bundesweit'],
+            'sort' => ['relevance', 'name', 'duration', 'deadline'],
+        ];
+        foreach (array_merge(self::FACET_ORDER, ['page']) as $key) {
+            $v = $request->query($key);
+            if ($v !== null && ! is_string($v)) {
+                abort(404); // dizi parametre (degree[]=…)
+            }
+        }
+        foreach ($enums as $key => $allowed) {
+            $v = $request->query($key);
+            if ($v !== null && $v !== '' && ! in_array($v, $allowed, true)) {
+                abort(404);
+            }
+        }
+        $page = $request->query('page');
+        if ($page !== null && $page !== '' && ! preg_match('/^[1-9]\d{0,4}$/', $page)) {
+            abort(404);
+        }
+        // $field: eski slug'ı çözülmüş değer (SlugRedirects) — yalnız gerçekten bilinmeyen slug 404 olur.
+        if ($field !== null && $field !== '' && ! FieldOfStudy::where('slug', $field)->exists()) {
+            abort(404);
+        }
+        $state = $request->query('state');
+        if ($state !== null && $state !== '' && ! State::where('slug', $state)->exists()) {
+            abort(404);
+        }
+    }
+
     private function cleanFilters(Request $request): array
     {
         $allowedDegree    = ['bachelor', 'master', 'phd', 'staatsexamen', 'diplom', 'magister', 'other'];
