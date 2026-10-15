@@ -117,21 +117,23 @@ $routes = function () {
     Route::get('/link-to-us', [AboutController::class, 'linkToUs'])->name('link-to-us');
     // Reklam Ver / medya kiti — satılmamış ad slot'larındaki davet kartı buraya gider
     Route::get('/advertise', [AboutController::class, 'advertise'])->name('advertise');
-    Route::redirect('/reklam', '/advertise', 301);
+    // Eski TR takma adları: hedef HER ZAMAN '/{locale}/…' — dil grubunun içindeyiz; öneksiz hedef '/team' fallback'e düşüp
+    // marka varsayılanına (EN) 302'liyordu ve /tr/ekip → /en/team sızıntısı oluyordu (LEGACY_DOMAIN_REDIRECT_AUDIT §1.5).
+    Route::redirect('/reklam', '/{locale}/advertise', 301);
     // Tüm sayfalar — mobil menüde gizlenen araçlar dâhil site dizini
     Route::get('/all-pages', [AboutController::class, 'allPages'])->name('all-pages');
-    Route::redirect('/tum-sayfalar', '/all-pages', 301);
+    Route::redirect('/tum-sayfalar', '/{locale}/all-pages', 301);
     Route::get('/team', [AboutController::class, 'team'])->name('team');
     Route::get('/advisory-board', [AboutController::class, 'advisoryBoard'])->name('advisory-board');
-    Route::redirect('/danisma-kurulu', '/advisory-board', 301);
-    Route::redirect('/ekip', '/team', 301);
+    Route::redirect('/danisma-kurulu', '/{locale}/advisory-board', 301);
+    Route::redirect('/ekip', '/{locale}/team', 301);
     Route::get('/author/{slug}', [AboutController::class, 'author'])->name('author.show');
-    Route::redirect('/yazar/{slug}', '/author/{slug}', 301);
+    Route::redirect('/yazar/{slug}', '/{locale}/author/{slug}', 301);
     Route::get('/study-in-germany', [\App\Http\Controllers\Web\AboutGermanyController::class, 'index'])->name('study.germany');
-    Route::redirect('/almanyada-egitim', '/study-in-germany', 301);
-    Route::redirect('/about-germany', '/study-in-germany', 301);
-    Route::redirect('/neden-almanya', '/study-in-germany', 301);
-    Route::redirect('/yazarlar', '/team', 301);
+    Route::redirect('/almanyada-egitim', '/{locale}/study-in-germany', 301);
+    Route::redirect('/about-germany', '/{locale}/study-in-germany', 301);
+    Route::redirect('/neden-almanya', '/{locale}/study-in-germany', 301);
+    Route::redirect('/yazarlar', '/{locale}/team', 301);
     Route::post('/feedback', [\App\Http\Controllers\Web\FeedbackController::class, 'store'])
         ->middleware('throttle:5,1')
         ->name('feedback.store');
@@ -158,10 +160,10 @@ $routes = function () {
     Route::get('/cookie-policy', [LegalController::class, 'cookies'])->name('legal.cookies');
     Route::get('/impressum',     [LegalController::class, 'impressum'])->name('legal.impressum'); // Almanca yasal terim — korunur
     Route::get('/disclaimer',    [LegalController::class, 'disclaimer'])->name('legal.disclaimer');
-    Route::redirect('/gizlilik', '/privacy', 301);
-    Route::redirect('/kosullar', '/terms', 301);
-    Route::redirect('/cerez-politikasi', '/cookie-policy', 301);
-    Route::redirect('/yasal-uyari', '/disclaimer', 301);
+    Route::redirect('/gizlilik', '/{locale}/privacy', 301);
+    Route::redirect('/kosullar', '/{locale}/terms', 301);
+    Route::redirect('/cerez-politikasi', '/{locale}/cookie-policy', 301);
+    Route::redirect('/yasal-uyari', '/{locale}/disclaimer', 301);
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
@@ -175,9 +177,9 @@ $routes = function () {
     Route::get('/news/category/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'category'])->name('news.category');
     Route::get('/news/{slug}', [\App\Http\Controllers\Web\NewsController::class, 'show'])->name('news.show');
     // Eski Türkçe path'ler → İngilizce canonical (SEO/var olan linkler için 301)
-    Route::redirect('/haberler/kategori/{slug}', '/news/category/{slug}', 301);
-    Route::redirect('/haberler/{slug}', '/news/{slug}', 301);
-    Route::redirect('/haberler', '/news', 301);
+    Route::redirect('/haberler/kategori/{slug}', '/{locale}/news/category/{slug}', 301);
+    Route::redirect('/haberler/{slug}', '/{locale}/news/{slug}', 301);
+    Route::redirect('/haberler', '/{locale}/news', 301);
 
     Route::get('/faq', [FaqController::class, 'index'])->name('faqs.index');
     Route::get('/faq/{topic}', [FaqController::class, 'topic'])->name('faqs.topic');
@@ -277,14 +279,14 @@ $routes = function () {
         // Inspire Me — MyGuide style random discovery (uni / city / programme / scholarship / profession / field)
         Route::get('/inspire-me', [ToolsController::class, 'inspireMe'])->name('inspire-me');
     });
-    Route::redirect('/araclar/kariyer-pusulasi', '/tools/career-compass', 301);
-    Route::redirect('/tools/bloke-hesap', '/tools/sperrkonto', 301);
-    Route::redirect('/araclar/sperrkonto', '/tools/sperrkonto', 301);
-    Route::redirect('/tools/vize-randevu', '/tools/visa-appointment', 301);
-    Route::redirect('/araclar/vize-randevu', '/tools/visa-appointment', 301);
-    Route::redirect('/tools/dil-sertifikalari', '/tools/language-certificates', 301);
-    Route::redirect('/tools/saglik-sigortasi', '/tools/health-insurance', 301);
-    Route::redirect('/araclar/saglik-sigortasi', '/tools/health-insurance', 301);
+    Route::redirect('/araclar/kariyer-pusulasi', '/{locale}/tools/career-compass', 301);
+    Route::redirect('/tools/bloke-hesap', '/{locale}/tools/sperrkonto', 301);
+    Route::redirect('/araclar/sperrkonto', '/{locale}/tools/sperrkonto', 301);
+    Route::redirect('/tools/vize-randevu', '/{locale}/tools/visa-appointment', 301);
+    Route::redirect('/araclar/vize-randevu', '/{locale}/tools/visa-appointment', 301);
+    Route::redirect('/tools/dil-sertifikalari', '/{locale}/tools/language-certificates', 301);
+    Route::redirect('/tools/saglik-sigortasi', '/{locale}/tools/health-insurance', 301);
+    Route::redirect('/araclar/saglik-sigortasi', '/{locale}/tools/health-insurance', 301);
 
     // University Reviews — UGC + helpful votes (i18n)
     Route::post('/universities/{uniSlug}/reviews', [\App\Http\Controllers\Web\UniversityReviewController::class, 'store'])
@@ -326,7 +328,7 @@ $routes = function () {
     Route::get('/housing', [HousingController::class, 'index'])->name('housing.index');
     Route::get('/housing/providers', [HousingController::class, 'providers'])->name('housing.providers');
     Route::get('/housing/providers/{slug}', [HousingController::class, 'providerShow'])->name('housing.provider-show');
-    Route::redirect('/housing/saglayicilar', '/housing/providers', 301);
+    Route::redirect('/housing/saglayicilar', '/{locale}/housing/providers', 301);
     Route::get('/housing/templates/{slug}', [HousingController::class, 'template'])->name('housing.template');
     Route::get('/housing/tips', [HousingController::class, 'tips'])->name('housing.tips');
 
@@ -364,7 +366,7 @@ $routes = function () {
     Route::post('/events/{slug}/review', [\App\Http\Controllers\Web\EventController::class, 'review'])
         ->middleware('throttle:5,10')
         ->name('events.review');
-    Route::redirect('/etkinlikler', '/events', 301);
+    Route::redirect('/etkinlikler', '/{locale}/events', 301);
 
     // Mentors / Mentorlar
     Route::get('/mentors', [\App\Http\Controllers\Web\MentorController::class, 'index'])->name('mentors.index');
@@ -372,7 +374,7 @@ $routes = function () {
     Route::post('/mentors/{slug}/book', [\App\Http\Controllers\Web\MentorController::class, 'book'])
         ->middleware(['auth', 'throttle:5,60'])
         ->name('mentors.book');
-    Route::redirect('/mentorlar', '/mentors', 301);
+    Route::redirect('/mentorlar', '/{locale}/mentors', 301);
 
     // City listesi + detay (locale grubu içinde → /tr/cities, /en/cities ...)
     Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
@@ -386,12 +388,12 @@ $routes = function () {
         Route::get('/contribute', [\App\Http\Controllers\Web\ContributionController::class, 'create'])->name('contribute');
         Route::post('/contribute', [\App\Http\Controllers\Web\ContributionController::class, 'store'])->middleware('throttle:5,1')->name('contribute.store');
     });
-    Route::redirect('/deneyim-paylas', '/contribute', 301);
+    Route::redirect('/deneyim-paylas', '/{locale}/contribute', 301);
 
     // İletişim / gönüllü formu — PUBLIC (auth grubu DIŞINDA; ziyaretçi de yazabilir)
     Route::get('/contact', [\App\Http\Controllers\Web\ContactController::class, 'create'])->name('contact');
     Route::post('/contact', [\App\Http\Controllers\Web\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
-    Route::redirect('/iletisim', '/contact', 301);
+    Route::redirect('/iletisim', '/{locale}/contact', 301);
 
     // Application Tracker — locale grubu içinde (mega menü doğru locale alabilsin)
     Route::get('/journey',                       [\App\Http\Controllers\Web\ApplicationTrackerController::class, 'show'])->name('journey.show');
