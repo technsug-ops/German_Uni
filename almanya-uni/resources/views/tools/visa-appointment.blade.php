@@ -52,7 +52,7 @@
             Almanya Öğrenim Vizesi Başvurusu (Türkiye)
         </h1>
         <p class="text-lg md:text-xl text-rose-100 max-w-3xl">
-            Türkiye'de <strong>öğrenim ve öğrenim yeri arama</strong> vizesi başvuruları artık yalnızca <strong>Konsolosluk Hizmet Portalı</strong> üzerinden yürütülüyor. iData bu iki vize türü için kanal değil; diğer ulusal vizelerde temsilcilikler iData ve IOM-FAP ile çalışıyor.
+            Türkiye'de <strong>öğrenim ve öğrenim yeri arama</strong> vizesi başvuruları yalnızca <strong>Konsolosluk Hizmet Portalı</strong> üzerinden yürütülüyor. iData bu iki vize türü için kanal değil; diğer ulusal vizelerde temsilcilikler iData ve IOM-FAP ile çalışıyor.
         </p>
 
         {{-- Quick facts --}}

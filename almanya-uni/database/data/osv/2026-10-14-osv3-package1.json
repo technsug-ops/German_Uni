@@ -614,7 +614,7 @@
             "locale": "tr",
             "field": "content_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -629,7 +629,7 @@
             "locale": "en",
             "field": "content_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -645,7 +645,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Deutschland-Visum: So bekommst du deinen Termin bei iDATA – Frust vermeiden, schnell handeln\n",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -829,7 +829,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Almanya Konsolosluk Vize Randevusu — 2026 Stratejisi\n",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "\n> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -845,7 +845,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Germany Consulate Visa Appointment — 2026 Waiting Times and City Strategy\n",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "\n> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -861,7 +861,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Deutschland Konsulat Visumstermin — 2026 Wartezeiten und Stadtstrategie\n",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -963,7 +963,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -978,7 +978,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -993,7 +993,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1008,7 +1008,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1023,7 +1023,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1038,7 +1038,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1053,7 +1053,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1068,7 +1068,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1083,7 +1083,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1182,7 +1182,7 @@
             "field": "answer_md",
             "op": "replace",
             "find": "✅ 30 € hizmet ücreti",
-            "replace": "✅ iDATA hizmet bedeli / randevu ücreti"
+            "replace": "iDATA hizmet bedeli / randevu ücreti"
         },
         {
             "key": "F-166-tr-table",
@@ -1252,7 +1252,7 @@
             "field": "answer_md",
             "op": "replace",
             "find": "✅ 30 € Servicegebühr",
-            "replace": "✅ iDATA-Servicegebühr / Terminbuchungsgebühr"
+            "replace": "iDATA-Servicegebühr / Terminbuchungsgebühr"
         },
         {
             "key": "F-582-de-table",
@@ -1672,7 +1672,7 @@
             "locale": "tr",
             "field": "content_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1688,7 +1688,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Before Your Consulate Appointment: How the German Student Visa Process Works (2026 Guide)\n",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "\n> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -1704,7 +1704,7 @@
             "field": "content_md",
             "op": "insert_after",
             "find": "# Vor dem Konsulatstermin: Wie läuft der deutsche Studentenvisum-Prozess ab? (2026 Leitfaden)\n",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "\n> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n"
         },
         {
@@ -1915,7 +1915,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1930,7 +1930,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1945,7 +1945,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1960,7 +1960,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1975,7 +1975,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -1990,7 +1990,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2005,7 +2005,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2020,7 +2020,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2035,7 +2035,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2050,7 +2050,7 @@
             "locale": "tr",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Güncelleme (14.10.2026):",
+            "marker": "Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium]",
             "text": "> **Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu iki vize türünde aşağıdaki iDATA randevu adımları geçerli değildir. Diğer ulusal vizelerde temsilcilikler iDATA ve IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2065,7 +2065,7 @@
             "locale": "en",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Update (14.10.2026):",
+            "marker": "Consular Services Portal (Auslandsportal): [digital.diplo.de/studium]",
             "text": "> **Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The iDATA appointment steps below do not apply to these two visa types. For other national visas the missions work with iDATA and IOM-FAP ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {
@@ -2080,7 +2080,7 @@
             "locale": "de",
             "field": "answer_md",
             "op": "prepend",
-            "marker": "Aktualisierung (14.10.2026):",
+            "marker": "über das Auslandsportal: [digital.diplo.de/studium]",
             "text": "> **Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Die folgenden iDATA-Terminschritte gelten für diese beiden Visumarten nicht. Für andere nationale Visa arbeiten die Vertretungen mit iDATA und IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)).\n\n"
         },
         {

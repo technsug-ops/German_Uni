@@ -1,0 +1,434 @@
+{
+    "package": "2026-10-14-osv3-package1b-check-date-vs-effective-date",
+    "checked_at": "2026-10-14",
+    "notes": "OSV-3 Paket 1b. Paket 1'in öğrenim vizesi notundaki 'Güncelleme (14.10.2026)' + 'artık/now/inzwischen' ifadesi, 14.10.2026'yı kuralın başlangıç tarihi gibi okutuyordu (chatbot: '14.10.2026 tarihinden itibaren yalnızca portal'). 14.10.2026 yalnız kontrol tarihidir; resmî sayfa (tuerkei.diplo.de 2728622, 14.10.2026'da yeniden okundu) başlangıç tarihi vermiyor, tarih uydurulmadı. Yalnız notun ilk iki cümlesi değişir; kayıtlar slug+locale ile bulunur, beklenen metin yoksa atlanır.",
+    "sources": {
+        "tr_missions_study": {
+            "url": "https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622",
+            "owner": "Türkiye'deki Alman temsilcilikleri",
+            "scope": "Öğrenim ve öğrenim yeri arama vizeleri yalnızca Konsolosluk Hizmet Portalı üzerinden. Sayfa kuralın başlangıç tarihini vermiyor."
+        }
+    },
+    "edits": [
+        {
+            "key": "D-faq13-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq163-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq164-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq166-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq167-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq168-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq169-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir",
+            "locale": "tr",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-faq292-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq293-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-on-average-does-it-take-to-get-a-visa-appointment-from-the-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq575-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq576-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-many-weeks-does-it-take-to-get-a-visa-appointment-at-the-german-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq577-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq578-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-is-the-student-visa-application-appointment-process-at-the-ankara-consulate-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq581-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq582-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq583-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq584-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "the-earliest-appointment-is-in-early-october-what-should-you-do-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq585-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq586-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "what-are-the-alternative-ways-to-get-a-visa-appointment-if-you-cant-find-one-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-faq587-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-en",
+            "locale": "en",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-faq588-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "faqs",
+            "slug": "how-long-does-a-national-visa-application-take-through-idata-izmir-de",
+            "locale": "de",
+            "field": "answer_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-post7-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-post39-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-post91-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-post92-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy-en",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-post93-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-consulate-visa-appointment-2026-waiting-times-and-city-strategy",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-post178-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "how-to-get-a-german-visa-appointment-the-idata-ordeal-and-de",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        },
+        {
+            "key": "D-post232-tr",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "germany-student-visa-consulate-process-before-you-go",
+            "locale": "tr",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Güncelleme (14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları artık yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Güncel durum (kontrol tarihi: 14.10.2026):** Türkiye'de **öğrenim ve öğrenim yeri arama** vizesi başvuruları yalnızca Konsolosluk Hizmet Portalı (Auslandsportal) üzerinden yürütülüyor: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 14.10.2026 yalnızca bizim kontrol tarihimiz."
+        },
+        {
+            "key": "D-post245-en",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "german-student-visa-process-guide-2026",
+            "locale": "en",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Update (14.10.2026):** In Türkiye, **study and study-place-search** visa applications are now handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Current status (checked 14.10.2026):** In Türkiye, **study and study-place-search** visa applications are handled only through the Consular Services Portal (Auslandsportal): [digital.diplo.de/studium](https://digital.diplo.de/studium) ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). The official page does not say since when this rule applies; 14.10.2026 is only the date we checked it."
+        },
+        {
+            "key": "D-post246-de",
+            "topic": "visa-channel-date",
+            "sources": [
+                "tr_missions_study"
+            ],
+            "table": "posts",
+            "slug": "deutscher-studentenvisum-prozess-leitfaden-2026",
+            "locale": "de",
+            "field": "content_md",
+            "op": "replace",
+            "find": "**Aktualisierung (14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** inzwischen ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)).",
+            "replace": "**Aktueller Stand (geprüft am 14.10.2026):** In der Türkei laufen Visumanträge für **Studium und Studienplatzsuche** ausschließlich über das Auslandsportal: [digital.diplo.de/studium](https://digital.diplo.de/studium) ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622)). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 14.10.2026 ist nur unser Prüfdatum."
+        }
+    ]
+}
