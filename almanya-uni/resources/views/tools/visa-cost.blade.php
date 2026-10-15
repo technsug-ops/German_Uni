@@ -4,7 +4,7 @@
 
 <x-seo
     :title="__('Visa Cost Calculator')"
-    :description="__('Add up every cost of the German student visa process step by step: Sperrkonto, visa fee, uni-assist, language exam, translation, flight. Up-to-date 2025 figures.')"
+    :description="__('Add up every cost of the German student visa process step by step: Sperrkonto, visa fee, uni-assist, language exam, translation, flight. Official amounts checked 15.10.2026.')"
 />
 
 <x-tool-schema tool="visa-cost" />
@@ -118,7 +118,7 @@
                 </div>
 
                 <p class="text-xs text-gray-400 mt-5 leading-relaxed border-t border-gray-100 pt-4 flex items-start gap-1.5">
-                    <x-svg-icon name="information-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" /> <span>{{ __('Numbers are average values for 2025. Consulate fees and insurance prices may change over time.') }}</span>
+                    <x-svg-icon name="information-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" /> <span>{{ __('The Sperrkonto amount (€992/month for 2026) and the €75 visa fee are official amounts, checked 15.10.2026; the other items are estimates. Fees and prices can change.') }}</span>
                 </p>
             </div>
 

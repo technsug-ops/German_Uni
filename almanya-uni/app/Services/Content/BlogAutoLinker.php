@@ -225,7 +225,7 @@ class BlogAutoLinker
     /** Glossary + entity terimlerini tek haritada birleştir (cache'li). */
     private function buildTermMap(string $locale = 'tr'): array
     {
-        return Cache::remember("blog_autolinker_terms_v4_{$locale}", 3600, function () use ($locale) {
+        return Cache::remember("blog_autolinker_terms_v5_{$locale}", 3600, function () use ($locale) {
             $map = [];
 
             // 1) Glossary (TÜRKÇE tanımlar) — SADECE TR içeriğe. DE/EN'e Türkçe tooltip sızmasın.
@@ -262,12 +262,13 @@ class BlogAutoLinker
 
     /**
      * Almanya öğrenci terimleri sözlüğü — hover tooltip açıklamaları.
-     * Tanımlar faktüel; spesifik rakamlar güncel (2025) ve "yaklaşık" olarak verilir.
+     * Tanımlar faktüel; resmî rakamlar kaynağıyla birlikte yıl etiketli verilir (OSV-4 paket 2, kontrol: 15.10.2026).
      */
     private function glossary(): array
     {
         return [
-            'Sperrkonto'        => 'Bloke hesap — Almanya öğrenci vizesi için ~11.904 €/yıl (2025) bloke edilen banka hesabı. Aylık ~992 € çekilebilir.',
+            // OSV-4 (15.10.2026): 2026 tutarı BMI ilanı BAnz AT 29.08.2025 B1 (992 €/ay); Türkiye'de Verpflichtungserklärung da kabul (tuerkei.diplo.de 2725836).
+            'Sperrkonto'        => 'Bloke hesap — Almanya öğrenci vizesinde geçim kanıtı için kullanılan banka hesabı. Öğrenim için 2026 tutarı ayda 992 €, yıllık 11.904 € (BMI ilanı). Yerine Verpflichtungserklärung da kabul edilebilir.',
             'Bloke hesap'       => 'Sperrkonto — vize için bloke edilen, aylık limitli para çekilen banka hesabı.',
             // OSV-3 (14.10.2026): APS yalnız Çin/Vietnam/Hindistan belgeleri için; Türkiye belgeleri için yok (aps-india.de/faqs).
             'APS'               => 'Akademische Prüfstelle — Çin, Vietnam ve Hindistan\'da verilmiş eğitim belgelerini inceleyen birim. Türkiye\'de verilmiş belgeler için APS yok.',

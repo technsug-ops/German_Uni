@@ -153,7 +153,7 @@
                     {{ __('Sperrkonto (Blocked Account)') }}
                 </h3>
                 <p class="text-sm text-accent-800">
-                    {{ __('Minimum yearly amount required for visa as of 2025:') }}
+                    {{ __('Minimum yearly amount for a student visa in 2026:') }}
                     <strong>{{ number_format($result['blocked_account'], 0, ',', '.') }} €</strong>
                     ({{ number_format($result['blocked_account'] / 12, 0, ',', '.') }} €/{{ __('month') }}).
                 </p>
@@ -193,7 +193,7 @@
                 <div class="bg-primary-50 ring-1 ring-primary-200 rounded-lg p-4">
                     <p class="text-xs uppercase tracking-wider text-primary-700 font-semibold">{{ __('Monthly minimum') }}</p>
                     <p class="text-3xl font-extrabold text-primary-900 mt-1">992 €</p>
-                    <p class="text-xs text-primary-700 mt-1">{{ __('as of 2025') }}</p>
+                    <p class="text-xs text-primary-700 mt-1">{{ __('for 2026 (BMI notice)') }}</p>
                 </div>
                 <div class="bg-accent-50 ring-1 ring-accent-200 rounded-lg p-4">
                     <p class="text-xs uppercase tracking-wider text-accent-700 font-semibold">{{ __('Yearly total') }}</p>

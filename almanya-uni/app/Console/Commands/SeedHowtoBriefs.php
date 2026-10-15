@@ -28,9 +28,10 @@ class SeedHowtoBriefs extends Command
             'topic' => 'denklik',
             'primary_keyword' => 'aps sertifikası türkiye',
             'secondary_keywords' => ['akademische prüfstelle', 'aps türkiye 2026', 'aps başvuru', 'transkript çevirisi aps', 'aps mülakat'],
-            'pain_point' => 'Türk öğrenciler APS\'i hangi durumda almak zorunda, transkript + mülakat akışı, üniversite başvurusu öncesi ne kadar sürede halletmeli? Hangi konsolosluk yapar, ücret 2026 itibariyle ne kadar, online vs yüz yüze mülakat farkı?',
+            'pain_point' => 'Türk öğrenciler APS\'e ihtiyaç duyar mı? Türkiye\'de verilmiş belgelerle hayır; Çin, Vietnam veya Hindistan\'da verilmiş belgelerle evet. Kimin gerçekten APS\'e tabi olduğu ve Türkiye belgeleri için asıl yol (anabin, ZAB, uni-assist VPD).',
             'topic_filter' => 'denklik',
-            'notes' => 'APS Türkiye için yalnızca Çin/Hindistan/Vietnam zorunlu — Türk öğrenci için OPSIYONEL ama bazı üniler ister. Hangi durumda gerekli, hangi durumda gereksiz net açıkla. Pekin/İstanbul APS yapma — Türk konsolosluğu yok.',
+            // OSV-4 paket 2 (kontrol: 15.10.2026): aps-india.de/faqs, aps-india.de/about-us, uni-assist APS sözlüğü.
+            'notes' => 'APS yalnız Çin, Vietnam ve Hindistan\'da var ve yalnız bu ülkelerde verilmiş eğitim belgeleri için gerekir; belirleyici olan uyruk değil, belgenin verildiği ülke. Türkiye\'de verilmiş belgeler için APS YOK — "opsiyonel" ya da "bazı üniler ister" yazma. İstisnalar (IB gibi uluslararası diploma, Alman/AB kamu fonlu burs) APS sitesinde. Türkiye\'de APS ofisi yok.',
         ],
         [
             'title' => 'Anmeldung Rehberi 2026 — Almanya\'da İlk Hafta Şehir Kayıt Adımları',
@@ -118,9 +119,10 @@ class SeedHowtoBriefs extends Command
             'topic' => 'is',
             'primary_keyword' => 'blue card almanya başvuru',
             'secondary_keywords' => ['eu blue card mezun', 'mavi kart maaş limiti 2026', 'fachkräfteeinwanderungsgesetz', 'oturma izni mavi kart', 'aile birleşimi blue card'],
-            'pain_point' => 'Almanya\'da mezun olan Türk öğrenci için iş arama 18 ay var, ama daimi kalmak için Blue Card en güçlü yol. 2026 maaş eşiği €45.300 (mark mesleklerde €41.041). Lisans yetiyor mu, yoksa master mi? Aile birleşimi avantajları, oturma süresi (33 ay), tatil bürokrasisi.',
+            'pain_point' => 'Almanya\'da mezun olan Türk öğrenci için iş arama 18 ay var, ama daimi kalmak için Blue Card en güçlü yol. 2026 maaş eşiği 50.700 € (darboğaz meslekleri ve yeni mezunlarda 45.934,20 €). Lisans yetiyor mu, yoksa master mi? Aile birleşimi avantajları, yerleşim izni süresi (27 ay, yeterli Almanca ile 21 ay), tatil bürokrasisi.',
             'topic_filter' => 'is',
-            'notes' => '2024 Fachkräfteeinwanderungsgesetz reform: Blue Card 33 ay daimi oturma (Almanca B1) veya 21 ay (B1+pozisyon). Lisans veya tanınan dengi. STEM/IT/sağlık "Mangelberufe" daha düşük maaş eşiği.',
+            // OSV-4 paket 2 (kontrol: 15.10.2026): BAnz AT 18.12.2025 B3; § 18g, § 18c Abs. 2 AufenthG.
+            'notes' => 'Blue Card yerleşim izni: 27 ay çalışma, yeterli Almanca (B1) ile 21 ay (§ 18c Abs. 2 AufenthG). Tanınan yükseköğretim diploması veya dengi. 2026 eşikleri: genel 50.700 €, indirimli 45.934,20 € — § 18g Abs. 1 S. 2\'deki meslek grupları (ör. doğa bilimleri/mühendislik, bilişim, hekimlik, öğretmenlik) ve diploması en fazla 3 yıllık yeni mezunlar, Federal İş Ajansı onayıyla. Mavi Kart otomatik değildir.',
         ],
         [
             'title' => 'BAföG Alternatifleri 2026 — Türk Öğrenciye Burs ve Finansman Seçenekleri',

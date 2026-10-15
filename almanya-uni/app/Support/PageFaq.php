@@ -319,11 +319,11 @@ class PageFaq
     {
         return [
             ['q' => __('How much does it cost to live in Germany as a student?'),
-             'a' => __('Officially, **DAAD estimates around €992/month** for students in Germany (rent + food + transport + insurance + leisure). Sperrkonto requires exactly this amount × 12 = **€11,904/year** as financial proof for the visa. Real cost varies €850–€1,500 by city.')],
+             'a' => __('For 2026 the financial proof for a student visa is **€992/month**, i.e. **€11,904/year** for 12 months. The Federal Ministry of the Interior (BMI) sets this amount every year based on BAföG rates. Real living costs vary by city, roughly €850–€1,500 a month.')],
             ['q' => __('Which German cities are cheapest for students?'),
              'a' => __('Most affordable: **Leipzig, Dresden, Magdeburg, Halle, Chemnitz** (€700–900/month). Most expensive: **Munich, Frankfurt, Hamburg, Stuttgart, Düsseldorf** (€1,100–1,400/month). University tuition fees are zero at most public unis regardless of city.')],
             ['q' => __('Is the €992/month Sperrkonto amount fixed?'),
-             'a' => __('Yes — for the **2025/26 academic year**, the German embassy requires the standard DAAD rate. It updates roughly annually. Check the embassy of your country of residence for current figures before applying.')],
+             'a' => __('No — it is announced every year. For **2026** the Federal Ministry of the Interior (BMI) set **€992/month** for students (BAnz AT 29.08.2025 B1, checked 15.10.2026). For a language course that does not prepare for university, the German missions in Türkiye require at least €1,091/month. Check your mission before applying.')],
             ['q' => __('Are there hidden semester fees on top of living costs?'),
              'a' => __('Yes: **Semesterbeitrag (semester contribution)** of **€100–430** depending on university. This typically includes the **Semesterticket** (free public transport across the federal state) and Studentenwerk services. Tuition itself is free at most public unis.')],
             ['q' => __('Can I work as a student to reduce costs?'),

@@ -57,7 +57,7 @@
                 <div class="text-center mb-6">
                     <div class="flex justify-center mb-3 text-indigo-600"><x-svg-icon name="banknotes" class="w-12 h-12" /></div>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">{{ __('Total monthly living budget?') }}</h2>
-                    <p class="text-gray-500 text-sm mt-2">{{ __('Rent + food + transport + insurance + other · Sperrkonto min: €992/month (2025)') }}</p>
+                    <p class="text-gray-500 text-sm mt-2">{{ __('Rent + food + transport + insurance + other · Sperrkonto min. for 2026: €992/month') }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     @php

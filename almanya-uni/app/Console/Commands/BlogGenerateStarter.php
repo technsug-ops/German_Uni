@@ -25,8 +25,10 @@ class BlogGenerateStarter extends Command
     protected $description = 'Topluluk pain-point\'lerinden 10 SEO uyumlu Türkçe blog yazısı üret';
 
     private const TOPICS = [
-        ['title' => 'Sperrkonto 2025 Tam Rehber: Vize İçin Bloke Hesap', 'topic' => 'para',
-         'kw' => 'sperrkonto', 'category' => 'finans', 'pain' => 'Vize için 992€/ay kanıtı zorunlu, banka seçimi karmaşık'],
+        ['title' => 'Sperrkonto 2026 Tam Rehber: Vize İçin Bloke Hesap', 'topic' => 'para',
+         'kw' => 'sperrkonto', 'category' => 'finans', 'pain' => 'Vize için geçim kanıtı (2026: 992 €/ay) — Sperrkonto mu Verpflichtungserklärung mı, banka seçimi karmaşık',
+         // OSV-4 paket 2 (kontrol: 15.10.2026) — doğrulanmış değerler; tarih/tutar uydurma.
+         'notes' => 'Öğrenim (§ 16b) için 2026 tutarı ayda 992 €, 12 ay için 11.904 € (BMI ilanı BAnz AT 29.08.2025 B1). Türkiye temsilcilikleri Sperrkonto VEYA Verpflichtungserklärung kabul ediyor (tuerkei.diplo.de 2725836). Hazırlık amaçlı olmayan dil kursu (§ 16f): Türkiye temsilcilikleri ayda en az 1.091 € istiyor (Merkblatt 44F, 2725588); dil kursu için 992 € x ay hesabı YAZMA. Yürürlük tarihi verme; yalnız "2026 için" de.'],
         ['title' => 'Almanya Vize Randevusu Nasıl Alınır? idata + iVisa Gerçeği', 'topic' => 'vize',
          'kw' => 'almanya vize randevusu', 'category' => 'vize', 'pain' => 'idata randevuları aylarca beklemek'],
         ['title' => 'TestDaF vs DSH vs telc: 2025 Hangisi Daha Avantajlı?', 'topic' => 'dil',
@@ -53,8 +55,10 @@ class BlogGenerateStarter extends Command
          'kw' => 'krankenkasse tk aok barmer karşılaştırma', 'category' => 'saglik', 'pain' => 'Hangi kamu sağlık sigortası, fark ne, nasıl seçilir'],
         ['title' => 'Gesetzlich vs Privat Sağlık Sigortası: Kim Hangisini Seçmeli?', 'topic' => 'sigorta',
          'kw' => 'gesetzlich privat sigorta farkı', 'category' => 'saglik', 'pain' => 'Öğrenci/çalışan için zorunlu vs özel sigorta kararı'],
-        ['title' => 'Almanya Blue Card 2025: Kimler İçin, Maaş Eşiği, Başvuru', 'topic' => 'vize',
-         'kw' => 'almanya blue card mavi kart', 'category' => 'vize', 'pain' => 'MINT/yeni mezun eşiği, başvuru, aileyi getirme'],
+        ['title' => 'Almanya Blue Card 2026: Kimler İçin, Maaş Eşiği, Başvuru', 'topic' => 'vize',
+         'kw' => 'almanya blue card mavi kart', 'category' => 'vize', 'pain' => 'İndirimli eşik (belirli meslek grupları / yeni mezun), başvuru, aileyi getirme',
+         // OSV-4 paket 2 (kontrol: 15.10.2026) — doğrulanmış değerler.
+         'notes' => '2026 eşikleri: genel 50.700 €, indirimli 45.934,20 € (BMI ilanı BAnz AT 18.12.2025 B3). İndirimli eşik § 18g Abs. 1 S. 2: belirli ISCO meslek grupları (ör. doğa bilimleri/mühendislik, bilişim, hekimlik, öğretmenlik) veya diploması en fazla 3 yıllık yeni mezunlar, Federal İş Ajansı onayıyla. Mavi Kart otomatik değildir. Yerleşim izni 27 ay, yeterli Almanca (B1) ile 21 ay (§ 18c Abs. 2). Önceki yılların eşiklerini güncel diye yazma.'],
         ['title' => 'Brutto-Netto: Almanya\'da Maaş ve Vergi Sınıfları (Steuerklasse)', 'topic' => 'is',
          'kw' => 'brutto netto maaş vergi sınıfı', 'category' => 'finans', 'pain' => 'Brüt maaştan elime ne geçer, hangi Steuerklasse'],
         ['title' => 'Steuererklärung: Almanya\'da Vergi İadesi Nasıl Alınır?', 'topic' => 'is',
@@ -242,12 +246,14 @@ class BlogGenerateStarter extends Command
 
     private function callGemini(array $topic, string $communityContext, string $apiKey): ?array
     {
+        // OSV Faz 0 (G8): konuya editoryal not/doğrulanmış bilgi eklenmişse prompta bağlayıcı blok olarak girer.
+        $notes = \App\Services\Content\ContentPrompts::editorialNotes($topic['notes'] ?? null);
         $prompt = <<<TXT
 Sen AlmanyaUni'nin SEO editörüsün. Türk öğrencilere yönelik 1500-2000 kelimelik Türkçe blog yazısı üret.
 
 KONU: {$topic['title']}
 ANAHTAR KELİME: {$topic['kw']}
-PAIN POINT: {$topic['pain']}
+PAIN POINT: {$topic['pain']}{$notes}
 
 {$communityContext}
 

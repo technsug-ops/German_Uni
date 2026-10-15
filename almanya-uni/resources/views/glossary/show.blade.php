@@ -96,6 +96,8 @@
                 // Markdown-light: paragraphs from double newlines, bold markdown
                 $body = e($entry['body']);
                 $body = preg_replace('/\*\*(.+?)\*\*/u', '<strong>$1</strong>', $body);
+                // Kaynak bağlantıları: [metin](https://…) → dış link (OSV kaynak notları)
+                $body = preg_replace('/\[([^\]\n]+)\]\((https:\/\/[^)\s]+)\)/u', '<a href="$2" target="_blank" rel="noopener nofollow" class="text-primary-700 underline">$1</a>', $body);
                 $paragraphs = preg_split('/\n\n+/u', trim($body));
             @endphp
             @foreach ($paragraphs as $p)

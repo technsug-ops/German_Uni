@@ -510,11 +510,12 @@ class ToolsController extends Controller
     }
 
     /**
-     * Vize maliyeti hesaplayıcı — Türk öğrencilere yönelik 2025 güncel masraflar.
+     * Vize maliyeti hesaplayıcı — Türk öğrencilere yönelik masraflar. Resmî tutarlar (Sperrkonto 2026: 992 €/ay, BAnz AT 29.08.2025 B1;
+     * ulusal vize harcı 75 €, § 46 AufenthV) 15.10.2026'da kontrol edildi; diğer kalemler tahmindir.
      */
     public function visaCost(Request $request): View
     {
-        // Seçilebilir maliyet kalemleri (default değerler 2025 güncel)
+        // Seçilebilir maliyet kalemleri (resmî tutarlar 15.10.2026'da kontrol edildi; diğerleri tahmin)
         $items = [
             'sperrkonto' => [
                 'label' => __('Sperrkonto (blocked account)'),
@@ -527,7 +528,7 @@ class ToolsController extends Controller
             ],
             'visa_fee' => [
                 'label' => __('Vize başvuru ücreti'),
-                'desc'  => __('Almanya konsolosluğu öğrenci vizesi (Studienvisum). 2025: 75€.'),
+                'desc'  => __('National visa fee for a student visa: €75 (§ 46 AufenthV).'),
                 'default' => 75,
                 'min' => 50, 'max' => 100,
                 'required' => true,
@@ -974,7 +975,7 @@ class ToolsController extends Controller
 
         $total      = array_sum(array_column($items, 'value'));
         $totalYear  = $total * 12;
-        $blockedAcc = max($total * 12, 11904); // Sperrkonto 2025: 992 EUR/ay = 11904/yıl
+        $blockedAcc = max($total * 12, 11904); // Sperrkonto 2026: 992 EUR/ay = 11904/yıl (BMI, BAnz AT 29.08.2025 B1)
 
         return [
             'city'              => $city,
@@ -1599,8 +1600,8 @@ class ToolsController extends Controller
                 'process_steps' => [
                     'Diploma + iş tecrübesi + portfolio ile doğrudan başvuru',
                     'Anerkennung GEREKMEZ — IT serbest meslek',
-                    'Blue Card için lisans diploması + €45.300 yıllık maaş şart',
-                    'Diploma yoksa "Fachkräfteeinwanderungsgesetz" altında 3+ yıl tecrübe + €50.000 maaş ile Blue Card mümkün',
+                    'Blue Card için tanınan bir yükseköğretim diploması + 2026 için yıllık brüt en az 50.700 € (bilişim meslekleri ve son 3 yılda mezun olanlar için 45.934,20 €, Federal İş Ajansı onayıyla; BMI ilanı BAnz AT 18.12.2025 B3)',
+                    'Diploma yoksa: son 7 yılda en az 3 yıllık bilişim deneyimiyle, 45.934,20 € (2026) maaş eşiği ve Federal İş Ajansı onayıyla Blue Card mümkün (§ 18g Abs. 2 AufenthG)',
                 ],
                 'pitfalls' => [
                     'En kolay sektör ama remote-only pozisyonlar Blue Card için yetmiyor — fiziksel iş yeri Almanya\'da olmalı',
