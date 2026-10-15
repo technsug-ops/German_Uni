@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Faq;
 use App\Services\Content\ContentVoice;
+use App\Support\TranslationInvariants;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -53,6 +54,7 @@ class TranslateFaqs extends Command
         }
 
         $totalFixed = 0;
+        $skipped = 0;
 
         foreach ($locales as $loc) {
             if ($loc === 'tr') continue;
@@ -98,6 +100,7 @@ class TranslateFaqs extends Command
 
                 foreach ($chunk as $i => $r) {
                     if (! isset($out[$i]['question'])) continue;
+                    if (! $this->invariantsHold($pairs[$i], $out[$i], "#{$r->id}")) { $skipped++; continue; }
                     $r->question = trim($out[$i]['question']);
                     $r->answer_md = trim($out[$i]['answer'] ?? $r->answer_md);
                     $r->save(); // answer_html + answer_minutes saving hook ile
@@ -112,6 +115,7 @@ class TranslateFaqs extends Command
         $this->newLine();
         $this->info("━━━━━━━━━━━━━━━━━━━━━━━");
         $this->info("✅ {$totalFixed} FAQ satırı düzeltildi" . ($dry ? ' (DRY)' : ''));
+        if ($skipped > 0) $this->warn("⚠️ {$skipped} çeviri rakam/tarih/§/URL uyuşmazlığı yüzünden KAYDEDİLMEDİ (yukarıdaki satırlara bak)");
         return self::SUCCESS;
     }
 
@@ -123,6 +127,7 @@ class TranslateFaqs extends Command
     private function createMissing(array $locales, string $key, int $batch, int $sleep, int $limit, bool $dry): int
     {
         $totalCreated = 0;
+        $skipped = 0;
 
         // Grupsuz TR FAQ'lara (eski generate-ai çıktıları) grup ata ki çevrilebilsinler.
         $orphans = Faq::where('locale', 'tr')->whereNull('translation_group_id')->get();
@@ -175,6 +180,7 @@ class TranslateFaqs extends Command
 
                 foreach ($chunk as $i => $r) {
                     if (empty($out[$i]['question'])) continue;
+                    if (! $this->invariantsHold($pairs[$i], $out[$i], "TR#{$r->id}→{$loc}")) { $skipped++; continue; }
 
                     $slug = Str::limit(Str::slug($out[$i]['question']), 175, '');
                     if ($slug === '' || Faq::where('slug', $slug)->exists()) {
@@ -205,6 +211,7 @@ class TranslateFaqs extends Command
         $this->newLine();
         $this->info("━━━━━━━━━━━━━━━━━━━━━━━");
         $this->info("✅ {$totalCreated} eksik FAQ kardeşi yaratıldı" . ($dry ? ' (DRY)' : ''));
+        if ($skipped > 0) $this->warn("⚠️ {$skipped} çeviri rakam/tarih/§/URL uyuşmazlığı yüzünden YARATILMADI (yukarıdaki satırlara bak)");
         return self::SUCCESS;
     }
 
@@ -220,6 +227,7 @@ class TranslateFaqs extends Command
         }
 
         $shape = $this->jsonShape($pairs);
+        $preserve = TranslationInvariants::PROMPT_RULE;
 
         $prompt = <<<TXT
 You are translating FAQ entries for AlmanyaUni (a guide for students applying to Germany) from Turkish into {$langName}.
@@ -232,6 +240,7 @@ CRITICAL RULES:
 - Translate the ANSWER separately, preserving markdown structure, lists, and bold (**...**).
 - Keep German proper nouns/terms (Sperrkonto, Hochschule, TestDaF, Anabin, BAföG, uni-assist, Studienkolleg) untranslated.
 - Native, SEO-friendly phrasing — not literal word-for-word. No Turkish words may remain.
+{$preserve}
 
 SOURCE ITEMS (Turkish):
 {$items}
@@ -261,6 +270,26 @@ TXT;
             }
         }
         return null;
+    }
+
+    /**
+     * OSV Faz 0 (G9): soru ve cevaptaki rakam/tutar/tarih/§/URL çoklu kümesi kaynağınkiyle aynı olmalı.
+     * Değilse çeviri kaydedilmez; fark komut çıktısına ve log'a yazılır.
+     *
+     * @param array{q:string,a:string} $src
+     */
+    private function invariantsHold(array $src, array $out, string $label): bool
+    {
+        $diff = array_merge_recursive(TranslationInvariants::compare($src['q'], (string) $out['question']),
+            TranslationInvariants::compare($src['a'], (string) ($out['answer'] ?? '')));
+        if ($diff === []) {
+            return true;
+        }
+        $msg = "   ⛔ {$label} atlandı — çeviri değişmez parçaları korumadı: " . TranslationInvariants::summarize($diff);
+        $this->warn($msg);
+        \Illuminate\Support\Facades\Log::warning('faq:translate invariant mismatch ' . $label, $diff);
+
+        return false;
     }
 
     private function jsonShape(array $pairs): string

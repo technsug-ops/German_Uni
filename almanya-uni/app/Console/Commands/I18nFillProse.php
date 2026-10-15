@@ -118,7 +118,7 @@ class I18nFillProse extends Command
         foreach ($jobs as $j) {
             $bar->setMessage(class_basename($j['model']) . " #{$j['id']} → {$j['lang']}");
             try {
-                $result = $translator->translate($j['src'], $this->systemPrompt($j['lang']));
+                $result = $translator->translateChecked($j['src'], $this->systemPrompt($j['lang']));
                 if ($result && ! empty($result['translation'])) {
                     if (! $dryRun) {
                         $this->writeBack($j['model'], $j['id'], $j['col'], $result['translation']);

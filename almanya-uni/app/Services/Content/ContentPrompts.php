@@ -51,6 +51,7 @@ class ContentPrompts
 
         // Per-language register + native terminology + anti-AI-slop quality (single source of truth).
         $voice = ContentVoice::for($language);
+        $notes = self::editorialNotes($brief->notes);
 
         return <<<TXT
 KONU: {$brief->title}
@@ -59,10 +60,26 @@ ANA ANAHTAR KELİME: {$brief->primary_keyword}
 İKİNCİL KELİMELER: {$this->kw($brief)}
 PAIN POINT: {$brief->pain_point}
 TONLAMA: $tone
-PROJE: AlmanyaUni — uluslararası (özellikle Türk) öğrencilerin Almanya'da eğitim rehberi{$sourceQ}
+PROJE: AlmanyaUni — uluslararası (özellikle Türk) öğrencilerin Almanya'da eğitim rehberi{$sourceQ}{$notes}
 
 $voice
 TXT;
+    }
+
+    /**
+     * OSV Faz 0 (G8): brief'in `notes` alanı editörün doğruladığı bilgi/kısıtlardır
+     * (ör. "Remonstration 01.07.2025 itibarıyla kaldırıldı"). Prompta açıkça etiketli,
+     * bağlayıcı bir blok olarak girer; boşsa hiçbir şey eklenmez.
+     */
+    public static function editorialNotes(?string $notes): string
+    {
+        $notes = trim((string) $notes);
+        if ($notes === '') {
+            return '';
+        }
+
+        return "\n\nEDITORIAL CONSTRAINTS / VERIFIED FACTS — MUST FOLLOW (editörün doğruladığı bilgiler ve kısıtlar; aynen uygula, bunlarla çelişen bilgi, tutar, tarih veya prosedür yazma):\n"
+            . $notes;
     }
 
     private function kw(ContentBrief $brief): string

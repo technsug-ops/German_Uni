@@ -102,7 +102,7 @@ class TranslatePrograms extends Command
                 $bar->setMessage('#' . $program->id);
 
                 try {
-                    $result = $translator->translate($program->description_en);
+                    $result = $translator->translateChecked($program->description_en);
 
                     if ($result && ! empty($result['translation'])) {
                         if (! $dryRun) {

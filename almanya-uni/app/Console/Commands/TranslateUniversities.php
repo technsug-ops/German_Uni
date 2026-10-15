@@ -124,7 +124,7 @@ class TranslateUniversities extends Command
                 }
 
                 try {
-                    $result = $translator->translate($text, GeminiTranslator::SYSTEM_PROMPT_UNIVERSITY);
+                    $result = $translator->translateChecked($text, GeminiTranslator::SYSTEM_PROMPT_UNIVERSITY);
 
                     if ($result && ! empty($result['translation'])) {
                         if (! $dryRun) {

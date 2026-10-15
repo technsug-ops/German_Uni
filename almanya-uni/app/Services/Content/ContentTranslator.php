@@ -3,6 +3,7 @@
 namespace App\Services\Content;
 
 use App\Models\ContentAsset;
+use App\Support\TranslationInvariants;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -60,6 +61,7 @@ class ContentTranslator
 
         // Localize to the target language's native register (e.g. DE -> "du", not "Sie").
         $voice = ContentVoice::for($targetLang);
+        $preserve = TranslationInvariants::PROMPT_RULE;
 
         $prompt = <<<TXT
 You are a professional content translator and localizer for the AlmanyaUni / ApplyToGerman platform — a guide for international students applying to German universities.
@@ -77,8 +79,9 @@ PRESERVATION RULES (CRITICAL):
 5. Keep emojis exactly where they are. Do not add new emojis.
 6. Preserve frontmatter keys (title, slug, meta_description, etc.) — translate only the values.
 7. Slug: convert to a valid kebab-case slug in the target language (no diacritics).
-8. Adapt cultural references (currency, holidays, examples) for the target audience.
+8. Numbers, amounts and currency stay EXACTLY as in the source (euro amounts stay in euros — never convert, round or "localize" them). Adapt only idioms and examples, never facts.
 9. For German technical terms (Sperrkonto, Studienkolleg, Anabin, TV-L, etc.), keep the German word and add a brief in-language gloss in parentheses on first mention.
+{$preserve}
 
 OUTPUT: ONLY the translated content. No commentary, no "Here is the translation:" preface.
 
@@ -109,6 +112,13 @@ TXT;
             throw new \RuntimeException('Empty translation returned from Gemini.');
         }
 
+        // OSV Faz 0 (G9): rakam/tutar/tarih/§/URL değişmişse çeviri KAYDEDİLMEZ (çağıranlar Throwable'ı raporlar).
+        $diff = TranslationInvariants::compare((string) $asset->body_md, (string) $translated);
+        if ($diff !== []) {
+            Log::warning("ContentTranslator invariant mismatch asset {$asset->id} → {$targetLang}", $diff);
+            throw new \RuntimeException('Translation not saved — numbers/amounts/dates/§/URLs changed: ' . TranslationInvariants::summarize($diff));
+        }
+
         // Create new asset (or update if force re-translate)
         $newAsset = $existing ?: new ContentAsset();
         $newAsset->fill([
@@ -118,7 +128,7 @@ TXT;
             'source_asset_id'  => $asset->id,
             'spec'             => $asset->spec,
             'body_md'          => trim($translated),
-            'generated_by'     => 'gemini-translator',
+            'generated_by'     => 'ai_gemini', // enum: manual|ai_gemini|ai_claude|ai_openai ('gemini-translator' strict MySQL'de kaydı düşürüyordu)
             'prompt_used'      => substr($prompt, 0, 500) . '...',
             'status'           => 'draft',
         ]);

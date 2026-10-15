@@ -20,6 +20,7 @@ Rules:
 - If the source mentions degrees like "Master of Science (M.Sc.)", keep that form.
 - Preserve paragraph breaks, lists, and bullet markers (*, -, 1., 2.) exactly.
 - If source contains HTML tags, keep them. If source contains markdown, keep it.
+- Keep numbers, amounts, dates, legal references (e.g. "§ 16b Abs. 3") and URLs exactly as in the source; never round, convert or update a figure (only thousands/decimal separators may follow Turkish style).
 - Do not add information not present in the source.
 TXT;
 
@@ -33,6 +34,7 @@ Rules:
 - City names: keep German form (München, Köln, Nürnberg — NOT Munich/Cologne/Nuremberg in the Turkish output unless the Turkish form is widely used like "Berlin"). Eyalet adlarını Almanca bırak: Baden-Württemberg, Bayern, Nordrhein-Westfalen.
 - Use natural, fluent Turkish for a 17-22 year old Turkish student audience.
 - Preserve paragraph breaks, lists, formatting.
+- Keep numbers, amounts, dates, legal references (e.g. "§ 16b Abs. 3") and URLs exactly as in the source; never round, convert or update a figure (only thousands/decimal separators may follow Turkish style).
 - Do not add information not present in the source.
 - If source is empty or null, return empty.
 TXT;
@@ -103,6 +105,26 @@ TXT;
             'input_tokens'  => (int) ($usage['promptTokenCount']     ?? 0),
             'output_tokens' => (int) ($usage['candidatesTokenCount'] ?? 0),
         ];
+    }
+
+    /**
+     * OSV Faz 0 (G9): çeviri için translate() + deterministik kontrol. Kaynaktaki rakam/tutar/tarih/§/URL
+     * çeviride aynı değilse RuntimeException atar → çağıran komut kaydı atlar ve hatayı raporlar.
+     * (translate() genel amaçlı kalır; çeviri olmayan çağrılar — sıralama ayrıştırma, dedupe — etkilenmez.)
+     *
+     * @return array{translation:string, input_tokens:int, output_tokens:int}|null
+     */
+    public function translateChecked(?string $text, ?string $systemPrompt = null): ?array
+    {
+        $result = $this->translate($text, $systemPrompt);
+        if ($result && $result['translation'] !== '') {
+            $diff = \App\Support\TranslationInvariants::compare((string) $text, $result['translation']);
+            if ($diff !== []) {
+                throw new \RuntimeException('translation not saved — numbers/amounts/dates/§/URLs changed: ' . \App\Support\TranslationInvariants::summarize($diff));
+            }
+        }
+
+        return $result;
     }
 
     private function client(): PendingRequest

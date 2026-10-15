@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Rag\ChatService;
+use App\Support\PhraseGuard;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -18,7 +19,10 @@ use Illuminate\Support\Facades\Http;
  *
  * KAPI: ort. groundedness ≥ eşik VE abstain doğruluğu ≥ eşik olmadan canlıya çıkma.
  *
- *   php artisan chat:eval [--lang=tr] [--limit=0] [--json]
+ *  - OSV dize kontrolleri (deterministik, LLM yok): öğede `must_not_contain` / `must_contain` varsa cevapta aranır.
+ *    must_not_contain ihlali KAPIYI KALDIRIR (hedef: 0). `tag: "osv"` + `--tag=osv` ile yalnız OSV alt kümesi koşar.
+ *
+ *   php artisan chat:eval [--lang=tr] [--tag=osv] [--limit=0] [--json]
  *
  * (doc/CHATBOT-RAG-PLAYBOOK.md §10)
  */
@@ -26,6 +30,7 @@ class ChatEval extends Command
 {
     protected $signature = 'chat:eval
         {--lang= : Sadece bu dildeki sorular}
+        {--tag= : Sadece bu etiketteki sorular (ör. osv)}
         {--limit=0 : İlk N soru (0=hepsi)}
         {--json : Sonucu JSON olarak yaz}';
 
@@ -48,6 +53,9 @@ class ChatEval extends Command
         if ($lang = $this->option('lang')) {
             $items = array_values(array_filter($items, fn ($i) => ($i['lang'] ?? 'tr') === $lang));
         }
+        if ($tag = $this->option('tag')) {
+            $items = array_values(array_filter($items, fn ($i) => in_array($tag, (array) ($i['tag'] ?? []), true)));
+        }
         if (($limit = (int) $this->option('limit')) > 0) {
             $items = array_slice($items, 0, $limit);
         }
@@ -68,6 +76,7 @@ class ChatEval extends Command
         $answeredExpected = 0; $expectedAnswer = 0;
         $abstainOk = 0; $expectedAbstain = 0;
         $programOk = 0; $programNeeded = 0;
+        $strChecked = 0; $strForbidden = 0; $strMissing = 0; // OSV dize kontrolleri
 
         foreach ($items as $n => $it) {
             $q = (string) $it['q'];
@@ -106,6 +115,23 @@ class ChatEval extends Command
                 }
             }
 
+            // OSV: deterministik dize kontrolü (LLM-judge'dan bağımsız)
+            $sc = self::stringChecks($it, (string) ($res['answer'] ?? ''));
+            if ($sc !== null) {
+                $strChecked++;
+                if ($sc['forbidden']) {
+                    $strForbidden++;
+                    $verdict .= ' | YASAK ✗ «' . implode('», «', $sc['forbidden']) . '»';
+                }
+                if ($sc['missing']) {
+                    $strMissing++;
+                    $verdict .= ' | EKSİK ✗ ' . implode('; ', $sc['missing']);
+                }
+                if (! $sc['forbidden'] && ! $sc['missing']) {
+                    $verdict .= ' | dize ✓';
+                }
+            }
+
             $rows[] = [
                 'q'        => mb_substr($q, 0, 42),
                 'lang'     => $lang,
@@ -132,15 +158,18 @@ class ChatEval extends Command
             ['Abstain doğruluğu',   sprintf('%.0f%% (%d/%d)', $abstainAcc * 100, $abstainOk, $expectedAbstain), '≥ ' . (self::GATE_ABSTAIN * 100) . '%'],
             ['Program isabeti',     sprintf('%.0f%% (%d/%d)', $progAcc * 100, $programOk, $programNeeded), '—'],
             ['Kapsama',             sprintf('%.0f%% (%d/%d)', $coverage * 100, $answeredExpected, $expectedAnswer), '(içerik boşluğu)'],
+            ['OSV yasak ifade',     sprintf('%d/%d soruda', $strForbidden, $strChecked), '= 0'],
+            ['OSV beklenen ifade eksik', sprintf('%d/%d soruda', $strMissing, $strChecked), '—'],
         ]);
 
-        $pass = $avgG >= self::GATE_GROUNDEDNESS && $abstainAcc >= self::GATE_ABSTAIN;
+        $pass = $avgG >= self::GATE_GROUNDEDNESS && $abstainAcc >= self::GATE_ABSTAIN && $strForbidden === 0;
 
         if ($this->option('json')) {
             $this->line(json_encode([
                 'groundedness' => round($avgG, 3), 'relevance' => round($avgR, 3),
                 'abstain_accuracy' => round($abstainAcc, 3), 'program_accuracy' => round($progAcc, 3),
-                'coverage' => round($coverage, 3), 'pass' => $pass,
+                'coverage' => round($coverage, 3), 'osv_forbidden' => $strForbidden, 'osv_missing' => $strMissing,
+                'osv_checked' => $strChecked, 'pass' => $pass,
             ], JSON_PRETTY_PRINT));
         }
 
@@ -150,6 +179,25 @@ class ChatEval extends Command
         }
         $this->error('❌ KAPI KALDI — eşik altı. Düşük groundedness = halüsinasyon riski; düşük abstain = yanlış-cevaplama.');
         return self::FAILURE;
+    }
+
+    /**
+     * OSV deterministik kontrol: `must_not_contain` (ifade ya da {phrase, allow_context}) ve `must_contain`
+     * (ifade ya da alternatif listesi). Öğede ikisi de yoksa null. Büyük/küçük harf duyarsız; öğe düzeyi
+     * `allow_context` tarihsel anlatımı serbest bırakır (ör. "eskiden 120 gün").
+     *
+     * @return array{forbidden: array<int,string>, missing: array<int,string>}|null
+     */
+    public static function stringChecks(array $item, string $answer): ?array
+    {
+        if (empty($item['must_not_contain']) && empty($item['must_contain'])) {
+            return null;
+        }
+
+        return [
+            'forbidden' => PhraseGuard::forbidden($answer, (array) ($item['must_not_contain'] ?? []), (array) ($item['allow_context'] ?? [])),
+            'missing' => PhraseGuard::missing($answer, (array) ($item['must_contain'] ?? [])),
+        ];
     }
 
     /**

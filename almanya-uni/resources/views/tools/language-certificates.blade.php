@@ -133,7 +133,7 @@
                 ['name' => 'TestDaF', 'url' => 'https://www.testdaf.de/de/teilnehmende/mein-testdaf/faq/faq-ergebnisse-und-zertifikat/'],
                 ['name' => 'uni-assist', 'url' => 'https://www.uni-assist.de/bewerben/dokumente-sammeln/sprachzertifikate/'],
             ]"
-            updated="2026-10-10"
+            checked="2026-10-10"
             :note="__('Each program sets its own requirement — always confirm on the university\'s admissions page.')"
             class="!bg-white/60 !border-indigo-100"
         />

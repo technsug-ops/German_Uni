@@ -173,7 +173,7 @@
                 ['name' => 'Türkiye\'deki Alman temsilcilikleri – ulusal vize ve iData', 'url' => $nationalUrl],
                 ['name' => 'AufenthV § 46', 'url' => $feeLawUrl],
             ]"
-            updated="2026-10-14"
+            checked="2026-10-14"
             note="Ücretler ve kanallar değişebilir; başvurmadan önce temsilciliğin güncel sayfasını kontrol et."
             class="!bg-white/60 !border-amber-100"
         />

@@ -1,0 +1,1402 @@
+{
+    "package": "known-wrong-denylist (OSV Faz 0) — onarım paketi DEĞİL, düzenleme içermez",
+    "checked_at": "2026-10-15",
+    "edits": [],
+    "_note": "Bilinen yanlış ifadeler (deny-list). tests/Feature/OfficialKnownWrongRegressionTest bu listeyi aktif kaynaklarda arar. Eşleşme büyük/küçük harf duyarsız alt-dizgedir; allow_context işaretlerinden biri isabetin önündeki 'window' karakterde varsa tarihsel anlatım sayılır ve serbesttir. 'package', 'checked_at' ve boş 'edits' alanları yalnız /admin/ops/osv-repair önizlemesinin bu dosyayı hatasız okuyabilmesi içindir.",
+    "window": 40,
+    "entries": [
+        {
+            "id": "pkg1-01",
+            "phrase": "usually offers a remonstration",
+            "locale": "en",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-02",
+            "phrase": "bietet die Auslandsvertretung in der Regel eine Remonstration",
+            "locale": "de",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-03",
+            "phrase": "30 gün içinde **itiraz**",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-04",
+            "phrase": "30 gün içinde itiraz (Remonstration)",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-05",
+            "phrase": "within 30 days**",
+            "locale": "en",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-06",
+            "phrase": "Remonstration 1 ay zorunlu",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-07",
+            "phrase": "1 ay içinde Remonstration (itiraz) hakkı var",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-08",
+            "phrase": "Türkiye\\'den başvuranların akademik belgelerinin denkliğini",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-09",
+            "phrase": "Türkiye'den başvuranların akademik belgelerinin denkliğini",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-10",
+            "phrase": "Türkiye'den başvuran öğrenciler için APS belgesi zorunludur",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-11",
+            "phrase": "iData is the only center authorized",
+            "locale": "en",
+            "topic": "visa-channel",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-12",
+            "phrase": "tek yetkili kanal iData",
+            "locale": "tr",
+            "topic": "visa-channel",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-13",
+            "phrase": "€32.81",
+            "locale": "en",
+            "topic": "visa-fee",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-14",
+            "phrase": "32,81 €",
+            "locale": "tr",
+            "topic": "visa-fee",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-15",
+            "phrase": "work exclusively with the external service provider **iDATA**",
+            "locale": "en",
+            "topic": "visa-channel",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-16",
+            "phrase": "Use your **30-day right to appeal**",
+            "locale": "en",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "pkg1-17",
+            "phrase": "30 gün **itiraz hakkı** kullan",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "OSV-3 paket 1 ile düzeltilen birebir eski cümle; güncel tavsiye olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage1RepairTest.php KNOWN_WRONG (OSV-3 paket 1)"
+        },
+        {
+            "id": "bluecard-48300-de",
+            "phrase": "48.300",
+            "locale": "tr|de",
+            "topic": "blue-card",
+            "context": "2026 genel eşik olarak sunulan 48.300 € yanlış (2025 değeri). Doğrulanmış 2026: 50.700 € (audit C24). '2025' bağlamında tarihsel anlatım serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "2025"
+            ]
+        },
+        {
+            "id": "bluecard-48300-en",
+            "phrase": "48,300",
+            "locale": "en",
+            "topic": "blue-card",
+            "context": "Same as 48.300 in EN notation; verified 2026 general threshold is €50,700.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "2025"
+            ]
+        },
+        {
+            "id": "bluecard-43759-de",
+            "phrase": "43.759,20",
+            "locale": "tr|de",
+            "topic": "blue-card",
+            "context": "Hiçbir yılın resmî değeri değil; doğrulanmış 2026 darboğaz/yeni mezun eşiği 45.934,20 €.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "bluecard-43759-en",
+            "phrase": "43,759.20",
+            "locale": "en",
+            "topic": "blue-card",
+            "context": "Not an official value; verified 2026 shortage/new-graduate threshold is €45,934.20.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "bluecard-43759-dots",
+            "phrase": "43.759.20",
+            "locale": "tr",
+            "topic": "blue-card",
+            "context": "Yazım hatalı varyant; 2026: 45.934,20 €.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "bluecard-45300-pre",
+            "phrase": "€45.300",
+            "locale": "tr",
+            "topic": "blue-card",
+            "context": "2024 eşiği 2026 değeri gibi sunuluyor. Doğrulanmış 2026: 50.700 €.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "2024"
+            ]
+        },
+        {
+            "id": "bluecard-45300-en",
+            "phrase": "€45,300",
+            "locale": "en",
+            "topic": "blue-card",
+            "context": "2024 threshold presented as current; verified 2026: €50,700.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "2024"
+            ]
+        },
+        {
+            "id": "bluecard-45300-post",
+            "phrase": "45.300 €",
+            "locale": "tr|de",
+            "topic": "blue-card",
+            "context": "2024 eşiği güncel gibi; doğrulanmış 2026: 50.700 €.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "2024"
+            ]
+        },
+        {
+            "id": "aps-tr-required-1",
+            "phrase": "Türk öğrenciler için APS zorunlu",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "APS Türkiye'de verilmiş belgeler için gerekmez.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-en-required-1",
+            "phrase": "APS is required for Turkish",
+            "locale": "en",
+            "topic": "aps",
+            "context": "APS is not required for documents issued in Turkey.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-en-required-2",
+            "phrase": "required for Turkish applicants",
+            "locale": "en",
+            "topic": "aps",
+            "context": "Generic EN variant of the APS claim.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-de-required-1",
+            "phrase": "APS ist für türkische",
+            "locale": "de",
+            "topic": "aps",
+            "context": "APS ist für in der Türkei ausgestellte Nachweise nicht erforderlich.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-de-required-2",
+            "phrase": "für türkische Bewerber erforderlich",
+            "locale": "de",
+            "topic": "aps",
+            "context": "Generische DE-Variante.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-list-tr",
+            "phrase": "Çin, Hindistan, Pakistan, Vietnam ve Moğolistan",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "APS listesi yalnız Çin/Vietnam/Hindistan belgeleri; Pakistan/Moğolistan ve 'vatandaşları' ifadesi yanlış.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-list-en",
+            "phrase": "China, India, Pakistan, Vietnam, and Mongolia",
+            "locale": "en",
+            "topic": "aps",
+            "context": "APS applies to documents from China, Vietnam and India only.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "aps-list-de",
+            "phrase": "China, Indien, Pakistan, Vietnam und der Mongolei",
+            "locale": "de",
+            "topic": "aps",
+            "context": "APS nur für Nachweise aus China, Vietnam und Indien.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "work-120-1",
+            "phrase": "120 tam gün",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "work-120-2",
+            "phrase": "120 gün",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "work-120-3",
+            "phrase": "120 Tage",
+            "locale": "de",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "work-120-4",
+            "phrase": "120 ganze Tage",
+            "locale": "de",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "work-120-5",
+            "phrase": "120 days",
+            "locale": "en",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "work-120-6",
+            "phrase": "120 full days",
+            "locale": "en",
+            "topic": "student-work",
+            "context": "Güncel öğrenci çalışma sınırı 140 tam gün / 280 yarım gün; 120 yalnız tarihsel bağlamda ('eskiden/früher/previously 120') serbest.",
+            "origin": "OSV Faz 0 (2026-10-15)",
+            "allow_context": [
+                "eskiden",
+                "önceden",
+                "daha önce",
+                "2024'e kadar",
+                "2024 öncesi",
+                "120'den",
+                "früher",
+                "bisher",
+                "vorher",
+                "bis 2024",
+                "von 120",
+                "previously",
+                "formerly",
+                "before 2024",
+                "until 2024",
+                "up from",
+                "from 120"
+            ]
+        },
+        {
+            "id": "langcourse-6x992-1",
+            "phrase": "6 × 992",
+            "locale": "any",
+            "topic": "sperrkonto",
+            "context": "Dil kursu vizesi finansman kanıtı için '6 × 992' hesabı yanlış genelleme.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "langcourse-6x992-2",
+            "phrase": "6 x 992",
+            "locale": "any",
+            "topic": "sperrkonto",
+            "context": "Dil kursu vizesi finansman kanıtı için '6 × 992' hesabı yanlış genelleme.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "langcourse-6x992-3",
+            "phrase": "6×992",
+            "locale": "any",
+            "topic": "sperrkonto",
+            "context": "Dil kursu vizesi finansman kanıtı için '6 × 992' hesabı yanlış genelleme.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "langcourse-6x992-4",
+            "phrase": "6x992",
+            "locale": "any",
+            "topic": "sperrkonto",
+            "context": "Dil kursu vizesi finansman kanıtı için '6 × 992' hesabı yanlış genelleme.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-1",
+            "phrase": "Sperrkonto (2025)",
+            "locale": "any",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-2",
+            "phrase": "€992/month (2025)",
+            "locale": "en",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-3",
+            "phrase": "€992/Monat (2025)",
+            "locale": "de",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-4",
+            "phrase": "€992/ay (2025)",
+            "locale": "tr",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-5",
+            "phrase": "€/yıl (2025)",
+            "locale": "tr",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-6",
+            "phrase": "€/year (2025)",
+            "locale": "en",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "sperrkonto-2025-label-7",
+            "phrase": "€/Jahr (2025)",
+            "locale": "de",
+            "topic": "sperrkonto",
+            "context": "2026 değerleri (11.904 €/yıl, 992 €/ay) '(2025)' etiketiyle sunuluyor; dönem etiketi değerle uyuşmalı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "idata-only-en",
+            "phrase": "iDATA is the only",
+            "locale": "en",
+            "topic": "visa-channel",
+            "context": "Öğrenim vizesi Türkiye'de Konsolosluk Hizmet Portalı üzerinden; iDATA tek kanal değil (eşleşme büyük/küçük harf duyarsız: iData da yakalanır).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "idata-fee-3281",
+            "phrase": "32,81",
+            "locale": "tr|de",
+            "topic": "visa-fee",
+            "context": "Eski iDATA bedeli; resmî: 39,92 € + 12 € randevu bedeli (OSV-3).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "idata-fee-3281-en",
+            "phrase": "€32.81",
+            "locale": "en",
+            "topic": "visa-fee",
+            "context": "Old iDATA fee; official: €39.92 + €12 booking fee.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "idata-fee-30-tr",
+            "phrase": "30 € IDATA",
+            "locale": "tr|de",
+            "topic": "visa-fee",
+            "context": "iDATA bedeli 30 € değil; vize harcı (75 €) ile iDATA bedeli ayrı.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "remonstration-en-file",
+            "phrase": "file a remonstration within",
+            "locale": "en",
+            "topic": "remonstration",
+            "context": "Remonstration abolished on 1 July 2025; there is no remonstration deadline any more.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "remonstration-de-innerhalb",
+            "phrase": "Remonstration innerhalb",
+            "locale": "de",
+            "topic": "remonstration",
+            "context": "Remonstration seit 01.07.2025 abgeschafft.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "remonstration-tr-dilekce",
+            "phrase": "Remonstration dilekçesi yaz",
+            "locale": "tr",
+            "topic": "remonstration",
+            "context": "Remonstration 01.07.2025'te kaldırıldı; dilekçe tavsiyesi güncel değil.",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-1",
+            "phrase": "14.10.2026 tarihinden itibaren",
+            "locale": "tr",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-2",
+            "phrase": "14.10.2026'dan itibaren",
+            "locale": "tr",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-3",
+            "phrase": "since 14.10.2026",
+            "locale": "en",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-4",
+            "phrase": "from 14.10.2026",
+            "locale": "en",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-5",
+            "phrase": "seit dem 14.10.2026",
+            "locale": "de",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "checkdate-6",
+            "phrase": "ab dem 14.10.2026",
+            "locale": "de",
+            "topic": "check-date",
+            "context": "14.10.2026 bizim kontrol tarihimiz, yürürlük tarihi değil (OSV-3 paket 1b, mimari §6).",
+            "origin": "OSV Faz 0 (2026-10-15)"
+        },
+        {
+            "id": "pkg2-01",
+            "phrase": "45.300 € maaş = Blue Card otomatik",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-02",
+            "phrase": "45,300 € = automatic Blue Card",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-03",
+            "phrase": "45.300 € = Blue Card automatisch",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-04",
+            "phrase": "= automatic Blue Card",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-05",
+            "phrase": "= Blue Card otomatik",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-06",
+            "phrase": "= Blue Card automatisch",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-07",
+            "phrase": "56,400 €/yıl",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-08",
+            "phrase": "56,400 €/year",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-09",
+            "phrase": "56.400 €/Jahr",
+            "locale": "de",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-10",
+            "phrase": "56,400 € (2026)",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-11",
+            "phrase": "56.400 € (2026)",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-12",
+            "phrase": "44,000 €/yıl",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-13",
+            "phrase": "44,000 €/year",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-14",
+            "phrase": "44.000 €/Jahr",
+            "locale": "de",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-15",
+            "phrase": "**44,000 €+**",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-16",
+            "phrase": "**44.000 €+**",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-17",
+            "phrase": "Yıllık brüt **€41.041**",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-18",
+            "phrase": "Annual gross **€41,041**",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-19",
+            "phrase": "Jährlich brutto **€41.041**",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-20",
+            "phrase": "~43.760€ 2025",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-21",
+            "phrase": "~€43,760 in 2025",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-22",
+            "phrase": "~48.3k€ (2025)",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-23",
+            "phrase": "~48,3k€ (2025)",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-24",
+            "phrase": "~€48.3k (2025)",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-25",
+            "phrase": "(~€43.759,80/yıl, 2025",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-26",
+            "phrase": "(~43.759,80 €/Jahr, 2025",
+            "locale": "de",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-27",
+            "phrase": "(~€43,759.80/yr, 2025",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-28",
+            "phrase": "~21-33 ay",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-29",
+            "phrase": "~21-33 Monate",
+            "locale": "de",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-30",
+            "phrase": "~21-33 months",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-31",
+            "phrase": "33 ayda B1 olmadan",
+            "locale": "en",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-32",
+            "phrase": "33 months without",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-33",
+            "phrase": "oturma süresi (33 ay)",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-34",
+            "phrase": "€45.300 yıllık maaş şart",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-35",
+            "phrase": "2026 normal eşik: 48.300",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-36",
+            "phrase": "Mindestgehalt 2026: 48.300",
+            "locale": "tr",
+            "topic": "bluecard",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-37",
+            "phrase": "OPSIYONEL ama bazı üniler ister",
+            "locale": "tr",
+            "topic": "aps",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-41",
+            "phrase": "This visa does **NOT** allow you to work",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-42",
+            "phrase": "lets you stay in Germany for **up to 6 months**",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-43",
+            "phrase": "with the 6-month Jobseeker Visa",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-44",
+            "phrase": "6 aylık Jobseeker Vizesi",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-45",
+            "phrase": "6-monatigen Jobsuchvisum",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-46",
+            "phrase": "6 aylık iş arama vizesi (Job-seeker visa)",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-47",
+            "phrase": "6-month job-seeker visa:**",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-48",
+            "phrase": "6-monatiges Job-Seeker-Visum",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-49",
+            "phrase": "A Sperrkonto is also required for highly qualified professionals",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-50",
+            "phrase": "yüksek vasıflı profesyoneller için de Sperrkonto gereklidir",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-51",
+            "phrase": "Job-Seeker Visa allows 6 months job search",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-52",
+            "phrase": "Job-Seeker Visa) ile 6 ay arayabilirsin",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-53",
+            "phrase": "18 aylık iş arama vizesi (§ 20 Abs. 3)",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-54",
+            "phrase": "18-month job-seeker visa (§ 20 Abs. 3)",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-55",
+            "phrase": "Visum zur Arbeitsplatzsuche (§ 20 Abs. 3)",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-56",
+            "phrase": "Automatic right to an **18-month job-seeker visa**",
+            "locale": "tr",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-57",
+            "phrase": "Automatischer Übergang zu einem **18-monatigen Visum",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-58",
+            "phrase": "18 aylık iş arama vizesi** otomatik geçiş hakkı",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-59",
+            "phrase": "Yıllık en fazla **20 saat/hafta**",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-60",
+            "phrase": "maximum of **20 hours per week** per year",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-61",
+            "phrase": "maximal **20 Stunden/Woche** pro Jahr",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-62",
+            "phrase": "120 volle oder 240 halbe Tage",
+            "locale": "en",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-63",
+            "phrase": "120-day limit",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-64",
+            "phrase": "120-Tage-Grenze",
+            "locale": "en",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-65",
+            "phrase": "yılda **120 tam gün",
+            "locale": "tr",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-66",
+            "phrase": "**120 full days/year**",
+            "locale": "en",
+            "topic": "student-work",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-67",
+            "phrase": "dil kursuna katılmak isteyen öğrenciler için de Sperrkonto zorunludur",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-68",
+            "phrase": "mandatory for students who wish to attend an intensive language course",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-69",
+            "phrase": "ein Sperrkonto obligatorisch",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-70",
+            "phrase": "kurs süresi × 992",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-71",
+            "phrase": "course duration × 992",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-72",
+            "phrase": "Kursdauer × 992",
+            "locale": "de",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-73",
+            "phrase": "Kursmonate × 992",
+            "locale": "de",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-74",
+            "phrase": "= 5.952 Euro",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-75",
+            "phrase": "= 5,952 Euro",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-76",
+            "phrase": "= 5,952 €",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-77",
+            "phrase": "= 5.952 €",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-78",
+            "phrase": "6 ay = 5,952",
+            "locale": "en",
+            "topic": "chancenkarte",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-79",
+            "phrase": "6 Monate = 5.952",
+            "locale": "de",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-80",
+            "phrase": "992 Euro x 6",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-81",
+            "phrase": "expected to remain valid for 2025",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-82",
+            "phrase": "expected to be valid for 2025",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-83",
+            "phrase": "geçerli olması beklenen",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-84",
+            "phrase": "voraussichtlich auch für 2025",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-85",
+            "phrase": "DAAD estimates around €992/month",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-86",
+            "phrase": "the German embassy requires the standard DAAD rate",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-87",
+            "phrase": "Up-to-date 2025 figures",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-88",
+            "phrase": "Numbers are average values for 2025",
+            "locale": "en",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-89",
+            "phrase": "required for visa as of 2025",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-90",
+            "phrase": "~11.904 €/yıl (2025)",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-91",
+            "phrase": "Sperrkonto min: €992/month (2025)",
+            "locale": "tr",
+            "topic": "finance",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-92",
+            "phrase": "Tüm vize başvuruları IDATA üzerinden yapılır",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-93",
+            "phrase": "Alle Visumanträge werden über IDATA gestellt",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-94",
+            "phrase": "Only iDATA and the missions issue appointments",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-95",
+            "phrase": "yalnızca iDATA'nın resmi web sitesini kullanmanız",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-96",
+            "phrase": "you only use iDATA's official website",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-97",
+            "phrase": "ausschließlich die offizielle Website von iDATA zu nutzen",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2-98",
+            "phrase": "Termine für deutsche Visa werden ausschließlich über die offizielle Website von iDATA",
+            "locale": "tr",
+            "topic": "idata",
+            "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
+            "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        }
+    ]
+}

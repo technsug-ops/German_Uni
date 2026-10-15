@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Post;
 use App\Services\Content\ContentVoice;
+use App\Support\TranslationInvariants;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -69,7 +70,7 @@ class TranslatePosts extends Command
         $this->info("🌍 {$total} TR post için EN + DE çeviri üretilecek (sleep: " . $this->option('sleep') . 's)');
         $this->newLine();
 
-        $success = 0; $failed = 0;
+        $success = 0; $failed = 0; $blocked = 0;
 
         foreach ($posts as $i => $p) {
             $this->line(sprintf('[%d/%d] #%d %s', $i + 1, $total, $p->id, mb_substr($p->title, 0, 60)));
@@ -109,6 +110,21 @@ class TranslatePosts extends Command
                 // Sadece başarılı olanları işle
                 $needed = array_keys($result);
             } elseif (! $result) {
+                $failed++;
+                continue;
+            }
+
+            // OSV Faz 0 (G9): rakam/tutar/tarih/§/URL değişmiş çeviri kaydedilmez (dry-run'da da raporlanır).
+            foreach ($needed as $k => $loc) {
+                $diff = self::invariantDiff($p, $result[$loc]);
+                if ($diff !== []) {
+                    $this->warn('   ⛔ ' . strtoupper($loc) . ' KAYDEDİLMEDİ — değişmez parçalar korunmadı: ' . TranslationInvariants::summarize($diff));
+                    \Illuminate\Support\Facades\Log::warning("content:translate-posts invariant mismatch post #{$p->id} → {$loc}", $diff);
+                    unset($needed[$k]);
+                    $blocked++;
+                }
+            }
+            if (empty($needed)) {
                 $failed++;
                 continue;
             }
@@ -157,8 +173,30 @@ class TranslatePosts extends Command
         $this->newLine();
         $this->info("━━━━━━━━━━━━━━━━━━━━━━");
         $this->info("Success: {$success}, Failed: {$failed}");
+        if ($blocked > 0) {
+            $this->warn("⚠️ {$blocked} çeviri rakam/tarih/§/URL uyuşmazlığı yüzünden kaydedilmedi");
+        }
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Gövde (content_md): kaynakla aynı çoklu küme. Başlık + özet kısaltılmış alanlar olduğu için
+     * yalnız "kaynakta olmayan" rakam/tarih/tutar yasak (eksik serbest).
+     *
+     * @param array{title?:string,excerpt?:string,content_md?:string} $out
+     */
+    public static function invariantDiff(Post $p, array $out): array
+    {
+        $source = mb_substr((string) $p->content_md, 0, 30000);
+        $diff = TranslationInvariants::compare($source, (string) ($out['content_md'] ?? ''));
+        $full = $p->title . "
+" . $p->excerpt . "
+" . $source;
+        $head = TranslationInvariants::unexpected($full, ($out['title'] ?? '') . "
+" . ($out['excerpt'] ?? ''));
+
+        return array_merge_recursive($diff, $head);
     }
 
     /**
@@ -184,9 +222,12 @@ class TranslatePosts extends Command
             $voiceBlock .= "\n--- {$loc} ---\n" . ContentVoice::for($loc) . "\n";
         }
 
+        $preserve = TranslationInvariants::PROMPT_RULE;
+
         $prompt = <<<TXT
 You are localizing a Turkish blog post about studying in Germany for AlmanyaUni / ApplyToGerman.
 Translate AND localize the SOURCE into {$localeList} — native and idiomatic, NOT literal. Render the ENTIRE source (every section to the end). Preserve markdown formatting (headings, bold, lists, tables, blockquotes, links). Keep German technical terms verbatim (Sperrkonto, Studienkolleg, Ausbildung, Rundfunkbeitrag, etc.) with a gloss in parentheses on first mention.
+{$preserve}
 
 VOICE & REGISTER per target locale (follow strictly):
 {$voiceBlock}
