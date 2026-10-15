@@ -25,18 +25,33 @@
             ? config('seo.default.description')
             : __('University, visa, cost of living and scholarship guide for studying in Germany.'));
     $canonicalUrl = $canonical ?? url(request()->path());
+    $pageLocale = app()->getLocale();
     // OG image: explicit > brand-specific > config fallback
-    $ogImage = $image ?? brand('og_image') ?? config('seo.default.image');
+    $ogImage = $image ?: (brand('og_image') ?: config('seo.default.image'));
+    // Dinamik kart (/og/{type}/{slug}.png): ortak-slug tiplerinde sayfa dilini ?lang= ile ekle
+    // → kart metinleri sayfa dilinde. Post kartı kaydın kendi dilini taşır, URL'si değişmez.
+    $ogImage = \App\Support\OgCard::localizeUrl($ogImage, $pageLocale);
     $ogImageAbs = str_starts_with($ogImage, 'http') ? $ogImage : url($ogImage);
     $ogImageAlt = $imageAlt ?? ($title ?? $siteName);
-    $twitterCard = config('seo.twitter.card');
+    $ogImageType = match (strtolower(pathinfo((string) parse_url($ogImageAbs, PHP_URL_PATH), PATHINFO_EXTENSION))) {
+        'png' => 'image/png',
+        'webp' => 'image/webp',
+        'gif' => 'image/gif',
+        default => 'image/jpeg',
+    };
+    // Görsel her zaman var (en kötü marka varsayılanı) → büyük kart
+    $twitterCard = $ogImageAbs ? 'summary_large_image' : (config('seo.twitter.card') ?: 'summary');
     // Twitter handle brand-specific
     $twitterHandle = brand('twitter') ?: config('seo.twitter.handle');
-    // og:locale current locale'den türet (BCP47 → og format)
+    // og:locale = sayfa dili (BCP47 → og format)
     $localeMap = ['tr' => 'tr_TR', 'de' => 'de_DE', 'en' => 'en_US'];
-    $locale = $localeMap[app()->getLocale()] ?? config('seo.locale');
-    // Multi-language alternate locale'ler (mevcut hariç)
-    $altLocales = collect(config('locale.active', ['tr','de','en']))
+    $locale = $localeMap[$pageLocale] ?? config('seo.locale');
+    // og:locale:alternate = diğer AKTİF diller; sayfa gerçek dil-kardeşlerini paylaşıyorsa
+    // (blog/haber: localeUrls) yalnızca var olan çeviriler — hreflang ile aynı kural.
+    $ogSiblings = view()->shared('localeUrls');
+    $ogHasSiblings = is_array($ogSiblings) && $ogSiblings !== [];
+    $altLocales = collect(\App\Support\Hreflang::activeLocales())
+        ->filter(fn ($l) => ! $ogHasSiblings || ! empty($ogSiblings[$l]))
         ->map(fn ($l) => $localeMap[$l] ?? null)
         ->filter(fn ($l) => $l && $l !== $locale)
         ->values();
@@ -62,7 +77,7 @@
     <meta property="og:image:width" content="{{ config('seo.default.image_width', 1200) }}">
     <meta property="og:image:height" content="{{ config('seo.default.image_height', 630) }}">
     <meta property="og:image:alt" content="{{ $ogImageAlt }}">
-    <meta property="og:image:type" content="{{ str_ends_with($ogImageAbs, '.png') ? 'image/png' : 'image/jpeg' }}">
+    <meta property="og:image:type" content="{{ $ogImageType }}">
     <meta property="og:locale" content="{{ $locale }}">
     @foreach ($altLocales as $alt)
         <meta property="og:locale:alternate" content="{{ $alt }}">

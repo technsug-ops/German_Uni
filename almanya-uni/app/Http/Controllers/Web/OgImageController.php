@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
-use App\Models\FieldOfStudy;
-use App\Models\Post;
-use App\Models\Profession;
-use App\Models\Program;
-use App\Models\Scholarship;
-use App\Models\University;
+use App\Support\OgCard;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
  * Dinamik og:image (1200x630) üretici.
  *
- * /og/{type}/{slug}.png — ilk istekte üretilir, storage/app/public/og/'a cache'lenir.
- * Cache-Control: public, max-age=30 gün. Browser+CDN dostu.
+ * /og/{type}/{slug}.png[?lang=xx] — ilk istekte üretilir,
+ * storage/app/public/og/{brand}/v2/{locale}/'a cache'lenir.
+ * Kart metinleri (slogan, rozet, kategori, okuma süresi…) sayfa dilinde: bkz. App\Support\OgCard
+ * (post → kaydın locale'i; diğer tipler → ?lang=, yoksa marka varsayılan dili).
+ * Cache-Control: public, max-age=7 gün.
  */
 class OgImageController extends Controller
 {
@@ -26,20 +24,29 @@ class OgImageController extends Controller
     private const FONT_BOLD = 'resources/fonts/Inter-Bold.ttf';
     private const FONT_REG  = 'resources/fonts/Inter-Regular.ttf';
 
-    public function show(string $type, string $slug)
+    public function show(Request $request, string $type, string $slug)
     {
         $cleanSlug = preg_replace('/\.png$/', '', $slug);
 
-        // DUAL-BRAND: cache key brand'e göre ayrı — iki domain farklı OG'ler üretir
-        $brandKey = brand_key();
-        $cachePath = "og/{$brandKey}/{$type}-{$cleanSlug}.png";
-        $diskPath  = storage_path('app/public/' . $cachePath);
+        if (! file_exists(base_path(self::FONT_BOLD)) || ! file_exists(base_path(self::FONT_REG))) {
+            abort(404);
+        }
+
+        // Geçersiz/eksik lang yok sayılır → sınırsız cache dosyası üretilemez.
+        $requested = OgCard::normalizeLocale($request->query(OgCard::QUERY_PARAM));
+        $locale = OgCard::localeFor($type, $cleanSlug, $requested);
+        if ($locale === null) {
+            abort(404);
+        }
+
+        // DUAL-BRAND + sürüm + dil: eski Türkçe-metinli cache dosyaları artık okunmaz.
+        $diskPath = storage_path('app/public/' . OgCard::cachePath(brand_key(), $locale, $type, $cleanSlug));
 
         if (file_exists($diskPath)) {
             return $this->serveFile($diskPath);
         }
 
-        $data = $this->fetchData($type, $cleanSlug);
+        $data = OgCard::data($type, $cleanSlug, $locale);
         if (! $data) {
             abort(404);
         }
@@ -50,123 +57,6 @@ class OgImageController extends Controller
         imagedestroy($im);
 
         return $this->serveFile($diskPath);
-    }
-
-    private function fetchData(string $type, string $slug): ?array
-    {
-        $fontReg  = base_path(self::FONT_REG);
-        $fontBold = base_path(self::FONT_BOLD);
-        if (! file_exists($fontBold) || ! file_exists($fontReg)) {
-            return null;
-        }
-
-        return match ($type) {
-            'university' => $this->forUniversity($slug),
-            'program'    => $this->forProgram($slug),
-            'city'       => $this->forCity($slug),
-            'field'      => $this->forField($slug),
-            'profession' => $this->forProfession($slug),
-            'post'       => $this->forPost($slug),
-            'scholarship'=> $this->forScholarship($slug),
-            default      => null,
-        };
-    }
-
-    private function forUniversity(string $slug): ?array
-    {
-        $u = University::with('city.state')->where('slug', $slug)->first();
-        if (! $u) return null;
-
-        $sub = collect([$u->city?->name, $u->city?->state?->name])->filter()->join(' · ');
-
-        return [
-            'badge'    => mb_strtoupper(__('University')),
-            'title'    => $u->short_name ?: $u->name_de,
-            'subtitle' => $sub ?: __('Germany'),
-            'meta'     => $u->type_label ?? 'Hochschule',
-            'color'    => '#1E40AF',
-        ];
-    }
-
-    private function forProgram(string $slug): ?array
-    {
-        $p = Program::with('university')->where('slug', $slug)->first();
-        if (! $p) return null;
-
-        return [
-            'badge'    => mb_strtoupper($p->degree ?? 'Programm'),
-            'title'    => $p->name_de,
-            'subtitle' => $p->university?->name_de ?: '',
-            'meta'     => $p->teaching_language === 'en' ? __('Taught in English') : __('Taught in German'),
-            'color'    => '#0F766E',
-        ];
-    }
-
-    private function forCity(string $slug): ?array
-    {
-        $c = City::with('state')->where('slug', $slug)->first();
-        if (! $c) return null;
-
-        $uniCount = $c->universities()->where('is_active', true)->count();
-        return [
-            'badge'    => mb_strtoupper(__('City')),
-            'title'    => $c->name,
-            'subtitle' => $c->state?->name ?: __('Germany'),
-            'meta'     => $uniCount . ' ' . __('universities'),
-            'color'    => '#B45309',
-        ];
-    }
-
-    private function forField(string $slug): ?array
-    {
-        $f = FieldOfStudy::where('slug', $slug)->first();
-        if (! $f) return null;
-        return [
-            'badge'    => mb_strtoupper(__('Study Field')),
-            'title'    => $f->name,
-            'subtitle' => $f->name_de,
-            'meta'     => __('Germany'),
-            'color'    => $f->color ?: '#7C3AED',
-        ];
-    }
-
-    private function forProfession(string $slug): ?array
-    {
-        $p = Profession::with('field')->where('slug', $slug)->first();
-        if (! $p) return null;
-        return [
-            'badge'    => mb_strtoupper(__('Profession')),
-            'title'    => $p->name ?: $p->name_de,
-            'subtitle' => ($p->name && $p->name !== $p->name_de) ? $p->name_de : ($p->field?->name ?? __('Germany')),
-            'meta'     => $p->kldb_code ? "KldB {$p->kldb_code}" : 'BERUFENET',
-            'color'    => $p->field?->color ?: '#0369A1',
-        ];
-    }
-
-    private function forPost(string $slug): ?array
-    {
-        $p = Post::where('slug', $slug)->first();
-        if (! $p) return null;
-        return [
-            'badge'    => 'BLOG',
-            'title'    => $p->title,
-            'subtitle' => $p->category?->name ?: brand('name'),
-            'meta'     => $p->reading_minutes ? $p->reading_minutes . ' dk okuma' : '',
-            'color'    => '#BE185D',
-        ];
-    }
-
-    private function forScholarship(string $slug): ?array
-    {
-        $s = Scholarship::where('slug', $slug)->first();
-        if (! $s) return null;
-        return [
-            'badge'    => $s->is_daad ? 'DAAD BURSU' : 'BURS',
-            'title'    => $s->name_en ?: $s->name_de,
-            'subtitle' => $s->programmname_en ?: ($s->programmname_de ?: 'Almanya bursu'),
-            'meta'     => 'Stipendium',
-            'color'    => '#15803D',
-        ];
     }
 
     private function renderImage(array $d): \GdImage
@@ -188,8 +78,9 @@ class OgImageController extends Controller
         // Üst sol: brand-aware branding (request host'una göre AlmanyaUni veya ApplyToGerman)
         $fontBold = base_path(self::FONT_BOLD);
         $fontReg  = base_path(self::FONT_REG);
-        $brandName    = brand('name');
-        $brandTagline = brand('tagline') ?: '';
+        // Marka adı / slogan / domain kart dilinde OgCard::data()'dan gelir (global locale'e bakmaz)
+        $brandName    = $d['brand'];
+        $brandTagline = $d['tagline'] ?? '';
         imagettftext($im, 28, 0, $padX, 100, $white, $fontBold, $brandName);
         if ($brandTagline !== '') {
             imagettftext($im, 16, 0, $padX, 130, $whiteSoft, $fontReg, $brandTagline);
@@ -223,7 +114,7 @@ class OgImageController extends Controller
         // Alt çubuk
         imagefilledrectangle($im, 0, self::H - 70, self::W, self::H, imagecolorallocatealpha($im, 0, 0, 0, 90));
 
-        imagettftext($im, 18, 0, $padX, self::H - 28, $white, $fontReg, brand('domain'));
+        imagettftext($im, 18, 0, $padX, self::H - 28, $white, $fontReg, $d['domain']);
         if (! empty($d['meta'])) {
             $metaText = $d['meta'];
             $metaBbox = imagettfbbox(18, 0, $fontReg, $metaText);
@@ -305,7 +196,8 @@ class OgImageController extends Controller
     {
         return response(file_get_contents($path), 200, [
             'Content-Type'  => 'image/png',
-            'Cache-Control' => 'public, max-age=2592000, immutable',
+            // URL sabitken içerik değişebilir (dil düzeltmesi, og:refresh) → immutable değil
+            'Cache-Control' => 'public, max-age=604800',
             'Content-Length' => (string) filesize($path),
         ]);
     }

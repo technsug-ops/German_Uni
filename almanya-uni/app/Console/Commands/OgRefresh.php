@@ -9,11 +9,12 @@ use App\Models\Profession;
 use App\Models\Program;
 use App\Models\Scholarship;
 use App\Models\University;
+use App\Support\OgCard;
 use Illuminate\Console\Command;
 
 /**
  * OG görselleri /og/{type}/{slug}.png ilk istekte üretilip
- * storage/app/public/og/{brand}/ altına SÜRESİZ cache'lenir. İçerik başlığı
+ * storage/app/public/og/{brand}/{sürüm}/{locale}/ altına (OgCard::cachePath) SÜRESİZ cache'lenir. İçerik başlığı
  * değişince cache bayatlar. Bu komut son N günde güncellenen içeriğin OG
  * cache'ini siler → sonraki istekte (sosyal paylaşım crawl'ı) TAZE üretilir.
  * Üretim mantığını kopyalamaz; sadece geçersiz kılar. Her iki brand için.
@@ -44,7 +45,12 @@ class OgRefresh extends Command
 
         if ($this->option('all')) {
             foreach ($brandKeys as $bk) {
-                foreach (glob(storage_path("app/public/og/{$bk}/*.png")) ?: [] as $f) {
+                // Güncel sürüm (dil klasörleri) + eski sürümsüz/dil-bağımsız dosyalar
+                $files = array_merge(
+                    glob(storage_path("app/public/og/{$bk}/*.png")) ?: [],
+                    glob(storage_path("app/public/og/{$bk}/" . OgCard::VERSION . '/*/*.png')) ?: [],
+                );
+                foreach ($files as $f) {
                     if (@unlink($f)) $deleted++;
                 }
             }
@@ -68,9 +74,15 @@ class OgRefresh extends Command
 
             foreach ($slugs as $slug) {
                 foreach ($brandKeys as $bk) {
-                    $path = storage_path("app/public/og/{$bk}/{$type}-{$slug}.png");
-                    if (is_file($path) && @unlink($path)) {
-                        $deleted++;
+                    $paths = [OgCard::legacyCachePath($bk, $type, $slug)];
+                    foreach (OgCard::locales() as $loc) {
+                        $paths[] = OgCard::cachePath($bk, $loc, $type, $slug);
+                    }
+                    foreach ($paths as $rel) {
+                        $path = storage_path('app/public/' . $rel);
+                        if (is_file($path) && @unlink($path)) {
+                            $deleted++;
+                        }
                     }
                 }
             }
