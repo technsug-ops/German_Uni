@@ -1397,6 +1397,253 @@
             "topic": "idata",
             "context": "OSV-4 paket 2 ile düzeltilen birebir eski ifade; güncel bilgi olarak yanlış.",
             "origin": "tests/Feature/OsvPackage2Test.php KNOWN_WRONG (OSV-4 paket 2)"
+        },
+        {
+            "id": "pkg2b-01",
+            "phrase": "01.09.2024'ten beri",
+            "locale": "tr",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-02",
+            "phrase": "1 Eylül 2024'ten beri",
+            "locale": "tr",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-03",
+            "phrase": "since 01.09.2024",
+            "locale": "en",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-04",
+            "phrase": "since 1 September 2024",
+            "locale": "en",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-05",
+            "phrase": "in force since 1 September 2024",
+            "locale": "en",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-06",
+            "phrase": "seit dem 01.09.2024",
+            "locale": "de",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-07",
+            "phrase": "seit 01.09.2024",
+            "locale": "de",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-08",
+            "phrase": "seit dem 1. September 2024",
+            "locale": "de",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-09",
+            "phrase": "01.09.2024'te 11.208 €'dan 11.904 €'a yükseldi",
+            "locale": "tr",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-10",
+            "phrase": "Zum 01.09.2024 wurde es von 11.208 € auf 11.904 € erhöht",
+            "locale": "de",
+            "topic": "funds-date",
+            "context": "Resmî kaynakla doğrulanamayan başlangıç tarihi (BMI ilanları takvim yılı bazlı: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde). Doğru biçim: \"2026 için 992 €/ay (BAnz AT 29.08.2025 B1)\". Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-11",
+            "phrase": "(Eylül 2026 itibarıyla)",
+            "locale": "tr",
+            "topic": "check-date",
+            "context": "Kaynaksız durum tarihi kontrol tarihi kuralıyla çelişiyor; doğru biçim: resmî kaynak + kontrol tarihi (§6). Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-12",
+            "phrase": "currently (September 2026)",
+            "locale": "en",
+            "topic": "check-date",
+            "context": "Kaynaksız durum tarihi kontrol tarihi kuralıyla çelişiyor; doğru biçim: resmî kaynak + kontrol tarihi (§6). Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
+        },
+        {
+            "id": "pkg2b-13",
+            "phrase": "derzeit (Stand September 2026)",
+            "locale": "de",
+            "topic": "check-date",
+            "context": "Kaynaksız durum tarihi kontrol tarihi kuralıyla çelişiyor; doğru biçim: resmî kaynak + kontrol tarihi (§6). Paket 2b ile kaldırıldı.",
+            "origin": "OSV-4 paket 2b (2026-10-15)",
+            "allow_context": [
+                "doğrulanamadı",
+                "doğrulanmadı",
+                "resmî kaynakta yok",
+                "not verified",
+                "unverified",
+                "cannot be verified",
+                "nicht belegt",
+                "nicht verifiziert",
+                "nicht bestätigt"
+            ]
         }
     ]
 }

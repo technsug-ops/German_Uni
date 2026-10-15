@@ -1,0 +1,996 @@
+{
+  "package": "2026-10-15-osv4-package2b-dates-fees-consistency",
+  "checked_at": "2026-10-15",
+  "notes": "OSV-4 Paket 2b. (A) '01.09.2024'ten beri 992 €' resmî kaynakla doğrulanamadı (BMI ilanları yıllık: 2024 = 934 €, 2026 = 992 €; 01.09.2024 yalnız ikincil sitelerde) → '2026 için 992 €/ay (BAnz AT 29.08.2025 B1)'; öğrenim vizesi SSS'sindeki 'Eylül 2026 itibarıyla / currently (September 2026) / Stand September 2026' → kontrol tarihi + resmî kaynak. (B) iDATA SSS'sine 75 € ulusal vize harcı (§ 46 AufenthV) ≠ iDATA bedeli (39,92 € ve/veya 12 €, TL) + § 52 Abs. 5 burs muafiyeti. (C) 140 iş günü 01.03.2024 DOĞRULANDI (BGBl. 2023 I Nr. 217 Art. 2 Nr. 6 + Art. 12 Abs. 1); yarım gün kavramı 2024'ten önce de vardı (BT-Drs. 20/6500 S. 78) → SSS başlıklarındaki tarih, kaynaklı bir cümleye taşınır. (D) dil kursu +%10 DOĞRULANDI (AufenthG § 2 Abs. 3 S. 6) → 'temsilcilik hesaplıyor' yerine yasa + kaynak. Kontrol tarihi 15.10.2026 yürürlük tarihi değildir. Kayıtlar slug+locale ile bulunur; beklenen metin yoksa atlanır.",
+  "reconfirmed_no_edit": {
+    "banz_bluecard_2026": "BAnz AT 18.12.2025 B3 (BMI, 02.12.2025): 'Mindestbruttogehalt für das Jahr 2026 in Höhe von jährlich 50 700 Euro' / '45 934,20 Euro' — 15.10.2026 yeniden okundu; içerik paket 2 ile zaten doğru."
+  },
+  "sources": {
+    "banz_subsistence_2026": {
+      "url": "https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf",
+      "owner": "Bundesministerium des Innern (Bundesanzeiger)",
+      "scope": "Bekanntmachung vom 13.08.2025, BAnz AT 29.08.2025 B1: Mindestbetrag Lebensunterhalt 'für das Jahr 2026'; §§ 16b, 16c, 16e, 16f (ohne nicht studienvorbereitende Sprachkurse): 'in Höhe von 992 Euro'. Nennt KEIN Datum 'seit 01.09.2024'.",
+      "quote": "ergibt sich gemäß § 13 Absatz 1 Nummer 2 und § 13a Absatz 1 BAföG ein Betrag für den monatlichen Bedarf in Höhe von 992 Euro.",
+      "checked": "2026-10-15"
+    },
+    "banz_subsistence_2024": {
+      "url": "https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf",
+      "owner": "Bundesministerium des Innern und für Heimat (Bundesanzeiger)",
+      "scope": "Bekanntmachung vom 17.08.2023, BAnz AT 30.08.2023 B3: Mindestbetrag 'für das Jahr 2024'; §§ 16b, 16c, 16e, 16f: 934 Euro monatlich (= 11.208 €/Jahr). Ein unterjähriger Wechsel zum 01.09.2024 ist in keiner gefundenen BMI-Bekanntmachung belegt.",
+      "quote": "Aufenthaltserlaubnissen nach den §§ 16b, 16c, 16e und 16f AufenthG ergibt sich ... ein Betrag für den monatlichen Bedarf in Höhe von 934 Euro.",
+      "checked": "2026-10-15"
+    },
+    "aufenthg_2": {
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__2.html",
+      "owner": "gesetze-im-internet.de (BMJ)",
+      "scope": "§ 2 Abs. 3 Satz 6 AufenthG: für § 16f Abs. 1 bei Sprachkursen, die nicht der Studienvorbereitung dienen, gilt der Lebensunterhalt als gesichert, wenn Mittel entsprechend Satz 5 zuzüglich eines Aufschlages um 10 Prozent zur Verfügung stehen. Satz 7: BMI gibt die Beträge für jedes Kalenderjahr bis 31.08. des Vorjahres bekannt.",
+      "quote": "Der Lebensunterhalt gilt für die Erteilung einer Aufenthaltserlaubnis nach den §§ 16d, 16f Absatz 1 für Teilnehmer an Sprachkursen, die nicht der Studienvorbereitung dienen, sowie § 17 als gesichert, wenn Mittel entsprechend Satz 5 zuzüglich eines Aufschlages um 10 Prozent zur Verfügung stehen.",
+      "checked": "2026-10-15"
+    },
+    "tr_missions_language_course": {
+      "url": "https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588",
+      "owner": "Deutsche Vertretungen in der Türkei (Merkblatt 44F Sprachkurs)",
+      "scope": "Sprachkurs: monatlich mindestens 1091 EUR; Sperrkonto und Verpflichtungserklärung gleichberechtigt; Visumgebühr i.d.R. 75 €. Die Seite selbst nennt keine Berechnungsmethode (die +10 % stehen im Gesetz, § 2 Abs. 3 S. 6 AufenthG).",
+      "quote": "es müssen monatlich mindestens 1091 EUR zur Verfügung stehen. Die folgenden Optionen stehen gleichberechtigt nebeneinander",
+      "checked": "2026-10-15"
+    },
+    "bgbl_2023_217": {
+      "url": "https://www.recht.bund.de/bgbl/1/2023/217/VO.html",
+      "owner": "Bundesgesetzblatt (recht.bund.de)",
+      "scope": "Gesetz zur Weiterentwicklung der Fachkräfteeinwanderung vom 16.08.2023, BGBl. 2023 I Nr. 217: Art. 2 Nr. 6 b) fasst § 16b Abs. 3 neu (140 Arbeitstage, Arbeitstagekonto, Tag bis 4 Std. = halber Arbeitstag, Woche bis 20 Std. in der Vorlesungszeit bzw. jede Woche außerhalb = 2,5 Tage). Art. 12 Abs. 1: Inkrafttreten 1. März 2024 (Art. 2 Nr. 6 fällt unter keine Ausnahme der Abs. 2-6).",
+      "quote": "(1) Dieses Gesetz tritt vorbehaltlich der Absätze 2 bis 6 am 1. März 2024 in Kraft.",
+      "checked": "2026-10-15"
+    },
+    "bt_drs_20_6500": {
+      "url": "https://dserver.bundestag.de/btd/20/065/2006500.pdf",
+      "owner": "Deutscher Bundestag (Drucksache 20/6500, Gesetzentwurf der Bundesregierung)",
+      "scope": "Begründung zu § 16b Abs. 3 (S. 78): bisherige Regelung '120 ganze oder 240 halbe Tage'; Konto auf 140 Arbeitstage angehoben; 'In Nummer 1 wird erstmalig der halbe Arbeitstag gesetzlich definiert' (bis 4 Stunden). Halbe Tage gab es also schon vor 2024; neu sind 140 Tage, die gesetzliche 4-Stunden-Definition und die Wochenoption.",
+      "quote": "Die Neuregelung ermöglicht es zudem, Arbeitsverhältnisse, die entsprechend der bisherigen Regelung (Beschäftigungserlaubnis für 120 ganze oder 240 halbe Tage) ausgestaltet sind, unverändert fortzuführen. ... In Nummer 1 wird erstmalig der 'halbe' Arbeitstag gesetzlich definiert",
+      "checked": "2026-10-15"
+    },
+    "tr_missions_study": {
+      "url": "https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622",
+      "owner": "Türkiye'deki Alman temsilcilikleri",
+      "scope": "Öğrenim ve öğrenim yeri arama vizeleri yalnızca Konsolosluk Hizmet Portalı (digital.diplo.de/studium) üzerinden; sayfada başlangıç tarihi yok.",
+      "quote": "Eğitim ve öğrenim yeri arama alanındaki vize işlemleri artık yalnızca Konsolosluk Hizmet Portalı üzerinden gerçekleştirilmektedir.",
+      "checked": "2026-10-15"
+    },
+    "tr_missions_national": {
+      "url": "https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742",
+      "owner": "Türkiye'deki Alman temsilcilikleri",
+      "scope": "Ulusal vizeler (portal dışı): iDATA ve IOM-FAP; iDATA 39,92 € hizmet bedeli ve/veya 12 € randevu ücreti, TL ile.",
+      "quote": "Duruma bağlı olarak, iDATA 39,92 € hizmet bedeli ve/veya 12 € randevu rezervasyon ücreti almaktadır; her ikisi de Türk Lirası (TL) cinsinden ödenir.",
+      "checked": "2026-10-15"
+    },
+    "aufenthv_46": {
+      "url": "https://www.gesetze-im-internet.de/aufenthv/__46.html",
+      "owner": "gesetze-im-internet.de (BMJ)",
+      "scope": "§ 46 Abs. 2 Nr. 1 AufenthV: Erteilung eines nationalen Visums (Kategorie D) 75 Euro.",
+      "quote": "Die Gebührenhöhe beträgt 1. für die Erteilung eines nationalen Visums (Kategorie D), auch für mehrmalige Einreisen 75 Euro",
+      "checked": "2026-10-15"
+    },
+    "aufenthv_52": {
+      "url": "https://www.gesetze-im-internet.de/aufenthv/__52.html",
+      "owner": "gesetze-im-internet.de (BMJ)",
+      "scope": "§ 52 Abs. 5 Nr. 1 AufenthV: Ausländer mit einem Stipendium aus öffentlichen Mitteln sind von der Gebühr nach § 46 Abs. 2 Nr. 1 befreit. (Abs. 1: Familienangehörige Deutscher; Abs. 6/7: Ermessen.) Nur Abs. 5 wird im Text genannt.",
+      "quote": "Ausländer, die für ihren Aufenthalt im Bundesgebiet ein Stipendium aus öffentlichen Mitteln erhalten, sind befreit von den Gebühren nach 1. § 46 Absatz 2 Nummer 1 für die Erteilung eines nationalen Visums",
+      "checked": "2026-10-15"
+    }
+  },
+  "edits": [
+    {
+      "key": "A-sv-tr-funds",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "01.09.2024'ten beri esas alınan tutar **ayda 992 €, yıllık 11.904 €**.",
+      "replace": "2026 için esas alınan tutar **ayda 992 €, yıllık 11.904 €** ([BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), kontrol tarihi: 15.10.2026)."
+    },
+    {
+      "key": "A-sv-en-funds",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Since 01.09.2024 the reference amount is **€992 per month, €11,904 per year**.",
+      "replace": "For 2026 the reference amount is **€992 per month, €11,904 per year** ([BMI notice BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), checked 15.10.2026)."
+    },
+    {
+      "key": "A-sv-de-funds",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Seit dem 01.09.2024 gilt als Richtwert **992 € im Monat bzw. 11.904 € im Jahr**.",
+      "replace": "Für 2026 gilt als Richtwert **992 € im Monat bzw. 11.904 € im Jahr** ([BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), geprüft am 15.10.2026)."
+    },
+    {
+      "key": "A-sv-tr-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "vizelerini (Eylül 2026 itibarıyla) yalnızca online **Auslandsportal** üzerinden yürütüyor.",
+      "replace": "vizelerini yalnızca online **Auslandsportal** üzerinden yürütüyor ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), kontrol tarihi: 15.10.2026). Bu kuralın hangi tarihten beri uygulandığı resmî sayfada belirtilmiyor; 15.10.2026 yalnızca bizim kontrol tarihimiz."
+    },
+    {
+      "key": "A-sv-en-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "German missions in Türkiye currently (September 2026) handle study and study-applicant visas exclusively via the online **Auslandsportal**.",
+      "replace": "German missions in Türkiye handle study and study-applicant visas exclusively via the online **Auslandsportal** ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 15.10.2026). The official page does not say since when this rule applies; 15.10.2026 is only the date we checked it."
+    },
+    {
+      "key": "A-sv-de-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "how-do-i-get-a-german-student-visa-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "wickeln Visa für Studium und Studienplatzsuche derzeit (Stand September 2026) ausschließlich über das **Auslandsportal** ab.",
+      "replace": "wickeln Visa für Studium und Studienplatzsuche ausschließlich über das **Auslandsportal** ab ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), geprüft am 15.10.2026). Seit wann diese Regel gilt, nennt die offizielle Seite nicht; der 15.10.2026 ist nur unser Prüfdatum."
+    },
+    {
+      "key": "A-doc-tr-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Türkiye'de öğrenim vizesi (Eylül 2026 itibarıyla) yalnızca **Auslandsportal** üzerinden yürütüldüğü için",
+      "replace": "Türkiye'de öğrenim vizesi yalnızca **Auslandsportal** üzerinden yürütüldüğü için ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), kontrol tarihi: 15.10.2026; başlangıç tarihi resmî sayfada belirtilmiyor)"
+    },
+    {
+      "key": "A-doc-en-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "In Türkiye the student visa is currently (September 2026) handled only via the **Auslandsportal**,",
+      "replace": "In Türkiye the student visa is handled only via the **Auslandsportal** ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), checked 15.10.2026; the official page does not give a start date),"
+    },
+    {
+      "key": "A-doc-de-channel",
+      "topic": "check-date",
+      "sources": [
+        "tr_missions_study"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "In der Türkei läuft das Studienvisum derzeit (Stand September 2026) ausschließlich über das **Auslandsportal**,",
+      "replace": "In der Türkei läuft das Studienvisum ausschließlich über das **Auslandsportal** ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728622-2728622), geprüft am 15.10.2026; ein Startdatum nennt die offizielle Seite nicht),"
+    },
+    {
+      "key": "A-ba-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-in-a-blocked-account-sperrkonto",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Bu tutar 01.09.2024'ten beri geçerli.",
+      "replace": "Bu, 2026 için ilan edilen tutar ([BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), kontrol tarihi: 15.10.2026)."
+    },
+    {
+      "key": "A-ba-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-in-a-blocked-account-sperrkonto-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "This amount has applied since 1 September 2024.",
+      "replace": "This is the amount announced for 2026 ([BMI notice BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), checked 15.10.2026)."
+    },
+    {
+      "key": "A-ba-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-in-a-blocked-account-sperrkonto-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Dieser Betrag gilt seit dem 01.09.2024.",
+      "replace": "Das ist der für 2026 bekannt gegebene Betrag ([BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), geprüft am 15.10.2026)."
+    },
+    {
+      "key": "A-ba2-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-for-a-blocked-account-sperrkonto",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Bu tutar 01.09.2024'ten beri geçerli; öncesinde daha düşük bir tutar isteniyordu.",
+      "replace": "Bu, 2026 için ilan edilen tutar ([BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), kontrol tarihi: 15.10.2026); 2024 için aylık 934 € idi ([BMI ilanı BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf))."
+    },
+    {
+      "key": "A-ba2-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-for-a-blocked-account-sperrkonto-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "This amount has applied since 1 September 2024; before that, a lower amount was required.",
+      "replace": "This is the amount announced for 2026 ([BMI notice BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), checked 15.10.2026); for 2024 it was €934 per month ([BMI notice BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf))."
+    },
+    {
+      "key": "A-ba2-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-do-i-need-for-a-blocked-account-sperrkonto-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "Dieser Betrag gilt seit dem 01.09.2024; davor galt ein niedrigerer Betrag.",
+      "replace": "Das ist der für 2026 bekannt gegebene Betrag ([BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), geprüft am 15.10.2026); für 2024 waren es 934 € im Monat ([BMI-Bekanntmachung BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf))."
+    },
+    {
+      "key": "A-doc-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "01.09.2024'ten beri ayda 992 €, yıllık 11.904 €",
+      "replace": "2026 için ayda 992 €, yıllık 11.904 €"
+    },
+    {
+      "key": "A-doc-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "€992 per month, €11,904 per year since 01.09.2024",
+      "replace": "€992 per month, €11,904 per year for 2026"
+    },
+    {
+      "key": "A-doc-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "what-documents-are-required-for-a-german-student-visa-application-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "seit dem 01.09.2024 992 € im Monat bzw. 11.904 € im Jahr",
+      "replace": "für 2026 992 € im Monat bzw. 11.904 € im Jahr"
+    },
+    {
+      "key": "A-sk-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-a-blocked-account-sperrkonto-for-a-studienkolleg",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri, BAföG azami tutarına bağlı)",
+      "replace": "(BMI'nin 2026 ilanı, BAföG azami tutarına bağlı)"
+    },
+    {
+      "key": "A-sk-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-a-blocked-account-sperrkonto-for-a-studienkolleg-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(since 1 September 2024, tied to the maximum BAföG rate)",
+      "replace": "(BMI notice for 2026, tied to the maximum BAföG rate)"
+    },
+    {
+      "key": "A-sk-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-a-blocked-account-sperrkonto-for-a-studienkolleg-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(seit 01.09.2024, gekoppelt an den BAföG-Höchstsatz)",
+      "replace": "(BMI-Bekanntmachung für 2026, gekoppelt an den BAföG-Höchstsatz)"
+    },
+    {
+      "key": "A-sk2-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "is-a-studienkolleg-admission-letter-enough-for-a-german-student-visa",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri ayda 992 €, yıllık 11.904 €)",
+      "replace": "(2026 için ayda 992 €, yıllık 11.904 €)"
+    },
+    {
+      "key": "A-sk2-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "is-a-studienkolleg-admission-letter-enough-for-a-german-student-visa-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "€992 per month, €11,904 per year since 01.09.2024",
+      "replace": "€992 per month, €11,904 per year for 2026"
+    },
+    {
+      "key": "A-sk2-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "is-a-studienkolleg-admission-letter-enough-for-a-german-student-visa-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(seit dem 01.09.2024 992 € im Monat bzw. 11.904 € im Jahr)",
+      "replace": "(für 2026 992 € im Monat bzw. 11.904 € im Jahr)"
+    },
+    {
+      "key": "A-rp-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-an-anmeldung-to-extend-my-residence-permit",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(öğrenciler için referans: 01.09.2024'ten beri aylık 992 €)",
+      "replace": "(öğrenciler için referans: 2026 için aylık 992 €)"
+    },
+    {
+      "key": "A-rp-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-an-anmeldung-to-extend-my-residence-permit-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(reference for students: 992 € per month since 01.09.2024)",
+      "replace": "(reference for students: 992 € per month for 2026)"
+    },
+    {
+      "key": "A-rp-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "do-i-need-an-anmeldung-to-extend-my-residence-permit-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(Richtwert für Studierende: 992 € im Monat seit 01.09.2024)",
+      "replace": "(Richtwert für Studierende: 992 € im Monat für 2026)"
+    },
+    {
+      "key": "A-daad-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-is-the-daad-scholarship-for-a-masters-degree-per-month",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri 992 €/ay = 11.904 €/yıl)",
+      "replace": "(2026 için 992 €/ay = 11.904 €/yıl)"
+    },
+    {
+      "key": "A-daad-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-is-the-daad-scholarship-for-a-masters-degree-per-month-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(992 €/month = 11,904 €/year since 01.09.2024)",
+      "replace": "(992 €/month = 11,904 €/year for 2026)"
+    },
+    {
+      "key": "A-daad-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-is-the-daad-scholarship-for-a-masters-degree-per-month-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "(992 €/Monat = 11.904 €/Jahr seit 01.09.2024)",
+      "replace": "(992 €/Monat = 11.904 €/Jahr für 2026)"
+    },
+    {
+      "key": "A-p5-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "posts",
+      "slug": "germany-student-visa-2026-application-steps-documents-rejection",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "01.09.2024'te 11.208 €'dan 11.904 €'a yükseldi.",
+      "replace": "2024 için yıllık 11.208 € (aylık 934 €) idi ([BMI ilanı BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf)); 2026 için yıllık 11.904 € (aylık 992 €) ([BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), kontrol tarihi: 15.10.2026)."
+    },
+    {
+      "key": "A-p36-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "posts",
+      "slug": "germany-student-visa-2026-application-steps-documents-rejection-de",
+      "locale": "de",
+      "field": "content_md",
+      "op": "replace",
+      "find": "Zum 01.09.2024 wurde es von 11.208 € auf 11.904 € erhöht.",
+      "replace": "Für 2024 lag es bei 11.208 € im Jahr (934 € monatlich) ([BMI-Bekanntmachung BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf)), für 2026 bei 11.904 € (992 € monatlich) ([BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), geprüft am 15.10.2026)."
+    },
+    {
+      "key": "A-p87-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "zab-diploma-equivalency-official-recognition-guide-for-masterphd-in-germany",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri yıllık 11.904 Euro)",
+      "replace": "(2026 için yıllık 11.904 Euro)"
+    },
+    {
+      "key": "A-p90-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "testas-guide-2026-is-it-necessary-for-turkish-students-how-to",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri yıllık 11.904 Euro)",
+      "replace": "(2026 için yıllık 11.904 Euro)"
+    },
+    {
+      "key": "A-p114-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "bafog-alternatives-scholarships-in-germany-for-turkish-students",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri aylık 992 Euro, yıllık 11.904 Euro)",
+      "replace": "(2026 için aylık 992 Euro, yıllık 11.904 Euro)"
+    },
+    {
+      "key": "A-p113-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "bafog-alternatives-scholarships-in-germany-for-turkish-students-en",
+      "locale": "en",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(since 1 September 2024: 992 Euros per month, 11,904 Euros per year)",
+      "replace": "(for 2026: 992 Euros per month, 11,904 Euros per year)"
+    },
+    {
+      "key": "A-p112-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "bafog-alternatives-scholarships-in-germany-for-turkish-students-de",
+      "locale": "de",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(seit 01.09.2024: 992 Euro pro Monat, 11.904 Euro pro Jahr)",
+      "replace": "(für 2026: 992 Euro pro Monat, 11.904 Euro pro Jahr)"
+    },
+    {
+      "key": "A-p126-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "what-is-anabin-h-h-h-how-is-a-turkish-diploma",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "ve 01.09.2024'ten beri aylık 992 Euro",
+      "replace": "ve 2026 için aylık 992 Euro"
+    },
+    {
+      "key": "A-p153-tr-meta",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you",
+      "locale": "tr",
+      "field": "meta_description",
+      "op": "replace",
+      "find": "aylık 992 Euro (1 Eylül 2024'ten beri).",
+      "replace": "aylık 992 Euro (2026 için, BMI ilanı)."
+    },
+    {
+      "key": "A-p153-tr-exc",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you",
+      "locale": "tr",
+      "field": "excerpt",
+      "op": "replace",
+      "find": "aylık 992 Euro (1 Eylül 2024'ten beri geçerli).",
+      "replace": "aylık 992 Euro (2026 için, BMI ilanı)."
+    },
+    {
+      "key": "A-p153-tr-body",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "Bu tutar 1 Eylül 2024'ten beri geçerli (öncesinde yıllık 11.208 Euro / aylık 934 Euro idi) ve BAföG'ün aylık azami tutarına bağlı.",
+      "replace": "Bu tutar 2026 için geçerli ([BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), kontrol tarihi: 15.10.2026); 2024 için yıllık 11.208 Euro / aylık 934 Euro idi ([BMI ilanı BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf)). Tutar BAföG'ün aylık azami tutarına bağlı."
+    },
+    {
+      "key": "A-p154-en-meta",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en",
+      "locale": "en",
+      "field": "meta_description",
+      "op": "replace",
+      "find": "(€992 a month), in force since 1 September 2024.",
+      "replace": "(€992 a month) for 2026 (BMI notice)."
+    },
+    {
+      "key": "A-p154-en-exc",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en",
+      "locale": "en",
+      "field": "excerpt",
+      "op": "replace",
+      "find": "(€992 a month), in force since 1 September 2024.",
+      "replace": "(€992 a month) for 2026 (BMI notice)."
+    },
+    {
+      "key": "A-p154-en-body",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-en",
+      "locale": "en",
+      "field": "content_md",
+      "op": "replace",
+      "find": "This amount has applied since 1 September 2024 (before that it was €11,208 a year / €934 a month) and is linked to the maximum monthly BAföG rate.",
+      "replace": "This is the amount for 2026 ([BMI notice BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), checked 15.10.2026); for 2024 it was €11,208 a year / €934 a month ([BMI notice BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf)). The amount is linked to the maximum monthly BAföG rate."
+    },
+    {
+      "key": "A-p155-de-meta",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de",
+      "locale": "de",
+      "field": "meta_description",
+      "op": "replace",
+      "find": "(992 Euro im Monat), gültig seit dem 1. September 2024.",
+      "replace": "(992 Euro im Monat) für 2026 (BMI-Bekanntmachung)."
+    },
+    {
+      "key": "A-p155-de-exc",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de",
+      "locale": "de",
+      "field": "excerpt",
+      "op": "replace",
+      "find": "(992 Euro im Monat), gültig seit dem 1. September 2024.",
+      "replace": "(992 Euro im Monat) für 2026 (BMI-Bekanntmachung)."
+    },
+    {
+      "key": "A-p155-de-body",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026",
+        "banz_subsistence_2024"
+      ],
+      "table": "posts",
+      "slug": "2026-germany-blocked-account-sperrkonto-update-how-much-money-do-you-de",
+      "locale": "de",
+      "field": "content_md",
+      "op": "replace",
+      "find": "Dieser Betrag gilt seit dem 1. September 2024 (davor 11.208 Euro pro Jahr bzw. 934 Euro pro Monat) und orientiert sich am BAföG-Höchstsatz.",
+      "replace": "Das ist der Betrag für 2026 ([BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf), geprüft am 15.10.2026); für 2024 waren es 11.208 Euro pro Jahr bzw. 934 Euro pro Monat ([BMI-Bekanntmachung BAnz AT 30.08.2023 B3](https://www.bundesanzeiger.de/pub/publication/EaLjB8RES6Yt6gKPzbd/content/EaLjB8RES6Yt6gKPzbd/BAnz%20AT%2030.08.2023%20B3.pdf)). Der Betrag orientiert sich am BAföG-Höchstsatz."
+    },
+    {
+      "key": "A-p186-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "Bu miktar 01.09.2024'ten beri 11.904 Euro'dur (aylık 992 Euro).",
+      "replace": "Bu miktar 2026 için 11.904 Euro'dur (aylık 992 Euro)."
+    },
+    {
+      "key": "A-p185-en",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school-en",
+      "locale": "en",
+      "field": "content_md",
+      "op": "replace",
+      "find": "This amount is 11,904 Euros since 1 September 2024 (992 Euros per month).",
+      "replace": "For 2026 this amount is 11,904 Euros (992 Euros per month)."
+    },
+    {
+      "key": "A-p184-de",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "germany-bachelor-application-2026-complete-flow-guide-for-turkish-high-school-de",
+      "locale": "de",
+      "field": "content_md",
+      "op": "replace",
+      "find": "Dieser Betrag liegt seit 01.09.2024 bei 11.904 Euro (992 Euro pro Monat).",
+      "replace": "Für 2026 liegt dieser Betrag bei 11.904 Euro (992 Euro pro Monat)."
+    },
+    {
+      "key": "A-p192-tr",
+      "topic": "funds-date",
+      "sources": [
+        "banz_subsistence_2026"
+      ],
+      "table": "posts",
+      "slug": "studienkolleg-center-list-2026-public-private-institutions",
+      "locale": "tr",
+      "field": "content_md",
+      "op": "replace",
+      "find": "(01.09.2024'ten beri aylık 992 Euro, yıllık 11.904 Euro)",
+      "replace": "(2026 için aylık 992 Euro, yıllık 11.904 Euro)"
+    },
+    {
+      "key": "B-idata-tr",
+      "topic": "visa-fee",
+      "sources": [
+        "aufenthv_46",
+        "tr_missions_national",
+        "tr_missions_study",
+        "aufenthv_52"
+      ],
+      "table": "faqs",
+      "slug": "how-do-you-apply-for-a-visa-through-idata",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "insert_after",
+      "find": "IOM-FAP ile çalışır ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), kontrol tarihi: 15.10.2026).",
+      "text": "\n\n**Ücretler (kontrol tarihi: 15.10.2026):** Ulusal vize harcı 75 €'dur ([AufenthV § 46 Abs. 2 Nr. 1](https://www.gesetze-im-internet.de/aufenthv/__46.html)) ve iDATA'nın kendi ücretlerinden ayrı ödenir: iDATA 39,92 € hizmet bedeli ve/veya 12 € randevu ücreti alır, ikisi de TL olarak ([kaynak](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)). Öğrenim ve öğrenim yeri arama vizeleri iDATA üzerinden yürümez; bu vizelerde iDATA ücreti doğmaz. Kamu kaynaklı burs alanlar ulusal vize harcından muaftır ([AufenthV § 52 Abs. 5](https://www.gesetze-im-internet.de/aufenthv/__52.html)).",
+      "marker": "**Ücretler (kontrol tarihi: 15.10.2026):**"
+    },
+    {
+      "key": "B-idata-en",
+      "topic": "visa-fee",
+      "sources": [
+        "aufenthv_46",
+        "tr_missions_national",
+        "tr_missions_study",
+        "aufenthv_52"
+      ],
+      "table": "faqs",
+      "slug": "how-do-you-apply-for-a-visa-through-idata-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "insert_after",
+      "find": "IOM-FAP. Here’s a step-by-step guide to using their service.",
+      "text": "\n\n**Fees (checked 15.10.2026):** The national visa fee of €75 ([§ 46 (2) no. 1 AufenthV](https://www.gesetze-im-internet.de/aufenthv/__46.html)) is paid separately from iDATA's own charges: iDATA collects a €39.92 service fee and/or a €12 appointment booking fee, both in Turkish lira ([source](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)). Study and study-place-search visas do not go through iDATA, so no iDATA fee arises for them. Holders of a scholarship from public funds are exempt from the national visa fee ([§ 52 (5) AufenthV](https://www.gesetze-im-internet.de/aufenthv/__52.html)).",
+      "marker": "**Fees (checked 15.10.2026):**"
+    },
+    {
+      "key": "B-idata-de",
+      "topic": "visa-fee",
+      "sources": [
+        "aufenthv_46",
+        "tr_missions_national",
+        "tr_missions_study",
+        "aufenthv_52"
+      ],
+      "table": "faqs",
+      "slug": "how-do-you-apply-for-a-visa-through-idata-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "insert_after",
+      "find": "IOM-FAP ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742), geprüft am 15.10.2026).",
+      "text": "\n\n**Gebühren (geprüft am 15.10.2026):** Die Gebühr für das nationale Visum beträgt 75 € ([§ 46 Abs. 2 Nr. 1 AufenthV](https://www.gesetze-im-internet.de/aufenthv/__46.html)) und wird getrennt von den iDATA-Entgelten gezahlt: iDATA erhebt 39,92 € Servicegebühr und/oder 12 € Terminbuchungsgebühr, beide in TL ([Quelle](https://tuerkei.diplo.de/tr-tr/service/05-visaeinreise/2728742-2728742)). Visa für Studium und Studienplatzsuche laufen nicht über iDATA; dort fällt keine iDATA-Gebühr an. Wer ein Stipendium aus öffentlichen Mitteln erhält, ist von der Visumgebühr befreit ([§ 52 Abs. 5 AufenthV](https://www.gesetze-im-internet.de/aufenthv/__52.html)).",
+      "marker": "**Gebühren (geprüft am 15.10.2026):**"
+    },
+    {
+      "key": "C-hw-tr",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "how-many-hours-a-week-can-i-work-as-a-student-in-germany",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### 140 iş günü nasıl sayılır? (01.03.2024'ten beri)",
+      "replace": "### 140 iş günü nasıl sayılır?\n140 iş günlük hesap 1 Mart 2024'ten beri geçerli ([BGBl. 2023 I Nr. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Madde 2 No. 6 ve Madde 12 Abs. 1; kontrol tarihi: 15.10.2026). Yarım gün eski kuralda da vardı (120 tam veya 240 yarım gün); o tarihten beri yarım gün (en fazla 4 saat) yasada açıkça tanımlanıyor ve haftalık 2,5 gün seçeneği eklendi ([Federal Meclis belgesi 20/6500, s. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "C-hw-en",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "how-many-hours-a-week-can-i-work-as-a-student-in-germany-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### How the 140 days are counted (since 1 March 2024)",
+      "replace": "### How the 140 days are counted\nThe 140-day account has applied since 1 March 2024 ([BGBl. 2023 I No. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Art. 2 no. 6 and Art. 12 (1); checked 15.10.2026). Half days already existed under the previous rule (120 full or 240 half days); since then the law itself defines a half day as a day with up to 4 hours and adds the weekly 2.5-day option ([Bundestag document 20/6500, p. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "C-hw-de",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "how-many-hours-a-week-can-i-work-as-a-student-in-germany-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### So werden die 140 Tage gezählt (seit 01.03.2024)",
+      "replace": "### So werden die 140 Tage gezählt\nDas Arbeitstagekonto mit 140 Tagen gilt seit dem 1. März 2024 ([BGBl. 2023 I Nr. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Art. 2 Nr. 6 und Art. 12 Abs. 1; geprüft am 15.10.2026). Halbe Tage gab es schon in der alten Regel (120 ganze oder 240 halbe Tage); seitdem definiert das Gesetz selbst einen halben Tag als Tag mit bis zu 4 Stunden und ergänzt die Wochenoption von 2,5 Tagen ([BT-Drucksache 20/6500, S. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "C-pt-tr",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "can-i-work-part-time-during-my-masters-in-germany",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### 140 gün nasıl sayılır? (01.03.2024'ten beri)",
+      "replace": "### 140 gün nasıl sayılır?\n140 iş günlük hesap 1 Mart 2024'ten beri geçerli ([BGBl. 2023 I Nr. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Madde 2 No. 6 ve Madde 12 Abs. 1; kontrol tarihi: 15.10.2026). Yarım gün eski kuralda da vardı (120 tam veya 240 yarım gün); o tarihten beri yarım gün (en fazla 4 saat) yasada açıkça tanımlanıyor ve haftalık 2,5 gün seçeneği eklendi ([Federal Meclis belgesi 20/6500, s. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "C-pt-en",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "can-i-work-part-time-during-my-masters-in-germany-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### How the 140 days are counted (since 1 March 2024)",
+      "replace": "### How the 140 days are counted\nThe 140-day account has applied since 1 March 2024 ([BGBl. 2023 I No. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Art. 2 no. 6 and Art. 12 (1); checked 15.10.2026). Half days already existed under the previous rule (120 full or 240 half days); since then the law itself defines a half day as a day with up to 4 hours and adds the weekly 2.5-day option ([Bundestag document 20/6500, p. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "C-pt-de",
+      "topic": "student-work",
+      "sources": [
+        "bgbl_2023_217",
+        "bt_drs_20_6500"
+      ],
+      "table": "faqs",
+      "slug": "can-i-work-part-time-during-my-masters-in-germany-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "### So wird gezählt (seit 01.03.2024)",
+      "replace": "### So wird gezählt\nDas Arbeitstagekonto mit 140 Tagen gilt seit dem 1. März 2024 ([BGBl. 2023 I Nr. 217](https://www.recht.bund.de/bgbl/1/2023/217/VO.html), Art. 2 Nr. 6 und Art. 12 Abs. 1; geprüft am 15.10.2026). Halbe Tage gab es schon in der alten Regel (120 ganze oder 240 halbe Tage); seitdem definiert das Gesetz selbst einen halben Tag als Tag mit bis zu 4 Stunden und ergänzt die Wochenoption von 2,5 Tagen ([BT-Drucksache 20/6500, S. 78](https://dserver.bundestag.de/btd/20/065/2006500.pdf))."
+    },
+    {
+      "key": "D-lc-tr",
+      "topic": "language-course",
+      "sources": [
+        "aufenthg_2",
+        "tr_missions_language_course",
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-must-be-in-the-blocked-account-for-a-language-course-visa",
+      "locale": "tr",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "**Neden farklı:** Genel dil kursunda temsilcilik, geçim güvencesini BAföG azami tutarının **%10 fazlası** olarak hesaplıyor. Yükseköğrenime hazırlık kursunda standart öğrenci tutarı uygulanıyor.",
+      "replace": "**Neden farklı:** Öğrenime hazırlık amacı taşımayan dil kursunda Oturum Yasası, öğrenci tutarına **%10 ek** öngörüyor ([AufenthG § 2 Abs. 3 cümle 6](https://www.gesetze-im-internet.de/aufenthg_2004/__2.html), kontrol tarihi: 15.10.2026): 2026 için 992 € × 1,1 = 1.091,20 €; Türkiye'deki temsilcilikler ayda en az 1.091 € istiyor ([Bilgi Notu 44F](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588)). Yükseköğrenime hazırlık kursunda standart öğrenci tutarı uygulanıyor (2026 için 992 €, [BMI ilanı BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf))."
+    },
+    {
+      "key": "D-lc-en",
+      "topic": "language-course",
+      "sources": [
+        "aufenthg_2",
+        "tr_missions_language_course",
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-must-be-in-the-blocked-account-for-a-language-course-visa-en",
+      "locale": "en",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "**Why they differ:** for a general language course the mission calculates the required funds as the BAföG maximum rate **plus 10%**. Study-preparatory courses use the standard student rate.",
+      "replace": "**Why they differ:** for a language course that does not prepare for studies, the Residence Act requires the student amount **plus a 10% surcharge** ([§ 2 (3) sentence 6 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__2.html), checked 15.10.2026): for 2026, €992 × 1.1 = €1,091.20; the missions in Türkiye ask for at least €1,091 per month ([information sheet 44F](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588)). Study-preparatory courses use the standard student rate (€992 for 2026, [BMI notice BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf))."
+    },
+    {
+      "key": "D-lc-de",
+      "topic": "language-course",
+      "sources": [
+        "aufenthg_2",
+        "tr_missions_language_course",
+        "banz_subsistence_2026"
+      ],
+      "table": "faqs",
+      "slug": "how-much-money-must-be-in-the-blocked-account-for-a-language-course-visa-de",
+      "locale": "de",
+      "field": "answer_md",
+      "op": "replace",
+      "find": "**Grund für den Unterschied:** Beim allgemeinen Sprachkurs berechnet die Vertretung den Lebensunterhalt als BAföG-Höchstsatz **zuzüglich 10 %**. Für studienvorbereitende Kurse gilt der Standardsatz für Studierende.",
+      "replace": "**Grund für den Unterschied:** Für Sprachkurse, die nicht der Studienvorbereitung dienen, verlangt das Aufenthaltsgesetz den Studierendenbetrag **zuzüglich eines Aufschlags von 10 %** ([§ 2 Abs. 3 Satz 6 AufenthG](https://www.gesetze-im-internet.de/aufenthg_2004/__2.html), geprüft am 15.10.2026): für 2026 992 € × 1,1 = 1.091,20 €; die Vertretungen in der Türkei verlangen monatlich mindestens 1.091 € ([Merkblatt 44F](https://tuerkei.diplo.de/tr-de/service/05-visaeinreise/2725588-2725588)). Für studienvorbereitende Kurse gilt der Standardsatz für Studierende (für 2026 992 €, [BMI-Bekanntmachung BAnz AT 29.08.2025 B1](https://www.bundesanzeiger.de/pub/publication/7ZVbxqtVVGzHzr35dka/content/7ZVbxqtVVGzHzr35dka/BAnz%20AT%2029.08.2025%20B1.pdf))."
+    }
+  ]
+}
