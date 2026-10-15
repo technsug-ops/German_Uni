@@ -92,3 +92,53 @@ Prod KB'ye admin oturumu olmadan erişilemiyor. Adımlar:
 3. Ardından chatbot'ta 14 OSV senaryosu ve kontrol tarihi senaryosu yeniden koşulur. Beklenen: "14.10.2026 tarihinden itibaren" ifadesi yok, yanlış bilgi yok.
 
 KB adımı tamamlanınca bu bölüm sonuçla güncellenecek.
+
+---
+
+# Yayın 2 — /tr düzeltmesi, OSV Paket 2, Faz 0 korumaları, boş SSS HTML'i (15.10.2026)
+
+## Commit, CI, deploy
+
+| Commit | İçerik |
+|---|---|
+| `9d47032` | fix(seo): /tr takma adları aynı dilde (29 yönlendirme) |
+| `cf00460` | fix(content): OSV-4 Paket 2 |
+| `1284057` | feat(content): OSV Faz 0 korumaları |
+| `b9641bf` | fix(faq): boş answer_html yeniden üretimi |
+| `009f62b` | test: CI'da GEMINI_API_KEY olmadığı için sahte anahtar |
+
+- **İlk deneme (run 38735783795, ve kullanıcının yaptığı yeniden denemeler):** "Safety-net tests" başarısız, deploy atlandı, canlı değişmedi. Sebep: `OsvPhase0GuardrailsTest`'teki chatbot testi `ChatService` kuruyor; kurucu `GeminiEmbedder` anahtar ister. Lokal `.env`'de anahtar var, CI'da yok ("GEMINI_API_KEY yok – embedding yapılamaz", 1 failed / 675 passed). Bu bir FTPS ya da migration hatası değil, test ortamı farkıydı.
+- **Düzeltme:** testte `config(['services.gemini.key' => 'test-key'])` (API çağrısı yok). Tam paket anahtarsız (CI benzeri) koşuldu: **665/665 + 11/11**.
+- **Run 38754175084:** testler ✓, Build & Deploy ✓. Server deploy 14:50:18 UTC'de tamamlandı. Migration'lar (`2026_10_15_000100`, `000200`) canlıda görüldü.
+
+## Canlı kontroller (yalnız GET)
+
+| Kontrol | Önce | Sonra |
+|---|---|---|
+| `/tr/ekip` | 301 → 302 → `/en/team` | **301 → `/tr/team` 200** |
+| `/de/gizlilik` | 301 → 302 → `/en/privacy` | **301 → `/de/privacy` 200** |
+| `/tr/haberler`, `/tr/araclar/sperrkonto` | EN'e iniyordu | **TR'de tek 301** |
+| `/ekip` (öneksiz) | 301 → `/en/team` | Aynı (bilinçli) |
+| İş arama vizesi yazısı (TR) | "6 ay" 13 kez, Chancenkarte 0 | Chancenkarte 28 kez; "6 ay" yalnız düzeltme notu ve "sık yapılan hata" uyarısında |
+| `/en/sozluk/blue-card` | 48.300 (3×), 50.700 yok | **50.700 (3×)**, 48.300 yok |
+| OSV Paket 2, canlı gövde doğrulaması (222 düzenleme) | — | **189 tam doğrulandı**; 3 tam yeniden yazım %97 (başlık ve tablo biçim farkı); 6'sında yeni metin tam var ama genel bir ifade sayfanın başka yerinde de geçiyor; 24 düzenleme yayında olmayan iki yazıda (37/38 EN/DE, `is_published=0`, canlıda 404, sitemap'te yok; doğru) |
+| Boş cevaplı SSS'ler (DE FAQ 298 + 19) | Cevap alanı boş | **20/20 dolu** |
+| 150 rastgele canlı SSS örneği | Önceki örneklemde %2,5 boş | 0 boş (1 kısa cevap, 359 karakter) |
+
+## KB — kullanıcı adımı
+
+KB'ye admin oturumu gerekiyor.
+
+1. `/admin/ops/kb-embed?source=faq,post&dry=1`. Beklenen toplam:
+   - Paket 1b gerçek çalıştırması yapıldıysa **≈470 chunk** (Paket 2).
+   - Yapılmadıysa **≈570** (1b'nin 102'si + Paket 2).
+   - Boş HTML onarımı KB'yi etkilemez (`kb:embed` Markdown okur).
+   - **700'ü aşarsa durdurun.**
+2. Uygunsa `dry` olmadan çalıştırılır.
+3. Ardından chatbot senaryoları yeniden koşulur: OSV 14 senaryosu + kontrol tarihi + Blue Card 2026 + 140 gün + Chancenkarte.
+
+## Olay notu
+
+CI hatasını yeniden üretmek için LF satır sonlu bir worktree denendi. Windows yol uzunluğu sınırına takıldı ve komut zincirinin bir kısmı depo kökünde çalıştı:
+- 3 forum önbellek dosyası (`public/forum/cache/production/sql_*.php`) commit'lenmiş hallerine döndü. Kendiliğinden yeniden üretilir; veri kaybı yok.
+- Kökte oluşan `.env` kopyası ve `vendor` bağlantısı silindi; asıl `vendor` sağlam.
