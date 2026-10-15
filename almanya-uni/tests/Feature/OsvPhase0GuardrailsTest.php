@@ -219,6 +219,8 @@ class OsvPhase0GuardrailsTest extends TestCase
 
     public function test_chat_system_prompt_forbids_check_date_as_effective_date(): void
     {
+        // ChatService kurucusu GeminiEmbedder'ı başlatır; CI'da GEMINI_API_KEY yok → sahte anahtar (API çağrısı yapılmaz).
+        config(['services.gemini.key' => 'test-key']);
         foreach (['tr', 'en', 'de'] as $loc) {
             $system = app(ChatService::class)->buildPayload('Soru?', $loc, [['title' => 'T', 'url' => '/x', 'content' => 'Güncel durum (kontrol tarihi: 14.10.2026)']], [])['systemInstruction']['parts'][0]['text'];
             $this->assertStringContainsString('kuralın başladığı tarih değildir', $system, $loc);
