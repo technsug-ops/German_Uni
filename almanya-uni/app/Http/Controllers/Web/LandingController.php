@@ -48,12 +48,18 @@ class LandingController extends Controller
             ->whereHas('university.city', fn ($q) => $q->where('cities.id', $cityModel->id))
             ->where('field_of_study_id', $fieldModel->id);
 
+        // Derece çipleri yalnız sonucu olan dereceler için bağlantı verir (boş ?degree= varyantına link yok).
+        $degreeCounts = $this->degreeCounts(clone $query);
+        $englishCount = $this->baseCount()
+            ->whereHas('university.city', fn ($q) => $q->where('cities.id', $cityModel->id))
+            ->whereIn('language', ['en', 'both'])
+            ->count();
+
         if ($degree) {
             $query->where('degree', $degree);
         }
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
-        $totalCount = $query->count();
+        [$programs, $totalCount] = $this->paginateOr404($query, $request);
 
         // Diğer alanlardan örnekler (cross-link, internal linking)
         $otherFields = $this->relatedFields($cityModel->id, $fieldModel->id);
@@ -68,6 +74,8 @@ class LandingController extends Controller
             'totalCount' => $totalCount,
             'otherFields' => $otherFields,
             'otherCities' => $otherCities,
+            'degreeCounts' => $degreeCounts,
+            'englishCount' => $englishCount,
             'h1' => $this->h1ForCityField($cityModel, $fieldModel, $degree),
             'metaDescription' => $this->metaDescForCityField($cityModel, $fieldModel, $totalCount),
         ]);
@@ -96,8 +104,7 @@ class LandingController extends Controller
             $query->where('degree', $degree);
         }
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
-        $totalCount = $query->count();
+        [$programs, $totalCount] = $this->paginateOr404($query, $request);
 
         $otherCities = $this->relatedCitiesByLanguage($lang, $cityModel->id);
 
@@ -119,7 +126,7 @@ class LandingController extends Controller
      * URL: /{locale}/programs/field/{field}/degree/{degree}
      * Örnek: /tr/programs/field/computer-science/degree/master
      */
-    public function fieldDegree(string $field, string $degree): View|\Illuminate\Http\RedirectResponse
+    public function fieldDegree(string $field, string $degree, Request $request): View|\Illuminate\Http\RedirectResponse
     {
         abort_unless(in_array($degree, ['bachelor', 'master', 'phd'], true), 404);
 
@@ -135,8 +142,7 @@ class LandingController extends Controller
             ->where('field_of_study_id', $fieldModel->id)
             ->where('degree', $degree);
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
-        $totalCount = $query->count();
+        [$programs, $totalCount] = $this->paginateOr404($query, $request);
 
         return view('programs.landing', [
             'context' => 'field-degree',
@@ -178,12 +184,19 @@ class LandingController extends Controller
                 $q->where('language', $lang)->orWhere('language', 'both');
             });
 
+        // Derece ve diğer-dil çipleri yalnız sonucu varsa bağlantı verir.
+        $degreeCounts = $this->degreeCounts(clone $query);
+        $otherLang = $lang === 'de' ? 'en' : 'de';
+        $otherLanguageCount = $this->baseCount()
+            ->where('field_of_study_id', $fieldModel->id)
+            ->whereIn('language', [$otherLang, 'both'])
+            ->count();
+
         if ($degree) {
             $query->where('degree', $degree);
         }
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
-        $totalCount = $query->count();
+        [$programs, $totalCount] = $this->paginateOr404($query, $request);
 
         // Aynı alanda NC'siz kaç program var? Sayfadaki en değerli çapraz link bu.
         $ncFreeCount = Program::where('is_active', true)
@@ -199,6 +212,9 @@ class LandingController extends Controller
             'programs' => $programs,
             'totalCount' => $totalCount,
             'ncFreeCount' => $ncFreeCount,
+            'degreeCounts' => $degreeCounts,
+            'otherLanguage' => $otherLang,
+            'otherLanguageCount' => $otherLanguageCount,
             'h1' => $this->h1ForFieldLanguage($fieldModel, $lang, $degree),
             'metaDescription' => $this->metaDescForFieldLanguage($fieldModel, $lang, $totalCount),
         ]);
@@ -209,7 +225,7 @@ class LandingController extends Controller
      * URL: /{locale}/cities/{city}/nc-free
      * Örnek: /tr/cities/berlin-q64/nc-free — "Berlin'de NC'siz bölümler"
      */
-    public function cityNcFree(string $city): View
+    public function cityNcFree(string $city, Request $request): View
     {
         $cityModel = City::where('slug', $city)->where('is_active', true)->firstOrFail();
 
@@ -217,8 +233,7 @@ class LandingController extends Controller
             ->whereHas('university.city', fn ($q) => $q->where('cities.id', $cityModel->id))
             ->where('admission_mode', 'zulassungsfrei');
 
-        $programs = $query->paginate(self::PER_PAGE)->withQueryString();
-        $totalCount = $query->count();
+        [$programs, $totalCount] = $this->paginateOr404($query, $request);
 
         $otherCities = $this->relatedCitiesByNcFree($cityModel->id);
 
@@ -249,6 +264,66 @@ class LandingController extends Controller
             ])
             ->orderByRaw('CASE WHEN description_tr IS NULL THEN 1 ELSE 0 END')
             ->orderBy('name_de');
+    }
+
+    /**
+     * SEO Recovery P0-4 (soft 404): bağımsız programatik landing'de sonuç yoksa gerçek 404.
+     *
+     * Koşul sitemap üretimiyle aynı: aktif program sayısı (SitemapController::landingEntries ve
+     * şehir/alan NC-free blokları da yalnız ≥1 aktif programı olan kombinasyonları yazar). Bu yüzden
+     * sitemap'teki her landing 200 + index kalır; sitemap dışındaki boş kombinasyonlar ("Bu filtreye
+     * uygun program yok" + 200 + index) artık 404. `?degree=` varyantı da aynı kurala tabi.
+     * Sayfa: `page` pozitif tam sayı olmalı ve son sayfayı aşmamalı (aksi halde 404; /programs ile aynı).
+     *
+     * Not: eski kod toplamı paginate()'ten SONRA $query->count() ile alıyordu; paginate() builder'a
+     * offset eklediği için 2. ve sonraki sayfalarda toplam 0 görünüyordu. Toplam artık ayrı sayılıyor.
+     *
+     * @return array{0: \Illuminate\Contracts\Pagination\LengthAwarePaginator, 1: int}
+     */
+    private function paginateOr404($query, Request $request): array
+    {
+        $total = (clone $query)->count();
+        abort_if($total === 0, 404);
+
+        $page = 1;
+        if ($request->query->has('page')) {
+            $raw = $request->query('page');
+            abort_unless(is_string($raw) && preg_match('/^[1-9][0-9]{0,5}$/', $raw), 404);
+            $page = (int) $raw;
+        }
+        abort_if($page > (int) ceil($total / self::PER_PAGE), 404);
+
+        $programs = $query->paginate(self::PER_PAGE, ['*'], 'page', $page, $total)->withQueryString();
+
+        return [$programs, $total];
+    }
+
+    /** Eager-load ve sıralama olmadan aktif program sayımı için temel sorgu (çip sayıları). */
+    private function baseCount()
+    {
+        return Program::query()->where('is_active', true);
+    }
+
+    /**
+     * Derece çipleri için sayımlar (bachelor/master/phd), derece filtresi uygulanmadan önceki sorgudan.
+     *
+     * @return array<string, int>
+     */
+    private function degreeCounts($query): array
+    {
+        $counts = $query->reorder()->setEagerLoads([])
+            ->whereIn('degree', ['bachelor', 'master', 'phd'])
+            ->selectRaw('degree, COUNT(*) as n')
+            ->groupBy('degree')
+            ->pluck('n', 'degree')
+            ->all();
+
+        $out = [];
+        foreach (['bachelor', 'master', 'phd'] as $d) {
+            $out[$d] = (int) ($counts[$d] ?? 0);
+        }
+
+        return $out;
     }
 
     private function validDegree(?string $degree): ?string

@@ -51,6 +51,22 @@ class UniversityWebController extends Controller
         'hamburg-university-of-technology-partner-019de9f1' => 'technische-universitat-hamburg-q1060',
         'fau-erlangen-nurnberg-partner-019de9f1' => 'friedrich-alexander-universitat-erlangen-nurnberg-q40025',
         'freie-universitat-berlin-e-medien-q130548543' => 'freie-universitat-berlin',
+        // 2026-10-14 SEO Recovery P0-4 (soft 404): programsız pasif kabuk kayıtlar → aynı kurumun aktif kaydı.
+        // Elle doğrulandı (docs/SEO_RECOVERY_P0_4_RESULT.md §C3): aynı kurum, aynı şehir/web sitesi.
+        'hochschule-kempten-partner-019ddbba' => 'hochschule-fur-angewandte-wissenschaften-kempten-q1622115',
+        'baden-wuerttemberg-cooperative-state-university-heidenheim-partner-019de9f1' => 'duale-hochschule-baden-wurttemberg-heidenheim-q1262602',
+        // HfPV Hessen 2022'de "Hessische Hochschule für öffentliches Management und Sicherheit" (HöMS) adını aldı;
+        // eski kaydın web sitesi zaten hoems.hessen.de, yeni kayıt Wiesbaden'de ve aktif.
+        'hesse-state-university-of-applied-sciences-for-police-and-public-administration-management-q1481465' => 'hessische-hochschule-fur-offentliches-management-und-sicherheit-partner-019ddbba',
+    ];
+
+    /**
+     * Kalıcı olarak kaldırılmış, sitede karşılığı olmayan kayıtlar → 410 Gone (kayıt pasif kaldığı sürece).
+     * SEO Recovery P0-4: 225 "Informationszentrum für Fremdsprachenforschung" bir yükseköğretim kurumu değil
+     * (Marburg Üniversitesi'ne bağlı bilgi merkezi), programı yok; benzer isimli bir kuruma yönlendirmek yanlış sinyal olur.
+     */
+    public const GONE_SLUGS = [
+        'informationszentrum-fur-fremdsprachenforschung-q820409',
     ];
 
     public function index(Request $request): View|\Illuminate\Http\Response
@@ -392,6 +408,26 @@ class UniversityWebController extends Controller
         ];
     }
 
+    /**
+     * /universities/{id} → kanonik slug'a tek adım 301. Aktif kayıt: kendi slug'ı. Pasif kayıt: MERGED_SLUGS hedefi
+     * (tek adım), GONE_SLUGS ise 410; eşlemesi olmayan pasif kayıt (araştırma enstitüleri vb., NEEDS_REVIEW) ve
+     * geçersiz/bilinmeyen ID → 404. ID URL'lerinin sitede kaynağı yok; yalnız dışarıda kalmış eski URL'leri toplar.
+     */
+    private function redirectNumericId(string $id): RedirectResponse
+    {
+        abort_unless(preg_match('/^[1-9][0-9]{0,9}$/', $id) === 1, 404);
+
+        $uni = University::query()->whereKey((int) $id)->first(['id', 'slug', 'is_active']);
+        abort_unless($uni && $uni->slug, 404);
+
+        $target = self::MERGED_SLUGS[$uni->slug] ?? ($uni->is_active ? $uni->slug : null);
+        if ($target) {
+            return redirect()->route('universities.show', ['slugOrId' => $target], 301);
+        }
+        abort_if(in_array($uni->slug, self::GONE_SLUGS, true), 410, 'university');
+        abort(404);
+    }
+
     public function show(Request $request, string $slugOrId): View|RedirectResponse
     {
         // Merge edilmiş kaydın slug'ı → kanonik sayfaya kalıcı yönlendir. Kabuk kayıt DB'de (pasif) dursa bile.
@@ -399,13 +435,23 @@ class UniversityWebController extends Controller
             return redirect()->route('universities.show', ['slugOrId' => $canonical], 301);
         }
 
+        // SEO Recovery P0-4: sayısal ID URL'si (/universities/3) artık kopya sayfa açmıyor.
+        // Yalnız ^[1-9][0-9]*$ ve gerçek bir kayıt → tek adımda kanonik slug'a 301 (sorgu dizgisi taşınmaz).
+        // 003, 3-xyz, bilinmeyen ID → 404 (eskiden MySQL tip zorlamasıyla id=3 sayfası 200 + self-canonical açılıyordu).
+        if (ctype_digit($slugOrId)) {
+            return $this->redirectNumericId($slugOrId);
+        }
+
         $university = University::where('slug', $slugOrId)
-            ->orWhere('id', $slugOrId)
             ->with(['city.state'])
             ->first();
 
-        if (!$university) {
+        if (! $university) {
             abort(404);
+        }
+
+        if (! $university->is_active && in_array($university->slug, self::GONE_SLUGS, true)) {
+            abort(410, 'university');
         }
 
         \App\Support\ActivityLogger::log($university, $university->name_de);

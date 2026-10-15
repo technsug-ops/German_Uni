@@ -12,6 +12,28 @@ use Illuminate\View\View;
 
 class CityController extends Controller
 {
+    /**
+     * SEO Recovery P0-4: pasif şehir kayıtları → tek adımda doğru hedef (301).
+     * Eyalet kayıtları (Wikidata eyalet Q-id'si, ad = eyalet adı, state_id = aynı eyalet) → /states/{slug}.
+     * bonn-q586 → aktif Bonn kaydı (aynı ad, eyalet, nüfus). mitte-q883803 / mitte-q14214072 bilerek YOK
+     * (Berlin-Mitte değiller; eyaletleri farklı) → NEEDS_REVIEW, davranış değişmedi.
+     *
+     * @var array<string, array{0: string, 1: string}> slug → [route adı, hedef slug]
+     */
+    public const PASSIVE_REDIRECTS = [
+        'baden-wurttemberg-q985' => ['states.show', 'baden-wurttemberg'],
+        'bayern-q980' => ['states.show', 'bayern'],
+        'brandenburg-q1208' => ['states.show', 'brandenburg'],
+        'mecklenburg-vorpommern-q1196' => ['states.show', 'mecklenburg-vorpommern'],
+        'niedersachsen-q1197' => ['states.show', 'niedersachsen'],
+        'nordrhein-westfalen-q1198' => ['states.show', 'nordrhein-westfalen'],
+        'rheinland-pfalz-q1200' => ['states.show', 'rheinland-pfalz'],
+        'sachsen-anhalt-q1206' => ['states.show', 'sachsen-anhalt'],
+        'schleswig-holstein-q1194' => ['states.show', 'schleswig-holstein'],
+        'thuringen-q1205' => ['states.show', 'thuringen'],
+        'bonn-q586' => ['cities.show', 'bonn-q892684'],
+    ];
+
     public function index(Request $request): View|\Illuminate\Http\Response
     {
         // universities_count = KANONİK campus-farkındalı sayım (City::scopeWithCampusAwareUniCount).
@@ -87,10 +109,48 @@ class CityController extends Controller
         return view('cities.index', $viewData);
     }
 
-    public function show(string $slug): View
+    private function passiveRedirect(string $slug): ?\Illuminate\Http\RedirectResponse
     {
+        if (! isset(self::PASSIVE_REDIRECTS[$slug])) {
+            return null;
+        }
+        // Kayıt yeniden aktifleştirilirse yönlendirme kendiliğinden devre dışı kalır.
+        if (City::where('slug', $slug)->where('is_active', true)->exists()) {
+            return null;
+        }
+        [$route, $target] = self::PASSIVE_REDIRECTS[$slug];
+
+        return redirect()->route($route, ['slug' => $target], 301);
+    }
+
+    /**
+     * /cities/{id} → kanonik slug'a tek adım 301 (yalnız ^[1-9][0-9]*$ ve aktif kayıt; pasifse PASSIVE_REDIRECTS
+     * hedefi). 008, 8-xyz, bilinmeyen ya da eşlemesiz pasif ID → 404. Sorgu dizgisi taşınmaz.
+     */
+    private function redirectNumericId(string $id): \Illuminate\Http\RedirectResponse
+    {
+        abort_unless(preg_match('/^[1-9][0-9]{0,9}$/', $id) === 1, 404);
+        $city = City::query()->whereKey((int) $id)->first(['id', 'slug', 'is_active']);
+        abort_unless($city && $city->slug, 404);
+
+        if ($city->is_active) {
+            return redirect()->route('cities.show', ['slug' => $city->slug], 301);
+        }
+
+        return $this->passiveRedirect($city->slug) ?? abort(404);
+    }
+
+    public function show(string $slug): View|\Illuminate\Http\RedirectResponse
+    {
+        if (ctype_digit($slug)) {
+            return $this->redirectNumericId($slug);
+        }
+        if ($r = $this->passiveRedirect($slug)) {
+            return $r;
+        }
+
+        // SEO Recovery P0-4: orWhere('id') kaldırıldı — '8-xyz' MySQL tip zorlamasıyla Berlin'i (id 8) açıyordu.
         $city = City::where('slug', $slug)
-            ->orWhere('id', $slug)
             ->with(['state', 'universities' => fn ($q) => $q->where('is_active', 1)->orderByDesc('student_count')])
             ->firstOrFail();
 

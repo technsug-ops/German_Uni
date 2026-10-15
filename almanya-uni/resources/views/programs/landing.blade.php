@@ -99,20 +99,41 @@
             @endif
         </p>
 
-        {{-- Quick filters / cross-links --}}
+        {{-- Quick filters / cross-links.
+             SEO Recovery P0-4: çipler yalnız sonucu olan hedeflere bağlantı verir (boş hedef artık 404).
+             Seçili derece bağlantı değil, aria-current ile işaretli metin; hiç derece çipi kalmazsa etiket de gizlenir. --}}
+        @php
+            $degreeLabels = ['bachelor' => __('Bachelor'), 'master' => __('Master'), 'phd' => __('PhD')];
+            $chipClass = 'bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition';
+            $chipActiveClass = 'bg-white text-primary-800 border border-white px-3 py-1 rounded-full font-semibold';
+            $visibleDegrees = array_filter($degreeCounts ?? [], fn ($n) => $n > 0);
+        @endphp
         @if (isset($context) && $context === 'field-language')
-            <div class="flex flex-wrap gap-2 mt-5 text-sm">
-                <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
-                @foreach (['bachelor' => __('Bachelor'), 'master' => __('Master'), 'phd' => __('PhD')] as $d => $dLabel)
-                    <a href="{{ route('programs.field-language', [$field->slug, $language]) }}?degree={{ $d }}"
-                       class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition"
-                       title="{{ $dLabel }} — {{ $field->name }}">{{ $dLabel }}</a>
-                @endforeach
-                <span class="text-primary-300 mx-2">·</span>
-                <a href="{{ route('programs.field-language', [$field->slug, $language === 'de' ? 'en' : 'de']) }}"
-                   class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition">
-                    {{ $language === 'de' ? __('English programs') : __('German programs') }}
-                </a>
+            <div class="flex flex-wrap items-center gap-2 mt-5 text-sm">
+                @if (count($visibleDegrees) > 0)
+                    <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
+                    @if ($degree ?? null)
+                        <a href="{{ route('programs.field-language', [$field->slug, $language]) }}" class="{{ $chipClass }}">{{ __('All degrees') }}</a>
+                    @endif
+                    @foreach ($visibleDegrees as $d => $dCount)
+                        @if (($degree ?? null) === $d)
+                            <span class="{{ $chipActiveClass }}" aria-current="page">{{ $degreeLabels[$d] }} ({{ number_format($dCount, 0, ',', '.') }})</span>
+                        @else
+                            <a href="{{ route('programs.field-language', [$field->slug, $language]) }}?degree={{ $d }}"
+                               class="{{ $chipClass }}"
+                               title="{{ $degreeLabels[$d] }} — {{ $field->name }}">{{ $degreeLabels[$d] }} ({{ number_format($dCount, 0, ',', '.') }})</a>
+                        @endif
+                    @endforeach
+                @endif
+                @if (($otherLanguageCount ?? 0) > 0)
+                    @if (count($visibleDegrees) > 0)
+                        <span class="text-primary-300 mx-2" aria-hidden="true">·</span>
+                    @endif
+                    <a href="{{ route('programs.field-language', [$field->slug, $otherLanguage]) }}"
+                       class="{{ $chipClass }}">
+                        {{ $language === 'de' ? __('English programs') : __('German programs') }}
+                    </a>
+                @endif
                 @if (($ncFreeCount ?? 0) > 0)
                     <a href="{{ route('admission-free.by-subject', $field->slug) }}"
                        class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
@@ -121,21 +142,30 @@
             </div>
         @endif
         @if (isset($context) && $context === 'city-field')
-            <div class="flex flex-wrap gap-2 mt-5 text-sm">
-                <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
-                <a href="{{ route('programs.city-field', [$city->slug, $field->slug]) }}?degree=bachelor"
-                   class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition"
-                   title="{{ __('Bachelor') }} — {{ $field->name }} — {{ $city->name }}">{{ __('Bachelor') }}</a>
-                <a href="{{ route('programs.city-field', [$city->slug, $field->slug]) }}?degree=master"
-                   class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition"
-                   title="{{ __('Master') }} — {{ $field->name }} — {{ $city->name }}">{{ __('Master') }}</a>
-                <a href="{{ route('programs.city-field', [$city->slug, $field->slug]) }}?degree=phd"
-                   class="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full transition"
-                   title="{{ __('PhD') }} — {{ $field->name }} — {{ $city->name }}">{{ __('PhD') }}</a>
-                <span class="text-primary-300 mx-2">·</span>
-                <a href="{{ route('programs.city-language', [$city->slug, 'en']) }}"
-                   class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
-                   title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}">{{ __('English programs') }}</a>
+            <div class="flex flex-wrap items-center gap-2 mt-5 text-sm">
+                @if (count($visibleDegrees) > 0)
+                    <span class="text-primary-200 mr-1">{{ __('By degree:') }}</span>
+                    @if ($degree ?? null)
+                        <a href="{{ route('programs.city-field', [$city->slug, $field->slug]) }}" class="{{ $chipClass }}">{{ __('All degrees') }}</a>
+                    @endif
+                    @foreach ($visibleDegrees as $d => $dCount)
+                        @if (($degree ?? null) === $d)
+                            <span class="{{ $chipActiveClass }}" aria-current="page">{{ $degreeLabels[$d] }} ({{ number_format($dCount, 0, ',', '.') }})</span>
+                        @else
+                            <a href="{{ route('programs.city-field', [$city->slug, $field->slug]) }}?degree={{ $d }}"
+                               class="{{ $chipClass }}"
+                               title="{{ $degreeLabels[$d] }} — {{ $field->name }} — {{ $city->name }}">{{ $degreeLabels[$d] }} ({{ number_format($dCount, 0, ',', '.') }})</a>
+                        @endif
+                    @endforeach
+                @endif
+                @if (($englishCount ?? 0) > 0)
+                    @if (count($visibleDegrees) > 0)
+                        <span class="text-primary-300 mx-2" aria-hidden="true">·</span>
+                    @endif
+                    <a href="{{ route('programs.city-language', [$city->slug, 'en']) }}"
+                       class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-400/30 px-3 py-1 rounded-full transition"
+                       title="{{ __('English-taught programs in :city', ['city' => $city->name]) }}">{{ __('English programs') }}</a>
+                @endif
             </div>
         @endif
     </div>

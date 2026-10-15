@@ -280,11 +280,14 @@
         <div>
             <div class="bg-white p-6 rounded-xl border border-gray-200 mb-6 sticky top-20 space-y-3">
                 <x-favorite-button :model="$university_model" type="university" size="lg" :block="true" />
+                {{-- SEO Recovery P0-4: NC-frei programı yoksa hedef sayfa boş (noindex) → buton gösterilmez (üstteki sayaç kartıyla aynı koşul). --}}
+                @if ($progNcFree > 0)
                 <a href="{{ route('admission-free.by-university', $university['slug']) }}"
                    class="inline-flex items-center justify-center gap-1.5 w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
                     <x-svg-icon name="check-circle" class="w-4 h-4" />
                     {{ __('NC-frei Programlar') }}
                 </a>
+                @endif
                 <a href="{{ route('compare.index', ['slugs' => $university['slug']]) }}"
                    class="inline-flex items-center justify-center gap-1.5 w-full bg-primary-500 text-white py-3 rounded-lg font-semibold hover:bg-primary-600 transition">
                     <x-svg-icon name="scale" class="w-4 h-4" />

@@ -147,8 +147,13 @@ class BlogController extends Controller
                 ->where('from_slug', $slug)
                 ->where('locale', app()->getLocale())
                 ->first();
+            // SEO Recovery P0-4: hedef bu dilde YAYINDA değilse 301 → 404 zinciri kurma, doğrudan 404.
+            // Hedef yayındaysa kanonik adresine tek adımda git (haber hedefi → /news/, ara /blog/ adımı yok).
             if ($redir) {
-                return redirect()->to(url($redir->locale . '/blog/' . $redir->to_slug), 301);
+                $target = Post::published()->where('slug', $redir->to_slug)->first(['id', 'slug', 'type', 'locale']);
+                if ($target && $target->locale === $redir->locale) {
+                    return redirect()->to($target->publicUrl(), 301);
+                }
             }
             abort(404);
         }
