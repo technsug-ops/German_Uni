@@ -365,6 +365,33 @@
 <x-journey-promo />
 
 {{-- =================================================================== --}}
+{{-- BAŞVURU REHBERLERİ — SEO P1-1: beş ana niyetin ana URL'si ana sayfadan 1 tık (config/seo_intents.php) --}}
+{{-- =================================================================== --}}
+@php $intentCards = \App\Support\SeoIntents::cards(); @endphp
+@if (count($intentCards))
+<section class="max-w-[1400px] mx-auto px-4 py-14" aria-labelledby="application-guides-heading">
+    <div class="mb-6">
+        <h2 id="application-guides-heading" class="text-2xl md:text-3xl font-bold text-gray-900">{{ __('Application guides') }}</h2>
+        <p class="text-gray-600 text-sm">{{ __('One guide for each key question of your application.') }}</p>
+    </div>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" role="list">
+        @foreach ($intentCards as $card)
+            <li>
+                <a href="{{ $card['url'] }}" data-seo-intent="{{ $card['key'] }}"
+                   class="group h-full flex flex-col rounded-2xl border border-gray-200 bg-white p-5 hover:border-primary-500 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-600 transition">
+                    <span class="inline-flex w-10 h-10 rounded-lg bg-primary-50 text-primary-700 items-center justify-center mb-3" aria-hidden="true">
+                        <x-svg-icon :name="$card['icon']" class="w-5 h-5" />
+                    </span>
+                    <span class="font-bold text-gray-900 group-hover:text-primary-700 leading-snug mb-1">{{ __($card['label']) }}</span>
+                    <span class="text-sm text-gray-600">{{ __($card['description']) }}</span>
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</section>
+@endif
+
+{{-- =================================================================== --}}
 {{-- POPÜLER PROGRAMLAR — kart sırası: 1) Programlar 2) Üniversiteler 3) Şehirler --}}
 {{-- =================================================================== --}}
 @if (! empty($featured_programs) && count($featured_programs) > 0)

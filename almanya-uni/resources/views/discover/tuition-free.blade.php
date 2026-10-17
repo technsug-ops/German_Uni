@@ -40,6 +40,9 @@
         </p>
     </section>
 
+    {{-- SEO P1-1: katalogdan ücret niyetinin ana rehberine (config/seo_intents.php) --}}
+    <x-seo-intent-guide :intent="\App\Support\SeoIntents::forRoute('discover.tuition-free')" />
+
     {{-- Alanlara göre --}}
     <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ __('Tuition-free programs by subject') }}</h2>

@@ -68,6 +68,8 @@
 <section class="bg-white border-b border-gray-200">
     <div class="max-w-[1400px] mx-auto px-4 py-6">
         <p class="text-gray-700 max-w-3xl leading-relaxed">{{ $cIntro }}</p>
+        {{-- SEO P1-1: alt niyet koleksiyonundan niyetin ana rehberine (config/seo_intents.php) --}}
+        <x-seo-intent-guide :intent="\App\Support\SeoIntents::forCollection($slug)" class="mt-5 max-w-3xl" />
     </div>
 </section>
 

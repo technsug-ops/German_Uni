@@ -52,6 +52,9 @@
         @endif
     @endif
 
+    {{-- SEO P1-1: haberden niyetin ana rehberine (config/seo_intents.php) --}}
+    <x-seo-intent-guide :intent="\App\Support\SeoIntents::forPost($post)" class="mb-6" />
+
     <div class="blog-content prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6 prose-img:w-full">
         {!! $post->content_html !!}
     </div>

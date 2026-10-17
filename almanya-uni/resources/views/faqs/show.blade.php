@@ -97,6 +97,9 @@
         </div>
     @endif
 
+    {{-- SEO P1-1: soru metni + konu + kategori + soru tipi uygun düşerse niyetin ana rehberi; belirsizse kutu yok --}}
+    <x-seo-intent-guide :intent="\App\Support\SeoIntents::matchFaq((string) $faq->question, $topic->slug, $faq->category, $faq->intent)" class="mb-10" />
+
     {{-- Bu cevap işine yaradı mı? (localStorage çift-oy engeli, blog pattern'i) --}}
     @if ($faq->has_answer)
         <div x-data="faqFeedback({{ $faq->id }})" class="pt-6 border-t border-gray-200">
