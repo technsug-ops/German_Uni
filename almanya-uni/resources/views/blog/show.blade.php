@@ -22,7 +22,8 @@
 ]))" />
 
 @php
-    $tocData = \App\Support\TocBuilder::process($post->content_html);
+    // SEO P1-1 Paket B: gövdedeki H1 tekrarı kaldırılır / H2'ye çevrilir → sayfada tek H1 (şablondaki başlık).
+    $tocData = \App\Support\TocBuilder::process(\App\Support\ContentHeadings::normalizeH1($post->content_html, $post->title));
     // KÖK FIX: içerikteki iç linkleri render anında bu sayfanın diline çevir
     // (önek-siz linkler default locale=en'e düşmesin). [[ContentLinks]]
     $contentHtml = \App\Support\ContentLinks::localizeHtml($tocData['html'], app()->getLocale());

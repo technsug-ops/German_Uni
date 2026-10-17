@@ -56,7 +56,8 @@
     <x-seo-intent-guide :intent="\App\Support\SeoIntents::forPost($post)" class="mb-6" />
 
     <div class="blog-content prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6 prose-img:w-full">
-        {!! $post->content_html !!}
+        {{-- SEO P1-1 Paket B: gövdedeki H1 tekrarı → sayfada tek H1 --}}
+        {!! \App\Support\ContentHeadings::normalizeH1($post->content_html, $post->title) !!}
     </div>
 
     {{-- Kaynak atfı (telif: özgün içerik + atıf + deep-link) --}}
