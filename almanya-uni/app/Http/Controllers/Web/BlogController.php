@@ -166,7 +166,9 @@ class BlogController extends Controller
         }
 
         if (! $preview) {
-            Post::where('id', $post->id)->increment('view_count');
+            // SB-1: sorgu oluşturucu üzerinden atomik artış — Eloquent increment() updated_at'i de güncelliyordu
+            // (sitemap lastmod, JSON-LD dateModified ve "Güncellendi" etiketi her ziyarette 'bugün' oluyordu).
+            Post::where('id', $post->id)->toBase()->increment('view_count');
         }
 
         // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (slug locale'e göre
@@ -328,7 +330,7 @@ class BlogController extends Controller
         ]);
 
         $column = $data['vote'] === 'up' ? 'helpful_count' : 'unhelpful_count';
-        Post::where('id', $data['post_id'])->increment($column);
+        Post::where('id', $data['post_id'])->toBase()->increment($column); // SB-1: oy updated_at'i değiştirmez
 
         return response()->json(['ok' => true]);
     }

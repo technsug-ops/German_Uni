@@ -114,7 +114,7 @@ class FaqController extends Controller
         ]);
 
         $column = $data['vote'] === 'up' ? 'helpful_count' : 'unhelpful_count';
-        Faq::where('id', $data['faq_id'])->increment($column);
+        Faq::where('id', $data['faq_id'])->toBase()->increment($column); // SB-1: oy updated_at'i değiştirmez
 
         return response()->json(['ok' => true]);
     }
@@ -164,7 +164,7 @@ class FaqController extends Controller
             throw new NotFoundHttpException();
         }
 
-        Faq::where('id', $faq->id)->increment('view_count');
+        Faq::where('id', $faq->id)->toBase()->increment('view_count'); // SB-1: updated_at değişmez (sitemap lastmod)
 
         // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL.
         //

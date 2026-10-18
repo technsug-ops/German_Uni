@@ -99,7 +99,7 @@ class JobController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $job->increment('view_count');
+        JobPosting::whereKey($job->getKey())->toBase()->increment('view_count'); // SB-1: updated_at (sitemap lastmod) değişmez
 
         $related = JobPosting::active()
             ->where('id', '!=', $job->id)

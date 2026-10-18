@@ -69,7 +69,7 @@ class NewsController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        Post::where('id', $post->id)->increment('view_count');
+        Post::where('id', $post->id)->toBase()->increment('view_count'); // SB-1: updated_at değişmez (lastmod/dateModified)
 
         // Dil değiştirici + hreflang: her dilin GERÇEK slug'ına URL (404 önler).
         if ($post->translation_group_id) {
