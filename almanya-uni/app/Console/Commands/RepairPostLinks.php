@@ -155,7 +155,8 @@ class RepairPostLinks extends Command
                 }
 
                 if ($dirty && ! $dry) {
-                    $post->save();
+                    // Bağlantı hedefi onarımı bakımdır; içerik tarihini (content_updated_at) ilerletmez.
+                    \App\Models\Post::maintenance(fn () => $post->save());
                 }
             }
         });

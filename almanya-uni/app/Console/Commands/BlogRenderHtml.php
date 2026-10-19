@@ -73,7 +73,8 @@ class BlogRenderHtml extends Command
                 DB::table('posts')->where('id', $post->id)->update([
                     'content_html' => $html,
                     'reading_minutes' => Post::computeReadingMinutes((string) $post->content_md),
-                    'updated_at' => now(),
+                    // updated_at bilinçli olarak yazılmaz: yalnız türetilmiş HTML yeniden üretiliyor, içerik
+                    // değişmiyor. Bu komut her deploy'da çalışıyor ve sitemap lastmod'unu sahte ilerletiyordu.
                 ]);
             }
         }

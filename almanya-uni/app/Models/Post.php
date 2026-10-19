@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\TracksContentDate;
 use App\Support\MarkdownRenderer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Post extends Model
 {
     use HasFactory;
+    use TracksContentDate;
+
+    /** Editoryal içerik alanları — content_updated_at yalnız bunlar değişince ilerler (görsel başlığı, slug vb. hariç). */
+    public static function contentDateFields(): array
+    {
+        return ['title', 'excerpt', 'content_md', 'meta_title', 'meta_description'];
+    }
 
     protected $fillable = [
         'locale',
