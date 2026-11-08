@@ -19,7 +19,7 @@
 {{-- =================================================================== --}}
 {{-- HERO --}}
 {{-- =================================================================== --}}
-<section class="relative overflow-hidden bg-gradient-to-b from-primary-900 to-primary-800 lg:bg-gradient-to-br lg:from-primary-800 lg:via-primary-900 lg:to-primary-800 text-white">
+<section class="relative overflow-hidden bg-gradient-to-b from-primary-900 to-primary-800 lg:bg-none lg:bg-primary-900 text-white">
     {{-- Gerçek fotoğraf: "Brandenburger Tor abends", Thomas Wolf (www.foto-tw.de), CC BY-SA 3.0 — Wikimedia Commons.
          Lisans atıf ister; atıf satırı hero'nun sağ altında. (Önceki Gemini üretimi görseller 2026-10-14'te kaldırıldı.) --}}
     {{-- ===== MASAÜSTÜ: fotoğraf sağ tarafta, soldan lacivert geçiş ===== --}}
